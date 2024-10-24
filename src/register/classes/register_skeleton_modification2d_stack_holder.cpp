@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_modification2d_stack_holder.hpp>
 #include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
+#include <godot_cpp/classes/skeleton_modification2d_stack_holder.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -37,10 +37,12 @@ static JSValue skeleton_modification2d_stack_holder_class_constructor(JSContext 
 	return obj;
 }
 static JSValue skeleton_modification2d_stack_holder_class_set_held_modification_stack(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SkeletonModification2DStackHolder::set_held_modification_stack, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_stack_holder_class_get_held_modification_stack(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SkeletonModification2DStackHolder::get_held_modification_stack, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry skeleton_modification2d_stack_holder_class_proto_funcs[] = {

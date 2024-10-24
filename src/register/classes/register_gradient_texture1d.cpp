@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/gradient.hpp>
-#include <godot_cpp/classes/gradient_texture1d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/gradient_texture1d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,21 +37,26 @@ static JSValue gradient_texture1d_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue gradient_texture1d_class_set_gradient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GradientTexture1D::set_gradient, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture1d_class_get_gradient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GradientTexture1D::get_gradient, ctx, this_val, argc, argv);
 };
 static JSValue gradient_texture1d_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GradientTexture1D::set_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture1d_class_set_use_hdr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GradientTexture1D::set_use_hdr, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture1d_class_is_using_hdr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GradientTexture1D::is_using_hdr, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry gradient_texture1d_class_proto_funcs[] = {

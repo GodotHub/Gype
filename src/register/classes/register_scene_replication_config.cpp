@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/scene_replication_config.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/scene_replication_config.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,47 +36,60 @@ static JSValue scene_replication_config_class_constructor(JSContext *ctx, JSValu
 	return obj;
 }
 static JSValue scene_replication_config_class_get_properties(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneReplicationConfig::get_properties, ctx, this_val, argc, argv);
 };
 static JSValue scene_replication_config_class_add_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SceneReplicationConfig::add_property, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_replication_config_class_has_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneReplicationConfig::has_property, ctx, this_val, argc, argv);
 };
 static JSValue scene_replication_config_class_remove_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SceneReplicationConfig::remove_property, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_replication_config_class_property_get_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneReplicationConfig::property_get_index, ctx, this_val, argc, argv);
 };
 static JSValue scene_replication_config_class_property_get_spawn(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SceneReplicationConfig::property_get_spawn, ctx, this_val, argc, argv);
 };
 static JSValue scene_replication_config_class_property_set_spawn(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SceneReplicationConfig::property_set_spawn, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_replication_config_class_property_get_replication_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SceneReplicationConfig::property_get_replication_mode, ctx, this_val, argc, argv);
 };
 static JSValue scene_replication_config_class_property_set_replication_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SceneReplicationConfig::property_set_replication_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_replication_config_class_property_get_sync(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SceneReplicationConfig::property_get_sync, ctx, this_val, argc, argv);
 };
 static JSValue scene_replication_config_class_property_set_sync(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SceneReplicationConfig::property_set_sync, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_replication_config_class_property_get_watch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SceneReplicationConfig::property_get_watch, ctx, this_val, argc, argv);
 };
 static JSValue scene_replication_config_class_property_set_watch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SceneReplicationConfig::property_set_watch, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

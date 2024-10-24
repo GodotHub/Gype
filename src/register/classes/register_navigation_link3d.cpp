@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/navigation_link3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,76 +36,97 @@ static JSValue navigation_link3d_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue navigation_link3d_class_get_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationLink3D::get_rid, ctx, this_val, argc, argv);
 };
 static JSValue navigation_link3d_class_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationLink3D::set_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link3d_class_is_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationLink3D::is_enabled, ctx, this_val, argc, argv);
 };
 static JSValue navigation_link3d_class_set_bidirectional(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationLink3D::set_bidirectional, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link3d_class_is_bidirectional(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationLink3D::is_bidirectional, ctx, this_val, argc, argv);
 };
 static JSValue navigation_link3d_class_set_navigation_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationLink3D::set_navigation_layers, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link3d_class_get_navigation_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationLink3D::get_navigation_layers, ctx, this_val, argc, argv);
 };
 static JSValue navigation_link3d_class_set_navigation_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationLink3D::set_navigation_layer_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link3d_class_get_navigation_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationLink3D::get_navigation_layer_value, ctx, this_val, argc, argv);
 };
 static JSValue navigation_link3d_class_set_start_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationLink3D::set_start_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link3d_class_get_start_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationLink3D::get_start_position, ctx, this_val, argc, argv);
 };
 static JSValue navigation_link3d_class_set_end_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationLink3D::set_end_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link3d_class_get_end_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationLink3D::get_end_position, ctx, this_val, argc, argv);
 };
 static JSValue navigation_link3d_class_set_global_start_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationLink3D::set_global_start_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link3d_class_get_global_start_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationLink3D::get_global_start_position, ctx, this_val, argc, argv);
 };
 static JSValue navigation_link3d_class_set_global_end_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationLink3D::set_global_end_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link3d_class_get_global_end_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationLink3D::get_global_end_position, ctx, this_val, argc, argv);
 };
 static JSValue navigation_link3d_class_set_enter_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationLink3D::set_enter_cost, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link3d_class_get_enter_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationLink3D::get_enter_cost, ctx, this_val, argc, argv);
 };
 static JSValue navigation_link3d_class_set_travel_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationLink3D::set_travel_cost, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_link3d_class_get_travel_cost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationLink3D::get_travel_cost, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry navigation_link3d_class_proto_funcs[] = {

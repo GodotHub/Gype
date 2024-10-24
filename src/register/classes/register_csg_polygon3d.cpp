@@ -37,115 +37,147 @@ static JSValue csg_polygon3d_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 static JSValue csg_polygon3d_class_set_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGPolygon3D::set_polygon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_polygon3d_class_get_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGPolygon3D::get_polygon, ctx, this_val, argc, argv);
 };
 static JSValue csg_polygon3d_class_set_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGPolygon3D::set_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_polygon3d_class_get_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGPolygon3D::get_mode, ctx, this_val, argc, argv);
 };
 static JSValue csg_polygon3d_class_set_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGPolygon3D::set_depth, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_polygon3d_class_get_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGPolygon3D::get_depth, ctx, this_val, argc, argv);
 };
 static JSValue csg_polygon3d_class_set_spin_degrees(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGPolygon3D::set_spin_degrees, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_polygon3d_class_get_spin_degrees(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGPolygon3D::get_spin_degrees, ctx, this_val, argc, argv);
 };
 static JSValue csg_polygon3d_class_set_spin_sides(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGPolygon3D::set_spin_sides, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_polygon3d_class_get_spin_sides(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGPolygon3D::get_spin_sides, ctx, this_val, argc, argv);
 };
 static JSValue csg_polygon3d_class_set_path_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGPolygon3D::set_path_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_polygon3d_class_get_path_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGPolygon3D::get_path_node, ctx, this_val, argc, argv);
 };
 static JSValue csg_polygon3d_class_set_path_interval_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGPolygon3D::set_path_interval_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_polygon3d_class_get_path_interval_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGPolygon3D::get_path_interval_type, ctx, this_val, argc, argv);
 };
 static JSValue csg_polygon3d_class_set_path_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGPolygon3D::set_path_interval, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_polygon3d_class_get_path_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGPolygon3D::get_path_interval, ctx, this_val, argc, argv);
 };
 static JSValue csg_polygon3d_class_set_path_simplify_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGPolygon3D::set_path_simplify_angle, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_polygon3d_class_get_path_simplify_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGPolygon3D::get_path_simplify_angle, ctx, this_val, argc, argv);
 };
 static JSValue csg_polygon3d_class_set_path_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGPolygon3D::set_path_rotation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_polygon3d_class_get_path_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGPolygon3D::get_path_rotation, ctx, this_val, argc, argv);
 };
 static JSValue csg_polygon3d_class_set_path_local(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGPolygon3D::set_path_local, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_polygon3d_class_is_path_local(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGPolygon3D::is_path_local, ctx, this_val, argc, argv);
 };
 static JSValue csg_polygon3d_class_set_path_continuous_u(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGPolygon3D::set_path_continuous_u, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_polygon3d_class_is_path_continuous_u(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGPolygon3D::is_path_continuous_u, ctx, this_val, argc, argv);
 };
 static JSValue csg_polygon3d_class_set_path_u_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGPolygon3D::set_path_u_distance, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_polygon3d_class_get_path_u_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGPolygon3D::get_path_u_distance, ctx, this_val, argc, argv);
 };
 static JSValue csg_polygon3d_class_set_path_joined(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGPolygon3D::set_path_joined, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_polygon3d_class_is_path_joined(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGPolygon3D::is_path_joined, ctx, this_val, argc, argv);
 };
 static JSValue csg_polygon3d_class_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGPolygon3D::set_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_polygon3d_class_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGPolygon3D::get_material, ctx, this_val, argc, argv);
 };
 static JSValue csg_polygon3d_class_set_smooth_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGPolygon3D::set_smooth_faces, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_polygon3d_class_get_smooth_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGPolygon3D::get_smooth_faces, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry csg_polygon3d_class_proto_funcs[] = {

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_library.hpp>
-#include <godot_cpp/classes/animation.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/animation.hpp>
+#include <godot_cpp/classes/animation_library.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,23 +37,29 @@ static JSValue animation_library_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue animation_library_class_add_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&AnimationLibrary::add_animation, ctx, this_val, argc, argv);
 };
 static JSValue animation_library_class_remove_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimationLibrary::remove_animation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_library_class_rename_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimationLibrary::rename_animation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_library_class_has_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimationLibrary::has_animation, ctx, this_val, argc, argv);
 };
 static JSValue animation_library_class_get_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimationLibrary::get_animation, ctx, this_val, argc, argv);
 };
 static JSValue animation_library_class_get_animation_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimationLibrary::get_animation_list, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry animation_library_class_proto_funcs[] = {

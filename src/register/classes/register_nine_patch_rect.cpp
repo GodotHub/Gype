@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/nine_patch_rect.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/nine_patch_rect.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,45 +37,57 @@ static JSValue nine_patch_rect_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue nine_patch_rect_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NinePatchRect::set_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue nine_patch_rect_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NinePatchRect::get_texture, ctx, this_val, argc, argv);
 };
 static JSValue nine_patch_rect_class_set_patch_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NinePatchRect::set_patch_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue nine_patch_rect_class_get_patch_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NinePatchRect::get_patch_margin, ctx, this_val, argc, argv);
 };
 static JSValue nine_patch_rect_class_set_region_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NinePatchRect::set_region_rect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue nine_patch_rect_class_get_region_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NinePatchRect::get_region_rect, ctx, this_val, argc, argv);
 };
 static JSValue nine_patch_rect_class_set_draw_center(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NinePatchRect::set_draw_center, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue nine_patch_rect_class_is_draw_center_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NinePatchRect::is_draw_center_enabled, ctx, this_val, argc, argv);
 };
 static JSValue nine_patch_rect_class_set_h_axis_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NinePatchRect::set_h_axis_stretch_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue nine_patch_rect_class_get_h_axis_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NinePatchRect::get_h_axis_stretch_mode, ctx, this_val, argc, argv);
 };
 static JSValue nine_patch_rect_class_set_v_axis_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NinePatchRect::set_v_axis_stretch_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue nine_patch_rect_class_get_v_axis_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NinePatchRect::get_v_axis_stretch_mode, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry nine_patch_rect_class_proto_funcs[] = {

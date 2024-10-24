@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/immediate_mesh.hpp>
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,42 +37,52 @@ static JSValue immediate_mesh_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue immediate_mesh_class_surface_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImmediateMesh::surface_begin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue immediate_mesh_class_surface_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImmediateMesh::surface_set_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue immediate_mesh_class_surface_set_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImmediateMesh::surface_set_normal, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue immediate_mesh_class_surface_set_tangent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImmediateMesh::surface_set_tangent, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue immediate_mesh_class_surface_set_uv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImmediateMesh::surface_set_uv, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue immediate_mesh_class_surface_set_uv2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImmediateMesh::surface_set_uv2, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue immediate_mesh_class_surface_add_vertex(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImmediateMesh::surface_add_vertex, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue immediate_mesh_class_surface_add_vertex_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImmediateMesh::surface_add_vertex_2d, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue immediate_mesh_class_surface_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImmediateMesh::surface_end, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue immediate_mesh_class_clear_surfaces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImmediateMesh::clear_surfaces, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

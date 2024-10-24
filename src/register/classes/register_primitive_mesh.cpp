@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,44 +37,56 @@ static JSValue primitive_mesh_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue primitive_mesh_class_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PrimitiveMesh::set_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue primitive_mesh_class_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PrimitiveMesh::get_material, ctx, this_val, argc, argv);
 };
 static JSValue primitive_mesh_class_get_mesh_arrays(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PrimitiveMesh::get_mesh_arrays, ctx, this_val, argc, argv);
 };
 static JSValue primitive_mesh_class_set_custom_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PrimitiveMesh::set_custom_aabb, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue primitive_mesh_class_get_custom_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PrimitiveMesh::get_custom_aabb, ctx, this_val, argc, argv);
 };
 static JSValue primitive_mesh_class_set_flip_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PrimitiveMesh::set_flip_faces, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue primitive_mesh_class_get_flip_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PrimitiveMesh::get_flip_faces, ctx, this_val, argc, argv);
 };
 static JSValue primitive_mesh_class_set_add_uv2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PrimitiveMesh::set_add_uv2, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue primitive_mesh_class_get_add_uv2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PrimitiveMesh::get_add_uv2, ctx, this_val, argc, argv);
 };
 static JSValue primitive_mesh_class_set_uv2_padding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PrimitiveMesh::set_uv2_padding, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue primitive_mesh_class_get_uv2_padding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PrimitiveMesh::get_uv2_padding, ctx, this_val, argc, argv);
 };
 static JSValue primitive_mesh_class_request_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PrimitiveMesh::request_update, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

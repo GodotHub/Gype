@@ -7,8 +7,8 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/editor_interface.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/editor_script.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,13 +38,16 @@ static JSValue editor_script_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 static JSValue editor_script_class_add_root_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorScript::add_root_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_script_class_get_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorScript::get_scene, ctx, this_val, argc, argv);
 };
 static JSValue editor_script_class_get_editor_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorScript::get_editor_interface, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_script_class_proto_funcs[] = {

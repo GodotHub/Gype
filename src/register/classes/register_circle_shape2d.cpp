@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/classes/circle_shape2d.hpp>
+#include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,10 +36,12 @@ static JSValue circle_shape2d_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue circle_shape2d_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CircleShape2D::set_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue circle_shape2d_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CircleShape2D::get_radius, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry circle_shape2d_class_proto_funcs[] = {

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/tab_bar.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/tab_bar.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,197 +37,253 @@ static JSValue tab_bar_class_constructor(JSContext *ctx, JSValueConst new_target
 	return obj;
 }
 static JSValue tab_bar_class_set_tab_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_tab_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_tab_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_tab_count, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_current_tab(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_current_tab, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_current_tab(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_current_tab, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_get_previous_tab(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_previous_tab, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_select_previous_available(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TabBar::select_previous_available, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_select_next_available(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TabBar::select_next_available, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_tab_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_tab_title, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_tab_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_tab_title, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_tab_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_tab_tooltip, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_tab_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_tab_tooltip, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_tab_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_tab_text_direction, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_tab_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_tab_text_direction, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_tab_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_tab_language, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_tab_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_tab_language, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_tab_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_tab_icon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_tab_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_tab_icon, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_tab_icon_max_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_tab_icon_max_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_tab_icon_max_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_tab_icon_max_width, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_tab_button_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_tab_button_icon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_tab_button_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_tab_button_icon, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_tab_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_tab_disabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_is_tab_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::is_tab_disabled, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_tab_hidden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_tab_hidden, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_is_tab_hidden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::is_tab_hidden, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_tab_metadata(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_tab_metadata, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_tab_metadata(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_tab_metadata, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_remove_tab(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::remove_tab, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_add_tab(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::add_tab, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_tab_idx_at_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_tab_idx_at_point, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_tab_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_tab_alignment, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_tab_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_tab_alignment, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_clip_tabs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_clip_tabs, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_clip_tabs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_clip_tabs, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_get_tab_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_tab_offset, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_get_offset_buttons_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_offset_buttons_visible, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_ensure_tab_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::ensure_tab_visible, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_tab_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_tab_rect, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_move_tab(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::move_tab, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_set_tab_close_display_policy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_tab_close_display_policy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_tab_close_display_policy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_tab_close_display_policy, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_max_tab_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_max_tab_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_max_tab_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_max_tab_width, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_scrolling_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_scrolling_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_scrolling_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_scrolling_enabled, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_drag_to_rearrange_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_drag_to_rearrange_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_drag_to_rearrange_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_drag_to_rearrange_enabled, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_tabs_rearrange_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_tabs_rearrange_group, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_tabs_rearrange_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_tabs_rearrange_group, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_scroll_to_selected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_scroll_to_selected, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_scroll_to_selected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_scroll_to_selected, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_select_with_rmb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_select_with_rmb, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_select_with_rmb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_select_with_rmb, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_set_deselect_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::set_deselect_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tab_bar_class_get_deselect_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TabBar::get_deselect_enabled, ctx, this_val, argc, argv);
 };
 static JSValue tab_bar_class_clear_tabs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TabBar::clear_tabs, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

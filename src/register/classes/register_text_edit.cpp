@@ -5,13 +5,13 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/v_scroll_bar.hpp>
-#include <godot_cpp/classes/popup_menu.hpp>
-#include <godot_cpp/classes/text_edit.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/h_scroll_bar.hpp>
+#include <godot_cpp/classes/v_scroll_bar.hpp>
 #include <godot_cpp/classes/syntax_highlighter.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/text_edit.hpp>
+#include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/h_scroll_bar.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -41,813 +41,1046 @@ static JSValue text_edit_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue text_edit_class_has_ime_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::has_ime_text, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_cancel_ime(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::cancel_ime, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_apply_ime(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::apply_ime, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_set_editable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_editable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_editable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_editable, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_text_direction, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_text_direction, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_language, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_language, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_structured_text_bidi_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_structured_text_bidi_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_structured_text_bidi_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_structured_text_bidi_override, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_structured_text_bidi_override_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_structured_text_bidi_override_options, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_structured_text_bidi_override_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_structured_text_bidi_override_options, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_tab_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_tab_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_tab_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_tab_size, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_indent_wrapped_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_indent_wrapped_lines, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_indent_wrapped_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_indent_wrapped_lines, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_overtype_mode_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_overtype_mode_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_overtype_mode_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_overtype_mode_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_context_menu_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_context_menu_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_context_menu_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_context_menu_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_shortcut_keys_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_shortcut_keys_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_shortcut_keys_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_shortcut_keys_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_virtual_keyboard_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_virtual_keyboard_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_virtual_keyboard_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_virtual_keyboard_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_middle_mouse_paste_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_middle_mouse_paste_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_middle_mouse_paste_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_middle_mouse_paste_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_set_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_text, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_text, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_line_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_line_count, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_placeholder, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_placeholder, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_line, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_line, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_line_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_line_width, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_line_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_line_height, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_indent_level(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_indent_level, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_first_non_whitespace_column(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_first_non_whitespace_column, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_swap_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::swap_lines, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_insert_line_at(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::insert_line_at, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_remove_line_at(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::remove_line_at, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_insert_text_at_caret(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::insert_text_at_caret, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_insert_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::insert_text, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_remove_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::remove_text, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_last_unhidden_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_last_unhidden_line, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_next_visible_line_offset_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_next_visible_line_offset_from, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_next_visible_line_index_offset_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_next_visible_line_index_offset_from, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_backspace(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::backspace, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_cut(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::cut, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_copy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::copy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_paste(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::paste, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_paste_primary_clipboard(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::paste_primary_clipboard, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_start_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::start_action, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_end_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::end_action, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_begin_complex_operation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::begin_complex_operation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_end_complex_operation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::end_complex_operation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_has_undo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::has_undo, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_has_redo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::has_redo, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_undo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::undo, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_redo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::redo, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_clear_undo_history(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::clear_undo_history, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_tag_saved_version(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::tag_saved_version, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_version(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_version, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_saved_version(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_saved_version, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_search_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_search_text, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_set_search_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_search_flags, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_search(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::search, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_tooltip_request_func(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_tooltip_request_func, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_local_mouse_pos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_local_mouse_pos, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_word_at_pos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_word_at_pos, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_line_column_at_pos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_line_column_at_pos, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_pos_at_line_column(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_pos_at_line_column, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_rect_at_line_column(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_rect_at_line_column, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_minimap_line_at_pos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_minimap_line_at_pos, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_is_dragging_cursor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_dragging_cursor, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_is_mouse_over_selection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_mouse_over_selection, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_caret_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_caret_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_caret_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_caret_type, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_caret_blink_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_caret_blink_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_caret_blink_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_caret_blink_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_caret_blink_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_caret_blink_interval, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_caret_blink_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_caret_blink_interval, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_draw_caret_when_editable_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_draw_caret_when_editable_disabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_drawing_caret_when_editable_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_drawing_caret_when_editable_disabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_move_caret_on_right_click_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_move_caret_on_right_click_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_move_caret_on_right_click_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_move_caret_on_right_click_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_caret_mid_grapheme_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_caret_mid_grapheme_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_caret_mid_grapheme_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_caret_mid_grapheme_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_multiple_carets_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_multiple_carets_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_multiple_carets_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_multiple_carets_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_add_caret(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextEdit::add_caret, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_remove_caret(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::remove_caret, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_remove_secondary_carets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::remove_secondary_carets, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_caret_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_caret_count, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_add_caret_at_carets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::add_caret_at_carets, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_sorted_carets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_sorted_carets, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_collapse_carets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::collapse_carets, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_merge_overlapping_carets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::merge_overlapping_carets, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_begin_multicaret_edit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::begin_multicaret_edit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_end_multicaret_edit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::end_multicaret_edit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_in_mulitcaret_edit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_in_mulitcaret_edit, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_multicaret_edit_ignore_caret(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::multicaret_edit_ignore_caret, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_is_caret_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_caret_visible, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_caret_draw_pos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_caret_draw_pos, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_caret_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_caret_line, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_caret_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_caret_line, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_caret_column(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_caret_column, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_caret_column(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_caret_column, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_caret_wrap_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_caret_wrap_index, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_word_under_caret(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_word_under_caret, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_use_default_word_separators(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_use_default_word_separators, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_default_word_separators_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_default_word_separators_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_use_custom_word_separators(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_use_custom_word_separators, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_custom_word_separators_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_custom_word_separators_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_custom_word_separators(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_custom_word_separators, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_custom_word_separators(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_custom_word_separators, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_selecting_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_selecting_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_selecting_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_selecting_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_deselect_on_focus_loss_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_deselect_on_focus_loss_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_deselect_on_focus_loss_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_deselect_on_focus_loss_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_drag_and_drop_selection_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_drag_and_drop_selection_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_drag_and_drop_selection_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_drag_and_drop_selection_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_selection_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_selection_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_selection_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_selection_mode, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_select_all(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::select_all, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_select_word_under_caret(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::select_word_under_caret, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_add_selection_for_next_occurrence(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::add_selection_for_next_occurrence, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_skip_selection_for_next_occurrence(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::skip_selection_for_next_occurrence, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_select(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::select, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_has_selection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::has_selection, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_selected_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextEdit::get_selected_text, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_selection_at_line_column(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_selection_at_line_column, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_line_ranges_from_carets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_line_ranges_from_carets, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_selection_origin_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_selection_origin_line, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_selection_origin_column(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_selection_origin_column, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_selection_origin_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_selection_origin_line, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_set_selection_origin_column(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_selection_origin_column, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_selection_from_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_selection_from_line, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_selection_from_column(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_selection_from_column, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_selection_to_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_selection_to_line, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_selection_to_column(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_selection_to_column, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_is_caret_after_selection_origin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_caret_after_selection_origin, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_deselect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::deselect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_delete_selection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::delete_selection, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_set_line_wrapping_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_line_wrapping_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_line_wrapping_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_line_wrapping_mode, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_autowrap_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_autowrap_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_autowrap_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_autowrap_mode, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_is_line_wrapped(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_line_wrapped, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_line_wrap_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_line_wrap_count, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_line_wrap_index_at_column(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_line_wrap_index_at_column, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_line_wrapped_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_line_wrapped_text, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_smooth_scroll_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_smooth_scroll_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_smooth_scroll_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_smooth_scroll_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_v_scroll_bar(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_v_scroll_bar, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_h_scroll_bar(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_h_scroll_bar, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_v_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_v_scroll, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_v_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_v_scroll, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_h_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_h_scroll, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_h_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_h_scroll, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_scroll_past_end_of_file_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_scroll_past_end_of_file_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_scroll_past_end_of_file_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_scroll_past_end_of_file_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_v_scroll_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_v_scroll_speed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_v_scroll_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_v_scroll_speed, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_fit_content_height_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_fit_content_height_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_fit_content_height_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_fit_content_height_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_scroll_pos_for_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_scroll_pos_for_line, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_line_as_first_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_line_as_first_visible, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_first_visible_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_first_visible_line, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_line_as_center_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_line_as_center_visible, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_set_line_as_last_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_line_as_last_visible, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_last_full_visible_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_last_full_visible_line, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_last_full_visible_line_wrap_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_last_full_visible_line_wrap_index, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_visible_line_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_visible_line_count, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_visible_line_count_in_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_visible_line_count_in_range, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_total_visible_line_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_total_visible_line_count, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_adjust_viewport_to_caret(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::adjust_viewport_to_caret, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_center_viewport_to_caret(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::center_viewport_to_caret, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_set_draw_minimap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_draw_minimap, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_drawing_minimap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_drawing_minimap, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_minimap_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_minimap_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_minimap_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_minimap_width, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_minimap_visible_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_minimap_visible_lines, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_add_gutter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::add_gutter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_remove_gutter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::remove_gutter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_gutter_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_gutter_count, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_gutter_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_gutter_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_gutter_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_gutter_name, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_gutter_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_gutter_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_gutter_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_gutter_type, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_gutter_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_gutter_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_gutter_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_gutter_width, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_gutter_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_gutter_draw, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_gutter_drawn(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_gutter_drawn, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_gutter_clickable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_gutter_clickable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_gutter_clickable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_gutter_clickable, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_gutter_overwritable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_gutter_overwritable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_gutter_overwritable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_gutter_overwritable, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_merge_gutters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::merge_gutters, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_set_gutter_custom_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_gutter_custom_draw, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_total_gutter_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_total_gutter_width, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_line_gutter_metadata(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_line_gutter_metadata, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_line_gutter_metadata(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_line_gutter_metadata, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_line_gutter_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_line_gutter_text, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_line_gutter_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_line_gutter_text, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_line_gutter_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_line_gutter_icon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_line_gutter_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_line_gutter_icon, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_line_gutter_item_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_line_gutter_item_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_line_gutter_item_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_line_gutter_item_color, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_line_gutter_clickable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_line_gutter_clickable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_line_gutter_clickable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_line_gutter_clickable, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_line_background_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_line_background_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_line_background_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_line_background_color, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_syntax_highlighter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_syntax_highlighter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_syntax_highlighter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_syntax_highlighter, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_highlight_current_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_highlight_current_line, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_highlight_current_line_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_highlight_current_line_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_highlight_all_occurrences(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_highlight_all_occurrences, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_highlight_all_occurrences_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_highlight_all_occurrences_enabled, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_draw_control_chars(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_draw_control_chars, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_draw_control_chars(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_draw_control_chars, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_set_draw_tabs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_draw_tabs, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_drawing_tabs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_drawing_tabs, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_set_draw_spaces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::set_draw_spaces, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_is_drawing_spaces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_drawing_spaces, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_menu, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_is_menu_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::is_menu_visible, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_menu_option(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::menu_option, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_adjust_carets_after_edit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextEdit::adjust_carets_after_edit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_edit_class_get_caret_index_edit_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextEdit::get_caret_index_edit_order, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_selection_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_selection_line, ctx, this_val, argc, argv);
 };
 static JSValue text_edit_class_get_selection_column(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextEdit::get_selection_column, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry text_edit_class_proto_funcs[] = {

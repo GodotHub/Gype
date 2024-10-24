@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/visual_instance3d.hpp>
-#include <godot_cpp/classes/lightmap_gi.hpp>
-#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/classes/sky.hpp>
+#include <godot_cpp/classes/lightmap_gi.hpp>
 #include <godot_cpp/classes/lightmap_gi_data.hpp>
+#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -39,136 +39,174 @@ static JSValue lightmap_gi_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue lightmap_gi_class_set_light_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_light_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_get_light_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::get_light_data, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_set_bake_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_bake_quality, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_get_bake_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::get_bake_quality, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_set_bounces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_bounces, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_get_bounces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::get_bounces, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_set_bounce_indirect_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_bounce_indirect_energy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_get_bounce_indirect_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::get_bounce_indirect_energy, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_set_generate_probes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_generate_probes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_get_generate_probes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::get_generate_probes, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_set_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_bias, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_get_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::get_bias, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_set_environment_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_environment_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_get_environment_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::get_environment_mode, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_set_environment_custom_sky(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_environment_custom_sky, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_get_environment_custom_sky(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::get_environment_custom_sky, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_set_environment_custom_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_environment_custom_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_get_environment_custom_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::get_environment_custom_color, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_set_environment_custom_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_environment_custom_energy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_get_environment_custom_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::get_environment_custom_energy, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_set_texel_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_texel_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_get_texel_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::get_texel_scale, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_set_max_texture_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_max_texture_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_get_max_texture_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::get_max_texture_size, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_set_use_denoiser(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_use_denoiser, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_is_using_denoiser(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::is_using_denoiser, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_set_denoiser_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_denoiser_strength, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_get_denoiser_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::get_denoiser_strength, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_set_denoiser_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_denoiser_range, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_get_denoiser_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::get_denoiser_range, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_set_interior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_interior, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_is_interior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::is_interior, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_set_directional(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_directional, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_is_directional(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::is_directional, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_set_use_texture_for_bounces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_use_texture_for_bounces, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_is_using_texture_for_bounces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::is_using_texture_for_bounces, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_set_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGI::set_camera_attributes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_class_get_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGI::get_camera_attributes, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry lightmap_gi_class_proto_funcs[] = {

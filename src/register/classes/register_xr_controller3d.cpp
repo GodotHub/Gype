@@ -36,18 +36,23 @@ static JSValue xr_controller3d_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue xr_controller3d_class_is_button_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XRController3D::is_button_pressed, ctx, this_val, argc, argv);
 };
 static JSValue xr_controller3d_class_get_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XRController3D::get_input, ctx, this_val, argc, argv);
 };
 static JSValue xr_controller3d_class_get_float(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XRController3D::get_float, ctx, this_val, argc, argv);
 };
 static JSValue xr_controller3d_class_get_vector2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XRController3D::get_vector2, ctx, this_val, argc, argv);
 };
 static JSValue xr_controller3d_class_get_tracker_hand(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XRController3D::get_tracker_hand, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry xr_controller3d_class_proto_funcs[] = {

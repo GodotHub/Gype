@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/classes/mesh_instance3d.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/soft_body3d.hpp>
-#include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,118 +38,151 @@ static JSValue soft_body3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue soft_body3d_class_get_physics_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SoftBody3D::get_physics_rid, ctx, this_val, argc, argv);
 };
 static JSValue soft_body3d_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SoftBody3D::set_collision_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue soft_body3d_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SoftBody3D::get_collision_mask, ctx, this_val, argc, argv);
 };
 static JSValue soft_body3d_class_set_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SoftBody3D::set_collision_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue soft_body3d_class_get_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SoftBody3D::get_collision_layer, ctx, this_val, argc, argv);
 };
 static JSValue soft_body3d_class_set_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SoftBody3D::set_collision_mask_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue soft_body3d_class_get_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SoftBody3D::get_collision_mask_value, ctx, this_val, argc, argv);
 };
 static JSValue soft_body3d_class_set_collision_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SoftBody3D::set_collision_layer_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue soft_body3d_class_get_collision_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SoftBody3D::get_collision_layer_value, ctx, this_val, argc, argv);
 };
 static JSValue soft_body3d_class_set_parent_collision_ignore(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SoftBody3D::set_parent_collision_ignore, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue soft_body3d_class_get_parent_collision_ignore(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SoftBody3D::get_parent_collision_ignore, ctx, this_val, argc, argv);
 };
 static JSValue soft_body3d_class_set_disable_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SoftBody3D::set_disable_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue soft_body3d_class_get_disable_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SoftBody3D::get_disable_mode, ctx, this_val, argc, argv);
 };
 static JSValue soft_body3d_class_get_collision_exceptions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SoftBody3D::get_collision_exceptions, ctx, this_val, argc, argv);
 };
 static JSValue soft_body3d_class_add_collision_exception_with(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SoftBody3D::add_collision_exception_with, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue soft_body3d_class_remove_collision_exception_with(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SoftBody3D::remove_collision_exception_with, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue soft_body3d_class_set_simulation_precision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SoftBody3D::set_simulation_precision, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue soft_body3d_class_get_simulation_precision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SoftBody3D::get_simulation_precision, ctx, this_val, argc, argv);
 };
 static JSValue soft_body3d_class_set_total_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SoftBody3D::set_total_mass, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue soft_body3d_class_get_total_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SoftBody3D::get_total_mass, ctx, this_val, argc, argv);
 };
 static JSValue soft_body3d_class_set_linear_stiffness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SoftBody3D::set_linear_stiffness, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue soft_body3d_class_get_linear_stiffness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SoftBody3D::get_linear_stiffness, ctx, this_val, argc, argv);
 };
 static JSValue soft_body3d_class_set_pressure_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SoftBody3D::set_pressure_coefficient, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue soft_body3d_class_get_pressure_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SoftBody3D::get_pressure_coefficient, ctx, this_val, argc, argv);
 };
 static JSValue soft_body3d_class_set_damping_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SoftBody3D::set_damping_coefficient, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue soft_body3d_class_get_damping_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SoftBody3D::get_damping_coefficient, ctx, this_val, argc, argv);
 };
 static JSValue soft_body3d_class_set_drag_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SoftBody3D::set_drag_coefficient, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue soft_body3d_class_get_drag_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SoftBody3D::get_drag_coefficient, ctx, this_val, argc, argv);
 };
 static JSValue soft_body3d_class_get_point_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SoftBody3D::get_point_transform, ctx, this_val, argc, argv);
 };
 static JSValue soft_body3d_class_set_point_pinned(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SoftBody3D::set_point_pinned, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue soft_body3d_class_is_point_pinned(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SoftBody3D::is_point_pinned, ctx, this_val, argc, argv);
 };
 static JSValue soft_body3d_class_set_ray_pickable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SoftBody3D::set_ray_pickable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue soft_body3d_class_is_ray_pickable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SoftBody3D::is_ray_pickable, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry soft_body3d_class_proto_funcs[] = {

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/voxel_gi.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/voxel_gi.hpp>
 #include <godot_cpp/classes/voxel_gi_data.hpp>
 #include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -39,38 +39,48 @@ static JSValue voxel_gi_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue voxel_gi_class_set_probe_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VoxelGI::set_probe_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_class_get_probe_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VoxelGI::get_probe_data, ctx, this_val, argc, argv);
 };
 static JSValue voxel_gi_class_set_subdiv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VoxelGI::set_subdiv, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_class_get_subdiv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VoxelGI::get_subdiv, ctx, this_val, argc, argv);
 };
 static JSValue voxel_gi_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VoxelGI::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VoxelGI::get_size, ctx, this_val, argc, argv);
 };
 static JSValue voxel_gi_class_set_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VoxelGI::set_camera_attributes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_class_get_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VoxelGI::get_camera_attributes, ctx, this_val, argc, argv);
 };
 static JSValue voxel_gi_class_bake(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VoxelGI::bake, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_class_debug_bake(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VoxelGI::debug_bake, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

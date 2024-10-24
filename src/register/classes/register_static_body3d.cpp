@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/physics_body3d.hpp>
-#include <godot_cpp/classes/static_body3d.hpp>
 #include <godot_cpp/classes/physics_material.hpp>
+#include <godot_cpp/classes/static_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,24 +37,30 @@ static JSValue static_body3d_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 static JSValue static_body3d_class_set_constant_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StaticBody3D::set_constant_linear_velocity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue static_body3d_class_set_constant_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StaticBody3D::set_constant_angular_velocity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue static_body3d_class_get_constant_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StaticBody3D::get_constant_linear_velocity, ctx, this_val, argc, argv);
 };
 static JSValue static_body3d_class_get_constant_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StaticBody3D::get_constant_angular_velocity, ctx, this_val, argc, argv);
 };
 static JSValue static_body3d_class_set_physics_material_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StaticBody3D::set_physics_material_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue static_body3d_class_get_physics_material_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StaticBody3D::get_physics_material_override, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry static_body3d_class_proto_funcs[] = {

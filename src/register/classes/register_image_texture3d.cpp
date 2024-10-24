@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/image_texture3d.hpp>
 #include <godot_cpp/classes/texture3d.hpp>
+#include <godot_cpp/classes/image_texture3d.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,9 +37,11 @@ static JSValue image_texture3d_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue image_texture3d_class_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ImageTexture3D::create, ctx, this_val, argc, argv);
 };
 static JSValue image_texture3d_class_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImageTexture3D::update, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

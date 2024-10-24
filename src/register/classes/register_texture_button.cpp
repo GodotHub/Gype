@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture_button.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/bit_map.hpp>
 #include <godot_cpp/classes/base_button.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/texture_button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,73 +38,93 @@ static JSValue texture_button_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue texture_button_class_set_texture_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureButton::set_texture_normal, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_set_texture_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureButton::set_texture_pressed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_set_texture_hover(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureButton::set_texture_hover, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_set_texture_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureButton::set_texture_disabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_set_texture_focused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureButton::set_texture_focused, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_set_click_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureButton::set_click_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_set_ignore_texture_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureButton::set_ignore_texture_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_set_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureButton::set_stretch_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_set_flip_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureButton::set_flip_h, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_is_flipped_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureButton::is_flipped_h, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_set_flip_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureButton::set_flip_v, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_button_class_is_flipped_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureButton::is_flipped_v, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_get_texture_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureButton::get_texture_normal, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_get_texture_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureButton::get_texture_pressed, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_get_texture_hover(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureButton::get_texture_hover, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_get_texture_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureButton::get_texture_disabled, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_get_texture_focused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureButton::get_texture_focused, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_get_click_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureButton::get_click_mask, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_get_ignore_texture_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureButton::get_ignore_texture_size, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_get_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureButton::get_stretch_mode, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry texture_button_class_proto_funcs[] = {

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/light2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/light2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,115 +36,147 @@ static JSValue light2d_class_constructor(JSContext *ctx, JSValueConst new_target
 	return obj;
 }
 static JSValue light2d_class_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Light2D::set_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light2d_class_is_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Light2D::is_enabled, ctx, this_val, argc, argv);
 };
 static JSValue light2d_class_set_editor_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Light2D::set_editor_only, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light2d_class_is_editor_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Light2D::is_editor_only, ctx, this_val, argc, argv);
 };
 static JSValue light2d_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Light2D::set_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light2d_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Light2D::get_color, ctx, this_val, argc, argv);
 };
 static JSValue light2d_class_set_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Light2D::set_energy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light2d_class_get_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Light2D::get_energy, ctx, this_val, argc, argv);
 };
 static JSValue light2d_class_set_z_range_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Light2D::set_z_range_min, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light2d_class_get_z_range_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Light2D::get_z_range_min, ctx, this_val, argc, argv);
 };
 static JSValue light2d_class_set_z_range_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Light2D::set_z_range_max, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light2d_class_get_z_range_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Light2D::get_z_range_max, ctx, this_val, argc, argv);
 };
 static JSValue light2d_class_set_layer_range_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Light2D::set_layer_range_min, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light2d_class_get_layer_range_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Light2D::get_layer_range_min, ctx, this_val, argc, argv);
 };
 static JSValue light2d_class_set_layer_range_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Light2D::set_layer_range_max, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light2d_class_get_layer_range_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Light2D::get_layer_range_max, ctx, this_val, argc, argv);
 };
 static JSValue light2d_class_set_item_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Light2D::set_item_cull_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light2d_class_get_item_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Light2D::get_item_cull_mask, ctx, this_val, argc, argv);
 };
 static JSValue light2d_class_set_item_shadow_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Light2D::set_item_shadow_cull_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light2d_class_get_item_shadow_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Light2D::get_item_shadow_cull_mask, ctx, this_val, argc, argv);
 };
 static JSValue light2d_class_set_shadow_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Light2D::set_shadow_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light2d_class_is_shadow_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Light2D::is_shadow_enabled, ctx, this_val, argc, argv);
 };
 static JSValue light2d_class_set_shadow_smooth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Light2D::set_shadow_smooth, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light2d_class_get_shadow_smooth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Light2D::get_shadow_smooth, ctx, this_val, argc, argv);
 };
 static JSValue light2d_class_set_shadow_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Light2D::set_shadow_filter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light2d_class_get_shadow_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Light2D::get_shadow_filter, ctx, this_val, argc, argv);
 };
 static JSValue light2d_class_set_shadow_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Light2D::set_shadow_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light2d_class_get_shadow_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Light2D::get_shadow_color, ctx, this_val, argc, argv);
 };
 static JSValue light2d_class_set_blend_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Light2D::set_blend_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light2d_class_get_blend_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Light2D::get_blend_mode, ctx, this_val, argc, argv);
 };
 static JSValue light2d_class_set_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Light2D::set_height, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light2d_class_get_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Light2D::get_height, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry light2d_class_proto_funcs[] = {

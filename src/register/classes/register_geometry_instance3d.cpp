@@ -37,115 +37,147 @@ static JSValue geometry_instance3d_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue geometry_instance3d_class_set_material_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GeometryInstance3D::set_material_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue geometry_instance3d_class_get_material_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GeometryInstance3D::get_material_override, ctx, this_val, argc, argv);
 };
 static JSValue geometry_instance3d_class_set_material_overlay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GeometryInstance3D::set_material_overlay, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue geometry_instance3d_class_get_material_overlay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GeometryInstance3D::get_material_overlay, ctx, this_val, argc, argv);
 };
 static JSValue geometry_instance3d_class_set_cast_shadows_setting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GeometryInstance3D::set_cast_shadows_setting, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue geometry_instance3d_class_get_cast_shadows_setting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GeometryInstance3D::get_cast_shadows_setting, ctx, this_val, argc, argv);
 };
 static JSValue geometry_instance3d_class_set_lod_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GeometryInstance3D::set_lod_bias, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue geometry_instance3d_class_get_lod_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GeometryInstance3D::get_lod_bias, ctx, this_val, argc, argv);
 };
 static JSValue geometry_instance3d_class_set_transparency(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GeometryInstance3D::set_transparency, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue geometry_instance3d_class_get_transparency(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GeometryInstance3D::get_transparency, ctx, this_val, argc, argv);
 };
 static JSValue geometry_instance3d_class_set_visibility_range_end_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GeometryInstance3D::set_visibility_range_end_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue geometry_instance3d_class_get_visibility_range_end_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GeometryInstance3D::get_visibility_range_end_margin, ctx, this_val, argc, argv);
 };
 static JSValue geometry_instance3d_class_set_visibility_range_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GeometryInstance3D::set_visibility_range_end, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue geometry_instance3d_class_get_visibility_range_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GeometryInstance3D::get_visibility_range_end, ctx, this_val, argc, argv);
 };
 static JSValue geometry_instance3d_class_set_visibility_range_begin_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GeometryInstance3D::set_visibility_range_begin_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue geometry_instance3d_class_get_visibility_range_begin_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GeometryInstance3D::get_visibility_range_begin_margin, ctx, this_val, argc, argv);
 };
 static JSValue geometry_instance3d_class_set_visibility_range_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GeometryInstance3D::set_visibility_range_begin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue geometry_instance3d_class_get_visibility_range_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GeometryInstance3D::get_visibility_range_begin, ctx, this_val, argc, argv);
 };
 static JSValue geometry_instance3d_class_set_visibility_range_fade_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GeometryInstance3D::set_visibility_range_fade_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue geometry_instance3d_class_get_visibility_range_fade_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GeometryInstance3D::get_visibility_range_fade_mode, ctx, this_val, argc, argv);
 };
 static JSValue geometry_instance3d_class_set_instance_shader_parameter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GeometryInstance3D::set_instance_shader_parameter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue geometry_instance3d_class_get_instance_shader_parameter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GeometryInstance3D::get_instance_shader_parameter, ctx, this_val, argc, argv);
 };
 static JSValue geometry_instance3d_class_set_extra_cull_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GeometryInstance3D::set_extra_cull_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue geometry_instance3d_class_get_extra_cull_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GeometryInstance3D::get_extra_cull_margin, ctx, this_val, argc, argv);
 };
 static JSValue geometry_instance3d_class_set_lightmap_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GeometryInstance3D::set_lightmap_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue geometry_instance3d_class_get_lightmap_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GeometryInstance3D::get_lightmap_scale, ctx, this_val, argc, argv);
 };
 static JSValue geometry_instance3d_class_set_gi_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GeometryInstance3D::set_gi_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue geometry_instance3d_class_get_gi_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GeometryInstance3D::get_gi_mode, ctx, this_val, argc, argv);
 };
 static JSValue geometry_instance3d_class_set_ignore_occlusion_culling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GeometryInstance3D::set_ignore_occlusion_culling, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue geometry_instance3d_class_is_ignoring_occlusion_culling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GeometryInstance3D::is_ignoring_occlusion_culling, ctx, this_val, argc, argv);
 };
 static JSValue geometry_instance3d_class_set_custom_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GeometryInstance3D::set_custom_aabb, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue geometry_instance3d_class_get_custom_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GeometryInstance3D::get_custom_aabb, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry geometry_instance3d_class_proto_funcs[] = {

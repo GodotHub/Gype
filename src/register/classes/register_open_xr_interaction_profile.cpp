@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/open_xr_interaction_profile.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/open_xrip_binding.hpp>
-#include <godot_cpp/classes/open_xr_interaction_profile.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,23 +37,29 @@ static JSValue open_xr_interaction_profile_class_constructor(JSContext *ctx, JSV
 	return obj;
 }
 static JSValue open_xr_interaction_profile_class_set_interaction_profile_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRInteractionProfile::set_interaction_profile_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_interaction_profile_class_get_interaction_profile_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRInteractionProfile::get_interaction_profile_path, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_interaction_profile_class_get_binding_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRInteractionProfile::get_binding_count, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_interaction_profile_class_get_binding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRInteractionProfile::get_binding, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_interaction_profile_class_set_bindings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRInteractionProfile::set_bindings, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_interaction_profile_class_get_bindings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRInteractionProfile::get_bindings, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry open_xr_interaction_profile_class_proto_funcs[] = {

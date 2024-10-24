@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_direct_space_state3d.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/physics_direct_body_state3d.hpp>
+#include <godot_cpp/classes/physics_direct_space_state3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,157 +37,203 @@ static JSValue physics_direct_body_state3d_class_constructor(JSContext *ctx, JSV
 	return obj;
 }
 static JSValue physics_direct_body_state3d_class_get_total_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_total_gravity, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_total_linear_damp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_total_linear_damp, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_total_angular_damp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_total_angular_damp, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_center_of_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_center_of_mass, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_center_of_mass_local(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_center_of_mass_local, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_principal_inertia_axes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_principal_inertia_axes, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_inverse_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_inverse_mass, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_inverse_inertia(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_inverse_inertia, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_inverse_inertia_tensor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_inverse_inertia_tensor, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_set_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsDirectBodyState3D::set_linear_velocity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_get_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_linear_velocity, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_set_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsDirectBodyState3D::set_angular_velocity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_get_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_angular_velocity, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsDirectBodyState3D::set_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_transform, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_velocity_at_local_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_velocity_at_local_position, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_apply_central_impulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsDirectBodyState3D::apply_central_impulse, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_apply_impulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsDirectBodyState3D::apply_impulse, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_apply_torque_impulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsDirectBodyState3D::apply_torque_impulse, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_apply_central_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsDirectBodyState3D::apply_central_force, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_apply_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsDirectBodyState3D::apply_force, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_apply_torque(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsDirectBodyState3D::apply_torque, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_add_constant_central_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsDirectBodyState3D::add_constant_central_force, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_add_constant_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsDirectBodyState3D::add_constant_force, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_add_constant_torque(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsDirectBodyState3D::add_constant_torque, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_set_constant_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsDirectBodyState3D::set_constant_force, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_get_constant_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_constant_force, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_set_constant_torque(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsDirectBodyState3D::set_constant_torque, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_get_constant_torque(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_constant_torque, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_set_sleep_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsDirectBodyState3D::set_sleep_state, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_is_sleeping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::is_sleeping, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_contact_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_contact_count, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_contact_local_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_contact_local_position, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_contact_local_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_contact_local_normal, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_contact_impulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_contact_impulse, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_contact_local_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_contact_local_shape, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_contact_local_velocity_at_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_contact_local_velocity_at_position, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_contact_collider(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_contact_collider, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_contact_collider_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_contact_collider_position, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_contact_collider_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_contact_collider_id, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_contact_collider_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_contact_collider_object, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_contact_collider_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_contact_collider_shape, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_contact_collider_velocity_at_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_contact_collider_velocity_at_position, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_get_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectBodyState3D::get_step, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_body_state3d_class_integrate_forces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsDirectBodyState3D::integrate_forces, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_direct_body_state3d_class_get_space_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PhysicsDirectBodyState3D::get_space_state, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry physics_direct_body_state3d_class_proto_funcs[] = {

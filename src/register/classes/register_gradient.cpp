@@ -36,63 +36,80 @@ static JSValue gradient_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue gradient_class_add_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Gradient::add_point, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_class_remove_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Gradient::remove_point, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Gradient::set_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Gradient::get_offset, ctx, this_val, argc, argv);
 };
 static JSValue gradient_class_reverse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Gradient::reverse, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Gradient::set_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Gradient::get_color, ctx, this_val, argc, argv);
 };
 static JSValue gradient_class_sample(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Gradient::sample, ctx, this_val, argc, argv);
 };
 static JSValue gradient_class_get_point_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Gradient::get_point_count, ctx, this_val, argc, argv);
 };
 static JSValue gradient_class_set_offsets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Gradient::set_offsets, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_class_get_offsets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Gradient::get_offsets, ctx, this_val, argc, argv);
 };
 static JSValue gradient_class_set_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Gradient::set_colors, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_class_get_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Gradient::get_colors, ctx, this_val, argc, argv);
 };
 static JSValue gradient_class_set_interpolation_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Gradient::set_interpolation_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_class_get_interpolation_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Gradient::get_interpolation_mode, ctx, this_val, argc, argv);
 };
 static JSValue gradient_class_set_interpolation_color_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Gradient::set_interpolation_color_space, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_class_get_interpolation_color_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Gradient::get_interpolation_color_space, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry gradient_class_proto_funcs[] = {

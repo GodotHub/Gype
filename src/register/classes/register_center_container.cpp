@@ -36,10 +36,12 @@ static JSValue center_container_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue center_container_class_set_use_top_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CenterContainer::set_use_top_left, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue center_container_class_is_using_top_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CenterContainer::is_using_top_left, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry center_container_class_proto_funcs[] = {

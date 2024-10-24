@@ -36,10 +36,12 @@ static JSValue cone_twist_joint3d_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue cone_twist_joint3d_class_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ConeTwistJoint3D::set_param, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cone_twist_joint3d_class_get_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ConeTwistJoint3D::get_param, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry cone_twist_joint3d_class_proto_funcs[] = {

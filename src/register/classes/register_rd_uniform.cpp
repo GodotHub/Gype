@@ -36,28 +36,35 @@ static JSValue rd_uniform_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue rd_uniform_class_set_uniform_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDUniform::set_uniform_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_uniform_class_get_uniform_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDUniform::get_uniform_type, ctx, this_val, argc, argv);
 };
 static JSValue rd_uniform_class_set_binding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDUniform::set_binding, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_uniform_class_get_binding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDUniform::get_binding, ctx, this_val, argc, argv);
 };
 static JSValue rd_uniform_class_add_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDUniform::add_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_uniform_class_clear_ids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDUniform::clear_ids, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_uniform_class_get_ids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDUniform::get_ids, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry rd_uniform_class_proto_funcs[] = {

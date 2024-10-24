@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/aes_context.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,15 +36,19 @@ static JSValue aes_context_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue aes_context_class_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&AESContext::start, ctx, this_val, argc, argv);
 };
 static JSValue aes_context_class_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&AESContext::update, ctx, this_val, argc, argv);
 };
 static JSValue aes_context_class_get_iv_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&AESContext::get_iv_state, ctx, this_val, argc, argv);
 };
 static JSValue aes_context_class_finish(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AESContext::finish, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

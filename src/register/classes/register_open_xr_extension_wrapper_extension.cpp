@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/open_xrapi_extension.hpp>
 #include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
+#include <godot_cpp/classes/open_xrapi_extension.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -37,9 +37,11 @@ static JSValue open_xr_extension_wrapper_extension_class_constructor(JSContext *
 	return obj;
 }
 static JSValue open_xr_extension_wrapper_extension_class_get_openxr_api(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&OpenXRExtensionWrapperExtension::get_openxr_api, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_extension_wrapper_extension_class_register_extension_wrapper(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRExtensionWrapperExtension::register_extension_wrapper, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

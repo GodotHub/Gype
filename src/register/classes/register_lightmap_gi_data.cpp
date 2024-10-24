@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture_layered.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/texture_layered.hpp>
 #include <godot_cpp/classes/lightmap_gi_data.hpp>
-#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/texture_layered.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,38 +38,48 @@ static JSValue lightmap_gi_data_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue lightmap_gi_data_class_set_lightmap_textures(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGIData::set_lightmap_textures, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_data_class_get_lightmap_textures(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGIData::get_lightmap_textures, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_data_class_set_uses_spherical_harmonics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGIData::set_uses_spherical_harmonics, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_data_class_is_using_spherical_harmonics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGIData::is_using_spherical_harmonics, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_data_class_add_user(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGIData::add_user, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_data_class_get_user_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGIData::get_user_count, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_data_class_get_user_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGIData::get_user_path, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_data_class_clear_users(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGIData::clear_users, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_data_class_set_light_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&LightmapGIData::set_light_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue lightmap_gi_data_class_get_light_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&LightmapGIData::get_light_texture, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry lightmap_gi_data_class_proto_funcs[] = {

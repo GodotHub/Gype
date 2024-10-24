@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_with_modifiers.hpp>
 #include <godot_cpp/classes/input_event_gesture.hpp>
+#include <godot_cpp/classes/input_event_with_modifiers.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,10 +36,12 @@ static JSValue input_event_gesture_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue input_event_gesture_class_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventGesture::set_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_gesture_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventGesture::get_position, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry input_event_gesture_class_proto_funcs[] = {

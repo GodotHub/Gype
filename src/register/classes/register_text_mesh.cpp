@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/text_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/text_mesh.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,129 +37,165 @@ static JSValue text_mesh_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue text_mesh_class_set_horizontal_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextMesh::set_horizontal_alignment, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_mesh_class_get_horizontal_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextMesh::get_horizontal_alignment, ctx, this_val, argc, argv);
 };
 static JSValue text_mesh_class_set_vertical_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextMesh::set_vertical_alignment, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_mesh_class_get_vertical_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextMesh::get_vertical_alignment, ctx, this_val, argc, argv);
 };
 static JSValue text_mesh_class_set_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextMesh::set_text, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_mesh_class_get_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextMesh::get_text, ctx, this_val, argc, argv);
 };
 static JSValue text_mesh_class_set_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextMesh::set_font, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_mesh_class_get_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextMesh::get_font, ctx, this_val, argc, argv);
 };
 static JSValue text_mesh_class_set_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextMesh::set_font_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_mesh_class_get_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextMesh::get_font_size, ctx, this_val, argc, argv);
 };
 static JSValue text_mesh_class_set_line_spacing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextMesh::set_line_spacing, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_mesh_class_get_line_spacing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextMesh::get_line_spacing, ctx, this_val, argc, argv);
 };
 static JSValue text_mesh_class_set_autowrap_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextMesh::set_autowrap_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_mesh_class_get_autowrap_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextMesh::get_autowrap_mode, ctx, this_val, argc, argv);
 };
 static JSValue text_mesh_class_set_justification_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextMesh::set_justification_flags, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_mesh_class_get_justification_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextMesh::get_justification_flags, ctx, this_val, argc, argv);
 };
 static JSValue text_mesh_class_set_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextMesh::set_depth, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_mesh_class_get_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextMesh::get_depth, ctx, this_val, argc, argv);
 };
 static JSValue text_mesh_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextMesh::set_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_mesh_class_get_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextMesh::get_width, ctx, this_val, argc, argv);
 };
 static JSValue text_mesh_class_set_pixel_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextMesh::set_pixel_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_mesh_class_get_pixel_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextMesh::get_pixel_size, ctx, this_val, argc, argv);
 };
 static JSValue text_mesh_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextMesh::set_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_mesh_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextMesh::get_offset, ctx, this_val, argc, argv);
 };
 static JSValue text_mesh_class_set_curve_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextMesh::set_curve_step, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_mesh_class_get_curve_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextMesh::get_curve_step, ctx, this_val, argc, argv);
 };
 static JSValue text_mesh_class_set_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextMesh::set_text_direction, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_mesh_class_get_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextMesh::get_text_direction, ctx, this_val, argc, argv);
 };
 static JSValue text_mesh_class_set_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextMesh::set_language, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_mesh_class_get_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextMesh::get_language, ctx, this_val, argc, argv);
 };
 static JSValue text_mesh_class_set_structured_text_bidi_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextMesh::set_structured_text_bidi_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_mesh_class_get_structured_text_bidi_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextMesh::get_structured_text_bidi_override, ctx, this_val, argc, argv);
 };
 static JSValue text_mesh_class_set_structured_text_bidi_override_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextMesh::set_structured_text_bidi_override_options, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_mesh_class_get_structured_text_bidi_override_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextMesh::get_structured_text_bidi_override_options, ctx, this_val, argc, argv);
 };
 static JSValue text_mesh_class_set_uppercase(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextMesh::set_uppercase, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_mesh_class_is_uppercase(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextMesh::is_uppercase, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry text_mesh_class_proto_funcs[] = {

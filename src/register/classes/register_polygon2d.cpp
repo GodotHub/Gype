@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/polygon2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/polygon2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,137 +37,175 @@ static JSValue polygon2d_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue polygon2d_class_set_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::set_polygon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Polygon2D::get_polygon, ctx, this_val, argc, argv);
 };
 static JSValue polygon2d_class_set_uv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::set_uv, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_uv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Polygon2D::get_uv, ctx, this_val, argc, argv);
 };
 static JSValue polygon2d_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::set_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Polygon2D::get_color, ctx, this_val, argc, argv);
 };
 static JSValue polygon2d_class_set_polygons(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::set_polygons, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_polygons(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Polygon2D::get_polygons, ctx, this_val, argc, argv);
 };
 static JSValue polygon2d_class_set_vertex_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::set_vertex_colors, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_vertex_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Polygon2D::get_vertex_colors, ctx, this_val, argc, argv);
 };
 static JSValue polygon2d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::set_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Polygon2D::get_texture, ctx, this_val, argc, argv);
 };
 static JSValue polygon2d_class_set_texture_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::set_texture_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_texture_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Polygon2D::get_texture_offset, ctx, this_val, argc, argv);
 };
 static JSValue polygon2d_class_set_texture_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::set_texture_rotation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_texture_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Polygon2D::get_texture_rotation, ctx, this_val, argc, argv);
 };
 static JSValue polygon2d_class_set_texture_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::set_texture_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_texture_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Polygon2D::get_texture_scale, ctx, this_val, argc, argv);
 };
 static JSValue polygon2d_class_set_invert_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::set_invert_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_invert_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Polygon2D::get_invert_enabled, ctx, this_val, argc, argv);
 };
 static JSValue polygon2d_class_set_antialiased(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::set_antialiased, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_antialiased(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Polygon2D::get_antialiased, ctx, this_val, argc, argv);
 };
 static JSValue polygon2d_class_set_invert_border(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::set_invert_border, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_invert_border(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Polygon2D::get_invert_border, ctx, this_val, argc, argv);
 };
 static JSValue polygon2d_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::set_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Polygon2D::get_offset, ctx, this_val, argc, argv);
 };
 static JSValue polygon2d_class_add_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::add_bone, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_bone_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Polygon2D::get_bone_count, ctx, this_val, argc, argv);
 };
 static JSValue polygon2d_class_get_bone_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Polygon2D::get_bone_path, ctx, this_val, argc, argv);
 };
 static JSValue polygon2d_class_get_bone_weights(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Polygon2D::get_bone_weights, ctx, this_val, argc, argv);
 };
 static JSValue polygon2d_class_erase_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::erase_bone, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_clear_bones(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::clear_bones, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_set_bone_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::set_bone_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_set_bone_weights(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::set_bone_weights, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_set_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::set_skeleton, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Polygon2D::get_skeleton, ctx, this_val, argc, argv);
 };
 static JSValue polygon2d_class_set_internal_vertex_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Polygon2D::set_internal_vertex_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon2d_class_get_internal_vertex_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Polygon2D::get_internal_vertex_count, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry polygon2d_class_proto_funcs[] = {

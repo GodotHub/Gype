@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/curve.hpp>
-#include <godot_cpp/classes/curve_texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/curve_texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,21 +37,26 @@ static JSValue curve_texture_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 static JSValue curve_texture_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CurveTexture::set_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_texture_class_set_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CurveTexture::set_curve, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_texture_class_get_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CurveTexture::get_curve, ctx, this_val, argc, argv);
 };
 static JSValue curve_texture_class_set_texture_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CurveTexture::set_texture_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_texture_class_get_texture_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CurveTexture::get_texture_mode, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry curve_texture_class_proto_funcs[] = {

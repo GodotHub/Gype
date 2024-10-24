@@ -36,10 +36,12 @@ static JSValue marker3d_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue marker3d_class_set_gizmo_extents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Marker3D::set_gizmo_extents, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue marker3d_class_get_gizmo_extents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Marker3D::get_gizmo_extents, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry marker3d_class_proto_funcs[] = {

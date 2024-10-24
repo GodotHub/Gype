@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/classes/web_rtc_data_channel.hpp>
+#include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,47 +36,61 @@ static JSValue web_rtc_data_channel_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue web_rtc_data_channel_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&WebRTCDataChannel::poll, ctx, this_val, argc, argv);
 };
 static JSValue web_rtc_data_channel_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebRTCDataChannel::close, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_rtc_data_channel_class_was_string_packet(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebRTCDataChannel::was_string_packet, ctx, this_val, argc, argv);
 };
 static JSValue web_rtc_data_channel_class_set_write_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebRTCDataChannel::set_write_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_rtc_data_channel_class_get_write_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebRTCDataChannel::get_write_mode, ctx, this_val, argc, argv);
 };
 static JSValue web_rtc_data_channel_class_get_ready_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebRTCDataChannel::get_ready_state, ctx, this_val, argc, argv);
 };
 static JSValue web_rtc_data_channel_class_get_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebRTCDataChannel::get_label, ctx, this_val, argc, argv);
 };
 static JSValue web_rtc_data_channel_class_is_ordered(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebRTCDataChannel::is_ordered, ctx, this_val, argc, argv);
 };
 static JSValue web_rtc_data_channel_class_get_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebRTCDataChannel::get_id, ctx, this_val, argc, argv);
 };
 static JSValue web_rtc_data_channel_class_get_max_packet_life_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebRTCDataChannel::get_max_packet_life_time, ctx, this_val, argc, argv);
 };
 static JSValue web_rtc_data_channel_class_get_max_retransmits(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebRTCDataChannel::get_max_retransmits, ctx, this_val, argc, argv);
 };
 static JSValue web_rtc_data_channel_class_get_protocol(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebRTCDataChannel::get_protocol, ctx, this_val, argc, argv);
 };
 static JSValue web_rtc_data_channel_class_is_negotiated(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebRTCDataChannel::is_negotiated, ctx, this_val, argc, argv);
 };
 static JSValue web_rtc_data_channel_class_get_buffered_amount(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebRTCDataChannel::get_buffered_amount, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry web_rtc_data_channel_class_proto_funcs[] = {

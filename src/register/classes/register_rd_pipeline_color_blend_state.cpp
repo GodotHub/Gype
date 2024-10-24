@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/rd_pipeline_color_blend_state_attachment.hpp>
-#include <godot_cpp/classes/rd_pipeline_color_blend_state.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/rd_pipeline_color_blend_state.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,31 +37,39 @@ static JSValue rd_pipeline_color_blend_state_class_constructor(JSContext *ctx, J
 	return obj;
 }
 static JSValue rd_pipeline_color_blend_state_class_set_enable_logic_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDPipelineColorBlendState::set_enable_logic_op, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_class_get_enable_logic_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDPipelineColorBlendState::get_enable_logic_op, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_color_blend_state_class_set_logic_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDPipelineColorBlendState::set_logic_op, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_class_get_logic_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDPipelineColorBlendState::get_logic_op, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_color_blend_state_class_set_blend_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDPipelineColorBlendState::set_blend_constant, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_class_get_blend_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDPipelineColorBlendState::get_blend_constant, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_color_blend_state_class_set_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDPipelineColorBlendState::set_attachments, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_color_blend_state_class_get_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDPipelineColorBlendState::get_attachments, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry rd_pipeline_color_blend_state_class_proto_funcs[] = {

@@ -36,55 +36,72 @@ static JSValue xml_parser_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue xml_parser_class_read(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&XMLParser::read, ctx, this_val, argc, argv);
 };
 static JSValue xml_parser_class_get_node_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&XMLParser::get_node_type, ctx, this_val, argc, argv);
 };
 static JSValue xml_parser_class_get_node_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XMLParser::get_node_name, ctx, this_val, argc, argv);
 };
 static JSValue xml_parser_class_get_node_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XMLParser::get_node_data, ctx, this_val, argc, argv);
 };
 static JSValue xml_parser_class_get_node_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XMLParser::get_node_offset, ctx, this_val, argc, argv);
 };
 static JSValue xml_parser_class_get_attribute_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XMLParser::get_attribute_count, ctx, this_val, argc, argv);
 };
 static JSValue xml_parser_class_get_attribute_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XMLParser::get_attribute_name, ctx, this_val, argc, argv);
 };
 static JSValue xml_parser_class_get_attribute_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XMLParser::get_attribute_value, ctx, this_val, argc, argv);
 };
 static JSValue xml_parser_class_has_attribute(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XMLParser::has_attribute, ctx, this_val, argc, argv);
 };
 static JSValue xml_parser_class_get_named_attribute_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XMLParser::get_named_attribute_value, ctx, this_val, argc, argv);
 };
 static JSValue xml_parser_class_get_named_attribute_value_safe(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XMLParser::get_named_attribute_value_safe, ctx, this_val, argc, argv);
 };
 static JSValue xml_parser_class_is_empty(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XMLParser::is_empty, ctx, this_val, argc, argv);
 };
 static JSValue xml_parser_class_get_current_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XMLParser::get_current_line, ctx, this_val, argc, argv);
 };
 static JSValue xml_parser_class_skip_section(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&XMLParser::skip_section, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xml_parser_class_seek(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&XMLParser::seek, ctx, this_val, argc, argv);
 };
 static JSValue xml_parser_class_open(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&XMLParser::open, ctx, this_val, argc, argv);
 };
 static JSValue xml_parser_class_open_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&XMLParser::open_buffer, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry xml_parser_class_proto_funcs[] = {

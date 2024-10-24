@@ -36,80 +36,103 @@ static JSValue curve2d_class_constructor(JSContext *ctx, JSValueConst new_target
 	return obj;
 }
 static JSValue curve2d_class_get_point_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve2D::get_point_count, ctx, this_val, argc, argv);
 };
 static JSValue curve2d_class_set_point_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve2D::set_point_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve2d_class_add_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve2D::add_point, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve2d_class_set_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve2D::set_point_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve2d_class_get_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve2D::get_point_position, ctx, this_val, argc, argv);
 };
 static JSValue curve2d_class_set_point_in(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve2D::set_point_in, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve2d_class_get_point_in(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve2D::get_point_in, ctx, this_val, argc, argv);
 };
 static JSValue curve2d_class_set_point_out(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve2D::set_point_out, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve2d_class_get_point_out(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve2D::get_point_out, ctx, this_val, argc, argv);
 };
 static JSValue curve2d_class_remove_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve2D::remove_point, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve2d_class_clear_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve2D::clear_points, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve2d_class_sample(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve2D::sample, ctx, this_val, argc, argv);
 };
 static JSValue curve2d_class_samplef(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve2D::samplef, ctx, this_val, argc, argv);
 };
 static JSValue curve2d_class_set_bake_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve2D::set_bake_interval, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve2d_class_get_bake_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve2D::get_bake_interval, ctx, this_val, argc, argv);
 };
 static JSValue curve2d_class_get_baked_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve2D::get_baked_length, ctx, this_val, argc, argv);
 };
 static JSValue curve2d_class_sample_baked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve2D::sample_baked, ctx, this_val, argc, argv);
 };
 static JSValue curve2d_class_sample_baked_with_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve2D::sample_baked_with_rotation, ctx, this_val, argc, argv);
 };
 static JSValue curve2d_class_get_baked_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve2D::get_baked_points, ctx, this_val, argc, argv);
 };
 static JSValue curve2d_class_get_closest_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve2D::get_closest_point, ctx, this_val, argc, argv);
 };
 static JSValue curve2d_class_get_closest_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve2D::get_closest_offset, ctx, this_val, argc, argv);
 };
 static JSValue curve2d_class_tessellate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve2D::tessellate, ctx, this_val, argc, argv);
 };
 static JSValue curve2d_class_tessellate_even_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve2D::tessellate_even_length, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry curve2d_class_proto_funcs[] = {

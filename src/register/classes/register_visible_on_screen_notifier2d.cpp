@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/visible_on_screen_notifier2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,13 +36,16 @@ static JSValue visible_on_screen_notifier2d_class_constructor(JSContext *ctx, JS
 	return obj;
 }
 static JSValue visible_on_screen_notifier2d_class_set_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VisibleOnScreenNotifier2D::set_rect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visible_on_screen_notifier2d_class_get_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisibleOnScreenNotifier2D::get_rect, ctx, this_val, argc, argv);
 };
 static JSValue visible_on_screen_notifier2d_class_is_on_screen(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisibleOnScreenNotifier2D::is_on_screen, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry visible_on_screen_notifier2d_class_proto_funcs[] = {

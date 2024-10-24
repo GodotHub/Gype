@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/world_boundary_shape3d.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,10 +36,12 @@ static JSValue world_boundary_shape3d_class_constructor(JSContext *ctx, JSValueC
 	return obj;
 }
 static JSValue world_boundary_shape3d_class_set_plane(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WorldBoundaryShape3D::set_plane, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue world_boundary_shape3d_class_get_plane(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WorldBoundaryShape3D::get_plane, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry world_boundary_shape3d_class_proto_funcs[] = {

@@ -5,12 +5,12 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_test_motion_parameters2d.hpp>
 #include <godot_cpp/classes/physics_test_motion_result2d.hpp>
-#include <godot_cpp/classes/physics_direct_space_state2d.hpp>
 #include <godot_cpp/classes/physics_direct_body_state2d.hpp>
-#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/physics_test_motion_parameters2d.hpp>
 #include <godot_cpp/classes/physics_server2d.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/physics_direct_space_state2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;

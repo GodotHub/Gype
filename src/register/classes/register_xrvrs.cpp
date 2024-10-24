@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xrvrs.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/xrvrs.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,20 +36,25 @@ static JSValue xrvrs_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	return obj;
 }
 static JSValue xrvrs_class_get_vrs_min_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XRVRS::get_vrs_min_radius, ctx, this_val, argc, argv);
 };
 static JSValue xrvrs_class_set_vrs_min_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&XRVRS::set_vrs_min_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xrvrs_class_get_vrs_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XRVRS::get_vrs_strength, ctx, this_val, argc, argv);
 };
 static JSValue xrvrs_class_set_vrs_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&XRVRS::set_vrs_strength, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xrvrs_class_make_vrs_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&XRVRS::make_vrs_texture, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry xrvrs_class_proto_funcs[] = {

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_feature_profile.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/editor_feature_profile.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,40 +36,51 @@ static JSValue editor_feature_profile_class_constructor(JSContext *ctx, JSValueC
 	return obj;
 }
 static JSValue editor_feature_profile_class_set_disable_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorFeatureProfile::set_disable_class, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_feature_profile_class_is_class_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorFeatureProfile::is_class_disabled, ctx, this_val, argc, argv);
 };
 static JSValue editor_feature_profile_class_set_disable_class_editor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorFeatureProfile::set_disable_class_editor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_feature_profile_class_is_class_editor_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorFeatureProfile::is_class_editor_disabled, ctx, this_val, argc, argv);
 };
 static JSValue editor_feature_profile_class_set_disable_class_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorFeatureProfile::set_disable_class_property, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_feature_profile_class_is_class_property_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorFeatureProfile::is_class_property_disabled, ctx, this_val, argc, argv);
 };
 static JSValue editor_feature_profile_class_set_disable_feature(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorFeatureProfile::set_disable_feature, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_feature_profile_class_is_feature_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorFeatureProfile::is_feature_disabled, ctx, this_val, argc, argv);
 };
 static JSValue editor_feature_profile_class_get_feature_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorFeatureProfile::get_feature_name, ctx, this_val, argc, argv);
 };
 static JSValue editor_feature_profile_class_save_to_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorFeatureProfile::save_to_file, ctx, this_val, argc, argv);
 };
 static JSValue editor_feature_profile_class_load_from_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorFeatureProfile::load_from_file, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_feature_profile_class_proto_funcs[] = {

@@ -36,10 +36,12 @@ static JSValue animatable_body3d_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue animatable_body3d_class_set_sync_to_physics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatableBody3D::set_sync_to_physics, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animatable_body3d_class_is_sync_to_physics_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatableBody3D::is_sync_to_physics_enabled, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry animatable_body3d_class_proto_funcs[] = {

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera2d.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/camera2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,175 +37,224 @@ static JSValue camera2d_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue camera2d_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::get_offset, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_anchor_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_anchor_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_anchor_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::get_anchor_mode, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_ignore_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_ignore_rotation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_ignoring_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::is_ignoring_rotation, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_process_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_process_callback, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_process_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::get_process_callback, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::is_enabled, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_make_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::make_current, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::is_current, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_limit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_limit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_limit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::get_limit, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_limit_smoothing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_limit_smoothing_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_limit_smoothing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::is_limit_smoothing_enabled, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_drag_vertical_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_drag_vertical_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_drag_vertical_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::is_drag_vertical_enabled, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_drag_horizontal_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_drag_horizontal_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_drag_horizontal_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::is_drag_horizontal_enabled, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_drag_vertical_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_drag_vertical_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_drag_vertical_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::get_drag_vertical_offset, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_drag_horizontal_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_drag_horizontal_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_drag_horizontal_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::get_drag_horizontal_offset, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_drag_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_drag_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_drag_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::get_drag_margin, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_get_target_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::get_target_position, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_get_screen_center_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::get_screen_center_position, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_zoom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_zoom, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_zoom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::get_zoom, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_custom_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_custom_viewport, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_custom_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::get_custom_viewport, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_position_smoothing_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_position_smoothing_speed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_position_smoothing_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::get_position_smoothing_speed, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_position_smoothing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_position_smoothing_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_position_smoothing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::is_position_smoothing_enabled, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_rotation_smoothing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_rotation_smoothing_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_rotation_smoothing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::is_rotation_smoothing_enabled, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_rotation_smoothing_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_rotation_smoothing_speed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_rotation_smoothing_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::get_rotation_smoothing_speed, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_force_update_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::force_update_scroll, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_reset_smoothing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::reset_smoothing, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_align(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::align, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_set_screen_drawing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_screen_drawing_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_screen_drawing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::is_screen_drawing_enabled, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_limit_drawing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_limit_drawing_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_limit_drawing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::is_limit_drawing_enabled, ctx, this_val, argc, argv);
 };
 static JSValue camera2d_class_set_margin_drawing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera2D::set_margin_drawing_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_margin_drawing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera2D::is_margin_drawing_enabled, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry camera2d_class_proto_funcs[] = {

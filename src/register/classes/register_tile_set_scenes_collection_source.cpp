@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tile_set_source.hpp>
-#include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/classes/tile_set_scenes_collection_source.hpp>
+#include <godot_cpp/classes/packed_scene.hpp>
+#include <godot_cpp/classes/tile_set_source.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,40 +37,51 @@ static JSValue tile_set_scenes_collection_source_class_constructor(JSContext *ct
 	return obj;
 }
 static JSValue tile_set_scenes_collection_source_class_get_scene_tiles_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TileSetScenesCollectionSource::get_scene_tiles_count, ctx, this_val, argc, argv);
 };
 static JSValue tile_set_scenes_collection_source_class_get_scene_tile_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TileSetScenesCollectionSource::get_scene_tile_id, ctx, this_val, argc, argv);
 };
 static JSValue tile_set_scenes_collection_source_class_has_scene_tile_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TileSetScenesCollectionSource::has_scene_tile_id, ctx, this_val, argc, argv);
 };
 static JSValue tile_set_scenes_collection_source_class_create_scene_tile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TileSetScenesCollectionSource::create_scene_tile, ctx, this_val, argc, argv);
 };
 static JSValue tile_set_scenes_collection_source_class_set_scene_tile_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TileSetScenesCollectionSource::set_scene_tile_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_scenes_collection_source_class_set_scene_tile_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TileSetScenesCollectionSource::set_scene_tile_scene, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_scenes_collection_source_class_get_scene_tile_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TileSetScenesCollectionSource::get_scene_tile_scene, ctx, this_val, argc, argv);
 };
 static JSValue tile_set_scenes_collection_source_class_set_scene_tile_display_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TileSetScenesCollectionSource::set_scene_tile_display_placeholder, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_scenes_collection_source_class_get_scene_tile_display_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TileSetScenesCollectionSource::get_scene_tile_display_placeholder, ctx, this_val, argc, argv);
 };
 static JSValue tile_set_scenes_collection_source_class_remove_scene_tile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TileSetScenesCollectionSource::remove_scene_tile, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_scenes_collection_source_class_get_next_scene_tile_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TileSetScenesCollectionSource::get_next_scene_tile_id, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry tile_set_scenes_collection_source_class_proto_funcs[] = {

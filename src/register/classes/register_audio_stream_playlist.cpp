@@ -36,41 +36,52 @@ static JSValue audio_stream_playlist_class_constructor(JSContext *ctx, JSValueCo
 	return obj;
 }
 static JSValue audio_stream_playlist_class_set_stream_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioStreamPlaylist::set_stream_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_playlist_class_get_stream_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStreamPlaylist::get_stream_count, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_playlist_class_get_bpm(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStreamPlaylist::get_bpm, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_playlist_class_set_list_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioStreamPlaylist::set_list_stream, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_playlist_class_get_list_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStreamPlaylist::get_list_stream, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_playlist_class_set_shuffle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioStreamPlaylist::set_shuffle, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_playlist_class_get_shuffle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStreamPlaylist::get_shuffle, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_playlist_class_set_fade_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioStreamPlaylist::set_fade_time, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_playlist_class_get_fade_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStreamPlaylist::get_fade_time, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_playlist_class_set_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioStreamPlaylist::set_loop, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_playlist_class_has_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStreamPlaylist::has_loop, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry audio_stream_playlist_class_proto_funcs[] = {

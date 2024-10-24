@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/multiplayer_api.hpp>
 #include <godot_cpp/classes/multiplayer_peer.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,37 +38,48 @@ static JSValue multiplayer_api_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue multiplayer_api_class_has_multiplayer_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&MultiplayerAPI::has_multiplayer_peer, ctx, this_val, argc, argv);
 };
 static JSValue multiplayer_api_class_get_multiplayer_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&MultiplayerAPI::get_multiplayer_peer, ctx, this_val, argc, argv);
 };
 static JSValue multiplayer_api_class_set_multiplayer_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MultiplayerAPI::set_multiplayer_peer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_api_class_get_unique_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&MultiplayerAPI::get_unique_id, ctx, this_val, argc, argv);
 };
 static JSValue multiplayer_api_class_is_server(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&MultiplayerAPI::is_server, ctx, this_val, argc, argv);
 };
 static JSValue multiplayer_api_class_get_remote_sender_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&MultiplayerAPI::get_remote_sender_id, ctx, this_val, argc, argv);
 };
 static JSValue multiplayer_api_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&MultiplayerAPI::poll, ctx, this_val, argc, argv);
 };
 static JSValue multiplayer_api_class_rpc(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&MultiplayerAPI::rpc, ctx, this_val, argc, argv);
 };
 static JSValue multiplayer_api_class_object_configuration_add(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&MultiplayerAPI::object_configuration_add, ctx, this_val, argc, argv);
 };
 static JSValue multiplayer_api_class_object_configuration_remove(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&MultiplayerAPI::object_configuration_remove, ctx, this_val, argc, argv);
 };
 static JSValue multiplayer_api_class_get_peers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&MultiplayerAPI::get_peers, ctx, this_val, argc, argv);
 };
 static JSValue multiplayer_api_class_set_default_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

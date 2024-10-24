@@ -36,57 +36,73 @@ static JSValue upnp_device_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue upnp_device_class_is_valid_gateway(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNPDevice::is_valid_gateway, ctx, this_val, argc, argv);
 };
 static JSValue upnp_device_class_query_external_address(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNPDevice::query_external_address, ctx, this_val, argc, argv);
 };
 static JSValue upnp_device_class_add_port_mapping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNPDevice::add_port_mapping, ctx, this_val, argc, argv);
 };
 static JSValue upnp_device_class_delete_port_mapping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNPDevice::delete_port_mapping, ctx, this_val, argc, argv);
 };
 static JSValue upnp_device_class_set_description_url(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UPNPDevice::set_description_url, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_device_class_get_description_url(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNPDevice::get_description_url, ctx, this_val, argc, argv);
 };
 static JSValue upnp_device_class_set_service_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UPNPDevice::set_service_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_device_class_get_service_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNPDevice::get_service_type, ctx, this_val, argc, argv);
 };
 static JSValue upnp_device_class_set_igd_control_url(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UPNPDevice::set_igd_control_url, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_device_class_get_igd_control_url(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNPDevice::get_igd_control_url, ctx, this_val, argc, argv);
 };
 static JSValue upnp_device_class_set_igd_service_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UPNPDevice::set_igd_service_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_device_class_get_igd_service_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNPDevice::get_igd_service_type, ctx, this_val, argc, argv);
 };
 static JSValue upnp_device_class_set_igd_our_addr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UPNPDevice::set_igd_our_addr, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_device_class_get_igd_our_addr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNPDevice::get_igd_our_addr, ctx, this_val, argc, argv);
 };
 static JSValue upnp_device_class_set_igd_status(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UPNPDevice::set_igd_status, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_device_class_get_igd_status(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNPDevice::get_igd_status, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry upnp_device_class_proto_funcs[] = {

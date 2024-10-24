@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/video_stream_playback.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/video_stream_playback.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,6 +37,7 @@ static JSValue video_stream_playback_class_constructor(JSContext *ctx, JSValueCo
 	return obj;
 }
 static JSValue video_stream_playback_class_mix_audio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&VideoStreamPlayback::mix_audio, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry video_stream_playback_class_proto_funcs[] = {

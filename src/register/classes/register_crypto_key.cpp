@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/crypto_key.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/crypto_key.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,18 +36,23 @@ static JSValue crypto_key_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue crypto_key_class_save(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&CryptoKey::save, ctx, this_val, argc, argv);
 };
 static JSValue crypto_key_class_load(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&CryptoKey::load, ctx, this_val, argc, argv);
 };
 static JSValue crypto_key_class_is_public_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CryptoKey::is_public_only, ctx, this_val, argc, argv);
 };
 static JSValue crypto_key_class_save_to_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&CryptoKey::save_to_string, ctx, this_val, argc, argv);
 };
 static JSValue crypto_key_class_load_from_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&CryptoKey::load_from_string, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry crypto_key_class_proto_funcs[] = {

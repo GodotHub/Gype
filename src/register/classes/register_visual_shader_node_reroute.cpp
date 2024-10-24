@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_reroute.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,6 +36,7 @@ static JSValue visual_shader_node_reroute_class_constructor(JSContext *ctx, JSVa
 	return obj;
 }
 static JSValue visual_shader_node_reroute_class_get_port_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualShaderNodeReroute::get_port_type, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry visual_shader_node_reroute_class_proto_funcs[] = {

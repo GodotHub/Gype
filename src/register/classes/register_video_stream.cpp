@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/video_stream_playback.hpp>
-#include <godot_cpp/classes/video_stream.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/video_stream.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,10 +37,12 @@ static JSValue video_stream_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue video_stream_class_set_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VideoStream::set_file, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue video_stream_class_get_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&VideoStream::get_file, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry video_stream_class_proto_funcs[] = {

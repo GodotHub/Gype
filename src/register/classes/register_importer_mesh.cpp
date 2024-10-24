@@ -38,80 +38,103 @@ static JSValue importer_mesh_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 static JSValue importer_mesh_class_add_blend_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImporterMesh::add_blend_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_class_get_blend_shape_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMesh::get_blend_shape_count, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_class_get_blend_shape_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMesh::get_blend_shape_name, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_class_set_blend_shape_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImporterMesh::set_blend_shape_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_class_get_blend_shape_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMesh::get_blend_shape_mode, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_class_add_surface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImporterMesh::add_surface, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_class_get_surface_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMesh::get_surface_count, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_class_get_surface_primitive_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ImporterMesh::get_surface_primitive_type, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_class_get_surface_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMesh::get_surface_name, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_class_get_surface_arrays(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMesh::get_surface_arrays, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_class_get_surface_blend_shape_arrays(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMesh::get_surface_blend_shape_arrays, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_class_get_surface_lod_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMesh::get_surface_lod_count, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_class_get_surface_lod_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMesh::get_surface_lod_size, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_class_get_surface_lod_indices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMesh::get_surface_lod_indices, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_class_get_surface_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMesh::get_surface_material, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_class_get_surface_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMesh::get_surface_format, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_class_set_surface_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImporterMesh::set_surface_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_class_set_surface_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImporterMesh::set_surface_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_class_generate_lods(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImporterMesh::generate_lods, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_class_get_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ImporterMesh::get_mesh, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImporterMesh::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_class_set_lightmap_size_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImporterMesh::set_lightmap_size_hint, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_class_get_lightmap_size_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMesh::get_lightmap_size_hint, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry importer_mesh_class_proto_funcs[] = {

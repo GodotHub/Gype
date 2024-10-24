@@ -36,18 +36,22 @@ static JSValue open_xr_interaction_profile_metadata_class_constructor(JSContext 
 	return obj;
 }
 static JSValue open_xr_interaction_profile_metadata_class_register_profile_rename(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_profile_rename, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_interaction_profile_metadata_class_register_top_level_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_top_level_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_interaction_profile_metadata_class_register_interaction_profile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_interaction_profile, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_interaction_profile_metadata_class_register_io_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_io_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

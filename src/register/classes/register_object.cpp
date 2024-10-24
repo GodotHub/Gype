@@ -35,155 +35,201 @@ static JSValue object_class_constructor(JSContext *ctx, JSValueConst new_target,
 	return obj;
 }
 static JSValue object_class_get_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::get_class, ctx, this_val, argc, argv);
 };
 static JSValue object_class_is_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::is_class, ctx, this_val, argc, argv);
 };
 static JSValue object_class_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Object::set, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_get(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::get, ctx, this_val, argc, argv);
 };
 static JSValue object_class_set_indexed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Object::set_indexed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_get_indexed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::get_indexed, ctx, this_val, argc, argv);
 };
 static JSValue object_class_get_property_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::get_property_list, ctx, this_val, argc, argv);
 };
 static JSValue object_class_get_method_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::get_method_list, ctx, this_val, argc, argv);
 };
 static JSValue object_class_property_can_revert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::property_can_revert, ctx, this_val, argc, argv);
 };
 static JSValue object_class_property_get_revert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::property_get_revert, ctx, this_val, argc, argv);
 };
 static JSValue object_class_notification(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Object::notification, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_to_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Object::to_string, ctx, this_val, argc, argv);
 };
 static JSValue object_class_get_instance_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::get_instance_id, ctx, this_val, argc, argv);
 };
 static JSValue object_class_set_script(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Object::set_script, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_get_script(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::get_script, ctx, this_val, argc, argv);
 };
 static JSValue object_class_set_meta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Object::set_meta, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_remove_meta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Object::remove_meta, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_get_meta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::get_meta, ctx, this_val, argc, argv);
 };
 static JSValue object_class_has_meta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::has_meta, ctx, this_val, argc, argv);
 };
 static JSValue object_class_get_meta_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::get_meta_list, ctx, this_val, argc, argv);
 };
 static JSValue object_class_add_user_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Object::add_user_signal, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_has_user_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::has_user_signal, ctx, this_val, argc, argv);
 };
 static JSValue object_class_remove_user_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Object::remove_user_signal, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_set_deferred(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Object::set_deferred, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_callv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Object::callv, ctx, this_val, argc, argv);
 };
 static JSValue object_class_has_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::has_method, ctx, this_val, argc, argv);
 };
 static JSValue object_class_get_method_argument_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::get_method_argument_count, ctx, this_val, argc, argv);
 };
 static JSValue object_class_has_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::has_signal, ctx, this_val, argc, argv);
 };
 static JSValue object_class_get_signal_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::get_signal_list, ctx, this_val, argc, argv);
 };
 static JSValue object_class_get_signal_connection_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::get_signal_connection_list, ctx, this_val, argc, argv);
 };
 static JSValue object_class_get_incoming_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::get_incoming_connections, ctx, this_val, argc, argv);
 };
 static JSValue object_class_connect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Object::connect, ctx, this_val, argc, argv);
 };
 static JSValue object_class_disconnect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Object::disconnect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_is_connected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::is_connected, ctx, this_val, argc, argv);
 };
 static JSValue object_class_set_block_signals(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Object::set_block_signals, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_is_blocking_signals(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::is_blocking_signals, ctx, this_val, argc, argv);
 };
 static JSValue object_class_notify_property_list_changed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Object::notify_property_list_changed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_set_message_translation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Object::set_message_translation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_can_translate_messages(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::can_translate_messages, ctx, this_val, argc, argv);
 };
 static JSValue object_class_tr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::tr, ctx, this_val, argc, argv);
 };
 static JSValue object_class_tr_n(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::tr_n, ctx, this_val, argc, argv);
 };
 static JSValue object_class_is_queued_for_deletion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Object::is_queued_for_deletion, ctx, this_val, argc, argv);
 };
 static JSValue object_class_cancel_free(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Object::cancel_free, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue object_class_emit_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_vararg_method_ret(&Object::js_emit_signal, ctx, this_val, argc, argv);
 }
 static JSValue object_class_call(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_vararg_method_ret(&Object::js_call, ctx, this_val, argc, argv);
 }
 static JSValue object_class_call_deferred(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_vararg_method_ret(&Object::js_call_deferred, ctx, this_val, argc, argv);
 }
 static const JSCFunctionListEntry object_class_proto_funcs[] = {

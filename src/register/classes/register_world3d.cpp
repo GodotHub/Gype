@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_direct_space_state3d.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/environment.hpp>
 #include <godot_cpp/classes/world3d.hpp>
+#include <godot_cpp/classes/physics_direct_space_state3d.hpp>
 #include <godot_cpp/classes/camera_attributes.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -39,36 +39,46 @@ static JSValue world3d_class_constructor(JSContext *ctx, JSValueConst new_target
 	return obj;
 }
 static JSValue world3d_class_get_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&World3D::get_space, ctx, this_val, argc, argv);
 };
 static JSValue world3d_class_get_navigation_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&World3D::get_navigation_map, ctx, this_val, argc, argv);
 };
 static JSValue world3d_class_get_scenario(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&World3D::get_scenario, ctx, this_val, argc, argv);
 };
 static JSValue world3d_class_set_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&World3D::set_environment, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue world3d_class_get_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&World3D::get_environment, ctx, this_val, argc, argv);
 };
 static JSValue world3d_class_set_fallback_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&World3D::set_fallback_environment, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue world3d_class_get_fallback_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&World3D::get_fallback_environment, ctx, this_val, argc, argv);
 };
 static JSValue world3d_class_set_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&World3D::set_camera_attributes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue world3d_class_get_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&World3D::get_camera_attributes, ctx, this_val, argc, argv);
 };
 static JSValue world3d_class_get_direct_space_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&World3D::get_direct_space_state, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry world3d_class_proto_funcs[] = {

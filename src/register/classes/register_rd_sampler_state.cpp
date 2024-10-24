@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_sampler_state.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/rd_sampler_state.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,108 +36,138 @@ static JSValue rd_sampler_state_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue rd_sampler_state_class_set_mag_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDSamplerState::set_mag_filter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_mag_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDSamplerState::get_mag_filter, ctx, this_val, argc, argv);
 };
 static JSValue rd_sampler_state_class_set_min_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDSamplerState::set_min_filter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_min_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDSamplerState::get_min_filter, ctx, this_val, argc, argv);
 };
 static JSValue rd_sampler_state_class_set_mip_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDSamplerState::set_mip_filter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_mip_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDSamplerState::get_mip_filter, ctx, this_val, argc, argv);
 };
 static JSValue rd_sampler_state_class_set_repeat_u(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDSamplerState::set_repeat_u, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_repeat_u(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDSamplerState::get_repeat_u, ctx, this_val, argc, argv);
 };
 static JSValue rd_sampler_state_class_set_repeat_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDSamplerState::set_repeat_v, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_repeat_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDSamplerState::get_repeat_v, ctx, this_val, argc, argv);
 };
 static JSValue rd_sampler_state_class_set_repeat_w(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDSamplerState::set_repeat_w, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_repeat_w(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDSamplerState::get_repeat_w, ctx, this_val, argc, argv);
 };
 static JSValue rd_sampler_state_class_set_lod_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDSamplerState::set_lod_bias, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_lod_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDSamplerState::get_lod_bias, ctx, this_val, argc, argv);
 };
 static JSValue rd_sampler_state_class_set_use_anisotropy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDSamplerState::set_use_anisotropy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_use_anisotropy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDSamplerState::get_use_anisotropy, ctx, this_val, argc, argv);
 };
 static JSValue rd_sampler_state_class_set_anisotropy_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDSamplerState::set_anisotropy_max, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_anisotropy_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDSamplerState::get_anisotropy_max, ctx, this_val, argc, argv);
 };
 static JSValue rd_sampler_state_class_set_enable_compare(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDSamplerState::set_enable_compare, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_enable_compare(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDSamplerState::get_enable_compare, ctx, this_val, argc, argv);
 };
 static JSValue rd_sampler_state_class_set_compare_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDSamplerState::set_compare_op, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_compare_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDSamplerState::get_compare_op, ctx, this_val, argc, argv);
 };
 static JSValue rd_sampler_state_class_set_min_lod(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDSamplerState::set_min_lod, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_min_lod(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDSamplerState::get_min_lod, ctx, this_val, argc, argv);
 };
 static JSValue rd_sampler_state_class_set_max_lod(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDSamplerState::set_max_lod, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_max_lod(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDSamplerState::get_max_lod, ctx, this_val, argc, argv);
 };
 static JSValue rd_sampler_state_class_set_border_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDSamplerState::set_border_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_border_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDSamplerState::get_border_color, ctx, this_val, argc, argv);
 };
 static JSValue rd_sampler_state_class_set_unnormalized_uvw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDSamplerState::set_unnormalized_uvw, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_unnormalized_uvw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDSamplerState::get_unnormalized_uvw, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry rd_sampler_state_class_proto_funcs[] = {

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/navigation_mesh.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,206 +37,264 @@ static JSValue navigation_mesh_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue navigation_mesh_class_set_sample_partition_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_sample_partition_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_sample_partition_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_sample_partition_type, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_parsed_geometry_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_parsed_geometry_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_parsed_geometry_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_parsed_geometry_type, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_collision_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_collision_mask, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_collision_mask_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_collision_mask_value, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_source_geometry_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_source_geometry_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_source_geometry_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_source_geometry_mode, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_source_group_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_source_group_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_source_group_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_source_group_name, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_cell_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_cell_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_cell_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_cell_size, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_cell_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_cell_height, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_cell_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_cell_height, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_border_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_border_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_border_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_border_size, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_agent_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_agent_height, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_agent_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_agent_height, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_agent_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_agent_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_agent_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&NavigationMesh::get_agent_radius, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_agent_max_climb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_agent_max_climb, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_agent_max_climb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_agent_max_climb, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_agent_max_slope(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_agent_max_slope, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_agent_max_slope(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_agent_max_slope, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_region_min_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_region_min_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_region_min_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_region_min_size, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_region_merge_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_region_merge_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_region_merge_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_region_merge_size, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_edge_max_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_edge_max_length, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_edge_max_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_edge_max_length, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_edge_max_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_edge_max_error, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_edge_max_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_edge_max_error, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_vertices_per_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_vertices_per_polygon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_vertices_per_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_vertices_per_polygon, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_detail_sample_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_detail_sample_distance, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_detail_sample_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_detail_sample_distance, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_detail_sample_max_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_detail_sample_max_error, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_detail_sample_max_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_detail_sample_max_error, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_filter_low_hanging_obstacles(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_filter_low_hanging_obstacles, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_filter_low_hanging_obstacles(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_filter_low_hanging_obstacles, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_filter_ledge_spans(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_filter_ledge_spans, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_filter_ledge_spans(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_filter_ledge_spans, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_filter_walkable_low_height_spans(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_filter_walkable_low_height_spans, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_filter_walkable_low_height_spans(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_filter_walkable_low_height_spans, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_filter_baking_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_filter_baking_aabb, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_filter_baking_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_filter_baking_aabb, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_filter_baking_aabb_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_filter_baking_aabb_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_filter_baking_aabb_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_filter_baking_aabb_offset, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_set_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::set_vertices, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_vertices, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_add_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::add_polygon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_get_polygon_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMesh::get_polygon_count, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_get_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&NavigationMesh::get_polygon, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_class_clear_polygons(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::clear_polygons, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_create_from_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::create_from_mesh, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMesh::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

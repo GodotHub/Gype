@@ -36,24 +36,30 @@ static JSValue directional_light3d_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue directional_light3d_class_set_shadow_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&DirectionalLight3D::set_shadow_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue directional_light3d_class_get_shadow_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&DirectionalLight3D::get_shadow_mode, ctx, this_val, argc, argv);
 };
 static JSValue directional_light3d_class_set_blend_splits(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&DirectionalLight3D::set_blend_splits, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue directional_light3d_class_is_blend_splits_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&DirectionalLight3D::is_blend_splits_enabled, ctx, this_val, argc, argv);
 };
 static JSValue directional_light3d_class_set_sky_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&DirectionalLight3D::set_sky_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue directional_light3d_class_get_sky_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&DirectionalLight3D::get_sky_mode, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry directional_light3d_class_proto_funcs[] = {

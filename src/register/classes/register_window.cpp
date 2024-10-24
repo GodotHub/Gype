@@ -5,12 +5,12 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/viewport.hpp>
-#include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/window.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/style_box.hpp>
+#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/viewport.hpp>
 #include <godot_cpp/classes/theme.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -41,421 +41,540 @@ static JSValue window_class_constructor(JSContext *ctx, JSValueConst new_target,
 	return obj;
 }
 static JSValue window_class_set_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_title, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_title, ctx, this_val, argc, argv);
 };
 static JSValue window_class_get_window_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_window_id, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_initial_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_initial_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_initial_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_initial_position, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_current_screen(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_current_screen, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_current_screen(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_current_screen, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_position, ctx, this_val, argc, argv);
 };
 static JSValue window_class_move_to_center(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::move_to_center, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_size, ctx, this_val, argc, argv);
 };
 static JSValue window_class_reset_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::reset_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_position_with_decorations(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_position_with_decorations, ctx, this_val, argc, argv);
 };
 static JSValue window_class_get_size_with_decorations(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_size_with_decorations, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_max_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_max_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_max_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_max_size, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_min_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_min_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_min_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_min_size, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_mode, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_flag, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_flag, ctx, this_val, argc, argv);
 };
 static JSValue window_class_is_maximize_allowed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::is_maximize_allowed, ctx, this_val, argc, argv);
 };
 static JSValue window_class_request_attention(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::request_attention, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_move_to_foreground(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::move_to_foreground, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_set_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_visible, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_is_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::is_visible, ctx, this_val, argc, argv);
 };
 static JSValue window_class_hide(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::hide, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_show(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::show, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_set_transient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_transient, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_is_transient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::is_transient, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_transient_to_focused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_transient_to_focused, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_is_transient_to_focused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::is_transient_to_focused, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_exclusive(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_exclusive, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_is_exclusive(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::is_exclusive, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_unparent_when_invisible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_unparent_when_invisible, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_can_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::can_draw, ctx, this_val, argc, argv);
 };
 static JSValue window_class_has_focus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::has_focus, ctx, this_val, argc, argv);
 };
 static JSValue window_class_grab_focus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::grab_focus, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_set_ime_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_ime_active, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_set_ime_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_ime_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_is_embedded(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::is_embedded, ctx, this_val, argc, argv);
 };
 static JSValue window_class_get_contents_minimum_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_contents_minimum_size, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_force_native(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_force_native, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_force_native(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_force_native, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_content_scale_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_content_scale_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_content_scale_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_content_scale_size, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_content_scale_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_content_scale_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_content_scale_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_content_scale_mode, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_content_scale_aspect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_content_scale_aspect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_content_scale_aspect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_content_scale_aspect, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_content_scale_stretch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_content_scale_stretch, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_content_scale_stretch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_content_scale_stretch, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_keep_title_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_keep_title_visible, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_keep_title_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_keep_title_visible, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_content_scale_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_content_scale_factor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_content_scale_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_content_scale_factor, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_use_font_oversampling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_use_font_oversampling, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_is_using_font_oversampling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::is_using_font_oversampling, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_mouse_passthrough_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_mouse_passthrough_polygon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_mouse_passthrough_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_mouse_passthrough_polygon, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_wrap_controls(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_wrap_controls, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_is_wrapping_controls(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::is_wrapping_controls, ctx, this_val, argc, argv);
 };
 static JSValue window_class_child_controls_changed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::child_controls_changed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_set_theme(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_theme, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_theme(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_theme, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_theme_type_variation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_theme_type_variation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_theme_type_variation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_theme_type_variation, ctx, this_val, argc, argv);
 };
 static JSValue window_class_begin_bulk_theme_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::begin_bulk_theme_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_end_bulk_theme_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::end_bulk_theme_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_add_theme_icon_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::add_theme_icon_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_add_theme_stylebox_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::add_theme_stylebox_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_add_theme_font_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::add_theme_font_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_add_theme_font_size_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::add_theme_font_size_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_add_theme_color_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::add_theme_color_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_add_theme_constant_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::add_theme_constant_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_remove_theme_icon_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::remove_theme_icon_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_remove_theme_stylebox_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::remove_theme_stylebox_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_remove_theme_font_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::remove_theme_font_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_remove_theme_font_size_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::remove_theme_font_size_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_remove_theme_color_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::remove_theme_color_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_remove_theme_constant_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::remove_theme_constant_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_theme_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_theme_icon, ctx, this_val, argc, argv);
 };
 static JSValue window_class_get_theme_stylebox(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_theme_stylebox, ctx, this_val, argc, argv);
 };
 static JSValue window_class_get_theme_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_theme_font, ctx, this_val, argc, argv);
 };
 static JSValue window_class_get_theme_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_theme_font_size, ctx, this_val, argc, argv);
 };
 static JSValue window_class_get_theme_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_theme_color, ctx, this_val, argc, argv);
 };
 static JSValue window_class_get_theme_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_theme_constant, ctx, this_val, argc, argv);
 };
 static JSValue window_class_has_theme_icon_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::has_theme_icon_override, ctx, this_val, argc, argv);
 };
 static JSValue window_class_has_theme_stylebox_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::has_theme_stylebox_override, ctx, this_val, argc, argv);
 };
 static JSValue window_class_has_theme_font_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::has_theme_font_override, ctx, this_val, argc, argv);
 };
 static JSValue window_class_has_theme_font_size_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::has_theme_font_size_override, ctx, this_val, argc, argv);
 };
 static JSValue window_class_has_theme_color_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::has_theme_color_override, ctx, this_val, argc, argv);
 };
 static JSValue window_class_has_theme_constant_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::has_theme_constant_override, ctx, this_val, argc, argv);
 };
 static JSValue window_class_has_theme_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::has_theme_icon, ctx, this_val, argc, argv);
 };
 static JSValue window_class_has_theme_stylebox(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::has_theme_stylebox, ctx, this_val, argc, argv);
 };
 static JSValue window_class_has_theme_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::has_theme_font, ctx, this_val, argc, argv);
 };
 static JSValue window_class_has_theme_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::has_theme_font_size, ctx, this_val, argc, argv);
 };
 static JSValue window_class_has_theme_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::has_theme_color, ctx, this_val, argc, argv);
 };
 static JSValue window_class_has_theme_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::has_theme_constant, ctx, this_val, argc, argv);
 };
 static JSValue window_class_get_theme_default_base_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_theme_default_base_scale, ctx, this_val, argc, argv);
 };
 static JSValue window_class_get_theme_default_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_theme_default_font, ctx, this_val, argc, argv);
 };
 static JSValue window_class_get_theme_default_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_theme_default_font_size, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_layout_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_layout_direction, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_get_layout_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::get_layout_direction, ctx, this_val, argc, argv);
 };
 static JSValue window_class_is_layout_rtl(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::is_layout_rtl, ctx, this_val, argc, argv);
 };
 static JSValue window_class_set_auto_translate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::set_auto_translate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_is_auto_translating(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Window::is_auto_translating, ctx, this_val, argc, argv);
 };
 static JSValue window_class_popup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::popup, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_popup_on_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::popup_on_parent, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_popup_centered(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::popup_centered, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_popup_centered_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::popup_centered_ratio, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_popup_centered_clamped(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::popup_centered_clamped, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_popup_exclusive(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::popup_exclusive, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_popup_exclusive_on_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::popup_exclusive_on_parent, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_popup_exclusive_centered(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::popup_exclusive_centered, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_popup_exclusive_centered_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::popup_exclusive_centered_ratio, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue window_class_popup_exclusive_centered_clamped(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Window::popup_exclusive_centered_clamped, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

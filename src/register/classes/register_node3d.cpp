@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/world3d.hpp>
+#include <godot_cpp/classes/node3d_gizmo.hpp>
+#include <godot_cpp/classes/node3d_gizmo.hpp>
 #include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/node3d_gizmo.hpp>
-#include <godot_cpp/classes/node3d_gizmo.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -39,257 +39,327 @@ static JSValue node3d_class_constructor(JSContext *ctx, JSValueConst new_target,
 	return obj;
 }
 static JSValue node3d_class_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::get_transform, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::get_position, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_set_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_rotation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_get_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::get_rotation, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_set_rotation_degrees(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_rotation_degrees, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_get_rotation_degrees(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::get_rotation_degrees, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_set_rotation_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_rotation_order, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_get_rotation_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::get_rotation_order, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_set_rotation_edit_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_rotation_edit_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_get_rotation_edit_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::get_rotation_edit_mode, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_set_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_get_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::get_scale, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_set_quaternion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_quaternion, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_get_quaternion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::get_quaternion, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_set_basis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_basis, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_get_basis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::get_basis, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_set_global_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_global_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_get_global_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::get_global_transform, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_set_global_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_global_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_get_global_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::get_global_position, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_set_global_basis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_global_basis, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_get_global_basis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::get_global_basis, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_set_global_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_global_rotation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_get_global_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::get_global_rotation, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_set_global_rotation_degrees(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_global_rotation_degrees, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_get_global_rotation_degrees(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::get_global_rotation_degrees, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_get_parent_node_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::get_parent_node_3d, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_set_ignore_transform_notification(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_ignore_transform_notification, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_set_as_top_level(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_as_top_level, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_is_set_as_top_level(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::is_set_as_top_level, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_set_disable_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_disable_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_is_scale_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::is_scale_disabled, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_get_world_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::get_world_3d, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_force_update_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::force_update_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_set_visibility_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_visibility_parent, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_get_visibility_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::get_visibility_parent, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_update_gizmos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::update_gizmos, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_add_gizmo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::add_gizmo, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_get_gizmos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::get_gizmos, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_clear_gizmos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::clear_gizmos, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_set_subgizmo_selection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_subgizmo_selection, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_clear_subgizmo_selection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::clear_subgizmo_selection, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_set_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_visible, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_is_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::is_visible, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_is_visible_in_tree(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::is_visible_in_tree, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_show(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::show, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_hide(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::hide, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_set_notify_local_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_notify_local_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_is_local_transform_notification_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::is_local_transform_notification_enabled, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_set_notify_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_notify_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_is_transform_notification_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::is_transform_notification_enabled, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_rotate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::rotate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_global_rotate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::global_rotate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_global_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::global_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_global_translate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::global_translate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_rotate_object_local(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::rotate_object_local, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_scale_object_local(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::scale_object_local, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_translate_object_local(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::translate_object_local, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_rotate_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::rotate_x, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_rotate_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::rotate_y, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_rotate_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::rotate_z, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_translate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::translate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_orthonormalize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::orthonormalize, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_set_identity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::set_identity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_look_at(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::look_at, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_look_at_from_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Node3D::look_at_from_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node3d_class_to_local(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::to_local, ctx, this_val, argc, argv);
 };
 static JSValue node3d_class_to_global(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Node3D::to_global, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry node3d_class_proto_funcs[] = {

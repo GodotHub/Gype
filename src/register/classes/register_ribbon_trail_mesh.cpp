@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/curve.hpp>
-#include <godot_cpp/classes/ribbon_trail_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/ribbon_trail_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,45 +37,57 @@ static JSValue ribbon_trail_mesh_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue ribbon_trail_mesh_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RibbonTrailMesh::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ribbon_trail_mesh_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RibbonTrailMesh::get_size, ctx, this_val, argc, argv);
 };
 static JSValue ribbon_trail_mesh_class_set_sections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RibbonTrailMesh::set_sections, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ribbon_trail_mesh_class_get_sections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RibbonTrailMesh::get_sections, ctx, this_val, argc, argv);
 };
 static JSValue ribbon_trail_mesh_class_set_section_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RibbonTrailMesh::set_section_length, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ribbon_trail_mesh_class_get_section_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RibbonTrailMesh::get_section_length, ctx, this_val, argc, argv);
 };
 static JSValue ribbon_trail_mesh_class_set_section_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RibbonTrailMesh::set_section_segments, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ribbon_trail_mesh_class_get_section_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RibbonTrailMesh::get_section_segments, ctx, this_val, argc, argv);
 };
 static JSValue ribbon_trail_mesh_class_set_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RibbonTrailMesh::set_curve, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ribbon_trail_mesh_class_get_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RibbonTrailMesh::get_curve, ctx, this_val, argc, argv);
 };
 static JSValue ribbon_trail_mesh_class_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RibbonTrailMesh::set_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ribbon_trail_mesh_class_get_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RibbonTrailMesh::get_shape, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry ribbon_trail_mesh_class_proto_funcs[] = {

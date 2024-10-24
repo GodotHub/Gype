@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/spring_arm3d.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/spring_arm3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,45 +37,57 @@ static JSValue spring_arm3d_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue spring_arm3d_class_get_hit_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SpringArm3D::get_hit_length, ctx, this_val, argc, argv);
 };
 static JSValue spring_arm3d_class_set_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SpringArm3D::set_length, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue spring_arm3d_class_get_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SpringArm3D::get_length, ctx, this_val, argc, argv);
 };
 static JSValue spring_arm3d_class_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SpringArm3D::set_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue spring_arm3d_class_get_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SpringArm3D::get_shape, ctx, this_val, argc, argv);
 };
 static JSValue spring_arm3d_class_add_excluded_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SpringArm3D::add_excluded_object, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue spring_arm3d_class_remove_excluded_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SpringArm3D::remove_excluded_object, ctx, this_val, argc, argv);
 };
 static JSValue spring_arm3d_class_clear_excluded_objects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SpringArm3D::clear_excluded_objects, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue spring_arm3d_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SpringArm3D::set_collision_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue spring_arm3d_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SpringArm3D::get_collision_mask, ctx, this_val, argc, argv);
 };
 static JSValue spring_arm3d_class_set_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SpringArm3D::set_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue spring_arm3d_class_get_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SpringArm3D::get_margin, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry spring_arm3d_class_proto_funcs[] = {

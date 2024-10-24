@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/texture.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,33 +38,42 @@ static JSValue texture2d_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue texture2d_class_get_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Texture2D::get_width, ctx, this_val, argc, argv);
 };
 static JSValue texture2d_class_get_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Texture2D::get_height, ctx, this_val, argc, argv);
 };
 static JSValue texture2d_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Texture2D::get_size, ctx, this_val, argc, argv);
 };
 static JSValue texture2d_class_has_alpha(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Texture2D::has_alpha, ctx, this_val, argc, argv);
 };
 static JSValue texture2d_class_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_const_method_no_ret(&Texture2D::draw, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture2d_class_draw_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_const_method_no_ret(&Texture2D::draw_rect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture2d_class_draw_rect_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_const_method_no_ret(&Texture2D::draw_rect_region, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture2d_class_get_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Texture2D::get_image, ctx, this_val, argc, argv);
 };
 static JSValue texture2d_class_create_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Texture2D::create_placeholder, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry texture2d_class_proto_funcs[] = {

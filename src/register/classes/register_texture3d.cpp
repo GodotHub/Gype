@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/texture.hpp>
 #include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/texture.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,24 +38,31 @@ static JSValue texture3d_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue texture3d_class_get_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Texture3D::get_format, ctx, this_val, argc, argv);
 };
 static JSValue texture3d_class_get_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Texture3D::get_width, ctx, this_val, argc, argv);
 };
 static JSValue texture3d_class_get_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Texture3D::get_height, ctx, this_val, argc, argv);
 };
 static JSValue texture3d_class_get_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Texture3D::get_depth, ctx, this_val, argc, argv);
 };
 static JSValue texture3d_class_has_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Texture3D::has_mipmaps, ctx, this_val, argc, argv);
 };
 static JSValue texture3d_class_get_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Texture3D::get_data, ctx, this_val, argc, argv);
 };
 static JSValue texture3d_class_create_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Texture3D::create_placeholder, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry texture3d_class_proto_funcs[] = {

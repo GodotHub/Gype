@@ -36,9 +36,11 @@ static JSValue fbx_state_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue fbx_state_class_get_allow_geometry_helper_nodes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&FBXState::get_allow_geometry_helper_nodes, ctx, this_val, argc, argv);
 };
 static JSValue fbx_state_class_set_allow_geometry_helper_nodes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FBXState::set_allow_geometry_helper_nodes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

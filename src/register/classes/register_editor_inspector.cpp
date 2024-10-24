@@ -37,9 +37,11 @@ static JSValue editor_inspector_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue editor_inspector_class_get_selected_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorInspector::get_selected_path, ctx, this_val, argc, argv);
 };
 static JSValue editor_inspector_class_get_edited_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorInspector::get_edited_object, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_inspector_class_proto_funcs[] = {

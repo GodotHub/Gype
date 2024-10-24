@@ -36,44 +36,56 @@ static JSValue visual_instance3d_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue visual_instance3d_class_set_base(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VisualInstance3D::set_base, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_instance3d_class_get_base(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualInstance3D::get_base, ctx, this_val, argc, argv);
 };
 static JSValue visual_instance3d_class_get_instance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualInstance3D::get_instance, ctx, this_val, argc, argv);
 };
 static JSValue visual_instance3d_class_set_layer_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VisualInstance3D::set_layer_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_instance3d_class_get_layer_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualInstance3D::get_layer_mask, ctx, this_val, argc, argv);
 };
 static JSValue visual_instance3d_class_set_layer_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VisualInstance3D::set_layer_mask_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_instance3d_class_get_layer_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualInstance3D::get_layer_mask_value, ctx, this_val, argc, argv);
 };
 static JSValue visual_instance3d_class_set_sorting_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VisualInstance3D::set_sorting_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_instance3d_class_get_sorting_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualInstance3D::get_sorting_offset, ctx, this_val, argc, argv);
 };
 static JSValue visual_instance3d_class_set_sorting_use_aabb_center(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VisualInstance3D::set_sorting_use_aabb_center, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_instance3d_class_is_sorting_use_aabb_center(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualInstance3D::is_sorting_use_aabb_center, ctx, this_val, argc, argv);
 };
 static JSValue visual_instance3d_class_get_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualInstance3D::get_aabb, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry visual_instance3d_class_proto_funcs[] = {

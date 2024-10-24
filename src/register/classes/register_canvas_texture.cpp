@@ -36,52 +36,66 @@ static JSValue canvas_texture_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue canvas_texture_class_set_diffuse_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasTexture::set_diffuse_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_texture_class_get_diffuse_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasTexture::get_diffuse_texture, ctx, this_val, argc, argv);
 };
 static JSValue canvas_texture_class_set_normal_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasTexture::set_normal_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_texture_class_get_normal_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasTexture::get_normal_texture, ctx, this_val, argc, argv);
 };
 static JSValue canvas_texture_class_set_specular_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasTexture::set_specular_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_texture_class_get_specular_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasTexture::get_specular_texture, ctx, this_val, argc, argv);
 };
 static JSValue canvas_texture_class_set_specular_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasTexture::set_specular_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_texture_class_get_specular_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasTexture::get_specular_color, ctx, this_val, argc, argv);
 };
 static JSValue canvas_texture_class_set_specular_shininess(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasTexture::set_specular_shininess, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_texture_class_get_specular_shininess(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasTexture::get_specular_shininess, ctx, this_val, argc, argv);
 };
 static JSValue canvas_texture_class_set_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasTexture::set_texture_filter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_texture_class_get_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasTexture::get_texture_filter, ctx, this_val, argc, argv);
 };
 static JSValue canvas_texture_class_set_texture_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasTexture::set_texture_repeat, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_texture_class_get_texture_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasTexture::get_texture_repeat, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry canvas_texture_class_proto_funcs[] = {

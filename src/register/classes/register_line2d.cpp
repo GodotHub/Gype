@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/gradient.hpp>
-#include <godot_cpp/classes/line2d.hpp>
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/line2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -39,123 +39,157 @@ static JSValue line2d_class_constructor(JSContext *ctx, JSValueConst new_target,
 	return obj;
 }
 static JSValue line2d_class_set_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Line2D::set_points, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue line2d_class_get_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Line2D::get_points, ctx, this_val, argc, argv);
 };
 static JSValue line2d_class_set_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Line2D::set_point_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue line2d_class_get_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Line2D::get_point_position, ctx, this_val, argc, argv);
 };
 static JSValue line2d_class_get_point_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Line2D::get_point_count, ctx, this_val, argc, argv);
 };
 static JSValue line2d_class_add_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Line2D::add_point, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue line2d_class_remove_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Line2D::remove_point, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue line2d_class_clear_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Line2D::clear_points, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue line2d_class_set_closed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Line2D::set_closed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue line2d_class_is_closed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Line2D::is_closed, ctx, this_val, argc, argv);
 };
 static JSValue line2d_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Line2D::set_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue line2d_class_get_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Line2D::get_width, ctx, this_val, argc, argv);
 };
 static JSValue line2d_class_set_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Line2D::set_curve, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue line2d_class_get_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Line2D::get_curve, ctx, this_val, argc, argv);
 };
 static JSValue line2d_class_set_default_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Line2D::set_default_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue line2d_class_get_default_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Line2D::get_default_color, ctx, this_val, argc, argv);
 };
 static JSValue line2d_class_set_gradient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Line2D::set_gradient, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue line2d_class_get_gradient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Line2D::get_gradient, ctx, this_val, argc, argv);
 };
 static JSValue line2d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Line2D::set_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue line2d_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Line2D::get_texture, ctx, this_val, argc, argv);
 };
 static JSValue line2d_class_set_texture_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Line2D::set_texture_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue line2d_class_get_texture_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Line2D::get_texture_mode, ctx, this_val, argc, argv);
 };
 static JSValue line2d_class_set_joint_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Line2D::set_joint_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue line2d_class_get_joint_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Line2D::get_joint_mode, ctx, this_val, argc, argv);
 };
 static JSValue line2d_class_set_begin_cap_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Line2D::set_begin_cap_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue line2d_class_get_begin_cap_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Line2D::get_begin_cap_mode, ctx, this_val, argc, argv);
 };
 static JSValue line2d_class_set_end_cap_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Line2D::set_end_cap_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue line2d_class_get_end_cap_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Line2D::get_end_cap_mode, ctx, this_val, argc, argv);
 };
 static JSValue line2d_class_set_sharp_limit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Line2D::set_sharp_limit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue line2d_class_get_sharp_limit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Line2D::get_sharp_limit, ctx, this_val, argc, argv);
 };
 static JSValue line2d_class_set_round_precision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Line2D::set_round_precision, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue line2d_class_get_round_precision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Line2D::get_round_precision, ctx, this_val, argc, argv);
 };
 static JSValue line2d_class_set_antialiased(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Line2D::set_antialiased, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue line2d_class_get_antialiased(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Line2D::get_antialiased, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry line2d_class_proto_funcs[] = {

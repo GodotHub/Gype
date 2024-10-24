@@ -36,24 +36,30 @@ static JSValue canvas_group_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue canvas_group_class_set_fit_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasGroup::set_fit_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_group_class_get_fit_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasGroup::get_fit_margin, ctx, this_val, argc, argv);
 };
 static JSValue canvas_group_class_set_clear_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasGroup::set_clear_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_group_class_get_clear_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasGroup::get_clear_margin, ctx, this_val, argc, argv);
 };
 static JSValue canvas_group_class_set_use_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasGroup::set_use_mipmaps, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_group_class_is_using_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasGroup::is_using_mipmaps, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry canvas_group_class_proto_funcs[] = {

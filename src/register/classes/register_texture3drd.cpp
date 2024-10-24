@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/classes/texture3drd.hpp>
+#include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,10 +36,12 @@ static JSValue texture3drd_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue texture3drd_class_set_texture_rd_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Texture3DRD::set_texture_rd_rid, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture3drd_class_get_texture_rd_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Texture3DRD::get_texture_rd_rid, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry texture3drd_class_proto_funcs[] = {

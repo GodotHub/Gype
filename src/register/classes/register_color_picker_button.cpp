@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/color_picker_button.hpp>
 #include <godot_cpp/classes/button.hpp>
+#include <godot_cpp/classes/color_picker_button.hpp>
 #include <godot_cpp/classes/color_picker.hpp>
 #include <godot_cpp/classes/popup_panel.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -38,23 +38,29 @@ static JSValue color_picker_button_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue color_picker_button_class_set_pick_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ColorPickerButton::set_pick_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue color_picker_button_class_get_pick_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ColorPickerButton::get_pick_color, ctx, this_val, argc, argv);
 };
 static JSValue color_picker_button_class_get_picker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ColorPickerButton::get_picker, ctx, this_val, argc, argv);
 };
 static JSValue color_picker_button_class_get_popup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ColorPickerButton::get_popup, ctx, this_val, argc, argv);
 };
 static JSValue color_picker_button_class_set_edit_alpha(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ColorPickerButton::set_edit_alpha, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue color_picker_button_class_is_editing_alpha(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ColorPickerButton::is_editing_alpha, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry color_picker_button_class_proto_funcs[] = {

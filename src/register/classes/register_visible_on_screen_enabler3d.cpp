@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visible_on_screen_notifier3d.hpp>
 #include <godot_cpp/classes/visible_on_screen_enabler3d.hpp>
+#include <godot_cpp/classes/visible_on_screen_notifier3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,17 +36,21 @@ static JSValue visible_on_screen_enabler3d_class_constructor(JSContext *ctx, JSV
 	return obj;
 }
 static JSValue visible_on_screen_enabler3d_class_set_enable_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VisibleOnScreenEnabler3D::set_enable_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visible_on_screen_enabler3d_class_get_enable_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&VisibleOnScreenEnabler3D::get_enable_mode, ctx, this_val, argc, argv);
 };
 static JSValue visible_on_screen_enabler3d_class_set_enable_node_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VisibleOnScreenEnabler3D::set_enable_node_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visible_on_screen_enabler3d_class_get_enable_node_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&VisibleOnScreenEnabler3D::get_enable_node_path, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry visible_on_screen_enabler3d_class_proto_funcs[] = {

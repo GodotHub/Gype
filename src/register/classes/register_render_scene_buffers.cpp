@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/render_scene_buffers.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/render_scene_buffers_configuration.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,6 +37,7 @@ static JSValue render_scene_buffers_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue render_scene_buffers_class_configure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RenderSceneBuffers::configure, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

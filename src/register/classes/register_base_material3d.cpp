@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/base_material3d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/base_material3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,479 +37,615 @@ static JSValue base_material3d_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue base_material3d_class_set_albedo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_albedo, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_albedo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_albedo, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_transparency(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_transparency, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_transparency(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_transparency, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_alpha_antialiasing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_alpha_antialiasing, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_alpha_antialiasing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_alpha_antialiasing, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_alpha_antialiasing_edge(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_alpha_antialiasing_edge, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_alpha_antialiasing_edge(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_alpha_antialiasing_edge, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_shading_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_shading_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_shading_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_shading_mode, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_specular(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_specular, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_specular(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_specular, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_metallic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_metallic, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_metallic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_metallic, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_roughness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_roughness, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_roughness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_roughness, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_emission(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_emission, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_emission(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_emission, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_emission_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_emission_energy_multiplier, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_emission_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_emission_energy_multiplier, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_emission_intensity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_emission_intensity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_emission_intensity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_emission_intensity, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_normal_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_normal_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_normal_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_normal_scale, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_rim(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_rim, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_rim(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_rim, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_rim_tint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_rim_tint, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_rim_tint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_rim_tint, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_clearcoat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_clearcoat, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_clearcoat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_clearcoat, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_clearcoat_roughness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_clearcoat_roughness, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_clearcoat_roughness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_clearcoat_roughness, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_anisotropy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_anisotropy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_anisotropy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_anisotropy, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_heightmap_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_heightmap_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_heightmap_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_heightmap_scale, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_subsurface_scattering_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_subsurface_scattering_strength, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_subsurface_scattering_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_subsurface_scattering_strength, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_transmittance_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_transmittance_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_transmittance_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_transmittance_color, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_transmittance_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_transmittance_depth, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_transmittance_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_transmittance_depth, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_transmittance_boost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_transmittance_boost, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_transmittance_boost(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_transmittance_boost, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_backlight(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_backlight, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_backlight(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_backlight, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_refraction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_refraction, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_refraction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_refraction, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_point_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_point_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_point_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_point_size, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_detail_uv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_detail_uv, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_detail_uv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_detail_uv, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_blend_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_blend_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_blend_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_blend_mode, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_depth_draw_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_depth_draw_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_depth_draw_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_depth_draw_mode, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_cull_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_cull_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_cull_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_cull_mode, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_diffuse_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_diffuse_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_diffuse_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_diffuse_mode, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_specular_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_specular_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_specular_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_specular_mode, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_flag, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_flag, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_texture_filter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_texture_filter, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_feature(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_feature, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_feature(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_feature, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_texture, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_detail_blend_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_detail_blend_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_detail_blend_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_detail_blend_mode, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_uv1_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_uv1_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_uv1_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_uv1_scale, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_uv1_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_uv1_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_uv1_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_uv1_offset, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_uv1_triplanar_blend_sharpness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_uv1_triplanar_blend_sharpness, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_uv1_triplanar_blend_sharpness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_uv1_triplanar_blend_sharpness, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_uv2_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_uv2_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_uv2_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_uv2_scale, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_uv2_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_uv2_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_uv2_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_uv2_offset, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_uv2_triplanar_blend_sharpness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_uv2_triplanar_blend_sharpness, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_uv2_triplanar_blend_sharpness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_uv2_triplanar_blend_sharpness, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_billboard_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_billboard_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_billboard_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_billboard_mode, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_particles_anim_h_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_particles_anim_h_frames, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_particles_anim_h_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_particles_anim_h_frames, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_particles_anim_v_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_particles_anim_v_frames, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_particles_anim_v_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_particles_anim_v_frames, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_particles_anim_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_particles_anim_loop, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_particles_anim_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_particles_anim_loop, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_heightmap_deep_parallax(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_heightmap_deep_parallax, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_is_heightmap_deep_parallax_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::is_heightmap_deep_parallax_enabled, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_heightmap_deep_parallax_min_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_heightmap_deep_parallax_min_layers, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_heightmap_deep_parallax_min_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_heightmap_deep_parallax_min_layers, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_heightmap_deep_parallax_max_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_heightmap_deep_parallax_max_layers, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_heightmap_deep_parallax_max_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_heightmap_deep_parallax_max_layers, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_heightmap_deep_parallax_flip_tangent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_heightmap_deep_parallax_flip_tangent, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_heightmap_deep_parallax_flip_tangent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_heightmap_deep_parallax_flip_tangent, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_heightmap_deep_parallax_flip_binormal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_heightmap_deep_parallax_flip_binormal, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_heightmap_deep_parallax_flip_binormal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_heightmap_deep_parallax_flip_binormal, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_grow(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_grow, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_grow(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_grow, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_emission_operator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_emission_operator, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_emission_operator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_emission_operator, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_ao_light_affect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_ao_light_affect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_ao_light_affect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_ao_light_affect, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_alpha_scissor_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_alpha_scissor_threshold, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_alpha_scissor_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_alpha_scissor_threshold, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_alpha_hash_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_alpha_hash_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_alpha_hash_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_alpha_hash_scale, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_grow_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_grow_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_is_grow_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::is_grow_enabled, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_metallic_texture_channel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_metallic_texture_channel, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_metallic_texture_channel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_metallic_texture_channel, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_roughness_texture_channel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_roughness_texture_channel, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_roughness_texture_channel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_roughness_texture_channel, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_ao_texture_channel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_ao_texture_channel, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_ao_texture_channel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_ao_texture_channel, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_refraction_texture_channel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_refraction_texture_channel, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_refraction_texture_channel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_refraction_texture_channel, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_proximity_fade_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_proximity_fade_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_is_proximity_fade_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::is_proximity_fade_enabled, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_proximity_fade_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_proximity_fade_distance, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_proximity_fade_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_proximity_fade_distance, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_msdf_pixel_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_msdf_pixel_range, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_msdf_pixel_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_msdf_pixel_range, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_msdf_outline_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_msdf_outline_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_msdf_outline_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_msdf_outline_size, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_distance_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_distance_fade, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_distance_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_distance_fade, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_distance_fade_max_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_distance_fade_max_distance, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_distance_fade_max_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_distance_fade_max_distance, ctx, this_val, argc, argv);
 };
 static JSValue base_material3d_class_set_distance_fade_min_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BaseMaterial3D::set_distance_fade_min_distance, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue base_material3d_class_get_distance_fade_min_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BaseMaterial3D::get_distance_fade_min_distance, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry base_material3d_class_proto_funcs[] = {

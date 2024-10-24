@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture_layered.hpp>
 #include <godot_cpp/classes/compressed_texture_layered.hpp>
+#include <godot_cpp/classes/texture_layered.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,9 +36,11 @@ static JSValue compressed_texture_layered_class_constructor(JSContext *ctx, JSVa
 	return obj;
 }
 static JSValue compressed_texture_layered_class_load(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&CompressedTextureLayered::load, ctx, this_val, argc, argv);
 };
 static JSValue compressed_texture_layered_class_get_load_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CompressedTextureLayered::get_load_path, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry compressed_texture_layered_class_proto_funcs[] = {

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/atlas_texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/atlas_texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,31 +36,39 @@ static JSValue atlas_texture_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 static JSValue atlas_texture_class_set_atlas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AtlasTexture::set_atlas, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue atlas_texture_class_get_atlas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AtlasTexture::get_atlas, ctx, this_val, argc, argv);
 };
 static JSValue atlas_texture_class_set_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AtlasTexture::set_region, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue atlas_texture_class_get_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AtlasTexture::get_region, ctx, this_val, argc, argv);
 };
 static JSValue atlas_texture_class_set_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AtlasTexture::set_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue atlas_texture_class_get_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AtlasTexture::get_margin, ctx, this_val, argc, argv);
 };
 static JSValue atlas_texture_class_set_filter_clip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AtlasTexture::set_filter_clip, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue atlas_texture_class_has_filter_clip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AtlasTexture::has_filter_clip, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry atlas_texture_class_proto_funcs[] = {

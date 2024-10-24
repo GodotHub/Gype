@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/http_client.hpp>
-#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -38,75 +38,97 @@ static JSValue http_client_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue http_client_class_connect_to_host(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&HTTPClient::connect_to_host, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_set_connection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&HTTPClient::set_connection, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue http_client_class_get_connection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&HTTPClient::get_connection, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_request_raw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&HTTPClient::request_raw, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_request(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&HTTPClient::request, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&HTTPClient::close, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue http_client_class_has_response(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&HTTPClient::has_response, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_is_response_chunked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&HTTPClient::is_response_chunked, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_get_response_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&HTTPClient::get_response_code, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_get_response_headers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&HTTPClient::get_response_headers, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_get_response_headers_as_dictionary(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&HTTPClient::get_response_headers_as_dictionary, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_get_response_body_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&HTTPClient::get_response_body_length, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_read_response_body_chunk(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&HTTPClient::read_response_body_chunk, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_set_read_chunk_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&HTTPClient::set_read_chunk_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue http_client_class_get_read_chunk_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&HTTPClient::get_read_chunk_size, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_set_blocking_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&HTTPClient::set_blocking_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue http_client_class_is_blocking_mode_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&HTTPClient::is_blocking_mode_enabled, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_get_status(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&HTTPClient::get_status, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&HTTPClient::poll, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_set_http_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&HTTPClient::set_http_proxy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue http_client_class_set_https_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&HTTPClient::set_https_proxy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue http_client_class_query_string_from_dict(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&HTTPClient::query_string_from_dict, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry http_client_class_proto_funcs[] = {

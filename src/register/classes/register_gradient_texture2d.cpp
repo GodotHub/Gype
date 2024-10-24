@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gradient_texture2d.hpp>
 #include <godot_cpp/classes/gradient.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/gradient_texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,53 +37,67 @@ static JSValue gradient_texture2d_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue gradient_texture2d_class_set_gradient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GradientTexture2D::set_gradient, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture2d_class_get_gradient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GradientTexture2D::get_gradient, ctx, this_val, argc, argv);
 };
 static JSValue gradient_texture2d_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GradientTexture2D::set_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture2d_class_set_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GradientTexture2D::set_height, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture2d_class_set_use_hdr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GradientTexture2D::set_use_hdr, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture2d_class_is_using_hdr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GradientTexture2D::is_using_hdr, ctx, this_val, argc, argv);
 };
 static JSValue gradient_texture2d_class_set_fill(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GradientTexture2D::set_fill, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture2d_class_get_fill(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GradientTexture2D::get_fill, ctx, this_val, argc, argv);
 };
 static JSValue gradient_texture2d_class_set_fill_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GradientTexture2D::set_fill_from, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture2d_class_get_fill_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GradientTexture2D::get_fill_from, ctx, this_val, argc, argv);
 };
 static JSValue gradient_texture2d_class_set_fill_to(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GradientTexture2D::set_fill_to, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture2d_class_get_fill_to(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GradientTexture2D::get_fill_to, ctx, this_val, argc, argv);
 };
 static JSValue gradient_texture2d_class_set_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GradientTexture2D::set_repeat, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture2d_class_get_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GradientTexture2D::get_repeat, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry gradient_texture2d_class_proto_funcs[] = {

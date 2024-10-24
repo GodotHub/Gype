@@ -36,10 +36,12 @@ static JSValue audio_stream_playback_interactive_class_constructor(JSContext *ct
 	return obj;
 }
 static JSValue audio_stream_playback_interactive_class_switch_to_clip_by_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioStreamPlaybackInteractive::switch_to_clip_by_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_playback_interactive_class_switch_to_clip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioStreamPlaybackInteractive::switch_to_clip, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

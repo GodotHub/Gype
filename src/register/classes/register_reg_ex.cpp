@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/reg_ex_match.hpp>
 #include <godot_cpp/classes/reg_ex.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/reg_ex_match.hpp>
 #include <godot_cpp/classes/reg_ex_match.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -38,31 +38,40 @@ static JSValue reg_ex_class_constructor(JSContext *ctx, JSValueConst new_target,
 	return obj;
 }
 static JSValue reg_ex_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RegEx::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue reg_ex_class_compile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RegEx::compile, ctx, this_val, argc, argv);
 };
 static JSValue reg_ex_class_search(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RegEx::search, ctx, this_val, argc, argv);
 };
 static JSValue reg_ex_class_search_all(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RegEx::search_all, ctx, this_val, argc, argv);
 };
 static JSValue reg_ex_class_sub(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RegEx::sub, ctx, this_val, argc, argv);
 };
 static JSValue reg_ex_class_is_valid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RegEx::is_valid, ctx, this_val, argc, argv);
 };
 static JSValue reg_ex_class_get_pattern(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RegEx::get_pattern, ctx, this_val, argc, argv);
 };
 static JSValue reg_ex_class_get_group_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RegEx::get_group_count, ctx, this_val, argc, argv);
 };
 static JSValue reg_ex_class_get_names(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RegEx::get_names, ctx, this_val, argc, argv);
 };
 static JSValue reg_ex_class_create_from_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

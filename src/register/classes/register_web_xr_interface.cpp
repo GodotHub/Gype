@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/web_xr_interface.hpp>
 #include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/classes/xr_controller_tracker.hpp>
-#include <godot_cpp/classes/web_xr_interface.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,63 +37,81 @@ static JSValue web_xr_interface_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue web_xr_interface_class_is_session_supported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebXRInterface::is_session_supported, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_xr_interface_class_set_session_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebXRInterface::set_session_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_xr_interface_class_get_session_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebXRInterface::get_session_mode, ctx, this_val, argc, argv);
 };
 static JSValue web_xr_interface_class_set_required_features(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebXRInterface::set_required_features, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_xr_interface_class_get_required_features(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebXRInterface::get_required_features, ctx, this_val, argc, argv);
 };
 static JSValue web_xr_interface_class_set_optional_features(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebXRInterface::set_optional_features, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_xr_interface_class_get_optional_features(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebXRInterface::get_optional_features, ctx, this_val, argc, argv);
 };
 static JSValue web_xr_interface_class_get_reference_space_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebXRInterface::get_reference_space_type, ctx, this_val, argc, argv);
 };
 static JSValue web_xr_interface_class_get_enabled_features(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebXRInterface::get_enabled_features, ctx, this_val, argc, argv);
 };
 static JSValue web_xr_interface_class_set_requested_reference_space_types(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebXRInterface::set_requested_reference_space_types, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_xr_interface_class_get_requested_reference_space_types(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebXRInterface::get_requested_reference_space_types, ctx, this_val, argc, argv);
 };
 static JSValue web_xr_interface_class_is_input_source_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebXRInterface::is_input_source_active, ctx, this_val, argc, argv);
 };
 static JSValue web_xr_interface_class_get_input_source_tracker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebXRInterface::get_input_source_tracker, ctx, this_val, argc, argv);
 };
 static JSValue web_xr_interface_class_get_input_source_target_ray_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebXRInterface::get_input_source_target_ray_mode, ctx, this_val, argc, argv);
 };
 static JSValue web_xr_interface_class_get_visibility_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebXRInterface::get_visibility_state, ctx, this_val, argc, argv);
 };
 static JSValue web_xr_interface_class_get_display_refresh_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebXRInterface::get_display_refresh_rate, ctx, this_val, argc, argv);
 };
 static JSValue web_xr_interface_class_set_display_refresh_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebXRInterface::set_display_refresh_rate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_xr_interface_class_get_available_display_refresh_rates(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebXRInterface::get_available_display_refresh_rates, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry web_xr_interface_class_proto_funcs[] = {

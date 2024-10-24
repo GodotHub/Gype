@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/confirmation_dialog.hpp>
 #include <godot_cpp/classes/script_create_dialog.hpp>
+#include <godot_cpp/classes/confirmation_dialog.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,6 +36,7 @@ static JSValue script_create_dialog_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue script_create_dialog_class_config(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ScriptCreateDialog::config, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

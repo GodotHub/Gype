@@ -36,37 +36,47 @@ static JSValue animation_node_state_machine_playback_class_constructor(JSContext
 	return obj;
 }
 static JSValue animation_node_state_machine_playback_class_travel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimationNodeStateMachinePlayback::travel, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_state_machine_playback_class_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimationNodeStateMachinePlayback::start, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_state_machine_playback_class_next(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimationNodeStateMachinePlayback::next, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_state_machine_playback_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimationNodeStateMachinePlayback::stop, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_state_machine_playback_class_is_playing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimationNodeStateMachinePlayback::is_playing, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_playback_class_get_current_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimationNodeStateMachinePlayback::get_current_node, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_playback_class_get_current_play_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimationNodeStateMachinePlayback::get_current_play_position, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_playback_class_get_current_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimationNodeStateMachinePlayback::get_current_length, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_playback_class_get_fading_from_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimationNodeStateMachinePlayback::get_fading_from_node, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_playback_class_get_travel_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimationNodeStateMachinePlayback::get_travel_path, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry animation_node_state_machine_playback_class_proto_funcs[] = {

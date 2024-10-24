@@ -36,17 +36,21 @@ static JSValue xr_origin3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue xr_origin3d_class_set_world_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&XROrigin3D::set_world_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_origin3d_class_get_world_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XROrigin3D::get_world_scale, ctx, this_val, argc, argv);
 };
 static JSValue xr_origin3d_class_set_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&XROrigin3D::set_current, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_origin3d_class_is_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XROrigin3D::is_current, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry xr_origin3d_class_proto_funcs[] = {

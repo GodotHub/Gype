@@ -37,24 +37,30 @@ static JSValue packet_peer_stream_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue packet_peer_stream_class_set_stream_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PacketPeerStream::set_stream_peer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packet_peer_stream_class_get_stream_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PacketPeerStream::get_stream_peer, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_stream_class_set_input_buffer_max_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PacketPeerStream::set_input_buffer_max_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packet_peer_stream_class_set_output_buffer_max_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PacketPeerStream::set_output_buffer_max_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packet_peer_stream_class_get_input_buffer_max_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PacketPeerStream::get_input_buffer_max_size, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_stream_class_get_output_buffer_max_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PacketPeerStream::get_output_buffer_max_size, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry packet_peer_stream_class_proto_funcs[] = {

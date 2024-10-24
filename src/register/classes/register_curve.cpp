@@ -36,93 +36,119 @@ static JSValue curve_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	return obj;
 }
 static JSValue curve_class_get_point_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve::get_point_count, ctx, this_val, argc, argv);
 };
 static JSValue curve_class_set_point_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve::set_point_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_class_add_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Curve::add_point, ctx, this_val, argc, argv);
 };
 static JSValue curve_class_remove_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve::remove_point, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_class_clear_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve::clear_points, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_class_get_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve::get_point_position, ctx, this_val, argc, argv);
 };
 static JSValue curve_class_set_point_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve::set_point_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_class_set_point_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Curve::set_point_offset, ctx, this_val, argc, argv);
 };
 static JSValue curve_class_sample(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve::sample, ctx, this_val, argc, argv);
 };
 static JSValue curve_class_sample_baked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve::sample_baked, ctx, this_val, argc, argv);
 };
 static JSValue curve_class_get_point_left_tangent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve::get_point_left_tangent, ctx, this_val, argc, argv);
 };
 static JSValue curve_class_get_point_right_tangent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve::get_point_right_tangent, ctx, this_val, argc, argv);
 };
 static JSValue curve_class_get_point_left_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve::get_point_left_mode, ctx, this_val, argc, argv);
 };
 static JSValue curve_class_get_point_right_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve::get_point_right_mode, ctx, this_val, argc, argv);
 };
 static JSValue curve_class_set_point_left_tangent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve::set_point_left_tangent, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_class_set_point_right_tangent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve::set_point_right_tangent, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_class_set_point_left_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve::set_point_left_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_class_set_point_right_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve::set_point_right_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_class_get_min_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve::get_min_value, ctx, this_val, argc, argv);
 };
 static JSValue curve_class_set_min_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve::set_min_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_class_get_max_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve::get_max_value, ctx, this_val, argc, argv);
 };
 static JSValue curve_class_set_max_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve::set_max_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_class_clean_dupes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve::clean_dupes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_class_bake(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve::bake, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_class_get_bake_resolution(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve::get_bake_resolution, ctx, this_val, argc, argv);
 };
 static JSValue curve_class_set_bake_resolution(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve::set_bake_resolution, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

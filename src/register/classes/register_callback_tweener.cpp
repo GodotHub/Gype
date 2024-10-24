@@ -36,6 +36,7 @@ static JSValue callback_tweener_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue callback_tweener_class_set_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&CallbackTweener::set_delay, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry callback_tweener_class_proto_funcs[] = {

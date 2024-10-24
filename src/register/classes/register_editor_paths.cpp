@@ -36,21 +36,27 @@ static JSValue editor_paths_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue editor_paths_class_get_data_dir(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorPaths::get_data_dir, ctx, this_val, argc, argv);
 };
 static JSValue editor_paths_class_get_config_dir(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorPaths::get_config_dir, ctx, this_val, argc, argv);
 };
 static JSValue editor_paths_class_get_cache_dir(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorPaths::get_cache_dir, ctx, this_val, argc, argv);
 };
 static JSValue editor_paths_class_is_self_contained(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorPaths::is_self_contained, ctx, this_val, argc, argv);
 };
 static JSValue editor_paths_class_get_self_contained_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorPaths::get_self_contained_file, ctx, this_val, argc, argv);
 };
 static JSValue editor_paths_class_get_project_settings_dir(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorPaths::get_project_settings_dir, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_paths_class_proto_funcs[] = {

@@ -36,15 +36,19 @@ static JSValue ref_counted_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue ref_counted_class_init_ref(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RefCounted::init_ref, ctx, this_val, argc, argv);
 };
 static JSValue ref_counted_class_reference(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RefCounted::reference, ctx, this_val, argc, argv);
 };
 static JSValue ref_counted_class_unreference(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RefCounted::unreference, ctx, this_val, argc, argv);
 };
 static JSValue ref_counted_class_get_reference_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RefCounted::get_reference_count, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry ref_counted_class_proto_funcs[] = {

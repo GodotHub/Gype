@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animated_sprite2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/sprite_frames.hpp>
+#include <godot_cpp/classes/animated_sprite2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,99 +37,126 @@ static JSValue animated_sprite2d_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue animated_sprite2d_class_set_sprite_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedSprite2D::set_sprite_frames, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite2d_class_get_sprite_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedSprite2D::get_sprite_frames, ctx, this_val, argc, argv);
 };
 static JSValue animated_sprite2d_class_set_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedSprite2D::set_animation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite2d_class_get_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedSprite2D::get_animation, ctx, this_val, argc, argv);
 };
 static JSValue animated_sprite2d_class_set_autoplay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedSprite2D::set_autoplay, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite2d_class_get_autoplay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedSprite2D::get_autoplay, ctx, this_val, argc, argv);
 };
 static JSValue animated_sprite2d_class_is_playing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedSprite2D::is_playing, ctx, this_val, argc, argv);
 };
 static JSValue animated_sprite2d_class_play(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedSprite2D::play, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite2d_class_play_backwards(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedSprite2D::play_backwards, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite2d_class_pause(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedSprite2D::pause, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite2d_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedSprite2D::stop, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite2d_class_set_centered(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedSprite2D::set_centered, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite2d_class_is_centered(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedSprite2D::is_centered, ctx, this_val, argc, argv);
 };
 static JSValue animated_sprite2d_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedSprite2D::set_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite2d_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedSprite2D::get_offset, ctx, this_val, argc, argv);
 };
 static JSValue animated_sprite2d_class_set_flip_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedSprite2D::set_flip_h, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite2d_class_is_flipped_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedSprite2D::is_flipped_h, ctx, this_val, argc, argv);
 };
 static JSValue animated_sprite2d_class_set_flip_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedSprite2D::set_flip_v, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite2d_class_is_flipped_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedSprite2D::is_flipped_v, ctx, this_val, argc, argv);
 };
 static JSValue animated_sprite2d_class_set_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedSprite2D::set_frame, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite2d_class_get_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedSprite2D::get_frame, ctx, this_val, argc, argv);
 };
 static JSValue animated_sprite2d_class_set_frame_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedSprite2D::set_frame_progress, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite2d_class_get_frame_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedSprite2D::get_frame_progress, ctx, this_val, argc, argv);
 };
 static JSValue animated_sprite2d_class_set_frame_and_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedSprite2D::set_frame_and_progress, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite2d_class_set_speed_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedSprite2D::set_speed_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_sprite2d_class_get_speed_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedSprite2D::get_speed_scale, ctx, this_val, argc, argv);
 };
 static JSValue animated_sprite2d_class_get_playing_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedSprite2D::get_playing_speed, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry animated_sprite2d_class_proto_funcs[] = {

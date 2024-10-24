@@ -36,6 +36,7 @@ static JSValue gd_script_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue gd_script_class_new_(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_vararg_method_ret(&GDScript::js_new_, ctx, this_val, argc, argv);
 }
 static const JSCFunctionListEntry gd_script_class_proto_funcs[] = {

@@ -36,9 +36,11 @@ static JSValue compressed_texture2d_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue compressed_texture2d_class_load(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&CompressedTexture2D::load, ctx, this_val, argc, argv);
 };
 static JSValue compressed_texture2d_class_get_load_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CompressedTexture2D::get_load_path, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry compressed_texture2d_class_proto_funcs[] = {

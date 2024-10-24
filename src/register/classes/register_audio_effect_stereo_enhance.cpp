@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_stereo_enhance.hpp>
 #include <godot_cpp/classes/audio_effect.hpp>
+#include <godot_cpp/classes/audio_effect_stereo_enhance.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,24 +36,30 @@ static JSValue audio_effect_stereo_enhance_class_constructor(JSContext *ctx, JSV
 	return obj;
 }
 static JSValue audio_effect_stereo_enhance_class_set_pan_pullout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioEffectStereoEnhance::set_pan_pullout, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_stereo_enhance_class_get_pan_pullout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectStereoEnhance::get_pan_pullout, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_stereo_enhance_class_set_time_pullout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioEffectStereoEnhance::set_time_pullout, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_stereo_enhance_class_get_time_pullout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectStereoEnhance::get_time_pullout, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_stereo_enhance_class_set_surround(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioEffectStereoEnhance::set_surround, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_stereo_enhance_class_get_surround(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectStereoEnhance::get_surround, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry audio_effect_stereo_enhance_class_proto_funcs[] = {

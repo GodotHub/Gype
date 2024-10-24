@@ -36,45 +36,57 @@ static JSValue parallax_background_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue parallax_background_class_set_scroll_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ParallaxBackground::set_scroll_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax_background_class_get_scroll_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ParallaxBackground::get_scroll_offset, ctx, this_val, argc, argv);
 };
 static JSValue parallax_background_class_set_scroll_base_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ParallaxBackground::set_scroll_base_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax_background_class_get_scroll_base_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ParallaxBackground::get_scroll_base_offset, ctx, this_val, argc, argv);
 };
 static JSValue parallax_background_class_set_scroll_base_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ParallaxBackground::set_scroll_base_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax_background_class_get_scroll_base_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ParallaxBackground::get_scroll_base_scale, ctx, this_val, argc, argv);
 };
 static JSValue parallax_background_class_set_limit_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ParallaxBackground::set_limit_begin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax_background_class_get_limit_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ParallaxBackground::get_limit_begin, ctx, this_val, argc, argv);
 };
 static JSValue parallax_background_class_set_limit_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ParallaxBackground::set_limit_end, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax_background_class_get_limit_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ParallaxBackground::get_limit_end, ctx, this_val, argc, argv);
 };
 static JSValue parallax_background_class_set_ignore_camera_zoom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ParallaxBackground::set_ignore_camera_zoom, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax_background_class_is_ignore_camera_zoom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ParallaxBackground::is_ignore_camera_zoom, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry parallax_background_class_proto_funcs[] = {

@@ -37,21 +37,27 @@ static JSValue tcp_server_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue tcp_server_class_listen(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TCPServer::listen, ctx, this_val, argc, argv);
 };
 static JSValue tcp_server_class_is_connection_available(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TCPServer::is_connection_available, ctx, this_val, argc, argv);
 };
 static JSValue tcp_server_class_is_listening(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TCPServer::is_listening, ctx, this_val, argc, argv);
 };
 static JSValue tcp_server_class_get_local_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TCPServer::get_local_port, ctx, this_val, argc, argv);
 };
 static JSValue tcp_server_class_take_connection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TCPServer::take_connection, ctx, this_val, argc, argv);
 };
 static JSValue tcp_server_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TCPServer::stop, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

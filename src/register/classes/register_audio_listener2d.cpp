@@ -36,14 +36,17 @@ static JSValue audio_listener2d_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue audio_listener2d_class_make_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioListener2D::make_current, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_listener2d_class_clear_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioListener2D::clear_current, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_listener2d_class_is_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioListener2D::is_current, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry audio_listener2d_class_proto_funcs[] = {

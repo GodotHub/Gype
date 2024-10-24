@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gltf_texture_sampler.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/gltf_texture_sampler.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,30 +36,38 @@ static JSValue gltf_texture_sampler_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue gltf_texture_sampler_class_get_mag_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GLTFTextureSampler::get_mag_filter, ctx, this_val, argc, argv);
 };
 static JSValue gltf_texture_sampler_class_set_mag_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFTextureSampler::set_mag_filter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_texture_sampler_class_get_min_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GLTFTextureSampler::get_min_filter, ctx, this_val, argc, argv);
 };
 static JSValue gltf_texture_sampler_class_set_min_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFTextureSampler::set_min_filter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_texture_sampler_class_get_wrap_s(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GLTFTextureSampler::get_wrap_s, ctx, this_val, argc, argv);
 };
 static JSValue gltf_texture_sampler_class_set_wrap_s(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFTextureSampler::set_wrap_s, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_texture_sampler_class_get_wrap_t(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GLTFTextureSampler::get_wrap_t, ctx, this_val, argc, argv);
 };
 static JSValue gltf_texture_sampler_class_set_wrap_t(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFTextureSampler::set_wrap_t, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

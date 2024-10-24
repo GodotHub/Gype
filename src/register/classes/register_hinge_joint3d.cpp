@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/joint3d.hpp>
 #include <godot_cpp/classes/hinge_joint3d.hpp>
+#include <godot_cpp/classes/joint3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,17 +36,21 @@ static JSValue hinge_joint3d_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 static JSValue hinge_joint3d_class_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&HingeJoint3D::set_param, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue hinge_joint3d_class_get_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&HingeJoint3D::get_param, ctx, this_val, argc, argv);
 };
 static JSValue hinge_joint3d_class_set_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&HingeJoint3D::set_flag, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue hinge_joint3d_class_get_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&HingeJoint3D::get_flag, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry hinge_joint3d_class_proto_funcs[] = {

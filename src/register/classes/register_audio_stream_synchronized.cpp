@@ -36,24 +36,30 @@ static JSValue audio_stream_synchronized_class_constructor(JSContext *ctx, JSVal
 	return obj;
 }
 static JSValue audio_stream_synchronized_class_set_stream_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioStreamSynchronized::set_stream_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_synchronized_class_get_stream_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStreamSynchronized::get_stream_count, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_synchronized_class_set_sync_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioStreamSynchronized::set_sync_stream, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_synchronized_class_get_sync_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStreamSynchronized::get_sync_stream, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_synchronized_class_set_sync_stream_volume(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioStreamSynchronized::set_sync_stream_volume, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_synchronized_class_get_sync_stream_volume(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStreamSynchronized::get_sync_stream_volume, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry audio_stream_synchronized_class_proto_funcs[] = {

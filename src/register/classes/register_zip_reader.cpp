@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/zip_reader.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/zip_reader.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,18 +36,23 @@ static JSValue zip_reader_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue zip_reader_class_open(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ZIPReader::open, ctx, this_val, argc, argv);
 };
 static JSValue zip_reader_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ZIPReader::close, ctx, this_val, argc, argv);
 };
 static JSValue zip_reader_class_get_files(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ZIPReader::get_files, ctx, this_val, argc, argv);
 };
 static JSValue zip_reader_class_read_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ZIPReader::read_file, ctx, this_val, argc, argv);
 };
 static JSValue zip_reader_class_file_exists(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ZIPReader::file_exists, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry zip_reader_class_proto_funcs[] = {

@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_texture_view.hpp>
 #include <godot_cpp/classes/rd_texture_format.hpp>
-#include <godot_cpp/classes/render_scene_buffers_rd.hpp>
 #include <godot_cpp/classes/render_scene_buffers.hpp>
+#include <godot_cpp/classes/render_scene_buffers_rd.hpp>
+#include <godot_cpp/classes/rd_texture_view.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,85 +38,112 @@ static JSValue render_scene_buffers_rd_class_constructor(JSContext *ctx, JSValue
 	return obj;
 }
 static JSValue render_scene_buffers_rd_class_has_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersRD::has_texture, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_create_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RenderSceneBuffersRD::create_texture, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_create_texture_from_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RenderSceneBuffersRD::create_texture_from_format, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_create_texture_view(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RenderSceneBuffersRD::create_texture_view, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersRD::get_texture, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_texture_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersRD::get_texture_format, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_texture_slice(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RenderSceneBuffersRD::get_texture_slice, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_texture_slice_view(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RenderSceneBuffersRD::get_texture_slice_view, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_texture_slice_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RenderSceneBuffersRD::get_texture_slice_size, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_clear_context(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RenderSceneBuffersRD::clear_context, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_rd_class_get_color_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RenderSceneBuffersRD::get_color_texture, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_color_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RenderSceneBuffersRD::get_color_layer, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_depth_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RenderSceneBuffersRD::get_depth_texture, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_depth_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RenderSceneBuffersRD::get_depth_layer, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_velocity_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RenderSceneBuffersRD::get_velocity_texture, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_velocity_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RenderSceneBuffersRD::get_velocity_layer, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_render_target(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersRD::get_render_target, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_view_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersRD::get_view_count, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_internal_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersRD::get_internal_size, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_target_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersRD::get_target_size, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_scaling_3d_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersRD::get_scaling_3d_mode, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_fsr_sharpness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersRD::get_fsr_sharpness, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_msaa_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersRD::get_msaa_3d, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_texture_samples(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersRD::get_texture_samples, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_screen_space_aa(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersRD::get_screen_space_aa, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_use_taa(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersRD::get_use_taa, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_use_debanding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersRD::get_use_debanding, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry render_scene_buffers_rd_class_proto_funcs[] = {

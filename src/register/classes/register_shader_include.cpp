@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shader_include.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/shader_include.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,10 +36,12 @@ static JSValue shader_include_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue shader_include_class_set_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ShaderInclude::set_code, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shader_include_class_get_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ShaderInclude::get_code, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry shader_include_class_proto_funcs[] = {

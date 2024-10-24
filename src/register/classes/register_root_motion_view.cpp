@@ -36,38 +36,48 @@ static JSValue root_motion_view_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue root_motion_view_class_set_animation_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RootMotionView::set_animation_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue root_motion_view_class_get_animation_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RootMotionView::get_animation_path, ctx, this_val, argc, argv);
 };
 static JSValue root_motion_view_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RootMotionView::set_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue root_motion_view_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RootMotionView::get_color, ctx, this_val, argc, argv);
 };
 static JSValue root_motion_view_class_set_cell_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RootMotionView::set_cell_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue root_motion_view_class_get_cell_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RootMotionView::get_cell_size, ctx, this_val, argc, argv);
 };
 static JSValue root_motion_view_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RootMotionView::set_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue root_motion_view_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RootMotionView::get_radius, ctx, this_val, argc, argv);
 };
 static JSValue root_motion_view_class_set_zero_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RootMotionView::set_zero_y, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue root_motion_view_class_get_zero_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RootMotionView::get_zero_y, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry root_motion_view_class_proto_funcs[] = {

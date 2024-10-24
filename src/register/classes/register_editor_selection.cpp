@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_selection.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/editor_selection.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -38,21 +38,26 @@ static JSValue editor_selection_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue editor_selection_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorSelection::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_selection_class_add_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorSelection::add_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_selection_class_remove_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorSelection::remove_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_selection_class_get_selected_nodes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorSelection::get_selected_nodes, ctx, this_val, argc, argv);
 };
 static JSValue editor_selection_class_get_transformable_selected_nodes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorSelection::get_transformable_selected_nodes, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_selection_class_proto_funcs[] = {

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/shader.hpp>
 #include <godot_cpp/classes/shader_material.hpp>
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,17 +37,21 @@ static JSValue shader_material_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue shader_material_class_set_shader(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ShaderMaterial::set_shader, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shader_material_class_get_shader(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ShaderMaterial::get_shader, ctx, this_val, argc, argv);
 };
 static JSValue shader_material_class_set_shader_parameter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ShaderMaterial::set_shader_parameter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shader_material_class_get_shader_parameter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ShaderMaterial::get_shader_parameter, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry shader_material_class_proto_funcs[] = {

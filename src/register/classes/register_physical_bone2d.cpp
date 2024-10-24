@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/joint2d.hpp>
-#include <godot_cpp/classes/physical_bone2d.hpp>
 #include <godot_cpp/classes/rigid_body2d.hpp>
+#include <godot_cpp/classes/physical_bone2d.hpp>
+#include <godot_cpp/classes/joint2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,44 +37,56 @@ static JSValue physical_bone2d_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue physical_bone2d_class_get_joint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicalBone2D::get_joint, ctx, this_val, argc, argv);
 };
 static JSValue physical_bone2d_class_get_auto_configure_joint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicalBone2D::get_auto_configure_joint, ctx, this_val, argc, argv);
 };
 static JSValue physical_bone2d_class_set_auto_configure_joint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicalBone2D::set_auto_configure_joint, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone2d_class_set_simulate_physics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicalBone2D::set_simulate_physics, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone2d_class_get_simulate_physics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicalBone2D::get_simulate_physics, ctx, this_val, argc, argv);
 };
 static JSValue physical_bone2d_class_is_simulating_physics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicalBone2D::is_simulating_physics, ctx, this_val, argc, argv);
 };
 static JSValue physical_bone2d_class_set_bone2d_nodepath(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicalBone2D::set_bone2d_nodepath, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone2d_class_get_bone2d_nodepath(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicalBone2D::get_bone2d_nodepath, ctx, this_val, argc, argv);
 };
 static JSValue physical_bone2d_class_set_bone2d_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicalBone2D::set_bone2d_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone2d_class_get_bone2d_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicalBone2D::get_bone2d_index, ctx, this_val, argc, argv);
 };
 static JSValue physical_bone2d_class_set_follow_bone_when_simulating(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicalBone2D::set_follow_bone_when_simulating, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone2d_class_get_follow_bone_when_simulating(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicalBone2D::get_follow_bone_when_simulating, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry physical_bone2d_class_proto_funcs[] = {

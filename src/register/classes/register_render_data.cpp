@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/render_data.hpp>
 #include <godot_cpp/classes/render_scene_data.hpp>
-#include <godot_cpp/classes/render_scene_buffers.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/render_scene_buffers.hpp>
+#include <godot_cpp/classes/render_data.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,15 +38,19 @@ static JSValue render_data_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue render_data_class_get_render_scene_buffers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderData::get_render_scene_buffers, ctx, this_val, argc, argv);
 };
 static JSValue render_data_class_get_render_scene_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderData::get_render_scene_data, ctx, this_val, argc, argv);
 };
 static JSValue render_data_class_get_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderData::get_environment, ctx, this_val, argc, argv);
 };
 static JSValue render_data_class_get_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderData::get_camera_attributes, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry render_data_class_proto_funcs[] = {

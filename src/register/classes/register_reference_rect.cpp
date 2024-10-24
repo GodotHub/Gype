@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/reference_rect.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/reference_rect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,23 +36,29 @@ static JSValue reference_rect_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue reference_rect_class_get_border_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ReferenceRect::get_border_color, ctx, this_val, argc, argv);
 };
 static JSValue reference_rect_class_set_border_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ReferenceRect::set_border_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue reference_rect_class_get_border_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ReferenceRect::get_border_width, ctx, this_val, argc, argv);
 };
 static JSValue reference_rect_class_set_border_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ReferenceRect::set_border_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue reference_rect_class_get_editor_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ReferenceRect::get_editor_only, ctx, this_val, argc, argv);
 };
 static JSValue reference_rect_class_set_editor_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ReferenceRect::set_editor_only, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

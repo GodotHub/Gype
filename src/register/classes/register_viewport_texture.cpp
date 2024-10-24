@@ -36,10 +36,12 @@ static JSValue viewport_texture_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue viewport_texture_class_set_viewport_path_in_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ViewportTexture::set_viewport_path_in_scene, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_texture_class_get_viewport_path_in_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ViewportTexture::get_viewport_path_in_scene, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry viewport_texture_class_proto_funcs[] = {

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_stream_wav.hpp>
 #include <godot_cpp/classes/audio_effect_record.hpp>
 #include <godot_cpp/classes/audio_effect.hpp>
+#include <godot_cpp/classes/audio_stream_wav.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,20 +37,25 @@ static JSValue audio_effect_record_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue audio_effect_record_class_set_recording_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioEffectRecord::set_recording_active, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_record_class_is_recording_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectRecord::is_recording_active, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_record_class_set_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioEffectRecord::set_format, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_record_class_get_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectRecord::get_format, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_record_class_get_recording(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectRecord::get_recording, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry audio_effect_record_class_proto_funcs[] = {

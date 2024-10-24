@@ -36,31 +36,39 @@ static JSValue audio_effect_filter_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue audio_effect_filter_class_set_cutoff(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioEffectFilter::set_cutoff, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_filter_class_get_cutoff(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectFilter::get_cutoff, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_filter_class_set_resonance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioEffectFilter::set_resonance, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_filter_class_get_resonance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectFilter::get_resonance, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_filter_class_set_gain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioEffectFilter::set_gain, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_filter_class_get_gain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectFilter::get_gain, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_filter_class_set_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioEffectFilter::set_db, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_filter_class_get_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectFilter::get_db, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry audio_effect_filter_class_proto_funcs[] = {

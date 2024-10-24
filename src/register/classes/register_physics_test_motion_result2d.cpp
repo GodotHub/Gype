@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/physics_test_motion_result2d.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,42 +37,55 @@ static JSValue physics_test_motion_result2d_class_constructor(JSContext *ctx, JS
 	return obj;
 }
 static JSValue physics_test_motion_result2d_class_get_travel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionResult2D::get_travel, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_result2d_class_get_remainder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionResult2D::get_remainder, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_result2d_class_get_collision_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionResult2D::get_collision_point, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_result2d_class_get_collision_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionResult2D::get_collision_normal, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_result2d_class_get_collider_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionResult2D::get_collider_velocity, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_result2d_class_get_collider_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionResult2D::get_collider_id, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_result2d_class_get_collider_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionResult2D::get_collider_rid, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_result2d_class_get_collider(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionResult2D::get_collider, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_result2d_class_get_collider_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionResult2D::get_collider_shape, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_result2d_class_get_collision_local_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionResult2D::get_collision_local_shape, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_result2d_class_get_collision_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionResult2D::get_collision_depth, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_result2d_class_get_collision_safe_fraction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionResult2D::get_collision_safe_fraction, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_result2d_class_get_collision_unsafe_fraction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionResult2D::get_collision_unsafe_fraction, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry physics_test_motion_result2d_class_proto_funcs[] = {

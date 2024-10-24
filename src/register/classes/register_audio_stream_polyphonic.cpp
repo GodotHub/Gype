@@ -36,10 +36,12 @@ static JSValue audio_stream_polyphonic_class_constructor(JSContext *ctx, JSValue
 	return obj;
 }
 static JSValue audio_stream_polyphonic_class_set_polyphony(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioStreamPolyphonic::set_polyphony, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_polyphonic_class_get_polyphony(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStreamPolyphonic::get_polyphony, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry audio_stream_polyphonic_class_proto_funcs[] = {

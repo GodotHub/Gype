@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/concave_polygon_shape3d.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
+#include <godot_cpp/classes/concave_polygon_shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,17 +36,21 @@ static JSValue concave_polygon_shape3d_class_constructor(JSContext *ctx, JSValue
 	return obj;
 }
 static JSValue concave_polygon_shape3d_class_set_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ConcavePolygonShape3D::set_faces, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue concave_polygon_shape3d_class_get_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ConcavePolygonShape3D::get_faces, ctx, this_val, argc, argv);
 };
 static JSValue concave_polygon_shape3d_class_set_backface_collision_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ConcavePolygonShape3D::set_backface_collision_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue concave_polygon_shape3d_class_is_backface_collision_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ConcavePolygonShape3D::is_backface_collision_enabled, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry concave_polygon_shape3d_class_proto_funcs[] = {

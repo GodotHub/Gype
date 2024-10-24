@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
-#include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,37 +37,47 @@ static JSValue skeleton_modification2d_class_constructor(JSContext *ctx, JSValue
 	return obj;
 }
 static JSValue skeleton_modification2d_class_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SkeletonModification2D::set_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_class_get_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SkeletonModification2D::get_enabled, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_modification2d_class_get_modification_stack(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SkeletonModification2D::get_modification_stack, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_modification2d_class_set_is_setup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SkeletonModification2D::set_is_setup, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_class_get_is_setup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SkeletonModification2D::get_is_setup, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_modification2d_class_set_execution_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SkeletonModification2D::set_execution_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_class_get_execution_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SkeletonModification2D::get_execution_mode, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_modification2d_class_clamp_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SkeletonModification2D::clamp_angle, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_modification2d_class_set_editor_draw_gizmo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SkeletonModification2D::set_editor_draw_gizmo, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_class_get_editor_draw_gizmo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SkeletonModification2D::get_editor_draw_gizmo, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry skeleton_modification2d_class_proto_funcs[] = {

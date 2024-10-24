@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shader.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/shader.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,23 +37,29 @@ static JSValue shader_class_constructor(JSContext *ctx, JSValueConst new_target,
 	return obj;
 }
 static JSValue shader_class_get_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Shader::get_mode, ctx, this_val, argc, argv);
 };
 static JSValue shader_class_set_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Shader::set_code, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shader_class_get_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Shader::get_code, ctx, this_val, argc, argv);
 };
 static JSValue shader_class_set_default_texture_parameter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Shader::set_default_texture_parameter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shader_class_get_default_texture_parameter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Shader::get_default_texture_parameter, ctx, this_val, argc, argv);
 };
 static JSValue shader_class_get_shader_uniform_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Shader::get_shader_uniform_list, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry shader_class_proto_funcs[] = {

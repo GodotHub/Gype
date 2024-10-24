@@ -36,10 +36,12 @@ static JSValue gpu_particles_collision_box3d_class_constructor(JSContext *ctx, J
 	return obj;
 }
 static JSValue gpu_particles_collision_box3d_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GPUParticlesCollisionBox3D::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles_collision_box3d_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GPUParticlesCollisionBox3D::get_size, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry gpu_particles_collision_box3d_class_proto_funcs[] = {

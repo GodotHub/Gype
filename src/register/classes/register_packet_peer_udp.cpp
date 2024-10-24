@@ -36,44 +36,57 @@ static JSValue packet_peer_udp_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue packet_peer_udp_class_bind(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PacketPeerUDP::bind, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_udp_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PacketPeerUDP::close, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packet_peer_udp_class_wait(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PacketPeerUDP::wait, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_udp_class_is_bound(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PacketPeerUDP::is_bound, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_udp_class_connect_to_host(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PacketPeerUDP::connect_to_host, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_udp_class_is_socket_connected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PacketPeerUDP::is_socket_connected, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_udp_class_get_packet_ip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PacketPeerUDP::get_packet_ip, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_udp_class_get_packet_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PacketPeerUDP::get_packet_port, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_udp_class_get_local_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PacketPeerUDP::get_local_port, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_udp_class_set_dest_address(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PacketPeerUDP::set_dest_address, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_udp_class_set_broadcast_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PacketPeerUDP::set_broadcast_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packet_peer_udp_class_join_multicast_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PacketPeerUDP::join_multicast_group, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_udp_class_leave_multicast_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PacketPeerUDP::leave_multicast_group, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry packet_peer_udp_class_proto_funcs[] = {

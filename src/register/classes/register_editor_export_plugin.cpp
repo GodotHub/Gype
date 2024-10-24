@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_export_platform.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/editor_export_plugin.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/editor_export_platform.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -39,50 +39,62 @@ static JSValue editor_export_plugin_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue editor_export_plugin_class_add_shared_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorExportPlugin::add_shared_object, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_add_ios_project_static_lib(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorExportPlugin::add_ios_project_static_lib, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_add_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorExportPlugin::add_file, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_add_ios_framework(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorExportPlugin::add_ios_framework, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_add_ios_embedded_framework(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorExportPlugin::add_ios_embedded_framework, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_add_ios_plist_content(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorExportPlugin::add_ios_plist_content, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_add_ios_linker_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorExportPlugin::add_ios_linker_flags, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_add_ios_bundle_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorExportPlugin::add_ios_bundle_file, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_add_ios_cpp_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorExportPlugin::add_ios_cpp_code, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_add_macos_plugin_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorExportPlugin::add_macos_plugin_file, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_skip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorExportPlugin::skip, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_export_plugin_class_get_option(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorExportPlugin::get_option, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_export_plugin_class_proto_funcs[] = {

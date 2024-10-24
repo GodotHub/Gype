@@ -36,107 +36,137 @@ static JSValue gltf_accessor_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 static JSValue gltf_accessor_class_get_buffer_view(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFAccessor::get_buffer_view, ctx, this_val, argc, argv);
 };
 static JSValue gltf_accessor_class_set_buffer_view(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFAccessor::set_buffer_view, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_accessor_class_get_byte_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFAccessor::get_byte_offset, ctx, this_val, argc, argv);
 };
 static JSValue gltf_accessor_class_set_byte_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFAccessor::set_byte_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_accessor_class_get_component_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFAccessor::get_component_type, ctx, this_val, argc, argv);
 };
 static JSValue gltf_accessor_class_set_component_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFAccessor::set_component_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_accessor_class_get_normalized(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFAccessor::get_normalized, ctx, this_val, argc, argv);
 };
 static JSValue gltf_accessor_class_set_normalized(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFAccessor::set_normalized, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_accessor_class_get_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFAccessor::get_count, ctx, this_val, argc, argv);
 };
 static JSValue gltf_accessor_class_set_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFAccessor::set_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_accessor_class_get_accessor_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFAccessor::get_accessor_type, ctx, this_val, argc, argv);
 };
 static JSValue gltf_accessor_class_set_accessor_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFAccessor::set_accessor_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_accessor_class_get_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFAccessor::get_type, ctx, this_val, argc, argv);
 };
 static JSValue gltf_accessor_class_set_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFAccessor::set_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_accessor_class_get_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFAccessor::get_min, ctx, this_val, argc, argv);
 };
 static JSValue gltf_accessor_class_set_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFAccessor::set_min, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_accessor_class_get_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFAccessor::get_max, ctx, this_val, argc, argv);
 };
 static JSValue gltf_accessor_class_set_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFAccessor::set_max, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_accessor_class_get_sparse_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFAccessor::get_sparse_count, ctx, this_val, argc, argv);
 };
 static JSValue gltf_accessor_class_set_sparse_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFAccessor::set_sparse_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_accessor_class_get_sparse_indices_buffer_view(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFAccessor::get_sparse_indices_buffer_view, ctx, this_val, argc, argv);
 };
 static JSValue gltf_accessor_class_set_sparse_indices_buffer_view(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFAccessor::set_sparse_indices_buffer_view, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_accessor_class_get_sparse_indices_byte_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFAccessor::get_sparse_indices_byte_offset, ctx, this_val, argc, argv);
 };
 static JSValue gltf_accessor_class_set_sparse_indices_byte_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFAccessor::set_sparse_indices_byte_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_accessor_class_get_sparse_indices_component_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFAccessor::get_sparse_indices_component_type, ctx, this_val, argc, argv);
 };
 static JSValue gltf_accessor_class_set_sparse_indices_component_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFAccessor::set_sparse_indices_component_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_accessor_class_get_sparse_values_buffer_view(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFAccessor::get_sparse_values_buffer_view, ctx, this_val, argc, argv);
 };
 static JSValue gltf_accessor_class_set_sparse_values_buffer_view(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFAccessor::set_sparse_values_buffer_view, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_accessor_class_get_sparse_values_byte_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFAccessor::get_sparse_values_byte_offset, ctx, this_val, argc, argv);
 };
 static JSValue gltf_accessor_class_set_sparse_values_byte_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFAccessor::set_sparse_values_byte_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

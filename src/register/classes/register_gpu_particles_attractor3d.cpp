@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/classes/gpu_particles_attractor3d.hpp>
+#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,31 +36,39 @@ static JSValue gpu_particles_attractor3d_class_constructor(JSContext *ctx, JSVal
 	return obj;
 }
 static JSValue gpu_particles_attractor3d_class_set_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GPUParticlesAttractor3D::set_cull_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles_attractor3d_class_get_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GPUParticlesAttractor3D::get_cull_mask, ctx, this_val, argc, argv);
 };
 static JSValue gpu_particles_attractor3d_class_set_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GPUParticlesAttractor3D::set_strength, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles_attractor3d_class_get_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GPUParticlesAttractor3D::get_strength, ctx, this_val, argc, argv);
 };
 static JSValue gpu_particles_attractor3d_class_set_attenuation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GPUParticlesAttractor3D::set_attenuation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles_attractor3d_class_get_attenuation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GPUParticlesAttractor3D::get_attenuation, ctx, this_val, argc, argv);
 };
 static JSValue gpu_particles_attractor3d_class_set_directionality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GPUParticlesAttractor3D::set_directionality, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles_attractor3d_class_get_directionality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GPUParticlesAttractor3D::get_directionality, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry gpu_particles_attractor3d_class_proto_funcs[] = {

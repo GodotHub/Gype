@@ -36,53 +36,67 @@ static JSValue font_variation_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue font_variation_class_set_base_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FontVariation::set_base_font, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_variation_class_get_base_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FontVariation::get_base_font, ctx, this_val, argc, argv);
 };
 static JSValue font_variation_class_set_variation_opentype(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FontVariation::set_variation_opentype, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_variation_class_get_variation_opentype(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FontVariation::get_variation_opentype, ctx, this_val, argc, argv);
 };
 static JSValue font_variation_class_set_variation_embolden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FontVariation::set_variation_embolden, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_variation_class_get_variation_embolden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FontVariation::get_variation_embolden, ctx, this_val, argc, argv);
 };
 static JSValue font_variation_class_set_variation_face_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FontVariation::set_variation_face_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_variation_class_get_variation_face_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FontVariation::get_variation_face_index, ctx, this_val, argc, argv);
 };
 static JSValue font_variation_class_set_variation_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FontVariation::set_variation_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_variation_class_get_variation_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FontVariation::get_variation_transform, ctx, this_val, argc, argv);
 };
 static JSValue font_variation_class_set_opentype_features(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FontVariation::set_opentype_features, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_variation_class_set_spacing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FontVariation::set_spacing, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_variation_class_set_baseline_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FontVariation::set_baseline_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_variation_class_get_baseline_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FontVariation::get_baseline_offset, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry font_variation_class_proto_funcs[] = {

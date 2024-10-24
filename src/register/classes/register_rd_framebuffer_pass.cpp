@@ -36,38 +36,48 @@ static JSValue rd_framebuffer_pass_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue rd_framebuffer_pass_class_set_color_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDFramebufferPass::set_color_attachments, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_framebuffer_pass_class_get_color_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDFramebufferPass::get_color_attachments, ctx, this_val, argc, argv);
 };
 static JSValue rd_framebuffer_pass_class_set_input_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDFramebufferPass::set_input_attachments, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_framebuffer_pass_class_get_input_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDFramebufferPass::get_input_attachments, ctx, this_val, argc, argv);
 };
 static JSValue rd_framebuffer_pass_class_set_resolve_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDFramebufferPass::set_resolve_attachments, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_framebuffer_pass_class_get_resolve_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDFramebufferPass::get_resolve_attachments, ctx, this_val, argc, argv);
 };
 static JSValue rd_framebuffer_pass_class_set_preserve_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDFramebufferPass::set_preserve_attachments, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_framebuffer_pass_class_get_preserve_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDFramebufferPass::get_preserve_attachments, ctx, this_val, argc, argv);
 };
 static JSValue rd_framebuffer_pass_class_set_depth_attachment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDFramebufferPass::set_depth_attachment, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_framebuffer_pass_class_get_depth_attachment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDFramebufferPass::get_depth_attachment, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry rd_framebuffer_pass_class_proto_funcs[] = {

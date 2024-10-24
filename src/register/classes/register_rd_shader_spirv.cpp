@@ -36,17 +36,21 @@ static JSValue rd_shader_spirv_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue rd_shader_spirv_class_set_stage_bytecode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDShaderSPIRV::set_stage_bytecode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_shader_spirv_class_get_stage_bytecode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDShaderSPIRV::get_stage_bytecode, ctx, this_val, argc, argv);
 };
 static JSValue rd_shader_spirv_class_set_stage_compile_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDShaderSPIRV::set_stage_compile_error, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_shader_spirv_class_get_stage_compile_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDShaderSPIRV::get_stage_compile_error, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry rd_shader_spirv_class_proto_funcs[] = {

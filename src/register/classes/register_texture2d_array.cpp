@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/image_texture_layered.hpp>
-#include <godot_cpp/classes/texture2d_array.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/texture2d_array.hpp>
+#include <godot_cpp/classes/image_texture_layered.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,6 +37,7 @@ static JSValue texture2d_array_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue texture2d_array_class_create_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Texture2DArray::create_placeholder, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry texture2d_array_class_proto_funcs[] = {

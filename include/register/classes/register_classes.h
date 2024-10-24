@@ -1,5 +1,30 @@
 #ifndef __REGISTER_CLASSES_H__
 #define __REGISTER_CLASSES_H__
+
+#include <godot_cpp/variant/utility_functions.hpp>
+#include <unordered_map>
+
+extern std::unordered_map<intptr_t, uint64_t> instance_id_map;
+
+#define CHECK_INSTANCE_VALID(val)                                                                \
+	{                                                                                            \
+		Object *__binding__ = reinterpret_cast<Object *>(JS_GetOpaque(val, JS_GetClassID(val))); \
+		intptr_t __ptr__ = (intptr_t)__binding__->_owner;                                        \
+		ERR_FAIL_COND_V(instance_id_map.count(__ptr__) <= 0);                                    \
+		int64_t __id__ = instance_id_map[__ptr__];                                               \
+		ERR_FAIL_COND(!UtilityFunctions::is_instance_id_valid(__id__));                          \
+	}
+
+#define CHECK_INSTANCE_VALID_V(val)                                                              \
+	{                                                                                            \
+		JSValue __undefined__ = JS_UNDEFINED;                                                    \
+		Object *__binding__ = reinterpret_cast<Object *>(JS_GetOpaque(val, JS_GetClassID(val))); \
+		intptr_t __ptr__ = (intptr_t)__binding__->_owner;                                        \
+		ERR_FAIL_COND_V(instance_id_map.count(__ptr__) <= 0, __undefined__);                     \
+		int64_t __id__ = instance_id_map[__ptr__];                                               \
+		ERR_FAIL_COND_V(!UtilityFunctions::is_instance_id_valid(__id__), __undefined__);         \
+	}
+
 void register_aes_context();
 void register_a_star2d();
 void register_a_star3d();

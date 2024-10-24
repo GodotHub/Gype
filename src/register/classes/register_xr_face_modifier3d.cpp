@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/xr_face_modifier3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,17 +36,21 @@ static JSValue xr_face_modifier3d_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue xr_face_modifier3d_class_set_face_tracker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&XRFaceModifier3D::set_face_tracker, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_face_modifier3d_class_get_face_tracker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XRFaceModifier3D::get_face_tracker, ctx, this_val, argc, argv);
 };
 static JSValue xr_face_modifier3d_class_set_target(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&XRFaceModifier3D::set_target, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_face_modifier3d_class_get_target(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XRFaceModifier3D::get_target, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry xr_face_modifier3d_class_proto_funcs[] = {

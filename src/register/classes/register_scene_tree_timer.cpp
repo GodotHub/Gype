@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/scene_tree_timer.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/scene_tree_timer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,10 +36,12 @@ static JSValue scene_tree_timer_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue scene_tree_timer_class_set_time_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SceneTreeTimer::set_time_left, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_timer_class_get_time_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneTreeTimer::get_time_left, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry scene_tree_timer_class_proto_funcs[] = {

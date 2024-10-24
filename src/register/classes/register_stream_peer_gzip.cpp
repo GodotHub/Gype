@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/stream_peer_gzip.hpp>
+#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,15 +36,19 @@ static JSValue stream_peer_gzip_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue stream_peer_gzip_class_start_compression(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeerGZIP::start_compression, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_gzip_class_start_decompression(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeerGZIP::start_decompression, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_gzip_class_finish(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeerGZIP::finish, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_gzip_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeerGZIP::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

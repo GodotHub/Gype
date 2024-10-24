@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/file_system_dock.hpp>
 #include <godot_cpp/classes/v_box_container.hpp>
+#include <godot_cpp/classes/file_system_dock.hpp>
 #include <godot_cpp/classes/editor_resource_tooltip_plugin.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -37,14 +37,17 @@ static JSValue file_system_dock_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue file_system_dock_class_navigate_to_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileSystemDock::navigate_to_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_system_dock_class_add_resource_tooltip_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileSystemDock::add_resource_tooltip_plugin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_system_dock_class_remove_resource_tooltip_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileSystemDock::remove_resource_tooltip_plugin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

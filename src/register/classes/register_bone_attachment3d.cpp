@@ -36,42 +36,53 @@ static JSValue bone_attachment3d_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue bone_attachment3d_class_set_bone_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BoneAttachment3D::set_bone_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bone_attachment3d_class_get_bone_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BoneAttachment3D::get_bone_name, ctx, this_val, argc, argv);
 };
 static JSValue bone_attachment3d_class_set_bone_idx(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BoneAttachment3D::set_bone_idx, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bone_attachment3d_class_get_bone_idx(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BoneAttachment3D::get_bone_idx, ctx, this_val, argc, argv);
 };
 static JSValue bone_attachment3d_class_on_skeleton_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BoneAttachment3D::on_skeleton_update, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bone_attachment3d_class_set_override_pose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BoneAttachment3D::set_override_pose, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bone_attachment3d_class_get_override_pose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BoneAttachment3D::get_override_pose, ctx, this_val, argc, argv);
 };
 static JSValue bone_attachment3d_class_set_use_external_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BoneAttachment3D::set_use_external_skeleton, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bone_attachment3d_class_get_use_external_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BoneAttachment3D::get_use_external_skeleton, ctx, this_val, argc, argv);
 };
 static JSValue bone_attachment3d_class_set_external_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BoneAttachment3D::set_external_skeleton, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bone_attachment3d_class_get_external_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BoneAttachment3D::get_external_skeleton, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry bone_attachment3d_class_proto_funcs[] = {

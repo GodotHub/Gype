@@ -36,21 +36,27 @@ static JSValue audio_stream_generator_playback_class_constructor(JSContext *ctx,
 	return obj;
 }
 static JSValue audio_stream_generator_playback_class_push_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&AudioStreamGeneratorPlayback::push_frame, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_generator_playback_class_can_push_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStreamGeneratorPlayback::can_push_buffer, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_generator_playback_class_push_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&AudioStreamGeneratorPlayback::push_buffer, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_generator_playback_class_get_frames_available(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStreamGeneratorPlayback::get_frames_available, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_generator_playback_class_get_skips(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStreamGeneratorPlayback::get_skips, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_generator_playback_class_clear_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioStreamGeneratorPlayback::clear_buffer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

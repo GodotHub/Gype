@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/missing_node.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/missing_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,24 +36,30 @@ static JSValue missing_node_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue missing_node_class_set_original_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MissingNode::set_original_class, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue missing_node_class_get_original_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MissingNode::get_original_class, ctx, this_val, argc, argv);
 };
 static JSValue missing_node_class_set_original_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MissingNode::set_original_scene, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue missing_node_class_get_original_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MissingNode::get_original_scene, ctx, this_val, argc, argv);
 };
 static JSValue missing_node_class_set_recording_properties(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MissingNode::set_recording_properties, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue missing_node_class_is_recording_properties(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MissingNode::is_recording_properties, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry missing_node_class_proto_funcs[] = {

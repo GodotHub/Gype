@@ -36,31 +36,39 @@ static JSValue capsule_mesh_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue capsule_mesh_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CapsuleMesh::set_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue capsule_mesh_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CapsuleMesh::get_radius, ctx, this_val, argc, argv);
 };
 static JSValue capsule_mesh_class_set_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CapsuleMesh::set_height, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue capsule_mesh_class_get_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CapsuleMesh::get_height, ctx, this_val, argc, argv);
 };
 static JSValue capsule_mesh_class_set_radial_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CapsuleMesh::set_radial_segments, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue capsule_mesh_class_get_radial_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CapsuleMesh::get_radial_segments, ctx, this_val, argc, argv);
 };
 static JSValue capsule_mesh_class_set_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CapsuleMesh::set_rings, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue capsule_mesh_class_get_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CapsuleMesh::get_rings, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry capsule_mesh_class_proto_funcs[] = {

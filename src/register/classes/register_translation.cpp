@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/translation.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/translation.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,37 +36,47 @@ static JSValue translation_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue translation_class_set_locale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Translation::set_locale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_class_get_locale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Translation::get_locale, ctx, this_val, argc, argv);
 };
 static JSValue translation_class_add_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Translation::add_message, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_class_add_plural_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Translation::add_plural_message, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_class_get_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Translation::get_message, ctx, this_val, argc, argv);
 };
 static JSValue translation_class_get_plural_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Translation::get_plural_message, ctx, this_val, argc, argv);
 };
 static JSValue translation_class_erase_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Translation::erase_message, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_class_get_message_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Translation::get_message_list, ctx, this_val, argc, argv);
 };
 static JSValue translation_class_get_translated_message_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Translation::get_translated_message_list, ctx, this_val, argc, argv);
 };
 static JSValue translation_class_get_message_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Translation::get_message_count, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry translation_class_proto_funcs[] = {

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/panorama_sky_material.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/panorama_sky_material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,24 +37,30 @@ static JSValue panorama_sky_material_class_constructor(JSContext *ctx, JSValueCo
 	return obj;
 }
 static JSValue panorama_sky_material_class_set_panorama(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PanoramaSkyMaterial::set_panorama, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue panorama_sky_material_class_get_panorama(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PanoramaSkyMaterial::get_panorama, ctx, this_val, argc, argv);
 };
 static JSValue panorama_sky_material_class_set_filtering_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PanoramaSkyMaterial::set_filtering_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue panorama_sky_material_class_is_filtering_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PanoramaSkyMaterial::is_filtering_enabled, ctx, this_val, argc, argv);
 };
 static JSValue panorama_sky_material_class_set_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PanoramaSkyMaterial::set_energy_multiplier, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue panorama_sky_material_class_get_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PanoramaSkyMaterial::get_energy_multiplier, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry panorama_sky_material_class_proto_funcs[] = {

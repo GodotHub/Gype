@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/sub_viewport.hpp>
 #include <godot_cpp/classes/viewport.hpp>
+#include <godot_cpp/classes/sub_viewport.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,38 +36,48 @@ static JSValue sub_viewport_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue sub_viewport_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SubViewport::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sub_viewport_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SubViewport::get_size, ctx, this_val, argc, argv);
 };
 static JSValue sub_viewport_class_set_size_2d_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SubViewport::set_size_2d_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sub_viewport_class_get_size_2d_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SubViewport::get_size_2d_override, ctx, this_val, argc, argv);
 };
 static JSValue sub_viewport_class_set_size_2d_override_stretch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SubViewport::set_size_2d_override_stretch, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sub_viewport_class_is_size_2d_override_stretch_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SubViewport::is_size_2d_override_stretch_enabled, ctx, this_val, argc, argv);
 };
 static JSValue sub_viewport_class_set_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SubViewport::set_update_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sub_viewport_class_get_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SubViewport::get_update_mode, ctx, this_val, argc, argv);
 };
 static JSValue sub_viewport_class_set_clear_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SubViewport::set_clear_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sub_viewport_class_get_clear_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SubViewport::get_clear_mode, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry sub_viewport_class_proto_funcs[] = {

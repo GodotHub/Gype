@@ -36,14 +36,17 @@ static JSValue physics_server3d_rendering_server_handler_class_constructor(JSCon
 	return obj;
 }
 static JSValue physics_server3d_rendering_server_handler_class_set_vertex(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsServer3DRenderingServerHandler::set_vertex, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_rendering_server_handler_class_set_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsServer3DRenderingServerHandler::set_normal, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_rendering_server_handler_class_set_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsServer3DRenderingServerHandler::set_aabb, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

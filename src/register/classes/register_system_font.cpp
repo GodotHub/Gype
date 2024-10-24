@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/system_font.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,101 +36,129 @@ static JSValue system_font_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue system_font_class_set_antialiasing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SystemFont::set_antialiasing, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue system_font_class_get_antialiasing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SystemFont::get_antialiasing, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_set_disable_embedded_bitmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SystemFont::set_disable_embedded_bitmaps, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue system_font_class_get_disable_embedded_bitmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SystemFont::get_disable_embedded_bitmaps, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_set_generate_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SystemFont::set_generate_mipmaps, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue system_font_class_get_generate_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SystemFont::get_generate_mipmaps, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_set_allow_system_fallback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SystemFont::set_allow_system_fallback, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue system_font_class_is_allow_system_fallback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SystemFont::is_allow_system_fallback, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_set_force_autohinter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SystemFont::set_force_autohinter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue system_font_class_is_force_autohinter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SystemFont::is_force_autohinter, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_set_hinting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SystemFont::set_hinting, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue system_font_class_get_hinting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SystemFont::get_hinting, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_set_subpixel_positioning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SystemFont::set_subpixel_positioning, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue system_font_class_get_subpixel_positioning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SystemFont::get_subpixel_positioning, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_set_multichannel_signed_distance_field(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SystemFont::set_multichannel_signed_distance_field, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue system_font_class_is_multichannel_signed_distance_field(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SystemFont::is_multichannel_signed_distance_field, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_set_msdf_pixel_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SystemFont::set_msdf_pixel_range, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue system_font_class_get_msdf_pixel_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SystemFont::get_msdf_pixel_range, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_set_msdf_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SystemFont::set_msdf_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue system_font_class_get_msdf_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SystemFont::get_msdf_size, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_set_oversampling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SystemFont::set_oversampling, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue system_font_class_get_oversampling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SystemFont::get_oversampling, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_get_font_names(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SystemFont::get_font_names, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_set_font_names(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SystemFont::set_font_names, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue system_font_class_get_font_italic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SystemFont::get_font_italic, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_set_font_italic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SystemFont::set_font_italic, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue system_font_class_set_font_weight(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SystemFont::set_font_weight, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue system_font_class_set_font_stretch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SystemFont::set_font_stretch, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

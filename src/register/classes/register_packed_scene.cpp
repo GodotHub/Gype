@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/scene_state.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/scene_state.hpp>
+#include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,15 +38,19 @@ static JSValue packed_scene_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue packed_scene_class_pack(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PackedScene::pack, ctx, this_val, argc, argv);
 };
 static JSValue packed_scene_class_instantiate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PackedScene::instantiate, ctx, this_val, argc, argv);
 };
 static JSValue packed_scene_class_can_instantiate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PackedScene::can_instantiate, ctx, this_val, argc, argv);
 };
 static JSValue packed_scene_class_get_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PackedScene::get_state, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry packed_scene_class_proto_funcs[] = {

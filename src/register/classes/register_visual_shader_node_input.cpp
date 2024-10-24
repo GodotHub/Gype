@@ -36,13 +36,16 @@ static JSValue visual_shader_node_input_class_constructor(JSContext *ctx, JSValu
 	return obj;
 }
 static JSValue visual_shader_node_input_class_set_input_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VisualShaderNodeInput::set_input_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_input_class_get_input_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualShaderNodeInput::get_input_name, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_input_class_get_input_real_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualShaderNodeInput::get_input_real_name, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry visual_shader_node_input_class_proto_funcs[] = {

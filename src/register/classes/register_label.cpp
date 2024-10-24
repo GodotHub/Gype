@@ -37,158 +37,203 @@ static JSValue label_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	return obj;
 }
 static JSValue label_class_set_horizontal_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_horizontal_alignment, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_get_horizontal_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_horizontal_alignment, ctx, this_val, argc, argv);
 };
 static JSValue label_class_set_vertical_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_vertical_alignment, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_get_vertical_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_vertical_alignment, ctx, this_val, argc, argv);
 };
 static JSValue label_class_set_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_text, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_get_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_text, ctx, this_val, argc, argv);
 };
 static JSValue label_class_set_label_settings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_label_settings, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_get_label_settings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_label_settings, ctx, this_val, argc, argv);
 };
 static JSValue label_class_set_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_text_direction, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_get_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_text_direction, ctx, this_val, argc, argv);
 };
 static JSValue label_class_set_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_language, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_get_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_language, ctx, this_val, argc, argv);
 };
 static JSValue label_class_set_autowrap_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_autowrap_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_get_autowrap_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_autowrap_mode, ctx, this_val, argc, argv);
 };
 static JSValue label_class_set_justification_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_justification_flags, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_get_justification_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_justification_flags, ctx, this_val, argc, argv);
 };
 static JSValue label_class_set_clip_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_clip_text, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_is_clipping_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::is_clipping_text, ctx, this_val, argc, argv);
 };
 static JSValue label_class_set_tab_stops(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_tab_stops, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_get_tab_stops(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_tab_stops, ctx, this_val, argc, argv);
 };
 static JSValue label_class_set_text_overrun_behavior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_text_overrun_behavior, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_get_text_overrun_behavior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_text_overrun_behavior, ctx, this_val, argc, argv);
 };
 static JSValue label_class_set_ellipsis_char(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_ellipsis_char, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_get_ellipsis_char(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_ellipsis_char, ctx, this_val, argc, argv);
 };
 static JSValue label_class_set_uppercase(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_uppercase, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_is_uppercase(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::is_uppercase, ctx, this_val, argc, argv);
 };
 static JSValue label_class_get_line_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_line_height, ctx, this_val, argc, argv);
 };
 static JSValue label_class_get_line_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_line_count, ctx, this_val, argc, argv);
 };
 static JSValue label_class_get_visible_line_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_visible_line_count, ctx, this_val, argc, argv);
 };
 static JSValue label_class_get_total_character_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_total_character_count, ctx, this_val, argc, argv);
 };
 static JSValue label_class_set_visible_characters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_visible_characters, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_get_visible_characters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_visible_characters, ctx, this_val, argc, argv);
 };
 static JSValue label_class_get_visible_characters_behavior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_visible_characters_behavior, ctx, this_val, argc, argv);
 };
 static JSValue label_class_set_visible_characters_behavior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_visible_characters_behavior, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_set_visible_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_visible_ratio, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_get_visible_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_visible_ratio, ctx, this_val, argc, argv);
 };
 static JSValue label_class_set_lines_skipped(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_lines_skipped, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_get_lines_skipped(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_lines_skipped, ctx, this_val, argc, argv);
 };
 static JSValue label_class_set_max_lines_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_max_lines_visible, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_get_max_lines_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_max_lines_visible, ctx, this_val, argc, argv);
 };
 static JSValue label_class_set_structured_text_bidi_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_structured_text_bidi_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_get_structured_text_bidi_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_structured_text_bidi_override, ctx, this_val, argc, argv);
 };
 static JSValue label_class_set_structured_text_bidi_override_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Label::set_structured_text_bidi_override_options, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue label_class_get_structured_text_bidi_override_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_structured_text_bidi_override_options, ctx, this_val, argc, argv);
 };
 static JSValue label_class_get_character_bounds(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Label::get_character_bounds, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry label_class_proto_funcs[] = {

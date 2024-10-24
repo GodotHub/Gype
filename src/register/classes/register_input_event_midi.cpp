@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_midi.hpp>
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/input_event_midi.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,59 +36,75 @@ static JSValue input_event_midi_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue input_event_midi_class_set_channel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventMIDI::set_channel, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_midi_class_get_channel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventMIDI::get_channel, ctx, this_val, argc, argv);
 };
 static JSValue input_event_midi_class_set_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventMIDI::set_message, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_midi_class_get_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventMIDI::get_message, ctx, this_val, argc, argv);
 };
 static JSValue input_event_midi_class_set_pitch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventMIDI::set_pitch, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_midi_class_get_pitch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventMIDI::get_pitch, ctx, this_val, argc, argv);
 };
 static JSValue input_event_midi_class_set_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventMIDI::set_velocity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_midi_class_get_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventMIDI::get_velocity, ctx, this_val, argc, argv);
 };
 static JSValue input_event_midi_class_set_instrument(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventMIDI::set_instrument, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_midi_class_get_instrument(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventMIDI::get_instrument, ctx, this_val, argc, argv);
 };
 static JSValue input_event_midi_class_set_pressure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventMIDI::set_pressure, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_midi_class_get_pressure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventMIDI::get_pressure, ctx, this_val, argc, argv);
 };
 static JSValue input_event_midi_class_set_controller_number(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventMIDI::set_controller_number, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_midi_class_get_controller_number(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventMIDI::get_controller_number, ctx, this_val, argc, argv);
 };
 static JSValue input_event_midi_class_set_controller_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventMIDI::set_controller_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_midi_class_get_controller_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventMIDI::get_controller_value, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry input_event_midi_class_proto_funcs[] = {

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tile_map_pattern.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/tile_map_pattern.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,36 +36,46 @@ static JSValue tile_map_pattern_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue tile_map_pattern_class_set_cell(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TileMapPattern::set_cell, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_pattern_class_has_cell(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TileMapPattern::has_cell, ctx, this_val, argc, argv);
 };
 static JSValue tile_map_pattern_class_remove_cell(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TileMapPattern::remove_cell, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_pattern_class_get_cell_source_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TileMapPattern::get_cell_source_id, ctx, this_val, argc, argv);
 };
 static JSValue tile_map_pattern_class_get_cell_atlas_coords(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TileMapPattern::get_cell_atlas_coords, ctx, this_val, argc, argv);
 };
 static JSValue tile_map_pattern_class_get_cell_alternative_tile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TileMapPattern::get_cell_alternative_tile, ctx, this_val, argc, argv);
 };
 static JSValue tile_map_pattern_class_get_used_cells(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TileMapPattern::get_used_cells, ctx, this_val, argc, argv);
 };
 static JSValue tile_map_pattern_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TileMapPattern::get_size, ctx, this_val, argc, argv);
 };
 static JSValue tile_map_pattern_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TileMapPattern::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_map_pattern_class_is_empty(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TileMapPattern::is_empty, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry tile_map_pattern_class_proto_funcs[] = {

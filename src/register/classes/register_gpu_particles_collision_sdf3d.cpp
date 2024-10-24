@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gpu_particles_collision_sdf3d.hpp>
-#include <godot_cpp/classes/gpu_particles_collision3d.hpp>
 #include <godot_cpp/classes/texture3d.hpp>
+#include <godot_cpp/classes/gpu_particles_collision3d.hpp>
+#include <godot_cpp/classes/gpu_particles_collision_sdf3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,45 +37,57 @@ static JSValue gpu_particles_collision_sdf3d_class_constructor(JSContext *ctx, J
 	return obj;
 }
 static JSValue gpu_particles_collision_sdf3d_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GPUParticlesCollisionSDF3D::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles_collision_sdf3d_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GPUParticlesCollisionSDF3D::get_size, ctx, this_val, argc, argv);
 };
 static JSValue gpu_particles_collision_sdf3d_class_set_resolution(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GPUParticlesCollisionSDF3D::set_resolution, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles_collision_sdf3d_class_get_resolution(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GPUParticlesCollisionSDF3D::get_resolution, ctx, this_val, argc, argv);
 };
 static JSValue gpu_particles_collision_sdf3d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GPUParticlesCollisionSDF3D::set_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles_collision_sdf3d_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GPUParticlesCollisionSDF3D::get_texture, ctx, this_val, argc, argv);
 };
 static JSValue gpu_particles_collision_sdf3d_class_set_thickness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GPUParticlesCollisionSDF3D::set_thickness, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles_collision_sdf3d_class_get_thickness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GPUParticlesCollisionSDF3D::get_thickness, ctx, this_val, argc, argv);
 };
 static JSValue gpu_particles_collision_sdf3d_class_set_bake_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GPUParticlesCollisionSDF3D::set_bake_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles_collision_sdf3d_class_get_bake_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GPUParticlesCollisionSDF3D::get_bake_mask, ctx, this_val, argc, argv);
 };
 static JSValue gpu_particles_collision_sdf3d_class_set_bake_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GPUParticlesCollisionSDF3D::set_bake_mask_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles_collision_sdf3d_class_get_bake_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GPUParticlesCollisionSDF3D::get_bake_mask_value, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry gpu_particles_collision_sdf3d_class_proto_funcs[] = {

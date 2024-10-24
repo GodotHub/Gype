@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_direct_space_state2d.hpp>
 #include <godot_cpp/classes/physics_ray_query_parameters2d.hpp>
-#include <godot_cpp/classes/physics_point_query_parameters2d.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/physics_shape_query_parameters2d.hpp>
+#include <godot_cpp/classes/physics_direct_space_state2d.hpp>
+#include <godot_cpp/classes/physics_point_query_parameters2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -39,21 +39,27 @@ static JSValue physics_direct_space_state2d_class_constructor(JSContext *ctx, JS
 	return obj;
 }
 static JSValue physics_direct_space_state2d_class_intersect_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PhysicsDirectSpaceState2D::intersect_point, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_space_state2d_class_intersect_ray(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PhysicsDirectSpaceState2D::intersect_ray, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_space_state2d_class_intersect_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PhysicsDirectSpaceState2D::intersect_shape, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_space_state2d_class_cast_motion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PhysicsDirectSpaceState2D::cast_motion, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_space_state2d_class_collide_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PhysicsDirectSpaceState2D::collide_shape, ctx, this_val, argc, argv);
 };
 static JSValue physics_direct_space_state2d_class_get_rest_info(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PhysicsDirectSpaceState2D::get_rest_info, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry physics_direct_space_state2d_class_proto_funcs[] = {

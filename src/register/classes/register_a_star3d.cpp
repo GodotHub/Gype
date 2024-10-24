@@ -36,81 +36,104 @@ static JSValue a_star3d_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue a_star3d_class_get_available_point_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AStar3D::get_available_point_id, ctx, this_val, argc, argv);
 };
 static JSValue a_star3d_class_add_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AStar3D::add_point, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star3d_class_get_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AStar3D::get_point_position, ctx, this_val, argc, argv);
 };
 static JSValue a_star3d_class_set_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AStar3D::set_point_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star3d_class_get_point_weight_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AStar3D::get_point_weight_scale, ctx, this_val, argc, argv);
 };
 static JSValue a_star3d_class_set_point_weight_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AStar3D::set_point_weight_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star3d_class_remove_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AStar3D::remove_point, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star3d_class_has_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AStar3D::has_point, ctx, this_val, argc, argv);
 };
 static JSValue a_star3d_class_get_point_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&AStar3D::get_point_connections, ctx, this_val, argc, argv);
 };
 static JSValue a_star3d_class_get_point_ids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&AStar3D::get_point_ids, ctx, this_val, argc, argv);
 };
 static JSValue a_star3d_class_set_point_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AStar3D::set_point_disabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star3d_class_is_point_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AStar3D::is_point_disabled, ctx, this_val, argc, argv);
 };
 static JSValue a_star3d_class_connect_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AStar3D::connect_points, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star3d_class_disconnect_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AStar3D::disconnect_points, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star3d_class_are_points_connected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AStar3D::are_points_connected, ctx, this_val, argc, argv);
 };
 static JSValue a_star3d_class_get_point_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AStar3D::get_point_count, ctx, this_val, argc, argv);
 };
 static JSValue a_star3d_class_get_point_capacity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AStar3D::get_point_capacity, ctx, this_val, argc, argv);
 };
 static JSValue a_star3d_class_reserve_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AStar3D::reserve_space, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star3d_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AStar3D::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star3d_class_get_closest_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AStar3D::get_closest_point, ctx, this_val, argc, argv);
 };
 static JSValue a_star3d_class_get_closest_position_in_segment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AStar3D::get_closest_position_in_segment, ctx, this_val, argc, argv);
 };
 static JSValue a_star3d_class_get_point_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&AStar3D::get_point_path, ctx, this_val, argc, argv);
 };
 static JSValue a_star3d_class_get_id_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&AStar3D::get_id_path, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry a_star3d_class_proto_funcs[] = {

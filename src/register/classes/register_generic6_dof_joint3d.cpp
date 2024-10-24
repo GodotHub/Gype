@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/joint3d.hpp>
 #include <godot_cpp/classes/generic6_dof_joint3d.hpp>
+#include <godot_cpp/classes/joint3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,45 +36,57 @@ static JSValue generic6_dof_joint3d_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue generic6_dof_joint3d_class_set_param_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Generic6DOFJoint3D::set_param_x, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue generic6_dof_joint3d_class_get_param_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Generic6DOFJoint3D::get_param_x, ctx, this_val, argc, argv);
 };
 static JSValue generic6_dof_joint3d_class_set_param_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Generic6DOFJoint3D::set_param_y, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue generic6_dof_joint3d_class_get_param_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Generic6DOFJoint3D::get_param_y, ctx, this_val, argc, argv);
 };
 static JSValue generic6_dof_joint3d_class_set_param_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Generic6DOFJoint3D::set_param_z, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue generic6_dof_joint3d_class_get_param_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Generic6DOFJoint3D::get_param_z, ctx, this_val, argc, argv);
 };
 static JSValue generic6_dof_joint3d_class_set_flag_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Generic6DOFJoint3D::set_flag_x, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue generic6_dof_joint3d_class_get_flag_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Generic6DOFJoint3D::get_flag_x, ctx, this_val, argc, argv);
 };
 static JSValue generic6_dof_joint3d_class_set_flag_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Generic6DOFJoint3D::set_flag_y, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue generic6_dof_joint3d_class_get_flag_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Generic6DOFJoint3D::get_flag_y, ctx, this_val, argc, argv);
 };
 static JSValue generic6_dof_joint3d_class_set_flag_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Generic6DOFJoint3D::set_flag_z, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue generic6_dof_joint3d_class_get_flag_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Generic6DOFJoint3D::get_flag_z, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry generic6_dof_joint3d_class_proto_funcs[] = {

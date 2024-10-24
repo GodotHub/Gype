@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/environment.hpp>
 #include <godot_cpp/classes/texture.hpp>
-#include <godot_cpp/classes/sky.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/sky.hpp>
+#include <godot_cpp/classes/environment.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,647 +38,831 @@ static JSValue environment_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue environment_class_set_background(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_background, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_background(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_background, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_sky(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_sky, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_sky(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_sky, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_sky_custom_fov(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_sky_custom_fov, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_sky_custom_fov(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_sky_custom_fov, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_sky_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_sky_rotation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_sky_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_sky_rotation, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_bg_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_bg_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_bg_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_bg_color, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_bg_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_bg_energy_multiplier, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_bg_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_bg_energy_multiplier, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_bg_intensity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_bg_intensity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_bg_intensity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_bg_intensity, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_canvas_max_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_canvas_max_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_canvas_max_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_canvas_max_layer, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_camera_feed_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_camera_feed_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_camera_feed_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_camera_feed_id, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ambient_light_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ambient_light_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ambient_light_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ambient_light_color, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ambient_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ambient_source, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ambient_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ambient_source, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ambient_light_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ambient_light_energy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ambient_light_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ambient_light_energy, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ambient_light_sky_contribution(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ambient_light_sky_contribution, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ambient_light_sky_contribution(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ambient_light_sky_contribution, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_reflection_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_reflection_source, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_reflection_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_reflection_source, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_tonemapper(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_tonemapper, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_tonemapper(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_tonemapper, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_tonemap_exposure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_tonemap_exposure, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_tonemap_exposure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_tonemap_exposure, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_tonemap_white(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_tonemap_white, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_tonemap_white(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_tonemap_white, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssr_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssr_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_is_ssr_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::is_ssr_enabled, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssr_max_steps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssr_max_steps, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ssr_max_steps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ssr_max_steps, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssr_fade_in(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssr_fade_in, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ssr_fade_in(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ssr_fade_in, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssr_fade_out(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssr_fade_out, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ssr_fade_out(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ssr_fade_out, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssr_depth_tolerance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssr_depth_tolerance, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ssr_depth_tolerance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ssr_depth_tolerance, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssao_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssao_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_is_ssao_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::is_ssao_enabled, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssao_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssao_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ssao_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ssao_radius, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssao_intensity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssao_intensity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ssao_intensity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ssao_intensity, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssao_power(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssao_power, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ssao_power(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ssao_power, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssao_detail(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssao_detail, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ssao_detail(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ssao_detail, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssao_horizon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssao_horizon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ssao_horizon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ssao_horizon, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssao_sharpness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssao_sharpness, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ssao_sharpness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ssao_sharpness, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssao_direct_light_affect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssao_direct_light_affect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ssao_direct_light_affect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ssao_direct_light_affect, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssao_ao_channel_affect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssao_ao_channel_affect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ssao_ao_channel_affect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ssao_ao_channel_affect, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssil_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssil_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_is_ssil_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::is_ssil_enabled, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssil_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssil_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ssil_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ssil_radius, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssil_intensity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssil_intensity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ssil_intensity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ssil_intensity, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssil_sharpness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssil_sharpness, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ssil_sharpness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ssil_sharpness, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_ssil_normal_rejection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_ssil_normal_rejection, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_ssil_normal_rejection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_ssil_normal_rejection, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_sdfgi_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_sdfgi_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_is_sdfgi_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::is_sdfgi_enabled, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_sdfgi_cascades(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_sdfgi_cascades, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_sdfgi_cascades(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_sdfgi_cascades, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_sdfgi_min_cell_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_sdfgi_min_cell_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_sdfgi_min_cell_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_sdfgi_min_cell_size, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_sdfgi_max_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_sdfgi_max_distance, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_sdfgi_max_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_sdfgi_max_distance, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_sdfgi_cascade0_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_sdfgi_cascade0_distance, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_sdfgi_cascade0_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_sdfgi_cascade0_distance, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_sdfgi_y_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_sdfgi_y_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_sdfgi_y_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_sdfgi_y_scale, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_sdfgi_use_occlusion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_sdfgi_use_occlusion, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_is_sdfgi_using_occlusion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::is_sdfgi_using_occlusion, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_sdfgi_bounce_feedback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_sdfgi_bounce_feedback, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_sdfgi_bounce_feedback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_sdfgi_bounce_feedback, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_sdfgi_read_sky_light(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_sdfgi_read_sky_light, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_is_sdfgi_reading_sky_light(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::is_sdfgi_reading_sky_light, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_sdfgi_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_sdfgi_energy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_sdfgi_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_sdfgi_energy, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_sdfgi_normal_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_sdfgi_normal_bias, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_sdfgi_normal_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_sdfgi_normal_bias, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_sdfgi_probe_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_sdfgi_probe_bias, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_sdfgi_probe_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_sdfgi_probe_bias, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_glow_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_glow_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_is_glow_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::is_glow_enabled, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_glow_level(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_glow_level, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_glow_level(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_glow_level, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_glow_normalized(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_glow_normalized, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_is_glow_normalized(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::is_glow_normalized, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_glow_intensity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_glow_intensity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_glow_intensity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_glow_intensity, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_glow_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_glow_strength, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_glow_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_glow_strength, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_glow_mix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_glow_mix, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_glow_mix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_glow_mix, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_glow_bloom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_glow_bloom, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_glow_bloom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_glow_bloom, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_glow_blend_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_glow_blend_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_glow_blend_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_glow_blend_mode, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_glow_hdr_bleed_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_glow_hdr_bleed_threshold, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_glow_hdr_bleed_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_glow_hdr_bleed_threshold, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_glow_hdr_bleed_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_glow_hdr_bleed_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_glow_hdr_bleed_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_glow_hdr_bleed_scale, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_glow_hdr_luminance_cap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_glow_hdr_luminance_cap, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_glow_hdr_luminance_cap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_glow_hdr_luminance_cap, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_glow_map_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_glow_map_strength, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_glow_map_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_glow_map_strength, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_glow_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_glow_map, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_glow_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_glow_map, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_fog_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_fog_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_is_fog_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::is_fog_enabled, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_fog_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_fog_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_fog_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_fog_mode, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_fog_light_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_fog_light_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_fog_light_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_fog_light_color, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_fog_light_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_fog_light_energy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_fog_light_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_fog_light_energy, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_fog_sun_scatter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_fog_sun_scatter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_fog_sun_scatter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_fog_sun_scatter, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_fog_density(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_fog_density, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_fog_density(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_fog_density, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_fog_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_fog_height, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_fog_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_fog_height, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_fog_height_density(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_fog_height_density, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_fog_height_density(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_fog_height_density, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_fog_aerial_perspective(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_fog_aerial_perspective, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_fog_aerial_perspective(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_fog_aerial_perspective, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_fog_sky_affect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_fog_sky_affect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_fog_sky_affect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_fog_sky_affect, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_fog_depth_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_fog_depth_curve, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_fog_depth_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_fog_depth_curve, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_fog_depth_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_fog_depth_begin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_fog_depth_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_fog_depth_begin, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_fog_depth_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_fog_depth_end, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_fog_depth_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_fog_depth_end, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_volumetric_fog_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_volumetric_fog_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_is_volumetric_fog_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::is_volumetric_fog_enabled, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_volumetric_fog_emission(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_volumetric_fog_emission, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_volumetric_fog_emission(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_volumetric_fog_emission, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_volumetric_fog_albedo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_volumetric_fog_albedo, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_volumetric_fog_albedo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_volumetric_fog_albedo, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_volumetric_fog_density(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_volumetric_fog_density, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_volumetric_fog_density(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_volumetric_fog_density, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_volumetric_fog_emission_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_volumetric_fog_emission_energy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_volumetric_fog_emission_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_volumetric_fog_emission_energy, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_volumetric_fog_anisotropy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_volumetric_fog_anisotropy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_volumetric_fog_anisotropy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_volumetric_fog_anisotropy, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_volumetric_fog_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_volumetric_fog_length, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_volumetric_fog_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_volumetric_fog_length, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_volumetric_fog_detail_spread(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_volumetric_fog_detail_spread, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_volumetric_fog_detail_spread(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_volumetric_fog_detail_spread, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_volumetric_fog_gi_inject(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_volumetric_fog_gi_inject, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_volumetric_fog_gi_inject(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_volumetric_fog_gi_inject, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_volumetric_fog_ambient_inject(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_volumetric_fog_ambient_inject, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_volumetric_fog_ambient_inject(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_volumetric_fog_ambient_inject, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_volumetric_fog_sky_affect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_volumetric_fog_sky_affect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_volumetric_fog_sky_affect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_volumetric_fog_sky_affect, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_volumetric_fog_temporal_reprojection_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_volumetric_fog_temporal_reprojection_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_is_volumetric_fog_temporal_reprojection_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::is_volumetric_fog_temporal_reprojection_enabled, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_volumetric_fog_temporal_reprojection_amount(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_volumetric_fog_temporal_reprojection_amount, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_volumetric_fog_temporal_reprojection_amount(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_volumetric_fog_temporal_reprojection_amount, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_adjustment_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_adjustment_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_is_adjustment_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::is_adjustment_enabled, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_adjustment_brightness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_adjustment_brightness, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_adjustment_brightness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_adjustment_brightness, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_adjustment_contrast(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_adjustment_contrast, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_adjustment_contrast(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_adjustment_contrast, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_adjustment_saturation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_adjustment_saturation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_adjustment_saturation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_adjustment_saturation, ctx, this_val, argc, argv);
 };
 static JSValue environment_class_set_adjustment_color_correction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Environment::set_adjustment_color_correction, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue environment_class_get_adjustment_color_correction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Environment::get_adjustment_color_correction, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry environment_class_proto_funcs[] = {

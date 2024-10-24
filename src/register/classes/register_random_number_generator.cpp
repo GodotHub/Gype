@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/random_number_generator.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/random_number_generator.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,38 +36,49 @@ static JSValue random_number_generator_class_constructor(JSContext *ctx, JSValue
 	return obj;
 }
 static JSValue random_number_generator_class_set_seed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RandomNumberGenerator::set_seed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue random_number_generator_class_get_seed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RandomNumberGenerator::get_seed, ctx, this_val, argc, argv);
 };
 static JSValue random_number_generator_class_set_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RandomNumberGenerator::set_state, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue random_number_generator_class_get_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RandomNumberGenerator::get_state, ctx, this_val, argc, argv);
 };
 static JSValue random_number_generator_class_randi(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RandomNumberGenerator::randi, ctx, this_val, argc, argv);
 };
 static JSValue random_number_generator_class_randf(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RandomNumberGenerator::randf, ctx, this_val, argc, argv);
 };
 static JSValue random_number_generator_class_randfn(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RandomNumberGenerator::randfn, ctx, this_val, argc, argv);
 };
 static JSValue random_number_generator_class_randf_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RandomNumberGenerator::randf_range, ctx, this_val, argc, argv);
 };
 static JSValue random_number_generator_class_randi_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RandomNumberGenerator::randi_range, ctx, this_val, argc, argv);
 };
 static JSValue random_number_generator_class_rand_weighted(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&RandomNumberGenerator::rand_weighted, ctx, this_val, argc, argv);
 };
 static JSValue random_number_generator_class_randomize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RandomNumberGenerator::randomize, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

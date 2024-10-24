@@ -36,17 +36,21 @@ static JSValue rd_shader_source_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue rd_shader_source_class_set_stage_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDShaderSource::set_stage_source, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_shader_source_class_get_stage_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDShaderSource::get_stage_source, ctx, this_val, argc, argv);
 };
 static JSValue rd_shader_source_class_set_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDShaderSource::set_language, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_shader_source_class_get_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDShaderSource::get_language, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry rd_shader_source_class_proto_funcs[] = {

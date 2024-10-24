@@ -36,18 +36,23 @@ static JSValue zip_packer_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue zip_packer_class_open(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ZIPPacker::open, ctx, this_val, argc, argv);
 };
 static JSValue zip_packer_class_start_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ZIPPacker::start_file, ctx, this_val, argc, argv);
 };
 static JSValue zip_packer_class_write_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ZIPPacker::write_file, ctx, this_val, argc, argv);
 };
 static JSValue zip_packer_class_close_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ZIPPacker::close_file, ctx, this_val, argc, argv);
 };
 static JSValue zip_packer_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ZIPPacker::close, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry zip_packer_class_proto_funcs[] = {

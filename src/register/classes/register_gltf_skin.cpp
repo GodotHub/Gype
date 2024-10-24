@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/gltf_skin.hpp>
-#include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,72 +37,92 @@ static JSValue gltf_skin_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue gltf_skin_class_get_skin_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFSkin::get_skin_root, ctx, this_val, argc, argv);
 };
 static JSValue gltf_skin_class_set_skin_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFSkin::set_skin_root, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skin_class_get_joints_original(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFSkin::get_joints_original, ctx, this_val, argc, argv);
 };
 static JSValue gltf_skin_class_set_joints_original(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFSkin::set_joints_original, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skin_class_get_inverse_binds(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFSkin::get_inverse_binds, ctx, this_val, argc, argv);
 };
 static JSValue gltf_skin_class_set_inverse_binds(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFSkin::set_inverse_binds, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skin_class_get_joints(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFSkin::get_joints, ctx, this_val, argc, argv);
 };
 static JSValue gltf_skin_class_set_joints(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFSkin::set_joints, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skin_class_get_non_joints(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFSkin::get_non_joints, ctx, this_val, argc, argv);
 };
 static JSValue gltf_skin_class_set_non_joints(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFSkin::set_non_joints, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skin_class_get_roots(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFSkin::get_roots, ctx, this_val, argc, argv);
 };
 static JSValue gltf_skin_class_set_roots(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFSkin::set_roots, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skin_class_get_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFSkin::get_skeleton, ctx, this_val, argc, argv);
 };
 static JSValue gltf_skin_class_set_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFSkin::set_skeleton, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skin_class_get_joint_i_to_bone_i(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFSkin::get_joint_i_to_bone_i, ctx, this_val, argc, argv);
 };
 static JSValue gltf_skin_class_set_joint_i_to_bone_i(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFSkin::set_joint_i_to_bone_i, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skin_class_get_joint_i_to_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFSkin::get_joint_i_to_name, ctx, this_val, argc, argv);
 };
 static JSValue gltf_skin_class_set_joint_i_to_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFSkin::set_joint_i_to_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skin_class_get_godot_skin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFSkin::get_godot_skin, ctx, this_val, argc, argv);
 };
 static JSValue gltf_skin_class_set_godot_skin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFSkin::set_godot_skin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

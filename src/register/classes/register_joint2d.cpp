@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/joint2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/joint2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,34 +36,43 @@ static JSValue joint2d_class_constructor(JSContext *ctx, JSValueConst new_target
 	return obj;
 }
 static JSValue joint2d_class_set_node_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Joint2D::set_node_a, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue joint2d_class_get_node_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Joint2D::get_node_a, ctx, this_val, argc, argv);
 };
 static JSValue joint2d_class_set_node_b(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Joint2D::set_node_b, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue joint2d_class_get_node_b(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Joint2D::get_node_b, ctx, this_val, argc, argv);
 };
 static JSValue joint2d_class_set_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Joint2D::set_bias, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue joint2d_class_get_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Joint2D::get_bias, ctx, this_val, argc, argv);
 };
 static JSValue joint2d_class_set_exclude_nodes_from_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Joint2D::set_exclude_nodes_from_collision, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue joint2d_class_get_exclude_nodes_from_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Joint2D::get_exclude_nodes_from_collision, ctx, this_val, argc, argv);
 };
 static JSValue joint2d_class_get_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Joint2D::get_rid, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry joint2d_class_proto_funcs[] = {

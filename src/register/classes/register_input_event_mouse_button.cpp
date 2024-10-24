@@ -36,32 +36,40 @@ static JSValue input_event_mouse_button_class_constructor(JSContext *ctx, JSValu
 	return obj;
 }
 static JSValue input_event_mouse_button_class_set_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventMouseButton::set_factor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_mouse_button_class_get_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventMouseButton::get_factor, ctx, this_val, argc, argv);
 };
 static JSValue input_event_mouse_button_class_set_button_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventMouseButton::set_button_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_mouse_button_class_get_button_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventMouseButton::get_button_index, ctx, this_val, argc, argv);
 };
 static JSValue input_event_mouse_button_class_set_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventMouseButton::set_pressed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_mouse_button_class_set_canceled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventMouseButton::set_canceled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_mouse_button_class_set_double_click(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventMouseButton::set_double_click, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_mouse_button_class_is_double_click(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventMouseButton::is_double_click, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry input_event_mouse_button_class_proto_funcs[] = {

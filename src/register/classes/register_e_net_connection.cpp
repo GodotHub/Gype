@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/e_net_connection.hpp>
-#include <godot_cpp/classes/e_net_packet_peer.hpp>
 #include <godot_cpp/classes/e_net_packet_peer.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/e_net_connection.hpp>
+#include <godot_cpp/classes/e_net_packet_peer.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -39,64 +39,82 @@ static JSValue e_net_connection_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue e_net_connection_class_create_host_bound(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ENetConnection::create_host_bound, ctx, this_val, argc, argv);
 };
 static JSValue e_net_connection_class_create_host(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ENetConnection::create_host, ctx, this_val, argc, argv);
 };
 static JSValue e_net_connection_class_destroy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ENetConnection::destroy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_connection_class_connect_to_host(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ENetConnection::connect_to_host, ctx, this_val, argc, argv);
 };
 static JSValue e_net_connection_class_service(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ENetConnection::service, ctx, this_val, argc, argv);
 };
 static JSValue e_net_connection_class_flush(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ENetConnection::flush, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_connection_class_bandwidth_limit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ENetConnection::bandwidth_limit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_connection_class_channel_limit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ENetConnection::channel_limit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_connection_class_broadcast(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ENetConnection::broadcast, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_connection_class_compress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ENetConnection::compress, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_connection_class_dtls_server_setup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ENetConnection::dtls_server_setup, ctx, this_val, argc, argv);
 };
 static JSValue e_net_connection_class_dtls_client_setup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ENetConnection::dtls_client_setup, ctx, this_val, argc, argv);
 };
 static JSValue e_net_connection_class_refuse_new_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ENetConnection::refuse_new_connections, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_connection_class_pop_statistic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ENetConnection::pop_statistic, ctx, this_val, argc, argv);
 };
 static JSValue e_net_connection_class_get_max_channels(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ENetConnection::get_max_channels, ctx, this_val, argc, argv);
 };
 static JSValue e_net_connection_class_get_local_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ENetConnection::get_local_port, ctx, this_val, argc, argv);
 };
 static JSValue e_net_connection_class_get_peers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ENetConnection::get_peers, ctx, this_val, argc, argv);
 };
 static JSValue e_net_connection_class_socket_send(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ENetConnection::socket_send, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

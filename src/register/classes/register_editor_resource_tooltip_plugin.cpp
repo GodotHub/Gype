@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture_rect.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/editor_resource_tooltip_plugin.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/texture_rect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,6 +38,7 @@ static JSValue editor_resource_tooltip_plugin_class_constructor(JSContext *ctx, 
 	return obj;
 }
 static JSValue editor_resource_tooltip_plugin_class_request_thumbnail(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_const_method_no_ret(&EditorResourceTooltipPlugin::request_thumbnail, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

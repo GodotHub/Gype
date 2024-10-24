@@ -5,13 +5,13 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/standard_material3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/editor_node3d_gizmo_plugin.hpp>
 #include <godot_cpp/classes/editor_node3d_gizmo.hpp>
-#include <godot_cpp/classes/camera3d.hpp>
-#include <godot_cpp/classes/standard_material3d.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -41,22 +41,27 @@ static JSValue editor_node3d_gizmo_plugin_class_constructor(JSContext *ctx, JSVa
 	return obj;
 }
 static JSValue editor_node3d_gizmo_plugin_class_create_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorNode3DGizmoPlugin::create_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_node3d_gizmo_plugin_class_create_icon_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorNode3DGizmoPlugin::create_icon_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_node3d_gizmo_plugin_class_create_handle_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorNode3DGizmoPlugin::create_handle_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_node3d_gizmo_plugin_class_add_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorNode3DGizmoPlugin::add_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_node3d_gizmo_plugin_class_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorNode3DGizmoPlugin::get_material, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_node3d_gizmo_plugin_class_proto_funcs[] = {

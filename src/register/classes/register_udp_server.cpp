@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/udp_server.hpp>
-#include <godot_cpp/classes/packet_peer_udp.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/packet_peer_udp.hpp>
+#include <godot_cpp/classes/udp_server.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,32 +37,41 @@ static JSValue udp_server_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue udp_server_class_listen(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&UDPServer::listen, ctx, this_val, argc, argv);
 };
 static JSValue udp_server_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&UDPServer::poll, ctx, this_val, argc, argv);
 };
 static JSValue udp_server_class_is_connection_available(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UDPServer::is_connection_available, ctx, this_val, argc, argv);
 };
 static JSValue udp_server_class_get_local_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UDPServer::get_local_port, ctx, this_val, argc, argv);
 };
 static JSValue udp_server_class_is_listening(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UDPServer::is_listening, ctx, this_val, argc, argv);
 };
 static JSValue udp_server_class_take_connection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&UDPServer::take_connection, ctx, this_val, argc, argv);
 };
 static JSValue udp_server_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UDPServer::stop, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue udp_server_class_set_max_pending_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UDPServer::set_max_pending_connections, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue udp_server_class_get_max_pending_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UDPServer::get_max_pending_connections, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry udp_server_class_proto_funcs[] = {

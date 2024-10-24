@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/scene_state.hpp>
 #include <godot_cpp/classes/packed_scene.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,66 +37,87 @@ static JSValue scene_state_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue scene_state_class_get_node_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_node_count, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_node_type, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_node_name, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_node_path, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_owner_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_node_owner_path, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_is_node_instance_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::is_node_instance_placeholder, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_instance_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_node_instance_placeholder, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_instance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_node_instance, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_groups(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_node_groups, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_node_index, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_property_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_node_property_count, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_property_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_node_property_name, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_node_property_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_node_property_value, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_connection_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_connection_count, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_connection_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_connection_source, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_connection_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_connection_signal, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_connection_target(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_connection_target, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_connection_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_connection_method, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_connection_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_connection_flags, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_connection_binds(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_connection_binds, ctx, this_val, argc, argv);
 };
 static JSValue scene_state_class_get_connection_unbinds(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SceneState::get_connection_unbinds, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry scene_state_class_proto_funcs[] = {

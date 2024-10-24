@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_expression.hpp>
 #include <godot_cpp/classes/visual_shader_node_group_base.hpp>
+#include <godot_cpp/classes/visual_shader_node_expression.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,10 +36,12 @@ static JSValue visual_shader_node_expression_class_constructor(JSContext *ctx, J
 	return obj;
 }
 static JSValue visual_shader_node_expression_class_set_expression(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VisualShaderNodeExpression::set_expression, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_expression_class_get_expression(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualShaderNodeExpression::get_expression, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry visual_shader_node_expression_class_proto_funcs[] = {

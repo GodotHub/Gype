@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_anchor3d.hpp>
 #include <godot_cpp/classes/xr_node3d.hpp>
+#include <godot_cpp/classes/xr_anchor3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,9 +36,11 @@ static JSValue xr_anchor3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue xr_anchor3d_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XRAnchor3D::get_size, ctx, this_val, argc, argv);
 };
 static JSValue xr_anchor3d_class_get_plane(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XRAnchor3D::get_plane, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry xr_anchor3d_class_proto_funcs[] = {

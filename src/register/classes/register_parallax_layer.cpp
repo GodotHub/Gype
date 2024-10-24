@@ -36,24 +36,30 @@ static JSValue parallax_layer_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue parallax_layer_class_set_motion_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ParallaxLayer::set_motion_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax_layer_class_get_motion_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ParallaxLayer::get_motion_scale, ctx, this_val, argc, argv);
 };
 static JSValue parallax_layer_class_set_motion_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ParallaxLayer::set_motion_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax_layer_class_get_motion_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ParallaxLayer::get_motion_offset, ctx, this_val, argc, argv);
 };
 static JSValue parallax_layer_class_set_mirroring(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ParallaxLayer::set_mirroring, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax_layer_class_get_mirroring(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ParallaxLayer::get_mirroring, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry parallax_layer_class_proto_funcs[] = {

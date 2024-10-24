@@ -36,12 +36,15 @@ static JSValue pck_packer_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue pck_packer_class_pck_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PCKPacker::pck_start, ctx, this_val, argc, argv);
 };
 static JSValue pck_packer_class_add_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PCKPacker::add_file, ctx, this_val, argc, argv);
 };
 static JSValue pck_packer_class_flush(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PCKPacker::flush, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry pck_packer_class_proto_funcs[] = {

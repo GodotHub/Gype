@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,27 +36,35 @@ static JSValue packet_peer_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue packet_peer_class_get_var(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PacketPeer::get_var, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_class_put_var(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PacketPeer::put_var, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_class_get_packet(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PacketPeer::get_packet, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_class_put_packet(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PacketPeer::put_packet, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_class_get_packet_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PacketPeer::get_packet_error, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_class_get_available_packet_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PacketPeer::get_available_packet_count, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_class_get_encode_buffer_max_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PacketPeer::get_encode_buffer_max_size, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_class_set_encode_buffer_max_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PacketPeer::set_encode_buffer_max_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

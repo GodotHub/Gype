@@ -1,5 +1,7 @@
-
 #include "register/classes/register_classes.h"
+#include <cstdint>
+
+std::unordered_map<intptr_t, uint64_t> instance_id_map;
 
 void register_classes() {
 	register_object();
@@ -922,5 +924,4 @@ void register_classes() {
 	register_worker_thread_pool();
 	register_xr_server();
 	register_xrvrs();
-
 };

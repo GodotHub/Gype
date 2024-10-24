@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/polygon_path_finder.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/polygon_path_finder.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,29 +36,37 @@ static JSValue polygon_path_finder_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue polygon_path_finder_class_setup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PolygonPathFinder::setup, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon_path_finder_class_find_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PolygonPathFinder::find_path, ctx, this_val, argc, argv);
 };
 static JSValue polygon_path_finder_class_get_intersections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PolygonPathFinder::get_intersections, ctx, this_val, argc, argv);
 };
 static JSValue polygon_path_finder_class_get_closest_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PolygonPathFinder::get_closest_point, ctx, this_val, argc, argv);
 };
 static JSValue polygon_path_finder_class_is_point_inside(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PolygonPathFinder::is_point_inside, ctx, this_val, argc, argv);
 };
 static JSValue polygon_path_finder_class_set_point_penalty(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PolygonPathFinder::set_point_penalty, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon_path_finder_class_get_point_penalty(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PolygonPathFinder::get_point_penalty, ctx, this_val, argc, argv);
 };
 static JSValue polygon_path_finder_class_get_bounds(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PolygonPathFinder::get_bounds, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry polygon_path_finder_class_proto_funcs[] = {

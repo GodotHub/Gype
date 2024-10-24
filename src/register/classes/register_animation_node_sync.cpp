@@ -36,10 +36,12 @@ static JSValue animation_node_sync_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue animation_node_sync_class_set_use_sync(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimationNodeSync::set_use_sync, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_node_sync_class_is_using_sync(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimationNodeSync::is_using_sync, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry animation_node_sync_class_proto_funcs[] = {

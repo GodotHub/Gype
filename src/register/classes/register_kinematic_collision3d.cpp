@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/kinematic_collision3d.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,45 +37,59 @@ static JSValue kinematic_collision3d_class_constructor(JSContext *ctx, JSValueCo
 	return obj;
 }
 static JSValue kinematic_collision3d_class_get_travel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&KinematicCollision3D::get_travel, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision3d_class_get_remainder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&KinematicCollision3D::get_remainder, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision3d_class_get_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&KinematicCollision3D::get_depth, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision3d_class_get_collision_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&KinematicCollision3D::get_collision_count, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision3d_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&KinematicCollision3D::get_position, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision3d_class_get_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&KinematicCollision3D::get_normal, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision3d_class_get_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&KinematicCollision3D::get_angle, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision3d_class_get_local_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&KinematicCollision3D::get_local_shape, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision3d_class_get_collider(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&KinematicCollision3D::get_collider, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision3d_class_get_collider_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&KinematicCollision3D::get_collider_id, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision3d_class_get_collider_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&KinematicCollision3D::get_collider_rid, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision3d_class_get_collider_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&KinematicCollision3D::get_collider_shape, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision3d_class_get_collider_shape_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&KinematicCollision3D::get_collider_shape_index, ctx, this_val, argc, argv);
 };
 static JSValue kinematic_collision3d_class_get_collider_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&KinematicCollision3D::get_collider_velocity, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry kinematic_collision3d_class_proto_funcs[] = {

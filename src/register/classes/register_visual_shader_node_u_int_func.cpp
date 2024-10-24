@@ -36,10 +36,12 @@ static JSValue visual_shader_node_u_int_func_class_constructor(JSContext *ctx, J
 	return obj;
 }
 static JSValue visual_shader_node_u_int_func_class_set_function(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VisualShaderNodeUIntFunc::set_function, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_u_int_func_class_get_function(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualShaderNodeUIntFunc::get_function, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry visual_shader_node_u_int_func_class_proto_funcs[] = {

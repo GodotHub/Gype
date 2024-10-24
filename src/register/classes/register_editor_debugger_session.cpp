@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/editor_debugger_session.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,31 +37,39 @@ static JSValue editor_debugger_session_class_constructor(JSContext *ctx, JSValue
 	return obj;
 }
 static JSValue editor_debugger_session_class_send_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorDebuggerSession::send_message, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_debugger_session_class_toggle_profiler(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorDebuggerSession::toggle_profiler, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_debugger_session_class_is_breaked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorDebuggerSession::is_breaked, ctx, this_val, argc, argv);
 };
 static JSValue editor_debugger_session_class_is_debuggable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorDebuggerSession::is_debuggable, ctx, this_val, argc, argv);
 };
 static JSValue editor_debugger_session_class_is_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorDebuggerSession::is_active, ctx, this_val, argc, argv);
 };
 static JSValue editor_debugger_session_class_add_session_tab(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorDebuggerSession::add_session_tab, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_debugger_session_class_remove_session_tab(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorDebuggerSession::remove_session_tab, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_debugger_session_class_set_breakpoint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorDebuggerSession::set_breakpoint, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

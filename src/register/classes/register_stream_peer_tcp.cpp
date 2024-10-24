@@ -36,31 +36,40 @@ static JSValue stream_peer_tcp_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue stream_peer_tcp_class_bind(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeerTCP::bind, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_tcp_class_connect_to_host(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeerTCP::connect_to_host, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_tcp_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeerTCP::poll, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_tcp_class_get_status(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StreamPeerTCP::get_status, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_tcp_class_get_connected_host(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StreamPeerTCP::get_connected_host, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_tcp_class_get_connected_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StreamPeerTCP::get_connected_port, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_tcp_class_get_local_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StreamPeerTCP::get_local_port, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_tcp_class_disconnect_from_host(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeerTCP::disconnect_from_host, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_tcp_class_set_no_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeerTCP::set_no_delay, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

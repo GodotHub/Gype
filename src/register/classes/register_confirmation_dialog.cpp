@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/accept_dialog.hpp>
 #include <godot_cpp/classes/confirmation_dialog.hpp>
+#include <godot_cpp/classes/accept_dialog.hpp>
 #include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -37,13 +37,16 @@ static JSValue confirmation_dialog_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue confirmation_dialog_class_get_cancel_button(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ConfirmationDialog::get_cancel_button, ctx, this_val, argc, argv);
 };
 static JSValue confirmation_dialog_class_set_cancel_button_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ConfirmationDialog::set_cancel_button_text, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue confirmation_dialog_class_get_cancel_button_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ConfirmationDialog::get_cancel_button_text, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry confirmation_dialog_class_proto_funcs[] = {

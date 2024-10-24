@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/script.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,55 +37,72 @@ static JSValue script_class_constructor(JSContext *ctx, JSValueConst new_target,
 	return obj;
 }
 static JSValue script_class_can_instantiate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Script::can_instantiate, ctx, this_val, argc, argv);
 };
 static JSValue script_class_instance_has(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Script::instance_has, ctx, this_val, argc, argv);
 };
 static JSValue script_class_has_source_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Script::has_source_code, ctx, this_val, argc, argv);
 };
 static JSValue script_class_get_source_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Script::get_source_code, ctx, this_val, argc, argv);
 };
 static JSValue script_class_set_source_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Script::set_source_code, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue script_class_reload(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Script::reload, ctx, this_val, argc, argv);
 };
 static JSValue script_class_get_base_script(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Script::get_base_script, ctx, this_val, argc, argv);
 };
 static JSValue script_class_get_instance_base_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Script::get_instance_base_type, ctx, this_val, argc, argv);
 };
 static JSValue script_class_get_global_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Script::get_global_name, ctx, this_val, argc, argv);
 };
 static JSValue script_class_has_script_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Script::has_script_signal, ctx, this_val, argc, argv);
 };
 static JSValue script_class_get_script_property_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Script::get_script_property_list, ctx, this_val, argc, argv);
 };
 static JSValue script_class_get_script_method_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Script::get_script_method_list, ctx, this_val, argc, argv);
 };
 static JSValue script_class_get_script_signal_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Script::get_script_signal_list, ctx, this_val, argc, argv);
 };
 static JSValue script_class_get_script_constant_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Script::get_script_constant_map, ctx, this_val, argc, argv);
 };
 static JSValue script_class_get_property_default_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Script::get_property_default_value, ctx, this_val, argc, argv);
 };
 static JSValue script_class_is_tool(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Script::is_tool, ctx, this_val, argc, argv);
 };
 static JSValue script_class_is_abstract(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Script::is_abstract, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry script_class_proto_funcs[] = {

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animated_texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/animated_texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,52 +36,66 @@ static JSValue animated_texture_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue animated_texture_class_set_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedTexture::set_frames, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_texture_class_get_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedTexture::get_frames, ctx, this_val, argc, argv);
 };
 static JSValue animated_texture_class_set_current_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedTexture::set_current_frame, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_texture_class_get_current_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedTexture::get_current_frame, ctx, this_val, argc, argv);
 };
 static JSValue animated_texture_class_set_pause(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedTexture::set_pause, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_texture_class_get_pause(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedTexture::get_pause, ctx, this_val, argc, argv);
 };
 static JSValue animated_texture_class_set_one_shot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedTexture::set_one_shot, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_texture_class_get_one_shot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedTexture::get_one_shot, ctx, this_val, argc, argv);
 };
 static JSValue animated_texture_class_set_speed_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedTexture::set_speed_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_texture_class_get_speed_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedTexture::get_speed_scale, ctx, this_val, argc, argv);
 };
 static JSValue animated_texture_class_set_frame_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedTexture::set_frame_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_texture_class_get_frame_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedTexture::get_frame_texture, ctx, this_val, argc, argv);
 };
 static JSValue animated_texture_class_set_frame_duration(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimatedTexture::set_frame_duration, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animated_texture_class_get_frame_duration(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimatedTexture::get_frame_duration, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry animated_texture_class_proto_funcs[] = {

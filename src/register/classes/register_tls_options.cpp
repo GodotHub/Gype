@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/crypto_key.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/classes/x509_certificate.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/crypto_key.hpp>
+#include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,21 +38,27 @@ static JSValue tls_options_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue tls_options_class_is_server(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TLSOptions::is_server, ctx, this_val, argc, argv);
 };
 static JSValue tls_options_class_is_unsafe_client(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TLSOptions::is_unsafe_client, ctx, this_val, argc, argv);
 };
 static JSValue tls_options_class_get_common_name_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TLSOptions::get_common_name_override, ctx, this_val, argc, argv);
 };
 static JSValue tls_options_class_get_trusted_ca_chain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TLSOptions::get_trusted_ca_chain, ctx, this_val, argc, argv);
 };
 static JSValue tls_options_class_get_private_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TLSOptions::get_private_key, ctx, this_val, argc, argv);
 };
 static JSValue tls_options_class_get_own_certificate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TLSOptions::get_own_certificate, ctx, this_val, argc, argv);
 };
 static JSValue tls_options_class_client(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

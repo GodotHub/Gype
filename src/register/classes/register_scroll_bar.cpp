@@ -36,10 +36,12 @@ static JSValue scroll_bar_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue scroll_bar_class_set_custom_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ScrollBar::set_custom_step, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scroll_bar_class_get_custom_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ScrollBar::get_custom_step, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry scroll_bar_class_proto_funcs[] = {

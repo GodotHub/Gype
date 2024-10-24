@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/text_server.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,713 +37,926 @@ static JSValue text_server_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue text_server_class_has_feature(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::has_feature, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_get_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::get_name, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_get_features(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::get_features, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_load_support_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextServer::load_support_data, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_get_support_data_filename(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::get_support_data_filename, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_get_support_data_info(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::get_support_data_info, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_save_support_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::save_support_data, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_is_locale_right_to_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::is_locale_right_to_left, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_name_to_tag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::name_to_tag, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_tag_to_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::tag_to_name, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_has(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextServer::has, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_free_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::free_rid, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_create_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextServer::create_font, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_create_font_linked_variation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextServer::create_font_linked_variation, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_set_face_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_face_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_face_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_face_index, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_get_face_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_face_count, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_style(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_style, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_style(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_style, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_name, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_get_ot_name_strings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_ot_name_strings, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_style_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_style_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_style_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_style_name, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_weight(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_weight, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_weight(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_weight, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_stretch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_stretch, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_stretch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_stretch, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_antialiasing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_antialiasing, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_antialiasing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_antialiasing, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_disable_embedded_bitmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_disable_embedded_bitmaps, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_disable_embedded_bitmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_disable_embedded_bitmaps, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_generate_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_generate_mipmaps, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_generate_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_generate_mipmaps, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_multichannel_signed_distance_field(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_multichannel_signed_distance_field, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_is_multichannel_signed_distance_field(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_is_multichannel_signed_distance_field, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_msdf_pixel_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_msdf_pixel_range, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_msdf_pixel_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_msdf_pixel_range, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_msdf_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_msdf_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_msdf_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_msdf_size, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_fixed_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_fixed_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_fixed_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_fixed_size, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_fixed_size_scale_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_fixed_size_scale_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_fixed_size_scale_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_fixed_size_scale_mode, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_allow_system_fallback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_allow_system_fallback, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_is_allow_system_fallback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_is_allow_system_fallback, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_force_autohinter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_force_autohinter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_is_force_autohinter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_is_force_autohinter, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_hinting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_hinting, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_hinting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_hinting, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_subpixel_positioning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_subpixel_positioning, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_subpixel_positioning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_subpixel_positioning, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_embolden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_embolden, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_embolden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_embolden, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_spacing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_spacing, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_spacing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_spacing, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_baseline_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_baseline_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_baseline_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_baseline_offset, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_transform, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_variation_coordinates(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_variation_coordinates, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_variation_coordinates(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_variation_coordinates, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_oversampling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_oversampling, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_oversampling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_oversampling, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_get_size_cache_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_size_cache_list, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_clear_size_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_clear_size_cache, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_remove_size_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_remove_size_cache, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_set_ascent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_ascent, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_ascent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_ascent, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_descent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_descent, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_descent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_descent, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_underline_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_underline_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_underline_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_underline_position, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_underline_thickness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_underline_thickness, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_underline_thickness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_underline_thickness, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_scale, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_get_texture_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_texture_count, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_clear_textures(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_clear_textures, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_remove_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_remove_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_set_texture_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_texture_image, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_texture_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_texture_image, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_texture_offsets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_texture_offsets, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_texture_offsets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_texture_offsets, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_get_glyph_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_glyph_list, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_clear_glyphs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_clear_glyphs, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_remove_glyph(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_remove_glyph, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_glyph_advance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_glyph_advance, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_glyph_advance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_glyph_advance, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_glyph_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_glyph_offset, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_glyph_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_glyph_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_glyph_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_glyph_size, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_glyph_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_glyph_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_glyph_uv_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_glyph_uv_rect, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_glyph_uv_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_glyph_uv_rect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_glyph_texture_idx(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_glyph_texture_idx, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_glyph_texture_idx(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_glyph_texture_idx, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_glyph_texture_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_glyph_texture_rid, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_get_glyph_texture_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_glyph_texture_size, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_get_glyph_contours(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_glyph_contours, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_get_kerning_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_kerning_list, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_clear_kerning_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_clear_kerning_map, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_remove_kerning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_remove_kerning, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_set_kerning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_kerning, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_kerning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_kerning, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_get_glyph_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_glyph_index, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_get_char_from_glyph_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_char_from_glyph_index, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_has_char(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_has_char, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_get_supported_chars(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_supported_chars, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_render_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_render_range, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_render_glyph(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_render_glyph, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_draw_glyph(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_const_method_no_ret(&TextServer::font_draw_glyph, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_draw_glyph_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_const_method_no_ret(&TextServer::font_draw_glyph_outline, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_is_language_supported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_is_language_supported, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_language_support_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_language_support_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_language_support_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextServer::font_get_language_support_override, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_remove_language_support_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_remove_language_support_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_language_support_overrides(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextServer::font_get_language_support_overrides, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_is_script_supported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_is_script_supported, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_script_support_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_script_support_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_script_support_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextServer::font_get_script_support_override, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_remove_script_support_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_remove_script_support_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_script_support_overrides(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextServer::font_get_script_support_overrides, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_opentype_feature_overrides(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_opentype_feature_overrides, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_font_get_opentype_feature_overrides(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_opentype_feature_overrides, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_supported_feature_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_supported_feature_list, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_supported_variation_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_supported_variation_list, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_get_global_oversampling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::font_get_global_oversampling, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_font_set_global_oversampling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::font_set_global_oversampling, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_get_hex_code_box_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::get_hex_code_box_size, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_draw_hex_code_box(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_const_method_no_ret(&TextServer::draw_hex_code_box, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_create_shaped_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextServer::create_shaped_text, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::shaped_text_clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_shaped_text_set_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::shaped_text_set_direction, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_shaped_text_get_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_direction, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_inferred_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_inferred_direction, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_set_bidi_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::shaped_text_set_bidi_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_shaped_text_set_custom_punctuation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::shaped_text_set_custom_punctuation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_shaped_text_get_custom_punctuation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_custom_punctuation, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_set_custom_ellipsis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::shaped_text_set_custom_ellipsis, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_shaped_text_get_custom_ellipsis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_custom_ellipsis, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_set_orientation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::shaped_text_set_orientation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_shaped_text_get_orientation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_orientation, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_set_preserve_invalid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::shaped_text_set_preserve_invalid, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_shaped_text_get_preserve_invalid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_preserve_invalid, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_set_preserve_control(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::shaped_text_set_preserve_control, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_shaped_text_get_preserve_control(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_preserve_control, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_set_spacing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::shaped_text_set_spacing, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_shaped_text_get_spacing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_spacing, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_add_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextServer::shaped_text_add_string, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_add_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextServer::shaped_text_add_object, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_resize_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextServer::shaped_text_resize_object, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_get_span_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_get_span_count, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_get_span_meta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_get_span_meta, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_set_span_update_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::shaped_set_span_update_font, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_shaped_text_substr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_substr, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_parent, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_fit_to_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextServer::shaped_text_fit_to_width, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_tab_align(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextServer::shaped_text_tab_align, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextServer::shaped_text_shape, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_is_ready(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_is_ready, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_has_visible_chars(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_has_visible_chars, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_glyphs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_glyphs, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_sort_logical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextServer::shaped_text_sort_logical, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_glyph_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_glyph_count, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_range, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_line_breaks_adv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_line_breaks_adv, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_line_breaks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_line_breaks, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_word_breaks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_word_breaks, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_trim_pos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_trim_pos, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_ellipsis_pos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_ellipsis_pos, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_ellipsis_glyphs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_ellipsis_glyphs, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_ellipsis_glyph_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_ellipsis_glyph_count, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_overrun_trim_to_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextServer::shaped_text_overrun_trim_to_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_shaped_text_get_objects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_objects, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_object_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_object_rect, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_object_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_object_range, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_object_glyph(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_object_glyph, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_size, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_ascent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_ascent, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_descent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_descent, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_width, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_underline_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_underline_position, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_underline_thickness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_underline_thickness, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_carets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_carets, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_selection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_selection, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_hit_test_grapheme(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_hit_test_grapheme, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_hit_test_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_hit_test_position, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_grapheme_bounds(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_grapheme_bounds, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_next_grapheme_pos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_next_grapheme_pos, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_prev_grapheme_pos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_prev_grapheme_pos, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_get_character_breaks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_character_breaks, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_next_character_pos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_next_character_pos, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_prev_character_pos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_prev_character_pos, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_closest_character_pos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_closest_character_pos, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_shaped_text_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_const_method_no_ret(&TextServer::shaped_text_draw, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_shaped_text_draw_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_const_method_no_ret(&TextServer::shaped_text_draw_outline, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_class_shaped_text_get_dominant_direction_in_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::shaped_text_get_dominant_direction_in_range, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_format_number(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::format_number, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_parse_number(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::parse_number, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_percent_sign(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::percent_sign, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_string_get_word_breaks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::string_get_word_breaks, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_string_get_character_breaks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::string_get_character_breaks, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_is_confusable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::is_confusable, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_spoof_check(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::spoof_check, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_strip_diacritics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::strip_diacritics, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_is_valid_identifier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::is_valid_identifier, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_is_valid_letter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::is_valid_letter, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_string_to_upper(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::string_to_upper, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_string_to_lower(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::string_to_lower, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_string_to_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::string_to_title, ctx, this_val, argc, argv);
 };
 static JSValue text_server_class_parse_structured_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextServer::parse_structured_text, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry text_server_class_proto_funcs[] = {

@@ -36,16 +36,20 @@ static JSValue gltf_texture_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue gltf_texture_class_get_src_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GLTFTexture::get_src_image, ctx, this_val, argc, argv);
 };
 static JSValue gltf_texture_class_set_src_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFTexture::set_src_image, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_texture_class_get_sampler(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GLTFTexture::get_sampler, ctx, this_val, argc, argv);
 };
 static JSValue gltf_texture_class_set_sampler(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFTexture::set_sampler, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/canvas_item.hpp>
 #include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,33 +37,42 @@ static JSValue style_box_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue style_box_class_get_minimum_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StyleBox::get_minimum_size, ctx, this_val, argc, argv);
 };
 static JSValue style_box_class_set_content_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StyleBox::set_content_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_class_set_content_margin_all(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StyleBox::set_content_margin_all, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_class_get_content_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StyleBox::get_content_margin, ctx, this_val, argc, argv);
 };
 static JSValue style_box_class_get_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StyleBox::get_margin, ctx, this_val, argc, argv);
 };
 static JSValue style_box_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StyleBox::get_offset, ctx, this_val, argc, argv);
 };
 static JSValue style_box_class_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_const_method_no_ret(&StyleBox::draw, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_class_get_current_item_drawn(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StyleBox::get_current_item_drawn, ctx, this_val, argc, argv);
 };
 static JSValue style_box_class_test_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StyleBox::test_mask, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry style_box_class_proto_funcs[] = {

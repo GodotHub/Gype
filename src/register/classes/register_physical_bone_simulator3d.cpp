@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physical_bone_simulator3d.hpp>
 #include <godot_cpp/classes/skeleton_modifier3d.hpp>
+#include <godot_cpp/classes/physical_bone_simulator3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,21 +36,26 @@ static JSValue physical_bone_simulator3d_class_constructor(JSContext *ctx, JSVal
 	return obj;
 }
 static JSValue physical_bone_simulator3d_class_is_simulating_physics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicalBoneSimulator3D::is_simulating_physics, ctx, this_val, argc, argv);
 };
 static JSValue physical_bone_simulator3d_class_physical_bones_stop_simulation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicalBoneSimulator3D::physical_bones_stop_simulation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone_simulator3d_class_physical_bones_start_simulation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicalBoneSimulator3D::physical_bones_start_simulation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone_simulator3d_class_physical_bones_add_collision_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicalBoneSimulator3D::physical_bones_add_collision_exception, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physical_bone_simulator3d_class_physical_bones_remove_collision_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicalBoneSimulator3D::physical_bones_remove_collision_exception, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

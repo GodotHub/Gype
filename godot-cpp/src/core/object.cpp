@@ -32,6 +32,8 @@
 
 #include <godot_cpp/core/class_db.hpp>
 
+#include "register/classes/register_classes.h"
+
 namespace godot {
 
 namespace internal {
@@ -40,6 +42,9 @@ Object *get_object_instance_binding(GodotObject *p_engine_object) {
 	if (p_engine_object == nullptr) {
 		return nullptr;
 	}
+
+	GDObjectInstanceID id = gdextension_interface_object_get_instance_id(p_engine_object);
+	instance_id_map[(intptr_t)p_engine_object] = id;
 
 	// Get existing instance binding, if one already exists.
 	GDExtensionObjectPtr instance = gdextension_interface_object_get_instance_binding(p_engine_object, token, nullptr);

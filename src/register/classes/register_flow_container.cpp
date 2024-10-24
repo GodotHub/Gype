@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/flow_container.hpp>
 #include <godot_cpp/classes/container.hpp>
+#include <godot_cpp/classes/flow_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,34 +36,43 @@ static JSValue flow_container_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue flow_container_class_get_line_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FlowContainer::get_line_count, ctx, this_val, argc, argv);
 };
 static JSValue flow_container_class_set_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FlowContainer::set_alignment, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue flow_container_class_get_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FlowContainer::get_alignment, ctx, this_val, argc, argv);
 };
 static JSValue flow_container_class_set_last_wrap_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FlowContainer::set_last_wrap_alignment, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue flow_container_class_get_last_wrap_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FlowContainer::get_last_wrap_alignment, ctx, this_val, argc, argv);
 };
 static JSValue flow_container_class_set_vertical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FlowContainer::set_vertical, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue flow_container_class_is_vertical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FlowContainer::is_vertical, ctx, this_val, argc, argv);
 };
 static JSValue flow_container_class_set_reverse_fill(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FlowContainer::set_reverse_fill, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue flow_container_class_is_reverse_fill(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FlowContainer::is_reverse_fill, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry flow_container_class_proto_funcs[] = {

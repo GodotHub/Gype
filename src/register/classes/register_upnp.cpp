@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/upnp_device.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/upnp.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,61 +37,78 @@ static JSValue upnp_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	return obj;
 }
 static JSValue upnp_class_get_device_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNP::get_device_count, ctx, this_val, argc, argv);
 };
 static JSValue upnp_class_get_device(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNP::get_device, ctx, this_val, argc, argv);
 };
 static JSValue upnp_class_add_device(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UPNP::add_device, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_class_set_device(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UPNP::set_device, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_class_remove_device(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UPNP::remove_device, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_class_clear_devices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UPNP::clear_devices, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_class_get_gateway(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNP::get_gateway, ctx, this_val, argc, argv);
 };
 static JSValue upnp_class_discover(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&UPNP::discover, ctx, this_val, argc, argv);
 };
 static JSValue upnp_class_query_external_address(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNP::query_external_address, ctx, this_val, argc, argv);
 };
 static JSValue upnp_class_add_port_mapping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNP::add_port_mapping, ctx, this_val, argc, argv);
 };
 static JSValue upnp_class_delete_port_mapping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNP::delete_port_mapping, ctx, this_val, argc, argv);
 };
 static JSValue upnp_class_set_discover_multicast_if(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UPNP::set_discover_multicast_if, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_class_get_discover_multicast_if(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNP::get_discover_multicast_if, ctx, this_val, argc, argv);
 };
 static JSValue upnp_class_set_discover_local_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UPNP::set_discover_local_port, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_class_get_discover_local_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNP::get_discover_local_port, ctx, this_val, argc, argv);
 };
 static JSValue upnp_class_set_discover_ipv6(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UPNP::set_discover_ipv6, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_class_is_discover_ipv6(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UPNP::is_discover_ipv6, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry upnp_class_proto_funcs[] = {

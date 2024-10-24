@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/option_button.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/button.hpp>
-#include <godot_cpp/classes/option_button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,121 +38,155 @@ static JSValue option_button_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 static JSValue option_button_class_add_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OptionButton::add_item, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue option_button_class_add_icon_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OptionButton::add_icon_item, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue option_button_class_set_item_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OptionButton::set_item_text, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue option_button_class_set_item_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OptionButton::set_item_icon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue option_button_class_set_item_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OptionButton::set_item_disabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue option_button_class_set_item_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OptionButton::set_item_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue option_button_class_set_item_metadata(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OptionButton::set_item_metadata, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue option_button_class_set_item_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OptionButton::set_item_tooltip, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue option_button_class_get_item_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OptionButton::get_item_text, ctx, this_val, argc, argv);
 };
 static JSValue option_button_class_get_item_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OptionButton::get_item_icon, ctx, this_val, argc, argv);
 };
 static JSValue option_button_class_get_item_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OptionButton::get_item_id, ctx, this_val, argc, argv);
 };
 static JSValue option_button_class_get_item_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OptionButton::get_item_index, ctx, this_val, argc, argv);
 };
 static JSValue option_button_class_get_item_metadata(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OptionButton::get_item_metadata, ctx, this_val, argc, argv);
 };
 static JSValue option_button_class_get_item_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OptionButton::get_item_tooltip, ctx, this_val, argc, argv);
 };
 static JSValue option_button_class_is_item_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OptionButton::is_item_disabled, ctx, this_val, argc, argv);
 };
 static JSValue option_button_class_is_item_separator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OptionButton::is_item_separator, ctx, this_val, argc, argv);
 };
 static JSValue option_button_class_add_separator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OptionButton::add_separator, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue option_button_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OptionButton::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue option_button_class_select(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OptionButton::select, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue option_button_class_get_selected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OptionButton::get_selected, ctx, this_val, argc, argv);
 };
 static JSValue option_button_class_get_selected_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OptionButton::get_selected_id, ctx, this_val, argc, argv);
 };
 static JSValue option_button_class_get_selected_metadata(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OptionButton::get_selected_metadata, ctx, this_val, argc, argv);
 };
 static JSValue option_button_class_remove_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OptionButton::remove_item, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue option_button_class_get_popup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OptionButton::get_popup, ctx, this_val, argc, argv);
 };
 static JSValue option_button_class_show_popup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OptionButton::show_popup, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue option_button_class_set_item_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OptionButton::set_item_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue option_button_class_get_item_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OptionButton::get_item_count, ctx, this_val, argc, argv);
 };
 static JSValue option_button_class_has_selectable_items(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OptionButton::has_selectable_items, ctx, this_val, argc, argv);
 };
 static JSValue option_button_class_get_selectable_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OptionButton::get_selectable_item, ctx, this_val, argc, argv);
 };
 static JSValue option_button_class_set_fit_to_longest_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OptionButton::set_fit_to_longest_item, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue option_button_class_is_fit_to_longest_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OptionButton::is_fit_to_longest_item, ctx, this_val, argc, argv);
 };
 static JSValue option_button_class_set_allow_reselect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OptionButton::set_allow_reselect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue option_button_class_get_allow_reselect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OptionButton::get_allow_reselect, ctx, this_val, argc, argv);
 };
 static JSValue option_button_class_set_disable_shortcuts(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OptionButton::set_disable_shortcuts, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

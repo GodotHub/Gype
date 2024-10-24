@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/height_map_shape3d.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,33 +37,42 @@ static JSValue height_map_shape3d_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue height_map_shape3d_class_set_map_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&HeightMapShape3D::set_map_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue height_map_shape3d_class_get_map_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&HeightMapShape3D::get_map_width, ctx, this_val, argc, argv);
 };
 static JSValue height_map_shape3d_class_set_map_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&HeightMapShape3D::set_map_depth, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue height_map_shape3d_class_get_map_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&HeightMapShape3D::get_map_depth, ctx, this_val, argc, argv);
 };
 static JSValue height_map_shape3d_class_set_map_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&HeightMapShape3D::set_map_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue height_map_shape3d_class_get_map_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&HeightMapShape3D::get_map_data, ctx, this_val, argc, argv);
 };
 static JSValue height_map_shape3d_class_get_min_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&HeightMapShape3D::get_min_height, ctx, this_val, argc, argv);
 };
 static JSValue height_map_shape3d_class_get_max_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&HeightMapShape3D::get_max_height, ctx, this_val, argc, argv);
 };
 static JSValue height_map_shape3d_class_update_map_data_from_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&HeightMapShape3D::update_map_data_from_image, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

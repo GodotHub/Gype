@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/x509_certificate.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,15 +36,19 @@ static JSValue x509_certificate_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue x509_certificate_class_save(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&X509Certificate::save, ctx, this_val, argc, argv);
 };
 static JSValue x509_certificate_class_load(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&X509Certificate::load, ctx, this_val, argc, argv);
 };
 static JSValue x509_certificate_class_save_to_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&X509Certificate::save_to_string, ctx, this_val, argc, argv);
 };
 static JSValue x509_certificate_class_load_from_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&X509Certificate::load_from_string, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry x509_certificate_class_proto_funcs[] = {

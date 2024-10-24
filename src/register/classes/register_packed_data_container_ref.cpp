@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/packed_data_container_ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/packed_data_container_ref.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,6 +36,7 @@ static JSValue packed_data_container_ref_class_constructor(JSContext *ctx, JSVal
 	return obj;
 }
 static JSValue packed_data_container_ref_class_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PackedDataContainerRef::size, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry packed_data_container_ref_class_proto_funcs[] = {

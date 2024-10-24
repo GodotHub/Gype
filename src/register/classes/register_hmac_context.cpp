@@ -36,12 +36,15 @@ static JSValue hmac_context_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue hmac_context_class_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&HMACContext::start, ctx, this_val, argc, argv);
 };
 static JSValue hmac_context_class_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&HMACContext::update, ctx, this_val, argc, argv);
 };
 static JSValue hmac_context_class_finish(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&HMACContext::finish, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry hmac_context_class_proto_funcs[] = {

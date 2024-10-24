@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/open_xr_action_set.hpp>
-#include <godot_cpp/classes/open_xr_action_map.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/open_xr_interaction_profile.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/open_xr_action_map.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,54 +38,69 @@ static JSValue open_xr_action_map_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue open_xr_action_map_class_set_action_sets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRActionMap::set_action_sets, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_action_map_class_get_action_sets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRActionMap::get_action_sets, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_map_class_get_action_set_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRActionMap::get_action_set_count, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_map_class_find_action_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRActionMap::find_action_set, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_map_class_get_action_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRActionMap::get_action_set, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_map_class_add_action_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRActionMap::add_action_set, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_action_map_class_remove_action_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRActionMap::remove_action_set, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_action_map_class_set_interaction_profiles(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRActionMap::set_interaction_profiles, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_action_map_class_get_interaction_profiles(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRActionMap::get_interaction_profiles, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_map_class_get_interaction_profile_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRActionMap::get_interaction_profile_count, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_map_class_find_interaction_profile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRActionMap::find_interaction_profile, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_map_class_get_interaction_profile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRActionMap::get_interaction_profile, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_map_class_add_interaction_profile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRActionMap::add_interaction_profile, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_action_map_class_remove_interaction_profile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRActionMap::remove_interaction_profile, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_action_map_class_create_default_action_sets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRActionMap::create_default_action_sets, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

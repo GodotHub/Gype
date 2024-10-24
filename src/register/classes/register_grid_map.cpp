@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/mesh_library.hpp>
-#include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/grid_map.hpp>
 #include <godot_cpp/classes/physics_material.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/grid_map.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -39,163 +39,210 @@ static JSValue grid_map_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue grid_map_class_set_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::set_collision_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_get_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_collision_layer, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::set_collision_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_collision_mask, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_set_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::set_collision_mask_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_get_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_collision_mask_value, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_set_collision_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::set_collision_layer_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_get_collision_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_collision_layer_value, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_set_collision_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::set_collision_priority, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_get_collision_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_collision_priority, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_set_physics_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::set_physics_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_get_physics_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_physics_material, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_set_bake_navigation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::set_bake_navigation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_is_baking_navigation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GridMap::is_baking_navigation, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_set_navigation_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::set_navigation_map, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_get_navigation_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_navigation_map, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_set_mesh_library(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::set_mesh_library, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_get_mesh_library(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_mesh_library, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_set_cell_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::set_cell_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_get_cell_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_cell_size, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_set_cell_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::set_cell_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_get_cell_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_cell_scale, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_set_octant_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::set_octant_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_get_octant_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_octant_size, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_set_cell_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::set_cell_item, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_get_cell_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_cell_item, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_get_cell_item_orientation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_cell_item_orientation, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_get_cell_item_basis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_cell_item_basis, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_get_basis_with_orthogonal_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_basis_with_orthogonal_index, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_get_orthogonal_index_from_basis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_orthogonal_index_from_basis, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_local_to_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::local_to_map, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_map_to_local(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::map_to_local, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_resource_changed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::resource_changed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_set_center_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::set_center_x, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_get_center_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_center_x, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_set_center_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::set_center_y, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_get_center_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_center_y, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_set_center_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::set_center_z, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_get_center_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_center_z, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_get_used_cells(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_used_cells, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_get_used_cells_by_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_used_cells_by_item, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_get_meshes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GridMap::get_meshes, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_get_bake_meshes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GridMap::get_bake_meshes, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_get_bake_mesh_instance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GridMap::get_bake_mesh_instance, ctx, this_val, argc, argv);
 };
 static JSValue grid_map_class_clear_baked_meshes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::clear_baked_meshes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_map_class_make_baked_meshes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GridMap::make_baked_meshes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

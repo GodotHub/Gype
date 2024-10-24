@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_stream_playback.hpp>
-#include <godot_cpp/classes/audio_sample.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/audio_stream_playback.hpp>
 #include <godot_cpp/classes/audio_stream.hpp>
+#include <godot_cpp/classes/audio_sample.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,21 +38,27 @@ static JSValue audio_stream_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue audio_stream_class_get_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStream::get_length, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_class_is_monophonic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStream::is_monophonic, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_class_instantiate_playback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&AudioStream::instantiate_playback, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_class_can_be_sampled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStream::can_be_sampled, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_class_generate_sample(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStream::generate_sample, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_class_is_meta_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStream::is_meta_stream, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry audio_stream_class_proto_funcs[] = {

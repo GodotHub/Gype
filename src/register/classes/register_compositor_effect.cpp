@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/render_data.hpp>
 #include <godot_cpp/classes/compositor_effect.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,52 +37,66 @@ static JSValue compositor_effect_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue compositor_effect_class_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CompositorEffect::set_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue compositor_effect_class_get_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CompositorEffect::get_enabled, ctx, this_val, argc, argv);
 };
 static JSValue compositor_effect_class_set_effect_callback_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CompositorEffect::set_effect_callback_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue compositor_effect_class_get_effect_callback_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CompositorEffect::get_effect_callback_type, ctx, this_val, argc, argv);
 };
 static JSValue compositor_effect_class_set_access_resolved_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CompositorEffect::set_access_resolved_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue compositor_effect_class_get_access_resolved_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CompositorEffect::get_access_resolved_color, ctx, this_val, argc, argv);
 };
 static JSValue compositor_effect_class_set_access_resolved_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CompositorEffect::set_access_resolved_depth, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue compositor_effect_class_get_access_resolved_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CompositorEffect::get_access_resolved_depth, ctx, this_val, argc, argv);
 };
 static JSValue compositor_effect_class_set_needs_motion_vectors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CompositorEffect::set_needs_motion_vectors, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue compositor_effect_class_get_needs_motion_vectors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CompositorEffect::get_needs_motion_vectors, ctx, this_val, argc, argv);
 };
 static JSValue compositor_effect_class_set_needs_normal_roughness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CompositorEffect::set_needs_normal_roughness, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue compositor_effect_class_get_needs_normal_roughness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CompositorEffect::get_needs_normal_roughness, ctx, this_val, argc, argv);
 };
 static JSValue compositor_effect_class_set_needs_separate_specular(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CompositorEffect::set_needs_separate_specular, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue compositor_effect_class_get_needs_separate_specular(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CompositorEffect::get_needs_separate_specular, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry compositor_effect_class_proto_funcs[] = {

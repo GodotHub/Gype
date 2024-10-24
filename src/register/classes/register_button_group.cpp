@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/base_button.hpp>
-#include <godot_cpp/classes/base_button.hpp>
-#include <godot_cpp/classes/button_group.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/button_group.hpp>
+#include <godot_cpp/classes/base_button.hpp>
+#include <godot_cpp/classes/base_button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,16 +38,20 @@ static JSValue button_group_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue button_group_class_get_pressed_button(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ButtonGroup::get_pressed_button, ctx, this_val, argc, argv);
 };
 static JSValue button_group_class_get_buttons(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ButtonGroup::get_buttons, ctx, this_val, argc, argv);
 };
 static JSValue button_group_class_set_allow_unpress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ButtonGroup::set_allow_unpress, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue button_group_class_is_allow_unpress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ButtonGroup::is_allow_unpress, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry button_group_class_proto_funcs[] = {

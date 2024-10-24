@@ -36,10 +36,12 @@ static JSValue container_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue container_class_queue_sort(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Container::queue_sort, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue container_class_fit_child_in_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Container::fit_child_in_rect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

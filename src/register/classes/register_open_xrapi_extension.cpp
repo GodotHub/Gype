@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/open_xrapi_extension.hpp>
 #include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
+#include <godot_cpp/classes/open_xrapi_extension.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -37,63 +37,82 @@ static JSValue open_xrapi_extension_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue open_xrapi_extension_class_get_instance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&OpenXRAPIExtension::get_instance, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_get_system_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&OpenXRAPIExtension::get_system_id, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_get_session(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&OpenXRAPIExtension::get_session, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_transform_from_pose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&OpenXRAPIExtension::transform_from_pose, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_xr_result(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&OpenXRAPIExtension::xr_result, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_get_instance_proc_addr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&OpenXRAPIExtension::get_instance_proc_addr, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_get_error_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&OpenXRAPIExtension::get_error_string, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_get_swapchain_format_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&OpenXRAPIExtension::get_swapchain_format_name, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_is_initialized(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&OpenXRAPIExtension::is_initialized, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_is_running(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&OpenXRAPIExtension::is_running, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_get_play_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&OpenXRAPIExtension::get_play_space, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_get_predicted_display_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&OpenXRAPIExtension::get_predicted_display_time, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_get_next_frame_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&OpenXRAPIExtension::get_next_frame_time, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_can_render(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&OpenXRAPIExtension::can_render, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_get_hand_tracker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&OpenXRAPIExtension::get_hand_tracker, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_register_composition_layer_provider(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRAPIExtension::register_composition_layer_provider, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xrapi_extension_class_unregister_composition_layer_provider(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRAPIExtension::unregister_composition_layer_provider, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xrapi_extension_class_set_emulate_environment_blend_mode_alpha_blend(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRAPIExtension::set_emulate_environment_blend_mode_alpha_blend, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xrapi_extension_class_is_environment_blend_mode_alpha_supported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&OpenXRAPIExtension::is_environment_blend_mode_alpha_supported, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_openxr_is_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

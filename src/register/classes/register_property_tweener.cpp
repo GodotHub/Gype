@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/property_tweener.hpp>
 #include <godot_cpp/classes/tweener.hpp>
+#include <godot_cpp/classes/property_tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,24 +36,31 @@ static JSValue property_tweener_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue property_tweener_class_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PropertyTweener::from, ctx, this_val, argc, argv);
 };
 static JSValue property_tweener_class_from_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PropertyTweener::from_current, ctx, this_val, argc, argv);
 };
 static JSValue property_tweener_class_as_relative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PropertyTweener::as_relative, ctx, this_val, argc, argv);
 };
 static JSValue property_tweener_class_set_trans(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PropertyTweener::set_trans, ctx, this_val, argc, argv);
 };
 static JSValue property_tweener_class_set_ease(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PropertyTweener::set_ease, ctx, this_val, argc, argv);
 };
 static JSValue property_tweener_class_set_custom_interpolator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PropertyTweener::set_custom_interpolator, ctx, this_val, argc, argv);
 };
 static JSValue property_tweener_class_set_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PropertyTweener::set_delay, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry property_tweener_class_proto_funcs[] = {

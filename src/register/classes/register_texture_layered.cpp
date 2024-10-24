@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/texture.hpp>
 #include <godot_cpp/classes/texture_layered.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,24 +37,31 @@ static JSValue texture_layered_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue texture_layered_class_get_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureLayered::get_format, ctx, this_val, argc, argv);
 };
 static JSValue texture_layered_class_get_layered_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureLayered::get_layered_type, ctx, this_val, argc, argv);
 };
 static JSValue texture_layered_class_get_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureLayered::get_width, ctx, this_val, argc, argv);
 };
 static JSValue texture_layered_class_get_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureLayered::get_height, ctx, this_val, argc, argv);
 };
 static JSValue texture_layered_class_get_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureLayered::get_layers, ctx, this_val, argc, argv);
 };
 static JSValue texture_layered_class_has_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureLayered::has_mipmaps, ctx, this_val, argc, argv);
 };
 static JSValue texture_layered_class_get_layer_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureLayered::get_layer_data, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry texture_layered_class_proto_funcs[] = {

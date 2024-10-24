@@ -38,9 +38,11 @@ static JSValue script_editor_base_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue script_editor_base_class_get_base_editor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ScriptEditorBase::get_base_editor, ctx, this_val, argc, argv);
 };
 static JSValue script_editor_base_class_add_syntax_highlighter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ScriptEditorBase::add_syntax_highlighter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

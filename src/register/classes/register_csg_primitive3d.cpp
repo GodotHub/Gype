@@ -36,10 +36,12 @@ static JSValue csg_primitive3d_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue csg_primitive3d_class_set_flip_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGPrimitive3D::set_flip_faces, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_primitive3d_class_get_flip_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&CSGPrimitive3D::get_flip_faces, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry csg_primitive3d_class_proto_funcs[] = {

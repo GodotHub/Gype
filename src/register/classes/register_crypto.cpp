@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/crypto_key.hpp>
+#include <godot_cpp/classes/x509_certificate.hpp>
 #include <godot_cpp/classes/crypto.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/x509_certificate.hpp>
+#include <godot_cpp/classes/crypto_key.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,30 +38,39 @@ static JSValue crypto_class_constructor(JSContext *ctx, JSValueConst new_target,
 	return obj;
 }
 static JSValue crypto_class_generate_random_bytes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Crypto::generate_random_bytes, ctx, this_val, argc, argv);
 };
 static JSValue crypto_class_generate_rsa(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Crypto::generate_rsa, ctx, this_val, argc, argv);
 };
 static JSValue crypto_class_generate_self_signed_certificate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Crypto::generate_self_signed_certificate, ctx, this_val, argc, argv);
 };
 static JSValue crypto_class_sign(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Crypto::sign, ctx, this_val, argc, argv);
 };
 static JSValue crypto_class_verify(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Crypto::verify, ctx, this_val, argc, argv);
 };
 static JSValue crypto_class_encrypt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Crypto::encrypt, ctx, this_val, argc, argv);
 };
 static JSValue crypto_class_decrypt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Crypto::decrypt, ctx, this_val, argc, argv);
 };
 static JSValue crypto_class_hmac_digest(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Crypto::hmac_digest, ctx, this_val, argc, argv);
 };
 static JSValue crypto_class_constant_time_compare(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Crypto::constant_time_compare, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry crypto_class_proto_funcs[] = {

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource_importer.hpp>
 #include <godot_cpp/classes/editor_import_plugin.hpp>
+#include <godot_cpp/classes/resource_importer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,6 +36,7 @@ static JSValue editor_import_plugin_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue editor_import_plugin_class_append_import_external_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorImportPlugin::append_import_external_resource, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_import_plugin_class_proto_funcs[] = {

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture_rect.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/texture_rect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,38 +37,48 @@ static JSValue texture_rect_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue texture_rect_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureRect::set_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_rect_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureRect::get_texture, ctx, this_val, argc, argv);
 };
 static JSValue texture_rect_class_set_expand_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureRect::set_expand_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_rect_class_get_expand_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureRect::get_expand_mode, ctx, this_val, argc, argv);
 };
 static JSValue texture_rect_class_set_flip_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureRect::set_flip_h, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_rect_class_is_flipped_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureRect::is_flipped_h, ctx, this_val, argc, argv);
 };
 static JSValue texture_rect_class_set_flip_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureRect::set_flip_v, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_rect_class_is_flipped_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureRect::is_flipped_v, ctx, this_val, argc, argv);
 };
 static JSValue texture_rect_class_set_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureRect::set_stretch_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_rect_class_get_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureRect::get_stretch_mode, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry texture_rect_class_proto_funcs[] = {

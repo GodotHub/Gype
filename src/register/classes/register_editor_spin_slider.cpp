@@ -36,38 +36,48 @@ static JSValue editor_spin_slider_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue editor_spin_slider_class_set_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorSpinSlider::set_label, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_spin_slider_class_get_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorSpinSlider::get_label, ctx, this_val, argc, argv);
 };
 static JSValue editor_spin_slider_class_set_suffix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorSpinSlider::set_suffix, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_spin_slider_class_get_suffix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorSpinSlider::get_suffix, ctx, this_val, argc, argv);
 };
 static JSValue editor_spin_slider_class_set_read_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorSpinSlider::set_read_only, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_spin_slider_class_is_read_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorSpinSlider::is_read_only, ctx, this_val, argc, argv);
 };
 static JSValue editor_spin_slider_class_set_flat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorSpinSlider::set_flat, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_spin_slider_class_is_flat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorSpinSlider::is_flat, ctx, this_val, argc, argv);
 };
 static JSValue editor_spin_slider_class_set_hide_slider(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorSpinSlider::set_hide_slider, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_spin_slider_class_is_hiding_slider(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorSpinSlider::is_hiding_slider, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_spin_slider_class_proto_funcs[] = {

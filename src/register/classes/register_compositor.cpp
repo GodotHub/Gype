@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/compositor_effect.hpp>
 #include <godot_cpp/classes/compositor.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/compositor_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,10 +37,12 @@ static JSValue compositor_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue compositor_class_set_compositor_effects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Compositor::set_compositor_effects, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue compositor_class_get_compositor_effects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Compositor::get_compositor_effects, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry compositor_class_proto_funcs[] = {

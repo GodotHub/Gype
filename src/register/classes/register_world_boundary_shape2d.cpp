@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/world_boundary_shape2d.hpp>
 #include <godot_cpp/classes/shape2d.hpp>
+#include <godot_cpp/classes/world_boundary_shape2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,17 +36,21 @@ static JSValue world_boundary_shape2d_class_constructor(JSContext *ctx, JSValueC
 	return obj;
 }
 static JSValue world_boundary_shape2d_class_set_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WorldBoundaryShape2D::set_normal, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue world_boundary_shape2d_class_get_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WorldBoundaryShape2D::get_normal, ctx, this_val, argc, argv);
 };
 static JSValue world_boundary_shape2d_class_set_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WorldBoundaryShape2D::set_distance, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue world_boundary_shape2d_class_get_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WorldBoundaryShape2D::get_distance, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry world_boundary_shape2d_class_proto_funcs[] = {

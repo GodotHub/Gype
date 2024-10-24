@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/noise.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,30 +38,39 @@ static JSValue noise_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	return obj;
 }
 static JSValue noise_class_get_noise_1d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Noise::get_noise_1d, ctx, this_val, argc, argv);
 };
 static JSValue noise_class_get_noise_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Noise::get_noise_2d, ctx, this_val, argc, argv);
 };
 static JSValue noise_class_get_noise_2dv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Noise::get_noise_2dv, ctx, this_val, argc, argv);
 };
 static JSValue noise_class_get_noise_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Noise::get_noise_3d, ctx, this_val, argc, argv);
 };
 static JSValue noise_class_get_noise_3dv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Noise::get_noise_3dv, ctx, this_val, argc, argv);
 };
 static JSValue noise_class_get_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Noise::get_image, ctx, this_val, argc, argv);
 };
 static JSValue noise_class_get_seamless_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Noise::get_seamless_image, ctx, this_val, argc, argv);
 };
 static JSValue noise_class_get_image_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Noise::get_image_3d, ctx, this_val, argc, argv);
 };
 static JSValue noise_class_get_seamless_image_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Noise::get_seamless_image_3d, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry noise_class_proto_funcs[] = {

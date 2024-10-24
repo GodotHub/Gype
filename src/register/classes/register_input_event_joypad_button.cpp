@@ -36,20 +36,25 @@ static JSValue input_event_joypad_button_class_constructor(JSContext *ctx, JSVal
 	return obj;
 }
 static JSValue input_event_joypad_button_class_set_button_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventJoypadButton::set_button_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_joypad_button_class_get_button_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventJoypadButton::get_button_index, ctx, this_val, argc, argv);
 };
 static JSValue input_event_joypad_button_class_set_pressure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventJoypadButton::set_pressure, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_joypad_button_class_get_pressure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventJoypadButton::get_pressure, ctx, this_val, argc, argv);
 };
 static JSValue input_event_joypad_button_class_set_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventJoypadButton::set_pressed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

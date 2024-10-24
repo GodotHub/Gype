@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/procedural_sky_material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -37,101 +37,129 @@ static JSValue procedural_sky_material_class_constructor(JSContext *ctx, JSValue
 	return obj;
 }
 static JSValue procedural_sky_material_class_set_sky_top_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sky_top_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue procedural_sky_material_class_get_sky_top_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ProceduralSkyMaterial::get_sky_top_color, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_set_sky_horizon_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sky_horizon_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue procedural_sky_material_class_get_sky_horizon_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ProceduralSkyMaterial::get_sky_horizon_color, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_set_sky_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sky_curve, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue procedural_sky_material_class_get_sky_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ProceduralSkyMaterial::get_sky_curve, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_set_sky_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sky_energy_multiplier, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue procedural_sky_material_class_get_sky_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ProceduralSkyMaterial::get_sky_energy_multiplier, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_set_sky_cover(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sky_cover, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue procedural_sky_material_class_get_sky_cover(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ProceduralSkyMaterial::get_sky_cover, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_set_sky_cover_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sky_cover_modulate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue procedural_sky_material_class_get_sky_cover_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ProceduralSkyMaterial::get_sky_cover_modulate, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_set_ground_bottom_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ProceduralSkyMaterial::set_ground_bottom_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue procedural_sky_material_class_get_ground_bottom_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ProceduralSkyMaterial::get_ground_bottom_color, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_set_ground_horizon_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ProceduralSkyMaterial::set_ground_horizon_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue procedural_sky_material_class_get_ground_horizon_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ProceduralSkyMaterial::get_ground_horizon_color, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_set_ground_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ProceduralSkyMaterial::set_ground_curve, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue procedural_sky_material_class_get_ground_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ProceduralSkyMaterial::get_ground_curve, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_set_ground_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ProceduralSkyMaterial::set_ground_energy_multiplier, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue procedural_sky_material_class_get_ground_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ProceduralSkyMaterial::get_ground_energy_multiplier, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_set_sun_angle_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sun_angle_max, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue procedural_sky_material_class_get_sun_angle_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ProceduralSkyMaterial::get_sun_angle_max, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_set_sun_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sun_curve, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue procedural_sky_material_class_get_sun_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ProceduralSkyMaterial::get_sun_curve, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_set_use_debanding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ProceduralSkyMaterial::set_use_debanding, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue procedural_sky_material_class_get_use_debanding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ProceduralSkyMaterial::get_use_debanding, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_set_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ProceduralSkyMaterial::set_energy_multiplier, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue procedural_sky_material_class_get_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ProceduralSkyMaterial::get_energy_multiplier, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry procedural_sky_material_class_proto_funcs[] = {

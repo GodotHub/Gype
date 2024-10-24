@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/sub_viewport_container.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -37,17 +37,21 @@ static JSValue sub_viewport_container_class_constructor(JSContext *ctx, JSValueC
 	return obj;
 }
 static JSValue sub_viewport_container_class_set_stretch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SubViewportContainer::set_stretch, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sub_viewport_container_class_is_stretch_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SubViewportContainer::is_stretch_enabled, ctx, this_val, argc, argv);
 };
 static JSValue sub_viewport_container_class_set_stretch_shrink(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SubViewportContainer::set_stretch_shrink, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sub_viewport_container_class_get_stretch_shrink(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SubViewportContainer::get_stretch_shrink, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry sub_viewport_container_class_proto_funcs[] = {

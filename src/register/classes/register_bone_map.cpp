@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/bone_map.hpp>
 #include <godot_cpp/classes/skeleton_profile.hpp>
+#include <godot_cpp/classes/bone_map.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -37,20 +37,25 @@ static JSValue bone_map_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue bone_map_class_get_profile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BoneMap::get_profile, ctx, this_val, argc, argv);
 };
 static JSValue bone_map_class_set_profile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BoneMap::set_profile, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bone_map_class_get_skeleton_bone_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BoneMap::get_skeleton_bone_name, ctx, this_val, argc, argv);
 };
 static JSValue bone_map_class_set_skeleton_bone_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BoneMap::set_skeleton_bone_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bone_map_class_find_profile_bone_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BoneMap::find_profile_bone_name, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry bone_map_class_proto_funcs[] = {

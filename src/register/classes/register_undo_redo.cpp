@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/undo_redo.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/undo_redo.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,84 +36,107 @@ static JSValue undo_redo_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue undo_redo_class_create_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UndoRedo::create_action, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue undo_redo_class_commit_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UndoRedo::commit_action, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue undo_redo_class_is_committing_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UndoRedo::is_committing_action, ctx, this_val, argc, argv);
 };
 static JSValue undo_redo_class_add_do_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UndoRedo::add_do_method, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue undo_redo_class_add_undo_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UndoRedo::add_undo_method, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue undo_redo_class_add_do_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UndoRedo::add_do_property, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue undo_redo_class_add_undo_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UndoRedo::add_undo_property, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue undo_redo_class_add_do_reference(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UndoRedo::add_do_reference, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue undo_redo_class_add_undo_reference(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UndoRedo::add_undo_reference, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue undo_redo_class_start_force_keep_in_merge_ends(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UndoRedo::start_force_keep_in_merge_ends, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue undo_redo_class_end_force_keep_in_merge_ends(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UndoRedo::end_force_keep_in_merge_ends, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue undo_redo_class_get_history_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&UndoRedo::get_history_count, ctx, this_val, argc, argv);
 };
 static JSValue undo_redo_class_get_current_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&UndoRedo::get_current_action, ctx, this_val, argc, argv);
 };
 static JSValue undo_redo_class_get_action_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&UndoRedo::get_action_name, ctx, this_val, argc, argv);
 };
 static JSValue undo_redo_class_clear_history(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UndoRedo::clear_history, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue undo_redo_class_get_current_action_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UndoRedo::get_current_action_name, ctx, this_val, argc, argv);
 };
 static JSValue undo_redo_class_has_undo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UndoRedo::has_undo, ctx, this_val, argc, argv);
 };
 static JSValue undo_redo_class_has_redo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UndoRedo::has_redo, ctx, this_val, argc, argv);
 };
 static JSValue undo_redo_class_get_version(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UndoRedo::get_version, ctx, this_val, argc, argv);
 };
 static JSValue undo_redo_class_set_max_steps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&UndoRedo::set_max_steps, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue undo_redo_class_get_max_steps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&UndoRedo::get_max_steps, ctx, this_val, argc, argv);
 };
 static JSValue undo_redo_class_redo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&UndoRedo::redo, ctx, this_val, argc, argv);
 };
 static JSValue undo_redo_class_undo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&UndoRedo::undo, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry undo_redo_class_proto_funcs[] = {

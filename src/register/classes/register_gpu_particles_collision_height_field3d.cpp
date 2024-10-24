@@ -36,31 +36,39 @@ static JSValue gpu_particles_collision_height_field3d_class_constructor(JSContex
 	return obj;
 }
 static JSValue gpu_particles_collision_height_field3d_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GPUParticlesCollisionHeightField3D::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles_collision_height_field3d_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GPUParticlesCollisionHeightField3D::get_size, ctx, this_val, argc, argv);
 };
 static JSValue gpu_particles_collision_height_field3d_class_set_resolution(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GPUParticlesCollisionHeightField3D::set_resolution, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles_collision_height_field3d_class_get_resolution(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GPUParticlesCollisionHeightField3D::get_resolution, ctx, this_val, argc, argv);
 };
 static JSValue gpu_particles_collision_height_field3d_class_set_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GPUParticlesCollisionHeightField3D::set_update_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles_collision_height_field3d_class_get_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GPUParticlesCollisionHeightField3D::get_update_mode, ctx, this_val, argc, argv);
 };
 static JSValue gpu_particles_collision_height_field3d_class_set_follow_camera_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GPUParticlesCollisionHeightField3D::set_follow_camera_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles_collision_height_field3d_class_is_follow_camera_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GPUParticlesCollisionHeightField3D::is_follow_camera_enabled, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry gpu_particles_collision_height_field3d_class_proto_funcs[] = {

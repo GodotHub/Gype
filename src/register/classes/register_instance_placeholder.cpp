@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/instance_placeholder.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -37,12 +37,15 @@ static JSValue instance_placeholder_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue instance_placeholder_class_get_stored_values(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&InstancePlaceholder::get_stored_values, ctx, this_val, argc, argv);
 };
 static JSValue instance_placeholder_class_create_instance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&InstancePlaceholder::create_instance, ctx, this_val, argc, argv);
 };
 static JSValue instance_placeholder_class_get_instance_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InstancePlaceholder::get_instance_path, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry instance_placeholder_class_proto_funcs[] = {

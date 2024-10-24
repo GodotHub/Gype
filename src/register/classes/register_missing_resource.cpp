@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/missing_resource.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/missing_resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,17 +36,21 @@ static JSValue missing_resource_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue missing_resource_class_set_original_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MissingResource::set_original_class, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue missing_resource_class_get_original_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MissingResource::get_original_class, ctx, this_val, argc, argv);
 };
 static JSValue missing_resource_class_set_recording_properties(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MissingResource::set_recording_properties, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue missing_resource_class_is_recording_properties(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MissingResource::is_recording_properties, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry missing_resource_class_proto_funcs[] = {

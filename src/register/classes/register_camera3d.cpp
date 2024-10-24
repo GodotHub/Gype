@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/environment.hpp>
-#include <godot_cpp/classes/compositor.hpp>
-#include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/classes/camera3d.hpp>
+#include <godot_cpp/classes/environment.hpp>
+#include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/compositor.hpp>
+#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -39,171 +39,220 @@ static JSValue camera3d_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue camera3d_class_project_ray_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::project_ray_normal, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_project_local_ray_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::project_local_ray_normal, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_project_ray_origin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::project_ray_origin, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_unproject_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::unproject_position, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_is_position_behind(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::is_position_behind, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_project_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::project_position, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_set_perspective(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_perspective, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_set_orthogonal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_orthogonal, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_set_frustum(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_frustum, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_make_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::make_current, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_clear_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::clear_current, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_set_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_current, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_is_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::is_current, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_get_camera_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_camera_transform, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_get_camera_projection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_camera_projection, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_get_fov(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_fov, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_get_frustum_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_frustum_offset, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_size, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_get_far(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_far, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_get_near(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_near, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_set_fov(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_fov, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_set_frustum_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_frustum_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_set_far(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_far, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_set_near(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_near, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_get_projection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_projection, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_set_projection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_projection, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_set_h_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_h_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_get_h_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_h_offset, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_set_v_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_v_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_get_v_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_v_offset, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_set_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_cull_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_get_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_cull_mask, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_set_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_environment, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_get_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_environment, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_set_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_attributes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_get_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_attributes, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_set_compositor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_compositor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_get_compositor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_compositor, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_set_keep_aspect_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_keep_aspect_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_get_keep_aspect_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_keep_aspect_mode, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_set_doppler_tracking(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_doppler_tracking, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_get_doppler_tracking(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_doppler_tracking, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_get_frustum(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_frustum, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_is_position_in_frustum(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::is_position_in_frustum, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_get_camera_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_camera_rid, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_get_pyramid_shape_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Camera3D::get_pyramid_shape_rid, ctx, this_val, argc, argv);
 };
 static JSValue camera3d_class_set_cull_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Camera3D::set_cull_mask_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera3d_class_get_cull_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Camera3D::get_cull_mask_value, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry camera3d_class_proto_funcs[] = {

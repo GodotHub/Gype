@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_vcs_interface.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/editor_vcs_interface.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,27 +36,35 @@ static JSValue editor_vcs_interface_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue editor_vcs_interface_class_create_diff_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorVCSInterface::create_diff_line, ctx, this_val, argc, argv);
 };
 static JSValue editor_vcs_interface_class_create_diff_hunk(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorVCSInterface::create_diff_hunk, ctx, this_val, argc, argv);
 };
 static JSValue editor_vcs_interface_class_create_diff_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorVCSInterface::create_diff_file, ctx, this_val, argc, argv);
 };
 static JSValue editor_vcs_interface_class_create_commit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorVCSInterface::create_commit, ctx, this_val, argc, argv);
 };
 static JSValue editor_vcs_interface_class_create_status_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorVCSInterface::create_status_file, ctx, this_val, argc, argv);
 };
 static JSValue editor_vcs_interface_class_add_diff_hunks_into_diff_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorVCSInterface::add_diff_hunks_into_diff_file, ctx, this_val, argc, argv);
 };
 static JSValue editor_vcs_interface_class_add_line_diffs_into_diff_hunk(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorVCSInterface::add_line_diffs_into_diff_hunk, ctx, this_val, argc, argv);
 };
 static JSValue editor_vcs_interface_class_popup_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorVCSInterface::popup_error, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

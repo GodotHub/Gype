@@ -36,16 +36,20 @@ static JSValue xr_face_tracker_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue xr_face_tracker_class_get_blend_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XRFaceTracker::get_blend_shape, ctx, this_val, argc, argv);
 };
 static JSValue xr_face_tracker_class_set_blend_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&XRFaceTracker::set_blend_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_face_tracker_class_get_blend_shapes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&XRFaceTracker::get_blend_shapes, ctx, this_val, argc, argv);
 };
 static JSValue xr_face_tracker_class_set_blend_shapes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&XRFaceTracker::set_blend_shapes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

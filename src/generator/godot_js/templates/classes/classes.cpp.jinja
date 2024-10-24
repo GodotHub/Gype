@@ -69,15 +69,18 @@ static JSValue {{snake_name}}_class_constructor(JSContext *ctx, JSValueConst new
 {%- for method in instance_methods + virtual_methods %}
 	{%- if clazz_name == 'FileAccess' and method['name'] == 'get_buffer' %}
 static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(static_cast<PackedByteArray(FileAccess::*)(int64_t) const>(&FileAccess::get_buffer), ctx, this_val, argc, argv);
 };
 	{% elif clazz_name == 'FileAccess' and method['name'] == 'store_buffer' %}
 static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	call_builtin_method_no_ret(static_cast<void(FileAccess::*)(const PackedByteArray &)>(&FileAccess::store_buffer), ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 	{%- else %}
 static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 		{%- if method['return_value'] %}
 	return call_builtin{{get_const(method)}}_method_ret(&{{norm_name}}::{{method['name']}}, ctx, this_val, argc, argv);
 		{%- else %}
@@ -99,6 +102,7 @@ static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueCo
 {%- endfor %}
 {%- for method in vararg_methods %}
 static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     {%- if method['return_value'] %}
 	return call_builtin_vararg_method_ret(&{{norm_name}}::js_{{method['name']}}, ctx, this_val, argc, argv);
     {%- else %}

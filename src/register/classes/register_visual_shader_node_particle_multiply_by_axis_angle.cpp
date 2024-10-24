@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_particle_multiply_by_axis_angle.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/classes/visual_shader_node_particle_multiply_by_axis_angle.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,10 +36,12 @@ static JSValue visual_shader_node_particle_multiply_by_axis_angle_class_construc
 	return obj;
 }
 static JSValue visual_shader_node_particle_multiply_by_axis_angle_class_set_degrees_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VisualShaderNodeParticleMultiplyByAxisAngle::set_degrees_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_particle_multiply_by_axis_angle_class_is_degrees_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualShaderNodeParticleMultiplyByAxisAngle::is_degrees_mode, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry visual_shader_node_particle_multiply_by_axis_angle_class_proto_funcs[] = {

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,29 +36,37 @@ static JSValue shape2d_class_constructor(JSContext *ctx, JSValueConst new_target
 	return obj;
 }
 static JSValue shape2d_class_set_custom_solver_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Shape2D::set_custom_solver_bias, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape2d_class_get_custom_solver_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Shape2D::get_custom_solver_bias, ctx, this_val, argc, argv);
 };
 static JSValue shape2d_class_collide(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Shape2D::collide, ctx, this_val, argc, argv);
 };
 static JSValue shape2d_class_collide_with_motion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Shape2D::collide_with_motion, ctx, this_val, argc, argv);
 };
 static JSValue shape2d_class_collide_and_get_contacts(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Shape2D::collide_and_get_contacts, ctx, this_val, argc, argv);
 };
 static JSValue shape2d_class_collide_with_motion_and_get_contacts(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Shape2D::collide_with_motion_and_get_contacts, ctx, this_val, argc, argv);
 };
 static JSValue shape2d_class_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Shape2D::draw, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape2d_class_get_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Shape2D::get_rect, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry shape2d_class_proto_funcs[] = {

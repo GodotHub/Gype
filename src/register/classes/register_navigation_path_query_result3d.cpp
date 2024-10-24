@@ -36,34 +36,43 @@ static JSValue navigation_path_query_result3d_class_constructor(JSContext *ctx, 
 	return obj;
 }
 static JSValue navigation_path_query_result3d_class_set_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationPathQueryResult3D::set_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_result3d_class_get_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationPathQueryResult3D::get_path, ctx, this_val, argc, argv);
 };
 static JSValue navigation_path_query_result3d_class_set_path_types(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationPathQueryResult3D::set_path_types, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_result3d_class_get_path_types(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationPathQueryResult3D::get_path_types, ctx, this_val, argc, argv);
 };
 static JSValue navigation_path_query_result3d_class_set_path_rids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationPathQueryResult3D::set_path_rids, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_result3d_class_get_path_rids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationPathQueryResult3D::get_path_rids, ctx, this_val, argc, argv);
 };
 static JSValue navigation_path_query_result3d_class_set_path_owner_ids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationPathQueryResult3D::set_path_owner_ids, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_result3d_class_get_path_owner_ids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationPathQueryResult3D::get_path_owner_ids, ctx, this_val, argc, argv);
 };
 static JSValue navigation_path_query_result3d_class_reset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationPathQueryResult3D::reset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

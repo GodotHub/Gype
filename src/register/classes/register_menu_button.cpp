@@ -37,28 +37,35 @@ static JSValue menu_button_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue menu_button_class_get_popup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MenuButton::get_popup, ctx, this_val, argc, argv);
 };
 static JSValue menu_button_class_show_popup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MenuButton::show_popup, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_button_class_set_switch_on_hover(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MenuButton::set_switch_on_hover, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_button_class_is_switch_on_hover(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&MenuButton::is_switch_on_hover, ctx, this_val, argc, argv);
 };
 static JSValue menu_button_class_set_disable_shortcuts(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MenuButton::set_disable_shortcuts, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_button_class_set_item_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MenuButton::set_item_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_button_class_get_item_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MenuButton::get_item_count, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry menu_button_class_proto_funcs[] = {

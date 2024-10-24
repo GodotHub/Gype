@@ -36,29 +36,37 @@ static JSValue camera_feed_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue camera_feed_class_get_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CameraFeed::get_id, ctx, this_val, argc, argv);
 };
 static JSValue camera_feed_class_is_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CameraFeed::is_active, ctx, this_val, argc, argv);
 };
 static JSValue camera_feed_class_set_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CameraFeed::set_active, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_feed_class_get_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CameraFeed::get_name, ctx, this_val, argc, argv);
 };
 static JSValue camera_feed_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CameraFeed::get_position, ctx, this_val, argc, argv);
 };
 static JSValue camera_feed_class_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CameraFeed::get_transform, ctx, this_val, argc, argv);
 };
 static JSValue camera_feed_class_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CameraFeed::set_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_feed_class_get_datatype(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CameraFeed::get_datatype, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry camera_feed_class_proto_funcs[] = {

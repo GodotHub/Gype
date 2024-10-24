@@ -36,62 +36,79 @@ static JSValue camera_attributes_physical_class_constructor(JSContext *ctx, JSVa
 	return obj;
 }
 static JSValue camera_attributes_physical_class_set_aperture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CameraAttributesPhysical::set_aperture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_attributes_physical_class_get_aperture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CameraAttributesPhysical::get_aperture, ctx, this_val, argc, argv);
 };
 static JSValue camera_attributes_physical_class_set_shutter_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CameraAttributesPhysical::set_shutter_speed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_attributes_physical_class_get_shutter_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CameraAttributesPhysical::get_shutter_speed, ctx, this_val, argc, argv);
 };
 static JSValue camera_attributes_physical_class_set_focal_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CameraAttributesPhysical::set_focal_length, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_attributes_physical_class_get_focal_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CameraAttributesPhysical::get_focal_length, ctx, this_val, argc, argv);
 };
 static JSValue camera_attributes_physical_class_set_focus_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CameraAttributesPhysical::set_focus_distance, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_attributes_physical_class_get_focus_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CameraAttributesPhysical::get_focus_distance, ctx, this_val, argc, argv);
 };
 static JSValue camera_attributes_physical_class_set_near(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CameraAttributesPhysical::set_near, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_attributes_physical_class_get_near(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CameraAttributesPhysical::get_near, ctx, this_val, argc, argv);
 };
 static JSValue camera_attributes_physical_class_set_far(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CameraAttributesPhysical::set_far, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_attributes_physical_class_get_far(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CameraAttributesPhysical::get_far, ctx, this_val, argc, argv);
 };
 static JSValue camera_attributes_physical_class_get_fov(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CameraAttributesPhysical::get_fov, ctx, this_val, argc, argv);
 };
 static JSValue camera_attributes_physical_class_set_auto_exposure_max_exposure_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CameraAttributesPhysical::set_auto_exposure_max_exposure_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_attributes_physical_class_get_auto_exposure_max_exposure_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CameraAttributesPhysical::get_auto_exposure_max_exposure_value, ctx, this_val, argc, argv);
 };
 static JSValue camera_attributes_physical_class_set_auto_exposure_min_exposure_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CameraAttributesPhysical::set_auto_exposure_min_exposure_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_attributes_physical_class_get_auto_exposure_min_exposure_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CameraAttributesPhysical::get_auto_exposure_min_exposure_value, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry camera_attributes_physical_class_proto_funcs[] = {

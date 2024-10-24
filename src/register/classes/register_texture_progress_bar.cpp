@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/classes/texture_progress_bar.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,94 +37,120 @@ static JSValue texture_progress_bar_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue texture_progress_bar_class_set_under_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureProgressBar::set_under_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_under_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureProgressBar::get_under_texture, ctx, this_val, argc, argv);
 };
 static JSValue texture_progress_bar_class_set_progress_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureProgressBar::set_progress_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_progress_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureProgressBar::get_progress_texture, ctx, this_val, argc, argv);
 };
 static JSValue texture_progress_bar_class_set_over_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureProgressBar::set_over_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_over_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureProgressBar::get_over_texture, ctx, this_val, argc, argv);
 };
 static JSValue texture_progress_bar_class_set_fill_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureProgressBar::set_fill_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_fill_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextureProgressBar::get_fill_mode, ctx, this_val, argc, argv);
 };
 static JSValue texture_progress_bar_class_set_tint_under(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureProgressBar::set_tint_under, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_tint_under(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureProgressBar::get_tint_under, ctx, this_val, argc, argv);
 };
 static JSValue texture_progress_bar_class_set_tint_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureProgressBar::set_tint_progress, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_tint_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureProgressBar::get_tint_progress, ctx, this_val, argc, argv);
 };
 static JSValue texture_progress_bar_class_set_tint_over(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureProgressBar::set_tint_over, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_tint_over(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureProgressBar::get_tint_over, ctx, this_val, argc, argv);
 };
 static JSValue texture_progress_bar_class_set_texture_progress_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureProgressBar::set_texture_progress_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_texture_progress_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureProgressBar::get_texture_progress_offset, ctx, this_val, argc, argv);
 };
 static JSValue texture_progress_bar_class_set_radial_initial_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureProgressBar::set_radial_initial_angle, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_radial_initial_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextureProgressBar::get_radial_initial_angle, ctx, this_val, argc, argv);
 };
 static JSValue texture_progress_bar_class_set_radial_center_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureProgressBar::set_radial_center_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_radial_center_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextureProgressBar::get_radial_center_offset, ctx, this_val, argc, argv);
 };
 static JSValue texture_progress_bar_class_set_fill_degrees(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureProgressBar::set_fill_degrees, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_fill_degrees(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&TextureProgressBar::get_fill_degrees, ctx, this_val, argc, argv);
 };
 static JSValue texture_progress_bar_class_set_stretch_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureProgressBar::set_stretch_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_stretch_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureProgressBar::get_stretch_margin, ctx, this_val, argc, argv);
 };
 static JSValue texture_progress_bar_class_set_nine_patch_stretch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TextureProgressBar::set_nine_patch_stretch, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_nine_patch_stretch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TextureProgressBar::get_nine_patch_stretch, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry texture_progress_bar_class_proto_funcs[] = {

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/cylinder_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/cylinder_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,52 +36,66 @@ static JSValue cylinder_mesh_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 static JSValue cylinder_mesh_class_set_top_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CylinderMesh::set_top_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cylinder_mesh_class_get_top_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CylinderMesh::get_top_radius, ctx, this_val, argc, argv);
 };
 static JSValue cylinder_mesh_class_set_bottom_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CylinderMesh::set_bottom_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cylinder_mesh_class_get_bottom_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CylinderMesh::get_bottom_radius, ctx, this_val, argc, argv);
 };
 static JSValue cylinder_mesh_class_set_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CylinderMesh::set_height, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cylinder_mesh_class_get_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CylinderMesh::get_height, ctx, this_val, argc, argv);
 };
 static JSValue cylinder_mesh_class_set_radial_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CylinderMesh::set_radial_segments, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cylinder_mesh_class_get_radial_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CylinderMesh::get_radial_segments, ctx, this_val, argc, argv);
 };
 static JSValue cylinder_mesh_class_set_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CylinderMesh::set_rings, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cylinder_mesh_class_get_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CylinderMesh::get_rings, ctx, this_val, argc, argv);
 };
 static JSValue cylinder_mesh_class_set_cap_top(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CylinderMesh::set_cap_top, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cylinder_mesh_class_is_cap_top(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CylinderMesh::is_cap_top, ctx, this_val, argc, argv);
 };
 static JSValue cylinder_mesh_class_set_cap_bottom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CylinderMesh::set_cap_bottom, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue cylinder_mesh_class_is_cap_bottom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CylinderMesh::is_cap_bottom, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry cylinder_mesh_class_proto_funcs[] = {

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/curve3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/curve3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,103 +36,133 @@ static JSValue curve3d_class_constructor(JSContext *ctx, JSValueConst new_target
 	return obj;
 }
 static JSValue curve3d_class_get_point_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::get_point_count, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_set_point_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve3D::set_point_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_add_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve3D::add_point, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_set_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve3D::set_point_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_get_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::get_point_position, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_set_point_tilt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve3D::set_point_tilt, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_get_point_tilt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::get_point_tilt, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_set_point_in(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve3D::set_point_in, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_get_point_in(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::get_point_in, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_set_point_out(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve3D::set_point_out, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_get_point_out(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::get_point_out, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_remove_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve3D::remove_point, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_clear_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve3D::clear_points, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_sample(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::sample, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_samplef(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::samplef, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_set_bake_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve3D::set_bake_interval, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_get_bake_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::get_bake_interval, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_set_up_vector_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Curve3D::set_up_vector_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_is_up_vector_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::is_up_vector_enabled, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_get_baked_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::get_baked_length, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_sample_baked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::sample_baked, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_sample_baked_with_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::sample_baked_with_rotation, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_sample_baked_up_vector(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::sample_baked_up_vector, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_get_baked_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::get_baked_points, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_get_baked_tilts(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::get_baked_tilts, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_get_baked_up_vectors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::get_baked_up_vectors, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_get_closest_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::get_closest_point, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_get_closest_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::get_closest_offset, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_tessellate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::tessellate, ctx, this_val, argc, argv);
 };
 static JSValue curve3d_class_tessellate_even_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Curve3D::tessellate_even_length, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry curve3d_class_proto_funcs[] = {

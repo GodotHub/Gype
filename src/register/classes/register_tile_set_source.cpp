@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tile_set_source.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/tile_set_source.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,21 +36,27 @@ static JSValue tile_set_source_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue tile_set_source_class_get_tiles_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TileSetSource::get_tiles_count, ctx, this_val, argc, argv);
 };
 static JSValue tile_set_source_class_get_tile_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TileSetSource::get_tile_id, ctx, this_val, argc, argv);
 };
 static JSValue tile_set_source_class_has_tile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TileSetSource::has_tile, ctx, this_val, argc, argv);
 };
 static JSValue tile_set_source_class_get_alternative_tiles_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TileSetSource::get_alternative_tiles_count, ctx, this_val, argc, argv);
 };
 static JSValue tile_set_source_class_get_alternative_tile_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TileSetSource::get_alternative_tile_id, ctx, this_val, argc, argv);
 };
 static JSValue tile_set_source_class_has_alternative_tile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TileSetSource::has_alternative_tile, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry tile_set_source_class_proto_funcs[] = {

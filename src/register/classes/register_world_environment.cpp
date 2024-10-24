@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/environment.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/environment.hpp>
+#include <godot_cpp/classes/world_environment.hpp>
 #include <godot_cpp/classes/compositor.hpp>
 #include <godot_cpp/classes/camera_attributes.hpp>
-#include <godot_cpp/classes/world_environment.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -39,24 +39,30 @@ static JSValue world_environment_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue world_environment_class_set_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WorldEnvironment::set_environment, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue world_environment_class_get_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WorldEnvironment::get_environment, ctx, this_val, argc, argv);
 };
 static JSValue world_environment_class_set_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WorldEnvironment::set_camera_attributes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue world_environment_class_get_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WorldEnvironment::get_camera_attributes, ctx, this_val, argc, argv);
 };
 static JSValue world_environment_class_set_compositor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WorldEnvironment::set_compositor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue world_environment_class_get_compositor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WorldEnvironment::get_compositor, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry world_environment_class_proto_funcs[] = {

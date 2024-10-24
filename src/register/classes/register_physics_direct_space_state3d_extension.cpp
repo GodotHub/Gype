@@ -36,6 +36,7 @@ static JSValue physics_direct_space_state3d_extension_class_constructor(JSContex
 	return obj;
 }
 static JSValue physics_direct_space_state3d_extension_class_is_body_excluded_from_query(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectSpaceState3DExtension::is_body_excluded_from_query, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry physics_direct_space_state3d_extension_class_proto_funcs[] = {

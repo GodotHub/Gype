@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/semaphore.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/semaphore.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,13 +36,16 @@ static JSValue semaphore_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue semaphore_class_wait(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Semaphore::wait, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue semaphore_class_try_wait(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Semaphore::try_wait, ctx, this_val, argc, argv);
 };
 static JSValue semaphore_class_post(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Semaphore::post, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

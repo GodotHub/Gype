@@ -36,38 +36,48 @@ static JSValue sphere_mesh_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue sphere_mesh_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SphereMesh::set_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sphere_mesh_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SphereMesh::get_radius, ctx, this_val, argc, argv);
 };
 static JSValue sphere_mesh_class_set_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SphereMesh::set_height, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sphere_mesh_class_get_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SphereMesh::get_height, ctx, this_val, argc, argv);
 };
 static JSValue sphere_mesh_class_set_radial_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SphereMesh::set_radial_segments, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sphere_mesh_class_get_radial_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SphereMesh::get_radial_segments, ctx, this_val, argc, argv);
 };
 static JSValue sphere_mesh_class_set_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SphereMesh::set_rings, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sphere_mesh_class_get_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SphereMesh::get_rings, ctx, this_val, argc, argv);
 };
 static JSValue sphere_mesh_class_set_is_hemisphere(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SphereMesh::set_is_hemisphere, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sphere_mesh_class_get_is_hemisphere(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SphereMesh::get_is_hemisphere, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry sphere_mesh_class_proto_funcs[] = {

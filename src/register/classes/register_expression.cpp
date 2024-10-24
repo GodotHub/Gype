@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/expression.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -37,15 +37,19 @@ static JSValue expression_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue expression_class_parse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Expression::parse, ctx, this_val, argc, argv);
 };
 static JSValue expression_class_execute(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Expression::execute, ctx, this_val, argc, argv);
 };
 static JSValue expression_class_has_execute_failed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Expression::has_execute_failed, ctx, this_val, argc, argv);
 };
 static JSValue expression_class_get_error_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Expression::get_error_text, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry expression_class_proto_funcs[] = {

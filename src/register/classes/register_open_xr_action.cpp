@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/open_xr_action.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/open_xr_action.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,24 +36,30 @@ static JSValue open_xr_action_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue open_xr_action_class_set_localized_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRAction::set_localized_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_action_class_get_localized_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRAction::get_localized_name, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_class_set_action_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRAction::set_action_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_action_class_get_action_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRAction::get_action_type, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_class_set_toplevel_paths(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRAction::set_toplevel_paths, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_action_class_get_toplevel_paths(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRAction::get_toplevel_paths, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry open_xr_action_class_proto_funcs[] = {

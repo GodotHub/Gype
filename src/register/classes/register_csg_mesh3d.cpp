@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/csg_mesh3d.hpp>
 #include <godot_cpp/classes/csg_primitive3d.hpp>
-#include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,17 +38,21 @@ static JSValue csg_mesh3d_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue csg_mesh3d_class_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGMesh3D::set_mesh, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_mesh3d_class_get_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&CSGMesh3D::get_mesh, ctx, this_val, argc, argv);
 };
 static JSValue csg_mesh3d_class_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGMesh3D::set_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_mesh3d_class_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGMesh3D::get_material, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry csg_mesh3d_class_proto_funcs[] = {

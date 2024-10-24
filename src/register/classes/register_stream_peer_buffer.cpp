@@ -36,31 +36,39 @@ static JSValue stream_peer_buffer_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue stream_peer_buffer_class_seek(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeerBuffer::seek, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_buffer_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StreamPeerBuffer::get_size, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_buffer_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StreamPeerBuffer::get_position, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_buffer_class_resize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeerBuffer::resize, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_buffer_class_set_data_array(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeerBuffer::set_data_array, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_buffer_class_get_data_array(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StreamPeerBuffer::get_data_array, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_buffer_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeerBuffer::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_buffer_class_duplicate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StreamPeerBuffer::duplicate, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry stream_peer_buffer_class_proto_funcs[] = {

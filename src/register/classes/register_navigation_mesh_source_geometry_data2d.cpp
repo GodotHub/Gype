@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/navigation_mesh_source_geometry_data2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/navigation_mesh_source_geometry_data2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,59 +36,74 @@ static JSValue navigation_mesh_source_geometry_data2d_class_constructor(JSContex
 	return obj;
 }
 static JSValue navigation_mesh_source_geometry_data2d_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMeshSourceGeometryData2D::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_source_geometry_data2d_class_has_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&NavigationMeshSourceGeometryData2D::has_data, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_source_geometry_data2d_class_set_traversable_outlines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMeshSourceGeometryData2D::set_traversable_outlines, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_source_geometry_data2d_class_get_traversable_outlines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMeshSourceGeometryData2D::get_traversable_outlines, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_source_geometry_data2d_class_set_obstruction_outlines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMeshSourceGeometryData2D::set_obstruction_outlines, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_source_geometry_data2d_class_get_obstruction_outlines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMeshSourceGeometryData2D::get_obstruction_outlines, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_source_geometry_data2d_class_append_traversable_outlines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMeshSourceGeometryData2D::append_traversable_outlines, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_source_geometry_data2d_class_append_obstruction_outlines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMeshSourceGeometryData2D::append_obstruction_outlines, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_source_geometry_data2d_class_add_traversable_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMeshSourceGeometryData2D::add_traversable_outline, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_source_geometry_data2d_class_add_obstruction_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMeshSourceGeometryData2D::add_obstruction_outline, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_source_geometry_data2d_class_merge(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMeshSourceGeometryData2D::merge, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_source_geometry_data2d_class_add_projected_obstruction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMeshSourceGeometryData2D::add_projected_obstruction, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_source_geometry_data2d_class_clear_projected_obstructions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMeshSourceGeometryData2D::clear_projected_obstructions, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_source_geometry_data2d_class_set_projected_obstructions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationMeshSourceGeometryData2D::set_projected_obstructions, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_source_geometry_data2d_class_get_projected_obstructions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationMeshSourceGeometryData2D::get_projected_obstructions, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry navigation_mesh_source_geometry_data2d_class_proto_funcs[] = {

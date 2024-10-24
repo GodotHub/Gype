@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/multi_mesh_instance2d.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/multi_mesh.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/multi_mesh.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,17 +38,21 @@ static JSValue multi_mesh_instance2d_class_constructor(JSContext *ctx, JSValueCo
 	return obj;
 }
 static JSValue multi_mesh_instance2d_class_set_multimesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MultiMeshInstance2D::set_multimesh, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multi_mesh_instance2d_class_get_multimesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MultiMeshInstance2D::get_multimesh, ctx, this_val, argc, argv);
 };
 static JSValue multi_mesh_instance2d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MultiMeshInstance2D::set_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multi_mesh_instance2d_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MultiMeshInstance2D::get_texture, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry multi_mesh_instance2d_class_proto_funcs[] = {

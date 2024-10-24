@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,116 +36,149 @@ static JSValue stream_peer_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue stream_peer_class_put_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeer::put_data, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_class_put_partial_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeer::put_partial_data, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_class_get_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeer::get_data, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_class_get_partial_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeer::get_partial_data, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_class_get_available_bytes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StreamPeer::get_available_bytes, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_class_set_big_endian(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeer::set_big_endian, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_is_big_endian_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StreamPeer::is_big_endian_enabled, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_class_put_8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeer::put_8, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_u8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeer::put_u8, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_16(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeer::put_16, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_u16(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeer::put_u16, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_32(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeer::put_32, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_u32(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeer::put_u32, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_64(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeer::put_64, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_u64(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeer::put_u64, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_float(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeer::put_float, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_double(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeer::put_double, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeer::put_string, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_utf8_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeer::put_utf8_string, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_var(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StreamPeer::put_var, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_get_8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeer::get_8, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_class_get_u8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeer::get_u8, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_class_get_16(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeer::get_16, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_class_get_u16(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeer::get_u16, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_class_get_32(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeer::get_32, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_class_get_u32(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeer::get_u32, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_class_get_64(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeer::get_64, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_class_get_u64(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeer::get_u64, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_class_get_float(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeer::get_float, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_class_get_double(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeer::get_double, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_class_get_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeer::get_string, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_class_get_utf8_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeer::get_utf8_string, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_class_get_var(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&StreamPeer::get_var, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry stream_peer_class_proto_funcs[] = {

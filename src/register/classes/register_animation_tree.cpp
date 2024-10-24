@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_mixer.hpp>
-#include <godot_cpp/classes/animation_tree.hpp>
 #include <godot_cpp/classes/animation_root_node.hpp>
+#include <godot_cpp/classes/animation_tree.hpp>
+#include <godot_cpp/classes/animation_mixer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,31 +37,39 @@ static JSValue animation_tree_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue animation_tree_class_set_tree_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimationTree::set_tree_root, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_tree_class_get_tree_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimationTree::get_tree_root, ctx, this_val, argc, argv);
 };
 static JSValue animation_tree_class_set_advance_expression_base_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimationTree::set_advance_expression_base_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_tree_class_get_advance_expression_base_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimationTree::get_advance_expression_base_node, ctx, this_val, argc, argv);
 };
 static JSValue animation_tree_class_set_animation_player(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimationTree::set_animation_player, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_tree_class_get_animation_player(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimationTree::get_animation_player, ctx, this_val, argc, argv);
 };
 static JSValue animation_tree_class_set_process_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AnimationTree::set_process_callback, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_tree_class_get_process_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AnimationTree::get_process_callback, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry animation_tree_class_proto_funcs[] = {

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_shortcut.hpp>
-#include <godot_cpp/classes/shortcut.hpp>
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/shortcut.hpp>
+#include <godot_cpp/classes/input_event_shortcut.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,10 +37,12 @@ static JSValue input_event_shortcut_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue input_event_shortcut_class_set_shortcut(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventShortcut::set_shortcut, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_shortcut_class_get_shortcut(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&InputEventShortcut::get_shortcut, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry input_event_shortcut_class_proto_funcs[] = {

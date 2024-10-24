@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/image_texture.hpp>
 #include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,17 +37,21 @@ static JSValue image_texture_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 static JSValue image_texture_class_get_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImageTexture::get_format, ctx, this_val, argc, argv);
 };
 static JSValue image_texture_class_set_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImageTexture::set_image, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_texture_class_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImageTexture::update, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_texture_class_set_size_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImageTexture::set_size_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

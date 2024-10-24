@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/jsonrpc.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/jsonrpc.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,25 +36,32 @@ static JSValue jsonrpc_class_constructor(JSContext *ctx, JSValueConst new_target
 	return obj;
 }
 static JSValue jsonrpc_class_set_scope(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&JSONRPC::set_scope, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue jsonrpc_class_process_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&JSONRPC::process_action, ctx, this_val, argc, argv);
 };
 static JSValue jsonrpc_class_process_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&JSONRPC::process_string, ctx, this_val, argc, argv);
 };
 static JSValue jsonrpc_class_make_request(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&JSONRPC::make_request, ctx, this_val, argc, argv);
 };
 static JSValue jsonrpc_class_make_response(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&JSONRPC::make_response, ctx, this_val, argc, argv);
 };
 static JSValue jsonrpc_class_make_notification(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&JSONRPC::make_notification, ctx, this_val, argc, argv);
 };
 static JSValue jsonrpc_class_make_response_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&JSONRPC::make_response_error, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry jsonrpc_class_proto_funcs[] = {

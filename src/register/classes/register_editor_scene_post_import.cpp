@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/editor_scene_post_import.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -38,6 +38,7 @@ static JSValue editor_scene_post_import_class_constructor(JSContext *ctx, JSValu
 	return obj;
 }
 static JSValue editor_scene_post_import_class_get_source_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorScenePostImport::get_source_file, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_scene_post_import_class_proto_funcs[] = {

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mutex.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/mutex.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,13 +36,16 @@ static JSValue mutex_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	return obj;
 }
 static JSValue mutex_class_lock(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Mutex::lock, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mutex_class_try_lock(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Mutex::try_lock, ctx, this_val, argc, argv);
 };
 static JSValue mutex_class_unlock(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Mutex::unlock, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

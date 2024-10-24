@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/packet_peer_udp.hpp>
 #include <godot_cpp/classes/packet_peer_dtls.hpp>
 #include <godot_cpp/classes/packet_peer.hpp>
-#include <godot_cpp/classes/packet_peer_udp.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -38,16 +38,20 @@ static JSValue packet_peer_dtls_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue packet_peer_dtls_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PacketPeerDTLS::poll, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packet_peer_dtls_class_connect_to_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PacketPeerDTLS::connect_to_peer, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_dtls_class_get_status(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PacketPeerDTLS::get_status, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_dtls_class_disconnect_from_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PacketPeerDTLS::disconnect_from_peer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

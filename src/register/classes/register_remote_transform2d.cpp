@@ -36,42 +36,53 @@ static JSValue remote_transform2d_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue remote_transform2d_class_set_remote_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RemoteTransform2D::set_remote_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue remote_transform2d_class_get_remote_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RemoteTransform2D::get_remote_node, ctx, this_val, argc, argv);
 };
 static JSValue remote_transform2d_class_force_update_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RemoteTransform2D::force_update_cache, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue remote_transform2d_class_set_use_global_coordinates(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RemoteTransform2D::set_use_global_coordinates, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue remote_transform2d_class_get_use_global_coordinates(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RemoteTransform2D::get_use_global_coordinates, ctx, this_val, argc, argv);
 };
 static JSValue remote_transform2d_class_set_update_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RemoteTransform2D::set_update_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue remote_transform2d_class_get_update_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RemoteTransform2D::get_update_position, ctx, this_val, argc, argv);
 };
 static JSValue remote_transform2d_class_set_update_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RemoteTransform2D::set_update_rotation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue remote_transform2d_class_get_update_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RemoteTransform2D::get_update_rotation, ctx, this_val, argc, argv);
 };
 static JSValue remote_transform2d_class_set_update_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RemoteTransform2D::set_update_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue remote_transform2d_class_get_update_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RemoteTransform2D::get_update_scale, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry remote_transform2d_class_proto_funcs[] = {

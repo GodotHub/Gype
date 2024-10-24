@@ -36,6 +36,7 @@ static JSValue audio_effect_spectrum_analyzer_instance_class_constructor(JSConte
 	return obj;
 }
 static JSValue audio_effect_spectrum_analyzer_instance_class_get_magnitude_for_frequency_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectSpectrumAnalyzerInstance::get_magnitude_for_frequency_range, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry audio_effect_spectrum_analyzer_instance_class_proto_funcs[] = {

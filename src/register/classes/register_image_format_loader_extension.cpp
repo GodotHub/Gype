@@ -38,10 +38,12 @@ static JSValue image_format_loader_extension_class_constructor(JSContext *ctx, J
 	return obj;
 }
 static JSValue image_format_loader_extension_class_add_format_loader(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImageFormatLoaderExtension::add_format_loader, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_format_loader_extension_class_remove_format_loader(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImageFormatLoaderExtension::remove_format_loader, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

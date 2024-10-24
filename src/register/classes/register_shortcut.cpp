@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/shortcut.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,19 +37,24 @@ static JSValue shortcut_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue shortcut_class_set_events(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Shortcut::set_events, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shortcut_class_get_events(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Shortcut::get_events, ctx, this_val, argc, argv);
 };
 static JSValue shortcut_class_has_valid_event(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Shortcut::has_valid_event, ctx, this_val, argc, argv);
 };
 static JSValue shortcut_class_matches_event(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Shortcut::matches_event, ctx, this_val, argc, argv);
 };
 static JSValue shortcut_class_get_as_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Shortcut::get_as_text, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry shortcut_class_proto_funcs[] = {

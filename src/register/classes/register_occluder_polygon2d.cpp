@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/occluder_polygon2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/occluder_polygon2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,24 +36,30 @@ static JSValue occluder_polygon2d_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue occluder_polygon2d_class_set_closed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OccluderPolygon2D::set_closed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue occluder_polygon2d_class_is_closed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OccluderPolygon2D::is_closed, ctx, this_val, argc, argv);
 };
 static JSValue occluder_polygon2d_class_set_cull_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OccluderPolygon2D::set_cull_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue occluder_polygon2d_class_get_cull_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OccluderPolygon2D::get_cull_mode, ctx, this_val, argc, argv);
 };
 static JSValue occluder_polygon2d_class_set_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OccluderPolygon2D::set_polygon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue occluder_polygon2d_class_get_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OccluderPolygon2D::get_polygon, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry occluder_polygon2d_class_proto_funcs[] = {

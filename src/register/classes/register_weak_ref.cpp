@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/weak_ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/weak_ref.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,6 +36,7 @@ static JSValue weak_ref_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue weak_ref_class_get_ref(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WeakRef::get_ref, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry weak_ref_class_proto_funcs[] = {

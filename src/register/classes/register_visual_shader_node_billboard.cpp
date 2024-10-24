@@ -36,17 +36,21 @@ static JSValue visual_shader_node_billboard_class_constructor(JSContext *ctx, JS
 	return obj;
 }
 static JSValue visual_shader_node_billboard_class_set_billboard_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VisualShaderNodeBillboard::set_billboard_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_billboard_class_get_billboard_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualShaderNodeBillboard::get_billboard_type, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_billboard_class_set_keep_scale_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VisualShaderNodeBillboard::set_keep_scale_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_billboard_class_is_keep_scale_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualShaderNodeBillboard::is_keep_scale_enabled, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry visual_shader_node_billboard_class_proto_funcs[] = {

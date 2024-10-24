@@ -36,21 +36,27 @@ static JSValue render_scene_data_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue render_scene_data_class_get_cam_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneData::get_cam_transform, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_data_class_get_cam_projection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneData::get_cam_projection, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_data_class_get_view_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneData::get_view_count, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_data_class_get_view_eye_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneData::get_view_eye_offset, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_data_class_get_view_projection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneData::get_view_projection, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_data_class_get_uniform_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneData::get_uniform_buffer, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry render_scene_data_class_proto_funcs[] = {

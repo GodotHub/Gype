@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_resource_preview_generator.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/editor_resource_preview.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/editor_resource_preview_generator.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -39,22 +39,27 @@ static JSValue editor_resource_preview_class_constructor(JSContext *ctx, JSValue
 	return obj;
 }
 static JSValue editor_resource_preview_class_queue_resource_preview(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorResourcePreview::queue_resource_preview, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_resource_preview_class_queue_edited_resource_preview(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorResourcePreview::queue_edited_resource_preview, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_resource_preview_class_add_preview_generator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorResourcePreview::add_preview_generator, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_resource_preview_class_remove_preview_generator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorResourcePreview::remove_preview_generator, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_resource_preview_class_check_for_invalidation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorResourcePreview::check_for_invalidation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

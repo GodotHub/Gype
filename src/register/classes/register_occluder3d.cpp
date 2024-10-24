@@ -36,9 +36,11 @@ static JSValue occluder3d_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue occluder3d_class_get_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Occluder3D::get_vertices, ctx, this_val, argc, argv);
 };
 static JSValue occluder3d_class_get_indices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Occluder3D::get_indices, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry occluder3d_class_proto_funcs[] = {

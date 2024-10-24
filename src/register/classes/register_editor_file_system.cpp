@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_file_system.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/editor_file_system.hpp>
 #include <godot_cpp/classes/editor_file_system_directory.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -37,33 +37,42 @@ static JSValue editor_file_system_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue editor_file_system_class_get_filesystem(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorFileSystem::get_filesystem, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_class_is_scanning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorFileSystem::is_scanning, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_class_get_scanning_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorFileSystem::get_scanning_progress, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_class_scan(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorFileSystem::scan, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_file_system_class_scan_sources(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorFileSystem::scan_sources, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_file_system_class_update_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorFileSystem::update_file, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_file_system_class_get_filesystem_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorFileSystem::get_filesystem_path, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_class_get_file_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorFileSystem::get_file_type, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_class_reimport_files(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorFileSystem::reimport_files, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

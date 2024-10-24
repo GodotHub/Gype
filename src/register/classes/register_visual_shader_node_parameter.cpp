@@ -36,17 +36,21 @@ static JSValue visual_shader_node_parameter_class_constructor(JSContext *ctx, JS
 	return obj;
 }
 static JSValue visual_shader_node_parameter_class_set_parameter_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VisualShaderNodeParameter::set_parameter_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_parameter_class_get_parameter_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualShaderNodeParameter::get_parameter_name, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_parameter_class_set_qualifier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VisualShaderNodeParameter::set_qualifier, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_parameter_class_get_qualifier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualShaderNodeParameter::get_qualifier, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry visual_shader_node_parameter_class_proto_funcs[] = {

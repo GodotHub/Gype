@@ -37,17 +37,21 @@ static JSValue syntax_highlighter_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue syntax_highlighter_class_get_line_syntax_highlighting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&SyntaxHighlighter::get_line_syntax_highlighting, ctx, this_val, argc, argv);
 };
 static JSValue syntax_highlighter_class_update_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SyntaxHighlighter::update_cache, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue syntax_highlighter_class_clear_highlighting_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SyntaxHighlighter::clear_highlighting_cache, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue syntax_highlighter_class_get_text_edit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SyntaxHighlighter::get_text_edit, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry syntax_highlighter_class_proto_funcs[] = {

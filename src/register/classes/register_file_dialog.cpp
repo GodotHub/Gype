@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/v_box_container.hpp>
-#include <godot_cpp/classes/confirmation_dialog.hpp>
 #include <godot_cpp/classes/line_edit.hpp>
+#include <godot_cpp/classes/confirmation_dialog.hpp>
+#include <godot_cpp/classes/v_box_container.hpp>
 #include <godot_cpp/classes/file_dialog.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -38,129 +38,165 @@ static JSValue file_dialog_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue file_dialog_class_clear_filters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::clear_filters, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_add_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::add_filter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_set_filters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::set_filters, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_get_filters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FileDialog::get_filters, ctx, this_val, argc, argv);
 };
 static JSValue file_dialog_class_get_option_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FileDialog::get_option_name, ctx, this_val, argc, argv);
 };
 static JSValue file_dialog_class_get_option_values(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FileDialog::get_option_values, ctx, this_val, argc, argv);
 };
 static JSValue file_dialog_class_get_option_default(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FileDialog::get_option_default, ctx, this_val, argc, argv);
 };
 static JSValue file_dialog_class_set_option_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::set_option_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_set_option_values(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::set_option_values, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_set_option_default(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::set_option_default, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_set_option_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::set_option_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_get_option_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FileDialog::get_option_count, ctx, this_val, argc, argv);
 };
 static JSValue file_dialog_class_add_option(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::add_option, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_get_selected_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FileDialog::get_selected_options, ctx, this_val, argc, argv);
 };
 static JSValue file_dialog_class_get_current_dir(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FileDialog::get_current_dir, ctx, this_val, argc, argv);
 };
 static JSValue file_dialog_class_get_current_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FileDialog::get_current_file, ctx, this_val, argc, argv);
 };
 static JSValue file_dialog_class_get_current_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FileDialog::get_current_path, ctx, this_val, argc, argv);
 };
 static JSValue file_dialog_class_set_current_dir(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::set_current_dir, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_set_current_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::set_current_file, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_set_current_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::set_current_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_set_mode_overrides_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::set_mode_overrides_title, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_is_mode_overriding_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FileDialog::is_mode_overriding_title, ctx, this_val, argc, argv);
 };
 static JSValue file_dialog_class_set_file_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::set_file_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_get_file_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FileDialog::get_file_mode, ctx, this_val, argc, argv);
 };
 static JSValue file_dialog_class_get_vbox(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&FileDialog::get_vbox, ctx, this_val, argc, argv);
 };
 static JSValue file_dialog_class_get_line_edit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&FileDialog::get_line_edit, ctx, this_val, argc, argv);
 };
 static JSValue file_dialog_class_set_access(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::set_access, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_get_access(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FileDialog::get_access, ctx, this_val, argc, argv);
 };
 static JSValue file_dialog_class_set_root_subfolder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::set_root_subfolder, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_get_root_subfolder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FileDialog::get_root_subfolder, ctx, this_val, argc, argv);
 };
 static JSValue file_dialog_class_set_show_hidden_files(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::set_show_hidden_files, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_is_showing_hidden_files(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FileDialog::is_showing_hidden_files, ctx, this_val, argc, argv);
 };
 static JSValue file_dialog_class_set_use_native_dialog(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::set_use_native_dialog, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_get_use_native_dialog(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FileDialog::get_use_native_dialog, ctx, this_val, argc, argv);
 };
 static JSValue file_dialog_class_deselect_all(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::deselect_all, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_dialog_class_invalidate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FileDialog::invalidate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

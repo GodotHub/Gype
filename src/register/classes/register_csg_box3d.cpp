@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/csg_box3d.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/csg_primitive3d.hpp>
+#include <godot_cpp/classes/csg_box3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,17 +37,21 @@ static JSValue csg_box3d_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue csg_box3d_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGBox3D::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_box3d_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGBox3D::get_size, ctx, this_val, argc, argv);
 };
 static JSValue csg_box3d_class_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGBox3D::set_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_box3d_class_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGBox3D::get_material, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry csg_box3d_class_proto_funcs[] = {

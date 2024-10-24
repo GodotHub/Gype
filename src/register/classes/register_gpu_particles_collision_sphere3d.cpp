@@ -36,10 +36,12 @@ static JSValue gpu_particles_collision_sphere3d_class_constructor(JSContext *ctx
 	return obj;
 }
 static JSValue gpu_particles_collision_sphere3d_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GPUParticlesCollisionSphere3D::set_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles_collision_sphere3d_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GPUParticlesCollisionSphere3D::get_radius, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry gpu_particles_collision_sphere3d_class_proto_funcs[] = {

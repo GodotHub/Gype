@@ -36,10 +36,12 @@ static JSValue visual_shader_node_multiply_add_class_constructor(JSContext *ctx,
 	return obj;
 }
 static JSValue visual_shader_node_multiply_add_class_set_op_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VisualShaderNodeMultiplyAdd::set_op_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_multiply_add_class_get_op_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualShaderNodeMultiplyAdd::get_op_type, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry visual_shader_node_multiply_add_class_proto_funcs[] = {

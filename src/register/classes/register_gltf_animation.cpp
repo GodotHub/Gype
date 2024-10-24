@@ -36,23 +36,29 @@ static JSValue gltf_animation_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue gltf_animation_class_get_original_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFAnimation::get_original_name, ctx, this_val, argc, argv);
 };
 static JSValue gltf_animation_class_set_original_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFAnimation::set_original_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_animation_class_get_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GLTFAnimation::get_loop, ctx, this_val, argc, argv);
 };
 static JSValue gltf_animation_class_set_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFAnimation::set_loop, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_animation_class_get_additional_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFAnimation::get_additional_data, ctx, this_val, argc, argv);
 };
 static JSValue gltf_animation_class_set_additional_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFAnimation::set_additional_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

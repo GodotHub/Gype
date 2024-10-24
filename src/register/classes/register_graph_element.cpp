@@ -36,38 +36,48 @@ static JSValue graph_element_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 static JSValue graph_element_class_set_resizable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GraphElement::set_resizable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_element_class_is_resizable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GraphElement::is_resizable, ctx, this_val, argc, argv);
 };
 static JSValue graph_element_class_set_draggable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GraphElement::set_draggable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_element_class_is_draggable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GraphElement::is_draggable, ctx, this_val, argc, argv);
 };
 static JSValue graph_element_class_set_selectable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GraphElement::set_selectable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_element_class_is_selectable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GraphElement::is_selectable, ctx, this_val, argc, argv);
 };
 static JSValue graph_element_class_set_selected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GraphElement::set_selected, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_element_class_is_selected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GraphElement::is_selected, ctx, this_val, argc, argv);
 };
 static JSValue graph_element_class_set_position_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GraphElement::set_position_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue graph_element_class_get_position_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GraphElement::get_position_offset, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry graph_element_class_proto_funcs[] = {

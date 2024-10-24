@@ -36,9 +36,11 @@ static JSValue gd_extension_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue gd_extension_class_is_library_open(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GDExtension::is_library_open, ctx, this_val, argc, argv);
 };
 static JSValue gd_extension_class_get_minimum_library_initialization_level(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GDExtension::get_minimum_library_initialization_level, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry gd_extension_class_proto_funcs[] = {

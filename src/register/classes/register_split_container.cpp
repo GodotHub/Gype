@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/split_container.hpp>
 #include <godot_cpp/classes/container.hpp>
+#include <godot_cpp/classes/split_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,35 +36,44 @@ static JSValue split_container_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue split_container_class_set_split_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SplitContainer::set_split_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue split_container_class_get_split_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SplitContainer::get_split_offset, ctx, this_val, argc, argv);
 };
 static JSValue split_container_class_clamp_split_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SplitContainer::clamp_split_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue split_container_class_set_collapsed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SplitContainer::set_collapsed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue split_container_class_is_collapsed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SplitContainer::is_collapsed, ctx, this_val, argc, argv);
 };
 static JSValue split_container_class_set_dragger_visibility(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SplitContainer::set_dragger_visibility, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue split_container_class_get_dragger_visibility(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SplitContainer::get_dragger_visibility, ctx, this_val, argc, argv);
 };
 static JSValue split_container_class_set_vertical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&SplitContainer::set_vertical, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue split_container_class_is_vertical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SplitContainer::is_vertical, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry split_container_class_proto_funcs[] = {

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,84 +37,107 @@ static JSValue range_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	return obj;
 }
 static JSValue range_class_get_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Range::get_value, ctx, this_val, argc, argv);
 };
 static JSValue range_class_get_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Range::get_min, ctx, this_val, argc, argv);
 };
 static JSValue range_class_get_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Range::get_max, ctx, this_val, argc, argv);
 };
 static JSValue range_class_get_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Range::get_step, ctx, this_val, argc, argv);
 };
 static JSValue range_class_get_page(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Range::get_page, ctx, this_val, argc, argv);
 };
 static JSValue range_class_get_as_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Range::get_as_ratio, ctx, this_val, argc, argv);
 };
 static JSValue range_class_set_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Range::set_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_set_value_no_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Range::set_value_no_signal, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_set_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Range::set_min, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_set_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Range::set_max, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_set_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Range::set_step, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_set_page(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Range::set_page, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_set_as_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Range::set_as_ratio, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_set_use_rounded_values(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Range::set_use_rounded_values, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_is_using_rounded_values(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Range::is_using_rounded_values, ctx, this_val, argc, argv);
 };
 static JSValue range_class_set_exp_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Range::set_exp_ratio, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_is_ratio_exp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Range::is_ratio_exp, ctx, this_val, argc, argv);
 };
 static JSValue range_class_set_allow_greater(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Range::set_allow_greater, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_is_greater_allowed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Range::is_greater_allowed, ctx, this_val, argc, argv);
 };
 static JSValue range_class_set_allow_lesser(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Range::set_allow_lesser, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_is_lesser_allowed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Range::is_lesser_allowed, ctx, this_val, argc, argv);
 };
 static JSValue range_class_share(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Range::share, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue range_class_unshare(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Range::unshare, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

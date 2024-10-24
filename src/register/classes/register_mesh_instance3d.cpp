@@ -5,14 +5,14 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh_instance3d.hpp>
-#include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/array_mesh.hpp>
-#include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/skin.hpp>
+#include <godot_cpp/classes/geometry_instance3d.hpp>
+#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/mesh_instance3d.hpp>
 #include <godot_cpp/classes/skin_reference.hpp>
 #include <godot_cpp/classes/mesh_convex_decomposition_settings.hpp>
-#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -42,72 +42,92 @@ static JSValue mesh_instance3d_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue mesh_instance3d_class_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshInstance3D::set_mesh, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_instance3d_class_get_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshInstance3D::get_mesh, ctx, this_val, argc, argv);
 };
 static JSValue mesh_instance3d_class_set_skeleton_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshInstance3D::set_skeleton_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_instance3d_class_get_skeleton_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&MeshInstance3D::get_skeleton_path, ctx, this_val, argc, argv);
 };
 static JSValue mesh_instance3d_class_set_skin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshInstance3D::set_skin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_instance3d_class_get_skin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshInstance3D::get_skin, ctx, this_val, argc, argv);
 };
 static JSValue mesh_instance3d_class_get_skin_reference(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshInstance3D::get_skin_reference, ctx, this_val, argc, argv);
 };
 static JSValue mesh_instance3d_class_get_surface_override_material_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshInstance3D::get_surface_override_material_count, ctx, this_val, argc, argv);
 };
 static JSValue mesh_instance3d_class_set_surface_override_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshInstance3D::set_surface_override_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_instance3d_class_get_surface_override_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshInstance3D::get_surface_override_material, ctx, this_val, argc, argv);
 };
 static JSValue mesh_instance3d_class_get_active_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshInstance3D::get_active_material, ctx, this_val, argc, argv);
 };
 static JSValue mesh_instance3d_class_create_trimesh_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshInstance3D::create_trimesh_collision, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_instance3d_class_create_convex_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshInstance3D::create_convex_collision, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_instance3d_class_create_multiple_convex_collisions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshInstance3D::create_multiple_convex_collisions, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_instance3d_class_get_blend_shape_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshInstance3D::get_blend_shape_count, ctx, this_val, argc, argv);
 };
 static JSValue mesh_instance3d_class_find_blend_shape_by_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&MeshInstance3D::find_blend_shape_by_name, ctx, this_val, argc, argv);
 };
 static JSValue mesh_instance3d_class_get_blend_shape_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshInstance3D::get_blend_shape_value, ctx, this_val, argc, argv);
 };
 static JSValue mesh_instance3d_class_set_blend_shape_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshInstance3D::set_blend_shape_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_instance3d_class_create_debug_tangents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshInstance3D::create_debug_tangents, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_instance3d_class_bake_mesh_from_current_blend_shape_mix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&MeshInstance3D::bake_mesh_from_current_blend_shape_mix, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry mesh_instance3d_class_proto_funcs[] = {

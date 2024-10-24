@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_pipeline_multisample_state.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/rd_pipeline_multisample_state.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,45 +36,57 @@ static JSValue rd_pipeline_multisample_state_class_constructor(JSContext *ctx, J
 	return obj;
 }
 static JSValue rd_pipeline_multisample_state_class_set_sample_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDPipelineMultisampleState::set_sample_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_multisample_state_class_get_sample_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDPipelineMultisampleState::get_sample_count, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_multisample_state_class_set_enable_sample_shading(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDPipelineMultisampleState::set_enable_sample_shading, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_multisample_state_class_get_enable_sample_shading(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDPipelineMultisampleState::get_enable_sample_shading, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_multisample_state_class_set_min_sample_shading(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDPipelineMultisampleState::set_min_sample_shading, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_multisample_state_class_get_min_sample_shading(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDPipelineMultisampleState::get_min_sample_shading, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_multisample_state_class_set_enable_alpha_to_coverage(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDPipelineMultisampleState::set_enable_alpha_to_coverage, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_multisample_state_class_get_enable_alpha_to_coverage(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDPipelineMultisampleState::get_enable_alpha_to_coverage, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_multisample_state_class_set_enable_alpha_to_one(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDPipelineMultisampleState::set_enable_alpha_to_one, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_multisample_state_class_get_enable_alpha_to_one(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDPipelineMultisampleState::get_enable_alpha_to_one, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_multisample_state_class_set_sample_masks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDPipelineMultisampleState::set_sample_masks, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_multisample_state_class_get_sample_masks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDPipelineMultisampleState::get_sample_masks, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry rd_pipeline_multisample_state_class_proto_funcs[] = {

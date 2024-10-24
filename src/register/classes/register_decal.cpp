@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/decal.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,87 +37,111 @@ static JSValue decal_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	return obj;
 }
 static JSValue decal_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Decal::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Decal::get_size, ctx, this_val, argc, argv);
 };
 static JSValue decal_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Decal::set_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Decal::get_texture, ctx, this_val, argc, argv);
 };
 static JSValue decal_class_set_emission_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Decal::set_emission_energy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_emission_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Decal::get_emission_energy, ctx, this_val, argc, argv);
 };
 static JSValue decal_class_set_albedo_mix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Decal::set_albedo_mix, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_albedo_mix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Decal::get_albedo_mix, ctx, this_val, argc, argv);
 };
 static JSValue decal_class_set_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Decal::set_modulate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Decal::get_modulate, ctx, this_val, argc, argv);
 };
 static JSValue decal_class_set_upper_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Decal::set_upper_fade, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_upper_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Decal::get_upper_fade, ctx, this_val, argc, argv);
 };
 static JSValue decal_class_set_lower_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Decal::set_lower_fade, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_lower_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Decal::get_lower_fade, ctx, this_val, argc, argv);
 };
 static JSValue decal_class_set_normal_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Decal::set_normal_fade, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_normal_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Decal::get_normal_fade, ctx, this_val, argc, argv);
 };
 static JSValue decal_class_set_enable_distance_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Decal::set_enable_distance_fade, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_is_distance_fade_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Decal::is_distance_fade_enabled, ctx, this_val, argc, argv);
 };
 static JSValue decal_class_set_distance_fade_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Decal::set_distance_fade_begin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_distance_fade_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Decal::get_distance_fade_begin, ctx, this_val, argc, argv);
 };
 static JSValue decal_class_set_distance_fade_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Decal::set_distance_fade_length, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_distance_fade_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Decal::get_distance_fade_length, ctx, this_val, argc, argv);
 };
 static JSValue decal_class_set_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Decal::set_cull_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Decal::get_cull_mask, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry decal_class_proto_funcs[] = {

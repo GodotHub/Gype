@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_direct_space_state2d.hpp>
 #include <godot_cpp/classes/physics_direct_space_state2d_extension.hpp>
+#include <godot_cpp/classes/physics_direct_space_state2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,6 +36,7 @@ static JSValue physics_direct_space_state2d_extension_class_constructor(JSContex
 	return obj;
 }
 static JSValue physics_direct_space_state2d_extension_class_is_body_excluded_from_query(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsDirectSpaceState2DExtension::is_body_excluded_from_query, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry physics_direct_space_state2d_extension_class_proto_funcs[] = {

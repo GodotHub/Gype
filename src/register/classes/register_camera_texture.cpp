@@ -36,24 +36,30 @@ static JSValue camera_texture_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue camera_texture_class_set_camera_feed_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CameraTexture::set_camera_feed_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_texture_class_get_camera_feed_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CameraTexture::get_camera_feed_id, ctx, this_val, argc, argv);
 };
 static JSValue camera_texture_class_set_which_feed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CameraTexture::set_which_feed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_texture_class_get_which_feed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CameraTexture::get_which_feed, ctx, this_val, argc, argv);
 };
 static JSValue camera_texture_class_set_camera_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CameraTexture::set_camera_active, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_texture_class_get_camera_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CameraTexture::get_camera_active, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry camera_texture_class_proto_funcs[] = {

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_point_query_parameters3d.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/physics_point_query_parameters3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,38 +36,48 @@ static JSValue physics_point_query_parameters3d_class_constructor(JSContext *ctx
 	return obj;
 }
 static JSValue physics_point_query_parameters3d_class_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsPointQueryParameters3D::set_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_point_query_parameters3d_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsPointQueryParameters3D::get_position, ctx, this_val, argc, argv);
 };
 static JSValue physics_point_query_parameters3d_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsPointQueryParameters3D::set_collision_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_point_query_parameters3d_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsPointQueryParameters3D::get_collision_mask, ctx, this_val, argc, argv);
 };
 static JSValue physics_point_query_parameters3d_class_set_exclude(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsPointQueryParameters3D::set_exclude, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_point_query_parameters3d_class_get_exclude(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsPointQueryParameters3D::get_exclude, ctx, this_val, argc, argv);
 };
 static JSValue physics_point_query_parameters3d_class_set_collide_with_bodies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsPointQueryParameters3D::set_collide_with_bodies, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_point_query_parameters3d_class_is_collide_with_bodies_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsPointQueryParameters3D::is_collide_with_bodies_enabled, ctx, this_val, argc, argv);
 };
 static JSValue physics_point_query_parameters3d_class_set_collide_with_areas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsPointQueryParameters3D::set_collide_with_areas, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_point_query_parameters3d_class_is_collide_with_areas_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsPointQueryParameters3D::is_collide_with_areas_enabled, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry physics_point_query_parameters3d_class_proto_funcs[] = {

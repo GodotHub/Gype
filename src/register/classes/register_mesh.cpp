@@ -6,11 +6,11 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/triangle_mesh.hpp>
-#include <godot_cpp/classes/concave_polygon_shape3d.hpp>
-#include <godot_cpp/classes/convex_polygon_shape3d.hpp>
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/convex_polygon_shape3d.hpp>
+#include <godot_cpp/classes/concave_polygon_shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -40,47 +40,61 @@ static JSValue mesh_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	return obj;
 }
 static JSValue mesh_class_set_lightmap_size_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Mesh::set_lightmap_size_hint, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_class_get_lightmap_size_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Mesh::get_lightmap_size_hint, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_get_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Mesh::get_aabb, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_get_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Mesh::get_faces, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_get_surface_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Mesh::get_surface_count, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_surface_get_arrays(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Mesh::surface_get_arrays, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_surface_get_blend_shape_arrays(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Mesh::surface_get_blend_shape_arrays, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_surface_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Mesh::surface_set_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_class_surface_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Mesh::surface_get_material, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_create_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Mesh::create_placeholder, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_create_trimesh_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Mesh::create_trimesh_shape, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_create_convex_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Mesh::create_convex_shape, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_create_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Mesh::create_outline, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_generate_triangle_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Mesh::generate_triangle_mesh, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry mesh_class_proto_funcs[] = {

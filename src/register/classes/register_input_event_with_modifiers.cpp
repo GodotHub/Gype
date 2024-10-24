@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_from_window.hpp>
 #include <godot_cpp/classes/input_event_with_modifiers.hpp>
+#include <godot_cpp/classes/input_event_from_window.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,44 +36,56 @@ static JSValue input_event_with_modifiers_class_constructor(JSContext *ctx, JSVa
 	return obj;
 }
 static JSValue input_event_with_modifiers_class_set_command_or_control_autoremap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventWithModifiers::set_command_or_control_autoremap, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_with_modifiers_class_is_command_or_control_autoremap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventWithModifiers::is_command_or_control_autoremap, ctx, this_val, argc, argv);
 };
 static JSValue input_event_with_modifiers_class_is_command_or_control_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventWithModifiers::is_command_or_control_pressed, ctx, this_val, argc, argv);
 };
 static JSValue input_event_with_modifiers_class_set_alt_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventWithModifiers::set_alt_pressed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_with_modifiers_class_is_alt_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventWithModifiers::is_alt_pressed, ctx, this_val, argc, argv);
 };
 static JSValue input_event_with_modifiers_class_set_shift_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventWithModifiers::set_shift_pressed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_with_modifiers_class_is_shift_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventWithModifiers::is_shift_pressed, ctx, this_val, argc, argv);
 };
 static JSValue input_event_with_modifiers_class_set_ctrl_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventWithModifiers::set_ctrl_pressed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_with_modifiers_class_is_ctrl_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventWithModifiers::is_ctrl_pressed, ctx, this_val, argc, argv);
 };
 static JSValue input_event_with_modifiers_class_set_meta_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventWithModifiers::set_meta_pressed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_with_modifiers_class_is_meta_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventWithModifiers::is_meta_pressed, ctx, this_val, argc, argv);
 };
 static JSValue input_event_with_modifiers_class_get_modifiers_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventWithModifiers::get_modifiers_mask, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry input_event_with_modifiers_class_proto_funcs[] = {

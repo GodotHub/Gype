@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/shape3d.hpp>
-#include <godot_cpp/classes/gltf_physics_shape.hpp>
 #include <godot_cpp/classes/collision_shape3d.hpp>
-#include <godot_cpp/classes/importer_mesh.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/gltf_physics_shape.hpp>
+#include <godot_cpp/classes/importer_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -39,60 +39,77 @@ static JSValue gltf_physics_shape_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue gltf_physics_shape_class_to_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFPhysicsShape::to_node, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_shape_class_to_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFPhysicsShape::to_resource, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_shape_class_to_dictionary(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GLTFPhysicsShape::to_dictionary, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_shape_class_get_shape_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GLTFPhysicsShape::get_shape_type, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_shape_class_set_shape_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFPhysicsShape::set_shape_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_physics_shape_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GLTFPhysicsShape::get_size, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_shape_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFPhysicsShape::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_physics_shape_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GLTFPhysicsShape::get_radius, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_shape_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFPhysicsShape::set_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_physics_shape_class_get_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GLTFPhysicsShape::get_height, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_shape_class_set_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFPhysicsShape::set_height, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_physics_shape_class_get_is_trigger(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GLTFPhysicsShape::get_is_trigger, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_shape_class_set_is_trigger(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFPhysicsShape::set_is_trigger, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_physics_shape_class_get_mesh_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GLTFPhysicsShape::get_mesh_index, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_shape_class_set_mesh_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFPhysicsShape::set_mesh_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_physics_shape_class_get_importer_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GLTFPhysicsShape::get_importer_mesh, ctx, this_val, argc, argv);
 };
 static JSValue gltf_physics_shape_class_set_importer_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFPhysicsShape::set_importer_mesh, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

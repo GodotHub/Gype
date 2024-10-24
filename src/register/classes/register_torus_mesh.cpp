@@ -36,31 +36,39 @@ static JSValue torus_mesh_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue torus_mesh_class_set_inner_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TorusMesh::set_inner_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue torus_mesh_class_get_inner_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TorusMesh::get_inner_radius, ctx, this_val, argc, argv);
 };
 static JSValue torus_mesh_class_set_outer_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TorusMesh::set_outer_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue torus_mesh_class_get_outer_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TorusMesh::get_outer_radius, ctx, this_val, argc, argv);
 };
 static JSValue torus_mesh_class_set_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TorusMesh::set_rings, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue torus_mesh_class_get_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TorusMesh::get_rings, ctx, this_val, argc, argv);
 };
 static JSValue torus_mesh_class_set_ring_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TorusMesh::set_ring_segments, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue torus_mesh_class_get_ring_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TorusMesh::get_ring_segments, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry torus_mesh_class_proto_funcs[] = {

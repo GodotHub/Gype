@@ -36,27 +36,34 @@ static JSValue ogg_packet_sequence_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue ogg_packet_sequence_class_set_packet_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OggPacketSequence::set_packet_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ogg_packet_sequence_class_get_packet_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OggPacketSequence::get_packet_data, ctx, this_val, argc, argv);
 };
 static JSValue ogg_packet_sequence_class_set_packet_granule_positions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OggPacketSequence::set_packet_granule_positions, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ogg_packet_sequence_class_get_packet_granule_positions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OggPacketSequence::get_packet_granule_positions, ctx, this_val, argc, argv);
 };
 static JSValue ogg_packet_sequence_class_set_sampling_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OggPacketSequence::set_sampling_rate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ogg_packet_sequence_class_get_sampling_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OggPacketSequence::get_sampling_rate, ctx, this_val, argc, argv);
 };
 static JSValue ogg_packet_sequence_class_get_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OggPacketSequence::get_length, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry ogg_packet_sequence_class_proto_funcs[] = {

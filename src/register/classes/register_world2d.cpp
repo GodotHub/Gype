@@ -37,15 +37,19 @@ static JSValue world2d_class_constructor(JSContext *ctx, JSValueConst new_target
 	return obj;
 }
 static JSValue world2d_class_get_canvas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&World2D::get_canvas, ctx, this_val, argc, argv);
 };
 static JSValue world2d_class_get_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&World2D::get_space, ctx, this_val, argc, argv);
 };
 static JSValue world2d_class_get_navigation_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&World2D::get_navigation_map, ctx, this_val, argc, argv);
 };
 static JSValue world2d_class_get_direct_space_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&World2D::get_direct_space_state, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry world2d_class_proto_funcs[] = {

@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/skeleton3d.hpp>
+#include <godot_cpp/classes/skin_reference.hpp>
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/skin.hpp>
-#include <godot_cpp/classes/skin_reference.hpp>
-#include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,181 +38,232 @@ static JSValue skeleton3d_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue skeleton3d_class_add_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Skeleton3D::add_bone, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_find_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::find_bone, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_get_bone_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_bone_name, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_set_bone_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::set_bone_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_get_concatenated_bone_names(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_concatenated_bone_names, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_get_bone_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_bone_parent, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_set_bone_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::set_bone_parent, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_get_bone_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_bone_count, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_get_version(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_version, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_unparent_bone_and_rest(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::unparent_bone_and_rest, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_get_bone_children(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_bone_children, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_get_parentless_bones(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_parentless_bones, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_get_bone_rest(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_bone_rest, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_set_bone_rest(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::set_bone_rest, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_get_bone_global_rest(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_bone_global_rest, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_create_skin_from_rest_transforms(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Skeleton3D::create_skin_from_rest_transforms, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_register_skin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Skeleton3D::register_skin, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_localize_rests(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::localize_rests, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_clear_bones(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::clear_bones, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_get_bone_pose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_bone_pose, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_set_bone_pose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::set_bone_pose, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_set_bone_pose_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::set_bone_pose_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_set_bone_pose_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::set_bone_pose_rotation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_set_bone_pose_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::set_bone_pose_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_get_bone_pose_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_bone_pose_position, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_get_bone_pose_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_bone_pose_rotation, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_get_bone_pose_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_bone_pose_scale, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_reset_bone_pose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::reset_bone_pose, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_reset_bone_poses(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::reset_bone_poses, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_is_bone_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::is_bone_enabled, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_set_bone_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::set_bone_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_get_bone_global_pose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_bone_global_pose, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_set_bone_global_pose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::set_bone_global_pose, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_force_update_all_bone_transforms(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::force_update_all_bone_transforms, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_force_update_bone_child_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::force_update_bone_child_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_set_motion_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::set_motion_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_get_motion_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_motion_scale, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_set_show_rest_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::set_show_rest_only, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_is_show_rest_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::is_show_rest_only, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_set_modifier_callback_mode_process(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::set_modifier_callback_mode_process, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_get_modifier_callback_mode_process(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_modifier_callback_mode_process, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_clear_bones_global_pose_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::clear_bones_global_pose_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_set_bone_global_pose_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::set_bone_global_pose_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_get_bone_global_pose_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_bone_global_pose_override, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_get_bone_global_pose_no_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_bone_global_pose_no_override, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_set_animate_physical_bones(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::set_animate_physical_bones, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_get_animate_physical_bones(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Skeleton3D::get_animate_physical_bones, ctx, this_val, argc, argv);
 };
 static JSValue skeleton3d_class_physical_bones_stop_simulation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::physical_bones_stop_simulation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_physical_bones_start_simulation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::physical_bones_start_simulation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_physical_bones_add_collision_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::physical_bones_add_collision_exception, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton3d_class_physical_bones_remove_collision_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Skeleton3D::physical_bones_remove_collision_exception, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

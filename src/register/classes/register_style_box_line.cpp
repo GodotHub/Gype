@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/style_box_line.hpp>
+#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,38 +36,48 @@ static JSValue style_box_line_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue style_box_line_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StyleBoxLine::set_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_line_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StyleBoxLine::get_color, ctx, this_val, argc, argv);
 };
 static JSValue style_box_line_class_set_thickness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StyleBoxLine::set_thickness, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_line_class_get_thickness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StyleBoxLine::get_thickness, ctx, this_val, argc, argv);
 };
 static JSValue style_box_line_class_set_grow_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StyleBoxLine::set_grow_begin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_line_class_get_grow_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StyleBoxLine::get_grow_begin, ctx, this_val, argc, argv);
 };
 static JSValue style_box_line_class_set_grow_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StyleBoxLine::set_grow_end, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_line_class_get_grow_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StyleBoxLine::get_grow_end, ctx, this_val, argc, argv);
 };
 static JSValue style_box_line_class_set_vertical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&StyleBoxLine::set_vertical, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue style_box_line_class_is_vertical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&StyleBoxLine::is_vertical, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry style_box_line_class_proto_funcs[] = {

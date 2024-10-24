@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/classes/skin_reference.hpp>
+#include <godot_cpp/classes/skin.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,9 +37,11 @@ static JSValue skin_reference_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue skin_reference_class_get_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SkinReference::get_skeleton, ctx, this_val, argc, argv);
 };
 static JSValue skin_reference_class_get_skin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&SkinReference::get_skin, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry skin_reference_class_proto_funcs[] = {

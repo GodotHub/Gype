@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_file_system_directory.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/editor_file_system_directory.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,45 +36,59 @@ static JSValue editor_file_system_directory_class_constructor(JSContext *ctx, JS
 	return obj;
 }
 static JSValue editor_file_system_directory_class_get_subdir_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorFileSystemDirectory::get_subdir_count, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_directory_class_get_subdir(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorFileSystemDirectory::get_subdir, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_directory_class_get_file_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorFileSystemDirectory::get_file_count, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_directory_class_get_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorFileSystemDirectory::get_file, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_directory_class_get_file_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorFileSystemDirectory::get_file_path, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_directory_class_get_file_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorFileSystemDirectory::get_file_type, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_directory_class_get_file_script_class_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorFileSystemDirectory::get_file_script_class_name, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_directory_class_get_file_script_class_extends(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorFileSystemDirectory::get_file_script_class_extends, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_directory_class_get_file_import_is_valid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorFileSystemDirectory::get_file_import_is_valid, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_directory_class_get_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorFileSystemDirectory::get_name, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_directory_class_get_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorFileSystemDirectory::get_path, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_directory_class_get_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorFileSystemDirectory::get_parent, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_directory_class_find_file_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorFileSystemDirectory::find_file_index, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_directory_class_find_dir_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorFileSystemDirectory::find_dir_index, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_file_system_directory_class_proto_funcs[] = {

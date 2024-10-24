@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/container.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/editor_property.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,73 +38,93 @@ static JSValue editor_property_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue editor_property_class_set_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorProperty::set_label, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_property_class_get_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorProperty::get_label, ctx, this_val, argc, argv);
 };
 static JSValue editor_property_class_set_read_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorProperty::set_read_only, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_property_class_is_read_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorProperty::is_read_only, ctx, this_val, argc, argv);
 };
 static JSValue editor_property_class_set_checkable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorProperty::set_checkable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_property_class_is_checkable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorProperty::is_checkable, ctx, this_val, argc, argv);
 };
 static JSValue editor_property_class_set_checked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorProperty::set_checked, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_property_class_is_checked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorProperty::is_checked, ctx, this_val, argc, argv);
 };
 static JSValue editor_property_class_set_draw_warning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorProperty::set_draw_warning, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_property_class_is_draw_warning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorProperty::is_draw_warning, ctx, this_val, argc, argv);
 };
 static JSValue editor_property_class_set_keying(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorProperty::set_keying, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_property_class_is_keying(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorProperty::is_keying, ctx, this_val, argc, argv);
 };
 static JSValue editor_property_class_set_deletable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorProperty::set_deletable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_property_class_is_deletable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorProperty::is_deletable, ctx, this_val, argc, argv);
 };
 static JSValue editor_property_class_get_edited_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EditorProperty::get_edited_property, ctx, this_val, argc, argv);
 };
 static JSValue editor_property_class_get_edited_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorProperty::get_edited_object, ctx, this_val, argc, argv);
 };
 static JSValue editor_property_class_update_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorProperty::update_property, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_property_class_add_focusable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorProperty::add_focusable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_property_class_set_bottom_editor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorProperty::set_bottom_editor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_property_class_emit_changed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EditorProperty::emit_changed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

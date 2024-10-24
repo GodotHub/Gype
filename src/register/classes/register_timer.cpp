@@ -36,52 +36,66 @@ static JSValue timer_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	return obj;
 }
 static JSValue timer_class_set_wait_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Timer::set_wait_time, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue timer_class_get_wait_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Timer::get_wait_time, ctx, this_val, argc, argv);
 };
 static JSValue timer_class_set_one_shot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Timer::set_one_shot, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue timer_class_is_one_shot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Timer::is_one_shot, ctx, this_val, argc, argv);
 };
 static JSValue timer_class_set_autostart(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Timer::set_autostart, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue timer_class_has_autostart(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Timer::has_autostart, ctx, this_val, argc, argv);
 };
 static JSValue timer_class_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Timer::start, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue timer_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Timer::stop, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue timer_class_set_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Timer::set_paused, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue timer_class_is_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Timer::is_paused, ctx, this_val, argc, argv);
 };
 static JSValue timer_class_is_stopped(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Timer::is_stopped, ctx, this_val, argc, argv);
 };
 static JSValue timer_class_get_time_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Timer::get_time_left, ctx, this_val, argc, argv);
 };
 static JSValue timer_class_set_timer_process_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Timer::set_timer_process_callback, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue timer_class_get_timer_process_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Timer::get_timer_process_callback, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry timer_class_proto_funcs[] = {

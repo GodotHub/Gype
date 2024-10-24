@@ -36,18 +36,23 @@ static JSValue thread_class_constructor(JSContext *ctx, JSValueConst new_target,
 	return obj;
 }
 static JSValue thread_class_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Thread::start, ctx, this_val, argc, argv);
 };
 static JSValue thread_class_get_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Thread::get_id, ctx, this_val, argc, argv);
 };
 static JSValue thread_class_is_started(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Thread::is_started, ctx, this_val, argc, argv);
 };
 static JSValue thread_class_is_alive(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Thread::is_alive, ctx, this_val, argc, argv);
 };
 static JSValue thread_class_wait_to_finish(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Thread::wait_to_finish, ctx, this_val, argc, argv);
 };
 static JSValue thread_class_set_thread_safety_checks_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

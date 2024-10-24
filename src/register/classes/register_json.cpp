@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/json.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/json.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,22 +36,28 @@ static JSValue json_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	return obj;
 }
 static JSValue json_class_parse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&JSON::parse, ctx, this_val, argc, argv);
 };
 static JSValue json_class_get_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&JSON::get_data, ctx, this_val, argc, argv);
 };
 static JSValue json_class_set_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&JSON::set_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue json_class_get_parsed_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&JSON::get_parsed_text, ctx, this_val, argc, argv);
 };
 static JSValue json_class_get_error_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&JSON::get_error_line, ctx, this_val, argc, argv);
 };
 static JSValue json_class_get_error_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&JSON::get_error_message, ctx, this_val, argc, argv);
 };
 static JSValue json_class_stringify(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

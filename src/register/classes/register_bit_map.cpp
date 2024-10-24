@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/bit_map.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,49 +37,62 @@ static JSValue bit_map_class_constructor(JSContext *ctx, JSValueConst new_target
 	return obj;
 }
 static JSValue bit_map_class_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BitMap::create, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bit_map_class_create_from_image_alpha(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BitMap::create_from_image_alpha, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bit_map_class_set_bitv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BitMap::set_bitv, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bit_map_class_set_bit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BitMap::set_bit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bit_map_class_get_bitv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BitMap::get_bitv, ctx, this_val, argc, argv);
 };
 static JSValue bit_map_class_get_bit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BitMap::get_bit, ctx, this_val, argc, argv);
 };
 static JSValue bit_map_class_set_bit_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BitMap::set_bit_rect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bit_map_class_get_true_bit_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BitMap::get_true_bit_count, ctx, this_val, argc, argv);
 };
 static JSValue bit_map_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BitMap::get_size, ctx, this_val, argc, argv);
 };
 static JSValue bit_map_class_resize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BitMap::resize, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bit_map_class_grow_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&BitMap::grow_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue bit_map_class_convert_to_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BitMap::convert_to_image, ctx, this_val, argc, argv);
 };
 static JSValue bit_map_class_opaque_to_polygons(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&BitMap::opaque_to_polygons, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry bit_map_class_proto_funcs[] = {

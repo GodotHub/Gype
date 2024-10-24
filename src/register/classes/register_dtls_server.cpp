@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/packet_peer_dtls.hpp>
-#include <godot_cpp/classes/dtls_server.hpp>
 #include <godot_cpp/classes/packet_peer_udp.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/dtls_server.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
+#include <godot_cpp/classes/packet_peer_dtls.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -39,9 +39,11 @@ static JSValue dtls_server_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue dtls_server_class_setup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&DTLSServer::setup, ctx, this_val, argc, argv);
 };
 static JSValue dtls_server_class_take_connection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&DTLSServer::take_connection, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry dtls_server_class_proto_funcs[] = {

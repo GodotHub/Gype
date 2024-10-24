@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,49 +36,64 @@ static JSValue input_event_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue input_event_class_set_device(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEvent::set_device, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_class_get_device(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEvent::get_device, ctx, this_val, argc, argv);
 };
 static JSValue input_event_class_is_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEvent::is_action, ctx, this_val, argc, argv);
 };
 static JSValue input_event_class_is_action_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEvent::is_action_pressed, ctx, this_val, argc, argv);
 };
 static JSValue input_event_class_is_action_released(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEvent::is_action_released, ctx, this_val, argc, argv);
 };
 static JSValue input_event_class_get_action_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEvent::get_action_strength, ctx, this_val, argc, argv);
 };
 static JSValue input_event_class_is_canceled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEvent::is_canceled, ctx, this_val, argc, argv);
 };
 static JSValue input_event_class_is_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEvent::is_pressed, ctx, this_val, argc, argv);
 };
 static JSValue input_event_class_is_released(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEvent::is_released, ctx, this_val, argc, argv);
 };
 static JSValue input_event_class_is_echo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEvent::is_echo, ctx, this_val, argc, argv);
 };
 static JSValue input_event_class_as_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEvent::as_text, ctx, this_val, argc, argv);
 };
 static JSValue input_event_class_is_match(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEvent::is_match, ctx, this_val, argc, argv);
 };
 static JSValue input_event_class_is_action_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEvent::is_action_type, ctx, this_val, argc, argv);
 };
 static JSValue input_event_class_accumulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&InputEvent::accumulate, ctx, this_val, argc, argv);
 };
 static JSValue input_event_class_xformed_by(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEvent::xformed_by, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry input_event_class_proto_funcs[] = {

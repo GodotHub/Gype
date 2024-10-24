@@ -36,38 +36,48 @@ static JSValue rd_texture_view_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue rd_texture_view_class_set_format_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDTextureView::set_format_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_view_class_get_format_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDTextureView::get_format_override, ctx, this_val, argc, argv);
 };
 static JSValue rd_texture_view_class_set_swizzle_r(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDTextureView::set_swizzle_r, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_view_class_get_swizzle_r(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDTextureView::get_swizzle_r, ctx, this_val, argc, argv);
 };
 static JSValue rd_texture_view_class_set_swizzle_g(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDTextureView::set_swizzle_g, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_view_class_get_swizzle_g(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDTextureView::get_swizzle_g, ctx, this_val, argc, argv);
 };
 static JSValue rd_texture_view_class_set_swizzle_b(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDTextureView::set_swizzle_b, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_view_class_get_swizzle_b(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDTextureView::get_swizzle_b, ctx, this_val, argc, argv);
 };
 static JSValue rd_texture_view_class_set_swizzle_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RDTextureView::set_swizzle_a, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_texture_view_class_get_swizzle_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RDTextureView::get_swizzle_a, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry rd_texture_view_class_proto_funcs[] = {

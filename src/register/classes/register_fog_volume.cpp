@@ -37,24 +37,30 @@ static JSValue fog_volume_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue fog_volume_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FogVolume::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fog_volume_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FogVolume::get_size, ctx, this_val, argc, argv);
 };
 static JSValue fog_volume_class_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FogVolume::set_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fog_volume_class_get_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FogVolume::get_shape, ctx, this_val, argc, argv);
 };
 static JSValue fog_volume_class_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FogVolume::set_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fog_volume_class_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FogVolume::get_material, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry fog_volume_class_proto_funcs[] = {

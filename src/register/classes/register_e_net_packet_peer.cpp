@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/classes/e_net_packet_peer.hpp>
+#include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,56 +36,71 @@ static JSValue e_net_packet_peer_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue e_net_packet_peer_class_peer_disconnect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ENetPacketPeer::peer_disconnect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_packet_peer_class_peer_disconnect_later(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ENetPacketPeer::peer_disconnect_later, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_packet_peer_class_peer_disconnect_now(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ENetPacketPeer::peer_disconnect_now, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_packet_peer_class_ping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ENetPacketPeer::ping, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_packet_peer_class_ping_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ENetPacketPeer::ping_interval, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_packet_peer_class_reset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ENetPacketPeer::reset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_packet_peer_class_send(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ENetPacketPeer::send, ctx, this_val, argc, argv);
 };
 static JSValue e_net_packet_peer_class_throttle_configure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ENetPacketPeer::throttle_configure, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_packet_peer_class_set_timeout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ENetPacketPeer::set_timeout, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_packet_peer_class_get_remote_address(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ENetPacketPeer::get_remote_address, ctx, this_val, argc, argv);
 };
 static JSValue e_net_packet_peer_class_get_remote_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ENetPacketPeer::get_remote_port, ctx, this_val, argc, argv);
 };
 static JSValue e_net_packet_peer_class_get_statistic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ENetPacketPeer::get_statistic, ctx, this_val, argc, argv);
 };
 static JSValue e_net_packet_peer_class_get_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ENetPacketPeer::get_state, ctx, this_val, argc, argv);
 };
 static JSValue e_net_packet_peer_class_get_channels(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ENetPacketPeer::get_channels, ctx, this_val, argc, argv);
 };
 static JSValue e_net_packet_peer_class_is_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ENetPacketPeer::is_active, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry e_net_packet_peer_class_proto_funcs[] = {

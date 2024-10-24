@@ -38,73 +38,93 @@ static JSValue importer_mesh_instance3d_class_constructor(JSContext *ctx, JSValu
 	return obj;
 }
 static JSValue importer_mesh_instance3d_class_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImporterMeshInstance3D::set_mesh, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_instance3d_class_get_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMeshInstance3D::get_mesh, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_instance3d_class_set_skin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImporterMeshInstance3D::set_skin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_instance3d_class_get_skin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMeshInstance3D::get_skin, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_instance3d_class_set_skeleton_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImporterMeshInstance3D::set_skeleton_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_instance3d_class_get_skeleton_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMeshInstance3D::get_skeleton_path, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_instance3d_class_set_layer_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImporterMeshInstance3D::set_layer_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_instance3d_class_get_layer_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMeshInstance3D::get_layer_mask, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_instance3d_class_set_cast_shadows_setting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImporterMeshInstance3D::set_cast_shadows_setting, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_instance3d_class_get_cast_shadows_setting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMeshInstance3D::get_cast_shadows_setting, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_instance3d_class_set_visibility_range_end_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImporterMeshInstance3D::set_visibility_range_end_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_instance3d_class_get_visibility_range_end_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMeshInstance3D::get_visibility_range_end_margin, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_instance3d_class_set_visibility_range_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImporterMeshInstance3D::set_visibility_range_end, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_instance3d_class_get_visibility_range_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMeshInstance3D::get_visibility_range_end, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_instance3d_class_set_visibility_range_begin_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImporterMeshInstance3D::set_visibility_range_begin_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_instance3d_class_get_visibility_range_begin_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMeshInstance3D::get_visibility_range_begin_margin, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_instance3d_class_set_visibility_range_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImporterMeshInstance3D::set_visibility_range_begin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_instance3d_class_get_visibility_range_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMeshInstance3D::get_visibility_range_begin, ctx, this_val, argc, argv);
 };
 static JSValue importer_mesh_instance3d_class_set_visibility_range_fade_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ImporterMeshInstance3D::set_visibility_range_fade_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_instance3d_class_get_visibility_range_fade_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ImporterMeshInstance3D::get_visibility_range_fade_mode, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry importer_mesh_instance3d_class_proto_funcs[] = {

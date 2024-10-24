@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/omni_light3d.hpp>
 #include <godot_cpp/classes/light3d.hpp>
+#include <godot_cpp/classes/omni_light3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,10 +36,12 @@ static JSValue omni_light3d_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue omni_light3d_class_set_shadow_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OmniLight3D::set_shadow_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue omni_light3d_class_get_shadow_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OmniLight3D::get_shadow_mode, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry omni_light3d_class_proto_funcs[] = {

@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_direct_space_state3d.hpp>
-#include <godot_cpp/classes/physics_server3d_rendering_server_handler.hpp>
-#include <godot_cpp/classes/physics_server3d_extension.hpp>
 #include <godot_cpp/classes/physics_direct_body_state3d.hpp>
+#include <godot_cpp/classes/physics_direct_space_state3d.hpp>
+#include <godot_cpp/classes/physics_server3d_extension.hpp>
 #include <godot_cpp/classes/physics_server3d.hpp>
+#include <godot_cpp/classes/physics_server3d_rendering_server_handler.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -39,9 +39,11 @@ static JSValue physics_server3d_extension_class_constructor(JSContext *ctx, JSVa
 	return obj;
 }
 static JSValue physics_server3d_extension_class_body_test_motion_is_excluding_body(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsServer3DExtension::body_test_motion_is_excluding_body, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_extension_class_body_test_motion_is_excluding_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsServer3DExtension::body_test_motion_is_excluding_object, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry physics_server3d_extension_class_proto_funcs[] = {

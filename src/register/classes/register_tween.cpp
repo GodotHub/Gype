@@ -5,14 +5,14 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/method_tweener.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/interval_tweener.hpp>
-#include <godot_cpp/classes/property_tweener.hpp>
 #include <godot_cpp/classes/tween.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/callback_tweener.hpp>
+#include <godot_cpp/classes/interval_tweener.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/callback_tweener.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/property_tweener.hpp>
+#include <godot_cpp/classes/method_tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -42,76 +42,99 @@ static JSValue tween_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	return obj;
 }
 static JSValue tween_class_tween_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Tween::tween_property, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_tween_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Tween::tween_interval, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_tween_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Tween::tween_callback, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_tween_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Tween::tween_method, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_custom_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Tween::custom_step, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Tween::stop, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tween_class_pause(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Tween::pause, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tween_class_play(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Tween::play, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tween_class_kill(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Tween::kill, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tween_class_get_total_elapsed_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Tween::get_total_elapsed_time, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_is_running(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Tween::is_running, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_is_valid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Tween::is_valid, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_bind_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Tween::bind_node, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_set_process_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Tween::set_process_mode, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_set_pause_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Tween::set_pause_mode, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_set_parallel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Tween::set_parallel, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_set_loops(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Tween::set_loops, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_get_loops_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Tween::get_loops_left, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_set_speed_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Tween::set_speed_scale, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_set_trans(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Tween::set_trans, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_set_ease(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Tween::set_ease, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_parallel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Tween::parallel, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_chain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Tween::chain, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_interpolate_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

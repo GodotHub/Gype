@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/array_mesh.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,20 +37,25 @@ static JSValue shape3d_class_constructor(JSContext *ctx, JSValueConst new_target
 	return obj;
 }
 static JSValue shape3d_class_set_custom_solver_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Shape3D::set_custom_solver_bias, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape3d_class_get_custom_solver_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Shape3D::get_custom_solver_bias, ctx, this_val, argc, argv);
 };
 static JSValue shape3d_class_set_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Shape3D::set_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape3d_class_get_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Shape3D::get_margin, ctx, this_val, argc, argv);
 };
 static JSValue shape3d_class_get_debug_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&Shape3D::get_debug_mesh, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry shape3d_class_proto_funcs[] = {

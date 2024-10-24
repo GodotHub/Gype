@@ -36,24 +36,30 @@ static JSValue audio_effect_spectrum_analyzer_class_constructor(JSContext *ctx, 
 	return obj;
 }
 static JSValue audio_effect_spectrum_analyzer_class_set_buffer_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioEffectSpectrumAnalyzer::set_buffer_length, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_spectrum_analyzer_class_get_buffer_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectSpectrumAnalyzer::get_buffer_length, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_spectrum_analyzer_class_set_tap_back_pos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioEffectSpectrumAnalyzer::set_tap_back_pos, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_spectrum_analyzer_class_get_tap_back_pos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectSpectrumAnalyzer::get_tap_back_pos, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_spectrum_analyzer_class_set_fft_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioEffectSpectrumAnalyzer::set_fft_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_spectrum_analyzer_class_get_fft_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectSpectrumAnalyzer::get_fft_size, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry audio_effect_spectrum_analyzer_class_proto_funcs[] = {

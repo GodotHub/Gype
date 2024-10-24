@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/open_xr_action_set.hpp>
-#include <godot_cpp/classes/open_xr_action.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/open_xr_action.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,34 +37,43 @@ static JSValue open_xr_action_set_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue open_xr_action_set_class_set_localized_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRActionSet::set_localized_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_action_set_class_get_localized_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRActionSet::get_localized_name, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_set_class_set_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRActionSet::set_priority, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_action_set_class_get_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRActionSet::get_priority, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_set_class_get_action_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRActionSet::get_action_count, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_set_class_set_actions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRActionSet::set_actions, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_action_set_class_get_actions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRActionSet::get_actions, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_set_class_add_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRActionSet::add_action, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_action_set_class_remove_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRActionSet::remove_action, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

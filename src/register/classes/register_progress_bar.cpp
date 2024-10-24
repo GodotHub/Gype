@@ -36,31 +36,39 @@ static JSValue progress_bar_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue progress_bar_class_set_fill_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ProgressBar::set_fill_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue progress_bar_class_get_fill_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ProgressBar::get_fill_mode, ctx, this_val, argc, argv);
 };
 static JSValue progress_bar_class_set_show_percentage(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ProgressBar::set_show_percentage, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue progress_bar_class_is_percentage_shown(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ProgressBar::is_percentage_shown, ctx, this_val, argc, argv);
 };
 static JSValue progress_bar_class_set_indeterminate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ProgressBar::set_indeterminate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue progress_bar_class_is_indeterminate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ProgressBar::is_indeterminate, ctx, this_val, argc, argv);
 };
 static JSValue progress_bar_class_set_editor_preview_indeterminate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ProgressBar::set_editor_preview_indeterminate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue progress_bar_class_is_editor_preview_indeterminate_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ProgressBar::is_editor_preview_indeterminate_enabled, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry progress_bar_class_proto_funcs[] = {

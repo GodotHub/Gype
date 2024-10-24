@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/v_scroll_bar.hpp>
 #include <godot_cpp/classes/scroll_container.hpp>
-#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/v_scroll_bar.hpp>
 #include <godot_cpp/classes/h_scroll_bar.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -39,68 +39,87 @@ static JSValue scroll_container_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue scroll_container_class_set_h_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ScrollContainer::set_h_scroll, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scroll_container_class_get_h_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ScrollContainer::get_h_scroll, ctx, this_val, argc, argv);
 };
 static JSValue scroll_container_class_set_v_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ScrollContainer::set_v_scroll, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scroll_container_class_get_v_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ScrollContainer::get_v_scroll, ctx, this_val, argc, argv);
 };
 static JSValue scroll_container_class_set_horizontal_custom_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ScrollContainer::set_horizontal_custom_step, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scroll_container_class_get_horizontal_custom_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ScrollContainer::get_horizontal_custom_step, ctx, this_val, argc, argv);
 };
 static JSValue scroll_container_class_set_vertical_custom_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ScrollContainer::set_vertical_custom_step, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scroll_container_class_get_vertical_custom_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ScrollContainer::get_vertical_custom_step, ctx, this_val, argc, argv);
 };
 static JSValue scroll_container_class_set_horizontal_scroll_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ScrollContainer::set_horizontal_scroll_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scroll_container_class_get_horizontal_scroll_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ScrollContainer::get_horizontal_scroll_mode, ctx, this_val, argc, argv);
 };
 static JSValue scroll_container_class_set_vertical_scroll_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ScrollContainer::set_vertical_scroll_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scroll_container_class_get_vertical_scroll_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ScrollContainer::get_vertical_scroll_mode, ctx, this_val, argc, argv);
 };
 static JSValue scroll_container_class_set_deadzone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ScrollContainer::set_deadzone, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scroll_container_class_get_deadzone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ScrollContainer::get_deadzone, ctx, this_val, argc, argv);
 };
 static JSValue scroll_container_class_set_follow_focus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ScrollContainer::set_follow_focus, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scroll_container_class_is_following_focus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ScrollContainer::is_following_focus, ctx, this_val, argc, argv);
 };
 static JSValue scroll_container_class_get_h_scroll_bar(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ScrollContainer::get_h_scroll_bar, ctx, this_val, argc, argv);
 };
 static JSValue scroll_container_class_get_v_scroll_bar(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ScrollContainer::get_v_scroll_bar, ctx, this_val, argc, argv);
 };
 static JSValue scroll_container_class_ensure_control_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ScrollContainer::ensure_control_visible, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

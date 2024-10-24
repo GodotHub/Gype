@@ -36,9 +36,11 @@ static JSValue packed_data_container_class_constructor(JSContext *ctx, JSValueCo
 	return obj;
 }
 static JSValue packed_data_container_class_pack(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&PackedDataContainer::pack, ctx, this_val, argc, argv);
 };
 static JSValue packed_data_container_class_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PackedDataContainer::size, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry packed_data_container_class_proto_funcs[] = {

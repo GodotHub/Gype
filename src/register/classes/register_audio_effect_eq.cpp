@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_eq.hpp>
 #include <godot_cpp/classes/audio_effect.hpp>
+#include <godot_cpp/classes/audio_effect_eq.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,13 +36,16 @@ static JSValue audio_effect_eq_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue audio_effect_eq_class_set_band_gain_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioEffectEQ::set_band_gain_db, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_eq_class_get_band_gain_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectEQ::get_band_gain_db, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_eq_class_get_band_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectEQ::get_band_count, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry audio_effect_eq_class_proto_funcs[] = {

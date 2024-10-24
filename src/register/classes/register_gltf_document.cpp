@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gltf_state.hpp>
+#include <godot_cpp/classes/gltf_document_extension.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/gltf_document.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/gltf_document_extension.hpp>
+#include <godot_cpp/classes/gltf_state.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -39,42 +39,54 @@ static JSValue gltf_document_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 static JSValue gltf_document_class_set_image_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFDocument::set_image_format, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_document_class_get_image_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GLTFDocument::get_image_format, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_set_lossy_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFDocument::set_lossy_quality, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_document_class_get_lossy_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GLTFDocument::get_lossy_quality, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_set_root_node_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFDocument::set_root_node_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_document_class_get_root_node_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&GLTFDocument::get_root_node_mode, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_append_from_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFDocument::append_from_file, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_append_from_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFDocument::append_from_buffer, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_append_from_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFDocument::append_from_scene, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_generate_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFDocument::generate_scene, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_generate_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFDocument::generate_buffer, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_write_to_filesystem(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFDocument::write_to_filesystem, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_register_gltf_document_extension(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {

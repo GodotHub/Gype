@@ -36,57 +36,74 @@ static JSValue config_file_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue config_file_class_set_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ConfigFile::set_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue config_file_class_get_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ConfigFile::get_value, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_has_section(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ConfigFile::has_section, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_has_section_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ConfigFile::has_section_key, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_get_sections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ConfigFile::get_sections, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_get_section_keys(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ConfigFile::get_section_keys, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_erase_section(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ConfigFile::erase_section, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue config_file_class_erase_section_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ConfigFile::erase_section_key, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue config_file_class_load(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ConfigFile::load, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_parse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ConfigFile::parse, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_save(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ConfigFile::save, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_encode_to_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ConfigFile::encode_to_text, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_load_encrypted(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ConfigFile::load_encrypted, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_load_encrypted_pass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ConfigFile::load_encrypted_pass, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_save_encrypted(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ConfigFile::save_encrypted, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_save_encrypted_pass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ConfigFile::save_encrypted_pass, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ConfigFile::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

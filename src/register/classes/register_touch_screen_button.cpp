@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/touch_screen_button.hpp>
-#include <godot_cpp/classes/bit_map.hpp>
 #include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/bit_map.hpp>
+#include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -39,69 +39,88 @@ static JSValue touch_screen_button_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue touch_screen_button_class_set_texture_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TouchScreenButton::set_texture_normal, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue touch_screen_button_class_get_texture_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TouchScreenButton::get_texture_normal, ctx, this_val, argc, argv);
 };
 static JSValue touch_screen_button_class_set_texture_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TouchScreenButton::set_texture_pressed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue touch_screen_button_class_get_texture_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TouchScreenButton::get_texture_pressed, ctx, this_val, argc, argv);
 };
 static JSValue touch_screen_button_class_set_bitmask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TouchScreenButton::set_bitmask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue touch_screen_button_class_get_bitmask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TouchScreenButton::get_bitmask, ctx, this_val, argc, argv);
 };
 static JSValue touch_screen_button_class_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TouchScreenButton::set_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue touch_screen_button_class_get_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TouchScreenButton::get_shape, ctx, this_val, argc, argv);
 };
 static JSValue touch_screen_button_class_set_shape_centered(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TouchScreenButton::set_shape_centered, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue touch_screen_button_class_is_shape_centered(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TouchScreenButton::is_shape_centered, ctx, this_val, argc, argv);
 };
 static JSValue touch_screen_button_class_set_shape_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TouchScreenButton::set_shape_visible, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue touch_screen_button_class_is_shape_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TouchScreenButton::is_shape_visible, ctx, this_val, argc, argv);
 };
 static JSValue touch_screen_button_class_set_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TouchScreenButton::set_action, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue touch_screen_button_class_get_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TouchScreenButton::get_action, ctx, this_val, argc, argv);
 };
 static JSValue touch_screen_button_class_set_visibility_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TouchScreenButton::set_visibility_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue touch_screen_button_class_get_visibility_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TouchScreenButton::get_visibility_mode, ctx, this_val, argc, argv);
 };
 static JSValue touch_screen_button_class_set_passby_press(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&TouchScreenButton::set_passby_press, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue touch_screen_button_class_is_passby_press_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TouchScreenButton::is_passby_press_enabled, ctx, this_val, argc, argv);
 };
 static JSValue touch_screen_button_class_is_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&TouchScreenButton::is_pressed, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry touch_screen_button_class_proto_funcs[] = {

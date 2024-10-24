@@ -36,10 +36,12 @@ static JSValue visual_shader_node_vec2_constant_class_constructor(JSContext *ctx
 	return obj;
 }
 static JSValue visual_shader_node_vec2_constant_class_set_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&VisualShaderNodeVec2Constant::set_constant, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_vec2_constant_class_get_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&VisualShaderNodeVec2Constant::get_constant, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry visual_shader_node_vec2_constant_class_proto_funcs[] = {

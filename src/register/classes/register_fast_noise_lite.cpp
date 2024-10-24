@@ -36,150 +36,192 @@ static JSValue fast_noise_lite_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue fast_noise_lite_class_set_noise_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_noise_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_noise_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_noise_type, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_seed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_seed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_seed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_seed, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_frequency(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_frequency, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_frequency(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_frequency, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_offset, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_fractal_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_fractal_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_fractal_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_fractal_type, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_fractal_octaves(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_fractal_octaves, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_fractal_octaves(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_fractal_octaves, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_fractal_lacunarity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_fractal_lacunarity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_fractal_lacunarity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_fractal_lacunarity, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_fractal_gain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_fractal_gain, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_fractal_gain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_fractal_gain, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_fractal_weighted_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_fractal_weighted_strength, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_fractal_weighted_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_fractal_weighted_strength, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_fractal_ping_pong_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_fractal_ping_pong_strength, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_fractal_ping_pong_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_fractal_ping_pong_strength, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_cellular_distance_function(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_cellular_distance_function, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_cellular_distance_function(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_cellular_distance_function, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_cellular_jitter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_cellular_jitter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_cellular_jitter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_cellular_jitter, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_cellular_return_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_cellular_return_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_cellular_return_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_cellular_return_type, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_domain_warp_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_domain_warp_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_is_domain_warp_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::is_domain_warp_enabled, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_domain_warp_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_domain_warp_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_domain_warp_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_domain_warp_type, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_domain_warp_amplitude(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_domain_warp_amplitude, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_domain_warp_amplitude(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_domain_warp_amplitude, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_domain_warp_frequency(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_domain_warp_frequency, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_domain_warp_frequency(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_domain_warp_frequency, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_domain_warp_fractal_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_domain_warp_fractal_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_domain_warp_fractal_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_domain_warp_fractal_type, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_domain_warp_fractal_octaves(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_domain_warp_fractal_octaves, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_domain_warp_fractal_octaves(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_domain_warp_fractal_octaves, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_domain_warp_fractal_lacunarity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_domain_warp_fractal_lacunarity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_domain_warp_fractal_lacunarity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_domain_warp_fractal_lacunarity, ctx, this_val, argc, argv);
 };
 static JSValue fast_noise_lite_class_set_domain_warp_fractal_gain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&FastNoiseLite::set_domain_warp_fractal_gain, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fast_noise_lite_class_get_domain_warp_fractal_gain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FastNoiseLite::get_domain_warp_fractal_gain, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry fast_noise_lite_class_proto_funcs[] = {

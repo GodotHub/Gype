@@ -36,32 +36,41 @@ static JSValue audio_effect_capture_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue audio_effect_capture_class_can_get_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectCapture::can_get_buffer, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_capture_class_get_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&AudioEffectCapture::get_buffer, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_capture_class_clear_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioEffectCapture::clear_buffer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_capture_class_set_buffer_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioEffectCapture::set_buffer_length, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_capture_class_get_buffer_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&AudioEffectCapture::get_buffer_length, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_capture_class_get_frames_available(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectCapture::get_frames_available, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_capture_class_get_discarded_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectCapture::get_discarded_frames, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_capture_class_get_buffer_length_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectCapture::get_buffer_length_frames, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_capture_class_get_pushed_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioEffectCapture::get_pushed_frames, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry audio_effect_capture_class_proto_funcs[] = {

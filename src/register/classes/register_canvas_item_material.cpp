@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/canvas_item_material.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/canvas_item_material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,45 +36,57 @@ static JSValue canvas_item_material_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue canvas_item_material_class_set_blend_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItemMaterial::set_blend_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_material_class_get_blend_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItemMaterial::get_blend_mode, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_material_class_set_light_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItemMaterial::set_light_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_material_class_get_light_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItemMaterial::get_light_mode, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_material_class_set_particles_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItemMaterial::set_particles_animation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_material_class_get_particles_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItemMaterial::get_particles_animation, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_material_class_set_particles_anim_h_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItemMaterial::set_particles_anim_h_frames, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_material_class_get_particles_anim_h_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItemMaterial::get_particles_anim_h_frames, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_material_class_set_particles_anim_v_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItemMaterial::set_particles_anim_v_frames, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_material_class_get_particles_anim_v_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItemMaterial::get_particles_anim_v_frames, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_material_class_set_particles_anim_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItemMaterial::set_particles_anim_loop, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_material_class_get_particles_anim_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItemMaterial::get_particles_anim_loop, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry canvas_item_material_class_proto_funcs[] = {

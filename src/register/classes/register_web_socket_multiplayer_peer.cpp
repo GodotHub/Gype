@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/web_socket_peer.hpp>
-#include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/classes/web_socket_multiplayer_peer.hpp>
+#include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -38,60 +38,77 @@ static JSValue web_socket_multiplayer_peer_class_constructor(JSContext *ctx, JSV
 	return obj;
 }
 static JSValue web_socket_multiplayer_peer_class_create_client(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&WebSocketMultiplayerPeer::create_client, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_multiplayer_peer_class_create_server(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&WebSocketMultiplayerPeer::create_server, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_multiplayer_peer_class_get_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketMultiplayerPeer::get_peer, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_multiplayer_peer_class_get_peer_address(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketMultiplayerPeer::get_peer_address, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_multiplayer_peer_class_get_peer_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketMultiplayerPeer::get_peer_port, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_multiplayer_peer_class_get_supported_protocols(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketMultiplayerPeer::get_supported_protocols, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_multiplayer_peer_class_set_supported_protocols(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebSocketMultiplayerPeer::set_supported_protocols, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_multiplayer_peer_class_get_handshake_headers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketMultiplayerPeer::get_handshake_headers, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_multiplayer_peer_class_set_handshake_headers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebSocketMultiplayerPeer::set_handshake_headers, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_multiplayer_peer_class_get_inbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketMultiplayerPeer::get_inbound_buffer_size, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_multiplayer_peer_class_set_inbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebSocketMultiplayerPeer::set_inbound_buffer_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_multiplayer_peer_class_get_outbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketMultiplayerPeer::get_outbound_buffer_size, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_multiplayer_peer_class_set_outbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebSocketMultiplayerPeer::set_outbound_buffer_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_multiplayer_peer_class_get_handshake_timeout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketMultiplayerPeer::get_handshake_timeout, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_multiplayer_peer_class_set_handshake_timeout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebSocketMultiplayerPeer::set_handshake_timeout, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_multiplayer_peer_class_set_max_queued_packets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebSocketMultiplayerPeer::set_max_queued_packets, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_multiplayer_peer_class_get_max_queued_packets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketMultiplayerPeer::get_max_queued_packets, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry web_socket_multiplayer_peer_class_proto_funcs[] = {

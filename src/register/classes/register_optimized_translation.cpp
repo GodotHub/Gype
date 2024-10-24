@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/optimized_translation.hpp>
 #include <godot_cpp/classes/translation.hpp>
+#include <godot_cpp/classes/optimized_translation.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,6 +36,7 @@ static JSValue optimized_translation_class_constructor(JSContext *ctx, JSValueCo
 	return obj;
 }
 static JSValue optimized_translation_class_generate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OptimizedTranslation::generate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

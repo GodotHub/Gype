@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_interface_extension.hpp>
 #include <godot_cpp/classes/xr_interface.hpp>
+#include <godot_cpp/classes/xr_interface_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,19 +36,24 @@ static JSValue xr_interface_extension_class_constructor(JSContext *ctx, JSValueC
 	return obj;
 }
 static JSValue xr_interface_extension_class_get_color_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&XRInterfaceExtension::get_color_texture, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_extension_class_get_depth_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&XRInterfaceExtension::get_depth_texture, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_extension_class_get_velocity_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&XRInterfaceExtension::get_velocity_texture, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_extension_class_add_blit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&XRInterfaceExtension::add_blit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_interface_extension_class_get_render_target_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&XRInterfaceExtension::get_render_target_texture, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry xr_interface_extension_class_proto_funcs[] = {

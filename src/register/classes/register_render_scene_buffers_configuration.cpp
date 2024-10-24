@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/render_scene_buffers_configuration.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/render_scene_buffers_configuration.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,65 +36,83 @@ static JSValue render_scene_buffers_configuration_class_constructor(JSContext *c
 	return obj;
 }
 static JSValue render_scene_buffers_configuration_class_get_render_target(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersConfiguration::get_render_target, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_configuration_class_set_render_target(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_render_target, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_configuration_class_get_internal_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersConfiguration::get_internal_size, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_configuration_class_set_internal_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_internal_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_configuration_class_get_target_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersConfiguration::get_target_size, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_configuration_class_set_target_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_target_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_configuration_class_get_view_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersConfiguration::get_view_count, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_configuration_class_set_view_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_view_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_configuration_class_get_scaling_3d_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersConfiguration::get_scaling_3d_mode, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_configuration_class_set_scaling_3d_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_scaling_3d_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_configuration_class_get_msaa_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersConfiguration::get_msaa_3d, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_configuration_class_set_msaa_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_msaa_3d, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_configuration_class_get_screen_space_aa(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersConfiguration::get_screen_space_aa, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_configuration_class_set_screen_space_aa(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_screen_space_aa, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_configuration_class_get_fsr_sharpness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersConfiguration::get_fsr_sharpness, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_configuration_class_set_fsr_sharpness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_fsr_sharpness, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_configuration_class_get_texture_mipmap_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RenderSceneBuffersConfiguration::get_texture_mipmap_bias, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_configuration_class_set_texture_mipmap_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_texture_mipmap_bias, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

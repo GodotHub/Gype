@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/resource_preloader.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,24 +37,30 @@ static JSValue resource_preloader_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue resource_preloader_class_add_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ResourcePreloader::add_resource, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_preloader_class_remove_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ResourcePreloader::remove_resource, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_preloader_class_rename_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ResourcePreloader::rename_resource, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_preloader_class_has_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ResourcePreloader::has_resource, ctx, this_val, argc, argv);
 };
 static JSValue resource_preloader_class_get_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ResourcePreloader::get_resource, ctx, this_val, argc, argv);
 };
 static JSValue resource_preloader_class_get_resource_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ResourcePreloader::get_resource_list, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry resource_preloader_class_proto_funcs[] = {

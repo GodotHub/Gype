@@ -36,72 +36,92 @@ static JSValue csg_shape3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue csg_shape3d_class_is_root_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGShape3D::is_root_shape, ctx, this_val, argc, argv);
 };
 static JSValue csg_shape3d_class_set_operation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGShape3D::set_operation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_shape3d_class_get_operation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGShape3D::get_operation, ctx, this_val, argc, argv);
 };
 static JSValue csg_shape3d_class_set_snap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGShape3D::set_snap, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_shape3d_class_get_snap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGShape3D::get_snap, ctx, this_val, argc, argv);
 };
 static JSValue csg_shape3d_class_set_use_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGShape3D::set_use_collision, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_shape3d_class_is_using_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGShape3D::is_using_collision, ctx, this_val, argc, argv);
 };
 static JSValue csg_shape3d_class_set_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGShape3D::set_collision_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_shape3d_class_get_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGShape3D::get_collision_layer, ctx, this_val, argc, argv);
 };
 static JSValue csg_shape3d_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGShape3D::set_collision_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_shape3d_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGShape3D::get_collision_mask, ctx, this_val, argc, argv);
 };
 static JSValue csg_shape3d_class_set_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGShape3D::set_collision_mask_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_shape3d_class_get_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGShape3D::get_collision_mask_value, ctx, this_val, argc, argv);
 };
 static JSValue csg_shape3d_class_set_collision_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGShape3D::set_collision_layer_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_shape3d_class_get_collision_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGShape3D::get_collision_layer_value, ctx, this_val, argc, argv);
 };
 static JSValue csg_shape3d_class_set_collision_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGShape3D::set_collision_priority, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_shape3d_class_get_collision_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGShape3D::get_collision_priority, ctx, this_val, argc, argv);
 };
 static JSValue csg_shape3d_class_set_calculate_tangents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CSGShape3D::set_calculate_tangents, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_shape3d_class_is_calculating_tangents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGShape3D::is_calculating_tangents, ctx, this_val, argc, argv);
 };
 static JSValue csg_shape3d_class_get_meshes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CSGShape3D::get_meshes, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry csg_shape3d_class_proto_funcs[] = {

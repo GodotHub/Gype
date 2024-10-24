@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/script.hpp>
-#include <godot_cpp/classes/editor_debugger_plugin.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/editor_debugger_session.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/editor_debugger_plugin.hpp>
+#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,9 +38,11 @@ static JSValue editor_debugger_plugin_class_constructor(JSContext *ctx, JSValueC
 	return obj;
 }
 static JSValue editor_debugger_plugin_class_get_session(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorDebuggerPlugin::get_session, ctx, this_val, argc, argv);
 };
 static JSValue editor_debugger_plugin_class_get_sessions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&EditorDebuggerPlugin::get_sessions, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_debugger_plugin_class_proto_funcs[] = {

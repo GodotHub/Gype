@@ -36,10 +36,12 @@ static JSValue placeholder_texture3d_class_constructor(JSContext *ctx, JSValueCo
 	return obj;
 }
 static JSValue placeholder_texture3d_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PlaceholderTexture3D::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue placeholder_texture3d_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PlaceholderTexture3D::get_size, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry placeholder_texture3d_class_proto_funcs[] = {

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/e_net_multiplayer_peer.hpp>
-#include <godot_cpp/classes/e_net_connection.hpp>
 #include <godot_cpp/classes/e_net_packet_peer.hpp>
+#include <godot_cpp/classes/e_net_connection.hpp>
 #include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -38,25 +38,32 @@ static JSValue e_net_multiplayer_peer_class_constructor(JSContext *ctx, JSValueC
 	return obj;
 }
 static JSValue e_net_multiplayer_peer_class_create_server(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ENetMultiplayerPeer::create_server, ctx, this_val, argc, argv);
 };
 static JSValue e_net_multiplayer_peer_class_create_client(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ENetMultiplayerPeer::create_client, ctx, this_val, argc, argv);
 };
 static JSValue e_net_multiplayer_peer_class_create_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ENetMultiplayerPeer::create_mesh, ctx, this_val, argc, argv);
 };
 static JSValue e_net_multiplayer_peer_class_add_mesh_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&ENetMultiplayerPeer::add_mesh_peer, ctx, this_val, argc, argv);
 };
 static JSValue e_net_multiplayer_peer_class_set_bind_ip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&ENetMultiplayerPeer::set_bind_ip, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_multiplayer_peer_class_get_host(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ENetMultiplayerPeer::get_host, ctx, this_val, argc, argv);
 };
 static JSValue e_net_multiplayer_peer_class_get_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&ENetMultiplayerPeer::get_peer, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry e_net_multiplayer_peer_class_proto_funcs[] = {

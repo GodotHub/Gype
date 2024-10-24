@@ -36,10 +36,12 @@ static JSValue input_event_magnify_gesture_class_constructor(JSContext *ctx, JSV
 	return obj;
 }
 static JSValue input_event_magnify_gesture_class_set_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventMagnifyGesture::set_factor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_magnify_gesture_class_get_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventMagnifyGesture::get_factor, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry input_event_magnify_gesture_class_proto_funcs[] = {

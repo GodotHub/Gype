@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/hashing_context.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/hashing_context.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,12 +36,15 @@ static JSValue hashing_context_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue hashing_context_class_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&HashingContext::start, ctx, this_val, argc, argv);
 };
 static JSValue hashing_context_class_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&HashingContext::update, ctx, this_val, argc, argv);
 };
 static JSValue hashing_context_class_finish(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&HashingContext::finish, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry hashing_context_class_proto_funcs[] = {

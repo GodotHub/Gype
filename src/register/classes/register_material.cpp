@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,24 +36,30 @@ static JSValue material_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue material_class_set_next_pass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Material::set_next_pass, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue material_class_get_next_pass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Material::get_next_pass, ctx, this_val, argc, argv);
 };
 static JSValue material_class_set_render_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Material::set_render_priority, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue material_class_get_render_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Material::get_render_priority, ctx, this_val, argc, argv);
 };
 static JSValue material_class_inspect_native_shader_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&Material::inspect_native_shader_code, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue material_class_create_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&Material::create_placeholder, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry material_class_proto_funcs[] = {

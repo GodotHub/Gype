@@ -5,17 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/multi_mesh.hpp>
-#include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/canvas_item.hpp>
-#include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/world2d.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/canvas_layer.hpp>
+#include <godot_cpp/classes/style_box.hpp>
+#include <godot_cpp/classes/world2d.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/canvas_item.hpp>
+#include <godot_cpp/classes/multi_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -45,317 +45,404 @@ static JSValue canvas_item_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue canvas_item_class_get_canvas_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_canvas_item, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_set_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::set_visible, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_is_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::is_visible, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_is_visible_in_tree(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::is_visible_in_tree, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_show(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::show, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_hide(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::hide, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_queue_redraw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::queue_redraw, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_move_to_front(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::move_to_front, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_set_as_top_level(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::set_as_top_level, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_is_set_as_top_level(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::is_set_as_top_level, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_set_light_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::set_light_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_light_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_light_mask, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_set_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::set_modulate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_modulate, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_set_self_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::set_self_modulate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_self_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_self_modulate, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_set_z_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::set_z_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_z_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_z_index, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_set_z_as_relative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::set_z_as_relative, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_is_z_relative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::is_z_relative, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_set_y_sort_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::set_y_sort_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_is_y_sort_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::is_y_sort_enabled, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_set_draw_behind_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::set_draw_behind_parent, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_is_draw_behind_parent_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::is_draw_behind_parent_enabled, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_draw_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_line, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_dashed_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_dashed_line, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_polyline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_polyline, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_polyline_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_polyline_colors, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_arc(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_arc, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_multiline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_multiline, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_multiline_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_multiline_colors, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_rect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_circle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_circle, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_texture_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_texture_rect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_texture_rect_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_texture_rect_region, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_msdf_texture_rect_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_msdf_texture_rect_region, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_lcd_texture_rect_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_lcd_texture_rect_region, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_style_box(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_style_box, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_primitive(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_primitive, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_polygon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_colored_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_colored_polygon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_const_method_no_ret(&CanvasItem::draw_string, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_multiline_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_const_method_no_ret(&CanvasItem::draw_multiline_string, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_string_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_const_method_no_ret(&CanvasItem::draw_string_outline, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_multiline_string_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_const_method_no_ret(&CanvasItem::draw_multiline_string_outline, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_char(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_const_method_no_ret(&CanvasItem::draw_char, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_char_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_const_method_no_ret(&CanvasItem::draw_char_outline, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_mesh, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_multimesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_multimesh, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_set_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_set_transform_matrix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_set_transform_matrix, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_animation_slice(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_animation_slice, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_draw_end_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::draw_end_animation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_transform, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_get_global_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_global_transform, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_get_global_transform_with_canvas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_global_transform_with_canvas, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_get_viewport_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_viewport_transform, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_get_viewport_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_viewport_rect, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_get_canvas_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_canvas_transform, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_get_screen_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_screen_transform, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_get_local_mouse_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_local_mouse_position, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_get_global_mouse_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_global_mouse_position, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_get_canvas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_canvas, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_get_canvas_layer_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_canvas_layer_node, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_get_world_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_world_2d, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::set_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_material, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_set_use_parent_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::set_use_parent_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_use_parent_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_use_parent_material, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_set_notify_local_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::set_notify_local_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_is_local_transform_notification_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::is_local_transform_notification_enabled, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_set_notify_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::set_notify_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_is_transform_notification_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::is_transform_notification_enabled, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_force_update_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::force_update_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_make_canvas_position_local(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::make_canvas_position_local, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_make_input_local(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::make_input_local, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_set_visibility_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::set_visibility_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_visibility_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_visibility_layer, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_set_visibility_layer_bit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::set_visibility_layer_bit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_visibility_layer_bit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_visibility_layer_bit, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_set_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::set_texture_filter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_texture_filter, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_set_texture_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::set_texture_repeat, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_texture_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_texture_repeat, ctx, this_val, argc, argv);
 };
 static JSValue canvas_item_class_set_clip_children_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&CanvasItem::set_clip_children_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_class_get_clip_children_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&CanvasItem::get_clip_children_mode, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry canvas_item_class_proto_funcs[] = {

@@ -36,17 +36,21 @@ static JSValue input_event_joypad_motion_class_constructor(JSContext *ctx, JSVal
 	return obj;
 }
 static JSValue input_event_joypad_motion_class_set_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventJoypadMotion::set_axis, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_joypad_motion_class_get_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventJoypadMotion::get_axis, ctx, this_val, argc, argv);
 };
 static JSValue input_event_joypad_motion_class_set_axis_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&InputEventJoypadMotion::set_axis_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_joypad_motion_class_get_axis_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&InputEventJoypadMotion::get_axis_value, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry input_event_joypad_motion_class_proto_funcs[] = {

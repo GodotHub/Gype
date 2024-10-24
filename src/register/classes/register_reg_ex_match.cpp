@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/reg_ex_match.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/reg_ex_match.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,24 +36,31 @@ static JSValue reg_ex_match_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue reg_ex_match_class_get_subject(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RegExMatch::get_subject, ctx, this_val, argc, argv);
 };
 static JSValue reg_ex_match_class_get_group_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RegExMatch::get_group_count, ctx, this_val, argc, argv);
 };
 static JSValue reg_ex_match_class_get_names(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RegExMatch::get_names, ctx, this_val, argc, argv);
 };
 static JSValue reg_ex_match_class_get_strings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RegExMatch::get_strings, ctx, this_val, argc, argv);
 };
 static JSValue reg_ex_match_class_get_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RegExMatch::get_string, ctx, this_val, argc, argv);
 };
 static JSValue reg_ex_match_class_get_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RegExMatch::get_start, ctx, this_val, argc, argv);
 };
 static JSValue reg_ex_match_class_get_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&RegExMatch::get_end, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry reg_ex_match_class_proto_funcs[] = {

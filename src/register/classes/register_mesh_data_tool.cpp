@@ -7,8 +7,8 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/mesh_data_tool.hpp>
 #include <godot_cpp/classes/array_mesh.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,130 +38,168 @@ static JSValue mesh_data_tool_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue mesh_data_tool_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshDataTool::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_data_tool_class_create_from_surface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&MeshDataTool::create_from_surface, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_commit_to_surface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&MeshDataTool::commit_to_surface, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_get_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_format, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_get_vertex_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_vertex_count, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_get_edge_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_edge_count, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_get_face_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_face_count, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_set_vertex(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshDataTool::set_vertex, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_data_tool_class_get_vertex(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_vertex, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_set_vertex_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshDataTool::set_vertex_normal, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_data_tool_class_get_vertex_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_vertex_normal, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_set_vertex_tangent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshDataTool::set_vertex_tangent, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_data_tool_class_get_vertex_tangent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_vertex_tangent, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_set_vertex_uv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshDataTool::set_vertex_uv, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_data_tool_class_get_vertex_uv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_vertex_uv, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_set_vertex_uv2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshDataTool::set_vertex_uv2, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_data_tool_class_get_vertex_uv2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_vertex_uv2, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_set_vertex_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshDataTool::set_vertex_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_data_tool_class_get_vertex_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_vertex_color, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_set_vertex_bones(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshDataTool::set_vertex_bones, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_data_tool_class_get_vertex_bones(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_vertex_bones, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_set_vertex_weights(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshDataTool::set_vertex_weights, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_data_tool_class_get_vertex_weights(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_vertex_weights, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_set_vertex_meta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshDataTool::set_vertex_meta, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_data_tool_class_get_vertex_meta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_vertex_meta, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_get_vertex_edges(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_vertex_edges, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_get_vertex_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_vertex_faces, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_get_edge_vertex(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_edge_vertex, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_get_edge_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_edge_faces, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_set_edge_meta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshDataTool::set_edge_meta, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_data_tool_class_get_edge_meta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_edge_meta, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_get_face_vertex(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_face_vertex, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_get_face_edge(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_face_edge, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_set_face_meta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshDataTool::set_face_meta, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_data_tool_class_get_face_meta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_face_meta, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_get_face_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_face_normal, ctx, this_val, argc, argv);
 };
 static JSValue mesh_data_tool_class_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshDataTool::set_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_data_tool_class_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshDataTool::get_material, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry mesh_data_tool_class_proto_funcs[] = {

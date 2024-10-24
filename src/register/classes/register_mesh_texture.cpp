@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh_texture.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/mesh_texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,24 +37,30 @@ static JSValue mesh_texture_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue mesh_texture_class_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshTexture::set_mesh, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_texture_class_get_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshTexture::get_mesh, ctx, this_val, argc, argv);
 };
 static JSValue mesh_texture_class_set_image_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshTexture::set_image_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_texture_class_get_image_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshTexture::get_image_size, ctx, this_val, argc, argv);
 };
 static JSValue mesh_texture_class_set_base_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&MeshTexture::set_base_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_texture_class_get_base_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&MeshTexture::get_base_texture, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry mesh_texture_class_proto_funcs[] = {

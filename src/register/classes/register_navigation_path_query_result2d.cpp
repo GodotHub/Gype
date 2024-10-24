@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/navigation_path_query_result2d.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/navigation_path_query_result2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,34 +36,43 @@ static JSValue navigation_path_query_result2d_class_constructor(JSContext *ctx, 
 	return obj;
 }
 static JSValue navigation_path_query_result2d_class_set_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationPathQueryResult2D::set_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_result2d_class_get_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationPathQueryResult2D::get_path, ctx, this_val, argc, argv);
 };
 static JSValue navigation_path_query_result2d_class_set_path_types(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationPathQueryResult2D::set_path_types, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_result2d_class_get_path_types(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationPathQueryResult2D::get_path_types, ctx, this_val, argc, argv);
 };
 static JSValue navigation_path_query_result2d_class_set_path_rids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationPathQueryResult2D::set_path_rids, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_result2d_class_get_path_rids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationPathQueryResult2D::get_path_rids, ctx, this_val, argc, argv);
 };
 static JSValue navigation_path_query_result2d_class_set_path_owner_ids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationPathQueryResult2D::set_path_owner_ids, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_result2d_class_get_path_owner_ids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&NavigationPathQueryResult2D::get_path_owner_ids, ctx, this_val, argc, argv);
 };
 static JSValue navigation_path_query_result2d_class_reset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&NavigationPathQueryResult2D::reset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

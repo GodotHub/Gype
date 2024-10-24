@@ -37,30 +37,38 @@ static JSValue open_xrip_binding_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 static JSValue open_xrip_binding_class_set_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRIPBinding::set_action, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xrip_binding_class_get_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRIPBinding::get_action, ctx, this_val, argc, argv);
 };
 static JSValue open_xrip_binding_class_get_path_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRIPBinding::get_path_count, ctx, this_val, argc, argv);
 };
 static JSValue open_xrip_binding_class_set_paths(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRIPBinding::set_paths, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xrip_binding_class_get_paths(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRIPBinding::get_paths, ctx, this_val, argc, argv);
 };
 static JSValue open_xrip_binding_class_has_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&OpenXRIPBinding::has_path, ctx, this_val, argc, argv);
 };
 static JSValue open_xrip_binding_class_add_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRIPBinding::add_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xrip_binding_class_remove_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&OpenXRIPBinding::remove_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

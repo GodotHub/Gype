@@ -36,10 +36,12 @@ static JSValue encoded_object_as_id_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue encoded_object_as_id_class_set_object_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&EncodedObjectAsID::set_object_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue encoded_object_as_id_class_get_object_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&EncodedObjectAsID::get_object_id, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry encoded_object_as_id_class_proto_funcs[] = {

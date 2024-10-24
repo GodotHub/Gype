@@ -38,89 +38,115 @@ static JSValue web_socket_peer_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue web_socket_peer_class_connect_to_url(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&WebSocketPeer::connect_to_url, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_accept_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&WebSocketPeer::accept_stream, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_send(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&WebSocketPeer::send, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_send_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&WebSocketPeer::send_text, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_was_string_packet(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketPeer::was_string_packet, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebSocketPeer::poll, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_peer_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebSocketPeer::close, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_peer_class_get_connected_host(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketPeer::get_connected_host, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_get_connected_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketPeer::get_connected_port, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_get_selected_protocol(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketPeer::get_selected_protocol, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_get_requested_url(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketPeer::get_requested_url, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_set_no_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebSocketPeer::set_no_delay, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_peer_class_get_current_outbound_buffered_amount(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketPeer::get_current_outbound_buffered_amount, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_get_ready_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketPeer::get_ready_state, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_get_close_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketPeer::get_close_code, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_get_close_reason(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketPeer::get_close_reason, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_get_supported_protocols(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketPeer::get_supported_protocols, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_set_supported_protocols(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebSocketPeer::set_supported_protocols, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_peer_class_get_handshake_headers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketPeer::get_handshake_headers, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_set_handshake_headers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebSocketPeer::set_handshake_headers, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_peer_class_get_inbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketPeer::get_inbound_buffer_size, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_set_inbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebSocketPeer::set_inbound_buffer_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_peer_class_get_outbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketPeer::get_outbound_buffer_size, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_set_outbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebSocketPeer::set_outbound_buffer_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_peer_class_set_max_queued_packets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&WebSocketPeer::set_max_queued_packets, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_socket_peer_class_get_max_queued_packets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&WebSocketPeer::get_max_queued_packets, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry web_socket_peer_class_proto_funcs[] = {

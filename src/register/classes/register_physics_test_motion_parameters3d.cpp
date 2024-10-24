@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_test_motion_parameters3d.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/physics_test_motion_parameters3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,58 +36,74 @@ static JSValue physics_test_motion_parameters3d_class_constructor(JSContext *ctx
 	return obj;
 }
 static JSValue physics_test_motion_parameters3d_class_get_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionParameters3D::get_from, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_parameters3d_class_set_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsTestMotionParameters3D::set_from, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_test_motion_parameters3d_class_get_motion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionParameters3D::get_motion, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_parameters3d_class_set_motion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsTestMotionParameters3D::set_motion, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_test_motion_parameters3d_class_get_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionParameters3D::get_margin, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_parameters3d_class_set_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsTestMotionParameters3D::set_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_test_motion_parameters3d_class_get_max_collisions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionParameters3D::get_max_collisions, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_parameters3d_class_set_max_collisions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsTestMotionParameters3D::set_max_collisions, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_test_motion_parameters3d_class_is_collide_separation_ray_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionParameters3D::is_collide_separation_ray_enabled, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_parameters3d_class_set_collide_separation_ray_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsTestMotionParameters3D::set_collide_separation_ray_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_test_motion_parameters3d_class_get_exclude_bodies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionParameters3D::get_exclude_bodies, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_parameters3d_class_set_exclude_bodies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsTestMotionParameters3D::set_exclude_bodies, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_test_motion_parameters3d_class_get_exclude_objects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionParameters3D::get_exclude_objects, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_parameters3d_class_set_exclude_objects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsTestMotionParameters3D::set_exclude_objects, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_test_motion_parameters3d_class_is_recovery_as_collision_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&PhysicsTestMotionParameters3D::is_recovery_as_collision_enabled, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_parameters3d_class_set_recovery_as_collision_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&PhysicsTestMotionParameters3D::set_recovery_as_collision_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

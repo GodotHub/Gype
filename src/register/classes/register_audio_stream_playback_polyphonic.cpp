@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/audio_stream_playback.hpp>
-#include <godot_cpp/classes/audio_stream_playback_polyphonic.hpp>
 #include <godot_cpp/classes/audio_stream.hpp>
+#include <godot_cpp/classes/audio_stream_playback_polyphonic.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,20 +37,25 @@ static JSValue audio_stream_playback_polyphonic_class_constructor(JSContext *ctx
 	return obj;
 }
 static JSValue audio_stream_playback_polyphonic_class_play_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&AudioStreamPlaybackPolyphonic::play_stream, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_playback_polyphonic_class_set_stream_volume(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioStreamPlaybackPolyphonic::set_stream_volume, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_playback_polyphonic_class_set_stream_pitch_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioStreamPlaybackPolyphonic::set_stream_pitch_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_playback_polyphonic_class_is_stream_playing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&AudioStreamPlaybackPolyphonic::is_stream_playing, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_playback_polyphonic_class_stop_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&AudioStreamPlaybackPolyphonic::stop_stream, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };

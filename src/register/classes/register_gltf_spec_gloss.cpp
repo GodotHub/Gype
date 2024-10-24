@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/gltf_spec_gloss.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/gltf_spec_gloss.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,37 +37,47 @@ static JSValue gltf_spec_gloss_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 static JSValue gltf_spec_gloss_class_get_diffuse_img(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFSpecGloss::get_diffuse_img, ctx, this_val, argc, argv);
 };
 static JSValue gltf_spec_gloss_class_set_diffuse_img(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFSpecGloss::set_diffuse_img, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_spec_gloss_class_get_diffuse_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFSpecGloss::get_diffuse_factor, ctx, this_val, argc, argv);
 };
 static JSValue gltf_spec_gloss_class_set_diffuse_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFSpecGloss::set_diffuse_factor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_spec_gloss_class_get_gloss_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFSpecGloss::get_gloss_factor, ctx, this_val, argc, argv);
 };
 static JSValue gltf_spec_gloss_class_set_gloss_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFSpecGloss::set_gloss_factor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_spec_gloss_class_get_specular_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFSpecGloss::get_specular_factor, ctx, this_val, argc, argv);
 };
 static JSValue gltf_spec_gloss_class_set_specular_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFSpecGloss::set_specular_factor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_spec_gloss_class_get_spec_gloss_img(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_method_ret(&GLTFSpecGloss::get_spec_gloss_img, ctx, this_val, argc, argv);
 };
 static JSValue gltf_spec_gloss_class_set_spec_gloss_img(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
     call_builtin_method_no_ret(&GLTFSpecGloss::set_spec_gloss_img, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
