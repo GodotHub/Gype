@@ -20,7 +20,7 @@ def gen_global_enum_h():
     cpp_template = env.get_template('global_enum.h.jinja')
     config_env(env)
     content = cpp_template.render()
-    with open(file=Path.joinpath(generated_root_dir, 'src', 'register', 'global_enum', f'register_global_enum.h'), mode='w', encoding='utf8') as file:
+    with open(file=Path.joinpath(generated_root_dir, 'include', 'register', 'global_enum', f'register_global_enum.h'), mode='w', encoding='utf8') as file:
         file.write(content)
 
 def config_env(env: Environment):

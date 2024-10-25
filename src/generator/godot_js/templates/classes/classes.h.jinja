@@ -6,23 +6,27 @@
 
 extern std::unordered_map<intptr_t, int64_t> instance_id_map;
 
-#define CHECK_INSTANCE_VALID(val)                                           \
-	{                                                                       \
-		intptr_t __ptr__ = (intptr_t)JS_GetOpaque(ctx, JS_GetClassID(val)); \
-		ERR_FAIL_COND(instance_id_map.count(__ptr__) <= 0)                  \
-		int64_t __id__ = instance_id_map[__ptr__];                          \
-		ERR_FAIL_COND(!UtilityFunctions::is_instance_id_valid(__id__));     \
+#define CHECK_INSTANCE_VALID(val)                                   \
+	{                                                               \
+		void *opaque = JS_GetOpaque(val, JS_GetClassID(val));       \
+		Object *object = reinterpret_cast<Object *>(opaque);        \
+		intptr_t ptr = (intptr_t)object->_owner;                    \
+		ERR_FAIL_COND(instance_id_map.count(ptr) <= 0)              \
+		int64_t id = instance_id_map[ptr];                          \
+		ERR_FAIL_COND(!UtilityFunctions::is_instance_id_valid(id)); \
 	}
 
-#define CHECK_INSTANCE_VALID_V(val)                                                      \
-	{                                                                                    \
-		JSValue __undefined__ = JS_UNDEFINED;                                            \
-		intptr_t __ptr__ = (intptr_t)JS_GetOpaque(val, JS_GetClassID(val));              \
-		ERR_FAIL_COND_V(instance_id_map.count(__ptr__) <= 0, __undefined__);             \
-		int64_t __id__ = instance_id_map[__ptr__];                                       \
-		ERR_FAIL_COND_V(!UtilityFunctions::is_instance_id_valid(__id__), __undefined__); \
+#define CHECK_INSTANCE_VALID_V(val)                                              \
+	{                                                                            \
+		JSValue undefined = JS_UNDEFINED;                                        \
+		void *opaque = JS_GetOpaque(val, JS_GetClassID(val));                    \
+		Object *object = reinterpret_cast<Object *>(opaque);                     \
+		intptr_t ptr = (intptr_t)object->_owner;                                 \
+		ERR_FAIL_COND_V(instance_id_map.count(ptr) <= 0, undefined);             \
+		int64_t id = instance_id_map[ptr];                                       \
+		ERR_FAIL_COND_V(!UtilityFunctions::is_instance_id_valid(id), undefined); \
 	}
-
+	
 {%- for class in classes %}
 void register_{{ camel_to_snake(class['name']) }}();
 {%- endfor %}
