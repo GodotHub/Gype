@@ -1,0 +1,9 @@
+#ifndef __REGISTER_BUILTIN_CLASSES_H__
+#define __REGISTER_BUILTIN_CLASSES_H__
+
+{%- for class in classes %}
+void register_{{camel_to_snake(class['name'])}}();
+{%- endfor %}
+void register_builtin_classes();
+
+#endif // __REGISTER_BUILTIN_CLASSES_H__

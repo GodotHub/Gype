@@ -1,0 +1,7 @@
+#include "register/builtin_classes/register_builtin_classes.h"
+
+void register_builtin_classes(){
+{%- for clazz in classes %}
+    register_{{camel_to_snake(clazz['name'])}}();
+{%- endfor %}
+}
