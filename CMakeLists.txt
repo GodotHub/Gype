@@ -40,14 +40,12 @@ target_link_libraries(gype PRIVATE tree-sitter)
 # Specify the include directories for the "gype" target
 # These directories will be searched for header files during compilation
 target_include_directories(gype PUBLIC
-    ${PROJECT_SOURCE_DIR}/include         # Project's include directory
-    ${PROJECT_SOURCE_DIR}/quickjs/include # QuickJS include directory
-    ${PROJECT_SOURCE_DIR}/tree-sitter/src # Tree-sitter source directory
-    ${PROJECT_SOURCE_DIR}/test            # Test directory
+    ${PROJECT_SOURCE_DIR}/include         
+    ${PROJECT_SOURCE_DIR}/quickjs/include 
+    ${PROJECT_SOURCE_DIR}/tree-sitter/src 
+    ${PROJECT_SOURCE_DIR}/test            
 )
 
-# Set the required C++ standard for the "gype" target
-# In this case, C++17 is being used
 target_compile_features(${PROJECT_NAME}
     PRIVATE
         cxx_std_17
