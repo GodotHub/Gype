@@ -21,5 +21,8 @@ void test_number() {
         GD.print(Number.isSafeInteger(0));
         GD.print(Number.EPSILON);
     )xxx";
-	JSValue ret = JS_Eval(ctx, code.c_str(), code.size(), "<eval>", JS_EVAL_TYPE_MODULE);
+    
+	// JSValue ret = JS_Eval(ctx, code.c_str(), code.size(), "<eval>", JS_EVAL_TYPE_MODULE);
+
+    JS_Eval(ctx, code.c_str(), code.size(), "<eval>", JS_EVAL_TYPE_MODULE);
 }
