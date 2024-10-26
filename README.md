@@ -2,7 +2,7 @@
 
 Godot with Great JavaScript/TypeScript
 
-## 快速开始
+## Quick Start
 
 Import the plugin in a Godot project and use it like GDS：  
 ```js
