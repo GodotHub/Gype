@@ -6,7 +6,7 @@ Godot引擎，但是带有JavaScript/TypeScript支持
 
 ## 快速开始
 
-在Godot项目中导入插件，像GDS一样使用：  
+在Godot项目中导入[插件](https://github.com/GodotHub/Gype/releases/download/preview/addons.zip)，像GDS一样使用：  
 ```js
 import { GodotClass, Tool } from "@js_godot/class_defined";
 import { Sprite2D } from "godot/classes/sprite2d";

@@ -6,7 +6,7 @@ Godot with Great JavaScript/TypeScript
 
 ## Quick Start
 
-Import the plugin in a Godot project and use it like GDS：  
+Import the [plugin](https://github.com/GodotHub/Gype/releases/download/preview/addons.zip) in a Godot project and use it like GDS：  
 ```js
 import { GodotClass, Tool } from "@js_godot/class_defined";
 import { Sprite2D } from "godot/classes/sprite2d";
