@@ -1,39 +1,59 @@
 ## GypeScript
 
-Godot with Great TypeScript
+Godot with Great JavaScript/TypeScript
 
-## Notes
+## 快速开始
 
-This project is still under development. Stay tuned!
+Import the plugin in a Godot project and use it like GDS：  
+```js
+import { GodotClass, Tool } from "@js_godot/class_defined";
+import { Sprite2D } from "godot/classes/sprite2d";
+
+@GodotClass
+export class MySprite extends Sprite2D {
+  vec2 = new Vector2(500, 0);
+  constructor() {
+	super();
+  }
+
+  _ready() {
+	this.position = this.vec2;
+	GD.print(this.position);
+  }
+
+  _process(delta) {
+	this.vec2.y += 100 * delta;
+	this.position = this.vec2;
+  }
+}
+```  
+
+Examples can be viewed in the `example` directory.  
+> The source repository does not contain compiled binaries, so the addons directory needs to import the plugin itself.  
+
+Notes:  
+1. Godot's `variant` types are globally scoped and can be used without `import`.  
+2. Godot's `object` classes are all in `godot/classes/xxxx`, such as `godot/classes/node`.  
+3. Godot's utility functions are in the `GD` singleton, e.g. `GD.print()`.  
+
+
+## Project Plan
+
+1. ✅ Run a JS/TS script  
+2. ✅ Add JS/TS bindings for Godot API  
+3. 🟦 Implement new version of GMUI with JS/TS binding  
+4. 🟨 Add editor support for ~~JS~~/TS  
+5. 🟦🟨✅...  
 
 ## Build the Project
 
 #### Compiler Setup
 
 On Linux, you can run it directly without manually configuring GCC.  
+
 On Windows, download [mingw64 (posix version)](https://github.com/niXman/mingw-builds-binaries/releases/download/13.2.0-rt_v11-rev1/x86_64-13.2.0-release-posix-seh-msvcrt-rt_v11-rev1.7z) and set the PATH variable.
 
 #### Build library
 
-1. Windows: `.\getlib`
-2. Linux: `bash getlib.sh`
-3. Compile JS: `.\gsc ts_example\hello.ts`
+Windows: `./build.ps1`  
 
-## Project Plan
-
-1. 🟨 Run GypeScript/JS/TS code through GDE
-2. 🟦 Add GDE API bindings for GypeScript
-3. 🟦 Add Godot API bindings for GypeScript
-4. 🟦 Customize GypeScript while maintaining TS compatibility
-5. 🟦 Add new GMUI API bindings for GypeScript
-6. 🟦 Add GypeScript support in the Godot editor
-7. 🟦🟨✅...
-
-## 使用
-
-在 godot 导入插件即可像 gdscript 一样使用
-godot 的 variant 类型均在全局作用域,不需要 import 就可使用.
-object 类均在 godot/classes/xxxx,例如,godot/classes/node
-工具函数均在 GD 单例内,例如 GD.print(...);
-
-该项目依赖 nodejs 来执行 tsc,需要安装 nodejs 才能编译.(后续会尝试替换为 qjs)

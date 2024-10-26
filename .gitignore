@@ -14,6 +14,7 @@ godot-cpp/__pycache__
 .cache
 __pycache__
 .TMP
+example/addons.zip
 
 # /src/register/classes
 # /src/register/utility_functions
