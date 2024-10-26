@@ -1,6 +1,8 @@
-## GypeScript
-
-Godot with Great JavaScript/TypeScript
+## GypeScript  
+  
+Godot with Great JavaScript/TypeScript  
+  
+[English](https://github.com/GodotHub/Gype) &nbsp;&nbsp;&nbsp;&nbsp;[中文](https://github.com/GodotHub/Gype/blob/master/README.ZH.md)  
 
 ## Quick Start
 
@@ -51,9 +53,8 @@ Notes:
 
 On Linux, you can run it directly without manually configuring GCC.  
 
-On Windows, download [mingw64 (posix version)](https://github.com/niXman/mingw-builds-binaries/releases/download/13.2.0-rt_v11-rev1/x86_64-13.2.0-release-posix-seh-msvcrt-rt_v11-rev1.7z) and set the PATH variable.
+On Windows, download [mingw64 (posix version)](https://github.com/niXman/mingw-builds-binaries/releases/download/13.2.0-rt_v11-rev1/x86_64-13.2.0-release-posix-seh-msvcrt-rt_v11-rev1.7z) and set the PATH env variable.
 
 #### Build library
 
 Windows: `./build.ps1`  
-

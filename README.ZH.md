@@ -1,6 +1,8 @@
-## GypeScript
-
+## GypeScript  
+  
 Godot引擎，但是带有JavaScript/TypeScript支持  
+  
+[English](https://github.com/GodotHub/Gype) &nbsp;&nbsp;&nbsp;&nbsp;[中文](https://github.com/GodotHub/Gype/blob/master/README.ZH.md)  
 
 ## 快速开始
 
