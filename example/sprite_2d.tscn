@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://dalcjnhm3c6sp"]
+[gd_scene load_steps=3 format=3 uid="uid://ywkvev50gpv6"]
 
-[ext_resource type="Texture2D" uid="uid://b8cebd1utf34e" path="res://icon.svg" id="1_hyu6n"]
-
-[sub_resource type="JavaScript" id="JavaScript_j6ddl"]
+[ext_resource type="Texture2D" uid="uid://b8cebd1utf34e" path="res://icon.svg" id="1_mrcbm"]
+[ext_resource type="Script" path="res://MySprite.js" id="2_ylg5d"]
 
 [node name="Sprite2D" type="Sprite2D"]
-texture = ExtResource("1_hyu6n")
-script = SubResource("JavaScript_j6ddl")
+unique_name_in_owner = 0
+visible = 1
+show_behind_parent = 0
+top_level = 0
+z_as_relative = 1
+y_sort_enabled = 0
+use_parent_material = 0
+rotation = 0
+skew = 0
+texture = ExtResource("1_mrcbm")
+centered = 1
+flip_h = 0
+flip_v = 0
+region_enabled = 0
+region_filter_clip_enabled = 0
+script = ExtResource("2_ylg5d")
