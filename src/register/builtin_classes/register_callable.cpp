@@ -5,6 +5,7 @@
 #include "quickjs/str_helper.h"
 #include "utils/func_utils.h"
 #include <godot_cpp/variant/callable.hpp>
+#include <godot_cpp/variant/callable_jsmethod_pointer.hpp>
 
 using namespace godot;
 
@@ -28,6 +29,10 @@ static JSValue callable_class_constructor(JSContext *ctx, JSValueConst new_targe
 
 	if (argc == 0) {
 		callable_class = memnew(Callable());
+	}
+
+	if (argc == 2 && JS_IsObject(argv[0]) && JS_IsFunction(ctx, argv[1])) {
+		callable_class = create_custom_javascript_callable(argv[0], argv[1]);
 	}
 
 	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::CALLABLE) {

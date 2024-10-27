@@ -49,6 +49,7 @@ struct FuncTraits<R (T::*)(P...)> {
 	using ArgTypes = std::tuple<P...>;
 	using Type = T;
 };
+
 template <typename T>
 std::enable_if_t<std::is_same_v<T, Variant>, T>
 convert(JSContext *ctx, JSValue v) {

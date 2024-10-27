@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bp3ese7njloef"]
+[gd_scene load_steps=3 format=3 uid="uid://dalcjnhm3c6sp"]
 
-[ext_resource type="Texture2D" uid="uid://b8cebd1utf34e" path="res://icon.svg" id="1_2ieca"]
-[ext_resource type="Script" path="res://MySprite.js" id="2_di68k"]
+[ext_resource type="Texture2D" uid="uid://b8cebd1utf34e" path="res://icon.svg" id="1_hyu6n"]
+
+[sub_resource type="JavaScript" id="JavaScript_j6ddl"]
 
 [node name="Sprite2D" type="Sprite2D"]
-texture = ExtResource("1_2ieca")
-script = ExtResource("2_di68k")
+texture = ExtResource("1_hyu6n")
+script = SubResource("JavaScript_j6ddl")

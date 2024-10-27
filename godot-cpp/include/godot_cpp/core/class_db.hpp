@@ -65,8 +65,6 @@ struct std::hash<godot::StringName> {
 namespace godot {
 #define DEFVAL(m_defval) (m_defval)
 
-// class JavaScriptDB;
-
 struct MethodDefinition {
 	StringName name;
 	std::list<StringName> args;
@@ -352,44 +350,6 @@ MethodBind *ClassDB::bind_vararg_method(uint32_t p_flags, StringName p_name, M p
 
 	return bind;
 }
-
-// class JavaScriptDB {
-// 	static JavaScriptDB *singleton;
-// 	static JSContext *ctx;
-// 	HashMap<uint64_t, JSValue> instances;
-
-// protected:
-// 	static void _bind_methods() {}
-
-// public:
-// 	JavaScriptDB() {}
-
-// 	void add_instance(Object *obj, JSValue js_obj) {
-// 		instances[obj->get_instance_id()] = js_obj;
-// 	}
-
-// 	template <typename Func>
-// 	bool call_virtual_method(const char *func_name, Object *p_obj, const GDExtensionConstTypePtr *p_args, GDExtensionTypePtr p_ret) {
-// 		JSValue this_obj = instances.has(p_obj->get_instance_id()) ? instances[p_obj->get_instance_id()] : JS_UNDEFINED;
-// 		if (JS_IsUndefined(this_obj))
-// 			return false;
-
-// 		JSValue func_obj = JS_GetPropertyStr(ctx, this_obj, func_name);
-// 		if (JS_IsUndefined(func_obj) || JS_IsNull(func_obj) || JS_IsException(func_obj))
-// 			return false;
-
-// 		using ArgTypes = typename FunctionTraits<Func>::ArgTypes;
-// 		constexpr std::size_t ArgCount = std::tuple_size<ArgTypes>::value;
-// 		auto tuple = convert_args_to_tuple<ArgTypes>(p_args);
-// 		JSValue js_ret = call_js_function_with_tuple(ctx, func_obj, this_obj, tuple);
-// 		Variant ret = convert_to_gd<Variant>(ctx, js_ret);
-// 		internal::gdextension_interface_variant_new_copy(p_ret, ret._native_ptr());
-// 		return true;
-// 	}
-
-// 	static JavaScriptDB *get_singleton();
-// 	static void init(JSContext *ctx);
-// };
 
 #define GDREGISTER_CLASS(m_class) ::godot::ClassDB::register_class<m_class>();
 #define GDREGISTER_VIRTUAL_CLASS(m_class) ::godot::ClassDB::register_class<m_class>(true);

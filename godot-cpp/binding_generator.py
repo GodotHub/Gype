@@ -2578,6 +2578,8 @@ def make_js_varargs_template(function_data, static=False,
         result.append(
             f"\t_method_bindings.method_{function_name}({base}, reinterpret_cast<GDExtensionConstTypePtr *>(const_cast<const Variant **>(variant_args.data())), {ret}, {len(method_arguments)} + variant_args.size());"
         )
+        if return_type != "void":
+            result.append("\treturn ret;")
 
     result.append('}\n')
     result = list(map(lambda e: '\t' + e , result))

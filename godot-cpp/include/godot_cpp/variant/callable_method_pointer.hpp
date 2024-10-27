@@ -53,6 +53,7 @@ public:
 namespace internal {
 
 Callable create_callable_from_ccmp(CallableCustomMethodPointerBase *p_callable_method_pointer);
+Callable *create_callable_ptr_from_ccmp(CallableCustomMethodPointerBase *p_callable_method_pointer);
 
 } // namespace internal
 

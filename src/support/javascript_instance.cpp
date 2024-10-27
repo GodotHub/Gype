@@ -96,8 +96,8 @@ JSValue JavaScriptInstance::find_ns_property(JSModuleDef *md, const char *name) 
 	return true;
 
 GDExtensionBool JavaScriptInstance::set(GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_variant) {
-	// if (script->is_tool || Engine::get_singleton()->is_editor_hint())
-	// 	return false;
+	if (script->is_tool || Engine::get_singleton()->is_editor_hint())
+		return false;
 	JSValue js_instance = binding->js_instance;
 	const char *name = to_chars(*reinterpret_cast<const StringName *>(p_name));
 	Variant varg;
@@ -155,12 +155,14 @@ GDExtensionInt JavaScriptInstance::get_method_argument_count(GDExtensionConstStr
 }
 
 void JavaScriptInstance::call(GDExtensionConstStringNamePtr p_method, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error) {
-	// if (script->is_tool || Engine::get_singleton()->is_editor_hint())
-	// 	return;
 	JSValue js_instance = binding->js_instance;
 	JSValue prototype = JS_GetPrototype(ctx, js_instance);
 	const char *method = to_chars(*reinterpret_cast<const StringName *>(p_method));
 	JSAtom atom = JS_NewAtom(ctx, method);
+	JSPropertyDescriptor desc;
+
+	if (script->is_tool || (Engine::get_singleton()->is_editor_hint() && JS_GetOwnProperty(ctx, &desc, js_instance, atom) <= 0))
+		return;
 	int it = 0;
 	while (!JS_IsNull(prototype)) {
 		JSPropertyDescriptor prop;

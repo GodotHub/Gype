@@ -376,7 +376,7 @@ JSValue any_to_jsvalue(const Variant *val) {
 			return JS_UNDEFINED;
 		}
 		default:
-			return packed_to_jsvalue(val);
+			return JS_UNDEFINED;
 	}
 }
 
