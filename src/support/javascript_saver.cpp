@@ -39,10 +39,11 @@ bool JavaScriptSaver::_recognize(const Ref<Resource> &p_resource) const {
 
 PackedStringArray JavaScriptSaver::_get_recognized_extensions(const Ref<Resource> &p_resource) const {
 	PackedStringArray ret = PackedStringArray();
+	ret.append("ts");
 	ret.append("js");
 	return ret;
 }
 
 bool JavaScriptSaver::_recognize_path(const Ref<Resource> &p_resource, const String &p_path) const {
-	return p_path.ends_with(".js");
+	return p_path.ends_with(".js") || p_path.ends_with(".ts");
 }

@@ -19,21 +19,22 @@ JavaScriptLoader *JavaScriptLoader::get_singleton() {
 
 PackedStringArray JavaScriptLoader::_get_recognized_extensions() const {
 	PackedStringArray ret = PackedStringArray();
+	ret.append("ts");
 	ret.append("js");
 	return ret;
 }
 
 bool JavaScriptLoader::_recognize_path(const String &p_path, const StringName &p_type) const {
-	return p_path.ends_with(".js");
+	return p_path.ends_with(".js") || p_path.ends_with(".ts");
 }
 
 bool JavaScriptLoader::_handles_type(const StringName &p_type) const {
-	return p_type == StringName("JavaScript");
+	return p_type == StringName("TypeScript");
 }
 
 String JavaScriptLoader::_get_resource_type(const String &p_path) const {
-	if (p_path.get_extension() == "js") {
-		return "JavaScript";
+	if (p_path.get_extension() == "js" || p_path.get_extension() == "ts") {
+		return "TypeScript";
 	} else {
 		return "";
 	}

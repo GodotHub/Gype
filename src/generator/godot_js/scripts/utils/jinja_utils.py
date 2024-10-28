@@ -138,14 +138,6 @@ def add_opaque(args):
                 tmp.append(args[i]['name'])
     return tmp
 
-def norm_op_name(ops):
-    ret = []
-    for op in ops:
-        tmp = operator_id_name(op['name'])
-        tmp = 'operator_%s_%s' % (operator_id_name(op['name']), op['right_type'] if op.get('right_type') else '')
-        ret.append(tmp)
-    return ret
-
 def camel_to_snake(name):
     name = re.sub("(.)([A-Z][a-z]+)", r"\1_\2", name)
     name = re.sub("([a-z0-9])([A-Z])", r"\1_\2", name)
@@ -180,6 +172,7 @@ def get_enum_name(enum_name: str):
     else:
         return enum_name.replace("enum::", "").split(".")[-1]
 
+# ---给内置类使用
 def put_args(arguments):
     def mapper(pair):
         index, arg = pair
@@ -202,3 +195,61 @@ def variant_type_cond(arguments):
         return '&&' + '&&'.join(arr)
     else:
         return ''
+# ---
+
+# ---ts声明使用
+def is_number(arg_type):
+    return arg_type == 'float' or arg_type == 'int'
+
+def is_bool(arg_type):
+    return arg_type == 'bool'
+
+def connect_args(args):
+    def mapper(arg):
+        arg_name = '_' + arg.get('name', '')
+        arg_type = arg.get('type', '')
+        if is_number(arg_type):
+            return arg_name + ': ' 'number'
+        elif is_bool(arg_type):
+            return arg_name + ': ' 'boolean'
+        elif is_enum(arg_type):
+            return arg_name + ': ' + 'number'
+        elif arg_type == 'Array':
+            return arg_name + ': ' + 'GDArray'
+        else:
+            return arg_name + ': ' + arg_type
+
+    if args:
+        return ', '.join(list(map(mapper, args)))
+    return ''
+
+def set_return(return_value):
+    if return_value:
+        arg_type = return_value['type']
+        if is_number(arg_type):
+            return ': ' 'number'
+        elif is_bool(arg_type):
+            return ': ' 'boolean'
+        elif is_enum(arg_type):
+            return ': ' + 'number'
+        elif arg_type.find('typedarray:') != -1:
+            return ': ' + 'Array'
+        elif arg_type == 'Array':
+            return ': ' + 'GDArray'
+        else:
+            return ': ' + arg_type
+    return ': void'
+
+def set_type(type):
+    if is_number(type):
+        return 'number'
+    elif is_bool(type):
+        return 'boolean'
+    elif is_enum(type):
+        return get_enum_fullname(type)
+    elif type.find('typedarray:') != -1:
+        return 'Array'
+    else:
+        return type
+
+# ---

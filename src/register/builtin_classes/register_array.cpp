@@ -15,7 +15,7 @@ static void array_class_finalizer(JSRuntime *rt, JSValue val) {
 }
 
 static JSClassDef array_class_def = {
-	"Array",
+	"GDArray",
 	.finalizer = array_class_finalizer
 };
 

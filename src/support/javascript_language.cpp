@@ -22,18 +22,18 @@ JavaScriptLanguage *JavaScriptLanguage::get_singleton() {
 }
 
 String JavaScriptLanguage::_get_name() const {
-	return "JavaScript";
+	return "TypeScript";
 }
 
 void JavaScriptLanguage::_init() {
 }
 
 String JavaScriptLanguage::_get_type() const {
-	return "JavaScript";
+	return "TypeScript";
 }
 
 String JavaScriptLanguage::_get_extension() const {
-	return "js";
+	return "ts";
 }
 
 void JavaScriptLanguage::_finish() {
@@ -207,6 +207,7 @@ void JavaScriptLanguage::_reload_tool_script(const Ref<Script> &p_script, bool p
 PackedStringArray JavaScriptLanguage::_get_recognized_extensions() const {
 	PackedStringArray ret = PackedStringArray();
 	ret.append("js");
+	ret.append("ts");
 	return ret;
 }
 
@@ -243,7 +244,7 @@ void JavaScriptLanguage::_frame() {
 }
 
 bool JavaScriptLanguage::_handles_global_class_type(const String &p_type) const {
-	return p_type == "JavaScript";
+	return p_type == "TypeScript";
 }
 
 Dictionary JavaScriptLanguage::_get_global_class_name(const String &p_path) const {

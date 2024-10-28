@@ -15,8 +15,8 @@ JSModuleDef *module_loader(JSContext *ctx, const char *module_name, void *opaque
 	String path = godot::String(filepath);
 	if (path.begins_with("@res")) {
 		path = path.replace("@res", "res://");
-	} else if (path.begins_with("@js_godot")) {
-		path = path.replace("@js_godot", "res://addons/gype/js_godot");
+	} else if (path.begins_with("@godot")) {
+		path = path.replace("@godot", "res://addons/gype/godot");
 	}
 
 	Ref<JavaScript> script = godot::ResourceLoader::get_singleton()->load(path);

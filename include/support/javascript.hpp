@@ -6,7 +6,7 @@
 #include "support/javascript_saver.hpp"
 #include "support/placeholder_javascript_instance.hpp"
 #include "tree_sitter/api.h"
-#include "tree_sitter/tree-sitter-javascript.h"
+#include "typescript/tree_sitter/tree-sitter-typescript.h"
 #include <godot_cpp/classes/script_extension.hpp>
 #include <godot_cpp/templates/hash_map.hpp>
 #include <godot_cpp/templates/hash_set.hpp>
@@ -84,13 +84,13 @@ public:
 
 	JavaScript() {
 		parser = ts_parser_new();
-		lang = tree_sitter_javascript();
+		lang = tree_sitter_typescript();
 		ts_parser_set_language(parser, lang);
 	}
 	JavaScript(const String &path, const String &origin_path) :
 			origin_path(origin_path), path(path) {
 		parser = ts_parser_new();
-		lang = tree_sitter_javascript();
+		lang = tree_sitter_typescript();
 		ts_parser_set_language(parser, lang);
 	};
 	~JavaScript();

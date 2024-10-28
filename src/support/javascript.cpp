@@ -87,12 +87,13 @@ void JavaScript::_set_source_code(const String &p_code) {
 		uint32_t error_offset;
 		TSQueryError error;
 		const char *query_string = R"xxx(
-			(class_declaration
+			(export_statement 
 				(decorator)* @decorator.name
-				name: (identifier) @class.name
-				(class_heritage (identifier) @base.name)?
-			)
-			(#eq? @decorator.name "GodotClass")
+				(class_declaration
+					name: (type_identifier) @class.name
+					(class_heritage (extends_clause (identifier) @base.name))?
+				))
+				(#eq? @decorator.name "GodotClass")
 		)xxx";
 		TSQuery *query = ts_query_new(lang, query_string, strlen(query_string), &error_offset, &error);
 		if (!query)

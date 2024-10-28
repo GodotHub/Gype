@@ -7,5 +7,5 @@ add_library(tree-sitter STATIC ${SOURCE})
 target_include_directories(tree-sitter 
     PUBLIC
         ${PROJECT_SOURCE_DIR}/src
-        ${PROJECT_SOURCE_DIR}/src/javascript
+        ${PROJECT_SOURCE_DIR}/include
 )
