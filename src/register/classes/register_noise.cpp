@@ -1,21 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/noise.hpp>
-#include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void noise_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -34,7 +31,7 @@ static JSValue noise_class_constructor(JSContext *ctx, JSValueConst new_target, 
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, noise_class);	
+	JS_SetOpaque(obj, noise_class);
 	return obj;
 }
 static JSValue noise_class_get_noise_1d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,7 +89,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_noise_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&Noise::__class_id);
 	classes["Noise"] = Noise::__class_id;
 	class_id_list.insert(Noise::__class_id);

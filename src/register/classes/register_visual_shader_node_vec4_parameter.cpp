@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_vec4_parameter.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/visual_shader_node_parameter.hpp>
+#include <godot_cpp/classes/visual_shader_node_vec4_parameter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void visual_shader_node_vec4_parameter_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue visual_shader_node_vec4_parameter_class_constructor(JSContext *ct
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_vec4_parameter_class);	
+	JS_SetOpaque(obj, visual_shader_node_vec4_parameter_class);
 	return obj;
 }
 static JSValue visual_shader_node_vec4_parameter_class_set_default_value_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeVec4Parameter::set_default_value_enabled, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VisualShaderNodeVec4Parameter::set_default_value_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_vec4_parameter_class_is_default_value_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue visual_shader_node_vec4_parameter_class_is_default_value_enabled(
 };
 static JSValue visual_shader_node_vec4_parameter_class_set_default_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeVec4Parameter::set_default_value, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VisualShaderNodeVec4Parameter::set_default_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_vec4_parameter_class_get_default_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -61,29 +59,26 @@ static const JSCFunctionListEntry visual_shader_node_vec4_parameter_class_proto_
 };
 
 void define_visual_shader_node_vec4_parameter_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "default_value_enabled"),
-        JS_NewCFunction(ctx, visual_shader_node_vec4_parameter_class_is_default_value_enabled, "is_default_value_enabled", 0),
-        JS_NewCFunction(ctx, visual_shader_node_vec4_parameter_class_set_default_value_enabled, "set_default_value_enabled", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "default_value"),
-        JS_NewCFunction(ctx, visual_shader_node_vec4_parameter_class_get_default_value, "get_default_value", 0),
-        JS_NewCFunction(ctx, visual_shader_node_vec4_parameter_class_set_default_value, "set_default_value", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "default_value_enabled"),
+			JS_NewCFunction(ctx, visual_shader_node_vec4_parameter_class_is_default_value_enabled, "is_default_value_enabled", 0),
+			JS_NewCFunction(ctx, visual_shader_node_vec4_parameter_class_set_default_value_enabled, "set_default_value_enabled", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "default_value"),
+			JS_NewCFunction(ctx, visual_shader_node_vec4_parameter_class_get_default_value, "get_default_value", 0),
+			JS_NewCFunction(ctx, visual_shader_node_vec4_parameter_class_set_default_value, "set_default_value", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_vec4_parameter_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&VisualShaderNodeVec4Parameter::__class_id);
 	classes["VisualShaderNodeVec4Parameter"] = VisualShaderNodeVec4Parameter::__class_id;
 	class_id_list.insert(VisualShaderNodeVec4Parameter::__class_id);

@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
+#include <godot_cpp/classes/editor_scene_format_importer.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/editor_scene_format_importer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void editor_scene_format_importer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,7 +31,7 @@ static JSValue editor_scene_format_importer_class_constructor(JSContext *ctx, JS
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_scene_format_importer_class);	
+	JS_SetOpaque(obj, editor_scene_format_importer_class);
 	return obj;
 }
 
@@ -44,7 +42,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_scene_format_importer_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&EditorSceneFormatImporter::__class_id);
 	classes["EditorSceneFormatImporter"] = EditorSceneFormatImporter::__class_id;
 	class_id_list.insert(EditorSceneFormatImporter::__class_id);

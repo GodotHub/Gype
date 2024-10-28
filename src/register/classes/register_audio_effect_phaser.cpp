@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_phaser.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/audio_effect.hpp>
+#include <godot_cpp/classes/audio_effect_phaser.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void audio_effect_phaser_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue audio_effect_phaser_class_constructor(JSContext *ctx, JSValueCons
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_phaser_class);	
+	JS_SetOpaque(obj, audio_effect_phaser_class);
 	return obj;
 }
 static JSValue audio_effect_phaser_class_set_range_min_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectPhaser::set_range_min_hz, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AudioEffectPhaser::set_range_min_hz, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_phaser_class_get_range_min_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue audio_effect_phaser_class_get_range_min_hz(JSContext *ctx, JSValu
 };
 static JSValue audio_effect_phaser_class_set_range_max_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectPhaser::set_range_max_hz, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AudioEffectPhaser::set_range_max_hz, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_phaser_class_get_range_max_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,7 +53,7 @@ static JSValue audio_effect_phaser_class_get_range_max_hz(JSContext *ctx, JSValu
 };
 static JSValue audio_effect_phaser_class_set_rate_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectPhaser::set_rate_hz, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AudioEffectPhaser::set_rate_hz, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_phaser_class_get_rate_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -64,7 +62,7 @@ static JSValue audio_effect_phaser_class_get_rate_hz(JSContext *ctx, JSValueCons
 };
 static JSValue audio_effect_phaser_class_set_feedback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectPhaser::set_feedback, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AudioEffectPhaser::set_feedback, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_phaser_class_get_feedback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -73,7 +71,7 @@ static JSValue audio_effect_phaser_class_get_feedback(JSContext *ctx, JSValueCon
 };
 static JSValue audio_effect_phaser_class_set_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectPhaser::set_depth, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AudioEffectPhaser::set_depth, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_phaser_class_get_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -94,53 +92,47 @@ static const JSCFunctionListEntry audio_effect_phaser_class_proto_funcs[] = {
 };
 
 void define_audio_effect_phaser_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "range_min_hz"),
-        JS_NewCFunction(ctx, audio_effect_phaser_class_get_range_min_hz, "get_range_min_hz", 0),
-        JS_NewCFunction(ctx, audio_effect_phaser_class_set_range_min_hz, "set_range_min_hz", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "range_max_hz"),
-        JS_NewCFunction(ctx, audio_effect_phaser_class_get_range_max_hz, "get_range_max_hz", 0),
-        JS_NewCFunction(ctx, audio_effect_phaser_class_set_range_max_hz, "set_range_max_hz", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "rate_hz"),
-        JS_NewCFunction(ctx, audio_effect_phaser_class_get_rate_hz, "get_rate_hz", 0),
-        JS_NewCFunction(ctx, audio_effect_phaser_class_set_rate_hz, "set_rate_hz", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "feedback"),
-        JS_NewCFunction(ctx, audio_effect_phaser_class_get_feedback, "get_feedback", 0),
-        JS_NewCFunction(ctx, audio_effect_phaser_class_set_feedback, "set_feedback", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "depth"),
-        JS_NewCFunction(ctx, audio_effect_phaser_class_get_depth, "get_depth", 0),
-        JS_NewCFunction(ctx, audio_effect_phaser_class_set_depth, "set_depth", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "range_min_hz"),
+			JS_NewCFunction(ctx, audio_effect_phaser_class_get_range_min_hz, "get_range_min_hz", 0),
+			JS_NewCFunction(ctx, audio_effect_phaser_class_set_range_min_hz, "set_range_min_hz", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "range_max_hz"),
+			JS_NewCFunction(ctx, audio_effect_phaser_class_get_range_max_hz, "get_range_max_hz", 0),
+			JS_NewCFunction(ctx, audio_effect_phaser_class_set_range_max_hz, "set_range_max_hz", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "rate_hz"),
+			JS_NewCFunction(ctx, audio_effect_phaser_class_get_rate_hz, "get_rate_hz", 0),
+			JS_NewCFunction(ctx, audio_effect_phaser_class_set_rate_hz, "set_rate_hz", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "feedback"),
+			JS_NewCFunction(ctx, audio_effect_phaser_class_get_feedback, "get_feedback", 0),
+			JS_NewCFunction(ctx, audio_effect_phaser_class_set_feedback, "set_feedback", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "depth"),
+			JS_NewCFunction(ctx, audio_effect_phaser_class_get_depth, "get_depth", 0),
+			JS_NewCFunction(ctx, audio_effect_phaser_class_set_depth, "set_depth", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_effect_phaser_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&AudioEffectPhaser::__class_id);
 	classes["AudioEffectPhaser"] = AudioEffectPhaser::__class_id;
 	class_id_list.insert(AudioEffectPhaser::__class_id);

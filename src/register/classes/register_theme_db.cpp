@@ -1,16 +1,16 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/theme.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/theme_db.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/style_box.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/theme.hpp>
+#include <godot_cpp/classes/theme_db.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -20,7 +20,6 @@ static JSValue theme_db_instance;
 static void js_theme_db_singleton();
 
 static void theme_db_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -44,56 +43,56 @@ static JSValue theme_db_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue theme_db_class_get_default_theme(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_theme_db_singleton();
+	js_theme_db_singleton();
 	return call_builtin_method_ret(&ThemeDB::get_default_theme, ctx, this_val, argc, argv);
 };
 static JSValue theme_db_class_get_project_theme(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_theme_db_singleton();
+	js_theme_db_singleton();
 	return call_builtin_method_ret(&ThemeDB::get_project_theme, ctx, this_val, argc, argv);
 };
 static JSValue theme_db_class_set_fallback_base_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_theme_db_singleton();
-    call_builtin_method_no_ret(&ThemeDB::set_fallback_base_scale, ctx, this_val, argc, argv);
+	js_theme_db_singleton();
+	call_builtin_method_no_ret(&ThemeDB::set_fallback_base_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue theme_db_class_get_fallback_base_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_theme_db_singleton();
+	js_theme_db_singleton();
 	return call_builtin_method_ret(&ThemeDB::get_fallback_base_scale, ctx, this_val, argc, argv);
 };
 static JSValue theme_db_class_set_fallback_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_theme_db_singleton();
-    call_builtin_method_no_ret(&ThemeDB::set_fallback_font, ctx, this_val, argc, argv);
+	js_theme_db_singleton();
+	call_builtin_method_no_ret(&ThemeDB::set_fallback_font, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue theme_db_class_get_fallback_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_theme_db_singleton();
+	js_theme_db_singleton();
 	return call_builtin_method_ret(&ThemeDB::get_fallback_font, ctx, this_val, argc, argv);
 };
 static JSValue theme_db_class_set_fallback_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_theme_db_singleton();
-    call_builtin_method_no_ret(&ThemeDB::set_fallback_font_size, ctx, this_val, argc, argv);
+	js_theme_db_singleton();
+	call_builtin_method_no_ret(&ThemeDB::set_fallback_font_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue theme_db_class_get_fallback_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_theme_db_singleton();
+	js_theme_db_singleton();
 	return call_builtin_method_ret(&ThemeDB::get_fallback_font_size, ctx, this_val, argc, argv);
 };
 static JSValue theme_db_class_set_fallback_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_theme_db_singleton();
-    call_builtin_method_no_ret(&ThemeDB::set_fallback_icon, ctx, this_val, argc, argv);
+	js_theme_db_singleton();
+	call_builtin_method_no_ret(&ThemeDB::set_fallback_icon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue theme_db_class_get_fallback_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_theme_db_singleton();
+	js_theme_db_singleton();
 	return call_builtin_method_ret(&ThemeDB::get_fallback_icon, ctx, this_val, argc, argv);
 };
 static JSValue theme_db_class_set_fallback_stylebox(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_theme_db_singleton();
-    call_builtin_method_no_ret(&ThemeDB::set_fallback_stylebox, ctx, this_val, argc, argv);
+	js_theme_db_singleton();
+	call_builtin_method_no_ret(&ThemeDB::set_fallback_stylebox, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue theme_db_class_get_fallback_stylebox(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_theme_db_singleton();
+	js_theme_db_singleton();
 	return call_builtin_method_ret(&ThemeDB::get_fallback_stylebox, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry theme_db_class_proto_funcs[] = {
@@ -131,7 +130,6 @@ static void js_theme_db_singleton() {
 		JS_SetPropertyStr(ctx, global, "ThemeDB", theme_db_instance);
 	}
 }
-
 
 void register_theme_db() {
 	js_theme_db_class_init(ctx);

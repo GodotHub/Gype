@@ -1,21 +1,19 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton3d.hpp>
-#include <godot_cpp/classes/resource.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/bone_attachment3d.hpp>
 #include <godot_cpp/classes/gltf_skeleton.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void gltf_skeleton_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -34,7 +32,7 @@ static JSValue gltf_skeleton_class_constructor(JSContext *ctx, JSValueConst new_
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_skeleton_class);	
+	JS_SetOpaque(obj, gltf_skeleton_class);
 	return obj;
 }
 static JSValue gltf_skeleton_class_get_joints(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -43,7 +41,7 @@ static JSValue gltf_skeleton_class_get_joints(JSContext *ctx, JSValueConst this_
 };
 static JSValue gltf_skeleton_class_set_joints(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFSkeleton::set_joints, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFSkeleton::set_joints, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skeleton_class_get_roots(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -52,7 +50,7 @@ static JSValue gltf_skeleton_class_get_roots(JSContext *ctx, JSValueConst this_v
 };
 static JSValue gltf_skeleton_class_set_roots(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFSkeleton::set_roots, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFSkeleton::set_roots, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skeleton_class_get_godot_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,7 +63,7 @@ static JSValue gltf_skeleton_class_get_unique_names(JSContext *ctx, JSValueConst
 };
 static JSValue gltf_skeleton_class_set_unique_names(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFSkeleton::set_unique_names, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFSkeleton::set_unique_names, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skeleton_class_get_godot_bone_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -74,7 +72,7 @@ static JSValue gltf_skeleton_class_get_godot_bone_node(JSContext *ctx, JSValueCo
 };
 static JSValue gltf_skeleton_class_set_godot_bone_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFSkeleton::set_godot_bone_node, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFSkeleton::set_godot_bone_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_skeleton_class_get_bone_attachment_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -100,45 +98,40 @@ static const JSCFunctionListEntry gltf_skeleton_class_proto_funcs[] = {
 };
 
 void define_gltf_skeleton_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "joints"),
-        JS_NewCFunction(ctx, gltf_skeleton_class_get_joints, "get_joints", 0),
-        JS_NewCFunction(ctx, gltf_skeleton_class_set_joints, "set_joints", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "roots"),
-        JS_NewCFunction(ctx, gltf_skeleton_class_get_roots, "get_roots", 0),
-        JS_NewCFunction(ctx, gltf_skeleton_class_set_roots, "set_roots", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "unique_names"),
-        JS_NewCFunction(ctx, gltf_skeleton_class_get_unique_names, "get_unique_names", 0),
-        JS_NewCFunction(ctx, gltf_skeleton_class_set_unique_names, "set_unique_names", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "godot_bone_node"),
-        JS_NewCFunction(ctx, gltf_skeleton_class_get_godot_bone_node, "get_godot_bone_node", 0),
-        JS_NewCFunction(ctx, gltf_skeleton_class_set_godot_bone_node, "set_godot_bone_node", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "joints"),
+			JS_NewCFunction(ctx, gltf_skeleton_class_get_joints, "get_joints", 0),
+			JS_NewCFunction(ctx, gltf_skeleton_class_set_joints, "set_joints", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "roots"),
+			JS_NewCFunction(ctx, gltf_skeleton_class_get_roots, "get_roots", 0),
+			JS_NewCFunction(ctx, gltf_skeleton_class_set_roots, "set_roots", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "unique_names"),
+			JS_NewCFunction(ctx, gltf_skeleton_class_get_unique_names, "get_unique_names", 0),
+			JS_NewCFunction(ctx, gltf_skeleton_class_set_unique_names, "set_unique_names", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "godot_bone_node"),
+			JS_NewCFunction(ctx, gltf_skeleton_class_get_godot_bone_node, "get_godot_bone_node", 0),
+			JS_NewCFunction(ctx, gltf_skeleton_class_set_godot_bone_node, "set_godot_bone_node", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_gltf_skeleton_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&GLTFSkeleton::__class_id);
 	classes["GLTFSkeleton"] = GLTFSkeleton::__class_id;
 	class_id_list.insert(GLTFSkeleton::__class_id);

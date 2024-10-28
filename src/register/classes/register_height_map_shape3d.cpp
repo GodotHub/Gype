@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/image.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/height_map_shape3d.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void height_map_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,12 +31,12 @@ static JSValue height_map_shape3d_class_constructor(JSContext *ctx, JSValueConst
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, height_map_shape3d_class);	
+	JS_SetOpaque(obj, height_map_shape3d_class);
 	return obj;
 }
 static JSValue height_map_shape3d_class_set_map_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HeightMapShape3D::set_map_width, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&HeightMapShape3D::set_map_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue height_map_shape3d_class_get_map_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -47,7 +45,7 @@ static JSValue height_map_shape3d_class_get_map_width(JSContext *ctx, JSValueCon
 };
 static JSValue height_map_shape3d_class_set_map_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HeightMapShape3D::set_map_depth, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&HeightMapShape3D::set_map_depth, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue height_map_shape3d_class_get_map_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -56,7 +54,7 @@ static JSValue height_map_shape3d_class_get_map_depth(JSContext *ctx, JSValueCon
 };
 static JSValue height_map_shape3d_class_set_map_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HeightMapShape3D::set_map_data, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&HeightMapShape3D::set_map_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue height_map_shape3d_class_get_map_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -73,7 +71,7 @@ static JSValue height_map_shape3d_class_get_max_height(JSContext *ctx, JSValueCo
 };
 static JSValue height_map_shape3d_class_update_map_data_from_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HeightMapShape3D::update_map_data_from_image, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&HeightMapShape3D::update_map_data_from_image, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry height_map_shape3d_class_proto_funcs[] = {
@@ -89,37 +87,33 @@ static const JSCFunctionListEntry height_map_shape3d_class_proto_funcs[] = {
 };
 
 void define_height_map_shape3d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "map_width"),
-        JS_NewCFunction(ctx, height_map_shape3d_class_get_map_width, "get_map_width", 0),
-        JS_NewCFunction(ctx, height_map_shape3d_class_set_map_width, "set_map_width", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "map_depth"),
-        JS_NewCFunction(ctx, height_map_shape3d_class_get_map_depth, "get_map_depth", 0),
-        JS_NewCFunction(ctx, height_map_shape3d_class_set_map_depth, "set_map_depth", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "map_data"),
-        JS_NewCFunction(ctx, height_map_shape3d_class_get_map_data, "get_map_data", 0),
-        JS_NewCFunction(ctx, height_map_shape3d_class_set_map_data, "set_map_data", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "map_width"),
+			JS_NewCFunction(ctx, height_map_shape3d_class_get_map_width, "get_map_width", 0),
+			JS_NewCFunction(ctx, height_map_shape3d_class_set_map_width, "set_map_width", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "map_depth"),
+			JS_NewCFunction(ctx, height_map_shape3d_class_get_map_depth, "get_map_depth", 0),
+			JS_NewCFunction(ctx, height_map_shape3d_class_set_map_depth, "set_map_depth", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "map_data"),
+			JS_NewCFunction(ctx, height_map_shape3d_class_get_map_data, "get_map_data", 0),
+			JS_NewCFunction(ctx, height_map_shape3d_class_set_map_data, "set_map_data", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_height_map_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&HeightMapShape3D::__class_id);
 	classes["HeightMapShape3D"] = HeightMapShape3D::__class_id;
 	class_id_list.insert(HeightMapShape3D::__class_id);

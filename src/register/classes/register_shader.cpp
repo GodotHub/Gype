@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shader.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/shader.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void shader_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,7 +31,7 @@ static JSValue shader_class_constructor(JSContext *ctx, JSValueConst new_target,
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, shader_class);	
+	JS_SetOpaque(obj, shader_class);
 	return obj;
 }
 static JSValue shader_class_get_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -42,7 +40,7 @@ static JSValue shader_class_get_mode(JSContext *ctx, JSValueConst this_val, int 
 };
 static JSValue shader_class_set_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Shader::set_code, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Shader::set_code, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shader_class_get_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -51,7 +49,7 @@ static JSValue shader_class_get_code(JSContext *ctx, JSValueConst this_val, int 
 };
 static JSValue shader_class_set_default_texture_parameter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Shader::set_default_texture_parameter, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Shader::set_default_texture_parameter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shader_class_get_default_texture_parameter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,14 +70,13 @@ static const JSCFunctionListEntry shader_class_proto_funcs[] = {
 };
 
 void define_shader_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "code"),
-        JS_NewCFunction(ctx, shader_class_get_code, "get_code", 0),
-        JS_NewCFunction(ctx, shader_class_set_code, "set_code", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "code"),
+			JS_NewCFunction(ctx, shader_class_get_code, "get_code", 0),
+			JS_NewCFunction(ctx, shader_class_set_code, "set_code", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -93,7 +90,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_shader_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&Shader::__class_id);
 	classes["Shader"] = Shader::__class_id;
 	class_id_list.insert(Shader::__class_id);

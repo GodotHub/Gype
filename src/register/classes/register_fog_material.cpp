@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture3d.hpp>
-#include <godot_cpp/classes/material.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/fog_material.hpp>
+#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void fog_material_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,12 +31,12 @@ static JSValue fog_material_class_constructor(JSContext *ctx, JSValueConst new_t
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, fog_material_class);	
+	JS_SetOpaque(obj, fog_material_class);
 	return obj;
 }
 static JSValue fog_material_class_set_density(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FogMaterial::set_density, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FogMaterial::set_density, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fog_material_class_get_density(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -47,7 +45,7 @@ static JSValue fog_material_class_get_density(JSContext *ctx, JSValueConst this_
 };
 static JSValue fog_material_class_set_albedo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FogMaterial::set_albedo, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FogMaterial::set_albedo, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fog_material_class_get_albedo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -56,7 +54,7 @@ static JSValue fog_material_class_get_albedo(JSContext *ctx, JSValueConst this_v
 };
 static JSValue fog_material_class_set_emission(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FogMaterial::set_emission, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FogMaterial::set_emission, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fog_material_class_get_emission(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,7 +63,7 @@ static JSValue fog_material_class_get_emission(JSContext *ctx, JSValueConst this
 };
 static JSValue fog_material_class_set_height_falloff(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FogMaterial::set_height_falloff, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FogMaterial::set_height_falloff, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fog_material_class_get_height_falloff(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -74,7 +72,7 @@ static JSValue fog_material_class_get_height_falloff(JSContext *ctx, JSValueCons
 };
 static JSValue fog_material_class_set_edge_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FogMaterial::set_edge_fade, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FogMaterial::set_edge_fade, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fog_material_class_get_edge_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -83,7 +81,7 @@ static JSValue fog_material_class_get_edge_fade(JSContext *ctx, JSValueConst thi
 };
 static JSValue fog_material_class_set_density_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FogMaterial::set_density_texture, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FogMaterial::set_density_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue fog_material_class_get_density_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -106,61 +104,54 @@ static const JSCFunctionListEntry fog_material_class_proto_funcs[] = {
 };
 
 void define_fog_material_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "density"),
-        JS_NewCFunction(ctx, fog_material_class_get_density, "get_density", 0),
-        JS_NewCFunction(ctx, fog_material_class_set_density, "set_density", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "albedo"),
-        JS_NewCFunction(ctx, fog_material_class_get_albedo, "get_albedo", 0),
-        JS_NewCFunction(ctx, fog_material_class_set_albedo, "set_albedo", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "emission"),
-        JS_NewCFunction(ctx, fog_material_class_get_emission, "get_emission", 0),
-        JS_NewCFunction(ctx, fog_material_class_set_emission, "set_emission", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "height_falloff"),
-        JS_NewCFunction(ctx, fog_material_class_get_height_falloff, "get_height_falloff", 0),
-        JS_NewCFunction(ctx, fog_material_class_set_height_falloff, "set_height_falloff", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "edge_fade"),
-        JS_NewCFunction(ctx, fog_material_class_get_edge_fade, "get_edge_fade", 0),
-        JS_NewCFunction(ctx, fog_material_class_set_edge_fade, "set_edge_fade", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "density_texture"),
-        JS_NewCFunction(ctx, fog_material_class_get_density_texture, "get_density_texture", 0),
-        JS_NewCFunction(ctx, fog_material_class_set_density_texture, "set_density_texture", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "density"),
+			JS_NewCFunction(ctx, fog_material_class_get_density, "get_density", 0),
+			JS_NewCFunction(ctx, fog_material_class_set_density, "set_density", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "albedo"),
+			JS_NewCFunction(ctx, fog_material_class_get_albedo, "get_albedo", 0),
+			JS_NewCFunction(ctx, fog_material_class_set_albedo, "set_albedo", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "emission"),
+			JS_NewCFunction(ctx, fog_material_class_get_emission, "get_emission", 0),
+			JS_NewCFunction(ctx, fog_material_class_set_emission, "set_emission", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "height_falloff"),
+			JS_NewCFunction(ctx, fog_material_class_get_height_falloff, "get_height_falloff", 0),
+			JS_NewCFunction(ctx, fog_material_class_set_height_falloff, "set_height_falloff", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "edge_fade"),
+			JS_NewCFunction(ctx, fog_material_class_get_edge_fade, "get_edge_fade", 0),
+			JS_NewCFunction(ctx, fog_material_class_set_edge_fade, "set_edge_fade", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "density_texture"),
+			JS_NewCFunction(ctx, fog_material_class_get_density_texture, "get_density_texture", 0),
+			JS_NewCFunction(ctx, fog_material_class_set_density_texture, "set_density_texture", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_fog_material_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&FogMaterial::__class_id);
 	classes["FogMaterial"] = FogMaterial::__class_id;
 	class_id_list.insert(FogMaterial::__class_id);

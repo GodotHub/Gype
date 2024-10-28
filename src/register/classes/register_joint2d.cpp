@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/joint2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void joint2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue joint2d_class_constructor(JSContext *ctx, JSValueConst new_target
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, joint2d_class);	
+	JS_SetOpaque(obj, joint2d_class);
 	return obj;
 }
 static JSValue joint2d_class_set_node_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Joint2D::set_node_a, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Joint2D::set_node_a, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue joint2d_class_get_node_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue joint2d_class_get_node_a(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue joint2d_class_set_node_b(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Joint2D::set_node_b, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Joint2D::set_node_b, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue joint2d_class_get_node_b(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,7 +53,7 @@ static JSValue joint2d_class_get_node_b(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue joint2d_class_set_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Joint2D::set_bias, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Joint2D::set_bias, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue joint2d_class_get_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -64,7 +62,7 @@ static JSValue joint2d_class_get_bias(JSContext *ctx, JSValueConst this_val, int
 };
 static JSValue joint2d_class_set_exclude_nodes_from_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Joint2D::set_exclude_nodes_from_collision, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Joint2D::set_exclude_nodes_from_collision, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue joint2d_class_get_exclude_nodes_from_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,45 +86,40 @@ static const JSCFunctionListEntry joint2d_class_proto_funcs[] = {
 };
 
 void define_joint2d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "node_a"),
-        JS_NewCFunction(ctx, joint2d_class_get_node_a, "get_node_a", 0),
-        JS_NewCFunction(ctx, joint2d_class_set_node_a, "set_node_a", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "node_b"),
-        JS_NewCFunction(ctx, joint2d_class_get_node_b, "get_node_b", 0),
-        JS_NewCFunction(ctx, joint2d_class_set_node_b, "set_node_b", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "bias"),
-        JS_NewCFunction(ctx, joint2d_class_get_bias, "get_bias", 0),
-        JS_NewCFunction(ctx, joint2d_class_set_bias, "set_bias", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "disable_collision"),
-        JS_NewCFunction(ctx, joint2d_class_get_exclude_nodes_from_collision, "get_exclude_nodes_from_collision", 0),
-        JS_NewCFunction(ctx, joint2d_class_set_exclude_nodes_from_collision, "set_exclude_nodes_from_collision", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "node_a"),
+			JS_NewCFunction(ctx, joint2d_class_get_node_a, "get_node_a", 0),
+			JS_NewCFunction(ctx, joint2d_class_set_node_a, "set_node_a", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "node_b"),
+			JS_NewCFunction(ctx, joint2d_class_get_node_b, "get_node_b", 0),
+			JS_NewCFunction(ctx, joint2d_class_set_node_b, "set_node_b", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "bias"),
+			JS_NewCFunction(ctx, joint2d_class_get_bias, "get_bias", 0),
+			JS_NewCFunction(ctx, joint2d_class_set_bias, "set_bias", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "disable_collision"),
+			JS_NewCFunction(ctx, joint2d_class_get_exclude_nodes_from_collision, "get_exclude_nodes_from_collision", 0),
+			JS_NewCFunction(ctx, joint2d_class_set_exclude_nodes_from_collision, "set_exclude_nodes_from_collision", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_joint2d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&Joint2D::__class_id);
 	classes["Joint2D"] = Joint2D::__class_id;
 	class_id_list.insert(Joint2D::__class_id);

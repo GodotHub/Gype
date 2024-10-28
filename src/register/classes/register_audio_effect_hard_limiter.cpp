@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_hard_limiter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void audio_effect_hard_limiter_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue audio_effect_hard_limiter_class_constructor(JSContext *ctx, JSVal
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_hard_limiter_class);	
+	JS_SetOpaque(obj, audio_effect_hard_limiter_class);
 	return obj;
 }
 static JSValue audio_effect_hard_limiter_class_set_ceiling_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectHardLimiter::set_ceiling_db, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AudioEffectHardLimiter::set_ceiling_db, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_hard_limiter_class_get_ceiling_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue audio_effect_hard_limiter_class_get_ceiling_db(JSContext *ctx, JS
 };
 static JSValue audio_effect_hard_limiter_class_set_pre_gain_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectHardLimiter::set_pre_gain_db, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AudioEffectHardLimiter::set_pre_gain_db, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_hard_limiter_class_get_pre_gain_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,7 +53,7 @@ static JSValue audio_effect_hard_limiter_class_get_pre_gain_db(JSContext *ctx, J
 };
 static JSValue audio_effect_hard_limiter_class_set_release(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectHardLimiter::set_release, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AudioEffectHardLimiter::set_release, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_hard_limiter_class_get_release(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,37 +70,33 @@ static const JSCFunctionListEntry audio_effect_hard_limiter_class_proto_funcs[] 
 };
 
 void define_audio_effect_hard_limiter_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "pre_gain_db"),
-        JS_NewCFunction(ctx, audio_effect_hard_limiter_class_get_pre_gain_db, "get_pre_gain_db", 0),
-        JS_NewCFunction(ctx, audio_effect_hard_limiter_class_set_pre_gain_db, "set_pre_gain_db", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "ceiling_db"),
-        JS_NewCFunction(ctx, audio_effect_hard_limiter_class_get_ceiling_db, "get_ceiling_db", 0),
-        JS_NewCFunction(ctx, audio_effect_hard_limiter_class_set_ceiling_db, "set_ceiling_db", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "release"),
-        JS_NewCFunction(ctx, audio_effect_hard_limiter_class_get_release, "get_release", 0),
-        JS_NewCFunction(ctx, audio_effect_hard_limiter_class_set_release, "set_release", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "pre_gain_db"),
+			JS_NewCFunction(ctx, audio_effect_hard_limiter_class_get_pre_gain_db, "get_pre_gain_db", 0),
+			JS_NewCFunction(ctx, audio_effect_hard_limiter_class_set_pre_gain_db, "set_pre_gain_db", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "ceiling_db"),
+			JS_NewCFunction(ctx, audio_effect_hard_limiter_class_get_ceiling_db, "get_ceiling_db", 0),
+			JS_NewCFunction(ctx, audio_effect_hard_limiter_class_set_ceiling_db, "set_ceiling_db", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "release"),
+			JS_NewCFunction(ctx, audio_effect_hard_limiter_class_get_release, "get_release", 0),
+			JS_NewCFunction(ctx, audio_effect_hard_limiter_class_set_release, "set_release", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_effect_hard_limiter_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&AudioEffectHardLimiter::__class_id);
 	classes["AudioEffectHardLimiter"] = AudioEffectHardLimiter::__class_id;
 	class_id_list.insert(AudioEffectHardLimiter::__class_id);

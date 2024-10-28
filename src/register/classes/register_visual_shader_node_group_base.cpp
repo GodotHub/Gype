@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/visual_shader_node_group_base.hpp>
 #include <godot_cpp/classes/visual_shader_node_resizable_base.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void visual_shader_node_group_base_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue visual_shader_node_group_base_class_constructor(JSContext *ctx, J
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_group_base_class);	
+	JS_SetOpaque(obj, visual_shader_node_group_base_class);
 	return obj;
 }
 static JSValue visual_shader_node_group_base_class_set_inputs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeGroupBase::set_inputs, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VisualShaderNodeGroupBase::set_inputs, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_group_base_class_get_inputs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue visual_shader_node_group_base_class_get_inputs(JSContext *ctx, JS
 };
 static JSValue visual_shader_node_group_base_class_set_outputs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeGroupBase::set_outputs, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VisualShaderNodeGroupBase::set_outputs, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_group_base_class_get_outputs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -59,12 +57,12 @@ static JSValue visual_shader_node_group_base_class_is_valid_port_name(JSContext 
 };
 static JSValue visual_shader_node_group_base_class_add_input_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeGroupBase::add_input_port, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VisualShaderNodeGroupBase::add_input_port, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_group_base_class_remove_input_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeGroupBase::remove_input_port, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VisualShaderNodeGroupBase::remove_input_port, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_group_base_class_get_input_port_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -77,17 +75,17 @@ static JSValue visual_shader_node_group_base_class_has_input_port(JSContext *ctx
 };
 static JSValue visual_shader_node_group_base_class_clear_input_ports(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeGroupBase::clear_input_ports, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VisualShaderNodeGroupBase::clear_input_ports, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_group_base_class_add_output_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeGroupBase::add_output_port, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VisualShaderNodeGroupBase::add_output_port, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_group_base_class_remove_output_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeGroupBase::remove_output_port, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VisualShaderNodeGroupBase::remove_output_port, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_group_base_class_get_output_port_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -100,27 +98,27 @@ static JSValue visual_shader_node_group_base_class_has_output_port(JSContext *ct
 };
 static JSValue visual_shader_node_group_base_class_clear_output_ports(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeGroupBase::clear_output_ports, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VisualShaderNodeGroupBase::clear_output_ports, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_group_base_class_set_input_port_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeGroupBase::set_input_port_name, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VisualShaderNodeGroupBase::set_input_port_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_group_base_class_set_input_port_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeGroupBase::set_input_port_type, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VisualShaderNodeGroupBase::set_input_port_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_group_base_class_set_output_port_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeGroupBase::set_output_port_name, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VisualShaderNodeGroupBase::set_output_port_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_group_base_class_set_output_port_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeGroupBase::set_output_port_type, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VisualShaderNodeGroupBase::set_output_port_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_group_base_class_get_free_input_port_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -162,7 +160,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_group_base_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&VisualShaderNodeGroupBase::__class_id);
 	classes["VisualShaderNodeGroupBase"] = VisualShaderNodeGroupBase::__class_id;
 	class_id_list.insert(VisualShaderNodeGroupBase::__class_id);

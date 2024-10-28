@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/curve_texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void curve_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,17 +31,17 @@ static JSValue curve_texture_class_constructor(JSContext *ctx, JSValueConst new_
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, curve_texture_class);	
+	JS_SetOpaque(obj, curve_texture_class);
 	return obj;
 }
 static JSValue curve_texture_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CurveTexture::set_width, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CurveTexture::set_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_texture_class_set_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CurveTexture::set_curve, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CurveTexture::set_curve, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_texture_class_get_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -52,7 +50,7 @@ static JSValue curve_texture_class_get_curve(JSContext *ctx, JSValueConst this_v
 };
 static JSValue curve_texture_class_set_texture_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CurveTexture::set_texture_mode, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CurveTexture::set_texture_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve_texture_class_get_texture_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -68,30 +66,27 @@ static const JSCFunctionListEntry curve_texture_class_proto_funcs[] = {
 };
 
 void define_curve_texture_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "width"),
-        JS_UNDEFINED,
-        JS_NewCFunction(ctx, curve_texture_class_set_width, "set_width", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "texture_mode"),
-        JS_NewCFunction(ctx, curve_texture_class_get_texture_mode, "get_texture_mode", 0),
-        JS_NewCFunction(ctx, curve_texture_class_set_texture_mode, "set_texture_mode", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "curve"),
-        JS_NewCFunction(ctx, curve_texture_class_get_curve, "get_curve", 0),
-        JS_NewCFunction(ctx, curve_texture_class_set_curve, "set_curve", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "width"),
+			JS_UNDEFINED,
+			JS_NewCFunction(ctx, curve_texture_class_set_width, "set_width", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "texture_mode"),
+			JS_NewCFunction(ctx, curve_texture_class_get_texture_mode, "get_texture_mode", 0),
+			JS_NewCFunction(ctx, curve_texture_class_set_texture_mode, "set_texture_mode", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "curve"),
+			JS_NewCFunction(ctx, curve_texture_class_get_curve, "get_curve", 0),
+			JS_NewCFunction(ctx, curve_texture_class_set_curve, "set_curve", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -102,7 +97,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_curve_texture_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&CurveTexture::__class_id);
 	classes["CurveTexture"] = CurveTexture::__class_id;
 	class_id_list.insert(CurveTexture::__class_id);

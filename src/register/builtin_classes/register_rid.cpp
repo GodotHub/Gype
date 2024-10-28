@@ -1,9 +1,9 @@
 
-#include "quickjs/quickjs.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/variant/rid.hpp>
 
 using namespace godot;
@@ -25,16 +25,15 @@ static JSValue rid_class_constructor(JSContext *ctx, JSValueConst new_target, in
 		return obj;
 
 	RID *rid_class;
-	
-	if (argc == 0 ) {
+
+	if (argc == 0) {
 		rid_class = memnew(RID());
 	}
-	
-	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::RID) {
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::RID) {
 		RID v0 = Variant(argv[0]);
 		rid_class = memnew(RID(v0));
 	}
-	
 
 	if (!rid_class) {
 		JS_FreeValue(ctx, obj);
@@ -51,16 +50,12 @@ static JSValue rid_class_get_id(JSContext *ctx, JSValueConst this_val, int argc,
 	return call_builtin_const_method_ret(&RID::get_id, ctx, this_val, argc, argv);
 };
 
-
 static const JSCFunctionListEntry rid_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_valid", 0, &rid_class_is_valid),
 	JS_CFUNC_DEF("get_id", 0, &rid_class_get_id),
 };
 
-
-
 static int js_rid_class_init(JSContext *ctx) {
-	
 	JS_NewClassID(&RID::__class_id);
 	classes["RID"] = RID::__class_id;
 	class_id_list.insert(RID::__class_id);

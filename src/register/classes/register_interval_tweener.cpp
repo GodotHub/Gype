@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tweener.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/interval_tweener.hpp>
+#include <godot_cpp/classes/tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void interval_tweener_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,7 +30,7 @@ static JSValue interval_tweener_class_constructor(JSContext *ctx, JSValueConst n
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, interval_tweener_class);	
+	JS_SetOpaque(obj, interval_tweener_class);
 	return obj;
 }
 
@@ -43,7 +41,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_interval_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&IntervalTweener::__class_id);
 	classes["IntervalTweener"] = IntervalTweener::__class_id;
 	class_id_list.insert(IntervalTweener::__class_id);

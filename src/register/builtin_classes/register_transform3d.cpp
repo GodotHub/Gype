@@ -6,7 +6,6 @@
 #include "utils/func_utils.h"
 #include <godot_cpp/variant/transform3d.hpp>
 
-
 using namespace godot;
 
 static void transform3d_class_finalizer(JSRuntime *rt, JSValue val) {

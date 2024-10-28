@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/visible_on_screen_notifier3d.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void visible_on_screen_notifier3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue visible_on_screen_notifier3d_class_constructor(JSContext *ctx, JS
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visible_on_screen_notifier3d_class);	
+	JS_SetOpaque(obj, visible_on_screen_notifier3d_class);
 	return obj;
 }
 static JSValue visible_on_screen_notifier3d_class_set_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisibleOnScreenNotifier3D::set_aabb, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VisibleOnScreenNotifier3D::set_aabb, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visible_on_screen_notifier3d_class_is_on_screen(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -50,21 +48,19 @@ static const JSCFunctionListEntry visible_on_screen_notifier3d_class_proto_funcs
 };
 
 void define_visible_on_screen_notifier3d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "aabb"),
-        JS_UNDEFINED,
-        JS_NewCFunction(ctx, visible_on_screen_notifier3d_class_set_aabb, "set_aabb", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "aabb"),
+			JS_UNDEFINED,
+			JS_NewCFunction(ctx, visible_on_screen_notifier3d_class_set_aabb, "set_aabb", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visible_on_screen_notifier3d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&VisibleOnScreenNotifier3D::__class_id);
 	classes["VisibleOnScreenNotifier3D"] = VisibleOnScreenNotifier3D::__class_id;
 	class_id_list.insert(VisibleOnScreenNotifier3D::__class_id);

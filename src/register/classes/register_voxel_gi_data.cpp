@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/voxel_gi_data.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void voxel_gi_data_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue voxel_gi_data_class_constructor(JSContext *ctx, JSValueConst new_
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, voxel_gi_data_class);	
+	JS_SetOpaque(obj, voxel_gi_data_class);
 	return obj;
 }
 static JSValue voxel_gi_data_class_allocate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VoxelGIData::allocate, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VoxelGIData::allocate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_data_class_get_bounds(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -66,7 +64,7 @@ static JSValue voxel_gi_data_class_get_level_counts(JSContext *ctx, JSValueConst
 };
 static JSValue voxel_gi_data_class_set_dynamic_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VoxelGIData::set_dynamic_range, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VoxelGIData::set_dynamic_range, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_data_class_get_dynamic_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,7 +73,7 @@ static JSValue voxel_gi_data_class_get_dynamic_range(JSContext *ctx, JSValueCons
 };
 static JSValue voxel_gi_data_class_set_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VoxelGIData::set_energy, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VoxelGIData::set_energy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_data_class_get_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -84,7 +82,7 @@ static JSValue voxel_gi_data_class_get_energy(JSContext *ctx, JSValueConst this_
 };
 static JSValue voxel_gi_data_class_set_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VoxelGIData::set_bias, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VoxelGIData::set_bias, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_data_class_get_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -93,7 +91,7 @@ static JSValue voxel_gi_data_class_get_bias(JSContext *ctx, JSValueConst this_va
 };
 static JSValue voxel_gi_data_class_set_normal_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VoxelGIData::set_normal_bias, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VoxelGIData::set_normal_bias, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_data_class_get_normal_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -102,7 +100,7 @@ static JSValue voxel_gi_data_class_get_normal_bias(JSContext *ctx, JSValueConst 
 };
 static JSValue voxel_gi_data_class_set_propagation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VoxelGIData::set_propagation, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VoxelGIData::set_propagation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_data_class_get_propagation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -111,7 +109,7 @@ static JSValue voxel_gi_data_class_get_propagation(JSContext *ctx, JSValueConst 
 };
 static JSValue voxel_gi_data_class_set_interior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VoxelGIData::set_interior, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VoxelGIData::set_interior, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_data_class_is_interior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -120,7 +118,7 @@ static JSValue voxel_gi_data_class_is_interior(JSContext *ctx, JSValueConst this
 };
 static JSValue voxel_gi_data_class_set_use_two_bounces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VoxelGIData::set_use_two_bounces, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VoxelGIData::set_use_two_bounces, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_data_class_is_using_two_bounces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -152,69 +150,61 @@ static const JSCFunctionListEntry voxel_gi_data_class_proto_funcs[] = {
 };
 
 void define_voxel_gi_data_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "dynamic_range"),
-        JS_NewCFunction(ctx, voxel_gi_data_class_get_dynamic_range, "get_dynamic_range", 0),
-        JS_NewCFunction(ctx, voxel_gi_data_class_set_dynamic_range, "set_dynamic_range", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "energy"),
-        JS_NewCFunction(ctx, voxel_gi_data_class_get_energy, "get_energy", 0),
-        JS_NewCFunction(ctx, voxel_gi_data_class_set_energy, "set_energy", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "bias"),
-        JS_NewCFunction(ctx, voxel_gi_data_class_get_bias, "get_bias", 0),
-        JS_NewCFunction(ctx, voxel_gi_data_class_set_bias, "set_bias", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "normal_bias"),
-        JS_NewCFunction(ctx, voxel_gi_data_class_get_normal_bias, "get_normal_bias", 0),
-        JS_NewCFunction(ctx, voxel_gi_data_class_set_normal_bias, "set_normal_bias", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "propagation"),
-        JS_NewCFunction(ctx, voxel_gi_data_class_get_propagation, "get_propagation", 0),
-        JS_NewCFunction(ctx, voxel_gi_data_class_set_propagation, "set_propagation", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "use_two_bounces"),
-        JS_NewCFunction(ctx, voxel_gi_data_class_is_using_two_bounces, "is_using_two_bounces", 0),
-        JS_NewCFunction(ctx, voxel_gi_data_class_set_use_two_bounces, "set_use_two_bounces", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "interior"),
-        JS_NewCFunction(ctx, voxel_gi_data_class_is_interior, "is_interior", 0),
-        JS_NewCFunction(ctx, voxel_gi_data_class_set_interior, "set_interior", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "dynamic_range"),
+			JS_NewCFunction(ctx, voxel_gi_data_class_get_dynamic_range, "get_dynamic_range", 0),
+			JS_NewCFunction(ctx, voxel_gi_data_class_set_dynamic_range, "set_dynamic_range", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "energy"),
+			JS_NewCFunction(ctx, voxel_gi_data_class_get_energy, "get_energy", 0),
+			JS_NewCFunction(ctx, voxel_gi_data_class_set_energy, "set_energy", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "bias"),
+			JS_NewCFunction(ctx, voxel_gi_data_class_get_bias, "get_bias", 0),
+			JS_NewCFunction(ctx, voxel_gi_data_class_set_bias, "set_bias", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "normal_bias"),
+			JS_NewCFunction(ctx, voxel_gi_data_class_get_normal_bias, "get_normal_bias", 0),
+			JS_NewCFunction(ctx, voxel_gi_data_class_set_normal_bias, "set_normal_bias", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "propagation"),
+			JS_NewCFunction(ctx, voxel_gi_data_class_get_propagation, "get_propagation", 0),
+			JS_NewCFunction(ctx, voxel_gi_data_class_set_propagation, "set_propagation", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "use_two_bounces"),
+			JS_NewCFunction(ctx, voxel_gi_data_class_is_using_two_bounces, "is_using_two_bounces", 0),
+			JS_NewCFunction(ctx, voxel_gi_data_class_set_use_two_bounces, "set_use_two_bounces", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "interior"),
+			JS_NewCFunction(ctx, voxel_gi_data_class_is_interior, "is_interior", 0),
+			JS_NewCFunction(ctx, voxel_gi_data_class_set_interior, "set_interior", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_voxel_gi_data_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&VoxelGIData::__class_id);
 	classes["VoxelGIData"] = VoxelGIData::__class_id;
 	class_id_list.insert(VoxelGIData::__class_id);

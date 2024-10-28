@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/decal.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void decal_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,12 +31,12 @@ static JSValue decal_class_constructor(JSContext *ctx, JSValueConst new_target, 
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, decal_class);	
+	JS_SetOpaque(obj, decal_class);
 	return obj;
 }
 static JSValue decal_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Decal::set_size, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Decal::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -47,7 +45,7 @@ static JSValue decal_class_get_size(JSContext *ctx, JSValueConst this_val, int a
 };
 static JSValue decal_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Decal::set_texture, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Decal::set_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -56,7 +54,7 @@ static JSValue decal_class_get_texture(JSContext *ctx, JSValueConst this_val, in
 };
 static JSValue decal_class_set_emission_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Decal::set_emission_energy, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Decal::set_emission_energy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_emission_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,7 +63,7 @@ static JSValue decal_class_get_emission_energy(JSContext *ctx, JSValueConst this
 };
 static JSValue decal_class_set_albedo_mix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Decal::set_albedo_mix, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Decal::set_albedo_mix, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_albedo_mix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -74,7 +72,7 @@ static JSValue decal_class_get_albedo_mix(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue decal_class_set_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Decal::set_modulate, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Decal::set_modulate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -83,7 +81,7 @@ static JSValue decal_class_get_modulate(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue decal_class_set_upper_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Decal::set_upper_fade, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Decal::set_upper_fade, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_upper_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,7 +90,7 @@ static JSValue decal_class_get_upper_fade(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue decal_class_set_lower_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Decal::set_lower_fade, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Decal::set_lower_fade, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_lower_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -101,7 +99,7 @@ static JSValue decal_class_get_lower_fade(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue decal_class_set_normal_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Decal::set_normal_fade, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Decal::set_normal_fade, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_normal_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,7 +108,7 @@ static JSValue decal_class_get_normal_fade(JSContext *ctx, JSValueConst this_val
 };
 static JSValue decal_class_set_enable_distance_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Decal::set_enable_distance_fade, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Decal::set_enable_distance_fade, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_is_distance_fade_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -119,7 +117,7 @@ static JSValue decal_class_is_distance_fade_enabled(JSContext *ctx, JSValueConst
 };
 static JSValue decal_class_set_distance_fade_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Decal::set_distance_fade_begin, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Decal::set_distance_fade_begin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_distance_fade_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -128,7 +126,7 @@ static JSValue decal_class_get_distance_fade_begin(JSContext *ctx, JSValueConst 
 };
 static JSValue decal_class_set_distance_fade_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Decal::set_distance_fade_length, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Decal::set_distance_fade_length, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_distance_fade_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -137,7 +135,7 @@ static JSValue decal_class_get_distance_fade_length(JSContext *ctx, JSValueConst
 };
 static JSValue decal_class_set_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Decal::set_cull_mask, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Decal::set_cull_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue decal_class_get_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -172,126 +170,111 @@ static const JSCFunctionListEntry decal_class_proto_funcs[] = {
 };
 
 void define_decal_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "size"),
-        JS_NewCFunction(ctx, decal_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, decal_class_set_size, "set_size", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "texture_albedo"),
-        JS_NewCFunction(ctx, decal_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, decal_class_set_texture, "set_texture", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "texture_normal"),
-        JS_NewCFunction(ctx, decal_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, decal_class_set_texture, "set_texture", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "texture_orm"),
-        JS_NewCFunction(ctx, decal_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, decal_class_set_texture, "set_texture", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "texture_emission"),
-        JS_NewCFunction(ctx, decal_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, decal_class_set_texture, "set_texture", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "emission_energy"),
-        JS_NewCFunction(ctx, decal_class_get_emission_energy, "get_emission_energy", 0),
-        JS_NewCFunction(ctx, decal_class_set_emission_energy, "set_emission_energy", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "modulate"),
-        JS_NewCFunction(ctx, decal_class_get_modulate, "get_modulate", 0),
-        JS_NewCFunction(ctx, decal_class_set_modulate, "set_modulate", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "albedo_mix"),
-        JS_NewCFunction(ctx, decal_class_get_albedo_mix, "get_albedo_mix", 0),
-        JS_NewCFunction(ctx, decal_class_set_albedo_mix, "set_albedo_mix", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "normal_fade"),
-        JS_NewCFunction(ctx, decal_class_get_normal_fade, "get_normal_fade", 0),
-        JS_NewCFunction(ctx, decal_class_set_normal_fade, "set_normal_fade", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "upper_fade"),
-        JS_NewCFunction(ctx, decal_class_get_upper_fade, "get_upper_fade", 0),
-        JS_NewCFunction(ctx, decal_class_set_upper_fade, "set_upper_fade", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "lower_fade"),
-        JS_NewCFunction(ctx, decal_class_get_lower_fade, "get_lower_fade", 0),
-        JS_NewCFunction(ctx, decal_class_set_lower_fade, "set_lower_fade", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "distance_fade_enabled"),
-        JS_NewCFunction(ctx, decal_class_is_distance_fade_enabled, "is_distance_fade_enabled", 0),
-        JS_NewCFunction(ctx, decal_class_set_enable_distance_fade, "set_enable_distance_fade", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "distance_fade_begin"),
-        JS_NewCFunction(ctx, decal_class_get_distance_fade_begin, "get_distance_fade_begin", 0),
-        JS_NewCFunction(ctx, decal_class_set_distance_fade_begin, "set_distance_fade_begin", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "distance_fade_length"),
-        JS_NewCFunction(ctx, decal_class_get_distance_fade_length, "get_distance_fade_length", 0),
-        JS_NewCFunction(ctx, decal_class_set_distance_fade_length, "set_distance_fade_length", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "cull_mask"),
-        JS_NewCFunction(ctx, decal_class_get_cull_mask, "get_cull_mask", 0),
-        JS_NewCFunction(ctx, decal_class_set_cull_mask, "set_cull_mask", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "size"),
+			JS_NewCFunction(ctx, decal_class_get_size, "get_size", 0),
+			JS_NewCFunction(ctx, decal_class_set_size, "set_size", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "texture_albedo"),
+			JS_NewCFunction(ctx, decal_class_get_texture, "get_texture", 0),
+			JS_NewCFunction(ctx, decal_class_set_texture, "set_texture", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "texture_normal"),
+			JS_NewCFunction(ctx, decal_class_get_texture, "get_texture", 0),
+			JS_NewCFunction(ctx, decal_class_set_texture, "set_texture", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "texture_orm"),
+			JS_NewCFunction(ctx, decal_class_get_texture, "get_texture", 0),
+			JS_NewCFunction(ctx, decal_class_set_texture, "set_texture", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "texture_emission"),
+			JS_NewCFunction(ctx, decal_class_get_texture, "get_texture", 0),
+			JS_NewCFunction(ctx, decal_class_set_texture, "set_texture", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "emission_energy"),
+			JS_NewCFunction(ctx, decal_class_get_emission_energy, "get_emission_energy", 0),
+			JS_NewCFunction(ctx, decal_class_set_emission_energy, "set_emission_energy", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "modulate"),
+			JS_NewCFunction(ctx, decal_class_get_modulate, "get_modulate", 0),
+			JS_NewCFunction(ctx, decal_class_set_modulate, "set_modulate", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "albedo_mix"),
+			JS_NewCFunction(ctx, decal_class_get_albedo_mix, "get_albedo_mix", 0),
+			JS_NewCFunction(ctx, decal_class_set_albedo_mix, "set_albedo_mix", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "normal_fade"),
+			JS_NewCFunction(ctx, decal_class_get_normal_fade, "get_normal_fade", 0),
+			JS_NewCFunction(ctx, decal_class_set_normal_fade, "set_normal_fade", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "upper_fade"),
+			JS_NewCFunction(ctx, decal_class_get_upper_fade, "get_upper_fade", 0),
+			JS_NewCFunction(ctx, decal_class_set_upper_fade, "set_upper_fade", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "lower_fade"),
+			JS_NewCFunction(ctx, decal_class_get_lower_fade, "get_lower_fade", 0),
+			JS_NewCFunction(ctx, decal_class_set_lower_fade, "set_lower_fade", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "distance_fade_enabled"),
+			JS_NewCFunction(ctx, decal_class_is_distance_fade_enabled, "is_distance_fade_enabled", 0),
+			JS_NewCFunction(ctx, decal_class_set_enable_distance_fade, "set_enable_distance_fade", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "distance_fade_begin"),
+			JS_NewCFunction(ctx, decal_class_get_distance_fade_begin, "get_distance_fade_begin", 0),
+			JS_NewCFunction(ctx, decal_class_set_distance_fade_begin, "set_distance_fade_begin", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "distance_fade_length"),
+			JS_NewCFunction(ctx, decal_class_get_distance_fade_length, "get_distance_fade_length", 0),
+			JS_NewCFunction(ctx, decal_class_set_distance_fade_length, "set_distance_fade_length", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "cull_mask"),
+			JS_NewCFunction(ctx, decal_class_get_cull_mask, "get_cull_mask", 0),
+			JS_NewCFunction(ctx, decal_class_set_cull_mask, "set_cull_mask", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -305,7 +288,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_decal_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&Decal::__class_id);
 	classes["Decal"] = Decal::__class_id;
 	class_id_list.insert(Decal::__class_id);

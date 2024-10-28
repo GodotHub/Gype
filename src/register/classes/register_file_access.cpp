@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/file_access.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void file_access_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,7 +30,7 @@ static JSValue file_access_class_constructor(JSContext *ctx, JSValueConst new_ta
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, file_access_class);	
+	JS_SetOpaque(obj, file_access_class);
 	return obj;
 }
 static JSValue file_access_class_resize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -41,7 +39,7 @@ static JSValue file_access_class_resize(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue file_access_class_flush(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileAccess::flush, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileAccess::flush, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_access_class_get_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -58,12 +56,12 @@ static JSValue file_access_class_is_open(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue file_access_class_seek(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileAccess::seek, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileAccess::seek, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_access_class_seek_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileAccess::seek_end, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileAccess::seek_end, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_access_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -108,9 +106,9 @@ static JSValue file_access_class_get_real(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue file_access_class_get_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	return call_builtin_const_method_ret(static_cast<PackedByteArray(FileAccess::*)(int64_t) const>(&FileAccess::get_buffer), ctx, this_val, argc, argv);
+	return call_builtin_const_method_ret(static_cast<PackedByteArray (FileAccess::*)(int64_t) const>(&FileAccess::get_buffer), ctx, this_val, argc, argv);
 };
-	
+
 static JSValue file_access_class_get_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
 	return call_builtin_const_method_ret(&FileAccess::get_line, ctx, this_val, argc, argv);
@@ -129,7 +127,7 @@ static JSValue file_access_class_is_big_endian(JSContext *ctx, JSValueConst this
 };
 static JSValue file_access_class_set_big_endian(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileAccess::set_big_endian, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileAccess::set_big_endian, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_access_class_get_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -142,67 +140,67 @@ static JSValue file_access_class_get_var(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue file_access_class_store_8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileAccess::store_8, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileAccess::store_8, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_access_class_store_16(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileAccess::store_16, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileAccess::store_16, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_access_class_store_32(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileAccess::store_32, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileAccess::store_32, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_access_class_store_64(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileAccess::store_64, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileAccess::store_64, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_access_class_store_float(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileAccess::store_float, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileAccess::store_float, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_access_class_store_double(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileAccess::store_double, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileAccess::store_double, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_access_class_store_real(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileAccess::store_real, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileAccess::store_real, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_access_class_store_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(static_cast<void(FileAccess::*)(const PackedByteArray &)>(&FileAccess::store_buffer), ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(static_cast<void (FileAccess::*)(const PackedByteArray &)>(&FileAccess::store_buffer), ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_access_class_store_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileAccess::store_line, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileAccess::store_line, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_access_class_store_csv_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileAccess::store_csv_line, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileAccess::store_csv_line, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_access_class_store_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileAccess::store_string, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileAccess::store_string, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_access_class_store_var(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileAccess::store_var, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileAccess::store_var, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_access_class_store_pascal_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileAccess::store_pascal_string, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileAccess::store_pascal_string, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_access_class_get_pascal_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -211,7 +209,7 @@ static JSValue file_access_class_get_pascal_string(JSContext *ctx, JSValueConst 
 };
 static JSValue file_access_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileAccess::close, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileAccess::close, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_access_class_open(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -328,14 +326,13 @@ static const JSCFunctionListEntry file_access_class_static_funcs[] = {
 };
 
 void define_file_access_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "big_endian"),
-        JS_NewCFunction(ctx, file_access_class_is_big_endian, "is_big_endian", 0),
-        JS_NewCFunction(ctx, file_access_class_set_big_endian, "set_big_endian", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "big_endian"),
+			JS_NewCFunction(ctx, file_access_class_is_big_endian, "is_big_endian", 0),
+			JS_NewCFunction(ctx, file_access_class_set_big_endian, "set_big_endian", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -369,7 +366,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_file_access_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&FileAccess::__class_id);
 	classes["FileAccess"] = FileAccess::__class_id;
 	class_id_list.insert(FileAccess::__class_id);

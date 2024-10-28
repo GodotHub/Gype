@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/occluder_polygon2d.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void occluder_polygon2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue occluder_polygon2d_class_constructor(JSContext *ctx, JSValueConst
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, occluder_polygon2d_class);	
+	JS_SetOpaque(obj, occluder_polygon2d_class);
 	return obj;
 }
 static JSValue occluder_polygon2d_class_set_closed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OccluderPolygon2D::set_closed, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OccluderPolygon2D::set_closed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue occluder_polygon2d_class_is_closed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue occluder_polygon2d_class_is_closed(JSContext *ctx, JSValueConst t
 };
 static JSValue occluder_polygon2d_class_set_cull_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OccluderPolygon2D::set_cull_mode, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OccluderPolygon2D::set_cull_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue occluder_polygon2d_class_get_cull_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,7 +53,7 @@ static JSValue occluder_polygon2d_class_get_cull_mode(JSContext *ctx, JSValueCon
 };
 static JSValue occluder_polygon2d_class_set_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OccluderPolygon2D::set_polygon, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OccluderPolygon2D::set_polygon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue occluder_polygon2d_class_get_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,30 +70,27 @@ static const JSCFunctionListEntry occluder_polygon2d_class_proto_funcs[] = {
 };
 
 void define_occluder_polygon2d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "closed"),
-        JS_NewCFunction(ctx, occluder_polygon2d_class_is_closed, "is_closed", 0),
-        JS_NewCFunction(ctx, occluder_polygon2d_class_set_closed, "set_closed", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "cull_mode"),
-        JS_NewCFunction(ctx, occluder_polygon2d_class_get_cull_mode, "get_cull_mode", 0),
-        JS_NewCFunction(ctx, occluder_polygon2d_class_set_cull_mode, "set_cull_mode", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "polygon"),
-        JS_NewCFunction(ctx, occluder_polygon2d_class_get_polygon, "get_polygon", 0),
-        JS_NewCFunction(ctx, occluder_polygon2d_class_set_polygon, "set_polygon", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "closed"),
+			JS_NewCFunction(ctx, occluder_polygon2d_class_is_closed, "is_closed", 0),
+			JS_NewCFunction(ctx, occluder_polygon2d_class_set_closed, "set_closed", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "cull_mode"),
+			JS_NewCFunction(ctx, occluder_polygon2d_class_get_cull_mode, "get_cull_mode", 0),
+			JS_NewCFunction(ctx, occluder_polygon2d_class_set_cull_mode, "set_cull_mode", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "polygon"),
+			JS_NewCFunction(ctx, occluder_polygon2d_class_get_polygon, "get_polygon", 0),
+			JS_NewCFunction(ctx, occluder_polygon2d_class_set_polygon, "set_polygon", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -107,7 +102,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_occluder_polygon2d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&OccluderPolygon2D::__class_id);
 	classes["OccluderPolygon2D"] = OccluderPolygon2D::__class_id;
 	class_id_list.insert(OccluderPolygon2D::__class_id);

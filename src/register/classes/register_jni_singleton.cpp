@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/jni_singleton.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void jni_singleton_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,7 +30,7 @@ static JSValue jni_singleton_class_constructor(JSContext *ctx, JSValueConst new_
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, jni_singleton_class);	
+	JS_SetOpaque(obj, jni_singleton_class);
 	return obj;
 }
 
@@ -43,7 +41,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_jni_singleton_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&JNISingleton::__class_id);
 	classes["JNISingleton"] = JNISingleton::__class_id;
 	class_id_list.insert(JNISingleton::__class_id);

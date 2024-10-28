@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
+#include <godot_cpp/classes/csg_cylinder3d.hpp>
 #include <godot_cpp/classes/csg_primitive3d.hpp>
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/csg_cylinder3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void csg_cylinder3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,12 +31,12 @@ static JSValue csg_cylinder3d_class_constructor(JSContext *ctx, JSValueConst new
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, csg_cylinder3d_class);	
+	JS_SetOpaque(obj, csg_cylinder3d_class);
 	return obj;
 }
 static JSValue csg_cylinder3d_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CSGCylinder3D::set_radius, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CSGCylinder3D::set_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_cylinder3d_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -47,7 +45,7 @@ static JSValue csg_cylinder3d_class_get_radius(JSContext *ctx, JSValueConst this
 };
 static JSValue csg_cylinder3d_class_set_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CSGCylinder3D::set_height, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CSGCylinder3D::set_height, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_cylinder3d_class_get_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -56,7 +54,7 @@ static JSValue csg_cylinder3d_class_get_height(JSContext *ctx, JSValueConst this
 };
 static JSValue csg_cylinder3d_class_set_sides(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CSGCylinder3D::set_sides, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CSGCylinder3D::set_sides, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_cylinder3d_class_get_sides(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,7 +63,7 @@ static JSValue csg_cylinder3d_class_get_sides(JSContext *ctx, JSValueConst this_
 };
 static JSValue csg_cylinder3d_class_set_cone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CSGCylinder3D::set_cone, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CSGCylinder3D::set_cone, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_cylinder3d_class_is_cone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -74,7 +72,7 @@ static JSValue csg_cylinder3d_class_is_cone(JSContext *ctx, JSValueConst this_va
 };
 static JSValue csg_cylinder3d_class_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CSGCylinder3D::set_material, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CSGCylinder3D::set_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_cylinder3d_class_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -83,7 +81,7 @@ static JSValue csg_cylinder3d_class_get_material(JSContext *ctx, JSValueConst th
 };
 static JSValue csg_cylinder3d_class_set_smooth_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CSGCylinder3D::set_smooth_faces, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CSGCylinder3D::set_smooth_faces, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_cylinder3d_class_get_smooth_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -106,61 +104,54 @@ static const JSCFunctionListEntry csg_cylinder3d_class_proto_funcs[] = {
 };
 
 void define_csg_cylinder3d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "radius"),
-        JS_NewCFunction(ctx, csg_cylinder3d_class_get_radius, "get_radius", 0),
-        JS_NewCFunction(ctx, csg_cylinder3d_class_set_radius, "set_radius", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "height"),
-        JS_NewCFunction(ctx, csg_cylinder3d_class_get_height, "get_height", 0),
-        JS_NewCFunction(ctx, csg_cylinder3d_class_set_height, "set_height", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "sides"),
-        JS_NewCFunction(ctx, csg_cylinder3d_class_get_sides, "get_sides", 0),
-        JS_NewCFunction(ctx, csg_cylinder3d_class_set_sides, "set_sides", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "cone"),
-        JS_NewCFunction(ctx, csg_cylinder3d_class_is_cone, "is_cone", 0),
-        JS_NewCFunction(ctx, csg_cylinder3d_class_set_cone, "set_cone", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "smooth_faces"),
-        JS_NewCFunction(ctx, csg_cylinder3d_class_get_smooth_faces, "get_smooth_faces", 0),
-        JS_NewCFunction(ctx, csg_cylinder3d_class_set_smooth_faces, "set_smooth_faces", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "material"),
-        JS_NewCFunction(ctx, csg_cylinder3d_class_get_material, "get_material", 0),
-        JS_NewCFunction(ctx, csg_cylinder3d_class_set_material, "set_material", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "radius"),
+			JS_NewCFunction(ctx, csg_cylinder3d_class_get_radius, "get_radius", 0),
+			JS_NewCFunction(ctx, csg_cylinder3d_class_set_radius, "set_radius", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "height"),
+			JS_NewCFunction(ctx, csg_cylinder3d_class_get_height, "get_height", 0),
+			JS_NewCFunction(ctx, csg_cylinder3d_class_set_height, "set_height", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "sides"),
+			JS_NewCFunction(ctx, csg_cylinder3d_class_get_sides, "get_sides", 0),
+			JS_NewCFunction(ctx, csg_cylinder3d_class_set_sides, "set_sides", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "cone"),
+			JS_NewCFunction(ctx, csg_cylinder3d_class_is_cone, "is_cone", 0),
+			JS_NewCFunction(ctx, csg_cylinder3d_class_set_cone, "set_cone", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "smooth_faces"),
+			JS_NewCFunction(ctx, csg_cylinder3d_class_get_smooth_faces, "get_smooth_faces", 0),
+			JS_NewCFunction(ctx, csg_cylinder3d_class_set_smooth_faces, "set_smooth_faces", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "material"),
+			JS_NewCFunction(ctx, csg_cylinder3d_class_get_material, "get_material", 0),
+			JS_NewCFunction(ctx, csg_cylinder3d_class_set_material, "set_material", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_csg_cylinder3d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&CSGCylinder3D::__class_id);
 	classes["CSGCylinder3D"] = CSGCylinder3D::__class_id;
 	class_id_list.insert(CSGCylinder3D::__class_id);

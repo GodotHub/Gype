@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/rigid_body3d.hpp>
 #include <godot_cpp/classes/vehicle_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void vehicle_body3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue vehicle_body3d_class_constructor(JSContext *ctx, JSValueConst new
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, vehicle_body3d_class);	
+	JS_SetOpaque(obj, vehicle_body3d_class);
 	return obj;
 }
 static JSValue vehicle_body3d_class_set_engine_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VehicleBody3D::set_engine_force, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VehicleBody3D::set_engine_force, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_body3d_class_get_engine_force(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue vehicle_body3d_class_get_engine_force(JSContext *ctx, JSValueCons
 };
 static JSValue vehicle_body3d_class_set_brake(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VehicleBody3D::set_brake, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VehicleBody3D::set_brake, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_body3d_class_get_brake(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,7 +53,7 @@ static JSValue vehicle_body3d_class_get_brake(JSContext *ctx, JSValueConst this_
 };
 static JSValue vehicle_body3d_class_set_steering(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VehicleBody3D::set_steering, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VehicleBody3D::set_steering, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue vehicle_body3d_class_get_steering(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,37 +70,33 @@ static const JSCFunctionListEntry vehicle_body3d_class_proto_funcs[] = {
 };
 
 void define_vehicle_body3d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "engine_force"),
-        JS_NewCFunction(ctx, vehicle_body3d_class_get_engine_force, "get_engine_force", 0),
-        JS_NewCFunction(ctx, vehicle_body3d_class_set_engine_force, "set_engine_force", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "brake"),
-        JS_NewCFunction(ctx, vehicle_body3d_class_get_brake, "get_brake", 0),
-        JS_NewCFunction(ctx, vehicle_body3d_class_set_brake, "set_brake", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "steering"),
-        JS_NewCFunction(ctx, vehicle_body3d_class_get_steering, "get_steering", 0),
-        JS_NewCFunction(ctx, vehicle_body3d_class_set_steering, "set_steering", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "engine_force"),
+			JS_NewCFunction(ctx, vehicle_body3d_class_get_engine_force, "get_engine_force", 0),
+			JS_NewCFunction(ctx, vehicle_body3d_class_set_engine_force, "set_engine_force", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "brake"),
+			JS_NewCFunction(ctx, vehicle_body3d_class_get_brake, "get_brake", 0),
+			JS_NewCFunction(ctx, vehicle_body3d_class_set_brake, "set_brake", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "steering"),
+			JS_NewCFunction(ctx, vehicle_body3d_class_get_steering, "get_steering", 0),
+			JS_NewCFunction(ctx, vehicle_body3d_class_set_steering, "set_steering", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_vehicle_body3d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&VehicleBody3D::__class_id);
 	classes["VehicleBody3D"] = VehicleBody3D::__class_id;
 	class_id_list.insert(VehicleBody3D::__class_id);

@@ -6,7 +6,6 @@
 #include "utils/func_utils.h"
 #include <godot_cpp/variant/rect2i.hpp>
 
-
 using namespace godot;
 
 static void rect2i_class_finalizer(JSRuntime *rt, JSValue val) {

@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/static_body2d.hpp>
-#include <godot_cpp/classes/physics_material.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/physics_body2d.hpp>
+#include <godot_cpp/classes/physics_material.hpp>
+#include <godot_cpp/classes/static_body2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void static_body2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,17 +31,17 @@ static JSValue static_body2d_class_constructor(JSContext *ctx, JSValueConst new_
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, static_body2d_class);	
+	JS_SetOpaque(obj, static_body2d_class);
 	return obj;
 }
 static JSValue static_body2d_class_set_constant_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StaticBody2D::set_constant_linear_velocity, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&StaticBody2D::set_constant_linear_velocity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue static_body2d_class_set_constant_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StaticBody2D::set_constant_angular_velocity, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&StaticBody2D::set_constant_angular_velocity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue static_body2d_class_get_constant_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -56,7 +54,7 @@ static JSValue static_body2d_class_get_constant_angular_velocity(JSContext *ctx,
 };
 static JSValue static_body2d_class_set_physics_material_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StaticBody2D::set_physics_material_override, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&StaticBody2D::set_physics_material_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue static_body2d_class_get_physics_material_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -73,37 +71,33 @@ static const JSCFunctionListEntry static_body2d_class_proto_funcs[] = {
 };
 
 void define_static_body2d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "physics_material_override"),
-        JS_NewCFunction(ctx, static_body2d_class_get_physics_material_override, "get_physics_material_override", 0),
-        JS_NewCFunction(ctx, static_body2d_class_set_physics_material_override, "set_physics_material_override", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "constant_linear_velocity"),
-        JS_NewCFunction(ctx, static_body2d_class_get_constant_linear_velocity, "get_constant_linear_velocity", 0),
-        JS_NewCFunction(ctx, static_body2d_class_set_constant_linear_velocity, "set_constant_linear_velocity", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "constant_angular_velocity"),
-        JS_NewCFunction(ctx, static_body2d_class_get_constant_angular_velocity, "get_constant_angular_velocity", 0),
-        JS_NewCFunction(ctx, static_body2d_class_set_constant_angular_velocity, "set_constant_angular_velocity", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "physics_material_override"),
+			JS_NewCFunction(ctx, static_body2d_class_get_physics_material_override, "get_physics_material_override", 0),
+			JS_NewCFunction(ctx, static_body2d_class_set_physics_material_override, "set_physics_material_override", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "constant_linear_velocity"),
+			JS_NewCFunction(ctx, static_body2d_class_get_constant_linear_velocity, "get_constant_linear_velocity", 0),
+			JS_NewCFunction(ctx, static_body2d_class_set_constant_linear_velocity, "set_constant_linear_velocity", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "constant_angular_velocity"),
+			JS_NewCFunction(ctx, static_body2d_class_get_constant_angular_velocity, "get_constant_angular_velocity", 0),
+			JS_NewCFunction(ctx, static_body2d_class_set_constant_angular_velocity, "set_constant_angular_velocity", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_static_body2d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&StaticBody2D::__class_id);
 	classes["StaticBody2D"] = StaticBody2D::__class_id;
 	class_id_list.insert(StaticBody2D::__class_id);

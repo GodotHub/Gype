@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_action.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/input_event_action.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void input_event_action_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue input_event_action_class_constructor(JSContext *ctx, JSValueConst
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, input_event_action_class);	
+	JS_SetOpaque(obj, input_event_action_class);
 	return obj;
 }
 static JSValue input_event_action_class_set_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventAction::set_action, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&InputEventAction::set_action, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_action_class_get_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,12 +44,12 @@ static JSValue input_event_action_class_get_action(JSContext *ctx, JSValueConst 
 };
 static JSValue input_event_action_class_set_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventAction::set_pressed, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&InputEventAction::set_pressed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_action_class_set_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventAction::set_strength, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&InputEventAction::set_strength, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_action_class_get_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -60,7 +58,7 @@ static JSValue input_event_action_class_get_strength(JSContext *ctx, JSValueCons
 };
 static JSValue input_event_action_class_set_event_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventAction::set_event_index, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&InputEventAction::set_event_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_event_action_class_get_event_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -78,45 +76,40 @@ static const JSCFunctionListEntry input_event_action_class_proto_funcs[] = {
 };
 
 void define_input_event_action_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "action"),
-        JS_NewCFunction(ctx, input_event_action_class_get_action, "get_action", 0),
-        JS_NewCFunction(ctx, input_event_action_class_set_action, "set_action", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "pressed"),
-        JS_UNDEFINED,
-        JS_NewCFunction(ctx, input_event_action_class_set_pressed, "set_pressed", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "strength"),
-        JS_NewCFunction(ctx, input_event_action_class_get_strength, "get_strength", 0),
-        JS_NewCFunction(ctx, input_event_action_class_set_strength, "set_strength", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "event_index"),
-        JS_NewCFunction(ctx, input_event_action_class_get_event_index, "get_event_index", 0),
-        JS_NewCFunction(ctx, input_event_action_class_set_event_index, "set_event_index", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "action"),
+			JS_NewCFunction(ctx, input_event_action_class_get_action, "get_action", 0),
+			JS_NewCFunction(ctx, input_event_action_class_set_action, "set_action", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "pressed"),
+			JS_UNDEFINED,
+			JS_NewCFunction(ctx, input_event_action_class_set_pressed, "set_pressed", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "strength"),
+			JS_NewCFunction(ctx, input_event_action_class_get_strength, "get_strength", 0),
+			JS_NewCFunction(ctx, input_event_action_class_set_strength, "set_strength", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "event_index"),
+			JS_NewCFunction(ctx, input_event_action_class_get_event_index, "get_event_index", 0),
+			JS_NewCFunction(ctx, input_event_action_class_set_event_index, "set_event_index", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_input_event_action_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&InputEventAction::__class_id);
 	classes["InputEventAction"] = InputEventAction::__class_id;
 	class_id_list.insert(InputEventAction::__class_id);

@@ -1,5 +1,6 @@
 #include "register/register_types.h"
 #include "quickjs/env.h"
+#include "quickjs/event_loop.h"
 #include "register/builtin_classes/register_builtin_classes.h"
 #include "register/classes/register_classes.h"
 #include "register/utility_functions/register_utility_functions.h"
@@ -16,40 +17,16 @@
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/defs.hpp>
 
-// bug 无法关闭程序
-// #ifdef DEBUG_ENABLED
-#include "array_test/array_test.hpp"
-#include "call_test/call_test.hpp"
-#include "dict_test/dict_test.hpp"
-#include "gdstring_test/gdstring_test.hpp"
-#include "node_test/node_test.hpp"
-#include "number_test/number_test.hpp"
-
-// #endif
-
 using namespace godot;
-
-// #include "support/typescript.h"
-// #include "support/typescript_language.h"
-// #include "support/typescript_loader.h"
-// #include "support/typescript_saver.h"
 
 void initialize_tgds_types(godot::ModuleInitializationLevel p_level) {
 	if (p_level != godot::ModuleInitializationLevel::MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
-	RedirectIOToConsole();
+	// RedirectIOToConsole();
 	printf("%s", "Quickjs start initialization\n");
 	init_quickjs();
 	init_language();
-#ifdef DEBUG_ENABLED
-	// test_gdstring();
-	// test_number();
-	// test_array();
-	// test_dict();
-	// test_call();
-	// test_node();
-#endif // DEBUG
 	printf("%s", "Quickjs initialization is over\n");
 }
 
@@ -69,10 +46,10 @@ void uninitialize_tgds_types(godot::ModuleInitializationLevel p_level) {
 void init_quickjs() {
 	rt = JS_NewRuntime();
 	ctx = JS_NewContext(rt);
+	create_event_loop(rt);
 	register_utility_functions();
 	register_builtin_classes();
 	register_classes();
-	JS_AddIntrinsicOperators(ctx);
 	JS_SetModuleLoaderFunc(rt, NULL, module_loader, NULL);
 }
 

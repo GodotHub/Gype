@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/canvas_item_material.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void canvas_item_material_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue canvas_item_material_class_constructor(JSContext *ctx, JSValueCon
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, canvas_item_material_class);	
+	JS_SetOpaque(obj, canvas_item_material_class);
 	return obj;
 }
 static JSValue canvas_item_material_class_set_blend_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasItemMaterial::set_blend_mode, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasItemMaterial::set_blend_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_material_class_get_blend_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue canvas_item_material_class_get_blend_mode(JSContext *ctx, JSValue
 };
 static JSValue canvas_item_material_class_set_light_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasItemMaterial::set_light_mode, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasItemMaterial::set_light_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_material_class_get_light_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,7 +53,7 @@ static JSValue canvas_item_material_class_get_light_mode(JSContext *ctx, JSValue
 };
 static JSValue canvas_item_material_class_set_particles_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasItemMaterial::set_particles_animation, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasItemMaterial::set_particles_animation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_material_class_get_particles_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -64,7 +62,7 @@ static JSValue canvas_item_material_class_get_particles_animation(JSContext *ctx
 };
 static JSValue canvas_item_material_class_set_particles_anim_h_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasItemMaterial::set_particles_anim_h_frames, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasItemMaterial::set_particles_anim_h_frames, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_material_class_get_particles_anim_h_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -73,7 +71,7 @@ static JSValue canvas_item_material_class_get_particles_anim_h_frames(JSContext 
 };
 static JSValue canvas_item_material_class_set_particles_anim_v_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasItemMaterial::set_particles_anim_v_frames, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasItemMaterial::set_particles_anim_v_frames, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_material_class_get_particles_anim_v_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,7 +80,7 @@ static JSValue canvas_item_material_class_get_particles_anim_v_frames(JSContext 
 };
 static JSValue canvas_item_material_class_set_particles_anim_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasItemMaterial::set_particles_anim_loop, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasItemMaterial::set_particles_anim_loop, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_item_material_class_get_particles_anim_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -105,54 +103,48 @@ static const JSCFunctionListEntry canvas_item_material_class_proto_funcs[] = {
 };
 
 void define_canvas_item_material_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "blend_mode"),
-        JS_NewCFunction(ctx, canvas_item_material_class_get_blend_mode, "get_blend_mode", 0),
-        JS_NewCFunction(ctx, canvas_item_material_class_set_blend_mode, "set_blend_mode", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "light_mode"),
-        JS_NewCFunction(ctx, canvas_item_material_class_get_light_mode, "get_light_mode", 0),
-        JS_NewCFunction(ctx, canvas_item_material_class_set_light_mode, "set_light_mode", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "particles_animation"),
-        JS_NewCFunction(ctx, canvas_item_material_class_get_particles_animation, "get_particles_animation", 0),
-        JS_NewCFunction(ctx, canvas_item_material_class_set_particles_animation, "set_particles_animation", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "particles_anim_h_frames"),
-        JS_NewCFunction(ctx, canvas_item_material_class_get_particles_anim_h_frames, "get_particles_anim_h_frames", 0),
-        JS_NewCFunction(ctx, canvas_item_material_class_set_particles_anim_h_frames, "set_particles_anim_h_frames", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "particles_anim_v_frames"),
-        JS_NewCFunction(ctx, canvas_item_material_class_get_particles_anim_v_frames, "get_particles_anim_v_frames", 0),
-        JS_NewCFunction(ctx, canvas_item_material_class_set_particles_anim_v_frames, "set_particles_anim_v_frames", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "particles_anim_loop"),
-        JS_NewCFunction(ctx, canvas_item_material_class_get_particles_anim_loop, "get_particles_anim_loop", 0),
-        JS_NewCFunction(ctx, canvas_item_material_class_set_particles_anim_loop, "set_particles_anim_loop", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "blend_mode"),
+			JS_NewCFunction(ctx, canvas_item_material_class_get_blend_mode, "get_blend_mode", 0),
+			JS_NewCFunction(ctx, canvas_item_material_class_set_blend_mode, "set_blend_mode", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "light_mode"),
+			JS_NewCFunction(ctx, canvas_item_material_class_get_light_mode, "get_light_mode", 0),
+			JS_NewCFunction(ctx, canvas_item_material_class_set_light_mode, "set_light_mode", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "particles_animation"),
+			JS_NewCFunction(ctx, canvas_item_material_class_get_particles_animation, "get_particles_animation", 0),
+			JS_NewCFunction(ctx, canvas_item_material_class_set_particles_animation, "set_particles_animation", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "particles_anim_h_frames"),
+			JS_NewCFunction(ctx, canvas_item_material_class_get_particles_anim_h_frames, "get_particles_anim_h_frames", 0),
+			JS_NewCFunction(ctx, canvas_item_material_class_set_particles_anim_h_frames, "set_particles_anim_h_frames", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "particles_anim_v_frames"),
+			JS_NewCFunction(ctx, canvas_item_material_class_get_particles_anim_v_frames, "get_particles_anim_v_frames", 0),
+			JS_NewCFunction(ctx, canvas_item_material_class_set_particles_anim_v_frames, "set_particles_anim_v_frames", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "particles_anim_loop"),
+			JS_NewCFunction(ctx, canvas_item_material_class_get_particles_anim_loop, "get_particles_anim_loop", 0),
+			JS_NewCFunction(ctx, canvas_item_material_class_set_particles_anim_loop, "set_particles_anim_loop", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -171,7 +163,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_canvas_item_material_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&CanvasItemMaterial::__class_id);
 	classes["CanvasItemMaterial"] = CanvasItemMaterial::__class_id;
 	class_id_list.insert(CanvasItemMaterial::__class_id);

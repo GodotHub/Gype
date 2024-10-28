@@ -30,20 +30,26 @@ static JSValue callable_class_constructor(JSContext *ctx, JSValueConst new_targe
 	if (argc == 0) {
 		callable_class = memnew(Callable());
 	}
-
-	if (argc == 2 && JS_IsObject(argv[0]) && JS_IsFunction(ctx, argv[1])) {
-		callable_class = create_custom_javascript_callable(argv[0], argv[1]);
-	}
-
 	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::CALLABLE) {
 		Callable v0 = Variant(argv[0]);
 		callable_class = memnew(Callable(v0));
+	}
+
+	if (argc == 1 && JS_IsFunction(ctx, argv[0])) {
+		JS_DupValue(ctx, argv[0]);
+		callable_class = create_custom_javascript_callable(JS_UNDEFINED, argv[0]);
 	}
 
 	if (argc == 2 && Variant(argv[0]).get_type() == Variant::Type::OBJECT && Variant(argv[1]).get_type() == Variant::Type::STRING_NAME) {
 		Object *v0 = Variant(argv[0]);
 		StringName v1 = Variant(argv[1]);
 		callable_class = memnew(Callable(v0, v1));
+	}
+
+	if (argc == 2 && JS_IsObject(argv[0]) && JS_IsFunction(ctx, argv[1])) {
+		JS_DupValue(ctx, argv[0]);
+		JS_DupValue(ctx, argv[1]);
+		callable_class = create_custom_javascript_callable(argv[0], argv[1]);
 	}
 
 	if (!callable_class) {

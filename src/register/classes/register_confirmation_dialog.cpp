@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/button.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/accept_dialog.hpp>
+#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/confirmation_dialog.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void confirmation_dialog_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,7 +31,7 @@ static JSValue confirmation_dialog_class_constructor(JSContext *ctx, JSValueCons
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, confirmation_dialog_class);	
+	JS_SetOpaque(obj, confirmation_dialog_class);
 	return obj;
 }
 static JSValue confirmation_dialog_class_get_cancel_button(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -42,7 +40,7 @@ static JSValue confirmation_dialog_class_get_cancel_button(JSContext *ctx, JSVal
 };
 static JSValue confirmation_dialog_class_set_cancel_button_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ConfirmationDialog::set_cancel_button_text, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&ConfirmationDialog::set_cancel_button_text, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue confirmation_dialog_class_get_cancel_button_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -56,21 +54,19 @@ static const JSCFunctionListEntry confirmation_dialog_class_proto_funcs[] = {
 };
 
 void define_confirmation_dialog_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "cancel_button_text"),
-        JS_NewCFunction(ctx, confirmation_dialog_class_get_cancel_button_text, "get_cancel_button_text", 0),
-        JS_NewCFunction(ctx, confirmation_dialog_class_set_cancel_button_text, "set_cancel_button_text", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "cancel_button_text"),
+			JS_NewCFunction(ctx, confirmation_dialog_class_get_cancel_button_text, "get_cancel_button_text", 0),
+			JS_NewCFunction(ctx, confirmation_dialog_class_set_cancel_button_text, "set_cancel_button_text", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_confirmation_dialog_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&ConfirmationDialog::__class_id);
 	classes["ConfirmationDialog"] = ConfirmationDialog::__class_id;
 	class_id_list.insert(ConfirmationDialog::__class_id);

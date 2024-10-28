@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/stream_peer_tls.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/stream_peer.hpp>
+#include <godot_cpp/classes/stream_peer_tls.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void stream_peer_tls_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,12 +31,12 @@ static JSValue stream_peer_tls_class_constructor(JSContext *ctx, JSValueConst ne
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, stream_peer_tls_class);	
+	JS_SetOpaque(obj, stream_peer_tls_class);
 	return obj;
 }
 static JSValue stream_peer_tls_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StreamPeerTLS::poll, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&StreamPeerTLS::poll, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_tls_class_accept_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -59,7 +57,7 @@ static JSValue stream_peer_tls_class_get_stream(JSContext *ctx, JSValueConst thi
 };
 static JSValue stream_peer_tls_class_disconnect_from_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StreamPeerTLS::disconnect_from_stream, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&StreamPeerTLS::disconnect_from_stream, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry stream_peer_tls_class_proto_funcs[] = {
@@ -85,7 +83,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_stream_peer_tls_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&StreamPeerTLS::__class_id);
 	classes["StreamPeerTLS"] = StreamPeerTLS::__class_id;
 	class_id_list.insert(StreamPeerTLS::__class_id);

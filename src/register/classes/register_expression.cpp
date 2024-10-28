@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
+#include <godot_cpp/classes/expression.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/expression.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void expression_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,7 +31,7 @@ static JSValue expression_class_constructor(JSContext *ctx, JSValueConst new_tar
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, expression_class);	
+	JS_SetOpaque(obj, expression_class);
 	return obj;
 }
 static JSValue expression_class_parse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -66,7 +64,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_expression_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&Expression::__class_id);
 	classes["Expression"] = Expression::__class_id;
 	class_id_list.insert(Expression::__class_id);

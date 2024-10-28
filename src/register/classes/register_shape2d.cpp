@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue shape2d_class_constructor(JSContext *ctx, JSValueConst new_target
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, shape2d_class);	
+	JS_SetOpaque(obj, shape2d_class);
 	return obj;
 }
 static JSValue shape2d_class_set_custom_solver_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Shape2D::set_custom_solver_bias, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Shape2D::set_custom_solver_bias, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape2d_class_get_custom_solver_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +60,7 @@ static JSValue shape2d_class_collide_with_motion_and_get_contacts(JSContext *ctx
 };
 static JSValue shape2d_class_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Shape2D::draw, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Shape2D::draw, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue shape2d_class_get_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -81,21 +79,19 @@ static const JSCFunctionListEntry shape2d_class_proto_funcs[] = {
 };
 
 void define_shape2d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "custom_solver_bias"),
-        JS_NewCFunction(ctx, shape2d_class_get_custom_solver_bias, "get_custom_solver_bias", 0),
-        JS_NewCFunction(ctx, shape2d_class_set_custom_solver_bias, "set_custom_solver_bias", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "custom_solver_bias"),
+			JS_NewCFunction(ctx, shape2d_class_get_custom_solver_bias, "get_custom_solver_bias", 0),
+			JS_NewCFunction(ctx, shape2d_class_set_custom_solver_bias, "set_custom_solver_bias", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_shape2d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&Shape2D::__class_id);
 	classes["Shape2D"] = Shape2D::__class_id;
 	class_id_list.insert(Shape2D::__class_id);

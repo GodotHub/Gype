@@ -1,28 +1,24 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/multiplayer_api.hpp>
-#include <godot_cpp/classes/scene_tree_timer.hpp>
-#include <godot_cpp/classes/scene_tree.hpp>
-#include <godot_cpp/classes/tween.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/main_loop.hpp>
+#include <godot_cpp/classes/multiplayer_api.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/packed_scene.hpp>
+#include <godot_cpp/classes/scene_tree.hpp>
+#include <godot_cpp/classes/scene_tree_timer.hpp>
 #include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/packed_scene.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void scene_tree_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -41,7 +37,7 @@ static JSValue scene_tree_class_constructor(JSContext *ctx, JSValueConst new_tar
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, scene_tree_class);	
+	JS_SetOpaque(obj, scene_tree_class);
 	return obj;
 }
 static JSValue scene_tree_class_get_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -58,7 +54,7 @@ static JSValue scene_tree_class_is_auto_accept_quit(JSContext *ctx, JSValueConst
 };
 static JSValue scene_tree_class_set_auto_accept_quit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneTree::set_auto_accept_quit, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneTree::set_auto_accept_quit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_is_quit_on_go_back(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,12 +63,12 @@ static JSValue scene_tree_class_is_quit_on_go_back(JSContext *ctx, JSValueConst 
 };
 static JSValue scene_tree_class_set_quit_on_go_back(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneTree::set_quit_on_go_back, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneTree::set_quit_on_go_back, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_set_debug_collisions_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneTree::set_debug_collisions_hint, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneTree::set_debug_collisions_hint, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_is_debugging_collisions_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -81,7 +77,7 @@ static JSValue scene_tree_class_is_debugging_collisions_hint(JSContext *ctx, JSV
 };
 static JSValue scene_tree_class_set_debug_paths_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneTree::set_debug_paths_hint, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneTree::set_debug_paths_hint, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_is_debugging_paths_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -90,7 +86,7 @@ static JSValue scene_tree_class_is_debugging_paths_hint(JSContext *ctx, JSValueC
 };
 static JSValue scene_tree_class_set_debug_navigation_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneTree::set_debug_navigation_hint, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneTree::set_debug_navigation_hint, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_is_debugging_navigation_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -99,7 +95,7 @@ static JSValue scene_tree_class_is_debugging_navigation_hint(JSContext *ctx, JSV
 };
 static JSValue scene_tree_class_set_edited_scene_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneTree::set_edited_scene_root, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneTree::set_edited_scene_root, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_get_edited_scene_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -108,7 +104,7 @@ static JSValue scene_tree_class_get_edited_scene_root(JSContext *ctx, JSValueCon
 };
 static JSValue scene_tree_class_set_pause(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneTree::set_pause, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneTree::set_pause, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_is_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -137,12 +133,12 @@ static JSValue scene_tree_class_get_frame(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue scene_tree_class_quit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneTree::quit, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneTree::quit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_set_physics_interpolation_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneTree::set_physics_interpolation_enabled, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneTree::set_physics_interpolation_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_is_physics_interpolation_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -151,27 +147,27 @@ static JSValue scene_tree_class_is_physics_interpolation_enabled(JSContext *ctx,
 };
 static JSValue scene_tree_class_queue_delete(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneTree::queue_delete, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneTree::queue_delete, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_notify_group_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneTree::notify_group_flags, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneTree::notify_group_flags, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_set_group_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneTree::set_group_flags, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneTree::set_group_flags, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_notify_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneTree::notify_group, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneTree::notify_group, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_set_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneTree::set_group, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneTree::set_group, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_get_nodes_in_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -188,7 +184,7 @@ static JSValue scene_tree_class_get_node_count_in_group(JSContext *ctx, JSValueC
 };
 static JSValue scene_tree_class_set_current_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneTree::set_current_scene, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneTree::set_current_scene, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_get_current_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -209,12 +205,12 @@ static JSValue scene_tree_class_reload_current_scene(JSContext *ctx, JSValueCons
 };
 static JSValue scene_tree_class_unload_current_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneTree::unload_current_scene, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneTree::unload_current_scene, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_set_multiplayer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneTree::set_multiplayer, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneTree::set_multiplayer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_get_multiplayer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -223,7 +219,7 @@ static JSValue scene_tree_class_get_multiplayer(JSContext *ctx, JSValueConst thi
 };
 static JSValue scene_tree_class_set_multiplayer_poll_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneTree::set_multiplayer_poll_enabled, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneTree::set_multiplayer_poll_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_tree_class_is_multiplayer_poll_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -232,12 +228,12 @@ static JSValue scene_tree_class_is_multiplayer_poll_enabled(JSContext *ctx, JSVa
 };
 static JSValue scene_tree_class_call_group_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_vararg_method_no_ret(&SceneTree::js_call_group_flags, ctx, this_val, argc, argv);
+	call_builtin_vararg_method_no_ret(&SceneTree::js_call_group_flags, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static JSValue scene_tree_class_call_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_vararg_method_no_ret(&SceneTree::js_call_group, ctx, this_val, argc, argv);
+	call_builtin_vararg_method_no_ret(&SceneTree::js_call_group, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 }
 static const JSCFunctionListEntry scene_tree_class_proto_funcs[] = {
@@ -288,94 +284,83 @@ static const JSCFunctionListEntry scene_tree_class_proto_funcs[] = {
 };
 
 void define_scene_tree_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "auto_accept_quit"),
-        JS_NewCFunction(ctx, scene_tree_class_is_auto_accept_quit, "is_auto_accept_quit", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_auto_accept_quit, "set_auto_accept_quit", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "quit_on_go_back"),
-        JS_NewCFunction(ctx, scene_tree_class_is_quit_on_go_back, "is_quit_on_go_back", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_quit_on_go_back, "set_quit_on_go_back", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "debug_collisions_hint"),
-        JS_NewCFunction(ctx, scene_tree_class_is_debugging_collisions_hint, "is_debugging_collisions_hint", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_debug_collisions_hint, "set_debug_collisions_hint", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "debug_paths_hint"),
-        JS_NewCFunction(ctx, scene_tree_class_is_debugging_paths_hint, "is_debugging_paths_hint", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_debug_paths_hint, "set_debug_paths_hint", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "debug_navigation_hint"),
-        JS_NewCFunction(ctx, scene_tree_class_is_debugging_navigation_hint, "is_debugging_navigation_hint", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_debug_navigation_hint, "set_debug_navigation_hint", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "paused"),
-        JS_NewCFunction(ctx, scene_tree_class_is_paused, "is_paused", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_pause, "set_pause", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "edited_scene_root"),
-        JS_NewCFunction(ctx, scene_tree_class_get_edited_scene_root, "get_edited_scene_root", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_edited_scene_root, "set_edited_scene_root", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "current_scene"),
-        JS_NewCFunction(ctx, scene_tree_class_get_current_scene, "get_current_scene", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_current_scene, "set_current_scene", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "root"),
-        JS_NewCFunction(ctx, scene_tree_class_get_root, "get_root", 0),
-        JS_UNDEFINED,
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "multiplayer_poll"),
-        JS_NewCFunction(ctx, scene_tree_class_is_multiplayer_poll_enabled, "is_multiplayer_poll_enabled", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_multiplayer_poll_enabled, "set_multiplayer_poll_enabled", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "physics_interpolation"),
-        JS_NewCFunction(ctx, scene_tree_class_is_physics_interpolation_enabled, "is_physics_interpolation_enabled", 0),
-        JS_NewCFunction(ctx, scene_tree_class_set_physics_interpolation_enabled, "set_physics_interpolation_enabled", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "auto_accept_quit"),
+			JS_NewCFunction(ctx, scene_tree_class_is_auto_accept_quit, "is_auto_accept_quit", 0),
+			JS_NewCFunction(ctx, scene_tree_class_set_auto_accept_quit, "set_auto_accept_quit", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "quit_on_go_back"),
+			JS_NewCFunction(ctx, scene_tree_class_is_quit_on_go_back, "is_quit_on_go_back", 0),
+			JS_NewCFunction(ctx, scene_tree_class_set_quit_on_go_back, "set_quit_on_go_back", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "debug_collisions_hint"),
+			JS_NewCFunction(ctx, scene_tree_class_is_debugging_collisions_hint, "is_debugging_collisions_hint", 0),
+			JS_NewCFunction(ctx, scene_tree_class_set_debug_collisions_hint, "set_debug_collisions_hint", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "debug_paths_hint"),
+			JS_NewCFunction(ctx, scene_tree_class_is_debugging_paths_hint, "is_debugging_paths_hint", 0),
+			JS_NewCFunction(ctx, scene_tree_class_set_debug_paths_hint, "set_debug_paths_hint", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "debug_navigation_hint"),
+			JS_NewCFunction(ctx, scene_tree_class_is_debugging_navigation_hint, "is_debugging_navigation_hint", 0),
+			JS_NewCFunction(ctx, scene_tree_class_set_debug_navigation_hint, "set_debug_navigation_hint", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "paused"),
+			JS_NewCFunction(ctx, scene_tree_class_is_paused, "is_paused", 0),
+			JS_NewCFunction(ctx, scene_tree_class_set_pause, "set_pause", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "edited_scene_root"),
+			JS_NewCFunction(ctx, scene_tree_class_get_edited_scene_root, "get_edited_scene_root", 0),
+			JS_NewCFunction(ctx, scene_tree_class_set_edited_scene_root, "set_edited_scene_root", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "current_scene"),
+			JS_NewCFunction(ctx, scene_tree_class_get_current_scene, "get_current_scene", 0),
+			JS_NewCFunction(ctx, scene_tree_class_set_current_scene, "set_current_scene", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "root"),
+			JS_NewCFunction(ctx, scene_tree_class_get_root, "get_root", 0),
+			JS_UNDEFINED,
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "multiplayer_poll"),
+			JS_NewCFunction(ctx, scene_tree_class_is_multiplayer_poll_enabled, "is_multiplayer_poll_enabled", 0),
+			JS_NewCFunction(ctx, scene_tree_class_set_multiplayer_poll_enabled, "set_multiplayer_poll_enabled", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "physics_interpolation"),
+			JS_NewCFunction(ctx, scene_tree_class_is_physics_interpolation_enabled, "is_physics_interpolation_enabled", 0),
+			JS_NewCFunction(ctx, scene_tree_class_set_physics_interpolation_enabled, "set_physics_interpolation_enabled", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -388,7 +373,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_scene_tree_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&SceneTree::__class_id);
 	classes["SceneTree"] = SceneTree::__class_id;
 	class_id_list.insert(SceneTree::__class_id);

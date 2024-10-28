@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/classes/tile_set_scenes_collection_source.hpp>
 #include <godot_cpp/classes/tile_set_source.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void tile_set_scenes_collection_source_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,7 +31,7 @@ static JSValue tile_set_scenes_collection_source_class_constructor(JSContext *ct
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, tile_set_scenes_collection_source_class);	
+	JS_SetOpaque(obj, tile_set_scenes_collection_source_class);
 	return obj;
 }
 static JSValue tile_set_scenes_collection_source_class_get_scene_tiles_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -54,12 +52,12 @@ static JSValue tile_set_scenes_collection_source_class_create_scene_tile(JSConte
 };
 static JSValue tile_set_scenes_collection_source_class_set_scene_tile_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSetScenesCollectionSource::set_scene_tile_id, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSetScenesCollectionSource::set_scene_tile_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_scenes_collection_source_class_set_scene_tile_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSetScenesCollectionSource::set_scene_tile_scene, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSetScenesCollectionSource::set_scene_tile_scene, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_scenes_collection_source_class_get_scene_tile_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -68,7 +66,7 @@ static JSValue tile_set_scenes_collection_source_class_get_scene_tile_scene(JSCo
 };
 static JSValue tile_set_scenes_collection_source_class_set_scene_tile_display_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSetScenesCollectionSource::set_scene_tile_display_placeholder, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSetScenesCollectionSource::set_scene_tile_display_placeholder, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_scenes_collection_source_class_get_scene_tile_display_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -77,7 +75,7 @@ static JSValue tile_set_scenes_collection_source_class_get_scene_tile_display_pl
 };
 static JSValue tile_set_scenes_collection_source_class_remove_scene_tile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSetScenesCollectionSource::remove_scene_tile, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSetScenesCollectionSource::remove_scene_tile, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_scenes_collection_source_class_get_next_scene_tile_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -105,7 +103,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_tile_set_scenes_collection_source_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&TileSetScenesCollectionSource::__class_id);
 	classes["TileSetScenesCollectionSource"] = TileSetScenesCollectionSource::__class_id;
 	class_id_list.insert(TileSetScenesCollectionSource::__class_id);

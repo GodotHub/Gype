@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ywkvev50gpv6"]
+[gd_scene load_steps=2 format=3 uid="uid://dw82uxt35habb"]
 
-[ext_resource type="Texture2D" uid="uid://b8cebd1utf34e" path="res://icon.svg" id="1_mrcbm"]
-[ext_resource type="Script" path="res://MySprite.js" id="2_ylg5d"]
+[ext_resource type="Script" path="res://MySprite.js" id="1_54kn8"]
 
 [node name="Sprite2D" type="Sprite2D"]
 unique_name_in_owner = 0
@@ -13,10 +12,9 @@ y_sort_enabled = 0
 use_parent_material = 0
 rotation = 0
 skew = 0
-texture = ExtResource("1_mrcbm")
 centered = 1
 flip_h = 0
 flip_v = 0
 region_enabled = 0
 region_filter_clip_enabled = 0
-script = ExtResource("2_ylg5d")
+script = ExtResource("1_54kn8")

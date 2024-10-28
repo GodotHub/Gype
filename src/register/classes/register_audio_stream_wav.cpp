@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_stream_wav.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/audio_stream.hpp>
+#include <godot_cpp/classes/audio_stream_wav.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void audio_stream_wav_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue audio_stream_wav_class_constructor(JSContext *ctx, JSValueConst n
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_stream_wav_class);	
+	JS_SetOpaque(obj, audio_stream_wav_class);
 	return obj;
 }
 static JSValue audio_stream_wav_class_set_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamWAV::set_data, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AudioStreamWAV::set_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_wav_class_get_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue audio_stream_wav_class_get_data(JSContext *ctx, JSValueConst this
 };
 static JSValue audio_stream_wav_class_set_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamWAV::set_format, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AudioStreamWAV::set_format, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_wav_class_get_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,7 +53,7 @@ static JSValue audio_stream_wav_class_get_format(JSContext *ctx, JSValueConst th
 };
 static JSValue audio_stream_wav_class_set_loop_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamWAV::set_loop_mode, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AudioStreamWAV::set_loop_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_wav_class_get_loop_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -64,7 +62,7 @@ static JSValue audio_stream_wav_class_get_loop_mode(JSContext *ctx, JSValueConst
 };
 static JSValue audio_stream_wav_class_set_loop_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamWAV::set_loop_begin, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AudioStreamWAV::set_loop_begin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_wav_class_get_loop_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -73,7 +71,7 @@ static JSValue audio_stream_wav_class_get_loop_begin(JSContext *ctx, JSValueCons
 };
 static JSValue audio_stream_wav_class_set_loop_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamWAV::set_loop_end, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AudioStreamWAV::set_loop_end, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_wav_class_get_loop_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,7 +80,7 @@ static JSValue audio_stream_wav_class_get_loop_end(JSContext *ctx, JSValueConst 
 };
 static JSValue audio_stream_wav_class_set_mix_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamWAV::set_mix_rate, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AudioStreamWAV::set_mix_rate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_wav_class_get_mix_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -91,7 +89,7 @@ static JSValue audio_stream_wav_class_get_mix_rate(JSContext *ctx, JSValueConst 
 };
 static JSValue audio_stream_wav_class_set_stereo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamWAV::set_stereo, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AudioStreamWAV::set_stereo, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_wav_class_is_stereo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -121,62 +119,55 @@ static const JSCFunctionListEntry audio_stream_wav_class_proto_funcs[] = {
 };
 
 void define_audio_stream_wav_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "data"),
-        JS_NewCFunction(ctx, audio_stream_wav_class_get_data, "get_data", 0),
-        JS_NewCFunction(ctx, audio_stream_wav_class_set_data, "set_data", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "format"),
-        JS_NewCFunction(ctx, audio_stream_wav_class_get_format, "get_format", 0),
-        JS_NewCFunction(ctx, audio_stream_wav_class_set_format, "set_format", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "loop_mode"),
-        JS_NewCFunction(ctx, audio_stream_wav_class_get_loop_mode, "get_loop_mode", 0),
-        JS_NewCFunction(ctx, audio_stream_wav_class_set_loop_mode, "set_loop_mode", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "loop_begin"),
-        JS_NewCFunction(ctx, audio_stream_wav_class_get_loop_begin, "get_loop_begin", 0),
-        JS_NewCFunction(ctx, audio_stream_wav_class_set_loop_begin, "set_loop_begin", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "loop_end"),
-        JS_NewCFunction(ctx, audio_stream_wav_class_get_loop_end, "get_loop_end", 0),
-        JS_NewCFunction(ctx, audio_stream_wav_class_set_loop_end, "set_loop_end", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "mix_rate"),
-        JS_NewCFunction(ctx, audio_stream_wav_class_get_mix_rate, "get_mix_rate", 0),
-        JS_NewCFunction(ctx, audio_stream_wav_class_set_mix_rate, "set_mix_rate", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "stereo"),
-        JS_NewCFunction(ctx, audio_stream_wav_class_is_stereo, "is_stereo", 0),
-        JS_NewCFunction(ctx, audio_stream_wav_class_set_stereo, "set_stereo", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "data"),
+			JS_NewCFunction(ctx, audio_stream_wav_class_get_data, "get_data", 0),
+			JS_NewCFunction(ctx, audio_stream_wav_class_set_data, "set_data", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "format"),
+			JS_NewCFunction(ctx, audio_stream_wav_class_get_format, "get_format", 0),
+			JS_NewCFunction(ctx, audio_stream_wav_class_set_format, "set_format", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "loop_mode"),
+			JS_NewCFunction(ctx, audio_stream_wav_class_get_loop_mode, "get_loop_mode", 0),
+			JS_NewCFunction(ctx, audio_stream_wav_class_set_loop_mode, "set_loop_mode", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "loop_begin"),
+			JS_NewCFunction(ctx, audio_stream_wav_class_get_loop_begin, "get_loop_begin", 0),
+			JS_NewCFunction(ctx, audio_stream_wav_class_set_loop_begin, "set_loop_begin", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "loop_end"),
+			JS_NewCFunction(ctx, audio_stream_wav_class_get_loop_end, "get_loop_end", 0),
+			JS_NewCFunction(ctx, audio_stream_wav_class_set_loop_end, "set_loop_end", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "mix_rate"),
+			JS_NewCFunction(ctx, audio_stream_wav_class_get_mix_rate, "get_mix_rate", 0),
+			JS_NewCFunction(ctx, audio_stream_wav_class_set_mix_rate, "set_mix_rate", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "stereo"),
+			JS_NewCFunction(ctx, audio_stream_wav_class_is_stereo, "is_stereo", 0),
+			JS_NewCFunction(ctx, audio_stream_wav_class_set_stereo, "set_stereo", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -195,7 +186,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_stream_wav_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&AudioStreamWAV::__class_id);
 	classes["AudioStreamWAV"] = AudioStreamWAV::__class_id;
 	class_id_list.insert(AudioStreamWAV::__class_id);

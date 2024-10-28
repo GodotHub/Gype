@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/char_fx_transform.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void char_fx_transform_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,7 +30,7 @@ static JSValue char_fx_transform_class_constructor(JSContext *ctx, JSValueConst 
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, char_fx_transform_class);	
+	JS_SetOpaque(obj, char_fx_transform_class);
 	return obj;
 }
 static JSValue char_fx_transform_class_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -41,7 +39,7 @@ static JSValue char_fx_transform_class_get_transform(JSContext *ctx, JSValueCons
 };
 static JSValue char_fx_transform_class_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharFXTransform::set_transform, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharFXTransform::set_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -50,7 +48,7 @@ static JSValue char_fx_transform_class_get_range(JSContext *ctx, JSValueConst th
 };
 static JSValue char_fx_transform_class_set_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharFXTransform::set_range, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharFXTransform::set_range, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_elapsed_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -59,7 +57,7 @@ static JSValue char_fx_transform_class_get_elapsed_time(JSContext *ctx, JSValueC
 };
 static JSValue char_fx_transform_class_set_elapsed_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharFXTransform::set_elapsed_time, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharFXTransform::set_elapsed_time, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_is_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -68,7 +66,7 @@ static JSValue char_fx_transform_class_is_visible(JSContext *ctx, JSValueConst t
 };
 static JSValue char_fx_transform_class_set_visibility(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharFXTransform::set_visibility, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharFXTransform::set_visibility, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_is_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -77,7 +75,7 @@ static JSValue char_fx_transform_class_is_outline(JSContext *ctx, JSValueConst t
 };
 static JSValue char_fx_transform_class_set_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharFXTransform::set_outline, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharFXTransform::set_outline, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -86,7 +84,7 @@ static JSValue char_fx_transform_class_get_offset(JSContext *ctx, JSValueConst t
 };
 static JSValue char_fx_transform_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharFXTransform::set_offset, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharFXTransform::set_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -95,7 +93,7 @@ static JSValue char_fx_transform_class_get_color(JSContext *ctx, JSValueConst th
 };
 static JSValue char_fx_transform_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharFXTransform::set_color, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharFXTransform::set_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -104,7 +102,7 @@ static JSValue char_fx_transform_class_get_environment(JSContext *ctx, JSValueCo
 };
 static JSValue char_fx_transform_class_set_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharFXTransform::set_environment, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharFXTransform::set_environment, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_glyph_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -113,7 +111,7 @@ static JSValue char_fx_transform_class_get_glyph_index(JSContext *ctx, JSValueCo
 };
 static JSValue char_fx_transform_class_set_glyph_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharFXTransform::set_glyph_index, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharFXTransform::set_glyph_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_relative_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -122,7 +120,7 @@ static JSValue char_fx_transform_class_get_relative_index(JSContext *ctx, JSValu
 };
 static JSValue char_fx_transform_class_set_relative_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharFXTransform::set_relative_index, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharFXTransform::set_relative_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_glyph_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -131,7 +129,7 @@ static JSValue char_fx_transform_class_get_glyph_count(JSContext *ctx, JSValueCo
 };
 static JSValue char_fx_transform_class_set_glyph_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharFXTransform::set_glyph_count, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharFXTransform::set_glyph_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_glyph_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -140,7 +138,7 @@ static JSValue char_fx_transform_class_get_glyph_flags(JSContext *ctx, JSValueCo
 };
 static JSValue char_fx_transform_class_set_glyph_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharFXTransform::set_glyph_flags, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharFXTransform::set_glyph_flags, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue char_fx_transform_class_get_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -149,7 +147,7 @@ static JSValue char_fx_transform_class_get_font(JSContext *ctx, JSValueConst thi
 };
 static JSValue char_fx_transform_class_set_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharFXTransform::set_font, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharFXTransform::set_font, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry char_fx_transform_class_proto_funcs[] = {
@@ -182,117 +180,103 @@ static const JSCFunctionListEntry char_fx_transform_class_proto_funcs[] = {
 };
 
 void define_char_fx_transform_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "transform"),
-        JS_NewCFunction(ctx, char_fx_transform_class_get_transform, "get_transform", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_transform, "set_transform", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "range"),
-        JS_NewCFunction(ctx, char_fx_transform_class_get_range, "get_range", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_range, "set_range", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "elapsed_time"),
-        JS_NewCFunction(ctx, char_fx_transform_class_get_elapsed_time, "get_elapsed_time", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_elapsed_time, "set_elapsed_time", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "visible"),
-        JS_NewCFunction(ctx, char_fx_transform_class_is_visible, "is_visible", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_visibility, "set_visibility", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "outline"),
-        JS_NewCFunction(ctx, char_fx_transform_class_is_outline, "is_outline", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_outline, "set_outline", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "offset"),
-        JS_NewCFunction(ctx, char_fx_transform_class_get_offset, "get_offset", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_offset, "set_offset", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "color"),
-        JS_NewCFunction(ctx, char_fx_transform_class_get_color, "get_color", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_color, "set_color", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "env"),
-        JS_NewCFunction(ctx, char_fx_transform_class_get_environment, "get_environment", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_environment, "set_environment", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "glyph_index"),
-        JS_NewCFunction(ctx, char_fx_transform_class_get_glyph_index, "get_glyph_index", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_glyph_index, "set_glyph_index", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "glyph_count"),
-        JS_NewCFunction(ctx, char_fx_transform_class_get_glyph_count, "get_glyph_count", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_glyph_count, "set_glyph_count", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "glyph_flags"),
-        JS_NewCFunction(ctx, char_fx_transform_class_get_glyph_flags, "get_glyph_flags", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_glyph_flags, "set_glyph_flags", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "relative_index"),
-        JS_NewCFunction(ctx, char_fx_transform_class_get_relative_index, "get_relative_index", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_relative_index, "set_relative_index", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "font"),
-        JS_NewCFunction(ctx, char_fx_transform_class_get_font, "get_font", 0),
-        JS_NewCFunction(ctx, char_fx_transform_class_set_font, "set_font", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "transform"),
+			JS_NewCFunction(ctx, char_fx_transform_class_get_transform, "get_transform", 0),
+			JS_NewCFunction(ctx, char_fx_transform_class_set_transform, "set_transform", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "range"),
+			JS_NewCFunction(ctx, char_fx_transform_class_get_range, "get_range", 0),
+			JS_NewCFunction(ctx, char_fx_transform_class_set_range, "set_range", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "elapsed_time"),
+			JS_NewCFunction(ctx, char_fx_transform_class_get_elapsed_time, "get_elapsed_time", 0),
+			JS_NewCFunction(ctx, char_fx_transform_class_set_elapsed_time, "set_elapsed_time", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "visible"),
+			JS_NewCFunction(ctx, char_fx_transform_class_is_visible, "is_visible", 0),
+			JS_NewCFunction(ctx, char_fx_transform_class_set_visibility, "set_visibility", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "outline"),
+			JS_NewCFunction(ctx, char_fx_transform_class_is_outline, "is_outline", 0),
+			JS_NewCFunction(ctx, char_fx_transform_class_set_outline, "set_outline", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "offset"),
+			JS_NewCFunction(ctx, char_fx_transform_class_get_offset, "get_offset", 0),
+			JS_NewCFunction(ctx, char_fx_transform_class_set_offset, "set_offset", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "color"),
+			JS_NewCFunction(ctx, char_fx_transform_class_get_color, "get_color", 0),
+			JS_NewCFunction(ctx, char_fx_transform_class_set_color, "set_color", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "env"),
+			JS_NewCFunction(ctx, char_fx_transform_class_get_environment, "get_environment", 0),
+			JS_NewCFunction(ctx, char_fx_transform_class_set_environment, "set_environment", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "glyph_index"),
+			JS_NewCFunction(ctx, char_fx_transform_class_get_glyph_index, "get_glyph_index", 0),
+			JS_NewCFunction(ctx, char_fx_transform_class_set_glyph_index, "set_glyph_index", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "glyph_count"),
+			JS_NewCFunction(ctx, char_fx_transform_class_get_glyph_count, "get_glyph_count", 0),
+			JS_NewCFunction(ctx, char_fx_transform_class_set_glyph_count, "set_glyph_count", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "glyph_flags"),
+			JS_NewCFunction(ctx, char_fx_transform_class_get_glyph_flags, "get_glyph_flags", 0),
+			JS_NewCFunction(ctx, char_fx_transform_class_set_glyph_flags, "set_glyph_flags", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "relative_index"),
+			JS_NewCFunction(ctx, char_fx_transform_class_get_relative_index, "get_relative_index", 0),
+			JS_NewCFunction(ctx, char_fx_transform_class_set_relative_index, "set_relative_index", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "font"),
+			JS_NewCFunction(ctx, char_fx_transform_class_get_font, "get_font", 0),
+			JS_NewCFunction(ctx, char_fx_transform_class_set_font, "set_font", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_char_fx_transform_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&CharFXTransform::__class_id);
 	classes["CharFXTransform"] = CharFXTransform::__class_id;
 	class_id_list.insert(CharFXTransform::__class_id);

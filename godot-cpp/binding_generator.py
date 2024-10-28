@@ -668,6 +668,7 @@ def generate_builtin_class_header(builtin_api, size, used_classes, fully_used_cl
 
     result.append("#include <gdextension_interface.h>")
     result.append("#include \"quickjs/quickjs.h\"")
+    result.append("#include \"quickjs/env.h\"")
     result.append("")
     result.append("namespace godot {")
     result.append("")
@@ -1625,6 +1626,7 @@ def generate_engine_class_header(class_api, used_classes, fully_used_classes, us
         result.append("")
 
     result.append('#include "quickjs/quickjs.h"')
+    result.append('#include "quickjs/env.h"')
 
     if class_name != "Object" and class_name != "ClassDBSingleton" and class_name != 'RefCounted':
         result.append("#include <godot_cpp/core/class_db.hpp>")
@@ -2228,6 +2230,7 @@ def generate_utility_functions(api, output_dir):
     header.append("#include <godot_cpp/variant/builtin_types.hpp>")
     header.append("#include <godot_cpp/variant/variant.hpp>")
     header.append('#include "quickjs/quickjs.h"')
+    header.append('#include "quickjs/env.h"')
     header.append("#include <vector>")
     header.append("")
     header.append("#include <array>")

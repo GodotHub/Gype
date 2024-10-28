@@ -1,4 +1,5 @@
 #include "support/javascript_instance.hpp"
+#include "quickjs/event_loop.h"
 #include "quickjs/quickjs_helper.h"
 #include "quickjs/str_helper.h"
 #include "support/javascript.hpp"
@@ -137,7 +138,8 @@ GDExtensionBool JavaScriptInstance::get(GDExtensionConstStringNamePtr p_name, GD
 
 GDExtensionBool JavaScriptInstance::has_method(GDExtensionConstStringNamePtr p_name) {
 	JSValue js_instance = binding->js_instance;
-	const char *name = to_chars(*reinterpret_cast<const StringName *>(p_name));
+	StringName method = *reinterpret_cast<const StringName *>(p_name);
+	const char *name = to_chars(method);
 	JSValue js_method = JS_GetPropertyStr(ctx, js_instance, name);
 	return JS_IsFunction(ctx, js_method);
 }
@@ -148,9 +150,7 @@ GDExtensionInt JavaScriptInstance::get_method_argument_count(GDExtensionConstStr
 	JSValue js_method = JS_GetPropertyStr(ctx, js_instance, name);
 	JSValue js_len = JS_GetPropertyStr(ctx, js_method, "length");
 	int64_t len;
-	if (JS_ToInt64(ctx, &len, js_len))
-		*r_is_valid = false;
-	*r_is_valid = true;
+	*r_is_valid = !JS_ToInt64(ctx, &len, js_len);
 	return len;
 }
 
@@ -176,6 +176,7 @@ void JavaScriptInstance::call(GDExtensionConstStringNamePtr p_method, const GDEx
 			for (int i = 0; i < p_argument_count; i++)
 				js_args[i] = static_cast<JSValue>(variant_args[i]);
 			JSValue js_ret = JS_Call(ctx, js_method, js_instance, p_argument_count, js_args.data());
+			execute_events();
 			Variant ret = Variant(js_ret);
 			internal::gdextension_interface_variant_new_copy(r_return, ret._native_ptr());
 			r_error->error = GDExtensionCallErrorType::GDEXTENSION_CALL_OK;

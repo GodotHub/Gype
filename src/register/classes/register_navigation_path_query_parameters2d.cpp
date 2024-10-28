@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/navigation_path_query_parameters2d.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void navigation_path_query_parameters2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue navigation_path_query_parameters2d_class_constructor(JSContext *c
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, navigation_path_query_parameters2d_class);	
+	JS_SetOpaque(obj, navigation_path_query_parameters2d_class);
 	return obj;
 }
 static JSValue navigation_path_query_parameters2d_class_set_pathfinding_algorithm(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationPathQueryParameters2D::set_pathfinding_algorithm, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&NavigationPathQueryParameters2D::set_pathfinding_algorithm, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_parameters2d_class_get_pathfinding_algorithm(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue navigation_path_query_parameters2d_class_get_pathfinding_algorith
 };
 static JSValue navigation_path_query_parameters2d_class_set_path_postprocessing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationPathQueryParameters2D::set_path_postprocessing, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&NavigationPathQueryParameters2D::set_path_postprocessing, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_parameters2d_class_get_path_postprocessing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,7 +53,7 @@ static JSValue navigation_path_query_parameters2d_class_get_path_postprocessing(
 };
 static JSValue navigation_path_query_parameters2d_class_set_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationPathQueryParameters2D::set_map, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&NavigationPathQueryParameters2D::set_map, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_parameters2d_class_get_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -64,7 +62,7 @@ static JSValue navigation_path_query_parameters2d_class_get_map(JSContext *ctx, 
 };
 static JSValue navigation_path_query_parameters2d_class_set_start_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationPathQueryParameters2D::set_start_position, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&NavigationPathQueryParameters2D::set_start_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_parameters2d_class_get_start_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -73,7 +71,7 @@ static JSValue navigation_path_query_parameters2d_class_get_start_position(JSCon
 };
 static JSValue navigation_path_query_parameters2d_class_set_target_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationPathQueryParameters2D::set_target_position, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&NavigationPathQueryParameters2D::set_target_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_parameters2d_class_get_target_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,7 +80,7 @@ static JSValue navigation_path_query_parameters2d_class_get_target_position(JSCo
 };
 static JSValue navigation_path_query_parameters2d_class_set_navigation_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationPathQueryParameters2D::set_navigation_layers, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&NavigationPathQueryParameters2D::set_navigation_layers, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_parameters2d_class_get_navigation_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -91,7 +89,7 @@ static JSValue navigation_path_query_parameters2d_class_get_navigation_layers(JS
 };
 static JSValue navigation_path_query_parameters2d_class_set_metadata_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationPathQueryParameters2D::set_metadata_flags, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&NavigationPathQueryParameters2D::set_metadata_flags, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_parameters2d_class_get_metadata_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -100,7 +98,7 @@ static JSValue navigation_path_query_parameters2d_class_get_metadata_flags(JSCon
 };
 static JSValue navigation_path_query_parameters2d_class_set_simplify_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationPathQueryParameters2D::set_simplify_path, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&NavigationPathQueryParameters2D::set_simplify_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_parameters2d_class_get_simplify_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -109,7 +107,7 @@ static JSValue navigation_path_query_parameters2d_class_get_simplify_path(JSCont
 };
 static JSValue navigation_path_query_parameters2d_class_set_simplify_epsilon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationPathQueryParameters2D::set_simplify_epsilon, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&NavigationPathQueryParameters2D::set_simplify_epsilon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_parameters2d_class_get_simplify_epsilon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -138,78 +136,69 @@ static const JSCFunctionListEntry navigation_path_query_parameters2d_class_proto
 };
 
 void define_navigation_path_query_parameters2d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "map"),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_map, "get_map", 0),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_map, "set_map", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "start_position"),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_start_position, "get_start_position", 0),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_start_position, "set_start_position", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "target_position"),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_target_position, "get_target_position", 0),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_target_position, "set_target_position", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "navigation_layers"),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_navigation_layers, "get_navigation_layers", 0),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_navigation_layers, "set_navigation_layers", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "pathfinding_algorithm"),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_pathfinding_algorithm, "get_pathfinding_algorithm", 0),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_pathfinding_algorithm, "set_pathfinding_algorithm", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "path_postprocessing"),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_path_postprocessing, "get_path_postprocessing", 0),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_path_postprocessing, "set_path_postprocessing", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "metadata_flags"),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_metadata_flags, "get_metadata_flags", 0),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_metadata_flags, "set_metadata_flags", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "simplify_path"),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_simplify_path, "get_simplify_path", 0),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_simplify_path, "set_simplify_path", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "simplify_epsilon"),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_simplify_epsilon, "get_simplify_epsilon", 0),
-        JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_simplify_epsilon, "set_simplify_epsilon", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "map"),
+			JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_map, "get_map", 0),
+			JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_map, "set_map", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "start_position"),
+			JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_start_position, "get_start_position", 0),
+			JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_start_position, "set_start_position", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "target_position"),
+			JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_target_position, "get_target_position", 0),
+			JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_target_position, "set_target_position", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "navigation_layers"),
+			JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_navigation_layers, "get_navigation_layers", 0),
+			JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_navigation_layers, "set_navigation_layers", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "pathfinding_algorithm"),
+			JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_pathfinding_algorithm, "get_pathfinding_algorithm", 0),
+			JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_pathfinding_algorithm, "set_pathfinding_algorithm", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "path_postprocessing"),
+			JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_path_postprocessing, "get_path_postprocessing", 0),
+			JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_path_postprocessing, "set_path_postprocessing", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "metadata_flags"),
+			JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_metadata_flags, "get_metadata_flags", 0),
+			JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_metadata_flags, "set_metadata_flags", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "simplify_path"),
+			JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_simplify_path, "get_simplify_path", 0),
+			JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_simplify_path, "set_simplify_path", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "simplify_epsilon"),
+			JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_get_simplify_epsilon, "get_simplify_epsilon", 0),
+			JS_NewCFunction(ctx, navigation_path_query_parameters2d_class_set_simplify_epsilon, "set_simplify_epsilon", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -230,7 +219,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_navigation_path_query_parameters2d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&NavigationPathQueryParameters2D::__class_id);
 	classes["NavigationPathQueryParameters2D"] = NavigationPathQueryParameters2D::__class_id;
 	class_id_list.insert(NavigationPathQueryParameters2D::__class_id);

@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture_progress_bar.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/range.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/texture_progress_bar.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void texture_progress_bar_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,12 +31,12 @@ static JSValue texture_progress_bar_class_constructor(JSContext *ctx, JSValueCon
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, texture_progress_bar_class);	
+	JS_SetOpaque(obj, texture_progress_bar_class);
 	return obj;
 }
 static JSValue texture_progress_bar_class_set_under_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureProgressBar::set_under_texture, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TextureProgressBar::set_under_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_under_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -47,7 +45,7 @@ static JSValue texture_progress_bar_class_get_under_texture(JSContext *ctx, JSVa
 };
 static JSValue texture_progress_bar_class_set_progress_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureProgressBar::set_progress_texture, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TextureProgressBar::set_progress_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_progress_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -56,7 +54,7 @@ static JSValue texture_progress_bar_class_get_progress_texture(JSContext *ctx, J
 };
 static JSValue texture_progress_bar_class_set_over_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureProgressBar::set_over_texture, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TextureProgressBar::set_over_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_over_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,7 +63,7 @@ static JSValue texture_progress_bar_class_get_over_texture(JSContext *ctx, JSVal
 };
 static JSValue texture_progress_bar_class_set_fill_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureProgressBar::set_fill_mode, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TextureProgressBar::set_fill_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_fill_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -74,7 +72,7 @@ static JSValue texture_progress_bar_class_get_fill_mode(JSContext *ctx, JSValueC
 };
 static JSValue texture_progress_bar_class_set_tint_under(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureProgressBar::set_tint_under, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TextureProgressBar::set_tint_under, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_tint_under(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -83,7 +81,7 @@ static JSValue texture_progress_bar_class_get_tint_under(JSContext *ctx, JSValue
 };
 static JSValue texture_progress_bar_class_set_tint_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureProgressBar::set_tint_progress, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TextureProgressBar::set_tint_progress, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_tint_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,7 +90,7 @@ static JSValue texture_progress_bar_class_get_tint_progress(JSContext *ctx, JSVa
 };
 static JSValue texture_progress_bar_class_set_tint_over(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureProgressBar::set_tint_over, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TextureProgressBar::set_tint_over, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_tint_over(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -101,7 +99,7 @@ static JSValue texture_progress_bar_class_get_tint_over(JSContext *ctx, JSValueC
 };
 static JSValue texture_progress_bar_class_set_texture_progress_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureProgressBar::set_texture_progress_offset, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TextureProgressBar::set_texture_progress_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_texture_progress_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,7 +108,7 @@ static JSValue texture_progress_bar_class_get_texture_progress_offset(JSContext 
 };
 static JSValue texture_progress_bar_class_set_radial_initial_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureProgressBar::set_radial_initial_angle, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TextureProgressBar::set_radial_initial_angle, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_radial_initial_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -119,7 +117,7 @@ static JSValue texture_progress_bar_class_get_radial_initial_angle(JSContext *ct
 };
 static JSValue texture_progress_bar_class_set_radial_center_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureProgressBar::set_radial_center_offset, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TextureProgressBar::set_radial_center_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_radial_center_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -128,7 +126,7 @@ static JSValue texture_progress_bar_class_get_radial_center_offset(JSContext *ct
 };
 static JSValue texture_progress_bar_class_set_fill_degrees(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureProgressBar::set_fill_degrees, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TextureProgressBar::set_fill_degrees, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_fill_degrees(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -137,7 +135,7 @@ static JSValue texture_progress_bar_class_get_fill_degrees(JSContext *ctx, JSVal
 };
 static JSValue texture_progress_bar_class_set_stretch_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureProgressBar::set_stretch_margin, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TextureProgressBar::set_stretch_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_stretch_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -146,7 +144,7 @@ static JSValue texture_progress_bar_class_get_stretch_margin(JSContext *ctx, JSV
 };
 static JSValue texture_progress_bar_class_set_nine_patch_stretch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureProgressBar::set_nine_patch_stretch, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TextureProgressBar::set_nine_patch_stretch, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture_progress_bar_class_get_nine_patch_stretch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -183,134 +181,118 @@ static const JSCFunctionListEntry texture_progress_bar_class_proto_funcs[] = {
 };
 
 void define_texture_progress_bar_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "fill_mode"),
-        JS_NewCFunction(ctx, texture_progress_bar_class_get_fill_mode, "get_fill_mode", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_fill_mode, "set_fill_mode", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "radial_initial_angle"),
-        JS_NewCFunction(ctx, texture_progress_bar_class_get_radial_initial_angle, "get_radial_initial_angle", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_radial_initial_angle, "set_radial_initial_angle", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "radial_fill_degrees"),
-        JS_NewCFunction(ctx, texture_progress_bar_class_get_fill_degrees, "get_fill_degrees", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_fill_degrees, "set_fill_degrees", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "radial_center_offset"),
-        JS_NewCFunction(ctx, texture_progress_bar_class_get_radial_center_offset, "get_radial_center_offset", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_radial_center_offset, "set_radial_center_offset", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "nine_patch_stretch"),
-        JS_NewCFunction(ctx, texture_progress_bar_class_get_nine_patch_stretch, "get_nine_patch_stretch", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_nine_patch_stretch, "set_nine_patch_stretch", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "stretch_margin_left"),
-        JS_NewCFunction(ctx, texture_progress_bar_class_get_stretch_margin, "get_stretch_margin", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_stretch_margin, "set_stretch_margin", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "stretch_margin_top"),
-        JS_NewCFunction(ctx, texture_progress_bar_class_get_stretch_margin, "get_stretch_margin", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_stretch_margin, "set_stretch_margin", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "stretch_margin_right"),
-        JS_NewCFunction(ctx, texture_progress_bar_class_get_stretch_margin, "get_stretch_margin", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_stretch_margin, "set_stretch_margin", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "stretch_margin_bottom"),
-        JS_NewCFunction(ctx, texture_progress_bar_class_get_stretch_margin, "get_stretch_margin", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_stretch_margin, "set_stretch_margin", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "texture_under"),
-        JS_NewCFunction(ctx, texture_progress_bar_class_get_under_texture, "get_under_texture", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_under_texture, "set_under_texture", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "texture_over"),
-        JS_NewCFunction(ctx, texture_progress_bar_class_get_over_texture, "get_over_texture", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_over_texture, "set_over_texture", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "texture_progress"),
-        JS_NewCFunction(ctx, texture_progress_bar_class_get_progress_texture, "get_progress_texture", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_progress_texture, "set_progress_texture", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "texture_progress_offset"),
-        JS_NewCFunction(ctx, texture_progress_bar_class_get_texture_progress_offset, "get_texture_progress_offset", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_texture_progress_offset, "set_texture_progress_offset", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "tint_under"),
-        JS_NewCFunction(ctx, texture_progress_bar_class_get_tint_under, "get_tint_under", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_tint_under, "set_tint_under", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "tint_over"),
-        JS_NewCFunction(ctx, texture_progress_bar_class_get_tint_over, "get_tint_over", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_tint_over, "set_tint_over", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "tint_progress"),
-        JS_NewCFunction(ctx, texture_progress_bar_class_get_tint_progress, "get_tint_progress", 0),
-        JS_NewCFunction(ctx, texture_progress_bar_class_set_tint_progress, "set_tint_progress", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "fill_mode"),
+			JS_NewCFunction(ctx, texture_progress_bar_class_get_fill_mode, "get_fill_mode", 0),
+			JS_NewCFunction(ctx, texture_progress_bar_class_set_fill_mode, "set_fill_mode", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "radial_initial_angle"),
+			JS_NewCFunction(ctx, texture_progress_bar_class_get_radial_initial_angle, "get_radial_initial_angle", 0),
+			JS_NewCFunction(ctx, texture_progress_bar_class_set_radial_initial_angle, "set_radial_initial_angle", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "radial_fill_degrees"),
+			JS_NewCFunction(ctx, texture_progress_bar_class_get_fill_degrees, "get_fill_degrees", 0),
+			JS_NewCFunction(ctx, texture_progress_bar_class_set_fill_degrees, "set_fill_degrees", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "radial_center_offset"),
+			JS_NewCFunction(ctx, texture_progress_bar_class_get_radial_center_offset, "get_radial_center_offset", 0),
+			JS_NewCFunction(ctx, texture_progress_bar_class_set_radial_center_offset, "set_radial_center_offset", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "nine_patch_stretch"),
+			JS_NewCFunction(ctx, texture_progress_bar_class_get_nine_patch_stretch, "get_nine_patch_stretch", 0),
+			JS_NewCFunction(ctx, texture_progress_bar_class_set_nine_patch_stretch, "set_nine_patch_stretch", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "stretch_margin_left"),
+			JS_NewCFunction(ctx, texture_progress_bar_class_get_stretch_margin, "get_stretch_margin", 0),
+			JS_NewCFunction(ctx, texture_progress_bar_class_set_stretch_margin, "set_stretch_margin", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "stretch_margin_top"),
+			JS_NewCFunction(ctx, texture_progress_bar_class_get_stretch_margin, "get_stretch_margin", 0),
+			JS_NewCFunction(ctx, texture_progress_bar_class_set_stretch_margin, "set_stretch_margin", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "stretch_margin_right"),
+			JS_NewCFunction(ctx, texture_progress_bar_class_get_stretch_margin, "get_stretch_margin", 0),
+			JS_NewCFunction(ctx, texture_progress_bar_class_set_stretch_margin, "set_stretch_margin", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "stretch_margin_bottom"),
+			JS_NewCFunction(ctx, texture_progress_bar_class_get_stretch_margin, "get_stretch_margin", 0),
+			JS_NewCFunction(ctx, texture_progress_bar_class_set_stretch_margin, "set_stretch_margin", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "texture_under"),
+			JS_NewCFunction(ctx, texture_progress_bar_class_get_under_texture, "get_under_texture", 0),
+			JS_NewCFunction(ctx, texture_progress_bar_class_set_under_texture, "set_under_texture", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "texture_over"),
+			JS_NewCFunction(ctx, texture_progress_bar_class_get_over_texture, "get_over_texture", 0),
+			JS_NewCFunction(ctx, texture_progress_bar_class_set_over_texture, "set_over_texture", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "texture_progress"),
+			JS_NewCFunction(ctx, texture_progress_bar_class_get_progress_texture, "get_progress_texture", 0),
+			JS_NewCFunction(ctx, texture_progress_bar_class_set_progress_texture, "set_progress_texture", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "texture_progress_offset"),
+			JS_NewCFunction(ctx, texture_progress_bar_class_get_texture_progress_offset, "get_texture_progress_offset", 0),
+			JS_NewCFunction(ctx, texture_progress_bar_class_set_texture_progress_offset, "set_texture_progress_offset", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "tint_under"),
+			JS_NewCFunction(ctx, texture_progress_bar_class_get_tint_under, "get_tint_under", 0),
+			JS_NewCFunction(ctx, texture_progress_bar_class_set_tint_under, "set_tint_under", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "tint_over"),
+			JS_NewCFunction(ctx, texture_progress_bar_class_get_tint_over, "get_tint_over", 0),
+			JS_NewCFunction(ctx, texture_progress_bar_class_set_tint_over, "set_tint_over", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "tint_progress"),
+			JS_NewCFunction(ctx, texture_progress_bar_class_get_tint_progress, "get_tint_progress", 0),
+			JS_NewCFunction(ctx, texture_progress_bar_class_set_tint_progress, "set_tint_progress", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -328,7 +310,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_texture_progress_bar_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&TextureProgressBar::__class_id);
 	classes["TextureProgressBar"] = TextureProgressBar::__class_id;
 	class_id_list.insert(TextureProgressBar::__class_id);

@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/packet_peer.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void packet_peer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,7 +30,7 @@ static JSValue packet_peer_class_constructor(JSContext *ctx, JSValueConst new_ta
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, packet_peer_class);	
+	JS_SetOpaque(obj, packet_peer_class);
 	return obj;
 }
 static JSValue packet_peer_class_get_var(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,7 +63,7 @@ static JSValue packet_peer_class_get_encode_buffer_max_size(JSContext *ctx, JSVa
 };
 static JSValue packet_peer_class_set_encode_buffer_max_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PacketPeer::set_encode_buffer_max_size, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&PacketPeer::set_encode_buffer_max_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry packet_peer_class_proto_funcs[] = {
@@ -80,21 +78,19 @@ static const JSCFunctionListEntry packet_peer_class_proto_funcs[] = {
 };
 
 void define_packet_peer_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "encode_buffer_max_size"),
-        JS_NewCFunction(ctx, packet_peer_class_get_encode_buffer_max_size, "get_encode_buffer_max_size", 0),
-        JS_NewCFunction(ctx, packet_peer_class_set_encode_buffer_max_size, "set_encode_buffer_max_size", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "encode_buffer_max_size"),
+			JS_NewCFunction(ctx, packet_peer_class_get_encode_buffer_max_size, "get_encode_buffer_max_size", 0),
+			JS_NewCFunction(ctx, packet_peer_class_set_encode_buffer_max_size, "set_encode_buffer_max_size", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_packet_peer_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&PacketPeer::__class_id);
 	classes["PacketPeer"] = PacketPeer::__class_id;
 	class_id_list.insert(PacketPeer::__class_id);

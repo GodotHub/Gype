@@ -1,12 +1,12 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/class_db_singleton.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -16,7 +16,6 @@ static JSValue class_db_instance;
 static void js_class_db_singleton();
 
 static void class_db_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -40,107 +39,107 @@ static JSValue class_db_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 static JSValue class_db_class_get_class_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::get_class_list, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_get_inheriters_from_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::get_inheriters_from_class, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_get_parent_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::get_parent_class, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_class_exists(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::class_exists, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_is_parent_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::is_parent_class, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_can_instantiate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::can_instantiate, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_instantiate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::instantiate, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_class_has_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::class_has_signal, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_class_get_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::class_get_signal, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_class_get_signal_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::class_get_signal_list, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_class_get_property_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::class_get_property_list, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_class_get_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::class_get_property, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_class_set_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::class_set_property, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_class_get_property_default_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::class_get_property_default_value, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_class_has_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::class_has_method, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_class_get_method_argument_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::class_get_method_argument_count, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_class_get_method_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::class_get_method_list, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_class_get_integer_constant_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::class_get_integer_constant_list, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_class_has_integer_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::class_has_integer_constant, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_class_get_integer_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::class_get_integer_constant, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_class_has_enum(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::class_has_enum, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_class_get_enum_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::class_get_enum_list, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_class_get_enum_constants(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::class_get_enum_constants, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_class_get_integer_constant_enum(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::class_get_integer_constant_enum, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_is_class_enum_bitfield(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::is_class_enum_bitfield, ctx, this_val, argc, argv);
 };
 static JSValue class_db_class_is_class_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_class_db_singleton();
+	js_class_db_singleton();
 	return call_builtin_const_method_ret(&ClassDBSingleton::is_class_enabled, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry class_db_class_proto_funcs[] = {
@@ -192,7 +191,6 @@ static void js_class_db_singleton() {
 		JS_SetPropertyStr(ctx, global, "ClassDB", class_db_instance);
 	}
 }
-
 
 void register_class_db() {
 	js_class_db_class_init(ctx);

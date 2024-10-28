@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/joint2d.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/groove_joint2d.hpp>
+#include <godot_cpp/classes/joint2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void groove_joint2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue groove_joint2d_class_constructor(JSContext *ctx, JSValueConst new
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, groove_joint2d_class);	
+	JS_SetOpaque(obj, groove_joint2d_class);
 	return obj;
 }
 static JSValue groove_joint2d_class_set_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GrooveJoint2D::set_length, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GrooveJoint2D::set_length, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue groove_joint2d_class_get_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue groove_joint2d_class_get_length(JSContext *ctx, JSValueConst this
 };
 static JSValue groove_joint2d_class_set_initial_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GrooveJoint2D::set_initial_offset, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GrooveJoint2D::set_initial_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue groove_joint2d_class_get_initial_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -61,29 +59,26 @@ static const JSCFunctionListEntry groove_joint2d_class_proto_funcs[] = {
 };
 
 void define_groove_joint2d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "length"),
-        JS_NewCFunction(ctx, groove_joint2d_class_get_length, "get_length", 0),
-        JS_NewCFunction(ctx, groove_joint2d_class_set_length, "set_length", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "initial_offset"),
-        JS_NewCFunction(ctx, groove_joint2d_class_get_initial_offset, "get_initial_offset", 0),
-        JS_NewCFunction(ctx, groove_joint2d_class_set_initial_offset, "set_initial_offset", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "length"),
+			JS_NewCFunction(ctx, groove_joint2d_class_get_length, "get_length", 0),
+			JS_NewCFunction(ctx, groove_joint2d_class_set_length, "set_length", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "initial_offset"),
+			JS_NewCFunction(ctx, groove_joint2d_class_get_initial_offset, "get_initial_offset", 0),
+			JS_NewCFunction(ctx, groove_joint2d_class_set_initial_offset, "set_initial_offset", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_groove_joint2d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&GrooveJoint2D::__class_id);
 	classes["GrooveJoint2D"] = GrooveJoint2D::__class_id;
 	class_id_list.insert(GrooveJoint2D::__class_id);

@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_random_range.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void visual_shader_node_random_range_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,7 +30,7 @@ static JSValue visual_shader_node_random_range_class_constructor(JSContext *ctx,
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_random_range_class);	
+	JS_SetOpaque(obj, visual_shader_node_random_range_class);
 	return obj;
 }
 
@@ -43,7 +41,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_random_range_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&VisualShaderNodeRandomRange::__class_id);
 	classes["VisualShaderNodeRandomRange"] = VisualShaderNodeRandomRange::__class_id;
 	class_id_list.insert(VisualShaderNodeRandomRange::__class_id);

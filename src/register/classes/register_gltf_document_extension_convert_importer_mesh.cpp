@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/gltf_document_extension.hpp>
 #include <godot_cpp/classes/gltf_document_extension_convert_importer_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void gltf_document_extension_convert_importer_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,7 +30,7 @@ static JSValue gltf_document_extension_convert_importer_mesh_class_constructor(J
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_document_extension_convert_importer_mesh_class);	
+	JS_SetOpaque(obj, gltf_document_extension_convert_importer_mesh_class);
 	return obj;
 }
 
@@ -43,7 +41,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_gltf_document_extension_convert_importer_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&GLTFDocumentExtensionConvertImporterMesh::__class_id);
 	classes["GLTFDocumentExtensionConvertImporterMesh"] = GLTFDocumentExtensionConvertImporterMesh::__class_id;
 	class_id_list.insert(GLTFDocumentExtensionConvertImporterMesh::__class_id);

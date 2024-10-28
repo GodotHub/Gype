@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/config_file.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void config_file_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue config_file_class_constructor(JSContext *ctx, JSValueConst new_ta
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, config_file_class);	
+	JS_SetOpaque(obj, config_file_class);
 	return obj;
 }
 static JSValue config_file_class_set_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ConfigFile::set_value, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&ConfigFile::set_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue config_file_class_get_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,12 +60,12 @@ static JSValue config_file_class_get_section_keys(JSContext *ctx, JSValueConst t
 };
 static JSValue config_file_class_erase_section(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ConfigFile::erase_section, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&ConfigFile::erase_section, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue config_file_class_erase_section_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ConfigFile::erase_section_key, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&ConfigFile::erase_section_key, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue config_file_class_load(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -104,7 +102,7 @@ static JSValue config_file_class_save_encrypted_pass(JSContext *ctx, JSValueCons
 };
 static JSValue config_file_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ConfigFile::clear, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&ConfigFile::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry config_file_class_proto_funcs[] = {
@@ -134,7 +132,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_config_file_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&ConfigFile::__class_id);
 	classes["ConfigFile"] = ConfigFile::__class_id;
 	class_id_list.insert(ConfigFile::__class_id);

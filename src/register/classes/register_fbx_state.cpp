@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gltf_state.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/fbx_state.hpp>
+#include <godot_cpp/classes/gltf_state.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void fbx_state_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,7 +30,7 @@ static JSValue fbx_state_class_constructor(JSContext *ctx, JSValueConst new_targ
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, fbx_state_class);	
+	JS_SetOpaque(obj, fbx_state_class);
 	return obj;
 }
 static JSValue fbx_state_class_get_allow_geometry_helper_nodes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -41,7 +39,7 @@ static JSValue fbx_state_class_get_allow_geometry_helper_nodes(JSContext *ctx, J
 };
 static JSValue fbx_state_class_set_allow_geometry_helper_nodes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FBXState::set_allow_geometry_helper_nodes, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FBXState::set_allow_geometry_helper_nodes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry fbx_state_class_proto_funcs[] = {
@@ -50,21 +48,19 @@ static const JSCFunctionListEntry fbx_state_class_proto_funcs[] = {
 };
 
 void define_fbx_state_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "allow_geometry_helper_nodes"),
-        JS_NewCFunction(ctx, fbx_state_class_get_allow_geometry_helper_nodes, "get_allow_geometry_helper_nodes", 0),
-        JS_NewCFunction(ctx, fbx_state_class_set_allow_geometry_helper_nodes, "set_allow_geometry_helper_nodes", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "allow_geometry_helper_nodes"),
+			JS_NewCFunction(ctx, fbx_state_class_get_allow_geometry_helper_nodes, "get_allow_geometry_helper_nodes", 0),
+			JS_NewCFunction(ctx, fbx_state_class_set_allow_geometry_helper_nodes, "set_allow_geometry_helper_nodes", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_fbx_state_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&FBXState::__class_id);
 	classes["FBXState"] = FBXState::__class_id;
 	class_id_list.insert(FBXState::__class_id);

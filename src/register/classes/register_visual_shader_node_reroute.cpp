@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_reroute.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/classes/visual_shader_node_reroute.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void visual_shader_node_reroute_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,7 +30,7 @@ static JSValue visual_shader_node_reroute_class_constructor(JSContext *ctx, JSVa
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_reroute_class);	
+	JS_SetOpaque(obj, visual_shader_node_reroute_class);
 	return obj;
 }
 static JSValue visual_shader_node_reroute_class_get_port_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,21 +42,19 @@ static const JSCFunctionListEntry visual_shader_node_reroute_class_proto_funcs[]
 };
 
 void define_visual_shader_node_reroute_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "port_type"),
-        JS_NewCFunction(ctx, visual_shader_node_reroute_class_get_port_type, "get_port_type", 0),
-        JS_UNDEFINED,
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "port_type"),
+			JS_NewCFunction(ctx, visual_shader_node_reroute_class_get_port_type, "get_port_type", 0),
+			JS_UNDEFINED,
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_reroute_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&VisualShaderNodeReroute::__class_id);
 	classes["VisualShaderNodeReroute"] = VisualShaderNodeReroute::__class_id;
 	class_id_list.insert(VisualShaderNodeReroute::__class_id);

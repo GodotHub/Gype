@@ -1,22 +1,20 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/tile_set.hpp>
-#include <godot_cpp/classes/tile_map_pattern.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/physics_material.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/tile_map_pattern.hpp>
+#include <godot_cpp/classes/tile_set.hpp>
 #include <godot_cpp/classes/tile_set_source.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void tile_set_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -35,7 +33,7 @@ static JSValue tile_set_class_constructor(JSContext *ctx, JSValueConst new_targe
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, tile_set_class);	
+	JS_SetOpaque(obj, tile_set_class);
 	return obj;
 }
 static JSValue tile_set_class_get_next_source_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,12 +46,12 @@ static JSValue tile_set_class_add_source(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue tile_set_class_remove_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::remove_source, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::remove_source, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_set_source_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_source_id, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_source_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_source_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -74,7 +72,7 @@ static JSValue tile_set_class_get_source(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue tile_set_class_set_tile_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_tile_shape, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_tile_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_tile_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -83,7 +81,7 @@ static JSValue tile_set_class_get_tile_shape(JSContext *ctx, JSValueConst this_v
 };
 static JSValue tile_set_class_set_tile_layout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_tile_layout, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_tile_layout, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_tile_layout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,7 +90,7 @@ static JSValue tile_set_class_get_tile_layout(JSContext *ctx, JSValueConst this_
 };
 static JSValue tile_set_class_set_tile_offset_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_tile_offset_axis, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_tile_offset_axis, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_tile_offset_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -101,7 +99,7 @@ static JSValue tile_set_class_get_tile_offset_axis(JSContext *ctx, JSValueConst 
 };
 static JSValue tile_set_class_set_tile_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_tile_size, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_tile_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_tile_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,7 +108,7 @@ static JSValue tile_set_class_get_tile_size(JSContext *ctx, JSValueConst this_va
 };
 static JSValue tile_set_class_set_uv_clipping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_uv_clipping, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_uv_clipping, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_is_uv_clipping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -123,22 +121,22 @@ static JSValue tile_set_class_get_occlusion_layers_count(JSContext *ctx, JSValue
 };
 static JSValue tile_set_class_add_occlusion_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::add_occlusion_layer, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::add_occlusion_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_move_occlusion_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::move_occlusion_layer, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::move_occlusion_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_remove_occlusion_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::remove_occlusion_layer, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::remove_occlusion_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_set_occlusion_layer_light_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_occlusion_layer_light_mask, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_occlusion_layer_light_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_occlusion_layer_light_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -147,7 +145,7 @@ static JSValue tile_set_class_get_occlusion_layer_light_mask(JSContext *ctx, JSV
 };
 static JSValue tile_set_class_set_occlusion_layer_sdf_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_occlusion_layer_sdf_collision, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_occlusion_layer_sdf_collision, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_occlusion_layer_sdf_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -160,22 +158,22 @@ static JSValue tile_set_class_get_physics_layers_count(JSContext *ctx, JSValueCo
 };
 static JSValue tile_set_class_add_physics_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::add_physics_layer, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::add_physics_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_move_physics_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::move_physics_layer, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::move_physics_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_remove_physics_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::remove_physics_layer, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::remove_physics_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_set_physics_layer_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_physics_layer_collision_layer, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_physics_layer_collision_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_physics_layer_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -184,7 +182,7 @@ static JSValue tile_set_class_get_physics_layer_collision_layer(JSContext *ctx, 
 };
 static JSValue tile_set_class_set_physics_layer_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_physics_layer_collision_mask, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_physics_layer_collision_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_physics_layer_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -193,7 +191,7 @@ static JSValue tile_set_class_get_physics_layer_collision_mask(JSContext *ctx, J
 };
 static JSValue tile_set_class_set_physics_layer_physics_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_physics_layer_physics_material, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_physics_layer_physics_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_physics_layer_physics_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -206,22 +204,22 @@ static JSValue tile_set_class_get_terrain_sets_count(JSContext *ctx, JSValueCons
 };
 static JSValue tile_set_class_add_terrain_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::add_terrain_set, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::add_terrain_set, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_move_terrain_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::move_terrain_set, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::move_terrain_set, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_remove_terrain_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::remove_terrain_set, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::remove_terrain_set, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_set_terrain_set_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_terrain_set_mode, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_terrain_set_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_terrain_set_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -234,22 +232,22 @@ static JSValue tile_set_class_get_terrains_count(JSContext *ctx, JSValueConst th
 };
 static JSValue tile_set_class_add_terrain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::add_terrain, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::add_terrain, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_move_terrain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::move_terrain, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::move_terrain, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_remove_terrain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::remove_terrain, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::remove_terrain, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_set_terrain_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_terrain_name, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_terrain_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_terrain_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -258,7 +256,7 @@ static JSValue tile_set_class_get_terrain_name(JSContext *ctx, JSValueConst this
 };
 static JSValue tile_set_class_set_terrain_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_terrain_color, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_terrain_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_terrain_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -271,22 +269,22 @@ static JSValue tile_set_class_get_navigation_layers_count(JSContext *ctx, JSValu
 };
 static JSValue tile_set_class_add_navigation_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::add_navigation_layer, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::add_navigation_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_move_navigation_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::move_navigation_layer, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::move_navigation_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_remove_navigation_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::remove_navigation_layer, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::remove_navigation_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_set_navigation_layer_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_navigation_layer_layers, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_navigation_layer_layers, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_navigation_layer_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -295,7 +293,7 @@ static JSValue tile_set_class_get_navigation_layer_layers(JSContext *ctx, JSValu
 };
 static JSValue tile_set_class_set_navigation_layer_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_navigation_layer_layer_value, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_navigation_layer_layer_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_navigation_layer_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -308,17 +306,17 @@ static JSValue tile_set_class_get_custom_data_layers_count(JSContext *ctx, JSVal
 };
 static JSValue tile_set_class_add_custom_data_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::add_custom_data_layer, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::add_custom_data_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_move_custom_data_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::move_custom_data_layer, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::move_custom_data_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_remove_custom_data_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::remove_custom_data_layer, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::remove_custom_data_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_custom_data_layer_by_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -327,7 +325,7 @@ static JSValue tile_set_class_get_custom_data_layer_by_name(JSContext *ctx, JSVa
 };
 static JSValue tile_set_class_set_custom_data_layer_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_custom_data_layer_name, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_custom_data_layer_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_custom_data_layer_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -336,7 +334,7 @@ static JSValue tile_set_class_get_custom_data_layer_name(JSContext *ctx, JSValue
 };
 static JSValue tile_set_class_set_custom_data_layer_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_custom_data_layer_type, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_custom_data_layer_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_custom_data_layer_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -345,7 +343,7 @@ static JSValue tile_set_class_get_custom_data_layer_type(JSContext *ctx, JSValue
 };
 static JSValue tile_set_class_set_source_level_tile_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_source_level_tile_proxy, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_source_level_tile_proxy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_source_level_tile_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -358,12 +356,12 @@ static JSValue tile_set_class_has_source_level_tile_proxy(JSContext *ctx, JSValu
 };
 static JSValue tile_set_class_remove_source_level_tile_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::remove_source_level_tile_proxy, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::remove_source_level_tile_proxy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_set_coords_level_tile_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_coords_level_tile_proxy, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_coords_level_tile_proxy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_coords_level_tile_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -376,12 +374,12 @@ static JSValue tile_set_class_has_coords_level_tile_proxy(JSContext *ctx, JSValu
 };
 static JSValue tile_set_class_remove_coords_level_tile_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::remove_coords_level_tile_proxy, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::remove_coords_level_tile_proxy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_set_alternative_level_tile_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::set_alternative_level_tile_proxy, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::set_alternative_level_tile_proxy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_alternative_level_tile_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -394,7 +392,7 @@ static JSValue tile_set_class_has_alternative_level_tile_proxy(JSContext *ctx, J
 };
 static JSValue tile_set_class_remove_alternative_level_tile_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::remove_alternative_level_tile_proxy, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::remove_alternative_level_tile_proxy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_map_tile_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -403,12 +401,12 @@ static JSValue tile_set_class_map_tile_proxy(JSContext *ctx, JSValueConst this_v
 };
 static JSValue tile_set_class_cleanup_invalid_tile_proxies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::cleanup_invalid_tile_proxies, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::cleanup_invalid_tile_proxies, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_clear_tile_proxies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::clear_tile_proxies, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::clear_tile_proxies, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_add_pattern(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -421,7 +419,7 @@ static JSValue tile_set_class_get_pattern(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue tile_set_class_remove_pattern(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileSet::remove_pattern, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileSet::remove_pattern, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_set_class_get_patterns_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -518,46 +516,41 @@ static const JSCFunctionListEntry tile_set_class_proto_funcs[] = {
 };
 
 void define_tile_set_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "tile_shape"),
-        JS_NewCFunction(ctx, tile_set_class_get_tile_shape, "get_tile_shape", 0),
-        JS_NewCFunction(ctx, tile_set_class_set_tile_shape, "set_tile_shape", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "tile_layout"),
-        JS_NewCFunction(ctx, tile_set_class_get_tile_layout, "get_tile_layout", 0),
-        JS_NewCFunction(ctx, tile_set_class_set_tile_layout, "set_tile_layout", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "tile_offset_axis"),
-        JS_NewCFunction(ctx, tile_set_class_get_tile_offset_axis, "get_tile_offset_axis", 0),
-        JS_NewCFunction(ctx, tile_set_class_set_tile_offset_axis, "set_tile_offset_axis", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "tile_size"),
-        JS_NewCFunction(ctx, tile_set_class_get_tile_size, "get_tile_size", 0),
-        JS_NewCFunction(ctx, tile_set_class_set_tile_size, "set_tile_size", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "uv_clipping"),
-        JS_NewCFunction(ctx, tile_set_class_is_uv_clipping, "is_uv_clipping", 0),
-        JS_NewCFunction(ctx, tile_set_class_set_uv_clipping, "set_uv_clipping", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "tile_shape"),
+			JS_NewCFunction(ctx, tile_set_class_get_tile_shape, "get_tile_shape", 0),
+			JS_NewCFunction(ctx, tile_set_class_set_tile_shape, "set_tile_shape", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "tile_layout"),
+			JS_NewCFunction(ctx, tile_set_class_get_tile_layout, "get_tile_layout", 0),
+			JS_NewCFunction(ctx, tile_set_class_set_tile_layout, "set_tile_layout", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "tile_offset_axis"),
+			JS_NewCFunction(ctx, tile_set_class_get_tile_offset_axis, "get_tile_offset_axis", 0),
+			JS_NewCFunction(ctx, tile_set_class_set_tile_offset_axis, "set_tile_offset_axis", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "tile_size"),
+			JS_NewCFunction(ctx, tile_set_class_get_tile_size, "get_tile_size", 0),
+			JS_NewCFunction(ctx, tile_set_class_set_tile_size, "set_tile_size", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "uv_clipping"),
+			JS_NewCFunction(ctx, tile_set_class_is_uv_clipping, "is_uv_clipping", 0),
+			JS_NewCFunction(ctx, tile_set_class_set_uv_clipping, "set_uv_clipping", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -605,7 +598,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_tile_set_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&TileSet::__class_id);
 	classes["TileSet"] = TileSet::__class_id;
 	class_id_list.insert(TileSet::__class_id);

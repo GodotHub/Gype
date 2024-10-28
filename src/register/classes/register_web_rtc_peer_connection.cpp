@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/web_rtc_peer_connection.hpp>
-#include <godot_cpp/classes/web_rtc_data_channel.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/web_rtc_data_channel.hpp>
+#include <godot_cpp/classes/web_rtc_peer_connection.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void web_rtc_peer_connection_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,7 +31,7 @@ static JSValue web_rtc_peer_connection_class_constructor(JSContext *ctx, JSValue
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, web_rtc_peer_connection_class);	
+	JS_SetOpaque(obj, web_rtc_peer_connection_class);
 	return obj;
 }
 static JSValue web_rtc_peer_connection_class_initialize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -66,7 +64,7 @@ static JSValue web_rtc_peer_connection_class_poll(JSContext *ctx, JSValueConst t
 };
 static JSValue web_rtc_peer_connection_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebRTCPeerConnection::close, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&WebRTCPeerConnection::close, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_rtc_peer_connection_class_get_connection_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,7 +80,7 @@ static JSValue web_rtc_peer_connection_class_get_signaling_state(JSContext *ctx,
 	return call_builtin_const_method_ret(&WebRTCPeerConnection::get_signaling_state, ctx, this_val, argc, argv);
 };
 static JSValue web_rtc_peer_connection_class_set_default_extension(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_static_method_no_ret(&WebRTCPeerConnection::set_default_extension, ctx, this_val, argc, argv);
+	call_builtin_static_method_no_ret(&WebRTCPeerConnection::set_default_extension, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry web_rtc_peer_connection_class_proto_funcs[] = {
@@ -130,7 +128,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_web_rtc_peer_connection_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&WebRTCPeerConnection::__class_id);
 	classes["WebRTCPeerConnection"] = WebRTCPeerConnection::__class_id;
 	class_id_list.insert(WebRTCPeerConnection::__class_id);

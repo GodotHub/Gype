@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/rd_sampler_state.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void rd_sampler_state_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue rd_sampler_state_class_constructor(JSContext *ctx, JSValueConst n
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rd_sampler_state_class);	
+	JS_SetOpaque(obj, rd_sampler_state_class);
 	return obj;
 }
 static JSValue rd_sampler_state_class_set_mag_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDSamplerState::set_mag_filter, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDSamplerState::set_mag_filter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_mag_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue rd_sampler_state_class_get_mag_filter(JSContext *ctx, JSValueCons
 };
 static JSValue rd_sampler_state_class_set_min_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDSamplerState::set_min_filter, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDSamplerState::set_min_filter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_min_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,7 +53,7 @@ static JSValue rd_sampler_state_class_get_min_filter(JSContext *ctx, JSValueCons
 };
 static JSValue rd_sampler_state_class_set_mip_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDSamplerState::set_mip_filter, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDSamplerState::set_mip_filter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_mip_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -64,7 +62,7 @@ static JSValue rd_sampler_state_class_get_mip_filter(JSContext *ctx, JSValueCons
 };
 static JSValue rd_sampler_state_class_set_repeat_u(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDSamplerState::set_repeat_u, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDSamplerState::set_repeat_u, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_repeat_u(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -73,7 +71,7 @@ static JSValue rd_sampler_state_class_get_repeat_u(JSContext *ctx, JSValueConst 
 };
 static JSValue rd_sampler_state_class_set_repeat_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDSamplerState::set_repeat_v, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDSamplerState::set_repeat_v, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_repeat_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,7 +80,7 @@ static JSValue rd_sampler_state_class_get_repeat_v(JSContext *ctx, JSValueConst 
 };
 static JSValue rd_sampler_state_class_set_repeat_w(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDSamplerState::set_repeat_w, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDSamplerState::set_repeat_w, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_repeat_w(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -91,7 +89,7 @@ static JSValue rd_sampler_state_class_get_repeat_w(JSContext *ctx, JSValueConst 
 };
 static JSValue rd_sampler_state_class_set_lod_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDSamplerState::set_lod_bias, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDSamplerState::set_lod_bias, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_lod_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -100,7 +98,7 @@ static JSValue rd_sampler_state_class_get_lod_bias(JSContext *ctx, JSValueConst 
 };
 static JSValue rd_sampler_state_class_set_use_anisotropy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDSamplerState::set_use_anisotropy, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDSamplerState::set_use_anisotropy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_use_anisotropy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -109,7 +107,7 @@ static JSValue rd_sampler_state_class_get_use_anisotropy(JSContext *ctx, JSValue
 };
 static JSValue rd_sampler_state_class_set_anisotropy_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDSamplerState::set_anisotropy_max, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDSamplerState::set_anisotropy_max, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_anisotropy_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -118,7 +116,7 @@ static JSValue rd_sampler_state_class_get_anisotropy_max(JSContext *ctx, JSValue
 };
 static JSValue rd_sampler_state_class_set_enable_compare(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDSamplerState::set_enable_compare, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDSamplerState::set_enable_compare, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_enable_compare(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -127,7 +125,7 @@ static JSValue rd_sampler_state_class_get_enable_compare(JSContext *ctx, JSValue
 };
 static JSValue rd_sampler_state_class_set_compare_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDSamplerState::set_compare_op, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDSamplerState::set_compare_op, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_compare_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -136,7 +134,7 @@ static JSValue rd_sampler_state_class_get_compare_op(JSContext *ctx, JSValueCons
 };
 static JSValue rd_sampler_state_class_set_min_lod(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDSamplerState::set_min_lod, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDSamplerState::set_min_lod, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_min_lod(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -145,7 +143,7 @@ static JSValue rd_sampler_state_class_get_min_lod(JSContext *ctx, JSValueConst t
 };
 static JSValue rd_sampler_state_class_set_max_lod(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDSamplerState::set_max_lod, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDSamplerState::set_max_lod, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_max_lod(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -154,7 +152,7 @@ static JSValue rd_sampler_state_class_get_max_lod(JSContext *ctx, JSValueConst t
 };
 static JSValue rd_sampler_state_class_set_border_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDSamplerState::set_border_color, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDSamplerState::set_border_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_border_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -163,7 +161,7 @@ static JSValue rd_sampler_state_class_get_border_color(JSContext *ctx, JSValueCo
 };
 static JSValue rd_sampler_state_class_set_unnormalized_uvw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDSamplerState::set_unnormalized_uvw, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDSamplerState::set_unnormalized_uvw, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_sampler_state_class_get_unnormalized_uvw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -204,133 +202,117 @@ static const JSCFunctionListEntry rd_sampler_state_class_proto_funcs[] = {
 };
 
 void define_rd_sampler_state_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "mag_filter"),
-        JS_NewCFunction(ctx, rd_sampler_state_class_get_mag_filter, "get_mag_filter", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_mag_filter, "set_mag_filter", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "min_filter"),
-        JS_NewCFunction(ctx, rd_sampler_state_class_get_min_filter, "get_min_filter", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_min_filter, "set_min_filter", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "mip_filter"),
-        JS_NewCFunction(ctx, rd_sampler_state_class_get_mip_filter, "get_mip_filter", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_mip_filter, "set_mip_filter", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "repeat_u"),
-        JS_NewCFunction(ctx, rd_sampler_state_class_get_repeat_u, "get_repeat_u", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_repeat_u, "set_repeat_u", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "repeat_v"),
-        JS_NewCFunction(ctx, rd_sampler_state_class_get_repeat_v, "get_repeat_v", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_repeat_v, "set_repeat_v", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "repeat_w"),
-        JS_NewCFunction(ctx, rd_sampler_state_class_get_repeat_w, "get_repeat_w", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_repeat_w, "set_repeat_w", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "lod_bias"),
-        JS_NewCFunction(ctx, rd_sampler_state_class_get_lod_bias, "get_lod_bias", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_lod_bias, "set_lod_bias", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "use_anisotropy"),
-        JS_NewCFunction(ctx, rd_sampler_state_class_get_use_anisotropy, "get_use_anisotropy", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_use_anisotropy, "set_use_anisotropy", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "anisotropy_max"),
-        JS_NewCFunction(ctx, rd_sampler_state_class_get_anisotropy_max, "get_anisotropy_max", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_anisotropy_max, "set_anisotropy_max", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "enable_compare"),
-        JS_NewCFunction(ctx, rd_sampler_state_class_get_enable_compare, "get_enable_compare", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_enable_compare, "set_enable_compare", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "compare_op"),
-        JS_NewCFunction(ctx, rd_sampler_state_class_get_compare_op, "get_compare_op", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_compare_op, "set_compare_op", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "min_lod"),
-        JS_NewCFunction(ctx, rd_sampler_state_class_get_min_lod, "get_min_lod", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_min_lod, "set_min_lod", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "max_lod"),
-        JS_NewCFunction(ctx, rd_sampler_state_class_get_max_lod, "get_max_lod", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_max_lod, "set_max_lod", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "border_color"),
-        JS_NewCFunction(ctx, rd_sampler_state_class_get_border_color, "get_border_color", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_border_color, "set_border_color", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "unnormalized_uvw"),
-        JS_NewCFunction(ctx, rd_sampler_state_class_get_unnormalized_uvw, "get_unnormalized_uvw", 0),
-        JS_NewCFunction(ctx, rd_sampler_state_class_set_unnormalized_uvw, "set_unnormalized_uvw", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "mag_filter"),
+			JS_NewCFunction(ctx, rd_sampler_state_class_get_mag_filter, "get_mag_filter", 0),
+			JS_NewCFunction(ctx, rd_sampler_state_class_set_mag_filter, "set_mag_filter", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "min_filter"),
+			JS_NewCFunction(ctx, rd_sampler_state_class_get_min_filter, "get_min_filter", 0),
+			JS_NewCFunction(ctx, rd_sampler_state_class_set_min_filter, "set_min_filter", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "mip_filter"),
+			JS_NewCFunction(ctx, rd_sampler_state_class_get_mip_filter, "get_mip_filter", 0),
+			JS_NewCFunction(ctx, rd_sampler_state_class_set_mip_filter, "set_mip_filter", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "repeat_u"),
+			JS_NewCFunction(ctx, rd_sampler_state_class_get_repeat_u, "get_repeat_u", 0),
+			JS_NewCFunction(ctx, rd_sampler_state_class_set_repeat_u, "set_repeat_u", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "repeat_v"),
+			JS_NewCFunction(ctx, rd_sampler_state_class_get_repeat_v, "get_repeat_v", 0),
+			JS_NewCFunction(ctx, rd_sampler_state_class_set_repeat_v, "set_repeat_v", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "repeat_w"),
+			JS_NewCFunction(ctx, rd_sampler_state_class_get_repeat_w, "get_repeat_w", 0),
+			JS_NewCFunction(ctx, rd_sampler_state_class_set_repeat_w, "set_repeat_w", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "lod_bias"),
+			JS_NewCFunction(ctx, rd_sampler_state_class_get_lod_bias, "get_lod_bias", 0),
+			JS_NewCFunction(ctx, rd_sampler_state_class_set_lod_bias, "set_lod_bias", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "use_anisotropy"),
+			JS_NewCFunction(ctx, rd_sampler_state_class_get_use_anisotropy, "get_use_anisotropy", 0),
+			JS_NewCFunction(ctx, rd_sampler_state_class_set_use_anisotropy, "set_use_anisotropy", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "anisotropy_max"),
+			JS_NewCFunction(ctx, rd_sampler_state_class_get_anisotropy_max, "get_anisotropy_max", 0),
+			JS_NewCFunction(ctx, rd_sampler_state_class_set_anisotropy_max, "set_anisotropy_max", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "enable_compare"),
+			JS_NewCFunction(ctx, rd_sampler_state_class_get_enable_compare, "get_enable_compare", 0),
+			JS_NewCFunction(ctx, rd_sampler_state_class_set_enable_compare, "set_enable_compare", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "compare_op"),
+			JS_NewCFunction(ctx, rd_sampler_state_class_get_compare_op, "get_compare_op", 0),
+			JS_NewCFunction(ctx, rd_sampler_state_class_set_compare_op, "set_compare_op", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "min_lod"),
+			JS_NewCFunction(ctx, rd_sampler_state_class_get_min_lod, "get_min_lod", 0),
+			JS_NewCFunction(ctx, rd_sampler_state_class_set_min_lod, "set_min_lod", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "max_lod"),
+			JS_NewCFunction(ctx, rd_sampler_state_class_get_max_lod, "get_max_lod", 0),
+			JS_NewCFunction(ctx, rd_sampler_state_class_set_max_lod, "set_max_lod", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "border_color"),
+			JS_NewCFunction(ctx, rd_sampler_state_class_get_border_color, "get_border_color", 0),
+			JS_NewCFunction(ctx, rd_sampler_state_class_set_border_color, "set_border_color", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "unnormalized_uvw"),
+			JS_NewCFunction(ctx, rd_sampler_state_class_get_unnormalized_uvw, "get_unnormalized_uvw", 0),
+			JS_NewCFunction(ctx, rd_sampler_state_class_set_unnormalized_uvw, "set_unnormalized_uvw", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_rd_sampler_state_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&RDSamplerState::__class_id);
 	classes["RDSamplerState"] = RDSamplerState::__class_id;
 	class_id_list.insert(RDSamplerState::__class_id);

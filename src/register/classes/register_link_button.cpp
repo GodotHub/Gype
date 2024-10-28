@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/link_button.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/base_button.hpp>
+#include <godot_cpp/classes/link_button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void link_button_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue link_button_class_constructor(JSContext *ctx, JSValueConst new_ta
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, link_button_class);	
+	JS_SetOpaque(obj, link_button_class);
 	return obj;
 }
 static JSValue link_button_class_set_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LinkButton::set_text, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&LinkButton::set_text, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue link_button_class_get_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue link_button_class_get_text(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue link_button_class_set_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LinkButton::set_text_direction, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&LinkButton::set_text_direction, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue link_button_class_get_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,7 +53,7 @@ static JSValue link_button_class_get_text_direction(JSContext *ctx, JSValueConst
 };
 static JSValue link_button_class_set_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LinkButton::set_language, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&LinkButton::set_language, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue link_button_class_get_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -64,7 +62,7 @@ static JSValue link_button_class_get_language(JSContext *ctx, JSValueConst this_
 };
 static JSValue link_button_class_set_uri(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LinkButton::set_uri, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&LinkButton::set_uri, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue link_button_class_get_uri(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -73,7 +71,7 @@ static JSValue link_button_class_get_uri(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue link_button_class_set_underline_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LinkButton::set_underline_mode, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&LinkButton::set_underline_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue link_button_class_get_underline_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,7 +80,7 @@ static JSValue link_button_class_get_underline_mode(JSContext *ctx, JSValueConst
 };
 static JSValue link_button_class_set_structured_text_bidi_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LinkButton::set_structured_text_bidi_override, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&LinkButton::set_structured_text_bidi_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue link_button_class_get_structured_text_bidi_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -91,7 +89,7 @@ static JSValue link_button_class_get_structured_text_bidi_override(JSContext *ct
 };
 static JSValue link_button_class_set_structured_text_bidi_override_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LinkButton::set_structured_text_bidi_override_options, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&LinkButton::set_structured_text_bidi_override_options, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue link_button_class_get_structured_text_bidi_override_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -116,62 +114,55 @@ static const JSCFunctionListEntry link_button_class_proto_funcs[] = {
 };
 
 void define_link_button_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "text"),
-        JS_NewCFunction(ctx, link_button_class_get_text, "get_text", 0),
-        JS_NewCFunction(ctx, link_button_class_set_text, "set_text", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "underline"),
-        JS_NewCFunction(ctx, link_button_class_get_underline_mode, "get_underline_mode", 0),
-        JS_NewCFunction(ctx, link_button_class_set_underline_mode, "set_underline_mode", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "uri"),
-        JS_NewCFunction(ctx, link_button_class_get_uri, "get_uri", 0),
-        JS_NewCFunction(ctx, link_button_class_set_uri, "set_uri", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "text_direction"),
-        JS_NewCFunction(ctx, link_button_class_get_text_direction, "get_text_direction", 0),
-        JS_NewCFunction(ctx, link_button_class_set_text_direction, "set_text_direction", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "language"),
-        JS_NewCFunction(ctx, link_button_class_get_language, "get_language", 0),
-        JS_NewCFunction(ctx, link_button_class_set_language, "set_language", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "structured_text_bidi_override"),
-        JS_NewCFunction(ctx, link_button_class_get_structured_text_bidi_override, "get_structured_text_bidi_override", 0),
-        JS_NewCFunction(ctx, link_button_class_set_structured_text_bidi_override, "set_structured_text_bidi_override", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "structured_text_bidi_override_options"),
-        JS_NewCFunction(ctx, link_button_class_get_structured_text_bidi_override_options, "get_structured_text_bidi_override_options", 0),
-        JS_NewCFunction(ctx, link_button_class_set_structured_text_bidi_override_options, "set_structured_text_bidi_override_options", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "text"),
+			JS_NewCFunction(ctx, link_button_class_get_text, "get_text", 0),
+			JS_NewCFunction(ctx, link_button_class_set_text, "set_text", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "underline"),
+			JS_NewCFunction(ctx, link_button_class_get_underline_mode, "get_underline_mode", 0),
+			JS_NewCFunction(ctx, link_button_class_set_underline_mode, "set_underline_mode", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "uri"),
+			JS_NewCFunction(ctx, link_button_class_get_uri, "get_uri", 0),
+			JS_NewCFunction(ctx, link_button_class_set_uri, "set_uri", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "text_direction"),
+			JS_NewCFunction(ctx, link_button_class_get_text_direction, "get_text_direction", 0),
+			JS_NewCFunction(ctx, link_button_class_set_text_direction, "set_text_direction", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "language"),
+			JS_NewCFunction(ctx, link_button_class_get_language, "get_language", 0),
+			JS_NewCFunction(ctx, link_button_class_set_language, "set_language", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "structured_text_bidi_override"),
+			JS_NewCFunction(ctx, link_button_class_get_structured_text_bidi_override, "get_structured_text_bidi_override", 0),
+			JS_NewCFunction(ctx, link_button_class_set_structured_text_bidi_override, "set_structured_text_bidi_override", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "structured_text_bidi_override_options"),
+			JS_NewCFunction(ctx, link_button_class_get_structured_text_bidi_override_options, "get_structured_text_bidi_override_options", 0),
+			JS_NewCFunction(ctx, link_button_class_set_structured_text_bidi_override_options, "set_structured_text_bidi_override_options", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -183,7 +174,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_link_button_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&LinkButton::__class_id);
 	classes["LinkButton"] = LinkButton::__class_id;
 	class_id_list.insert(LinkButton::__class_id);

@@ -31,6 +31,7 @@
 #ifndef GODOT_COLOR_HPP
 #define GODOT_COLOR_HPP
 
+#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
 #include <godot_cpp/core/math.hpp>
 

@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
+#include <godot_cpp/classes/multiplayer_synchronizer.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/scene_replication_config.hpp>
-#include <godot_cpp/classes/multiplayer_synchronizer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void multiplayer_synchronizer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,12 +31,12 @@ static JSValue multiplayer_synchronizer_class_constructor(JSContext *ctx, JSValu
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, multiplayer_synchronizer_class);	
+	JS_SetOpaque(obj, multiplayer_synchronizer_class);
 	return obj;
 }
 static JSValue multiplayer_synchronizer_class_set_root_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiplayerSynchronizer::set_root_path, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MultiplayerSynchronizer::set_root_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_synchronizer_class_get_root_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -47,7 +45,7 @@ static JSValue multiplayer_synchronizer_class_get_root_path(JSContext *ctx, JSVa
 };
 static JSValue multiplayer_synchronizer_class_set_replication_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiplayerSynchronizer::set_replication_interval, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MultiplayerSynchronizer::set_replication_interval, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_synchronizer_class_get_replication_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -56,7 +54,7 @@ static JSValue multiplayer_synchronizer_class_get_replication_interval(JSContext
 };
 static JSValue multiplayer_synchronizer_class_set_delta_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiplayerSynchronizer::set_delta_interval, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MultiplayerSynchronizer::set_delta_interval, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_synchronizer_class_get_delta_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,7 +63,7 @@ static JSValue multiplayer_synchronizer_class_get_delta_interval(JSContext *ctx,
 };
 static JSValue multiplayer_synchronizer_class_set_replication_config(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiplayerSynchronizer::set_replication_config, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MultiplayerSynchronizer::set_replication_config, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_synchronizer_class_get_replication_config(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -74,7 +72,7 @@ static JSValue multiplayer_synchronizer_class_get_replication_config(JSContext *
 };
 static JSValue multiplayer_synchronizer_class_set_visibility_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiplayerSynchronizer::set_visibility_update_mode, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MultiplayerSynchronizer::set_visibility_update_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_synchronizer_class_get_visibility_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -83,12 +81,12 @@ static JSValue multiplayer_synchronizer_class_get_visibility_update_mode(JSConte
 };
 static JSValue multiplayer_synchronizer_class_update_visibility(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiplayerSynchronizer::update_visibility, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MultiplayerSynchronizer::update_visibility, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_synchronizer_class_set_visibility_public(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiplayerSynchronizer::set_visibility_public, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MultiplayerSynchronizer::set_visibility_public, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_synchronizer_class_is_visibility_public(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -97,17 +95,17 @@ static JSValue multiplayer_synchronizer_class_is_visibility_public(JSContext *ct
 };
 static JSValue multiplayer_synchronizer_class_add_visibility_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiplayerSynchronizer::add_visibility_filter, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MultiplayerSynchronizer::add_visibility_filter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_synchronizer_class_remove_visibility_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiplayerSynchronizer::remove_visibility_filter, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MultiplayerSynchronizer::remove_visibility_filter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_synchronizer_class_set_visibility_for(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiplayerSynchronizer::set_visibility_for, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MultiplayerSynchronizer::set_visibility_for, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_synchronizer_class_get_visibility_for(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -135,54 +133,48 @@ static const JSCFunctionListEntry multiplayer_synchronizer_class_proto_funcs[] =
 };
 
 void define_multiplayer_synchronizer_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "root_path"),
-        JS_NewCFunction(ctx, multiplayer_synchronizer_class_get_root_path, "get_root_path", 0),
-        JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_root_path, "set_root_path", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "replication_interval"),
-        JS_NewCFunction(ctx, multiplayer_synchronizer_class_get_replication_interval, "get_replication_interval", 0),
-        JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_replication_interval, "set_replication_interval", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "delta_interval"),
-        JS_NewCFunction(ctx, multiplayer_synchronizer_class_get_delta_interval, "get_delta_interval", 0),
-        JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_delta_interval, "set_delta_interval", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "replication_config"),
-        JS_NewCFunction(ctx, multiplayer_synchronizer_class_get_replication_config, "get_replication_config", 0),
-        JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_replication_config, "set_replication_config", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "visibility_update_mode"),
-        JS_NewCFunction(ctx, multiplayer_synchronizer_class_get_visibility_update_mode, "get_visibility_update_mode", 0),
-        JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_visibility_update_mode, "set_visibility_update_mode", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "public_visibility"),
-        JS_NewCFunction(ctx, multiplayer_synchronizer_class_is_visibility_public, "is_visibility_public", 0),
-        JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_visibility_public, "set_visibility_public", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "root_path"),
+			JS_NewCFunction(ctx, multiplayer_synchronizer_class_get_root_path, "get_root_path", 0),
+			JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_root_path, "set_root_path", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "replication_interval"),
+			JS_NewCFunction(ctx, multiplayer_synchronizer_class_get_replication_interval, "get_replication_interval", 0),
+			JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_replication_interval, "set_replication_interval", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "delta_interval"),
+			JS_NewCFunction(ctx, multiplayer_synchronizer_class_get_delta_interval, "get_delta_interval", 0),
+			JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_delta_interval, "set_delta_interval", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "replication_config"),
+			JS_NewCFunction(ctx, multiplayer_synchronizer_class_get_replication_config, "get_replication_config", 0),
+			JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_replication_config, "set_replication_config", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "visibility_update_mode"),
+			JS_NewCFunction(ctx, multiplayer_synchronizer_class_get_visibility_update_mode, "get_visibility_update_mode", 0),
+			JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_visibility_update_mode, "set_visibility_update_mode", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "public_visibility"),
+			JS_NewCFunction(ctx, multiplayer_synchronizer_class_is_visibility_public, "is_visibility_public", 0),
+			JS_NewCFunction(ctx, multiplayer_synchronizer_class_set_visibility_public, "set_visibility_public", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -194,7 +186,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_multiplayer_synchronizer_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&MultiplayerSynchronizer::__class_id);
 	classes["MultiplayerSynchronizer"] = MultiplayerSynchronizer::__class_id;
 	class_id_list.insert(MultiplayerSynchronizer::__class_id);

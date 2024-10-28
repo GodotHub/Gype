@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture_layered_rd.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/texture2d_array_rd.hpp>
+#include <godot_cpp/classes/texture_layered_rd.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void texture2d_array_rd_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,7 +30,7 @@ static JSValue texture2d_array_rd_class_constructor(JSContext *ctx, JSValueConst
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, texture2d_array_rd_class);	
+	JS_SetOpaque(obj, texture2d_array_rd_class);
 	return obj;
 }
 
@@ -43,7 +41,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_texture2d_array_rd_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&Texture2DArrayRD::__class_id);
 	classes["Texture2DArrayRD"] = Texture2DArrayRD::__class_id;
 	class_id_list.insert(Texture2DArrayRD::__class_id);

@@ -1,21 +1,19 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/bone2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/skeleton2d.hpp>
+#include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void skeleton2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -34,7 +32,7 @@ static JSValue skeleton2d_class_constructor(JSContext *ctx, JSValueConst new_tar
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, skeleton2d_class);	
+	JS_SetOpaque(obj, skeleton2d_class);
 	return obj;
 }
 static JSValue skeleton2d_class_get_bone_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -51,7 +49,7 @@ static JSValue skeleton2d_class_get_skeleton(JSContext *ctx, JSValueConst this_v
 };
 static JSValue skeleton2d_class_set_modification_stack(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Skeleton2D::set_modification_stack, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Skeleton2D::set_modification_stack, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton2d_class_get_modification_stack(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -60,12 +58,12 @@ static JSValue skeleton2d_class_get_modification_stack(JSContext *ctx, JSValueCo
 };
 static JSValue skeleton2d_class_execute_modifications(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Skeleton2D::execute_modifications, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Skeleton2D::execute_modifications, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton2d_class_set_bone_local_pose_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Skeleton2D::set_bone_local_pose_override, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Skeleton2D::set_bone_local_pose_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton2d_class_get_bone_local_pose_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -90,7 +88,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_skeleton2d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&Skeleton2D::__class_id);
 	classes["Skeleton2D"] = Skeleton2D::__class_id;
 	class_id_list.insert(Skeleton2D::__class_id);

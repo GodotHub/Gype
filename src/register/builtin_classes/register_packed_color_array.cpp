@@ -1,9 +1,9 @@
 
-#include "quickjs/quickjs.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/variant/packed_color_array.hpp>
 
 using namespace godot;
@@ -25,21 +25,20 @@ static JSValue packed_color_array_class_constructor(JSContext *ctx, JSValueConst
 		return obj;
 
 	PackedColorArray *packed_color_array_class;
-	
-	if (argc == 0 ) {
+
+	if (argc == 0) {
 		packed_color_array_class = memnew(PackedColorArray());
 	}
-	
-	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::PACKED_COLOR_ARRAY) {
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::PACKED_COLOR_ARRAY) {
 		PackedColorArray v0 = Variant(argv[0]);
 		packed_color_array_class = memnew(PackedColorArray(v0));
 	}
-	
-	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::ARRAY) {
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::ARRAY) {
 		Array v0 = Variant(argv[0]);
 		packed_color_array_class = memnew(PackedColorArray(v0));
 	}
-	
 
 	if (!packed_color_array_class) {
 		JS_FreeValue(ctx, obj);
@@ -56,7 +55,7 @@ static JSValue packed_color_array_class_is_empty(JSContext *ctx, JSValueConst th
 	return call_builtin_const_method_ret(&PackedColorArray::is_empty, ctx, this_val, argc, argv);
 };
 static JSValue packed_color_array_class_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PackedColorArray::set, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&PackedColorArray::set, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_color_array_class_push_back(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -66,32 +65,32 @@ static JSValue packed_color_array_class_append(JSContext *ctx, JSValueConst this
 	return call_builtin_method_ret(&PackedColorArray::append, ctx, this_val, argc, argv);
 };
 static JSValue packed_color_array_class_append_array(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PackedColorArray::append_array, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&PackedColorArray::append_array, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_color_array_class_remove_at(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PackedColorArray::remove_at, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&PackedColorArray::remove_at, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_color_array_class_insert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&PackedColorArray::insert, ctx, this_val, argc, argv);
 };
 static JSValue packed_color_array_class_fill(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PackedColorArray::fill, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&PackedColorArray::fill, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_color_array_class_resize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&PackedColorArray::resize, ctx, this_val, argc, argv);
 };
 static JSValue packed_color_array_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PackedColorArray::clear, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&PackedColorArray::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_color_array_class_has(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PackedColorArray::has, ctx, this_val, argc, argv);
 };
 static JSValue packed_color_array_class_reverse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PackedColorArray::reverse, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&PackedColorArray::reverse, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_color_array_class_slice(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -101,7 +100,7 @@ static JSValue packed_color_array_class_to_byte_array(JSContext *ctx, JSValueCon
 	return call_builtin_const_method_ret(&PackedColorArray::to_byte_array, ctx, this_val, argc, argv);
 };
 static JSValue packed_color_array_class_sort(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PackedColorArray::sort, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&PackedColorArray::sort, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_color_array_class_bsearch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -119,7 +118,6 @@ static JSValue packed_color_array_class_rfind(JSContext *ctx, JSValueConst this_
 static JSValue packed_color_array_class_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PackedColorArray::count, ctx, this_val, argc, argv);
 };
-
 
 static const JSCFunctionListEntry packed_color_array_class_proto_funcs[] = {
 	JS_CFUNC_DEF("size", 0, &packed_color_array_class_size),
@@ -145,10 +143,7 @@ static const JSCFunctionListEntry packed_color_array_class_proto_funcs[] = {
 	JS_CFUNC_DEF("count", 1, &packed_color_array_class_count),
 };
 
-
-
 static int js_packed_color_array_class_init(JSContext *ctx) {
-	
 	JS_NewClassID(&PackedColorArray::__class_id);
 	classes["PackedColorArray"] = PackedColorArray::__class_id;
 	class_id_list.insert(PackedColorArray::__class_id);

@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/occluder3d.hpp>
 #include <godot_cpp/classes/sphere_occluder3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void sphere_occluder3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue sphere_occluder3d_class_constructor(JSContext *ctx, JSValueConst 
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, sphere_occluder3d_class);	
+	JS_SetOpaque(obj, sphere_occluder3d_class);
 	return obj;
 }
 static JSValue sphere_occluder3d_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SphereOccluder3D::set_radius, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SphereOccluder3D::set_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sphere_occluder3d_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -50,21 +48,19 @@ static const JSCFunctionListEntry sphere_occluder3d_class_proto_funcs[] = {
 };
 
 void define_sphere_occluder3d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "radius"),
-        JS_NewCFunction(ctx, sphere_occluder3d_class_get_radius, "get_radius", 0),
-        JS_NewCFunction(ctx, sphere_occluder3d_class_set_radius, "set_radius", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "radius"),
+			JS_NewCFunction(ctx, sphere_occluder3d_class_get_radius, "get_radius", 0),
+			JS_NewCFunction(ctx, sphere_occluder3d_class_set_radius, "set_radius", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_sphere_occluder3d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&SphereOccluder3D::__class_id);
 	classes["SphereOccluder3D"] = SphereOccluder3D::__class_id;
 	class_id_list.insert(SphereOccluder3D::__class_id);

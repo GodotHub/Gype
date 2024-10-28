@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/rd_attachment_format.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void rd_attachment_format_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue rd_attachment_format_class_constructor(JSContext *ctx, JSValueCon
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rd_attachment_format_class);	
+	JS_SetOpaque(obj, rd_attachment_format_class);
 	return obj;
 }
 static JSValue rd_attachment_format_class_set_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDAttachmentFormat::set_format, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDAttachmentFormat::set_format, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_attachment_format_class_get_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue rd_attachment_format_class_get_format(JSContext *ctx, JSValueCons
 };
 static JSValue rd_attachment_format_class_set_samples(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDAttachmentFormat::set_samples, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDAttachmentFormat::set_samples, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_attachment_format_class_get_samples(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,7 +53,7 @@ static JSValue rd_attachment_format_class_get_samples(JSContext *ctx, JSValueCon
 };
 static JSValue rd_attachment_format_class_set_usage_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDAttachmentFormat::set_usage_flags, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDAttachmentFormat::set_usage_flags, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_attachment_format_class_get_usage_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,37 +70,33 @@ static const JSCFunctionListEntry rd_attachment_format_class_proto_funcs[] = {
 };
 
 void define_rd_attachment_format_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "format"),
-        JS_NewCFunction(ctx, rd_attachment_format_class_get_format, "get_format", 0),
-        JS_NewCFunction(ctx, rd_attachment_format_class_set_format, "set_format", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "samples"),
-        JS_NewCFunction(ctx, rd_attachment_format_class_get_samples, "get_samples", 0),
-        JS_NewCFunction(ctx, rd_attachment_format_class_set_samples, "set_samples", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "usage_flags"),
-        JS_NewCFunction(ctx, rd_attachment_format_class_get_usage_flags, "get_usage_flags", 0),
-        JS_NewCFunction(ctx, rd_attachment_format_class_set_usage_flags, "set_usage_flags", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "format"),
+			JS_NewCFunction(ctx, rd_attachment_format_class_get_format, "get_format", 0),
+			JS_NewCFunction(ctx, rd_attachment_format_class_set_format, "set_format", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "samples"),
+			JS_NewCFunction(ctx, rd_attachment_format_class_get_samples, "get_samples", 0),
+			JS_NewCFunction(ctx, rd_attachment_format_class_set_samples, "set_samples", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "usage_flags"),
+			JS_NewCFunction(ctx, rd_attachment_format_class_get_usage_flags, "get_usage_flags", 0),
+			JS_NewCFunction(ctx, rd_attachment_format_class_set_usage_flags, "set_usage_flags", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_rd_attachment_format_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&RDAttachmentFormat::__class_id);
 	classes["RDAttachmentFormat"] = RDAttachmentFormat::__class_id;
 	class_id_list.insert(RDAttachmentFormat::__class_id);

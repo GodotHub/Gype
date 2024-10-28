@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/node.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/canvas_item.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void node2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,32 +31,32 @@ static JSValue node2d_class_constructor(JSContext *ctx, JSValueConst new_target,
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, node2d_class);	
+	JS_SetOpaque(obj, node2d_class);
 	return obj;
 }
 static JSValue node2d_class_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::set_position, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::set_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_set_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::set_rotation, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::set_rotation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_set_rotation_degrees(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::set_rotation_degrees, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::set_rotation_degrees, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_set_skew(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::set_skew, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::set_skew, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_set_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::set_scale, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::set_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -83,37 +81,37 @@ static JSValue node2d_class_get_scale(JSContext *ctx, JSValueConst this_val, int
 };
 static JSValue node2d_class_rotate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::rotate, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::rotate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_move_local_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::move_local_x, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::move_local_x, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_move_local_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::move_local_y, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::move_local_y, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_translate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::translate, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::translate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_global_translate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::global_translate, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::global_translate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_apply_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::apply_scale, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::apply_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_set_global_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::set_global_position, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::set_global_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_get_global_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -122,12 +120,12 @@ static JSValue node2d_class_get_global_position(JSContext *ctx, JSValueConst thi
 };
 static JSValue node2d_class_set_global_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::set_global_rotation, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::set_global_rotation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_set_global_rotation_degrees(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::set_global_rotation_degrees, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::set_global_rotation_degrees, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_get_global_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -140,7 +138,7 @@ static JSValue node2d_class_get_global_rotation_degrees(JSContext *ctx, JSValueC
 };
 static JSValue node2d_class_set_global_skew(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::set_global_skew, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::set_global_skew, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_get_global_skew(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -149,7 +147,7 @@ static JSValue node2d_class_get_global_skew(JSContext *ctx, JSValueConst this_va
 };
 static JSValue node2d_class_set_global_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::set_global_scale, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::set_global_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_get_global_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -158,17 +156,17 @@ static JSValue node2d_class_get_global_scale(JSContext *ctx, JSValueConst this_v
 };
 static JSValue node2d_class_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::set_transform, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::set_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_set_global_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::set_global_transform, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::set_global_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_look_at(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Node2D::look_at, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Node2D::look_at, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue node2d_class_get_angle_to(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -224,109 +222,96 @@ static const JSCFunctionListEntry node2d_class_proto_funcs[] = {
 };
 
 void define_node2d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "position"),
-        JS_NewCFunction(ctx, node2d_class_get_position, "get_position", 0),
-        JS_NewCFunction(ctx, node2d_class_set_position, "set_position", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "rotation"),
-        JS_NewCFunction(ctx, node2d_class_get_rotation, "get_rotation", 0),
-        JS_NewCFunction(ctx, node2d_class_set_rotation, "set_rotation", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "rotation_degrees"),
-        JS_NewCFunction(ctx, node2d_class_get_rotation_degrees, "get_rotation_degrees", 0),
-        JS_NewCFunction(ctx, node2d_class_set_rotation_degrees, "set_rotation_degrees", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "scale"),
-        JS_NewCFunction(ctx, node2d_class_get_scale, "get_scale", 0),
-        JS_NewCFunction(ctx, node2d_class_set_scale, "set_scale", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "skew"),
-        JS_NewCFunction(ctx, node2d_class_get_skew, "get_skew", 0),
-        JS_NewCFunction(ctx, node2d_class_set_skew, "set_skew", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "transform"),
-        JS_UNDEFINED,
-        JS_NewCFunction(ctx, node2d_class_set_transform, "set_transform", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "global_position"),
-        JS_NewCFunction(ctx, node2d_class_get_global_position, "get_global_position", 0),
-        JS_NewCFunction(ctx, node2d_class_set_global_position, "set_global_position", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "global_rotation"),
-        JS_NewCFunction(ctx, node2d_class_get_global_rotation, "get_global_rotation", 0),
-        JS_NewCFunction(ctx, node2d_class_set_global_rotation, "set_global_rotation", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "global_rotation_degrees"),
-        JS_NewCFunction(ctx, node2d_class_get_global_rotation_degrees, "get_global_rotation_degrees", 0),
-        JS_NewCFunction(ctx, node2d_class_set_global_rotation_degrees, "set_global_rotation_degrees", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "global_scale"),
-        JS_NewCFunction(ctx, node2d_class_get_global_scale, "get_global_scale", 0),
-        JS_NewCFunction(ctx, node2d_class_set_global_scale, "set_global_scale", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "global_skew"),
-        JS_NewCFunction(ctx, node2d_class_get_global_skew, "get_global_skew", 0),
-        JS_NewCFunction(ctx, node2d_class_set_global_skew, "set_global_skew", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "global_transform"),
-        JS_UNDEFINED,
-        JS_NewCFunction(ctx, node2d_class_set_global_transform, "set_global_transform", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "position"),
+			JS_NewCFunction(ctx, node2d_class_get_position, "get_position", 0),
+			JS_NewCFunction(ctx, node2d_class_set_position, "set_position", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "rotation"),
+			JS_NewCFunction(ctx, node2d_class_get_rotation, "get_rotation", 0),
+			JS_NewCFunction(ctx, node2d_class_set_rotation, "set_rotation", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "rotation_degrees"),
+			JS_NewCFunction(ctx, node2d_class_get_rotation_degrees, "get_rotation_degrees", 0),
+			JS_NewCFunction(ctx, node2d_class_set_rotation_degrees, "set_rotation_degrees", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "scale"),
+			JS_NewCFunction(ctx, node2d_class_get_scale, "get_scale", 0),
+			JS_NewCFunction(ctx, node2d_class_set_scale, "set_scale", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "skew"),
+			JS_NewCFunction(ctx, node2d_class_get_skew, "get_skew", 0),
+			JS_NewCFunction(ctx, node2d_class_set_skew, "set_skew", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "transform"),
+			JS_UNDEFINED,
+			JS_NewCFunction(ctx, node2d_class_set_transform, "set_transform", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "global_position"),
+			JS_NewCFunction(ctx, node2d_class_get_global_position, "get_global_position", 0),
+			JS_NewCFunction(ctx, node2d_class_set_global_position, "set_global_position", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "global_rotation"),
+			JS_NewCFunction(ctx, node2d_class_get_global_rotation, "get_global_rotation", 0),
+			JS_NewCFunction(ctx, node2d_class_set_global_rotation, "set_global_rotation", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "global_rotation_degrees"),
+			JS_NewCFunction(ctx, node2d_class_get_global_rotation_degrees, "get_global_rotation_degrees", 0),
+			JS_NewCFunction(ctx, node2d_class_set_global_rotation_degrees, "set_global_rotation_degrees", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "global_scale"),
+			JS_NewCFunction(ctx, node2d_class_get_global_scale, "get_global_scale", 0),
+			JS_NewCFunction(ctx, node2d_class_set_global_scale, "set_global_scale", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "global_skew"),
+			JS_NewCFunction(ctx, node2d_class_get_global_skew, "get_global_skew", 0),
+			JS_NewCFunction(ctx, node2d_class_set_global_skew, "set_global_skew", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "global_transform"),
+			JS_UNDEFINED,
+			JS_NewCFunction(ctx, node2d_class_set_global_transform, "set_global_transform", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_node2d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&Node2D::__class_id);
 	classes["Node2D"] = Node2D::__class_id;
 	class_id_list.insert(Node2D::__class_id);

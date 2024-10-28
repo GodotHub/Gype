@@ -1,21 +1,19 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/h_box_container.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/editor_resource_picker.hpp>
+#include <godot_cpp/classes/h_box_container.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void editor_resource_picker_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -34,12 +32,12 @@ static JSValue editor_resource_picker_class_constructor(JSContext *ctx, JSValueC
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_resource_picker_class);	
+	JS_SetOpaque(obj, editor_resource_picker_class);
 	return obj;
 }
 static JSValue editor_resource_picker_class_set_base_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorResourcePicker::set_base_type, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&EditorResourcePicker::set_base_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_resource_picker_class_get_base_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -52,7 +50,7 @@ static JSValue editor_resource_picker_class_get_allowed_types(JSContext *ctx, JS
 };
 static JSValue editor_resource_picker_class_set_edited_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorResourcePicker::set_edited_resource, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&EditorResourcePicker::set_edited_resource, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_resource_picker_class_get_edited_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -61,7 +59,7 @@ static JSValue editor_resource_picker_class_get_edited_resource(JSContext *ctx, 
 };
 static JSValue editor_resource_picker_class_set_toggle_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorResourcePicker::set_toggle_mode, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&EditorResourcePicker::set_toggle_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_resource_picker_class_is_toggle_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,12 +68,12 @@ static JSValue editor_resource_picker_class_is_toggle_mode(JSContext *ctx, JSVal
 };
 static JSValue editor_resource_picker_class_set_toggle_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorResourcePicker::set_toggle_pressed, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&EditorResourcePicker::set_toggle_pressed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_resource_picker_class_set_editable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorResourcePicker::set_editable, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&EditorResourcePicker::set_editable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_resource_picker_class_is_editable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -96,45 +94,40 @@ static const JSCFunctionListEntry editor_resource_picker_class_proto_funcs[] = {
 };
 
 void define_editor_resource_picker_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "base_type"),
-        JS_NewCFunction(ctx, editor_resource_picker_class_get_base_type, "get_base_type", 0),
-        JS_NewCFunction(ctx, editor_resource_picker_class_set_base_type, "set_base_type", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "edited_resource"),
-        JS_NewCFunction(ctx, editor_resource_picker_class_get_edited_resource, "get_edited_resource", 0),
-        JS_NewCFunction(ctx, editor_resource_picker_class_set_edited_resource, "set_edited_resource", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "editable"),
-        JS_NewCFunction(ctx, editor_resource_picker_class_is_editable, "is_editable", 0),
-        JS_NewCFunction(ctx, editor_resource_picker_class_set_editable, "set_editable", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "toggle_mode"),
-        JS_NewCFunction(ctx, editor_resource_picker_class_is_toggle_mode, "is_toggle_mode", 0),
-        JS_NewCFunction(ctx, editor_resource_picker_class_set_toggle_mode, "set_toggle_mode", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "base_type"),
+			JS_NewCFunction(ctx, editor_resource_picker_class_get_base_type, "get_base_type", 0),
+			JS_NewCFunction(ctx, editor_resource_picker_class_set_base_type, "set_base_type", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "edited_resource"),
+			JS_NewCFunction(ctx, editor_resource_picker_class_get_edited_resource, "get_edited_resource", 0),
+			JS_NewCFunction(ctx, editor_resource_picker_class_set_edited_resource, "set_edited_resource", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "editable"),
+			JS_NewCFunction(ctx, editor_resource_picker_class_is_editable, "is_editable", 0),
+			JS_NewCFunction(ctx, editor_resource_picker_class_set_editable, "set_editable", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "toggle_mode"),
+			JS_NewCFunction(ctx, editor_resource_picker_class_is_toggle_mode, "is_toggle_mode", 0),
+			JS_NewCFunction(ctx, editor_resource_picker_class_set_toggle_mode, "set_toggle_mode", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_resource_picker_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&EditorResourcePicker::__class_id);
 	classes["EditorResourcePicker"] = EditorResourcePicker::__class_id;
 	class_id_list.insert(EditorResourcePicker::__class_id);

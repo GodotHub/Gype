@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/text_edit.hpp>
 #include <godot_cpp/classes/syntax_highlighter.hpp>
+#include <godot_cpp/classes/text_edit.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void syntax_highlighter_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,7 +31,7 @@ static JSValue syntax_highlighter_class_constructor(JSContext *ctx, JSValueConst
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, syntax_highlighter_class);	
+	JS_SetOpaque(obj, syntax_highlighter_class);
 	return obj;
 }
 static JSValue syntax_highlighter_class_get_line_syntax_highlighting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -42,12 +40,12 @@ static JSValue syntax_highlighter_class_get_line_syntax_highlighting(JSContext *
 };
 static JSValue syntax_highlighter_class_update_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SyntaxHighlighter::update_cache, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SyntaxHighlighter::update_cache, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue syntax_highlighter_class_clear_highlighting_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SyntaxHighlighter::clear_highlighting_cache, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SyntaxHighlighter::clear_highlighting_cache, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue syntax_highlighter_class_get_text_edit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -68,7 +66,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_syntax_highlighter_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&SyntaxHighlighter::__class_id);
 	classes["SyntaxHighlighter"] = SyntaxHighlighter::__class_id;
 	class_id_list.insert(SyntaxHighlighter::__class_id);

@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_parameter_ref.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/classes/visual_shader_node_parameter_ref.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void visual_shader_node_parameter_ref_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue visual_shader_node_parameter_ref_class_constructor(JSContext *ctx
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_parameter_ref_class);	
+	JS_SetOpaque(obj, visual_shader_node_parameter_ref_class);
 	return obj;
 }
 static JSValue visual_shader_node_parameter_ref_class_set_parameter_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeParameterRef::set_parameter_name, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VisualShaderNodeParameterRef::set_parameter_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_parameter_ref_class_get_parameter_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -50,21 +48,19 @@ static const JSCFunctionListEntry visual_shader_node_parameter_ref_class_proto_f
 };
 
 void define_visual_shader_node_parameter_ref_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "parameter_name"),
-        JS_NewCFunction(ctx, visual_shader_node_parameter_ref_class_get_parameter_name, "get_parameter_name", 0),
-        JS_NewCFunction(ctx, visual_shader_node_parameter_ref_class_set_parameter_name, "set_parameter_name", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "parameter_name"),
+			JS_NewCFunction(ctx, visual_shader_node_parameter_ref_class_get_parameter_name, "get_parameter_name", 0),
+			JS_NewCFunction(ctx, visual_shader_node_parameter_ref_class_set_parameter_name, "set_parameter_name", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_parameter_ref_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&VisualShaderNodeParameterRef::__class_id);
 	classes["VisualShaderNodeParameterRef"] = VisualShaderNodeParameterRef::__class_id;
 	class_id_list.insert(VisualShaderNodeParameterRef::__class_id);

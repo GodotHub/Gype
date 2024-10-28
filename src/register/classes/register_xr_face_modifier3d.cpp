@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_face_modifier3d.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/xr_face_modifier3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void xr_face_modifier3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue xr_face_modifier3d_class_constructor(JSContext *ctx, JSValueConst
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, xr_face_modifier3d_class);	
+	JS_SetOpaque(obj, xr_face_modifier3d_class);
 	return obj;
 }
 static JSValue xr_face_modifier3d_class_set_face_tracker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRFaceModifier3D::set_face_tracker, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&XRFaceModifier3D::set_face_tracker, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_face_modifier3d_class_get_face_tracker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue xr_face_modifier3d_class_get_face_tracker(JSContext *ctx, JSValue
 };
 static JSValue xr_face_modifier3d_class_set_target(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRFaceModifier3D::set_target, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&XRFaceModifier3D::set_target, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_face_modifier3d_class_get_target(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -61,29 +59,26 @@ static const JSCFunctionListEntry xr_face_modifier3d_class_proto_funcs[] = {
 };
 
 void define_xr_face_modifier3d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "face_tracker"),
-        JS_NewCFunction(ctx, xr_face_modifier3d_class_get_face_tracker, "get_face_tracker", 0),
-        JS_NewCFunction(ctx, xr_face_modifier3d_class_set_face_tracker, "set_face_tracker", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "target"),
-        JS_NewCFunction(ctx, xr_face_modifier3d_class_get_target, "get_target", 0),
-        JS_NewCFunction(ctx, xr_face_modifier3d_class_set_target, "set_target", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "face_tracker"),
+			JS_NewCFunction(ctx, xr_face_modifier3d_class_get_face_tracker, "get_face_tracker", 0),
+			JS_NewCFunction(ctx, xr_face_modifier3d_class_set_face_tracker, "set_face_tracker", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "target"),
+			JS_NewCFunction(ctx, xr_face_modifier3d_class_get_target, "get_target", 0),
+			JS_NewCFunction(ctx, xr_face_modifier3d_class_set_target, "set_target", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_xr_face_modifier3d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&XRFaceModifier3D::__class_id);
 	classes["XRFaceModifier3D"] = XRFaceModifier3D::__class_id;
 	class_id_list.insert(XRFaceModifier3D::__class_id);

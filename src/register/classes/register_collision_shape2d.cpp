@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
+#include <godot_cpp/classes/collision_shape2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/shape2d.hpp>
-#include <godot_cpp/classes/collision_shape2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void collision_shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,12 +31,12 @@ static JSValue collision_shape2d_class_constructor(JSContext *ctx, JSValueConst 
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, collision_shape2d_class);	
+	JS_SetOpaque(obj, collision_shape2d_class);
 	return obj;
 }
 static JSValue collision_shape2d_class_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionShape2D::set_shape, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CollisionShape2D::set_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_shape2d_class_get_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -47,7 +45,7 @@ static JSValue collision_shape2d_class_get_shape(JSContext *ctx, JSValueConst th
 };
 static JSValue collision_shape2d_class_set_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionShape2D::set_disabled, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CollisionShape2D::set_disabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_shape2d_class_is_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -56,7 +54,7 @@ static JSValue collision_shape2d_class_is_disabled(JSContext *ctx, JSValueConst 
 };
 static JSValue collision_shape2d_class_set_one_way_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionShape2D::set_one_way_collision, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CollisionShape2D::set_one_way_collision, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_shape2d_class_is_one_way_collision_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,7 +63,7 @@ static JSValue collision_shape2d_class_is_one_way_collision_enabled(JSContext *c
 };
 static JSValue collision_shape2d_class_set_one_way_collision_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionShape2D::set_one_way_collision_margin, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CollisionShape2D::set_one_way_collision_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_shape2d_class_get_one_way_collision_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -74,7 +72,7 @@ static JSValue collision_shape2d_class_get_one_way_collision_margin(JSContext *c
 };
 static JSValue collision_shape2d_class_set_debug_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionShape2D::set_debug_color, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CollisionShape2D::set_debug_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_shape2d_class_get_debug_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -95,53 +93,47 @@ static const JSCFunctionListEntry collision_shape2d_class_proto_funcs[] = {
 };
 
 void define_collision_shape2d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "shape"),
-        JS_NewCFunction(ctx, collision_shape2d_class_get_shape, "get_shape", 0),
-        JS_NewCFunction(ctx, collision_shape2d_class_set_shape, "set_shape", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "disabled"),
-        JS_NewCFunction(ctx, collision_shape2d_class_is_disabled, "is_disabled", 0),
-        JS_NewCFunction(ctx, collision_shape2d_class_set_disabled, "set_disabled", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "one_way_collision"),
-        JS_NewCFunction(ctx, collision_shape2d_class_is_one_way_collision_enabled, "is_one_way_collision_enabled", 0),
-        JS_NewCFunction(ctx, collision_shape2d_class_set_one_way_collision, "set_one_way_collision", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "one_way_collision_margin"),
-        JS_NewCFunction(ctx, collision_shape2d_class_get_one_way_collision_margin, "get_one_way_collision_margin", 0),
-        JS_NewCFunction(ctx, collision_shape2d_class_set_one_way_collision_margin, "set_one_way_collision_margin", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "debug_color"),
-        JS_NewCFunction(ctx, collision_shape2d_class_get_debug_color, "get_debug_color", 0),
-        JS_NewCFunction(ctx, collision_shape2d_class_set_debug_color, "set_debug_color", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "shape"),
+			JS_NewCFunction(ctx, collision_shape2d_class_get_shape, "get_shape", 0),
+			JS_NewCFunction(ctx, collision_shape2d_class_set_shape, "set_shape", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "disabled"),
+			JS_NewCFunction(ctx, collision_shape2d_class_is_disabled, "is_disabled", 0),
+			JS_NewCFunction(ctx, collision_shape2d_class_set_disabled, "set_disabled", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "one_way_collision"),
+			JS_NewCFunction(ctx, collision_shape2d_class_is_one_way_collision_enabled, "is_one_way_collision_enabled", 0),
+			JS_NewCFunction(ctx, collision_shape2d_class_set_one_way_collision, "set_one_way_collision", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "one_way_collision_margin"),
+			JS_NewCFunction(ctx, collision_shape2d_class_get_one_way_collision_margin, "get_one_way_collision_margin", 0),
+			JS_NewCFunction(ctx, collision_shape2d_class_set_one_way_collision_margin, "set_one_way_collision_margin", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "debug_color"),
+			JS_NewCFunction(ctx, collision_shape2d_class_get_debug_color, "get_debug_color", 0),
+			JS_NewCFunction(ctx, collision_shape2d_class_set_debug_color, "set_debug_color", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_collision_shape2d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&CollisionShape2D::__class_id);
 	classes["CollisionShape2D"] = CollisionShape2D::__class_id;
 	class_id_list.insert(CollisionShape2D::__class_id);

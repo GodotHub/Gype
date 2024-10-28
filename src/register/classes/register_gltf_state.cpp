@@ -1,34 +1,32 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/gltf_texture_sampler.hpp>
-#include <godot_cpp/classes/gltf_skin.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/gltf_node.hpp>
-#include <godot_cpp/classes/gltf_skeleton.hpp>
-#include <godot_cpp/classes/gltf_state.hpp>
-#include <godot_cpp/classes/gltf_camera.hpp>
-#include <godot_cpp/classes/gltf_texture.hpp>
-#include <godot_cpp/classes/gltf_light.hpp>
-#include <godot_cpp/classes/gltf_animation.hpp>
-#include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/gltf_buffer_view.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/gltf_mesh.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/animation_player.hpp>
 #include <godot_cpp/classes/gltf_accessor.hpp>
+#include <godot_cpp/classes/gltf_animation.hpp>
+#include <godot_cpp/classes/gltf_buffer_view.hpp>
+#include <godot_cpp/classes/gltf_camera.hpp>
+#include <godot_cpp/classes/gltf_light.hpp>
+#include <godot_cpp/classes/gltf_mesh.hpp>
+#include <godot_cpp/classes/gltf_node.hpp>
+#include <godot_cpp/classes/gltf_skeleton.hpp>
+#include <godot_cpp/classes/gltf_skin.hpp>
+#include <godot_cpp/classes/gltf_state.hpp>
+#include <godot_cpp/classes/gltf_texture.hpp>
+#include <godot_cpp/classes/gltf_texture_sampler.hpp>
+#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void gltf_state_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -47,12 +45,12 @@ static JSValue gltf_state_class_constructor(JSContext *ctx, JSValueConst new_tar
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_state_class);	
+	JS_SetOpaque(obj, gltf_state_class);
 	return obj;
 }
 static JSValue gltf_state_class_add_used_extension(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::add_used_extension, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::add_used_extension, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_append_data_to_buffers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,7 +63,7 @@ static JSValue gltf_state_class_get_json(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue gltf_state_class_set_json(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_json, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_json, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_major_version(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -74,7 +72,7 @@ static JSValue gltf_state_class_get_major_version(JSContext *ctx, JSValueConst t
 };
 static JSValue gltf_state_class_set_major_version(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_major_version, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_major_version, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_minor_version(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -83,7 +81,7 @@ static JSValue gltf_state_class_get_minor_version(JSContext *ctx, JSValueConst t
 };
 static JSValue gltf_state_class_set_minor_version(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_minor_version, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_minor_version, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_copyright(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,7 +90,7 @@ static JSValue gltf_state_class_get_copyright(JSContext *ctx, JSValueConst this_
 };
 static JSValue gltf_state_class_set_copyright(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_copyright, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_copyright, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_glb_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -101,7 +99,7 @@ static JSValue gltf_state_class_get_glb_data(JSContext *ctx, JSValueConst this_v
 };
 static JSValue gltf_state_class_set_glb_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_glb_data, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_glb_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_use_named_skin_binds(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,7 +108,7 @@ static JSValue gltf_state_class_get_use_named_skin_binds(JSContext *ctx, JSValue
 };
 static JSValue gltf_state_class_set_use_named_skin_binds(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_use_named_skin_binds, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_use_named_skin_binds, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_nodes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -119,7 +117,7 @@ static JSValue gltf_state_class_get_nodes(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue gltf_state_class_set_nodes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_nodes, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_nodes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_buffers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -128,7 +126,7 @@ static JSValue gltf_state_class_get_buffers(JSContext *ctx, JSValueConst this_va
 };
 static JSValue gltf_state_class_set_buffers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_buffers, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_buffers, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_buffer_views(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -137,7 +135,7 @@ static JSValue gltf_state_class_get_buffer_views(JSContext *ctx, JSValueConst th
 };
 static JSValue gltf_state_class_set_buffer_views(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_buffer_views, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_buffer_views, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_accessors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -146,7 +144,7 @@ static JSValue gltf_state_class_get_accessors(JSContext *ctx, JSValueConst this_
 };
 static JSValue gltf_state_class_set_accessors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_accessors, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_accessors, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_meshes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -155,7 +153,7 @@ static JSValue gltf_state_class_get_meshes(JSContext *ctx, JSValueConst this_val
 };
 static JSValue gltf_state_class_set_meshes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_meshes, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_meshes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_animation_players_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -172,7 +170,7 @@ static JSValue gltf_state_class_get_materials(JSContext *ctx, JSValueConst this_
 };
 static JSValue gltf_state_class_set_materials(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_materials, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_materials, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_scene_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -181,7 +179,7 @@ static JSValue gltf_state_class_get_scene_name(JSContext *ctx, JSValueConst this
 };
 static JSValue gltf_state_class_set_scene_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_scene_name, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_scene_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_base_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -190,7 +188,7 @@ static JSValue gltf_state_class_get_base_path(JSContext *ctx, JSValueConst this_
 };
 static JSValue gltf_state_class_set_base_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_base_path, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_base_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_filename(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -199,7 +197,7 @@ static JSValue gltf_state_class_get_filename(JSContext *ctx, JSValueConst this_v
 };
 static JSValue gltf_state_class_set_filename(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_filename, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_filename, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_root_nodes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -208,7 +206,7 @@ static JSValue gltf_state_class_get_root_nodes(JSContext *ctx, JSValueConst this
 };
 static JSValue gltf_state_class_set_root_nodes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_root_nodes, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_root_nodes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_textures(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -217,7 +215,7 @@ static JSValue gltf_state_class_get_textures(JSContext *ctx, JSValueConst this_v
 };
 static JSValue gltf_state_class_set_textures(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_textures, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_textures, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_texture_samplers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -226,7 +224,7 @@ static JSValue gltf_state_class_get_texture_samplers(JSContext *ctx, JSValueCons
 };
 static JSValue gltf_state_class_set_texture_samplers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_texture_samplers, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_texture_samplers, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_images(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -235,7 +233,7 @@ static JSValue gltf_state_class_get_images(JSContext *ctx, JSValueConst this_val
 };
 static JSValue gltf_state_class_set_images(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_images, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_images, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_skins(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -244,7 +242,7 @@ static JSValue gltf_state_class_get_skins(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue gltf_state_class_set_skins(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_skins, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_skins, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_cameras(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -253,7 +251,7 @@ static JSValue gltf_state_class_get_cameras(JSContext *ctx, JSValueConst this_va
 };
 static JSValue gltf_state_class_set_cameras(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_cameras, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_cameras, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_lights(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -262,7 +260,7 @@ static JSValue gltf_state_class_get_lights(JSContext *ctx, JSValueConst this_val
 };
 static JSValue gltf_state_class_set_lights(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_lights, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_lights, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_unique_names(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -271,7 +269,7 @@ static JSValue gltf_state_class_get_unique_names(JSContext *ctx, JSValueConst th
 };
 static JSValue gltf_state_class_set_unique_names(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_unique_names, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_unique_names, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_unique_animation_names(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -280,7 +278,7 @@ static JSValue gltf_state_class_get_unique_animation_names(JSContext *ctx, JSVal
 };
 static JSValue gltf_state_class_set_unique_animation_names(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_unique_animation_names, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_unique_animation_names, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_skeletons(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -289,7 +287,7 @@ static JSValue gltf_state_class_get_skeletons(JSContext *ctx, JSValueConst this_
 };
 static JSValue gltf_state_class_set_skeletons(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_skeletons, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_skeletons, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_create_animations(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -298,7 +296,7 @@ static JSValue gltf_state_class_get_create_animations(JSContext *ctx, JSValueCon
 };
 static JSValue gltf_state_class_set_create_animations(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_create_animations, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_create_animations, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_import_as_skeleton_bones(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -307,7 +305,7 @@ static JSValue gltf_state_class_get_import_as_skeleton_bones(JSContext *ctx, JSV
 };
 static JSValue gltf_state_class_set_import_as_skeleton_bones(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_import_as_skeleton_bones, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_import_as_skeleton_bones, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_animations(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -316,7 +314,7 @@ static JSValue gltf_state_class_get_animations(JSContext *ctx, JSValueConst this
 };
 static JSValue gltf_state_class_set_animations(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_animations, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_animations, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_scene_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -333,7 +331,7 @@ static JSValue gltf_state_class_get_additional_data(JSContext *ctx, JSValueConst
 };
 static JSValue gltf_state_class_set_additional_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_additional_data, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_additional_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_handle_binary_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -342,12 +340,12 @@ static JSValue gltf_state_class_get_handle_binary_image(JSContext *ctx, JSValueC
 };
 static JSValue gltf_state_class_set_handle_binary_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_handle_binary_image, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_handle_binary_image, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_set_bake_fps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFState::set_bake_fps, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&GLTFState::set_bake_fps, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_state_class_get_bake_fps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -426,253 +424,222 @@ static const JSCFunctionListEntry gltf_state_class_proto_funcs[] = {
 };
 
 void define_gltf_state_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "json"),
-        JS_NewCFunction(ctx, gltf_state_class_get_json, "get_json", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_json, "set_json", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "major_version"),
-        JS_NewCFunction(ctx, gltf_state_class_get_major_version, "get_major_version", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_major_version, "set_major_version", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "minor_version"),
-        JS_NewCFunction(ctx, gltf_state_class_get_minor_version, "get_minor_version", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_minor_version, "set_minor_version", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "copyright"),
-        JS_NewCFunction(ctx, gltf_state_class_get_copyright, "get_copyright", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_copyright, "set_copyright", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "glb_data"),
-        JS_NewCFunction(ctx, gltf_state_class_get_glb_data, "get_glb_data", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_glb_data, "set_glb_data", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "use_named_skin_binds"),
-        JS_NewCFunction(ctx, gltf_state_class_get_use_named_skin_binds, "get_use_named_skin_binds", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_use_named_skin_binds, "set_use_named_skin_binds", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "nodes"),
-        JS_NewCFunction(ctx, gltf_state_class_get_nodes, "get_nodes", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_nodes, "set_nodes", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "buffers"),
-        JS_NewCFunction(ctx, gltf_state_class_get_buffers, "get_buffers", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_buffers, "set_buffers", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "buffer_views"),
-        JS_NewCFunction(ctx, gltf_state_class_get_buffer_views, "get_buffer_views", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_buffer_views, "set_buffer_views", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "accessors"),
-        JS_NewCFunction(ctx, gltf_state_class_get_accessors, "get_accessors", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_accessors, "set_accessors", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "meshes"),
-        JS_NewCFunction(ctx, gltf_state_class_get_meshes, "get_meshes", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_meshes, "set_meshes", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "materials"),
-        JS_NewCFunction(ctx, gltf_state_class_get_materials, "get_materials", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_materials, "set_materials", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "scene_name"),
-        JS_NewCFunction(ctx, gltf_state_class_get_scene_name, "get_scene_name", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_scene_name, "set_scene_name", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "base_path"),
-        JS_NewCFunction(ctx, gltf_state_class_get_base_path, "get_base_path", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_base_path, "set_base_path", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "filename"),
-        JS_NewCFunction(ctx, gltf_state_class_get_filename, "get_filename", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_filename, "set_filename", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "root_nodes"),
-        JS_NewCFunction(ctx, gltf_state_class_get_root_nodes, "get_root_nodes", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_root_nodes, "set_root_nodes", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "textures"),
-        JS_NewCFunction(ctx, gltf_state_class_get_textures, "get_textures", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_textures, "set_textures", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "texture_samplers"),
-        JS_NewCFunction(ctx, gltf_state_class_get_texture_samplers, "get_texture_samplers", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_texture_samplers, "set_texture_samplers", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "images"),
-        JS_NewCFunction(ctx, gltf_state_class_get_images, "get_images", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_images, "set_images", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "skins"),
-        JS_NewCFunction(ctx, gltf_state_class_get_skins, "get_skins", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_skins, "set_skins", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "cameras"),
-        JS_NewCFunction(ctx, gltf_state_class_get_cameras, "get_cameras", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_cameras, "set_cameras", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "lights"),
-        JS_NewCFunction(ctx, gltf_state_class_get_lights, "get_lights", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_lights, "set_lights", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "unique_names"),
-        JS_NewCFunction(ctx, gltf_state_class_get_unique_names, "get_unique_names", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_unique_names, "set_unique_names", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "unique_animation_names"),
-        JS_NewCFunction(ctx, gltf_state_class_get_unique_animation_names, "get_unique_animation_names", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_unique_animation_names, "set_unique_animation_names", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "skeletons"),
-        JS_NewCFunction(ctx, gltf_state_class_get_skeletons, "get_skeletons", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_skeletons, "set_skeletons", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "create_animations"),
-        JS_NewCFunction(ctx, gltf_state_class_get_create_animations, "get_create_animations", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_create_animations, "set_create_animations", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "import_as_skeleton_bones"),
-        JS_NewCFunction(ctx, gltf_state_class_get_import_as_skeleton_bones, "get_import_as_skeleton_bones", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_import_as_skeleton_bones, "set_import_as_skeleton_bones", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "animations"),
-        JS_NewCFunction(ctx, gltf_state_class_get_animations, "get_animations", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_animations, "set_animations", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "handle_binary_image"),
-        JS_NewCFunction(ctx, gltf_state_class_get_handle_binary_image, "get_handle_binary_image", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_handle_binary_image, "set_handle_binary_image", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "bake_fps"),
-        JS_NewCFunction(ctx, gltf_state_class_get_bake_fps, "get_bake_fps", 0),
-        JS_NewCFunction(ctx, gltf_state_class_set_bake_fps, "set_bake_fps", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "json"),
+			JS_NewCFunction(ctx, gltf_state_class_get_json, "get_json", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_json, "set_json", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "major_version"),
+			JS_NewCFunction(ctx, gltf_state_class_get_major_version, "get_major_version", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_major_version, "set_major_version", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "minor_version"),
+			JS_NewCFunction(ctx, gltf_state_class_get_minor_version, "get_minor_version", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_minor_version, "set_minor_version", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "copyright"),
+			JS_NewCFunction(ctx, gltf_state_class_get_copyright, "get_copyright", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_copyright, "set_copyright", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "glb_data"),
+			JS_NewCFunction(ctx, gltf_state_class_get_glb_data, "get_glb_data", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_glb_data, "set_glb_data", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "use_named_skin_binds"),
+			JS_NewCFunction(ctx, gltf_state_class_get_use_named_skin_binds, "get_use_named_skin_binds", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_use_named_skin_binds, "set_use_named_skin_binds", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "nodes"),
+			JS_NewCFunction(ctx, gltf_state_class_get_nodes, "get_nodes", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_nodes, "set_nodes", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "buffers"),
+			JS_NewCFunction(ctx, gltf_state_class_get_buffers, "get_buffers", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_buffers, "set_buffers", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "buffer_views"),
+			JS_NewCFunction(ctx, gltf_state_class_get_buffer_views, "get_buffer_views", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_buffer_views, "set_buffer_views", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "accessors"),
+			JS_NewCFunction(ctx, gltf_state_class_get_accessors, "get_accessors", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_accessors, "set_accessors", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "meshes"),
+			JS_NewCFunction(ctx, gltf_state_class_get_meshes, "get_meshes", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_meshes, "set_meshes", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "materials"),
+			JS_NewCFunction(ctx, gltf_state_class_get_materials, "get_materials", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_materials, "set_materials", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "scene_name"),
+			JS_NewCFunction(ctx, gltf_state_class_get_scene_name, "get_scene_name", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_scene_name, "set_scene_name", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "base_path"),
+			JS_NewCFunction(ctx, gltf_state_class_get_base_path, "get_base_path", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_base_path, "set_base_path", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "filename"),
+			JS_NewCFunction(ctx, gltf_state_class_get_filename, "get_filename", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_filename, "set_filename", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "root_nodes"),
+			JS_NewCFunction(ctx, gltf_state_class_get_root_nodes, "get_root_nodes", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_root_nodes, "set_root_nodes", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "textures"),
+			JS_NewCFunction(ctx, gltf_state_class_get_textures, "get_textures", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_textures, "set_textures", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "texture_samplers"),
+			JS_NewCFunction(ctx, gltf_state_class_get_texture_samplers, "get_texture_samplers", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_texture_samplers, "set_texture_samplers", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "images"),
+			JS_NewCFunction(ctx, gltf_state_class_get_images, "get_images", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_images, "set_images", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "skins"),
+			JS_NewCFunction(ctx, gltf_state_class_get_skins, "get_skins", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_skins, "set_skins", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "cameras"),
+			JS_NewCFunction(ctx, gltf_state_class_get_cameras, "get_cameras", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_cameras, "set_cameras", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "lights"),
+			JS_NewCFunction(ctx, gltf_state_class_get_lights, "get_lights", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_lights, "set_lights", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "unique_names"),
+			JS_NewCFunction(ctx, gltf_state_class_get_unique_names, "get_unique_names", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_unique_names, "set_unique_names", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "unique_animation_names"),
+			JS_NewCFunction(ctx, gltf_state_class_get_unique_animation_names, "get_unique_animation_names", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_unique_animation_names, "set_unique_animation_names", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "skeletons"),
+			JS_NewCFunction(ctx, gltf_state_class_get_skeletons, "get_skeletons", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_skeletons, "set_skeletons", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "create_animations"),
+			JS_NewCFunction(ctx, gltf_state_class_get_create_animations, "get_create_animations", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_create_animations, "set_create_animations", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "import_as_skeleton_bones"),
+			JS_NewCFunction(ctx, gltf_state_class_get_import_as_skeleton_bones, "get_import_as_skeleton_bones", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_import_as_skeleton_bones, "set_import_as_skeleton_bones", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "animations"),
+			JS_NewCFunction(ctx, gltf_state_class_get_animations, "get_animations", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_animations, "set_animations", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "handle_binary_image"),
+			JS_NewCFunction(ctx, gltf_state_class_get_handle_binary_image, "get_handle_binary_image", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_handle_binary_image, "set_handle_binary_image", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "bake_fps"),
+			JS_NewCFunction(ctx, gltf_state_class_get_bake_fps, "get_bake_fps", 0),
+			JS_NewCFunction(ctx, gltf_state_class_set_bake_fps, "set_bake_fps", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_gltf_state_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&GLTFState::__class_id);
 	classes["GLTFState"] = GLTFState::__class_id;
 	class_id_list.insert(GLTFState::__class_id);

@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_high_shelf_filter.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/audio_effect_filter.hpp>
+#include <godot_cpp/classes/audio_effect_high_shelf_filter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void audio_effect_high_shelf_filter_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,7 +30,7 @@ static JSValue audio_effect_high_shelf_filter_class_constructor(JSContext *ctx, 
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_high_shelf_filter_class);	
+	JS_SetOpaque(obj, audio_effect_high_shelf_filter_class);
 	return obj;
 }
 
@@ -43,7 +41,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_effect_high_shelf_filter_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&AudioEffectHighShelfFilter::__class_id);
 	classes["AudioEffectHighShelfFilter"] = AudioEffectHighShelfFilter::__class_id;
 	class_id_list.insert(AudioEffectHighShelfFilter::__class_id);

@@ -1,14 +1,13 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/input_map.hpp>
-#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -18,7 +17,6 @@ static JSValue input_map_instance;
 static void js_input_map_singleton();
 
 static void input_map_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -42,62 +40,62 @@ static JSValue input_map_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue input_map_class_has_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_map_singleton();
+	js_input_map_singleton();
 	return call_builtin_const_method_ret(&InputMap::has_action, ctx, this_val, argc, argv);
 };
 static JSValue input_map_class_get_actions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_map_singleton();
+	js_input_map_singleton();
 	return call_builtin_method_ret(&InputMap::get_actions, ctx, this_val, argc, argv);
 };
 static JSValue input_map_class_add_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_map_singleton();
-    call_builtin_method_no_ret(&InputMap::add_action, ctx, this_val, argc, argv);
+	js_input_map_singleton();
+	call_builtin_method_no_ret(&InputMap::add_action, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_map_class_erase_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_map_singleton();
-    call_builtin_method_no_ret(&InputMap::erase_action, ctx, this_val, argc, argv);
+	js_input_map_singleton();
+	call_builtin_method_no_ret(&InputMap::erase_action, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_map_class_action_set_deadzone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_map_singleton();
-    call_builtin_method_no_ret(&InputMap::action_set_deadzone, ctx, this_val, argc, argv);
+	js_input_map_singleton();
+	call_builtin_method_no_ret(&InputMap::action_set_deadzone, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_map_class_action_get_deadzone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_map_singleton();
+	js_input_map_singleton();
 	return call_builtin_method_ret(&InputMap::action_get_deadzone, ctx, this_val, argc, argv);
 };
 static JSValue input_map_class_action_add_event(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_map_singleton();
-    call_builtin_method_no_ret(&InputMap::action_add_event, ctx, this_val, argc, argv);
+	js_input_map_singleton();
+	call_builtin_method_no_ret(&InputMap::action_add_event, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_map_class_action_has_event(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_map_singleton();
+	js_input_map_singleton();
 	return call_builtin_method_ret(&InputMap::action_has_event, ctx, this_val, argc, argv);
 };
 static JSValue input_map_class_action_erase_event(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_map_singleton();
-    call_builtin_method_no_ret(&InputMap::action_erase_event, ctx, this_val, argc, argv);
+	js_input_map_singleton();
+	call_builtin_method_no_ret(&InputMap::action_erase_event, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_map_class_action_erase_events(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_map_singleton();
-    call_builtin_method_no_ret(&InputMap::action_erase_events, ctx, this_val, argc, argv);
+	js_input_map_singleton();
+	call_builtin_method_no_ret(&InputMap::action_erase_events, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_map_class_action_get_events(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_map_singleton();
+	js_input_map_singleton();
 	return call_builtin_method_ret(&InputMap::action_get_events, ctx, this_val, argc, argv);
 };
 static JSValue input_map_class_event_is_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_map_singleton();
+	js_input_map_singleton();
 	return call_builtin_const_method_ret(&InputMap::event_is_action, ctx, this_val, argc, argv);
 };
 static JSValue input_map_class_load_from_project_settings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_map_singleton();
-    call_builtin_method_no_ret(&InputMap::load_from_project_settings, ctx, this_val, argc, argv);
+	js_input_map_singleton();
+	call_builtin_method_no_ret(&InputMap::load_from_project_settings, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry input_map_class_proto_funcs[] = {
@@ -136,7 +134,6 @@ static void js_input_map_singleton() {
 		JS_SetPropertyStr(ctx, global, "InputMap", input_map_instance);
 	}
 }
-
 
 void register_input_map() {
 	js_input_map_class_init(ctx);

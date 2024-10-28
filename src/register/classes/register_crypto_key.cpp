@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/crypto_key.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void crypto_key_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,7 +30,7 @@ static JSValue crypto_key_class_constructor(JSContext *ctx, JSValueConst new_tar
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, crypto_key_class);	
+	JS_SetOpaque(obj, crypto_key_class);
 	return obj;
 }
 static JSValue crypto_key_class_save(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +68,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_crypto_key_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&CryptoKey::__class_id);
 	classes["CryptoKey"] = CryptoKey::__class_id;
 	class_id_list.insert(CryptoKey::__class_id);

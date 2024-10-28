@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/canvas_layer.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void canvas_layer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue canvas_layer_class_constructor(JSContext *ctx, JSValueConst new_t
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, canvas_layer_class);	
+	JS_SetOpaque(obj, canvas_layer_class);
 	return obj;
 }
 static JSValue canvas_layer_class_set_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasLayer::set_layer, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasLayer::set_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_layer_class_get_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue canvas_layer_class_get_layer(JSContext *ctx, JSValueConst this_va
 };
 static JSValue canvas_layer_class_set_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasLayer::set_visible, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasLayer::set_visible, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_layer_class_is_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,17 +53,17 @@ static JSValue canvas_layer_class_is_visible(JSContext *ctx, JSValueConst this_v
 };
 static JSValue canvas_layer_class_show(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasLayer::show, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasLayer::show, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_layer_class_hide(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasLayer::hide, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasLayer::hide, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_layer_class_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasLayer::set_transform, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasLayer::set_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_layer_class_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -78,7 +76,7 @@ static JSValue canvas_layer_class_get_final_transform(JSContext *ctx, JSValueCon
 };
 static JSValue canvas_layer_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasLayer::set_offset, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasLayer::set_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_layer_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -87,7 +85,7 @@ static JSValue canvas_layer_class_get_offset(JSContext *ctx, JSValueConst this_v
 };
 static JSValue canvas_layer_class_set_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasLayer::set_rotation, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasLayer::set_rotation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_layer_class_get_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -96,7 +94,7 @@ static JSValue canvas_layer_class_get_rotation(JSContext *ctx, JSValueConst this
 };
 static JSValue canvas_layer_class_set_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasLayer::set_scale, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasLayer::set_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_layer_class_get_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -105,7 +103,7 @@ static JSValue canvas_layer_class_get_scale(JSContext *ctx, JSValueConst this_va
 };
 static JSValue canvas_layer_class_set_follow_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasLayer::set_follow_viewport, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasLayer::set_follow_viewport, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_layer_class_is_following_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -114,7 +112,7 @@ static JSValue canvas_layer_class_is_following_viewport(JSContext *ctx, JSValueC
 };
 static JSValue canvas_layer_class_set_follow_viewport_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasLayer::set_follow_viewport_scale, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasLayer::set_follow_viewport_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_layer_class_get_follow_viewport_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -123,7 +121,7 @@ static JSValue canvas_layer_class_get_follow_viewport_scale(JSContext *ctx, JSVa
 };
 static JSValue canvas_layer_class_set_custom_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasLayer::set_custom_viewport, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasLayer::set_custom_viewport, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_layer_class_get_custom_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -160,85 +158,75 @@ static const JSCFunctionListEntry canvas_layer_class_proto_funcs[] = {
 };
 
 void define_canvas_layer_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "layer"),
-        JS_NewCFunction(ctx, canvas_layer_class_get_layer, "get_layer", 0),
-        JS_NewCFunction(ctx, canvas_layer_class_set_layer, "set_layer", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "visible"),
-        JS_NewCFunction(ctx, canvas_layer_class_is_visible, "is_visible", 0),
-        JS_NewCFunction(ctx, canvas_layer_class_set_visible, "set_visible", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "offset"),
-        JS_NewCFunction(ctx, canvas_layer_class_get_offset, "get_offset", 0),
-        JS_NewCFunction(ctx, canvas_layer_class_set_offset, "set_offset", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "rotation"),
-        JS_NewCFunction(ctx, canvas_layer_class_get_rotation, "get_rotation", 0),
-        JS_NewCFunction(ctx, canvas_layer_class_set_rotation, "set_rotation", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "scale"),
-        JS_NewCFunction(ctx, canvas_layer_class_get_scale, "get_scale", 0),
-        JS_NewCFunction(ctx, canvas_layer_class_set_scale, "set_scale", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "transform"),
-        JS_NewCFunction(ctx, canvas_layer_class_get_transform, "get_transform", 0),
-        JS_NewCFunction(ctx, canvas_layer_class_set_transform, "set_transform", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "custom_viewport"),
-        JS_NewCFunction(ctx, canvas_layer_class_get_custom_viewport, "get_custom_viewport", 0),
-        JS_NewCFunction(ctx, canvas_layer_class_set_custom_viewport, "set_custom_viewport", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "follow_viewport_enabled"),
-        JS_NewCFunction(ctx, canvas_layer_class_is_following_viewport, "is_following_viewport", 0),
-        JS_NewCFunction(ctx, canvas_layer_class_set_follow_viewport, "set_follow_viewport", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "follow_viewport_scale"),
-        JS_NewCFunction(ctx, canvas_layer_class_get_follow_viewport_scale, "get_follow_viewport_scale", 0),
-        JS_NewCFunction(ctx, canvas_layer_class_set_follow_viewport_scale, "set_follow_viewport_scale", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "layer"),
+			JS_NewCFunction(ctx, canvas_layer_class_get_layer, "get_layer", 0),
+			JS_NewCFunction(ctx, canvas_layer_class_set_layer, "set_layer", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "visible"),
+			JS_NewCFunction(ctx, canvas_layer_class_is_visible, "is_visible", 0),
+			JS_NewCFunction(ctx, canvas_layer_class_set_visible, "set_visible", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "offset"),
+			JS_NewCFunction(ctx, canvas_layer_class_get_offset, "get_offset", 0),
+			JS_NewCFunction(ctx, canvas_layer_class_set_offset, "set_offset", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "rotation"),
+			JS_NewCFunction(ctx, canvas_layer_class_get_rotation, "get_rotation", 0),
+			JS_NewCFunction(ctx, canvas_layer_class_set_rotation, "set_rotation", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "scale"),
+			JS_NewCFunction(ctx, canvas_layer_class_get_scale, "get_scale", 0),
+			JS_NewCFunction(ctx, canvas_layer_class_set_scale, "set_scale", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "transform"),
+			JS_NewCFunction(ctx, canvas_layer_class_get_transform, "get_transform", 0),
+			JS_NewCFunction(ctx, canvas_layer_class_set_transform, "set_transform", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "custom_viewport"),
+			JS_NewCFunction(ctx, canvas_layer_class_get_custom_viewport, "get_custom_viewport", 0),
+			JS_NewCFunction(ctx, canvas_layer_class_set_custom_viewport, "set_custom_viewport", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "follow_viewport_enabled"),
+			JS_NewCFunction(ctx, canvas_layer_class_is_following_viewport, "is_following_viewport", 0),
+			JS_NewCFunction(ctx, canvas_layer_class_set_follow_viewport, "set_follow_viewport", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "follow_viewport_scale"),
+			JS_NewCFunction(ctx, canvas_layer_class_get_follow_viewport_scale, "get_follow_viewport_scale", 0),
+			JS_NewCFunction(ctx, canvas_layer_class_set_follow_viewport_scale, "set_follow_viewport_scale", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_canvas_layer_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&CanvasLayer::__class_id);
 	classes["CanvasLayer"] = CanvasLayer::__class_id;
 	class_id_list.insert(CanvasLayer::__class_id);

@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/camera_feed.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void camera_feed_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,7 +30,7 @@ static JSValue camera_feed_class_constructor(JSContext *ctx, JSValueConst new_ta
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, camera_feed_class);	
+	JS_SetOpaque(obj, camera_feed_class);
 	return obj;
 }
 static JSValue camera_feed_class_get_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -45,7 +43,7 @@ static JSValue camera_feed_class_is_active(JSContext *ctx, JSValueConst this_val
 };
 static JSValue camera_feed_class_set_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CameraFeed::set_active, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CameraFeed::set_active, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_feed_class_get_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +60,7 @@ static JSValue camera_feed_class_get_transform(JSContext *ctx, JSValueConst this
 };
 static JSValue camera_feed_class_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CameraFeed::set_transform, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CameraFeed::set_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_feed_class_get_datatype(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -81,22 +79,20 @@ static const JSCFunctionListEntry camera_feed_class_proto_funcs[] = {
 };
 
 void define_camera_feed_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "feed_is_active"),
-        JS_NewCFunction(ctx, camera_feed_class_is_active, "is_active", 0),
-        JS_NewCFunction(ctx, camera_feed_class_set_active, "set_active", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "feed_transform"),
-        JS_NewCFunction(ctx, camera_feed_class_get_transform, "get_transform", 0),
-        JS_NewCFunction(ctx, camera_feed_class_set_transform, "set_transform", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "feed_is_active"),
+			JS_NewCFunction(ctx, camera_feed_class_is_active, "is_active", 0),
+			JS_NewCFunction(ctx, camera_feed_class_set_active, "set_active", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "feed_transform"),
+			JS_NewCFunction(ctx, camera_feed_class_get_transform, "get_transform", 0),
+			JS_NewCFunction(ctx, camera_feed_class_set_transform, "set_transform", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -114,7 +110,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_camera_feed_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&CameraFeed::__class_id);
 	classes["CameraFeed"] = CameraFeed::__class_id;
 	class_id_list.insert(CameraFeed::__class_id);

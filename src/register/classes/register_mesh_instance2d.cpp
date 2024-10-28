@@ -1,21 +1,19 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh_instance2d.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/mesh_instance2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void mesh_instance2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -34,12 +32,12 @@ static JSValue mesh_instance2d_class_constructor(JSContext *ctx, JSValueConst ne
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, mesh_instance2d_class);	
+	JS_SetOpaque(obj, mesh_instance2d_class);
 	return obj;
 }
 static JSValue mesh_instance2d_class_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MeshInstance2D::set_mesh, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MeshInstance2D::set_mesh, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_instance2d_class_get_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,7 +46,7 @@ static JSValue mesh_instance2d_class_get_mesh(JSContext *ctx, JSValueConst this_
 };
 static JSValue mesh_instance2d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MeshInstance2D::set_texture, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MeshInstance2D::set_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_instance2d_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -63,29 +61,26 @@ static const JSCFunctionListEntry mesh_instance2d_class_proto_funcs[] = {
 };
 
 void define_mesh_instance2d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "mesh"),
-        JS_NewCFunction(ctx, mesh_instance2d_class_get_mesh, "get_mesh", 0),
-        JS_NewCFunction(ctx, mesh_instance2d_class_set_mesh, "set_mesh", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "texture"),
-        JS_NewCFunction(ctx, mesh_instance2d_class_get_texture, "get_texture", 0),
-        JS_NewCFunction(ctx, mesh_instance2d_class_set_texture, "set_texture", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "mesh"),
+			JS_NewCFunction(ctx, mesh_instance2d_class_get_mesh, "get_mesh", 0),
+			JS_NewCFunction(ctx, mesh_instance2d_class_set_mesh, "set_mesh", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "texture"),
+			JS_NewCFunction(ctx, mesh_instance2d_class_get_texture, "get_texture", 0),
+			JS_NewCFunction(ctx, mesh_instance2d_class_set_texture, "set_texture", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_mesh_instance2d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&MeshInstance2D::__class_id);
 	classes["MeshInstance2D"] = MeshInstance2D::__class_id;
 	class_id_list.insert(MeshInstance2D::__class_id);

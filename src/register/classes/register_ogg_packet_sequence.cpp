@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/ogg_packet_sequence.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void ogg_packet_sequence_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue ogg_packet_sequence_class_constructor(JSContext *ctx, JSValueCons
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, ogg_packet_sequence_class);	
+	JS_SetOpaque(obj, ogg_packet_sequence_class);
 	return obj;
 }
 static JSValue ogg_packet_sequence_class_set_packet_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OggPacketSequence::set_packet_data, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OggPacketSequence::set_packet_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ogg_packet_sequence_class_get_packet_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue ogg_packet_sequence_class_get_packet_data(JSContext *ctx, JSValue
 };
 static JSValue ogg_packet_sequence_class_set_packet_granule_positions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OggPacketSequence::set_packet_granule_positions, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OggPacketSequence::set_packet_granule_positions, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ogg_packet_sequence_class_get_packet_granule_positions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,7 +53,7 @@ static JSValue ogg_packet_sequence_class_get_packet_granule_positions(JSContext 
 };
 static JSValue ogg_packet_sequence_class_set_sampling_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OggPacketSequence::set_sampling_rate, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OggPacketSequence::set_sampling_rate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue ogg_packet_sequence_class_get_sampling_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -77,37 +75,33 @@ static const JSCFunctionListEntry ogg_packet_sequence_class_proto_funcs[] = {
 };
 
 void define_ogg_packet_sequence_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "packet_data"),
-        JS_NewCFunction(ctx, ogg_packet_sequence_class_get_packet_data, "get_packet_data", 0),
-        JS_NewCFunction(ctx, ogg_packet_sequence_class_set_packet_data, "set_packet_data", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "granule_positions"),
-        JS_NewCFunction(ctx, ogg_packet_sequence_class_get_packet_granule_positions, "get_packet_granule_positions", 0),
-        JS_NewCFunction(ctx, ogg_packet_sequence_class_set_packet_granule_positions, "set_packet_granule_positions", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "sampling_rate"),
-        JS_NewCFunction(ctx, ogg_packet_sequence_class_get_sampling_rate, "get_sampling_rate", 0),
-        JS_NewCFunction(ctx, ogg_packet_sequence_class_set_sampling_rate, "set_sampling_rate", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "packet_data"),
+			JS_NewCFunction(ctx, ogg_packet_sequence_class_get_packet_data, "get_packet_data", 0),
+			JS_NewCFunction(ctx, ogg_packet_sequence_class_set_packet_data, "set_packet_data", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "granule_positions"),
+			JS_NewCFunction(ctx, ogg_packet_sequence_class_get_packet_granule_positions, "get_packet_granule_positions", 0),
+			JS_NewCFunction(ctx, ogg_packet_sequence_class_set_packet_granule_positions, "set_packet_granule_positions", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "sampling_rate"),
+			JS_NewCFunction(ctx, ogg_packet_sequence_class_get_sampling_rate, "get_sampling_rate", 0),
+			JS_NewCFunction(ctx, ogg_packet_sequence_class_set_sampling_rate, "set_sampling_rate", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_ogg_packet_sequence_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&OggPacketSequence::__class_id);
 	classes["OggPacketSequence"] = OggPacketSequence::__class_id;
 	class_id_list.insert(OggPacketSequence::__class_id);

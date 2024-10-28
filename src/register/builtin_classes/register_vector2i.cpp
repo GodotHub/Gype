@@ -1,9 +1,9 @@
 
-#include "quickjs/quickjs.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/variant/vector2i.hpp>
 
 using namespace godot;
@@ -25,27 +25,26 @@ static JSValue vector2i_class_constructor(JSContext *ctx, JSValueConst new_targe
 		return obj;
 
 	Vector2i *vector2i_class;
-	
-	if (argc == 0 ) {
+
+	if (argc == 0) {
 		vector2i_class = memnew(Vector2i());
 	}
-	
-	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::VECTOR2I) {
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::VECTOR2I) {
 		Vector2i v0 = Variant(argv[0]);
 		vector2i_class = memnew(Vector2i(v0));
 	}
-	
-	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::VECTOR2) {
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::VECTOR2) {
 		Vector2 v0 = Variant(argv[0]);
 		vector2i_class = memnew(Vector2i(v0));
 	}
-	
-	if (argc == 2 &&Variant(argv[0]).get_type() == Variant::Type::INT&&Variant(argv[1]).get_type() == Variant::Type::INT) {
+
+	if (argc == 2 && Variant(argv[0]).get_type() == Variant::Type::INT && Variant(argv[1]).get_type() == Variant::Type::INT) {
 		int v0 = Variant(argv[0]);
 		int v1 = Variant(argv[1]);
-		vector2i_class = memnew(Vector2i(v0,v1));
+		vector2i_class = memnew(Vector2i(v0, v1));
 	}
-	
 
 	if (!vector2i_class) {
 		JS_FreeValue(ctx, obj);
@@ -107,8 +106,6 @@ static JSValue vector2i_class_maxi(JSContext *ctx, JSValueConst this_val, int ar
 	return call_builtin_const_method_ret(&Vector2i::maxi, ctx, this_val, argc, argv);
 };
 
-
-
 static JSValue vector2i_class_get_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Vector2i &val = *reinterpret_cast<Vector2i *>(JS_GetOpaque(this_val, Vector2i::__class_id));
 	return Variant(val.x);
@@ -128,7 +125,6 @@ static JSValue vector2i_class_set_y(JSContext *ctx, JSValueConst this_val, int a
 	val.y = Variant(*argv);
 	return JS_UNDEFINED;
 }
-
 
 static const JSCFunctionListEntry vector2i_class_proto_funcs[] = {
 	JS_CFUNC_DEF("aspect", 0, &vector2i_class_aspect),
@@ -150,29 +146,24 @@ static const JSCFunctionListEntry vector2i_class_proto_funcs[] = {
 	JS_CFUNC_DEF("maxi", 1, &vector2i_class_maxi),
 };
 
-
 void define_vector2i_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "x"),
-        JS_NewCFunction(ctx, vector2i_class_get_x, "get_x", 0),
-        JS_NewCFunction(ctx, vector2i_class_set_x, "set_x", 1),
-		JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "y"),
-        JS_NewCFunction(ctx, vector2i_class_get_y, "get_y", 0),
-        JS_NewCFunction(ctx, vector2i_class_set_y, "set_y", 1),
-		JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "x"),
+			JS_NewCFunction(ctx, vector2i_class_get_x, "get_x", 0),
+			JS_NewCFunction(ctx, vector2i_class_set_x, "set_x", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "y"),
+			JS_NewCFunction(ctx, vector2i_class_get_y, "get_y", 0),
+			JS_NewCFunction(ctx, vector2i_class_set_y, "set_y", 1),
+			JS_PROP_GETSET);
 }
 
-
 static int js_vector2i_class_init(JSContext *ctx) {
-	
 	JS_NewClassID(&Vector2i::__class_id);
 	classes["Vector2i"] = Vector2i::__class_id;
 	class_id_list.insert(Vector2i::__class_id);

@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/button.hpp>
-#include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/menu_button.hpp>
+#include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void menu_button_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,7 +31,7 @@ static JSValue menu_button_class_constructor(JSContext *ctx, JSValueConst new_ta
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, menu_button_class);	
+	JS_SetOpaque(obj, menu_button_class);
 	return obj;
 }
 static JSValue menu_button_class_get_popup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -42,12 +40,12 @@ static JSValue menu_button_class_get_popup(JSContext *ctx, JSValueConst this_val
 };
 static JSValue menu_button_class_show_popup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MenuButton::show_popup, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MenuButton::show_popup, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_button_class_set_switch_on_hover(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MenuButton::set_switch_on_hover, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MenuButton::set_switch_on_hover, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_button_class_is_switch_on_hover(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -56,12 +54,12 @@ static JSValue menu_button_class_is_switch_on_hover(JSContext *ctx, JSValueConst
 };
 static JSValue menu_button_class_set_disable_shortcuts(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MenuButton::set_disable_shortcuts, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MenuButton::set_disable_shortcuts, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_button_class_set_item_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MenuButton::set_item_count, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MenuButton::set_item_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue menu_button_class_get_item_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -79,29 +77,26 @@ static const JSCFunctionListEntry menu_button_class_proto_funcs[] = {
 };
 
 void define_menu_button_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "switch_on_hover"),
-        JS_NewCFunction(ctx, menu_button_class_is_switch_on_hover, "is_switch_on_hover", 0),
-        JS_NewCFunction(ctx, menu_button_class_set_switch_on_hover, "set_switch_on_hover", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "item_count"),
-        JS_NewCFunction(ctx, menu_button_class_get_item_count, "get_item_count", 0),
-        JS_NewCFunction(ctx, menu_button_class_set_item_count, "set_item_count", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "switch_on_hover"),
+			JS_NewCFunction(ctx, menu_button_class_is_switch_on_hover, "is_switch_on_hover", 0),
+			JS_NewCFunction(ctx, menu_button_class_set_switch_on_hover, "set_switch_on_hover", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "item_count"),
+			JS_NewCFunction(ctx, menu_button_class_get_item_count, "get_item_count", 0),
+			JS_NewCFunction(ctx, menu_button_class_set_item_count, "set_item_count", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_menu_button_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&MenuButton::__class_id);
 	classes["MenuButton"] = MenuButton::__class_id;
 	class_id_list.insert(MenuButton::__class_id);

@@ -1,21 +1,19 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_library.hpp>
-#include <godot_cpp/classes/node.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/animation.hpp>
+#include <godot_cpp/classes/animation_library.hpp>
 #include <godot_cpp/classes/animation_mixer.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void animation_mixer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -34,7 +32,7 @@ static JSValue animation_mixer_class_constructor(JSContext *ctx, JSValueConst ne
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animation_mixer_class);	
+	JS_SetOpaque(obj, animation_mixer_class);
 	return obj;
 }
 static JSValue animation_mixer_class_add_animation_library(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -43,12 +41,12 @@ static JSValue animation_mixer_class_add_animation_library(JSContext *ctx, JSVal
 };
 static JSValue animation_mixer_class_remove_animation_library(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationMixer::remove_animation_library, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AnimationMixer::remove_animation_library, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_mixer_class_rename_animation_library(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationMixer::rename_animation_library, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AnimationMixer::rename_animation_library, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_mixer_class_has_animation_library(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -77,7 +75,7 @@ static JSValue animation_mixer_class_get_animation_list(JSContext *ctx, JSValueC
 };
 static JSValue animation_mixer_class_set_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationMixer::set_active, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AnimationMixer::set_active, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_mixer_class_is_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -86,7 +84,7 @@ static JSValue animation_mixer_class_is_active(JSContext *ctx, JSValueConst this
 };
 static JSValue animation_mixer_class_set_deterministic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationMixer::set_deterministic, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AnimationMixer::set_deterministic, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_mixer_class_is_deterministic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -95,7 +93,7 @@ static JSValue animation_mixer_class_is_deterministic(JSContext *ctx, JSValueCon
 };
 static JSValue animation_mixer_class_set_root_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationMixer::set_root_node, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AnimationMixer::set_root_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_mixer_class_get_root_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -104,7 +102,7 @@ static JSValue animation_mixer_class_get_root_node(JSContext *ctx, JSValueConst 
 };
 static JSValue animation_mixer_class_set_callback_mode_process(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationMixer::set_callback_mode_process, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AnimationMixer::set_callback_mode_process, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_mixer_class_get_callback_mode_process(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -113,7 +111,7 @@ static JSValue animation_mixer_class_get_callback_mode_process(JSContext *ctx, J
 };
 static JSValue animation_mixer_class_set_callback_mode_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationMixer::set_callback_mode_method, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AnimationMixer::set_callback_mode_method, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_mixer_class_get_callback_mode_method(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -122,7 +120,7 @@ static JSValue animation_mixer_class_get_callback_mode_method(JSContext *ctx, JS
 };
 static JSValue animation_mixer_class_set_callback_mode_discrete(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationMixer::set_callback_mode_discrete, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AnimationMixer::set_callback_mode_discrete, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_mixer_class_get_callback_mode_discrete(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -131,7 +129,7 @@ static JSValue animation_mixer_class_get_callback_mode_discrete(JSContext *ctx, 
 };
 static JSValue animation_mixer_class_set_audio_max_polyphony(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationMixer::set_audio_max_polyphony, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AnimationMixer::set_audio_max_polyphony, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_mixer_class_get_audio_max_polyphony(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -140,7 +138,7 @@ static JSValue animation_mixer_class_get_audio_max_polyphony(JSContext *ctx, JSV
 };
 static JSValue animation_mixer_class_set_root_motion_track(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationMixer::set_root_motion_track, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AnimationMixer::set_root_motion_track, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_mixer_class_get_root_motion_track(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -173,22 +171,22 @@ static JSValue animation_mixer_class_get_root_motion_scale_accumulator(JSContext
 };
 static JSValue animation_mixer_class_clear_caches(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationMixer::clear_caches, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AnimationMixer::clear_caches, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_mixer_class_advance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationMixer::advance, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AnimationMixer::advance, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_mixer_class_capture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationMixer::capture, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AnimationMixer::capture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_mixer_class_set_reset_on_save_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationMixer::set_reset_on_save_enabled, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AnimationMixer::set_reset_on_save_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue animation_mixer_class_is_reset_on_save_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -245,78 +243,69 @@ static const JSCFunctionListEntry animation_mixer_class_proto_funcs[] = {
 };
 
 void define_animation_mixer_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "active"),
-        JS_NewCFunction(ctx, animation_mixer_class_is_active, "is_active", 0),
-        JS_NewCFunction(ctx, animation_mixer_class_set_active, "set_active", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "deterministic"),
-        JS_NewCFunction(ctx, animation_mixer_class_is_deterministic, "is_deterministic", 0),
-        JS_NewCFunction(ctx, animation_mixer_class_set_deterministic, "set_deterministic", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "reset_on_save"),
-        JS_NewCFunction(ctx, animation_mixer_class_is_reset_on_save_enabled, "is_reset_on_save_enabled", 0),
-        JS_NewCFunction(ctx, animation_mixer_class_set_reset_on_save_enabled, "set_reset_on_save_enabled", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "root_node"),
-        JS_NewCFunction(ctx, animation_mixer_class_get_root_node, "get_root_node", 0),
-        JS_NewCFunction(ctx, animation_mixer_class_set_root_node, "set_root_node", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "root_motion_track"),
-        JS_NewCFunction(ctx, animation_mixer_class_get_root_motion_track, "get_root_motion_track", 0),
-        JS_NewCFunction(ctx, animation_mixer_class_set_root_motion_track, "set_root_motion_track", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "audio_max_polyphony"),
-        JS_NewCFunction(ctx, animation_mixer_class_get_audio_max_polyphony, "get_audio_max_polyphony", 0),
-        JS_NewCFunction(ctx, animation_mixer_class_set_audio_max_polyphony, "set_audio_max_polyphony", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "callback_mode_process"),
-        JS_NewCFunction(ctx, animation_mixer_class_get_callback_mode_process, "get_callback_mode_process", 0),
-        JS_NewCFunction(ctx, animation_mixer_class_set_callback_mode_process, "set_callback_mode_process", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "callback_mode_method"),
-        JS_NewCFunction(ctx, animation_mixer_class_get_callback_mode_method, "get_callback_mode_method", 0),
-        JS_NewCFunction(ctx, animation_mixer_class_set_callback_mode_method, "set_callback_mode_method", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "callback_mode_discrete"),
-        JS_NewCFunction(ctx, animation_mixer_class_get_callback_mode_discrete, "get_callback_mode_discrete", 0),
-        JS_NewCFunction(ctx, animation_mixer_class_set_callback_mode_discrete, "set_callback_mode_discrete", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "active"),
+			JS_NewCFunction(ctx, animation_mixer_class_is_active, "is_active", 0),
+			JS_NewCFunction(ctx, animation_mixer_class_set_active, "set_active", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "deterministic"),
+			JS_NewCFunction(ctx, animation_mixer_class_is_deterministic, "is_deterministic", 0),
+			JS_NewCFunction(ctx, animation_mixer_class_set_deterministic, "set_deterministic", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "reset_on_save"),
+			JS_NewCFunction(ctx, animation_mixer_class_is_reset_on_save_enabled, "is_reset_on_save_enabled", 0),
+			JS_NewCFunction(ctx, animation_mixer_class_set_reset_on_save_enabled, "set_reset_on_save_enabled", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "root_node"),
+			JS_NewCFunction(ctx, animation_mixer_class_get_root_node, "get_root_node", 0),
+			JS_NewCFunction(ctx, animation_mixer_class_set_root_node, "set_root_node", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "root_motion_track"),
+			JS_NewCFunction(ctx, animation_mixer_class_get_root_motion_track, "get_root_motion_track", 0),
+			JS_NewCFunction(ctx, animation_mixer_class_set_root_motion_track, "set_root_motion_track", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "audio_max_polyphony"),
+			JS_NewCFunction(ctx, animation_mixer_class_get_audio_max_polyphony, "get_audio_max_polyphony", 0),
+			JS_NewCFunction(ctx, animation_mixer_class_set_audio_max_polyphony, "set_audio_max_polyphony", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "callback_mode_process"),
+			JS_NewCFunction(ctx, animation_mixer_class_get_callback_mode_process, "get_callback_mode_process", 0),
+			JS_NewCFunction(ctx, animation_mixer_class_set_callback_mode_process, "set_callback_mode_process", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "callback_mode_method"),
+			JS_NewCFunction(ctx, animation_mixer_class_get_callback_mode_method, "get_callback_mode_method", 0),
+			JS_NewCFunction(ctx, animation_mixer_class_set_callback_mode_method, "set_callback_mode_method", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "callback_mode_discrete"),
+			JS_NewCFunction(ctx, animation_mixer_class_get_callback_mode_discrete, "get_callback_mode_discrete", 0),
+			JS_NewCFunction(ctx, animation_mixer_class_set_callback_mode_discrete, "set_callback_mode_discrete", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -337,7 +326,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_animation_mixer_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&AnimationMixer::__class_id);
 	classes["AnimationMixer"] = AnimationMixer::__class_id;
 	class_id_list.insert(AnimationMixer::__class_id);

@@ -7,26 +7,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { GodotClass, Tool } from "@js_godot/class_defined";
+import { GodotClass, Tool, ToSignal } from "@js_godot/class_defined";
 import { Sprite2D } from "godot/classes/sprite2d";
 let MySprite = class MySprite extends Sprite2D {
     constructor() {
         super();
         this.vec2 = new Vector2(500, 0);
     }
-    _method() {
-        GD.print("process");
+    _test() {
+        GD.print("_test");
+    }
+    async _enter_tree() {
+        GD.print("pre");
+        await ToSignal(this, "ready");
+        GD.print("after");
     }
     _ready() {
-        this.position = this.vec2;
-        GD.print(this.position);
-        let method = new Callable(this, this._method);
-        method.call();
+        // GD.print(this.vec2);
     }
-    _process(delta) {
-        this.vec2.y += 100 * delta;
-        this.position = this.vec2;
-    }
+    _process(delta) { }
 };
 MySprite = __decorate([
     GodotClass,

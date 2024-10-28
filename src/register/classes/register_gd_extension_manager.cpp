@@ -1,13 +1,13 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/gd_extension.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/gd_extension_manager.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -17,7 +17,6 @@ static JSValue gd_extension_manager_instance;
 static void js_gd_extension_manager_singleton();
 
 static void gd_extension_manager_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -41,27 +40,27 @@ static JSValue gd_extension_manager_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 static JSValue gd_extension_manager_class_load_extension(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_gd_extension_manager_singleton();
+	js_gd_extension_manager_singleton();
 	return call_builtin_method_ret(&GDExtensionManager::load_extension, ctx, this_val, argc, argv);
 };
 static JSValue gd_extension_manager_class_reload_extension(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_gd_extension_manager_singleton();
+	js_gd_extension_manager_singleton();
 	return call_builtin_method_ret(&GDExtensionManager::reload_extension, ctx, this_val, argc, argv);
 };
 static JSValue gd_extension_manager_class_unload_extension(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_gd_extension_manager_singleton();
+	js_gd_extension_manager_singleton();
 	return call_builtin_method_ret(&GDExtensionManager::unload_extension, ctx, this_val, argc, argv);
 };
 static JSValue gd_extension_manager_class_is_extension_loaded(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_gd_extension_manager_singleton();
+	js_gd_extension_manager_singleton();
 	return call_builtin_const_method_ret(&GDExtensionManager::is_extension_loaded, ctx, this_val, argc, argv);
 };
 static JSValue gd_extension_manager_class_get_loaded_extensions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_gd_extension_manager_singleton();
+	js_gd_extension_manager_singleton();
 	return call_builtin_const_method_ret(&GDExtensionManager::get_loaded_extensions, ctx, this_val, argc, argv);
 };
 static JSValue gd_extension_manager_class_get_extension(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_gd_extension_manager_singleton();
+	js_gd_extension_manager_singleton();
 	return call_builtin_method_ret(&GDExtensionManager::get_extension, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry gd_extension_manager_class_proto_funcs[] = {
@@ -93,7 +92,6 @@ static void js_gd_extension_manager_singleton() {
 		JS_SetPropertyStr(ctx, global, "GDExtensionManager", gd_extension_manager_instance);
 	}
 }
-
 
 void register_gd_extension_manager() {
 	js_gd_extension_manager_class_init(ctx);

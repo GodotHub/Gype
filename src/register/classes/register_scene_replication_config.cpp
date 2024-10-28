@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/scene_replication_config.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void scene_replication_config_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,7 +30,7 @@ static JSValue scene_replication_config_class_constructor(JSContext *ctx, JSValu
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, scene_replication_config_class);	
+	JS_SetOpaque(obj, scene_replication_config_class);
 	return obj;
 }
 static JSValue scene_replication_config_class_get_properties(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -41,7 +39,7 @@ static JSValue scene_replication_config_class_get_properties(JSContext *ctx, JSV
 };
 static JSValue scene_replication_config_class_add_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneReplicationConfig::add_property, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneReplicationConfig::add_property, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_replication_config_class_has_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -50,7 +48,7 @@ static JSValue scene_replication_config_class_has_property(JSContext *ctx, JSVal
 };
 static JSValue scene_replication_config_class_remove_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneReplicationConfig::remove_property, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneReplicationConfig::remove_property, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_replication_config_class_property_get_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -63,7 +61,7 @@ static JSValue scene_replication_config_class_property_get_spawn(JSContext *ctx,
 };
 static JSValue scene_replication_config_class_property_set_spawn(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneReplicationConfig::property_set_spawn, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneReplicationConfig::property_set_spawn, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_replication_config_class_property_get_replication_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,7 +70,7 @@ static JSValue scene_replication_config_class_property_get_replication_mode(JSCo
 };
 static JSValue scene_replication_config_class_property_set_replication_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneReplicationConfig::property_set_replication_mode, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneReplicationConfig::property_set_replication_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_replication_config_class_property_get_sync(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -81,7 +79,7 @@ static JSValue scene_replication_config_class_property_get_sync(JSContext *ctx, 
 };
 static JSValue scene_replication_config_class_property_set_sync(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneReplicationConfig::property_set_sync, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneReplicationConfig::property_set_sync, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue scene_replication_config_class_property_get_watch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -90,7 +88,7 @@ static JSValue scene_replication_config_class_property_get_watch(JSContext *ctx,
 };
 static JSValue scene_replication_config_class_property_set_watch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneReplicationConfig::property_set_watch, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SceneReplicationConfig::property_set_watch, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry scene_replication_config_class_proto_funcs[] = {
@@ -121,7 +119,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_scene_replication_config_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&SceneReplicationConfig::__class_id);
 	classes["SceneReplicationConfig"] = SceneReplicationConfig::__class_id;
 	class_id_list.insert(SceneReplicationConfig::__class_id);

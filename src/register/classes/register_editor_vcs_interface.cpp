@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/editor_vcs_interface.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void editor_vcs_interface_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,7 +30,7 @@ static JSValue editor_vcs_interface_class_constructor(JSContext *ctx, JSValueCon
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_vcs_interface_class);	
+	JS_SetOpaque(obj, editor_vcs_interface_class);
 	return obj;
 }
 static JSValue editor_vcs_interface_class_create_diff_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,7 +63,7 @@ static JSValue editor_vcs_interface_class_add_line_diffs_into_diff_hunk(JSContex
 };
 static JSValue editor_vcs_interface_class_popup_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorVCSInterface::popup_error, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&EditorVCSInterface::popup_error, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry editor_vcs_interface_class_proto_funcs[] = {
@@ -99,7 +97,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_vcs_interface_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&EditorVCSInterface::__class_id);
 	classes["EditorVCSInterface"] = EditorVCSInterface::__class_id;
 	class_id_list.insert(EditorVCSInterface::__class_id);

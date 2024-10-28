@@ -100,6 +100,7 @@ convert(JSContext *ctx, JSValue v) {
 template <typename T, typename... P, std::size_t... Is>
 JSValue call_builtin_method_no_ret_impl(void (T::*Func)(P...), JSContext *ctx, JSValue this_val, int argc, JSValue *argv, std::index_sequence<Is...>) {
 	T *obj = (T *)JS_GetOpaque(this_val, JS_GetClassID(this_val));
+	(JS_DupValue(ctx, argv[Is]), ...);
 	(obj->*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, std::forward<JSValue>(argv[Is]))...);
 	return JS_UNDEFINED;
 };
@@ -111,6 +112,7 @@ JSValue call_builtin_method_no_ret(void (T::*Func)(P...), JSContext *ctx, JSValu
 
 template <typename T, typename... P, std::size_t... Is>
 JSValue call_builtin_const_method_no_ret_impl(void (T::*Func)(P...) const, JSContext *ctx, JSValue this_val, int argc, JSValue *argv, std::index_sequence<Is...>) {
+	(JS_DupValue(ctx, argv[Is]), ...);
 	T *obj = (T *)JS_GetOpaque(this_val, JS_GetClassID(this_val));
 	(obj->*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, argv[Is])...);
 	return JS_UNDEFINED;
@@ -122,6 +124,7 @@ JSValue call_builtin_const_method_no_ret(void (T::*Func)(P...) const, JSContext 
 };
 template <typename R, typename T, typename... P, std::size_t... Is>
 JSValue call_builtin_method_ret_impl(R (T::*Func)(P...), JSContext *ctx, JSValue this_val, int argc, JSValue *argv, std::index_sequence<Is...>) {
+	(JS_DupValue(ctx, argv[Is]), ...);
 	T *obj = (T *)JS_GetOpaque(this_val, JS_GetClassID(this_val));
 	return Variant((obj->*Func)((convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, argv[Is]))...));
 };
@@ -133,6 +136,7 @@ JSValue call_builtin_method_ret(R (T::*Func)(P...), JSContext *ctx, JSValue this
 
 template <typename R, typename T, typename... P, std::size_t... Is>
 JSValue call_builtin_const_method_ret_impl(R (T::*Func)(P...) const, JSContext *ctx, JSValue this_val, int argc, JSValue *argv, std::index_sequence<Is...>) {
+	(JS_DupValue(ctx, argv[Is]), ...);
 	T *obj = (T *)JS_GetOpaque(this_val, JS_GetClassID(this_val));
 	return Variant((obj->*Func)((convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, argv[Is]))...));
 };
@@ -144,6 +148,7 @@ JSValue call_builtin_const_method_ret(R (T::*Func)(P...) const, JSContext *ctx, 
 
 template <typename R, typename... P, std::size_t... Is>
 JSValue call_builtin_static_method_ret_impl(R (*Func)(P...), JSContext *ctx, JSValue this_val, int argc, JSValue *argv, std::index_sequence<Is...>) {
+	(JS_DupValue(ctx, argv[Is]), ...);
 	return Variant((*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, argv[Is])...));
 };
 
@@ -154,6 +159,7 @@ JSValue call_builtin_static_method_ret(R (*Func)(P...), JSContext *ctx, JSValue 
 
 template <typename... P, std::size_t... Is>
 JSValue call_builtin_static_method_no_ret_impl(void (*Func)(P...), JSContext *ctx, JSValue this_val, int argc, JSValue *argv, std::index_sequence<Is...>) {
+	(JS_DupValue(ctx, argv[Is]), ...);
 	(*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, argv[Is])...);
 	return JS_UNDEFINED;
 };
@@ -164,130 +170,144 @@ JSValue call_builtin_static_method_no_ret(void (*Func)(P...), JSContext *ctx, JS
 };
 
 template <typename T, typename... P, std::size_t... Is>
-JSValue call_builtin_vararg_method_no_ret_impl(void (T::*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *args, std::index_sequence<Is...>) {
+JSValue call_builtin_vararg_method_no_ret_impl(void (T::*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv, std::index_sequence<Is...>) {
+	(JS_DupValue(ctx, argv[Is]), ...);
 	T *gd_val = static_cast<T *>(JS_GetOpaque(this_obj, JS_GetClassID(this_obj)));
 	constexpr int fixed_argc = sizeof...(P) - 1;
 	std::vector<Variant> variant_args;
 	for (int i = fixed_argc; i < argc; ++i) {
-		variant_args.push_back(args[i]);
+		JS_DupValue(ctx, argv[i]);
+		variant_args.push_back(argv[i]);
 	}
-	(gd_val->*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, std::forward<JSValue>(args[Is]))..., variant_args);
+	(gd_val->*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, std::forward<JSValue>(argv[Is]))..., variant_args);
 	return JS_UNDEFINED;
 };
 
 template <typename T, typename... P>
-JSValue call_builtin_vararg_method_no_ret(void (T::*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *args) {
-	return call_builtin_vararg_method_no_ret_impl(Func, ctx, this_obj, argc, args, std::make_index_sequence<sizeof...(P) - 1>());
+JSValue call_builtin_vararg_method_no_ret(void (T::*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv) {
+	return call_builtin_vararg_method_no_ret_impl(Func, ctx, this_obj, argc, argv, std::make_index_sequence<sizeof...(P) - 1>());
 };
 
 template <typename T, typename... P, std::size_t... Is>
-JSValue call_builtin_const_vararg_method_no_ret_impl(void (T::*Func)(P...) const, JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *args, std::index_sequence<Is...>) {
+JSValue call_builtin_const_vararg_method_no_ret_impl(void (T::*Func)(P...) const, JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv, std::index_sequence<Is...>) {
+	(JS_DupValue(ctx, argv[Is]), ...);
 	T *gd_val = static_cast<T *>(JS_GetOpaque(this_obj, JS_GetClassID(this_obj)));
 	constexpr int fixed_argc = sizeof...(P) - 1;
 	std::vector<Variant> variant_args;
 	for (int i = fixed_argc; i < argc; ++i) {
-		variant_args.push_back(args[i]);
+		JS_DupValue(ctx, argv[i]);
+		variant_args.push_back(argv[i]);
 	}
-	(gd_val->*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, args[Is])..., variant_args);
+	(gd_val->*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, argv[Is])..., variant_args);
 	return JS_UNDEFINED;
 }
 
 template <typename T, typename... P>
-JSValue call_builtin_const_vararg_method_no_ret(void (T::*Func)(P...) const, JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *args) {
-	return call_builtin_const_vararg_method_no_ret_impl(Func, ctx, this_obj, argc, args, std::make_index_sequence<sizeof...(P) - 1>());
+JSValue call_builtin_const_vararg_method_no_ret(void (T::*Func)(P...) const, JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv) {
+	return call_builtin_const_vararg_method_no_ret_impl(Func, ctx, this_obj, argc, argv, std::make_index_sequence<sizeof...(P) - 1>());
 };
 
 template <typename T, typename... P>
-JSValue call_builtin_const_no_fixed_vararg_method_no_ret_impl(void (T::*Func)(std::vector<Variant>) const, JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *args) {
+JSValue call_builtin_const_no_fixed_vararg_method_no_ret_impl(void (T::*Func)(std::vector<Variant>) const, JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv) {
 	T *gd_val = static_cast<T *>(JS_GetOpaque(this_obj, JS_GetClassID(this_obj)));
 	std::vector<Variant> variant_args;
 	for (int i = 0; i < argc; ++i) {
-		variant_args.push_back(args[i]);
+		JS_DupValue(ctx, argv[i]);
+		variant_args.push_back(argv[i]);
 	}
 	(gd_val->*Func)(variant_args);
 	return JS_UNDEFINED;
 }
 
 template <typename T, typename... P>
-JSValue call_builtin_const_no_fixed_vararg_method_no_ret(void (T::*Func)(std::vector<Variant>) const, JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *args) {
-	return call_builtin_const_no_fixed_vararg_method_no_ret_impl(Func, ctx, std::forward<JSValue>(this_obj), argc, args);
+JSValue call_builtin_const_no_fixed_vararg_method_no_ret(void (T::*Func)(std::vector<Variant>) const, JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv) {
+	return call_builtin_const_no_fixed_vararg_method_no_ret_impl(Func, ctx, std::forward<JSValue>(this_obj), argc, argv);
 };
 
 template <typename T, typename R, typename... P, std::size_t... Is>
-JSValue call_builtin_vararg_method_ret_impl(R (T::*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *args, std::index_sequence<Is...>) {
+JSValue call_builtin_vararg_method_ret_impl(R (T::*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv, std::index_sequence<Is...>) {
+	(JS_DupValue(ctx, argv[Is]), ...);
 	T *gd_val = static_cast<T *>(JS_GetOpaque(this_obj, JS_GetClassID(this_obj)));
 	constexpr int fixed_argc = sizeof...(P) - 1;
 	std::vector<Variant> variant_args;
 	for (int i = fixed_argc; i < argc; ++i) {
-		variant_args.push_back(args[i]);
+		JS_DupValue(ctx, argv[i]);
+		variant_args.push_back(argv[i]);
 	}
-	return Variant((gd_val->*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, std::forward<JSValue>(args[Is]))..., variant_args));
+	return Variant((gd_val->*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, std::forward<JSValue>(argv[Is]))..., variant_args));
 };
 
 template <typename T, typename R, typename... P>
-JSValue call_builtin_vararg_method_ret(R (T::*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *args) {
-	return call_builtin_vararg_method_ret_impl(Func, ctx, std::forward<JSValue>(this_obj), argc, std::forward<JSValue *>(args), std::make_index_sequence<sizeof...(P) - 1>());
+JSValue call_builtin_vararg_method_ret(R (T::*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv) {
+	return call_builtin_vararg_method_ret_impl(Func, ctx, std::forward<JSValue>(this_obj), argc, std::forward<JSValue *>(argv), std::make_index_sequence<sizeof...(P) - 1>());
 };
 
 template <typename... P, std::size_t... Is>
-JSValue call_builtin_static_vararg_method_no_ret_impl(void (*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *args, std::index_sequence<Is...>) {
+JSValue call_builtin_static_vararg_method_no_ret_impl(void (*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv, std::index_sequence<Is...>) {
+	(JS_DupValue(ctx, argv[Is]), ...);
 	constexpr int fixed_argc = sizeof...(P) - 1;
 	std::vector<Variant> variant_args;
 	for (int i = fixed_argc; i < argc; ++i) {
-		variant_args.push_back(args[i]);
+		JS_DupValue(ctx, argv[i]);
+		variant_args.push_back(argv[i]);
 	}
-	(*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, std::forward<JSValue>(args[Is]))..., variant_args);
+	(*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, std::forward<JSValue>(argv[Is]))..., variant_args);
 	return JS_UNDEFINED;
 };
 
 template <typename... P>
-JSValue call_builtin_static_vararg_method_no_ret(void (*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *args) {
-	return call_builtin_static_vararg_method_no_ret_impl(Func, ctx, std::forward<JSValue>(this_obj), argc, args, std::make_index_sequence<sizeof...(P) - 1>());
+JSValue call_builtin_static_vararg_method_no_ret(void (*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv) {
+	return call_builtin_static_vararg_method_no_ret_impl(Func, ctx, std::forward<JSValue>(this_obj), argc, argv, std::make_index_sequence<sizeof...(P) - 1>());
 };
 
 template <typename T, typename R, typename... P, std::size_t... Is>
-JSValue call_builtin_const_vararg_method_ret_impl(R (T::*Func)(P...) const, JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *args, std::index_sequence<Is...>) {
+JSValue call_builtin_const_vararg_method_ret_impl(R (T::*Func)(P...) const, JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv, std::index_sequence<Is...>) {
+	(JS_DupValue(ctx, argv[Is]), ...);
 	T *gd_val = static_cast<T *>(JS_GetOpaque(this_obj, JS_GetClassID(this_obj)));
 	constexpr int fixed_argc = sizeof...(P) - 1;
 	std::vector<Variant> variant_args;
 	for (int i = fixed_argc; i < argc; ++i) {
-		variant_args.push_back(args[i]);
+		JS_DupValue(ctx, argv[i]);
+		variant_args.push_back(argv[i]);
 	}
-	return Variant((gd_val->*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, args[Is])..., variant_args));
+	return Variant((gd_val->*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, argv[Is])..., variant_args));
 };
 
 template <typename T, typename R, typename... P>
-JSValue call_builtin_const_vararg_method_ret(R (T::*Func)(P...) const, JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *args) {
-	return call_builtin_const_vararg_method_ret_impl(Func, std::forward<JSContext *>(ctx), std::forward<JSValue>(this_obj), argc, std::forward<JSValue *>(args), std::make_index_sequence<sizeof...(P) - 1>());
+JSValue call_builtin_const_vararg_method_ret(R (T::*Func)(P...) const, JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv) {
+	return call_builtin_const_vararg_method_ret_impl(Func, std::forward<JSContext *>(ctx), std::forward<JSValue>(this_obj), argc, std::forward<JSValue *>(argv), std::make_index_sequence<sizeof...(P) - 1>());
 };
 
 template <typename T, typename R>
-JSValue call_builtin_const_no_fixed_vararg_method_ret_impl(R (T::*Func)(std::vector<Variant>) const, JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *args) {
+JSValue call_builtin_const_no_fixed_vararg_method_ret_impl(R (T::*Func)(std::vector<Variant>) const, JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv) {
 	T *gd_val = static_cast<T *>(JS_GetOpaque(this_obj, JS_GetClassID(this_obj)));
 	std::vector<Variant> variant_args;
 	for (int i = 0; i < argc; ++i) {
-		variant_args.push_back(args[i]);
+		JS_DupValue(ctx, argv[i]);
+		variant_args.push_back(argv[i]);
 	}
 	return Variant((gd_val->*Func)(variant_args));
 };
 
 template <typename T, typename R>
-JSValue call_builtin_const_no_fixed_vararg_method_ret(R (T::*Func)(std::vector<Variant>) const, JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *args) {
-	return call_builtin_const_no_fixed_vararg_method_ret_impl(Func, ctx, std::forward<JSValue>(this_obj), argc, args);
+JSValue call_builtin_const_no_fixed_vararg_method_ret(R (T::*Func)(std::vector<Variant>) const, JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv) {
+	return call_builtin_const_no_fixed_vararg_method_ret_impl(Func, ctx, std::forward<JSValue>(this_obj), argc, argv);
 };
 
 template <typename R, typename... P, std::size_t... Is>
-JSValue call_builtin_static_vararg_method_ret_impl(R (*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *args, std::index_sequence<Is...>) {
+JSValue call_builtin_static_vararg_method_ret_impl(R (*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv, std::index_sequence<Is...>) {
+	(JS_DupValue(ctx, argv[Is]), ...);
 	std::vector<Variant> variant_args;
 	for (int i = 0; i < argc; ++i) {
-		variant_args.push_back(args[i]);
+		JS_DupValue(ctx, argv[i]);
+		variant_args.push_back(argv[i]);
 	}
-	return Variant((*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, std::forward<JSValue>(args[Is]))..., variant_args));
+	return Variant((*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, std::forward<JSValue>(argv[Is]))..., variant_args));
 };
 
 template <typename R, typename... P>
-JSValue call_builtin_static_vararg_method_ret(R (*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *args) {
-	return call_builtin_static_vararg_method_ret_impl(Func, ctx, std::forward<JSValue>(this_obj), argc, args, std::make_index_sequence<sizeof...(P) - 1>());
+JSValue call_builtin_static_vararg_method_ret(R (*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv) {
+	return call_builtin_static_vararg_method_ret_impl(Func, ctx, std::forward<JSValue>(this_obj), argc, argv, std::make_index_sequence<sizeof...(P) - 1>());
 };
 
 #endif // __FUNC_UTILS_H__

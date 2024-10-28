@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/canvas_group.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void canvas_group_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue canvas_group_class_constructor(JSContext *ctx, JSValueConst new_t
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, canvas_group_class);	
+	JS_SetOpaque(obj, canvas_group_class);
 	return obj;
 }
 static JSValue canvas_group_class_set_fit_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasGroup::set_fit_margin, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasGroup::set_fit_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_group_class_get_fit_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue canvas_group_class_get_fit_margin(JSContext *ctx, JSValueConst th
 };
 static JSValue canvas_group_class_set_clear_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasGroup::set_clear_margin, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasGroup::set_clear_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_group_class_get_clear_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,7 +53,7 @@ static JSValue canvas_group_class_get_clear_margin(JSContext *ctx, JSValueConst 
 };
 static JSValue canvas_group_class_set_use_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CanvasGroup::set_use_mipmaps, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CanvasGroup::set_use_mipmaps, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue canvas_group_class_is_using_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,37 +70,33 @@ static const JSCFunctionListEntry canvas_group_class_proto_funcs[] = {
 };
 
 void define_canvas_group_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "fit_margin"),
-        JS_NewCFunction(ctx, canvas_group_class_get_fit_margin, "get_fit_margin", 0),
-        JS_NewCFunction(ctx, canvas_group_class_set_fit_margin, "set_fit_margin", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "clear_margin"),
-        JS_NewCFunction(ctx, canvas_group_class_get_clear_margin, "get_clear_margin", 0),
-        JS_NewCFunction(ctx, canvas_group_class_set_clear_margin, "set_clear_margin", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "use_mipmaps"),
-        JS_NewCFunction(ctx, canvas_group_class_is_using_mipmaps, "is_using_mipmaps", 0),
-        JS_NewCFunction(ctx, canvas_group_class_set_use_mipmaps, "set_use_mipmaps", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "fit_margin"),
+			JS_NewCFunction(ctx, canvas_group_class_get_fit_margin, "get_fit_margin", 0),
+			JS_NewCFunction(ctx, canvas_group_class_set_fit_margin, "set_fit_margin", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "clear_margin"),
+			JS_NewCFunction(ctx, canvas_group_class_get_clear_margin, "get_clear_margin", 0),
+			JS_NewCFunction(ctx, canvas_group_class_set_clear_margin, "set_clear_margin", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "use_mipmaps"),
+			JS_NewCFunction(ctx, canvas_group_class_is_using_mipmaps, "is_using_mipmaps", 0),
+			JS_NewCFunction(ctx, canvas_group_class_set_use_mipmaps, "set_use_mipmaps", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_canvas_group_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&CanvasGroup::__class_id);
 	classes["CanvasGroup"] = CanvasGroup::__class_id;
 	class_id_list.insert(CanvasGroup::__class_id);

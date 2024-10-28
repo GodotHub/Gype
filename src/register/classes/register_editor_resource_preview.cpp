@@ -1,22 +1,20 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/editor_resource_preview.hpp>
-#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/editor_resource_preview_generator.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/editor_resource_preview_generator.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void editor_resource_preview_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -35,32 +33,32 @@ static JSValue editor_resource_preview_class_constructor(JSContext *ctx, JSValue
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_resource_preview_class);	
+	JS_SetOpaque(obj, editor_resource_preview_class);
 	return obj;
 }
 static JSValue editor_resource_preview_class_queue_resource_preview(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorResourcePreview::queue_resource_preview, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&EditorResourcePreview::queue_resource_preview, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_resource_preview_class_queue_edited_resource_preview(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorResourcePreview::queue_edited_resource_preview, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&EditorResourcePreview::queue_edited_resource_preview, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_resource_preview_class_add_preview_generator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorResourcePreview::add_preview_generator, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&EditorResourcePreview::add_preview_generator, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_resource_preview_class_remove_preview_generator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorResourcePreview::remove_preview_generator, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&EditorResourcePreview::remove_preview_generator, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_resource_preview_class_check_for_invalidation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorResourcePreview::check_for_invalidation, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&EditorResourcePreview::check_for_invalidation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry editor_resource_preview_class_proto_funcs[] = {
@@ -78,7 +76,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_resource_preview_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&EditorResourcePreview::__class_id);
 	classes["EditorResourcePreview"] = EditorResourcePreview::__class_id;
 	class_id_list.insert(EditorResourcePreview::__class_id);

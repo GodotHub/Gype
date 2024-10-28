@@ -6,7 +6,6 @@
 #include "utils/func_utils.h"
 #include <godot_cpp/variant/vector3i.hpp>
 
-
 using namespace godot;
 
 static void vector3i_class_finalizer(JSRuntime *rt, JSValue val) {

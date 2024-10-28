@@ -6,7 +6,6 @@
 #include "utils/func_utils.h"
 #include <godot_cpp/variant/node_path.hpp>
 
-
 using namespace godot;
 
 static void node_path_class_finalizer(JSRuntime *rt, JSValue val) {

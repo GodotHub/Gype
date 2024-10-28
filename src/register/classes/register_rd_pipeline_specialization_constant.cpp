@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/rd_pipeline_specialization_constant.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void rd_pipeline_specialization_constant_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue rd_pipeline_specialization_constant_class_constructor(JSContext *
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rd_pipeline_specialization_constant_class);	
+	JS_SetOpaque(obj, rd_pipeline_specialization_constant_class);
 	return obj;
 }
 static JSValue rd_pipeline_specialization_constant_class_set_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineSpecializationConstant::set_value, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDPipelineSpecializationConstant::set_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_specialization_constant_class_get_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue rd_pipeline_specialization_constant_class_get_value(JSContext *ct
 };
 static JSValue rd_pipeline_specialization_constant_class_set_constant_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineSpecializationConstant::set_constant_id, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RDPipelineSpecializationConstant::set_constant_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_pipeline_specialization_constant_class_get_constant_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -61,29 +59,26 @@ static const JSCFunctionListEntry rd_pipeline_specialization_constant_class_prot
 };
 
 void define_rd_pipeline_specialization_constant_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "value"),
-        JS_NewCFunction(ctx, rd_pipeline_specialization_constant_class_get_value, "get_value", 0),
-        JS_NewCFunction(ctx, rd_pipeline_specialization_constant_class_set_value, "set_value", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "constant_id"),
-        JS_NewCFunction(ctx, rd_pipeline_specialization_constant_class_get_constant_id, "get_constant_id", 0),
-        JS_NewCFunction(ctx, rd_pipeline_specialization_constant_class_set_constant_id, "set_constant_id", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "value"),
+			JS_NewCFunction(ctx, rd_pipeline_specialization_constant_class_get_value, "get_value", 0),
+			JS_NewCFunction(ctx, rd_pipeline_specialization_constant_class_set_value, "set_value", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "constant_id"),
+			JS_NewCFunction(ctx, rd_pipeline_specialization_constant_class_get_constant_id, "get_constant_id", 0),
+			JS_NewCFunction(ctx, rd_pipeline_specialization_constant_class_set_constant_id, "set_constant_id", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_rd_pipeline_specialization_constant_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&RDPipelineSpecializationConstant::__class_id);
 	classes["RDPipelineSpecializationConstant"] = RDPipelineSpecializationConstant::__class_id;
 	class_id_list.insert(RDPipelineSpecializationConstant::__class_id);

@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_pitch_shift.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void audio_effect_pitch_shift_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue audio_effect_pitch_shift_class_constructor(JSContext *ctx, JSValu
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_pitch_shift_class);	
+	JS_SetOpaque(obj, audio_effect_pitch_shift_class);
 	return obj;
 }
 static JSValue audio_effect_pitch_shift_class_set_pitch_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectPitchShift::set_pitch_scale, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AudioEffectPitchShift::set_pitch_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_pitch_shift_class_get_pitch_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue audio_effect_pitch_shift_class_get_pitch_scale(JSContext *ctx, JS
 };
 static JSValue audio_effect_pitch_shift_class_set_oversampling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectPitchShift::set_oversampling, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AudioEffectPitchShift::set_oversampling, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_pitch_shift_class_get_oversampling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,7 +53,7 @@ static JSValue audio_effect_pitch_shift_class_get_oversampling(JSContext *ctx, J
 };
 static JSValue audio_effect_pitch_shift_class_set_fft_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectPitchShift::set_fft_size, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&AudioEffectPitchShift::set_fft_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_pitch_shift_class_get_fft_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,30 +70,27 @@ static const JSCFunctionListEntry audio_effect_pitch_shift_class_proto_funcs[] =
 };
 
 void define_audio_effect_pitch_shift_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "pitch_scale"),
-        JS_NewCFunction(ctx, audio_effect_pitch_shift_class_get_pitch_scale, "get_pitch_scale", 0),
-        JS_NewCFunction(ctx, audio_effect_pitch_shift_class_set_pitch_scale, "set_pitch_scale", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "oversampling"),
-        JS_NewCFunction(ctx, audio_effect_pitch_shift_class_get_oversampling, "get_oversampling", 0),
-        JS_NewCFunction(ctx, audio_effect_pitch_shift_class_set_oversampling, "set_oversampling", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "fft_size"),
-        JS_NewCFunction(ctx, audio_effect_pitch_shift_class_get_fft_size, "get_fft_size", 0),
-        JS_NewCFunction(ctx, audio_effect_pitch_shift_class_set_fft_size, "set_fft_size", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "pitch_scale"),
+			JS_NewCFunction(ctx, audio_effect_pitch_shift_class_get_pitch_scale, "get_pitch_scale", 0),
+			JS_NewCFunction(ctx, audio_effect_pitch_shift_class_set_pitch_scale, "set_pitch_scale", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "oversampling"),
+			JS_NewCFunction(ctx, audio_effect_pitch_shift_class_get_oversampling, "get_oversampling", 0),
+			JS_NewCFunction(ctx, audio_effect_pitch_shift_class_set_oversampling, "set_oversampling", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "fft_size"),
+			JS_NewCFunction(ctx, audio_effect_pitch_shift_class_get_fft_size, "get_fft_size", 0),
+			JS_NewCFunction(ctx, audio_effect_pitch_shift_class_set_fft_size, "set_fft_size", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -110,7 +105,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_effect_pitch_shift_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&AudioEffectPitchShift::__class_id);
 	classes["AudioEffectPitchShift"] = AudioEffectPitchShift::__class_id;
 	class_id_list.insert(AudioEffectPitchShift::__class_id);

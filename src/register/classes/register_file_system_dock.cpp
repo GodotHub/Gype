@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
+#include <godot_cpp/classes/editor_resource_tooltip_plugin.hpp>
 #include <godot_cpp/classes/file_system_dock.hpp>
 #include <godot_cpp/classes/v_box_container.hpp>
-#include <godot_cpp/classes/editor_resource_tooltip_plugin.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void file_system_dock_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,22 +31,22 @@ static JSValue file_system_dock_class_constructor(JSContext *ctx, JSValueConst n
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, file_system_dock_class);	
+	JS_SetOpaque(obj, file_system_dock_class);
 	return obj;
 }
 static JSValue file_system_dock_class_navigate_to_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileSystemDock::navigate_to_path, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileSystemDock::navigate_to_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_system_dock_class_add_resource_tooltip_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileSystemDock::add_resource_tooltip_plugin, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileSystemDock::add_resource_tooltip_plugin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue file_system_dock_class_remove_resource_tooltip_plugin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FileSystemDock::remove_resource_tooltip_plugin, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&FileSystemDock::remove_resource_tooltip_plugin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry file_system_dock_class_proto_funcs[] = {
@@ -64,7 +62,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_file_system_dock_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&FileSystemDock::__class_id);
 	classes["FileSystemDock"] = FileSystemDock::__class_id;
 	class_id_list.insert(FileSystemDock::__class_id);

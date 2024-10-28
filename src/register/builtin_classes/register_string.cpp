@@ -1,9 +1,9 @@
 
-#include "quickjs/quickjs.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/variant/string.hpp>
 
 using namespace godot;
@@ -25,26 +25,25 @@ static JSValue string_class_constructor(JSContext *ctx, JSValueConst new_target,
 		return obj;
 
 	String *string_class;
-	
-	if (argc == 0 ) {
+
+	if (argc == 0) {
 		string_class = memnew(String());
 	}
-	
-	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::STRING) {
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::STRING) {
 		String v0 = Variant(argv[0]);
 		string_class = memnew(String(v0));
 	}
-	
-	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::STRING_NAME) {
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::STRING_NAME) {
 		StringName v0 = Variant(argv[0]);
 		string_class = memnew(String(v0));
 	}
-	
-	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::NODE_PATH) {
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::NODE_PATH) {
 		NodePath v0 = Variant(argv[0]);
 		string_class = memnew(String(v0));
 	}
-	
 
 	if (!string_class) {
 		JS_FreeValue(ctx, obj);
@@ -381,8 +380,6 @@ static JSValue string_class_humanize_size(JSContext *ctx, JSValueConst this_val,
 	return call_builtin_static_method_ret(&String::humanize_size, ctx, this_val, argc, argv);
 };
 
-
-
 static const JSCFunctionListEntry string_class_proto_funcs[] = {
 	JS_CFUNC_DEF("casecmp_to", 1, &string_class_casecmp_to),
 	JS_CFUNC_DEF("nocasecmp_to", 1, &string_class_nocasecmp_to),
@@ -495,10 +492,7 @@ static const JSCFunctionListEntry string_class_static_funcs[] = {
 	JS_CFUNC_DEF("humanize_size", 1, &string_class_humanize_size),
 };
 
-
-
 static int js_string_class_init(JSContext *ctx) {
-	
 	JS_NewClassID(&String::__class_id);
 	classes["String"] = String::__class_id;
 	class_id_list.insert(String::__class_id);

@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/remote_transform3d.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/remote_transform3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void remote_transform3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue remote_transform3d_class_constructor(JSContext *ctx, JSValueConst
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, remote_transform3d_class);	
+	JS_SetOpaque(obj, remote_transform3d_class);
 	return obj;
 }
 static JSValue remote_transform3d_class_set_remote_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RemoteTransform3D::set_remote_node, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RemoteTransform3D::set_remote_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue remote_transform3d_class_get_remote_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,12 +44,12 @@ static JSValue remote_transform3d_class_get_remote_node(JSContext *ctx, JSValueC
 };
 static JSValue remote_transform3d_class_force_update_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RemoteTransform3D::force_update_cache, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RemoteTransform3D::force_update_cache, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue remote_transform3d_class_set_use_global_coordinates(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RemoteTransform3D::set_use_global_coordinates, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RemoteTransform3D::set_use_global_coordinates, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue remote_transform3d_class_get_use_global_coordinates(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -60,7 +58,7 @@ static JSValue remote_transform3d_class_get_use_global_coordinates(JSContext *ct
 };
 static JSValue remote_transform3d_class_set_update_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RemoteTransform3D::set_update_position, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RemoteTransform3D::set_update_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue remote_transform3d_class_get_update_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -69,7 +67,7 @@ static JSValue remote_transform3d_class_get_update_position(JSContext *ctx, JSVa
 };
 static JSValue remote_transform3d_class_set_update_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RemoteTransform3D::set_update_rotation, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RemoteTransform3D::set_update_rotation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue remote_transform3d_class_get_update_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -78,7 +76,7 @@ static JSValue remote_transform3d_class_get_update_rotation(JSContext *ctx, JSVa
 };
 static JSValue remote_transform3d_class_set_update_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RemoteTransform3D::set_update_scale, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RemoteTransform3D::set_update_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue remote_transform3d_class_get_update_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -100,53 +98,47 @@ static const JSCFunctionListEntry remote_transform3d_class_proto_funcs[] = {
 };
 
 void define_remote_transform3d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "remote_path"),
-        JS_NewCFunction(ctx, remote_transform3d_class_get_remote_node, "get_remote_node", 0),
-        JS_NewCFunction(ctx, remote_transform3d_class_set_remote_node, "set_remote_node", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "use_global_coordinates"),
-        JS_NewCFunction(ctx, remote_transform3d_class_get_use_global_coordinates, "get_use_global_coordinates", 0),
-        JS_NewCFunction(ctx, remote_transform3d_class_set_use_global_coordinates, "set_use_global_coordinates", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "update_position"),
-        JS_NewCFunction(ctx, remote_transform3d_class_get_update_position, "get_update_position", 0),
-        JS_NewCFunction(ctx, remote_transform3d_class_set_update_position, "set_update_position", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "update_rotation"),
-        JS_NewCFunction(ctx, remote_transform3d_class_get_update_rotation, "get_update_rotation", 0),
-        JS_NewCFunction(ctx, remote_transform3d_class_set_update_rotation, "set_update_rotation", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "update_scale"),
-        JS_NewCFunction(ctx, remote_transform3d_class_get_update_scale, "get_update_scale", 0),
-        JS_NewCFunction(ctx, remote_transform3d_class_set_update_scale, "set_update_scale", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "remote_path"),
+			JS_NewCFunction(ctx, remote_transform3d_class_get_remote_node, "get_remote_node", 0),
+			JS_NewCFunction(ctx, remote_transform3d_class_set_remote_node, "set_remote_node", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "use_global_coordinates"),
+			JS_NewCFunction(ctx, remote_transform3d_class_get_use_global_coordinates, "get_use_global_coordinates", 0),
+			JS_NewCFunction(ctx, remote_transform3d_class_set_use_global_coordinates, "set_use_global_coordinates", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "update_position"),
+			JS_NewCFunction(ctx, remote_transform3d_class_get_update_position, "get_update_position", 0),
+			JS_NewCFunction(ctx, remote_transform3d_class_set_update_position, "set_update_position", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "update_rotation"),
+			JS_NewCFunction(ctx, remote_transform3d_class_get_update_rotation, "get_update_rotation", 0),
+			JS_NewCFunction(ctx, remote_transform3d_class_set_update_rotation, "set_update_rotation", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "update_scale"),
+			JS_NewCFunction(ctx, remote_transform3d_class_get_update_scale, "get_update_scale", 0),
+			JS_NewCFunction(ctx, remote_transform3d_class_set_update_scale, "set_update_scale", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_remote_transform3d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&RemoteTransform3D::__class_id);
 	classes["RemoteTransform3D"] = RemoteTransform3D::__class_id;
 	class_id_list.insert(RemoteTransform3D::__class_id);

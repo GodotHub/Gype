@@ -6,7 +6,6 @@
 #include "utils/func_utils.h"
 #include <godot_cpp/variant/signal.hpp>
 
-
 using namespace godot;
 
 static void signal_class_finalizer(JSRuntime *rt, JSValue val) {

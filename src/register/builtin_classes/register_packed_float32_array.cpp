@@ -1,9 +1,9 @@
 
-#include "quickjs/quickjs.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/variant/packed_float32_array.hpp>
 
 using namespace godot;
@@ -25,21 +25,20 @@ static JSValue packed_float32_array_class_constructor(JSContext *ctx, JSValueCon
 		return obj;
 
 	PackedFloat32Array *packed_float32_array_class;
-	
-	if (argc == 0 ) {
+
+	if (argc == 0) {
 		packed_float32_array_class = memnew(PackedFloat32Array());
 	}
-	
-	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::PACKED_FLOAT32_ARRAY) {
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::PACKED_FLOAT32_ARRAY) {
 		PackedFloat32Array v0 = Variant(argv[0]);
 		packed_float32_array_class = memnew(PackedFloat32Array(v0));
 	}
-	
-	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::ARRAY) {
+
+	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::ARRAY) {
 		Array v0 = Variant(argv[0]);
 		packed_float32_array_class = memnew(PackedFloat32Array(v0));
 	}
-	
 
 	if (!packed_float32_array_class) {
 		JS_FreeValue(ctx, obj);
@@ -56,7 +55,7 @@ static JSValue packed_float32_array_class_is_empty(JSContext *ctx, JSValueConst 
 	return call_builtin_const_method_ret(&PackedFloat32Array::is_empty, ctx, this_val, argc, argv);
 };
 static JSValue packed_float32_array_class_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PackedFloat32Array::set, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&PackedFloat32Array::set, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_float32_array_class_push_back(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -66,32 +65,32 @@ static JSValue packed_float32_array_class_append(JSContext *ctx, JSValueConst th
 	return call_builtin_method_ret(&PackedFloat32Array::append, ctx, this_val, argc, argv);
 };
 static JSValue packed_float32_array_class_append_array(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PackedFloat32Array::append_array, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&PackedFloat32Array::append_array, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_float32_array_class_remove_at(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PackedFloat32Array::remove_at, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&PackedFloat32Array::remove_at, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_float32_array_class_insert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&PackedFloat32Array::insert, ctx, this_val, argc, argv);
 };
 static JSValue packed_float32_array_class_fill(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PackedFloat32Array::fill, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&PackedFloat32Array::fill, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_float32_array_class_resize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&PackedFloat32Array::resize, ctx, this_val, argc, argv);
 };
 static JSValue packed_float32_array_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PackedFloat32Array::clear, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&PackedFloat32Array::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_float32_array_class_has(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PackedFloat32Array::has, ctx, this_val, argc, argv);
 };
 static JSValue packed_float32_array_class_reverse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PackedFloat32Array::reverse, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&PackedFloat32Array::reverse, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_float32_array_class_slice(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -101,7 +100,7 @@ static JSValue packed_float32_array_class_to_byte_array(JSContext *ctx, JSValueC
 	return call_builtin_const_method_ret(&PackedFloat32Array::to_byte_array, ctx, this_val, argc, argv);
 };
 static JSValue packed_float32_array_class_sort(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&PackedFloat32Array::sort, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&PackedFloat32Array::sort, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue packed_float32_array_class_bsearch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -119,7 +118,6 @@ static JSValue packed_float32_array_class_rfind(JSContext *ctx, JSValueConst thi
 static JSValue packed_float32_array_class_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&PackedFloat32Array::count, ctx, this_val, argc, argv);
 };
-
 
 static const JSCFunctionListEntry packed_float32_array_class_proto_funcs[] = {
 	JS_CFUNC_DEF("size", 0, &packed_float32_array_class_size),
@@ -145,10 +143,7 @@ static const JSCFunctionListEntry packed_float32_array_class_proto_funcs[] = {
 	JS_CFUNC_DEF("count", 1, &packed_float32_array_class_count),
 };
 
-
-
 static int js_packed_float32_array_class_init(JSContext *ctx) {
-	
 	JS_NewClassID(&PackedFloat32Array::__class_id);
 	classes["PackedFloat32Array"] = PackedFloat32Array::__class_id;
 	class_id_list.insert(PackedFloat32Array::__class_id);

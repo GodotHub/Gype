@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_interface.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/open_xr_interface.hpp>
+#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void open_xr_interface_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,7 +30,7 @@ static JSValue open_xr_interface_class_constructor(JSContext *ctx, JSValueConst 
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, open_xr_interface_class);	
+	JS_SetOpaque(obj, open_xr_interface_class);
 	return obj;
 }
 static JSValue open_xr_interface_class_get_display_refresh_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -41,7 +39,7 @@ static JSValue open_xr_interface_class_get_display_refresh_rate(JSContext *ctx, 
 };
 static JSValue open_xr_interface_class_set_display_refresh_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInterface::set_display_refresh_rate, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OpenXRInterface::set_display_refresh_rate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_interface_class_get_render_target_size_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -50,7 +48,7 @@ static JSValue open_xr_interface_class_get_render_target_size_multiplier(JSConte
 };
 static JSValue open_xr_interface_class_set_render_target_size_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInterface::set_render_target_size_multiplier, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OpenXRInterface::set_render_target_size_multiplier, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_interface_class_is_foveation_supported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -63,7 +61,7 @@ static JSValue open_xr_interface_class_get_foveation_level(JSContext *ctx, JSVal
 };
 static JSValue open_xr_interface_class_set_foveation_level(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInterface::set_foveation_level, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OpenXRInterface::set_foveation_level, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_interface_class_get_foveation_dynamic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,7 +70,7 @@ static JSValue open_xr_interface_class_get_foveation_dynamic(JSContext *ctx, JSV
 };
 static JSValue open_xr_interface_class_set_foveation_dynamic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInterface::set_foveation_dynamic, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OpenXRInterface::set_foveation_dynamic, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_interface_class_is_action_set_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -81,7 +79,7 @@ static JSValue open_xr_interface_class_is_action_set_active(JSContext *ctx, JSVa
 };
 static JSValue open_xr_interface_class_set_action_set_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInterface::set_action_set_active, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OpenXRInterface::set_action_set_active, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_interface_class_get_action_sets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -94,7 +92,7 @@ static JSValue open_xr_interface_class_get_available_display_refresh_rates(JSCon
 };
 static JSValue open_xr_interface_class_set_motion_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInterface::set_motion_range, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OpenXRInterface::set_motion_range, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_interface_class_get_motion_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -147,7 +145,7 @@ static JSValue open_xr_interface_class_get_vrs_min_radius(JSContext *ctx, JSValu
 };
 static JSValue open_xr_interface_class_set_vrs_min_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInterface::set_vrs_min_radius, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OpenXRInterface::set_vrs_min_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_interface_class_get_vrs_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -156,7 +154,7 @@ static JSValue open_xr_interface_class_get_vrs_strength(JSContext *ctx, JSValueC
 };
 static JSValue open_xr_interface_class_set_vrs_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInterface::set_vrs_strength, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OpenXRInterface::set_vrs_strength, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry open_xr_interface_class_proto_funcs[] = {
@@ -192,54 +190,48 @@ static const JSCFunctionListEntry open_xr_interface_class_proto_funcs[] = {
 };
 
 void define_open_xr_interface_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "display_refresh_rate"),
-        JS_NewCFunction(ctx, open_xr_interface_class_get_display_refresh_rate, "get_display_refresh_rate", 0),
-        JS_NewCFunction(ctx, open_xr_interface_class_set_display_refresh_rate, "set_display_refresh_rate", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "render_target_size_multiplier"),
-        JS_NewCFunction(ctx, open_xr_interface_class_get_render_target_size_multiplier, "get_render_target_size_multiplier", 0),
-        JS_NewCFunction(ctx, open_xr_interface_class_set_render_target_size_multiplier, "set_render_target_size_multiplier", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "foveation_level"),
-        JS_NewCFunction(ctx, open_xr_interface_class_get_foveation_level, "get_foveation_level", 0),
-        JS_NewCFunction(ctx, open_xr_interface_class_set_foveation_level, "set_foveation_level", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "foveation_dynamic"),
-        JS_NewCFunction(ctx, open_xr_interface_class_get_foveation_dynamic, "get_foveation_dynamic", 0),
-        JS_NewCFunction(ctx, open_xr_interface_class_set_foveation_dynamic, "set_foveation_dynamic", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "vrs_min_radius"),
-        JS_NewCFunction(ctx, open_xr_interface_class_get_vrs_min_radius, "get_vrs_min_radius", 0),
-        JS_NewCFunction(ctx, open_xr_interface_class_set_vrs_min_radius, "set_vrs_min_radius", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "vrs_strength"),
-        JS_NewCFunction(ctx, open_xr_interface_class_get_vrs_strength, "get_vrs_strength", 0),
-        JS_NewCFunction(ctx, open_xr_interface_class_set_vrs_strength, "set_vrs_strength", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "display_refresh_rate"),
+			JS_NewCFunction(ctx, open_xr_interface_class_get_display_refresh_rate, "get_display_refresh_rate", 0),
+			JS_NewCFunction(ctx, open_xr_interface_class_set_display_refresh_rate, "set_display_refresh_rate", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "render_target_size_multiplier"),
+			JS_NewCFunction(ctx, open_xr_interface_class_get_render_target_size_multiplier, "get_render_target_size_multiplier", 0),
+			JS_NewCFunction(ctx, open_xr_interface_class_set_render_target_size_multiplier, "set_render_target_size_multiplier", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "foveation_level"),
+			JS_NewCFunction(ctx, open_xr_interface_class_get_foveation_level, "get_foveation_level", 0),
+			JS_NewCFunction(ctx, open_xr_interface_class_set_foveation_level, "set_foveation_level", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "foveation_dynamic"),
+			JS_NewCFunction(ctx, open_xr_interface_class_get_foveation_dynamic, "get_foveation_dynamic", 0),
+			JS_NewCFunction(ctx, open_xr_interface_class_set_foveation_dynamic, "set_foveation_dynamic", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "vrs_min_radius"),
+			JS_NewCFunction(ctx, open_xr_interface_class_get_vrs_min_radius, "get_vrs_min_radius", 0),
+			JS_NewCFunction(ctx, open_xr_interface_class_set_vrs_min_radius, "set_vrs_min_radius", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "vrs_strength"),
+			JS_NewCFunction(ctx, open_xr_interface_class_get_vrs_strength, "get_vrs_strength", 0),
+			JS_NewCFunction(ctx, open_xr_interface_class_set_vrs_strength, "set_vrs_strength", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -300,7 +292,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_open_xr_interface_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&OpenXRInterface::__class_id);
 	classes["OpenXRInterface"] = OpenXRInterface::__class_id;
 	class_id_list.insert(OpenXRInterface::__class_id);

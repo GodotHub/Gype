@@ -1,22 +1,20 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
+#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/classes/voxel_gi.hpp>
-#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/classes/voxel_gi_data.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void voxel_gi_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -35,12 +33,12 @@ static JSValue voxel_gi_class_constructor(JSContext *ctx, JSValueConst new_targe
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, voxel_gi_class);	
+	JS_SetOpaque(obj, voxel_gi_class);
 	return obj;
 }
 static JSValue voxel_gi_class_set_probe_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VoxelGI::set_probe_data, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VoxelGI::set_probe_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_class_get_probe_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -49,7 +47,7 @@ static JSValue voxel_gi_class_get_probe_data(JSContext *ctx, JSValueConst this_v
 };
 static JSValue voxel_gi_class_set_subdiv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VoxelGI::set_subdiv, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VoxelGI::set_subdiv, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_class_get_subdiv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -58,7 +56,7 @@ static JSValue voxel_gi_class_get_subdiv(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue voxel_gi_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VoxelGI::set_size, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VoxelGI::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,7 +65,7 @@ static JSValue voxel_gi_class_get_size(JSContext *ctx, JSValueConst this_val, in
 };
 static JSValue voxel_gi_class_set_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VoxelGI::set_camera_attributes, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VoxelGI::set_camera_attributes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_class_get_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -76,12 +74,12 @@ static JSValue voxel_gi_class_get_camera_attributes(JSContext *ctx, JSValueConst
 };
 static JSValue voxel_gi_class_bake(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VoxelGI::bake, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VoxelGI::bake, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue voxel_gi_class_debug_bake(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VoxelGI::debug_bake, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VoxelGI::debug_bake, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry voxel_gi_class_proto_funcs[] = {
@@ -98,38 +96,34 @@ static const JSCFunctionListEntry voxel_gi_class_proto_funcs[] = {
 };
 
 void define_voxel_gi_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "subdiv"),
-        JS_NewCFunction(ctx, voxel_gi_class_get_subdiv, "get_subdiv", 0),
-        JS_NewCFunction(ctx, voxel_gi_class_set_subdiv, "set_subdiv", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "size"),
-        JS_NewCFunction(ctx, voxel_gi_class_get_size, "get_size", 0),
-        JS_NewCFunction(ctx, voxel_gi_class_set_size, "set_size", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "camera_attributes"),
-        JS_NewCFunction(ctx, voxel_gi_class_get_camera_attributes, "get_camera_attributes", 0),
-        JS_NewCFunction(ctx, voxel_gi_class_set_camera_attributes, "set_camera_attributes", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "data"),
-        JS_NewCFunction(ctx, voxel_gi_class_get_probe_data, "get_probe_data", 0),
-        JS_NewCFunction(ctx, voxel_gi_class_set_probe_data, "set_probe_data", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "subdiv"),
+			JS_NewCFunction(ctx, voxel_gi_class_get_subdiv, "get_subdiv", 0),
+			JS_NewCFunction(ctx, voxel_gi_class_set_subdiv, "set_subdiv", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "size"),
+			JS_NewCFunction(ctx, voxel_gi_class_get_size, "get_size", 0),
+			JS_NewCFunction(ctx, voxel_gi_class_set_size, "set_size", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "camera_attributes"),
+			JS_NewCFunction(ctx, voxel_gi_class_get_camera_attributes, "get_camera_attributes", 0),
+			JS_NewCFunction(ctx, voxel_gi_class_set_camera_attributes, "set_camera_attributes", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "data"),
+			JS_NewCFunction(ctx, voxel_gi_class_get_probe_data, "get_probe_data", 0),
+			JS_NewCFunction(ctx, voxel_gi_class_set_probe_data, "set_probe_data", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -143,7 +137,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_voxel_gi_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&VoxelGI::__class_id);
 	classes["VoxelGI"] = VoxelGI::__class_id;
 	class_id_list.insert(VoxelGI::__class_id);

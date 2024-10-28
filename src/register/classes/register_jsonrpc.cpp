@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/jsonrpc.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void jsonrpc_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue jsonrpc_class_constructor(JSContext *ctx, JSValueConst new_target
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, jsonrpc_class);	
+	JS_SetOpaque(obj, jsonrpc_class);
 	return obj;
 }
 static JSValue jsonrpc_class_set_scope(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&JSONRPC::set_scope, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&JSONRPC::set_scope, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue jsonrpc_class_process_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,7 +86,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_jsonrpc_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&JSONRPC::__class_id);
 	classes["JSONRPC"] = JSONRPC::__class_id;
 	class_id_list.insert(JSONRPC::__class_id);

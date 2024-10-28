@@ -1,28 +1,26 @@
-import { GodotClass, Tool } from "@js_godot/class_defined";
+import { GodotClass, Tool, ToSignal } from "@js_godot/class_defined";
 import { Sprite2D } from "godot/classes/sprite2d";
 
 @GodotClass
 export class MySprite extends Sprite2D {
   vec2 = new Vector2(500, 0);
   constructor() {
-	super();
+    super();
   }
 
-  _method() {
-	GD.print("process");
+  _test() {
+    GD.print("_test");
+  }
+
+  async _enter_tree() {
+    GD.print("pre");
+    await ToSignal(this, "ready");
+    GD.print("after");
   }
 
   _ready() {
-	this.position = this.vec2;
-	GD.print(this.position);
-	
-	let method = new Callable(this, this._method);
-	method.call();
+    // GD.print(this.vec2);
   }
 
-  _process(delta) {
-	this.vec2.y += 100 * delta;
-	this.position = this.vec2;
-  }
-
+  _process(delta) {}
 }

@@ -1,21 +1,19 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/classes/skeleton2d.hpp>
+#include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void skeleton_modification_stack2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -34,22 +32,22 @@ static JSValue skeleton_modification_stack2d_class_constructor(JSContext *ctx, J
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, skeleton_modification_stack2d_class);	
+	JS_SetOpaque(obj, skeleton_modification_stack2d_class);
 	return obj;
 }
 static JSValue skeleton_modification_stack2d_class_setup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModificationStack2D::setup, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SkeletonModificationStack2D::setup, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification_stack2d_class_execute(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModificationStack2D::execute, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SkeletonModificationStack2D::execute, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification_stack2d_class_enable_all_modifications(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModificationStack2D::enable_all_modifications, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SkeletonModificationStack2D::enable_all_modifications, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification_stack2d_class_get_modification(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -58,22 +56,22 @@ static JSValue skeleton_modification_stack2d_class_get_modification(JSContext *c
 };
 static JSValue skeleton_modification_stack2d_class_add_modification(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModificationStack2D::add_modification, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SkeletonModificationStack2D::add_modification, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification_stack2d_class_delete_modification(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModificationStack2D::delete_modification, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SkeletonModificationStack2D::delete_modification, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification_stack2d_class_set_modification(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModificationStack2D::set_modification, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SkeletonModificationStack2D::set_modification, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification_stack2d_class_set_modification_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModificationStack2D::set_modification_count, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SkeletonModificationStack2D::set_modification_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification_stack2d_class_get_modification_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -86,7 +84,7 @@ static JSValue skeleton_modification_stack2d_class_get_is_setup(JSContext *ctx, 
 };
 static JSValue skeleton_modification_stack2d_class_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModificationStack2D::set_enabled, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SkeletonModificationStack2D::set_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification_stack2d_class_get_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -95,7 +93,7 @@ static JSValue skeleton_modification_stack2d_class_get_enabled(JSContext *ctx, J
 };
 static JSValue skeleton_modification_stack2d_class_set_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModificationStack2D::set_strength, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SkeletonModificationStack2D::set_strength, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification_stack2d_class_get_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -125,37 +123,33 @@ static const JSCFunctionListEntry skeleton_modification_stack2d_class_proto_func
 };
 
 void define_skeleton_modification_stack2d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "enabled"),
-        JS_NewCFunction(ctx, skeleton_modification_stack2d_class_get_enabled, "get_enabled", 0),
-        JS_NewCFunction(ctx, skeleton_modification_stack2d_class_set_enabled, "set_enabled", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "strength"),
-        JS_NewCFunction(ctx, skeleton_modification_stack2d_class_get_strength, "get_strength", 0),
-        JS_NewCFunction(ctx, skeleton_modification_stack2d_class_set_strength, "set_strength", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "modification_count"),
-        JS_NewCFunction(ctx, skeleton_modification_stack2d_class_get_modification_count, "get_modification_count", 0),
-        JS_NewCFunction(ctx, skeleton_modification_stack2d_class_set_modification_count, "set_modification_count", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "enabled"),
+			JS_NewCFunction(ctx, skeleton_modification_stack2d_class_get_enabled, "get_enabled", 0),
+			JS_NewCFunction(ctx, skeleton_modification_stack2d_class_set_enabled, "set_enabled", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "strength"),
+			JS_NewCFunction(ctx, skeleton_modification_stack2d_class_get_strength, "get_strength", 0),
+			JS_NewCFunction(ctx, skeleton_modification_stack2d_class_set_strength, "set_strength", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "modification_count"),
+			JS_NewCFunction(ctx, skeleton_modification_stack2d_class_get_modification_count, "get_modification_count", 0),
+			JS_NewCFunction(ctx, skeleton_modification_stack2d_class_set_modification_count, "set_modification_count", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_skeleton_modification_stack2d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&SkeletonModificationStack2D::__class_id);
 	classes["SkeletonModificationStack2D"] = SkeletonModificationStack2D::__class_id;
 	class_id_list.insert(SkeletonModificationStack2D::__class_id);

@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/render_scene_buffers_configuration.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void render_scene_buffers_configuration_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,7 +30,7 @@ static JSValue render_scene_buffers_configuration_class_constructor(JSContext *c
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, render_scene_buffers_configuration_class);	
+	JS_SetOpaque(obj, render_scene_buffers_configuration_class);
 	return obj;
 }
 static JSValue render_scene_buffers_configuration_class_get_render_target(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -41,7 +39,7 @@ static JSValue render_scene_buffers_configuration_class_get_render_target(JSCont
 };
 static JSValue render_scene_buffers_configuration_class_set_render_target(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_render_target, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_render_target, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_configuration_class_get_internal_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -50,7 +48,7 @@ static JSValue render_scene_buffers_configuration_class_get_internal_size(JSCont
 };
 static JSValue render_scene_buffers_configuration_class_set_internal_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_internal_size, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_internal_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_configuration_class_get_target_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -59,7 +57,7 @@ static JSValue render_scene_buffers_configuration_class_get_target_size(JSContex
 };
 static JSValue render_scene_buffers_configuration_class_set_target_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_target_size, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_target_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_configuration_class_get_view_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -68,7 +66,7 @@ static JSValue render_scene_buffers_configuration_class_get_view_count(JSContext
 };
 static JSValue render_scene_buffers_configuration_class_set_view_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_view_count, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_view_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_configuration_class_get_scaling_3d_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -77,7 +75,7 @@ static JSValue render_scene_buffers_configuration_class_get_scaling_3d_mode(JSCo
 };
 static JSValue render_scene_buffers_configuration_class_set_scaling_3d_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_scaling_3d_mode, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_scaling_3d_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_configuration_class_get_msaa_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -86,7 +84,7 @@ static JSValue render_scene_buffers_configuration_class_get_msaa_3d(JSContext *c
 };
 static JSValue render_scene_buffers_configuration_class_set_msaa_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_msaa_3d, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_msaa_3d, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_configuration_class_get_screen_space_aa(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -95,7 +93,7 @@ static JSValue render_scene_buffers_configuration_class_get_screen_space_aa(JSCo
 };
 static JSValue render_scene_buffers_configuration_class_set_screen_space_aa(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_screen_space_aa, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_screen_space_aa, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_configuration_class_get_fsr_sharpness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -104,7 +102,7 @@ static JSValue render_scene_buffers_configuration_class_get_fsr_sharpness(JSCont
 };
 static JSValue render_scene_buffers_configuration_class_set_fsr_sharpness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_fsr_sharpness, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_fsr_sharpness, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_configuration_class_get_texture_mipmap_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -113,7 +111,7 @@ static JSValue render_scene_buffers_configuration_class_get_texture_mipmap_bias(
 };
 static JSValue render_scene_buffers_configuration_class_set_texture_mipmap_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_texture_mipmap_bias, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&RenderSceneBuffersConfiguration::set_texture_mipmap_bias, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry render_scene_buffers_configuration_class_proto_funcs[] = {
@@ -138,85 +136,75 @@ static const JSCFunctionListEntry render_scene_buffers_configuration_class_proto
 };
 
 void define_render_scene_buffers_configuration_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "render_target"),
-        JS_NewCFunction(ctx, render_scene_buffers_configuration_class_get_render_target, "get_render_target", 0),
-        JS_NewCFunction(ctx, render_scene_buffers_configuration_class_set_render_target, "set_render_target", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "internal_size"),
-        JS_NewCFunction(ctx, render_scene_buffers_configuration_class_get_internal_size, "get_internal_size", 0),
-        JS_NewCFunction(ctx, render_scene_buffers_configuration_class_set_internal_size, "set_internal_size", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "target_size"),
-        JS_NewCFunction(ctx, render_scene_buffers_configuration_class_get_target_size, "get_target_size", 0),
-        JS_NewCFunction(ctx, render_scene_buffers_configuration_class_set_target_size, "set_target_size", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "view_count"),
-        JS_NewCFunction(ctx, render_scene_buffers_configuration_class_get_view_count, "get_view_count", 0),
-        JS_NewCFunction(ctx, render_scene_buffers_configuration_class_set_view_count, "set_view_count", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "scaling_3d_mode"),
-        JS_NewCFunction(ctx, render_scene_buffers_configuration_class_get_scaling_3d_mode, "get_scaling_3d_mode", 0),
-        JS_NewCFunction(ctx, render_scene_buffers_configuration_class_set_scaling_3d_mode, "set_scaling_3d_mode", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "msaa_3d"),
-        JS_NewCFunction(ctx, render_scene_buffers_configuration_class_get_msaa_3d, "get_msaa_3d", 0),
-        JS_NewCFunction(ctx, render_scene_buffers_configuration_class_set_msaa_3d, "set_msaa_3d", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "screen_space_aa"),
-        JS_NewCFunction(ctx, render_scene_buffers_configuration_class_get_screen_space_aa, "get_screen_space_aa", 0),
-        JS_NewCFunction(ctx, render_scene_buffers_configuration_class_set_screen_space_aa, "set_screen_space_aa", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "fsr_sharpness"),
-        JS_NewCFunction(ctx, render_scene_buffers_configuration_class_get_fsr_sharpness, "get_fsr_sharpness", 0),
-        JS_NewCFunction(ctx, render_scene_buffers_configuration_class_set_fsr_sharpness, "set_fsr_sharpness", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "texture_mipmap_bias"),
-        JS_NewCFunction(ctx, render_scene_buffers_configuration_class_get_texture_mipmap_bias, "get_texture_mipmap_bias", 0),
-        JS_NewCFunction(ctx, render_scene_buffers_configuration_class_set_texture_mipmap_bias, "set_texture_mipmap_bias", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "render_target"),
+			JS_NewCFunction(ctx, render_scene_buffers_configuration_class_get_render_target, "get_render_target", 0),
+			JS_NewCFunction(ctx, render_scene_buffers_configuration_class_set_render_target, "set_render_target", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "internal_size"),
+			JS_NewCFunction(ctx, render_scene_buffers_configuration_class_get_internal_size, "get_internal_size", 0),
+			JS_NewCFunction(ctx, render_scene_buffers_configuration_class_set_internal_size, "set_internal_size", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "target_size"),
+			JS_NewCFunction(ctx, render_scene_buffers_configuration_class_get_target_size, "get_target_size", 0),
+			JS_NewCFunction(ctx, render_scene_buffers_configuration_class_set_target_size, "set_target_size", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "view_count"),
+			JS_NewCFunction(ctx, render_scene_buffers_configuration_class_get_view_count, "get_view_count", 0),
+			JS_NewCFunction(ctx, render_scene_buffers_configuration_class_set_view_count, "set_view_count", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "scaling_3d_mode"),
+			JS_NewCFunction(ctx, render_scene_buffers_configuration_class_get_scaling_3d_mode, "get_scaling_3d_mode", 0),
+			JS_NewCFunction(ctx, render_scene_buffers_configuration_class_set_scaling_3d_mode, "set_scaling_3d_mode", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "msaa_3d"),
+			JS_NewCFunction(ctx, render_scene_buffers_configuration_class_get_msaa_3d, "get_msaa_3d", 0),
+			JS_NewCFunction(ctx, render_scene_buffers_configuration_class_set_msaa_3d, "set_msaa_3d", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "screen_space_aa"),
+			JS_NewCFunction(ctx, render_scene_buffers_configuration_class_get_screen_space_aa, "get_screen_space_aa", 0),
+			JS_NewCFunction(ctx, render_scene_buffers_configuration_class_set_screen_space_aa, "set_screen_space_aa", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "fsr_sharpness"),
+			JS_NewCFunction(ctx, render_scene_buffers_configuration_class_get_fsr_sharpness, "get_fsr_sharpness", 0),
+			JS_NewCFunction(ctx, render_scene_buffers_configuration_class_set_fsr_sharpness, "set_fsr_sharpness", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "texture_mipmap_bias"),
+			JS_NewCFunction(ctx, render_scene_buffers_configuration_class_get_texture_mipmap_bias, "get_texture_mipmap_bias", 0),
+			JS_NewCFunction(ctx, render_scene_buffers_configuration_class_set_texture_mipmap_bias, "set_texture_mipmap_bias", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_render_scene_buffers_configuration_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&RenderSceneBuffersConfiguration::__class_id);
 	classes["RenderSceneBuffersConfiguration"] = RenderSceneBuffersConfiguration::__class_id;
 	class_id_list.insert(RenderSceneBuffersConfiguration::__class_id);

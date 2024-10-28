@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/mesh_convex_decomposition_settings.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void mesh_convex_decomposition_settings_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue mesh_convex_decomposition_settings_class_constructor(JSContext *c
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, mesh_convex_decomposition_settings_class);	
+	JS_SetOpaque(obj, mesh_convex_decomposition_settings_class);
 	return obj;
 }
 static JSValue mesh_convex_decomposition_settings_class_set_max_concavity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_max_concavity, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_max_concavity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_convex_decomposition_settings_class_get_max_concavity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue mesh_convex_decomposition_settings_class_get_max_concavity(JSCont
 };
 static JSValue mesh_convex_decomposition_settings_class_set_symmetry_planes_clipping_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_symmetry_planes_clipping_bias, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_symmetry_planes_clipping_bias, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_convex_decomposition_settings_class_get_symmetry_planes_clipping_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,7 +53,7 @@ static JSValue mesh_convex_decomposition_settings_class_get_symmetry_planes_clip
 };
 static JSValue mesh_convex_decomposition_settings_class_set_revolution_axes_clipping_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_revolution_axes_clipping_bias, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_revolution_axes_clipping_bias, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_convex_decomposition_settings_class_get_revolution_axes_clipping_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -64,7 +62,7 @@ static JSValue mesh_convex_decomposition_settings_class_get_revolution_axes_clip
 };
 static JSValue mesh_convex_decomposition_settings_class_set_min_volume_per_convex_hull(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_min_volume_per_convex_hull, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_min_volume_per_convex_hull, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_convex_decomposition_settings_class_get_min_volume_per_convex_hull(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -73,7 +71,7 @@ static JSValue mesh_convex_decomposition_settings_class_get_min_volume_per_conve
 };
 static JSValue mesh_convex_decomposition_settings_class_set_resolution(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_resolution, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_resolution, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_convex_decomposition_settings_class_get_resolution(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,7 +80,7 @@ static JSValue mesh_convex_decomposition_settings_class_get_resolution(JSContext
 };
 static JSValue mesh_convex_decomposition_settings_class_set_max_num_vertices_per_convex_hull(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_max_num_vertices_per_convex_hull, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_max_num_vertices_per_convex_hull, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_convex_decomposition_settings_class_get_max_num_vertices_per_convex_hull(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -91,7 +89,7 @@ static JSValue mesh_convex_decomposition_settings_class_get_max_num_vertices_per
 };
 static JSValue mesh_convex_decomposition_settings_class_set_plane_downsampling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_plane_downsampling, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_plane_downsampling, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_convex_decomposition_settings_class_get_plane_downsampling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -100,7 +98,7 @@ static JSValue mesh_convex_decomposition_settings_class_get_plane_downsampling(J
 };
 static JSValue mesh_convex_decomposition_settings_class_set_convex_hull_downsampling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_convex_hull_downsampling, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_convex_hull_downsampling, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_convex_decomposition_settings_class_get_convex_hull_downsampling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -109,7 +107,7 @@ static JSValue mesh_convex_decomposition_settings_class_get_convex_hull_downsamp
 };
 static JSValue mesh_convex_decomposition_settings_class_set_normalize_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_normalize_mesh, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_normalize_mesh, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_convex_decomposition_settings_class_get_normalize_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -118,7 +116,7 @@ static JSValue mesh_convex_decomposition_settings_class_get_normalize_mesh(JSCon
 };
 static JSValue mesh_convex_decomposition_settings_class_set_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_mode, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_convex_decomposition_settings_class_get_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -127,7 +125,7 @@ static JSValue mesh_convex_decomposition_settings_class_get_mode(JSContext *ctx,
 };
 static JSValue mesh_convex_decomposition_settings_class_set_convex_hull_approximation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_convex_hull_approximation, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_convex_hull_approximation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_convex_decomposition_settings_class_get_convex_hull_approximation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -136,7 +134,7 @@ static JSValue mesh_convex_decomposition_settings_class_get_convex_hull_approxim
 };
 static JSValue mesh_convex_decomposition_settings_class_set_max_convex_hulls(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_max_convex_hulls, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_max_convex_hulls, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_convex_decomposition_settings_class_get_max_convex_hulls(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -145,7 +143,7 @@ static JSValue mesh_convex_decomposition_settings_class_get_max_convex_hulls(JSC
 };
 static JSValue mesh_convex_decomposition_settings_class_set_project_hull_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_project_hull_vertices, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&MeshConvexDecompositionSettings::set_project_hull_vertices, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_convex_decomposition_settings_class_get_project_hull_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -182,110 +180,97 @@ static const JSCFunctionListEntry mesh_convex_decomposition_settings_class_proto
 };
 
 void define_mesh_convex_decomposition_settings_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "max_concavity"),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_max_concavity, "get_max_concavity", 0),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_max_concavity, "set_max_concavity", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "symmetry_planes_clipping_bias"),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_symmetry_planes_clipping_bias, "get_symmetry_planes_clipping_bias", 0),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_symmetry_planes_clipping_bias, "set_symmetry_planes_clipping_bias", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "revolution_axes_clipping_bias"),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_revolution_axes_clipping_bias, "get_revolution_axes_clipping_bias", 0),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_revolution_axes_clipping_bias, "set_revolution_axes_clipping_bias", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "min_volume_per_convex_hull"),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_min_volume_per_convex_hull, "get_min_volume_per_convex_hull", 0),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_min_volume_per_convex_hull, "set_min_volume_per_convex_hull", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "resolution"),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_resolution, "get_resolution", 0),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_resolution, "set_resolution", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "max_num_vertices_per_convex_hull"),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_max_num_vertices_per_convex_hull, "get_max_num_vertices_per_convex_hull", 0),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_max_num_vertices_per_convex_hull, "set_max_num_vertices_per_convex_hull", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "plane_downsampling"),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_plane_downsampling, "get_plane_downsampling", 0),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_plane_downsampling, "set_plane_downsampling", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "convex_hull_downsampling"),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_convex_hull_downsampling, "get_convex_hull_downsampling", 0),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_convex_hull_downsampling, "set_convex_hull_downsampling", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "normalize_mesh"),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_normalize_mesh, "get_normalize_mesh", 0),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_normalize_mesh, "set_normalize_mesh", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "mode"),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_mode, "get_mode", 0),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_mode, "set_mode", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "convex_hull_approximation"),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_convex_hull_approximation, "get_convex_hull_approximation", 0),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_convex_hull_approximation, "set_convex_hull_approximation", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "max_convex_hulls"),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_max_convex_hulls, "get_max_convex_hulls", 0),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_max_convex_hulls, "set_max_convex_hulls", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "project_hull_vertices"),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_project_hull_vertices, "get_project_hull_vertices", 0),
-        JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_project_hull_vertices, "set_project_hull_vertices", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "max_concavity"),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_max_concavity, "get_max_concavity", 0),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_max_concavity, "set_max_concavity", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "symmetry_planes_clipping_bias"),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_symmetry_planes_clipping_bias, "get_symmetry_planes_clipping_bias", 0),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_symmetry_planes_clipping_bias, "set_symmetry_planes_clipping_bias", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "revolution_axes_clipping_bias"),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_revolution_axes_clipping_bias, "get_revolution_axes_clipping_bias", 0),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_revolution_axes_clipping_bias, "set_revolution_axes_clipping_bias", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "min_volume_per_convex_hull"),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_min_volume_per_convex_hull, "get_min_volume_per_convex_hull", 0),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_min_volume_per_convex_hull, "set_min_volume_per_convex_hull", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "resolution"),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_resolution, "get_resolution", 0),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_resolution, "set_resolution", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "max_num_vertices_per_convex_hull"),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_max_num_vertices_per_convex_hull, "get_max_num_vertices_per_convex_hull", 0),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_max_num_vertices_per_convex_hull, "set_max_num_vertices_per_convex_hull", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "plane_downsampling"),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_plane_downsampling, "get_plane_downsampling", 0),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_plane_downsampling, "set_plane_downsampling", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "convex_hull_downsampling"),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_convex_hull_downsampling, "get_convex_hull_downsampling", 0),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_convex_hull_downsampling, "set_convex_hull_downsampling", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "normalize_mesh"),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_normalize_mesh, "get_normalize_mesh", 0),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_normalize_mesh, "set_normalize_mesh", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "mode"),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_mode, "get_mode", 0),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_mode, "set_mode", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "convex_hull_approximation"),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_convex_hull_approximation, "get_convex_hull_approximation", 0),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_convex_hull_approximation, "set_convex_hull_approximation", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "max_convex_hulls"),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_max_convex_hulls, "get_max_convex_hulls", 0),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_max_convex_hulls, "set_max_convex_hulls", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "project_hull_vertices"),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_get_project_hull_vertices, "get_project_hull_vertices", 0),
+			JS_NewCFunction(ctx, mesh_convex_decomposition_settings_class_set_project_hull_vertices, "set_project_hull_vertices", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -296,7 +281,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_mesh_convex_decomposition_settings_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&MeshConvexDecompositionSettings::__class_id);
 	classes["MeshConvexDecompositionSettings"] = MeshConvexDecompositionSettings::__class_id;
 	class_id_list.insert(MeshConvexDecompositionSettings::__class_id);

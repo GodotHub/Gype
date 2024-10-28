@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/property_tweener.hpp>
 #include <godot_cpp/classes/tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void property_tweener_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,7 +30,7 @@ static JSValue property_tweener_class_constructor(JSContext *ctx, JSValueConst n
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, property_tweener_class);	
+	JS_SetOpaque(obj, property_tweener_class);
 	return obj;
 }
 static JSValue property_tweener_class_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -80,7 +78,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_property_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&PropertyTweener::__class_id);
 	classes["PropertyTweener"] = PropertyTweener::__class_id;
 	class_id_list.insert(PropertyTweener::__class_id);

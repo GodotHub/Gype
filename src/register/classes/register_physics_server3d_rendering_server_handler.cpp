@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/physics_server3d_rendering_server_handler.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void physics_server3d_rendering_server_handler_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,22 +30,22 @@ static JSValue physics_server3d_rendering_server_handler_class_constructor(JSCon
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, physics_server3d_rendering_server_handler_class);	
+	JS_SetOpaque(obj, physics_server3d_rendering_server_handler_class);
 	return obj;
 }
 static JSValue physics_server3d_rendering_server_handler_class_set_vertex(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsServer3DRenderingServerHandler::set_vertex, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&PhysicsServer3DRenderingServerHandler::set_vertex, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_rendering_server_handler_class_set_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsServer3DRenderingServerHandler::set_normal, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&PhysicsServer3DRenderingServerHandler::set_normal, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_rendering_server_handler_class_set_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsServer3DRenderingServerHandler::set_aabb, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&PhysicsServer3DRenderingServerHandler::set_aabb, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry physics_server3d_rendering_server_handler_class_proto_funcs[] = {
@@ -63,7 +61,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_physics_server3d_rendering_server_handler_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&PhysicsServer3DRenderingServerHandler::__class_id);
 	classes["PhysicsServer3DRenderingServerHandler"] = PhysicsServer3DRenderingServerHandler::__class_id;
 	class_id_list.insert(PhysicsServer3DRenderingServerHandler::__class_id);

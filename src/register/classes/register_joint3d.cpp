@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node3d.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/joint3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void joint3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue joint3d_class_constructor(JSContext *ctx, JSValueConst new_target
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, joint3d_class);	
+	JS_SetOpaque(obj, joint3d_class);
 	return obj;
 }
 static JSValue joint3d_class_set_node_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Joint3D::set_node_a, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Joint3D::set_node_a, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue joint3d_class_get_node_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue joint3d_class_get_node_a(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue joint3d_class_set_node_b(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Joint3D::set_node_b, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Joint3D::set_node_b, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue joint3d_class_get_node_b(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,7 +53,7 @@ static JSValue joint3d_class_get_node_b(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue joint3d_class_set_solver_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Joint3D::set_solver_priority, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Joint3D::set_solver_priority, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue joint3d_class_get_solver_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -64,7 +62,7 @@ static JSValue joint3d_class_get_solver_priority(JSContext *ctx, JSValueConst th
 };
 static JSValue joint3d_class_set_exclude_nodes_from_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Joint3D::set_exclude_nodes_from_collision, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&Joint3D::set_exclude_nodes_from_collision, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue joint3d_class_get_exclude_nodes_from_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,45 +86,40 @@ static const JSCFunctionListEntry joint3d_class_proto_funcs[] = {
 };
 
 void define_joint3d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "node_a"),
-        JS_NewCFunction(ctx, joint3d_class_get_node_a, "get_node_a", 0),
-        JS_NewCFunction(ctx, joint3d_class_set_node_a, "set_node_a", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "node_b"),
-        JS_NewCFunction(ctx, joint3d_class_get_node_b, "get_node_b", 0),
-        JS_NewCFunction(ctx, joint3d_class_set_node_b, "set_node_b", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "solver_priority"),
-        JS_NewCFunction(ctx, joint3d_class_get_solver_priority, "get_solver_priority", 0),
-        JS_NewCFunction(ctx, joint3d_class_set_solver_priority, "set_solver_priority", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "exclude_nodes_from_collision"),
-        JS_NewCFunction(ctx, joint3d_class_get_exclude_nodes_from_collision, "get_exclude_nodes_from_collision", 0),
-        JS_NewCFunction(ctx, joint3d_class_set_exclude_nodes_from_collision, "set_exclude_nodes_from_collision", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "node_a"),
+			JS_NewCFunction(ctx, joint3d_class_get_node_a, "get_node_a", 0),
+			JS_NewCFunction(ctx, joint3d_class_set_node_a, "set_node_a", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "node_b"),
+			JS_NewCFunction(ctx, joint3d_class_get_node_b, "get_node_b", 0),
+			JS_NewCFunction(ctx, joint3d_class_set_node_b, "set_node_b", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "solver_priority"),
+			JS_NewCFunction(ctx, joint3d_class_get_solver_priority, "get_solver_priority", 0),
+			JS_NewCFunction(ctx, joint3d_class_set_solver_priority, "set_solver_priority", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "exclude_nodes_from_collision"),
+			JS_NewCFunction(ctx, joint3d_class_get_exclude_nodes_from_collision, "get_exclude_nodes_from_collision", 0),
+			JS_NewCFunction(ctx, joint3d_class_set_exclude_nodes_from_collision, "set_exclude_nodes_from_collision", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_joint3d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&Joint3D::__class_id);
 	classes["Joint3D"] = Joint3D::__class_id;
 	class_id_list.insert(Joint3D::__class_id);

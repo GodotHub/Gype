@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/editor_file_system_directory.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/editor_file_system.hpp>
+#include <godot_cpp/classes/editor_file_system_directory.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void editor_file_system_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,7 +31,7 @@ static JSValue editor_file_system_class_constructor(JSContext *ctx, JSValueConst
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_file_system_class);	
+	JS_SetOpaque(obj, editor_file_system_class);
 	return obj;
 }
 static JSValue editor_file_system_class_get_filesystem(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -50,17 +48,17 @@ static JSValue editor_file_system_class_get_scanning_progress(JSContext *ctx, JS
 };
 static JSValue editor_file_system_class_scan(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorFileSystem::scan, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&EditorFileSystem::scan, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_file_system_class_scan_sources(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorFileSystem::scan_sources, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&EditorFileSystem::scan_sources, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_file_system_class_update_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorFileSystem::update_file, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&EditorFileSystem::update_file, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_file_system_class_get_filesystem_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -73,7 +71,7 @@ static JSValue editor_file_system_class_get_file_type(JSContext *ctx, JSValueCon
 };
 static JSValue editor_file_system_class_reimport_files(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorFileSystem::reimport_files, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&EditorFileSystem::reimport_files, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry editor_file_system_class_proto_funcs[] = {
@@ -95,7 +93,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_file_system_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&EditorFileSystem::__class_id);
 	classes["EditorFileSystem"] = EditorFileSystem::__class_id;
 	class_id_list.insert(EditorFileSystem::__class_id);

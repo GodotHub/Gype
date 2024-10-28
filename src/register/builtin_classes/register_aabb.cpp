@@ -6,7 +6,6 @@
 #include "utils/func_utils.h"
 #include <godot_cpp/variant/aabb.hpp>
 
-
 using namespace godot;
 
 static void aabb_class_finalizer(JSRuntime *rt, JSValue val) {

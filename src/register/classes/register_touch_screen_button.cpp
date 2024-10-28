@@ -1,22 +1,20 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/bit_map.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/touch_screen_button.hpp>
-#include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void touch_screen_button_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -35,12 +33,12 @@ static JSValue touch_screen_button_class_constructor(JSContext *ctx, JSValueCons
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, touch_screen_button_class);	
+	JS_SetOpaque(obj, touch_screen_button_class);
 	return obj;
 }
 static JSValue touch_screen_button_class_set_texture_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TouchScreenButton::set_texture_normal, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TouchScreenButton::set_texture_normal, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue touch_screen_button_class_get_texture_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -49,7 +47,7 @@ static JSValue touch_screen_button_class_get_texture_normal(JSContext *ctx, JSVa
 };
 static JSValue touch_screen_button_class_set_texture_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TouchScreenButton::set_texture_pressed, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TouchScreenButton::set_texture_pressed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue touch_screen_button_class_get_texture_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -58,7 +56,7 @@ static JSValue touch_screen_button_class_get_texture_pressed(JSContext *ctx, JSV
 };
 static JSValue touch_screen_button_class_set_bitmask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TouchScreenButton::set_bitmask, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TouchScreenButton::set_bitmask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue touch_screen_button_class_get_bitmask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,7 +65,7 @@ static JSValue touch_screen_button_class_get_bitmask(JSContext *ctx, JSValueCons
 };
 static JSValue touch_screen_button_class_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TouchScreenButton::set_shape, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TouchScreenButton::set_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue touch_screen_button_class_get_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -76,7 +74,7 @@ static JSValue touch_screen_button_class_get_shape(JSContext *ctx, JSValueConst 
 };
 static JSValue touch_screen_button_class_set_shape_centered(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TouchScreenButton::set_shape_centered, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TouchScreenButton::set_shape_centered, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue touch_screen_button_class_is_shape_centered(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -85,7 +83,7 @@ static JSValue touch_screen_button_class_is_shape_centered(JSContext *ctx, JSVal
 };
 static JSValue touch_screen_button_class_set_shape_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TouchScreenButton::set_shape_visible, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TouchScreenButton::set_shape_visible, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue touch_screen_button_class_is_shape_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -94,7 +92,7 @@ static JSValue touch_screen_button_class_is_shape_visible(JSContext *ctx, JSValu
 };
 static JSValue touch_screen_button_class_set_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TouchScreenButton::set_action, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TouchScreenButton::set_action, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue touch_screen_button_class_get_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -103,7 +101,7 @@ static JSValue touch_screen_button_class_get_action(JSContext *ctx, JSValueConst
 };
 static JSValue touch_screen_button_class_set_visibility_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TouchScreenButton::set_visibility_mode, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TouchScreenButton::set_visibility_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue touch_screen_button_class_get_visibility_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -112,7 +110,7 @@ static JSValue touch_screen_button_class_get_visibility_mode(JSContext *ctx, JSV
 };
 static JSValue touch_screen_button_class_set_passby_press(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TouchScreenButton::set_passby_press, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TouchScreenButton::set_passby_press, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue touch_screen_button_class_is_passby_press_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -146,78 +144,69 @@ static const JSCFunctionListEntry touch_screen_button_class_proto_funcs[] = {
 };
 
 void define_touch_screen_button_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "texture_normal"),
-        JS_NewCFunction(ctx, touch_screen_button_class_get_texture_normal, "get_texture_normal", 0),
-        JS_NewCFunction(ctx, touch_screen_button_class_set_texture_normal, "set_texture_normal", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "texture_pressed"),
-        JS_NewCFunction(ctx, touch_screen_button_class_get_texture_pressed, "get_texture_pressed", 0),
-        JS_NewCFunction(ctx, touch_screen_button_class_set_texture_pressed, "set_texture_pressed", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "bitmask"),
-        JS_NewCFunction(ctx, touch_screen_button_class_get_bitmask, "get_bitmask", 0),
-        JS_NewCFunction(ctx, touch_screen_button_class_set_bitmask, "set_bitmask", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "shape"),
-        JS_NewCFunction(ctx, touch_screen_button_class_get_shape, "get_shape", 0),
-        JS_NewCFunction(ctx, touch_screen_button_class_set_shape, "set_shape", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "shape_centered"),
-        JS_NewCFunction(ctx, touch_screen_button_class_is_shape_centered, "is_shape_centered", 0),
-        JS_NewCFunction(ctx, touch_screen_button_class_set_shape_centered, "set_shape_centered", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "shape_visible"),
-        JS_NewCFunction(ctx, touch_screen_button_class_is_shape_visible, "is_shape_visible", 0),
-        JS_NewCFunction(ctx, touch_screen_button_class_set_shape_visible, "set_shape_visible", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "passby_press"),
-        JS_NewCFunction(ctx, touch_screen_button_class_is_passby_press_enabled, "is_passby_press_enabled", 0),
-        JS_NewCFunction(ctx, touch_screen_button_class_set_passby_press, "set_passby_press", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "action"),
-        JS_NewCFunction(ctx, touch_screen_button_class_get_action, "get_action", 0),
-        JS_NewCFunction(ctx, touch_screen_button_class_set_action, "set_action", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "visibility_mode"),
-        JS_NewCFunction(ctx, touch_screen_button_class_get_visibility_mode, "get_visibility_mode", 0),
-        JS_NewCFunction(ctx, touch_screen_button_class_set_visibility_mode, "set_visibility_mode", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "texture_normal"),
+			JS_NewCFunction(ctx, touch_screen_button_class_get_texture_normal, "get_texture_normal", 0),
+			JS_NewCFunction(ctx, touch_screen_button_class_set_texture_normal, "set_texture_normal", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "texture_pressed"),
+			JS_NewCFunction(ctx, touch_screen_button_class_get_texture_pressed, "get_texture_pressed", 0),
+			JS_NewCFunction(ctx, touch_screen_button_class_set_texture_pressed, "set_texture_pressed", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "bitmask"),
+			JS_NewCFunction(ctx, touch_screen_button_class_get_bitmask, "get_bitmask", 0),
+			JS_NewCFunction(ctx, touch_screen_button_class_set_bitmask, "set_bitmask", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "shape"),
+			JS_NewCFunction(ctx, touch_screen_button_class_get_shape, "get_shape", 0),
+			JS_NewCFunction(ctx, touch_screen_button_class_set_shape, "set_shape", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "shape_centered"),
+			JS_NewCFunction(ctx, touch_screen_button_class_is_shape_centered, "is_shape_centered", 0),
+			JS_NewCFunction(ctx, touch_screen_button_class_set_shape_centered, "set_shape_centered", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "shape_visible"),
+			JS_NewCFunction(ctx, touch_screen_button_class_is_shape_visible, "is_shape_visible", 0),
+			JS_NewCFunction(ctx, touch_screen_button_class_set_shape_visible, "set_shape_visible", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "passby_press"),
+			JS_NewCFunction(ctx, touch_screen_button_class_is_passby_press_enabled, "is_passby_press_enabled", 0),
+			JS_NewCFunction(ctx, touch_screen_button_class_set_passby_press, "set_passby_press", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "action"),
+			JS_NewCFunction(ctx, touch_screen_button_class_get_action, "get_action", 0),
+			JS_NewCFunction(ctx, touch_screen_button_class_set_action, "set_action", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "visibility_mode"),
+			JS_NewCFunction(ctx, touch_screen_button_class_get_visibility_mode, "get_visibility_mode", 0),
+			JS_NewCFunction(ctx, touch_screen_button_class_set_visibility_mode, "set_visibility_mode", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -228,7 +217,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_touch_screen_button_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&TouchScreenButton::__class_id);
 	classes["TouchScreenButton"] = TouchScreenButton::__class_id;
 	class_id_list.insert(TouchScreenButton::__class_id);

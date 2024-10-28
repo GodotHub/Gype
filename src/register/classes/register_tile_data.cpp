@@ -1,22 +1,20 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tile_data.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
+#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/navigation_polygon.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/occluder_polygon2d.hpp>
-#include <godot_cpp/classes/navigation_polygon.hpp>
-#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/tile_data.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void tile_data_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -35,12 +33,12 @@ static JSValue tile_data_class_constructor(JSContext *ctx, JSValueConst new_targ
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, tile_data_class);	
+	JS_SetOpaque(obj, tile_data_class);
 	return obj;
 }
 static JSValue tile_data_class_set_flip_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_flip_h, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_flip_h, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_flip_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -49,7 +47,7 @@ static JSValue tile_data_class_get_flip_h(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue tile_data_class_set_flip_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_flip_v, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_flip_v, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_flip_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -58,7 +56,7 @@ static JSValue tile_data_class_get_flip_v(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue tile_data_class_set_transpose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_transpose, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_transpose, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_transpose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,7 +65,7 @@ static JSValue tile_data_class_get_transpose(JSContext *ctx, JSValueConst this_v
 };
 static JSValue tile_data_class_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_material, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -76,7 +74,7 @@ static JSValue tile_data_class_get_material(JSContext *ctx, JSValueConst this_va
 };
 static JSValue tile_data_class_set_texture_origin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_texture_origin, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_texture_origin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_texture_origin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -85,7 +83,7 @@ static JSValue tile_data_class_get_texture_origin(JSContext *ctx, JSValueConst t
 };
 static JSValue tile_data_class_set_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_modulate, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_modulate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -94,7 +92,7 @@ static JSValue tile_data_class_get_modulate(JSContext *ctx, JSValueConst this_va
 };
 static JSValue tile_data_class_set_z_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_z_index, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_z_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_z_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -103,7 +101,7 @@ static JSValue tile_data_class_get_z_index(JSContext *ctx, JSValueConst this_val
 };
 static JSValue tile_data_class_set_y_sort_origin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_y_sort_origin, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_y_sort_origin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_y_sort_origin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -112,7 +110,7 @@ static JSValue tile_data_class_get_y_sort_origin(JSContext *ctx, JSValueConst th
 };
 static JSValue tile_data_class_set_occluder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_occluder, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_occluder, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_occluder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -121,7 +119,7 @@ static JSValue tile_data_class_get_occluder(JSContext *ctx, JSValueConst this_va
 };
 static JSValue tile_data_class_set_constant_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_constant_linear_velocity, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_constant_linear_velocity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_constant_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -130,7 +128,7 @@ static JSValue tile_data_class_get_constant_linear_velocity(JSContext *ctx, JSVa
 };
 static JSValue tile_data_class_set_constant_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_constant_angular_velocity, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_constant_angular_velocity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_constant_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -139,7 +137,7 @@ static JSValue tile_data_class_get_constant_angular_velocity(JSContext *ctx, JSV
 };
 static JSValue tile_data_class_set_collision_polygons_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_collision_polygons_count, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_collision_polygons_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_collision_polygons_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -148,17 +146,17 @@ static JSValue tile_data_class_get_collision_polygons_count(JSContext *ctx, JSVa
 };
 static JSValue tile_data_class_add_collision_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::add_collision_polygon, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::add_collision_polygon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_remove_collision_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::remove_collision_polygon, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::remove_collision_polygon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_set_collision_polygon_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_collision_polygon_points, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_collision_polygon_points, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_collision_polygon_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -167,7 +165,7 @@ static JSValue tile_data_class_get_collision_polygon_points(JSContext *ctx, JSVa
 };
 static JSValue tile_data_class_set_collision_polygon_one_way(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_collision_polygon_one_way, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_collision_polygon_one_way, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_is_collision_polygon_one_way(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -176,7 +174,7 @@ static JSValue tile_data_class_is_collision_polygon_one_way(JSContext *ctx, JSVa
 };
 static JSValue tile_data_class_set_collision_polygon_one_way_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_collision_polygon_one_way_margin, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_collision_polygon_one_way_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_collision_polygon_one_way_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -185,7 +183,7 @@ static JSValue tile_data_class_get_collision_polygon_one_way_margin(JSContext *c
 };
 static JSValue tile_data_class_set_terrain_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_terrain_set, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_terrain_set, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_terrain_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -194,7 +192,7 @@ static JSValue tile_data_class_get_terrain_set(JSContext *ctx, JSValueConst this
 };
 static JSValue tile_data_class_set_terrain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_terrain, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_terrain, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_terrain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -203,7 +201,7 @@ static JSValue tile_data_class_get_terrain(JSContext *ctx, JSValueConst this_val
 };
 static JSValue tile_data_class_set_terrain_peering_bit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_terrain_peering_bit, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_terrain_peering_bit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_terrain_peering_bit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -216,7 +214,7 @@ static JSValue tile_data_class_is_valid_terrain_peering_bit(JSContext *ctx, JSVa
 };
 static JSValue tile_data_class_set_navigation_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_navigation_polygon, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_navigation_polygon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_navigation_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -225,7 +223,7 @@ static JSValue tile_data_class_get_navigation_polygon(JSContext *ctx, JSValueCon
 };
 static JSValue tile_data_class_set_probability(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_probability, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_probability, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_probability(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -234,7 +232,7 @@ static JSValue tile_data_class_get_probability(JSContext *ctx, JSValueConst this
 };
 static JSValue tile_data_class_set_custom_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_custom_data, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_custom_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_custom_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -243,7 +241,7 @@ static JSValue tile_data_class_get_custom_data(JSContext *ctx, JSValueConst this
 };
 static JSValue tile_data_class_set_custom_data_by_layer_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileData::set_custom_data_by_layer_id, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&TileData::set_custom_data_by_layer_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue tile_data_class_get_custom_data_by_layer_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -301,101 +299,89 @@ static const JSCFunctionListEntry tile_data_class_proto_funcs[] = {
 };
 
 void define_tile_data_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "flip_h"),
-        JS_NewCFunction(ctx, tile_data_class_get_flip_h, "get_flip_h", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_flip_h, "set_flip_h", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "flip_v"),
-        JS_NewCFunction(ctx, tile_data_class_get_flip_v, "get_flip_v", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_flip_v, "set_flip_v", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "transpose"),
-        JS_NewCFunction(ctx, tile_data_class_get_transpose, "get_transpose", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_transpose, "set_transpose", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "texture_origin"),
-        JS_NewCFunction(ctx, tile_data_class_get_texture_origin, "get_texture_origin", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_texture_origin, "set_texture_origin", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "modulate"),
-        JS_NewCFunction(ctx, tile_data_class_get_modulate, "get_modulate", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_modulate, "set_modulate", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "material"),
-        JS_NewCFunction(ctx, tile_data_class_get_material, "get_material", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_material, "set_material", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "z_index"),
-        JS_NewCFunction(ctx, tile_data_class_get_z_index, "get_z_index", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_z_index, "set_z_index", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "y_sort_origin"),
-        JS_NewCFunction(ctx, tile_data_class_get_y_sort_origin, "get_y_sort_origin", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_y_sort_origin, "set_y_sort_origin", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "terrain_set"),
-        JS_NewCFunction(ctx, tile_data_class_get_terrain_set, "get_terrain_set", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_terrain_set, "set_terrain_set", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "terrain"),
-        JS_NewCFunction(ctx, tile_data_class_get_terrain, "get_terrain", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_terrain, "set_terrain", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "probability"),
-        JS_NewCFunction(ctx, tile_data_class_get_probability, "get_probability", 0),
-        JS_NewCFunction(ctx, tile_data_class_set_probability, "set_probability", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "flip_h"),
+			JS_NewCFunction(ctx, tile_data_class_get_flip_h, "get_flip_h", 0),
+			JS_NewCFunction(ctx, tile_data_class_set_flip_h, "set_flip_h", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "flip_v"),
+			JS_NewCFunction(ctx, tile_data_class_get_flip_v, "get_flip_v", 0),
+			JS_NewCFunction(ctx, tile_data_class_set_flip_v, "set_flip_v", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "transpose"),
+			JS_NewCFunction(ctx, tile_data_class_get_transpose, "get_transpose", 0),
+			JS_NewCFunction(ctx, tile_data_class_set_transpose, "set_transpose", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "texture_origin"),
+			JS_NewCFunction(ctx, tile_data_class_get_texture_origin, "get_texture_origin", 0),
+			JS_NewCFunction(ctx, tile_data_class_set_texture_origin, "set_texture_origin", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "modulate"),
+			JS_NewCFunction(ctx, tile_data_class_get_modulate, "get_modulate", 0),
+			JS_NewCFunction(ctx, tile_data_class_set_modulate, "set_modulate", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "material"),
+			JS_NewCFunction(ctx, tile_data_class_get_material, "get_material", 0),
+			JS_NewCFunction(ctx, tile_data_class_set_material, "set_material", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "z_index"),
+			JS_NewCFunction(ctx, tile_data_class_get_z_index, "get_z_index", 0),
+			JS_NewCFunction(ctx, tile_data_class_set_z_index, "set_z_index", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "y_sort_origin"),
+			JS_NewCFunction(ctx, tile_data_class_get_y_sort_origin, "get_y_sort_origin", 0),
+			JS_NewCFunction(ctx, tile_data_class_set_y_sort_origin, "set_y_sort_origin", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "terrain_set"),
+			JS_NewCFunction(ctx, tile_data_class_get_terrain_set, "get_terrain_set", 0),
+			JS_NewCFunction(ctx, tile_data_class_set_terrain_set, "set_terrain_set", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "terrain"),
+			JS_NewCFunction(ctx, tile_data_class_get_terrain, "get_terrain", 0),
+			JS_NewCFunction(ctx, tile_data_class_set_terrain, "set_terrain", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "probability"),
+			JS_NewCFunction(ctx, tile_data_class_get_probability, "get_probability", 0),
+			JS_NewCFunction(ctx, tile_data_class_set_probability, "set_probability", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_tile_data_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&TileData::__class_id);
 	classes["TileData"] = TileData::__class_id;
 	class_id_list.insert(TileData::__class_id);

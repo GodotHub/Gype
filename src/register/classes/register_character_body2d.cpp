@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
+#include <godot_cpp/classes/character_body2d.hpp>
 #include <godot_cpp/classes/kinematic_collision2d.hpp>
 #include <godot_cpp/classes/physics_body2d.hpp>
-#include <godot_cpp/classes/character_body2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void character_body2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,7 +31,7 @@ static JSValue character_body2d_class_constructor(JSContext *ctx, JSValueConst n
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, character_body2d_class);	
+	JS_SetOpaque(obj, character_body2d_class);
 	return obj;
 }
 static JSValue character_body2d_class_move_and_slide(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -42,12 +40,12 @@ static JSValue character_body2d_class_move_and_slide(JSContext *ctx, JSValueCons
 };
 static JSValue character_body2d_class_apply_floor_snap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharacterBody2D::apply_floor_snap, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharacterBody2D::apply_floor_snap, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body2d_class_set_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharacterBody2D::set_velocity, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharacterBody2D::set_velocity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body2d_class_get_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -56,7 +54,7 @@ static JSValue character_body2d_class_get_velocity(JSContext *ctx, JSValueConst 
 };
 static JSValue character_body2d_class_set_safe_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharacterBody2D::set_safe_margin, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharacterBody2D::set_safe_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body2d_class_get_safe_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -69,12 +67,12 @@ static JSValue character_body2d_class_is_floor_stop_on_slope_enabled(JSContext *
 };
 static JSValue character_body2d_class_set_floor_stop_on_slope_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharacterBody2D::set_floor_stop_on_slope_enabled, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharacterBody2D::set_floor_stop_on_slope_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body2d_class_set_floor_constant_speed_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharacterBody2D::set_floor_constant_speed_enabled, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharacterBody2D::set_floor_constant_speed_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body2d_class_is_floor_constant_speed_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -83,7 +81,7 @@ static JSValue character_body2d_class_is_floor_constant_speed_enabled(JSContext 
 };
 static JSValue character_body2d_class_set_floor_block_on_wall_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharacterBody2D::set_floor_block_on_wall_enabled, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharacterBody2D::set_floor_block_on_wall_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body2d_class_is_floor_block_on_wall_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,7 +90,7 @@ static JSValue character_body2d_class_is_floor_block_on_wall_enabled(JSContext *
 };
 static JSValue character_body2d_class_set_slide_on_ceiling_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharacterBody2D::set_slide_on_ceiling_enabled, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharacterBody2D::set_slide_on_ceiling_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body2d_class_is_slide_on_ceiling_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -101,7 +99,7 @@ static JSValue character_body2d_class_is_slide_on_ceiling_enabled(JSContext *ctx
 };
 static JSValue character_body2d_class_set_platform_floor_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharacterBody2D::set_platform_floor_layers, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharacterBody2D::set_platform_floor_layers, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body2d_class_get_platform_floor_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,7 +108,7 @@ static JSValue character_body2d_class_get_platform_floor_layers(JSContext *ctx, 
 };
 static JSValue character_body2d_class_set_platform_wall_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharacterBody2D::set_platform_wall_layers, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharacterBody2D::set_platform_wall_layers, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body2d_class_get_platform_wall_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -123,7 +121,7 @@ static JSValue character_body2d_class_get_max_slides(JSContext *ctx, JSValueCons
 };
 static JSValue character_body2d_class_set_max_slides(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharacterBody2D::set_max_slides, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharacterBody2D::set_max_slides, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body2d_class_get_floor_max_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -132,7 +130,7 @@ static JSValue character_body2d_class_get_floor_max_angle(JSContext *ctx, JSValu
 };
 static JSValue character_body2d_class_set_floor_max_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharacterBody2D::set_floor_max_angle, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharacterBody2D::set_floor_max_angle, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body2d_class_get_floor_snap_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -141,7 +139,7 @@ static JSValue character_body2d_class_get_floor_snap_length(JSContext *ctx, JSVa
 };
 static JSValue character_body2d_class_set_floor_snap_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharacterBody2D::set_floor_snap_length, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharacterBody2D::set_floor_snap_length, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body2d_class_get_wall_min_slide_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -150,7 +148,7 @@ static JSValue character_body2d_class_get_wall_min_slide_angle(JSContext *ctx, J
 };
 static JSValue character_body2d_class_set_wall_min_slide_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharacterBody2D::set_wall_min_slide_angle, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharacterBody2D::set_wall_min_slide_angle, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body2d_class_get_up_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -159,12 +157,12 @@ static JSValue character_body2d_class_get_up_direction(JSContext *ctx, JSValueCo
 };
 static JSValue character_body2d_class_set_up_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharacterBody2D::set_up_direction, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharacterBody2D::set_up_direction, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body2d_class_set_motion_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharacterBody2D::set_motion_mode, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharacterBody2D::set_motion_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body2d_class_get_motion_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -173,7 +171,7 @@ static JSValue character_body2d_class_get_motion_mode(JSContext *ctx, JSValueCon
 };
 static JSValue character_body2d_class_set_platform_on_leave(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CharacterBody2D::set_platform_on_leave, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&CharacterBody2D::set_platform_on_leave, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue character_body2d_class_get_platform_on_leave(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -296,126 +294,111 @@ static const JSCFunctionListEntry character_body2d_class_proto_funcs[] = {
 };
 
 void define_character_body2d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "motion_mode"),
-        JS_NewCFunction(ctx, character_body2d_class_get_motion_mode, "get_motion_mode", 0),
-        JS_NewCFunction(ctx, character_body2d_class_set_motion_mode, "set_motion_mode", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "up_direction"),
-        JS_NewCFunction(ctx, character_body2d_class_get_up_direction, "get_up_direction", 0),
-        JS_NewCFunction(ctx, character_body2d_class_set_up_direction, "set_up_direction", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "velocity"),
-        JS_NewCFunction(ctx, character_body2d_class_get_velocity, "get_velocity", 0),
-        JS_NewCFunction(ctx, character_body2d_class_set_velocity, "set_velocity", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "slide_on_ceiling"),
-        JS_NewCFunction(ctx, character_body2d_class_is_slide_on_ceiling_enabled, "is_slide_on_ceiling_enabled", 0),
-        JS_NewCFunction(ctx, character_body2d_class_set_slide_on_ceiling_enabled, "set_slide_on_ceiling_enabled", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "max_slides"),
-        JS_NewCFunction(ctx, character_body2d_class_get_max_slides, "get_max_slides", 0),
-        JS_NewCFunction(ctx, character_body2d_class_set_max_slides, "set_max_slides", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "wall_min_slide_angle"),
-        JS_NewCFunction(ctx, character_body2d_class_get_wall_min_slide_angle, "get_wall_min_slide_angle", 0),
-        JS_NewCFunction(ctx, character_body2d_class_set_wall_min_slide_angle, "set_wall_min_slide_angle", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "floor_stop_on_slope"),
-        JS_NewCFunction(ctx, character_body2d_class_is_floor_stop_on_slope_enabled, "is_floor_stop_on_slope_enabled", 0),
-        JS_NewCFunction(ctx, character_body2d_class_set_floor_stop_on_slope_enabled, "set_floor_stop_on_slope_enabled", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "floor_constant_speed"),
-        JS_NewCFunction(ctx, character_body2d_class_is_floor_constant_speed_enabled, "is_floor_constant_speed_enabled", 0),
-        JS_NewCFunction(ctx, character_body2d_class_set_floor_constant_speed_enabled, "set_floor_constant_speed_enabled", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "floor_block_on_wall"),
-        JS_NewCFunction(ctx, character_body2d_class_is_floor_block_on_wall_enabled, "is_floor_block_on_wall_enabled", 0),
-        JS_NewCFunction(ctx, character_body2d_class_set_floor_block_on_wall_enabled, "set_floor_block_on_wall_enabled", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "floor_max_angle"),
-        JS_NewCFunction(ctx, character_body2d_class_get_floor_max_angle, "get_floor_max_angle", 0),
-        JS_NewCFunction(ctx, character_body2d_class_set_floor_max_angle, "set_floor_max_angle", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "floor_snap_length"),
-        JS_NewCFunction(ctx, character_body2d_class_get_floor_snap_length, "get_floor_snap_length", 0),
-        JS_NewCFunction(ctx, character_body2d_class_set_floor_snap_length, "set_floor_snap_length", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "platform_on_leave"),
-        JS_NewCFunction(ctx, character_body2d_class_get_platform_on_leave, "get_platform_on_leave", 0),
-        JS_NewCFunction(ctx, character_body2d_class_set_platform_on_leave, "set_platform_on_leave", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "platform_floor_layers"),
-        JS_NewCFunction(ctx, character_body2d_class_get_platform_floor_layers, "get_platform_floor_layers", 0),
-        JS_NewCFunction(ctx, character_body2d_class_set_platform_floor_layers, "set_platform_floor_layers", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "platform_wall_layers"),
-        JS_NewCFunction(ctx, character_body2d_class_get_platform_wall_layers, "get_platform_wall_layers", 0),
-        JS_NewCFunction(ctx, character_body2d_class_set_platform_wall_layers, "set_platform_wall_layers", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "safe_margin"),
-        JS_NewCFunction(ctx, character_body2d_class_get_safe_margin, "get_safe_margin", 0),
-        JS_NewCFunction(ctx, character_body2d_class_set_safe_margin, "set_safe_margin", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "motion_mode"),
+			JS_NewCFunction(ctx, character_body2d_class_get_motion_mode, "get_motion_mode", 0),
+			JS_NewCFunction(ctx, character_body2d_class_set_motion_mode, "set_motion_mode", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "up_direction"),
+			JS_NewCFunction(ctx, character_body2d_class_get_up_direction, "get_up_direction", 0),
+			JS_NewCFunction(ctx, character_body2d_class_set_up_direction, "set_up_direction", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "velocity"),
+			JS_NewCFunction(ctx, character_body2d_class_get_velocity, "get_velocity", 0),
+			JS_NewCFunction(ctx, character_body2d_class_set_velocity, "set_velocity", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "slide_on_ceiling"),
+			JS_NewCFunction(ctx, character_body2d_class_is_slide_on_ceiling_enabled, "is_slide_on_ceiling_enabled", 0),
+			JS_NewCFunction(ctx, character_body2d_class_set_slide_on_ceiling_enabled, "set_slide_on_ceiling_enabled", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "max_slides"),
+			JS_NewCFunction(ctx, character_body2d_class_get_max_slides, "get_max_slides", 0),
+			JS_NewCFunction(ctx, character_body2d_class_set_max_slides, "set_max_slides", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "wall_min_slide_angle"),
+			JS_NewCFunction(ctx, character_body2d_class_get_wall_min_slide_angle, "get_wall_min_slide_angle", 0),
+			JS_NewCFunction(ctx, character_body2d_class_set_wall_min_slide_angle, "set_wall_min_slide_angle", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "floor_stop_on_slope"),
+			JS_NewCFunction(ctx, character_body2d_class_is_floor_stop_on_slope_enabled, "is_floor_stop_on_slope_enabled", 0),
+			JS_NewCFunction(ctx, character_body2d_class_set_floor_stop_on_slope_enabled, "set_floor_stop_on_slope_enabled", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "floor_constant_speed"),
+			JS_NewCFunction(ctx, character_body2d_class_is_floor_constant_speed_enabled, "is_floor_constant_speed_enabled", 0),
+			JS_NewCFunction(ctx, character_body2d_class_set_floor_constant_speed_enabled, "set_floor_constant_speed_enabled", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "floor_block_on_wall"),
+			JS_NewCFunction(ctx, character_body2d_class_is_floor_block_on_wall_enabled, "is_floor_block_on_wall_enabled", 0),
+			JS_NewCFunction(ctx, character_body2d_class_set_floor_block_on_wall_enabled, "set_floor_block_on_wall_enabled", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "floor_max_angle"),
+			JS_NewCFunction(ctx, character_body2d_class_get_floor_max_angle, "get_floor_max_angle", 0),
+			JS_NewCFunction(ctx, character_body2d_class_set_floor_max_angle, "set_floor_max_angle", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "floor_snap_length"),
+			JS_NewCFunction(ctx, character_body2d_class_get_floor_snap_length, "get_floor_snap_length", 0),
+			JS_NewCFunction(ctx, character_body2d_class_set_floor_snap_length, "set_floor_snap_length", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "platform_on_leave"),
+			JS_NewCFunction(ctx, character_body2d_class_get_platform_on_leave, "get_platform_on_leave", 0),
+			JS_NewCFunction(ctx, character_body2d_class_set_platform_on_leave, "set_platform_on_leave", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "platform_floor_layers"),
+			JS_NewCFunction(ctx, character_body2d_class_get_platform_floor_layers, "get_platform_floor_layers", 0),
+			JS_NewCFunction(ctx, character_body2d_class_set_platform_floor_layers, "set_platform_floor_layers", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "platform_wall_layers"),
+			JS_NewCFunction(ctx, character_body2d_class_get_platform_wall_layers, "get_platform_wall_layers", 0),
+			JS_NewCFunction(ctx, character_body2d_class_set_platform_wall_layers, "set_platform_wall_layers", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "safe_margin"),
+			JS_NewCFunction(ctx, character_body2d_class_get_safe_margin, "get_safe_margin", 0),
+			JS_NewCFunction(ctx, character_body2d_class_set_safe_margin, "set_safe_margin", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -431,7 +414,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_character_body2d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&CharacterBody2D::__class_id);
 	classes["CharacterBody2D"] = CharacterBody2D::__class_id;
 	class_id_list.insert(CharacterBody2D::__class_id);

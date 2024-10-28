@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/open_xr_composition_layer.hpp>
 #include <godot_cpp/classes/sub_viewport.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void open_xr_composition_layer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,12 +31,12 @@ static JSValue open_xr_composition_layer_class_constructor(JSContext *ctx, JSVal
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, open_xr_composition_layer_class);	
+	JS_SetOpaque(obj, open_xr_composition_layer_class);
 	return obj;
 }
 static JSValue open_xr_composition_layer_class_set_layer_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRCompositionLayer::set_layer_viewport, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OpenXRCompositionLayer::set_layer_viewport, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_composition_layer_class_get_layer_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -47,7 +45,7 @@ static JSValue open_xr_composition_layer_class_get_layer_viewport(JSContext *ctx
 };
 static JSValue open_xr_composition_layer_class_set_enable_hole_punch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRCompositionLayer::set_enable_hole_punch, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OpenXRCompositionLayer::set_enable_hole_punch, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_composition_layer_class_get_enable_hole_punch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -56,7 +54,7 @@ static JSValue open_xr_composition_layer_class_get_enable_hole_punch(JSContext *
 };
 static JSValue open_xr_composition_layer_class_set_sort_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRCompositionLayer::set_sort_order, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OpenXRCompositionLayer::set_sort_order, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_composition_layer_class_get_sort_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,7 +63,7 @@ static JSValue open_xr_composition_layer_class_get_sort_order(JSContext *ctx, JS
 };
 static JSValue open_xr_composition_layer_class_set_alpha_blend(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRCompositionLayer::set_alpha_blend, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OpenXRCompositionLayer::set_alpha_blend, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_composition_layer_class_get_alpha_blend(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -94,45 +92,40 @@ static const JSCFunctionListEntry open_xr_composition_layer_class_proto_funcs[] 
 };
 
 void define_open_xr_composition_layer_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "layer_viewport"),
-        JS_NewCFunction(ctx, open_xr_composition_layer_class_get_layer_viewport, "get_layer_viewport", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_class_set_layer_viewport, "set_layer_viewport", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "sort_order"),
-        JS_NewCFunction(ctx, open_xr_composition_layer_class_get_sort_order, "get_sort_order", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_class_set_sort_order, "set_sort_order", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "alpha_blend"),
-        JS_NewCFunction(ctx, open_xr_composition_layer_class_get_alpha_blend, "get_alpha_blend", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_class_set_alpha_blend, "set_alpha_blend", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "enable_hole_punch"),
-        JS_NewCFunction(ctx, open_xr_composition_layer_class_get_enable_hole_punch, "get_enable_hole_punch", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_class_set_enable_hole_punch, "set_enable_hole_punch", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "layer_viewport"),
+			JS_NewCFunction(ctx, open_xr_composition_layer_class_get_layer_viewport, "get_layer_viewport", 0),
+			JS_NewCFunction(ctx, open_xr_composition_layer_class_set_layer_viewport, "set_layer_viewport", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "sort_order"),
+			JS_NewCFunction(ctx, open_xr_composition_layer_class_get_sort_order, "get_sort_order", 0),
+			JS_NewCFunction(ctx, open_xr_composition_layer_class_set_sort_order, "set_sort_order", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "alpha_blend"),
+			JS_NewCFunction(ctx, open_xr_composition_layer_class_get_alpha_blend, "get_alpha_blend", 0),
+			JS_NewCFunction(ctx, open_xr_composition_layer_class_set_alpha_blend, "set_alpha_blend", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "enable_hole_punch"),
+			JS_NewCFunction(ctx, open_xr_composition_layer_class_get_enable_hole_punch, "get_enable_hole_punch", 0),
+			JS_NewCFunction(ctx, open_xr_composition_layer_class_set_enable_hole_punch, "set_enable_hole_punch", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_open_xr_composition_layer_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&OpenXRCompositionLayer::__class_id);
 	classes["OpenXRCompositionLayer"] = OpenXRCompositionLayer::__class_id;
 	class_id_list.insert(OpenXRCompositionLayer::__class_id);

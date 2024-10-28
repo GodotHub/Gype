@@ -31,6 +31,7 @@
 #ifndef GODOT_VECTOR4_HPP
 #define GODOT_VECTOR4_HPP
 
+#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
 #include <godot_cpp/core/error_macros.hpp>
 #include <godot_cpp/core/math.hpp>

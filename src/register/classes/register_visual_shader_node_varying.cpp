@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_varying.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/classes/visual_shader_node_varying.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void visual_shader_node_varying_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue visual_shader_node_varying_class_constructor(JSContext *ctx, JSVa
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_varying_class);	
+	JS_SetOpaque(obj, visual_shader_node_varying_class);
 	return obj;
 }
 static JSValue visual_shader_node_varying_class_set_varying_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeVarying::set_varying_name, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VisualShaderNodeVarying::set_varying_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_varying_class_get_varying_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue visual_shader_node_varying_class_get_varying_name(JSContext *ctx,
 };
 static JSValue visual_shader_node_varying_class_set_varying_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeVarying::set_varying_type, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&VisualShaderNodeVarying::set_varying_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_varying_class_get_varying_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -61,29 +59,26 @@ static const JSCFunctionListEntry visual_shader_node_varying_class_proto_funcs[]
 };
 
 void define_visual_shader_node_varying_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "varying_name"),
-        JS_NewCFunction(ctx, visual_shader_node_varying_class_get_varying_name, "get_varying_name", 0),
-        JS_NewCFunction(ctx, visual_shader_node_varying_class_set_varying_name, "set_varying_name", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "varying_type"),
-        JS_NewCFunction(ctx, visual_shader_node_varying_class_get_varying_type, "get_varying_type", 0),
-        JS_NewCFunction(ctx, visual_shader_node_varying_class_set_varying_type, "set_varying_type", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "varying_name"),
+			JS_NewCFunction(ctx, visual_shader_node_varying_class_get_varying_name, "get_varying_name", 0),
+			JS_NewCFunction(ctx, visual_shader_node_varying_class_set_varying_name, "set_varying_name", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "varying_type"),
+			JS_NewCFunction(ctx, visual_shader_node_varying_class_get_varying_type, "get_varying_type", 0),
+			JS_NewCFunction(ctx, visual_shader_node_varying_class_set_varying_type, "set_varying_type", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_varying_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&VisualShaderNodeVarying::__class_id);
 	classes["VisualShaderNodeVarying"] = VisualShaderNodeVarying::__class_id;
 	class_id_list.insert(VisualShaderNodeVarying::__class_id);

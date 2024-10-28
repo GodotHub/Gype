@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
+#include <godot_cpp/classes/box_container.hpp>
 #include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/box_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void box_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,7 +31,7 @@ static JSValue box_container_class_constructor(JSContext *ctx, JSValueConst new_
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, box_container_class);	
+	JS_SetOpaque(obj, box_container_class);
 	return obj;
 }
 static JSValue box_container_class_add_spacer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -42,7 +40,7 @@ static JSValue box_container_class_add_spacer(JSContext *ctx, JSValueConst this_
 };
 static JSValue box_container_class_set_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&BoxContainer::set_alignment, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&BoxContainer::set_alignment, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue box_container_class_get_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -51,7 +49,7 @@ static JSValue box_container_class_get_alignment(JSContext *ctx, JSValueConst th
 };
 static JSValue box_container_class_set_vertical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&BoxContainer::set_vertical, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&BoxContainer::set_vertical, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue box_container_class_is_vertical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,22 +65,20 @@ static const JSCFunctionListEntry box_container_class_proto_funcs[] = {
 };
 
 void define_box_container_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "alignment"),
-        JS_NewCFunction(ctx, box_container_class_get_alignment, "get_alignment", 0),
-        JS_NewCFunction(ctx, box_container_class_set_alignment, "set_alignment", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "vertical"),
-        JS_NewCFunction(ctx, box_container_class_is_vertical, "is_vertical", 0),
-        JS_NewCFunction(ctx, box_container_class_set_vertical, "set_vertical", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "alignment"),
+			JS_NewCFunction(ctx, box_container_class_get_alignment, "get_alignment", 0),
+			JS_NewCFunction(ctx, box_container_class_set_alignment, "set_alignment", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "vertical"),
+			JS_NewCFunction(ctx, box_container_class_is_vertical, "is_vertical", 0),
+			JS_NewCFunction(ctx, box_container_class_set_vertical, "set_vertical", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -94,7 +90,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_box_container_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&BoxContainer::__class_id);
 	classes["BoxContainer"] = BoxContainer::__class_id;
 	class_id_list.insert(BoxContainer::__class_id);

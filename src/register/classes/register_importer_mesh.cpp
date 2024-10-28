@@ -1,21 +1,19 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/array_mesh.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/importer_mesh.hpp>
+#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void importer_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -34,12 +32,12 @@ static JSValue importer_mesh_class_constructor(JSContext *ctx, JSValueConst new_
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, importer_mesh_class);	
+	JS_SetOpaque(obj, importer_mesh_class);
 	return obj;
 }
 static JSValue importer_mesh_class_add_blend_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImporterMesh::add_blend_shape, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&ImporterMesh::add_blend_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_class_get_blend_shape_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -52,7 +50,7 @@ static JSValue importer_mesh_class_get_blend_shape_name(JSContext *ctx, JSValueC
 };
 static JSValue importer_mesh_class_set_blend_shape_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImporterMesh::set_blend_shape_mode, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&ImporterMesh::set_blend_shape_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_class_get_blend_shape_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -61,7 +59,7 @@ static JSValue importer_mesh_class_get_blend_shape_mode(JSContext *ctx, JSValueC
 };
 static JSValue importer_mesh_class_add_surface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImporterMesh::add_surface, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&ImporterMesh::add_surface, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_class_get_surface_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -106,17 +104,17 @@ static JSValue importer_mesh_class_get_surface_format(JSContext *ctx, JSValueCon
 };
 static JSValue importer_mesh_class_set_surface_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImporterMesh::set_surface_name, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&ImporterMesh::set_surface_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_class_set_surface_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImporterMesh::set_surface_material, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&ImporterMesh::set_surface_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_class_generate_lods(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImporterMesh::generate_lods, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&ImporterMesh::generate_lods, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_class_get_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -125,12 +123,12 @@ static JSValue importer_mesh_class_get_mesh(JSContext *ctx, JSValueConst this_va
 };
 static JSValue importer_mesh_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImporterMesh::clear, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&ImporterMesh::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_class_set_lightmap_size_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImporterMesh::set_lightmap_size_hint, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&ImporterMesh::set_lightmap_size_hint, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue importer_mesh_class_get_lightmap_size_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -170,7 +168,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_importer_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&ImporterMesh::__class_id);
 	classes["ImporterMesh"] = ImporterMesh::__class_id;
 	class_id_list.insert(ImporterMesh::__class_id);

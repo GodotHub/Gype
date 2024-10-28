@@ -1,19 +1,17 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/open_xr_composition_layer_equirect.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/open_xr_composition_layer.hpp>
+#include <godot_cpp/classes/open_xr_composition_layer_equirect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void open_xr_composition_layer_equirect_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -32,12 +30,12 @@ static JSValue open_xr_composition_layer_equirect_class_constructor(JSContext *c
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, open_xr_composition_layer_equirect_class);	
+	JS_SetOpaque(obj, open_xr_composition_layer_equirect_class);
 	return obj;
 }
 static JSValue open_xr_composition_layer_equirect_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_radius, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_composition_layer_equirect_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,7 +44,7 @@ static JSValue open_xr_composition_layer_equirect_class_get_radius(JSContext *ct
 };
 static JSValue open_xr_composition_layer_equirect_class_set_central_horizontal_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_central_horizontal_angle, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_central_horizontal_angle, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_composition_layer_equirect_class_get_central_horizontal_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,7 +53,7 @@ static JSValue open_xr_composition_layer_equirect_class_get_central_horizontal_a
 };
 static JSValue open_xr_composition_layer_equirect_class_set_upper_vertical_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_upper_vertical_angle, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_upper_vertical_angle, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_composition_layer_equirect_class_get_upper_vertical_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -64,7 +62,7 @@ static JSValue open_xr_composition_layer_equirect_class_get_upper_vertical_angle
 };
 static JSValue open_xr_composition_layer_equirect_class_set_lower_vertical_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_lower_vertical_angle, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_lower_vertical_angle, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_composition_layer_equirect_class_get_lower_vertical_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -73,7 +71,7 @@ static JSValue open_xr_composition_layer_equirect_class_get_lower_vertical_angle
 };
 static JSValue open_xr_composition_layer_equirect_class_set_fallback_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_fallback_segments, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_fallback_segments, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_composition_layer_equirect_class_get_fallback_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -94,53 +92,47 @@ static const JSCFunctionListEntry open_xr_composition_layer_equirect_class_proto
 };
 
 void define_open_xr_composition_layer_equirect_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "radius"),
-        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_radius, "get_radius", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_radius, "set_radius", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "central_horizontal_angle"),
-        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_central_horizontal_angle, "get_central_horizontal_angle", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_central_horizontal_angle, "set_central_horizontal_angle", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "upper_vertical_angle"),
-        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_upper_vertical_angle, "get_upper_vertical_angle", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_upper_vertical_angle, "set_upper_vertical_angle", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "lower_vertical_angle"),
-        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_lower_vertical_angle, "get_lower_vertical_angle", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_lower_vertical_angle, "set_lower_vertical_angle", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "fallback_segments"),
-        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_fallback_segments, "get_fallback_segments", 0),
-        JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_fallback_segments, "set_fallback_segments", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "radius"),
+			JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_radius, "get_radius", 0),
+			JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_radius, "set_radius", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "central_horizontal_angle"),
+			JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_central_horizontal_angle, "get_central_horizontal_angle", 0),
+			JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_central_horizontal_angle, "set_central_horizontal_angle", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "upper_vertical_angle"),
+			JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_upper_vertical_angle, "get_upper_vertical_angle", 0),
+			JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_upper_vertical_angle, "set_upper_vertical_angle", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "lower_vertical_angle"),
+			JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_lower_vertical_angle, "get_lower_vertical_angle", 0),
+			JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_lower_vertical_angle, "set_lower_vertical_angle", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "fallback_segments"),
+			JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_fallback_segments, "get_fallback_segments", 0),
+			JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_fallback_segments, "set_fallback_segments", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_open_xr_composition_layer_equirect_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&OpenXRCompositionLayerEquirect::__class_id);
 	classes["OpenXRCompositionLayerEquirect"] = OpenXRCompositionLayerEquirect::__class_id;
 	class_id_list.insert(OpenXRCompositionLayerEquirect::__class_id);

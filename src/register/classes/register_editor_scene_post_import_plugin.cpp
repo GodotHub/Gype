@@ -1,21 +1,19 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
+#include <godot_cpp/classes/editor_scene_post_import_plugin.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/editor_scene_post_import_plugin.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-
 
 using namespace godot;
 
 static void editor_scene_post_import_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -34,7 +32,7 @@ static JSValue editor_scene_post_import_plugin_class_constructor(JSContext *ctx,
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_scene_post_import_plugin_class);	
+	JS_SetOpaque(obj, editor_scene_post_import_plugin_class);
 	return obj;
 }
 static JSValue editor_scene_post_import_plugin_class_get_option_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -43,12 +41,12 @@ static JSValue editor_scene_post_import_plugin_class_get_option_value(JSContext 
 };
 static JSValue editor_scene_post_import_plugin_class_add_import_option(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorScenePostImportPlugin::add_import_option, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&EditorScenePostImportPlugin::add_import_option, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_scene_post_import_plugin_class_add_import_option_advanced(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorScenePostImportPlugin::add_import_option_advanced, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&EditorScenePostImportPlugin::add_import_option_advanced, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry editor_scene_post_import_plugin_class_proto_funcs[] = {
@@ -74,7 +72,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_scene_post_import_plugin_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&EditorScenePostImportPlugin::__class_id);
 	classes["EditorScenePostImportPlugin"] = EditorScenePostImportPlugin::__class_id;
 	class_id_list.insert(EditorScenePostImportPlugin::__class_id);

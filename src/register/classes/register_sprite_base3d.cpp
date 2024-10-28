@@ -1,20 +1,18 @@
 
-#include "quickjs/quickjs.h"
-#include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/quickjs.h"
 #include "quickjs/quickjs_helper.h"
+#include "quickjs/str_helper.h"
+#include "register/classes/register_classes.h"
+#include "utils/func_utils.h"
 #include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/sprite_base3d.hpp>
 #include <godot_cpp/classes/triangle_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
-
 using namespace godot;
 
 static void sprite_base3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
 	// nothing
 }
 
@@ -33,12 +31,12 @@ static JSValue sprite_base3d_class_constructor(JSContext *ctx, JSValueConst new_
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, sprite_base3d_class);	
+	JS_SetOpaque(obj, sprite_base3d_class);
 	return obj;
 }
 static JSValue sprite_base3d_class_set_centered(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpriteBase3D::set_centered, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SpriteBase3D::set_centered, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_base3d_class_is_centered(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -47,7 +45,7 @@ static JSValue sprite_base3d_class_is_centered(JSContext *ctx, JSValueConst this
 };
 static JSValue sprite_base3d_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpriteBase3D::set_offset, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SpriteBase3D::set_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_base3d_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -56,7 +54,7 @@ static JSValue sprite_base3d_class_get_offset(JSContext *ctx, JSValueConst this_
 };
 static JSValue sprite_base3d_class_set_flip_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpriteBase3D::set_flip_h, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SpriteBase3D::set_flip_h, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_base3d_class_is_flipped_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,7 +63,7 @@ static JSValue sprite_base3d_class_is_flipped_h(JSContext *ctx, JSValueConst thi
 };
 static JSValue sprite_base3d_class_set_flip_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpriteBase3D::set_flip_v, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SpriteBase3D::set_flip_v, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_base3d_class_is_flipped_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -74,7 +72,7 @@ static JSValue sprite_base3d_class_is_flipped_v(JSContext *ctx, JSValueConst thi
 };
 static JSValue sprite_base3d_class_set_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpriteBase3D::set_modulate, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SpriteBase3D::set_modulate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_base3d_class_get_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -83,7 +81,7 @@ static JSValue sprite_base3d_class_get_modulate(JSContext *ctx, JSValueConst thi
 };
 static JSValue sprite_base3d_class_set_render_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpriteBase3D::set_render_priority, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SpriteBase3D::set_render_priority, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_base3d_class_get_render_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,7 +90,7 @@ static JSValue sprite_base3d_class_get_render_priority(JSContext *ctx, JSValueCo
 };
 static JSValue sprite_base3d_class_set_pixel_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpriteBase3D::set_pixel_size, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SpriteBase3D::set_pixel_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_base3d_class_get_pixel_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -101,7 +99,7 @@ static JSValue sprite_base3d_class_get_pixel_size(JSContext *ctx, JSValueConst t
 };
 static JSValue sprite_base3d_class_set_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpriteBase3D::set_axis, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SpriteBase3D::set_axis, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_base3d_class_get_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,7 +108,7 @@ static JSValue sprite_base3d_class_get_axis(JSContext *ctx, JSValueConst this_va
 };
 static JSValue sprite_base3d_class_set_draw_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpriteBase3D::set_draw_flag, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SpriteBase3D::set_draw_flag, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_base3d_class_get_draw_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -119,7 +117,7 @@ static JSValue sprite_base3d_class_get_draw_flag(JSContext *ctx, JSValueConst th
 };
 static JSValue sprite_base3d_class_set_alpha_cut_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpriteBase3D::set_alpha_cut_mode, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SpriteBase3D::set_alpha_cut_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_base3d_class_get_alpha_cut_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -128,7 +126,7 @@ static JSValue sprite_base3d_class_get_alpha_cut_mode(JSContext *ctx, JSValueCon
 };
 static JSValue sprite_base3d_class_set_alpha_scissor_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpriteBase3D::set_alpha_scissor_threshold, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SpriteBase3D::set_alpha_scissor_threshold, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_base3d_class_get_alpha_scissor_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -137,7 +135,7 @@ static JSValue sprite_base3d_class_get_alpha_scissor_threshold(JSContext *ctx, J
 };
 static JSValue sprite_base3d_class_set_alpha_hash_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpriteBase3D::set_alpha_hash_scale, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SpriteBase3D::set_alpha_hash_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_base3d_class_get_alpha_hash_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -146,7 +144,7 @@ static JSValue sprite_base3d_class_get_alpha_hash_scale(JSContext *ctx, JSValueC
 };
 static JSValue sprite_base3d_class_set_alpha_antialiasing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpriteBase3D::set_alpha_antialiasing, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SpriteBase3D::set_alpha_antialiasing, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_base3d_class_get_alpha_antialiasing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -155,7 +153,7 @@ static JSValue sprite_base3d_class_get_alpha_antialiasing(JSContext *ctx, JSValu
 };
 static JSValue sprite_base3d_class_set_alpha_antialiasing_edge(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpriteBase3D::set_alpha_antialiasing_edge, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SpriteBase3D::set_alpha_antialiasing_edge, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_base3d_class_get_alpha_antialiasing_edge(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -164,7 +162,7 @@ static JSValue sprite_base3d_class_get_alpha_antialiasing_edge(JSContext *ctx, J
 };
 static JSValue sprite_base3d_class_set_billboard_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpriteBase3D::set_billboard_mode, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SpriteBase3D::set_billboard_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_base3d_class_get_billboard_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -173,7 +171,7 @@ static JSValue sprite_base3d_class_get_billboard_mode(JSContext *ctx, JSValueCon
 };
 static JSValue sprite_base3d_class_set_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpriteBase3D::set_texture_filter, ctx, this_val, argc, argv);
+	call_builtin_method_no_ret(&SpriteBase3D::set_texture_filter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue sprite_base3d_class_get_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -226,166 +224,146 @@ static const JSCFunctionListEntry sprite_base3d_class_proto_funcs[] = {
 };
 
 void define_sprite_base3d_property(JSContext *ctx, JSValue obj) {
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "centered"),
-        JS_NewCFunction(ctx, sprite_base3d_class_is_centered, "is_centered", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_centered, "set_centered", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "offset"),
-        JS_NewCFunction(ctx, sprite_base3d_class_get_offset, "get_offset", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_offset, "set_offset", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "flip_h"),
-        JS_NewCFunction(ctx, sprite_base3d_class_is_flipped_h, "is_flipped_h", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_flip_h, "set_flip_h", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "flip_v"),
-        JS_NewCFunction(ctx, sprite_base3d_class_is_flipped_v, "is_flipped_v", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_flip_v, "set_flip_v", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "modulate"),
-        JS_NewCFunction(ctx, sprite_base3d_class_get_modulate, "get_modulate", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_modulate, "set_modulate", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "pixel_size"),
-        JS_NewCFunction(ctx, sprite_base3d_class_get_pixel_size, "get_pixel_size", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_pixel_size, "set_pixel_size", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "axis"),
-        JS_NewCFunction(ctx, sprite_base3d_class_get_axis, "get_axis", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_axis, "set_axis", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "billboard"),
-        JS_NewCFunction(ctx, sprite_base3d_class_get_billboard_mode, "get_billboard_mode", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_billboard_mode, "set_billboard_mode", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "transparent"),
-        JS_NewCFunction(ctx, sprite_base3d_class_get_draw_flag, "get_draw_flag", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "shaded"),
-        JS_NewCFunction(ctx, sprite_base3d_class_get_draw_flag, "get_draw_flag", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "double_sided"),
-        JS_NewCFunction(ctx, sprite_base3d_class_get_draw_flag, "get_draw_flag", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "no_depth_test"),
-        JS_NewCFunction(ctx, sprite_base3d_class_get_draw_flag, "get_draw_flag", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "fixed_size"),
-        JS_NewCFunction(ctx, sprite_base3d_class_get_draw_flag, "get_draw_flag", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "alpha_cut"),
-        JS_NewCFunction(ctx, sprite_base3d_class_get_alpha_cut_mode, "get_alpha_cut_mode", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_cut_mode, "set_alpha_cut_mode", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "alpha_scissor_threshold"),
-        JS_NewCFunction(ctx, sprite_base3d_class_get_alpha_scissor_threshold, "get_alpha_scissor_threshold", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_scissor_threshold, "set_alpha_scissor_threshold", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "alpha_hash_scale"),
-        JS_NewCFunction(ctx, sprite_base3d_class_get_alpha_hash_scale, "get_alpha_hash_scale", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_hash_scale, "set_alpha_hash_scale", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "alpha_antialiasing_mode"),
-        JS_NewCFunction(ctx, sprite_base3d_class_get_alpha_antialiasing, "get_alpha_antialiasing", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_antialiasing, "set_alpha_antialiasing", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "alpha_antialiasing_edge"),
-        JS_NewCFunction(ctx, sprite_base3d_class_get_alpha_antialiasing_edge, "get_alpha_antialiasing_edge", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_antialiasing_edge, "set_alpha_antialiasing_edge", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "texture_filter"),
-        JS_NewCFunction(ctx, sprite_base3d_class_get_texture_filter, "get_texture_filter", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_texture_filter, "set_texture_filter", 1),
-        JS_PROP_GETSET
-    );
-    JS_DefinePropertyGetSet(
-        ctx,
-        obj,
-        JS_NewAtom(ctx, "render_priority"),
-        JS_NewCFunction(ctx, sprite_base3d_class_get_render_priority, "get_render_priority", 0),
-        JS_NewCFunction(ctx, sprite_base3d_class_set_render_priority, "set_render_priority", 1),
-        JS_PROP_GETSET
-    );
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "centered"),
+			JS_NewCFunction(ctx, sprite_base3d_class_is_centered, "is_centered", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_centered, "set_centered", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "offset"),
+			JS_NewCFunction(ctx, sprite_base3d_class_get_offset, "get_offset", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_offset, "set_offset", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "flip_h"),
+			JS_NewCFunction(ctx, sprite_base3d_class_is_flipped_h, "is_flipped_h", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_flip_h, "set_flip_h", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "flip_v"),
+			JS_NewCFunction(ctx, sprite_base3d_class_is_flipped_v, "is_flipped_v", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_flip_v, "set_flip_v", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "modulate"),
+			JS_NewCFunction(ctx, sprite_base3d_class_get_modulate, "get_modulate", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_modulate, "set_modulate", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "pixel_size"),
+			JS_NewCFunction(ctx, sprite_base3d_class_get_pixel_size, "get_pixel_size", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_pixel_size, "set_pixel_size", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "axis"),
+			JS_NewCFunction(ctx, sprite_base3d_class_get_axis, "get_axis", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_axis, "set_axis", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "billboard"),
+			JS_NewCFunction(ctx, sprite_base3d_class_get_billboard_mode, "get_billboard_mode", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_billboard_mode, "set_billboard_mode", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "transparent"),
+			JS_NewCFunction(ctx, sprite_base3d_class_get_draw_flag, "get_draw_flag", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "shaded"),
+			JS_NewCFunction(ctx, sprite_base3d_class_get_draw_flag, "get_draw_flag", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "double_sided"),
+			JS_NewCFunction(ctx, sprite_base3d_class_get_draw_flag, "get_draw_flag", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "no_depth_test"),
+			JS_NewCFunction(ctx, sprite_base3d_class_get_draw_flag, "get_draw_flag", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "fixed_size"),
+			JS_NewCFunction(ctx, sprite_base3d_class_get_draw_flag, "get_draw_flag", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_draw_flag, "set_draw_flag", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "alpha_cut"),
+			JS_NewCFunction(ctx, sprite_base3d_class_get_alpha_cut_mode, "get_alpha_cut_mode", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_cut_mode, "set_alpha_cut_mode", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "alpha_scissor_threshold"),
+			JS_NewCFunction(ctx, sprite_base3d_class_get_alpha_scissor_threshold, "get_alpha_scissor_threshold", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_scissor_threshold, "set_alpha_scissor_threshold", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "alpha_hash_scale"),
+			JS_NewCFunction(ctx, sprite_base3d_class_get_alpha_hash_scale, "get_alpha_hash_scale", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_hash_scale, "set_alpha_hash_scale", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "alpha_antialiasing_mode"),
+			JS_NewCFunction(ctx, sprite_base3d_class_get_alpha_antialiasing, "get_alpha_antialiasing", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_antialiasing, "set_alpha_antialiasing", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "alpha_antialiasing_edge"),
+			JS_NewCFunction(ctx, sprite_base3d_class_get_alpha_antialiasing_edge, "get_alpha_antialiasing_edge", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_alpha_antialiasing_edge, "set_alpha_antialiasing_edge", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "texture_filter"),
+			JS_NewCFunction(ctx, sprite_base3d_class_get_texture_filter, "get_texture_filter", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_texture_filter, "set_texture_filter", 1),
+			JS_PROP_GETSET);
+	JS_DefinePropertyGetSet(
+			ctx,
+			obj,
+			JS_NewAtom(ctx, "render_priority"),
+			JS_NewCFunction(ctx, sprite_base3d_class_get_render_priority, "get_render_priority", 0),
+			JS_NewCFunction(ctx, sprite_base3d_class_set_render_priority, "set_render_priority", 1),
+			JS_PROP_GETSET);
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -406,7 +384,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_sprite_base3d_class_init(JSContext *ctx, JSModuleDef *m) {
-	
 	JS_NewClassID(&SpriteBase3D::__class_id);
 	classes["SpriteBase3D"] = SpriteBase3D::__class_id;
 	class_id_list.insert(SpriteBase3D::__class_id);
