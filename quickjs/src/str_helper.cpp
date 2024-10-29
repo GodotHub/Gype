@@ -31,10 +31,16 @@ std::string camelToSnake(std::string input) {
 	std::string result = input;
 
 	// 处理连续的大写字母，例如 "HTTPRequestID" -> "HTTP_Request_ID"
-	result = std::regex_replace(result, std::regex("([A-Z]+)([A-Z][a-z]|[0-9])"), "$1_$2");
+	result = std::regex_replace(result, std::regex("(.)([A-Z][a-z]+)"), "$1_$2");
 
 	// 处理驼峰命名，例如 "camelCase" -> "camel_Case"
 	result = std::regex_replace(result, std::regex("([a-z0-9])([A-Z])"), "$1_$2");
+
+	std::regex reg_2d("2_D");
+	std::regex reg_3d("3_D");
+
+	result = std::regex_replace(result, reg_2d, "2D");
+	result = std::regex_replace(result, reg_3d, "3D");
 
 	// 转换为全小写
 	for (auto &c : result) {
@@ -43,6 +49,7 @@ std::string camelToSnake(std::string input) {
 
 	return result;
 }
+
 const char *to_chars(const godot::String &input) {
 	std::string str = std::string(input.ascii().get_data());
 	char *chars = new char[128];

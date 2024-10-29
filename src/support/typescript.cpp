@@ -45,6 +45,7 @@ StringName TypeScript::_get_instance_base_type() const {
 }
 
 void *TypeScript::_instance_create(Object *p_for_object) const {
+	complie(false);
 	String path = this->path.replace("res://", "res://.dist/").replace(".ts", ".js");
 	Ref<TypeScript> script = ResourceLoader::get_singleton()->load(path);
 	return internal::gdextension_interface_script_instance_create3(&InstanceInfo, memnew(TypeScriptInstance(p_for_object, script.ptr(), false)));
@@ -71,7 +72,7 @@ String TypeScript::get_dist_source_code() const {
 	return dist_source_code;
 }
 
-void TypeScript::complie(bool force) const {
+void TypeScript::complie(bool force = false) const {
 	int exit_code = 0;
 	if (force)
 		exit_code = OS::get_singleton()->execute("cmd.exe", { "/c", "tsc", "--build", "tsconfig.json", "--force" });
