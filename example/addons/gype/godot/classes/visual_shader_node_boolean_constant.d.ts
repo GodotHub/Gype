@@ -7,7 +7,7 @@ export declare class VisualShaderNodeBooleanConstant extends VisualShaderNodeCon
   public get constant(): boolean {
     get_constant();
   }
-  public set constant(value: boolean): void {
+  public set constant(value): void {
     set_constant(value);
   }
 }

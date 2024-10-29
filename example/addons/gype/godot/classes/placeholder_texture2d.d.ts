@@ -6,7 +6,7 @@ export declare class PlaceholderTexture2D extends Texture2D{
   public get size(): Vector2 {
     get_size();
   }
-  public set size(value: Vector2): void {
+  public set size(value): void {
     set_size(value);
   }
 }

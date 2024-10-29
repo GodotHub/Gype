@@ -7,7 +7,7 @@ export declare class TextureLayeredRD extends TextureLayered{
   public get texture_rd_rid(): RID {
     get_texture_rd_rid();
   }
-  public set texture_rd_rid(value: RID): void {
+  public set texture_rd_rid(value): void {
     set_texture_rd_rid(value);
   }
 }

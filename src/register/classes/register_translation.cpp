@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/resource.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/translation.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void translation_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue translation_class_constructor(JSContext *ctx, JSValueConst new_ta
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, translation_class);
+	JS_SetOpaque(obj, translation_class);	
 	return obj;
 }
 static JSValue translation_class_set_locale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Translation::set_locale, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Translation::set_locale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_class_get_locale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,12 +46,12 @@ static JSValue translation_class_get_locale(JSContext *ctx, JSValueConst this_va
 };
 static JSValue translation_class_add_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Translation::add_message, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Translation::add_message, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_class_add_plural_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Translation::add_plural_message, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Translation::add_plural_message, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_class_get_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +64,7 @@ static JSValue translation_class_get_plural_message(JSContext *ctx, JSValueConst
 };
 static JSValue translation_class_erase_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Translation::erase_message, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Translation::erase_message, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_class_get_message_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -91,19 +93,21 @@ static const JSCFunctionListEntry translation_class_proto_funcs[] = {
 };
 
 void define_translation_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "locale"),
-			JS_NewCFunction(ctx, translation_class_get_locale, "get_locale", 0),
-			JS_NewCFunction(ctx, translation_class_set_locale, "set_locale", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "locale"),
+        JS_NewCFunction(ctx, translation_class_get_locale, "get_locale", 0),
+        JS_NewCFunction(ctx, translation_class_set_locale, "set_locale", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_translation_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Translation::__class_id);
 	classes["Translation"] = Translation::__class_id;
 	class_id_list.insert(Translation::__class_id);
@@ -126,7 +130,7 @@ static int js_translation_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_translation_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/resource';";
+	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -138,7 +142,7 @@ JSModuleDef *_js_init_translation_module(JSContext *ctx, const char *module_name
 }
 
 JSModuleDef *js_init_translation_module(JSContext *ctx) {
-	return _js_init_translation_module(ctx, "godot/classes/translation");
+	return _js_init_translation_module(ctx, "@godot/classes/translation");
 }
 
 void register_translation() {

@@ -27,67 +27,67 @@ export declare class RDPipelineRasterizationState extends RefCounted{
   public get enable_depth_clamp(): boolean {
     get_enable_depth_clamp();
   }
-  public set enable_depth_clamp(value: boolean): void {
+  public set enable_depth_clamp(value): void {
     set_enable_depth_clamp(value);
   }
   public get discard_primitives(): boolean {
     get_discard_primitives();
   }
-  public set discard_primitives(value: boolean): void {
+  public set discard_primitives(value): void {
     set_discard_primitives(value);
   }
   public get wireframe(): boolean {
     get_wireframe();
   }
-  public set wireframe(value: boolean): void {
+  public set wireframe(value): void {
     set_wireframe(value);
   }
   public get cull_mode(): number {
     get_cull_mode();
   }
-  public set cull_mode(value: number): void {
+  public set cull_mode(value): void {
     set_cull_mode(value);
   }
   public get front_face(): number {
     get_front_face();
   }
-  public set front_face(value: number): void {
+  public set front_face(value): void {
     set_front_face(value);
   }
   public get depth_bias_enabled(): boolean {
     get_depth_bias_enabled();
   }
-  public set depth_bias_enabled(value: boolean): void {
+  public set depth_bias_enabled(value): void {
     set_depth_bias_enabled(value);
   }
   public get depth_bias_constant_factor(): number {
     get_depth_bias_constant_factor();
   }
-  public set depth_bias_constant_factor(value: number): void {
+  public set depth_bias_constant_factor(value): void {
     set_depth_bias_constant_factor(value);
   }
   public get depth_bias_clamp(): number {
     get_depth_bias_clamp();
   }
-  public set depth_bias_clamp(value: number): void {
+  public set depth_bias_clamp(value): void {
     set_depth_bias_clamp(value);
   }
   public get depth_bias_slope_factor(): number {
     get_depth_bias_slope_factor();
   }
-  public set depth_bias_slope_factor(value: number): void {
+  public set depth_bias_slope_factor(value): void {
     set_depth_bias_slope_factor(value);
   }
   public get line_width(): number {
     get_line_width();
   }
-  public set line_width(value: number): void {
+  public set line_width(value): void {
     set_line_width(value);
   }
   public get patch_control_points(): number {
     get_patch_control_points();
   }
-  public set patch_control_points(value: number): void {
+  public set patch_control_points(value): void {
     set_patch_control_points(value);
   }
 }

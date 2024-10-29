@@ -21,7 +21,7 @@ export declare class StreamPeer extends RefCounted{
   public put_double(_value: number): void;
   public put_string(_value: String): void;
   public put_utf8_string(_value: String): void;
-  public put_var(_value: Variant, _full_objects: boolean): void;
+  public put_var(_value: any, _full_objects: boolean): void;
   public get_8(): number;
   public get_u8(): number;
   public get_16(): number;
@@ -34,11 +34,11 @@ export declare class StreamPeer extends RefCounted{
   public get_double(): number;
   public get_string(_bytes: number): String;
   public get_utf8_string(_bytes: number): String;
-  public get_var(_allow_objects: boolean): Variant;
+  public get_var(_allow_objects: boolean): any;
   public get big_endian(): boolean {
     is_big_endian_enabled();
   }
-  public set big_endian(value: boolean): void {
+  public set big_endian(value): void {
     set_big_endian(value);
   }
 }

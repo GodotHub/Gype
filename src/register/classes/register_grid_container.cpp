@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/container.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/grid_container.hpp>
+#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void grid_container_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue grid_container_class_constructor(JSContext *ctx, JSValueConst new
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, grid_container_class);
+	JS_SetOpaque(obj, grid_container_class);	
 	return obj;
 }
 static JSValue grid_container_class_set_columns(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GridContainer::set_columns, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GridContainer::set_columns, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue grid_container_class_get_columns(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,19 +50,21 @@ static const JSCFunctionListEntry grid_container_class_proto_funcs[] = {
 };
 
 void define_grid_container_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "columns"),
-			JS_NewCFunction(ctx, grid_container_class_get_columns, "get_columns", 0),
-			JS_NewCFunction(ctx, grid_container_class_set_columns, "set_columns", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "columns"),
+        JS_NewCFunction(ctx, grid_container_class_get_columns, "get_columns", 0),
+        JS_NewCFunction(ctx, grid_container_class_set_columns, "set_columns", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_grid_container_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&GridContainer::__class_id);
 	classes["GridContainer"] = GridContainer::__class_id;
 	class_id_list.insert(GridContainer::__class_id);
@@ -83,7 +87,7 @@ static int js_grid_container_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_grid_container_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/container';";
+	const char *code = "import * as _ from '@godot/classes/container';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -95,7 +99,7 @@ JSModuleDef *_js_init_grid_container_module(JSContext *ctx, const char *module_n
 }
 
 JSModuleDef *js_init_grid_container_module(JSContext *ctx) {
-	return _js_init_grid_container_module(ctx, "godot/classes/grid_container");
+	return _js_init_grid_container_module(ctx, "@godot/classes/grid_container");
 }
 
 void register_grid_container() {

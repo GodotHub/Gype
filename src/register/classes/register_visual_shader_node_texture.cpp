@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/visual_shader_node_texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
-#include <godot_cpp/classes/visual_shader_node_texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void visual_shader_node_texture_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,12 +33,12 @@ static JSValue visual_shader_node_texture_class_constructor(JSContext *ctx, JSVa
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_texture_class);
+	JS_SetOpaque(obj, visual_shader_node_texture_class);	
 	return obj;
 }
 static JSValue visual_shader_node_texture_class_set_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShaderNodeTexture::set_source, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeTexture::set_source, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_texture_class_get_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -45,7 +47,7 @@ static JSValue visual_shader_node_texture_class_get_source(JSContext *ctx, JSVal
 };
 static JSValue visual_shader_node_texture_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShaderNodeTexture::set_texture, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeTexture::set_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_texture_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -54,7 +56,7 @@ static JSValue visual_shader_node_texture_class_get_texture(JSContext *ctx, JSVa
 };
 static JSValue visual_shader_node_texture_class_set_texture_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShaderNodeTexture::set_texture_type, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeTexture::set_texture_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_texture_class_get_texture_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,27 +73,30 @@ static const JSCFunctionListEntry visual_shader_node_texture_class_proto_funcs[]
 };
 
 void define_visual_shader_node_texture_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "source"),
-			JS_NewCFunction(ctx, visual_shader_node_texture_class_get_source, "get_source", 0),
-			JS_NewCFunction(ctx, visual_shader_node_texture_class_set_source, "set_source", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "texture"),
-			JS_NewCFunction(ctx, visual_shader_node_texture_class_get_texture, "get_texture", 0),
-			JS_NewCFunction(ctx, visual_shader_node_texture_class_set_texture, "set_texture", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "texture_type"),
-			JS_NewCFunction(ctx, visual_shader_node_texture_class_get_texture_type, "get_texture_type", 0),
-			JS_NewCFunction(ctx, visual_shader_node_texture_class_set_texture_type, "set_texture_type", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "source"),
+        JS_NewCFunction(ctx, visual_shader_node_texture_class_get_source, "get_source", 0),
+        JS_NewCFunction(ctx, visual_shader_node_texture_class_set_source, "set_source", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "texture"),
+        JS_NewCFunction(ctx, visual_shader_node_texture_class_get_texture, "get_texture", 0),
+        JS_NewCFunction(ctx, visual_shader_node_texture_class_set_texture, "set_texture", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "texture_type"),
+        JS_NewCFunction(ctx, visual_shader_node_texture_class_get_texture_type, "get_texture_type", 0),
+        JS_NewCFunction(ctx, visual_shader_node_texture_class_set_texture_type, "set_texture_type", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -115,6 +120,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_texture_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&VisualShaderNodeTexture::__class_id);
 	classes["VisualShaderNodeTexture"] = VisualShaderNodeTexture::__class_id;
 	class_id_list.insert(VisualShaderNodeTexture::__class_id);
@@ -137,7 +143,7 @@ static int js_visual_shader_node_texture_class_init(JSContext *ctx, JSModuleDef 
 }
 
 JSModuleDef *_js_init_visual_shader_node_texture_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/visual_shader_node';";
+	const char *code = "import * as _ from '@godot/classes/visual_shader_node';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -149,7 +155,7 @@ JSModuleDef *_js_init_visual_shader_node_texture_module(JSContext *ctx, const ch
 }
 
 JSModuleDef *js_init_visual_shader_node_texture_module(JSContext *ctx) {
-	return _js_init_visual_shader_node_texture_module(ctx, "godot/classes/visual_shader_node_texture");
+	return _js_init_visual_shader_node_texture_module(ctx, "@godot/classes/visual_shader_node_texture");
 }
 
 void register_visual_shader_node_texture() {

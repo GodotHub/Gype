@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/editor_resource_picker.hpp>
-#include <godot_cpp/classes/editor_script_picker.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/editor_script_picker.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void editor_script_picker_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,12 +33,12 @@ static JSValue editor_script_picker_class_constructor(JSContext *ctx, JSValueCon
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_script_picker_class);
+	JS_SetOpaque(obj, editor_script_picker_class);	
 	return obj;
 }
 static JSValue editor_script_picker_class_set_script_owner(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&EditorScriptPicker::set_script_owner, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&EditorScriptPicker::set_script_owner, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_script_picker_class_get_script_owner(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -49,19 +51,21 @@ static const JSCFunctionListEntry editor_script_picker_class_proto_funcs[] = {
 };
 
 void define_editor_script_picker_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "script_owner"),
-			JS_NewCFunction(ctx, editor_script_picker_class_get_script_owner, "get_script_owner", 0),
-			JS_NewCFunction(ctx, editor_script_picker_class_set_script_owner, "set_script_owner", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "script_owner"),
+        JS_NewCFunction(ctx, editor_script_picker_class_get_script_owner, "get_script_owner", 0),
+        JS_NewCFunction(ctx, editor_script_picker_class_set_script_owner, "set_script_owner", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_script_picker_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&EditorScriptPicker::__class_id);
 	classes["EditorScriptPicker"] = EditorScriptPicker::__class_id;
 	class_id_list.insert(EditorScriptPicker::__class_id);
@@ -84,7 +88,7 @@ static int js_editor_script_picker_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_editor_script_picker_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/editor_resource_picker';";
+	const char *code = "import * as _ from '@godot/classes/editor_resource_picker';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -96,7 +100,7 @@ JSModuleDef *_js_init_editor_script_picker_module(JSContext *ctx, const char *mo
 }
 
 JSModuleDef *js_init_editor_script_picker_module(JSContext *ctx) {
-	return _js_init_editor_script_picker_module(ctx, "godot/classes/editor_script_picker");
+	return _js_init_editor_script_picker_module(ctx, "@godot/classes/editor_script_picker");
 }
 
 void register_editor_script_picker() {

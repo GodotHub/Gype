@@ -1,6 +1,6 @@
 
-import { Object } from "@godot/classes/object";
 import { ResourceFormatLoader } from "@godot/classes/resource_format_loader";
+import { Object } from "@godot/classes/object";
 import { Resource } from "@godot/classes/resource";
 
 export declare class ResourceLoader extends Object{

@@ -19,7 +19,7 @@ export declare class WebRTCDataChannel extends PacketPeer{
   public get write_mode(): number {
     get_write_mode();
   }
-  public set write_mode(value: number): void {
+  public set write_mode(value): void {
     set_write_mode(value);
   }
   static WriteMode = {

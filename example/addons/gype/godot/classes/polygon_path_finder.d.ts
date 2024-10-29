@@ -13,7 +13,7 @@ export declare class PolygonPathFinder extends Resource{
   public get data(): Dictionary {
     _get_data();
   }
-  public set data(value: Dictionary): void {
+  public set data(value): void {
     _set_data(value);
   }
 }

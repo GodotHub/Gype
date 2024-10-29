@@ -1,13 +1,13 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/translation.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/translation_server.hpp>
+#include <godot_cpp/classes/translation.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -17,6 +17,7 @@ static JSValue translation_server_instance;
 static void js_translation_server_singleton();
 
 static void translation_server_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -40,101 +41,101 @@ static JSValue translation_server_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue translation_server_class_set_locale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
-	call_builtin_method_no_ret(&TranslationServer::set_locale, ctx, this_val, argc, argv);
+    js_translation_server_singleton();
+    call_builtin_method_no_ret(&TranslationServer::set_locale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_server_class_get_locale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
+    js_translation_server_singleton();
 	return call_builtin_const_method_ret(&TranslationServer::get_locale, ctx, this_val, argc, argv);
 };
 static JSValue translation_server_class_get_tool_locale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
+    js_translation_server_singleton();
 	return call_builtin_method_ret(&TranslationServer::get_tool_locale, ctx, this_val, argc, argv);
 };
 static JSValue translation_server_class_compare_locales(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
+    js_translation_server_singleton();
 	return call_builtin_const_method_ret(&TranslationServer::compare_locales, ctx, this_val, argc, argv);
 };
 static JSValue translation_server_class_standardize_locale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
+    js_translation_server_singleton();
 	return call_builtin_const_method_ret(&TranslationServer::standardize_locale, ctx, this_val, argc, argv);
 };
 static JSValue translation_server_class_get_all_languages(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
+    js_translation_server_singleton();
 	return call_builtin_const_method_ret(&TranslationServer::get_all_languages, ctx, this_val, argc, argv);
 };
 static JSValue translation_server_class_get_language_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
+    js_translation_server_singleton();
 	return call_builtin_const_method_ret(&TranslationServer::get_language_name, ctx, this_val, argc, argv);
 };
 static JSValue translation_server_class_get_all_scripts(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
+    js_translation_server_singleton();
 	return call_builtin_const_method_ret(&TranslationServer::get_all_scripts, ctx, this_val, argc, argv);
 };
 static JSValue translation_server_class_get_script_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
+    js_translation_server_singleton();
 	return call_builtin_const_method_ret(&TranslationServer::get_script_name, ctx, this_val, argc, argv);
 };
 static JSValue translation_server_class_get_all_countries(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
+    js_translation_server_singleton();
 	return call_builtin_const_method_ret(&TranslationServer::get_all_countries, ctx, this_val, argc, argv);
 };
 static JSValue translation_server_class_get_country_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
+    js_translation_server_singleton();
 	return call_builtin_const_method_ret(&TranslationServer::get_country_name, ctx, this_val, argc, argv);
 };
 static JSValue translation_server_class_get_locale_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
+    js_translation_server_singleton();
 	return call_builtin_const_method_ret(&TranslationServer::get_locale_name, ctx, this_val, argc, argv);
 };
 static JSValue translation_server_class_translate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
+    js_translation_server_singleton();
 	return call_builtin_const_method_ret(&TranslationServer::translate, ctx, this_val, argc, argv);
 };
 static JSValue translation_server_class_translate_plural(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
+    js_translation_server_singleton();
 	return call_builtin_const_method_ret(&TranslationServer::translate_plural, ctx, this_val, argc, argv);
 };
 static JSValue translation_server_class_add_translation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
-	call_builtin_method_no_ret(&TranslationServer::add_translation, ctx, this_val, argc, argv);
+    js_translation_server_singleton();
+    call_builtin_method_no_ret(&TranslationServer::add_translation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_server_class_remove_translation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
-	call_builtin_method_no_ret(&TranslationServer::remove_translation, ctx, this_val, argc, argv);
+    js_translation_server_singleton();
+    call_builtin_method_no_ret(&TranslationServer::remove_translation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_server_class_get_translation_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
+    js_translation_server_singleton();
 	return call_builtin_method_ret(&TranslationServer::get_translation_object, ctx, this_val, argc, argv);
 };
 static JSValue translation_server_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
-	call_builtin_method_no_ret(&TranslationServer::clear, ctx, this_val, argc, argv);
+    js_translation_server_singleton();
+    call_builtin_method_no_ret(&TranslationServer::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_server_class_get_loaded_locales(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
+    js_translation_server_singleton();
 	return call_builtin_const_method_ret(&TranslationServer::get_loaded_locales, ctx, this_val, argc, argv);
 };
 static JSValue translation_server_class_is_pseudolocalization_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
+    js_translation_server_singleton();
 	return call_builtin_const_method_ret(&TranslationServer::is_pseudolocalization_enabled, ctx, this_val, argc, argv);
 };
 static JSValue translation_server_class_set_pseudolocalization_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
-	call_builtin_method_no_ret(&TranslationServer::set_pseudolocalization_enabled, ctx, this_val, argc, argv);
+    js_translation_server_singleton();
+    call_builtin_method_no_ret(&TranslationServer::set_pseudolocalization_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_server_class_reload_pseudolocalization(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
-	call_builtin_method_no_ret(&TranslationServer::reload_pseudolocalization, ctx, this_val, argc, argv);
+    js_translation_server_singleton();
+    call_builtin_method_no_ret(&TranslationServer::reload_pseudolocalization, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue translation_server_class_pseudolocalize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_translation_server_singleton();
+    js_translation_server_singleton();
 	return call_builtin_const_method_ret(&TranslationServer::pseudolocalize, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry translation_server_class_proto_funcs[] = {
@@ -183,6 +184,7 @@ static void js_translation_server_singleton() {
 		JS_SetPropertyStr(ctx, global, "TranslationServer", translation_server_instance);
 	}
 }
+
 
 void register_translation_server() {
 	js_translation_server_class_init(ctx);

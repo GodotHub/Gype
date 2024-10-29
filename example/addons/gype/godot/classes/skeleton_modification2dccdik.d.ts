@@ -25,19 +25,19 @@ export declare class SkeletonModification2DCCDIK extends SkeletonModification2D{
   public get target_nodepath(): NodePath {
     get_target_node();
   }
-  public set target_nodepath(value: NodePath): void {
+  public set target_nodepath(value): void {
     set_target_node(value);
   }
   public get tip_nodepath(): NodePath {
     get_tip_node();
   }
-  public set tip_nodepath(value: NodePath): void {
+  public set tip_nodepath(value): void {
     set_tip_node(value);
   }
   public get ccdik_data_chain_length(): number {
     get_ccdik_data_chain_length();
   }
-  public set ccdik_data_chain_length(value: number): void {
+  public set ccdik_data_chain_length(value): void {
     set_ccdik_data_chain_length(value);
   }
 }

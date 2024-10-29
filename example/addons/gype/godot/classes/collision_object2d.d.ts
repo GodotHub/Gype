@@ -1,9 +1,9 @@
 
-import { InputEvent } from "@godot/classes/input_event";
-import { Node2D } from "@godot/classes/node2d";
-import { Viewport } from "@godot/classes/viewport";
-import { Object } from "@godot/classes/object";
 import { Shape2D } from "@godot/classes/shape2d";
+import { Viewport } from "@godot/classes/viewport";
+import { InputEvent } from "@godot/classes/input_event";
+import { Object } from "@godot/classes/object";
+import { Node2D } from "@godot/classes/node2d";
 
 export declare class CollisionObject2D extends Node2D{
   public _input_event(_viewport: Viewport, _event: InputEvent, _shape_idx: number): void;
@@ -48,31 +48,31 @@ export declare class CollisionObject2D extends Node2D{
   public get disable_mode(): number {
     get_disable_mode();
   }
-  public set disable_mode(value: number): void {
+  public set disable_mode(value): void {
     set_disable_mode(value);
   }
   public get collision_layer(): number {
     get_collision_layer();
   }
-  public set collision_layer(value: number): void {
+  public set collision_layer(value): void {
     set_collision_layer(value);
   }
   public get collision_mask(): number {
     get_collision_mask();
   }
-  public set collision_mask(value: number): void {
+  public set collision_mask(value): void {
     set_collision_mask(value);
   }
   public get collision_priority(): number {
     get_collision_priority();
   }
-  public set collision_priority(value: number): void {
+  public set collision_priority(value): void {
     set_collision_priority(value);
   }
   public get input_pickable(): boolean {
     is_pickable();
   }
-  public set input_pickable(value: boolean): void {
+  public set input_pickable(value): void {
     set_pickable(value);
   }
   static DisableMode = {

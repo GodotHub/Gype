@@ -13,25 +13,25 @@ export declare class AspectRatioContainer extends Container{
   public get ratio(): number {
     get_ratio();
   }
-  public set ratio(value: number): void {
+  public set ratio(value): void {
     set_ratio(value);
   }
   public get stretch_mode(): number {
     get_stretch_mode();
   }
-  public set stretch_mode(value: number): void {
+  public set stretch_mode(value): void {
     set_stretch_mode(value);
   }
   public get alignment_horizontal(): number {
     get_alignment_horizontal();
   }
-  public set alignment_horizontal(value: number): void {
+  public set alignment_horizontal(value): void {
     set_alignment_horizontal(value);
   }
   public get alignment_vertical(): number {
     get_alignment_vertical();
   }
-  public set alignment_vertical(value: number): void {
+  public set alignment_vertical(value): void {
     set_alignment_vertical(value);
   }
   static StretchMode = {

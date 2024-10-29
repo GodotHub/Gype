@@ -8,7 +8,7 @@ export declare class ConvexPolygonShape2D extends Shape2D{
   public get points(): PackedVector2Array {
     get_points();
   }
-  public set points(value: PackedVector2Array): void {
+  public set points(value): void {
     set_points(value);
   }
 }

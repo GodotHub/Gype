@@ -1,10 +1,10 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/geometry2d.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -16,6 +16,7 @@ static JSValue geometry2d_instance;
 static void js_geometry2d_singleton();
 
 static void geometry2d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -39,95 +40,95 @@ static JSValue geometry2d_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue geometry2d_class_is_point_in_circle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::is_point_in_circle, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_segment_intersects_circle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::segment_intersects_circle, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_segment_intersects_segment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::segment_intersects_segment, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_line_intersects_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::line_intersects_line, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_get_closest_points_between_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::get_closest_points_between_segments, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_get_closest_point_to_segment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::get_closest_point_to_segment, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_get_closest_point_to_segment_uncapped(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::get_closest_point_to_segment_uncapped, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_point_is_inside_triangle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_const_method_ret(&Geometry2D::point_is_inside_triangle, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_is_polygon_clockwise(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::is_polygon_clockwise, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_is_point_in_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::is_point_in_polygon, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_triangulate_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::triangulate_polygon, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_triangulate_delaunay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::triangulate_delaunay, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_convex_hull(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::convex_hull, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_decompose_polygon_in_convex(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::decompose_polygon_in_convex, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_merge_polygons(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::merge_polygons, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_clip_polygons(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::clip_polygons, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_intersect_polygons(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::intersect_polygons, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_exclude_polygons(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::exclude_polygons, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_clip_polyline_with_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::clip_polyline_with_polygon, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_intersect_polyline_with_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::intersect_polyline_with_polygon, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_offset_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::offset_polygon, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_offset_polyline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::offset_polyline, ctx, this_val, argc, argv);
 };
 static JSValue geometry2d_class_make_atlas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry2d_singleton();
+    js_geometry2d_singleton();
 	return call_builtin_method_ret(&Geometry2D::make_atlas, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry geometry2d_class_proto_funcs[] = {
@@ -176,6 +177,7 @@ static void js_geometry2d_singleton() {
 		JS_SetPropertyStr(ctx, global, "Geometry2D", geometry2d_instance);
 	}
 }
+
 
 void register_geometry2d() {
 	js_geometry2d_class_init(ctx);

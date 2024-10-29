@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/polygon_path_finder.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/polygon_path_finder.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void polygon_path_finder_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue polygon_path_finder_class_constructor(JSContext *ctx, JSValueCons
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, polygon_path_finder_class);
+	JS_SetOpaque(obj, polygon_path_finder_class);	
 	return obj;
 }
 static JSValue polygon_path_finder_class_setup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PolygonPathFinder::setup, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PolygonPathFinder::setup, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon_path_finder_class_find_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -56,7 +58,7 @@ static JSValue polygon_path_finder_class_is_point_inside(JSContext *ctx, JSValue
 };
 static JSValue polygon_path_finder_class_set_point_penalty(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PolygonPathFinder::set_point_penalty, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PolygonPathFinder::set_point_penalty, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue polygon_path_finder_class_get_point_penalty(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -85,6 +87,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_polygon_path_finder_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&PolygonPathFinder::__class_id);
 	classes["PolygonPathFinder"] = PolygonPathFinder::__class_id;
 	class_id_list.insert(PolygonPathFinder::__class_id);
@@ -107,7 +110,7 @@ static int js_polygon_path_finder_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_polygon_path_finder_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/resource';";
+	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -119,7 +122,7 @@ JSModuleDef *_js_init_polygon_path_finder_module(JSContext *ctx, const char *mod
 }
 
 JSModuleDef *js_init_polygon_path_finder_module(JSContext *ctx) {
-	return _js_init_polygon_path_finder_module(ctx, "godot/classes/polygon_path_finder");
+	return _js_init_polygon_path_finder_module(ctx, "@godot/classes/polygon_path_finder");
 }
 
 void register_polygon_path_finder() {

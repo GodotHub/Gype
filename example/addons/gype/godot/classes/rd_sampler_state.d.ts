@@ -35,91 +35,91 @@ export declare class RDSamplerState extends RefCounted{
   public get mag_filter(): number {
     get_mag_filter();
   }
-  public set mag_filter(value: number): void {
+  public set mag_filter(value): void {
     set_mag_filter(value);
   }
   public get min_filter(): number {
     get_min_filter();
   }
-  public set min_filter(value: number): void {
+  public set min_filter(value): void {
     set_min_filter(value);
   }
   public get mip_filter(): number {
     get_mip_filter();
   }
-  public set mip_filter(value: number): void {
+  public set mip_filter(value): void {
     set_mip_filter(value);
   }
   public get repeat_u(): number {
     get_repeat_u();
   }
-  public set repeat_u(value: number): void {
+  public set repeat_u(value): void {
     set_repeat_u(value);
   }
   public get repeat_v(): number {
     get_repeat_v();
   }
-  public set repeat_v(value: number): void {
+  public set repeat_v(value): void {
     set_repeat_v(value);
   }
   public get repeat_w(): number {
     get_repeat_w();
   }
-  public set repeat_w(value: number): void {
+  public set repeat_w(value): void {
     set_repeat_w(value);
   }
   public get lod_bias(): number {
     get_lod_bias();
   }
-  public set lod_bias(value: number): void {
+  public set lod_bias(value): void {
     set_lod_bias(value);
   }
   public get use_anisotropy(): boolean {
     get_use_anisotropy();
   }
-  public set use_anisotropy(value: boolean): void {
+  public set use_anisotropy(value): void {
     set_use_anisotropy(value);
   }
   public get anisotropy_max(): number {
     get_anisotropy_max();
   }
-  public set anisotropy_max(value: number): void {
+  public set anisotropy_max(value): void {
     set_anisotropy_max(value);
   }
   public get enable_compare(): boolean {
     get_enable_compare();
   }
-  public set enable_compare(value: boolean): void {
+  public set enable_compare(value): void {
     set_enable_compare(value);
   }
   public get compare_op(): number {
     get_compare_op();
   }
-  public set compare_op(value: number): void {
+  public set compare_op(value): void {
     set_compare_op(value);
   }
   public get min_lod(): number {
     get_min_lod();
   }
-  public set min_lod(value: number): void {
+  public set min_lod(value): void {
     set_min_lod(value);
   }
   public get max_lod(): number {
     get_max_lod();
   }
-  public set max_lod(value: number): void {
+  public set max_lod(value): void {
     set_max_lod(value);
   }
   public get border_color(): number {
     get_border_color();
   }
-  public set border_color(value: number): void {
+  public set border_color(value): void {
     set_border_color(value);
   }
   public get unnormalized_uvw(): boolean {
     get_unnormalized_uvw();
   }
-  public set unnormalized_uvw(value: boolean): void {
+  public set unnormalized_uvw(value): void {
     set_unnormalized_uvw(value);
   }
 }

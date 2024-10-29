@@ -1,7 +1,7 @@
 
+import { Control } from "@godot/classes/control";
 import { Container } from "@godot/classes/container";
 import { Object } from "@godot/classes/object";
-import { Control } from "@godot/classes/control";
 
 export declare class EditorProperty extends Container{
   public _update_property(): void;
@@ -25,47 +25,47 @@ export declare class EditorProperty extends Container{
   public update_property(): void;
   public add_focusable(_control: Control): void;
   public set_bottom_editor(_editor: Control): void;
-  public emit_changed(_property: StringName, _value: Variant, _field: StringName, _changing: boolean): void;
+  public emit_changed(_property: StringName, _value: any, _field: StringName, _changing: boolean): void;
   public get label(): String {
     get_label();
   }
-  public set label(value: String): void {
+  public set label(value): void {
     set_label(value);
   }
   public get read_only(): boolean {
     is_read_only();
   }
-  public set read_only(value: boolean): void {
+  public set read_only(value): void {
     set_read_only(value);
   }
   public get checkable(): boolean {
     is_checkable();
   }
-  public set checkable(value: boolean): void {
+  public set checkable(value): void {
     set_checkable(value);
   }
   public get checked(): boolean {
     is_checked();
   }
-  public set checked(value: boolean): void {
+  public set checked(value): void {
     set_checked(value);
   }
   public get draw_warning(): boolean {
     is_draw_warning();
   }
-  public set draw_warning(value: boolean): void {
+  public set draw_warning(value): void {
     set_draw_warning(value);
   }
   public get keying(): boolean {
     is_keying();
   }
-  public set keying(value: boolean): void {
+  public set keying(value): void {
     set_keying(value);
   }
   public get deletable(): boolean {
     is_deletable();
   }
-  public set deletable(value: boolean): void {
+  public set deletable(value): void {
     set_deletable(value);
   }
 }

@@ -7,7 +7,7 @@ export declare class OpenXRCompositionLayerQuad extends OpenXRCompositionLayer{
   public get quad_size(): Vector2 {
     get_quad_size();
   }
-  public set quad_size(value: Vector2): void {
+  public set quad_size(value): void {
     set_quad_size(value);
   }
 }

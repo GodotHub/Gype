@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/packet_peer.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/web_rtc_data_channel.hpp>
+#include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void web_rtc_data_channel_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue web_rtc_data_channel_class_constructor(JSContext *ctx, JSValueCon
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, web_rtc_data_channel_class);
+	JS_SetOpaque(obj, web_rtc_data_channel_class);	
 	return obj;
 }
 static JSValue web_rtc_data_channel_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -39,7 +41,7 @@ static JSValue web_rtc_data_channel_class_poll(JSContext *ctx, JSValueConst this
 };
 static JSValue web_rtc_data_channel_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&WebRTCDataChannel::close, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&WebRTCDataChannel::close, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_rtc_data_channel_class_was_string_packet(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,7 +50,7 @@ static JSValue web_rtc_data_channel_class_was_string_packet(JSContext *ctx, JSVa
 };
 static JSValue web_rtc_data_channel_class_set_write_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&WebRTCDataChannel::set_write_mode, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&WebRTCDataChannel::set_write_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue web_rtc_data_channel_class_get_write_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -109,13 +111,14 @@ static const JSCFunctionListEntry web_rtc_data_channel_class_proto_funcs[] = {
 };
 
 void define_web_rtc_data_channel_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "write_mode"),
-			JS_NewCFunction(ctx, web_rtc_data_channel_class_get_write_mode, "get_write_mode", 0),
-			JS_NewCFunction(ctx, web_rtc_data_channel_class_set_write_mode, "set_write_mode", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "write_mode"),
+        JS_NewCFunction(ctx, web_rtc_data_channel_class_get_write_mode, "get_write_mode", 0),
+        JS_NewCFunction(ctx, web_rtc_data_channel_class_set_write_mode, "set_write_mode", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -132,6 +135,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_web_rtc_data_channel_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&WebRTCDataChannel::__class_id);
 	classes["WebRTCDataChannel"] = WebRTCDataChannel::__class_id;
 	class_id_list.insert(WebRTCDataChannel::__class_id);
@@ -154,7 +158,7 @@ static int js_web_rtc_data_channel_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_web_rtc_data_channel_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/packet_peer';";
+	const char *code = "import * as _ from '@godot/classes/packet_peer';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -166,7 +170,7 @@ JSModuleDef *_js_init_web_rtc_data_channel_module(JSContext *ctx, const char *mo
 }
 
 JSModuleDef *js_init_web_rtc_data_channel_module(JSContext *ctx) {
-	return _js_init_web_rtc_data_channel_module(ctx, "godot/classes/web_rtc_data_channel");
+	return _js_init_web_rtc_data_channel_module(ctx, "@godot/classes/web_rtc_data_channel");
 }
 
 void register_web_rtc_data_channel() {

@@ -1,19 +1,21 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/rd_texture_format.hpp>
-#include <godot_cpp/classes/rd_texture_view.hpp>
-#include <godot_cpp/classes/render_scene_buffers.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/render_scene_buffers_rd.hpp>
+#include <godot_cpp/classes/render_scene_buffers.hpp>
+#include <godot_cpp/classes/rd_texture_view.hpp>
+#include <godot_cpp/classes/rd_texture_format.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void render_scene_buffers_rd_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -32,7 +34,7 @@ static JSValue render_scene_buffers_rd_class_constructor(JSContext *ctx, JSValue
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, render_scene_buffers_rd_class);
+	JS_SetOpaque(obj, render_scene_buffers_rd_class);	
 	return obj;
 }
 static JSValue render_scene_buffers_rd_class_has_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -73,7 +75,7 @@ static JSValue render_scene_buffers_rd_class_get_texture_slice_size(JSContext *c
 };
 static JSValue render_scene_buffers_rd_class_clear_context(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&RenderSceneBuffersRD::clear_context, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&RenderSceneBuffersRD::clear_context, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue render_scene_buffers_rd_class_get_color_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -181,6 +183,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_render_scene_buffers_rd_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&RenderSceneBuffersRD::__class_id);
 	classes["RenderSceneBuffersRD"] = RenderSceneBuffersRD::__class_id;
 	class_id_list.insert(RenderSceneBuffersRD::__class_id);
@@ -203,7 +206,7 @@ static int js_render_scene_buffers_rd_class_init(JSContext *ctx, JSModuleDef *m)
 }
 
 JSModuleDef *_js_init_render_scene_buffers_rd_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/render_scene_buffers';";
+	const char *code = "import * as _ from '@godot/classes/render_scene_buffers';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -215,7 +218,7 @@ JSModuleDef *_js_init_render_scene_buffers_rd_module(JSContext *ctx, const char 
 }
 
 JSModuleDef *js_init_render_scene_buffers_rd_module(JSContext *ctx) {
-	return _js_init_render_scene_buffers_rd_module(ctx, "godot/classes/render_scene_buffers_rd");
+	return _js_init_render_scene_buffers_rd_module(ctx, "@godot/classes/render_scene_buffers_rd");
 }
 
 void register_render_scene_buffers_rd() {

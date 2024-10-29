@@ -1,7 +1,7 @@
 #include "support/placeholder_javascript_instance.hpp"
 #include "quickjs/quickjs_helper.h"
 #include "quickjs/str_helper.h"
-#include "support/javascript.hpp"
+#include "support/typescript.hpp"
 #include <godot_cpp/classes/class_db_singleton.hpp>
 #include <godot_cpp/classes/engine.hpp>
 #include <godot_cpp/classes/resource_loader.hpp>
@@ -17,7 +17,7 @@ static void notification_bind(JSValue instance, JSValue prototype, int32_t p_wha
 
 const char *PlaceholderJavaScriptInstance::symbol_mask = "_GodotClass";
 
-PlaceholderJavaScriptInstance::PlaceholderJavaScriptInstance(Object *p_godot_object, JavaScript *script, bool is_placeholder) {
+PlaceholderJavaScriptInstance::PlaceholderJavaScriptInstance(Object *p_godot_object, TypeScript *script, bool is_placeholder) {
 	this->_is_placeholder = is_placeholder;
 	this->script = script;
 	binding = internal::get_object_instance_binding(p_godot_object->_owner);
@@ -188,7 +188,7 @@ GDExtensionBool godot::PlaceholderJavaScriptInstance::is_placeholder() {
 }
 
 GDExtensionScriptLanguagePtr PlaceholderJavaScriptInstance::get_language() {
-	return JavaScriptLanguage::get_singleton();
+	return TypeScriptLanguage::get_singleton();
 }
 
 static void notification_bind(JSValue instance, JSValue prototype, int32_t p_what, GDExtensionBool p_reversed) {

@@ -1,6 +1,6 @@
 
-import { Node2D } from "@godot/classes/node2d";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Node2D } from "@godot/classes/node2d";
 
 export declare class Sprite2D extends Node2D{
   public set_texture(_texture: Texture2D): void;
@@ -32,73 +32,73 @@ export declare class Sprite2D extends Node2D{
   public get texture(): Texture2D {
     get_texture();
   }
-  public set texture(value: Texture2D): void {
+  public set texture(value): void {
     set_texture(value);
   }
   public get centered(): boolean {
     is_centered();
   }
-  public set centered(value: boolean): void {
+  public set centered(value): void {
     set_centered(value);
   }
   public get offset(): Vector2 {
     get_offset();
   }
-  public set offset(value: Vector2): void {
+  public set offset(value): void {
     set_offset(value);
   }
   public get flip_h(): boolean {
     is_flipped_h();
   }
-  public set flip_h(value: boolean): void {
+  public set flip_h(value): void {
     set_flip_h(value);
   }
   public get flip_v(): boolean {
     is_flipped_v();
   }
-  public set flip_v(value: boolean): void {
+  public set flip_v(value): void {
     set_flip_v(value);
   }
   public get hframes(): number {
     get_hframes();
   }
-  public set hframes(value: number): void {
+  public set hframes(value): void {
     set_hframes(value);
   }
   public get vframes(): number {
     get_vframes();
   }
-  public set vframes(value: number): void {
+  public set vframes(value): void {
     set_vframes(value);
   }
   public get frame(): number {
     get_frame();
   }
-  public set frame(value: number): void {
+  public set frame(value): void {
     set_frame(value);
   }
   public get frame_coords(): Vector2i {
     get_frame_coords();
   }
-  public set frame_coords(value: Vector2i): void {
+  public set frame_coords(value): void {
     set_frame_coords(value);
   }
   public get region_enabled(): boolean {
     is_region_enabled();
   }
-  public set region_enabled(value: boolean): void {
+  public set region_enabled(value): void {
     set_region_enabled(value);
   }
   public get region_rect(): Rect2 {
     get_region_rect();
   }
-  public set region_rect(value: Rect2): void {
+  public set region_rect(value): void {
     set_region_rect(value);
   }
   public get region_filter_clip_enabled(): boolean {
     is_region_filter_clip_enabled();
   }
-  public set region_filter_clip_enabled(value: boolean): void {
+  public set region_filter_clip_enabled(value): void {
     set_region_filter_clip_enabled(value);
   }
 }

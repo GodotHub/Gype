@@ -48,19 +48,19 @@ export declare class AnimationPlayer extends AnimationMixer{
   public get current_animation(): StringName {
     get_current_animation();
   }
-  public set current_animation(value: StringName): void {
+  public set current_animation(value): void {
     set_current_animation(value);
   }
   public get assigned_animation(): StringName {
     get_assigned_animation();
   }
-  public set assigned_animation(value: StringName): void {
+  public set assigned_animation(value): void {
     set_assigned_animation(value);
   }
   public get autoplay(): StringName {
     get_autoplay();
   }
-  public set autoplay(value: StringName): void {
+  public set autoplay(value): void {
     set_autoplay(value);
   }
   public get current_animation_length(): number {
@@ -72,43 +72,43 @@ export declare class AnimationPlayer extends AnimationMixer{
   public get playback_auto_capture(): boolean {
     is_auto_capture();
   }
-  public set playback_auto_capture(value: boolean): void {
+  public set playback_auto_capture(value): void {
     set_auto_capture(value);
   }
   public get playback_auto_capture_duration(): number {
     get_auto_capture_duration();
   }
-  public set playback_auto_capture_duration(value: number): void {
+  public set playback_auto_capture_duration(value): void {
     set_auto_capture_duration(value);
   }
   public get playback_auto_capture_transition_type(): number {
     get_auto_capture_transition_type();
   }
-  public set playback_auto_capture_transition_type(value: number): void {
+  public set playback_auto_capture_transition_type(value): void {
     set_auto_capture_transition_type(value);
   }
   public get playback_auto_capture_ease_type(): number {
     get_auto_capture_ease_type();
   }
-  public set playback_auto_capture_ease_type(value: number): void {
+  public set playback_auto_capture_ease_type(value): void {
     set_auto_capture_ease_type(value);
   }
   public get playback_default_blend_time(): number {
     get_default_blend_time();
   }
-  public set playback_default_blend_time(value: number): void {
+  public set playback_default_blend_time(value): void {
     set_default_blend_time(value);
   }
   public get speed_scale(): number {
     get_speed_scale();
   }
-  public set speed_scale(value: number): void {
+  public set speed_scale(value): void {
     set_speed_scale(value);
   }
   public get movie_quit_on_finish(): boolean {
     is_movie_quit_on_finish_enabled();
   }
-  public set movie_quit_on_finish(value: boolean): void {
+  public set movie_quit_on_finish(value): void {
     set_movie_quit_on_finish_enabled(value);
   }
   static AnimationProcessCallback = {

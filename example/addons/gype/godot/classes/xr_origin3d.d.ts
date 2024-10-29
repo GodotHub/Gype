@@ -9,13 +9,13 @@ export declare class XROrigin3D extends Node3D{
   public get world_scale(): number {
     get_world_scale();
   }
-  public set world_scale(value: number): void {
+  public set world_scale(value): void {
     set_world_scale(value);
   }
   public get current(): boolean {
     is_current();
   }
-  public set current(value: boolean): void {
+  public set current(value): void {
     set_current(value);
   }
 }

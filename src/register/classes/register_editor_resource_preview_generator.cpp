@@ -1,19 +1,21 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/editor_resource_preview_generator.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/editor_resource_preview_generator.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void editor_resource_preview_generator_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -32,7 +34,7 @@ static JSValue editor_resource_preview_generator_class_constructor(JSContext *ct
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_resource_preview_generator_class);
+	JS_SetOpaque(obj, editor_resource_preview_generator_class);	
 	return obj;
 }
 
@@ -43,6 +45,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_resource_preview_generator_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&EditorResourcePreviewGenerator::__class_id);
 	classes["EditorResourcePreviewGenerator"] = EditorResourcePreviewGenerator::__class_id;
 	class_id_list.insert(EditorResourcePreviewGenerator::__class_id);
@@ -64,7 +67,7 @@ static int js_editor_resource_preview_generator_class_init(JSContext *ctx, JSMod
 }
 
 JSModuleDef *_js_init_editor_resource_preview_generator_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -76,7 +79,7 @@ JSModuleDef *_js_init_editor_resource_preview_generator_module(JSContext *ctx, c
 }
 
 JSModuleDef *js_init_editor_resource_preview_generator_module(JSContext *ctx) {
-	return _js_init_editor_resource_preview_generator_module(ctx, "godot/classes/editor_resource_preview_generator");
+	return _js_init_editor_resource_preview_generator_module(ctx, "@godot/classes/editor_resource_preview_generator");
 }
 
 void register_editor_resource_preview_generator() {

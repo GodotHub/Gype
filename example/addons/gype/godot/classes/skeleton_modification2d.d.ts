@@ -19,13 +19,13 @@ export declare class SkeletonModification2D extends Resource{
   public get enabled(): boolean {
     get_enabled();
   }
-  public set enabled(value: boolean): void {
+  public set enabled(value): void {
     set_enabled(value);
   }
   public get execution_mode(): number {
     get_execution_mode();
   }
-  public set execution_mode(value: number): void {
+  public set execution_mode(value): void {
     set_execution_mode(value);
   }
 }

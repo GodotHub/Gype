@@ -1,9 +1,9 @@
 
-import { InputEvent } from "@godot/classes/input_event";
-import { Shape3D } from "@godot/classes/shape3d";
-import { Node3D } from "@godot/classes/node3d";
-import { Object } from "@godot/classes/object";
 import { Camera3D } from "@godot/classes/camera3d";
+import { Shape3D } from "@godot/classes/shape3d";
+import { InputEvent } from "@godot/classes/input_event";
+import { Object } from "@godot/classes/object";
+import { Node3D } from "@godot/classes/node3d";
 
 export declare class CollisionObject3D extends Node3D{
   public _input_event(_camera: Camera3D, _event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: number): void;
@@ -44,37 +44,37 @@ export declare class CollisionObject3D extends Node3D{
   public get disable_mode(): number {
     get_disable_mode();
   }
-  public set disable_mode(value: number): void {
+  public set disable_mode(value): void {
     set_disable_mode(value);
   }
   public get collision_layer(): number {
     get_collision_layer();
   }
-  public set collision_layer(value: number): void {
+  public set collision_layer(value): void {
     set_collision_layer(value);
   }
   public get collision_mask(): number {
     get_collision_mask();
   }
-  public set collision_mask(value: number): void {
+  public set collision_mask(value): void {
     set_collision_mask(value);
   }
   public get collision_priority(): number {
     get_collision_priority();
   }
-  public set collision_priority(value: number): void {
+  public set collision_priority(value): void {
     set_collision_priority(value);
   }
   public get input_ray_pickable(): boolean {
     is_ray_pickable();
   }
-  public set input_ray_pickable(value: boolean): void {
+  public set input_ray_pickable(value): void {
     set_ray_pickable(value);
   }
   public get input_capture_on_drag(): boolean {
     get_capture_input_on_drag();
   }
-  public set input_capture_on_drag(value: boolean): void {
+  public set input_capture_on_drag(value): void {
     set_capture_input_on_drag(value);
   }
   static DisableMode = {

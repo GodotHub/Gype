@@ -35,19 +35,19 @@ export declare class Curve3D extends Resource{
   public get bake_interval(): number {
     get_bake_interval();
   }
-  public set bake_interval(value: number): void {
+  public set bake_interval(value): void {
     set_bake_interval(value);
   }
   public get point_count(): number {
     get_point_count();
   }
-  public set point_count(value: number): void {
+  public set point_count(value): void {
     set_point_count(value);
   }
   public get up_vector_enabled(): boolean {
     is_up_vector_enabled();
   }
-  public set up_vector_enabled(value: boolean): void {
+  public set up_vector_enabled(value): void {
     set_up_vector_enabled(value);
   }
 }

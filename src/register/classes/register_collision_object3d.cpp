@@ -1,21 +1,23 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/collision_object3d.hpp>
-#include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
+#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void collision_object3d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -34,12 +36,12 @@ static JSValue collision_object3d_class_constructor(JSContext *ctx, JSValueConst
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, collision_object3d_class);
+	JS_SetOpaque(obj, collision_object3d_class);	
 	return obj;
 }
 static JSValue collision_object3d_class_set_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionObject3D::set_collision_layer, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionObject3D::set_collision_layer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_object3d_class_get_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,7 +50,7 @@ static JSValue collision_object3d_class_get_collision_layer(JSContext *ctx, JSVa
 };
 static JSValue collision_object3d_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionObject3D::set_collision_mask, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionObject3D::set_collision_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_object3d_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,7 +59,7 @@ static JSValue collision_object3d_class_get_collision_mask(JSContext *ctx, JSVal
 };
 static JSValue collision_object3d_class_set_collision_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionObject3D::set_collision_layer_value, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionObject3D::set_collision_layer_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_object3d_class_get_collision_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -66,7 +68,7 @@ static JSValue collision_object3d_class_get_collision_layer_value(JSContext *ctx
 };
 static JSValue collision_object3d_class_set_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionObject3D::set_collision_mask_value, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionObject3D::set_collision_mask_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_object3d_class_get_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,7 +77,7 @@ static JSValue collision_object3d_class_get_collision_mask_value(JSContext *ctx,
 };
 static JSValue collision_object3d_class_set_collision_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionObject3D::set_collision_priority, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionObject3D::set_collision_priority, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_object3d_class_get_collision_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -84,7 +86,7 @@ static JSValue collision_object3d_class_get_collision_priority(JSContext *ctx, J
 };
 static JSValue collision_object3d_class_set_disable_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionObject3D::set_disable_mode, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionObject3D::set_disable_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_object3d_class_get_disable_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -93,7 +95,7 @@ static JSValue collision_object3d_class_get_disable_mode(JSContext *ctx, JSValue
 };
 static JSValue collision_object3d_class_set_ray_pickable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionObject3D::set_ray_pickable, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionObject3D::set_ray_pickable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_object3d_class_is_ray_pickable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -102,7 +104,7 @@ static JSValue collision_object3d_class_is_ray_pickable(JSContext *ctx, JSValueC
 };
 static JSValue collision_object3d_class_set_capture_input_on_drag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionObject3D::set_capture_input_on_drag, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionObject3D::set_capture_input_on_drag, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_object3d_class_get_capture_input_on_drag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -119,7 +121,7 @@ static JSValue collision_object3d_class_create_shape_owner(JSContext *ctx, JSVal
 };
 static JSValue collision_object3d_class_remove_shape_owner(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionObject3D::remove_shape_owner, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionObject3D::remove_shape_owner, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_object3d_class_get_shape_owners(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -128,7 +130,7 @@ static JSValue collision_object3d_class_get_shape_owners(JSContext *ctx, JSValue
 };
 static JSValue collision_object3d_class_shape_owner_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionObject3D::shape_owner_set_transform, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionObject3D::shape_owner_set_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_object3d_class_shape_owner_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -141,7 +143,7 @@ static JSValue collision_object3d_class_shape_owner_get_owner(JSContext *ctx, JS
 };
 static JSValue collision_object3d_class_shape_owner_set_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionObject3D::shape_owner_set_disabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionObject3D::shape_owner_set_disabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_object3d_class_is_shape_owner_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -150,7 +152,7 @@ static JSValue collision_object3d_class_is_shape_owner_disabled(JSContext *ctx, 
 };
 static JSValue collision_object3d_class_shape_owner_add_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionObject3D::shape_owner_add_shape, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionObject3D::shape_owner_add_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_object3d_class_shape_owner_get_shape_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -167,12 +169,12 @@ static JSValue collision_object3d_class_shape_owner_get_shape_index(JSContext *c
 };
 static JSValue collision_object3d_class_shape_owner_remove_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionObject3D::shape_owner_remove_shape, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionObject3D::shape_owner_remove_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_object3d_class_shape_owner_clear_shapes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionObject3D::shape_owner_clear_shapes, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionObject3D::shape_owner_clear_shapes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_object3d_class_shape_find_owner(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -215,48 +217,54 @@ static const JSCFunctionListEntry collision_object3d_class_proto_funcs[] = {
 };
 
 void define_collision_object3d_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "disable_mode"),
-			JS_NewCFunction(ctx, collision_object3d_class_get_disable_mode, "get_disable_mode", 0),
-			JS_NewCFunction(ctx, collision_object3d_class_set_disable_mode, "set_disable_mode", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "collision_layer"),
-			JS_NewCFunction(ctx, collision_object3d_class_get_collision_layer, "get_collision_layer", 0),
-			JS_NewCFunction(ctx, collision_object3d_class_set_collision_layer, "set_collision_layer", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "collision_mask"),
-			JS_NewCFunction(ctx, collision_object3d_class_get_collision_mask, "get_collision_mask", 0),
-			JS_NewCFunction(ctx, collision_object3d_class_set_collision_mask, "set_collision_mask", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "collision_priority"),
-			JS_NewCFunction(ctx, collision_object3d_class_get_collision_priority, "get_collision_priority", 0),
-			JS_NewCFunction(ctx, collision_object3d_class_set_collision_priority, "set_collision_priority", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "input_ray_pickable"),
-			JS_NewCFunction(ctx, collision_object3d_class_is_ray_pickable, "is_ray_pickable", 0),
-			JS_NewCFunction(ctx, collision_object3d_class_set_ray_pickable, "set_ray_pickable", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "input_capture_on_drag"),
-			JS_NewCFunction(ctx, collision_object3d_class_get_capture_input_on_drag, "get_capture_input_on_drag", 0),
-			JS_NewCFunction(ctx, collision_object3d_class_set_capture_input_on_drag, "set_capture_input_on_drag", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "disable_mode"),
+        JS_NewCFunction(ctx, collision_object3d_class_get_disable_mode, "get_disable_mode", 0),
+        JS_NewCFunction(ctx, collision_object3d_class_set_disable_mode, "set_disable_mode", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "collision_layer"),
+        JS_NewCFunction(ctx, collision_object3d_class_get_collision_layer, "get_collision_layer", 0),
+        JS_NewCFunction(ctx, collision_object3d_class_set_collision_layer, "set_collision_layer", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "collision_mask"),
+        JS_NewCFunction(ctx, collision_object3d_class_get_collision_mask, "get_collision_mask", 0),
+        JS_NewCFunction(ctx, collision_object3d_class_set_collision_mask, "set_collision_mask", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "collision_priority"),
+        JS_NewCFunction(ctx, collision_object3d_class_get_collision_priority, "get_collision_priority", 0),
+        JS_NewCFunction(ctx, collision_object3d_class_set_collision_priority, "set_collision_priority", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "input_ray_pickable"),
+        JS_NewCFunction(ctx, collision_object3d_class_is_ray_pickable, "is_ray_pickable", 0),
+        JS_NewCFunction(ctx, collision_object3d_class_set_ray_pickable, "set_ray_pickable", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "input_capture_on_drag"),
+        JS_NewCFunction(ctx, collision_object3d_class_get_capture_input_on_drag, "get_capture_input_on_drag", 0),
+        JS_NewCFunction(ctx, collision_object3d_class_set_capture_input_on_drag, "set_capture_input_on_drag", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -268,6 +276,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_collision_object3d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&CollisionObject3D::__class_id);
 	classes["CollisionObject3D"] = CollisionObject3D::__class_id;
 	class_id_list.insert(CollisionObject3D::__class_id);
@@ -290,7 +299,7 @@ static int js_collision_object3d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_collision_object3d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/node3d';";
+	const char *code = "import * as _ from '@godot/classes/node3d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -302,7 +311,7 @@ JSModuleDef *_js_init_collision_object3d_module(JSContext *ctx, const char *modu
 }
 
 JSModuleDef *js_init_collision_object3d_module(JSContext *ctx) {
-	return _js_init_collision_object3d_module(ctx, "godot/classes/collision_object3d");
+	return _js_init_collision_object3d_module(ctx, "@godot/classes/collision_object3d");
 }
 
 void register_collision_object3d() {

@@ -1,20 +1,24 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/editor_syntax_highlighter.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/panel_container.hpp>
 #include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/classes/script_editor.hpp>
 #include <godot_cpp/classes/script_editor_base.hpp>
+#include <godot_cpp/classes/script_editor_base.hpp>
+#include <godot_cpp/classes/script.hpp>
+#include <godot_cpp/classes/editor_syntax_highlighter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void script_editor_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -33,7 +37,7 @@ static JSValue script_editor_class_constructor(JSContext *ctx, JSValueConst new_
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, script_editor_class);
+	JS_SetOpaque(obj, script_editor_class);	
 	return obj;
 }
 static JSValue script_editor_class_get_current_editor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -46,17 +50,17 @@ static JSValue script_editor_class_get_open_script_editors(JSContext *ctx, JSVal
 };
 static JSValue script_editor_class_register_syntax_highlighter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ScriptEditor::register_syntax_highlighter, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ScriptEditor::register_syntax_highlighter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue script_editor_class_unregister_syntax_highlighter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ScriptEditor::unregister_syntax_highlighter, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ScriptEditor::unregister_syntax_highlighter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue script_editor_class_goto_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ScriptEditor::goto_line, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ScriptEditor::goto_line, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue script_editor_class_get_current_script(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -69,12 +73,12 @@ static JSValue script_editor_class_get_open_scripts(JSContext *ctx, JSValueConst
 };
 static JSValue script_editor_class_open_script_create_dialog(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ScriptEditor::open_script_create_dialog, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ScriptEditor::open_script_create_dialog, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue script_editor_class_goto_help(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ScriptEditor::goto_help, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ScriptEditor::goto_help, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry script_editor_class_proto_funcs[] = {
@@ -96,6 +100,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_script_editor_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&ScriptEditor::__class_id);
 	classes["ScriptEditor"] = ScriptEditor::__class_id;
 	class_id_list.insert(ScriptEditor::__class_id);
@@ -118,7 +123,7 @@ static int js_script_editor_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_script_editor_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/panel_container';";
+	const char *code = "import * as _ from '@godot/classes/panel_container';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -130,7 +135,7 @@ JSModuleDef *_js_init_script_editor_module(JSContext *ctx, const char *module_na
 }
 
 JSModuleDef *js_init_script_editor_module(JSContext *ctx) {
-	return _js_init_script_editor_module(ctx, "godot/classes/script_editor");
+	return _js_init_script_editor_module(ctx, "@godot/classes/script_editor");
 }
 
 void register_script_editor() {

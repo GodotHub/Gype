@@ -1,19 +1,22 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/e_net_connection.hpp>
-#include <godot_cpp/classes/e_net_packet_peer.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/e_net_packet_peer.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
+#include <godot_cpp/classes/e_net_packet_peer.hpp>
+#include <godot_cpp/classes/e_net_connection.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void e_net_connection_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -32,7 +35,7 @@ static JSValue e_net_connection_class_constructor(JSContext *ctx, JSValueConst n
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, e_net_connection_class);
+	JS_SetOpaque(obj, e_net_connection_class);	
 	return obj;
 }
 static JSValue e_net_connection_class_create_host_bound(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -45,7 +48,7 @@ static JSValue e_net_connection_class_create_host(JSContext *ctx, JSValueConst t
 };
 static JSValue e_net_connection_class_destroy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ENetConnection::destroy, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ENetConnection::destroy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_connection_class_connect_to_host(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -58,27 +61,27 @@ static JSValue e_net_connection_class_service(JSContext *ctx, JSValueConst this_
 };
 static JSValue e_net_connection_class_flush(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ENetConnection::flush, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ENetConnection::flush, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_connection_class_bandwidth_limit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ENetConnection::bandwidth_limit, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ENetConnection::bandwidth_limit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_connection_class_channel_limit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ENetConnection::channel_limit, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ENetConnection::channel_limit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_connection_class_broadcast(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ENetConnection::broadcast, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ENetConnection::broadcast, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_connection_class_compress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ENetConnection::compress, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ENetConnection::compress, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_connection_class_dtls_server_setup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -91,7 +94,7 @@ static JSValue e_net_connection_class_dtls_client_setup(JSContext *ctx, JSValueC
 };
 static JSValue e_net_connection_class_refuse_new_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ENetConnection::refuse_new_connections, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ENetConnection::refuse_new_connections, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_connection_class_pop_statistic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -112,7 +115,7 @@ static JSValue e_net_connection_class_get_peers(JSContext *ctx, JSValueConst thi
 };
 static JSValue e_net_connection_class_socket_send(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ENetConnection::socket_send, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ENetConnection::socket_send, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry e_net_connection_class_proto_funcs[] = {
@@ -163,6 +166,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_e_net_connection_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&ENetConnection::__class_id);
 	classes["ENetConnection"] = ENetConnection::__class_id;
 	class_id_list.insert(ENetConnection::__class_id);
@@ -185,7 +189,7 @@ static int js_e_net_connection_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_e_net_connection_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -197,7 +201,7 @@ JSModuleDef *_js_init_e_net_connection_module(JSContext *ctx, const char *module
 }
 
 JSModuleDef *js_init_e_net_connection_module(JSContext *ctx) {
-	return _js_init_e_net_connection_module(ctx, "godot/classes/e_net_connection");
+	return _js_init_e_net_connection_module(ctx, "@godot/classes/e_net_connection");
 }
 
 void register_e_net_connection() {

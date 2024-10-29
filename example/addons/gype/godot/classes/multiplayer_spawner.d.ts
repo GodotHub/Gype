@@ -6,7 +6,7 @@ export declare class MultiplayerSpawner extends Node{
   public get_spawnable_scene_count(): number;
   public get_spawnable_scene(_index: number): String;
   public clear_spawnable_scenes(): void;
-  public spawn(_data: Variant): Node;
+  public spawn(_data: any): Node;
   public get_spawn_path(): NodePath;
   public set_spawn_path(_path: NodePath): void;
   public get_spawn_limit(): number;
@@ -16,19 +16,19 @@ export declare class MultiplayerSpawner extends Node{
   public get spawn_path(): NodePath {
     get_spawn_path();
   }
-  public set spawn_path(value: NodePath): void {
+  public set spawn_path(value): void {
     set_spawn_path(value);
   }
   public get spawn_limit(): number {
     get_spawn_limit();
   }
-  public set spawn_limit(value: number): void {
+  public set spawn_limit(value): void {
     set_spawn_limit(value);
   }
   public get spawn_function(): Callable {
     get_spawn_function();
   }
-  public set spawn_function(value: Callable): void {
+  public set spawn_function(value): void {
     set_spawn_function(value);
   }
 }

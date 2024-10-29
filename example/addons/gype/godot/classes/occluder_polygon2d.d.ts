@@ -11,19 +11,19 @@ export declare class OccluderPolygon2D extends Resource{
   public get closed(): boolean {
     is_closed();
   }
-  public set closed(value: boolean): void {
+  public set closed(value): void {
     set_closed(value);
   }
   public get cull_mode(): number {
     get_cull_mode();
   }
-  public set cull_mode(value: number): void {
+  public set cull_mode(value): void {
     set_cull_mode(value);
   }
   public get polygon(): PackedVector2Array {
     get_polygon();
   }
-  public set polygon(value: PackedVector2Array): void {
+  public set polygon(value): void {
     set_polygon(value);
   }
   static CullMode = {

@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/gd_script.hpp>
 #include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void gd_script_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue gd_script_class_constructor(JSContext *ctx, JSValueConst new_targ
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gd_script_class);
+	JS_SetOpaque(obj, gd_script_class);	
 	return obj;
 }
 static JSValue gd_script_class_new_(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,6 +50,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_gd_script_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&GDScript::__class_id);
 	classes["GDScript"] = GDScript::__class_id;
 	class_id_list.insert(GDScript::__class_id);
@@ -70,7 +73,7 @@ static int js_gd_script_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_gd_script_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/script';";
+	const char *code = "import * as _ from '@godot/classes/script';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -82,7 +85,7 @@ JSModuleDef *_js_init_gd_script_module(JSContext *ctx, const char *module_name) 
 }
 
 JSModuleDef *js_init_gd_script_module(JSContext *ctx) {
-	return _js_init_gd_script_module(ctx, "godot/classes/gd_script");
+	return _js_init_gd_script_module(ctx, "@godot/classes/gd_script");
 }
 
 void register_gd_script() {

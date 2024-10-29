@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/e_net_packet_peer.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/packet_peer.hpp>
+#include <godot_cpp/classes/e_net_packet_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void e_net_packet_peer_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,37 +32,37 @@ static JSValue e_net_packet_peer_class_constructor(JSContext *ctx, JSValueConst 
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, e_net_packet_peer_class);
+	JS_SetOpaque(obj, e_net_packet_peer_class);	
 	return obj;
 }
 static JSValue e_net_packet_peer_class_peer_disconnect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ENetPacketPeer::peer_disconnect, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ENetPacketPeer::peer_disconnect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_packet_peer_class_peer_disconnect_later(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ENetPacketPeer::peer_disconnect_later, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ENetPacketPeer::peer_disconnect_later, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_packet_peer_class_peer_disconnect_now(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ENetPacketPeer::peer_disconnect_now, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ENetPacketPeer::peer_disconnect_now, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_packet_peer_class_ping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ENetPacketPeer::ping, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ENetPacketPeer::ping, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_packet_peer_class_ping_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ENetPacketPeer::ping_interval, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ENetPacketPeer::ping_interval, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_packet_peer_class_reset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ENetPacketPeer::reset, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ENetPacketPeer::reset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_packet_peer_class_send(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -69,12 +71,12 @@ static JSValue e_net_packet_peer_class_send(JSContext *ctx, JSValueConst this_va
 };
 static JSValue e_net_packet_peer_class_throttle_configure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ENetPacketPeer::throttle_configure, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ENetPacketPeer::throttle_configure, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_packet_peer_class_set_timeout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&ENetPacketPeer::set_timeout, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&ENetPacketPeer::set_timeout, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue e_net_packet_peer_class_get_remote_address(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -154,6 +156,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_e_net_packet_peer_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&ENetPacketPeer::__class_id);
 	classes["ENetPacketPeer"] = ENetPacketPeer::__class_id;
 	class_id_list.insert(ENetPacketPeer::__class_id);
@@ -176,7 +179,7 @@ static int js_e_net_packet_peer_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_e_net_packet_peer_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/packet_peer';";
+	const char *code = "import * as _ from '@godot/classes/packet_peer';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -188,7 +191,7 @@ JSModuleDef *_js_init_e_net_packet_peer_module(JSContext *ctx, const char *modul
 }
 
 JSModuleDef *js_init_e_net_packet_peer_module(JSContext *ctx) {
-	return _js_init_e_net_packet_peer_module(ctx, "godot/classes/e_net_packet_peer");
+	return _js_init_e_net_packet_peer_module(ctx, "@godot/classes/e_net_packet_peer");
 }
 
 void register_e_net_packet_peer() {

@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/framebuffer_cache_rd.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/rd_framebuffer_pass.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void framebuffer_cache_rd_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,7 +33,7 @@ static JSValue framebuffer_cache_rd_class_constructor(JSContext *ctx, JSValueCon
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, framebuffer_cache_rd_class);
+	JS_SetOpaque(obj, framebuffer_cache_rd_class);	
 	return obj;
 }
 static JSValue framebuffer_cache_rd_class_get_cache_multipass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,6 +50,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_framebuffer_cache_rd_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&FramebufferCacheRD::__class_id);
 	classes["FramebufferCacheRD"] = FramebufferCacheRD::__class_id;
 	class_id_list.insert(FramebufferCacheRD::__class_id);
@@ -70,7 +73,7 @@ static int js_framebuffer_cache_rd_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_framebuffer_cache_rd_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -82,7 +85,7 @@ JSModuleDef *_js_init_framebuffer_cache_rd_module(JSContext *ctx, const char *mo
 }
 
 JSModuleDef *js_init_framebuffer_cache_rd_module(JSContext *ctx) {
-	return _js_init_framebuffer_cache_rd_module(ctx, "godot/classes/framebuffer_cache_rd");
+	return _js_init_framebuffer_cache_rd_module(ctx, "@godot/classes/framebuffer_cache_rd");
 }
 
 void register_framebuffer_cache_rd() {

@@ -9,13 +9,13 @@ export declare class CapsuleShape2D extends Shape2D{
   public get radius(): number {
     get_radius();
   }
-  public set radius(value: number): void {
+  public set radius(value): void {
     set_radius(value);
   }
   public get height(): number {
     get_height();
   }
-  public set height(value: number): void {
+  public set height(value): void {
     set_height(value);
   }
 }

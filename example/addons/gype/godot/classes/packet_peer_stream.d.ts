@@ -12,19 +12,19 @@ export declare class PacketPeerStream extends PacketPeer{
   public get input_buffer_max_size(): number {
     get_input_buffer_max_size();
   }
-  public set input_buffer_max_size(value: number): void {
+  public set input_buffer_max_size(value): void {
     set_input_buffer_max_size(value);
   }
   public get output_buffer_max_size(): number {
     get_output_buffer_max_size();
   }
-  public set output_buffer_max_size(value: number): void {
+  public set output_buffer_max_size(value): void {
     set_output_buffer_max_size(value);
   }
   public get stream_peer(): StreamPeer {
     get_stream_peer();
   }
-  public set stream_peer(value: StreamPeer): void {
+  public set stream_peer(value): void {
     set_stream_peer(value);
   }
 }

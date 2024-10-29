@@ -15,31 +15,31 @@ export declare class AudioEffectPhaser extends AudioEffect{
   public get range_min_hz(): number {
     get_range_min_hz();
   }
-  public set range_min_hz(value: number): void {
+  public set range_min_hz(value): void {
     set_range_min_hz(value);
   }
   public get range_max_hz(): number {
     get_range_max_hz();
   }
-  public set range_max_hz(value: number): void {
+  public set range_max_hz(value): void {
     set_range_max_hz(value);
   }
   public get rate_hz(): number {
     get_rate_hz();
   }
-  public set rate_hz(value: number): void {
+  public set rate_hz(value): void {
     set_rate_hz(value);
   }
   public get feedback(): number {
     get_feedback();
   }
-  public set feedback(value: number): void {
+  public set feedback(value): void {
     set_feedback(value);
   }
   public get depth(): number {
     get_depth();
   }
-  public set depth(value: number): void {
+  public set depth(value): void {
     set_depth(value);
   }
 }

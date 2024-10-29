@@ -11,6 +11,6 @@ export declare class Noise extends Resource{
   public get_noise_3dv(_v: Vector3): number;
   public get_image(_width: number, _height: number, _invert: boolean, _in_3d_space: boolean, _normalize: boolean): Image;
   public get_seamless_image(_width: number, _height: number, _invert: boolean, _in_3d_space: boolean, _skirt: number, _normalize: boolean): Image;
-  public get_image_3d(_width: number, _height: number, _depth: number, _invert: boolean, _normalize: boolean): Array;
-  public get_seamless_image_3d(_width: number, _height: number, _depth: number, _invert: boolean, _skirt: number, _normalize: boolean): Array;
+  public get_image_3d(_width: number, _height: number, _depth: number, _invert: boolean, _normalize: boolean): GDArray;
+  public get_seamless_image_3d(_width: number, _height: number, _depth: number, _invert: boolean, _skirt: number, _normalize: boolean): GDArray;
 }

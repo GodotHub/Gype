@@ -22,43 +22,43 @@ export declare class SpinBox extends Range{
   public get alignment(): number {
     get_horizontal_alignment();
   }
-  public set alignment(value: number): void {
+  public set alignment(value): void {
     set_horizontal_alignment(value);
   }
   public get editable(): boolean {
     is_editable();
   }
-  public set editable(value: boolean): void {
+  public set editable(value): void {
     set_editable(value);
   }
   public get update_on_text_changed(): boolean {
     get_update_on_text_changed();
   }
-  public set update_on_text_changed(value: boolean): void {
+  public set update_on_text_changed(value): void {
     set_update_on_text_changed(value);
   }
   public get prefix(): String {
     get_prefix();
   }
-  public set prefix(value: String): void {
+  public set prefix(value): void {
     set_prefix(value);
   }
   public get suffix(): String {
     get_suffix();
   }
-  public set suffix(value: String): void {
+  public set suffix(value): void {
     set_suffix(value);
   }
   public get custom_arrow_step(): number {
     get_custom_arrow_step();
   }
-  public set custom_arrow_step(value: number): void {
+  public set custom_arrow_step(value): void {
     set_custom_arrow_step(value);
   }
   public get select_all_on_focus(): boolean {
     is_select_all_on_focus();
   }
-  public set select_all_on_focus(value: boolean): void {
+  public set select_all_on_focus(value): void {
     set_select_all_on_focus(value);
   }
 }

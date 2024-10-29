@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/gltf_spec_gloss.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/gltf_spec_gloss.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void gltf_spec_gloss_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,7 +33,7 @@ static JSValue gltf_spec_gloss_class_constructor(JSContext *ctx, JSValueConst ne
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_spec_gloss_class);
+	JS_SetOpaque(obj, gltf_spec_gloss_class);	
 	return obj;
 }
 static JSValue gltf_spec_gloss_class_get_diffuse_img(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -40,7 +42,7 @@ static JSValue gltf_spec_gloss_class_get_diffuse_img(JSContext *ctx, JSValueCons
 };
 static JSValue gltf_spec_gloss_class_set_diffuse_img(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GLTFSpecGloss::set_diffuse_img, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GLTFSpecGloss::set_diffuse_img, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_spec_gloss_class_get_diffuse_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -49,7 +51,7 @@ static JSValue gltf_spec_gloss_class_get_diffuse_factor(JSContext *ctx, JSValueC
 };
 static JSValue gltf_spec_gloss_class_set_diffuse_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GLTFSpecGloss::set_diffuse_factor, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GLTFSpecGloss::set_diffuse_factor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_spec_gloss_class_get_gloss_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -58,7 +60,7 @@ static JSValue gltf_spec_gloss_class_get_gloss_factor(JSContext *ctx, JSValueCon
 };
 static JSValue gltf_spec_gloss_class_set_gloss_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GLTFSpecGloss::set_gloss_factor, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GLTFSpecGloss::set_gloss_factor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_spec_gloss_class_get_specular_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,7 +69,7 @@ static JSValue gltf_spec_gloss_class_get_specular_factor(JSContext *ctx, JSValue
 };
 static JSValue gltf_spec_gloss_class_set_specular_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GLTFSpecGloss::set_specular_factor, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GLTFSpecGloss::set_specular_factor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_spec_gloss_class_get_spec_gloss_img(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -76,7 +78,7 @@ static JSValue gltf_spec_gloss_class_get_spec_gloss_img(JSContext *ctx, JSValueC
 };
 static JSValue gltf_spec_gloss_class_set_spec_gloss_img(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GLTFSpecGloss::set_spec_gloss_img, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GLTFSpecGloss::set_spec_gloss_img, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry gltf_spec_gloss_class_proto_funcs[] = {
@@ -93,47 +95,53 @@ static const JSCFunctionListEntry gltf_spec_gloss_class_proto_funcs[] = {
 };
 
 void define_gltf_spec_gloss_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "diffuse_img"),
-			JS_NewCFunction(ctx, gltf_spec_gloss_class_get_diffuse_img, "get_diffuse_img", 0),
-			JS_NewCFunction(ctx, gltf_spec_gloss_class_set_diffuse_img, "set_diffuse_img", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "diffuse_factor"),
-			JS_NewCFunction(ctx, gltf_spec_gloss_class_get_diffuse_factor, "get_diffuse_factor", 0),
-			JS_NewCFunction(ctx, gltf_spec_gloss_class_set_diffuse_factor, "set_diffuse_factor", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "gloss_factor"),
-			JS_NewCFunction(ctx, gltf_spec_gloss_class_get_gloss_factor, "get_gloss_factor", 0),
-			JS_NewCFunction(ctx, gltf_spec_gloss_class_set_gloss_factor, "set_gloss_factor", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "specular_factor"),
-			JS_NewCFunction(ctx, gltf_spec_gloss_class_get_specular_factor, "get_specular_factor", 0),
-			JS_NewCFunction(ctx, gltf_spec_gloss_class_set_specular_factor, "set_specular_factor", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "spec_gloss_img"),
-			JS_NewCFunction(ctx, gltf_spec_gloss_class_get_spec_gloss_img, "get_spec_gloss_img", 0),
-			JS_NewCFunction(ctx, gltf_spec_gloss_class_set_spec_gloss_img, "set_spec_gloss_img", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "diffuse_img"),
+        JS_NewCFunction(ctx, gltf_spec_gloss_class_get_diffuse_img, "get_diffuse_img", 0),
+        JS_NewCFunction(ctx, gltf_spec_gloss_class_set_diffuse_img, "set_diffuse_img", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "diffuse_factor"),
+        JS_NewCFunction(ctx, gltf_spec_gloss_class_get_diffuse_factor, "get_diffuse_factor", 0),
+        JS_NewCFunction(ctx, gltf_spec_gloss_class_set_diffuse_factor, "set_diffuse_factor", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "gloss_factor"),
+        JS_NewCFunction(ctx, gltf_spec_gloss_class_get_gloss_factor, "get_gloss_factor", 0),
+        JS_NewCFunction(ctx, gltf_spec_gloss_class_set_gloss_factor, "set_gloss_factor", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "specular_factor"),
+        JS_NewCFunction(ctx, gltf_spec_gloss_class_get_specular_factor, "get_specular_factor", 0),
+        JS_NewCFunction(ctx, gltf_spec_gloss_class_set_specular_factor, "set_specular_factor", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "spec_gloss_img"),
+        JS_NewCFunction(ctx, gltf_spec_gloss_class_get_spec_gloss_img, "get_spec_gloss_img", 0),
+        JS_NewCFunction(ctx, gltf_spec_gloss_class_set_spec_gloss_img, "set_spec_gloss_img", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_gltf_spec_gloss_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&GLTFSpecGloss::__class_id);
 	classes["GLTFSpecGloss"] = GLTFSpecGloss::__class_id;
 	class_id_list.insert(GLTFSpecGloss::__class_id);
@@ -156,7 +164,7 @@ static int js_gltf_spec_gloss_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_gltf_spec_gloss_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/resource';";
+	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -168,7 +176,7 @@ JSModuleDef *_js_init_gltf_spec_gloss_module(JSContext *ctx, const char *module_
 }
 
 JSModuleDef *js_init_gltf_spec_gloss_module(JSContext *ctx) {
-	return _js_init_gltf_spec_gloss_module(ctx, "godot/classes/gltf_spec_gloss");
+	return _js_init_gltf_spec_gloss_module(ctx, "@godot/classes/gltf_spec_gloss");
 }
 
 void register_gltf_spec_gloss() {

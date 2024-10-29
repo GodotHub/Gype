@@ -11,19 +11,19 @@ export declare class VisualShaderNodeCompare extends VisualShaderNode{
   public get type(): number {
     get_comparison_type();
   }
-  public set type(value: number): void {
+  public set type(value): void {
     set_comparison_type(value);
   }
   public get function(): number {
     get_function();
   }
-  public set function(value: number): void {
+  public set function(value): void {
     set_function(value);
   }
   public get condition(): number {
     get_condition();
   }
-  public set condition(value: number): void {
+  public set condition(value): void {
     set_condition(value);
   }
   static ComparisonType = {

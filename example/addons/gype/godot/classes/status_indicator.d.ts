@@ -1,6 +1,6 @@
 
-import { Node } from "@godot/classes/node";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Node } from "@godot/classes/node";
 
 export declare class StatusIndicator extends Node{
   public set_tooltip(_tooltip: String): void;
@@ -15,25 +15,25 @@ export declare class StatusIndicator extends Node{
   public get tooltip(): String {
     get_tooltip();
   }
-  public set tooltip(value: String): void {
+  public set tooltip(value): void {
     set_tooltip(value);
   }
   public get icon(): Texture2D {
     get_icon();
   }
-  public set icon(value: Texture2D): void {
+  public set icon(value): void {
     set_icon(value);
   }
   public get menu(): NodePath {
     get_menu();
   }
-  public set menu(value: NodePath): void {
+  public set menu(value): void {
     set_menu(value);
   }
   public get visible(): boolean {
     is_visible();
   }
-  public set visible(value: boolean): void {
+  public set visible(value): void {
     set_visible(value);
   }
 }

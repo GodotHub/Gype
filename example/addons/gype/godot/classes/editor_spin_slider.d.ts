@@ -15,31 +15,31 @@ export declare class EditorSpinSlider extends Range{
   public get label(): String {
     get_label();
   }
-  public set label(value: String): void {
+  public set label(value): void {
     set_label(value);
   }
   public get suffix(): String {
     get_suffix();
   }
-  public set suffix(value: String): void {
+  public set suffix(value): void {
     set_suffix(value);
   }
   public get read_only(): boolean {
     is_read_only();
   }
-  public set read_only(value: boolean): void {
+  public set read_only(value): void {
     set_read_only(value);
   }
   public get flat(): boolean {
     is_flat();
   }
-  public set flat(value: boolean): void {
+  public set flat(value): void {
     set_flat(value);
   }
   public get hide_slider(): boolean {
     is_hiding_slider();
   }
-  public set hide_slider(value: boolean): void {
+  public set hide_slider(value): void {
     set_hide_slider(value);
   }
 }

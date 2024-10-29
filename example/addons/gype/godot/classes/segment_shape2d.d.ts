@@ -9,13 +9,13 @@ export declare class SegmentShape2D extends Shape2D{
   public get a(): Vector2 {
     get_a();
   }
-  public set a(value: Vector2): void {
+  public set a(value): void {
     set_a(value);
   }
   public get b(): Vector2 {
     get_b();
   }
-  public set b(value: Vector2): void {
+  public set b(value): void {
     set_b(value);
   }
 }

@@ -1,6 +1,6 @@
 
-import { Node2D } from "@godot/classes/node2d";
 import { NavigationPolygon } from "@godot/classes/navigation_polygon";
+import { Node2D } from "@godot/classes/node2d";
 
 export declare class NavigationRegion2D extends Node2D{
   public get_rid(): RID;
@@ -26,37 +26,37 @@ export declare class NavigationRegion2D extends Node2D{
   public get navigation_polygon(): NavigationPolygon {
     get_navigation_polygon();
   }
-  public set navigation_polygon(value: NavigationPolygon): void {
+  public set navigation_polygon(value): void {
     set_navigation_polygon(value);
   }
   public get enabled(): boolean {
     is_enabled();
   }
-  public set enabled(value: boolean): void {
+  public set enabled(value): void {
     set_enabled(value);
   }
   public get use_edge_connections(): boolean {
     get_use_edge_connections();
   }
-  public set use_edge_connections(value: boolean): void {
+  public set use_edge_connections(value): void {
     set_use_edge_connections(value);
   }
   public get navigation_layers(): number {
     get_navigation_layers();
   }
-  public set navigation_layers(value: number): void {
+  public set navigation_layers(value): void {
     set_navigation_layers(value);
   }
   public get enter_cost(): number {
     get_enter_cost();
   }
-  public set enter_cost(value: number): void {
+  public set enter_cost(value): void {
     set_enter_cost(value);
   }
   public get travel_cost(): number {
     get_travel_cost();
   }
-  public set travel_cost(value: number): void {
+  public set travel_cost(value): void {
     set_travel_cost(value);
   }
 }

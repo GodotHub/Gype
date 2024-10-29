@@ -39,43 +39,43 @@ export declare class SkeletonModification2DJiggle extends SkeletonModification2D
   public get target_nodepath(): NodePath {
     get_target_node();
   }
-  public set target_nodepath(value: NodePath): void {
+  public set target_nodepath(value): void {
     set_target_node(value);
   }
   public get jiggle_data_chain_length(): number {
     get_jiggle_data_chain_length();
   }
-  public set jiggle_data_chain_length(value: number): void {
+  public set jiggle_data_chain_length(value): void {
     set_jiggle_data_chain_length(value);
   }
   public get stiffness(): number {
     get_stiffness();
   }
-  public set stiffness(value: number): void {
+  public set stiffness(value): void {
     set_stiffness(value);
   }
   public get mass(): number {
     get_mass();
   }
-  public set mass(value: number): void {
+  public set mass(value): void {
     set_mass(value);
   }
   public get damping(): number {
     get_damping();
   }
-  public set damping(value: number): void {
+  public set damping(value): void {
     set_damping(value);
   }
   public get use_gravity(): boolean {
     get_use_gravity();
   }
-  public set use_gravity(value: boolean): void {
+  public set use_gravity(value): void {
     set_use_gravity(value);
   }
   public get gravity(): Vector2 {
     get_gravity();
   }
-  public set gravity(value: Vector2): void {
+  public set gravity(value): void {
     set_gravity(value);
   }
 }

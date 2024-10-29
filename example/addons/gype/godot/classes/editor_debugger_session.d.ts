@@ -1,6 +1,6 @@
 
-import { Control } from "@godot/classes/control";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { Control } from "@godot/classes/control";
 
 export declare class EditorDebuggerSession extends RefCounted{
   public send_message(_message: String, _data: GDArray): void;

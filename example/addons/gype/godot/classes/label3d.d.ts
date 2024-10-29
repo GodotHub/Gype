@@ -66,193 +66,193 @@ export declare class Label3D extends GeometryInstance3D{
   public get pixel_size(): number {
     get_pixel_size();
   }
-  public set pixel_size(value: number): void {
+  public set pixel_size(value): void {
     set_pixel_size(value);
   }
   public get offset(): Vector2 {
     get_offset();
   }
-  public set offset(value: Vector2): void {
+  public set offset(value): void {
     set_offset(value);
   }
   public get billboard(): number {
     get_billboard_mode();
   }
-  public set billboard(value: number): void {
+  public set billboard(value): void {
     set_billboard_mode(value);
   }
   public get shaded(): boolean {
     get_draw_flag();
   }
-  public set shaded(value: boolean): void {
+  public set shaded(value): void {
     set_draw_flag(value);
   }
   public get double_sided(): boolean {
     get_draw_flag();
   }
-  public set double_sided(value: boolean): void {
+  public set double_sided(value): void {
     set_draw_flag(value);
   }
   public get no_depth_test(): boolean {
     get_draw_flag();
   }
-  public set no_depth_test(value: boolean): void {
+  public set no_depth_test(value): void {
     set_draw_flag(value);
   }
   public get fixed_size(): boolean {
     get_draw_flag();
   }
-  public set fixed_size(value: boolean): void {
+  public set fixed_size(value): void {
     set_draw_flag(value);
   }
   public get alpha_cut(): number {
     get_alpha_cut_mode();
   }
-  public set alpha_cut(value: number): void {
+  public set alpha_cut(value): void {
     set_alpha_cut_mode(value);
   }
   public get alpha_scissor_threshold(): number {
     get_alpha_scissor_threshold();
   }
-  public set alpha_scissor_threshold(value: number): void {
+  public set alpha_scissor_threshold(value): void {
     set_alpha_scissor_threshold(value);
   }
   public get alpha_hash_scale(): number {
     get_alpha_hash_scale();
   }
-  public set alpha_hash_scale(value: number): void {
+  public set alpha_hash_scale(value): void {
     set_alpha_hash_scale(value);
   }
   public get alpha_antialiasing_mode(): number {
     get_alpha_antialiasing();
   }
-  public set alpha_antialiasing_mode(value: number): void {
+  public set alpha_antialiasing_mode(value): void {
     set_alpha_antialiasing(value);
   }
   public get alpha_antialiasing_edge(): number {
     get_alpha_antialiasing_edge();
   }
-  public set alpha_antialiasing_edge(value: number): void {
+  public set alpha_antialiasing_edge(value): void {
     set_alpha_antialiasing_edge(value);
   }
   public get texture_filter(): number {
     get_texture_filter();
   }
-  public set texture_filter(value: number): void {
+  public set texture_filter(value): void {
     set_texture_filter(value);
   }
   public get render_priority(): number {
     get_render_priority();
   }
-  public set render_priority(value: number): void {
+  public set render_priority(value): void {
     set_render_priority(value);
   }
   public get outline_render_priority(): number {
     get_outline_render_priority();
   }
-  public set outline_render_priority(value: number): void {
+  public set outline_render_priority(value): void {
     set_outline_render_priority(value);
   }
   public get modulate(): Color {
     get_modulate();
   }
-  public set modulate(value: Color): void {
+  public set modulate(value): void {
     set_modulate(value);
   }
   public get outline_modulate(): Color {
     get_outline_modulate();
   }
-  public set outline_modulate(value: Color): void {
+  public set outline_modulate(value): void {
     set_outline_modulate(value);
   }
   public get text(): String {
     get_text();
   }
-  public set text(value: String): void {
+  public set text(value): void {
     set_text(value);
   }
   public get font(): Font {
     get_font();
   }
-  public set font(value: Font): void {
+  public set font(value): void {
     set_font(value);
   }
   public get font_size(): number {
     get_font_size();
   }
-  public set font_size(value: number): void {
+  public set font_size(value): void {
     set_font_size(value);
   }
   public get outline_size(): number {
     get_outline_size();
   }
-  public set outline_size(value: number): void {
+  public set outline_size(value): void {
     set_outline_size(value);
   }
   public get horizontal_alignment(): number {
     get_horizontal_alignment();
   }
-  public set horizontal_alignment(value: number): void {
+  public set horizontal_alignment(value): void {
     set_horizontal_alignment(value);
   }
   public get vertical_alignment(): number {
     get_vertical_alignment();
   }
-  public set vertical_alignment(value: number): void {
+  public set vertical_alignment(value): void {
     set_vertical_alignment(value);
   }
   public get uppercase(): boolean {
     is_uppercase();
   }
-  public set uppercase(value: boolean): void {
+  public set uppercase(value): void {
     set_uppercase(value);
   }
   public get line_spacing(): number {
     get_line_spacing();
   }
-  public set line_spacing(value: number): void {
+  public set line_spacing(value): void {
     set_line_spacing(value);
   }
   public get autowrap_mode(): number {
     get_autowrap_mode();
   }
-  public set autowrap_mode(value: number): void {
+  public set autowrap_mode(value): void {
     set_autowrap_mode(value);
   }
   public get justification_flags(): number {
     get_justification_flags();
   }
-  public set justification_flags(value: number): void {
+  public set justification_flags(value): void {
     set_justification_flags(value);
   }
   public get width(): number {
     get_width();
   }
-  public set width(value: number): void {
+  public set width(value): void {
     set_width(value);
   }
   public get text_direction(): number {
     get_text_direction();
   }
-  public set text_direction(value: number): void {
+  public set text_direction(value): void {
     set_text_direction(value);
   }
   public get language(): String {
     get_language();
   }
-  public set language(value: String): void {
+  public set language(value): void {
     set_language(value);
   }
   public get structured_text_bidi_override(): number {
     get_structured_text_bidi_override();
   }
-  public set structured_text_bidi_override(value: number): void {
+  public set structured_text_bidi_override(value): void {
     set_structured_text_bidi_override(value);
   }
-  public get structured_text_bidi_override_options(): Array {
+  public get structured_text_bidi_override_options(): GDArray {
     get_structured_text_bidi_override_options();
   }
-  public set structured_text_bidi_override_options(value: Array): void {
+  public set structured_text_bidi_override_options(value): void {
     set_structured_text_bidi_override_options(value);
   }
   static DrawFlags = {

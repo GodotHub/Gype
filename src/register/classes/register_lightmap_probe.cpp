@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/lightmap_probe.hpp>
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void lightmap_probe_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue lightmap_probe_class_constructor(JSContext *ctx, JSValueConst new
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, lightmap_probe_class);
+	JS_SetOpaque(obj, lightmap_probe_class);	
 	return obj;
 }
 
@@ -41,6 +43,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_lightmap_probe_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&LightmapProbe::__class_id);
 	classes["LightmapProbe"] = LightmapProbe::__class_id;
 	class_id_list.insert(LightmapProbe::__class_id);
@@ -62,7 +65,7 @@ static int js_lightmap_probe_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_lightmap_probe_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/node3d';";
+	const char *code = "import * as _ from '@godot/classes/node3d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -74,7 +77,7 @@ JSModuleDef *_js_init_lightmap_probe_module(JSContext *ctx, const char *module_n
 }
 
 JSModuleDef *js_init_lightmap_probe_module(JSContext *ctx) {
-	return _js_init_lightmap_probe_module(ctx, "godot/classes/lightmap_probe");
+	return _js_init_lightmap_probe_module(ctx, "@godot/classes/lightmap_probe");
 }
 
 void register_lightmap_probe() {

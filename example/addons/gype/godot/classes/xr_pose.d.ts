@@ -18,37 +18,37 @@ export declare class XRPose extends RefCounted{
   public get has_tracking_data(): boolean {
     get_has_tracking_data();
   }
-  public set has_tracking_data(value: boolean): void {
+  public set has_tracking_data(value): void {
     set_has_tracking_data(value);
   }
   public get name(): String {
     get_name();
   }
-  public set name(value: String): void {
+  public set name(value): void {
     set_name(value);
   }
   public get transform(): String {
     get_transform();
   }
-  public set transform(value: String): void {
+  public set transform(value): void {
     set_transform(value);
   }
   public get linear_velocity(): String {
     get_linear_velocity();
   }
-  public set linear_velocity(value: String): void {
+  public set linear_velocity(value): void {
     set_linear_velocity(value);
   }
   public get angular_velocity(): String {
     get_angular_velocity();
   }
-  public set angular_velocity(value: String): void {
+  public set angular_velocity(value): void {
     set_angular_velocity(value);
   }
   public get tracking_confidence(): number {
     get_tracking_confidence();
   }
-  public set tracking_confidence(value: number): void {
+  public set tracking_confidence(value): void {
     set_tracking_confidence(value);
   }
   static TrackingConfidence = {

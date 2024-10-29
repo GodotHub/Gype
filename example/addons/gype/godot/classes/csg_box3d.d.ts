@@ -10,13 +10,13 @@ export declare class CSGBox3D extends CSGPrimitive3D{
   public get size(): Vector3 {
     get_size();
   }
-  public set size(value: Vector3): void {
+  public set size(value): void {
     set_size(value);
   }
-  public get material(): BaseMaterial3D,ShaderMaterial {
+  public get material(): BaseMaterial3D {
     get_material();
   }
-  public set material(value: BaseMaterial3D,ShaderMaterial): void {
+  public set material(value): void {
     set_material(value);
   }
 }

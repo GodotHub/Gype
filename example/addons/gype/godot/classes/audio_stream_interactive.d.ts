@@ -28,13 +28,13 @@ export declare class AudioStreamInteractive extends AudioStream{
   public get initial_clip(): number {
     get_initial_clip();
   }
-  public set initial_clip(value: number): void {
+  public set initial_clip(value): void {
     set_initial_clip(value);
   }
   public get clip_count(): number {
     get_clip_count();
   }
-  public set clip_count(value: number): void {
+  public set clip_count(value): void {
     set_clip_count(value);
   }
   static TransitionFromTime = {

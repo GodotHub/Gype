@@ -1,6 +1,6 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { Control } from "@godot/classes/control";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class TabBar extends Control{
   public set_tab_count(_count: number): void;
@@ -28,8 +28,8 @@ export declare class TabBar extends Control{
   public is_tab_disabled(_tab_idx: number): boolean;
   public set_tab_hidden(_tab_idx: number, _hidden: boolean): void;
   public is_tab_hidden(_tab_idx: number): boolean;
-  public set_tab_metadata(_tab_idx: number, _metadata: Variant): void;
-  public get_tab_metadata(_tab_idx: number): Variant;
+  public set_tab_metadata(_tab_idx: number, _metadata: any): void;
+  public get_tab_metadata(_tab_idx: number): any;
   public remove_tab(_tab_idx: number): void;
   public add_tab(_title: String, _icon: Texture2D): void;
   public get_tab_idx_at_point(_point: Vector2): number;
@@ -62,73 +62,73 @@ export declare class TabBar extends Control{
   public get current_tab(): number {
     get_current_tab();
   }
-  public set current_tab(value: number): void {
+  public set current_tab(value): void {
     set_current_tab(value);
   }
   public get tab_alignment(): number {
     get_tab_alignment();
   }
-  public set tab_alignment(value: number): void {
+  public set tab_alignment(value): void {
     set_tab_alignment(value);
   }
   public get clip_tabs(): boolean {
     get_clip_tabs();
   }
-  public set clip_tabs(value: boolean): void {
+  public set clip_tabs(value): void {
     set_clip_tabs(value);
   }
   public get tab_close_display_policy(): number {
     get_tab_close_display_policy();
   }
-  public set tab_close_display_policy(value: number): void {
+  public set tab_close_display_policy(value): void {
     set_tab_close_display_policy(value);
   }
   public get max_tab_width(): number {
     get_max_tab_width();
   }
-  public set max_tab_width(value: number): void {
+  public set max_tab_width(value): void {
     set_max_tab_width(value);
   }
   public get scrolling_enabled(): boolean {
     get_scrolling_enabled();
   }
-  public set scrolling_enabled(value: boolean): void {
+  public set scrolling_enabled(value): void {
     set_scrolling_enabled(value);
   }
   public get drag_to_rearrange_enabled(): boolean {
     get_drag_to_rearrange_enabled();
   }
-  public set drag_to_rearrange_enabled(value: boolean): void {
+  public set drag_to_rearrange_enabled(value): void {
     set_drag_to_rearrange_enabled(value);
   }
   public get tabs_rearrange_group(): number {
     get_tabs_rearrange_group();
   }
-  public set tabs_rearrange_group(value: number): void {
+  public set tabs_rearrange_group(value): void {
     set_tabs_rearrange_group(value);
   }
   public get scroll_to_selected(): boolean {
     get_scroll_to_selected();
   }
-  public set scroll_to_selected(value: boolean): void {
+  public set scroll_to_selected(value): void {
     set_scroll_to_selected(value);
   }
   public get select_with_rmb(): boolean {
     get_select_with_rmb();
   }
-  public set select_with_rmb(value: boolean): void {
+  public set select_with_rmb(value): void {
     set_select_with_rmb(value);
   }
   public get deselect_enabled(): boolean {
     get_deselect_enabled();
   }
-  public set deselect_enabled(value: boolean): void {
+  public set deselect_enabled(value): void {
     set_deselect_enabled(value);
   }
   public get tab_count(): number {
     get_tab_count();
   }
-  public set tab_count(value: number): void {
+  public set tab_count(value): void {
     set_tab_count(value);
   }
   static AlignmentMode = {

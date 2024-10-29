@@ -1,10 +1,10 @@
 
-import { Viewport } from "@godot/classes/viewport";
-import { Texture2D } from "@godot/classes/texture2d";
 import { Theme } from "@godot/classes/theme";
-import { Node } from "@godot/classes/node";
+import { Texture2D } from "@godot/classes/texture2d";
 import { StyleBox } from "@godot/classes/style_box";
+import { Node } from "@godot/classes/node";
 import { Font } from "@godot/classes/font";
+import { Viewport } from "@godot/classes/viewport";
 
 export declare class Window extends Viewport{
   public _get_contents_minimum_size(): Vector2;
@@ -130,193 +130,193 @@ export declare class Window extends Viewport{
   public get mode(): number {
     get_mode();
   }
-  public set mode(value: number): void {
+  public set mode(value): void {
     set_mode(value);
   }
   public get title(): String {
     get_title();
   }
-  public set title(value: String): void {
+  public set title(value): void {
     set_title(value);
   }
   public get initial_position(): number {
     get_initial_position();
   }
-  public set initial_position(value: number): void {
+  public set initial_position(value): void {
     set_initial_position(value);
   }
   public get position(): Vector2i {
     get_position();
   }
-  public set position(value: Vector2i): void {
+  public set position(value): void {
     set_position(value);
   }
   public get size(): Vector2i {
     get_size();
   }
-  public set size(value: Vector2i): void {
+  public set size(value): void {
     set_size(value);
   }
   public get current_screen(): number {
     get_current_screen();
   }
-  public set current_screen(value: number): void {
+  public set current_screen(value): void {
     set_current_screen(value);
   }
   public get mouse_passthrough_polygon(): PackedVector2Array {
     get_mouse_passthrough_polygon();
   }
-  public set mouse_passthrough_polygon(value: PackedVector2Array): void {
+  public set mouse_passthrough_polygon(value): void {
     set_mouse_passthrough_polygon(value);
   }
   public get visible(): boolean {
     is_visible();
   }
-  public set visible(value: boolean): void {
+  public set visible(value): void {
     set_visible(value);
   }
   public get wrap_controls(): boolean {
     is_wrapping_controls();
   }
-  public set wrap_controls(value: boolean): void {
+  public set wrap_controls(value): void {
     set_wrap_controls(value);
   }
   public get transient(): boolean {
     is_transient();
   }
-  public set transient(value: boolean): void {
+  public set transient(value): void {
     set_transient(value);
   }
   public get transient_to_focused(): boolean {
     is_transient_to_focused();
   }
-  public set transient_to_focused(value: boolean): void {
+  public set transient_to_focused(value): void {
     set_transient_to_focused(value);
   }
   public get exclusive(): boolean {
     is_exclusive();
   }
-  public set exclusive(value: boolean): void {
+  public set exclusive(value): void {
     set_exclusive(value);
   }
   public get unresizable(): boolean {
     get_flag();
   }
-  public set unresizable(value: boolean): void {
+  public set unresizable(value): void {
     set_flag(value);
   }
   public get borderless(): boolean {
     get_flag();
   }
-  public set borderless(value: boolean): void {
+  public set borderless(value): void {
     set_flag(value);
   }
   public get always_on_top(): boolean {
     get_flag();
   }
-  public set always_on_top(value: boolean): void {
+  public set always_on_top(value): void {
     set_flag(value);
   }
   public get transparent(): boolean {
     get_flag();
   }
-  public set transparent(value: boolean): void {
+  public set transparent(value): void {
     set_flag(value);
   }
   public get unfocusable(): boolean {
     get_flag();
   }
-  public set unfocusable(value: boolean): void {
+  public set unfocusable(value): void {
     set_flag(value);
   }
   public get popup_window(): boolean {
     get_flag();
   }
-  public set popup_window(value: boolean): void {
+  public set popup_window(value): void {
     set_flag(value);
   }
   public get extend_to_title(): boolean {
     get_flag();
   }
-  public set extend_to_title(value: boolean): void {
+  public set extend_to_title(value): void {
     set_flag(value);
   }
   public get mouse_passthrough(): boolean {
     get_flag();
   }
-  public set mouse_passthrough(value: boolean): void {
+  public set mouse_passthrough(value): void {
     set_flag(value);
   }
   public get force_native(): boolean {
     get_force_native();
   }
-  public set force_native(value: boolean): void {
+  public set force_native(value): void {
     set_force_native(value);
   }
   public get min_size(): Vector2i {
     get_min_size();
   }
-  public set min_size(value: Vector2i): void {
+  public set min_size(value): void {
     set_min_size(value);
   }
   public get max_size(): Vector2i {
     get_max_size();
   }
-  public set max_size(value: Vector2i): void {
+  public set max_size(value): void {
     set_max_size(value);
   }
   public get keep_title_visible(): boolean {
     get_keep_title_visible();
   }
-  public set keep_title_visible(value: boolean): void {
+  public set keep_title_visible(value): void {
     set_keep_title_visible(value);
   }
   public get content_scale_size(): Vector2i {
     get_content_scale_size();
   }
-  public set content_scale_size(value: Vector2i): void {
+  public set content_scale_size(value): void {
     set_content_scale_size(value);
   }
   public get content_scale_mode(): number {
     get_content_scale_mode();
   }
-  public set content_scale_mode(value: number): void {
+  public set content_scale_mode(value): void {
     set_content_scale_mode(value);
   }
   public get content_scale_aspect(): number {
     get_content_scale_aspect();
   }
-  public set content_scale_aspect(value: number): void {
+  public set content_scale_aspect(value): void {
     set_content_scale_aspect(value);
   }
   public get content_scale_stretch(): number {
     get_content_scale_stretch();
   }
-  public set content_scale_stretch(value: number): void {
+  public set content_scale_stretch(value): void {
     set_content_scale_stretch(value);
   }
   public get content_scale_factor(): number {
     get_content_scale_factor();
   }
-  public set content_scale_factor(value: number): void {
+  public set content_scale_factor(value): void {
     set_content_scale_factor(value);
   }
   public get auto_translate(): boolean {
     is_auto_translating();
   }
-  public set auto_translate(value: boolean): void {
+  public set auto_translate(value): void {
     set_auto_translate(value);
   }
   public get theme(): Theme {
     get_theme();
   }
-  public set theme(value: Theme): void {
+  public set theme(value): void {
     set_theme(value);
   }
   public get theme_type_variation(): String {
     get_theme_type_variation();
   }
-  public set theme_type_variation(value: String): void {
+  public set theme_type_variation(value): void {
     set_theme_type_variation(value);
   }
   static Mode = {

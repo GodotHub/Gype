@@ -1,6 +1,6 @@
 
-import { GPUParticlesCollision3D } from "@godot/classes/gpu_particles_collision3d";
 import { Texture3D } from "@godot/classes/texture3d";
+import { GPUParticlesCollision3D } from "@godot/classes/gpu_particles_collision3d";
 
 export declare class GPUParticlesCollisionSDF3D extends GPUParticlesCollision3D{
   public set_size(_size: Vector3): void;
@@ -18,31 +18,31 @@ export declare class GPUParticlesCollisionSDF3D extends GPUParticlesCollision3D{
   public get size(): Vector3 {
     get_size();
   }
-  public set size(value: Vector3): void {
+  public set size(value): void {
     set_size(value);
   }
   public get resolution(): number {
     get_resolution();
   }
-  public set resolution(value: number): void {
+  public set resolution(value): void {
     set_resolution(value);
   }
   public get thickness(): number {
     get_thickness();
   }
-  public set thickness(value: number): void {
+  public set thickness(value): void {
     set_thickness(value);
   }
   public get bake_mask(): number {
     get_bake_mask();
   }
-  public set bake_mask(value: number): void {
+  public set bake_mask(value): void {
     set_bake_mask(value);
   }
   public get texture(): Texture3D {
     get_texture();
   }
-  public set texture(value: Texture3D): void {
+  public set texture(value): void {
     set_texture(value);
   }
   static Resolution = {

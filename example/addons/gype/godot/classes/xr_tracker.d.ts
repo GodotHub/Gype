@@ -11,19 +11,19 @@ export declare class XRTracker extends RefCounted{
   public get type(): number {
     get_tracker_type();
   }
-  public set type(value: number): void {
+  public set type(value): void {
     set_tracker_type(value);
   }
   public get name(): String {
     get_tracker_name();
   }
-  public set name(value: String): void {
+  public set name(value): void {
     set_tracker_name(value);
   }
   public get description(): String {
     get_tracker_desc();
   }
-  public set description(value: String): void {
+  public set description(value): void {
     set_tracker_desc(value);
   }
 }

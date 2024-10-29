@@ -11,5 +11,5 @@ export declare class AnimationNodeStateMachinePlayback extends Resource{
   public get_current_play_position(): number;
   public get_current_length(): number;
   public get_fading_from_node(): StringName;
-  public get_travel_path(): Array;
+  public get_travel_path(): GDArray;
 }

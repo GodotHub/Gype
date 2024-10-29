@@ -1,6 +1,6 @@
 
-import { Node } from "@godot/classes/node";
 import { NavigationPathQueryResult3D } from "@godot/classes/navigation_path_query_result3d";
+import { Node } from "@godot/classes/node";
 
 export declare class NavigationAgent3D extends Node{
   public get_rid(): RID;
@@ -83,175 +83,175 @@ export declare class NavigationAgent3D extends Node{
   public get target_position(): Vector3 {
     get_target_position();
   }
-  public set target_position(value: Vector3): void {
+  public set target_position(value): void {
     set_target_position(value);
   }
   public get path_desired_distance(): number {
     get_path_desired_distance();
   }
-  public set path_desired_distance(value: number): void {
+  public set path_desired_distance(value): void {
     set_path_desired_distance(value);
   }
   public get target_desired_distance(): number {
     get_target_desired_distance();
   }
-  public set target_desired_distance(value: number): void {
+  public set target_desired_distance(value): void {
     set_target_desired_distance(value);
   }
   public get path_height_offset(): number {
     get_path_height_offset();
   }
-  public set path_height_offset(value: number): void {
+  public set path_height_offset(value): void {
     set_path_height_offset(value);
   }
   public get path_max_distance(): number {
     get_path_max_distance();
   }
-  public set path_max_distance(value: number): void {
+  public set path_max_distance(value): void {
     set_path_max_distance(value);
   }
   public get navigation_layers(): number {
     get_navigation_layers();
   }
-  public set navigation_layers(value: number): void {
+  public set navigation_layers(value): void {
     set_navigation_layers(value);
   }
   public get pathfinding_algorithm(): number {
     get_pathfinding_algorithm();
   }
-  public set pathfinding_algorithm(value: number): void {
+  public set pathfinding_algorithm(value): void {
     set_pathfinding_algorithm(value);
   }
   public get path_postprocessing(): number {
     get_path_postprocessing();
   }
-  public set path_postprocessing(value: number): void {
+  public set path_postprocessing(value): void {
     set_path_postprocessing(value);
   }
   public get path_metadata_flags(): number {
     get_path_metadata_flags();
   }
-  public set path_metadata_flags(value: number): void {
+  public set path_metadata_flags(value): void {
     set_path_metadata_flags(value);
   }
   public get simplify_path(): boolean {
     get_simplify_path();
   }
-  public set simplify_path(value: boolean): void {
+  public set simplify_path(value): void {
     set_simplify_path(value);
   }
   public get simplify_epsilon(): number {
     get_simplify_epsilon();
   }
-  public set simplify_epsilon(value: number): void {
+  public set simplify_epsilon(value): void {
     set_simplify_epsilon(value);
   }
   public get avoidance_enabled(): boolean {
     get_avoidance_enabled();
   }
-  public set avoidance_enabled(value: boolean): void {
+  public set avoidance_enabled(value): void {
     set_avoidance_enabled(value);
   }
   public get velocity(): Vector3 {
     get_velocity();
   }
-  public set velocity(value: Vector3): void {
+  public set velocity(value): void {
     set_velocity(value);
   }
   public get height(): number {
     get_height();
   }
-  public set height(value: number): void {
+  public set height(value): void {
     set_height(value);
   }
   public get radius(): number {
     get_radius();
   }
-  public set radius(value: number): void {
+  public set radius(value): void {
     set_radius(value);
   }
   public get neighbor_distance(): number {
     get_neighbor_distance();
   }
-  public set neighbor_distance(value: number): void {
+  public set neighbor_distance(value): void {
     set_neighbor_distance(value);
   }
   public get max_neighbors(): number {
     get_max_neighbors();
   }
-  public set max_neighbors(value: number): void {
+  public set max_neighbors(value): void {
     set_max_neighbors(value);
   }
   public get time_horizon_agents(): number {
     get_time_horizon_agents();
   }
-  public set time_horizon_agents(value: number): void {
+  public set time_horizon_agents(value): void {
     set_time_horizon_agents(value);
   }
   public get time_horizon_obstacles(): number {
     get_time_horizon_obstacles();
   }
-  public set time_horizon_obstacles(value: number): void {
+  public set time_horizon_obstacles(value): void {
     set_time_horizon_obstacles(value);
   }
   public get max_speed(): number {
     get_max_speed();
   }
-  public set max_speed(value: number): void {
+  public set max_speed(value): void {
     set_max_speed(value);
   }
   public get use_3d_avoidance(): boolean {
     get_use_3d_avoidance();
   }
-  public set use_3d_avoidance(value: boolean): void {
+  public set use_3d_avoidance(value): void {
     set_use_3d_avoidance(value);
   }
   public get keep_y_velocity(): boolean {
     get_keep_y_velocity();
   }
-  public set keep_y_velocity(value: boolean): void {
+  public set keep_y_velocity(value): void {
     set_keep_y_velocity(value);
   }
   public get avoidance_layers(): number {
     get_avoidance_layers();
   }
-  public set avoidance_layers(value: number): void {
+  public set avoidance_layers(value): void {
     set_avoidance_layers(value);
   }
   public get avoidance_mask(): number {
     get_avoidance_mask();
   }
-  public set avoidance_mask(value: number): void {
+  public set avoidance_mask(value): void {
     set_avoidance_mask(value);
   }
   public get avoidance_priority(): number {
     get_avoidance_priority();
   }
-  public set avoidance_priority(value: number): void {
+  public set avoidance_priority(value): void {
     set_avoidance_priority(value);
   }
   public get debug_enabled(): boolean {
     get_debug_enabled();
   }
-  public set debug_enabled(value: boolean): void {
+  public set debug_enabled(value): void {
     set_debug_enabled(value);
   }
   public get debug_use_custom(): boolean {
     get_debug_use_custom();
   }
-  public set debug_use_custom(value: boolean): void {
+  public set debug_use_custom(value): void {
     set_debug_use_custom(value);
   }
   public get debug_path_custom_color(): Color {
     get_debug_path_custom_color();
   }
-  public set debug_path_custom_color(value: Color): void {
+  public set debug_path_custom_color(value): void {
     set_debug_path_custom_color(value);
   }
   public get debug_path_custom_point_size(): number {
     get_debug_path_custom_point_size();
   }
-  public set debug_path_custom_point_size(value: number): void {
+  public set debug_path_custom_point_size(value): void {
     set_debug_path_custom_point_size(value);
   }
 }

@@ -7,7 +7,7 @@ export declare class PlaceholderTexture3D extends Texture3D{
   public get size(): Vector3i {
     get_size();
   }
-  public set size(value: Vector3i): void {
+  public set size(value): void {
     set_size(value);
   }
 }

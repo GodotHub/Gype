@@ -33,43 +33,43 @@ export declare class CodeHighlighter extends SyntaxHighlighter{
   public get number_color(): Color {
     get_number_color();
   }
-  public set number_color(value: Color): void {
+  public set number_color(value): void {
     set_number_color(value);
   }
   public get symbol_color(): Color {
     get_symbol_color();
   }
-  public set symbol_color(value: Color): void {
+  public set symbol_color(value): void {
     set_symbol_color(value);
   }
   public get function_color(): Color {
     get_function_color();
   }
-  public set function_color(value: Color): void {
+  public set function_color(value): void {
     set_function_color(value);
   }
   public get member_variable_color(): Color {
     get_member_variable_color();
   }
-  public set member_variable_color(value: Color): void {
+  public set member_variable_color(value): void {
     set_member_variable_color(value);
   }
   public get keyword_colors(): Dictionary {
     get_keyword_colors();
   }
-  public set keyword_colors(value: Dictionary): void {
+  public set keyword_colors(value): void {
     set_keyword_colors(value);
   }
   public get member_keyword_colors(): Dictionary {
     get_member_keyword_colors();
   }
-  public set member_keyword_colors(value: Dictionary): void {
+  public set member_keyword_colors(value): void {
     set_member_keyword_colors(value);
   }
   public get color_regions(): Dictionary {
     get_color_regions();
   }
-  public set color_regions(value: Dictionary): void {
+  public set color_regions(value): void {
     set_color_regions(value);
   }
 }

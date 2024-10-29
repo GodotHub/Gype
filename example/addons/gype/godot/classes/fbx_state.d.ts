@@ -7,7 +7,7 @@ export declare class FBXState extends GLTFState{
   public get allow_geometry_helper_nodes(): boolean {
     get_allow_geometry_helper_nodes();
   }
-  public set allow_geometry_helper_nodes(value: boolean): void {
+  public set allow_geometry_helper_nodes(value): void {
     set_allow_geometry_helper_nodes(value);
   }
 }

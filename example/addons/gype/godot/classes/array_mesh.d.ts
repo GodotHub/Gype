@@ -9,7 +9,7 @@ export declare class ArrayMesh extends Mesh{
   public clear_blend_shapes(): void;
   public set_blend_shape_mode(_mode: number): void;
   public get_blend_shape_mode(): number;
-  public add_surface_from_arrays(_primitive: number, _arrays: GDArray, _blend_shapes: typedarray::Array, _lods: Dictionary, _flags: number): void;
+  public add_surface_from_arrays(_primitive: number, _arrays: GDArray, _blend_shapes: GDArray, _lods: Dictionary, _flags: number): void;
   public clear_surfaces(): void;
   public surface_update_vertex_region(_surf_idx: number, _offset: number, _data: PackedByteArray): void;
   public surface_update_attribute_region(_surf_idx: number, _offset: number, _data: PackedByteArray): void;
@@ -30,19 +30,19 @@ export declare class ArrayMesh extends Mesh{
   public get blend_shape_mode(): number {
     get_blend_shape_mode();
   }
-  public set blend_shape_mode(value: number): void {
+  public set blend_shape_mode(value): void {
     set_blend_shape_mode(value);
   }
   public get custom_aabb(): AABB {
     get_custom_aabb();
   }
-  public set custom_aabb(value: AABB): void {
+  public set custom_aabb(value): void {
     set_custom_aabb(value);
   }
   public get shadow_mesh(): ArrayMesh {
     get_shadow_mesh();
   }
-  public set shadow_mesh(value: ArrayMesh): void {
+  public set shadow_mesh(value): void {
     set_shadow_mesh(value);
   }
 }

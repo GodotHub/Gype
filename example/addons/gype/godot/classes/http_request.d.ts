@@ -1,6 +1,6 @@
 
-import { Node } from "@godot/classes/node";
 import { TLSOptions } from "@godot/classes/tls_options";
+import { Node } from "@godot/classes/node";
 
 export declare class HTTPRequest extends Node{
   public request(_url: String, _custom_headers: PackedStringArray, _method: number, _request_data: String): number;
@@ -29,43 +29,43 @@ export declare class HTTPRequest extends Node{
   public get download_file(): String {
     get_download_file();
   }
-  public set download_file(value: String): void {
+  public set download_file(value): void {
     set_download_file(value);
   }
   public get download_chunk_size(): number {
     get_download_chunk_size();
   }
-  public set download_chunk_size(value: number): void {
+  public set download_chunk_size(value): void {
     set_download_chunk_size(value);
   }
   public get use_threads(): boolean {
     is_using_threads();
   }
-  public set use_threads(value: boolean): void {
+  public set use_threads(value): void {
     set_use_threads(value);
   }
   public get accept_gzip(): boolean {
     is_accepting_gzip();
   }
-  public set accept_gzip(value: boolean): void {
+  public set accept_gzip(value): void {
     set_accept_gzip(value);
   }
   public get body_size_limit(): number {
     get_body_size_limit();
   }
-  public set body_size_limit(value: number): void {
+  public set body_size_limit(value): void {
     set_body_size_limit(value);
   }
   public get max_redirects(): number {
     get_max_redirects();
   }
-  public set max_redirects(value: number): void {
+  public set max_redirects(value): void {
     set_max_redirects(value);
   }
   public get timeout(): number {
     get_timeout();
   }
-  public set timeout(value: number): void {
+  public set timeout(value): void {
     set_timeout(value);
   }
   static Result = {

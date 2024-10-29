@@ -7,7 +7,7 @@ export declare class WorldBoundaryShape3D extends Shape3D{
   public get plane(): Plane {
     get_plane();
   }
-  public set plane(value: Plane): void {
+  public set plane(value): void {
     set_plane(value);
   }
 }

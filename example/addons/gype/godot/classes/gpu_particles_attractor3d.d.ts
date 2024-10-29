@@ -13,25 +13,25 @@ export declare class GPUParticlesAttractor3D extends VisualInstance3D{
   public get strength(): number {
     get_strength();
   }
-  public set strength(value: number): void {
+  public set strength(value): void {
     set_strength(value);
   }
   public get attenuation(): number {
     get_attenuation();
   }
-  public set attenuation(value: number): void {
+  public set attenuation(value): void {
     set_attenuation(value);
   }
   public get directionality(): number {
     get_directionality();
   }
-  public set directionality(value: number): void {
+  public set directionality(value): void {
     set_directionality(value);
   }
   public get cull_mask(): number {
     get_cull_mask();
   }
-  public set cull_mask(value: number): void {
+  public set cull_mask(value): void {
     set_cull_mask(value);
   }
 }

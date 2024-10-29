@@ -16,31 +16,31 @@ export declare class GLTFSpecGloss extends Resource{
   public get diffuse_img(): Object {
     get_diffuse_img();
   }
-  public set diffuse_img(value: Object): void {
+  public set diffuse_img(value): void {
     set_diffuse_img(value);
   }
   public get diffuse_factor(): Color {
     get_diffuse_factor();
   }
-  public set diffuse_factor(value: Color): void {
+  public set diffuse_factor(value): void {
     set_diffuse_factor(value);
   }
   public get gloss_factor(): number {
     get_gloss_factor();
   }
-  public set gloss_factor(value: number): void {
+  public set gloss_factor(value): void {
     set_gloss_factor(value);
   }
   public get specular_factor(): Color {
     get_specular_factor();
   }
-  public set specular_factor(value: Color): void {
+  public set specular_factor(value): void {
     set_specular_factor(value);
   }
   public get spec_gloss_img(): Object {
     get_spec_gloss_img();
   }
-  public set spec_gloss_img(value: Object): void {
+  public set spec_gloss_img(value): void {
     set_spec_gloss_img(value);
   }
 }

@@ -9,13 +9,13 @@ export declare class XRFaceModifier3D extends Node3D{
   public get face_tracker(): String {
     get_face_tracker();
   }
-  public set face_tracker(value: String): void {
+  public set face_tracker(value): void {
     set_face_tracker(value);
   }
   public get target(): NodePath {
     get_target();
   }
-  public set target(value: NodePath): void {
+  public set target(value): void {
     set_target(value);
   }
 }

@@ -15,31 +15,31 @@ export declare class CameraAttributes extends Resource{
   public get exposure_sensitivity(): number {
     get_exposure_sensitivity();
   }
-  public set exposure_sensitivity(value: number): void {
+  public set exposure_sensitivity(value): void {
     set_exposure_sensitivity(value);
   }
   public get exposure_multiplier(): number {
     get_exposure_multiplier();
   }
-  public set exposure_multiplier(value: number): void {
+  public set exposure_multiplier(value): void {
     set_exposure_multiplier(value);
   }
   public get auto_exposure_enabled(): boolean {
     is_auto_exposure_enabled();
   }
-  public set auto_exposure_enabled(value: boolean): void {
+  public set auto_exposure_enabled(value): void {
     set_auto_exposure_enabled(value);
   }
   public get auto_exposure_scale(): number {
     get_auto_exposure_scale();
   }
-  public set auto_exposure_scale(value: number): void {
+  public set auto_exposure_scale(value): void {
     set_auto_exposure_scale(value);
   }
   public get auto_exposure_speed(): number {
     get_auto_exposure_speed();
   }
-  public set auto_exposure_speed(value: number): void {
+  public set auto_exposure_speed(value): void {
     set_auto_exposure_speed(value);
   }
 }

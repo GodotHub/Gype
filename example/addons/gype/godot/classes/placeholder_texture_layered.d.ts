@@ -8,13 +8,13 @@ export declare class PlaceholderTextureLayered extends TextureLayered{
   public get size(): Vector2i {
     get_size();
   }
-  public set size(value: Vector2i): void {
+  public set size(value): void {
     set_size(value);
   }
   public get layers(): number {
     get_layers();
   }
-  public set layers(value: number): void {
+  public set layers(value): void {
     set_layers(value);
   }
 }

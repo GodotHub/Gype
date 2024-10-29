@@ -7,31 +7,31 @@ export declare class ConeTwistJoint3D extends Joint3D{
   public get swing_span(): number {
     get_param();
   }
-  public set swing_span(value: number): void {
+  public set swing_span(value): void {
     set_param(value);
   }
   public get twist_span(): number {
     get_param();
   }
-  public set twist_span(value: number): void {
+  public set twist_span(value): void {
     set_param(value);
   }
   public get bias(): number {
     get_param();
   }
-  public set bias(value: number): void {
+  public set bias(value): void {
     set_param(value);
   }
   public get softness(): number {
     get_param();
   }
-  public set softness(value: number): void {
+  public set softness(value): void {
     set_param(value);
   }
   public get relaxation(): number {
     get_param();
   }
-  public set relaxation(value: number): void {
+  public set relaxation(value): void {
     set_param(value);
   }
   static Param = {

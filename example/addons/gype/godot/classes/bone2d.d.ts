@@ -16,7 +16,7 @@ export declare class Bone2D extends Node2D{
   public get rest(): Transform2D {
     get_rest();
   }
-  public set rest(value: Transform2D): void {
+  public set rest(value): void {
     set_rest(value);
   }
 }

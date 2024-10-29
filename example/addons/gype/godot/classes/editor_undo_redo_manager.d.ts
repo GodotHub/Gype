@@ -9,8 +9,8 @@ export declare class EditorUndoRedoManager extends Object{
   public force_fixed_history(): void;
   public add_do_method(_object: Object, _method: StringName): void;
   public add_undo_method(_object: Object, _method: StringName): void;
-  public add_do_property(_object: Object, _property: StringName, _value: Variant): void;
-  public add_undo_property(_object: Object, _property: StringName, _value: Variant): void;
+  public add_do_property(_object: Object, _property: StringName, _value: any): void;
+  public add_undo_property(_object: Object, _property: StringName, _value: any): void;
   public add_do_reference(_object: Object): void;
   public add_undo_reference(_object: Object): void;
   public get_object_history_id(_object: Object): number;

@@ -26,43 +26,43 @@ export declare class VoxelGIData extends Resource{
   public get dynamic_range(): number {
     get_dynamic_range();
   }
-  public set dynamic_range(value: number): void {
+  public set dynamic_range(value): void {
     set_dynamic_range(value);
   }
   public get energy(): number {
     get_energy();
   }
-  public set energy(value: number): void {
+  public set energy(value): void {
     set_energy(value);
   }
   public get bias(): number {
     get_bias();
   }
-  public set bias(value: number): void {
+  public set bias(value): void {
     set_bias(value);
   }
   public get normal_bias(): number {
     get_normal_bias();
   }
-  public set normal_bias(value: number): void {
+  public set normal_bias(value): void {
     set_normal_bias(value);
   }
   public get propagation(): number {
     get_propagation();
   }
-  public set propagation(value: number): void {
+  public set propagation(value): void {
     set_propagation(value);
   }
   public get use_two_bounces(): boolean {
     is_using_two_bounces();
   }
-  public set use_two_bounces(value: boolean): void {
+  public set use_two_bounces(value): void {
     set_use_two_bounces(value);
   }
   public get interior(): boolean {
     is_interior();
   }
-  public set interior(value: boolean): void {
+  public set interior(value): void {
     set_interior(value);
   }
 }

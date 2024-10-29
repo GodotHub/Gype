@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/open_xr_interaction_profile.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/open_xrip_binding.hpp>
+#include <godot_cpp/classes/open_xr_interaction_profile.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void open_xr_interaction_profile_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,12 +33,12 @@ static JSValue open_xr_interaction_profile_class_constructor(JSContext *ctx, JSV
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, open_xr_interaction_profile_class);
+	JS_SetOpaque(obj, open_xr_interaction_profile_class);	
 	return obj;
 }
 static JSValue open_xr_interaction_profile_class_set_interaction_profile_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&OpenXRInteractionProfile::set_interaction_profile_path, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&OpenXRInteractionProfile::set_interaction_profile_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_interaction_profile_class_get_interaction_profile_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,7 +55,7 @@ static JSValue open_xr_interaction_profile_class_get_binding(JSContext *ctx, JSV
 };
 static JSValue open_xr_interaction_profile_class_set_bindings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&OpenXRInteractionProfile::set_bindings, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&OpenXRInteractionProfile::set_bindings, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_interaction_profile_class_get_bindings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,26 +72,29 @@ static const JSCFunctionListEntry open_xr_interaction_profile_class_proto_funcs[
 };
 
 void define_open_xr_interaction_profile_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "interaction_profile_path"),
-			JS_NewCFunction(ctx, open_xr_interaction_profile_class_get_interaction_profile_path, "get_interaction_profile_path", 0),
-			JS_NewCFunction(ctx, open_xr_interaction_profile_class_set_interaction_profile_path, "set_interaction_profile_path", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "bindings"),
-			JS_NewCFunction(ctx, open_xr_interaction_profile_class_get_bindings, "get_bindings", 0),
-			JS_NewCFunction(ctx, open_xr_interaction_profile_class_set_bindings, "set_bindings", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "interaction_profile_path"),
+        JS_NewCFunction(ctx, open_xr_interaction_profile_class_get_interaction_profile_path, "get_interaction_profile_path", 0),
+        JS_NewCFunction(ctx, open_xr_interaction_profile_class_set_interaction_profile_path, "set_interaction_profile_path", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "bindings"),
+        JS_NewCFunction(ctx, open_xr_interaction_profile_class_get_bindings, "get_bindings", 0),
+        JS_NewCFunction(ctx, open_xr_interaction_profile_class_set_bindings, "set_bindings", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_open_xr_interaction_profile_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&OpenXRInteractionProfile::__class_id);
 	classes["OpenXRInteractionProfile"] = OpenXRInteractionProfile::__class_id;
 	class_id_list.insert(OpenXRInteractionProfile::__class_id);
@@ -112,7 +117,7 @@ static int js_open_xr_interaction_profile_class_init(JSContext *ctx, JSModuleDef
 }
 
 JSModuleDef *_js_init_open_xr_interaction_profile_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/resource';";
+	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -124,7 +129,7 @@ JSModuleDef *_js_init_open_xr_interaction_profile_module(JSContext *ctx, const c
 }
 
 JSModuleDef *js_init_open_xr_interaction_profile_module(JSContext *ctx) {
-	return _js_init_open_xr_interaction_profile_module(ctx, "godot/classes/open_xr_interaction_profile");
+	return _js_init_open_xr_interaction_profile_module(ctx, "@godot/classes/open_xr_interaction_profile");
 }
 
 void register_open_xr_interaction_profile() {

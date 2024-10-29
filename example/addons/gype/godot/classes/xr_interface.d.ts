@@ -33,25 +33,25 @@ export declare class XRInterface extends RefCounted{
   public get interface_is_primary(): boolean {
     is_primary();
   }
-  public set interface_is_primary(value: boolean): void {
+  public set interface_is_primary(value): void {
     set_primary(value);
   }
   public get xr_play_area_mode(): number {
     get_play_area_mode();
   }
-  public set xr_play_area_mode(value: number): void {
+  public set xr_play_area_mode(value): void {
     set_play_area_mode(value);
   }
   public get environment_blend_mode(): number {
     get_environment_blend_mode();
   }
-  public set environment_blend_mode(value: number): void {
+  public set environment_blend_mode(value): void {
     set_environment_blend_mode(value);
   }
   public get ar_is_anchor_detection_enabled(): boolean {
     get_anchor_detection_is_enabled();
   }
-  public set ar_is_anchor_detection_enabled(value: boolean): void {
+  public set ar_is_anchor_detection_enabled(value): void {
     set_anchor_detection_is_enabled(value);
   }
   static Capabilities = {

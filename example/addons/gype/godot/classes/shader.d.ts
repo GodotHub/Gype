@@ -12,7 +12,7 @@ export declare class Shader extends Resource{
   public get code(): String {
     get_code();
   }
-  public set code(value: String): void {
+  public set code(value): void {
     set_code(value);
   }
   static Mode = {

@@ -7,7 +7,7 @@ export declare class VisualShaderNodeComment extends VisualShaderNodeFrame{
   public get description(): String {
     get_description();
   }
-  public set description(value: String): void {
+  public set description(value): void {
     set_description(value);
   }
 }

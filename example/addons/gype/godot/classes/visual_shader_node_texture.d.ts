@@ -12,19 +12,19 @@ export declare class VisualShaderNodeTexture extends VisualShaderNode{
   public get source(): number {
     get_source();
   }
-  public set source(value: number): void {
+  public set source(value): void {
     set_source(value);
   }
   public get texture(): Texture2D {
     get_texture();
   }
-  public set texture(value: Texture2D): void {
+  public set texture(value): void {
     set_texture(value);
   }
   public get texture_type(): number {
     get_texture_type();
   }
-  public set texture_type(value: number): void {
+  public set texture_type(value): void {
     set_texture_type(value);
   }
   static Source = {

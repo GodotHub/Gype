@@ -1,6 +1,6 @@
 
-import { ImporterMesh } from "@godot/classes/importer_mesh";
 import { CollisionShape3D } from "@godot/classes/collision_shape3d";
+import { ImporterMesh } from "@godot/classes/importer_mesh";
 import { Shape3D } from "@godot/classes/shape3d";
 import { Resource } from "@godot/classes/resource";
 
@@ -28,43 +28,43 @@ export declare class GLTFPhysicsShape extends Resource{
   public get shape_type(): String {
     get_shape_type();
   }
-  public set shape_type(value: String): void {
+  public set shape_type(value): void {
     set_shape_type(value);
   }
   public get size(): Vector3 {
     get_size();
   }
-  public set size(value: Vector3): void {
+  public set size(value): void {
     set_size(value);
   }
   public get radius(): number {
     get_radius();
   }
-  public set radius(value: number): void {
+  public set radius(value): void {
     set_radius(value);
   }
   public get height(): number {
     get_height();
   }
-  public set height(value: number): void {
+  public set height(value): void {
     set_height(value);
   }
   public get is_trigger(): boolean {
     get_is_trigger();
   }
-  public set is_trigger(value: boolean): void {
+  public set is_trigger(value): void {
     set_is_trigger(value);
   }
   public get mesh_index(): number {
     get_mesh_index();
   }
-  public set mesh_index(value: number): void {
+  public set mesh_index(value): void {
     set_mesh_index(value);
   }
   public get importer_mesh(): ImporterMesh {
     get_importer_mesh();
   }
-  public set importer_mesh(value: ImporterMesh): void {
+  public set importer_mesh(value): void {
     set_importer_mesh(value);
   }
 }

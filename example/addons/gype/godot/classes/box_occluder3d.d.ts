@@ -7,7 +7,7 @@ export declare class BoxOccluder3D extends Occluder3D{
   public get size(): Vector3 {
     get_size();
   }
-  public set size(value: Vector3): void {
+  public set size(value): void {
     set_size(value);
   }
 }

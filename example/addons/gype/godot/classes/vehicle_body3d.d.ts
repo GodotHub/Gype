@@ -11,19 +11,19 @@ export declare class VehicleBody3D extends RigidBody3D{
   public get engine_force(): number {
     get_engine_force();
   }
-  public set engine_force(value: number): void {
+  public set engine_force(value): void {
     set_engine_force(value);
   }
   public get brake(): number {
     get_brake();
   }
-  public set brake(value: number): void {
+  public set brake(value): void {
     set_brake(value);
   }
   public get steering(): number {
     get_steering();
   }
-  public set steering(value: number): void {
+  public set steering(value): void {
     set_steering(value);
   }
 }

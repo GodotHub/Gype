@@ -12,13 +12,13 @@ export declare class OpenXRInteractionProfile extends Resource{
   public get interaction_profile_path(): String {
     get_interaction_profile_path();
   }
-  public set interaction_profile_path(value: String): void {
+  public set interaction_profile_path(value): void {
     set_interaction_profile_path(value);
   }
   public get bindings(): OpenXRIPBinding {
     get_bindings();
   }
-  public set bindings(value: OpenXRIPBinding): void {
+  public set bindings(value): void {
     set_bindings(value);
   }
 }

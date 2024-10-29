@@ -14,13 +14,13 @@ export declare class OpenXRIPBinding extends Resource{
   public get action(): OpenXRAction {
     get_action();
   }
-  public set action(value: OpenXRAction): void {
+  public set action(value): void {
     set_action(value);
   }
   public get paths(): PackedStringArray {
     get_paths();
   }
-  public set paths(value: PackedStringArray): void {
+  public set paths(value): void {
     set_paths(value);
   }
 }

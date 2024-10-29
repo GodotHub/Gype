@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/callback_tweener.hpp>
 #include <godot_cpp/classes/tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void callback_tweener_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue callback_tweener_class_constructor(JSContext *ctx, JSValueConst n
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, callback_tweener_class);
+	JS_SetOpaque(obj, callback_tweener_class);	
 	return obj;
 }
 static JSValue callback_tweener_class_set_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,6 +50,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_callback_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&CallbackTweener::__class_id);
 	classes["CallbackTweener"] = CallbackTweener::__class_id;
 	class_id_list.insert(CallbackTweener::__class_id);
@@ -70,7 +73,7 @@ static int js_callback_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_callback_tweener_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/tweener';";
+	const char *code = "import * as _ from '@godot/classes/tweener';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -82,7 +85,7 @@ JSModuleDef *_js_init_callback_tweener_module(JSContext *ctx, const char *module
 }
 
 JSModuleDef *js_init_callback_tweener_module(JSContext *ctx) {
-	return _js_init_callback_tweener_module(ctx, "godot/classes/callback_tweener");
+	return _js_init_callback_tweener_module(ctx, "@godot/classes/callback_tweener");
 }
 
 void register_callback_tweener() {

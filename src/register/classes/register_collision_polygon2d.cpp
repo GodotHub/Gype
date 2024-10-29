@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/collision_polygon2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void collision_polygon2d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue collision_polygon2d_class_constructor(JSContext *ctx, JSValueCons
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, collision_polygon2d_class);
+	JS_SetOpaque(obj, collision_polygon2d_class);	
 	return obj;
 }
 static JSValue collision_polygon2d_class_set_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionPolygon2D::set_polygon, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionPolygon2D::set_polygon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_polygon2d_class_get_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue collision_polygon2d_class_get_polygon(JSContext *ctx, JSValueCons
 };
 static JSValue collision_polygon2d_class_set_build_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionPolygon2D::set_build_mode, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionPolygon2D::set_build_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_polygon2d_class_get_build_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,7 +55,7 @@ static JSValue collision_polygon2d_class_get_build_mode(JSContext *ctx, JSValueC
 };
 static JSValue collision_polygon2d_class_set_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionPolygon2D::set_disabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionPolygon2D::set_disabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_polygon2d_class_is_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +64,7 @@ static JSValue collision_polygon2d_class_is_disabled(JSContext *ctx, JSValueCons
 };
 static JSValue collision_polygon2d_class_set_one_way_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionPolygon2D::set_one_way_collision, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionPolygon2D::set_one_way_collision, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_polygon2d_class_is_one_way_collision_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,7 +73,7 @@ static JSValue collision_polygon2d_class_is_one_way_collision_enabled(JSContext 
 };
 static JSValue collision_polygon2d_class_set_one_way_collision_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CollisionPolygon2D::set_one_way_collision_margin, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CollisionPolygon2D::set_one_way_collision_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue collision_polygon2d_class_get_one_way_collision_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,41 +94,46 @@ static const JSCFunctionListEntry collision_polygon2d_class_proto_funcs[] = {
 };
 
 void define_collision_polygon2d_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "build_mode"),
-			JS_NewCFunction(ctx, collision_polygon2d_class_get_build_mode, "get_build_mode", 0),
-			JS_NewCFunction(ctx, collision_polygon2d_class_set_build_mode, "set_build_mode", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "polygon"),
-			JS_NewCFunction(ctx, collision_polygon2d_class_get_polygon, "get_polygon", 0),
-			JS_NewCFunction(ctx, collision_polygon2d_class_set_polygon, "set_polygon", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "disabled"),
-			JS_NewCFunction(ctx, collision_polygon2d_class_is_disabled, "is_disabled", 0),
-			JS_NewCFunction(ctx, collision_polygon2d_class_set_disabled, "set_disabled", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "one_way_collision"),
-			JS_NewCFunction(ctx, collision_polygon2d_class_is_one_way_collision_enabled, "is_one_way_collision_enabled", 0),
-			JS_NewCFunction(ctx, collision_polygon2d_class_set_one_way_collision, "set_one_way_collision", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "one_way_collision_margin"),
-			JS_NewCFunction(ctx, collision_polygon2d_class_get_one_way_collision_margin, "get_one_way_collision_margin", 0),
-			JS_NewCFunction(ctx, collision_polygon2d_class_set_one_way_collision_margin, "set_one_way_collision_margin", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "build_mode"),
+        JS_NewCFunction(ctx, collision_polygon2d_class_get_build_mode, "get_build_mode", 0),
+        JS_NewCFunction(ctx, collision_polygon2d_class_set_build_mode, "set_build_mode", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "polygon"),
+        JS_NewCFunction(ctx, collision_polygon2d_class_get_polygon, "get_polygon", 0),
+        JS_NewCFunction(ctx, collision_polygon2d_class_set_polygon, "set_polygon", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "disabled"),
+        JS_NewCFunction(ctx, collision_polygon2d_class_is_disabled, "is_disabled", 0),
+        JS_NewCFunction(ctx, collision_polygon2d_class_set_disabled, "set_disabled", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "one_way_collision"),
+        JS_NewCFunction(ctx, collision_polygon2d_class_is_one_way_collision_enabled, "is_one_way_collision_enabled", 0),
+        JS_NewCFunction(ctx, collision_polygon2d_class_set_one_way_collision, "set_one_way_collision", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "one_way_collision_margin"),
+        JS_NewCFunction(ctx, collision_polygon2d_class_get_one_way_collision_margin, "get_one_way_collision_margin", 0),
+        JS_NewCFunction(ctx, collision_polygon2d_class_set_one_way_collision_margin, "set_one_way_collision_margin", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -137,6 +144,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_collision_polygon2d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&CollisionPolygon2D::__class_id);
 	classes["CollisionPolygon2D"] = CollisionPolygon2D::__class_id;
 	class_id_list.insert(CollisionPolygon2D::__class_id);
@@ -159,7 +167,7 @@ static int js_collision_polygon2d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_collision_polygon2d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/node2d';";
+	const char *code = "import * as _ from '@godot/classes/node2d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -171,7 +179,7 @@ JSModuleDef *_js_init_collision_polygon2d_module(JSContext *ctx, const char *mod
 }
 
 JSModuleDef *js_init_collision_polygon2d_module(JSContext *ctx) {
-	return _js_init_collision_polygon2d_module(ctx, "godot/classes/collision_polygon2d");
+	return _js_init_collision_polygon2d_module(ctx, "@godot/classes/collision_polygon2d");
 }
 
 void register_collision_polygon2d() {

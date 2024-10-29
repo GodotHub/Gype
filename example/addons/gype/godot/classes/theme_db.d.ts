@@ -1,9 +1,9 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
-import { Font } from "@godot/classes/font";
 import { Theme } from "@godot/classes/theme";
-import { Object } from "@godot/classes/object";
+import { Font } from "@godot/classes/font";
+import { Texture2D } from "@godot/classes/texture2d";
 import { StyleBox } from "@godot/classes/style_box";
+import { Object } from "@godot/classes/object";
 
 export declare class ThemeDB extends Object{
   public get_default_theme(): Theme;
@@ -21,31 +21,31 @@ export declare class ThemeDB extends Object{
   public get fallback_base_scale(): number {
     get_fallback_base_scale();
   }
-  public set fallback_base_scale(value: number): void {
+  public set fallback_base_scale(value): void {
     set_fallback_base_scale(value);
   }
   public get fallback_font(): Font {
     get_fallback_font();
   }
-  public set fallback_font(value: Font): void {
+  public set fallback_font(value): void {
     set_fallback_font(value);
   }
   public get fallback_font_size(): number {
     get_fallback_font_size();
   }
-  public set fallback_font_size(value: number): void {
+  public set fallback_font_size(value): void {
     set_fallback_font_size(value);
   }
   public get fallback_icon(): Texture2D {
     get_fallback_icon();
   }
-  public set fallback_icon(value: Texture2D): void {
+  public set fallback_icon(value): void {
     set_fallback_icon(value);
   }
   public get fallback_stylebox(): StyleBox {
     get_fallback_stylebox();
   }
-  public set fallback_stylebox(value: StyleBox): void {
+  public set fallback_stylebox(value): void {
     set_fallback_stylebox(value);
   }
 }

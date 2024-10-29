@@ -67,73 +67,73 @@ export declare class Tree extends Control{
   public get columns(): number {
     get_columns();
   }
-  public set columns(value: number): void {
+  public set columns(value): void {
     set_columns(value);
   }
   public get column_titles_visible(): boolean {
     are_column_titles_visible();
   }
-  public set column_titles_visible(value: boolean): void {
+  public set column_titles_visible(value): void {
     set_column_titles_visible(value);
   }
   public get allow_reselect(): boolean {
     get_allow_reselect();
   }
-  public set allow_reselect(value: boolean): void {
+  public set allow_reselect(value): void {
     set_allow_reselect(value);
   }
   public get allow_rmb_select(): boolean {
     get_allow_rmb_select();
   }
-  public set allow_rmb_select(value: boolean): void {
+  public set allow_rmb_select(value): void {
     set_allow_rmb_select(value);
   }
   public get allow_search(): boolean {
     get_allow_search();
   }
-  public set allow_search(value: boolean): void {
+  public set allow_search(value): void {
     set_allow_search(value);
   }
   public get hide_folding(): boolean {
     is_folding_hidden();
   }
-  public set hide_folding(value: boolean): void {
+  public set hide_folding(value): void {
     set_hide_folding(value);
   }
   public get enable_recursive_folding(): boolean {
     is_recursive_folding_enabled();
   }
-  public set enable_recursive_folding(value: boolean): void {
+  public set enable_recursive_folding(value): void {
     set_enable_recursive_folding(value);
   }
   public get hide_root(): boolean {
     is_root_hidden();
   }
-  public set hide_root(value: boolean): void {
+  public set hide_root(value): void {
     set_hide_root(value);
   }
   public get drop_mode_flags(): number {
     get_drop_mode_flags();
   }
-  public set drop_mode_flags(value: number): void {
+  public set drop_mode_flags(value): void {
     set_drop_mode_flags(value);
   }
   public get select_mode(): number {
     get_select_mode();
   }
-  public set select_mode(value: number): void {
+  public set select_mode(value): void {
     set_select_mode(value);
   }
   public get scroll_horizontal_enabled(): boolean {
     is_h_scroll_enabled();
   }
-  public set scroll_horizontal_enabled(value: boolean): void {
+  public set scroll_horizontal_enabled(value): void {
     set_h_scroll_enabled(value);
   }
   public get scroll_vertical_enabled(): boolean {
     is_v_scroll_enabled();
   }
-  public set scroll_vertical_enabled(value: boolean): void {
+  public set scroll_vertical_enabled(value): void {
     set_v_scroll_enabled(value);
   }
   static SelectMode = {

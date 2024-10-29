@@ -15,19 +15,19 @@ export declare class OpenXRActionSet extends Resource{
   public get localized_name(): String {
     get_localized_name();
   }
-  public set localized_name(value: String): void {
+  public set localized_name(value): void {
     set_localized_name(value);
   }
   public get priority(): number {
     get_priority();
   }
-  public set priority(value: number): void {
+  public set priority(value): void {
     set_priority(value);
   }
   public get actions(): OpenXRAction {
     get_actions();
   }
-  public set actions(value: OpenXRAction): void {
+  public set actions(value): void {
     set_actions(value);
   }
 }

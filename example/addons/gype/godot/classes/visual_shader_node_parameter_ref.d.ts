@@ -7,13 +7,13 @@ export declare class VisualShaderNodeParameterRef extends VisualShaderNode{
   public get parameter_name(): StringName {
     get_parameter_name();
   }
-  public set parameter_name(value: StringName): void {
+  public set parameter_name(value): void {
     set_parameter_name(value);
   }
   public get param_type(): number {
     _get_parameter_type();
   }
-  public set param_type(value: number): void {
+  public set param_type(value): void {
     _set_parameter_type(value);
   }
 }

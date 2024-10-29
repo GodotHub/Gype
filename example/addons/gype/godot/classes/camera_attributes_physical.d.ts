@@ -22,49 +22,49 @@ export declare class CameraAttributesPhysical extends CameraAttributes{
   public get frustum_focus_distance(): number {
     get_focus_distance();
   }
-  public set frustum_focus_distance(value: number): void {
+  public set frustum_focus_distance(value): void {
     set_focus_distance(value);
   }
   public get frustum_focal_length(): number {
     get_focal_length();
   }
-  public set frustum_focal_length(value: number): void {
+  public set frustum_focal_length(value): void {
     set_focal_length(value);
   }
   public get frustum_near(): number {
     get_near();
   }
-  public set frustum_near(value: number): void {
+  public set frustum_near(value): void {
     set_near(value);
   }
   public get frustum_far(): number {
     get_far();
   }
-  public set frustum_far(value: number): void {
+  public set frustum_far(value): void {
     set_far(value);
   }
   public get exposure_aperture(): number {
     get_aperture();
   }
-  public set exposure_aperture(value: number): void {
+  public set exposure_aperture(value): void {
     set_aperture(value);
   }
   public get exposure_shutter_speed(): number {
     get_shutter_speed();
   }
-  public set exposure_shutter_speed(value: number): void {
+  public set exposure_shutter_speed(value): void {
     set_shutter_speed(value);
   }
   public get auto_exposure_min_exposure_value(): number {
     get_auto_exposure_min_exposure_value();
   }
-  public set auto_exposure_min_exposure_value(value: number): void {
+  public set auto_exposure_min_exposure_value(value): void {
     set_auto_exposure_min_exposure_value(value);
   }
   public get auto_exposure_max_exposure_value(): number {
     get_auto_exposure_max_exposure_value();
   }
-  public set auto_exposure_max_exposure_value(value: number): void {
+  public set auto_exposure_max_exposure_value(value): void {
     set_auto_exposure_max_exposure_value(value);
   }
 }

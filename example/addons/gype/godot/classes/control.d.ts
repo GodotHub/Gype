@@ -1,21 +1,21 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { Theme } from "@godot/classes/theme";
-import { Node } from "@godot/classes/node";
-import { Object } from "@godot/classes/object";
+import { Texture2D } from "@godot/classes/texture2d";
 import { StyleBox } from "@godot/classes/style_box";
-import { InputEvent } from "@godot/classes/input_event";
-import { Font } from "@godot/classes/font";
 import { CanvasItem } from "@godot/classes/canvas_item";
+import { Object } from "@godot/classes/object";
+import { Node } from "@godot/classes/node";
+import { Font } from "@godot/classes/font";
+import { InputEvent } from "@godot/classes/input_event";
 
 export declare class Control extends CanvasItem{
   public _has_point(_point: Vector2): boolean;
-  public _structured_text_parser(_args: GDArray, _text: String): Array;
+  public _structured_text_parser(_args: GDArray, _text: String): GDArray;
   public _get_minimum_size(): Vector2;
   public _get_tooltip(_at_position: Vector2): String;
-  public _get_drag_data(_at_position: Vector2): Variant;
-  public _can_drop_data(_at_position: Vector2, _data: Variant): boolean;
-  public _drop_data(_at_position: Vector2, _data: Variant): void;
+  public _get_drag_data(_at_position: Vector2): any;
+  public _can_drop_data(_at_position: Vector2, _data: any): boolean;
+  public _drop_data(_at_position: Vector2, _data: any): void;
   public _make_custom_tooltip(_for_text: String): Object;
   public _gui_input(_event: InputEvent): void;
   public accept_event(): void;
@@ -124,7 +124,7 @@ export declare class Control extends CanvasItem{
   public get_focus_next(): NodePath;
   public set_focus_previous(_previous: NodePath): void;
   public get_focus_previous(): NodePath;
-  public force_drag(_data: Variant, _preview: Control): void;
+  public force_drag(_data: any, _preview: Control): void;
   public set_mouse_filter(_filter: number): void;
   public get_mouse_filter(): number;
   public set_force_pass_scroll_events(_force_pass_scroll_events: boolean): void;
@@ -149,247 +149,247 @@ export declare class Control extends CanvasItem{
   public get clip_contents(): boolean {
     is_clipping_contents();
   }
-  public set clip_contents(value: boolean): void {
+  public set clip_contents(value): void {
     set_clip_contents(value);
   }
   public get custom_minimum_size(): Vector2 {
     get_custom_minimum_size();
   }
-  public set custom_minimum_size(value: Vector2): void {
+  public set custom_minimum_size(value): void {
     set_custom_minimum_size(value);
   }
   public get layout_direction(): number {
     get_layout_direction();
   }
-  public set layout_direction(value: number): void {
+  public set layout_direction(value): void {
     set_layout_direction(value);
   }
   public get layout_mode(): number {
     _get_layout_mode();
   }
-  public set layout_mode(value: number): void {
+  public set layout_mode(value): void {
     _set_layout_mode(value);
   }
   public get anchors_preset(): number {
     _get_anchors_layout_preset();
   }
-  public set anchors_preset(value: number): void {
+  public set anchors_preset(value): void {
     _set_anchors_layout_preset(value);
   }
   public get anchor_left(): number {
     get_anchor();
   }
-  public set anchor_left(value: number): void {
+  public set anchor_left(value): void {
     _set_anchor(value);
   }
   public get anchor_top(): number {
     get_anchor();
   }
-  public set anchor_top(value: number): void {
+  public set anchor_top(value): void {
     _set_anchor(value);
   }
   public get anchor_right(): number {
     get_anchor();
   }
-  public set anchor_right(value: number): void {
+  public set anchor_right(value): void {
     _set_anchor(value);
   }
   public get anchor_bottom(): number {
     get_anchor();
   }
-  public set anchor_bottom(value: number): void {
+  public set anchor_bottom(value): void {
     _set_anchor(value);
   }
   public get offset_left(): number {
     get_offset();
   }
-  public set offset_left(value: number): void {
+  public set offset_left(value): void {
     set_offset(value);
   }
   public get offset_top(): number {
     get_offset();
   }
-  public set offset_top(value: number): void {
+  public set offset_top(value): void {
     set_offset(value);
   }
   public get offset_right(): number {
     get_offset();
   }
-  public set offset_right(value: number): void {
+  public set offset_right(value): void {
     set_offset(value);
   }
   public get offset_bottom(): number {
     get_offset();
   }
-  public set offset_bottom(value: number): void {
+  public set offset_bottom(value): void {
     set_offset(value);
   }
   public get grow_horizontal(): number {
     get_h_grow_direction();
   }
-  public set grow_horizontal(value: number): void {
+  public set grow_horizontal(value): void {
     set_h_grow_direction(value);
   }
   public get grow_vertical(): number {
     get_v_grow_direction();
   }
-  public set grow_vertical(value: number): void {
+  public set grow_vertical(value): void {
     set_v_grow_direction(value);
   }
   public get size(): Vector2 {
     get_size();
   }
-  public set size(value: Vector2): void {
+  public set size(value): void {
     _set_size(value);
   }
   public get position(): Vector2 {
     get_position();
   }
-  public set position(value: Vector2): void {
+  public set position(value): void {
     _set_position(value);
   }
   public get global_position(): Vector2 {
     get_global_position();
   }
-  public set global_position(value: Vector2): void {
+  public set global_position(value): void {
     _set_global_position(value);
   }
   public get rotation(): number {
     get_rotation();
   }
-  public set rotation(value: number): void {
+  public set rotation(value): void {
     set_rotation(value);
   }
   public get rotation_degrees(): number {
     get_rotation_degrees();
   }
-  public set rotation_degrees(value: number): void {
+  public set rotation_degrees(value): void {
     set_rotation_degrees(value);
   }
   public get scale(): Vector2 {
     get_scale();
   }
-  public set scale(value: Vector2): void {
+  public set scale(value): void {
     set_scale(value);
   }
   public get pivot_offset(): Vector2 {
     get_pivot_offset();
   }
-  public set pivot_offset(value: Vector2): void {
+  public set pivot_offset(value): void {
     set_pivot_offset(value);
   }
   public get size_flags_horizontal(): number {
     get_h_size_flags();
   }
-  public set size_flags_horizontal(value: number): void {
+  public set size_flags_horizontal(value): void {
     set_h_size_flags(value);
   }
   public get size_flags_vertical(): number {
     get_v_size_flags();
   }
-  public set size_flags_vertical(value: number): void {
+  public set size_flags_vertical(value): void {
     set_v_size_flags(value);
   }
   public get size_flags_stretch_ratio(): number {
     get_stretch_ratio();
   }
-  public set size_flags_stretch_ratio(value: number): void {
+  public set size_flags_stretch_ratio(value): void {
     set_stretch_ratio(value);
   }
   public get localize_numeral_system(): boolean {
     is_localizing_numeral_system();
   }
-  public set localize_numeral_system(value: boolean): void {
+  public set localize_numeral_system(value): void {
     set_localize_numeral_system(value);
   }
   public get auto_translate(): boolean {
     is_auto_translating();
   }
-  public set auto_translate(value: boolean): void {
+  public set auto_translate(value): void {
     set_auto_translate(value);
   }
   public get tooltip_text(): String {
     get_tooltip_text();
   }
-  public set tooltip_text(value: String): void {
+  public set tooltip_text(value): void {
     set_tooltip_text(value);
   }
   public get focus_neighbor_left(): NodePath {
     get_focus_neighbor();
   }
-  public set focus_neighbor_left(value: NodePath): void {
+  public set focus_neighbor_left(value): void {
     set_focus_neighbor(value);
   }
   public get focus_neighbor_top(): NodePath {
     get_focus_neighbor();
   }
-  public set focus_neighbor_top(value: NodePath): void {
+  public set focus_neighbor_top(value): void {
     set_focus_neighbor(value);
   }
   public get focus_neighbor_right(): NodePath {
     get_focus_neighbor();
   }
-  public set focus_neighbor_right(value: NodePath): void {
+  public set focus_neighbor_right(value): void {
     set_focus_neighbor(value);
   }
   public get focus_neighbor_bottom(): NodePath {
     get_focus_neighbor();
   }
-  public set focus_neighbor_bottom(value: NodePath): void {
+  public set focus_neighbor_bottom(value): void {
     set_focus_neighbor(value);
   }
   public get focus_next(): NodePath {
     get_focus_next();
   }
-  public set focus_next(value: NodePath): void {
+  public set focus_next(value): void {
     set_focus_next(value);
   }
   public get focus_previous(): NodePath {
     get_focus_previous();
   }
-  public set focus_previous(value: NodePath): void {
+  public set focus_previous(value): void {
     set_focus_previous(value);
   }
   public get focus_mode(): number {
     get_focus_mode();
   }
-  public set focus_mode(value: number): void {
+  public set focus_mode(value): void {
     set_focus_mode(value);
   }
   public get mouse_filter(): number {
     get_mouse_filter();
   }
-  public set mouse_filter(value: number): void {
+  public set mouse_filter(value): void {
     set_mouse_filter(value);
   }
   public get mouse_force_pass_scroll_events(): boolean {
     is_force_pass_scroll_events();
   }
-  public set mouse_force_pass_scroll_events(value: boolean): void {
+  public set mouse_force_pass_scroll_events(value): void {
     set_force_pass_scroll_events(value);
   }
   public get mouse_default_cursor_shape(): number {
     get_default_cursor_shape();
   }
-  public set mouse_default_cursor_shape(value: number): void {
+  public set mouse_default_cursor_shape(value): void {
     set_default_cursor_shape(value);
   }
   public get shortcut_context(): Object {
     get_shortcut_context();
   }
-  public set shortcut_context(value: Object): void {
+  public set shortcut_context(value): void {
     set_shortcut_context(value);
   }
   public get theme(): Theme {
     get_theme();
   }
-  public set theme(value: Theme): void {
+  public set theme(value): void {
     set_theme(value);
   }
   public get theme_type_variation(): String {
     get_theme_type_variation();
   }
-  public set theme_type_variation(value: String): void {
+  public set theme_type_variation(value): void {
     set_theme_type_variation(value);
   }
   static FocusMode = {

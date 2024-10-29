@@ -2,7 +2,6 @@
 #define __PLACEHOLDER_JAVASCRIPT_INSTANCE_H__
 
 #include "quickjs/env.h"
-#include "support/instance_binding.hpp"
 #include <gdextension_interface.h>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/string_name.hpp>
@@ -12,13 +11,13 @@
 namespace godot {
 
 class Variant;
-class JavaScript;
+class TypeScript;
 class PlaceholderJavaScriptInstance;
 
 class PlaceholderJavaScriptInstance {
 	Object *binding;
 	Object *p_godot_object;
-	JavaScript *script;
+	TypeScript *script;
 	bool _is_placeholder;
 
 private:
@@ -48,7 +47,7 @@ public:
 	Object *get_godot_obj() { return p_godot_object; }
 	Object *get_binding() { return binding; }
 
-	PlaceholderJavaScriptInstance(Object *p_godot_object, JavaScript *script, bool is_placeholder);
+	PlaceholderJavaScriptInstance(Object *p_godot_object, TypeScript *script, bool is_placeholder);
 	~PlaceholderJavaScriptInstance();
 };
 } // namespace godot

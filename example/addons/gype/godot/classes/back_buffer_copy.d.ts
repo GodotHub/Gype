@@ -9,13 +9,13 @@ export declare class BackBufferCopy extends Node2D{
   public get copy_mode(): number {
     get_copy_mode();
   }
-  public set copy_mode(value: number): void {
+  public set copy_mode(value): void {
     set_copy_mode(value);
   }
   public get rect(): Rect2 {
     get_rect();
   }
-  public set rect(value: Rect2): void {
+  public set rect(value): void {
     set_rect(value);
   }
   static CopyMode = {

@@ -1,9 +1,9 @@
 
-import { Node3D } from "@godot/classes/node3d";
 import { CollisionObject3D } from "@godot/classes/collision_object3d";
-import { Object } from "@godot/classes/object";
 import { Shape3D } from "@godot/classes/shape3d";
+import { Object } from "@godot/classes/object";
 import { Resource } from "@godot/classes/resource";
+import { Node3D } from "@godot/classes/node3d";
 
 export declare class ShapeCast3D extends Node3D{
   public resource_changed(_resource: Resource): void;
@@ -47,64 +47,64 @@ export declare class ShapeCast3D extends Node3D{
   public get enabled(): boolean {
     is_enabled();
   }
-  public set enabled(value: boolean): void {
+  public set enabled(value): void {
     set_enabled(value);
   }
   public get shape(): Shape3D {
     get_shape();
   }
-  public set shape(value: Shape3D): void {
+  public set shape(value): void {
     set_shape(value);
   }
   public get exclude_parent(): boolean {
     get_exclude_parent_body();
   }
-  public set exclude_parent(value: boolean): void {
+  public set exclude_parent(value): void {
     set_exclude_parent_body(value);
   }
   public get target_position(): Vector3 {
     get_target_position();
   }
-  public set target_position(value: Vector3): void {
+  public set target_position(value): void {
     set_target_position(value);
   }
   public get margin(): number {
     get_margin();
   }
-  public set margin(value: number): void {
+  public set margin(value): void {
     set_margin(value);
   }
   public get max_results(): number {
     get_max_results();
   }
-  public set max_results(value: number): void {
+  public set max_results(value): void {
     set_max_results(value);
   }
   public get collision_mask(): number {
     get_collision_mask();
   }
-  public set collision_mask(value: number): void {
+  public set collision_mask(value): void {
     set_collision_mask(value);
   }
-  public get collision_result(): Array {
+  public get collision_result(): GDArray {
     _get_collision_result();
   }
   public get collide_with_areas(): boolean {
     is_collide_with_areas_enabled();
   }
-  public set collide_with_areas(value: boolean): void {
+  public set collide_with_areas(value): void {
     set_collide_with_areas(value);
   }
   public get collide_with_bodies(): boolean {
     is_collide_with_bodies_enabled();
   }
-  public set collide_with_bodies(value: boolean): void {
+  public set collide_with_bodies(value): void {
     set_collide_with_bodies(value);
   }
   public get debug_shape_custom_color(): Color {
     get_debug_shape_custom_color();
   }
-  public set debug_shape_custom_color(value: Color): void {
+  public set debug_shape_custom_color(value): void {
     set_debug_shape_custom_color(value);
   }
 }

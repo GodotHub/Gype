@@ -15,13 +15,13 @@ export declare class Material extends Resource{
   public get render_priority(): number {
     get_render_priority();
   }
-  public set render_priority(value: number): void {
+  public set render_priority(value): void {
     set_render_priority(value);
   }
   public get next_pass(): Material {
     get_next_pass();
   }
-  public set next_pass(value: Material): void {
+  public set next_pass(value): void {
     set_next_pass(value);
   }
 }

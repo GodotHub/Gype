@@ -31,79 +31,79 @@ export declare class AudioEffectDelay extends AudioEffect{
   public get dry(): number {
     get_dry();
   }
-  public set dry(value: number): void {
+  public set dry(value): void {
     set_dry(value);
   }
   public get tap1_active(): boolean {
     is_tap1_active();
   }
-  public set tap1_active(value: boolean): void {
+  public set tap1_active(value): void {
     set_tap1_active(value);
   }
   public get tap1_delay_ms(): number {
     get_tap1_delay_ms();
   }
-  public set tap1_delay_ms(value: number): void {
+  public set tap1_delay_ms(value): void {
     set_tap1_delay_ms(value);
   }
   public get tap1_level_db(): number {
     get_tap1_level_db();
   }
-  public set tap1_level_db(value: number): void {
+  public set tap1_level_db(value): void {
     set_tap1_level_db(value);
   }
   public get tap1_pan(): number {
     get_tap1_pan();
   }
-  public set tap1_pan(value: number): void {
+  public set tap1_pan(value): void {
     set_tap1_pan(value);
   }
   public get tap2_active(): boolean {
     is_tap2_active();
   }
-  public set tap2_active(value: boolean): void {
+  public set tap2_active(value): void {
     set_tap2_active(value);
   }
   public get tap2_delay_ms(): number {
     get_tap2_delay_ms();
   }
-  public set tap2_delay_ms(value: number): void {
+  public set tap2_delay_ms(value): void {
     set_tap2_delay_ms(value);
   }
   public get tap2_level_db(): number {
     get_tap2_level_db();
   }
-  public set tap2_level_db(value: number): void {
+  public set tap2_level_db(value): void {
     set_tap2_level_db(value);
   }
   public get tap2_pan(): number {
     get_tap2_pan();
   }
-  public set tap2_pan(value: number): void {
+  public set tap2_pan(value): void {
     set_tap2_pan(value);
   }
   public get feedback_active(): boolean {
     is_feedback_active();
   }
-  public set feedback_active(value: boolean): void {
+  public set feedback_active(value): void {
     set_feedback_active(value);
   }
   public get feedback_delay_ms(): number {
     get_feedback_delay_ms();
   }
-  public set feedback_delay_ms(value: number): void {
+  public set feedback_delay_ms(value): void {
     set_feedback_delay_ms(value);
   }
   public get feedback_level_db(): number {
     get_feedback_level_db();
   }
-  public set feedback_level_db(value: number): void {
+  public set feedback_level_db(value): void {
     set_feedback_level_db(value);
   }
   public get feedback_lowpass(): number {
     get_feedback_lowpass();
   }
-  public set feedback_lowpass(value: number): void {
+  public set feedback_lowpass(value): void {
     set_feedback_lowpass(value);
   }
 }

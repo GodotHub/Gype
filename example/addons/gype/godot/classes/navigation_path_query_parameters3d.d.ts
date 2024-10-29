@@ -23,55 +23,55 @@ export declare class NavigationPathQueryParameters3D extends RefCounted{
   public get map(): RID {
     get_map();
   }
-  public set map(value: RID): void {
+  public set map(value): void {
     set_map(value);
   }
   public get start_position(): Vector3 {
     get_start_position();
   }
-  public set start_position(value: Vector3): void {
+  public set start_position(value): void {
     set_start_position(value);
   }
   public get target_position(): Vector3 {
     get_target_position();
   }
-  public set target_position(value: Vector3): void {
+  public set target_position(value): void {
     set_target_position(value);
   }
   public get navigation_layers(): number {
     get_navigation_layers();
   }
-  public set navigation_layers(value: number): void {
+  public set navigation_layers(value): void {
     set_navigation_layers(value);
   }
   public get pathfinding_algorithm(): number {
     get_pathfinding_algorithm();
   }
-  public set pathfinding_algorithm(value: number): void {
+  public set pathfinding_algorithm(value): void {
     set_pathfinding_algorithm(value);
   }
   public get path_postprocessing(): number {
     get_path_postprocessing();
   }
-  public set path_postprocessing(value: number): void {
+  public set path_postprocessing(value): void {
     set_path_postprocessing(value);
   }
   public get metadata_flags(): number {
     get_metadata_flags();
   }
-  public set metadata_flags(value: number): void {
+  public set metadata_flags(value): void {
     set_metadata_flags(value);
   }
   public get simplify_path(): boolean {
     get_simplify_path();
   }
-  public set simplify_path(value: boolean): void {
+  public set simplify_path(value): void {
     set_simplify_path(value);
   }
   public get simplify_epsilon(): number {
     get_simplify_epsilon();
   }
-  public set simplify_epsilon(value: number): void {
+  public set simplify_epsilon(value): void {
     set_simplify_epsilon(value);
   }
   static PathfindingAlgorithm = {

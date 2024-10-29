@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/semaphore.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void semaphore_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue semaphore_class_constructor(JSContext *ctx, JSValueConst new_targ
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, semaphore_class);
+	JS_SetOpaque(obj, semaphore_class);	
 	return obj;
 }
 static JSValue semaphore_class_wait(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Semaphore::wait, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Semaphore::wait, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue semaphore_class_try_wait(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue semaphore_class_try_wait(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue semaphore_class_post(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Semaphore::post, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Semaphore::post, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry semaphore_class_proto_funcs[] = {
@@ -60,6 +62,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_semaphore_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Semaphore::__class_id);
 	classes["Semaphore"] = Semaphore::__class_id;
 	class_id_list.insert(Semaphore::__class_id);
@@ -82,7 +85,7 @@ static int js_semaphore_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_semaphore_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -94,7 +97,7 @@ JSModuleDef *_js_init_semaphore_module(JSContext *ctx, const char *module_name) 
 }
 
 JSModuleDef *js_init_semaphore_module(JSContext *ctx) {
-	return _js_init_semaphore_module(ctx, "godot/classes/semaphore");
+	return _js_init_semaphore_module(ctx, "@godot/classes/semaphore");
 }
 
 void register_semaphore() {

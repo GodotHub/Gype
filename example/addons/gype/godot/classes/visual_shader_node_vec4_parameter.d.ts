@@ -9,13 +9,13 @@ export declare class VisualShaderNodeVec4Parameter extends VisualShaderNodeParam
   public get default_value_enabled(): boolean {
     is_default_value_enabled();
   }
-  public set default_value_enabled(value: boolean): void {
+  public set default_value_enabled(value): void {
     set_default_value_enabled(value);
   }
   public get default_value(): Vector4 {
     get_default_value();
   }
-  public set default_value(value: Vector4): void {
+  public set default_value(value): void {
     set_default_value(value);
   }
 }

@@ -33,67 +33,67 @@ export declare class ColorPicker extends VBoxContainer{
   public get color(): Color {
     get_pick_color();
   }
-  public set color(value: Color): void {
+  public set color(value): void {
     set_pick_color(value);
   }
   public get edit_alpha(): boolean {
     is_editing_alpha();
   }
-  public set edit_alpha(value: boolean): void {
+  public set edit_alpha(value): void {
     set_edit_alpha(value);
   }
   public get color_mode(): number {
     get_color_mode();
   }
-  public set color_mode(value: number): void {
+  public set color_mode(value): void {
     set_color_mode(value);
   }
   public get deferred_mode(): boolean {
     is_deferred_mode();
   }
-  public set deferred_mode(value: boolean): void {
+  public set deferred_mode(value): void {
     set_deferred_mode(value);
   }
   public get picker_shape(): number {
     get_picker_shape();
   }
-  public set picker_shape(value: number): void {
+  public set picker_shape(value): void {
     set_picker_shape(value);
   }
   public get can_add_swatches(): boolean {
     are_swatches_enabled();
   }
-  public set can_add_swatches(value: boolean): void {
+  public set can_add_swatches(value): void {
     set_can_add_swatches(value);
   }
   public get sampler_visible(): boolean {
     is_sampler_visible();
   }
-  public set sampler_visible(value: boolean): void {
+  public set sampler_visible(value): void {
     set_sampler_visible(value);
   }
   public get color_modes_visible(): boolean {
     are_modes_visible();
   }
-  public set color_modes_visible(value: boolean): void {
+  public set color_modes_visible(value): void {
     set_modes_visible(value);
   }
   public get sliders_visible(): boolean {
     are_sliders_visible();
   }
-  public set sliders_visible(value: boolean): void {
+  public set sliders_visible(value): void {
     set_sliders_visible(value);
   }
   public get hex_visible(): boolean {
     is_hex_visible();
   }
-  public set hex_visible(value: boolean): void {
+  public set hex_visible(value): void {
     set_hex_visible(value);
   }
   public get presets_visible(): boolean {
     are_presets_visible();
   }
-  public set presets_visible(value: boolean): void {
+  public set presets_visible(value): void {
     set_presets_visible(value);
   }
   static ColorModeType = {

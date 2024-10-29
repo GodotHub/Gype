@@ -1,6 +1,6 @@
 
-import { Resource } from "@godot/classes/resource";
 import { Mesh } from "@godot/classes/mesh";
+import { Resource } from "@godot/classes/resource";
 
 export declare class NavigationMesh extends Resource{
   public set_sample_partition_type(_sample_partition_type: number): void;
@@ -64,157 +64,157 @@ export declare class NavigationMesh extends Resource{
   public get vertices(): PackedVector3Array {
     get_vertices();
   }
-  public set vertices(value: PackedVector3Array): void {
+  public set vertices(value): void {
     set_vertices(value);
   }
-  public get polygons(): Array {
+  public get polygons(): GDArray {
     _get_polygons();
   }
-  public set polygons(value: Array): void {
+  public set polygons(value): void {
     _set_polygons(value);
   }
   public get sample_partition_type(): number {
     get_sample_partition_type();
   }
-  public set sample_partition_type(value: number): void {
+  public set sample_partition_type(value): void {
     set_sample_partition_type(value);
   }
   public get geometry_parsed_geometry_type(): number {
     get_parsed_geometry_type();
   }
-  public set geometry_parsed_geometry_type(value: number): void {
+  public set geometry_parsed_geometry_type(value): void {
     set_parsed_geometry_type(value);
   }
   public get geometry_collision_mask(): number {
     get_collision_mask();
   }
-  public set geometry_collision_mask(value: number): void {
+  public set geometry_collision_mask(value): void {
     set_collision_mask(value);
   }
   public get geometry_source_geometry_mode(): number {
     get_source_geometry_mode();
   }
-  public set geometry_source_geometry_mode(value: number): void {
+  public set geometry_source_geometry_mode(value): void {
     set_source_geometry_mode(value);
   }
   public get geometry_source_group_name(): String {
     get_source_group_name();
   }
-  public set geometry_source_group_name(value: String): void {
+  public set geometry_source_group_name(value): void {
     set_source_group_name(value);
   }
   public get cell_size(): number {
     get_cell_size();
   }
-  public set cell_size(value: number): void {
+  public set cell_size(value): void {
     set_cell_size(value);
   }
   public get cell_height(): number {
     get_cell_height();
   }
-  public set cell_height(value: number): void {
+  public set cell_height(value): void {
     set_cell_height(value);
   }
   public get border_size(): number {
     get_border_size();
   }
-  public set border_size(value: number): void {
+  public set border_size(value): void {
     set_border_size(value);
   }
   public get agent_height(): number {
     get_agent_height();
   }
-  public set agent_height(value: number): void {
+  public set agent_height(value): void {
     set_agent_height(value);
   }
   public get agent_radius(): number {
     get_agent_radius();
   }
-  public set agent_radius(value: number): void {
+  public set agent_radius(value): void {
     set_agent_radius(value);
   }
   public get agent_max_climb(): number {
     get_agent_max_climb();
   }
-  public set agent_max_climb(value: number): void {
+  public set agent_max_climb(value): void {
     set_agent_max_climb(value);
   }
   public get agent_max_slope(): number {
     get_agent_max_slope();
   }
-  public set agent_max_slope(value: number): void {
+  public set agent_max_slope(value): void {
     set_agent_max_slope(value);
   }
   public get region_min_size(): number {
     get_region_min_size();
   }
-  public set region_min_size(value: number): void {
+  public set region_min_size(value): void {
     set_region_min_size(value);
   }
   public get region_merge_size(): number {
     get_region_merge_size();
   }
-  public set region_merge_size(value: number): void {
+  public set region_merge_size(value): void {
     set_region_merge_size(value);
   }
   public get edge_max_length(): number {
     get_edge_max_length();
   }
-  public set edge_max_length(value: number): void {
+  public set edge_max_length(value): void {
     set_edge_max_length(value);
   }
   public get edge_max_error(): number {
     get_edge_max_error();
   }
-  public set edge_max_error(value: number): void {
+  public set edge_max_error(value): void {
     set_edge_max_error(value);
   }
   public get vertices_per_polygon(): number {
     get_vertices_per_polygon();
   }
-  public set vertices_per_polygon(value: number): void {
+  public set vertices_per_polygon(value): void {
     set_vertices_per_polygon(value);
   }
   public get detail_sample_distance(): number {
     get_detail_sample_distance();
   }
-  public set detail_sample_distance(value: number): void {
+  public set detail_sample_distance(value): void {
     set_detail_sample_distance(value);
   }
   public get detail_sample_max_error(): number {
     get_detail_sample_max_error();
   }
-  public set detail_sample_max_error(value: number): void {
+  public set detail_sample_max_error(value): void {
     set_detail_sample_max_error(value);
   }
   public get filter_low_hanging_obstacles(): boolean {
     get_filter_low_hanging_obstacles();
   }
-  public set filter_low_hanging_obstacles(value: boolean): void {
+  public set filter_low_hanging_obstacles(value): void {
     set_filter_low_hanging_obstacles(value);
   }
   public get filter_ledge_spans(): boolean {
     get_filter_ledge_spans();
   }
-  public set filter_ledge_spans(value: boolean): void {
+  public set filter_ledge_spans(value): void {
     set_filter_ledge_spans(value);
   }
   public get filter_walkable_low_height_spans(): boolean {
     get_filter_walkable_low_height_spans();
   }
-  public set filter_walkable_low_height_spans(value: boolean): void {
+  public set filter_walkable_low_height_spans(value): void {
     set_filter_walkable_low_height_spans(value);
   }
   public get filter_baking_aabb(): AABB {
     get_filter_baking_aabb();
   }
-  public set filter_baking_aabb(value: AABB): void {
+  public set filter_baking_aabb(value): void {
     set_filter_baking_aabb(value);
   }
   public get filter_baking_aabb_offset(): Vector3 {
     get_filter_baking_aabb_offset();
   }
-  public set filter_baking_aabb_offset(value: Vector3): void {
+  public set filter_baking_aabb_offset(value): void {
     set_filter_baking_aabb_offset(value);
   }
   static SamplePartitionType = {

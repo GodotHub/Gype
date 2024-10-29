@@ -7,7 +7,7 @@ export declare class CircleShape2D extends Shape2D{
   public get radius(): number {
     get_radius();
   }
-  public set radius(value: number): void {
+  public set radius(value): void {
     set_radius(value);
   }
 }

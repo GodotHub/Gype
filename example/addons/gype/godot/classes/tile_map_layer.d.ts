@@ -1,8 +1,8 @@
 
+import { TileSet } from "@godot/classes/tile_set";
+import { TileData } from "@godot/classes/tile_data";
 import { TileMapPattern } from "@godot/classes/tile_map_pattern";
 import { Node2D } from "@godot/classes/node2d";
-import { TileData } from "@godot/classes/tile_data";
-import { TileSet } from "@godot/classes/tile_set";
 
 export declare class TileMapLayer extends Node2D{
   public _use_tile_data_runtime_update(_coords: Vector2i): boolean;
@@ -15,19 +15,19 @@ export declare class TileMapLayer extends Node2D{
   public get_cell_atlas_coords(_coords: Vector2i): Vector2i;
   public get_cell_alternative_tile(_coords: Vector2i): number;
   public get_cell_tile_data(_coords: Vector2i): TileData;
-  public get_used_cells(): Array;
-  public get_used_cells_by_id(_source_id: number, _atlas_coords: Vector2i, _alternative_tile: number): Array;
+  public get_used_cells(): GDArray;
+  public get_used_cells_by_id(_source_id: number, _atlas_coords: Vector2i, _alternative_tile: number): GDArray;
   public get_used_rect(): Rect2i;
-  public get_pattern(_coords_array: typedarray::Vector2i): TileMapPattern;
+  public get_pattern(_coords_array: GDArray): TileMapPattern;
   public set_pattern(_position: Vector2i, _pattern: TileMapPattern): void;
-  public set_cells_terrain_connect(_cells: typedarray::Vector2i, _terrain_set: number, _terrain: number, _ignore_empty_terrains: boolean): void;
-  public set_cells_terrain_path(_path: typedarray::Vector2i, _terrain_set: number, _terrain: number, _ignore_empty_terrains: boolean): void;
+  public set_cells_terrain_connect(_cells: GDArray, _terrain_set: number, _terrain: number, _ignore_empty_terrains: boolean): void;
+  public set_cells_terrain_path(_path: GDArray, _terrain_set: number, _terrain: number, _ignore_empty_terrains: boolean): void;
   public has_body_rid(_body: RID): boolean;
   public get_coords_for_body_rid(_body: RID): Vector2i;
   public update_internals(): void;
   public notify_runtime_tile_data_update(): void;
   public map_pattern(_position_in_tilemap: Vector2i, _coords_in_pattern: Vector2i, _pattern: TileMapPattern): Vector2i;
-  public get_surrounding_cells(_coords: Vector2i): Array;
+  public get_surrounding_cells(_coords: Vector2i): GDArray;
   public get_neighbor_cell(_coords: Vector2i, _neighbor: number): Vector2i;
   public map_to_local(_map_position: Vector2i): Vector2;
   public local_to_map(_local_position: Vector2): Vector2i;
@@ -58,67 +58,67 @@ export declare class TileMapLayer extends Node2D{
   public get tile_map_data(): PackedByteArray {
     get_tile_map_data_as_array();
   }
-  public set tile_map_data(value: PackedByteArray): void {
+  public set tile_map_data(value): void {
     set_tile_map_data_from_array(value);
   }
   public get enabled(): boolean {
     is_enabled();
   }
-  public set enabled(value: boolean): void {
+  public set enabled(value): void {
     set_enabled(value);
   }
   public get tile_set(): TileSet {
     get_tile_set();
   }
-  public set tile_set(value: TileSet): void {
+  public set tile_set(value): void {
     set_tile_set(value);
   }
   public get y_sort_origin(): number {
     get_y_sort_origin();
   }
-  public set y_sort_origin(value: number): void {
+  public set y_sort_origin(value): void {
     set_y_sort_origin(value);
   }
   public get x_draw_order_reversed(): boolean {
     is_x_draw_order_reversed();
   }
-  public set x_draw_order_reversed(value: boolean): void {
+  public set x_draw_order_reversed(value): void {
     set_x_draw_order_reversed(value);
   }
   public get rendering_quadrant_size(): number {
     get_rendering_quadrant_size();
   }
-  public set rendering_quadrant_size(value: number): void {
+  public set rendering_quadrant_size(value): void {
     set_rendering_quadrant_size(value);
   }
   public get collision_enabled(): boolean {
     is_collision_enabled();
   }
-  public set collision_enabled(value: boolean): void {
+  public set collision_enabled(value): void {
     set_collision_enabled(value);
   }
   public get use_kinematic_bodies(): boolean {
     is_using_kinematic_bodies();
   }
-  public set use_kinematic_bodies(value: boolean): void {
+  public set use_kinematic_bodies(value): void {
     set_use_kinematic_bodies(value);
   }
   public get collision_visibility_mode(): number {
     get_collision_visibility_mode();
   }
-  public set collision_visibility_mode(value: number): void {
+  public set collision_visibility_mode(value): void {
     set_collision_visibility_mode(value);
   }
   public get navigation_enabled(): boolean {
     is_navigation_enabled();
   }
-  public set navigation_enabled(value: boolean): void {
+  public set navigation_enabled(value): void {
     set_navigation_enabled(value);
   }
   public get navigation_visibility_mode(): number {
     get_navigation_visibility_mode();
   }
-  public set navigation_visibility_mode(value: number): void {
+  public set navigation_visibility_mode(value): void {
     set_navigation_visibility_mode(value);
   }
   static DebugVisibilityMode = {

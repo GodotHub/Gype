@@ -24,55 +24,55 @@ export declare class AnimationNodeOneShot extends AnimationNodeSync{
   public get mix_mode(): number {
     get_mix_mode();
   }
-  public set mix_mode(value: number): void {
+  public set mix_mode(value): void {
     set_mix_mode(value);
   }
   public get fadein_time(): number {
     get_fadein_time();
   }
-  public set fadein_time(value: number): void {
+  public set fadein_time(value): void {
     set_fadein_time(value);
   }
   public get fadein_curve(): Curve {
     get_fadein_curve();
   }
-  public set fadein_curve(value: Curve): void {
+  public set fadein_curve(value): void {
     set_fadein_curve(value);
   }
   public get fadeout_time(): number {
     get_fadeout_time();
   }
-  public set fadeout_time(value: number): void {
+  public set fadeout_time(value): void {
     set_fadeout_time(value);
   }
   public get fadeout_curve(): Curve {
     get_fadeout_curve();
   }
-  public set fadeout_curve(value: Curve): void {
+  public set fadeout_curve(value): void {
     set_fadeout_curve(value);
   }
   public get break_loop_at_end(): boolean {
     is_loop_broken_at_end();
   }
-  public set break_loop_at_end(value: boolean): void {
+  public set break_loop_at_end(value): void {
     set_break_loop_at_end(value);
   }
   public get autorestart(): boolean {
     has_autorestart();
   }
-  public set autorestart(value: boolean): void {
+  public set autorestart(value): void {
     set_autorestart(value);
   }
   public get autorestart_delay(): number {
     get_autorestart_delay();
   }
-  public set autorestart_delay(value: number): void {
+  public set autorestart_delay(value): void {
     set_autorestart_delay(value);
   }
   public get autorestart_random_delay(): number {
     get_autorestart_random_delay();
   }
-  public set autorestart_random_delay(value: number): void {
+  public set autorestart_random_delay(value): void {
     set_autorestart_random_delay(value);
   }
   static OneShotRequest = {

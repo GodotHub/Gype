@@ -11,13 +11,13 @@ export declare class MultiMeshInstance2D extends Node2D{
   public get multimesh(): MultiMesh {
     get_multimesh();
   }
-  public set multimesh(value: MultiMesh): void {
+  public set multimesh(value): void {
     set_multimesh(value);
   }
   public get texture(): Texture2D {
     get_texture();
   }
-  public set texture(value: Texture2D): void {
+  public set texture(value): void {
     set_texture(value);
   }
 }

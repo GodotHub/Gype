@@ -1,16 +1,16 @@
 
+import { Material } from "@godot/classes/material";
+import { TriangleMesh } from "@godot/classes/triangle_mesh";
 import { Resource } from "@godot/classes/resource";
 import { ConvexPolygonShape3D } from "@godot/classes/convex_polygon_shape3d";
-import { TriangleMesh } from "@godot/classes/triangle_mesh";
 import { ConcavePolygonShape3D } from "@godot/classes/concave_polygon_shape3d";
-import { Material } from "@godot/classes/material";
 
 export declare class Mesh extends Resource{
   public _get_surface_count(): number;
   public _surface_get_array_len(_index: number): number;
   public _surface_get_array_index_len(_index: number): number;
   public _surface_get_arrays(_index: number): GDArray;
-  public _surface_get_blend_shape_arrays(_index: number): Array;
+  public _surface_get_blend_shape_arrays(_index: number): GDArray;
   public _surface_get_lods(_index: number): Dictionary;
   public _surface_get_format(_index: number): number;
   public _surface_get_primitive_type(_index: number): number;
@@ -26,7 +26,7 @@ export declare class Mesh extends Resource{
   public get_faces(): PackedVector3Array;
   public get_surface_count(): number;
   public surface_get_arrays(_surf_idx: number): GDArray;
-  public surface_get_blend_shape_arrays(_surf_idx: number): Array;
+  public surface_get_blend_shape_arrays(_surf_idx: number): GDArray;
   public surface_set_material(_surf_idx: number, _material: Material): void;
   public surface_get_material(_surf_idx: number): Material;
   public create_placeholder(): Resource;
@@ -37,7 +37,7 @@ export declare class Mesh extends Resource{
   public get lightmap_size_hint(): Vector2i {
     get_lightmap_size_hint();
   }
-  public set lightmap_size_hint(value: Vector2i): void {
+  public set lightmap_size_hint(value): void {
     set_lightmap_size_hint(value);
   }
   static PrimitiveType = {

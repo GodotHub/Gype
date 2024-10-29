@@ -7,7 +7,7 @@ export declare class InputEventFromWindow extends InputEvent{
   public get window_id(): number {
     get_window_id();
   }
-  public set window_id(value: number): void {
+  public set window_id(value): void {
     set_window_id(value);
   }
 }

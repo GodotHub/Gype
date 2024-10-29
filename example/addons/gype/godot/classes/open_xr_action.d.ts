@@ -11,19 +11,19 @@ export declare class OpenXRAction extends Resource{
   public get localized_name(): String {
     get_localized_name();
   }
-  public set localized_name(value: String): void {
+  public set localized_name(value): void {
     set_localized_name(value);
   }
   public get action_type(): number {
     get_action_type();
   }
-  public set action_type(value: number): void {
+  public set action_type(value): void {
     set_action_type(value);
   }
   public get toplevel_paths(): PackedStringArray {
     get_toplevel_paths();
   }
-  public set toplevel_paths(value: PackedStringArray): void {
+  public set toplevel_paths(value): void {
     set_toplevel_paths(value);
   }
   static ActionType = {

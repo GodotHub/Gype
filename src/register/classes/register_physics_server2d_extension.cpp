@@ -1,19 +1,21 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/physics_direct_body_state2d.hpp>
 #include <godot_cpp/classes/physics_direct_space_state2d.hpp>
 #include <godot_cpp/classes/physics_server2d.hpp>
 #include <godot_cpp/classes/physics_server2d_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void physics_server2d_extension_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -32,7 +34,7 @@ static JSValue physics_server2d_extension_class_constructor(JSContext *ctx, JSVa
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, physics_server2d_extension_class);
+	JS_SetOpaque(obj, physics_server2d_extension_class);	
 	return obj;
 }
 static JSValue physics_server2d_extension_class_body_test_motion_is_excluding_body(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,6 +57,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_physics_server2d_extension_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&PhysicsServer2DExtension::__class_id);
 	classes["PhysicsServer2DExtension"] = PhysicsServer2DExtension::__class_id;
 	class_id_list.insert(PhysicsServer2DExtension::__class_id);
@@ -77,7 +80,7 @@ static int js_physics_server2d_extension_class_init(JSContext *ctx, JSModuleDef 
 }
 
 JSModuleDef *_js_init_physics_server2d_extension_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/physics_server2d';";
+	const char *code = "import * as _ from '@godot/classes/physics_server2d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -89,7 +92,7 @@ JSModuleDef *_js_init_physics_server2d_extension_module(JSContext *ctx, const ch
 }
 
 JSModuleDef *js_init_physics_server2d_extension_module(JSContext *ctx) {
-	return _js_init_physics_server2d_extension_module(ctx, "godot/classes/physics_server2d_extension");
+	return _js_init_physics_server2d_extension_module(ctx, "@godot/classes/physics_server2d_extension");
 }
 
 void register_physics_server2d_extension() {

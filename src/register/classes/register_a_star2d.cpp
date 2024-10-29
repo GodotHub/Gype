@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/a_star2d.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/a_star2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void a_star2d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue a_star2d_class_constructor(JSContext *ctx, JSValueConst new_targe
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, a_star2d_class);
+	JS_SetOpaque(obj, a_star2d_class);	
 	return obj;
 }
 static JSValue a_star2d_class_get_available_point_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -39,7 +41,7 @@ static JSValue a_star2d_class_get_available_point_id(JSContext *ctx, JSValueCons
 };
 static JSValue a_star2d_class_add_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStar2D::add_point, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStar2D::add_point, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star2d_class_get_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,7 +50,7 @@ static JSValue a_star2d_class_get_point_position(JSContext *ctx, JSValueConst th
 };
 static JSValue a_star2d_class_set_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStar2D::set_point_position, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStar2D::set_point_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star2d_class_get_point_weight_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,12 +59,12 @@ static JSValue a_star2d_class_get_point_weight_scale(JSContext *ctx, JSValueCons
 };
 static JSValue a_star2d_class_set_point_weight_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStar2D::set_point_weight_scale, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStar2D::set_point_weight_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star2d_class_remove_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStar2D::remove_point, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStar2D::remove_point, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star2d_class_has_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -79,7 +81,7 @@ static JSValue a_star2d_class_get_point_ids(JSContext *ctx, JSValueConst this_va
 };
 static JSValue a_star2d_class_set_point_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStar2D::set_point_disabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStar2D::set_point_disabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star2d_class_is_point_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,12 +90,12 @@ static JSValue a_star2d_class_is_point_disabled(JSContext *ctx, JSValueConst thi
 };
 static JSValue a_star2d_class_connect_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStar2D::connect_points, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStar2D::connect_points, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star2d_class_disconnect_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStar2D::disconnect_points, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStar2D::disconnect_points, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star2d_class_are_points_connected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,12 +112,12 @@ static JSValue a_star2d_class_get_point_capacity(JSContext *ctx, JSValueConst th
 };
 static JSValue a_star2d_class_reserve_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStar2D::reserve_space, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStar2D::reserve_space, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star2d_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStar2D::clear, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStar2D::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star2d_class_get_closest_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -167,6 +169,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_a_star2d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AStar2D::__class_id);
 	classes["AStar2D"] = AStar2D::__class_id;
 	class_id_list.insert(AStar2D::__class_id);
@@ -189,7 +192,7 @@ static int js_a_star2d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_a_star2d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -201,7 +204,7 @@ JSModuleDef *_js_init_a_star2d_module(JSContext *ctx, const char *module_name) {
 }
 
 JSModuleDef *js_init_a_star2d_module(JSContext *ctx) {
-	return _js_init_a_star2d_module(ctx, "godot/classes/a_star2d");
+	return _js_init_a_star2d_module(ctx, "@godot/classes/a_star2d");
 }
 
 void register_a_star2d() {

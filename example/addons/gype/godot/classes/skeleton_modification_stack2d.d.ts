@@ -1,7 +1,7 @@
 
-import { SkeletonModification2D } from "@godot/classes/skeleton_modification2d";
-import { Resource } from "@godot/classes/resource";
 import { Skeleton2D } from "@godot/classes/skeleton2d";
+import { Resource } from "@godot/classes/resource";
+import { SkeletonModification2D } from "@godot/classes/skeleton_modification2d";
 
 export declare class SkeletonModificationStack2D extends Resource{
   public setup(): void;
@@ -22,19 +22,19 @@ export declare class SkeletonModificationStack2D extends Resource{
   public get enabled(): boolean {
     get_enabled();
   }
-  public set enabled(value: boolean): void {
+  public set enabled(value): void {
     set_enabled(value);
   }
   public get strength(): number {
     get_strength();
   }
-  public set strength(value: number): void {
+  public set strength(value): void {
     set_strength(value);
   }
   public get modification_count(): number {
     get_modification_count();
   }
-  public set modification_count(value: number): void {
+  public set modification_count(value): void {
     set_modification_count(value);
   }
 }

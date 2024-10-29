@@ -11,19 +11,19 @@ export declare class ReferenceRect extends Control{
   public get border_color(): Color {
     get_border_color();
   }
-  public set border_color(value: Color): void {
+  public set border_color(value): void {
     set_border_color(value);
   }
   public get border_width(): number {
     get_border_width();
   }
-  public set border_width(value: number): void {
+  public set border_width(value): void {
     set_border_width(value);
   }
   public get editor_only(): boolean {
     get_editor_only();
   }
-  public set editor_only(value: boolean): void {
+  public set editor_only(value): void {
     set_editor_only(value);
   }
 }

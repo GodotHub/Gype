@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/confirmation_dialog.hpp>
 #include <godot_cpp/classes/editor_command_palette.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void editor_command_palette_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,17 +32,17 @@ static JSValue editor_command_palette_class_constructor(JSContext *ctx, JSValueC
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_command_palette_class);
+	JS_SetOpaque(obj, editor_command_palette_class);	
 	return obj;
 }
 static JSValue editor_command_palette_class_add_command(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&EditorCommandPalette::add_command, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&EditorCommandPalette::add_command, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_command_palette_class_remove_command(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&EditorCommandPalette::remove_command, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&EditorCommandPalette::remove_command, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry editor_command_palette_class_proto_funcs[] = {
@@ -55,6 +57,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_command_palette_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&EditorCommandPalette::__class_id);
 	classes["EditorCommandPalette"] = EditorCommandPalette::__class_id;
 	class_id_list.insert(EditorCommandPalette::__class_id);
@@ -77,7 +80,7 @@ static int js_editor_command_palette_class_init(JSContext *ctx, JSModuleDef *m) 
 }
 
 JSModuleDef *_js_init_editor_command_palette_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/confirmation_dialog';";
+	const char *code = "import * as _ from '@godot/classes/confirmation_dialog';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -89,7 +92,7 @@ JSModuleDef *_js_init_editor_command_palette_module(JSContext *ctx, const char *
 }
 
 JSModuleDef *js_init_editor_command_palette_module(JSContext *ctx) {
-	return _js_init_editor_command_palette_module(ctx, "godot/classes/editor_command_palette");
+	return _js_init_editor_command_palette_module(ctx, "@godot/classes/editor_command_palette");
 }
 
 void register_editor_command_palette() {

@@ -12,13 +12,13 @@ export declare class SkeletonModifier3D extends Node3D{
   public get active(): boolean {
     is_active();
   }
-  public set active(value: boolean): void {
+  public set active(value): void {
     set_active(value);
   }
   public get influence(): number {
     get_influence();
   }
-  public set influence(value: number): void {
+  public set influence(value): void {
     set_influence(value);
   }
 }

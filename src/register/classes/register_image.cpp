@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void image_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue image_class_constructor(JSContext *ctx, JSValueConst new_target, 
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, image_class);
+	JS_SetOpaque(obj, image_class);	
 	return obj;
 }
 static JSValue image_class_get_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -63,7 +65,7 @@ static JSValue image_class_get_data_size(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue image_class_convert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::convert, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::convert, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_get_mipmap_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -76,32 +78,32 @@ static JSValue image_class_get_mipmap_offset(JSContext *ctx, JSValueConst this_v
 };
 static JSValue image_class_resize_to_po2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::resize_to_po2, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::resize_to_po2, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_resize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::resize, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::resize, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_shrink_x2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::shrink_x2, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::shrink_x2, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_crop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::crop, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::crop, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_flip_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::flip_x, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::flip_x, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_flip_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::flip_y, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::flip_y, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_generate_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,12 +112,12 @@ static JSValue image_class_generate_mipmaps(JSContext *ctx, JSValueConst this_va
 };
 static JSValue image_class_clear_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::clear_mipmaps, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::clear_mipmaps, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_set_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::set_data, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::set_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_is_empty(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -188,32 +190,32 @@ static JSValue image_class_is_compressed(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue image_class_rotate_90(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::rotate_90, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::rotate_90, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_rotate_180(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::rotate_180, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::rotate_180, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_fix_alpha_edges(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::fix_alpha_edges, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::fix_alpha_edges, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_premultiply_alpha(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::premultiply_alpha, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::premultiply_alpha, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_srgb_to_linear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::srgb_to_linear, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::srgb_to_linear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_normal_map_to_xy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::normal_map_to_xy, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::normal_map_to_xy, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_rgbe_to_srgb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -222,7 +224,7 @@ static JSValue image_class_rgbe_to_srgb(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue image_class_bump_map_to_normal_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::bump_map_to_normal_map, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::bump_map_to_normal_map, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_compute_image_metrics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -231,32 +233,32 @@ static JSValue image_class_compute_image_metrics(JSContext *ctx, JSValueConst th
 };
 static JSValue image_class_blit_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::blit_rect, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::blit_rect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_blit_rect_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::blit_rect_mask, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::blit_rect_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_blend_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::blend_rect, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::blend_rect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_blend_rect_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::blend_rect_mask, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::blend_rect_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_fill(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::fill, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::fill, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_fill_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::fill_rect, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::fill_rect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_get_used_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -269,7 +271,7 @@ static JSValue image_class_get_region(JSContext *ctx, JSValueConst this_val, int
 };
 static JSValue image_class_copy_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::copy_from, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::copy_from, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_get_pixelv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -282,17 +284,17 @@ static JSValue image_class_get_pixel(JSContext *ctx, JSValueConst this_val, int 
 };
 static JSValue image_class_set_pixelv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::set_pixelv, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::set_pixelv, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_set_pixel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::set_pixel, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::set_pixel, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_adjust_bcs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Image::adjust_bcs, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Image::adjust_bcs, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue image_class_load_png_from_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -501,6 +503,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_image_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Image::__class_id);
 	classes["Image"] = Image::__class_id;
 	class_id_list.insert(Image::__class_id);
@@ -524,7 +527,7 @@ static int js_image_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_image_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/resource';";
+	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -536,7 +539,7 @@ JSModuleDef *_js_init_image_module(JSContext *ctx, const char *module_name) {
 }
 
 JSModuleDef *js_init_image_module(JSContext *ctx) {
-	return _js_init_image_module(ctx, "godot/classes/image");
+	return _js_init_image_module(ctx, "@godot/classes/image");
 }
 
 void register_image() {

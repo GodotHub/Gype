@@ -7,7 +7,7 @@ export declare class VisualShaderNodeParticleEmitter extends VisualShaderNode{
   public get mode_2d(): boolean {
     is_mode_2d();
   }
-  public set mode_2d(value: boolean): void {
+  public set mode_2d(value): void {
     set_mode_2d(value);
   }
 }

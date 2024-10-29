@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/skeleton_modification2dccdik.hpp>
+#include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void skeleton_modification2dccdik_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue skeleton_modification2dccdik_class_constructor(JSContext *ctx, JS
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, skeleton_modification2dccdik_class);
+	JS_SetOpaque(obj, skeleton_modification2dccdik_class);	
 	return obj;
 }
 static JSValue skeleton_modification2dccdik_class_set_target_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_target_node, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_target_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2dccdik_class_get_target_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue skeleton_modification2dccdik_class_get_target_node(JSContext *ctx
 };
 static JSValue skeleton_modification2dccdik_class_set_tip_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_tip_node, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_tip_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2dccdik_class_get_tip_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,7 +55,7 @@ static JSValue skeleton_modification2dccdik_class_get_tip_node(JSContext *ctx, J
 };
 static JSValue skeleton_modification2dccdik_class_set_ccdik_data_chain_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_ccdik_data_chain_length, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_ccdik_data_chain_length, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2dccdik_class_get_ccdik_data_chain_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +64,7 @@ static JSValue skeleton_modification2dccdik_class_get_ccdik_data_chain_length(JS
 };
 static JSValue skeleton_modification2dccdik_class_set_ccdik_joint_bone2d_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_ccdik_joint_bone2d_node, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_ccdik_joint_bone2d_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2dccdik_class_get_ccdik_joint_bone2d_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,7 +73,7 @@ static JSValue skeleton_modification2dccdik_class_get_ccdik_joint_bone2d_node(JS
 };
 static JSValue skeleton_modification2dccdik_class_set_ccdik_joint_bone_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_ccdik_joint_bone_index, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_ccdik_joint_bone_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2dccdik_class_get_ccdik_joint_bone_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -80,7 +82,7 @@ static JSValue skeleton_modification2dccdik_class_get_ccdik_joint_bone_index(JSC
 };
 static JSValue skeleton_modification2dccdik_class_set_ccdik_joint_rotate_from_joint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_ccdik_joint_rotate_from_joint, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_ccdik_joint_rotate_from_joint, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2dccdik_class_get_ccdik_joint_rotate_from_joint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -89,7 +91,7 @@ static JSValue skeleton_modification2dccdik_class_get_ccdik_joint_rotate_from_jo
 };
 static JSValue skeleton_modification2dccdik_class_set_ccdik_joint_enable_constraint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_ccdik_joint_enable_constraint, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_ccdik_joint_enable_constraint, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2dccdik_class_get_ccdik_joint_enable_constraint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -98,7 +100,7 @@ static JSValue skeleton_modification2dccdik_class_get_ccdik_joint_enable_constra
 };
 static JSValue skeleton_modification2dccdik_class_set_ccdik_joint_constraint_angle_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_ccdik_joint_constraint_angle_min, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_ccdik_joint_constraint_angle_min, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2dccdik_class_get_ccdik_joint_constraint_angle_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -107,7 +109,7 @@ static JSValue skeleton_modification2dccdik_class_get_ccdik_joint_constraint_ang
 };
 static JSValue skeleton_modification2dccdik_class_set_ccdik_joint_constraint_angle_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_ccdik_joint_constraint_angle_max, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_ccdik_joint_constraint_angle_max, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2dccdik_class_get_ccdik_joint_constraint_angle_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -116,7 +118,7 @@ static JSValue skeleton_modification2dccdik_class_get_ccdik_joint_constraint_ang
 };
 static JSValue skeleton_modification2dccdik_class_set_ccdik_joint_constraint_angle_invert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_ccdik_joint_constraint_angle_invert, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DCCDIK::set_ccdik_joint_constraint_angle_invert, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2dccdik_class_get_ccdik_joint_constraint_angle_invert(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -147,33 +149,37 @@ static const JSCFunctionListEntry skeleton_modification2dccdik_class_proto_funcs
 };
 
 void define_skeleton_modification2dccdik_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "target_nodepath"),
-			JS_NewCFunction(ctx, skeleton_modification2dccdik_class_get_target_node, "get_target_node", 0),
-			JS_NewCFunction(ctx, skeleton_modification2dccdik_class_set_target_node, "set_target_node", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "tip_nodepath"),
-			JS_NewCFunction(ctx, skeleton_modification2dccdik_class_get_tip_node, "get_tip_node", 0),
-			JS_NewCFunction(ctx, skeleton_modification2dccdik_class_set_tip_node, "set_tip_node", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "ccdik_data_chain_length"),
-			JS_NewCFunction(ctx, skeleton_modification2dccdik_class_get_ccdik_data_chain_length, "get_ccdik_data_chain_length", 0),
-			JS_NewCFunction(ctx, skeleton_modification2dccdik_class_set_ccdik_data_chain_length, "set_ccdik_data_chain_length", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "target_nodepath"),
+        JS_NewCFunction(ctx, skeleton_modification2dccdik_class_get_target_node, "get_target_node", 0),
+        JS_NewCFunction(ctx, skeleton_modification2dccdik_class_set_target_node, "set_target_node", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "tip_nodepath"),
+        JS_NewCFunction(ctx, skeleton_modification2dccdik_class_get_tip_node, "get_tip_node", 0),
+        JS_NewCFunction(ctx, skeleton_modification2dccdik_class_set_tip_node, "set_tip_node", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "ccdik_data_chain_length"),
+        JS_NewCFunction(ctx, skeleton_modification2dccdik_class_get_ccdik_data_chain_length, "get_ccdik_data_chain_length", 0),
+        JS_NewCFunction(ctx, skeleton_modification2dccdik_class_set_ccdik_data_chain_length, "set_ccdik_data_chain_length", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_skeleton_modification2dccdik_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&SkeletonModification2DCCDIK::__class_id);
 	classes["SkeletonModification2DCCDIK"] = SkeletonModification2DCCDIK::__class_id;
 	class_id_list.insert(SkeletonModification2DCCDIK::__class_id);
@@ -196,7 +202,7 @@ static int js_skeleton_modification2dccdik_class_init(JSContext *ctx, JSModuleDe
 }
 
 JSModuleDef *_js_init_skeleton_modification2dccdik_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/skeleton_modification2d';";
+	const char *code = "import * as _ from '@godot/classes/skeleton_modification2d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -208,7 +214,7 @@ JSModuleDef *_js_init_skeleton_modification2dccdik_module(JSContext *ctx, const 
 }
 
 JSModuleDef *js_init_skeleton_modification2dccdik_module(JSContext *ctx) {
-	return _js_init_skeleton_modification2dccdik_module(ctx, "godot/classes/skeleton_modification2dccdik");
+	return _js_init_skeleton_modification2dccdik_module(ctx, "@godot/classes/skeleton_modification2dccdik");
 }
 
 void register_skeleton_modification2dccdik() {

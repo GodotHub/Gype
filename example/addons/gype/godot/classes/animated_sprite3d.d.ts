@@ -25,37 +25,37 @@ export declare class AnimatedSprite3D extends SpriteBase3D{
   public get sprite_frames(): SpriteFrames {
     get_sprite_frames();
   }
-  public set sprite_frames(value: SpriteFrames): void {
+  public set sprite_frames(value): void {
     set_sprite_frames(value);
   }
   public get animation(): StringName {
     get_animation();
   }
-  public set animation(value: StringName): void {
+  public set animation(value): void {
     set_animation(value);
   }
   public get autoplay(): StringName {
     get_autoplay();
   }
-  public set autoplay(value: StringName): void {
+  public set autoplay(value): void {
     set_autoplay(value);
   }
   public get frame(): number {
     get_frame();
   }
-  public set frame(value: number): void {
+  public set frame(value): void {
     set_frame(value);
   }
   public get frame_progress(): number {
     get_frame_progress();
   }
-  public set frame_progress(value: number): void {
+  public set frame_progress(value): void {
     set_frame_progress(value);
   }
   public get speed_scale(): number {
     get_speed_scale();
   }
-  public set speed_scale(value: number): void {
+  public set speed_scale(value): void {
     set_speed_scale(value);
   }
 }

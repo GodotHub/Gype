@@ -18,31 +18,31 @@ export declare class PhysicalBone2D extends RigidBody2D{
   public get bone2d_nodepath(): NodePath {
     get_bone2d_nodepath();
   }
-  public set bone2d_nodepath(value: NodePath): void {
+  public set bone2d_nodepath(value): void {
     set_bone2d_nodepath(value);
   }
   public get bone2d_index(): number {
     get_bone2d_index();
   }
-  public set bone2d_index(value: number): void {
+  public set bone2d_index(value): void {
     set_bone2d_index(value);
   }
   public get auto_configure_joint(): boolean {
     get_auto_configure_joint();
   }
-  public set auto_configure_joint(value: boolean): void {
+  public set auto_configure_joint(value): void {
     set_auto_configure_joint(value);
   }
   public get simulate_physics(): boolean {
     get_simulate_physics();
   }
-  public set simulate_physics(value: boolean): void {
+  public set simulate_physics(value): void {
     set_simulate_physics(value);
   }
   public get follow_bone_when_simulating(): boolean {
     get_follow_bone_when_simulating();
   }
-  public set follow_bone_when_simulating(value: boolean): void {
+  public set follow_bone_when_simulating(value): void {
     set_follow_bone_when_simulating(value);
   }
 }

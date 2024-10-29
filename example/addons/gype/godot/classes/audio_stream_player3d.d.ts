@@ -1,7 +1,7 @@
 
 import { AudioStream } from "@godot/classes/audio_stream";
-import { Node3D } from "@godot/classes/node3d";
 import { AudioStreamPlayback } from "@godot/classes/audio_stream_playback";
+import { Node3D } from "@godot/classes/node3d";
 
 export declare class AudioStreamPlayer3D extends Node3D{
   public set_stream(_stream: AudioStream): void;
@@ -54,127 +54,127 @@ export declare class AudioStreamPlayer3D extends Node3D{
   public get stream(): AudioStream {
     get_stream();
   }
-  public set stream(value: AudioStream): void {
+  public set stream(value): void {
     set_stream(value);
   }
   public get attenuation_model(): number {
     get_attenuation_model();
   }
-  public set attenuation_model(value: number): void {
+  public set attenuation_model(value): void {
     set_attenuation_model(value);
   }
   public get volume_db(): number {
     get_volume_db();
   }
-  public set volume_db(value: number): void {
+  public set volume_db(value): void {
     set_volume_db(value);
   }
   public get unit_size(): number {
     get_unit_size();
   }
-  public set unit_size(value: number): void {
+  public set unit_size(value): void {
     set_unit_size(value);
   }
   public get max_db(): number {
     get_max_db();
   }
-  public set max_db(value: number): void {
+  public set max_db(value): void {
     set_max_db(value);
   }
   public get pitch_scale(): number {
     get_pitch_scale();
   }
-  public set pitch_scale(value: number): void {
+  public set pitch_scale(value): void {
     set_pitch_scale(value);
   }
   public get playing(): boolean {
     is_playing();
   }
-  public set playing(value: boolean): void {
+  public set playing(value): void {
     _set_playing(value);
   }
   public get autoplay(): boolean {
     is_autoplay_enabled();
   }
-  public set autoplay(value: boolean): void {
+  public set autoplay(value): void {
     set_autoplay(value);
   }
   public get stream_paused(): boolean {
     get_stream_paused();
   }
-  public set stream_paused(value: boolean): void {
+  public set stream_paused(value): void {
     set_stream_paused(value);
   }
   public get max_distance(): number {
     get_max_distance();
   }
-  public set max_distance(value: number): void {
+  public set max_distance(value): void {
     set_max_distance(value);
   }
   public get max_polyphony(): number {
     get_max_polyphony();
   }
-  public set max_polyphony(value: number): void {
+  public set max_polyphony(value): void {
     set_max_polyphony(value);
   }
   public get panning_strength(): number {
     get_panning_strength();
   }
-  public set panning_strength(value: number): void {
+  public set panning_strength(value): void {
     set_panning_strength(value);
   }
   public get bus(): StringName {
     get_bus();
   }
-  public set bus(value: StringName): void {
+  public set bus(value): void {
     set_bus(value);
   }
   public get area_mask(): number {
     get_area_mask();
   }
-  public set area_mask(value: number): void {
+  public set area_mask(value): void {
     set_area_mask(value);
   }
   public get playback_type(): number {
     get_playback_type();
   }
-  public set playback_type(value: number): void {
+  public set playback_type(value): void {
     set_playback_type(value);
   }
   public get emission_angle_enabled(): boolean {
     is_emission_angle_enabled();
   }
-  public set emission_angle_enabled(value: boolean): void {
+  public set emission_angle_enabled(value): void {
     set_emission_angle_enabled(value);
   }
   public get emission_angle_degrees(): number {
     get_emission_angle();
   }
-  public set emission_angle_degrees(value: number): void {
+  public set emission_angle_degrees(value): void {
     set_emission_angle(value);
   }
   public get emission_angle_filter_attenuation_db(): number {
     get_emission_angle_filter_attenuation_db();
   }
-  public set emission_angle_filter_attenuation_db(value: number): void {
+  public set emission_angle_filter_attenuation_db(value): void {
     set_emission_angle_filter_attenuation_db(value);
   }
   public get attenuation_filter_cutoff_hz(): number {
     get_attenuation_filter_cutoff_hz();
   }
-  public set attenuation_filter_cutoff_hz(value: number): void {
+  public set attenuation_filter_cutoff_hz(value): void {
     set_attenuation_filter_cutoff_hz(value);
   }
   public get attenuation_filter_db(): number {
     get_attenuation_filter_db();
   }
-  public set attenuation_filter_db(value: number): void {
+  public set attenuation_filter_db(value): void {
     set_attenuation_filter_db(value);
   }
   public get doppler_tracking(): number {
     get_doppler_tracking();
   }
-  public set doppler_tracking(value: number): void {
+  public set doppler_tracking(value): void {
     set_doppler_tracking(value);
   }
   static AttenuationModel = {

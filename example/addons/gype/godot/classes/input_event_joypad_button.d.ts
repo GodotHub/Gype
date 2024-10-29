@@ -10,19 +10,19 @@ export declare class InputEventJoypadButton extends InputEvent{
   public get button_index(): number {
     get_button_index();
   }
-  public set button_index(value: number): void {
+  public set button_index(value): void {
     set_button_index(value);
   }
   public get pressure(): number {
     get_pressure();
   }
-  public set pressure(value: number): void {
+  public set pressure(value): void {
     set_pressure(value);
   }
   public get pressed(): boolean {
     is_pressed();
   }
-  public set pressed(value: boolean): void {
+  public set pressed(value): void {
     set_pressed(value);
   }
 }

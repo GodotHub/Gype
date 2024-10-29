@@ -7,7 +7,7 @@ export declare class GridContainer extends Container{
   public get columns(): number {
     get_columns();
   }
-  public set columns(value: number): void {
+  public set columns(value): void {
     set_columns(value);
   }
 }

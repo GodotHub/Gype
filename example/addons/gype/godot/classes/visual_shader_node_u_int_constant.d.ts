@@ -7,7 +7,7 @@ export declare class VisualShaderNodeUIntConstant extends VisualShaderNodeConsta
   public get constant(): number {
     get_constant();
   }
-  public set constant(value: number): void {
+  public set constant(value): void {
     set_constant(value);
   }
 }

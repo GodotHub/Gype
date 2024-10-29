@@ -1,6 +1,6 @@
 
-import { Node } from "@godot/classes/node";
 import { EditorResourcePicker } from "@godot/classes/editor_resource_picker";
+import { Node } from "@godot/classes/node";
 
 export declare class EditorScriptPicker extends EditorResourcePicker{
   public set_script_owner(_owner_node: Node): void;
@@ -8,7 +8,7 @@ export declare class EditorScriptPicker extends EditorResourcePicker{
   public get script_owner(): Node {
     get_script_owner();
   }
-  public set script_owner(value: Node): void {
+  public set script_owner(value): void {
     set_script_owner(value);
   }
 }

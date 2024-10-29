@@ -28,84 +28,84 @@ export declare class GLTFNode extends Resource{
   public set_children(_children: PackedInt32Array): void;
   public get_light(): number;
   public set_light(_light: number): void;
-  public get_additional_data(_extension_name: StringName): Variant;
-  public set_additional_data(_extension_name: StringName, _additional_data: Variant): void;
+  public get_additional_data(_extension_name: StringName): any;
+  public set_additional_data(_extension_name: StringName, _additional_data: any): void;
   public get original_name(): String {
     get_original_name();
   }
-  public set original_name(value: String): void {
+  public set original_name(value): void {
     set_original_name(value);
   }
   public get parent(): number {
     get_parent();
   }
-  public set parent(value: number): void {
+  public set parent(value): void {
     set_parent(value);
   }
   public get height(): number {
     get_height();
   }
-  public set height(value: number): void {
+  public set height(value): void {
     set_height(value);
   }
   public get xform(): Transform3D {
     get_xform();
   }
-  public set xform(value: Transform3D): void {
+  public set xform(value): void {
     set_xform(value);
   }
   public get mesh(): number {
     get_mesh();
   }
-  public set mesh(value: number): void {
+  public set mesh(value): void {
     set_mesh(value);
   }
   public get camera(): number {
     get_camera();
   }
-  public set camera(value: number): void {
+  public set camera(value): void {
     set_camera(value);
   }
   public get skin(): number {
     get_skin();
   }
-  public set skin(value: number): void {
+  public set skin(value): void {
     set_skin(value);
   }
   public get skeleton(): number {
     get_skeleton();
   }
-  public set skeleton(value: number): void {
+  public set skeleton(value): void {
     set_skeleton(value);
   }
   public get position(): Vector3 {
     get_position();
   }
-  public set position(value: Vector3): void {
+  public set position(value): void {
     set_position(value);
   }
   public get rotation(): Quaternion {
     get_rotation();
   }
-  public set rotation(value: Quaternion): void {
+  public set rotation(value): void {
     set_rotation(value);
   }
   public get scale(): Vector3 {
     get_scale();
   }
-  public set scale(value: Vector3): void {
+  public set scale(value): void {
     set_scale(value);
   }
   public get children(): PackedInt32Array {
     get_children();
   }
-  public set children(value: PackedInt32Array): void {
+  public set children(value): void {
     set_children(value);
   }
   public get light(): number {
     get_light();
   }
-  public set light(value: number): void {
+  public set light(value): void {
     set_light(value);
   }
 }

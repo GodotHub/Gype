@@ -7,7 +7,7 @@ export declare class CanvasModulate extends Node2D{
   public get color(): Color {
     get_color();
   }
-  public set color(value: Color): void {
+  public set color(value): void {
     set_color(value);
   }
 }

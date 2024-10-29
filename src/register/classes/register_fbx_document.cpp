@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/fbx_document.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/gltf_document.hpp>
+#include <godot_cpp/classes/fbx_document.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void fbx_document_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue fbx_document_class_constructor(JSContext *ctx, JSValueConst new_t
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, fbx_document_class);
+	JS_SetOpaque(obj, fbx_document_class);	
 	return obj;
 }
 
@@ -41,6 +43,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_fbx_document_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&FBXDocument::__class_id);
 	classes["FBXDocument"] = FBXDocument::__class_id;
 	class_id_list.insert(FBXDocument::__class_id);
@@ -62,7 +65,7 @@ static int js_fbx_document_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_fbx_document_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/gltf_document';";
+	const char *code = "import * as _ from '@godot/classes/gltf_document';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -74,7 +77,7 @@ JSModuleDef *_js_init_fbx_document_module(JSContext *ctx, const char *module_nam
 }
 
 JSModuleDef *js_init_fbx_document_module(JSContext *ctx) {
-	return _js_init_fbx_document_module(ctx, "godot/classes/fbx_document");
+	return _js_init_fbx_document_module(ctx, "@godot/classes/fbx_document");
 }
 
 void register_fbx_document() {

@@ -22,13 +22,13 @@ export declare class OpenXRActionMap extends Resource{
   public get action_sets(): OpenXRActionSet {
     get_action_sets();
   }
-  public set action_sets(value: OpenXRActionSet): void {
+  public set action_sets(value): void {
     set_action_sets(value);
   }
   public get interaction_profiles(): OpenXRInteractionProfile {
     get_interaction_profiles();
   }
-  public set interaction_profiles(value: OpenXRInteractionProfile): void {
+  public set interaction_profiles(value): void {
     set_interaction_profiles(value);
   }
 }

@@ -1,13 +1,13 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/text_server.hpp>
 #include <godot_cpp/classes/text_server_manager.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -17,6 +17,7 @@ static JSValue text_server_manager_instance;
 static void js_text_server_manager_singleton();
 
 static void text_server_manager_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -40,38 +41,38 @@ static JSValue text_server_manager_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 static JSValue text_server_manager_class_add_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_text_server_manager_singleton();
-	call_builtin_method_no_ret(&TextServerManager::add_interface, ctx, this_val, argc, argv);
+    js_text_server_manager_singleton();
+    call_builtin_method_no_ret(&TextServerManager::add_interface, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_manager_class_get_interface_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_text_server_manager_singleton();
+    js_text_server_manager_singleton();
 	return call_builtin_const_method_ret(&TextServerManager::get_interface_count, ctx, this_val, argc, argv);
 };
 static JSValue text_server_manager_class_remove_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_text_server_manager_singleton();
-	call_builtin_method_no_ret(&TextServerManager::remove_interface, ctx, this_val, argc, argv);
+    js_text_server_manager_singleton();
+    call_builtin_method_no_ret(&TextServerManager::remove_interface, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_manager_class_get_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_text_server_manager_singleton();
+    js_text_server_manager_singleton();
 	return call_builtin_const_method_ret(&TextServerManager::get_interface, ctx, this_val, argc, argv);
 };
 static JSValue text_server_manager_class_get_interfaces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_text_server_manager_singleton();
+    js_text_server_manager_singleton();
 	return call_builtin_const_method_ret(&TextServerManager::get_interfaces, ctx, this_val, argc, argv);
 };
 static JSValue text_server_manager_class_find_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_text_server_manager_singleton();
+    js_text_server_manager_singleton();
 	return call_builtin_const_method_ret(&TextServerManager::find_interface, ctx, this_val, argc, argv);
 };
 static JSValue text_server_manager_class_set_primary_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_text_server_manager_singleton();
-	call_builtin_method_no_ret(&TextServerManager::set_primary_interface, ctx, this_val, argc, argv);
+    js_text_server_manager_singleton();
+    call_builtin_method_no_ret(&TextServerManager::set_primary_interface, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue text_server_manager_class_get_primary_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_text_server_manager_singleton();
+    js_text_server_manager_singleton();
 	return call_builtin_const_method_ret(&TextServerManager::get_primary_interface, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry text_server_manager_class_proto_funcs[] = {
@@ -105,6 +106,7 @@ static void js_text_server_manager_singleton() {
 		JS_SetPropertyStr(ctx, global, "TextServerManager", text_server_manager_instance);
 	}
 }
+
 
 void register_text_server_manager() {
 	js_text_server_manager_class_init(ctx);

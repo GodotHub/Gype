@@ -1,19 +1,21 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/packed_scene.hpp>
-#include <godot_cpp/classes/resource.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/scene_state.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/packed_scene.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void packed_scene_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -32,7 +34,7 @@ static JSValue packed_scene_class_constructor(JSContext *ctx, JSValueConst new_t
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, packed_scene_class);
+	JS_SetOpaque(obj, packed_scene_class);	
 	return obj;
 }
 static JSValue packed_scene_class_pack(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,6 +73,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_packed_scene_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&PackedScene::__class_id);
 	classes["PackedScene"] = PackedScene::__class_id;
 	class_id_list.insert(PackedScene::__class_id);
@@ -93,7 +96,7 @@ static int js_packed_scene_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_packed_scene_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/resource';";
+	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -105,7 +108,7 @@ JSModuleDef *_js_init_packed_scene_module(JSContext *ctx, const char *module_nam
 }
 
 JSModuleDef *js_init_packed_scene_module(JSContext *ctx) {
-	return _js_init_packed_scene_module(ctx, "godot/classes/packed_scene");
+	return _js_init_packed_scene_module(ctx, "@godot/classes/packed_scene");
 }
 
 void register_packed_scene() {

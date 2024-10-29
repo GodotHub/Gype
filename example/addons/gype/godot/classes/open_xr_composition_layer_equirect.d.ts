@@ -15,31 +15,31 @@ export declare class OpenXRCompositionLayerEquirect extends OpenXRCompositionLay
   public get radius(): number {
     get_radius();
   }
-  public set radius(value: number): void {
+  public set radius(value): void {
     set_radius(value);
   }
   public get central_horizontal_angle(): number {
     get_central_horizontal_angle();
   }
-  public set central_horizontal_angle(value: number): void {
+  public set central_horizontal_angle(value): void {
     set_central_horizontal_angle(value);
   }
   public get upper_vertical_angle(): number {
     get_upper_vertical_angle();
   }
-  public set upper_vertical_angle(value: number): void {
+  public set upper_vertical_angle(value): void {
     set_upper_vertical_angle(value);
   }
   public get lower_vertical_angle(): number {
     get_lower_vertical_angle();
   }
-  public set lower_vertical_angle(value: number): void {
+  public set lower_vertical_angle(value): void {
     set_lower_vertical_angle(value);
   }
   public get fallback_segments(): number {
     get_fallback_segments();
   }
-  public set fallback_segments(value: number): void {
+  public set fallback_segments(value): void {
     set_fallback_segments(value);
   }
 }

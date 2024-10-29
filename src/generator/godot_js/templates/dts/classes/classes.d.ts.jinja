@@ -12,16 +12,16 @@ import { {{den}} } from "@godot/classes/{{camel_to_snake(den)}}";
 
 export declare class {{class['name']}} {{extends(class)}}{
   {%- for method in class['methods'] %}
-  public {{method['name']}}({{connect_args(method['arguments'])}}){{set_return(method['return_value'])}};
+  public {{method['name']}}({{connect_args(method['arguments'])}}){{set_return(method['return_value']['type'] if method['return_value'] else None)}};
   {%- endfor %}
   {%- for prop in class['properties'] %}
   {%- if prop['getter'] %}
-  public get {{prop['name']}}(): {{set_type(prop['type'])}} {
+  public get {{prop['name']}}(){{set_return(prop['type'])}} {
     {{prop['getter']}}();
   }
   {%- endif %}
   {%- if prop['setter'] %}
-  public set {{prop['name']}}(value: {{set_type(prop['type'])}}): void {
+  public set {{prop['name']}}(value): void {
     {{prop['setter']}}(value);
   }
   {%- endif %}

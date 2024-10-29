@@ -7,7 +7,7 @@ export declare class VisualShaderNodeParticleAccelerator extends VisualShaderNod
   public get mode(): number {
     get_mode();
   }
-  public set mode(value: number): void {
+  public set mode(value): void {
     set_mode(value);
   }
   static Mode = {

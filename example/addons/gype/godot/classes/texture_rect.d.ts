@@ -1,6 +1,6 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { Control } from "@godot/classes/control";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class TextureRect extends Control{
   public set_texture(_texture: Texture2D): void;
@@ -16,31 +16,31 @@ export declare class TextureRect extends Control{
   public get texture(): Texture2D {
     get_texture();
   }
-  public set texture(value: Texture2D): void {
+  public set texture(value): void {
     set_texture(value);
   }
   public get expand_mode(): number {
     get_expand_mode();
   }
-  public set expand_mode(value: number): void {
+  public set expand_mode(value): void {
     set_expand_mode(value);
   }
   public get stretch_mode(): number {
     get_stretch_mode();
   }
-  public set stretch_mode(value: number): void {
+  public set stretch_mode(value): void {
     set_stretch_mode(value);
   }
   public get flip_h(): boolean {
     is_flipped_h();
   }
-  public set flip_h(value: boolean): void {
+  public set flip_h(value): void {
     set_flip_h(value);
   }
   public get flip_v(): boolean {
     is_flipped_v();
   }
-  public set flip_v(value: boolean): void {
+  public set flip_v(value): void {
     set_flip_v(value);
   }
   static ExpandMode = {

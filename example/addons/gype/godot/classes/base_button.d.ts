@@ -1,7 +1,7 @@
 
+import { ButtonGroup } from "@godot/classes/button_group";
 import { Control } from "@godot/classes/control";
 import { Shortcut } from "@godot/classes/shortcut";
-import { ButtonGroup } from "@godot/classes/button_group";
 
 export declare class BaseButton extends Control{
   public _pressed(): void;
@@ -32,61 +32,61 @@ export declare class BaseButton extends Control{
   public get disabled(): boolean {
     is_disabled();
   }
-  public set disabled(value: boolean): void {
+  public set disabled(value): void {
     set_disabled(value);
   }
   public get toggle_mode(): boolean {
     is_toggle_mode();
   }
-  public set toggle_mode(value: boolean): void {
+  public set toggle_mode(value): void {
     set_toggle_mode(value);
   }
   public get button_pressed(): boolean {
     is_pressed();
   }
-  public set button_pressed(value: boolean): void {
+  public set button_pressed(value): void {
     set_pressed(value);
   }
   public get action_mode(): number {
     get_action_mode();
   }
-  public set action_mode(value: number): void {
+  public set action_mode(value): void {
     set_action_mode(value);
   }
   public get button_mask(): number {
     get_button_mask();
   }
-  public set button_mask(value: number): void {
+  public set button_mask(value): void {
     set_button_mask(value);
   }
   public get keep_pressed_outside(): boolean {
     is_keep_pressed_outside();
   }
-  public set keep_pressed_outside(value: boolean): void {
+  public set keep_pressed_outside(value): void {
     set_keep_pressed_outside(value);
   }
   public get button_group(): ButtonGroup {
     get_button_group();
   }
-  public set button_group(value: ButtonGroup): void {
+  public set button_group(value): void {
     set_button_group(value);
   }
   public get shortcut(): Shortcut {
     get_shortcut();
   }
-  public set shortcut(value: Shortcut): void {
+  public set shortcut(value): void {
     set_shortcut(value);
   }
   public get shortcut_feedback(): boolean {
     is_shortcut_feedback();
   }
-  public set shortcut_feedback(value: boolean): void {
+  public set shortcut_feedback(value): void {
     set_shortcut_feedback(value);
   }
   public get shortcut_in_tooltip(): boolean {
     is_shortcut_in_tooltip_enabled();
   }
-  public set shortcut_in_tooltip(value: boolean): void {
+  public set shortcut_in_tooltip(value): void {
     set_shortcut_in_tooltip(value);
   }
   static DrawMode = {

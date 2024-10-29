@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_multiply_add.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void visual_shader_node_multiply_add_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue visual_shader_node_multiply_add_class_constructor(JSContext *ctx,
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_multiply_add_class);
+	JS_SetOpaque(obj, visual_shader_node_multiply_add_class);	
 	return obj;
 }
 static JSValue visual_shader_node_multiply_add_class_set_op_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShaderNodeMultiplyAdd::set_op_type, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeMultiplyAdd::set_op_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_multiply_add_class_get_op_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,13 +50,14 @@ static const JSCFunctionListEntry visual_shader_node_multiply_add_class_proto_fu
 };
 
 void define_visual_shader_node_multiply_add_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "op_type"),
-			JS_NewCFunction(ctx, visual_shader_node_multiply_add_class_get_op_type, "get_op_type", 0),
-			JS_NewCFunction(ctx, visual_shader_node_multiply_add_class_set_op_type, "set_op_type", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "op_type"),
+        JS_NewCFunction(ctx, visual_shader_node_multiply_add_class_get_op_type, "get_op_type", 0),
+        JS_NewCFunction(ctx, visual_shader_node_multiply_add_class_set_op_type, "set_op_type", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -68,6 +71,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_multiply_add_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&VisualShaderNodeMultiplyAdd::__class_id);
 	classes["VisualShaderNodeMultiplyAdd"] = VisualShaderNodeMultiplyAdd::__class_id;
 	class_id_list.insert(VisualShaderNodeMultiplyAdd::__class_id);
@@ -90,7 +94,7 @@ static int js_visual_shader_node_multiply_add_class_init(JSContext *ctx, JSModul
 }
 
 JSModuleDef *_js_init_visual_shader_node_multiply_add_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/visual_shader_node';";
+	const char *code = "import * as _ from '@godot/classes/visual_shader_node';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -102,7 +106,7 @@ JSModuleDef *_js_init_visual_shader_node_multiply_add_module(JSContext *ctx, con
 }
 
 JSModuleDef *js_init_visual_shader_node_multiply_add_module(JSContext *ctx) {
-	return _js_init_visual_shader_node_multiply_add_module(ctx, "godot/classes/visual_shader_node_multiply_add");
+	return _js_init_visual_shader_node_multiply_add_module(ctx, "@godot/classes/visual_shader_node_multiply_add");
 }
 
 void register_visual_shader_node_multiply_add() {

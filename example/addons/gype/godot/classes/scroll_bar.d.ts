@@ -7,7 +7,7 @@ export declare class ScrollBar extends Range{
   public get custom_step(): number {
     get_custom_step();
   }
-  public set custom_step(value: number): void {
+  public set custom_step(value): void {
     set_custom_step(value);
   }
 }

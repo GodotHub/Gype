@@ -13,25 +13,25 @@ export declare class AudioEffectLimiter extends AudioEffect{
   public get ceiling_db(): number {
     get_ceiling_db();
   }
-  public set ceiling_db(value: number): void {
+  public set ceiling_db(value): void {
     set_ceiling_db(value);
   }
   public get threshold_db(): number {
     get_threshold_db();
   }
-  public set threshold_db(value: number): void {
+  public set threshold_db(value): void {
     set_threshold_db(value);
   }
   public get soft_clip_db(): number {
     get_soft_clip_db();
   }
-  public set soft_clip_db(value: number): void {
+  public set soft_clip_db(value): void {
     set_soft_clip_db(value);
   }
   public get soft_clip_ratio(): number {
     get_soft_clip_ratio();
   }
-  public set soft_clip_ratio(value: number): void {
+  public set soft_clip_ratio(value): void {
     set_soft_clip_ratio(value);
   }
 }

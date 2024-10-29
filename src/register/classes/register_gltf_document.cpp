@@ -1,20 +1,22 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/gltf_document.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/gltf_document_extension.hpp>
 #include <godot_cpp/classes/gltf_state.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/gltf_document.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void gltf_document_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -33,12 +35,12 @@ static JSValue gltf_document_class_constructor(JSContext *ctx, JSValueConst new_
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_document_class);
+	JS_SetOpaque(obj, gltf_document_class);	
 	return obj;
 }
 static JSValue gltf_document_class_set_image_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GLTFDocument::set_image_format, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GLTFDocument::set_image_format, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_document_class_get_image_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -47,7 +49,7 @@ static JSValue gltf_document_class_get_image_format(JSContext *ctx, JSValueConst
 };
 static JSValue gltf_document_class_set_lossy_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GLTFDocument::set_lossy_quality, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GLTFDocument::set_lossy_quality, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_document_class_get_lossy_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -56,7 +58,7 @@ static JSValue gltf_document_class_get_lossy_quality(JSContext *ctx, JSValueCons
 };
 static JSValue gltf_document_class_set_root_node_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GLTFDocument::set_root_node_mode, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GLTFDocument::set_root_node_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_document_class_get_root_node_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,11 +90,11 @@ static JSValue gltf_document_class_write_to_filesystem(JSContext *ctx, JSValueCo
 	return call_builtin_method_ret(&GLTFDocument::write_to_filesystem, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_register_gltf_document_extension(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_method_no_ret(&GLTFDocument::register_gltf_document_extension, ctx, this_val, argc, argv);
+    call_builtin_static_method_no_ret(&GLTFDocument::register_gltf_document_extension, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_document_class_unregister_gltf_document_extension(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_method_no_ret(&GLTFDocument::unregister_gltf_document_extension, ctx, this_val, argc, argv);
+    call_builtin_static_method_no_ret(&GLTFDocument::unregister_gltf_document_extension, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry gltf_document_class_proto_funcs[] = {
@@ -115,27 +117,30 @@ static const JSCFunctionListEntry gltf_document_class_static_funcs[] = {
 };
 
 void define_gltf_document_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "image_format"),
-			JS_NewCFunction(ctx, gltf_document_class_get_image_format, "get_image_format", 0),
-			JS_NewCFunction(ctx, gltf_document_class_set_image_format, "set_image_format", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "lossy_quality"),
-			JS_NewCFunction(ctx, gltf_document_class_get_lossy_quality, "get_lossy_quality", 0),
-			JS_NewCFunction(ctx, gltf_document_class_set_lossy_quality, "set_lossy_quality", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "root_node_mode"),
-			JS_NewCFunction(ctx, gltf_document_class_get_root_node_mode, "get_root_node_mode", 0),
-			JS_NewCFunction(ctx, gltf_document_class_set_root_node_mode, "set_root_node_mode", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "image_format"),
+        JS_NewCFunction(ctx, gltf_document_class_get_image_format, "get_image_format", 0),
+        JS_NewCFunction(ctx, gltf_document_class_set_image_format, "set_image_format", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "lossy_quality"),
+        JS_NewCFunction(ctx, gltf_document_class_get_lossy_quality, "get_lossy_quality", 0),
+        JS_NewCFunction(ctx, gltf_document_class_set_lossy_quality, "set_lossy_quality", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "root_node_mode"),
+        JS_NewCFunction(ctx, gltf_document_class_get_root_node_mode, "get_root_node_mode", 0),
+        JS_NewCFunction(ctx, gltf_document_class_set_root_node_mode, "set_root_node_mode", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -147,6 +152,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_gltf_document_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&GLTFDocument::__class_id);
 	classes["GLTFDocument"] = GLTFDocument::__class_id;
 	class_id_list.insert(GLTFDocument::__class_id);
@@ -170,7 +176,7 @@ static int js_gltf_document_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_gltf_document_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/resource';";
+	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -182,7 +188,7 @@ JSModuleDef *_js_init_gltf_document_module(JSContext *ctx, const char *module_na
 }
 
 JSModuleDef *js_init_gltf_document_module(JSContext *ctx) {
-	return _js_init_gltf_document_module(ctx, "godot/classes/gltf_document");
+	return _js_init_gltf_document_module(ctx, "@godot/classes/gltf_document");
 }
 
 void register_gltf_document() {

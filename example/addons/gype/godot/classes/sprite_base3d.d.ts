@@ -40,121 +40,121 @@ export declare class SpriteBase3D extends GeometryInstance3D{
   public get centered(): boolean {
     is_centered();
   }
-  public set centered(value: boolean): void {
+  public set centered(value): void {
     set_centered(value);
   }
   public get offset(): Vector2 {
     get_offset();
   }
-  public set offset(value: Vector2): void {
+  public set offset(value): void {
     set_offset(value);
   }
   public get flip_h(): boolean {
     is_flipped_h();
   }
-  public set flip_h(value: boolean): void {
+  public set flip_h(value): void {
     set_flip_h(value);
   }
   public get flip_v(): boolean {
     is_flipped_v();
   }
-  public set flip_v(value: boolean): void {
+  public set flip_v(value): void {
     set_flip_v(value);
   }
   public get modulate(): Color {
     get_modulate();
   }
-  public set modulate(value: Color): void {
+  public set modulate(value): void {
     set_modulate(value);
   }
   public get pixel_size(): number {
     get_pixel_size();
   }
-  public set pixel_size(value: number): void {
+  public set pixel_size(value): void {
     set_pixel_size(value);
   }
   public get axis(): number {
     get_axis();
   }
-  public set axis(value: number): void {
+  public set axis(value): void {
     set_axis(value);
   }
   public get billboard(): number {
     get_billboard_mode();
   }
-  public set billboard(value: number): void {
+  public set billboard(value): void {
     set_billboard_mode(value);
   }
   public get transparent(): boolean {
     get_draw_flag();
   }
-  public set transparent(value: boolean): void {
+  public set transparent(value): void {
     set_draw_flag(value);
   }
   public get shaded(): boolean {
     get_draw_flag();
   }
-  public set shaded(value: boolean): void {
+  public set shaded(value): void {
     set_draw_flag(value);
   }
   public get double_sided(): boolean {
     get_draw_flag();
   }
-  public set double_sided(value: boolean): void {
+  public set double_sided(value): void {
     set_draw_flag(value);
   }
   public get no_depth_test(): boolean {
     get_draw_flag();
   }
-  public set no_depth_test(value: boolean): void {
+  public set no_depth_test(value): void {
     set_draw_flag(value);
   }
   public get fixed_size(): boolean {
     get_draw_flag();
   }
-  public set fixed_size(value: boolean): void {
+  public set fixed_size(value): void {
     set_draw_flag(value);
   }
   public get alpha_cut(): number {
     get_alpha_cut_mode();
   }
-  public set alpha_cut(value: number): void {
+  public set alpha_cut(value): void {
     set_alpha_cut_mode(value);
   }
   public get alpha_scissor_threshold(): number {
     get_alpha_scissor_threshold();
   }
-  public set alpha_scissor_threshold(value: number): void {
+  public set alpha_scissor_threshold(value): void {
     set_alpha_scissor_threshold(value);
   }
   public get alpha_hash_scale(): number {
     get_alpha_hash_scale();
   }
-  public set alpha_hash_scale(value: number): void {
+  public set alpha_hash_scale(value): void {
     set_alpha_hash_scale(value);
   }
   public get alpha_antialiasing_mode(): number {
     get_alpha_antialiasing();
   }
-  public set alpha_antialiasing_mode(value: number): void {
+  public set alpha_antialiasing_mode(value): void {
     set_alpha_antialiasing(value);
   }
   public get alpha_antialiasing_edge(): number {
     get_alpha_antialiasing_edge();
   }
-  public set alpha_antialiasing_edge(value: number): void {
+  public set alpha_antialiasing_edge(value): void {
     set_alpha_antialiasing_edge(value);
   }
   public get texture_filter(): number {
     get_texture_filter();
   }
-  public set texture_filter(value: number): void {
+  public set texture_filter(value): void {
     set_texture_filter(value);
   }
   public get render_priority(): number {
     get_render_priority();
   }
-  public set render_priority(value: number): void {
+  public set render_priority(value): void {
     set_render_priority(value);
   }
   static DrawFlags = {

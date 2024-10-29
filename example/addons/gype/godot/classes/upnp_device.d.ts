@@ -21,37 +21,37 @@ export declare class UPNPDevice extends RefCounted{
   public get description_url(): String {
     get_description_url();
   }
-  public set description_url(value: String): void {
+  public set description_url(value): void {
     set_description_url(value);
   }
   public get service_type(): String {
     get_service_type();
   }
-  public set service_type(value: String): void {
+  public set service_type(value): void {
     set_service_type(value);
   }
   public get igd_control_url(): String {
     get_igd_control_url();
   }
-  public set igd_control_url(value: String): void {
+  public set igd_control_url(value): void {
     set_igd_control_url(value);
   }
   public get igd_service_type(): String {
     get_igd_service_type();
   }
-  public set igd_service_type(value: String): void {
+  public set igd_service_type(value): void {
     set_igd_service_type(value);
   }
   public get igd_our_addr(): String {
     get_igd_our_addr();
   }
-  public set igd_our_addr(value: String): void {
+  public set igd_our_addr(value): void {
     set_igd_our_addr(value);
   }
   public get igd_status(): number {
     get_igd_status();
   }
-  public set igd_status(value: number): void {
+  public set igd_status(value): void {
     set_igd_status(value);
   }
   static IGDStatus = {

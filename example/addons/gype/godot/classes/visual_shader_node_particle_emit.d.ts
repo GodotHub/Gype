@@ -7,7 +7,7 @@ export declare class VisualShaderNodeParticleEmit extends VisualShaderNode{
   public get flags(): number {
     get_flags();
   }
-  public set flags(value: number): void {
+  public set flags(value): void {
     set_flags(value);
   }
   static EmitFlags = {

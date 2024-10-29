@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/audio_effect_filter.hpp>
 #include <godot_cpp/classes/audio_effect_high_pass_filter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void audio_effect_high_pass_filter_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue audio_effect_high_pass_filter_class_constructor(JSContext *ctx, J
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_high_pass_filter_class);
+	JS_SetOpaque(obj, audio_effect_high_pass_filter_class);	
 	return obj;
 }
 
@@ -41,6 +43,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_effect_high_pass_filter_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AudioEffectHighPassFilter::__class_id);
 	classes["AudioEffectHighPassFilter"] = AudioEffectHighPassFilter::__class_id;
 	class_id_list.insert(AudioEffectHighPassFilter::__class_id);
@@ -62,7 +65,7 @@ static int js_audio_effect_high_pass_filter_class_init(JSContext *ctx, JSModuleD
 }
 
 JSModuleDef *_js_init_audio_effect_high_pass_filter_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/audio_effect_filter';";
+	const char *code = "import * as _ from '@godot/classes/audio_effect_filter';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -74,7 +77,7 @@ JSModuleDef *_js_init_audio_effect_high_pass_filter_module(JSContext *ctx, const
 }
 
 JSModuleDef *js_init_audio_effect_high_pass_filter_module(JSContext *ctx) {
-	return _js_init_audio_effect_high_pass_filter_module(ctx, "godot/classes/audio_effect_high_pass_filter");
+	return _js_init_audio_effect_high_pass_filter_module(ctx, "@godot/classes/audio_effect_high_pass_filter");
 }
 
 void register_audio_effect_high_pass_filter() {

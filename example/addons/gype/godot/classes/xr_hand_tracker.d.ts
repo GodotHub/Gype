@@ -19,13 +19,13 @@ export declare class XRHandTracker extends XRPositionalTracker{
   public get has_tracking_data(): boolean {
     get_has_tracking_data();
   }
-  public set has_tracking_data(value: boolean): void {
+  public set has_tracking_data(value): void {
     set_has_tracking_data(value);
   }
   public get hand_tracking_source(): number {
     get_hand_tracking_source();
   }
-  public set hand_tracking_source(value: number): void {
+  public set hand_tracking_source(value): void {
     set_hand_tracking_source(value);
   }
   static HandTrackingSource = {

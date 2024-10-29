@@ -1,6 +1,6 @@
 
-import { CSGPrimitive3D } from "@godot/classes/csg_primitive3d";
 import { Material } from "@godot/classes/material";
+import { CSGPrimitive3D } from "@godot/classes/csg_primitive3d";
 
 export declare class CSGCylinder3D extends CSGPrimitive3D{
   public set_radius(_radius: number): void;
@@ -18,37 +18,37 @@ export declare class CSGCylinder3D extends CSGPrimitive3D{
   public get radius(): number {
     get_radius();
   }
-  public set radius(value: number): void {
+  public set radius(value): void {
     set_radius(value);
   }
   public get height(): number {
     get_height();
   }
-  public set height(value: number): void {
+  public set height(value): void {
     set_height(value);
   }
   public get sides(): number {
     get_sides();
   }
-  public set sides(value: number): void {
+  public set sides(value): void {
     set_sides(value);
   }
   public get cone(): boolean {
     is_cone();
   }
-  public set cone(value: boolean): void {
+  public set cone(value): void {
     set_cone(value);
   }
   public get smooth_faces(): boolean {
     get_smooth_faces();
   }
-  public set smooth_faces(value: boolean): void {
+  public set smooth_faces(value): void {
     set_smooth_faces(value);
   }
-  public get material(): BaseMaterial3D,ShaderMaterial {
+  public get material(): BaseMaterial3D {
     get_material();
   }
-  public set material(value: BaseMaterial3D,ShaderMaterial): void {
+  public set material(value): void {
     set_material(value);
   }
 }

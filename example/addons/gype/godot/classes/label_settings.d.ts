@@ -24,55 +24,55 @@ export declare class LabelSettings extends Resource{
   public get line_spacing(): number {
     get_line_spacing();
   }
-  public set line_spacing(value: number): void {
+  public set line_spacing(value): void {
     set_line_spacing(value);
   }
   public get font(): Font {
     get_font();
   }
-  public set font(value: Font): void {
+  public set font(value): void {
     set_font(value);
   }
   public get font_size(): number {
     get_font_size();
   }
-  public set font_size(value: number): void {
+  public set font_size(value): void {
     set_font_size(value);
   }
   public get font_color(): Color {
     get_font_color();
   }
-  public set font_color(value: Color): void {
+  public set font_color(value): void {
     set_font_color(value);
   }
   public get outline_size(): number {
     get_outline_size();
   }
-  public set outline_size(value: number): void {
+  public set outline_size(value): void {
     set_outline_size(value);
   }
   public get outline_color(): Color {
     get_outline_color();
   }
-  public set outline_color(value: Color): void {
+  public set outline_color(value): void {
     set_outline_color(value);
   }
   public get shadow_size(): number {
     get_shadow_size();
   }
-  public set shadow_size(value: number): void {
+  public set shadow_size(value): void {
     set_shadow_size(value);
   }
   public get shadow_color(): Color {
     get_shadow_color();
   }
-  public set shadow_color(value: Color): void {
+  public set shadow_color(value): void {
     set_shadow_color(value);
   }
   public get shadow_offset(): Vector2 {
     get_shadow_offset();
   }
-  public set shadow_offset(value: Vector2): void {
+  public set shadow_offset(value): void {
     set_shadow_offset(value);
   }
 }

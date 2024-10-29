@@ -1,6 +1,6 @@
 
-import { Node2D } from "@godot/classes/node2d";
 import { SpriteFrames } from "@godot/classes/sprite_frames";
+import { Node2D } from "@godot/classes/node2d";
 
 export declare class AnimatedSprite2D extends Node2D{
   public set_sprite_frames(_sprite_frames: SpriteFrames): void;
@@ -33,61 +33,61 @@ export declare class AnimatedSprite2D extends Node2D{
   public get sprite_frames(): SpriteFrames {
     get_sprite_frames();
   }
-  public set sprite_frames(value: SpriteFrames): void {
+  public set sprite_frames(value): void {
     set_sprite_frames(value);
   }
   public get animation(): StringName {
     get_animation();
   }
-  public set animation(value: StringName): void {
+  public set animation(value): void {
     set_animation(value);
   }
   public get autoplay(): StringName {
     get_autoplay();
   }
-  public set autoplay(value: StringName): void {
+  public set autoplay(value): void {
     set_autoplay(value);
   }
   public get frame(): number {
     get_frame();
   }
-  public set frame(value: number): void {
+  public set frame(value): void {
     set_frame(value);
   }
   public get frame_progress(): number {
     get_frame_progress();
   }
-  public set frame_progress(value: number): void {
+  public set frame_progress(value): void {
     set_frame_progress(value);
   }
   public get speed_scale(): number {
     get_speed_scale();
   }
-  public set speed_scale(value: number): void {
+  public set speed_scale(value): void {
     set_speed_scale(value);
   }
   public get centered(): boolean {
     is_centered();
   }
-  public set centered(value: boolean): void {
+  public set centered(value): void {
     set_centered(value);
   }
   public get offset(): Vector2 {
     get_offset();
   }
-  public set offset(value: Vector2): void {
+  public set offset(value): void {
     set_offset(value);
   }
   public get flip_h(): boolean {
     is_flipped_h();
   }
-  public set flip_h(value: boolean): void {
+  public set flip_h(value): void {
     set_flip_h(value);
   }
   public get flip_v(): boolean {
     is_flipped_v();
   }
-  public set flip_v(value: boolean): void {
+  public set flip_v(value): void {
     set_flip_v(value);
   }
 }

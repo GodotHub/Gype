@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/gpu_particles_collision3d.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/gpu_particles_collision3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void gpu_particles_collision3d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue gpu_particles_collision3d_class_constructor(JSContext *ctx, JSVal
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gpu_particles_collision3d_class);
+	JS_SetOpaque(obj, gpu_particles_collision3d_class);	
 	return obj;
 }
 static JSValue gpu_particles_collision3d_class_set_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GPUParticlesCollision3D::set_cull_mask, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GPUParticlesCollision3D::set_cull_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gpu_particles_collision3d_class_get_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,19 +50,21 @@ static const JSCFunctionListEntry gpu_particles_collision3d_class_proto_funcs[] 
 };
 
 void define_gpu_particles_collision3d_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "cull_mask"),
-			JS_NewCFunction(ctx, gpu_particles_collision3d_class_get_cull_mask, "get_cull_mask", 0),
-			JS_NewCFunction(ctx, gpu_particles_collision3d_class_set_cull_mask, "set_cull_mask", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "cull_mask"),
+        JS_NewCFunction(ctx, gpu_particles_collision3d_class_get_cull_mask, "get_cull_mask", 0),
+        JS_NewCFunction(ctx, gpu_particles_collision3d_class_set_cull_mask, "set_cull_mask", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_gpu_particles_collision3d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&GPUParticlesCollision3D::__class_id);
 	classes["GPUParticlesCollision3D"] = GPUParticlesCollision3D::__class_id;
 	class_id_list.insert(GPUParticlesCollision3D::__class_id);
@@ -83,7 +87,7 @@ static int js_gpu_particles_collision3d_class_init(JSContext *ctx, JSModuleDef *
 }
 
 JSModuleDef *_js_init_gpu_particles_collision3d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/visual_instance3d';";
+	const char *code = "import * as _ from '@godot/classes/visual_instance3d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -95,7 +99,7 @@ JSModuleDef *_js_init_gpu_particles_collision3d_module(JSContext *ctx, const cha
 }
 
 JSModuleDef *js_init_gpu_particles_collision3d_module(JSContext *ctx) {
-	return _js_init_gpu_particles_collision3d_module(ctx, "godot/classes/gpu_particles_collision3d");
+	return _js_init_gpu_particles_collision3d_module(ctx, "@godot/classes/gpu_particles_collision3d");
 }
 
 void register_gpu_particles_collision3d() {

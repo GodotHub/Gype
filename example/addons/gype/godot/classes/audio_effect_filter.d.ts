@@ -13,25 +13,25 @@ export declare class AudioEffectFilter extends AudioEffect{
   public get cutoff_hz(): number {
     get_cutoff();
   }
-  public set cutoff_hz(value: number): void {
+  public set cutoff_hz(value): void {
     set_cutoff(value);
   }
   public get resonance(): number {
     get_resonance();
   }
-  public set resonance(value: number): void {
+  public set resonance(value): void {
     set_resonance(value);
   }
   public get gain(): number {
     get_gain();
   }
-  public set gain(value: number): void {
+  public set gain(value): void {
     set_gain(value);
   }
   public get db(): number {
     get_db();
   }
-  public set db(value: number): void {
+  public set db(value): void {
     set_db(value);
   }
   static FilterDB = {

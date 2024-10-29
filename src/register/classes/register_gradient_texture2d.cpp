@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/gradient.hpp>
-#include <godot_cpp/classes/gradient_texture2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/gradient_texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void gradient_texture2d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,12 +33,12 @@ static JSValue gradient_texture2d_class_constructor(JSContext *ctx, JSValueConst
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gradient_texture2d_class);
+	JS_SetOpaque(obj, gradient_texture2d_class);	
 	return obj;
 }
 static JSValue gradient_texture2d_class_set_gradient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GradientTexture2D::set_gradient, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GradientTexture2D::set_gradient, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture2d_class_get_gradient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -45,17 +47,17 @@ static JSValue gradient_texture2d_class_get_gradient(JSContext *ctx, JSValueCons
 };
 static JSValue gradient_texture2d_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GradientTexture2D::set_width, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GradientTexture2D::set_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture2d_class_set_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GradientTexture2D::set_height, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GradientTexture2D::set_height, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture2d_class_set_use_hdr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GradientTexture2D::set_use_hdr, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GradientTexture2D::set_use_hdr, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture2d_class_is_using_hdr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -64,7 +66,7 @@ static JSValue gradient_texture2d_class_is_using_hdr(JSContext *ctx, JSValueCons
 };
 static JSValue gradient_texture2d_class_set_fill(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GradientTexture2D::set_fill, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GradientTexture2D::set_fill, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture2d_class_get_fill(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -73,7 +75,7 @@ static JSValue gradient_texture2d_class_get_fill(JSContext *ctx, JSValueConst th
 };
 static JSValue gradient_texture2d_class_set_fill_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GradientTexture2D::set_fill_from, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GradientTexture2D::set_fill_from, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture2d_class_get_fill_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,7 +84,7 @@ static JSValue gradient_texture2d_class_get_fill_from(JSContext *ctx, JSValueCon
 };
 static JSValue gradient_texture2d_class_set_fill_to(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GradientTexture2D::set_fill_to, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GradientTexture2D::set_fill_to, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture2d_class_get_fill_to(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -91,7 +93,7 @@ static JSValue gradient_texture2d_class_get_fill_to(JSContext *ctx, JSValueConst
 };
 static JSValue gradient_texture2d_class_set_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GradientTexture2D::set_repeat, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GradientTexture2D::set_repeat, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gradient_texture2d_class_get_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -116,62 +118,70 @@ static const JSCFunctionListEntry gradient_texture2d_class_proto_funcs[] = {
 };
 
 void define_gradient_texture2d_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "gradient"),
-			JS_NewCFunction(ctx, gradient_texture2d_class_get_gradient, "get_gradient", 0),
-			JS_NewCFunction(ctx, gradient_texture2d_class_set_gradient, "set_gradient", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "width"),
-			JS_UNDEFINED,
-			JS_NewCFunction(ctx, gradient_texture2d_class_set_width, "set_width", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "height"),
-			JS_UNDEFINED,
-			JS_NewCFunction(ctx, gradient_texture2d_class_set_height, "set_height", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "use_hdr"),
-			JS_NewCFunction(ctx, gradient_texture2d_class_is_using_hdr, "is_using_hdr", 0),
-			JS_NewCFunction(ctx, gradient_texture2d_class_set_use_hdr, "set_use_hdr", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "fill"),
-			JS_NewCFunction(ctx, gradient_texture2d_class_get_fill, "get_fill", 0),
-			JS_NewCFunction(ctx, gradient_texture2d_class_set_fill, "set_fill", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "fill_from"),
-			JS_NewCFunction(ctx, gradient_texture2d_class_get_fill_from, "get_fill_from", 0),
-			JS_NewCFunction(ctx, gradient_texture2d_class_set_fill_from, "set_fill_from", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "fill_to"),
-			JS_NewCFunction(ctx, gradient_texture2d_class_get_fill_to, "get_fill_to", 0),
-			JS_NewCFunction(ctx, gradient_texture2d_class_set_fill_to, "set_fill_to", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "repeat"),
-			JS_NewCFunction(ctx, gradient_texture2d_class_get_repeat, "get_repeat", 0),
-			JS_NewCFunction(ctx, gradient_texture2d_class_set_repeat, "set_repeat", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "gradient"),
+        JS_NewCFunction(ctx, gradient_texture2d_class_get_gradient, "get_gradient", 0),
+        JS_NewCFunction(ctx, gradient_texture2d_class_set_gradient, "set_gradient", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "width"),
+        JS_UNDEFINED,
+        JS_NewCFunction(ctx, gradient_texture2d_class_set_width, "set_width", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "height"),
+        JS_UNDEFINED,
+        JS_NewCFunction(ctx, gradient_texture2d_class_set_height, "set_height", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "use_hdr"),
+        JS_NewCFunction(ctx, gradient_texture2d_class_is_using_hdr, "is_using_hdr", 0),
+        JS_NewCFunction(ctx, gradient_texture2d_class_set_use_hdr, "set_use_hdr", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "fill"),
+        JS_NewCFunction(ctx, gradient_texture2d_class_get_fill, "get_fill", 0),
+        JS_NewCFunction(ctx, gradient_texture2d_class_set_fill, "set_fill", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "fill_from"),
+        JS_NewCFunction(ctx, gradient_texture2d_class_get_fill_from, "get_fill_from", 0),
+        JS_NewCFunction(ctx, gradient_texture2d_class_set_fill_from, "set_fill_from", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "fill_to"),
+        JS_NewCFunction(ctx, gradient_texture2d_class_get_fill_to, "get_fill_to", 0),
+        JS_NewCFunction(ctx, gradient_texture2d_class_set_fill_to, "set_fill_to", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "repeat"),
+        JS_NewCFunction(ctx, gradient_texture2d_class_get_repeat, "get_repeat", 0),
+        JS_NewCFunction(ctx, gradient_texture2d_class_set_repeat, "set_repeat", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -188,6 +198,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_gradient_texture2d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&GradientTexture2D::__class_id);
 	classes["GradientTexture2D"] = GradientTexture2D::__class_id;
 	class_id_list.insert(GradientTexture2D::__class_id);
@@ -210,7 +221,7 @@ static int js_gradient_texture2d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_gradient_texture2d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/texture2d';";
+	const char *code = "import * as _ from '@godot/classes/texture2d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -222,7 +233,7 @@ JSModuleDef *_js_init_gradient_texture2d_module(JSContext *ctx, const char *modu
 }
 
 JSModuleDef *js_init_gradient_texture2d_module(JSContext *ctx) {
-	return _js_init_gradient_texture2d_module(ctx, "godot/classes/gradient_texture2d");
+	return _js_init_gradient_texture2d_module(ctx, "@godot/classes/gradient_texture2d");
 }
 
 void register_gradient_texture2d() {

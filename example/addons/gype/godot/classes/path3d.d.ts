@@ -8,7 +8,7 @@ export declare class Path3D extends Node3D{
   public get curve(): Curve3D {
     get_curve();
   }
-  public set curve(value: Curve3D): void {
+  public set curve(value): void {
     set_curve(value);
   }
 }

@@ -21,49 +21,49 @@ export declare class AudioEffectReverb extends AudioEffect{
   public get predelay_msec(): number {
     get_predelay_msec();
   }
-  public set predelay_msec(value: number): void {
+  public set predelay_msec(value): void {
     set_predelay_msec(value);
   }
   public get predelay_feedback(): number {
     get_predelay_feedback();
   }
-  public set predelay_feedback(value: number): void {
+  public set predelay_feedback(value): void {
     set_predelay_feedback(value);
   }
   public get room_size(): number {
     get_room_size();
   }
-  public set room_size(value: number): void {
+  public set room_size(value): void {
     set_room_size(value);
   }
   public get damping(): number {
     get_damping();
   }
-  public set damping(value: number): void {
+  public set damping(value): void {
     set_damping(value);
   }
   public get spread(): number {
     get_spread();
   }
-  public set spread(value: number): void {
+  public set spread(value): void {
     set_spread(value);
   }
   public get hipass(): number {
     get_hpf();
   }
-  public set hipass(value: number): void {
+  public set hipass(value): void {
     set_hpf(value);
   }
   public get dry(): number {
     get_dry();
   }
-  public set dry(value: number): void {
+  public set dry(value): void {
     set_dry(value);
   }
   public get wet(): number {
     get_wet();
   }
-  public set wet(value: number): void {
+  public set wet(value): void {
     set_wet(value);
   }
 }

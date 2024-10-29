@@ -1,7 +1,7 @@
 
 import { RenderSceneBuffers } from "@godot/classes/render_scene_buffers";
-import { RDTextureFormat } from "@godot/classes/rd_texture_format";
 import { RDTextureView } from "@godot/classes/rd_texture_view";
+import { RDTextureFormat } from "@godot/classes/rd_texture_format";
 
 export declare class RenderSceneBuffersRD extends RenderSceneBuffers{
   public has_texture(_context: StringName, _name: StringName): boolean;

@@ -1,6 +1,6 @@
 
-import { InputEvent } from "@godot/classes/input_event";
 import { Container } from "@godot/classes/container";
+import { InputEvent } from "@godot/classes/input_event";
 
 export declare class SubViewportContainer extends Container{
   public _propagate_input_event(_event: InputEvent): boolean;
@@ -11,13 +11,13 @@ export declare class SubViewportContainer extends Container{
   public get stretch(): boolean {
     is_stretch_enabled();
   }
-  public set stretch(value: boolean): void {
+  public set stretch(value): void {
     set_stretch(value);
   }
   public get stretch_shrink(): number {
     get_stretch_shrink();
   }
-  public set stretch_shrink(value: number): void {
+  public set stretch_shrink(value): void {
     set_stretch_shrink(value);
   }
 }

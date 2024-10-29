@@ -9,13 +9,13 @@ export declare class VisualShaderNodeVarying extends VisualShaderNode{
   public get varying_name(): StringName {
     get_varying_name();
   }
-  public set varying_name(value: StringName): void {
+  public set varying_name(value): void {
     set_varying_name(value);
   }
   public get varying_type(): number {
     get_varying_type();
   }
-  public set varying_type(value: number): void {
+  public set varying_type(value): void {
     set_varying_type(value);
   }
 }

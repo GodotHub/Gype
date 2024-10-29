@@ -15,31 +15,31 @@ export declare class OpenXRHand extends Node3D{
   public get hand(): number {
     get_hand();
   }
-  public set hand(value: number): void {
+  public set hand(value): void {
     set_hand(value);
   }
   public get motion_range(): number {
     get_motion_range();
   }
-  public set motion_range(value: number): void {
+  public set motion_range(value): void {
     set_motion_range(value);
   }
   public get hand_skeleton(): NodePath {
     get_hand_skeleton();
   }
-  public set hand_skeleton(value: NodePath): void {
+  public set hand_skeleton(value): void {
     set_hand_skeleton(value);
   }
   public get skeleton_rig(): number {
     get_skeleton_rig();
   }
-  public set skeleton_rig(value: number): void {
+  public set skeleton_rig(value): void {
     set_skeleton_rig(value);
   }
   public get bone_update(): number {
     get_bone_update();
   }
-  public set bone_update(value: number): void {
+  public set bone_update(value): void {
     set_bone_update(value);
   }
   static Hands = {

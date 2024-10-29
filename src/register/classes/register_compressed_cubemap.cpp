@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/compressed_cubemap.hpp>
 #include <godot_cpp/classes/compressed_texture_layered.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void compressed_cubemap_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue compressed_cubemap_class_constructor(JSContext *ctx, JSValueConst
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, compressed_cubemap_class);
+	JS_SetOpaque(obj, compressed_cubemap_class);	
 	return obj;
 }
 
@@ -41,6 +43,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_compressed_cubemap_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&CompressedCubemap::__class_id);
 	classes["CompressedCubemap"] = CompressedCubemap::__class_id;
 	class_id_list.insert(CompressedCubemap::__class_id);
@@ -62,7 +65,7 @@ static int js_compressed_cubemap_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_compressed_cubemap_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/compressed_texture_layered';";
+	const char *code = "import * as _ from '@godot/classes/compressed_texture_layered';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -74,7 +77,7 @@ JSModuleDef *_js_init_compressed_cubemap_module(JSContext *ctx, const char *modu
 }
 
 JSModuleDef *js_init_compressed_cubemap_module(JSContext *ctx) {
-	return _js_init_compressed_cubemap_module(ctx, "godot/classes/compressed_cubemap");
+	return _js_init_compressed_cubemap_module(ctx, "@godot/classes/compressed_cubemap");
 }
 
 void register_compressed_cubemap() {

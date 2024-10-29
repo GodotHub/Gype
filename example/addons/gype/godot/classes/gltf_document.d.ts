@@ -1,8 +1,8 @@
 
-import { Node } from "@godot/classes/node";
 import { GLTFDocumentExtension } from "@godot/classes/gltf_document_extension";
 import { GLTFState } from "@godot/classes/gltf_state";
 import { Resource } from "@godot/classes/resource";
+import { Node } from "@godot/classes/node";
 
 export declare class GLTFDocument extends Resource{
   public set_image_format(_image_format: String): void;
@@ -22,19 +22,19 @@ export declare class GLTFDocument extends Resource{
   public get image_format(): String {
     get_image_format();
   }
-  public set image_format(value: String): void {
+  public set image_format(value): void {
     set_image_format(value);
   }
   public get lossy_quality(): number {
     get_lossy_quality();
   }
-  public set lossy_quality(value: number): void {
+  public set lossy_quality(value): void {
     set_lossy_quality(value);
   }
   public get root_node_mode(): number {
     get_root_node_mode();
   }
-  public set root_node_mode(value: number): void {
+  public set root_node_mode(value): void {
     set_root_node_mode(value);
   }
   static RootNodeMode = {

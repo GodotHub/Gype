@@ -25,55 +25,55 @@ export declare class RDTextureFormat extends RefCounted{
   public get format(): number {
     get_format();
   }
-  public set format(value: number): void {
+  public set format(value): void {
     set_format(value);
   }
   public get width(): number {
     get_width();
   }
-  public set width(value: number): void {
+  public set width(value): void {
     set_width(value);
   }
   public get height(): number {
     get_height();
   }
-  public set height(value: number): void {
+  public set height(value): void {
     set_height(value);
   }
   public get depth(): number {
     get_depth();
   }
-  public set depth(value: number): void {
+  public set depth(value): void {
     set_depth(value);
   }
   public get array_layers(): number {
     get_array_layers();
   }
-  public set array_layers(value: number): void {
+  public set array_layers(value): void {
     set_array_layers(value);
   }
   public get mipmaps(): number {
     get_mipmaps();
   }
-  public set mipmaps(value: number): void {
+  public set mipmaps(value): void {
     set_mipmaps(value);
   }
   public get texture_type(): number {
     get_texture_type();
   }
-  public set texture_type(value: number): void {
+  public set texture_type(value): void {
     set_texture_type(value);
   }
   public get samples(): number {
     get_samples();
   }
-  public set samples(value: number): void {
+  public set samples(value): void {
     set_samples(value);
   }
   public get usage_bits(): number {
     get_usage_bits();
   }
-  public set usage_bits(value: number): void {
+  public set usage_bits(value): void {
     set_usage_bits(value);
   }
 }

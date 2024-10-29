@@ -13,13 +13,13 @@ export declare class XRBodyTracker extends XRPositionalTracker{
   public get has_tracking_data(): boolean {
     get_has_tracking_data();
   }
-  public set has_tracking_data(value: boolean): void {
+  public set has_tracking_data(value): void {
     set_has_tracking_data(value);
   }
   public get body_flags(): number {
     get_body_flags();
   }
-  public set body_flags(value: number): void {
+  public set body_flags(value): void {
     set_body_flags(value);
   }
   static BodyFlags = {

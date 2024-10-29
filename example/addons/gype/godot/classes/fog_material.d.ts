@@ -1,6 +1,6 @@
 
-import { Texture3D } from "@godot/classes/texture3d";
 import { Material } from "@godot/classes/material";
+import { Texture3D } from "@godot/classes/texture3d";
 
 export declare class FogMaterial extends Material{
   public set_density(_density: number): void;
@@ -18,37 +18,37 @@ export declare class FogMaterial extends Material{
   public get density(): number {
     get_density();
   }
-  public set density(value: number): void {
+  public set density(value): void {
     set_density(value);
   }
   public get albedo(): Color {
     get_albedo();
   }
-  public set albedo(value: Color): void {
+  public set albedo(value): void {
     set_albedo(value);
   }
   public get emission(): Color {
     get_emission();
   }
-  public set emission(value: Color): void {
+  public set emission(value): void {
     set_emission(value);
   }
   public get height_falloff(): number {
     get_height_falloff();
   }
-  public set height_falloff(value: number): void {
+  public set height_falloff(value): void {
     set_height_falloff(value);
   }
   public get edge_fade(): number {
     get_edge_fade();
   }
-  public set edge_fade(value: number): void {
+  public set edge_fade(value): void {
     set_edge_fade(value);
   }
   public get density_texture(): Texture3D {
     get_density_texture();
   }
-  public set density_texture(value: Texture3D): void {
+  public set density_texture(value): void {
     set_density_texture(value);
   }
 }

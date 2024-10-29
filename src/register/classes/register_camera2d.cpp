@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/camera2d.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void camera2d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,12 +33,12 @@ static JSValue camera2d_class_constructor(JSContext *ctx, JSValueConst new_targe
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, camera2d_class);
+	JS_SetOpaque(obj, camera2d_class);	
 	return obj;
 }
 static JSValue camera2d_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_offset, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -45,7 +47,7 @@ static JSValue camera2d_class_get_offset(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue camera2d_class_set_anchor_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_anchor_mode, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_anchor_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_anchor_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -54,7 +56,7 @@ static JSValue camera2d_class_get_anchor_mode(JSContext *ctx, JSValueConst this_
 };
 static JSValue camera2d_class_set_ignore_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_ignore_rotation, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_ignore_rotation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_ignoring_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -63,7 +65,7 @@ static JSValue camera2d_class_is_ignoring_rotation(JSContext *ctx, JSValueConst 
 };
 static JSValue camera2d_class_set_process_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_process_callback, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_process_callback, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_process_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,7 +74,7 @@ static JSValue camera2d_class_get_process_callback(JSContext *ctx, JSValueConst 
 };
 static JSValue camera2d_class_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_enabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -81,7 +83,7 @@ static JSValue camera2d_class_is_enabled(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue camera2d_class_make_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::make_current, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::make_current, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -90,7 +92,7 @@ static JSValue camera2d_class_is_current(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue camera2d_class_set_limit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_limit, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_limit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_limit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -99,7 +101,7 @@ static JSValue camera2d_class_get_limit(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue camera2d_class_set_limit_smoothing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_limit_smoothing_enabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_limit_smoothing_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_limit_smoothing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -108,7 +110,7 @@ static JSValue camera2d_class_is_limit_smoothing_enabled(JSContext *ctx, JSValue
 };
 static JSValue camera2d_class_set_drag_vertical_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_drag_vertical_enabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_drag_vertical_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_drag_vertical_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -117,7 +119,7 @@ static JSValue camera2d_class_is_drag_vertical_enabled(JSContext *ctx, JSValueCo
 };
 static JSValue camera2d_class_set_drag_horizontal_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_drag_horizontal_enabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_drag_horizontal_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_drag_horizontal_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -126,7 +128,7 @@ static JSValue camera2d_class_is_drag_horizontal_enabled(JSContext *ctx, JSValue
 };
 static JSValue camera2d_class_set_drag_vertical_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_drag_vertical_offset, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_drag_vertical_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_drag_vertical_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -135,7 +137,7 @@ static JSValue camera2d_class_get_drag_vertical_offset(JSContext *ctx, JSValueCo
 };
 static JSValue camera2d_class_set_drag_horizontal_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_drag_horizontal_offset, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_drag_horizontal_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_drag_horizontal_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -144,7 +146,7 @@ static JSValue camera2d_class_get_drag_horizontal_offset(JSContext *ctx, JSValue
 };
 static JSValue camera2d_class_set_drag_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_drag_margin, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_drag_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_drag_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -161,7 +163,7 @@ static JSValue camera2d_class_get_screen_center_position(JSContext *ctx, JSValue
 };
 static JSValue camera2d_class_set_zoom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_zoom, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_zoom, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_zoom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -170,7 +172,7 @@ static JSValue camera2d_class_get_zoom(JSContext *ctx, JSValueConst this_val, in
 };
 static JSValue camera2d_class_set_custom_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_custom_viewport, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_custom_viewport, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_custom_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -179,7 +181,7 @@ static JSValue camera2d_class_get_custom_viewport(JSContext *ctx, JSValueConst t
 };
 static JSValue camera2d_class_set_position_smoothing_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_position_smoothing_speed, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_position_smoothing_speed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_position_smoothing_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -188,7 +190,7 @@ static JSValue camera2d_class_get_position_smoothing_speed(JSContext *ctx, JSVal
 };
 static JSValue camera2d_class_set_position_smoothing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_position_smoothing_enabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_position_smoothing_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_position_smoothing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -197,7 +199,7 @@ static JSValue camera2d_class_is_position_smoothing_enabled(JSContext *ctx, JSVa
 };
 static JSValue camera2d_class_set_rotation_smoothing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_rotation_smoothing_enabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_rotation_smoothing_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_rotation_smoothing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -206,7 +208,7 @@ static JSValue camera2d_class_is_rotation_smoothing_enabled(JSContext *ctx, JSVa
 };
 static JSValue camera2d_class_set_rotation_smoothing_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_rotation_smoothing_speed, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_rotation_smoothing_speed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_get_rotation_smoothing_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -215,22 +217,22 @@ static JSValue camera2d_class_get_rotation_smoothing_speed(JSContext *ctx, JSVal
 };
 static JSValue camera2d_class_force_update_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::force_update_scroll, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::force_update_scroll, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_reset_smoothing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::reset_smoothing, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::reset_smoothing, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_align(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::align, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::align, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_set_screen_drawing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_screen_drawing_enabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_screen_drawing_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_screen_drawing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -239,7 +241,7 @@ static JSValue camera2d_class_is_screen_drawing_enabled(JSContext *ctx, JSValueC
 };
 static JSValue camera2d_class_set_limit_drawing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_limit_drawing_enabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_limit_drawing_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_limit_drawing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -248,7 +250,7 @@ static JSValue camera2d_class_is_limit_drawing_enabled(JSContext *ctx, JSValueCo
 };
 static JSValue camera2d_class_set_margin_drawing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Camera2D::set_margin_drawing_enabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Camera2D::set_margin_drawing_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera2d_class_is_margin_drawing_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -308,195 +310,222 @@ static const JSCFunctionListEntry camera2d_class_proto_funcs[] = {
 };
 
 void define_camera2d_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "offset"),
-			JS_NewCFunction(ctx, camera2d_class_get_offset, "get_offset", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_offset, "set_offset", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "anchor_mode"),
-			JS_NewCFunction(ctx, camera2d_class_get_anchor_mode, "get_anchor_mode", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_anchor_mode, "set_anchor_mode", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "ignore_rotation"),
-			JS_NewCFunction(ctx, camera2d_class_is_ignoring_rotation, "is_ignoring_rotation", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_ignore_rotation, "set_ignore_rotation", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "enabled"),
-			JS_NewCFunction(ctx, camera2d_class_is_enabled, "is_enabled", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_enabled, "set_enabled", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "zoom"),
-			JS_NewCFunction(ctx, camera2d_class_get_zoom, "get_zoom", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_zoom, "set_zoom", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "custom_viewport"),
-			JS_NewCFunction(ctx, camera2d_class_get_custom_viewport, "get_custom_viewport", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_custom_viewport, "set_custom_viewport", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "process_callback"),
-			JS_NewCFunction(ctx, camera2d_class_get_process_callback, "get_process_callback", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_process_callback, "set_process_callback", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "limit_left"),
-			JS_NewCFunction(ctx, camera2d_class_get_limit, "get_limit", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_limit, "set_limit", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "limit_top"),
-			JS_NewCFunction(ctx, camera2d_class_get_limit, "get_limit", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_limit, "set_limit", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "limit_right"),
-			JS_NewCFunction(ctx, camera2d_class_get_limit, "get_limit", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_limit, "set_limit", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "limit_bottom"),
-			JS_NewCFunction(ctx, camera2d_class_get_limit, "get_limit", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_limit, "set_limit", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "limit_smoothed"),
-			JS_NewCFunction(ctx, camera2d_class_is_limit_smoothing_enabled, "is_limit_smoothing_enabled", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_limit_smoothing_enabled, "set_limit_smoothing_enabled", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "position_smoothing_enabled"),
-			JS_NewCFunction(ctx, camera2d_class_is_position_smoothing_enabled, "is_position_smoothing_enabled", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_position_smoothing_enabled, "set_position_smoothing_enabled", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "position_smoothing_speed"),
-			JS_NewCFunction(ctx, camera2d_class_get_position_smoothing_speed, "get_position_smoothing_speed", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_position_smoothing_speed, "set_position_smoothing_speed", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "rotation_smoothing_enabled"),
-			JS_NewCFunction(ctx, camera2d_class_is_rotation_smoothing_enabled, "is_rotation_smoothing_enabled", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_rotation_smoothing_enabled, "set_rotation_smoothing_enabled", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "rotation_smoothing_speed"),
-			JS_NewCFunction(ctx, camera2d_class_get_rotation_smoothing_speed, "get_rotation_smoothing_speed", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_rotation_smoothing_speed, "set_rotation_smoothing_speed", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "drag_horizontal_enabled"),
-			JS_NewCFunction(ctx, camera2d_class_is_drag_horizontal_enabled, "is_drag_horizontal_enabled", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_drag_horizontal_enabled, "set_drag_horizontal_enabled", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "drag_vertical_enabled"),
-			JS_NewCFunction(ctx, camera2d_class_is_drag_vertical_enabled, "is_drag_vertical_enabled", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_drag_vertical_enabled, "set_drag_vertical_enabled", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "drag_horizontal_offset"),
-			JS_NewCFunction(ctx, camera2d_class_get_drag_horizontal_offset, "get_drag_horizontal_offset", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_drag_horizontal_offset, "set_drag_horizontal_offset", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "drag_vertical_offset"),
-			JS_NewCFunction(ctx, camera2d_class_get_drag_vertical_offset, "get_drag_vertical_offset", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_drag_vertical_offset, "set_drag_vertical_offset", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "drag_left_margin"),
-			JS_NewCFunction(ctx, camera2d_class_get_drag_margin, "get_drag_margin", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_drag_margin, "set_drag_margin", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "drag_top_margin"),
-			JS_NewCFunction(ctx, camera2d_class_get_drag_margin, "get_drag_margin", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_drag_margin, "set_drag_margin", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "drag_right_margin"),
-			JS_NewCFunction(ctx, camera2d_class_get_drag_margin, "get_drag_margin", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_drag_margin, "set_drag_margin", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "drag_bottom_margin"),
-			JS_NewCFunction(ctx, camera2d_class_get_drag_margin, "get_drag_margin", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_drag_margin, "set_drag_margin", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "editor_draw_screen"),
-			JS_NewCFunction(ctx, camera2d_class_is_screen_drawing_enabled, "is_screen_drawing_enabled", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_screen_drawing_enabled, "set_screen_drawing_enabled", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "editor_draw_limits"),
-			JS_NewCFunction(ctx, camera2d_class_is_limit_drawing_enabled, "is_limit_drawing_enabled", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_limit_drawing_enabled, "set_limit_drawing_enabled", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "editor_draw_drag_margin"),
-			JS_NewCFunction(ctx, camera2d_class_is_margin_drawing_enabled, "is_margin_drawing_enabled", 0),
-			JS_NewCFunction(ctx, camera2d_class_set_margin_drawing_enabled, "set_margin_drawing_enabled", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "offset"),
+        JS_NewCFunction(ctx, camera2d_class_get_offset, "get_offset", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "anchor_mode"),
+        JS_NewCFunction(ctx, camera2d_class_get_anchor_mode, "get_anchor_mode", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_anchor_mode, "set_anchor_mode", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "ignore_rotation"),
+        JS_NewCFunction(ctx, camera2d_class_is_ignoring_rotation, "is_ignoring_rotation", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_ignore_rotation, "set_ignore_rotation", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "enabled"),
+        JS_NewCFunction(ctx, camera2d_class_is_enabled, "is_enabled", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_enabled, "set_enabled", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "zoom"),
+        JS_NewCFunction(ctx, camera2d_class_get_zoom, "get_zoom", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_zoom, "set_zoom", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "custom_viewport"),
+        JS_NewCFunction(ctx, camera2d_class_get_custom_viewport, "get_custom_viewport", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_custom_viewport, "set_custom_viewport", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "process_callback"),
+        JS_NewCFunction(ctx, camera2d_class_get_process_callback, "get_process_callback", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_process_callback, "set_process_callback", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "limit_left"),
+        JS_NewCFunction(ctx, camera2d_class_get_limit, "get_limit", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_limit, "set_limit", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "limit_top"),
+        JS_NewCFunction(ctx, camera2d_class_get_limit, "get_limit", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_limit, "set_limit", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "limit_right"),
+        JS_NewCFunction(ctx, camera2d_class_get_limit, "get_limit", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_limit, "set_limit", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "limit_bottom"),
+        JS_NewCFunction(ctx, camera2d_class_get_limit, "get_limit", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_limit, "set_limit", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "limit_smoothed"),
+        JS_NewCFunction(ctx, camera2d_class_is_limit_smoothing_enabled, "is_limit_smoothing_enabled", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_limit_smoothing_enabled, "set_limit_smoothing_enabled", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "position_smoothing_enabled"),
+        JS_NewCFunction(ctx, camera2d_class_is_position_smoothing_enabled, "is_position_smoothing_enabled", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_position_smoothing_enabled, "set_position_smoothing_enabled", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "position_smoothing_speed"),
+        JS_NewCFunction(ctx, camera2d_class_get_position_smoothing_speed, "get_position_smoothing_speed", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_position_smoothing_speed, "set_position_smoothing_speed", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "rotation_smoothing_enabled"),
+        JS_NewCFunction(ctx, camera2d_class_is_rotation_smoothing_enabled, "is_rotation_smoothing_enabled", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_rotation_smoothing_enabled, "set_rotation_smoothing_enabled", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "rotation_smoothing_speed"),
+        JS_NewCFunction(ctx, camera2d_class_get_rotation_smoothing_speed, "get_rotation_smoothing_speed", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_rotation_smoothing_speed, "set_rotation_smoothing_speed", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "drag_horizontal_enabled"),
+        JS_NewCFunction(ctx, camera2d_class_is_drag_horizontal_enabled, "is_drag_horizontal_enabled", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_drag_horizontal_enabled, "set_drag_horizontal_enabled", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "drag_vertical_enabled"),
+        JS_NewCFunction(ctx, camera2d_class_is_drag_vertical_enabled, "is_drag_vertical_enabled", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_drag_vertical_enabled, "set_drag_vertical_enabled", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "drag_horizontal_offset"),
+        JS_NewCFunction(ctx, camera2d_class_get_drag_horizontal_offset, "get_drag_horizontal_offset", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_drag_horizontal_offset, "set_drag_horizontal_offset", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "drag_vertical_offset"),
+        JS_NewCFunction(ctx, camera2d_class_get_drag_vertical_offset, "get_drag_vertical_offset", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_drag_vertical_offset, "set_drag_vertical_offset", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "drag_left_margin"),
+        JS_NewCFunction(ctx, camera2d_class_get_drag_margin, "get_drag_margin", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_drag_margin, "set_drag_margin", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "drag_top_margin"),
+        JS_NewCFunction(ctx, camera2d_class_get_drag_margin, "get_drag_margin", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_drag_margin, "set_drag_margin", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "drag_right_margin"),
+        JS_NewCFunction(ctx, camera2d_class_get_drag_margin, "get_drag_margin", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_drag_margin, "set_drag_margin", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "drag_bottom_margin"),
+        JS_NewCFunction(ctx, camera2d_class_get_drag_margin, "get_drag_margin", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_drag_margin, "set_drag_margin", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "editor_draw_screen"),
+        JS_NewCFunction(ctx, camera2d_class_is_screen_drawing_enabled, "is_screen_drawing_enabled", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_screen_drawing_enabled, "set_screen_drawing_enabled", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "editor_draw_limits"),
+        JS_NewCFunction(ctx, camera2d_class_is_limit_drawing_enabled, "is_limit_drawing_enabled", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_limit_drawing_enabled, "set_limit_drawing_enabled", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "editor_draw_drag_margin"),
+        JS_NewCFunction(ctx, camera2d_class_is_margin_drawing_enabled, "is_margin_drawing_enabled", 0),
+        JS_NewCFunction(ctx, camera2d_class_set_margin_drawing_enabled, "set_margin_drawing_enabled", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -511,6 +540,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_camera2d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Camera2D::__class_id);
 	classes["Camera2D"] = Camera2D::__class_id;
 	class_id_list.insert(Camera2D::__class_id);
@@ -533,7 +563,7 @@ static int js_camera2d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_camera2d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/node2d';";
+	const char *code = "import * as _ from '@godot/classes/node2d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -545,7 +575,7 @@ JSModuleDef *_js_init_camera2d_module(JSContext *ctx, const char *module_name) {
 }
 
 JSModuleDef *js_init_camera2d_module(JSContext *ctx) {
-	return _js_init_camera2d_module(ctx, "godot/classes/camera2d");
+	return _js_init_camera2d_module(ctx, "@godot/classes/camera2d");
 }
 
 void register_camera2d() {

@@ -1,7 +1,7 @@
 
-import { Object } from "@godot/classes/object";
-import { Control } from "@godot/classes/control";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { Control } from "@godot/classes/control";
+import { Object } from "@godot/classes/object";
 
 export declare class EditorInspectorPlugin extends RefCounted{
   public _can_handle(_object: Object): boolean;

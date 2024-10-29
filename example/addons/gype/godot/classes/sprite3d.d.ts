@@ -20,43 +20,43 @@ export declare class Sprite3D extends SpriteBase3D{
   public get texture(): Texture2D {
     get_texture();
   }
-  public set texture(value: Texture2D): void {
+  public set texture(value): void {
     set_texture(value);
   }
   public get hframes(): number {
     get_hframes();
   }
-  public set hframes(value: number): void {
+  public set hframes(value): void {
     set_hframes(value);
   }
   public get vframes(): number {
     get_vframes();
   }
-  public set vframes(value: number): void {
+  public set vframes(value): void {
     set_vframes(value);
   }
   public get frame(): number {
     get_frame();
   }
-  public set frame(value: number): void {
+  public set frame(value): void {
     set_frame(value);
   }
   public get frame_coords(): Vector2i {
     get_frame_coords();
   }
-  public set frame_coords(value: Vector2i): void {
+  public set frame_coords(value): void {
     set_frame_coords(value);
   }
   public get region_enabled(): boolean {
     is_region_enabled();
   }
-  public set region_enabled(value: boolean): void {
+  public set region_enabled(value): void {
     set_region_enabled(value);
   }
   public get region_rect(): Rect2 {
     get_region_rect();
   }
-  public set region_rect(value: Rect2): void {
+  public set region_rect(value): void {
     set_region_rect(value);
   }
 }

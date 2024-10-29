@@ -1,6 +1,6 @@
 
-import { VisualInstance3D } from "@godot/classes/visual_instance3d";
 import { Material } from "@godot/classes/material";
+import { VisualInstance3D } from "@godot/classes/visual_instance3d";
 
 export declare class FogVolume extends VisualInstance3D{
   public set_size(_size: Vector3): void;
@@ -12,19 +12,19 @@ export declare class FogVolume extends VisualInstance3D{
   public get size(): Vector3 {
     get_size();
   }
-  public set size(value: Vector3): void {
+  public set size(value): void {
     set_size(value);
   }
   public get shape(): number {
     get_shape();
   }
-  public set shape(value: number): void {
+  public set shape(value): void {
     set_shape(value);
   }
-  public get material(): FogMaterial,ShaderMaterial {
+  public get material(): FogMaterial {
     get_material();
   }
-  public set material(value: FogMaterial,ShaderMaterial): void {
+  public set material(value): void {
     set_material(value);
   }
 }

@@ -10,13 +10,13 @@ export declare class XRVRS extends Object{
   public get vrs_min_radius(): number {
     get_vrs_min_radius();
   }
-  public set vrs_min_radius(value: number): void {
+  public set vrs_min_radius(value): void {
     set_vrs_min_radius(value);
   }
   public get vrs_strength(): number {
     get_vrs_strength();
   }
-  public set vrs_strength(value: number): void {
+  public set vrs_strength(value): void {
     set_vrs_strength(value);
   }
 }

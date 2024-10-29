@@ -11,19 +11,19 @@ export declare class AudioEffectHardLimiter extends AudioEffect{
   public get pre_gain_db(): number {
     get_pre_gain_db();
   }
-  public set pre_gain_db(value: number): void {
+  public set pre_gain_db(value): void {
     set_pre_gain_db(value);
   }
   public get ceiling_db(): number {
     get_ceiling_db();
   }
-  public set ceiling_db(value: number): void {
+  public set ceiling_db(value): void {
     set_ceiling_db(value);
   }
   public get release(): number {
     get_release();
   }
-  public set release(value: number): void {
+  public set release(value): void {
     set_release(value);
   }
 }

@@ -24,43 +24,43 @@ export declare class NavigationObstacle2D extends Node2D{
   public get radius(): number {
     get_radius();
   }
-  public set radius(value: number): void {
+  public set radius(value): void {
     set_radius(value);
   }
   public get vertices(): PackedVector2Array {
     get_vertices();
   }
-  public set vertices(value: PackedVector2Array): void {
+  public set vertices(value): void {
     set_vertices(value);
   }
   public get affect_navigation_mesh(): boolean {
     get_affect_navigation_mesh();
   }
-  public set affect_navigation_mesh(value: boolean): void {
+  public set affect_navigation_mesh(value): void {
     set_affect_navigation_mesh(value);
   }
   public get carve_navigation_mesh(): boolean {
     get_carve_navigation_mesh();
   }
-  public set carve_navigation_mesh(value: boolean): void {
+  public set carve_navigation_mesh(value): void {
     set_carve_navigation_mesh(value);
   }
   public get avoidance_enabled(): boolean {
     get_avoidance_enabled();
   }
-  public set avoidance_enabled(value: boolean): void {
+  public set avoidance_enabled(value): void {
     set_avoidance_enabled(value);
   }
   public get velocity(): Vector2 {
     get_velocity();
   }
-  public set velocity(value: Vector2): void {
+  public set velocity(value): void {
     set_velocity(value);
   }
   public get avoidance_layers(): number {
     get_avoidance_layers();
   }
-  public set avoidance_layers(value: number): void {
+  public set avoidance_layers(value): void {
     set_avoidance_layers(value);
   }
 }

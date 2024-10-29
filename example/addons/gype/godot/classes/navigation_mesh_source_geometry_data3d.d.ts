@@ -21,19 +21,19 @@ export declare class NavigationMeshSourceGeometryData3D extends Resource{
   public get vertices(): PackedVector3Array {
     get_vertices();
   }
-  public set vertices(value: PackedVector3Array): void {
+  public set vertices(value): void {
     set_vertices(value);
   }
   public get indices(): PackedInt32Array {
     get_indices();
   }
-  public set indices(value: PackedInt32Array): void {
+  public set indices(value): void {
     set_indices(value);
   }
-  public get projected_obstructions(): Array {
+  public get projected_obstructions(): GDArray {
     get_projected_obstructions();
   }
-  public set projected_obstructions(value: Array): void {
+  public set projected_obstructions(value): void {
     set_projected_obstructions(value);
   }
 }

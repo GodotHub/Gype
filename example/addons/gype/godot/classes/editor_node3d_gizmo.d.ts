@@ -1,27 +1,27 @@
 
-import { TriangleMesh } from "@godot/classes/triangle_mesh";
-import { Node } from "@godot/classes/node";
-import { Material } from "@godot/classes/material";
-import { Node3DGizmo } from "@godot/classes/node3d_gizmo";
 import { Mesh } from "@godot/classes/mesh";
-import { Camera3D } from "@godot/classes/camera3d";
-import { EditorNode3DGizmoPlugin } from "@godot/classes/editor_node3d_gizmo_plugin";
-import { Node3D } from "@godot/classes/node3d";
+import { TriangleMesh } from "@godot/classes/triangle_mesh";
+import { Material } from "@godot/classes/material";
 import { SkinReference } from "@godot/classes/skin_reference";
+import { Node3D } from "@godot/classes/node3d";
+import { Node } from "@godot/classes/node";
+import { Camera3D } from "@godot/classes/camera3d";
+import { Node3DGizmo } from "@godot/classes/node3d_gizmo";
+import { EditorNode3DGizmoPlugin } from "@godot/classes/editor_node3d_gizmo_plugin";
 
 export declare class EditorNode3DGizmo extends Node3DGizmo{
   public _redraw(): void;
   public _get_handle_name(_id: number, _secondary: boolean): String;
   public _is_handle_highlighted(_id: number, _secondary: boolean): boolean;
-  public _get_handle_value(_id: number, _secondary: boolean): Variant;
+  public _get_handle_value(_id: number, _secondary: boolean): any;
   public _begin_handle_action(_id: number, _secondary: boolean): void;
   public _set_handle(_id: number, _secondary: boolean, _camera: Camera3D, _point: Vector2): void;
-  public _commit_handle(_id: number, _secondary: boolean, _restore: Variant, _cancel: boolean): void;
+  public _commit_handle(_id: number, _secondary: boolean, _restore: any, _cancel: boolean): void;
   public _subgizmos_intersect_ray(_camera: Camera3D, _point: Vector2): number;
-  public _subgizmos_intersect_frustum(_camera: Camera3D, _frustum: typedarray::Plane): PackedInt32Array;
+  public _subgizmos_intersect_frustum(_camera: Camera3D, _frustum: GDArray): PackedInt32Array;
   public _set_subgizmo_transform(_id: number, _transform: Transform3D): void;
   public _get_subgizmo_transform(_id: number): Transform3D;
-  public _commit_subgizmos(_ids: PackedInt32Array, _restores: typedarray::Transform3D, _cancel: boolean): void;
+  public _commit_subgizmos(_ids: PackedInt32Array, _restores: GDArray, _cancel: boolean): void;
   public add_lines(_lines: PackedVector3Array, _material: Material, _billboard: boolean, _modulate: Color): void;
   public add_mesh(_mesh: Mesh, _material: Material, _transform: Transform3D, _skeleton: SkinReference): void;
   public add_collision_segments(_segments: PackedVector3Array): void;

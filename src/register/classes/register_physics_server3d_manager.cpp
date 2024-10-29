@@ -1,12 +1,12 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/physics_server3d_manager.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -16,6 +16,7 @@ static JSValue physics_server3d_manager_instance;
 static void js_physics_server3d_manager_singleton();
 
 static void physics_server3d_manager_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -39,13 +40,13 @@ static JSValue physics_server3d_manager_class_constructor(JSContext *ctx, JSValu
 	return obj;
 }
 static JSValue physics_server3d_manager_class_register_server(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_physics_server3d_manager_singleton();
-	call_builtin_method_no_ret(&PhysicsServer3DManager::register_server, ctx, this_val, argc, argv);
+    js_physics_server3d_manager_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3DManager::register_server, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue physics_server3d_manager_class_set_default_server(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_physics_server3d_manager_singleton();
-	call_builtin_method_no_ret(&PhysicsServer3DManager::set_default_server, ctx, this_val, argc, argv);
+    js_physics_server3d_manager_singleton();
+    call_builtin_method_no_ret(&PhysicsServer3DManager::set_default_server, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry physics_server3d_manager_class_proto_funcs[] = {
@@ -73,6 +74,7 @@ static void js_physics_server3d_manager_singleton() {
 		JS_SetPropertyStr(ctx, global, "PhysicsServer3DManager", physics_server3d_manager_instance);
 	}
 }
+
 
 void register_physics_server3d_manager() {
 	js_physics_server3d_manager_class_init(ctx);

@@ -13,25 +13,25 @@ export declare class CollisionPolygon3D extends Node3D{
   public get depth(): number {
     get_depth();
   }
-  public set depth(value: number): void {
+  public set depth(value): void {
     set_depth(value);
   }
   public get disabled(): boolean {
     is_disabled();
   }
-  public set disabled(value: boolean): void {
+  public set disabled(value): void {
     set_disabled(value);
   }
   public get polygon(): PackedVector2Array {
     get_polygon();
   }
-  public set polygon(value: PackedVector2Array): void {
+  public set polygon(value): void {
     set_polygon(value);
   }
   public get margin(): number {
     get_margin();
   }
-  public set margin(value: number): void {
+  public set margin(value): void {
     set_margin(value);
   }
 }

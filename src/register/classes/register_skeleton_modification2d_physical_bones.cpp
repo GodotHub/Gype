@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/classes/skeleton_modification2d_physical_bones.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void skeleton_modification2d_physical_bones_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue skeleton_modification2d_physical_bones_class_constructor(JSContex
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, skeleton_modification2d_physical_bones_class);
+	JS_SetOpaque(obj, skeleton_modification2d_physical_bones_class);	
 	return obj;
 }
 static JSValue skeleton_modification2d_physical_bones_class_set_physical_bone_chain_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::set_physical_bone_chain_length, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::set_physical_bone_chain_length, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_physical_bones_class_get_physical_bone_chain_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue skeleton_modification2d_physical_bones_class_get_physical_bone_ch
 };
 static JSValue skeleton_modification2d_physical_bones_class_set_physical_bone_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::set_physical_bone_node, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::set_physical_bone_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_physical_bones_class_get_physical_bone_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,17 +55,17 @@ static JSValue skeleton_modification2d_physical_bones_class_get_physical_bone_no
 };
 static JSValue skeleton_modification2d_physical_bones_class_fetch_physical_bones(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::fetch_physical_bones, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::fetch_physical_bones, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_physical_bones_class_start_simulation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::start_simulation, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::start_simulation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2d_physical_bones_class_stop_simulation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::stop_simulation, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DPhysicalBones::stop_simulation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry skeleton_modification2d_physical_bones_class_proto_funcs[] = {
@@ -77,19 +79,21 @@ static const JSCFunctionListEntry skeleton_modification2d_physical_bones_class_p
 };
 
 void define_skeleton_modification2d_physical_bones_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "physical_bone_chain_length"),
-			JS_NewCFunction(ctx, skeleton_modification2d_physical_bones_class_get_physical_bone_chain_length, "get_physical_bone_chain_length", 0),
-			JS_NewCFunction(ctx, skeleton_modification2d_physical_bones_class_set_physical_bone_chain_length, "set_physical_bone_chain_length", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "physical_bone_chain_length"),
+        JS_NewCFunction(ctx, skeleton_modification2d_physical_bones_class_get_physical_bone_chain_length, "get_physical_bone_chain_length", 0),
+        JS_NewCFunction(ctx, skeleton_modification2d_physical_bones_class_set_physical_bone_chain_length, "set_physical_bone_chain_length", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_skeleton_modification2d_physical_bones_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&SkeletonModification2DPhysicalBones::__class_id);
 	classes["SkeletonModification2DPhysicalBones"] = SkeletonModification2DPhysicalBones::__class_id;
 	class_id_list.insert(SkeletonModification2DPhysicalBones::__class_id);
@@ -112,7 +116,7 @@ static int js_skeleton_modification2d_physical_bones_class_init(JSContext *ctx, 
 }
 
 JSModuleDef *_js_init_skeleton_modification2d_physical_bones_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/skeleton_modification2d';";
+	const char *code = "import * as _ from '@godot/classes/skeleton_modification2d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -124,7 +128,7 @@ JSModuleDef *_js_init_skeleton_modification2d_physical_bones_module(JSContext *c
 }
 
 JSModuleDef *js_init_skeleton_modification2d_physical_bones_module(JSContext *ctx) {
-	return _js_init_skeleton_modification2d_physical_bones_module(ctx, "godot/classes/skeleton_modification2d_physical_bones");
+	return _js_init_skeleton_modification2d_physical_bones_module(ctx, "@godot/classes/skeleton_modification2d_physical_bones");
 }
 
 void register_skeleton_modification2d_physical_bones() {

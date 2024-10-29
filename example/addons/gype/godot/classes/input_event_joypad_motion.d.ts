@@ -9,13 +9,13 @@ export declare class InputEventJoypadMotion extends InputEvent{
   public get axis(): number {
     get_axis();
   }
-  public set axis(value: number): void {
+  public set axis(value): void {
     set_axis(value);
   }
   public get axis_value(): number {
     get_axis_value();
   }
-  public set axis_value(value: number): void {
+  public set axis_value(value): void {
     set_axis_value(value);
   }
 }

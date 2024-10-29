@@ -4,6 +4,7 @@
 #include <godot_cpp/classes/resource_loader.hpp>
 #include <godot_cpp/classes/script_editor.hpp>
 #include <godot_cpp/variant/callable_method_pointer.hpp>
+#include "quickjs/str_helper.h"
 
 using namespace godot;
 
@@ -58,6 +59,19 @@ PackedStringArray JavaScriptLanguage::_get_string_delimiters() const {
 Ref<Script> JavaScriptLanguage::_make_template(const String &p_template, const String &p_class_name, const String &p_base_class_name) const {
 	Ref<JavaScript> script;
 	script.instantiate();
+	const char *class_name = to_chars(p_class_name);
+	const char *template_name = to_chars(p_template);
+	char *code = new char[1024];
+	sprintf(code, R"xxx(
+import { %s } from "@godot/classes/%s";
+import { GodotClass } from "@godot/core/class_defined";
+
+@GodotClass
+export class %s {
+
+}
+	)xxx", class_name, camelToSnake(class_name), template_name);
+	script->_set_source_code(code);
 	return script;
 }
 

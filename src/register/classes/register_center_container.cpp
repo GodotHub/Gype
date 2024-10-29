@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/center_container.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/container.hpp>
+#include <godot_cpp/classes/center_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void center_container_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue center_container_class_constructor(JSContext *ctx, JSValueConst n
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, center_container_class);
+	JS_SetOpaque(obj, center_container_class);	
 	return obj;
 }
 static JSValue center_container_class_set_use_top_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CenterContainer::set_use_top_left, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CenterContainer::set_use_top_left, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue center_container_class_is_using_top_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,19 +50,21 @@ static const JSCFunctionListEntry center_container_class_proto_funcs[] = {
 };
 
 void define_center_container_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "use_top_left"),
-			JS_NewCFunction(ctx, center_container_class_is_using_top_left, "is_using_top_left", 0),
-			JS_NewCFunction(ctx, center_container_class_set_use_top_left, "set_use_top_left", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "use_top_left"),
+        JS_NewCFunction(ctx, center_container_class_is_using_top_left, "is_using_top_left", 0),
+        JS_NewCFunction(ctx, center_container_class_set_use_top_left, "set_use_top_left", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_center_container_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&CenterContainer::__class_id);
 	classes["CenterContainer"] = CenterContainer::__class_id;
 	class_id_list.insert(CenterContainer::__class_id);
@@ -83,7 +87,7 @@ static int js_center_container_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_center_container_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/container';";
+	const char *code = "import * as _ from '@godot/classes/container';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -95,7 +99,7 @@ JSModuleDef *_js_init_center_container_module(JSContext *ctx, const char *module
 }
 
 JSModuleDef *js_init_center_container_module(JSContext *ctx) {
-	return _js_init_center_container_module(ctx, "godot/classes/center_container");
+	return _js_init_center_container_module(ctx, "@godot/classes/center_container");
 }
 
 void register_center_container() {

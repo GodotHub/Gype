@@ -1,6 +1,6 @@
 
-import { CSGPrimitive3D } from "@godot/classes/csg_primitive3d";
 import { Material } from "@godot/classes/material";
+import { CSGPrimitive3D } from "@godot/classes/csg_primitive3d";
 
 export declare class CSGTorus3D extends CSGPrimitive3D{
   public set_inner_radius(_radius: number): void;
@@ -18,37 +18,37 @@ export declare class CSGTorus3D extends CSGPrimitive3D{
   public get inner_radius(): number {
     get_inner_radius();
   }
-  public set inner_radius(value: number): void {
+  public set inner_radius(value): void {
     set_inner_radius(value);
   }
   public get outer_radius(): number {
     get_outer_radius();
   }
-  public set outer_radius(value: number): void {
+  public set outer_radius(value): void {
     set_outer_radius(value);
   }
   public get sides(): number {
     get_sides();
   }
-  public set sides(value: number): void {
+  public set sides(value): void {
     set_sides(value);
   }
   public get ring_sides(): number {
     get_ring_sides();
   }
-  public set ring_sides(value: number): void {
+  public set ring_sides(value): void {
     set_ring_sides(value);
   }
   public get smooth_faces(): boolean {
     get_smooth_faces();
   }
-  public set smooth_faces(value: boolean): void {
+  public set smooth_faces(value): void {
     set_smooth_faces(value);
   }
-  public get material(): BaseMaterial3D,ShaderMaterial {
+  public get material(): BaseMaterial3D {
     get_material();
   }
-  public set material(value: BaseMaterial3D,ShaderMaterial): void {
+  public set material(value): void {
     set_material(value);
   }
 }

@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/upnp_device.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void upnp_device_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue upnp_device_class_constructor(JSContext *ctx, JSValueConst new_ta
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, upnp_device_class);
+	JS_SetOpaque(obj, upnp_device_class);	
 	return obj;
 }
 static JSValue upnp_device_class_is_valid_gateway(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -51,7 +53,7 @@ static JSValue upnp_device_class_delete_port_mapping(JSContext *ctx, JSValueCons
 };
 static JSValue upnp_device_class_set_description_url(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&UPNPDevice::set_description_url, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&UPNPDevice::set_description_url, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_device_class_get_description_url(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -60,7 +62,7 @@ static JSValue upnp_device_class_get_description_url(JSContext *ctx, JSValueCons
 };
 static JSValue upnp_device_class_set_service_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&UPNPDevice::set_service_type, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&UPNPDevice::set_service_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_device_class_get_service_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -69,7 +71,7 @@ static JSValue upnp_device_class_get_service_type(JSContext *ctx, JSValueConst t
 };
 static JSValue upnp_device_class_set_igd_control_url(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&UPNPDevice::set_igd_control_url, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&UPNPDevice::set_igd_control_url, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_device_class_get_igd_control_url(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -78,7 +80,7 @@ static JSValue upnp_device_class_get_igd_control_url(JSContext *ctx, JSValueCons
 };
 static JSValue upnp_device_class_set_igd_service_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&UPNPDevice::set_igd_service_type, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&UPNPDevice::set_igd_service_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_device_class_get_igd_service_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -87,7 +89,7 @@ static JSValue upnp_device_class_get_igd_service_type(JSContext *ctx, JSValueCon
 };
 static JSValue upnp_device_class_set_igd_our_addr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&UPNPDevice::set_igd_our_addr, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&UPNPDevice::set_igd_our_addr, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_device_class_get_igd_our_addr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -96,7 +98,7 @@ static JSValue upnp_device_class_get_igd_our_addr(JSContext *ctx, JSValueConst t
 };
 static JSValue upnp_device_class_set_igd_status(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&UPNPDevice::set_igd_status, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&UPNPDevice::set_igd_status, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue upnp_device_class_get_igd_status(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -123,48 +125,54 @@ static const JSCFunctionListEntry upnp_device_class_proto_funcs[] = {
 };
 
 void define_upnp_device_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "description_url"),
-			JS_NewCFunction(ctx, upnp_device_class_get_description_url, "get_description_url", 0),
-			JS_NewCFunction(ctx, upnp_device_class_set_description_url, "set_description_url", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "service_type"),
-			JS_NewCFunction(ctx, upnp_device_class_get_service_type, "get_service_type", 0),
-			JS_NewCFunction(ctx, upnp_device_class_set_service_type, "set_service_type", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "igd_control_url"),
-			JS_NewCFunction(ctx, upnp_device_class_get_igd_control_url, "get_igd_control_url", 0),
-			JS_NewCFunction(ctx, upnp_device_class_set_igd_control_url, "set_igd_control_url", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "igd_service_type"),
-			JS_NewCFunction(ctx, upnp_device_class_get_igd_service_type, "get_igd_service_type", 0),
-			JS_NewCFunction(ctx, upnp_device_class_set_igd_service_type, "set_igd_service_type", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "igd_our_addr"),
-			JS_NewCFunction(ctx, upnp_device_class_get_igd_our_addr, "get_igd_our_addr", 0),
-			JS_NewCFunction(ctx, upnp_device_class_set_igd_our_addr, "set_igd_our_addr", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "igd_status"),
-			JS_NewCFunction(ctx, upnp_device_class_get_igd_status, "get_igd_status", 0),
-			JS_NewCFunction(ctx, upnp_device_class_set_igd_status, "set_igd_status", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "description_url"),
+        JS_NewCFunction(ctx, upnp_device_class_get_description_url, "get_description_url", 0),
+        JS_NewCFunction(ctx, upnp_device_class_set_description_url, "set_description_url", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "service_type"),
+        JS_NewCFunction(ctx, upnp_device_class_get_service_type, "get_service_type", 0),
+        JS_NewCFunction(ctx, upnp_device_class_set_service_type, "set_service_type", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "igd_control_url"),
+        JS_NewCFunction(ctx, upnp_device_class_get_igd_control_url, "get_igd_control_url", 0),
+        JS_NewCFunction(ctx, upnp_device_class_set_igd_control_url, "set_igd_control_url", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "igd_service_type"),
+        JS_NewCFunction(ctx, upnp_device_class_get_igd_service_type, "get_igd_service_type", 0),
+        JS_NewCFunction(ctx, upnp_device_class_set_igd_service_type, "set_igd_service_type", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "igd_our_addr"),
+        JS_NewCFunction(ctx, upnp_device_class_get_igd_our_addr, "get_igd_our_addr", 0),
+        JS_NewCFunction(ctx, upnp_device_class_set_igd_our_addr, "set_igd_our_addr", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "igd_status"),
+        JS_NewCFunction(ctx, upnp_device_class_get_igd_status, "get_igd_status", 0),
+        JS_NewCFunction(ctx, upnp_device_class_set_igd_status, "set_igd_status", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -183,6 +191,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_upnp_device_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&UPNPDevice::__class_id);
 	classes["UPNPDevice"] = UPNPDevice::__class_id;
 	class_id_list.insert(UPNPDevice::__class_id);
@@ -205,7 +214,7 @@ static int js_upnp_device_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_upnp_device_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -217,7 +226,7 @@ JSModuleDef *_js_init_upnp_device_module(JSContext *ctx, const char *module_name
 }
 
 JSModuleDef *js_init_upnp_device_module(JSContext *ctx) {
-	return _js_init_upnp_device_module(ctx, "godot/classes/upnp_device");
+	return _js_init_upnp_device_module(ctx, "@godot/classes/upnp_device");
 }
 
 void register_upnp_device() {

@@ -19,43 +19,43 @@ export declare class AudioEffectCompressor extends AudioEffect{
   public get threshold(): number {
     get_threshold();
   }
-  public set threshold(value: number): void {
+  public set threshold(value): void {
     set_threshold(value);
   }
   public get ratio(): number {
     get_ratio();
   }
-  public set ratio(value: number): void {
+  public set ratio(value): void {
     set_ratio(value);
   }
   public get gain(): number {
     get_gain();
   }
-  public set gain(value: number): void {
+  public set gain(value): void {
     set_gain(value);
   }
   public get attack_us(): number {
     get_attack_us();
   }
-  public set attack_us(value: number): void {
+  public set attack_us(value): void {
     set_attack_us(value);
   }
   public get release_ms(): number {
     get_release_ms();
   }
-  public set release_ms(value: number): void {
+  public set release_ms(value): void {
     set_release_ms(value);
   }
   public get mix(): number {
     get_mix();
   }
-  public set mix(value: number): void {
+  public set mix(value): void {
     set_mix(value);
   }
   public get sidechain(): StringName {
     get_sidechain();
   }
-  public set sidechain(value: StringName): void {
+  public set sidechain(value): void {
     set_sidechain(value);
   }
 }

@@ -9,13 +9,13 @@ export declare class VisualShaderNodeColorParameter extends VisualShaderNodePara
   public get default_value_enabled(): boolean {
     is_default_value_enabled();
   }
-  public set default_value_enabled(value: boolean): void {
+  public set default_value_enabled(value): void {
     set_default_value_enabled(value);
   }
   public get default_value(): Color {
     get_default_value();
   }
-  public set default_value(value: Color): void {
+  public set default_value(value): void {
     set_default_value(value);
   }
 }

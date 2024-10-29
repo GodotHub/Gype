@@ -13,25 +13,25 @@ export declare class ProgressBar extends Range{
   public get fill_mode(): number {
     get_fill_mode();
   }
-  public set fill_mode(value: number): void {
+  public set fill_mode(value): void {
     set_fill_mode(value);
   }
   public get show_percentage(): boolean {
     is_percentage_shown();
   }
-  public set show_percentage(value: boolean): void {
+  public set show_percentage(value): void {
     set_show_percentage(value);
   }
   public get indeterminate(): boolean {
     is_indeterminate();
   }
-  public set indeterminate(value: boolean): void {
+  public set indeterminate(value): void {
     set_indeterminate(value);
   }
   public get editor_preview_indeterminate(): boolean {
     is_editor_preview_indeterminate_enabled();
   }
-  public set editor_preview_indeterminate(value: boolean): void {
+  public set editor_preview_indeterminate(value): void {
     set_editor_preview_indeterminate(value);
   }
   static FillMode = {

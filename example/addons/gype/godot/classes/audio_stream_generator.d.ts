@@ -9,13 +9,13 @@ export declare class AudioStreamGenerator extends AudioStream{
   public get mix_rate(): number {
     get_mix_rate();
   }
-  public set mix_rate(value: number): void {
+  public set mix_rate(value): void {
     set_mix_rate(value);
   }
   public get buffer_length(): number {
     get_buffer_length();
   }
-  public set buffer_length(value: number): void {
+  public set buffer_length(value): void {
     set_buffer_length(value);
   }
 }

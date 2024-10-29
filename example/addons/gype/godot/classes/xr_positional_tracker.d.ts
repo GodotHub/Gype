@@ -11,18 +11,18 @@ export declare class XRPositionalTracker extends XRTracker{
   public get_pose(_name: StringName): XRPose;
   public invalidate_pose(_name: StringName): void;
   public set_pose(_name: StringName, _transform: Transform3D, _linear_velocity: Vector3, _angular_velocity: Vector3, _tracking_confidence: number): void;
-  public get_input(_name: StringName): Variant;
-  public set_input(_name: StringName, _value: Variant): void;
+  public get_input(_name: StringName): any;
+  public set_input(_name: StringName, _value: any): void;
   public get profile(): String {
     get_tracker_profile();
   }
-  public set profile(value: String): void {
+  public set profile(value): void {
     set_tracker_profile(value);
   }
   public get hand(): number {
     get_tracker_hand();
   }
-  public set hand(value: number): void {
+  public set hand(value): void {
     set_tracker_hand(value);
   }
   static TrackerHand = {

@@ -10,7 +10,7 @@ export declare class IP extends Object{
   public get_resolve_item_addresses(_id: number): GDArray;
   public erase_resolve_item(_id: number): void;
   public get_local_addresses(): PackedStringArray;
-  public get_local_interfaces(): Array;
+  public get_local_interfaces(): GDArray;
   public clear_cache(_hostname: String): void;
   static ResolverStatus = {
     RESOLVER_STATUS_NONE = 0,

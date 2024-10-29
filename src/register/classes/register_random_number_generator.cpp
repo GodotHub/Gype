@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/random_number_generator.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void random_number_generator_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue random_number_generator_class_constructor(JSContext *ctx, JSValue
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, random_number_generator_class);
+	JS_SetOpaque(obj, random_number_generator_class);	
 	return obj;
 }
 static JSValue random_number_generator_class_set_seed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&RandomNumberGenerator::set_seed, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&RandomNumberGenerator::set_seed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue random_number_generator_class_get_seed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue random_number_generator_class_get_seed(JSContext *ctx, JSValueCon
 };
 static JSValue random_number_generator_class_set_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&RandomNumberGenerator::set_state, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&RandomNumberGenerator::set_state, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue random_number_generator_class_get_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -77,7 +79,7 @@ static JSValue random_number_generator_class_rand_weighted(JSContext *ctx, JSVal
 };
 static JSValue random_number_generator_class_randomize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&RandomNumberGenerator::randomize, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&RandomNumberGenerator::randomize, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry random_number_generator_class_proto_funcs[] = {
@@ -95,26 +97,29 @@ static const JSCFunctionListEntry random_number_generator_class_proto_funcs[] = 
 };
 
 void define_random_number_generator_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "seed"),
-			JS_NewCFunction(ctx, random_number_generator_class_get_seed, "get_seed", 0),
-			JS_NewCFunction(ctx, random_number_generator_class_set_seed, "set_seed", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "state"),
-			JS_NewCFunction(ctx, random_number_generator_class_get_state, "get_state", 0),
-			JS_NewCFunction(ctx, random_number_generator_class_set_state, "set_state", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "seed"),
+        JS_NewCFunction(ctx, random_number_generator_class_get_seed, "get_seed", 0),
+        JS_NewCFunction(ctx, random_number_generator_class_set_seed, "set_seed", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "state"),
+        JS_NewCFunction(ctx, random_number_generator_class_get_state, "get_state", 0),
+        JS_NewCFunction(ctx, random_number_generator_class_set_state, "set_state", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_random_number_generator_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&RandomNumberGenerator::__class_id);
 	classes["RandomNumberGenerator"] = RandomNumberGenerator::__class_id;
 	class_id_list.insert(RandomNumberGenerator::__class_id);
@@ -137,7 +142,7 @@ static int js_random_number_generator_class_init(JSContext *ctx, JSModuleDef *m)
 }
 
 JSModuleDef *_js_init_random_number_generator_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -149,7 +154,7 @@ JSModuleDef *_js_init_random_number_generator_module(JSContext *ctx, const char 
 }
 
 JSModuleDef *js_init_random_number_generator_module(JSContext *ctx) {
-	return _js_init_random_number_generator_module(ctx, "godot/classes/random_number_generator");
+	return _js_init_random_number_generator_module(ctx, "@godot/classes/random_number_generator");
 }
 
 void register_random_number_generator() {

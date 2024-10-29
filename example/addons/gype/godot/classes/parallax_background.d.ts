@@ -17,37 +17,37 @@ export declare class ParallaxBackground extends CanvasLayer{
   public get scroll_offset(): Vector2 {
     get_scroll_offset();
   }
-  public set scroll_offset(value: Vector2): void {
+  public set scroll_offset(value): void {
     set_scroll_offset(value);
   }
   public get scroll_base_offset(): Vector2 {
     get_scroll_base_offset();
   }
-  public set scroll_base_offset(value: Vector2): void {
+  public set scroll_base_offset(value): void {
     set_scroll_base_offset(value);
   }
   public get scroll_base_scale(): Vector2 {
     get_scroll_base_scale();
   }
-  public set scroll_base_scale(value: Vector2): void {
+  public set scroll_base_scale(value): void {
     set_scroll_base_scale(value);
   }
   public get scroll_limit_begin(): Vector2 {
     get_limit_begin();
   }
-  public set scroll_limit_begin(value: Vector2): void {
+  public set scroll_limit_begin(value): void {
     set_limit_begin(value);
   }
   public get scroll_limit_end(): Vector2 {
     get_limit_end();
   }
-  public set scroll_limit_end(value: Vector2): void {
+  public set scroll_limit_end(value): void {
     set_limit_end(value);
   }
   public get scroll_ignore_camera_zoom(): boolean {
     is_ignore_camera_zoom();
   }
-  public set scroll_ignore_camera_zoom(value: boolean): void {
+  public set scroll_ignore_camera_zoom(value): void {
     set_ignore_camera_zoom(value);
   }
 }

@@ -1,6 +1,6 @@
 
-import { Node3D } from "@godot/classes/node3d";
 import { SubViewport } from "@godot/classes/sub_viewport";
+import { Node3D } from "@godot/classes/node3d";
 
 export declare class OpenXRCompositionLayer extends Node3D{
   public set_layer_viewport(_viewport: SubViewport): void;
@@ -16,25 +16,25 @@ export declare class OpenXRCompositionLayer extends Node3D{
   public get layer_viewport(): Object {
     get_layer_viewport();
   }
-  public set layer_viewport(value: Object): void {
+  public set layer_viewport(value): void {
     set_layer_viewport(value);
   }
   public get sort_order(): number {
     get_sort_order();
   }
-  public set sort_order(value: number): void {
+  public set sort_order(value): void {
     set_sort_order(value);
   }
   public get alpha_blend(): boolean {
     get_alpha_blend();
   }
-  public set alpha_blend(value: boolean): void {
+  public set alpha_blend(value): void {
     set_alpha_blend(value);
   }
   public get enable_hole_punch(): boolean {
     get_enable_hole_punch();
   }
-  public set enable_hole_punch(value: boolean): void {
+  public set enable_hole_punch(value): void {
     set_enable_hole_punch(value);
   }
 }

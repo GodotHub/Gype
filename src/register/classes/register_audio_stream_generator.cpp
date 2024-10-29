@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/audio_stream.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/audio_stream_generator.hpp>
+#include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void audio_stream_generator_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue audio_stream_generator_class_constructor(JSContext *ctx, JSValueC
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_stream_generator_class);
+	JS_SetOpaque(obj, audio_stream_generator_class);	
 	return obj;
 }
 static JSValue audio_stream_generator_class_set_mix_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioStreamGenerator::set_mix_rate, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioStreamGenerator::set_mix_rate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_generator_class_get_mix_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue audio_stream_generator_class_get_mix_rate(JSContext *ctx, JSValue
 };
 static JSValue audio_stream_generator_class_set_buffer_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioStreamGenerator::set_buffer_length, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioStreamGenerator::set_buffer_length, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_generator_class_get_buffer_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -59,26 +61,29 @@ static const JSCFunctionListEntry audio_stream_generator_class_proto_funcs[] = {
 };
 
 void define_audio_stream_generator_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "mix_rate"),
-			JS_NewCFunction(ctx, audio_stream_generator_class_get_mix_rate, "get_mix_rate", 0),
-			JS_NewCFunction(ctx, audio_stream_generator_class_set_mix_rate, "set_mix_rate", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "buffer_length"),
-			JS_NewCFunction(ctx, audio_stream_generator_class_get_buffer_length, "get_buffer_length", 0),
-			JS_NewCFunction(ctx, audio_stream_generator_class_set_buffer_length, "set_buffer_length", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "mix_rate"),
+        JS_NewCFunction(ctx, audio_stream_generator_class_get_mix_rate, "get_mix_rate", 0),
+        JS_NewCFunction(ctx, audio_stream_generator_class_set_mix_rate, "set_mix_rate", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "buffer_length"),
+        JS_NewCFunction(ctx, audio_stream_generator_class_get_buffer_length, "get_buffer_length", 0),
+        JS_NewCFunction(ctx, audio_stream_generator_class_set_buffer_length, "set_buffer_length", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_stream_generator_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AudioStreamGenerator::__class_id);
 	classes["AudioStreamGenerator"] = AudioStreamGenerator::__class_id;
 	class_id_list.insert(AudioStreamGenerator::__class_id);
@@ -101,7 +106,7 @@ static int js_audio_stream_generator_class_init(JSContext *ctx, JSModuleDef *m) 
 }
 
 JSModuleDef *_js_init_audio_stream_generator_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/audio_stream';";
+	const char *code = "import * as _ from '@godot/classes/audio_stream';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -113,7 +118,7 @@ JSModuleDef *_js_init_audio_stream_generator_module(JSContext *ctx, const char *
 }
 
 JSModuleDef *js_init_audio_stream_generator_module(JSContext *ctx) {
-	return _js_init_audio_stream_generator_module(ctx, "godot/classes/audio_stream_generator");
+	return _js_init_audio_stream_generator_module(ctx, "@godot/classes/audio_stream_generator");
 }
 
 void register_audio_stream_generator() {

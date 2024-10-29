@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/xrvrs.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void xrvrs_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue xrvrs_class_constructor(JSContext *ctx, JSValueConst new_target, 
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, xrvrs_class);
+	JS_SetOpaque(obj, xrvrs_class);	
 	return obj;
 }
 static JSValue xrvrs_class_get_vrs_min_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -39,7 +41,7 @@ static JSValue xrvrs_class_get_vrs_min_radius(JSContext *ctx, JSValueConst this_
 };
 static JSValue xrvrs_class_set_vrs_min_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&XRVRS::set_vrs_min_radius, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&XRVRS::set_vrs_min_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xrvrs_class_get_vrs_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,7 +50,7 @@ static JSValue xrvrs_class_get_vrs_strength(JSContext *ctx, JSValueConst this_va
 };
 static JSValue xrvrs_class_set_vrs_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&XRVRS::set_vrs_strength, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&XRVRS::set_vrs_strength, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xrvrs_class_make_vrs_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -64,26 +66,29 @@ static const JSCFunctionListEntry xrvrs_class_proto_funcs[] = {
 };
 
 void define_xrvrs_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "vrs_min_radius"),
-			JS_NewCFunction(ctx, xrvrs_class_get_vrs_min_radius, "get_vrs_min_radius", 0),
-			JS_NewCFunction(ctx, xrvrs_class_set_vrs_min_radius, "set_vrs_min_radius", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "vrs_strength"),
-			JS_NewCFunction(ctx, xrvrs_class_get_vrs_strength, "get_vrs_strength", 0),
-			JS_NewCFunction(ctx, xrvrs_class_set_vrs_strength, "set_vrs_strength", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "vrs_min_radius"),
+        JS_NewCFunction(ctx, xrvrs_class_get_vrs_min_radius, "get_vrs_min_radius", 0),
+        JS_NewCFunction(ctx, xrvrs_class_set_vrs_min_radius, "set_vrs_min_radius", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "vrs_strength"),
+        JS_NewCFunction(ctx, xrvrs_class_get_vrs_strength, "get_vrs_strength", 0),
+        JS_NewCFunction(ctx, xrvrs_class_set_vrs_strength, "set_vrs_strength", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_xrvrs_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&XRVRS::__class_id);
 	classes["XRVRS"] = XRVRS::__class_id;
 	class_id_list.insert(XRVRS::__class_id);
@@ -106,7 +111,7 @@ static int js_xrvrs_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_xrvrs_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -118,7 +123,7 @@ JSModuleDef *_js_init_xrvrs_module(JSContext *ctx, const char *module_name) {
 }
 
 JSModuleDef *js_init_xrvrs_module(JSContext *ctx) {
-	return _js_init_xrvrs_module(ctx, "godot/classes/xrvrs");
+	return _js_init_xrvrs_module(ctx, "@godot/classes/xrvrs");
 }
 
 void register_xrvrs() {

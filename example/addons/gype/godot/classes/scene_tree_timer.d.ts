@@ -7,7 +7,7 @@ export declare class SceneTreeTimer extends RefCounted{
   public get time_left(): number {
     get_time_left();
   }
-  public set time_left(value: number): void {
+  public set time_left(value): void {
     set_time_left(value);
   }
 }

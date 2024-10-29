@@ -21,49 +21,49 @@ export declare class InputEventMIDI extends InputEvent{
   public get channel(): number {
     get_channel();
   }
-  public set channel(value: number): void {
+  public set channel(value): void {
     set_channel(value);
   }
   public get message(): number {
     get_message();
   }
-  public set message(value: number): void {
+  public set message(value): void {
     set_message(value);
   }
   public get pitch(): number {
     get_pitch();
   }
-  public set pitch(value: number): void {
+  public set pitch(value): void {
     set_pitch(value);
   }
   public get velocity(): number {
     get_velocity();
   }
-  public set velocity(value: number): void {
+  public set velocity(value): void {
     set_velocity(value);
   }
   public get instrument(): number {
     get_instrument();
   }
-  public set instrument(value: number): void {
+  public set instrument(value): void {
     set_instrument(value);
   }
   public get pressure(): number {
     get_pressure();
   }
-  public set pressure(value: number): void {
+  public set pressure(value): void {
     set_pressure(value);
   }
   public get controller_number(): number {
     get_controller_number();
   }
-  public set controller_number(value: number): void {
+  public set controller_number(value): void {
     set_controller_number(value);
   }
   public get controller_value(): number {
     get_controller_value();
   }
-  public set controller_value(value: number): void {
+  public set controller_value(value): void {
     set_controller_value(value);
   }
 }

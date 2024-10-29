@@ -16,13 +16,13 @@ export declare class RandomNumberGenerator extends RefCounted{
   public get seed(): number {
     get_seed();
   }
-  public set seed(value: number): void {
+  public set seed(value): void {
     set_seed(value);
   }
   public get state(): number {
     get_state();
   }
-  public set state(value: number): void {
+  public set state(value): void {
     set_state(value);
   }
 }

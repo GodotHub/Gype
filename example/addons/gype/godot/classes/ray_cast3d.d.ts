@@ -1,7 +1,7 @@
 
-import { Node3D } from "@godot/classes/node3d";
 import { CollisionObject3D } from "@godot/classes/collision_object3d";
 import { Object } from "@godot/classes/object";
+import { Node3D } from "@godot/classes/node3d";
 
 export declare class RayCast3D extends Node3D{
   public set_enabled(_enabled: boolean): void;
@@ -42,61 +42,61 @@ export declare class RayCast3D extends Node3D{
   public get enabled(): boolean {
     is_enabled();
   }
-  public set enabled(value: boolean): void {
+  public set enabled(value): void {
     set_enabled(value);
   }
   public get exclude_parent(): boolean {
     get_exclude_parent_body();
   }
-  public set exclude_parent(value: boolean): void {
+  public set exclude_parent(value): void {
     set_exclude_parent_body(value);
   }
   public get target_position(): Vector3 {
     get_target_position();
   }
-  public set target_position(value: Vector3): void {
+  public set target_position(value): void {
     set_target_position(value);
   }
   public get collision_mask(): number {
     get_collision_mask();
   }
-  public set collision_mask(value: number): void {
+  public set collision_mask(value): void {
     set_collision_mask(value);
   }
   public get hit_from_inside(): boolean {
     is_hit_from_inside_enabled();
   }
-  public set hit_from_inside(value: boolean): void {
+  public set hit_from_inside(value): void {
     set_hit_from_inside(value);
   }
   public get hit_back_faces(): boolean {
     is_hit_back_faces_enabled();
   }
-  public set hit_back_faces(value: boolean): void {
+  public set hit_back_faces(value): void {
     set_hit_back_faces(value);
   }
   public get collide_with_areas(): boolean {
     is_collide_with_areas_enabled();
   }
-  public set collide_with_areas(value: boolean): void {
+  public set collide_with_areas(value): void {
     set_collide_with_areas(value);
   }
   public get collide_with_bodies(): boolean {
     is_collide_with_bodies_enabled();
   }
-  public set collide_with_bodies(value: boolean): void {
+  public set collide_with_bodies(value): void {
     set_collide_with_bodies(value);
   }
   public get debug_shape_custom_color(): Color {
     get_debug_shape_custom_color();
   }
-  public set debug_shape_custom_color(value: Color): void {
+  public set debug_shape_custom_color(value): void {
     set_debug_shape_custom_color(value);
   }
   public get debug_shape_thickness(): number {
     get_debug_shape_thickness();
   }
-  public set debug_shape_thickness(value: number): void {
+  public set debug_shape_thickness(value): void {
     set_debug_shape_thickness(value);
   }
 }

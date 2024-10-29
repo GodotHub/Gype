@@ -1,22 +1,24 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/editor_node3d_gizmo.hpp>
 #include <godot_cpp/classes/editor_node3d_gizmo_plugin.hpp>
-#include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/standard_material3d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void editor_node3d_gizmo_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -35,27 +37,27 @@ static JSValue editor_node3d_gizmo_plugin_class_constructor(JSContext *ctx, JSVa
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_node3d_gizmo_plugin_class);
+	JS_SetOpaque(obj, editor_node3d_gizmo_plugin_class);	
 	return obj;
 }
 static JSValue editor_node3d_gizmo_plugin_class_create_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&EditorNode3DGizmoPlugin::create_material, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&EditorNode3DGizmoPlugin::create_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_node3d_gizmo_plugin_class_create_icon_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&EditorNode3DGizmoPlugin::create_icon_material, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&EditorNode3DGizmoPlugin::create_icon_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_node3d_gizmo_plugin_class_create_handle_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&EditorNode3DGizmoPlugin::create_handle_material, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&EditorNode3DGizmoPlugin::create_handle_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_node3d_gizmo_plugin_class_add_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&EditorNode3DGizmoPlugin::add_material, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&EditorNode3DGizmoPlugin::add_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue editor_node3d_gizmo_plugin_class_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -77,6 +79,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_node3d_gizmo_plugin_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&EditorNode3DGizmoPlugin::__class_id);
 	classes["EditorNode3DGizmoPlugin"] = EditorNode3DGizmoPlugin::__class_id;
 	class_id_list.insert(EditorNode3DGizmoPlugin::__class_id);
@@ -99,7 +102,7 @@ static int js_editor_node3d_gizmo_plugin_class_init(JSContext *ctx, JSModuleDef 
 }
 
 JSModuleDef *_js_init_editor_node3d_gizmo_plugin_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/resource';";
+	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -111,7 +114,7 @@ JSModuleDef *_js_init_editor_node3d_gizmo_plugin_module(JSContext *ctx, const ch
 }
 
 JSModuleDef *js_init_editor_node3d_gizmo_plugin_module(JSContext *ctx) {
-	return _js_init_editor_node3d_gizmo_plugin_module(ctx, "godot/classes/editor_node3d_gizmo_plugin");
+	return _js_init_editor_node3d_gizmo_plugin_module(ctx, "@godot/classes/editor_node3d_gizmo_plugin");
 }
 
 void register_editor_node3d_gizmo_plugin() {

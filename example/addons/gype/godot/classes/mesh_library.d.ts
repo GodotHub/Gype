@@ -1,7 +1,7 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
-import { NavigationMesh } from "@godot/classes/navigation_mesh";
 import { Mesh } from "@godot/classes/mesh";
+import { NavigationMesh } from "@godot/classes/navigation_mesh";
+import { Texture2D } from "@godot/classes/texture2d";
 import { Resource } from "@godot/classes/resource";
 
 export declare class MeshLibrary extends Resource{

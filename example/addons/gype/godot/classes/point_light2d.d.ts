@@ -1,6 +1,6 @@
 
-import { Light2D } from "@godot/classes/light2d";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Light2D } from "@godot/classes/light2d";
 
 export declare class PointLight2D extends Light2D{
   public set_texture(_texture: Texture2D): void;
@@ -12,25 +12,25 @@ export declare class PointLight2D extends Light2D{
   public get texture(): Texture2D {
     get_texture();
   }
-  public set texture(value: Texture2D): void {
+  public set texture(value): void {
     set_texture(value);
   }
   public get offset(): Vector2 {
     get_texture_offset();
   }
-  public set offset(value: Vector2): void {
+  public set offset(value): void {
     set_texture_offset(value);
   }
   public get texture_scale(): number {
     get_texture_scale();
   }
-  public set texture_scale(value: number): void {
+  public set texture_scale(value): void {
     set_texture_scale(value);
   }
   public get height(): number {
     get_height();
   }
-  public set height(value: number): void {
+  public set height(value): void {
     set_height(value);
   }
 }

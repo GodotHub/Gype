@@ -7,7 +7,7 @@ export declare class ViewportTexture extends Texture2D{
   public get viewport_path(): NodePath {
     get_viewport_path_in_scene();
   }
-  public set viewport_path(value: NodePath): void {
+  public set viewport_path(value): void {
     set_viewport_path_in_scene(value);
   }
 }

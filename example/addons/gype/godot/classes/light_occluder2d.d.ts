@@ -1,6 +1,6 @@
 
-import { Node2D } from "@godot/classes/node2d";
 import { OccluderPolygon2D } from "@godot/classes/occluder_polygon2d";
+import { Node2D } from "@godot/classes/node2d";
 
 export declare class LightOccluder2D extends Node2D{
   public set_occluder_polygon(_polygon: OccluderPolygon2D): void;
@@ -12,19 +12,19 @@ export declare class LightOccluder2D extends Node2D{
   public get occluder(): OccluderPolygon2D {
     get_occluder_polygon();
   }
-  public set occluder(value: OccluderPolygon2D): void {
+  public set occluder(value): void {
     set_occluder_polygon(value);
   }
   public get sdf_collision(): boolean {
     is_set_as_sdf_collision();
   }
-  public set sdf_collision(value: boolean): void {
+  public set sdf_collision(value): void {
     set_as_sdf_collision(value);
   }
   public get occluder_light_mask(): number {
     get_occluder_light_mask();
   }
-  public set occluder_light_mask(value: number): void {
+  public set occluder_light_mask(value): void {
     set_occluder_light_mask(value);
   }
 }

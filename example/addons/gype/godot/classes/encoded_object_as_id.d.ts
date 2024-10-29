@@ -7,7 +7,7 @@ export declare class EncodedObjectAsID extends RefCounted{
   public get object_id(): number {
     get_object_id();
   }
-  public set object_id(value: number): void {
+  public set object_id(value): void {
     set_object_id(value);
   }
 }

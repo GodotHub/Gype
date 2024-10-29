@@ -13,7 +13,7 @@ export declare class StreamPeerBuffer extends StreamPeer{
   public get data_array(): PackedByteArray {
     get_data_array();
   }
-  public set data_array(value: PackedByteArray): void {
+  public set data_array(value): void {
     set_data_array(value);
   }
 }

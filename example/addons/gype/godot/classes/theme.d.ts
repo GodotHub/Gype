@@ -1,8 +1,8 @@
 
-import { Resource } from "@godot/classes/resource";
-import { Texture2D } from "@godot/classes/texture2d";
 import { Font } from "@godot/classes/font";
+import { Texture2D } from "@godot/classes/texture2d";
 import { StyleBox } from "@godot/classes/style_box";
+import { Resource } from "@godot/classes/resource";
 
 export declare class Theme extends Resource{
   public set_icon(_name: StringName, _theme_type: StringName, _texture: Texture2D): void;
@@ -56,8 +56,8 @@ export declare class Theme extends Resource{
   public set_default_font_size(_font_size: number): void;
   public get_default_font_size(): number;
   public has_default_font_size(): boolean;
-  public set_theme_item(_data_type: number, _name: StringName, _theme_type: StringName, _value: Variant): void;
-  public get_theme_item(_data_type: number, _name: StringName, _theme_type: StringName): Variant;
+  public set_theme_item(_data_type: number, _name: StringName, _theme_type: StringName, _value: any): void;
+  public get_theme_item(_data_type: number, _name: StringName, _theme_type: StringName): any;
   public has_theme_item(_data_type: number, _name: StringName, _theme_type: StringName): boolean;
   public rename_theme_item(_data_type: number, _old_name: StringName, _name: StringName, _theme_type: StringName): void;
   public clear_theme_item(_data_type: number, _name: StringName, _theme_type: StringName): void;
@@ -76,19 +76,19 @@ export declare class Theme extends Resource{
   public get default_base_scale(): number {
     get_default_base_scale();
   }
-  public set default_base_scale(value: number): void {
+  public set default_base_scale(value): void {
     set_default_base_scale(value);
   }
   public get default_font(): Font {
     get_default_font();
   }
-  public set default_font(value: Font): void {
+  public set default_font(value): void {
     set_default_font(value);
   }
   public get default_font_size(): number {
     get_default_font_size();
   }
-  public set default_font_size(value: number): void {
+  public set default_font_size(value): void {
     set_default_font_size(value);
   }
   static DataType = {

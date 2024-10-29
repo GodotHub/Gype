@@ -21,25 +21,25 @@ export declare class SkeletonModification2DTwoBoneIK extends SkeletonModificatio
   public get target_nodepath(): NodePath {
     get_target_node();
   }
-  public set target_nodepath(value: NodePath): void {
+  public set target_nodepath(value): void {
     set_target_node(value);
   }
   public get target_minimum_distance(): number {
     get_target_minimum_distance();
   }
-  public set target_minimum_distance(value: number): void {
+  public set target_minimum_distance(value): void {
     set_target_minimum_distance(value);
   }
   public get target_maximum_distance(): number {
     get_target_maximum_distance();
   }
-  public set target_maximum_distance(value: number): void {
+  public set target_maximum_distance(value): void {
     set_target_maximum_distance(value);
   }
   public get flip_bend_direction(): boolean {
     get_flip_bend_direction();
   }
-  public set flip_bend_direction(value: boolean): void {
+  public set flip_bend_direction(value): void {
     set_flip_bend_direction(value);
   }
 }

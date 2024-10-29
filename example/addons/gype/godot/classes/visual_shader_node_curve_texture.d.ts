@@ -8,7 +8,7 @@ export declare class VisualShaderNodeCurveTexture extends VisualShaderNodeResiza
   public get texture(): CurveTexture {
     get_texture();
   }
-  public set texture(value: CurveTexture): void {
+  public set texture(value): void {
     set_texture(value);
   }
 }

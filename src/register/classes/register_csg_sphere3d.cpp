@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/csg_primitive3d.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/csg_sphere3d.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/csg_primitive3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void csg_sphere3d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,12 +33,12 @@ static JSValue csg_sphere3d_class_constructor(JSContext *ctx, JSValueConst new_t
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, csg_sphere3d_class);
+	JS_SetOpaque(obj, csg_sphere3d_class);	
 	return obj;
 }
 static JSValue csg_sphere3d_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CSGSphere3D::set_radius, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CSGSphere3D::set_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_sphere3d_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -45,7 +47,7 @@ static JSValue csg_sphere3d_class_get_radius(JSContext *ctx, JSValueConst this_v
 };
 static JSValue csg_sphere3d_class_set_radial_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CSGSphere3D::set_radial_segments, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CSGSphere3D::set_radial_segments, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_sphere3d_class_get_radial_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -54,7 +56,7 @@ static JSValue csg_sphere3d_class_get_radial_segments(JSContext *ctx, JSValueCon
 };
 static JSValue csg_sphere3d_class_set_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CSGSphere3D::set_rings, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CSGSphere3D::set_rings, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_sphere3d_class_get_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -63,7 +65,7 @@ static JSValue csg_sphere3d_class_get_rings(JSContext *ctx, JSValueConst this_va
 };
 static JSValue csg_sphere3d_class_set_smooth_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CSGSphere3D::set_smooth_faces, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CSGSphere3D::set_smooth_faces, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_sphere3d_class_get_smooth_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,7 +74,7 @@ static JSValue csg_sphere3d_class_get_smooth_faces(JSContext *ctx, JSValueConst 
 };
 static JSValue csg_sphere3d_class_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CSGSphere3D::set_material, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CSGSphere3D::set_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue csg_sphere3d_class_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -93,47 +95,53 @@ static const JSCFunctionListEntry csg_sphere3d_class_proto_funcs[] = {
 };
 
 void define_csg_sphere3d_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "radius"),
-			JS_NewCFunction(ctx, csg_sphere3d_class_get_radius, "get_radius", 0),
-			JS_NewCFunction(ctx, csg_sphere3d_class_set_radius, "set_radius", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "radial_segments"),
-			JS_NewCFunction(ctx, csg_sphere3d_class_get_radial_segments, "get_radial_segments", 0),
-			JS_NewCFunction(ctx, csg_sphere3d_class_set_radial_segments, "set_radial_segments", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "rings"),
-			JS_NewCFunction(ctx, csg_sphere3d_class_get_rings, "get_rings", 0),
-			JS_NewCFunction(ctx, csg_sphere3d_class_set_rings, "set_rings", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "smooth_faces"),
-			JS_NewCFunction(ctx, csg_sphere3d_class_get_smooth_faces, "get_smooth_faces", 0),
-			JS_NewCFunction(ctx, csg_sphere3d_class_set_smooth_faces, "set_smooth_faces", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "material"),
-			JS_NewCFunction(ctx, csg_sphere3d_class_get_material, "get_material", 0),
-			JS_NewCFunction(ctx, csg_sphere3d_class_set_material, "set_material", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "radius"),
+        JS_NewCFunction(ctx, csg_sphere3d_class_get_radius, "get_radius", 0),
+        JS_NewCFunction(ctx, csg_sphere3d_class_set_radius, "set_radius", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "radial_segments"),
+        JS_NewCFunction(ctx, csg_sphere3d_class_get_radial_segments, "get_radial_segments", 0),
+        JS_NewCFunction(ctx, csg_sphere3d_class_set_radial_segments, "set_radial_segments", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "rings"),
+        JS_NewCFunction(ctx, csg_sphere3d_class_get_rings, "get_rings", 0),
+        JS_NewCFunction(ctx, csg_sphere3d_class_set_rings, "set_rings", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "smooth_faces"),
+        JS_NewCFunction(ctx, csg_sphere3d_class_get_smooth_faces, "get_smooth_faces", 0),
+        JS_NewCFunction(ctx, csg_sphere3d_class_set_smooth_faces, "set_smooth_faces", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "material"),
+        JS_NewCFunction(ctx, csg_sphere3d_class_get_material, "get_material", 0),
+        JS_NewCFunction(ctx, csg_sphere3d_class_set_material, "set_material", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_csg_sphere3d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&CSGSphere3D::__class_id);
 	classes["CSGSphere3D"] = CSGSphere3D::__class_id;
 	class_id_list.insert(CSGSphere3D::__class_id);
@@ -156,7 +164,7 @@ static int js_csg_sphere3d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_csg_sphere3d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/csg_primitive3d';";
+	const char *code = "import * as _ from '@godot/classes/csg_primitive3d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -168,7 +176,7 @@ JSModuleDef *_js_init_csg_sphere3d_module(JSContext *ctx, const char *module_nam
 }
 
 JSModuleDef *js_init_csg_sphere3d_module(JSContext *ctx) {
-	return _js_init_csg_sphere3d_module(ctx, "godot/classes/csg_sphere3d");
+	return _js_init_csg_sphere3d_module(ctx, "@godot/classes/csg_sphere3d");
 }
 
 void register_csg_sphere3d() {

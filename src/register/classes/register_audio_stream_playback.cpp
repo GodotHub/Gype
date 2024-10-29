@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/audio_sample_playback.hpp>
 #include <godot_cpp/classes/audio_stream_playback.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void audio_stream_playback_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,12 +33,12 @@ static JSValue audio_stream_playback_class_constructor(JSContext *ctx, JSValueCo
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_stream_playback_class);
+	JS_SetOpaque(obj, audio_stream_playback_class);	
 	return obj;
 }
 static JSValue audio_stream_playback_class_set_sample_playback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioStreamPlayback::set_sample_playback, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioStreamPlayback::set_sample_playback, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_stream_playback_class_get_sample_playback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,6 +57,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_stream_playback_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AudioStreamPlayback::__class_id);
 	classes["AudioStreamPlayback"] = AudioStreamPlayback::__class_id;
 	class_id_list.insert(AudioStreamPlayback::__class_id);
@@ -77,7 +80,7 @@ static int js_audio_stream_playback_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_audio_stream_playback_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -89,7 +92,7 @@ JSModuleDef *_js_init_audio_stream_playback_module(JSContext *ctx, const char *m
 }
 
 JSModuleDef *js_init_audio_stream_playback_module(JSContext *ctx) {
-	return _js_init_audio_stream_playback_module(ctx, "godot/classes/audio_stream_playback");
+	return _js_init_audio_stream_playback_module(ctx, "@godot/classes/audio_stream_playback");
 }
 
 void register_audio_stream_playback() {

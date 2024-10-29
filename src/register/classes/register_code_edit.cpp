@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/code_edit.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/text_edit.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void code_edit_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,12 +33,12 @@ static JSValue code_edit_class_constructor(JSContext *ctx, JSValueConst new_targ
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, code_edit_class);
+	JS_SetOpaque(obj, code_edit_class);	
 	return obj;
 }
 static JSValue code_edit_class_set_indent_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_indent_size, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_indent_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_indent_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -45,7 +47,7 @@ static JSValue code_edit_class_get_indent_size(JSContext *ctx, JSValueConst this
 };
 static JSValue code_edit_class_set_indent_using_spaces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_indent_using_spaces, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_indent_using_spaces, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_indent_using_spaces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -54,7 +56,7 @@ static JSValue code_edit_class_is_indent_using_spaces(JSContext *ctx, JSValueCon
 };
 static JSValue code_edit_class_set_auto_indent_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_auto_indent_enabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_auto_indent_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_auto_indent_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -63,7 +65,7 @@ static JSValue code_edit_class_is_auto_indent_enabled(JSContext *ctx, JSValueCon
 };
 static JSValue code_edit_class_set_auto_indent_prefixes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_auto_indent_prefixes, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_auto_indent_prefixes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_auto_indent_prefixes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,27 +74,27 @@ static JSValue code_edit_class_get_auto_indent_prefixes(JSContext *ctx, JSValueC
 };
 static JSValue code_edit_class_do_indent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::do_indent, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::do_indent, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_indent_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::indent_lines, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::indent_lines, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_unindent_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::unindent_lines, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::unindent_lines, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_convert_indent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::convert_indent, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::convert_indent, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_set_auto_brace_completion_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_auto_brace_completion_enabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_auto_brace_completion_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_auto_brace_completion_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -101,7 +103,7 @@ static JSValue code_edit_class_is_auto_brace_completion_enabled(JSContext *ctx, 
 };
 static JSValue code_edit_class_set_highlight_matching_braces_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_highlight_matching_braces_enabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_highlight_matching_braces_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_highlight_matching_braces_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,12 +112,12 @@ static JSValue code_edit_class_is_highlight_matching_braces_enabled(JSContext *c
 };
 static JSValue code_edit_class_add_auto_brace_completion_pair(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::add_auto_brace_completion_pair, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::add_auto_brace_completion_pair, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_set_auto_brace_completion_pairs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_auto_brace_completion_pairs, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_auto_brace_completion_pairs, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_auto_brace_completion_pairs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -136,7 +138,7 @@ static JSValue code_edit_class_get_auto_brace_completion_close_key(JSContext *ct
 };
 static JSValue code_edit_class_set_draw_breakpoints_gutter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_draw_breakpoints_gutter, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_draw_breakpoints_gutter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_drawing_breakpoints_gutter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -145,7 +147,7 @@ static JSValue code_edit_class_is_drawing_breakpoints_gutter(JSContext *ctx, JSV
 };
 static JSValue code_edit_class_set_draw_bookmarks_gutter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_draw_bookmarks_gutter, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_draw_bookmarks_gutter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_drawing_bookmarks_gutter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -154,7 +156,7 @@ static JSValue code_edit_class_is_drawing_bookmarks_gutter(JSContext *ctx, JSVal
 };
 static JSValue code_edit_class_set_draw_executing_lines_gutter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_draw_executing_lines_gutter, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_draw_executing_lines_gutter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_drawing_executing_lines_gutter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -163,7 +165,7 @@ static JSValue code_edit_class_is_drawing_executing_lines_gutter(JSContext *ctx,
 };
 static JSValue code_edit_class_set_line_as_breakpoint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_line_as_breakpoint, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_line_as_breakpoint, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_line_breakpointed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -172,7 +174,7 @@ static JSValue code_edit_class_is_line_breakpointed(JSContext *ctx, JSValueConst
 };
 static JSValue code_edit_class_clear_breakpointed_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::clear_breakpointed_lines, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::clear_breakpointed_lines, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_breakpointed_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -181,7 +183,7 @@ static JSValue code_edit_class_get_breakpointed_lines(JSContext *ctx, JSValueCon
 };
 static JSValue code_edit_class_set_line_as_bookmarked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_line_as_bookmarked, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_line_as_bookmarked, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_line_bookmarked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -190,7 +192,7 @@ static JSValue code_edit_class_is_line_bookmarked(JSContext *ctx, JSValueConst t
 };
 static JSValue code_edit_class_clear_bookmarked_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::clear_bookmarked_lines, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::clear_bookmarked_lines, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_bookmarked_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -199,7 +201,7 @@ static JSValue code_edit_class_get_bookmarked_lines(JSContext *ctx, JSValueConst
 };
 static JSValue code_edit_class_set_line_as_executing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_line_as_executing, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_line_as_executing, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_line_executing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -208,7 +210,7 @@ static JSValue code_edit_class_is_line_executing(JSContext *ctx, JSValueConst th
 };
 static JSValue code_edit_class_clear_executing_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::clear_executing_lines, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::clear_executing_lines, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_executing_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -217,7 +219,7 @@ static JSValue code_edit_class_get_executing_lines(JSContext *ctx, JSValueConst 
 };
 static JSValue code_edit_class_set_draw_line_numbers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_draw_line_numbers, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_draw_line_numbers, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_draw_line_numbers_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -226,7 +228,7 @@ static JSValue code_edit_class_is_draw_line_numbers_enabled(JSContext *ctx, JSVa
 };
 static JSValue code_edit_class_set_line_numbers_zero_padded(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_line_numbers_zero_padded, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_line_numbers_zero_padded, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_line_numbers_zero_padded(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -235,7 +237,7 @@ static JSValue code_edit_class_is_line_numbers_zero_padded(JSContext *ctx, JSVal
 };
 static JSValue code_edit_class_set_draw_fold_gutter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_draw_fold_gutter, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_draw_fold_gutter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_drawing_fold_gutter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -244,7 +246,7 @@ static JSValue code_edit_class_is_drawing_fold_gutter(JSContext *ctx, JSValueCon
 };
 static JSValue code_edit_class_set_line_folding_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_line_folding_enabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_line_folding_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_line_folding_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -257,32 +259,32 @@ static JSValue code_edit_class_can_fold_line(JSContext *ctx, JSValueConst this_v
 };
 static JSValue code_edit_class_fold_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::fold_line, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::fold_line, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_unfold_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::unfold_line, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::unfold_line, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_fold_all_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::fold_all_lines, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::fold_all_lines, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_unfold_all_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::unfold_all_lines, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::unfold_all_lines, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_toggle_foldable_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::toggle_foldable_line, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::toggle_foldable_line, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_toggle_foldable_lines_at_carets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::toggle_foldable_lines_at_carets, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::toggle_foldable_lines_at_carets, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_line_folded(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -295,7 +297,7 @@ static JSValue code_edit_class_get_folded_lines(JSContext *ctx, JSValueConst thi
 };
 static JSValue code_edit_class_create_code_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::create_code_region, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::create_code_region, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_code_region_start_tag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -308,7 +310,7 @@ static JSValue code_edit_class_get_code_region_end_tag(JSContext *ctx, JSValueCo
 };
 static JSValue code_edit_class_set_code_region_tags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_code_region_tags, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_code_region_tags, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_line_code_region_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -321,12 +323,12 @@ static JSValue code_edit_class_is_line_code_region_end(JSContext *ctx, JSValueCo
 };
 static JSValue code_edit_class_add_string_delimiter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::add_string_delimiter, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::add_string_delimiter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_remove_string_delimiter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::remove_string_delimiter, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::remove_string_delimiter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_has_string_delimiter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -335,12 +337,12 @@ static JSValue code_edit_class_has_string_delimiter(JSContext *ctx, JSValueConst
 };
 static JSValue code_edit_class_set_string_delimiters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_string_delimiters, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_string_delimiters, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_clear_string_delimiters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::clear_string_delimiters, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::clear_string_delimiters, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_string_delimiters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -353,12 +355,12 @@ static JSValue code_edit_class_is_in_string(JSContext *ctx, JSValueConst this_va
 };
 static JSValue code_edit_class_add_comment_delimiter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::add_comment_delimiter, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::add_comment_delimiter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_remove_comment_delimiter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::remove_comment_delimiter, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::remove_comment_delimiter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_has_comment_delimiter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -367,12 +369,12 @@ static JSValue code_edit_class_has_comment_delimiter(JSContext *ctx, JSValueCons
 };
 static JSValue code_edit_class_set_comment_delimiters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_comment_delimiters, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_comment_delimiters, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_clear_comment_delimiters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::clear_comment_delimiters, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::clear_comment_delimiters, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_comment_delimiters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -401,12 +403,12 @@ static JSValue code_edit_class_get_delimiter_end_position(JSContext *ctx, JSValu
 };
 static JSValue code_edit_class_set_code_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_code_hint, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_code_hint, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_set_code_hint_draw_below(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_code_hint_draw_below, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_code_hint_draw_below, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_text_for_code_completion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -415,17 +417,17 @@ static JSValue code_edit_class_get_text_for_code_completion(JSContext *ctx, JSVa
 };
 static JSValue code_edit_class_request_code_completion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::request_code_completion, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::request_code_completion, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_add_code_completion_option(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::add_code_completion_option, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::add_code_completion_option, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_update_code_completion_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::update_code_completion_options, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::update_code_completion_options, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_code_completion_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -442,22 +444,22 @@ static JSValue code_edit_class_get_code_completion_selected_index(JSContext *ctx
 };
 static JSValue code_edit_class_set_code_completion_selected_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_code_completion_selected_index, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_code_completion_selected_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_confirm_code_completion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::confirm_code_completion, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::confirm_code_completion, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_cancel_code_completion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::cancel_code_completion, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::cancel_code_completion, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_set_code_completion_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_code_completion_enabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_code_completion_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_code_completion_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -466,7 +468,7 @@ static JSValue code_edit_class_is_code_completion_enabled(JSContext *ctx, JSValu
 };
 static JSValue code_edit_class_set_code_completion_prefixes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_code_completion_prefixes, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_code_completion_prefixes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_code_completion_prefixes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -475,7 +477,7 @@ static JSValue code_edit_class_get_code_completion_prefixes(JSContext *ctx, JSVa
 };
 static JSValue code_edit_class_set_line_length_guidelines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_line_length_guidelines, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_line_length_guidelines, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_get_line_length_guidelines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -484,7 +486,7 @@ static JSValue code_edit_class_get_line_length_guidelines(JSContext *ctx, JSValu
 };
 static JSValue code_edit_class_set_symbol_lookup_on_click_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_symbol_lookup_on_click_enabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_symbol_lookup_on_click_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_is_symbol_lookup_on_click_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -501,32 +503,32 @@ static JSValue code_edit_class_get_text_with_cursor_char(JSContext *ctx, JSValue
 };
 static JSValue code_edit_class_set_symbol_lookup_word_as_valid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::set_symbol_lookup_word_as_valid, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::set_symbol_lookup_word_as_valid, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_move_lines_up(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::move_lines_up, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::move_lines_up, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_move_lines_down(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::move_lines_down, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::move_lines_down, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_delete_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::delete_lines, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::delete_lines, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_duplicate_selection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::duplicate_selection, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::duplicate_selection, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue code_edit_class_duplicate_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CodeEdit::duplicate_lines, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CodeEdit::duplicate_lines, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry code_edit_class_proto_funcs[] = {
@@ -642,146 +644,166 @@ static const JSCFunctionListEntry code_edit_class_proto_funcs[] = {
 };
 
 void define_code_edit_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "symbol_lookup_on_click"),
-			JS_NewCFunction(ctx, code_edit_class_is_symbol_lookup_on_click_enabled, "is_symbol_lookup_on_click_enabled", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_symbol_lookup_on_click_enabled, "set_symbol_lookup_on_click_enabled", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "line_folding"),
-			JS_NewCFunction(ctx, code_edit_class_is_line_folding_enabled, "is_line_folding_enabled", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_line_folding_enabled, "set_line_folding_enabled", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "line_length_guidelines"),
-			JS_NewCFunction(ctx, code_edit_class_get_line_length_guidelines, "get_line_length_guidelines", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_line_length_guidelines, "set_line_length_guidelines", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "gutters_draw_breakpoints_gutter"),
-			JS_NewCFunction(ctx, code_edit_class_is_drawing_breakpoints_gutter, "is_drawing_breakpoints_gutter", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_draw_breakpoints_gutter, "set_draw_breakpoints_gutter", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "gutters_draw_bookmarks"),
-			JS_NewCFunction(ctx, code_edit_class_is_drawing_bookmarks_gutter, "is_drawing_bookmarks_gutter", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_draw_bookmarks_gutter, "set_draw_bookmarks_gutter", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "gutters_draw_executing_lines"),
-			JS_NewCFunction(ctx, code_edit_class_is_drawing_executing_lines_gutter, "is_drawing_executing_lines_gutter", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_draw_executing_lines_gutter, "set_draw_executing_lines_gutter", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "gutters_draw_line_numbers"),
-			JS_NewCFunction(ctx, code_edit_class_is_draw_line_numbers_enabled, "is_draw_line_numbers_enabled", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_draw_line_numbers, "set_draw_line_numbers", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "gutters_zero_pad_line_numbers"),
-			JS_NewCFunction(ctx, code_edit_class_is_line_numbers_zero_padded, "is_line_numbers_zero_padded", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_line_numbers_zero_padded, "set_line_numbers_zero_padded", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "gutters_draw_fold_gutter"),
-			JS_NewCFunction(ctx, code_edit_class_is_drawing_fold_gutter, "is_drawing_fold_gutter", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_draw_fold_gutter, "set_draw_fold_gutter", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "delimiter_strings"),
-			JS_NewCFunction(ctx, code_edit_class_get_string_delimiters, "get_string_delimiters", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_string_delimiters, "set_string_delimiters", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "delimiter_comments"),
-			JS_NewCFunction(ctx, code_edit_class_get_comment_delimiters, "get_comment_delimiters", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_comment_delimiters, "set_comment_delimiters", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "code_completion_enabled"),
-			JS_NewCFunction(ctx, code_edit_class_is_code_completion_enabled, "is_code_completion_enabled", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_code_completion_enabled, "set_code_completion_enabled", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "code_completion_prefixes"),
-			JS_NewCFunction(ctx, code_edit_class_get_code_completion_prefixes, "get_code_completion_prefixes", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_code_completion_prefixes, "set_code_completion_prefixes", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "indent_size"),
-			JS_NewCFunction(ctx, code_edit_class_get_indent_size, "get_indent_size", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_indent_size, "set_indent_size", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "indent_use_spaces"),
-			JS_NewCFunction(ctx, code_edit_class_is_indent_using_spaces, "is_indent_using_spaces", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_indent_using_spaces, "set_indent_using_spaces", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "indent_automatic"),
-			JS_NewCFunction(ctx, code_edit_class_is_auto_indent_enabled, "is_auto_indent_enabled", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_auto_indent_enabled, "set_auto_indent_enabled", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "indent_automatic_prefixes"),
-			JS_NewCFunction(ctx, code_edit_class_get_auto_indent_prefixes, "get_auto_indent_prefixes", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_auto_indent_prefixes, "set_auto_indent_prefixes", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "auto_brace_completion_enabled"),
-			JS_NewCFunction(ctx, code_edit_class_is_auto_brace_completion_enabled, "is_auto_brace_completion_enabled", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_auto_brace_completion_enabled, "set_auto_brace_completion_enabled", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "auto_brace_completion_highlight_matching"),
-			JS_NewCFunction(ctx, code_edit_class_is_highlight_matching_braces_enabled, "is_highlight_matching_braces_enabled", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_highlight_matching_braces_enabled, "set_highlight_matching_braces_enabled", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "auto_brace_completion_pairs"),
-			JS_NewCFunction(ctx, code_edit_class_get_auto_brace_completion_pairs, "get_auto_brace_completion_pairs", 0),
-			JS_NewCFunction(ctx, code_edit_class_set_auto_brace_completion_pairs, "set_auto_brace_completion_pairs", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "symbol_lookup_on_click"),
+        JS_NewCFunction(ctx, code_edit_class_is_symbol_lookup_on_click_enabled, "is_symbol_lookup_on_click_enabled", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_symbol_lookup_on_click_enabled, "set_symbol_lookup_on_click_enabled", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "line_folding"),
+        JS_NewCFunction(ctx, code_edit_class_is_line_folding_enabled, "is_line_folding_enabled", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_line_folding_enabled, "set_line_folding_enabled", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "line_length_guidelines"),
+        JS_NewCFunction(ctx, code_edit_class_get_line_length_guidelines, "get_line_length_guidelines", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_line_length_guidelines, "set_line_length_guidelines", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "gutters_draw_breakpoints_gutter"),
+        JS_NewCFunction(ctx, code_edit_class_is_drawing_breakpoints_gutter, "is_drawing_breakpoints_gutter", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_draw_breakpoints_gutter, "set_draw_breakpoints_gutter", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "gutters_draw_bookmarks"),
+        JS_NewCFunction(ctx, code_edit_class_is_drawing_bookmarks_gutter, "is_drawing_bookmarks_gutter", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_draw_bookmarks_gutter, "set_draw_bookmarks_gutter", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "gutters_draw_executing_lines"),
+        JS_NewCFunction(ctx, code_edit_class_is_drawing_executing_lines_gutter, "is_drawing_executing_lines_gutter", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_draw_executing_lines_gutter, "set_draw_executing_lines_gutter", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "gutters_draw_line_numbers"),
+        JS_NewCFunction(ctx, code_edit_class_is_draw_line_numbers_enabled, "is_draw_line_numbers_enabled", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_draw_line_numbers, "set_draw_line_numbers", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "gutters_zero_pad_line_numbers"),
+        JS_NewCFunction(ctx, code_edit_class_is_line_numbers_zero_padded, "is_line_numbers_zero_padded", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_line_numbers_zero_padded, "set_line_numbers_zero_padded", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "gutters_draw_fold_gutter"),
+        JS_NewCFunction(ctx, code_edit_class_is_drawing_fold_gutter, "is_drawing_fold_gutter", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_draw_fold_gutter, "set_draw_fold_gutter", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "delimiter_strings"),
+        JS_NewCFunction(ctx, code_edit_class_get_string_delimiters, "get_string_delimiters", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_string_delimiters, "set_string_delimiters", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "delimiter_comments"),
+        JS_NewCFunction(ctx, code_edit_class_get_comment_delimiters, "get_comment_delimiters", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_comment_delimiters, "set_comment_delimiters", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "code_completion_enabled"),
+        JS_NewCFunction(ctx, code_edit_class_is_code_completion_enabled, "is_code_completion_enabled", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_code_completion_enabled, "set_code_completion_enabled", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "code_completion_prefixes"),
+        JS_NewCFunction(ctx, code_edit_class_get_code_completion_prefixes, "get_code_completion_prefixes", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_code_completion_prefixes, "set_code_completion_prefixes", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "indent_size"),
+        JS_NewCFunction(ctx, code_edit_class_get_indent_size, "get_indent_size", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_indent_size, "set_indent_size", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "indent_use_spaces"),
+        JS_NewCFunction(ctx, code_edit_class_is_indent_using_spaces, "is_indent_using_spaces", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_indent_using_spaces, "set_indent_using_spaces", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "indent_automatic"),
+        JS_NewCFunction(ctx, code_edit_class_is_auto_indent_enabled, "is_auto_indent_enabled", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_auto_indent_enabled, "set_auto_indent_enabled", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "indent_automatic_prefixes"),
+        JS_NewCFunction(ctx, code_edit_class_get_auto_indent_prefixes, "get_auto_indent_prefixes", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_auto_indent_prefixes, "set_auto_indent_prefixes", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "auto_brace_completion_enabled"),
+        JS_NewCFunction(ctx, code_edit_class_is_auto_brace_completion_enabled, "is_auto_brace_completion_enabled", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_auto_brace_completion_enabled, "set_auto_brace_completion_enabled", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "auto_brace_completion_highlight_matching"),
+        JS_NewCFunction(ctx, code_edit_class_is_highlight_matching_braces_enabled, "is_highlight_matching_braces_enabled", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_highlight_matching_braces_enabled, "set_highlight_matching_braces_enabled", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "auto_brace_completion_pairs"),
+        JS_NewCFunction(ctx, code_edit_class_get_auto_brace_completion_pairs, "get_auto_brace_completion_pairs", 0),
+        JS_NewCFunction(ctx, code_edit_class_set_auto_brace_completion_pairs, "set_auto_brace_completion_pairs", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -806,6 +828,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_code_edit_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&CodeEdit::__class_id);
 	classes["CodeEdit"] = CodeEdit::__class_id;
 	class_id_list.insert(CodeEdit::__class_id);
@@ -828,7 +851,7 @@ static int js_code_edit_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_code_edit_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/text_edit';";
+	const char *code = "import * as _ from '@godot/classes/text_edit';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -840,7 +863,7 @@ JSModuleDef *_js_init_code_edit_module(JSContext *ctx, const char *module_name) 
 }
 
 JSModuleDef *js_init_code_edit_module(JSContext *ctx) {
-	return _js_init_code_edit_module(ctx, "godot/classes/code_edit");
+	return _js_init_code_edit_module(ctx, "@godot/classes/code_edit");
 }
 
 void register_code_edit() {

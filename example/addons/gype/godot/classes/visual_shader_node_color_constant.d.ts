@@ -7,7 +7,7 @@ export declare class VisualShaderNodeColorConstant extends VisualShaderNodeConst
   public get constant(): Color {
     get_constant();
   }
-  public set constant(value: Color): void {
+  public set constant(value): void {
     set_constant(value);
   }
 }

@@ -1,23 +1,23 @@
 
+import { RenderingDevice } from "@godot/classes/rendering_device";
+import { Image } from "@godot/classes/image";
 import { Image } from "@godot/classes/image";
 import { Object } from "@godot/classes/object";
-import { Image } from "@godot/classes/image";
-import { RenderingDevice } from "@godot/classes/rendering_device";
 
 export declare class RenderingServer extends Object{
   public texture_2d_create(_image: Image): RID;
-  public texture_2d_layered_create(_layers: typedarray::Image, _layered_type: number): RID;
-  public texture_3d_create(_format: number, _width: number, _height: number, _depth: number, _mipmaps: boolean, _data: typedarray::Image): RID;
+  public texture_2d_layered_create(_layers: GDArray, _layered_type: number): RID;
+  public texture_3d_create(_format: number, _width: number, _height: number, _depth: number, _mipmaps: boolean, _data: GDArray): RID;
   public texture_proxy_create(_base: RID): RID;
   public texture_2d_update(_texture: RID, _image: Image, _layer: number): void;
-  public texture_3d_update(_texture: RID, _data: typedarray::Image): void;
+  public texture_3d_update(_texture: RID, _data: GDArray): void;
   public texture_proxy_update(_texture: RID, _proxy_to: RID): void;
   public texture_2d_placeholder_create(): RID;
   public texture_2d_layered_placeholder_create(_layered_type: number): RID;
   public texture_3d_placeholder_create(): RID;
   public texture_2d_get(_texture: RID): Image;
   public texture_2d_layer_get(_texture: RID, _layer: number): Image;
-  public texture_3d_get(_texture: RID): Array;
+  public texture_3d_get(_texture: RID): GDArray;
   public texture_replace(_texture: RID, _by_texture: RID): void;
   public texture_set_size_override(_texture: RID, _width: number, _height: number): void;
   public texture_set_path(_texture: RID, _path: String): void;
@@ -31,17 +31,17 @@ export declare class RenderingServer extends Object{
   public shader_set_code(_shader: RID, _code: String): void;
   public shader_set_path_hint(_shader: RID, _path: String): void;
   public shader_get_code(_shader: RID): String;
-  public get_shader_parameter_list(_shader: RID): Array;
-  public shader_get_parameter_default(_shader: RID, _name: StringName): Variant;
+  public get_shader_parameter_list(_shader: RID): GDArray;
+  public shader_get_parameter_default(_shader: RID, _name: StringName): any;
   public shader_set_default_texture_parameter(_shader: RID, _name: StringName, _texture: RID, _index: number): void;
   public shader_get_default_texture_parameter(_shader: RID, _name: StringName, _index: number): RID;
   public material_create(): RID;
   public material_set_shader(_shader_material: RID, _shader: RID): void;
-  public material_set_param(_material: RID, _parameter: StringName, _value: Variant): void;
-  public material_get_param(_material: RID, _parameter: StringName): Variant;
+  public material_set_param(_material: RID, _parameter: StringName, _value: any): void;
+  public material_get_param(_material: RID, _parameter: StringName): any;
   public material_set_render_priority(_material: RID, _priority: number): void;
   public material_set_next_pass(_material: RID, _next_material: RID): void;
-  public mesh_create_from_surfaces(_surfaces: typedarray::Dictionary, _blend_shape_count: number): RID;
+  public mesh_create_from_surfaces(_surfaces: GDArray, _blend_shape_count: number): RID;
   public mesh_create(): RID;
   public mesh_surface_get_format_offset(_format: number, _vertex_count: number, _array_index: number): number;
   public mesh_surface_get_format_vertex_stride(_format: number, _vertex_count: number): number;
@@ -57,7 +57,7 @@ export declare class RenderingServer extends Object{
   public mesh_surface_get_material(_mesh: RID, _surface: number): RID;
   public mesh_get_surface(_mesh: RID, _surface: number): Dictionary;
   public mesh_surface_get_arrays(_mesh: RID, _surface: number): GDArray;
-  public mesh_surface_get_blend_shape_arrays(_mesh: RID, _surface: number): Array;
+  public mesh_surface_get_blend_shape_arrays(_mesh: RID, _surface: number): GDArray;
   public mesh_get_surface_count(_mesh: RID): number;
   public mesh_set_custom_aabb(_mesh: RID, _aabb: AABB): void;
   public mesh_get_custom_aabb(_mesh: RID): AABB;
@@ -194,7 +194,7 @@ export declare class RenderingServer extends Object{
   public particles_set_collision_base_size(_particles: RID, _size: number): void;
   public particles_set_transform_align(_particles: RID, _align: number): void;
   public particles_set_trails(_particles: RID, _enable: boolean, _length_sec: number): void;
-  public particles_set_trail_bind_poses(_particles: RID, _bind_poses: typedarray::Transform3D): void;
+  public particles_set_trail_bind_poses(_particles: RID, _bind_poses: GDArray): void;
   public particles_is_inactive(_particles: RID): boolean;
   public particles_request_process(_particles: RID): void;
   public particles_restart(_particles: RID): void;
@@ -297,7 +297,7 @@ export declare class RenderingServer extends Object{
   public compositor_effect_set_callback(_effect: RID, _callback_type: number, _callback: Callable): void;
   public compositor_effect_set_flag(_effect: RID, _flag: number, _set: boolean): void;
   public compositor_create(): RID;
-  public compositor_set_compositor_effects(_compositor: RID, _effects: typedarray::RID): void;
+  public compositor_set_compositor_effects(_compositor: RID, _effects: GDArray): void;
   public environment_create(): RID;
   public environment_set_background(_env: RID, _bg: number): void;
   public environment_set_sky(_env: RID, _sky: RID): void;
@@ -363,14 +363,14 @@ export declare class RenderingServer extends Object{
   public instance_geometry_set_visibility_range(_instance: RID, _min: number, _max: number, _min_margin: number, _max_margin: number, _fade_mode: number): void;
   public instance_geometry_set_lightmap(_instance: RID, _lightmap: RID, _lightmap_uv_scale: Rect2, _lightmap_slice: number): void;
   public instance_geometry_set_lod_bias(_instance: RID, _lod_bias: number): void;
-  public instance_geometry_set_shader_parameter(_instance: RID, _parameter: StringName, _value: Variant): void;
-  public instance_geometry_get_shader_parameter(_instance: RID, _parameter: StringName): Variant;
-  public instance_geometry_get_shader_parameter_default_value(_instance: RID, _parameter: StringName): Variant;
-  public instance_geometry_get_shader_parameter_list(_instance: RID): Array;
+  public instance_geometry_set_shader_parameter(_instance: RID, _parameter: StringName, _value: any): void;
+  public instance_geometry_get_shader_parameter(_instance: RID, _parameter: StringName): any;
+  public instance_geometry_get_shader_parameter_default_value(_instance: RID, _parameter: StringName): any;
+  public instance_geometry_get_shader_parameter_list(_instance: RID): GDArray;
   public instances_cull_aabb(_aabb: AABB, _scenario: RID): PackedInt64Array;
   public instances_cull_ray(_from: Vector3, _to: Vector3, _scenario: RID): PackedInt64Array;
-  public instances_cull_convex(_convex: typedarray::Plane, _scenario: RID): PackedInt64Array;
-  public bake_render_uv2(_base: RID, _material_overrides: typedarray::RID, _image_size: Vector2i): Array;
+  public instances_cull_convex(_convex: GDArray, _scenario: RID): PackedInt64Array;
+  public bake_render_uv2(_base: RID, _material_overrides: GDArray, _image_size: Vector2i): GDArray;
   public canvas_create(): RID;
   public canvas_set_item_mirroring(_canvas: RID, _item: RID, _mirroring: Vector2): void;
   public canvas_set_item_repeat(_item: RID, _repeat_size: Vector2, _repeat_times: number): void;
@@ -465,12 +465,12 @@ export declare class RenderingServer extends Object{
   public canvas_occluder_polygon_set_shape(_occluder_polygon: RID, _shape: PackedVector2Array, _closed: boolean): void;
   public canvas_occluder_polygon_set_cull_mode(_occluder_polygon: RID, _mode: number): void;
   public canvas_set_shadow_texture_size(_size: number): void;
-  public global_shader_parameter_add(_name: StringName, _type: number, _default_value: Variant): void;
+  public global_shader_parameter_add(_name: StringName, _type: number, _default_value: any): void;
   public global_shader_parameter_remove(_name: StringName): void;
-  public global_shader_parameter_get_list(): Array;
-  public global_shader_parameter_set(_name: StringName, _value: Variant): void;
-  public global_shader_parameter_set_override(_name: StringName, _value: Variant): void;
-  public global_shader_parameter_get(_name: StringName): Variant;
+  public global_shader_parameter_get_list(): GDArray;
+  public global_shader_parameter_set(_name: StringName, _value: any): void;
+  public global_shader_parameter_set_override(_name: StringName, _value: any): void;
+  public global_shader_parameter_get(_name: StringName): any;
   public global_shader_parameter_get_type(_name: StringName): number;
   public free_rid(_rid: RID): void;
   public request_frame_drawn_callback(_callable: Callable): void;
@@ -502,7 +502,7 @@ export declare class RenderingServer extends Object{
   public get render_loop_enabled(): boolean {
     is_render_loop_enabled();
   }
-  public set render_loop_enabled(value: boolean): void {
+  public set render_loop_enabled(value): void {
     set_render_loop_enabled(value);
   }
   static TextureLayeredType = {

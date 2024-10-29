@@ -7,19 +7,19 @@ export declare class OmniLight3D extends Light3D{
   public get omni_range(): number {
     get_param();
   }
-  public set omni_range(value: number): void {
+  public set omni_range(value): void {
     set_param(value);
   }
   public get omni_attenuation(): number {
     get_param();
   }
-  public set omni_attenuation(value: number): void {
+  public set omni_attenuation(value): void {
     set_param(value);
   }
   public get omni_shadow_mode(): number {
     get_shadow_mode();
   }
-  public set omni_shadow_mode(value: number): void {
+  public set omni_shadow_mode(value): void {
     set_shadow_mode(value);
   }
   static ShadowMode = {

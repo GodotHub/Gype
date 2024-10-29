@@ -20,10 +20,10 @@ export declare class SpriteFrames extends Resource{
   public get_frame_duration(_anim: StringName, _idx: number): number;
   public clear(_anim: StringName): void;
   public clear_all(): void;
-  public get animations(): Array {
+  public get animations(): GDArray {
     _get_animations();
   }
-  public set animations(value: Array): void {
+  public set animations(value): void {
     _set_animations(value);
   }
 }

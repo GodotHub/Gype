@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/node2d.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/parallax2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void parallax2d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue parallax2d_class_constructor(JSContext *ctx, JSValueConst new_tar
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, parallax2d_class);
+	JS_SetOpaque(obj, parallax2d_class);	
 	return obj;
 }
 static JSValue parallax2d_class_set_scroll_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Parallax2D::set_scroll_scale, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_scroll_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_get_scroll_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue parallax2d_class_get_scroll_scale(JSContext *ctx, JSValueConst th
 };
 static JSValue parallax2d_class_set_repeat_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Parallax2D::set_repeat_size, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_repeat_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_get_repeat_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,7 +55,7 @@ static JSValue parallax2d_class_get_repeat_size(JSContext *ctx, JSValueConst thi
 };
 static JSValue parallax2d_class_set_repeat_times(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Parallax2D::set_repeat_times, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_repeat_times, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_get_repeat_times(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +64,7 @@ static JSValue parallax2d_class_get_repeat_times(JSContext *ctx, JSValueConst th
 };
 static JSValue parallax2d_class_set_autoscroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Parallax2D::set_autoscroll, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_autoscroll, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_get_autoscroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,7 +73,7 @@ static JSValue parallax2d_class_get_autoscroll(JSContext *ctx, JSValueConst this
 };
 static JSValue parallax2d_class_set_scroll_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Parallax2D::set_scroll_offset, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_scroll_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_get_scroll_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -80,7 +82,7 @@ static JSValue parallax2d_class_get_scroll_offset(JSContext *ctx, JSValueConst t
 };
 static JSValue parallax2d_class_set_screen_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Parallax2D::set_screen_offset, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_screen_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_get_screen_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -89,7 +91,7 @@ static JSValue parallax2d_class_get_screen_offset(JSContext *ctx, JSValueConst t
 };
 static JSValue parallax2d_class_set_limit_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Parallax2D::set_limit_begin, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_limit_begin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_get_limit_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -98,7 +100,7 @@ static JSValue parallax2d_class_get_limit_begin(JSContext *ctx, JSValueConst thi
 };
 static JSValue parallax2d_class_set_limit_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Parallax2D::set_limit_end, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_limit_end, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_get_limit_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -107,7 +109,7 @@ static JSValue parallax2d_class_get_limit_end(JSContext *ctx, JSValueConst this_
 };
 static JSValue parallax2d_class_set_follow_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Parallax2D::set_follow_viewport, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_follow_viewport, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_get_follow_viewport(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -116,7 +118,7 @@ static JSValue parallax2d_class_get_follow_viewport(JSContext *ctx, JSValueConst
 };
 static JSValue parallax2d_class_set_ignore_camera_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Parallax2D::set_ignore_camera_scroll, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Parallax2D::set_ignore_camera_scroll, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue parallax2d_class_is_ignore_camera_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -147,82 +149,93 @@ static const JSCFunctionListEntry parallax2d_class_proto_funcs[] = {
 };
 
 void define_parallax2d_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "scroll_scale"),
-			JS_NewCFunction(ctx, parallax2d_class_get_scroll_scale, "get_scroll_scale", 0),
-			JS_NewCFunction(ctx, parallax2d_class_set_scroll_scale, "set_scroll_scale", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "scroll_offset"),
-			JS_NewCFunction(ctx, parallax2d_class_get_scroll_offset, "get_scroll_offset", 0),
-			JS_NewCFunction(ctx, parallax2d_class_set_scroll_offset, "set_scroll_offset", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "repeat_size"),
-			JS_NewCFunction(ctx, parallax2d_class_get_repeat_size, "get_repeat_size", 0),
-			JS_NewCFunction(ctx, parallax2d_class_set_repeat_size, "set_repeat_size", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "autoscroll"),
-			JS_NewCFunction(ctx, parallax2d_class_get_autoscroll, "get_autoscroll", 0),
-			JS_NewCFunction(ctx, parallax2d_class_set_autoscroll, "set_autoscroll", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "repeat_times"),
-			JS_NewCFunction(ctx, parallax2d_class_get_repeat_times, "get_repeat_times", 0),
-			JS_NewCFunction(ctx, parallax2d_class_set_repeat_times, "set_repeat_times", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "limit_begin"),
-			JS_NewCFunction(ctx, parallax2d_class_get_limit_begin, "get_limit_begin", 0),
-			JS_NewCFunction(ctx, parallax2d_class_set_limit_begin, "set_limit_begin", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "limit_end"),
-			JS_NewCFunction(ctx, parallax2d_class_get_limit_end, "get_limit_end", 0),
-			JS_NewCFunction(ctx, parallax2d_class_set_limit_end, "set_limit_end", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "follow_viewport"),
-			JS_NewCFunction(ctx, parallax2d_class_get_follow_viewport, "get_follow_viewport", 0),
-			JS_NewCFunction(ctx, parallax2d_class_set_follow_viewport, "set_follow_viewport", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "ignore_camera_scroll"),
-			JS_NewCFunction(ctx, parallax2d_class_is_ignore_camera_scroll, "is_ignore_camera_scroll", 0),
-			JS_NewCFunction(ctx, parallax2d_class_set_ignore_camera_scroll, "set_ignore_camera_scroll", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "screen_offset"),
-			JS_NewCFunction(ctx, parallax2d_class_get_screen_offset, "get_screen_offset", 0),
-			JS_NewCFunction(ctx, parallax2d_class_set_screen_offset, "set_screen_offset", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "scroll_scale"),
+        JS_NewCFunction(ctx, parallax2d_class_get_scroll_scale, "get_scroll_scale", 0),
+        JS_NewCFunction(ctx, parallax2d_class_set_scroll_scale, "set_scroll_scale", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "scroll_offset"),
+        JS_NewCFunction(ctx, parallax2d_class_get_scroll_offset, "get_scroll_offset", 0),
+        JS_NewCFunction(ctx, parallax2d_class_set_scroll_offset, "set_scroll_offset", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "repeat_size"),
+        JS_NewCFunction(ctx, parallax2d_class_get_repeat_size, "get_repeat_size", 0),
+        JS_NewCFunction(ctx, parallax2d_class_set_repeat_size, "set_repeat_size", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "autoscroll"),
+        JS_NewCFunction(ctx, parallax2d_class_get_autoscroll, "get_autoscroll", 0),
+        JS_NewCFunction(ctx, parallax2d_class_set_autoscroll, "set_autoscroll", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "repeat_times"),
+        JS_NewCFunction(ctx, parallax2d_class_get_repeat_times, "get_repeat_times", 0),
+        JS_NewCFunction(ctx, parallax2d_class_set_repeat_times, "set_repeat_times", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "limit_begin"),
+        JS_NewCFunction(ctx, parallax2d_class_get_limit_begin, "get_limit_begin", 0),
+        JS_NewCFunction(ctx, parallax2d_class_set_limit_begin, "set_limit_begin", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "limit_end"),
+        JS_NewCFunction(ctx, parallax2d_class_get_limit_end, "get_limit_end", 0),
+        JS_NewCFunction(ctx, parallax2d_class_set_limit_end, "set_limit_end", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "follow_viewport"),
+        JS_NewCFunction(ctx, parallax2d_class_get_follow_viewport, "get_follow_viewport", 0),
+        JS_NewCFunction(ctx, parallax2d_class_set_follow_viewport, "set_follow_viewport", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "ignore_camera_scroll"),
+        JS_NewCFunction(ctx, parallax2d_class_is_ignore_camera_scroll, "is_ignore_camera_scroll", 0),
+        JS_NewCFunction(ctx, parallax2d_class_set_ignore_camera_scroll, "set_ignore_camera_scroll", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "screen_offset"),
+        JS_NewCFunction(ctx, parallax2d_class_get_screen_offset, "get_screen_offset", 0),
+        JS_NewCFunction(ctx, parallax2d_class_set_screen_offset, "set_screen_offset", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_parallax2d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Parallax2D::__class_id);
 	classes["Parallax2D"] = Parallax2D::__class_id;
 	class_id_list.insert(Parallax2D::__class_id);
@@ -245,7 +258,7 @@ static int js_parallax2d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_parallax2d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/node2d';";
+	const char *code = "import * as _ from '@godot/classes/node2d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -257,7 +270,7 @@ JSModuleDef *_js_init_parallax2d_module(JSContext *ctx, const char *module_name)
 }
 
 JSModuleDef *js_init_parallax2d_module(JSContext *ctx) {
-	return _js_init_parallax2d_module(ctx, "godot/classes/parallax2d");
+	return _js_init_parallax2d_module(ctx, "@godot/classes/parallax2d");
 }
 
 void register_parallax2d() {

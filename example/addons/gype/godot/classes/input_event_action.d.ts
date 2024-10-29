@@ -12,25 +12,25 @@ export declare class InputEventAction extends InputEvent{
   public get action(): StringName {
     get_action();
   }
-  public set action(value: StringName): void {
+  public set action(value): void {
     set_action(value);
   }
   public get pressed(): boolean {
     is_pressed();
   }
-  public set pressed(value: boolean): void {
+  public set pressed(value): void {
     set_pressed(value);
   }
   public get strength(): number {
     get_strength();
   }
-  public set strength(value: number): void {
+  public set strength(value): void {
     set_strength(value);
   }
   public get event_index(): number {
     get_event_index();
   }
-  public set event_index(value: number): void {
+  public set event_index(value): void {
     set_event_index(value);
   }
 }

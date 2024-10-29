@@ -7,8 +7,8 @@ export declare class GLTFSkin extends Resource{
   public set_skin_root(_skin_root: number): void;
   public get_joints_original(): PackedInt32Array;
   public set_joints_original(_joints_original: PackedInt32Array): void;
-  public get_inverse_binds(): Array;
-  public set_inverse_binds(_inverse_binds: typedarray::Transform3D): void;
+  public get_inverse_binds(): GDArray;
+  public set_inverse_binds(_inverse_binds: GDArray): void;
   public get_joints(): PackedInt32Array;
   public set_joints(_joints: PackedInt32Array): void;
   public get_non_joints(): PackedInt32Array;
@@ -26,61 +26,61 @@ export declare class GLTFSkin extends Resource{
   public get skin_root(): number {
     get_skin_root();
   }
-  public set skin_root(value: number): void {
+  public set skin_root(value): void {
     set_skin_root(value);
   }
   public get joints_original(): PackedInt32Array {
     get_joints_original();
   }
-  public set joints_original(value: PackedInt32Array): void {
+  public set joints_original(value): void {
     set_joints_original(value);
   }
-  public get inverse_binds(): Array {
+  public get inverse_binds(): GDArray {
     get_inverse_binds();
   }
-  public set inverse_binds(value: Array): void {
+  public set inverse_binds(value): void {
     set_inverse_binds(value);
   }
   public get joints(): PackedInt32Array {
     get_joints();
   }
-  public set joints(value: PackedInt32Array): void {
+  public set joints(value): void {
     set_joints(value);
   }
   public get non_joints(): PackedInt32Array {
     get_non_joints();
   }
-  public set non_joints(value: PackedInt32Array): void {
+  public set non_joints(value): void {
     set_non_joints(value);
   }
   public get roots(): PackedInt32Array {
     get_roots();
   }
-  public set roots(value: PackedInt32Array): void {
+  public set roots(value): void {
     set_roots(value);
   }
   public get skeleton(): number {
     get_skeleton();
   }
-  public set skeleton(value: number): void {
+  public set skeleton(value): void {
     set_skeleton(value);
   }
   public get joint_i_to_bone_i(): Dictionary {
     get_joint_i_to_bone_i();
   }
-  public set joint_i_to_bone_i(value: Dictionary): void {
+  public set joint_i_to_bone_i(value): void {
     set_joint_i_to_bone_i(value);
   }
   public get joint_i_to_name(): Dictionary {
     get_joint_i_to_name();
   }
-  public set joint_i_to_name(value: Dictionary): void {
+  public set joint_i_to_name(value): void {
     set_joint_i_to_name(value);
   }
   public get godot_skin(): Skin {
     get_godot_skin();
   }
-  public set godot_skin(value: Skin): void {
+  public set godot_skin(value): void {
     set_godot_skin(value);
   }
 }

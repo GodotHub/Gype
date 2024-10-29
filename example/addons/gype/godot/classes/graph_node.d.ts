@@ -1,6 +1,6 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { HBoxContainer } from "@godot/classes/h_box_container";
+import { Texture2D } from "@godot/classes/texture2d";
 import { GraphElement } from "@godot/classes/graph_element";
 
 export declare class GraphNode extends GraphElement{
@@ -44,13 +44,13 @@ export declare class GraphNode extends GraphElement{
   public get title(): String {
     get_title();
   }
-  public set title(value: String): void {
+  public set title(value): void {
     set_title(value);
   }
   public get ignore_invalid_connection_type(): boolean {
     is_ignoring_valid_connection_type();
   }
-  public set ignore_invalid_connection_type(value: boolean): void {
+  public set ignore_invalid_connection_type(value): void {
     set_ignore_invalid_connection_type(value);
   }
 }

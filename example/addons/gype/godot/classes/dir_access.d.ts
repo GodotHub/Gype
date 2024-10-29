@@ -42,13 +42,13 @@ export declare class DirAccess extends RefCounted{
   public get include_navigational(): boolean {
     get_include_navigational();
   }
-  public set include_navigational(value: boolean): void {
+  public set include_navigational(value): void {
     set_include_navigational(value);
   }
   public get include_hidden(): boolean {
     get_include_hidden();
   }
-  public set include_hidden(value: boolean): void {
+  public set include_hidden(value): void {
     set_include_hidden(value);
   }
 }

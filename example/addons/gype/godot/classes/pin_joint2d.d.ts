@@ -17,37 +17,37 @@ export declare class PinJoint2D extends Joint2D{
   public get softness(): number {
     get_softness();
   }
-  public set softness(value: number): void {
+  public set softness(value): void {
     set_softness(value);
   }
   public get angular_limit_enabled(): boolean {
     is_angular_limit_enabled();
   }
-  public set angular_limit_enabled(value: boolean): void {
+  public set angular_limit_enabled(value): void {
     set_angular_limit_enabled(value);
   }
   public get angular_limit_lower(): number {
     get_angular_limit_lower();
   }
-  public set angular_limit_lower(value: number): void {
+  public set angular_limit_lower(value): void {
     set_angular_limit_lower(value);
   }
   public get angular_limit_upper(): number {
     get_angular_limit_upper();
   }
-  public set angular_limit_upper(value: number): void {
+  public set angular_limit_upper(value): void {
     set_angular_limit_upper(value);
   }
   public get motor_enabled(): boolean {
     is_motor_enabled();
   }
-  public set motor_enabled(value: boolean): void {
+  public set motor_enabled(value): void {
     set_motor_enabled(value);
   }
   public get motor_target_velocity(): number {
     get_motor_target_velocity();
   }
-  public set motor_target_velocity(value: number): void {
+  public set motor_target_velocity(value): void {
     set_motor_target_velocity(value);
   }
 }

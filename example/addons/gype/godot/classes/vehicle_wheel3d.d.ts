@@ -37,85 +37,85 @@ export declare class VehicleWheel3D extends Node3D{
   public get engine_force(): number {
     get_engine_force();
   }
-  public set engine_force(value: number): void {
+  public set engine_force(value): void {
     set_engine_force(value);
   }
   public get brake(): number {
     get_brake();
   }
-  public set brake(value: number): void {
+  public set brake(value): void {
     set_brake(value);
   }
   public get steering(): number {
     get_steering();
   }
-  public set steering(value: number): void {
+  public set steering(value): void {
     set_steering(value);
   }
   public get use_as_traction(): boolean {
     is_used_as_traction();
   }
-  public set use_as_traction(value: boolean): void {
+  public set use_as_traction(value): void {
     set_use_as_traction(value);
   }
   public get use_as_steering(): boolean {
     is_used_as_steering();
   }
-  public set use_as_steering(value: boolean): void {
+  public set use_as_steering(value): void {
     set_use_as_steering(value);
   }
   public get wheel_roll_influence(): number {
     get_roll_influence();
   }
-  public set wheel_roll_influence(value: number): void {
+  public set wheel_roll_influence(value): void {
     set_roll_influence(value);
   }
   public get wheel_radius(): number {
     get_radius();
   }
-  public set wheel_radius(value: number): void {
+  public set wheel_radius(value): void {
     set_radius(value);
   }
   public get wheel_rest_length(): number {
     get_suspension_rest_length();
   }
-  public set wheel_rest_length(value: number): void {
+  public set wheel_rest_length(value): void {
     set_suspension_rest_length(value);
   }
   public get wheel_friction_slip(): number {
     get_friction_slip();
   }
-  public set wheel_friction_slip(value: number): void {
+  public set wheel_friction_slip(value): void {
     set_friction_slip(value);
   }
   public get suspension_travel(): number {
     get_suspension_travel();
   }
-  public set suspension_travel(value: number): void {
+  public set suspension_travel(value): void {
     set_suspension_travel(value);
   }
   public get suspension_stiffness(): number {
     get_suspension_stiffness();
   }
-  public set suspension_stiffness(value: number): void {
+  public set suspension_stiffness(value): void {
     set_suspension_stiffness(value);
   }
   public get suspension_max_force(): number {
     get_suspension_max_force();
   }
-  public set suspension_max_force(value: number): void {
+  public set suspension_max_force(value): void {
     set_suspension_max_force(value);
   }
   public get damping_compression(): number {
     get_damping_compression();
   }
-  public set damping_compression(value: number): void {
+  public set damping_compression(value): void {
     set_damping_compression(value);
   }
   public get damping_relaxation(): number {
     get_damping_relaxation();
   }
-  public set damping_relaxation(value: number): void {
+  public set damping_relaxation(value): void {
     set_damping_relaxation(value);
   }
 }

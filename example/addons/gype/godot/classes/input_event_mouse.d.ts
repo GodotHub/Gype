@@ -11,19 +11,19 @@ export declare class InputEventMouse extends InputEventWithModifiers{
   public get button_mask(): number {
     get_button_mask();
   }
-  public set button_mask(value: number): void {
+  public set button_mask(value): void {
     set_button_mask(value);
   }
   public get position(): Vector2 {
     get_position();
   }
-  public set position(value: Vector2): void {
+  public set position(value): void {
     set_position(value);
   }
   public get global_position(): Vector2 {
     get_global_position();
   }
-  public set global_position(value: Vector2): void {
+  public set global_position(value): void {
     set_global_position(value);
   }
 }

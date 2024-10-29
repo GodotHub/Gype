@@ -14,19 +14,19 @@ export declare class AnimationTree extends AnimationMixer{
   public get tree_root(): AnimationRootNode {
     get_tree_root();
   }
-  public set tree_root(value: AnimationRootNode): void {
+  public set tree_root(value): void {
     set_tree_root(value);
   }
   public get advance_expression_base_node(): NodePath {
     get_advance_expression_base_node();
   }
-  public set advance_expression_base_node(value: NodePath): void {
+  public set advance_expression_base_node(value): void {
     set_advance_expression_base_node(value);
   }
   public get anim_player(): NodePath {
     get_animation_player();
   }
-  public set anim_player(value: NodePath): void {
+  public set anim_player(value): void {
     set_animation_player(value);
   }
   static AnimationProcessCallback = {

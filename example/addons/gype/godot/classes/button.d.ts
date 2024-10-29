@@ -30,73 +30,73 @@ export declare class Button extends BaseButton{
   public get text(): String {
     get_text();
   }
-  public set text(value: String): void {
+  public set text(value): void {
     set_text(value);
   }
   public get icon(): Texture2D {
     get_button_icon();
   }
-  public set icon(value: Texture2D): void {
+  public set icon(value): void {
     set_button_icon(value);
   }
   public get flat(): boolean {
     is_flat();
   }
-  public set flat(value: boolean): void {
+  public set flat(value): void {
     set_flat(value);
   }
   public get alignment(): number {
     get_text_alignment();
   }
-  public set alignment(value: number): void {
+  public set alignment(value): void {
     set_text_alignment(value);
   }
   public get text_overrun_behavior(): number {
     get_text_overrun_behavior();
   }
-  public set text_overrun_behavior(value: number): void {
+  public set text_overrun_behavior(value): void {
     set_text_overrun_behavior(value);
   }
   public get autowrap_mode(): number {
     get_autowrap_mode();
   }
-  public set autowrap_mode(value: number): void {
+  public set autowrap_mode(value): void {
     set_autowrap_mode(value);
   }
   public get clip_text(): boolean {
     get_clip_text();
   }
-  public set clip_text(value: boolean): void {
+  public set clip_text(value): void {
     set_clip_text(value);
   }
   public get icon_alignment(): number {
     get_icon_alignment();
   }
-  public set icon_alignment(value: number): void {
+  public set icon_alignment(value): void {
     set_icon_alignment(value);
   }
   public get vertical_icon_alignment(): number {
     get_vertical_icon_alignment();
   }
-  public set vertical_icon_alignment(value: number): void {
+  public set vertical_icon_alignment(value): void {
     set_vertical_icon_alignment(value);
   }
   public get expand_icon(): boolean {
     is_expand_icon();
   }
-  public set expand_icon(value: boolean): void {
+  public set expand_icon(value): void {
     set_expand_icon(value);
   }
   public get text_direction(): number {
     get_text_direction();
   }
-  public set text_direction(value: number): void {
+  public set text_direction(value): void {
     set_text_direction(value);
   }
   public get language(): String {
     get_language();
   }
-  public set language(value: String): void {
+  public set language(value): void {
     set_language(value);
   }
 }

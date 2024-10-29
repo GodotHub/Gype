@@ -7,7 +7,7 @@ export declare class VisualShaderNodeParticleMultiplyByAxisAngle extends VisualS
   public get degrees_mode(): boolean {
     is_degrees_mode();
   }
-  public set degrees_mode(value: boolean): void {
+  public set degrees_mode(value): void {
     set_degrees_mode(value);
   }
 }

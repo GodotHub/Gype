@@ -1,20 +1,22 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/mesh_library.hpp>
 #include <godot_cpp/classes/navigation_mesh.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/mesh_library.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void mesh_library_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -33,52 +35,52 @@ static JSValue mesh_library_class_constructor(JSContext *ctx, JSValueConst new_t
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, mesh_library_class);
+	JS_SetOpaque(obj, mesh_library_class);	
 	return obj;
 }
 static JSValue mesh_library_class_create_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MeshLibrary::create_item, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MeshLibrary::create_item, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_library_class_set_item_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MeshLibrary::set_item_name, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MeshLibrary::set_item_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_library_class_set_item_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MeshLibrary::set_item_mesh, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MeshLibrary::set_item_mesh, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_library_class_set_item_mesh_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MeshLibrary::set_item_mesh_transform, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MeshLibrary::set_item_mesh_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_library_class_set_item_navigation_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MeshLibrary::set_item_navigation_mesh, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MeshLibrary::set_item_navigation_mesh, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_library_class_set_item_navigation_mesh_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MeshLibrary::set_item_navigation_mesh_transform, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MeshLibrary::set_item_navigation_mesh_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_library_class_set_item_navigation_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MeshLibrary::set_item_navigation_layers, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MeshLibrary::set_item_navigation_layers, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_library_class_set_item_shapes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MeshLibrary::set_item_shapes, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MeshLibrary::set_item_shapes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_library_class_set_item_preview(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MeshLibrary::set_item_preview, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MeshLibrary::set_item_preview, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_library_class_get_item_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -115,7 +117,7 @@ static JSValue mesh_library_class_get_item_preview(JSContext *ctx, JSValueConst 
 };
 static JSValue mesh_library_class_remove_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MeshLibrary::remove_item, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MeshLibrary::remove_item, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_library_class_find_item_by_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -124,7 +126,7 @@ static JSValue mesh_library_class_find_item_by_name(JSContext *ctx, JSValueConst
 };
 static JSValue mesh_library_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MeshLibrary::clear, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MeshLibrary::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mesh_library_class_get_item_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -167,6 +169,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_mesh_library_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&MeshLibrary::__class_id);
 	classes["MeshLibrary"] = MeshLibrary::__class_id;
 	class_id_list.insert(MeshLibrary::__class_id);
@@ -189,7 +192,7 @@ static int js_mesh_library_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_mesh_library_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/resource';";
+	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -201,7 +204,7 @@ JSModuleDef *_js_init_mesh_library_module(JSContext *ctx, const char *module_nam
 }
 
 JSModuleDef *js_init_mesh_library_module(JSContext *ctx) {
-	return _js_init_mesh_library_module(ctx, "godot/classes/mesh_library");
+	return _js_init_mesh_library_module(ctx, "@godot/classes/mesh_library");
 }
 
 void register_mesh_library() {

@@ -1,17 +1,17 @@
 
-import { CallbackTweener } from "@godot/classes/callback_tweener";
-import { IntervalTweener } from "@godot/classes/interval_tweener";
-import { MethodTweener } from "@godot/classes/method_tweener";
-import { PropertyTweener } from "@godot/classes/property_tweener";
-import { Node } from "@godot/classes/node";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { PropertyTweener } from "@godot/classes/property_tweener";
+import { CallbackTweener } from "@godot/classes/callback_tweener";
+import { MethodTweener } from "@godot/classes/method_tweener";
+import { IntervalTweener } from "@godot/classes/interval_tweener";
 import { Object } from "@godot/classes/object";
+import { Node } from "@godot/classes/node";
 
 export declare class Tween extends RefCounted{
-  public tween_property(_object: Object, _property: NodePath, _final_val: Variant, _duration: number): PropertyTweener;
+  public tween_property(_object: Object, _property: NodePath, _final_val: any, _duration: number): PropertyTweener;
   public tween_interval(_time: number): IntervalTweener;
   public tween_callback(_callback: Callable): CallbackTweener;
-  public tween_method(_method: Callable, _from: Variant, _to: Variant, _duration: number): MethodTweener;
+  public tween_method(_method: Callable, _from: any, _to: any, _duration: number): MethodTweener;
   public custom_step(_delta: number): boolean;
   public stop(): void;
   public pause(): void;
@@ -31,7 +31,7 @@ export declare class Tween extends RefCounted{
   public set_ease(_ease: number): Tween;
   public parallel(): Tween;
   public chain(): Tween;
-  public interpolate_value(_initial_value: Variant, _delta_value: Variant, _elapsed_time: number, _duration: number, _trans_type: number, _ease_type: number): Variant;
+  public interpolate_value(_initial_value: any, _delta_value: any, _elapsed_time: number, _duration: number, _trans_type: number, _ease_type: number): any;
   static TweenProcessMode = {
     TWEEN_PROCESS_PHYSICS = 0,
     TWEEN_PROCESS_IDLE = 1,

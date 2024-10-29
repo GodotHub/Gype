@@ -1,6 +1,6 @@
 
-import { RefCounted } from "@godot/classes/ref_counted";
 import { Font } from "@godot/classes/font";
+import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class TextLine extends RefCounted{
   public clear(): void;
@@ -13,9 +13,9 @@ export declare class TextLine extends RefCounted{
   public set_preserve_control(_enabled: boolean): void;
   public get_preserve_control(): boolean;
   public set_bidi_override(_override: GDArray): void;
-  public add_string(_text: String, _font: Font, _font_size: number, _language: String, _meta: Variant): boolean;
-  public add_object(_key: Variant, _size: Vector2, _inline_align: number, _length: number, _baseline: number): boolean;
-  public resize_object(_key: Variant, _size: Vector2, _inline_align: number, _baseline: number): boolean;
+  public add_string(_text: String, _font: Font, _font_size: number, _language: String, _meta: any): boolean;
+  public add_object(_key: any, _size: Vector2, _inline_align: number, _length: number, _baseline: number): boolean;
+  public resize_object(_key: any, _size: Vector2, _inline_align: number, _baseline: number): boolean;
   public set_width(_width: number): void;
   public get_width(): number;
   public set_horizontal_alignment(_alignment: number): void;
@@ -28,7 +28,7 @@ export declare class TextLine extends RefCounted{
   public set_ellipsis_char(_char: String): void;
   public get_ellipsis_char(): String;
   public get_objects(): GDArray;
-  public get_object_rect(_key: Variant): Rect2;
+  public get_object_rect(_key: any): Rect2;
   public get_size(): Vector2;
   public get_rid(): RID;
   public get_line_ascent(): number;
@@ -42,55 +42,55 @@ export declare class TextLine extends RefCounted{
   public get direction(): number {
     get_direction();
   }
-  public set direction(value: number): void {
+  public set direction(value): void {
     set_direction(value);
   }
   public get orientation(): number {
     get_orientation();
   }
-  public set orientation(value: number): void {
+  public set orientation(value): void {
     set_orientation(value);
   }
   public get preserve_invalid(): boolean {
     get_preserve_invalid();
   }
-  public set preserve_invalid(value: boolean): void {
+  public set preserve_invalid(value): void {
     set_preserve_invalid(value);
   }
   public get preserve_control(): boolean {
     get_preserve_control();
   }
-  public set preserve_control(value: boolean): void {
+  public set preserve_control(value): void {
     set_preserve_control(value);
   }
   public get width(): number {
     get_width();
   }
-  public set width(value: number): void {
+  public set width(value): void {
     set_width(value);
   }
   public get alignment(): number {
     get_horizontal_alignment();
   }
-  public set alignment(value: number): void {
+  public set alignment(value): void {
     set_horizontal_alignment(value);
   }
   public get flags(): number {
     get_flags();
   }
-  public set flags(value: number): void {
+  public set flags(value): void {
     set_flags(value);
   }
   public get text_overrun_behavior(): number {
     get_text_overrun_behavior();
   }
-  public set text_overrun_behavior(value: number): void {
+  public set text_overrun_behavior(value): void {
     set_text_overrun_behavior(value);
   }
   public get ellipsis_char(): String {
     get_ellipsis_char();
   }
-  public set ellipsis_char(value: String): void {
+  public set ellipsis_char(value): void {
     set_ellipsis_char(value);
   }
 }

@@ -9,13 +9,13 @@ export declare class GLTFTexture extends Resource{
   public get src_image(): number {
     get_src_image();
   }
-  public set src_image(value: number): void {
+  public set src_image(value): void {
     set_src_image(value);
   }
   public get sampler(): number {
     get_sampler();
   }
-  public set sampler(value: number): void {
+  public set sampler(value): void {
     set_sampler(value);
   }
 }

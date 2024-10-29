@@ -216,6 +216,10 @@ def connect_args(args):
             return arg_name + ': ' + 'number'
         elif arg_type == 'Array':
             return arg_name + ': ' + 'GDArray'
+        elif arg_type.find('typedarray:') != -1:
+            return arg_name + ': ' + 'GDArray'
+        elif arg_type == 'Variant':
+            return arg_name + ': ' + 'any'
         else:
             return arg_name + ': ' + arg_type
 
@@ -223,9 +227,10 @@ def connect_args(args):
         return ', '.join(list(map(mapper, args)))
     return ''
 
-def set_return(return_value):
-    if return_value:
-        arg_type = return_value['type']
+def set_return(arg_type):
+    if arg_type and arg_type.find(',') != -1:
+        arg_type = arg_type.split(',')[0]
+    if arg_type:
         if is_number(arg_type):
             return ': ' 'number'
         elif is_bool(arg_type):
@@ -233,9 +238,11 @@ def set_return(return_value):
         elif is_enum(arg_type):
             return ': ' + 'number'
         elif arg_type.find('typedarray:') != -1:
-            return ': ' + 'Array'
+            return ': ' + 'GDArray'
         elif arg_type == 'Array':
             return ': ' + 'GDArray'
+        elif arg_type == 'Variant':
+            return ': ' + 'any'
         else:
             return ': ' + arg_type
     return ': void'

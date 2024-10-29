@@ -1,15 +1,15 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/navigation_mesh.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/navigation_mesh_generator.hpp>
+#include <godot_cpp/classes/navigation_mesh.hpp>
 #include <godot_cpp/classes/navigation_mesh_source_geometry_data3d.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -19,6 +19,7 @@ static JSValue navigation_mesh_generator_instance;
 static void js_navigation_mesh_generator_singleton();
 
 static void navigation_mesh_generator_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -42,23 +43,23 @@ static JSValue navigation_mesh_generator_class_constructor(JSContext *ctx, JSVal
 	return obj;
 }
 static JSValue navigation_mesh_generator_class_bake(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_navigation_mesh_generator_singleton();
-	call_builtin_method_no_ret(&NavigationMeshGenerator::bake, ctx, this_val, argc, argv);
+    js_navigation_mesh_generator_singleton();
+    call_builtin_method_no_ret(&NavigationMeshGenerator::bake, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_generator_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_navigation_mesh_generator_singleton();
-	call_builtin_method_no_ret(&NavigationMeshGenerator::clear, ctx, this_val, argc, argv);
+    js_navigation_mesh_generator_singleton();
+    call_builtin_method_no_ret(&NavigationMeshGenerator::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_generator_class_parse_source_geometry_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_navigation_mesh_generator_singleton();
-	call_builtin_method_no_ret(&NavigationMeshGenerator::parse_source_geometry_data, ctx, this_val, argc, argv);
+    js_navigation_mesh_generator_singleton();
+    call_builtin_method_no_ret(&NavigationMeshGenerator::parse_source_geometry_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_mesh_generator_class_bake_from_source_geometry_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_navigation_mesh_generator_singleton();
-	call_builtin_method_no_ret(&NavigationMeshGenerator::bake_from_source_geometry_data, ctx, this_val, argc, argv);
+    js_navigation_mesh_generator_singleton();
+    call_builtin_method_no_ret(&NavigationMeshGenerator::bake_from_source_geometry_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry navigation_mesh_generator_class_proto_funcs[] = {
@@ -88,6 +89,7 @@ static void js_navigation_mesh_generator_singleton() {
 		JS_SetPropertyStr(ctx, global, "NavigationMeshGenerator", navigation_mesh_generator_instance);
 	}
 }
+
 
 void register_navigation_mesh_generator() {
 	js_navigation_mesh_generator_class_init(ctx);

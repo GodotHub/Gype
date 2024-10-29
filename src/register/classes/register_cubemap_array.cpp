@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/cubemap_array.hpp>
-#include <godot_cpp/classes/image_texture_layered.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/image_texture_layered.hpp>
+#include <godot_cpp/classes/cubemap_array.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void cubemap_array_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,7 +33,7 @@ static JSValue cubemap_array_class_constructor(JSContext *ctx, JSValueConst new_
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, cubemap_array_class);
+	JS_SetOpaque(obj, cubemap_array_class);	
 	return obj;
 }
 static JSValue cubemap_array_class_create_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -49,6 +51,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_cubemap_array_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&CubemapArray::__class_id);
 	classes["CubemapArray"] = CubemapArray::__class_id;
 	class_id_list.insert(CubemapArray::__class_id);
@@ -71,7 +74,7 @@ static int js_cubemap_array_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_cubemap_array_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/image_texture_layered';";
+	const char *code = "import * as _ from '@godot/classes/image_texture_layered';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -83,7 +86,7 @@ JSModuleDef *_js_init_cubemap_array_module(JSContext *ctx, const char *module_na
 }
 
 JSModuleDef *js_init_cubemap_array_module(JSContext *ctx) {
-	return _js_init_cubemap_array_module(ctx, "godot/classes/cubemap_array");
+	return _js_init_cubemap_array_module(ctx, "@godot/classes/cubemap_array");
 }
 
 void register_cubemap_array() {

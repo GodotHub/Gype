@@ -1,7 +1,7 @@
 
 import { LineEdit } from "@godot/classes/line_edit";
-import { VBoxContainer } from "@godot/classes/v_box_container";
 import { Control } from "@godot/classes/control";
+import { VBoxContainer } from "@godot/classes/v_box_container";
 import { ConfirmationDialog } from "@godot/classes/confirmation_dialog";
 
 export declare class EditorFileDialog extends ConfirmationDialog{
@@ -43,61 +43,61 @@ export declare class EditorFileDialog extends ConfirmationDialog{
   public get access(): number {
     get_access();
   }
-  public set access(value: number): void {
+  public set access(value): void {
     set_access(value);
   }
   public get display_mode(): number {
     get_display_mode();
   }
-  public set display_mode(value: number): void {
+  public set display_mode(value): void {
     set_display_mode(value);
   }
   public get file_mode(): number {
     get_file_mode();
   }
-  public set file_mode(value: number): void {
+  public set file_mode(value): void {
     set_file_mode(value);
   }
   public get current_dir(): String {
     get_current_dir();
   }
-  public set current_dir(value: String): void {
+  public set current_dir(value): void {
     set_current_dir(value);
   }
   public get current_file(): String {
     get_current_file();
   }
-  public set current_file(value: String): void {
+  public set current_file(value): void {
     set_current_file(value);
   }
   public get current_path(): String {
     get_current_path();
   }
-  public set current_path(value: String): void {
+  public set current_path(value): void {
     set_current_path(value);
   }
   public get filters(): PackedStringArray {
     get_filters();
   }
-  public set filters(value: PackedStringArray): void {
+  public set filters(value): void {
     set_filters(value);
   }
   public get option_count(): number {
     get_option_count();
   }
-  public set option_count(value: number): void {
+  public set option_count(value): void {
     set_option_count(value);
   }
   public get show_hidden_files(): boolean {
     is_showing_hidden_files();
   }
-  public set show_hidden_files(value: boolean): void {
+  public set show_hidden_files(value): void {
     set_show_hidden_files(value);
   }
   public get disable_overwrite_warning(): boolean {
     is_overwrite_warning_disabled();
   }
-  public set disable_overwrite_warning(value: boolean): void {
+  public set disable_overwrite_warning(value): void {
     set_disable_overwrite_warning(value);
   }
   static FileMode = {

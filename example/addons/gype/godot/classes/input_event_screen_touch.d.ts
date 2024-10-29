@@ -13,31 +13,31 @@ export declare class InputEventScreenTouch extends InputEventFromWindow{
   public get index(): number {
     get_index();
   }
-  public set index(value: number): void {
+  public set index(value): void {
     set_index(value);
   }
   public get position(): Vector2 {
     get_position();
   }
-  public set position(value: Vector2): void {
+  public set position(value): void {
     set_position(value);
   }
   public get canceled(): boolean {
     is_canceled();
   }
-  public set canceled(value: boolean): void {
+  public set canceled(value): void {
     set_canceled(value);
   }
   public get pressed(): boolean {
     is_pressed();
   }
-  public set pressed(value: boolean): void {
+  public set pressed(value): void {
     set_pressed(value);
   }
   public get double_tap(): boolean {
     is_double_tap();
   }
-  public set double_tap(value: boolean): void {
+  public set double_tap(value): void {
     set_double_tap(value);
   }
 }

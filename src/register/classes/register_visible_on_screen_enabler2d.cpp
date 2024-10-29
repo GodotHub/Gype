@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/visible_on_screen_enabler2d.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/visible_on_screen_notifier2d.hpp>
+#include <godot_cpp/classes/visible_on_screen_enabler2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void visible_on_screen_enabler2d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue visible_on_screen_enabler2d_class_constructor(JSContext *ctx, JSV
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visible_on_screen_enabler2d_class);
+	JS_SetOpaque(obj, visible_on_screen_enabler2d_class);	
 	return obj;
 }
 static JSValue visible_on_screen_enabler2d_class_set_enable_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisibleOnScreenEnabler2D::set_enable_mode, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisibleOnScreenEnabler2D::set_enable_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visible_on_screen_enabler2d_class_get_enable_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue visible_on_screen_enabler2d_class_get_enable_mode(JSContext *ctx,
 };
 static JSValue visible_on_screen_enabler2d_class_set_enable_node_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisibleOnScreenEnabler2D::set_enable_node_path, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisibleOnScreenEnabler2D::set_enable_node_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visible_on_screen_enabler2d_class_get_enable_node_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -59,20 +61,22 @@ static const JSCFunctionListEntry visible_on_screen_enabler2d_class_proto_funcs[
 };
 
 void define_visible_on_screen_enabler2d_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "enable_mode"),
-			JS_NewCFunction(ctx, visible_on_screen_enabler2d_class_get_enable_mode, "get_enable_mode", 0),
-			JS_NewCFunction(ctx, visible_on_screen_enabler2d_class_set_enable_mode, "set_enable_mode", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "enable_node_path"),
-			JS_NewCFunction(ctx, visible_on_screen_enabler2d_class_get_enable_node_path, "get_enable_node_path", 0),
-			JS_NewCFunction(ctx, visible_on_screen_enabler2d_class_set_enable_node_path, "set_enable_node_path", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "enable_mode"),
+        JS_NewCFunction(ctx, visible_on_screen_enabler2d_class_get_enable_mode, "get_enable_mode", 0),
+        JS_NewCFunction(ctx, visible_on_screen_enabler2d_class_set_enable_mode, "set_enable_mode", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "enable_node_path"),
+        JS_NewCFunction(ctx, visible_on_screen_enabler2d_class_get_enable_node_path, "get_enable_node_path", 0),
+        JS_NewCFunction(ctx, visible_on_screen_enabler2d_class_set_enable_node_path, "set_enable_node_path", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -84,6 +88,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visible_on_screen_enabler2d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&VisibleOnScreenEnabler2D::__class_id);
 	classes["VisibleOnScreenEnabler2D"] = VisibleOnScreenEnabler2D::__class_id;
 	class_id_list.insert(VisibleOnScreenEnabler2D::__class_id);
@@ -106,7 +111,7 @@ static int js_visible_on_screen_enabler2d_class_init(JSContext *ctx, JSModuleDef
 }
 
 JSModuleDef *_js_init_visible_on_screen_enabler2d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/visible_on_screen_notifier2d';";
+	const char *code = "import * as _ from '@godot/classes/visible_on_screen_notifier2d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -118,7 +123,7 @@ JSModuleDef *_js_init_visible_on_screen_enabler2d_module(JSContext *ctx, const c
 }
 
 JSModuleDef *js_init_visible_on_screen_enabler2d_module(JSContext *ctx) {
-	return _js_init_visible_on_screen_enabler2d_module(ctx, "godot/classes/visible_on_screen_enabler2d");
+	return _js_init_visible_on_screen_enabler2d_module(ctx, "@godot/classes/visible_on_screen_enabler2d");
 }
 
 void register_visible_on_screen_enabler2d() {

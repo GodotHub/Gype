@@ -9,13 +9,13 @@ export declare class VisualShaderNodeParameter extends VisualShaderNode{
   public get parameter_name(): StringName {
     get_parameter_name();
   }
-  public set parameter_name(value: StringName): void {
+  public set parameter_name(value): void {
     set_parameter_name(value);
   }
   public get qualifier(): number {
     get_qualifier();
   }
-  public set qualifier(value: number): void {
+  public set qualifier(value): void {
     set_qualifier(value);
   }
   static Qualifier = {

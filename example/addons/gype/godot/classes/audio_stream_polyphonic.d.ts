@@ -7,7 +7,7 @@ export declare class AudioStreamPolyphonic extends AudioStream{
   public get polyphony(): number {
     get_polyphony();
   }
-  public set polyphony(value: number): void {
+  public set polyphony(value): void {
     set_polyphony(value);
   }
 }

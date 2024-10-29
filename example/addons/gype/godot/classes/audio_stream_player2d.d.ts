@@ -1,7 +1,7 @@
 
-import { Node2D } from "@godot/classes/node2d";
 import { AudioStream } from "@godot/classes/audio_stream";
 import { AudioStreamPlayback } from "@godot/classes/audio_stream_playback";
+import { Node2D } from "@godot/classes/node2d";
 
 export declare class AudioStreamPlayer2D extends Node2D{
   public set_stream(_stream: AudioStream): void;
@@ -38,79 +38,79 @@ export declare class AudioStreamPlayer2D extends Node2D{
   public get stream(): AudioStream {
     get_stream();
   }
-  public set stream(value: AudioStream): void {
+  public set stream(value): void {
     set_stream(value);
   }
   public get volume_db(): number {
     get_volume_db();
   }
-  public set volume_db(value: number): void {
+  public set volume_db(value): void {
     set_volume_db(value);
   }
   public get pitch_scale(): number {
     get_pitch_scale();
   }
-  public set pitch_scale(value: number): void {
+  public set pitch_scale(value): void {
     set_pitch_scale(value);
   }
   public get playing(): boolean {
     is_playing();
   }
-  public set playing(value: boolean): void {
+  public set playing(value): void {
     _set_playing(value);
   }
   public get autoplay(): boolean {
     is_autoplay_enabled();
   }
-  public set autoplay(value: boolean): void {
+  public set autoplay(value): void {
     set_autoplay(value);
   }
   public get stream_paused(): boolean {
     get_stream_paused();
   }
-  public set stream_paused(value: boolean): void {
+  public set stream_paused(value): void {
     set_stream_paused(value);
   }
   public get max_distance(): number {
     get_max_distance();
   }
-  public set max_distance(value: number): void {
+  public set max_distance(value): void {
     set_max_distance(value);
   }
   public get attenuation(): number {
     get_attenuation();
   }
-  public set attenuation(value: number): void {
+  public set attenuation(value): void {
     set_attenuation(value);
   }
   public get max_polyphony(): number {
     get_max_polyphony();
   }
-  public set max_polyphony(value: number): void {
+  public set max_polyphony(value): void {
     set_max_polyphony(value);
   }
   public get panning_strength(): number {
     get_panning_strength();
   }
-  public set panning_strength(value: number): void {
+  public set panning_strength(value): void {
     set_panning_strength(value);
   }
   public get bus(): StringName {
     get_bus();
   }
-  public set bus(value: StringName): void {
+  public set bus(value): void {
     set_bus(value);
   }
   public get area_mask(): number {
     get_area_mask();
   }
-  public set area_mask(value: number): void {
+  public set area_mask(value): void {
     set_area_mask(value);
   }
   public get playback_type(): number {
     get_playback_type();
   }
-  public set playback_type(value: number): void {
+  public set playback_type(value): void {
     set_playback_type(value);
   }
 }

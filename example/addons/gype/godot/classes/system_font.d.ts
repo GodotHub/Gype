@@ -33,91 +33,91 @@ export declare class SystemFont extends Font{
   public get font_names(): PackedStringArray {
     get_font_names();
   }
-  public set font_names(value: PackedStringArray): void {
+  public set font_names(value): void {
     set_font_names(value);
   }
   public get font_italic(): boolean {
     get_font_italic();
   }
-  public set font_italic(value: boolean): void {
+  public set font_italic(value): void {
     set_font_italic(value);
   }
   public get font_weight(): number {
     get_font_weight();
   }
-  public set font_weight(value: number): void {
+  public set font_weight(value): void {
     set_font_weight(value);
   }
   public get font_stretch(): number {
     get_font_stretch();
   }
-  public set font_stretch(value: number): void {
+  public set font_stretch(value): void {
     set_font_stretch(value);
   }
   public get antialiasing(): number {
     get_antialiasing();
   }
-  public set antialiasing(value: number): void {
+  public set antialiasing(value): void {
     set_antialiasing(value);
   }
   public get generate_mipmaps(): boolean {
     get_generate_mipmaps();
   }
-  public set generate_mipmaps(value: boolean): void {
+  public set generate_mipmaps(value): void {
     set_generate_mipmaps(value);
   }
   public get disable_embedded_bitmaps(): boolean {
     get_disable_embedded_bitmaps();
   }
-  public set disable_embedded_bitmaps(value: boolean): void {
+  public set disable_embedded_bitmaps(value): void {
     set_disable_embedded_bitmaps(value);
   }
   public get allow_system_fallback(): boolean {
     is_allow_system_fallback();
   }
-  public set allow_system_fallback(value: boolean): void {
+  public set allow_system_fallback(value): void {
     set_allow_system_fallback(value);
   }
   public get force_autohinter(): boolean {
     is_force_autohinter();
   }
-  public set force_autohinter(value: boolean): void {
+  public set force_autohinter(value): void {
     set_force_autohinter(value);
   }
   public get hinting(): number {
     get_hinting();
   }
-  public set hinting(value: number): void {
+  public set hinting(value): void {
     set_hinting(value);
   }
   public get subpixel_positioning(): number {
     get_subpixel_positioning();
   }
-  public set subpixel_positioning(value: number): void {
+  public set subpixel_positioning(value): void {
     set_subpixel_positioning(value);
   }
   public get multichannel_signed_distance_field(): boolean {
     is_multichannel_signed_distance_field();
   }
-  public set multichannel_signed_distance_field(value: boolean): void {
+  public set multichannel_signed_distance_field(value): void {
     set_multichannel_signed_distance_field(value);
   }
   public get msdf_pixel_range(): number {
     get_msdf_pixel_range();
   }
-  public set msdf_pixel_range(value: number): void {
+  public set msdf_pixel_range(value): void {
     set_msdf_pixel_range(value);
   }
   public get msdf_size(): number {
     get_msdf_size();
   }
-  public set msdf_size(value: number): void {
+  public set msdf_size(value): void {
     set_msdf_size(value);
   }
   public get oversampling(): number {
     get_oversampling();
   }
-  public set oversampling(value: number): void {
+  public set oversampling(value): void {
     set_oversampling(value);
   }
 }

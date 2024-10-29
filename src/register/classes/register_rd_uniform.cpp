@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/rd_uniform.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void rd_uniform_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue rd_uniform_class_constructor(JSContext *ctx, JSValueConst new_tar
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rd_uniform_class);
+	JS_SetOpaque(obj, rd_uniform_class);	
 	return obj;
 }
 static JSValue rd_uniform_class_set_uniform_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&RDUniform::set_uniform_type, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&RDUniform::set_uniform_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_uniform_class_get_uniform_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue rd_uniform_class_get_uniform_type(JSContext *ctx, JSValueConst th
 };
 static JSValue rd_uniform_class_set_binding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&RDUniform::set_binding, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&RDUniform::set_binding, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_uniform_class_get_binding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,12 +55,12 @@ static JSValue rd_uniform_class_get_binding(JSContext *ctx, JSValueConst this_va
 };
 static JSValue rd_uniform_class_add_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&RDUniform::add_id, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&RDUniform::add_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_uniform_class_clear_ids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&RDUniform::clear_ids, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&RDUniform::clear_ids, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue rd_uniform_class_get_ids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -76,26 +78,29 @@ static const JSCFunctionListEntry rd_uniform_class_proto_funcs[] = {
 };
 
 void define_rd_uniform_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "uniform_type"),
-			JS_NewCFunction(ctx, rd_uniform_class_get_uniform_type, "get_uniform_type", 0),
-			JS_NewCFunction(ctx, rd_uniform_class_set_uniform_type, "set_uniform_type", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "binding"),
-			JS_NewCFunction(ctx, rd_uniform_class_get_binding, "get_binding", 0),
-			JS_NewCFunction(ctx, rd_uniform_class_set_binding, "set_binding", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "uniform_type"),
+        JS_NewCFunction(ctx, rd_uniform_class_get_uniform_type, "get_uniform_type", 0),
+        JS_NewCFunction(ctx, rd_uniform_class_set_uniform_type, "set_uniform_type", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "binding"),
+        JS_NewCFunction(ctx, rd_uniform_class_get_binding, "get_binding", 0),
+        JS_NewCFunction(ctx, rd_uniform_class_set_binding, "set_binding", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_rd_uniform_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&RDUniform::__class_id);
 	classes["RDUniform"] = RDUniform::__class_id;
 	class_id_list.insert(RDUniform::__class_id);
@@ -118,7 +123,7 @@ static int js_rd_uniform_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_rd_uniform_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -130,7 +135,7 @@ JSModuleDef *_js_init_rd_uniform_module(JSContext *ctx, const char *module_name)
 }
 
 JSModuleDef *js_init_rd_uniform_module(JSContext *ctx) {
-	return _js_init_rd_uniform_module(ctx, "godot/classes/rd_uniform");
+	return _js_init_rd_uniform_module(ctx, "@godot/classes/rd_uniform");
 }
 
 void register_rd_uniform() {

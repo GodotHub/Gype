@@ -19,37 +19,37 @@ export declare class GLTFBufferView extends Resource{
   public get buffer(): number {
     get_buffer();
   }
-  public set buffer(value: number): void {
+  public set buffer(value): void {
     set_buffer(value);
   }
   public get byte_offset(): number {
     get_byte_offset();
   }
-  public set byte_offset(value: number): void {
+  public set byte_offset(value): void {
     set_byte_offset(value);
   }
   public get byte_length(): number {
     get_byte_length();
   }
-  public set byte_length(value: number): void {
+  public set byte_length(value): void {
     set_byte_length(value);
   }
   public get byte_stride(): number {
     get_byte_stride();
   }
-  public set byte_stride(value: number): void {
+  public set byte_stride(value): void {
     set_byte_stride(value);
   }
   public get indices(): boolean {
     get_indices();
   }
-  public set indices(value: boolean): void {
+  public set indices(value): void {
     set_indices(value);
   }
   public get vertex_attributes(): boolean {
     get_vertex_attributes();
   }
-  public set vertex_attributes(value: boolean): void {
+  public set vertex_attributes(value): void {
     set_vertex_attributes(value);
   }
 }

@@ -8,10 +8,10 @@ export declare class Shortcut extends Resource{
   public has_valid_event(): boolean;
   public matches_event(_event: InputEvent): boolean;
   public get_as_text(): String;
-  public get events(): Array {
+  public get events(): GDArray {
     get_events();
   }
-  public set events(value: Array): void {
+  public set events(value): void {
     set_events(value);
   }
 }

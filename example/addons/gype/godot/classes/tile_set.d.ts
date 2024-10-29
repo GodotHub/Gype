@@ -1,8 +1,8 @@
 
-import { TileMapPattern } from "@godot/classes/tile_map_pattern";
 import { TileSetSource } from "@godot/classes/tile_set_source";
-import { Resource } from "@godot/classes/resource";
+import { TileMapPattern } from "@godot/classes/tile_map_pattern";
 import { PhysicsMaterial } from "@godot/classes/physics_material";
+import { Resource } from "@godot/classes/resource";
 
 export declare class TileSet extends Resource{
   public get_next_source_id(): number;
@@ -94,31 +94,31 @@ export declare class TileSet extends Resource{
   public get tile_shape(): number {
     get_tile_shape();
   }
-  public set tile_shape(value: number): void {
+  public set tile_shape(value): void {
     set_tile_shape(value);
   }
   public get tile_layout(): number {
     get_tile_layout();
   }
-  public set tile_layout(value: number): void {
+  public set tile_layout(value): void {
     set_tile_layout(value);
   }
   public get tile_offset_axis(): number {
     get_tile_offset_axis();
   }
-  public set tile_offset_axis(value: number): void {
+  public set tile_offset_axis(value): void {
     set_tile_offset_axis(value);
   }
   public get tile_size(): Vector2i {
     get_tile_size();
   }
-  public set tile_size(value: Vector2i): void {
+  public set tile_size(value): void {
     set_tile_size(value);
   }
   public get uv_clipping(): boolean {
     is_uv_clipping();
   }
-  public set uv_clipping(value: boolean): void {
+  public set uv_clipping(value): void {
     set_uv_clipping(value);
   }
   static TileShape = {

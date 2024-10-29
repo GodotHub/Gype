@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/a_star_grid2d.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/a_star_grid2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void a_star_grid2d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue a_star_grid2d_class_constructor(JSContext *ctx, JSValueConst new_
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, a_star_grid2d_class);
+	JS_SetOpaque(obj, a_star_grid2d_class);	
 	return obj;
 }
 static JSValue a_star_grid2d_class_set_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStarGrid2D::set_region, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStarGrid2D::set_region, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star_grid2d_class_get_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue a_star_grid2d_class_get_region(JSContext *ctx, JSValueConst this_
 };
 static JSValue a_star_grid2d_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStarGrid2D::set_size, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStarGrid2D::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star_grid2d_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,7 +55,7 @@ static JSValue a_star_grid2d_class_get_size(JSContext *ctx, JSValueConst this_va
 };
 static JSValue a_star_grid2d_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStarGrid2D::set_offset, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStarGrid2D::set_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star_grid2d_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +64,7 @@ static JSValue a_star_grid2d_class_get_offset(JSContext *ctx, JSValueConst this_
 };
 static JSValue a_star_grid2d_class_set_cell_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStarGrid2D::set_cell_size, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStarGrid2D::set_cell_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star_grid2d_class_get_cell_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,7 +73,7 @@ static JSValue a_star_grid2d_class_get_cell_size(JSContext *ctx, JSValueConst th
 };
 static JSValue a_star_grid2d_class_set_cell_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStarGrid2D::set_cell_shape, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStarGrid2D::set_cell_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star_grid2d_class_get_cell_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,12 +94,12 @@ static JSValue a_star_grid2d_class_is_dirty(JSContext *ctx, JSValueConst this_va
 };
 static JSValue a_star_grid2d_class_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStarGrid2D::update, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStarGrid2D::update, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star_grid2d_class_set_jumping_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStarGrid2D::set_jumping_enabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStarGrid2D::set_jumping_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star_grid2d_class_is_jumping_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -106,7 +108,7 @@ static JSValue a_star_grid2d_class_is_jumping_enabled(JSContext *ctx, JSValueCon
 };
 static JSValue a_star_grid2d_class_set_diagonal_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStarGrid2D::set_diagonal_mode, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStarGrid2D::set_diagonal_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star_grid2d_class_get_diagonal_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -115,7 +117,7 @@ static JSValue a_star_grid2d_class_get_diagonal_mode(JSContext *ctx, JSValueCons
 };
 static JSValue a_star_grid2d_class_set_default_compute_heuristic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStarGrid2D::set_default_compute_heuristic, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStarGrid2D::set_default_compute_heuristic, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star_grid2d_class_get_default_compute_heuristic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -124,7 +126,7 @@ static JSValue a_star_grid2d_class_get_default_compute_heuristic(JSContext *ctx,
 };
 static JSValue a_star_grid2d_class_set_default_estimate_heuristic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStarGrid2D::set_default_estimate_heuristic, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStarGrid2D::set_default_estimate_heuristic, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star_grid2d_class_get_default_estimate_heuristic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -133,7 +135,7 @@ static JSValue a_star_grid2d_class_get_default_estimate_heuristic(JSContext *ctx
 };
 static JSValue a_star_grid2d_class_set_point_solid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStarGrid2D::set_point_solid, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStarGrid2D::set_point_solid, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star_grid2d_class_is_point_solid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -142,7 +144,7 @@ static JSValue a_star_grid2d_class_is_point_solid(JSContext *ctx, JSValueConst t
 };
 static JSValue a_star_grid2d_class_set_point_weight_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStarGrid2D::set_point_weight_scale, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStarGrid2D::set_point_weight_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star_grid2d_class_get_point_weight_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -151,17 +153,17 @@ static JSValue a_star_grid2d_class_get_point_weight_scale(JSContext *ctx, JSValu
 };
 static JSValue a_star_grid2d_class_fill_solid_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStarGrid2D::fill_solid_region, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStarGrid2D::fill_solid_region, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star_grid2d_class_fill_weight_scale_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStarGrid2D::fill_weight_scale_region, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStarGrid2D::fill_weight_scale_region, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star_grid2d_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AStarGrid2D::clear, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AStarGrid2D::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue a_star_grid2d_class_get_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -212,69 +214,78 @@ static const JSCFunctionListEntry a_star_grid2d_class_proto_funcs[] = {
 };
 
 void define_a_star_grid2d_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "region"),
-			JS_NewCFunction(ctx, a_star_grid2d_class_get_region, "get_region", 0),
-			JS_NewCFunction(ctx, a_star_grid2d_class_set_region, "set_region", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "size"),
-			JS_NewCFunction(ctx, a_star_grid2d_class_get_size, "get_size", 0),
-			JS_NewCFunction(ctx, a_star_grid2d_class_set_size, "set_size", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "offset"),
-			JS_NewCFunction(ctx, a_star_grid2d_class_get_offset, "get_offset", 0),
-			JS_NewCFunction(ctx, a_star_grid2d_class_set_offset, "set_offset", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "cell_size"),
-			JS_NewCFunction(ctx, a_star_grid2d_class_get_cell_size, "get_cell_size", 0),
-			JS_NewCFunction(ctx, a_star_grid2d_class_set_cell_size, "set_cell_size", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "cell_shape"),
-			JS_NewCFunction(ctx, a_star_grid2d_class_get_cell_shape, "get_cell_shape", 0),
-			JS_NewCFunction(ctx, a_star_grid2d_class_set_cell_shape, "set_cell_shape", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "jumping_enabled"),
-			JS_NewCFunction(ctx, a_star_grid2d_class_is_jumping_enabled, "is_jumping_enabled", 0),
-			JS_NewCFunction(ctx, a_star_grid2d_class_set_jumping_enabled, "set_jumping_enabled", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "default_compute_heuristic"),
-			JS_NewCFunction(ctx, a_star_grid2d_class_get_default_compute_heuristic, "get_default_compute_heuristic", 0),
-			JS_NewCFunction(ctx, a_star_grid2d_class_set_default_compute_heuristic, "set_default_compute_heuristic", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "default_estimate_heuristic"),
-			JS_NewCFunction(ctx, a_star_grid2d_class_get_default_estimate_heuristic, "get_default_estimate_heuristic", 0),
-			JS_NewCFunction(ctx, a_star_grid2d_class_set_default_estimate_heuristic, "set_default_estimate_heuristic", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "diagonal_mode"),
-			JS_NewCFunction(ctx, a_star_grid2d_class_get_diagonal_mode, "get_diagonal_mode", 0),
-			JS_NewCFunction(ctx, a_star_grid2d_class_set_diagonal_mode, "set_diagonal_mode", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "region"),
+        JS_NewCFunction(ctx, a_star_grid2d_class_get_region, "get_region", 0),
+        JS_NewCFunction(ctx, a_star_grid2d_class_set_region, "set_region", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "size"),
+        JS_NewCFunction(ctx, a_star_grid2d_class_get_size, "get_size", 0),
+        JS_NewCFunction(ctx, a_star_grid2d_class_set_size, "set_size", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "offset"),
+        JS_NewCFunction(ctx, a_star_grid2d_class_get_offset, "get_offset", 0),
+        JS_NewCFunction(ctx, a_star_grid2d_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "cell_size"),
+        JS_NewCFunction(ctx, a_star_grid2d_class_get_cell_size, "get_cell_size", 0),
+        JS_NewCFunction(ctx, a_star_grid2d_class_set_cell_size, "set_cell_size", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "cell_shape"),
+        JS_NewCFunction(ctx, a_star_grid2d_class_get_cell_shape, "get_cell_shape", 0),
+        JS_NewCFunction(ctx, a_star_grid2d_class_set_cell_shape, "set_cell_shape", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "jumping_enabled"),
+        JS_NewCFunction(ctx, a_star_grid2d_class_is_jumping_enabled, "is_jumping_enabled", 0),
+        JS_NewCFunction(ctx, a_star_grid2d_class_set_jumping_enabled, "set_jumping_enabled", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "default_compute_heuristic"),
+        JS_NewCFunction(ctx, a_star_grid2d_class_get_default_compute_heuristic, "get_default_compute_heuristic", 0),
+        JS_NewCFunction(ctx, a_star_grid2d_class_set_default_compute_heuristic, "set_default_compute_heuristic", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "default_estimate_heuristic"),
+        JS_NewCFunction(ctx, a_star_grid2d_class_get_default_estimate_heuristic, "get_default_estimate_heuristic", 0),
+        JS_NewCFunction(ctx, a_star_grid2d_class_set_default_estimate_heuristic, "set_default_estimate_heuristic", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "diagonal_mode"),
+        JS_NewCFunction(ctx, a_star_grid2d_class_get_diagonal_mode, "get_diagonal_mode", 0),
+        JS_NewCFunction(ctx, a_star_grid2d_class_set_diagonal_mode, "set_diagonal_mode", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -301,6 +312,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_a_star_grid2d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AStarGrid2D::__class_id);
 	classes["AStarGrid2D"] = AStarGrid2D::__class_id;
 	class_id_list.insert(AStarGrid2D::__class_id);
@@ -323,7 +335,7 @@ static int js_a_star_grid2d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_a_star_grid2d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -335,7 +347,7 @@ JSModuleDef *_js_init_a_star_grid2d_module(JSContext *ctx, const char *module_na
 }
 
 JSModuleDef *js_init_a_star_grid2d_module(JSContext *ctx) {
-	return _js_init_a_star_grid2d_module(ctx, "godot/classes/a_star_grid2d");
+	return _js_init_a_star_grid2d_module(ctx, "@godot/classes/a_star_grid2d");
 }
 
 void register_a_star_grid2d() {

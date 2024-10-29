@@ -22,25 +22,25 @@ export declare class Gradient extends Resource{
   public get interpolation_mode(): number {
     get_interpolation_mode();
   }
-  public set interpolation_mode(value: number): void {
+  public set interpolation_mode(value): void {
     set_interpolation_mode(value);
   }
   public get interpolation_color_space(): number {
     get_interpolation_color_space();
   }
-  public set interpolation_color_space(value: number): void {
+  public set interpolation_color_space(value): void {
     set_interpolation_color_space(value);
   }
   public get offsets(): PackedFloat32Array {
     get_offsets();
   }
-  public set offsets(value: PackedFloat32Array): void {
+  public set offsets(value): void {
     set_offsets(value);
   }
   public get colors(): PackedColorArray {
     get_colors();
   }
-  public set colors(value: PackedColorArray): void {
+  public set colors(value): void {
     set_colors(value);
   }
   static InterpolationMode = {

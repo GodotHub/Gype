@@ -23,37 +23,37 @@ export declare class MultiplayerSynchronizer extends Node{
   public get root_path(): NodePath {
     get_root_path();
   }
-  public set root_path(value: NodePath): void {
+  public set root_path(value): void {
     set_root_path(value);
   }
   public get replication_interval(): number {
     get_replication_interval();
   }
-  public set replication_interval(value: number): void {
+  public set replication_interval(value): void {
     set_replication_interval(value);
   }
   public get delta_interval(): number {
     get_delta_interval();
   }
-  public set delta_interval(value: number): void {
+  public set delta_interval(value): void {
     set_delta_interval(value);
   }
   public get replication_config(): SceneReplicationConfig {
     get_replication_config();
   }
-  public set replication_config(value: SceneReplicationConfig): void {
+  public set replication_config(value): void {
     set_replication_config(value);
   }
   public get visibility_update_mode(): number {
     get_visibility_update_mode();
   }
-  public set visibility_update_mode(value: number): void {
+  public set visibility_update_mode(value): void {
     set_visibility_update_mode(value);
   }
   public get public_visibility(): boolean {
     is_visibility_public();
   }
-  public set public_visibility(value: boolean): void {
+  public set public_visibility(value): void {
     set_visibility_public(value);
   }
   static VisibilityUpdateMode = {

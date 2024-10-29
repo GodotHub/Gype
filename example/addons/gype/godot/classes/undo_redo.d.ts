@@ -7,8 +7,8 @@ export declare class UndoRedo extends Object{
   public is_committing_action(): boolean;
   public add_do_method(_callable: Callable): void;
   public add_undo_method(_callable: Callable): void;
-  public add_do_property(_object: Object, _property: StringName, _value: Variant): void;
-  public add_undo_property(_object: Object, _property: StringName, _value: Variant): void;
+  public add_do_property(_object: Object, _property: StringName, _value: any): void;
+  public add_undo_property(_object: Object, _property: StringName, _value: any): void;
   public add_do_reference(_object: Object): void;
   public add_undo_reference(_object: Object): void;
   public start_force_keep_in_merge_ends(): void;
@@ -28,7 +28,7 @@ export declare class UndoRedo extends Object{
   public get max_steps(): number {
     get_max_steps();
   }
-  public set max_steps(value: number): void {
+  public set max_steps(value): void {
     set_max_steps(value);
   }
   static MergeMode = {

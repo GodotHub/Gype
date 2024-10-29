@@ -24,37 +24,37 @@ export declare class AnimationNodeBlendSpace1D extends AnimationRootNode{
   public get min_space(): number {
     get_min_space();
   }
-  public set min_space(value: number): void {
+  public set min_space(value): void {
     set_min_space(value);
   }
   public get max_space(): number {
     get_max_space();
   }
-  public set max_space(value: number): void {
+  public set max_space(value): void {
     set_max_space(value);
   }
   public get snap(): number {
     get_snap();
   }
-  public set snap(value: number): void {
+  public set snap(value): void {
     set_snap(value);
   }
   public get value_label(): String {
     get_value_label();
   }
-  public set value_label(value: String): void {
+  public set value_label(value): void {
     set_value_label(value);
   }
   public get blend_mode(): number {
     get_blend_mode();
   }
-  public set blend_mode(value: number): void {
+  public set blend_mode(value): void {
     set_blend_mode(value);
   }
   public get sync(): boolean {
     is_using_sync();
   }
-  public set sync(value: boolean): void {
+  public set sync(value): void {
     set_use_sync(value);
   }
   static BlendMode = {

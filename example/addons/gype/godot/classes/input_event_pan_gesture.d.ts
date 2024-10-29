@@ -7,7 +7,7 @@ export declare class InputEventPanGesture extends InputEventGesture{
   public get delta(): Vector2 {
     get_delta();
   }
-  public set delta(value: Vector2): void {
+  public set delta(value): void {
     set_delta(value);
   }
 }

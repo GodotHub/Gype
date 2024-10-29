@@ -15,31 +15,31 @@ export declare class SubViewport extends Viewport{
   public get size(): Vector2i {
     get_size();
   }
-  public set size(value: Vector2i): void {
+  public set size(value): void {
     set_size(value);
   }
   public get size_2d_override(): Vector2i {
     get_size_2d_override();
   }
-  public set size_2d_override(value: Vector2i): void {
+  public set size_2d_override(value): void {
     set_size_2d_override(value);
   }
   public get size_2d_override_stretch(): boolean {
     is_size_2d_override_stretch_enabled();
   }
-  public set size_2d_override_stretch(value: boolean): void {
+  public set size_2d_override_stretch(value): void {
     set_size_2d_override_stretch(value);
   }
   public get render_target_clear_mode(): number {
     get_clear_mode();
   }
-  public set render_target_clear_mode(value: number): void {
+  public set render_target_clear_mode(value): void {
     set_clear_mode(value);
   }
   public get render_target_update_mode(): number {
     get_update_mode();
   }
-  public set render_target_update_mode(value: number): void {
+  public set render_target_update_mode(value): void {
     set_update_mode(value);
   }
   static ClearMode = {

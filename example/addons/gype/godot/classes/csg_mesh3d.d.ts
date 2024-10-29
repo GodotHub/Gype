@@ -1,7 +1,7 @@
 
-import { Mesh } from "@godot/classes/mesh";
-import { CSGPrimitive3D } from "@godot/classes/csg_primitive3d";
 import { Material } from "@godot/classes/material";
+import { CSGPrimitive3D } from "@godot/classes/csg_primitive3d";
+import { Mesh } from "@godot/classes/mesh";
 
 export declare class CSGMesh3D extends CSGPrimitive3D{
   public set_mesh(_mesh: Mesh): void;
@@ -11,13 +11,13 @@ export declare class CSGMesh3D extends CSGPrimitive3D{
   public get mesh(): Mesh {
     get_mesh();
   }
-  public set mesh(value: Mesh): void {
+  public set mesh(value): void {
     set_mesh(value);
   }
-  public get material(): BaseMaterial3D,ShaderMaterial {
+  public get material(): BaseMaterial3D {
     get_material();
   }
-  public set material(value: BaseMaterial3D,ShaderMaterial): void {
+  public set material(value): void {
     set_material(value);
   }
 }

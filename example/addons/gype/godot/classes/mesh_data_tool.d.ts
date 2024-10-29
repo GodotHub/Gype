@@ -1,7 +1,7 @@
 
-import { Material } from "@godot/classes/material";
-import { RefCounted } from "@godot/classes/ref_counted";
 import { ArrayMesh } from "@godot/classes/array_mesh";
+import { RefCounted } from "@godot/classes/ref_counted";
+import { Material } from "@godot/classes/material";
 
 export declare class MeshDataTool extends RefCounted{
   public clear(): void;
@@ -27,18 +27,18 @@ export declare class MeshDataTool extends RefCounted{
   public get_vertex_bones(_idx: number): PackedInt32Array;
   public set_vertex_weights(_idx: number, _weights: PackedFloat32Array): void;
   public get_vertex_weights(_idx: number): PackedFloat32Array;
-  public set_vertex_meta(_idx: number, _meta: Variant): void;
-  public get_vertex_meta(_idx: number): Variant;
+  public set_vertex_meta(_idx: number, _meta: any): void;
+  public get_vertex_meta(_idx: number): any;
   public get_vertex_edges(_idx: number): PackedInt32Array;
   public get_vertex_faces(_idx: number): PackedInt32Array;
   public get_edge_vertex(_idx: number, _vertex: number): number;
   public get_edge_faces(_idx: number): PackedInt32Array;
-  public set_edge_meta(_idx: number, _meta: Variant): void;
-  public get_edge_meta(_idx: number): Variant;
+  public set_edge_meta(_idx: number, _meta: any): void;
+  public get_edge_meta(_idx: number): any;
   public get_face_vertex(_idx: number, _vertex: number): number;
   public get_face_edge(_idx: number, _edge: number): number;
-  public set_face_meta(_idx: number, _meta: Variant): void;
-  public get_face_meta(_idx: number): Variant;
+  public set_face_meta(_idx: number, _meta: any): void;
+  public get_face_meta(_idx: number): any;
   public get_face_normal(_idx: number): Vector3;
   public set_material(_material: Material): void;
   public get_material(): Material;

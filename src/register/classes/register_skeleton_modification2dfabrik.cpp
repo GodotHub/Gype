@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/skeleton_modification2dfabrik.hpp>
+#include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void skeleton_modification2dfabrik_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue skeleton_modification2dfabrik_class_constructor(JSContext *ctx, J
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, skeleton_modification2dfabrik_class);
+	JS_SetOpaque(obj, skeleton_modification2dfabrik_class);	
 	return obj;
 }
 static JSValue skeleton_modification2dfabrik_class_set_target_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DFABRIK::set_target_node, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DFABRIK::set_target_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2dfabrik_class_get_target_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue skeleton_modification2dfabrik_class_get_target_node(JSContext *ct
 };
 static JSValue skeleton_modification2dfabrik_class_set_fabrik_data_chain_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DFABRIK::set_fabrik_data_chain_length, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DFABRIK::set_fabrik_data_chain_length, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2dfabrik_class_get_fabrik_data_chain_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,7 +55,7 @@ static JSValue skeleton_modification2dfabrik_class_get_fabrik_data_chain_length(
 };
 static JSValue skeleton_modification2dfabrik_class_set_fabrik_joint_bone2d_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DFABRIK::set_fabrik_joint_bone2d_node, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DFABRIK::set_fabrik_joint_bone2d_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2dfabrik_class_get_fabrik_joint_bone2d_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +64,7 @@ static JSValue skeleton_modification2dfabrik_class_get_fabrik_joint_bone2d_node(
 };
 static JSValue skeleton_modification2dfabrik_class_set_fabrik_joint_bone_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DFABRIK::set_fabrik_joint_bone_index, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DFABRIK::set_fabrik_joint_bone_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2dfabrik_class_get_fabrik_joint_bone_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,7 +73,7 @@ static JSValue skeleton_modification2dfabrik_class_get_fabrik_joint_bone_index(J
 };
 static JSValue skeleton_modification2dfabrik_class_set_fabrik_joint_magnet_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DFABRIK::set_fabrik_joint_magnet_position, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DFABRIK::set_fabrik_joint_magnet_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2dfabrik_class_get_fabrik_joint_magnet_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -80,7 +82,7 @@ static JSValue skeleton_modification2dfabrik_class_get_fabrik_joint_magnet_posit
 };
 static JSValue skeleton_modification2dfabrik_class_set_fabrik_joint_use_target_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&SkeletonModification2DFABRIK::set_fabrik_joint_use_target_rotation, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&SkeletonModification2DFABRIK::set_fabrik_joint_use_target_rotation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skeleton_modification2dfabrik_class_get_fabrik_joint_use_target_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -103,26 +105,29 @@ static const JSCFunctionListEntry skeleton_modification2dfabrik_class_proto_func
 };
 
 void define_skeleton_modification2dfabrik_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "target_nodepath"),
-			JS_NewCFunction(ctx, skeleton_modification2dfabrik_class_get_target_node, "get_target_node", 0),
-			JS_NewCFunction(ctx, skeleton_modification2dfabrik_class_set_target_node, "set_target_node", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "fabrik_data_chain_length"),
-			JS_NewCFunction(ctx, skeleton_modification2dfabrik_class_get_fabrik_data_chain_length, "get_fabrik_data_chain_length", 0),
-			JS_NewCFunction(ctx, skeleton_modification2dfabrik_class_set_fabrik_data_chain_length, "set_fabrik_data_chain_length", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "target_nodepath"),
+        JS_NewCFunction(ctx, skeleton_modification2dfabrik_class_get_target_node, "get_target_node", 0),
+        JS_NewCFunction(ctx, skeleton_modification2dfabrik_class_set_target_node, "set_target_node", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "fabrik_data_chain_length"),
+        JS_NewCFunction(ctx, skeleton_modification2dfabrik_class_get_fabrik_data_chain_length, "get_fabrik_data_chain_length", 0),
+        JS_NewCFunction(ctx, skeleton_modification2dfabrik_class_set_fabrik_data_chain_length, "set_fabrik_data_chain_length", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_skeleton_modification2dfabrik_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&SkeletonModification2DFABRIK::__class_id);
 	classes["SkeletonModification2DFABRIK"] = SkeletonModification2DFABRIK::__class_id;
 	class_id_list.insert(SkeletonModification2DFABRIK::__class_id);
@@ -145,7 +150,7 @@ static int js_skeleton_modification2dfabrik_class_init(JSContext *ctx, JSModuleD
 }
 
 JSModuleDef *_js_init_skeleton_modification2dfabrik_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/skeleton_modification2d';";
+	const char *code = "import * as _ from '@godot/classes/skeleton_modification2d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -157,7 +162,7 @@ JSModuleDef *_js_init_skeleton_modification2dfabrik_module(JSContext *ctx, const
 }
 
 JSModuleDef *js_init_skeleton_modification2dfabrik_module(JSContext *ctx) {
-	return _js_init_skeleton_modification2dfabrik_module(ctx, "godot/classes/skeleton_modification2dfabrik");
+	return _js_init_skeleton_modification2dfabrik_module(ctx, "@godot/classes/skeleton_modification2dfabrik");
 }
 
 void register_skeleton_modification2dfabrik() {

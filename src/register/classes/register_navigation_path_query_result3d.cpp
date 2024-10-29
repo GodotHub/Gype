@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/navigation_path_query_result3d.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/navigation_path_query_result3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void navigation_path_query_result3d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue navigation_path_query_result3d_class_constructor(JSContext *ctx, 
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, navigation_path_query_result3d_class);
+	JS_SetOpaque(obj, navigation_path_query_result3d_class);	
 	return obj;
 }
 static JSValue navigation_path_query_result3d_class_set_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&NavigationPathQueryResult3D::set_path, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&NavigationPathQueryResult3D::set_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_result3d_class_get_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue navigation_path_query_result3d_class_get_path(JSContext *ctx, JSV
 };
 static JSValue navigation_path_query_result3d_class_set_path_types(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&NavigationPathQueryResult3D::set_path_types, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&NavigationPathQueryResult3D::set_path_types, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_result3d_class_get_path_types(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,7 +55,7 @@ static JSValue navigation_path_query_result3d_class_get_path_types(JSContext *ct
 };
 static JSValue navigation_path_query_result3d_class_set_path_rids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&NavigationPathQueryResult3D::set_path_rids, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&NavigationPathQueryResult3D::set_path_rids, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_result3d_class_get_path_rids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +64,7 @@ static JSValue navigation_path_query_result3d_class_get_path_rids(JSContext *ctx
 };
 static JSValue navigation_path_query_result3d_class_set_path_owner_ids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&NavigationPathQueryResult3D::set_path_owner_ids, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&NavigationPathQueryResult3D::set_path_owner_ids, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue navigation_path_query_result3d_class_get_path_owner_ids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,7 +73,7 @@ static JSValue navigation_path_query_result3d_class_get_path_owner_ids(JSContext
 };
 static JSValue navigation_path_query_result3d_class_reset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&NavigationPathQueryResult3D::reset, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&NavigationPathQueryResult3D::reset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry navigation_path_query_result3d_class_proto_funcs[] = {
@@ -87,34 +89,38 @@ static const JSCFunctionListEntry navigation_path_query_result3d_class_proto_fun
 };
 
 void define_navigation_path_query_result3d_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "path"),
-			JS_NewCFunction(ctx, navigation_path_query_result3d_class_get_path, "get_path", 0),
-			JS_NewCFunction(ctx, navigation_path_query_result3d_class_set_path, "set_path", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "path_types"),
-			JS_NewCFunction(ctx, navigation_path_query_result3d_class_get_path_types, "get_path_types", 0),
-			JS_NewCFunction(ctx, navigation_path_query_result3d_class_set_path_types, "set_path_types", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "path_rids"),
-			JS_NewCFunction(ctx, navigation_path_query_result3d_class_get_path_rids, "get_path_rids", 0),
-			JS_NewCFunction(ctx, navigation_path_query_result3d_class_set_path_rids, "set_path_rids", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "path_owner_ids"),
-			JS_NewCFunction(ctx, navigation_path_query_result3d_class_get_path_owner_ids, "get_path_owner_ids", 0),
-			JS_NewCFunction(ctx, navigation_path_query_result3d_class_set_path_owner_ids, "set_path_owner_ids", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "path"),
+        JS_NewCFunction(ctx, navigation_path_query_result3d_class_get_path, "get_path", 0),
+        JS_NewCFunction(ctx, navigation_path_query_result3d_class_set_path, "set_path", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "path_types"),
+        JS_NewCFunction(ctx, navigation_path_query_result3d_class_get_path_types, "get_path_types", 0),
+        JS_NewCFunction(ctx, navigation_path_query_result3d_class_set_path_types, "set_path_types", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "path_rids"),
+        JS_NewCFunction(ctx, navigation_path_query_result3d_class_get_path_rids, "get_path_rids", 0),
+        JS_NewCFunction(ctx, navigation_path_query_result3d_class_set_path_rids, "set_path_rids", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "path_owner_ids"),
+        JS_NewCFunction(ctx, navigation_path_query_result3d_class_get_path_owner_ids, "get_path_owner_ids", 0),
+        JS_NewCFunction(ctx, navigation_path_query_result3d_class_set_path_owner_ids, "set_path_owner_ids", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -125,6 +131,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_navigation_path_query_result3d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&NavigationPathQueryResult3D::__class_id);
 	classes["NavigationPathQueryResult3D"] = NavigationPathQueryResult3D::__class_id;
 	class_id_list.insert(NavigationPathQueryResult3D::__class_id);
@@ -147,7 +154,7 @@ static int js_navigation_path_query_result3d_class_init(JSContext *ctx, JSModule
 }
 
 JSModuleDef *_js_init_navigation_path_query_result3d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -159,7 +166,7 @@ JSModuleDef *_js_init_navigation_path_query_result3d_module(JSContext *ctx, cons
 }
 
 JSModuleDef *js_init_navigation_path_query_result3d_module(JSContext *ctx) {
-	return _js_init_navigation_path_query_result3d_module(ctx, "godot/classes/navigation_path_query_result3d");
+	return _js_init_navigation_path_query_result3d_module(ctx, "@godot/classes/navigation_path_query_result3d");
 }
 
 void register_navigation_path_query_result3d() {

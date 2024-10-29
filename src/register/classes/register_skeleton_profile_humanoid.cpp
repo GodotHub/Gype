@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/skeleton_profile.hpp>
 #include <godot_cpp/classes/skeleton_profile_humanoid.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void skeleton_profile_humanoid_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue skeleton_profile_humanoid_class_constructor(JSContext *ctx, JSVal
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, skeleton_profile_humanoid_class);
+	JS_SetOpaque(obj, skeleton_profile_humanoid_class);	
 	return obj;
 }
 
@@ -41,6 +43,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_skeleton_profile_humanoid_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&SkeletonProfileHumanoid::__class_id);
 	classes["SkeletonProfileHumanoid"] = SkeletonProfileHumanoid::__class_id;
 	class_id_list.insert(SkeletonProfileHumanoid::__class_id);
@@ -62,7 +65,7 @@ static int js_skeleton_profile_humanoid_class_init(JSContext *ctx, JSModuleDef *
 }
 
 JSModuleDef *_js_init_skeleton_profile_humanoid_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/skeleton_profile';";
+	const char *code = "import * as _ from '@godot/classes/skeleton_profile';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -74,7 +77,7 @@ JSModuleDef *_js_init_skeleton_profile_humanoid_module(JSContext *ctx, const cha
 }
 
 JSModuleDef *js_init_skeleton_profile_humanoid_module(JSContext *ctx) {
-	return _js_init_skeleton_profile_humanoid_module(ctx, "godot/classes/skeleton_profile_humanoid");
+	return _js_init_skeleton_profile_humanoid_module(ctx, "@godot/classes/skeleton_profile_humanoid");
 }
 
 void register_skeleton_profile_humanoid() {

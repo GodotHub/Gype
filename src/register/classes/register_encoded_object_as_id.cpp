@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/encoded_object_as_id.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void encoded_object_as_id_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue encoded_object_as_id_class_constructor(JSContext *ctx, JSValueCon
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, encoded_object_as_id_class);
+	JS_SetOpaque(obj, encoded_object_as_id_class);	
 	return obj;
 }
 static JSValue encoded_object_as_id_class_set_object_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&EncodedObjectAsID::set_object_id, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&EncodedObjectAsID::set_object_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue encoded_object_as_id_class_get_object_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,19 +50,21 @@ static const JSCFunctionListEntry encoded_object_as_id_class_proto_funcs[] = {
 };
 
 void define_encoded_object_as_id_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "object_id"),
-			JS_NewCFunction(ctx, encoded_object_as_id_class_get_object_id, "get_object_id", 0),
-			JS_NewCFunction(ctx, encoded_object_as_id_class_set_object_id, "set_object_id", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "object_id"),
+        JS_NewCFunction(ctx, encoded_object_as_id_class_get_object_id, "get_object_id", 0),
+        JS_NewCFunction(ctx, encoded_object_as_id_class_set_object_id, "set_object_id", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_encoded_object_as_id_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&EncodedObjectAsID::__class_id);
 	classes["EncodedObjectAsID"] = EncodedObjectAsID::__class_id;
 	class_id_list.insert(EncodedObjectAsID::__class_id);
@@ -83,7 +87,7 @@ static int js_encoded_object_as_id_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_encoded_object_as_id_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -95,7 +99,7 @@ JSModuleDef *_js_init_encoded_object_as_id_module(JSContext *ctx, const char *mo
 }
 
 JSModuleDef *js_init_encoded_object_as_id_module(JSContext *ctx) {
-	return _js_init_encoded_object_as_id_module(ctx, "godot/classes/encoded_object_as_id");
+	return _js_init_encoded_object_as_id_module(ctx, "@godot/classes/encoded_object_as_id");
 }
 
 void register_encoded_object_as_id() {

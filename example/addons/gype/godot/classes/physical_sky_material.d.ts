@@ -28,67 +28,67 @@ export declare class PhysicalSkyMaterial extends Material{
   public get rayleigh_coefficient(): number {
     get_rayleigh_coefficient();
   }
-  public set rayleigh_coefficient(value: number): void {
+  public set rayleigh_coefficient(value): void {
     set_rayleigh_coefficient(value);
   }
   public get rayleigh_color(): Color {
     get_rayleigh_color();
   }
-  public set rayleigh_color(value: Color): void {
+  public set rayleigh_color(value): void {
     set_rayleigh_color(value);
   }
   public get mie_coefficient(): number {
     get_mie_coefficient();
   }
-  public set mie_coefficient(value: number): void {
+  public set mie_coefficient(value): void {
     set_mie_coefficient(value);
   }
   public get mie_eccentricity(): number {
     get_mie_eccentricity();
   }
-  public set mie_eccentricity(value: number): void {
+  public set mie_eccentricity(value): void {
     set_mie_eccentricity(value);
   }
   public get mie_color(): Color {
     get_mie_color();
   }
-  public set mie_color(value: Color): void {
+  public set mie_color(value): void {
     set_mie_color(value);
   }
   public get turbidity(): number {
     get_turbidity();
   }
-  public set turbidity(value: number): void {
+  public set turbidity(value): void {
     set_turbidity(value);
   }
   public get sun_disk_scale(): number {
     get_sun_disk_scale();
   }
-  public set sun_disk_scale(value: number): void {
+  public set sun_disk_scale(value): void {
     set_sun_disk_scale(value);
   }
   public get ground_color(): Color {
     get_ground_color();
   }
-  public set ground_color(value: Color): void {
+  public set ground_color(value): void {
     set_ground_color(value);
   }
   public get energy_multiplier(): number {
     get_energy_multiplier();
   }
-  public set energy_multiplier(value: number): void {
+  public set energy_multiplier(value): void {
     set_energy_multiplier(value);
   }
   public get use_debanding(): boolean {
     get_use_debanding();
   }
-  public set use_debanding(value: boolean): void {
+  public set use_debanding(value): void {
     set_use_debanding(value);
   }
   public get night_sky(): Texture2D {
     get_night_sky();
   }
-  public set night_sky(value: Texture2D): void {
+  public set night_sky(value): void {
     set_night_sky(value);
   }
 }

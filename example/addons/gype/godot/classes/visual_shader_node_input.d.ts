@@ -8,7 +8,7 @@ export declare class VisualShaderNodeInput extends VisualShaderNode{
   public get input_name(): StringName {
     get_input_name();
   }
-  public set input_name(value: StringName): void {
+  public set input_name(value): void {
     set_input_name(value);
   }
 }

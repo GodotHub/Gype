@@ -11,19 +11,19 @@ export declare class AudioEffectStereoEnhance extends AudioEffect{
   public get pan_pullout(): number {
     get_pan_pullout();
   }
-  public set pan_pullout(value: number): void {
+  public set pan_pullout(value): void {
     set_pan_pullout(value);
   }
   public get time_pullout_ms(): number {
     get_time_pullout();
   }
-  public set time_pullout_ms(value: number): void {
+  public set time_pullout_ms(value): void {
     set_time_pullout(value);
   }
   public get surround(): number {
     get_surround();
   }
-  public set surround(value: number): void {
+  public set surround(value): void {
     set_surround(value);
   }
 }

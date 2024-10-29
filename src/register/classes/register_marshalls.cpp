@@ -1,10 +1,10 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/marshalls.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -16,6 +16,7 @@ static JSValue marshalls_instance;
 static void js_marshalls_singleton();
 
 static void marshalls_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -39,27 +40,27 @@ static JSValue marshalls_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue marshalls_class_variant_to_base64(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_marshalls_singleton();
+    js_marshalls_singleton();
 	return call_builtin_method_ret(&Marshalls::variant_to_base64, ctx, this_val, argc, argv);
 };
 static JSValue marshalls_class_base64_to_variant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_marshalls_singleton();
+    js_marshalls_singleton();
 	return call_builtin_method_ret(&Marshalls::base64_to_variant, ctx, this_val, argc, argv);
 };
 static JSValue marshalls_class_raw_to_base64(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_marshalls_singleton();
+    js_marshalls_singleton();
 	return call_builtin_method_ret(&Marshalls::raw_to_base64, ctx, this_val, argc, argv);
 };
 static JSValue marshalls_class_base64_to_raw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_marshalls_singleton();
+    js_marshalls_singleton();
 	return call_builtin_method_ret(&Marshalls::base64_to_raw, ctx, this_val, argc, argv);
 };
 static JSValue marshalls_class_utf8_to_base64(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_marshalls_singleton();
+    js_marshalls_singleton();
 	return call_builtin_method_ret(&Marshalls::utf8_to_base64, ctx, this_val, argc, argv);
 };
 static JSValue marshalls_class_base64_to_utf8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_marshalls_singleton();
+    js_marshalls_singleton();
 	return call_builtin_method_ret(&Marshalls::base64_to_utf8, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry marshalls_class_proto_funcs[] = {
@@ -91,6 +92,7 @@ static void js_marshalls_singleton() {
 		JS_SetPropertyStr(ctx, global, "Marshalls", marshalls_instance);
 	}
 }
+
 
 void register_marshalls() {
 	js_marshalls_class_init(ctx);

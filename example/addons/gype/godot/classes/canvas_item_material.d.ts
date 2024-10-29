@@ -17,37 +17,37 @@ export declare class CanvasItemMaterial extends Material{
   public get blend_mode(): number {
     get_blend_mode();
   }
-  public set blend_mode(value: number): void {
+  public set blend_mode(value): void {
     set_blend_mode(value);
   }
   public get light_mode(): number {
     get_light_mode();
   }
-  public set light_mode(value: number): void {
+  public set light_mode(value): void {
     set_light_mode(value);
   }
   public get particles_animation(): boolean {
     get_particles_animation();
   }
-  public set particles_animation(value: boolean): void {
+  public set particles_animation(value): void {
     set_particles_animation(value);
   }
   public get particles_anim_h_frames(): number {
     get_particles_anim_h_frames();
   }
-  public set particles_anim_h_frames(value: number): void {
+  public set particles_anim_h_frames(value): void {
     set_particles_anim_h_frames(value);
   }
   public get particles_anim_v_frames(): number {
     get_particles_anim_v_frames();
   }
-  public set particles_anim_v_frames(value: number): void {
+  public set particles_anim_v_frames(value): void {
     set_particles_anim_v_frames(value);
   }
   public get particles_anim_loop(): boolean {
     get_particles_anim_loop();
   }
-  public set particles_anim_loop(value: boolean): void {
+  public set particles_anim_loop(value): void {
     set_particles_anim_loop(value);
   }
   static BlendMode = {

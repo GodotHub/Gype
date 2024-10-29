@@ -9,12 +9,12 @@ export declare class Texture3D extends Texture{
   public _get_height(): number;
   public _get_depth(): number;
   public _has_mipmaps(): boolean;
-  public _get_data(): Array;
+  public _get_data(): GDArray;
   public get_format(): number;
   public get_width(): number;
   public get_height(): number;
   public get_depth(): number;
   public has_mipmaps(): boolean;
-  public get_data(): Array;
+  public get_data(): GDArray;
   public create_placeholder(): Resource;
 }

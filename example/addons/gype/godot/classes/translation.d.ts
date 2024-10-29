@@ -17,13 +17,13 @@ export declare class Translation extends Resource{
   public get messages(): Dictionary {
     _get_messages();
   }
-  public set messages(value: Dictionary): void {
+  public set messages(value): void {
     _set_messages(value);
   }
   public get locale(): String {
     get_locale();
   }
-  public set locale(value: String): void {
+  public set locale(value): void {
     set_locale(value);
   }
 }

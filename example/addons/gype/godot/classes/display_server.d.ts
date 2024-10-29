@@ -1,7 +1,7 @@
 
 import { Texture2D } from "@godot/classes/texture2d";
-import { Object } from "@godot/classes/object";
 import { Image } from "@godot/classes/image";
+import { Object } from "@godot/classes/object";
 import { Resource } from "@godot/classes/resource";
 
 export declare class DisplayServer extends Object{
@@ -10,22 +10,22 @@ export declare class DisplayServer extends Object{
   public help_set_search_callbacks(_search_callback: Callable, _action_callback: Callable): void;
   public global_menu_set_popup_callbacks(_menu_root: String, _open_callback: Callable, _close_callback: Callable): void;
   public global_menu_add_submenu_item(_menu_root: String, _label: String, _submenu: String, _index: number): number;
-  public global_menu_add_item(_menu_root: String, _label: String, _callback: Callable, _key_callback: Callable, _tag: Variant, _accelerator: number, _index: number): number;
-  public global_menu_add_check_item(_menu_root: String, _label: String, _callback: Callable, _key_callback: Callable, _tag: Variant, _accelerator: number, _index: number): number;
-  public global_menu_add_icon_item(_menu_root: String, _icon: Texture2D, _label: String, _callback: Callable, _key_callback: Callable, _tag: Variant, _accelerator: number, _index: number): number;
-  public global_menu_add_icon_check_item(_menu_root: String, _icon: Texture2D, _label: String, _callback: Callable, _key_callback: Callable, _tag: Variant, _accelerator: number, _index: number): number;
-  public global_menu_add_radio_check_item(_menu_root: String, _label: String, _callback: Callable, _key_callback: Callable, _tag: Variant, _accelerator: number, _index: number): number;
-  public global_menu_add_icon_radio_check_item(_menu_root: String, _icon: Texture2D, _label: String, _callback: Callable, _key_callback: Callable, _tag: Variant, _accelerator: number, _index: number): number;
-  public global_menu_add_multistate_item(_menu_root: String, _label: String, _max_states: number, _default_state: number, _callback: Callable, _key_callback: Callable, _tag: Variant, _accelerator: number, _index: number): number;
+  public global_menu_add_item(_menu_root: String, _label: String, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
+  public global_menu_add_check_item(_menu_root: String, _label: String, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
+  public global_menu_add_icon_item(_menu_root: String, _icon: Texture2D, _label: String, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
+  public global_menu_add_icon_check_item(_menu_root: String, _icon: Texture2D, _label: String, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
+  public global_menu_add_radio_check_item(_menu_root: String, _label: String, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
+  public global_menu_add_icon_radio_check_item(_menu_root: String, _icon: Texture2D, _label: String, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
+  public global_menu_add_multistate_item(_menu_root: String, _label: String, _max_states: number, _default_state: number, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
   public global_menu_add_separator(_menu_root: String, _index: number): number;
   public global_menu_get_item_index_from_text(_menu_root: String, _text: String): number;
-  public global_menu_get_item_index_from_tag(_menu_root: String, _tag: Variant): number;
+  public global_menu_get_item_index_from_tag(_menu_root: String, _tag: any): number;
   public global_menu_is_item_checked(_menu_root: String, _idx: number): boolean;
   public global_menu_is_item_checkable(_menu_root: String, _idx: number): boolean;
   public global_menu_is_item_radio_checkable(_menu_root: String, _idx: number): boolean;
   public global_menu_get_item_callback(_menu_root: String, _idx: number): Callable;
   public global_menu_get_item_key_callback(_menu_root: String, _idx: number): Callable;
-  public global_menu_get_item_tag(_menu_root: String, _idx: number): Variant;
+  public global_menu_get_item_tag(_menu_root: String, _idx: number): any;
   public global_menu_get_item_text(_menu_root: String, _idx: number): String;
   public global_menu_get_item_submenu(_menu_root: String, _idx: number): String;
   public global_menu_get_item_accelerator(_menu_root: String, _idx: number): number;
@@ -42,7 +42,7 @@ export declare class DisplayServer extends Object{
   public global_menu_set_item_callback(_menu_root: String, _idx: number, _callback: Callable): void;
   public global_menu_set_item_hover_callbacks(_menu_root: String, _idx: number, _callback: Callable): void;
   public global_menu_set_item_key_callback(_menu_root: String, _idx: number, _key_callback: Callable): void;
-  public global_menu_set_item_tag(_menu_root: String, _idx: number, _tag: Variant): void;
+  public global_menu_set_item_tag(_menu_root: String, _idx: number, _tag: any): void;
   public global_menu_set_item_text(_menu_root: String, _idx: number, _text: String): void;
   public global_menu_set_item_submenu(_menu_root: String, _idx: number, _submenu: String): void;
   public global_menu_set_item_accelerator(_menu_root: String, _idx: number, _keycode: number): void;
@@ -59,7 +59,7 @@ export declare class DisplayServer extends Object{
   public global_menu_get_system_menu_roots(): Dictionary;
   public tts_is_speaking(): boolean;
   public tts_is_paused(): boolean;
-  public tts_get_voices(): Array;
+  public tts_get_voices(): GDArray;
   public tts_get_voices_for_language(_language: String): PackedStringArray;
   public tts_speak(_text: String, _voice: String, _volume: number, _pitch: number, _rate: number, _utterance_id: number, _interrupt: boolean): void;
   public tts_pause(): void;
@@ -83,7 +83,7 @@ export declare class DisplayServer extends Object{
   public clipboard_has_image(): boolean;
   public clipboard_set_primary(_clipboard_primary: String): void;
   public clipboard_get_primary(): String;
-  public get_display_cutouts(): Array;
+  public get_display_cutouts(): GDArray;
   public get_display_safe_area(): Rect2i;
   public get_screen_count(): number;
   public get_primary_screen(): number;
@@ -162,7 +162,7 @@ export declare class DisplayServer extends Object{
   public dialog_show(_title: String, _description: String, _buttons: PackedStringArray, _callback: Callable): number;
   public dialog_input_text(_title: String, _description: String, _existing_text: String, _callback: Callable): number;
   public file_dialog_show(_title: String, _current_directory: String, _filename: String, _show_hidden: boolean, _mode: number, _filters: PackedStringArray, _callback: Callable): number;
-  public file_dialog_with_options_show(_title: String, _current_directory: String, _root: String, _filename: String, _show_hidden: boolean, _mode: number, _filters: PackedStringArray, _options: typedarray::Dictionary, _callback: Callable): number;
+  public file_dialog_with_options_show(_title: String, _current_directory: String, _root: String, _filename: String, _show_hidden: boolean, _mode: number, _filters: PackedStringArray, _options: GDArray, _callback: Callable): number;
   public keyboard_get_layout_count(): number;
   public keyboard_get_current_layout(): number;
   public keyboard_set_current_layout(_index: number): void;

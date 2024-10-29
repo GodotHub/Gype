@@ -15,31 +15,31 @@ export declare class GraphElement extends Container{
   public get position_offset(): Vector2 {
     get_position_offset();
   }
-  public set position_offset(value: Vector2): void {
+  public set position_offset(value): void {
     set_position_offset(value);
   }
   public get resizable(): boolean {
     is_resizable();
   }
-  public set resizable(value: boolean): void {
+  public set resizable(value): void {
     set_resizable(value);
   }
   public get draggable(): boolean {
     is_draggable();
   }
-  public set draggable(value: boolean): void {
+  public set draggable(value): void {
     set_draggable(value);
   }
   public get selectable(): boolean {
     is_selectable();
   }
-  public set selectable(value: boolean): void {
+  public set selectable(value): void {
     set_selectable(value);
   }
   public get selected(): boolean {
     is_selected();
   }
-  public set selected(value: boolean): void {
+  public set selected(value): void {
     set_selected(value);
   }
 }

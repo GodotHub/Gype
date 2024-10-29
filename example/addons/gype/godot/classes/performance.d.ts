@@ -6,9 +6,9 @@ export declare class Performance extends Object{
   public add_custom_monitor(_id: StringName, _callable: Callable, _arguments: GDArray): void;
   public remove_custom_monitor(_id: StringName): void;
   public has_custom_monitor(_id: StringName): boolean;
-  public get_custom_monitor(_id: StringName): Variant;
+  public get_custom_monitor(_id: StringName): any;
   public get_monitor_modification_time(): number;
-  public get_custom_monitor_names(): Array;
+  public get_custom_monitor_names(): GDArray;
   static Monitor = {
     TIME_FPS = 0,
     TIME_PROCESS = 1,

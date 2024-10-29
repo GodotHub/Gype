@@ -1,13 +1,13 @@
 
-import { NavigationPathQueryResult2D } from "@godot/classes/navigation_path_query_result2d";
-import { Node } from "@godot/classes/node";
 import { NavigationPolygon } from "@godot/classes/navigation_polygon";
+import { NavigationPathQueryResult2D } from "@godot/classes/navigation_path_query_result2d";
 import { NavigationPathQueryParameters2D } from "@godot/classes/navigation_path_query_parameters2d";
 import { Object } from "@godot/classes/object";
+import { Node } from "@godot/classes/node";
 import { NavigationMeshSourceGeometryData2D } from "@godot/classes/navigation_mesh_source_geometry_data2d";
 
 export declare class NavigationServer2D extends Object{
-  public get_maps(): Array;
+  public get_maps(): GDArray;
   public map_create(): RID;
   public map_set_active(_map: RID, _active: boolean): void;
   public map_is_active(_map: RID): boolean;
@@ -22,10 +22,10 @@ export declare class NavigationServer2D extends Object{
   public map_get_path(_map: RID, _origin: Vector2, _destination: Vector2, _optimize: boolean, _navigation_layers: number): PackedVector2Array;
   public map_get_closest_point(_map: RID, _to_point: Vector2): Vector2;
   public map_get_closest_point_owner(_map: RID, _to_point: Vector2): RID;
-  public map_get_links(_map: RID): Array;
-  public map_get_regions(_map: RID): Array;
-  public map_get_agents(_map: RID): Array;
-  public map_get_obstacles(_map: RID): Array;
+  public map_get_links(_map: RID): GDArray;
+  public map_get_regions(_map: RID): GDArray;
+  public map_get_agents(_map: RID): GDArray;
+  public map_get_obstacles(_map: RID): GDArray;
   public map_force_update(_map: RID): void;
   public map_get_iteration_id(_map: RID): number;
   public map_get_random_point(_map: RID, _navigation_layers: number, _uniformly: boolean): Vector2;

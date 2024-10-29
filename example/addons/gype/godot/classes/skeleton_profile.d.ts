@@ -35,25 +35,25 @@ export declare class SkeletonProfile extends Resource{
   public get root_bone(): StringName {
     get_root_bone();
   }
-  public set root_bone(value: StringName): void {
+  public set root_bone(value): void {
     set_root_bone(value);
   }
   public get scale_base_bone(): StringName {
     get_scale_base_bone();
   }
-  public set scale_base_bone(value: StringName): void {
+  public set scale_base_bone(value): void {
     set_scale_base_bone(value);
   }
   public get group_size(): number {
     get_group_size();
   }
-  public set group_size(value: number): void {
+  public set group_size(value): void {
     set_group_size(value);
   }
   public get bone_size(): number {
     get_bone_size();
   }
-  public set bone_size(value: number): void {
+  public set bone_size(value): void {
     set_bone_size(value);
   }
   static TailDirection = {

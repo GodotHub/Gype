@@ -7,7 +7,7 @@ export declare class CSGPrimitive3D extends CSGShape3D{
   public get flip_faces(): boolean {
     get_flip_faces();
   }
-  public set flip_faces(value: boolean): void {
+  public set flip_faces(value): void {
     set_flip_faces(value);
   }
 }

@@ -7,12 +7,12 @@ export declare class SkeletonModification2DPhysicalBones extends SkeletonModific
   public set_physical_bone_node(_joint_idx: number, _physicalbone2d_node: NodePath): void;
   public get_physical_bone_node(_joint_idx: number): NodePath;
   public fetch_physical_bones(): void;
-  public start_simulation(_bones: typedarray::StringName): void;
-  public stop_simulation(_bones: typedarray::StringName): void;
+  public start_simulation(_bones: GDArray): void;
+  public stop_simulation(_bones: GDArray): void;
   public get physical_bone_chain_length(): number {
     get_physical_bone_chain_length();
   }
-  public set physical_bone_chain_length(value: number): void {
+  public set physical_bone_chain_length(value): void {
     set_physical_bone_chain_length(value);
   }
 }

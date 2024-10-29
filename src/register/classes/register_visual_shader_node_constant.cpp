@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/visual_shader_node_constant.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void visual_shader_node_constant_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue visual_shader_node_constant_class_constructor(JSContext *ctx, JSV
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_constant_class);
+	JS_SetOpaque(obj, visual_shader_node_constant_class);	
 	return obj;
 }
 
@@ -41,6 +43,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_constant_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&VisualShaderNodeConstant::__class_id);
 	classes["VisualShaderNodeConstant"] = VisualShaderNodeConstant::__class_id;
 	class_id_list.insert(VisualShaderNodeConstant::__class_id);
@@ -62,7 +65,7 @@ static int js_visual_shader_node_constant_class_init(JSContext *ctx, JSModuleDef
 }
 
 JSModuleDef *_js_init_visual_shader_node_constant_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/visual_shader_node';";
+	const char *code = "import * as _ from '@godot/classes/visual_shader_node';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -74,7 +77,7 @@ JSModuleDef *_js_init_visual_shader_node_constant_module(JSContext *ctx, const c
 }
 
 JSModuleDef *js_init_visual_shader_node_constant_module(JSContext *ctx) {
-	return _js_init_visual_shader_node_constant_module(ctx, "godot/classes/visual_shader_node_constant");
+	return _js_init_visual_shader_node_constant_module(ctx, "@godot/classes/visual_shader_node_constant");
 }
 
 void register_visual_shader_node_constant() {

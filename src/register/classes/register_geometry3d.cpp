@@ -1,10 +1,10 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/geometry3d.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -16,6 +16,7 @@ static JSValue geometry3d_instance;
 static void js_geometry3d_singleton();
 
 static void geometry3d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -39,63 +40,63 @@ static JSValue geometry3d_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 static JSValue geometry3d_class_compute_convex_mesh_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry3d_singleton();
+    js_geometry3d_singleton();
 	return call_builtin_method_ret(&Geometry3D::compute_convex_mesh_points, ctx, this_val, argc, argv);
 };
 static JSValue geometry3d_class_build_box_planes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry3d_singleton();
+    js_geometry3d_singleton();
 	return call_builtin_method_ret(&Geometry3D::build_box_planes, ctx, this_val, argc, argv);
 };
 static JSValue geometry3d_class_build_cylinder_planes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry3d_singleton();
+    js_geometry3d_singleton();
 	return call_builtin_method_ret(&Geometry3D::build_cylinder_planes, ctx, this_val, argc, argv);
 };
 static JSValue geometry3d_class_build_capsule_planes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry3d_singleton();
+    js_geometry3d_singleton();
 	return call_builtin_method_ret(&Geometry3D::build_capsule_planes, ctx, this_val, argc, argv);
 };
 static JSValue geometry3d_class_get_closest_points_between_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry3d_singleton();
+    js_geometry3d_singleton();
 	return call_builtin_method_ret(&Geometry3D::get_closest_points_between_segments, ctx, this_val, argc, argv);
 };
 static JSValue geometry3d_class_get_closest_point_to_segment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry3d_singleton();
+    js_geometry3d_singleton();
 	return call_builtin_method_ret(&Geometry3D::get_closest_point_to_segment, ctx, this_val, argc, argv);
 };
 static JSValue geometry3d_class_get_closest_point_to_segment_uncapped(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry3d_singleton();
+    js_geometry3d_singleton();
 	return call_builtin_method_ret(&Geometry3D::get_closest_point_to_segment_uncapped, ctx, this_val, argc, argv);
 };
 static JSValue geometry3d_class_get_triangle_barycentric_coords(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry3d_singleton();
+    js_geometry3d_singleton();
 	return call_builtin_method_ret(&Geometry3D::get_triangle_barycentric_coords, ctx, this_val, argc, argv);
 };
 static JSValue geometry3d_class_ray_intersects_triangle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry3d_singleton();
+    js_geometry3d_singleton();
 	return call_builtin_method_ret(&Geometry3D::ray_intersects_triangle, ctx, this_val, argc, argv);
 };
 static JSValue geometry3d_class_segment_intersects_triangle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry3d_singleton();
+    js_geometry3d_singleton();
 	return call_builtin_method_ret(&Geometry3D::segment_intersects_triangle, ctx, this_val, argc, argv);
 };
 static JSValue geometry3d_class_segment_intersects_sphere(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry3d_singleton();
+    js_geometry3d_singleton();
 	return call_builtin_method_ret(&Geometry3D::segment_intersects_sphere, ctx, this_val, argc, argv);
 };
 static JSValue geometry3d_class_segment_intersects_cylinder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry3d_singleton();
+    js_geometry3d_singleton();
 	return call_builtin_method_ret(&Geometry3D::segment_intersects_cylinder, ctx, this_val, argc, argv);
 };
 static JSValue geometry3d_class_segment_intersects_convex(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry3d_singleton();
+    js_geometry3d_singleton();
 	return call_builtin_method_ret(&Geometry3D::segment_intersects_convex, ctx, this_val, argc, argv);
 };
 static JSValue geometry3d_class_clip_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry3d_singleton();
+    js_geometry3d_singleton();
 	return call_builtin_method_ret(&Geometry3D::clip_polygon, ctx, this_val, argc, argv);
 };
 static JSValue geometry3d_class_tetrahedralize_delaunay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_geometry3d_singleton();
+    js_geometry3d_singleton();
 	return call_builtin_method_ret(&Geometry3D::tetrahedralize_delaunay, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry geometry3d_class_proto_funcs[] = {
@@ -136,6 +137,7 @@ static void js_geometry3d_singleton() {
 		JS_SetPropertyStr(ctx, global, "Geometry3D", geometry3d_instance);
 	}
 }
+
 
 void register_geometry3d() {
 	js_geometry3d_class_init(ctx);

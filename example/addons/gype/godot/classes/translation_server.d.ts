@@ -29,7 +29,7 @@ export declare class TranslationServer extends Object{
   public get pseudolocalization_enabled(): boolean {
     is_pseudolocalization_enabled();
   }
-  public set pseudolocalization_enabled(value: boolean): void {
+  public set pseudolocalization_enabled(value): void {
     set_pseudolocalization_enabled(value);
   }
 }

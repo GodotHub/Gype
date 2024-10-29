@@ -7,7 +7,7 @@ export declare class ConcavePolygonShape2D extends Shape2D{
   public get segments(): PackedVector2Array {
     get_segments();
   }
-  public set segments(value: PackedVector2Array): void {
+  public set segments(value): void {
     set_segments(value);
   }
 }

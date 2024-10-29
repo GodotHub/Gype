@@ -13,13 +13,13 @@ export declare class CameraFeed extends RefCounted{
   public get feed_is_active(): boolean {
     is_active();
   }
-  public set feed_is_active(value: boolean): void {
+  public set feed_is_active(value): void {
     set_active(value);
   }
   public get feed_transform(): Transform2D {
     get_transform();
   }
-  public set feed_transform(value: Transform2D): void {
+  public set feed_transform(value): void {
     set_transform(value);
   }
   static FeedDataType = {

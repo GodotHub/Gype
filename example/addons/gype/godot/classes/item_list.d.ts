@@ -1,7 +1,7 @@
 
-import { VScrollBar } from "@godot/classes/v_scroll_bar";
 import { Texture2D } from "@godot/classes/texture2d";
 import { Control } from "@godot/classes/control";
+import { VScrollBar } from "@godot/classes/v_scroll_bar";
 
 export declare class ItemList extends Control{
   public add_item(_text: String, _icon: Texture2D, _selectable: boolean): number;
@@ -24,8 +24,8 @@ export declare class ItemList extends Control{
   public is_item_selectable(_idx: number): boolean;
   public set_item_disabled(_idx: number, _disabled: boolean): void;
   public is_item_disabled(_idx: number): boolean;
-  public set_item_metadata(_idx: number, _metadata: Variant): void;
-  public get_item_metadata(_idx: number): Variant;
+  public set_item_metadata(_idx: number, _metadata: any): void;
+  public get_item_metadata(_idx: number): any;
   public set_item_custom_bg_color(_idx: number, _custom_bg_color: Color): void;
   public get_item_custom_bg_color(_idx: number): Color;
   public set_item_custom_fg_color(_idx: number, _custom_fg_color: Color): void;
@@ -80,85 +80,85 @@ export declare class ItemList extends Control{
   public get select_mode(): number {
     get_select_mode();
   }
-  public set select_mode(value: number): void {
+  public set select_mode(value): void {
     set_select_mode(value);
   }
   public get allow_reselect(): boolean {
     get_allow_reselect();
   }
-  public set allow_reselect(value: boolean): void {
+  public set allow_reselect(value): void {
     set_allow_reselect(value);
   }
   public get allow_rmb_select(): boolean {
     get_allow_rmb_select();
   }
-  public set allow_rmb_select(value: boolean): void {
+  public set allow_rmb_select(value): void {
     set_allow_rmb_select(value);
   }
   public get allow_search(): boolean {
     get_allow_search();
   }
-  public set allow_search(value: boolean): void {
+  public set allow_search(value): void {
     set_allow_search(value);
   }
   public get max_text_lines(): number {
     get_max_text_lines();
   }
-  public set max_text_lines(value: number): void {
+  public set max_text_lines(value): void {
     set_max_text_lines(value);
   }
   public get auto_height(): boolean {
     has_auto_height();
   }
-  public set auto_height(value: boolean): void {
+  public set auto_height(value): void {
     set_auto_height(value);
   }
   public get text_overrun_behavior(): number {
     get_text_overrun_behavior();
   }
-  public set text_overrun_behavior(value: number): void {
+  public set text_overrun_behavior(value): void {
     set_text_overrun_behavior(value);
   }
   public get item_count(): number {
     get_item_count();
   }
-  public set item_count(value: number): void {
+  public set item_count(value): void {
     set_item_count(value);
   }
   public get max_columns(): number {
     get_max_columns();
   }
-  public set max_columns(value: number): void {
+  public set max_columns(value): void {
     set_max_columns(value);
   }
   public get same_column_width(): boolean {
     is_same_column_width();
   }
-  public set same_column_width(value: boolean): void {
+  public set same_column_width(value): void {
     set_same_column_width(value);
   }
   public get fixed_column_width(): number {
     get_fixed_column_width();
   }
-  public set fixed_column_width(value: number): void {
+  public set fixed_column_width(value): void {
     set_fixed_column_width(value);
   }
   public get icon_mode(): number {
     get_icon_mode();
   }
-  public set icon_mode(value: number): void {
+  public set icon_mode(value): void {
     set_icon_mode(value);
   }
   public get icon_scale(): number {
     get_icon_scale();
   }
-  public set icon_scale(value: number): void {
+  public set icon_scale(value): void {
     set_icon_scale(value);
   }
   public get fixed_icon_size(): Vector2i {
     get_fixed_icon_size();
   }
-  public set fixed_icon_size(value: Vector2i): void {
+  public set fixed_icon_size(value): void {
     set_fixed_icon_size(value);
   }
   static IconMode = {

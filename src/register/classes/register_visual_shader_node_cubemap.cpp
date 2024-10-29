@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/cubemap.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_cubemap.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void visual_shader_node_cubemap_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,12 +33,12 @@ static JSValue visual_shader_node_cubemap_class_constructor(JSContext *ctx, JSVa
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_cubemap_class);
+	JS_SetOpaque(obj, visual_shader_node_cubemap_class);	
 	return obj;
 }
 static JSValue visual_shader_node_cubemap_class_set_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShaderNodeCubemap::set_source, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeCubemap::set_source, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_cubemap_class_get_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -45,7 +47,7 @@ static JSValue visual_shader_node_cubemap_class_get_source(JSContext *ctx, JSVal
 };
 static JSValue visual_shader_node_cubemap_class_set_cube_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShaderNodeCubemap::set_cube_map, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeCubemap::set_cube_map, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_cubemap_class_get_cube_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -54,7 +56,7 @@ static JSValue visual_shader_node_cubemap_class_get_cube_map(JSContext *ctx, JSV
 };
 static JSValue visual_shader_node_cubemap_class_set_texture_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShaderNodeCubemap::set_texture_type, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShaderNodeCubemap::set_texture_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_node_cubemap_class_get_texture_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,27 +73,30 @@ static const JSCFunctionListEntry visual_shader_node_cubemap_class_proto_funcs[]
 };
 
 void define_visual_shader_node_cubemap_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "source"),
-			JS_NewCFunction(ctx, visual_shader_node_cubemap_class_get_source, "get_source", 0),
-			JS_NewCFunction(ctx, visual_shader_node_cubemap_class_set_source, "set_source", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "cube_map"),
-			JS_NewCFunction(ctx, visual_shader_node_cubemap_class_get_cube_map, "get_cube_map", 0),
-			JS_NewCFunction(ctx, visual_shader_node_cubemap_class_set_cube_map, "set_cube_map", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "texture_type"),
-			JS_NewCFunction(ctx, visual_shader_node_cubemap_class_get_texture_type, "get_texture_type", 0),
-			JS_NewCFunction(ctx, visual_shader_node_cubemap_class_set_texture_type, "set_texture_type", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "source"),
+        JS_NewCFunction(ctx, visual_shader_node_cubemap_class_get_source, "get_source", 0),
+        JS_NewCFunction(ctx, visual_shader_node_cubemap_class_set_source, "set_source", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "cube_map"),
+        JS_NewCFunction(ctx, visual_shader_node_cubemap_class_get_cube_map, "get_cube_map", 0),
+        JS_NewCFunction(ctx, visual_shader_node_cubemap_class_set_cube_map, "set_cube_map", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "texture_type"),
+        JS_NewCFunction(ctx, visual_shader_node_cubemap_class_get_texture_type, "get_texture_type", 0),
+        JS_NewCFunction(ctx, visual_shader_node_cubemap_class_set_texture_type, "set_texture_type", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -109,6 +114,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_cubemap_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&VisualShaderNodeCubemap::__class_id);
 	classes["VisualShaderNodeCubemap"] = VisualShaderNodeCubemap::__class_id;
 	class_id_list.insert(VisualShaderNodeCubemap::__class_id);
@@ -131,7 +137,7 @@ static int js_visual_shader_node_cubemap_class_init(JSContext *ctx, JSModuleDef 
 }
 
 JSModuleDef *_js_init_visual_shader_node_cubemap_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/visual_shader_node';";
+	const char *code = "import * as _ from '@godot/classes/visual_shader_node';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -143,7 +149,7 @@ JSModuleDef *_js_init_visual_shader_node_cubemap_module(JSContext *ctx, const ch
 }
 
 JSModuleDef *js_init_visual_shader_node_cubemap_module(JSContext *ctx) {
-	return _js_init_visual_shader_node_cubemap_module(ctx, "godot/classes/visual_shader_node_cubemap");
+	return _js_init_visual_shader_node_cubemap_module(ctx, "@godot/classes/visual_shader_node_cubemap");
 }
 
 void register_visual_shader_node_cubemap() {

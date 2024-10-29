@@ -1,9 +1,9 @@
 
-import { Node } from "@godot/classes/node";
-import { GeometryInstance3D } from "@godot/classes/geometry_instance3d";
-import { Curve } from "@godot/classes/curve";
 import { Gradient } from "@godot/classes/gradient";
 import { Mesh } from "@godot/classes/mesh";
+import { Curve } from "@godot/classes/curve";
+import { GeometryInstance3D } from "@godot/classes/geometry_instance3d";
+import { Node } from "@godot/classes/node";
 
 export declare class CPUParticles3D extends GeometryInstance3D{
   public set_emitting(_emitting: boolean): void;
@@ -91,445 +91,445 @@ export declare class CPUParticles3D extends GeometryInstance3D{
   public get emitting(): boolean {
     is_emitting();
   }
-  public set emitting(value: boolean): void {
+  public set emitting(value): void {
     set_emitting(value);
   }
   public get amount(): number {
     get_amount();
   }
-  public set amount(value: number): void {
+  public set amount(value): void {
     set_amount(value);
   }
   public get lifetime(): number {
     get_lifetime();
   }
-  public set lifetime(value: number): void {
+  public set lifetime(value): void {
     set_lifetime(value);
   }
   public get one_shot(): boolean {
     get_one_shot();
   }
-  public set one_shot(value: boolean): void {
+  public set one_shot(value): void {
     set_one_shot(value);
   }
   public get preprocess(): number {
     get_pre_process_time();
   }
-  public set preprocess(value: number): void {
+  public set preprocess(value): void {
     set_pre_process_time(value);
   }
   public get speed_scale(): number {
     get_speed_scale();
   }
-  public set speed_scale(value: number): void {
+  public set speed_scale(value): void {
     set_speed_scale(value);
   }
   public get explosiveness(): number {
     get_explosiveness_ratio();
   }
-  public set explosiveness(value: number): void {
+  public set explosiveness(value): void {
     set_explosiveness_ratio(value);
   }
   public get randomness(): number {
     get_randomness_ratio();
   }
-  public set randomness(value: number): void {
+  public set randomness(value): void {
     set_randomness_ratio(value);
   }
   public get lifetime_randomness(): number {
     get_lifetime_randomness();
   }
-  public set lifetime_randomness(value: number): void {
+  public set lifetime_randomness(value): void {
     set_lifetime_randomness(value);
   }
   public get fixed_fps(): number {
     get_fixed_fps();
   }
-  public set fixed_fps(value: number): void {
+  public set fixed_fps(value): void {
     set_fixed_fps(value);
   }
   public get fract_delta(): boolean {
     get_fractional_delta();
   }
-  public set fract_delta(value: boolean): void {
+  public set fract_delta(value): void {
     set_fractional_delta(value);
   }
   public get visibility_aabb(): AABB {
     get_visibility_aabb();
   }
-  public set visibility_aabb(value: AABB): void {
+  public set visibility_aabb(value): void {
     set_visibility_aabb(value);
   }
   public get local_coords(): boolean {
     get_use_local_coordinates();
   }
-  public set local_coords(value: boolean): void {
+  public set local_coords(value): void {
     set_use_local_coordinates(value);
   }
   public get draw_order(): number {
     get_draw_order();
   }
-  public set draw_order(value: number): void {
+  public set draw_order(value): void {
     set_draw_order(value);
   }
   public get mesh(): Mesh {
     get_mesh();
   }
-  public set mesh(value: Mesh): void {
+  public set mesh(value): void {
     set_mesh(value);
   }
   public get emission_shape(): number {
     get_emission_shape();
   }
-  public set emission_shape(value: number): void {
+  public set emission_shape(value): void {
     set_emission_shape(value);
   }
   public get emission_sphere_radius(): number {
     get_emission_sphere_radius();
   }
-  public set emission_sphere_radius(value: number): void {
+  public set emission_sphere_radius(value): void {
     set_emission_sphere_radius(value);
   }
   public get emission_box_extents(): Vector3 {
     get_emission_box_extents();
   }
-  public set emission_box_extents(value: Vector3): void {
+  public set emission_box_extents(value): void {
     set_emission_box_extents(value);
   }
   public get emission_points(): PackedVector3Array {
     get_emission_points();
   }
-  public set emission_points(value: PackedVector3Array): void {
+  public set emission_points(value): void {
     set_emission_points(value);
   }
   public get emission_normals(): PackedVector3Array {
     get_emission_normals();
   }
-  public set emission_normals(value: PackedVector3Array): void {
+  public set emission_normals(value): void {
     set_emission_normals(value);
   }
   public get emission_colors(): PackedColorArray {
     get_emission_colors();
   }
-  public set emission_colors(value: PackedColorArray): void {
+  public set emission_colors(value): void {
     set_emission_colors(value);
   }
   public get emission_ring_axis(): Vector3 {
     get_emission_ring_axis();
   }
-  public set emission_ring_axis(value: Vector3): void {
+  public set emission_ring_axis(value): void {
     set_emission_ring_axis(value);
   }
   public get emission_ring_height(): number {
     get_emission_ring_height();
   }
-  public set emission_ring_height(value: number): void {
+  public set emission_ring_height(value): void {
     set_emission_ring_height(value);
   }
   public get emission_ring_radius(): number {
     get_emission_ring_radius();
   }
-  public set emission_ring_radius(value: number): void {
+  public set emission_ring_radius(value): void {
     set_emission_ring_radius(value);
   }
   public get emission_ring_inner_radius(): number {
     get_emission_ring_inner_radius();
   }
-  public set emission_ring_inner_radius(value: number): void {
+  public set emission_ring_inner_radius(value): void {
     set_emission_ring_inner_radius(value);
   }
   public get particle_flag_align_y(): boolean {
     get_particle_flag();
   }
-  public set particle_flag_align_y(value: boolean): void {
+  public set particle_flag_align_y(value): void {
     set_particle_flag(value);
   }
   public get particle_flag_rotate_y(): boolean {
     get_particle_flag();
   }
-  public set particle_flag_rotate_y(value: boolean): void {
+  public set particle_flag_rotate_y(value): void {
     set_particle_flag(value);
   }
   public get particle_flag_disable_z(): boolean {
     get_particle_flag();
   }
-  public set particle_flag_disable_z(value: boolean): void {
+  public set particle_flag_disable_z(value): void {
     set_particle_flag(value);
   }
   public get direction(): Vector3 {
     get_direction();
   }
-  public set direction(value: Vector3): void {
+  public set direction(value): void {
     set_direction(value);
   }
   public get spread(): number {
     get_spread();
   }
-  public set spread(value: number): void {
+  public set spread(value): void {
     set_spread(value);
   }
   public get flatness(): number {
     get_flatness();
   }
-  public set flatness(value: number): void {
+  public set flatness(value): void {
     set_flatness(value);
   }
   public get gravity(): Vector3 {
     get_gravity();
   }
-  public set gravity(value: Vector3): void {
+  public set gravity(value): void {
     set_gravity(value);
   }
   public get initial_velocity_min(): number {
     get_param_min();
   }
-  public set initial_velocity_min(value: number): void {
+  public set initial_velocity_min(value): void {
     set_param_min(value);
   }
   public get initial_velocity_max(): number {
     get_param_max();
   }
-  public set initial_velocity_max(value: number): void {
+  public set initial_velocity_max(value): void {
     set_param_max(value);
   }
   public get angular_velocity_min(): number {
     get_param_min();
   }
-  public set angular_velocity_min(value: number): void {
+  public set angular_velocity_min(value): void {
     set_param_min(value);
   }
   public get angular_velocity_max(): number {
     get_param_max();
   }
-  public set angular_velocity_max(value: number): void {
+  public set angular_velocity_max(value): void {
     set_param_max(value);
   }
   public get angular_velocity_curve(): Curve {
     get_param_curve();
   }
-  public set angular_velocity_curve(value: Curve): void {
+  public set angular_velocity_curve(value): void {
     set_param_curve(value);
   }
   public get orbit_velocity_min(): number {
     get_param_min();
   }
-  public set orbit_velocity_min(value: number): void {
+  public set orbit_velocity_min(value): void {
     set_param_min(value);
   }
   public get orbit_velocity_max(): number {
     get_param_max();
   }
-  public set orbit_velocity_max(value: number): void {
+  public set orbit_velocity_max(value): void {
     set_param_max(value);
   }
   public get orbit_velocity_curve(): Curve {
     get_param_curve();
   }
-  public set orbit_velocity_curve(value: Curve): void {
+  public set orbit_velocity_curve(value): void {
     set_param_curve(value);
   }
   public get linear_accel_min(): number {
     get_param_min();
   }
-  public set linear_accel_min(value: number): void {
+  public set linear_accel_min(value): void {
     set_param_min(value);
   }
   public get linear_accel_max(): number {
     get_param_max();
   }
-  public set linear_accel_max(value: number): void {
+  public set linear_accel_max(value): void {
     set_param_max(value);
   }
   public get linear_accel_curve(): Curve {
     get_param_curve();
   }
-  public set linear_accel_curve(value: Curve): void {
+  public set linear_accel_curve(value): void {
     set_param_curve(value);
   }
   public get radial_accel_min(): number {
     get_param_min();
   }
-  public set radial_accel_min(value: number): void {
+  public set radial_accel_min(value): void {
     set_param_min(value);
   }
   public get radial_accel_max(): number {
     get_param_max();
   }
-  public set radial_accel_max(value: number): void {
+  public set radial_accel_max(value): void {
     set_param_max(value);
   }
   public get radial_accel_curve(): Curve {
     get_param_curve();
   }
-  public set radial_accel_curve(value: Curve): void {
+  public set radial_accel_curve(value): void {
     set_param_curve(value);
   }
   public get tangential_accel_min(): number {
     get_param_min();
   }
-  public set tangential_accel_min(value: number): void {
+  public set tangential_accel_min(value): void {
     set_param_min(value);
   }
   public get tangential_accel_max(): number {
     get_param_max();
   }
-  public set tangential_accel_max(value: number): void {
+  public set tangential_accel_max(value): void {
     set_param_max(value);
   }
   public get tangential_accel_curve(): Curve {
     get_param_curve();
   }
-  public set tangential_accel_curve(value: Curve): void {
+  public set tangential_accel_curve(value): void {
     set_param_curve(value);
   }
   public get damping_min(): number {
     get_param_min();
   }
-  public set damping_min(value: number): void {
+  public set damping_min(value): void {
     set_param_min(value);
   }
   public get damping_max(): number {
     get_param_max();
   }
-  public set damping_max(value: number): void {
+  public set damping_max(value): void {
     set_param_max(value);
   }
   public get damping_curve(): Curve {
     get_param_curve();
   }
-  public set damping_curve(value: Curve): void {
+  public set damping_curve(value): void {
     set_param_curve(value);
   }
   public get angle_min(): number {
     get_param_min();
   }
-  public set angle_min(value: number): void {
+  public set angle_min(value): void {
     set_param_min(value);
   }
   public get angle_max(): number {
     get_param_max();
   }
-  public set angle_max(value: number): void {
+  public set angle_max(value): void {
     set_param_max(value);
   }
   public get angle_curve(): Curve {
     get_param_curve();
   }
-  public set angle_curve(value: Curve): void {
+  public set angle_curve(value): void {
     set_param_curve(value);
   }
   public get scale_amount_min(): number {
     get_param_min();
   }
-  public set scale_amount_min(value: number): void {
+  public set scale_amount_min(value): void {
     set_param_min(value);
   }
   public get scale_amount_max(): number {
     get_param_max();
   }
-  public set scale_amount_max(value: number): void {
+  public set scale_amount_max(value): void {
     set_param_max(value);
   }
   public get scale_amount_curve(): Curve {
     get_param_curve();
   }
-  public set scale_amount_curve(value: Curve): void {
+  public set scale_amount_curve(value): void {
     set_param_curve(value);
   }
   public get split_scale(): boolean {
     get_split_scale();
   }
-  public set split_scale(value: boolean): void {
+  public set split_scale(value): void {
     set_split_scale(value);
   }
   public get scale_curve_x(): Curve {
     get_scale_curve_x();
   }
-  public set scale_curve_x(value: Curve): void {
+  public set scale_curve_x(value): void {
     set_scale_curve_x(value);
   }
   public get scale_curve_y(): Curve {
     get_scale_curve_y();
   }
-  public set scale_curve_y(value: Curve): void {
+  public set scale_curve_y(value): void {
     set_scale_curve_y(value);
   }
   public get scale_curve_z(): Curve {
     get_scale_curve_z();
   }
-  public set scale_curve_z(value: Curve): void {
+  public set scale_curve_z(value): void {
     set_scale_curve_z(value);
   }
   public get color(): Color {
     get_color();
   }
-  public set color(value: Color): void {
+  public set color(value): void {
     set_color(value);
   }
   public get color_ramp(): Gradient {
     get_color_ramp();
   }
-  public set color_ramp(value: Gradient): void {
+  public set color_ramp(value): void {
     set_color_ramp(value);
   }
   public get color_initial_ramp(): Gradient {
     get_color_initial_ramp();
   }
-  public set color_initial_ramp(value: Gradient): void {
+  public set color_initial_ramp(value): void {
     set_color_initial_ramp(value);
   }
   public get hue_variation_min(): number {
     get_param_min();
   }
-  public set hue_variation_min(value: number): void {
+  public set hue_variation_min(value): void {
     set_param_min(value);
   }
   public get hue_variation_max(): number {
     get_param_max();
   }
-  public set hue_variation_max(value: number): void {
+  public set hue_variation_max(value): void {
     set_param_max(value);
   }
   public get hue_variation_curve(): Curve {
     get_param_curve();
   }
-  public set hue_variation_curve(value: Curve): void {
+  public set hue_variation_curve(value): void {
     set_param_curve(value);
   }
   public get anim_speed_min(): number {
     get_param_min();
   }
-  public set anim_speed_min(value: number): void {
+  public set anim_speed_min(value): void {
     set_param_min(value);
   }
   public get anim_speed_max(): number {
     get_param_max();
   }
-  public set anim_speed_max(value: number): void {
+  public set anim_speed_max(value): void {
     set_param_max(value);
   }
   public get anim_speed_curve(): Curve {
     get_param_curve();
   }
-  public set anim_speed_curve(value: Curve): void {
+  public set anim_speed_curve(value): void {
     set_param_curve(value);
   }
   public get anim_offset_min(): number {
     get_param_min();
   }
-  public set anim_offset_min(value: number): void {
+  public set anim_offset_min(value): void {
     set_param_min(value);
   }
   public get anim_offset_max(): number {
     get_param_max();
   }
-  public set anim_offset_max(value: number): void {
+  public set anim_offset_max(value): void {
     set_param_max(value);
   }
   public get anim_offset_curve(): Curve {
     get_param_curve();
   }
-  public set anim_offset_curve(value: Curve): void {
+  public set anim_offset_curve(value): void {
     set_param_curve(value);
   }
   static DrawOrder = {

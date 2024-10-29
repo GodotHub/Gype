@@ -9,13 +9,13 @@ export declare class SeparationRayShape2D extends Shape2D{
   public get length(): number {
     get_length();
   }
-  public set length(value: number): void {
+  public set length(value): void {
     set_length(value);
   }
   public get slide_on_slope(): boolean {
     get_slide_on_slope();
   }
-  public set slide_on_slope(value: boolean): void {
+  public set slide_on_slope(value): void {
     set_slide_on_slope(value);
   }
 }

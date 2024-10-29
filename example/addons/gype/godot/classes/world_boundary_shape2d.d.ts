@@ -9,13 +9,13 @@ export declare class WorldBoundaryShape2D extends Shape2D{
   public get normal(): Vector2 {
     get_normal();
   }
-  public set normal(value: Vector2): void {
+  public set normal(value): void {
     set_normal(value);
   }
   public get distance(): number {
     get_distance();
   }
-  public set distance(value: number): void {
+  public set distance(value): void {
     set_distance(value);
   }
 }

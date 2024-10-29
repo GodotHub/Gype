@@ -7,7 +7,7 @@ export declare class CompressedTextureLayered extends TextureLayered{
   public get load_path(): String {
     get_load_path();
   }
-  public set load_path(value: String): void {
+  public set load_path(value): void {
     load(value);
   }
 }

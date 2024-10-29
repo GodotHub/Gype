@@ -23,55 +23,55 @@ export declare class InputEventScreenDrag extends InputEventFromWindow{
   public get index(): number {
     get_index();
   }
-  public set index(value: number): void {
+  public set index(value): void {
     set_index(value);
   }
   public get tilt(): Vector2 {
     get_tilt();
   }
-  public set tilt(value: Vector2): void {
+  public set tilt(value): void {
     set_tilt(value);
   }
   public get pressure(): number {
     get_pressure();
   }
-  public set pressure(value: number): void {
+  public set pressure(value): void {
     set_pressure(value);
   }
   public get pen_inverted(): boolean {
     get_pen_inverted();
   }
-  public set pen_inverted(value: boolean): void {
+  public set pen_inverted(value): void {
     set_pen_inverted(value);
   }
   public get position(): Vector2 {
     get_position();
   }
-  public set position(value: Vector2): void {
+  public set position(value): void {
     set_position(value);
   }
   public get relative(): Vector2 {
     get_relative();
   }
-  public set relative(value: Vector2): void {
+  public set relative(value): void {
     set_relative(value);
   }
   public get screen_relative(): Vector2 {
     get_screen_relative();
   }
-  public set screen_relative(value: Vector2): void {
+  public set screen_relative(value): void {
     set_screen_relative(value);
   }
   public get velocity(): Vector2 {
     get_velocity();
   }
-  public set velocity(value: Vector2): void {
+  public set velocity(value): void {
     set_velocity(value);
   }
   public get screen_velocity(): Vector2 {
     get_screen_velocity();
   }
-  public set screen_velocity(value: Vector2): void {
+  public set screen_velocity(value): void {
     set_screen_velocity(value);
   }
 }

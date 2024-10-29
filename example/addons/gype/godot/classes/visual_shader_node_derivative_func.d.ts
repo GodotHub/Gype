@@ -11,19 +11,19 @@ export declare class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
   public get op_type(): number {
     get_op_type();
   }
-  public set op_type(value: number): void {
+  public set op_type(value): void {
     set_op_type(value);
   }
   public get function(): number {
     get_function();
   }
-  public set function(value: number): void {
+  public set function(value): void {
     set_function(value);
   }
   public get precision(): number {
     get_precision();
   }
-  public set precision(value: number): void {
+  public set precision(value): void {
     set_precision(value);
   }
   static OpType = {

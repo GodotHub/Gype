@@ -9,7 +9,7 @@ export declare class XRFaceTracker extends XRTracker{
   public get blend_shapes(): PackedFloat32Array {
     get_blend_shapes();
   }
-  public set blend_shapes(value: PackedFloat32Array): void {
+  public set blend_shapes(value): void {
     set_blend_shapes(value);
   }
   static BlendShapeEntry = {

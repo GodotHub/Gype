@@ -37,91 +37,91 @@ export declare class Light2D extends Node2D{
   public get enabled(): boolean {
     is_enabled();
   }
-  public set enabled(value: boolean): void {
+  public set enabled(value): void {
     set_enabled(value);
   }
   public get editor_only(): boolean {
     is_editor_only();
   }
-  public set editor_only(value: boolean): void {
+  public set editor_only(value): void {
     set_editor_only(value);
   }
   public get color(): Color {
     get_color();
   }
-  public set color(value: Color): void {
+  public set color(value): void {
     set_color(value);
   }
   public get energy(): number {
     get_energy();
   }
-  public set energy(value: number): void {
+  public set energy(value): void {
     set_energy(value);
   }
   public get blend_mode(): number {
     get_blend_mode();
   }
-  public set blend_mode(value: number): void {
+  public set blend_mode(value): void {
     set_blend_mode(value);
   }
   public get range_z_min(): number {
     get_z_range_min();
   }
-  public set range_z_min(value: number): void {
+  public set range_z_min(value): void {
     set_z_range_min(value);
   }
   public get range_z_max(): number {
     get_z_range_max();
   }
-  public set range_z_max(value: number): void {
+  public set range_z_max(value): void {
     set_z_range_max(value);
   }
   public get range_layer_min(): number {
     get_layer_range_min();
   }
-  public set range_layer_min(value: number): void {
+  public set range_layer_min(value): void {
     set_layer_range_min(value);
   }
   public get range_layer_max(): number {
     get_layer_range_max();
   }
-  public set range_layer_max(value: number): void {
+  public set range_layer_max(value): void {
     set_layer_range_max(value);
   }
   public get range_item_cull_mask(): number {
     get_item_cull_mask();
   }
-  public set range_item_cull_mask(value: number): void {
+  public set range_item_cull_mask(value): void {
     set_item_cull_mask(value);
   }
   public get shadow_enabled(): boolean {
     is_shadow_enabled();
   }
-  public set shadow_enabled(value: boolean): void {
+  public set shadow_enabled(value): void {
     set_shadow_enabled(value);
   }
   public get shadow_color(): Color {
     get_shadow_color();
   }
-  public set shadow_color(value: Color): void {
+  public set shadow_color(value): void {
     set_shadow_color(value);
   }
   public get shadow_filter(): number {
     get_shadow_filter();
   }
-  public set shadow_filter(value: number): void {
+  public set shadow_filter(value): void {
     set_shadow_filter(value);
   }
   public get shadow_filter_smooth(): number {
     get_shadow_smooth();
   }
-  public set shadow_filter_smooth(value: number): void {
+  public set shadow_filter_smooth(value): void {
     set_shadow_smooth(value);
   }
   public get shadow_item_cull_mask(): number {
     get_item_shadow_cull_mask();
   }
-  public set shadow_item_cull_mask(value: number): void {
+  public set shadow_item_cull_mask(value): void {
     set_item_shadow_cull_mask(value);
   }
   static ShadowFilter = {

@@ -8,5 +8,5 @@ export declare class AnimationLibrary extends Resource{
   public rename_animation(_name: StringName, _newname: StringName): void;
   public has_animation(_name: StringName): boolean;
   public get_animation(_name: StringName): Animation;
-  public get_animation_list(): Array;
+  public get_animation_list(): GDArray;
 }

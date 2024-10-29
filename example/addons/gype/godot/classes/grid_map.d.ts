@@ -1,8 +1,8 @@
 
-import { Node3D } from "@godot/classes/node3d";
-import { Resource } from "@godot/classes/resource";
-import { MeshLibrary } from "@godot/classes/mesh_library";
 import { PhysicsMaterial } from "@godot/classes/physics_material";
+import { MeshLibrary } from "@godot/classes/mesh_library";
+import { Resource } from "@godot/classes/resource";
+import { Node3D } from "@godot/classes/node3d";
 
 export declare class GridMap extends Node3D{
   public set_collision_layer(_layer: number): void;
@@ -45,8 +45,8 @@ export declare class GridMap extends Node3D{
   public set_center_z(_enable: boolean): void;
   public get_center_z(): boolean;
   public clear(): void;
-  public get_used_cells(): Array;
-  public get_used_cells_by_item(_item: number): Array;
+  public get_used_cells(): GDArray;
+  public get_used_cells_by_item(_item: number): GDArray;
   public get_meshes(): GDArray;
   public get_bake_meshes(): GDArray;
   public get_bake_mesh_instance(_idx: number): RID;
@@ -55,73 +55,73 @@ export declare class GridMap extends Node3D{
   public get mesh_library(): MeshLibrary {
     get_mesh_library();
   }
-  public set mesh_library(value: MeshLibrary): void {
+  public set mesh_library(value): void {
     set_mesh_library(value);
   }
   public get physics_material(): PhysicsMaterial {
     get_physics_material();
   }
-  public set physics_material(value: PhysicsMaterial): void {
+  public set physics_material(value): void {
     set_physics_material(value);
   }
   public get cell_size(): Vector3 {
     get_cell_size();
   }
-  public set cell_size(value: Vector3): void {
+  public set cell_size(value): void {
     set_cell_size(value);
   }
   public get cell_octant_size(): number {
     get_octant_size();
   }
-  public set cell_octant_size(value: number): void {
+  public set cell_octant_size(value): void {
     set_octant_size(value);
   }
   public get cell_center_x(): boolean {
     get_center_x();
   }
-  public set cell_center_x(value: boolean): void {
+  public set cell_center_x(value): void {
     set_center_x(value);
   }
   public get cell_center_y(): boolean {
     get_center_y();
   }
-  public set cell_center_y(value: boolean): void {
+  public set cell_center_y(value): void {
     set_center_y(value);
   }
   public get cell_center_z(): boolean {
     get_center_z();
   }
-  public set cell_center_z(value: boolean): void {
+  public set cell_center_z(value): void {
     set_center_z(value);
   }
   public get cell_scale(): number {
     get_cell_scale();
   }
-  public set cell_scale(value: number): void {
+  public set cell_scale(value): void {
     set_cell_scale(value);
   }
   public get collision_layer(): number {
     get_collision_layer();
   }
-  public set collision_layer(value: number): void {
+  public set collision_layer(value): void {
     set_collision_layer(value);
   }
   public get collision_mask(): number {
     get_collision_mask();
   }
-  public set collision_mask(value: number): void {
+  public set collision_mask(value): void {
     set_collision_mask(value);
   }
   public get collision_priority(): number {
     get_collision_priority();
   }
-  public set collision_priority(value: number): void {
+  public set collision_priority(value): void {
     set_collision_priority(value);
   }
   public get bake_navigation(): boolean {
     is_baking_navigation();
   }
-  public set bake_navigation(value: boolean): void {
+  public set bake_navigation(value): void {
     set_bake_navigation(value);
   }
 }

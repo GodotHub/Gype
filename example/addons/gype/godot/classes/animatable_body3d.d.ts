@@ -7,7 +7,7 @@ export declare class AnimatableBody3D extends StaticBody3D{
   public get sync_to_physics(): boolean {
     is_sync_to_physics_enabled();
   }
-  public set sync_to_physics(value: boolean): void {
+  public set sync_to_physics(value): void {
     set_sync_to_physics(value);
   }
 }

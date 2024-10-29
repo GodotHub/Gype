@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/light_occluder2d.hpp>
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/occluder_polygon2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void light_occluder2d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,12 +33,12 @@ static JSValue light_occluder2d_class_constructor(JSContext *ctx, JSValueConst n
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, light_occluder2d_class);
+	JS_SetOpaque(obj, light_occluder2d_class);	
 	return obj;
 }
 static JSValue light_occluder2d_class_set_occluder_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&LightOccluder2D::set_occluder_polygon, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&LightOccluder2D::set_occluder_polygon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light_occluder2d_class_get_occluder_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -45,7 +47,7 @@ static JSValue light_occluder2d_class_get_occluder_polygon(JSContext *ctx, JSVal
 };
 static JSValue light_occluder2d_class_set_occluder_light_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&LightOccluder2D::set_occluder_light_mask, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&LightOccluder2D::set_occluder_light_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light_occluder2d_class_get_occluder_light_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -54,7 +56,7 @@ static JSValue light_occluder2d_class_get_occluder_light_mask(JSContext *ctx, JS
 };
 static JSValue light_occluder2d_class_set_as_sdf_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&LightOccluder2D::set_as_sdf_collision, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&LightOccluder2D::set_as_sdf_collision, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light_occluder2d_class_is_set_as_sdf_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,33 +73,37 @@ static const JSCFunctionListEntry light_occluder2d_class_proto_funcs[] = {
 };
 
 void define_light_occluder2d_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "occluder"),
-			JS_NewCFunction(ctx, light_occluder2d_class_get_occluder_polygon, "get_occluder_polygon", 0),
-			JS_NewCFunction(ctx, light_occluder2d_class_set_occluder_polygon, "set_occluder_polygon", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "sdf_collision"),
-			JS_NewCFunction(ctx, light_occluder2d_class_is_set_as_sdf_collision, "is_set_as_sdf_collision", 0),
-			JS_NewCFunction(ctx, light_occluder2d_class_set_as_sdf_collision, "set_as_sdf_collision", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "occluder_light_mask"),
-			JS_NewCFunction(ctx, light_occluder2d_class_get_occluder_light_mask, "get_occluder_light_mask", 0),
-			JS_NewCFunction(ctx, light_occluder2d_class_set_occluder_light_mask, "set_occluder_light_mask", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "occluder"),
+        JS_NewCFunction(ctx, light_occluder2d_class_get_occluder_polygon, "get_occluder_polygon", 0),
+        JS_NewCFunction(ctx, light_occluder2d_class_set_occluder_polygon, "set_occluder_polygon", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "sdf_collision"),
+        JS_NewCFunction(ctx, light_occluder2d_class_is_set_as_sdf_collision, "is_set_as_sdf_collision", 0),
+        JS_NewCFunction(ctx, light_occluder2d_class_set_as_sdf_collision, "set_as_sdf_collision", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "occluder_light_mask"),
+        JS_NewCFunction(ctx, light_occluder2d_class_get_occluder_light_mask, "get_occluder_light_mask", 0),
+        JS_NewCFunction(ctx, light_occluder2d_class_set_occluder_light_mask, "set_occluder_light_mask", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_light_occluder2d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&LightOccluder2D::__class_id);
 	classes["LightOccluder2D"] = LightOccluder2D::__class_id;
 	class_id_list.insert(LightOccluder2D::__class_id);
@@ -120,7 +126,7 @@ static int js_light_occluder2d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_light_occluder2d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/node2d';";
+	const char *code = "import * as _ from '@godot/classes/node2d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -132,7 +138,7 @@ JSModuleDef *_js_init_light_occluder2d_module(JSContext *ctx, const char *module
 }
 
 JSModuleDef *js_init_light_occluder2d_module(JSContext *ctx) {
-	return _js_init_light_occluder2d_module(ctx, "godot/classes/light_occluder2d");
+	return _js_init_light_occluder2d_module(ctx, "@godot/classes/light_occluder2d");
 }
 
 void register_light_occluder2d() {

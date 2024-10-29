@@ -7,7 +7,7 @@ export declare class PolygonOccluder3D extends Occluder3D{
   public get polygon(): PackedVector2Array {
     get_polygon();
   }
-  public set polygon(value: PackedVector2Array): void {
+  public set polygon(value): void {
     set_polygon(value);
   }
 }

@@ -3,13 +3,13 @@ import { Object } from "@godot/classes/object";
 
 export declare class ProjectSettings extends Object{
   public has_setting(_name: String): boolean;
-  public set_setting(_name: String, _value: Variant): void;
-  public get_setting(_name: String, _default_value: Variant): Variant;
-  public get_setting_with_override(_name: StringName): Variant;
-  public get_global_class_list(): Array;
+  public set_setting(_name: String, _value: any): void;
+  public get_setting(_name: String, _default_value: any): any;
+  public get_setting_with_override(_name: StringName): any;
+  public get_global_class_list(): GDArray;
   public set_order(_name: String, _position: number): void;
   public get_order(_name: String): number;
-  public set_initial_value(_name: String, _value: Variant): void;
+  public set_initial_value(_name: String, _value: any): void;
   public set_as_basic(_name: String, _basic: boolean): void;
   public set_as_internal(_name: String, _internal: boolean): void;
   public add_property_info(_hint: Dictionary): void;

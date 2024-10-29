@@ -8,13 +8,13 @@ export declare class ArrayOccluder3D extends Occluder3D{
   public get vertices(): PackedVector3Array {
     get_vertices();
   }
-  public set vertices(value: PackedVector3Array): void {
+  public set vertices(value): void {
     set_vertices(value);
   }
   public get indices(): PackedInt32Array {
     get_indices();
   }
-  public set indices(value: PackedInt32Array): void {
+  public set indices(value): void {
     set_indices(value);
   }
 }

@@ -1,5 +1,4 @@
-import { RefCounted } from "godot/classes/ref_counted";
-import { Node } from "godot/classes/node";
+import { Node } from "@godot/classes/node";
 
 const _GodotClass = Symbol("_GodotClass");
 

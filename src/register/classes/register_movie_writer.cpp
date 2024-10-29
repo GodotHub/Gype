@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/image.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/movie_writer.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void movie_writer_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,11 +33,11 @@ static JSValue movie_writer_class_constructor(JSContext *ctx, JSValueConst new_t
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, movie_writer_class);
+	JS_SetOpaque(obj, movie_writer_class);	
 	return obj;
 }
 static JSValue movie_writer_class_add_writer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_method_no_ret(&MovieWriter::add_writer, ctx, this_val, argc, argv);
+    call_builtin_static_method_no_ret(&MovieWriter::add_writer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry movie_writer_class_static_funcs[] = {
@@ -49,6 +51,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_movie_writer_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&MovieWriter::__class_id);
 	classes["MovieWriter"] = MovieWriter::__class_id;
 	class_id_list.insert(MovieWriter::__class_id);
@@ -71,7 +74,7 @@ static int js_movie_writer_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_movie_writer_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -83,7 +86,7 @@ JSModuleDef *_js_init_movie_writer_module(JSContext *ctx, const char *module_nam
 }
 
 JSModuleDef *js_init_movie_writer_module(JSContext *ctx) {
-	return _js_init_movie_writer_module(ctx, "godot/classes/movie_writer");
+	return _js_init_movie_writer_module(ctx, "@godot/classes/movie_writer");
 }
 
 void register_movie_writer() {

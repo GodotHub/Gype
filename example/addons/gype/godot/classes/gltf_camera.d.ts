@@ -20,31 +20,31 @@ export declare class GLTFCamera extends Resource{
   public get perspective(): boolean {
     get_perspective();
   }
-  public set perspective(value: boolean): void {
+  public set perspective(value): void {
     set_perspective(value);
   }
   public get fov(): number {
     get_fov();
   }
-  public set fov(value: number): void {
+  public set fov(value): void {
     set_fov(value);
   }
   public get size_mag(): number {
     get_size_mag();
   }
-  public set size_mag(value: number): void {
+  public set size_mag(value): void {
     set_size_mag(value);
   }
   public get depth_far(): number {
     get_depth_far();
   }
-  public set depth_far(value: number): void {
+  public set depth_far(value): void {
     set_depth_far(value);
   }
   public get depth_near(): number {
     get_depth_near();
   }
-  public set depth_near(value: number): void {
+  public set depth_near(value): void {
     set_depth_near(value);
   }
 }

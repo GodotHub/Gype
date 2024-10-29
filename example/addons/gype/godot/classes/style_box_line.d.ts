@@ -15,31 +15,31 @@ export declare class StyleBoxLine extends StyleBox{
   public get color(): Color {
     get_color();
   }
-  public set color(value: Color): void {
+  public set color(value): void {
     set_color(value);
   }
   public get grow_begin(): number {
     get_grow_begin();
   }
-  public set grow_begin(value: number): void {
+  public set grow_begin(value): void {
     set_grow_begin(value);
   }
   public get grow_end(): number {
     get_grow_end();
   }
-  public set grow_end(value: number): void {
+  public set grow_end(value): void {
     set_grow_end(value);
   }
   public get thickness(): number {
     get_thickness();
   }
-  public set thickness(value: number): void {
+  public set thickness(value): void {
     set_thickness(value);
   }
   public get vertical(): boolean {
     is_vertical();
   }
-  public set vertical(value: boolean): void {
+  public set vertical(value): void {
     set_vertical(value);
   }
 }

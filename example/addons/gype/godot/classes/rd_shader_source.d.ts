@@ -9,37 +9,37 @@ export declare class RDShaderSource extends RefCounted{
   public get source_vertex(): String {
     get_stage_source();
   }
-  public set source_vertex(value: String): void {
+  public set source_vertex(value): void {
     set_stage_source(value);
   }
   public get source_fragment(): String {
     get_stage_source();
   }
-  public set source_fragment(value: String): void {
+  public set source_fragment(value): void {
     set_stage_source(value);
   }
   public get source_tesselation_control(): String {
     get_stage_source();
   }
-  public set source_tesselation_control(value: String): void {
+  public set source_tesselation_control(value): void {
     set_stage_source(value);
   }
   public get source_tesselation_evaluation(): String {
     get_stage_source();
   }
-  public set source_tesselation_evaluation(value: String): void {
+  public set source_tesselation_evaluation(value): void {
     set_stage_source(value);
   }
   public get source_compute(): String {
     get_stage_source();
   }
-  public set source_compute(value: String): void {
+  public set source_compute(value): void {
     set_stage_source(value);
   }
   public get language(): number {
     get_language();
   }
-  public set language(value: number): void {
+  public set language(value): void {
     set_language(value);
   }
 }

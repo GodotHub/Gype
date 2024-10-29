@@ -1,10 +1,10 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/resource_uid.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -16,6 +16,7 @@ static JSValue resource_uid_instance;
 static void js_resource_uid_singleton();
 
 static void resource_uid_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -39,38 +40,38 @@ static JSValue resource_uid_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 static JSValue resource_uid_class_id_to_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_resource_uid_singleton();
+    js_resource_uid_singleton();
 	return call_builtin_const_method_ret(&ResourceUID::id_to_text, ctx, this_val, argc, argv);
 };
 static JSValue resource_uid_class_text_to_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_resource_uid_singleton();
+    js_resource_uid_singleton();
 	return call_builtin_const_method_ret(&ResourceUID::text_to_id, ctx, this_val, argc, argv);
 };
 static JSValue resource_uid_class_create_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_resource_uid_singleton();
+    js_resource_uid_singleton();
 	return call_builtin_method_ret(&ResourceUID::create_id, ctx, this_val, argc, argv);
 };
 static JSValue resource_uid_class_has_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_resource_uid_singleton();
+    js_resource_uid_singleton();
 	return call_builtin_const_method_ret(&ResourceUID::has_id, ctx, this_val, argc, argv);
 };
 static JSValue resource_uid_class_add_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_resource_uid_singleton();
-	call_builtin_method_no_ret(&ResourceUID::add_id, ctx, this_val, argc, argv);
+    js_resource_uid_singleton();
+    call_builtin_method_no_ret(&ResourceUID::add_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_uid_class_set_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_resource_uid_singleton();
-	call_builtin_method_no_ret(&ResourceUID::set_id, ctx, this_val, argc, argv);
+    js_resource_uid_singleton();
+    call_builtin_method_no_ret(&ResourceUID::set_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_uid_class_get_id_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_resource_uid_singleton();
+    js_resource_uid_singleton();
 	return call_builtin_const_method_ret(&ResourceUID::get_id_path, ctx, this_val, argc, argv);
 };
 static JSValue resource_uid_class_remove_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_resource_uid_singleton();
-	call_builtin_method_no_ret(&ResourceUID::remove_id, ctx, this_val, argc, argv);
+    js_resource_uid_singleton();
+    call_builtin_method_no_ret(&ResourceUID::remove_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry resource_uid_class_proto_funcs[] = {
@@ -104,6 +105,7 @@ static void js_resource_uid_singleton() {
 		JS_SetPropertyStr(ctx, global, "ResourceUID", resource_uid_instance);
 	}
 }
+
 
 void register_resource_uid() {
 	js_resource_uid_class_init(ctx);

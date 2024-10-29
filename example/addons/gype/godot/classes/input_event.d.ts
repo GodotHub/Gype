@@ -20,7 +20,7 @@ export declare class InputEvent extends Resource{
   public get device(): number {
     get_device();
   }
-  public set device(value: number): void {
+  public set device(value): void {
     set_device(value);
   }
 }

@@ -11,13 +11,13 @@ namespace godot {
 class Variant;
 class Object;
 
-class JavaScriptLanguage : public ScriptLanguageExtension {
-	GDCLASS(JavaScriptLanguage, ScriptLanguageExtension)
+class TypeScriptLanguage : public ScriptLanguageExtension {
+	GDCLASS(TypeScriptLanguage, ScriptLanguageExtension)
 
-	static JavaScriptLanguage *singleton;
+	static TypeScriptLanguage *singleton;
 
 public:
-	static JavaScriptLanguage *get_singleton();
+	static TypeScriptLanguage *get_singleton();
 	String _get_name() const;
 	void _init();
 	String _get_type() const;
@@ -81,7 +81,7 @@ public:
 	static String get_base_type(const String &p_path);
 	static String get_class_name(const String &p_path);
 
-	~JavaScriptLanguage();
+	~TypeScriptLanguage();
 
 protected:
 	static void _bind_methods() {}

@@ -1,6 +1,6 @@
 
-import { UPNPDevice } from "@godot/classes/upnp_device";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { UPNPDevice } from "@godot/classes/upnp_device";
 
 export declare class UPNP extends RefCounted{
   public get_device_count(): number;
@@ -23,19 +23,19 @@ export declare class UPNP extends RefCounted{
   public get discover_multicast_if(): String {
     get_discover_multicast_if();
   }
-  public set discover_multicast_if(value: String): void {
+  public set discover_multicast_if(value): void {
     set_discover_multicast_if(value);
   }
   public get discover_local_port(): number {
     get_discover_local_port();
   }
-  public set discover_local_port(value: number): void {
+  public set discover_local_port(value): void {
     set_discover_local_port(value);
   }
   public get discover_ipv6(): boolean {
     is_discover_ipv6();
   }
-  public set discover_ipv6(value: boolean): void {
+  public set discover_ipv6(value): void {
     set_discover_ipv6(value);
   }
   static UPNPResult = {

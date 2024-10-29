@@ -1,6 +1,6 @@
 
-import { Node2D } from "@godot/classes/node2d";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Node2D } from "@godot/classes/node2d";
 
 export declare class Polygon2D extends Node2D{
   public set_polygon(_polygon: PackedVector2Array): void;
@@ -44,97 +44,97 @@ export declare class Polygon2D extends Node2D{
   public get color(): Color {
     get_color();
   }
-  public set color(value: Color): void {
+  public set color(value): void {
     set_color(value);
   }
   public get offset(): Vector2 {
     get_offset();
   }
-  public set offset(value: Vector2): void {
+  public set offset(value): void {
     set_offset(value);
   }
   public get antialiased(): boolean {
     get_antialiased();
   }
-  public set antialiased(value: boolean): void {
+  public set antialiased(value): void {
     set_antialiased(value);
   }
   public get texture(): Texture2D {
     get_texture();
   }
-  public set texture(value: Texture2D): void {
+  public set texture(value): void {
     set_texture(value);
   }
   public get texture_offset(): Vector2 {
     get_texture_offset();
   }
-  public set texture_offset(value: Vector2): void {
+  public set texture_offset(value): void {
     set_texture_offset(value);
   }
   public get texture_scale(): Vector2 {
     get_texture_scale();
   }
-  public set texture_scale(value: Vector2): void {
+  public set texture_scale(value): void {
     set_texture_scale(value);
   }
   public get texture_rotation(): number {
     get_texture_rotation();
   }
-  public set texture_rotation(value: number): void {
+  public set texture_rotation(value): void {
     set_texture_rotation(value);
   }
   public get skeleton(): NodePath {
     get_skeleton();
   }
-  public set skeleton(value: NodePath): void {
+  public set skeleton(value): void {
     set_skeleton(value);
   }
   public get invert_enabled(): boolean {
     get_invert_enabled();
   }
-  public set invert_enabled(value: boolean): void {
+  public set invert_enabled(value): void {
     set_invert_enabled(value);
   }
   public get invert_border(): number {
     get_invert_border();
   }
-  public set invert_border(value: number): void {
+  public set invert_border(value): void {
     set_invert_border(value);
   }
   public get polygon(): PackedVector2Array {
     get_polygon();
   }
-  public set polygon(value: PackedVector2Array): void {
+  public set polygon(value): void {
     set_polygon(value);
   }
   public get uv(): PackedVector2Array {
     get_uv();
   }
-  public set uv(value: PackedVector2Array): void {
+  public set uv(value): void {
     set_uv(value);
   }
   public get vertex_colors(): PackedColorArray {
     get_vertex_colors();
   }
-  public set vertex_colors(value: PackedColorArray): void {
+  public set vertex_colors(value): void {
     set_vertex_colors(value);
   }
-  public get polygons(): Array {
+  public get polygons(): GDArray {
     get_polygons();
   }
-  public set polygons(value: Array): void {
+  public set polygons(value): void {
     set_polygons(value);
   }
-  public get bones(): Array {
+  public get bones(): GDArray {
     _get_bones();
   }
-  public set bones(value: Array): void {
+  public set bones(value): void {
     _set_bones(value);
   }
   public get internal_vertex_count(): number {
     get_internal_vertex_count();
   }
-  public set internal_vertex_count(value: number): void {
+  public set internal_vertex_count(value): void {
     set_internal_vertex_count(value);
   }
 }

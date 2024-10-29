@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/camera_texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void camera_texture_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue camera_texture_class_constructor(JSContext *ctx, JSValueConst new
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, camera_texture_class);
+	JS_SetOpaque(obj, camera_texture_class);	
 	return obj;
 }
 static JSValue camera_texture_class_set_camera_feed_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CameraTexture::set_camera_feed_id, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CameraTexture::set_camera_feed_id, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_texture_class_get_camera_feed_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue camera_texture_class_get_camera_feed_id(JSContext *ctx, JSValueCo
 };
 static JSValue camera_texture_class_set_which_feed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CameraTexture::set_which_feed, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CameraTexture::set_which_feed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_texture_class_get_which_feed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,7 +55,7 @@ static JSValue camera_texture_class_get_which_feed(JSContext *ctx, JSValueConst 
 };
 static JSValue camera_texture_class_set_camera_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&CameraTexture::set_camera_active, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&CameraTexture::set_camera_active, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue camera_texture_class_get_camera_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,33 +72,37 @@ static const JSCFunctionListEntry camera_texture_class_proto_funcs[] = {
 };
 
 void define_camera_texture_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "camera_feed_id"),
-			JS_NewCFunction(ctx, camera_texture_class_get_camera_feed_id, "get_camera_feed_id", 0),
-			JS_NewCFunction(ctx, camera_texture_class_set_camera_feed_id, "set_camera_feed_id", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "which_feed"),
-			JS_NewCFunction(ctx, camera_texture_class_get_which_feed, "get_which_feed", 0),
-			JS_NewCFunction(ctx, camera_texture_class_set_which_feed, "set_which_feed", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "camera_is_active"),
-			JS_NewCFunction(ctx, camera_texture_class_get_camera_active, "get_camera_active", 0),
-			JS_NewCFunction(ctx, camera_texture_class_set_camera_active, "set_camera_active", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "camera_feed_id"),
+        JS_NewCFunction(ctx, camera_texture_class_get_camera_feed_id, "get_camera_feed_id", 0),
+        JS_NewCFunction(ctx, camera_texture_class_set_camera_feed_id, "set_camera_feed_id", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "which_feed"),
+        JS_NewCFunction(ctx, camera_texture_class_get_which_feed, "get_which_feed", 0),
+        JS_NewCFunction(ctx, camera_texture_class_set_which_feed, "set_which_feed", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "camera_is_active"),
+        JS_NewCFunction(ctx, camera_texture_class_get_camera_active, "get_camera_active", 0),
+        JS_NewCFunction(ctx, camera_texture_class_set_camera_active, "set_camera_active", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_camera_texture_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&CameraTexture::__class_id);
 	classes["CameraTexture"] = CameraTexture::__class_id;
 	class_id_list.insert(CameraTexture::__class_id);
@@ -119,7 +125,7 @@ static int js_camera_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_camera_texture_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/texture2d';";
+	const char *code = "import * as _ from '@godot/classes/texture2d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -131,7 +137,7 @@ JSModuleDef *_js_init_camera_texture_module(JSContext *ctx, const char *module_n
 }
 
 JSModuleDef *js_init_camera_texture_module(JSContext *ctx) {
-	return _js_init_camera_texture_module(ctx, "godot/classes/camera_texture");
+	return _js_init_camera_texture_module(ctx, "@godot/classes/camera_texture");
 }
 
 void register_camera_texture() {

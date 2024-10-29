@@ -8,7 +8,7 @@ export declare class VisibleOnScreenNotifier2D extends Node2D{
   public get rect(): Rect2 {
     get_rect();
   }
-  public set rect(value: Rect2): void {
+  public set rect(value): void {
     set_rect(value);
   }
 }

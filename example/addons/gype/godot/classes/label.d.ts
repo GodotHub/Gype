@@ -51,121 +51,121 @@ export declare class Label extends Control{
   public get text(): String {
     get_text();
   }
-  public set text(value: String): void {
+  public set text(value): void {
     set_text(value);
   }
   public get label_settings(): LabelSettings {
     get_label_settings();
   }
-  public set label_settings(value: LabelSettings): void {
+  public set label_settings(value): void {
     set_label_settings(value);
   }
   public get horizontal_alignment(): number {
     get_horizontal_alignment();
   }
-  public set horizontal_alignment(value: number): void {
+  public set horizontal_alignment(value): void {
     set_horizontal_alignment(value);
   }
   public get vertical_alignment(): number {
     get_vertical_alignment();
   }
-  public set vertical_alignment(value: number): void {
+  public set vertical_alignment(value): void {
     set_vertical_alignment(value);
   }
   public get autowrap_mode(): number {
     get_autowrap_mode();
   }
-  public set autowrap_mode(value: number): void {
+  public set autowrap_mode(value): void {
     set_autowrap_mode(value);
   }
   public get justification_flags(): number {
     get_justification_flags();
   }
-  public set justification_flags(value: number): void {
+  public set justification_flags(value): void {
     set_justification_flags(value);
   }
   public get clip_text(): boolean {
     is_clipping_text();
   }
-  public set clip_text(value: boolean): void {
+  public set clip_text(value): void {
     set_clip_text(value);
   }
   public get text_overrun_behavior(): number {
     get_text_overrun_behavior();
   }
-  public set text_overrun_behavior(value: number): void {
+  public set text_overrun_behavior(value): void {
     set_text_overrun_behavior(value);
   }
   public get ellipsis_char(): String {
     get_ellipsis_char();
   }
-  public set ellipsis_char(value: String): void {
+  public set ellipsis_char(value): void {
     set_ellipsis_char(value);
   }
   public get uppercase(): boolean {
     is_uppercase();
   }
-  public set uppercase(value: boolean): void {
+  public set uppercase(value): void {
     set_uppercase(value);
   }
   public get tab_stops(): PackedFloat32Array {
     get_tab_stops();
   }
-  public set tab_stops(value: PackedFloat32Array): void {
+  public set tab_stops(value): void {
     set_tab_stops(value);
   }
   public get lines_skipped(): number {
     get_lines_skipped();
   }
-  public set lines_skipped(value: number): void {
+  public set lines_skipped(value): void {
     set_lines_skipped(value);
   }
   public get max_lines_visible(): number {
     get_max_lines_visible();
   }
-  public set max_lines_visible(value: number): void {
+  public set max_lines_visible(value): void {
     set_max_lines_visible(value);
   }
   public get visible_characters(): number {
     get_visible_characters();
   }
-  public set visible_characters(value: number): void {
+  public set visible_characters(value): void {
     set_visible_characters(value);
   }
   public get visible_characters_behavior(): number {
     get_visible_characters_behavior();
   }
-  public set visible_characters_behavior(value: number): void {
+  public set visible_characters_behavior(value): void {
     set_visible_characters_behavior(value);
   }
   public get visible_ratio(): number {
     get_visible_ratio();
   }
-  public set visible_ratio(value: number): void {
+  public set visible_ratio(value): void {
     set_visible_ratio(value);
   }
   public get text_direction(): number {
     get_text_direction();
   }
-  public set text_direction(value: number): void {
+  public set text_direction(value): void {
     set_text_direction(value);
   }
   public get language(): String {
     get_language();
   }
-  public set language(value: String): void {
+  public set language(value): void {
     set_language(value);
   }
   public get structured_text_bidi_override(): number {
     get_structured_text_bidi_override();
   }
-  public set structured_text_bidi_override(value: number): void {
+  public set structured_text_bidi_override(value): void {
     set_structured_text_bidi_override(value);
   }
-  public get structured_text_bidi_override_options(): Array {
+  public get structured_text_bidi_override_options(): GDArray {
     get_structured_text_bidi_override_options();
   }
-  public set structured_text_bidi_override_options(value: Array): void {
+  public set structured_text_bidi_override_options(value): void {
     set_structured_text_bidi_override_options(value);
   }
 }

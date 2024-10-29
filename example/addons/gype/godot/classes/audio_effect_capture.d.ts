@@ -14,7 +14,7 @@ export declare class AudioEffectCapture extends AudioEffect{
   public get buffer_length(): number {
     get_buffer_length();
   }
-  public set buffer_length(value: number): void {
+  public set buffer_length(value): void {
     set_buffer_length(value);
   }
 }

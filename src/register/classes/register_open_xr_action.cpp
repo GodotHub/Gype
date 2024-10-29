@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/open_xr_action.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void open_xr_action_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue open_xr_action_class_constructor(JSContext *ctx, JSValueConst new
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, open_xr_action_class);
+	JS_SetOpaque(obj, open_xr_action_class);	
 	return obj;
 }
 static JSValue open_xr_action_class_set_localized_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&OpenXRAction::set_localized_name, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&OpenXRAction::set_localized_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_action_class_get_localized_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue open_xr_action_class_get_localized_name(JSContext *ctx, JSValueCo
 };
 static JSValue open_xr_action_class_set_action_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&OpenXRAction::set_action_type, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&OpenXRAction::set_action_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_action_class_get_action_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,7 +55,7 @@ static JSValue open_xr_action_class_get_action_type(JSContext *ctx, JSValueConst
 };
 static JSValue open_xr_action_class_set_toplevel_paths(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&OpenXRAction::set_toplevel_paths, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&OpenXRAction::set_toplevel_paths, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_action_class_get_toplevel_paths(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,27 +72,30 @@ static const JSCFunctionListEntry open_xr_action_class_proto_funcs[] = {
 };
 
 void define_open_xr_action_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "localized_name"),
-			JS_NewCFunction(ctx, open_xr_action_class_get_localized_name, "get_localized_name", 0),
-			JS_NewCFunction(ctx, open_xr_action_class_set_localized_name, "set_localized_name", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "action_type"),
-			JS_NewCFunction(ctx, open_xr_action_class_get_action_type, "get_action_type", 0),
-			JS_NewCFunction(ctx, open_xr_action_class_set_action_type, "set_action_type", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "toplevel_paths"),
-			JS_NewCFunction(ctx, open_xr_action_class_get_toplevel_paths, "get_toplevel_paths", 0),
-			JS_NewCFunction(ctx, open_xr_action_class_set_toplevel_paths, "set_toplevel_paths", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "localized_name"),
+        JS_NewCFunction(ctx, open_xr_action_class_get_localized_name, "get_localized_name", 0),
+        JS_NewCFunction(ctx, open_xr_action_class_set_localized_name, "set_localized_name", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "action_type"),
+        JS_NewCFunction(ctx, open_xr_action_class_get_action_type, "get_action_type", 0),
+        JS_NewCFunction(ctx, open_xr_action_class_set_action_type, "set_action_type", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "toplevel_paths"),
+        JS_NewCFunction(ctx, open_xr_action_class_get_toplevel_paths, "get_toplevel_paths", 0),
+        JS_NewCFunction(ctx, open_xr_action_class_set_toplevel_paths, "set_toplevel_paths", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -103,6 +108,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_open_xr_action_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&OpenXRAction::__class_id);
 	classes["OpenXRAction"] = OpenXRAction::__class_id;
 	class_id_list.insert(OpenXRAction::__class_id);
@@ -125,7 +131,7 @@ static int js_open_xr_action_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_open_xr_action_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/resource';";
+	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -137,7 +143,7 @@ JSModuleDef *_js_init_open_xr_action_module(JSContext *ctx, const char *module_n
 }
 
 JSModuleDef *js_init_open_xr_action_module(JSContext *ctx) {
-	return _js_init_open_xr_action_module(ctx, "godot/classes/open_xr_action");
+	return _js_init_open_xr_action_module(ctx, "@godot/classes/open_xr_action");
 }
 
 void register_open_xr_action() {

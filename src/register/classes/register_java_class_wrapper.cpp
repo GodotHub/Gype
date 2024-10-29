@@ -1,13 +1,13 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/java_class.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/java_class_wrapper.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/java_class.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -17,6 +17,7 @@ static JSValue java_class_wrapper_instance;
 static void js_java_class_wrapper_singleton();
 
 static void java_class_wrapper_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -40,7 +41,7 @@ static JSValue java_class_wrapper_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 static JSValue java_class_wrapper_class_wrap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_java_class_wrapper_singleton();
+    js_java_class_wrapper_singleton();
 	return call_builtin_method_ret(&JavaClassWrapper::wrap, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry java_class_wrapper_class_proto_funcs[] = {
@@ -67,6 +68,7 @@ static void js_java_class_wrapper_singleton() {
 		JS_SetPropertyStr(ctx, global, "JavaClassWrapper", java_class_wrapper_instance);
 	}
 }
+
 
 void register_java_class_wrapper() {
 	js_java_class_wrapper_class_init(ctx);

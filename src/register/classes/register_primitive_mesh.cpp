@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/mesh.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void primitive_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,12 +33,12 @@ static JSValue primitive_mesh_class_constructor(JSContext *ctx, JSValueConst new
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, primitive_mesh_class);
+	JS_SetOpaque(obj, primitive_mesh_class);	
 	return obj;
 }
 static JSValue primitive_mesh_class_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PrimitiveMesh::set_material, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PrimitiveMesh::set_material, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue primitive_mesh_class_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -49,7 +51,7 @@ static JSValue primitive_mesh_class_get_mesh_arrays(JSContext *ctx, JSValueConst
 };
 static JSValue primitive_mesh_class_set_custom_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PrimitiveMesh::set_custom_aabb, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PrimitiveMesh::set_custom_aabb, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue primitive_mesh_class_get_custom_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -58,7 +60,7 @@ static JSValue primitive_mesh_class_get_custom_aabb(JSContext *ctx, JSValueConst
 };
 static JSValue primitive_mesh_class_set_flip_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PrimitiveMesh::set_flip_faces, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PrimitiveMesh::set_flip_faces, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue primitive_mesh_class_get_flip_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,7 +69,7 @@ static JSValue primitive_mesh_class_get_flip_faces(JSContext *ctx, JSValueConst 
 };
 static JSValue primitive_mesh_class_set_add_uv2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PrimitiveMesh::set_add_uv2, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PrimitiveMesh::set_add_uv2, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue primitive_mesh_class_get_add_uv2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -76,7 +78,7 @@ static JSValue primitive_mesh_class_get_add_uv2(JSContext *ctx, JSValueConst thi
 };
 static JSValue primitive_mesh_class_set_uv2_padding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PrimitiveMesh::set_uv2_padding, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PrimitiveMesh::set_uv2_padding, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue primitive_mesh_class_get_uv2_padding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -85,7 +87,7 @@ static JSValue primitive_mesh_class_get_uv2_padding(JSContext *ctx, JSValueConst
 };
 static JSValue primitive_mesh_class_request_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PrimitiveMesh::request_update, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PrimitiveMesh::request_update, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry primitive_mesh_class_proto_funcs[] = {
@@ -104,47 +106,53 @@ static const JSCFunctionListEntry primitive_mesh_class_proto_funcs[] = {
 };
 
 void define_primitive_mesh_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "material"),
-			JS_NewCFunction(ctx, primitive_mesh_class_get_material, "get_material", 0),
-			JS_NewCFunction(ctx, primitive_mesh_class_set_material, "set_material", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "custom_aabb"),
-			JS_NewCFunction(ctx, primitive_mesh_class_get_custom_aabb, "get_custom_aabb", 0),
-			JS_NewCFunction(ctx, primitive_mesh_class_set_custom_aabb, "set_custom_aabb", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "flip_faces"),
-			JS_NewCFunction(ctx, primitive_mesh_class_get_flip_faces, "get_flip_faces", 0),
-			JS_NewCFunction(ctx, primitive_mesh_class_set_flip_faces, "set_flip_faces", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "add_uv2"),
-			JS_NewCFunction(ctx, primitive_mesh_class_get_add_uv2, "get_add_uv2", 0),
-			JS_NewCFunction(ctx, primitive_mesh_class_set_add_uv2, "set_add_uv2", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "uv2_padding"),
-			JS_NewCFunction(ctx, primitive_mesh_class_get_uv2_padding, "get_uv2_padding", 0),
-			JS_NewCFunction(ctx, primitive_mesh_class_set_uv2_padding, "set_uv2_padding", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "material"),
+        JS_NewCFunction(ctx, primitive_mesh_class_get_material, "get_material", 0),
+        JS_NewCFunction(ctx, primitive_mesh_class_set_material, "set_material", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "custom_aabb"),
+        JS_NewCFunction(ctx, primitive_mesh_class_get_custom_aabb, "get_custom_aabb", 0),
+        JS_NewCFunction(ctx, primitive_mesh_class_set_custom_aabb, "set_custom_aabb", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "flip_faces"),
+        JS_NewCFunction(ctx, primitive_mesh_class_get_flip_faces, "get_flip_faces", 0),
+        JS_NewCFunction(ctx, primitive_mesh_class_set_flip_faces, "set_flip_faces", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "add_uv2"),
+        JS_NewCFunction(ctx, primitive_mesh_class_get_add_uv2, "get_add_uv2", 0),
+        JS_NewCFunction(ctx, primitive_mesh_class_set_add_uv2, "set_add_uv2", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "uv2_padding"),
+        JS_NewCFunction(ctx, primitive_mesh_class_get_uv2_padding, "get_uv2_padding", 0),
+        JS_NewCFunction(ctx, primitive_mesh_class_set_uv2_padding, "set_uv2_padding", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_primitive_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&PrimitiveMesh::__class_id);
 	classes["PrimitiveMesh"] = PrimitiveMesh::__class_id;
 	class_id_list.insert(PrimitiveMesh::__class_id);
@@ -167,7 +175,7 @@ static int js_primitive_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_primitive_mesh_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/mesh';";
+	const char *code = "import * as _ from '@godot/classes/mesh';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -179,7 +187,7 @@ JSModuleDef *_js_init_primitive_mesh_module(JSContext *ctx, const char *module_n
 }
 
 JSModuleDef *js_init_primitive_mesh_module(JSContext *ctx) {
-	return _js_init_primitive_mesh_module(ctx, "godot/classes/primitive_mesh");
+	return _js_init_primitive_mesh_module(ctx, "@godot/classes/primitive_mesh");
 }
 
 void register_primitive_mesh() {

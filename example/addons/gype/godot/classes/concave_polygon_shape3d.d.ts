@@ -9,13 +9,13 @@ export declare class ConcavePolygonShape3D extends Shape3D{
   public get data(): PackedVector3Array {
     get_faces();
   }
-  public set data(value: PackedVector3Array): void {
+  public set data(value): void {
     set_faces(value);
   }
   public get backface_collision(): boolean {
     is_backface_collision_enabled();
   }
-  public set backface_collision(value: boolean): void {
+  public set backface_collision(value): void {
     set_backface_collision_enabled(value);
   }
 }

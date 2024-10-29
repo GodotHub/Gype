@@ -11,13 +11,13 @@ export declare class Shape3D extends Resource{
   public get custom_solver_bias(): number {
     get_custom_solver_bias();
   }
-  public set custom_solver_bias(value: number): void {
+  public set custom_solver_bias(value): void {
     set_custom_solver_bias(value);
   }
   public get margin(): number {
     get_margin();
   }
-  public set margin(value: number): void {
+  public set margin(value): void {
     set_margin(value);
   }
 }

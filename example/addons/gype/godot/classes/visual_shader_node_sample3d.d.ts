@@ -7,7 +7,7 @@ export declare class VisualShaderNodeSample3D extends VisualShaderNode{
   public get source(): number {
     get_source();
   }
-  public set source(value: number): void {
+  public set source(value): void {
     set_source(value);
   }
   static Source = {

@@ -63,7 +63,7 @@ export declare class PackedByteArray {
   public encode_half(_byte_offset: number, _value: number): void;
   public encode_float(_byte_offset: number, _value: number): void;
   public encode_double(_byte_offset: number, _value: number): void;
-  public encode_var(_byte_offset: number, _value: Variant, _allow_objects: boolean): void;
+  public encode_var(_byte_offset: number, _value: any, _allow_objects: boolean): void;
 }
 }
 

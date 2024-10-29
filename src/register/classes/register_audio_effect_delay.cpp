@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_delay.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void audio_effect_delay_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue audio_effect_delay_class_constructor(JSContext *ctx, JSValueConst
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_delay_class);
+	JS_SetOpaque(obj, audio_effect_delay_class);	
 	return obj;
 }
 static JSValue audio_effect_delay_class_set_dry(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectDelay::set_dry, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectDelay::set_dry, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_delay_class_get_dry(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue audio_effect_delay_class_get_dry(JSContext *ctx, JSValueConst thi
 };
 static JSValue audio_effect_delay_class_set_tap1_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectDelay::set_tap1_active, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectDelay::set_tap1_active, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_delay_class_is_tap1_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,7 +55,7 @@ static JSValue audio_effect_delay_class_is_tap1_active(JSContext *ctx, JSValueCo
 };
 static JSValue audio_effect_delay_class_set_tap1_delay_ms(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectDelay::set_tap1_delay_ms, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectDelay::set_tap1_delay_ms, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_delay_class_get_tap1_delay_ms(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +64,7 @@ static JSValue audio_effect_delay_class_get_tap1_delay_ms(JSContext *ctx, JSValu
 };
 static JSValue audio_effect_delay_class_set_tap1_level_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectDelay::set_tap1_level_db, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectDelay::set_tap1_level_db, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_delay_class_get_tap1_level_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,7 +73,7 @@ static JSValue audio_effect_delay_class_get_tap1_level_db(JSContext *ctx, JSValu
 };
 static JSValue audio_effect_delay_class_set_tap1_pan(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectDelay::set_tap1_pan, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectDelay::set_tap1_pan, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_delay_class_get_tap1_pan(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -80,7 +82,7 @@ static JSValue audio_effect_delay_class_get_tap1_pan(JSContext *ctx, JSValueCons
 };
 static JSValue audio_effect_delay_class_set_tap2_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectDelay::set_tap2_active, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectDelay::set_tap2_active, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_delay_class_is_tap2_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -89,7 +91,7 @@ static JSValue audio_effect_delay_class_is_tap2_active(JSContext *ctx, JSValueCo
 };
 static JSValue audio_effect_delay_class_set_tap2_delay_ms(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectDelay::set_tap2_delay_ms, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectDelay::set_tap2_delay_ms, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_delay_class_get_tap2_delay_ms(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -98,7 +100,7 @@ static JSValue audio_effect_delay_class_get_tap2_delay_ms(JSContext *ctx, JSValu
 };
 static JSValue audio_effect_delay_class_set_tap2_level_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectDelay::set_tap2_level_db, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectDelay::set_tap2_level_db, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_delay_class_get_tap2_level_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -107,7 +109,7 @@ static JSValue audio_effect_delay_class_get_tap2_level_db(JSContext *ctx, JSValu
 };
 static JSValue audio_effect_delay_class_set_tap2_pan(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectDelay::set_tap2_pan, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectDelay::set_tap2_pan, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_delay_class_get_tap2_pan(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -116,7 +118,7 @@ static JSValue audio_effect_delay_class_get_tap2_pan(JSContext *ctx, JSValueCons
 };
 static JSValue audio_effect_delay_class_set_feedback_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectDelay::set_feedback_active, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectDelay::set_feedback_active, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_delay_class_is_feedback_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -125,7 +127,7 @@ static JSValue audio_effect_delay_class_is_feedback_active(JSContext *ctx, JSVal
 };
 static JSValue audio_effect_delay_class_set_feedback_delay_ms(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectDelay::set_feedback_delay_ms, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectDelay::set_feedback_delay_ms, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_delay_class_get_feedback_delay_ms(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -134,7 +136,7 @@ static JSValue audio_effect_delay_class_get_feedback_delay_ms(JSContext *ctx, JS
 };
 static JSValue audio_effect_delay_class_set_feedback_level_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectDelay::set_feedback_level_db, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectDelay::set_feedback_level_db, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_delay_class_get_feedback_level_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -143,7 +145,7 @@ static JSValue audio_effect_delay_class_get_feedback_level_db(JSContext *ctx, JS
 };
 static JSValue audio_effect_delay_class_set_feedback_lowpass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectDelay::set_feedback_lowpass, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectDelay::set_feedback_lowpass, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_delay_class_get_feedback_lowpass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -180,103 +182,117 @@ static const JSCFunctionListEntry audio_effect_delay_class_proto_funcs[] = {
 };
 
 void define_audio_effect_delay_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "dry"),
-			JS_NewCFunction(ctx, audio_effect_delay_class_get_dry, "get_dry", 0),
-			JS_NewCFunction(ctx, audio_effect_delay_class_set_dry, "set_dry", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "tap1_active"),
-			JS_NewCFunction(ctx, audio_effect_delay_class_is_tap1_active, "is_tap1_active", 0),
-			JS_NewCFunction(ctx, audio_effect_delay_class_set_tap1_active, "set_tap1_active", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "tap1_delay_ms"),
-			JS_NewCFunction(ctx, audio_effect_delay_class_get_tap1_delay_ms, "get_tap1_delay_ms", 0),
-			JS_NewCFunction(ctx, audio_effect_delay_class_set_tap1_delay_ms, "set_tap1_delay_ms", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "tap1_level_db"),
-			JS_NewCFunction(ctx, audio_effect_delay_class_get_tap1_level_db, "get_tap1_level_db", 0),
-			JS_NewCFunction(ctx, audio_effect_delay_class_set_tap1_level_db, "set_tap1_level_db", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "tap1_pan"),
-			JS_NewCFunction(ctx, audio_effect_delay_class_get_tap1_pan, "get_tap1_pan", 0),
-			JS_NewCFunction(ctx, audio_effect_delay_class_set_tap1_pan, "set_tap1_pan", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "tap2_active"),
-			JS_NewCFunction(ctx, audio_effect_delay_class_is_tap2_active, "is_tap2_active", 0),
-			JS_NewCFunction(ctx, audio_effect_delay_class_set_tap2_active, "set_tap2_active", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "tap2_delay_ms"),
-			JS_NewCFunction(ctx, audio_effect_delay_class_get_tap2_delay_ms, "get_tap2_delay_ms", 0),
-			JS_NewCFunction(ctx, audio_effect_delay_class_set_tap2_delay_ms, "set_tap2_delay_ms", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "tap2_level_db"),
-			JS_NewCFunction(ctx, audio_effect_delay_class_get_tap2_level_db, "get_tap2_level_db", 0),
-			JS_NewCFunction(ctx, audio_effect_delay_class_set_tap2_level_db, "set_tap2_level_db", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "tap2_pan"),
-			JS_NewCFunction(ctx, audio_effect_delay_class_get_tap2_pan, "get_tap2_pan", 0),
-			JS_NewCFunction(ctx, audio_effect_delay_class_set_tap2_pan, "set_tap2_pan", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "feedback_active"),
-			JS_NewCFunction(ctx, audio_effect_delay_class_is_feedback_active, "is_feedback_active", 0),
-			JS_NewCFunction(ctx, audio_effect_delay_class_set_feedback_active, "set_feedback_active", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "feedback_delay_ms"),
-			JS_NewCFunction(ctx, audio_effect_delay_class_get_feedback_delay_ms, "get_feedback_delay_ms", 0),
-			JS_NewCFunction(ctx, audio_effect_delay_class_set_feedback_delay_ms, "set_feedback_delay_ms", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "feedback_level_db"),
-			JS_NewCFunction(ctx, audio_effect_delay_class_get_feedback_level_db, "get_feedback_level_db", 0),
-			JS_NewCFunction(ctx, audio_effect_delay_class_set_feedback_level_db, "set_feedback_level_db", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "feedback_lowpass"),
-			JS_NewCFunction(ctx, audio_effect_delay_class_get_feedback_lowpass, "get_feedback_lowpass", 0),
-			JS_NewCFunction(ctx, audio_effect_delay_class_set_feedback_lowpass, "set_feedback_lowpass", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "dry"),
+        JS_NewCFunction(ctx, audio_effect_delay_class_get_dry, "get_dry", 0),
+        JS_NewCFunction(ctx, audio_effect_delay_class_set_dry, "set_dry", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "tap1_active"),
+        JS_NewCFunction(ctx, audio_effect_delay_class_is_tap1_active, "is_tap1_active", 0),
+        JS_NewCFunction(ctx, audio_effect_delay_class_set_tap1_active, "set_tap1_active", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "tap1_delay_ms"),
+        JS_NewCFunction(ctx, audio_effect_delay_class_get_tap1_delay_ms, "get_tap1_delay_ms", 0),
+        JS_NewCFunction(ctx, audio_effect_delay_class_set_tap1_delay_ms, "set_tap1_delay_ms", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "tap1_level_db"),
+        JS_NewCFunction(ctx, audio_effect_delay_class_get_tap1_level_db, "get_tap1_level_db", 0),
+        JS_NewCFunction(ctx, audio_effect_delay_class_set_tap1_level_db, "set_tap1_level_db", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "tap1_pan"),
+        JS_NewCFunction(ctx, audio_effect_delay_class_get_tap1_pan, "get_tap1_pan", 0),
+        JS_NewCFunction(ctx, audio_effect_delay_class_set_tap1_pan, "set_tap1_pan", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "tap2_active"),
+        JS_NewCFunction(ctx, audio_effect_delay_class_is_tap2_active, "is_tap2_active", 0),
+        JS_NewCFunction(ctx, audio_effect_delay_class_set_tap2_active, "set_tap2_active", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "tap2_delay_ms"),
+        JS_NewCFunction(ctx, audio_effect_delay_class_get_tap2_delay_ms, "get_tap2_delay_ms", 0),
+        JS_NewCFunction(ctx, audio_effect_delay_class_set_tap2_delay_ms, "set_tap2_delay_ms", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "tap2_level_db"),
+        JS_NewCFunction(ctx, audio_effect_delay_class_get_tap2_level_db, "get_tap2_level_db", 0),
+        JS_NewCFunction(ctx, audio_effect_delay_class_set_tap2_level_db, "set_tap2_level_db", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "tap2_pan"),
+        JS_NewCFunction(ctx, audio_effect_delay_class_get_tap2_pan, "get_tap2_pan", 0),
+        JS_NewCFunction(ctx, audio_effect_delay_class_set_tap2_pan, "set_tap2_pan", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "feedback_active"),
+        JS_NewCFunction(ctx, audio_effect_delay_class_is_feedback_active, "is_feedback_active", 0),
+        JS_NewCFunction(ctx, audio_effect_delay_class_set_feedback_active, "set_feedback_active", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "feedback_delay_ms"),
+        JS_NewCFunction(ctx, audio_effect_delay_class_get_feedback_delay_ms, "get_feedback_delay_ms", 0),
+        JS_NewCFunction(ctx, audio_effect_delay_class_set_feedback_delay_ms, "set_feedback_delay_ms", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "feedback_level_db"),
+        JS_NewCFunction(ctx, audio_effect_delay_class_get_feedback_level_db, "get_feedback_level_db", 0),
+        JS_NewCFunction(ctx, audio_effect_delay_class_set_feedback_level_db, "set_feedback_level_db", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "feedback_lowpass"),
+        JS_NewCFunction(ctx, audio_effect_delay_class_get_feedback_lowpass, "get_feedback_lowpass", 0),
+        JS_NewCFunction(ctx, audio_effect_delay_class_set_feedback_lowpass, "set_feedback_lowpass", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_effect_delay_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AudioEffectDelay::__class_id);
 	classes["AudioEffectDelay"] = AudioEffectDelay::__class_id;
 	class_id_list.insert(AudioEffectDelay::__class_id);
@@ -299,7 +315,7 @@ static int js_audio_effect_delay_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_audio_effect_delay_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/audio_effect';";
+	const char *code = "import * as _ from '@godot/classes/audio_effect';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -311,7 +327,7 @@ JSModuleDef *_js_init_audio_effect_delay_module(JSContext *ctx, const char *modu
 }
 
 JSModuleDef *js_init_audio_effect_delay_module(JSContext *ctx) {
-	return _js_init_audio_effect_delay_module(ctx, "godot/classes/audio_effect_delay");
+	return _js_init_audio_effect_delay_module(ctx, "@godot/classes/audio_effect_delay");
 }
 
 void register_audio_effect_delay() {

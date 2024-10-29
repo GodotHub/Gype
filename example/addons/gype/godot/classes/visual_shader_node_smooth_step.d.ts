@@ -7,7 +7,7 @@ export declare class VisualShaderNodeSmoothStep extends VisualShaderNode{
   public get op_type(): number {
     get_op_type();
   }
-  public set op_type(value: number): void {
+  public set op_type(value): void {
     set_op_type(value);
   }
   static OpType = {

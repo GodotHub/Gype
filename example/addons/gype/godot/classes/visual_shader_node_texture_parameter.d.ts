@@ -15,31 +15,31 @@ export declare class VisualShaderNodeTextureParameter extends VisualShaderNodePa
   public get texture_type(): number {
     get_texture_type();
   }
-  public set texture_type(value: number): void {
+  public set texture_type(value): void {
     set_texture_type(value);
   }
   public get color_default(): number {
     get_color_default();
   }
-  public set color_default(value: number): void {
+  public set color_default(value): void {
     set_color_default(value);
   }
   public get texture_filter(): number {
     get_texture_filter();
   }
-  public set texture_filter(value: number): void {
+  public set texture_filter(value): void {
     set_texture_filter(value);
   }
   public get texture_repeat(): number {
     get_texture_repeat();
   }
-  public set texture_repeat(value: number): void {
+  public set texture_repeat(value): void {
     set_texture_repeat(value);
   }
   public get texture_source(): number {
     get_texture_source();
   }
-  public set texture_source(value: number): void {
+  public set texture_source(value): void {
     set_texture_source(value);
   }
   static TextureType = {

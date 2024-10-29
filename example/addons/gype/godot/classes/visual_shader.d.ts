@@ -17,7 +17,7 @@ export declare class VisualShader extends Shader{
   public connect_nodes(_type: number, _from_node: number, _from_port: number, _to_node: number, _to_port: number): number;
   public disconnect_nodes(_type: number, _from_node: number, _from_port: number, _to_node: number, _to_port: number): void;
   public connect_nodes_forced(_type: number, _from_node: number, _from_port: number, _to_node: number, _to_port: number): void;
-  public get_node_connections(_type: number): Array;
+  public get_node_connections(_type: number): GDArray;
   public set_graph_offset(_offset: Vector2): void;
   public get_graph_offset(): Vector2;
   public attach_node_to_frame(_type: number, _id: number, _frame: number): void;
@@ -28,7 +28,7 @@ export declare class VisualShader extends Shader{
   public get graph_offset(): Vector2 {
     get_graph_offset();
   }
-  public set graph_offset(value: Vector2): void {
+  public set graph_offset(value): void {
     set_graph_offset(value);
   }
   static Type = {

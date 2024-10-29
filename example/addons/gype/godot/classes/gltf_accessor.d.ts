@@ -35,91 +35,91 @@ export declare class GLTFAccessor extends Resource{
   public get buffer_view(): number {
     get_buffer_view();
   }
-  public set buffer_view(value: number): void {
+  public set buffer_view(value): void {
     set_buffer_view(value);
   }
   public get byte_offset(): number {
     get_byte_offset();
   }
-  public set byte_offset(value: number): void {
+  public set byte_offset(value): void {
     set_byte_offset(value);
   }
   public get component_type(): number {
     get_component_type();
   }
-  public set component_type(value: number): void {
+  public set component_type(value): void {
     set_component_type(value);
   }
   public get normalized(): boolean {
     get_normalized();
   }
-  public set normalized(value: boolean): void {
+  public set normalized(value): void {
     set_normalized(value);
   }
   public get count(): number {
     get_count();
   }
-  public set count(value: number): void {
+  public set count(value): void {
     set_count(value);
   }
   public get accessor_type(): number {
     get_accessor_type();
   }
-  public set accessor_type(value: number): void {
+  public set accessor_type(value): void {
     set_accessor_type(value);
   }
   public get type(): number {
     get_type();
   }
-  public set type(value: number): void {
+  public set type(value): void {
     set_type(value);
   }
   public get min(): PackedFloat64Array {
     get_min();
   }
-  public set min(value: PackedFloat64Array): void {
+  public set min(value): void {
     set_min(value);
   }
   public get max(): PackedFloat64Array {
     get_max();
   }
-  public set max(value: PackedFloat64Array): void {
+  public set max(value): void {
     set_max(value);
   }
   public get sparse_count(): number {
     get_sparse_count();
   }
-  public set sparse_count(value: number): void {
+  public set sparse_count(value): void {
     set_sparse_count(value);
   }
   public get sparse_indices_buffer_view(): number {
     get_sparse_indices_buffer_view();
   }
-  public set sparse_indices_buffer_view(value: number): void {
+  public set sparse_indices_buffer_view(value): void {
     set_sparse_indices_buffer_view(value);
   }
   public get sparse_indices_byte_offset(): number {
     get_sparse_indices_byte_offset();
   }
-  public set sparse_indices_byte_offset(value: number): void {
+  public set sparse_indices_byte_offset(value): void {
     set_sparse_indices_byte_offset(value);
   }
   public get sparse_indices_component_type(): number {
     get_sparse_indices_component_type();
   }
-  public set sparse_indices_component_type(value: number): void {
+  public set sparse_indices_component_type(value): void {
     set_sparse_indices_component_type(value);
   }
   public get sparse_values_buffer_view(): number {
     get_sparse_values_buffer_view();
   }
-  public set sparse_values_buffer_view(value: number): void {
+  public set sparse_values_buffer_view(value): void {
     set_sparse_values_buffer_view(value);
   }
   public get sparse_values_byte_offset(): number {
     get_sparse_values_byte_offset();
   }
-  public set sparse_values_byte_offset(value: number): void {
+  public set sparse_values_byte_offset(value): void {
     set_sparse_values_byte_offset(value);
   }
   static GLTFAccessorType = {

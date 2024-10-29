@@ -1,12 +1,12 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/project_settings.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -16,6 +16,7 @@ static JSValue project_settings_instance;
 static void js_project_settings_singleton();
 
 static void project_settings_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -39,83 +40,83 @@ static JSValue project_settings_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 static JSValue project_settings_class_has_setting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_project_settings_singleton();
+    js_project_settings_singleton();
 	return call_builtin_const_method_ret(&ProjectSettings::has_setting, ctx, this_val, argc, argv);
 };
 static JSValue project_settings_class_set_setting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_project_settings_singleton();
-	call_builtin_method_no_ret(&ProjectSettings::set_setting, ctx, this_val, argc, argv);
+    js_project_settings_singleton();
+    call_builtin_method_no_ret(&ProjectSettings::set_setting, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue project_settings_class_get_setting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_project_settings_singleton();
+    js_project_settings_singleton();
 	return call_builtin_const_method_ret(&ProjectSettings::get_setting, ctx, this_val, argc, argv);
 };
 static JSValue project_settings_class_get_setting_with_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_project_settings_singleton();
+    js_project_settings_singleton();
 	return call_builtin_const_method_ret(&ProjectSettings::get_setting_with_override, ctx, this_val, argc, argv);
 };
 static JSValue project_settings_class_get_global_class_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_project_settings_singleton();
+    js_project_settings_singleton();
 	return call_builtin_method_ret(&ProjectSettings::get_global_class_list, ctx, this_val, argc, argv);
 };
 static JSValue project_settings_class_set_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_project_settings_singleton();
-	call_builtin_method_no_ret(&ProjectSettings::set_order, ctx, this_val, argc, argv);
+    js_project_settings_singleton();
+    call_builtin_method_no_ret(&ProjectSettings::set_order, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue project_settings_class_get_order(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_project_settings_singleton();
+    js_project_settings_singleton();
 	return call_builtin_const_method_ret(&ProjectSettings::get_order, ctx, this_val, argc, argv);
 };
 static JSValue project_settings_class_set_initial_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_project_settings_singleton();
-	call_builtin_method_no_ret(&ProjectSettings::set_initial_value, ctx, this_val, argc, argv);
+    js_project_settings_singleton();
+    call_builtin_method_no_ret(&ProjectSettings::set_initial_value, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue project_settings_class_set_as_basic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_project_settings_singleton();
-	call_builtin_method_no_ret(&ProjectSettings::set_as_basic, ctx, this_val, argc, argv);
+    js_project_settings_singleton();
+    call_builtin_method_no_ret(&ProjectSettings::set_as_basic, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue project_settings_class_set_as_internal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_project_settings_singleton();
-	call_builtin_method_no_ret(&ProjectSettings::set_as_internal, ctx, this_val, argc, argv);
+    js_project_settings_singleton();
+    call_builtin_method_no_ret(&ProjectSettings::set_as_internal, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue project_settings_class_add_property_info(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_project_settings_singleton();
-	call_builtin_method_no_ret(&ProjectSettings::add_property_info, ctx, this_val, argc, argv);
+    js_project_settings_singleton();
+    call_builtin_method_no_ret(&ProjectSettings::add_property_info, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue project_settings_class_set_restart_if_changed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_project_settings_singleton();
-	call_builtin_method_no_ret(&ProjectSettings::set_restart_if_changed, ctx, this_val, argc, argv);
+    js_project_settings_singleton();
+    call_builtin_method_no_ret(&ProjectSettings::set_restart_if_changed, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue project_settings_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_project_settings_singleton();
-	call_builtin_method_no_ret(&ProjectSettings::clear, ctx, this_val, argc, argv);
+    js_project_settings_singleton();
+    call_builtin_method_no_ret(&ProjectSettings::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue project_settings_class_localize_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_project_settings_singleton();
+    js_project_settings_singleton();
 	return call_builtin_const_method_ret(&ProjectSettings::localize_path, ctx, this_val, argc, argv);
 };
 static JSValue project_settings_class_globalize_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_project_settings_singleton();
+    js_project_settings_singleton();
 	return call_builtin_const_method_ret(&ProjectSettings::globalize_path, ctx, this_val, argc, argv);
 };
 static JSValue project_settings_class_save(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_project_settings_singleton();
+    js_project_settings_singleton();
 	return call_builtin_method_ret(&ProjectSettings::save, ctx, this_val, argc, argv);
 };
 static JSValue project_settings_class_load_resource_pack(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_project_settings_singleton();
+    js_project_settings_singleton();
 	return call_builtin_method_ret(&ProjectSettings::load_resource_pack, ctx, this_val, argc, argv);
 };
 static JSValue project_settings_class_save_custom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_project_settings_singleton();
+    js_project_settings_singleton();
 	return call_builtin_method_ret(&ProjectSettings::save_custom, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry project_settings_class_proto_funcs[] = {
@@ -159,6 +160,7 @@ static void js_project_settings_singleton() {
 		JS_SetPropertyStr(ctx, global, "ProjectSettings", project_settings_instance);
 	}
 }
+
 
 void register_project_settings() {
 	js_project_settings_class_init(ctx);

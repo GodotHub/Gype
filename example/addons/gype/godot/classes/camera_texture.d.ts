@@ -11,19 +11,19 @@ export declare class CameraTexture extends Texture2D{
   public get camera_feed_id(): number {
     get_camera_feed_id();
   }
-  public set camera_feed_id(value: number): void {
+  public set camera_feed_id(value): void {
     set_camera_feed_id(value);
   }
   public get which_feed(): number {
     get_which_feed();
   }
-  public set which_feed(value: number): void {
+  public set which_feed(value): void {
     set_which_feed(value);
   }
   public get camera_is_active(): boolean {
     get_camera_active();
   }
-  public set camera_is_active(value: boolean): void {
+  public set camera_is_active(value): void {
     set_camera_active(value);
   }
 }

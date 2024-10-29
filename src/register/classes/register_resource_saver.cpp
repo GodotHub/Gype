@@ -1,14 +1,14 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/resource_saver.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/resource_format_saver.hpp>
-#include <godot_cpp/classes/resource_saver.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -18,6 +18,7 @@ static JSValue resource_saver_instance;
 static void js_resource_saver_singleton();
 
 static void resource_saver_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -41,21 +42,21 @@ static JSValue resource_saver_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 static JSValue resource_saver_class_save(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_resource_saver_singleton();
+    js_resource_saver_singleton();
 	return call_builtin_method_ret(&ResourceSaver::save, ctx, this_val, argc, argv);
 };
 static JSValue resource_saver_class_get_recognized_extensions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_resource_saver_singleton();
+    js_resource_saver_singleton();
 	return call_builtin_method_ret(&ResourceSaver::get_recognized_extensions, ctx, this_val, argc, argv);
 };
 static JSValue resource_saver_class_add_resource_format_saver(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_resource_saver_singleton();
-	call_builtin_method_no_ret(&ResourceSaver::add_resource_format_saver, ctx, this_val, argc, argv);
+    js_resource_saver_singleton();
+    call_builtin_method_no_ret(&ResourceSaver::add_resource_format_saver, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue resource_saver_class_remove_resource_format_saver(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_resource_saver_singleton();
-	call_builtin_method_no_ret(&ResourceSaver::remove_resource_format_saver, ctx, this_val, argc, argv);
+    js_resource_saver_singleton();
+    call_builtin_method_no_ret(&ResourceSaver::remove_resource_format_saver, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry resource_saver_class_proto_funcs[] = {
@@ -85,6 +86,7 @@ static void js_resource_saver_singleton() {
 		JS_SetPropertyStr(ctx, global, "ResourceSaver", resource_saver_instance);
 	}
 }
+
 
 void register_resource_saver() {
 	js_resource_saver_class_init(ctx);

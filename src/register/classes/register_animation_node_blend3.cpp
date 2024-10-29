@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/animation_node_blend3.hpp>
 #include <godot_cpp/classes/animation_node_sync.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void animation_node_blend3_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue animation_node_blend3_class_constructor(JSContext *ctx, JSValueCo
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animation_node_blend3_class);
+	JS_SetOpaque(obj, animation_node_blend3_class);	
 	return obj;
 }
 
@@ -41,6 +43,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_animation_node_blend3_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AnimationNodeBlend3::__class_id);
 	classes["AnimationNodeBlend3"] = AnimationNodeBlend3::__class_id;
 	class_id_list.insert(AnimationNodeBlend3::__class_id);
@@ -62,7 +65,7 @@ static int js_animation_node_blend3_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_animation_node_blend3_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/animation_node_sync';";
+	const char *code = "import * as _ from '@godot/classes/animation_node_sync';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -74,7 +77,7 @@ JSModuleDef *_js_init_animation_node_blend3_module(JSContext *ctx, const char *m
 }
 
 JSModuleDef *js_init_animation_node_blend3_module(JSContext *ctx) {
-	return _js_init_animation_node_blend3_module(ctx, "godot/classes/animation_node_blend3");
+	return _js_init_animation_node_blend3_module(ctx, "@godot/classes/animation_node_blend3");
 }
 
 void register_animation_node_blend3() {

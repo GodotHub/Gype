@@ -9,8 +9,8 @@ export declare class GLTFSkeleton extends Resource{
   public get_roots(): PackedInt32Array;
   public set_roots(_roots: PackedInt32Array): void;
   public get_godot_skeleton(): Skeleton3D;
-  public get_unique_names(): Array;
-  public set_unique_names(_unique_names: typedarray::String): void;
+  public get_unique_names(): GDArray;
+  public set_unique_names(_unique_names: GDArray): void;
   public get_godot_bone_node(): Dictionary;
   public set_godot_bone_node(_godot_bone_node: Dictionary): void;
   public get_bone_attachment_count(): number;
@@ -18,25 +18,25 @@ export declare class GLTFSkeleton extends Resource{
   public get joints(): PackedInt32Array {
     get_joints();
   }
-  public set joints(value: PackedInt32Array): void {
+  public set joints(value): void {
     set_joints(value);
   }
   public get roots(): PackedInt32Array {
     get_roots();
   }
-  public set roots(value: PackedInt32Array): void {
+  public set roots(value): void {
     set_roots(value);
   }
-  public get unique_names(): Array {
+  public get unique_names(): GDArray {
     get_unique_names();
   }
-  public set unique_names(value: Array): void {
+  public set unique_names(value): void {
     set_unique_names(value);
   }
   public get godot_bone_node(): Dictionary {
     get_godot_bone_node();
   }
-  public set godot_bone_node(value: Dictionary): void {
+  public set godot_bone_node(value): void {
     set_godot_bone_node(value);
   }
 }

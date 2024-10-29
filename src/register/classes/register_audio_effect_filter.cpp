@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_filter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void audio_effect_filter_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue audio_effect_filter_class_constructor(JSContext *ctx, JSValueCons
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_filter_class);
+	JS_SetOpaque(obj, audio_effect_filter_class);	
 	return obj;
 }
 static JSValue audio_effect_filter_class_set_cutoff(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectFilter::set_cutoff, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectFilter::set_cutoff, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_filter_class_get_cutoff(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue audio_effect_filter_class_get_cutoff(JSContext *ctx, JSValueConst
 };
 static JSValue audio_effect_filter_class_set_resonance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectFilter::set_resonance, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectFilter::set_resonance, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_filter_class_get_resonance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,7 +55,7 @@ static JSValue audio_effect_filter_class_get_resonance(JSContext *ctx, JSValueCo
 };
 static JSValue audio_effect_filter_class_set_gain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectFilter::set_gain, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectFilter::set_gain, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_filter_class_get_gain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +64,7 @@ static JSValue audio_effect_filter_class_get_gain(JSContext *ctx, JSValueConst t
 };
 static JSValue audio_effect_filter_class_set_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectFilter::set_db, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectFilter::set_db, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_filter_class_get_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -81,34 +83,38 @@ static const JSCFunctionListEntry audio_effect_filter_class_proto_funcs[] = {
 };
 
 void define_audio_effect_filter_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "cutoff_hz"),
-			JS_NewCFunction(ctx, audio_effect_filter_class_get_cutoff, "get_cutoff", 0),
-			JS_NewCFunction(ctx, audio_effect_filter_class_set_cutoff, "set_cutoff", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "resonance"),
-			JS_NewCFunction(ctx, audio_effect_filter_class_get_resonance, "get_resonance", 0),
-			JS_NewCFunction(ctx, audio_effect_filter_class_set_resonance, "set_resonance", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "gain"),
-			JS_NewCFunction(ctx, audio_effect_filter_class_get_gain, "get_gain", 0),
-			JS_NewCFunction(ctx, audio_effect_filter_class_set_gain, "set_gain", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "db"),
-			JS_NewCFunction(ctx, audio_effect_filter_class_get_db, "get_db", 0),
-			JS_NewCFunction(ctx, audio_effect_filter_class_set_db, "set_db", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "cutoff_hz"),
+        JS_NewCFunction(ctx, audio_effect_filter_class_get_cutoff, "get_cutoff", 0),
+        JS_NewCFunction(ctx, audio_effect_filter_class_set_cutoff, "set_cutoff", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "resonance"),
+        JS_NewCFunction(ctx, audio_effect_filter_class_get_resonance, "get_resonance", 0),
+        JS_NewCFunction(ctx, audio_effect_filter_class_set_resonance, "set_resonance", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "gain"),
+        JS_NewCFunction(ctx, audio_effect_filter_class_get_gain, "get_gain", 0),
+        JS_NewCFunction(ctx, audio_effect_filter_class_set_gain, "set_gain", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "db"),
+        JS_NewCFunction(ctx, audio_effect_filter_class_get_db, "get_db", 0),
+        JS_NewCFunction(ctx, audio_effect_filter_class_set_db, "set_db", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -121,6 +127,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_effect_filter_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AudioEffectFilter::__class_id);
 	classes["AudioEffectFilter"] = AudioEffectFilter::__class_id;
 	class_id_list.insert(AudioEffectFilter::__class_id);
@@ -143,7 +150,7 @@ static int js_audio_effect_filter_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_audio_effect_filter_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/audio_effect';";
+	const char *code = "import * as _ from '@godot/classes/audio_effect';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -155,7 +162,7 @@ JSModuleDef *_js_init_audio_effect_filter_module(JSContext *ctx, const char *mod
 }
 
 JSModuleDef *js_init_audio_effect_filter_module(JSContext *ctx) {
-	return _js_init_audio_effect_filter_module(ctx, "godot/classes/audio_effect_filter");
+	return _js_init_audio_effect_filter_module(ctx, "@godot/classes/audio_effect_filter");
 }
 
 void register_audio_effect_filter() {

@@ -16,19 +16,19 @@ export declare class BoneAttachment3D extends Node3D{
   public get bone_name(): StringName {
     get_bone_name();
   }
-  public set bone_name(value: StringName): void {
+  public set bone_name(value): void {
     set_bone_name(value);
   }
   public get bone_idx(): number {
     get_bone_idx();
   }
-  public set bone_idx(value: number): void {
+  public set bone_idx(value): void {
     set_bone_idx(value);
   }
   public get override_pose(): boolean {
     get_override_pose();
   }
-  public set override_pose(value: boolean): void {
+  public set override_pose(value): void {
     set_override_pose(value);
   }
 }

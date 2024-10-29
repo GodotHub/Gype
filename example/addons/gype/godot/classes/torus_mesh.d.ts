@@ -13,25 +13,25 @@ export declare class TorusMesh extends PrimitiveMesh{
   public get inner_radius(): number {
     get_inner_radius();
   }
-  public set inner_radius(value: number): void {
+  public set inner_radius(value): void {
     set_inner_radius(value);
   }
   public get outer_radius(): number {
     get_outer_radius();
   }
-  public set outer_radius(value: number): void {
+  public set outer_radius(value): void {
     set_outer_radius(value);
   }
   public get rings(): number {
     get_rings();
   }
-  public set rings(value: number): void {
+  public set rings(value): void {
     set_rings(value);
   }
   public get ring_segments(): number {
     get_ring_segments();
   }
-  public set ring_segments(value: number): void {
+  public set ring_segments(value): void {
     set_ring_segments(value);
   }
 }

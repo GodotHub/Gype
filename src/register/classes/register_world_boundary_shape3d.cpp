@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/shape3d.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/world_boundary_shape3d.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void world_boundary_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue world_boundary_shape3d_class_constructor(JSContext *ctx, JSValueC
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, world_boundary_shape3d_class);
+	JS_SetOpaque(obj, world_boundary_shape3d_class);	
 	return obj;
 }
 static JSValue world_boundary_shape3d_class_set_plane(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&WorldBoundaryShape3D::set_plane, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&WorldBoundaryShape3D::set_plane, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue world_boundary_shape3d_class_get_plane(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,19 +50,21 @@ static const JSCFunctionListEntry world_boundary_shape3d_class_proto_funcs[] = {
 };
 
 void define_world_boundary_shape3d_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "plane"),
-			JS_NewCFunction(ctx, world_boundary_shape3d_class_get_plane, "get_plane", 0),
-			JS_NewCFunction(ctx, world_boundary_shape3d_class_set_plane, "set_plane", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "plane"),
+        JS_NewCFunction(ctx, world_boundary_shape3d_class_get_plane, "get_plane", 0),
+        JS_NewCFunction(ctx, world_boundary_shape3d_class_set_plane, "set_plane", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_world_boundary_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&WorldBoundaryShape3D::__class_id);
 	classes["WorldBoundaryShape3D"] = WorldBoundaryShape3D::__class_id;
 	class_id_list.insert(WorldBoundaryShape3D::__class_id);
@@ -83,7 +87,7 @@ static int js_world_boundary_shape3d_class_init(JSContext *ctx, JSModuleDef *m) 
 }
 
 JSModuleDef *_js_init_world_boundary_shape3d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/shape3d';";
+	const char *code = "import * as _ from '@godot/classes/shape3d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -95,7 +99,7 @@ JSModuleDef *_js_init_world_boundary_shape3d_module(JSContext *ctx, const char *
 }
 
 JSModuleDef *js_init_world_boundary_shape3d_module(JSContext *ctx) {
-	return _js_init_world_boundary_shape3d_module(ctx, "godot/classes/world_boundary_shape3d");
+	return _js_init_world_boundary_shape3d_module(ctx, "@godot/classes/world_boundary_shape3d");
 }
 
 void register_world_boundary_shape3d() {

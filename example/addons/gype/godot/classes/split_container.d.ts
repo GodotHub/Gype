@@ -14,25 +14,25 @@ export declare class SplitContainer extends Container{
   public get split_offset(): number {
     get_split_offset();
   }
-  public set split_offset(value: number): void {
+  public set split_offset(value): void {
     set_split_offset(value);
   }
   public get collapsed(): boolean {
     is_collapsed();
   }
-  public set collapsed(value: boolean): void {
+  public set collapsed(value): void {
     set_collapsed(value);
   }
   public get dragger_visibility(): number {
     get_dragger_visibility();
   }
-  public set dragger_visibility(value: number): void {
+  public set dragger_visibility(value): void {
     set_dragger_visibility(value);
   }
   public get vertical(): boolean {
     is_vertical();
   }
-  public set vertical(value: boolean): void {
+  public set vertical(value): void {
     set_vertical(value);
   }
   static DraggerVisibility = {

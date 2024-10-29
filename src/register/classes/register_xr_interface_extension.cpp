@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/xr_interface.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/xr_interface_extension.hpp>
+#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void xr_interface_extension_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue xr_interface_extension_class_constructor(JSContext *ctx, JSValueC
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, xr_interface_extension_class);
+	JS_SetOpaque(obj, xr_interface_extension_class);	
 	return obj;
 }
 static JSValue xr_interface_extension_class_get_color_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -47,7 +49,7 @@ static JSValue xr_interface_extension_class_get_velocity_texture(JSContext *ctx,
 };
 static JSValue xr_interface_extension_class_add_blit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&XRInterfaceExtension::add_blit, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&XRInterfaceExtension::add_blit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_interface_extension_class_get_render_target_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -69,6 +71,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_xr_interface_extension_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&XRInterfaceExtension::__class_id);
 	classes["XRInterfaceExtension"] = XRInterfaceExtension::__class_id;
 	class_id_list.insert(XRInterfaceExtension::__class_id);
@@ -91,7 +94,7 @@ static int js_xr_interface_extension_class_init(JSContext *ctx, JSModuleDef *m) 
 }
 
 JSModuleDef *_js_init_xr_interface_extension_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/xr_interface';";
+	const char *code = "import * as _ from '@godot/classes/xr_interface';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -103,7 +106,7 @@ JSModuleDef *_js_init_xr_interface_extension_module(JSContext *ctx, const char *
 }
 
 JSModuleDef *js_init_xr_interface_extension_module(JSContext *ctx) {
-	return _js_init_xr_interface_extension_module(ctx, "godot/classes/xr_interface_extension");
+	return _js_init_xr_interface_extension_module(ctx, "@godot/classes/xr_interface_extension");
 }
 
 void register_xr_interface_extension() {

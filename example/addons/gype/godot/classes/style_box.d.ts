@@ -19,25 +19,25 @@ export declare class StyleBox extends Resource{
   public get content_margin_left(): number {
     get_content_margin();
   }
-  public set content_margin_left(value: number): void {
+  public set content_margin_left(value): void {
     set_content_margin(value);
   }
   public get content_margin_top(): number {
     get_content_margin();
   }
-  public set content_margin_top(value: number): void {
+  public set content_margin_top(value): void {
     set_content_margin(value);
   }
   public get content_margin_right(): number {
     get_content_margin();
   }
-  public set content_margin_right(value: number): void {
+  public set content_margin_right(value): void {
     set_content_margin(value);
   }
   public get content_margin_bottom(): number {
     get_content_margin();
   }
-  public set content_margin_bottom(value: number): void {
+  public set content_margin_bottom(value): void {
     set_content_margin(value);
   }
 }

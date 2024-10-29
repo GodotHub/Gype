@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_spectrum_analyzer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void audio_effect_spectrum_analyzer_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue audio_effect_spectrum_analyzer_class_constructor(JSContext *ctx, 
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_spectrum_analyzer_class);
+	JS_SetOpaque(obj, audio_effect_spectrum_analyzer_class);	
 	return obj;
 }
 static JSValue audio_effect_spectrum_analyzer_class_set_buffer_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectSpectrumAnalyzer::set_buffer_length, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectSpectrumAnalyzer::set_buffer_length, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_spectrum_analyzer_class_get_buffer_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue audio_effect_spectrum_analyzer_class_get_buffer_length(JSContext 
 };
 static JSValue audio_effect_spectrum_analyzer_class_set_tap_back_pos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectSpectrumAnalyzer::set_tap_back_pos, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectSpectrumAnalyzer::set_tap_back_pos, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_spectrum_analyzer_class_get_tap_back_pos(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,7 +55,7 @@ static JSValue audio_effect_spectrum_analyzer_class_get_tap_back_pos(JSContext *
 };
 static JSValue audio_effect_spectrum_analyzer_class_set_fft_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioEffectSpectrumAnalyzer::set_fft_size, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioEffectSpectrumAnalyzer::set_fft_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_effect_spectrum_analyzer_class_get_fft_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,27 +72,30 @@ static const JSCFunctionListEntry audio_effect_spectrum_analyzer_class_proto_fun
 };
 
 void define_audio_effect_spectrum_analyzer_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "buffer_length"),
-			JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_get_buffer_length, "get_buffer_length", 0),
-			JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_set_buffer_length, "set_buffer_length", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "tap_back_pos"),
-			JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_get_tap_back_pos, "get_tap_back_pos", 0),
-			JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_set_tap_back_pos, "set_tap_back_pos", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "fft_size"),
-			JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_get_fft_size, "get_fft_size", 0),
-			JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_set_fft_size, "set_fft_size", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "buffer_length"),
+        JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_get_buffer_length, "get_buffer_length", 0),
+        JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_set_buffer_length, "set_buffer_length", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "tap_back_pos"),
+        JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_get_tap_back_pos, "get_tap_back_pos", 0),
+        JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_set_tap_back_pos, "set_tap_back_pos", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "fft_size"),
+        JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_get_fft_size, "get_fft_size", 0),
+        JS_NewCFunction(ctx, audio_effect_spectrum_analyzer_class_set_fft_size, "set_fft_size", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -105,6 +110,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_effect_spectrum_analyzer_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AudioEffectSpectrumAnalyzer::__class_id);
 	classes["AudioEffectSpectrumAnalyzer"] = AudioEffectSpectrumAnalyzer::__class_id;
 	class_id_list.insert(AudioEffectSpectrumAnalyzer::__class_id);
@@ -127,7 +133,7 @@ static int js_audio_effect_spectrum_analyzer_class_init(JSContext *ctx, JSModule
 }
 
 JSModuleDef *_js_init_audio_effect_spectrum_analyzer_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/audio_effect';";
+	const char *code = "import * as _ from '@godot/classes/audio_effect';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -139,7 +145,7 @@ JSModuleDef *_js_init_audio_effect_spectrum_analyzer_module(JSContext *ctx, cons
 }
 
 JSModuleDef *js_init_audio_effect_spectrum_analyzer_module(JSContext *ctx) {
-	return _js_init_audio_effect_spectrum_analyzer_module(ctx, "godot/classes/audio_effect_spectrum_analyzer");
+	return _js_init_audio_effect_spectrum_analyzer_module(ctx, "@godot/classes/audio_effect_spectrum_analyzer");
 }
 
 void register_audio_effect_spectrum_analyzer() {

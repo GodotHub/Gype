@@ -43,67 +43,67 @@ export declare class FileDialog extends ConfirmationDialog{
   public get mode_overrides_title(): boolean {
     is_mode_overriding_title();
   }
-  public set mode_overrides_title(value: boolean): void {
+  public set mode_overrides_title(value): void {
     set_mode_overrides_title(value);
   }
   public get file_mode(): number {
     get_file_mode();
   }
-  public set file_mode(value: number): void {
+  public set file_mode(value): void {
     set_file_mode(value);
   }
   public get access(): number {
     get_access();
   }
-  public set access(value: number): void {
+  public set access(value): void {
     set_access(value);
   }
   public get root_subfolder(): String {
     get_root_subfolder();
   }
-  public set root_subfolder(value: String): void {
+  public set root_subfolder(value): void {
     set_root_subfolder(value);
   }
   public get filters(): PackedStringArray {
     get_filters();
   }
-  public set filters(value: PackedStringArray): void {
+  public set filters(value): void {
     set_filters(value);
   }
   public get option_count(): number {
     get_option_count();
   }
-  public set option_count(value: number): void {
+  public set option_count(value): void {
     set_option_count(value);
   }
   public get show_hidden_files(): boolean {
     is_showing_hidden_files();
   }
-  public set show_hidden_files(value: boolean): void {
+  public set show_hidden_files(value): void {
     set_show_hidden_files(value);
   }
   public get use_native_dialog(): boolean {
     get_use_native_dialog();
   }
-  public set use_native_dialog(value: boolean): void {
+  public set use_native_dialog(value): void {
     set_use_native_dialog(value);
   }
   public get current_dir(): String {
     get_current_dir();
   }
-  public set current_dir(value: String): void {
+  public set current_dir(value): void {
     set_current_dir(value);
   }
   public get current_file(): String {
     get_current_file();
   }
-  public set current_file(value: String): void {
+  public set current_file(value): void {
     set_current_file(value);
   }
   public get current_path(): String {
     get_current_path();
   }
-  public set current_path(value: String): void {
+  public set current_path(value): void {
     set_current_path(value);
   }
   static FileMode = {

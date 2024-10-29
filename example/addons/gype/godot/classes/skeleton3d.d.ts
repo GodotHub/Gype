@@ -52,31 +52,31 @@ export declare class Skeleton3D extends Node3D{
   public set_animate_physical_bones(_enabled: boolean): void;
   public get_animate_physical_bones(): boolean;
   public physical_bones_stop_simulation(): void;
-  public physical_bones_start_simulation(_bones: typedarray::StringName): void;
+  public physical_bones_start_simulation(_bones: GDArray): void;
   public physical_bones_add_collision_exception(_exception: RID): void;
   public physical_bones_remove_collision_exception(_exception: RID): void;
   public get motion_scale(): number {
     get_motion_scale();
   }
-  public set motion_scale(value: number): void {
+  public set motion_scale(value): void {
     set_motion_scale(value);
   }
   public get show_rest_only(): boolean {
     is_show_rest_only();
   }
-  public set show_rest_only(value: boolean): void {
+  public set show_rest_only(value): void {
     set_show_rest_only(value);
   }
   public get modifier_callback_mode_process(): number {
     get_modifier_callback_mode_process();
   }
-  public set modifier_callback_mode_process(value: number): void {
+  public set modifier_callback_mode_process(value): void {
     set_modifier_callback_mode_process(value);
   }
   public get animate_physical_bones(): boolean {
     get_animate_physical_bones();
   }
-  public set animate_physical_bones(value: boolean): void {
+  public set animate_physical_bones(value): void {
     set_animate_physical_bones(value);
   }
   static ModifierCallbackModeProcess = {

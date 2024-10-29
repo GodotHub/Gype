@@ -1,7 +1,7 @@
 
-import { Sky } from "@godot/classes/sky";
-import { LightmapGIData } from "@godot/classes/lightmap_gi_data";
 import { CameraAttributes } from "@godot/classes/camera_attributes";
+import { LightmapGIData } from "@godot/classes/lightmap_gi_data";
+import { Sky } from "@godot/classes/sky";
 import { VisualInstance3D } from "@godot/classes/visual_instance3d";
 
 export declare class LightmapGI extends VisualInstance3D{
@@ -46,115 +46,115 @@ export declare class LightmapGI extends VisualInstance3D{
   public get quality(): number {
     get_bake_quality();
   }
-  public set quality(value: number): void {
+  public set quality(value): void {
     set_bake_quality(value);
   }
   public get bounces(): number {
     get_bounces();
   }
-  public set bounces(value: number): void {
+  public set bounces(value): void {
     set_bounces(value);
   }
   public get bounce_indirect_energy(): number {
     get_bounce_indirect_energy();
   }
-  public set bounce_indirect_energy(value: number): void {
+  public set bounce_indirect_energy(value): void {
     set_bounce_indirect_energy(value);
   }
   public get directional(): boolean {
     is_directional();
   }
-  public set directional(value: boolean): void {
+  public set directional(value): void {
     set_directional(value);
   }
   public get use_texture_for_bounces(): boolean {
     is_using_texture_for_bounces();
   }
-  public set use_texture_for_bounces(value: boolean): void {
+  public set use_texture_for_bounces(value): void {
     set_use_texture_for_bounces(value);
   }
   public get interior(): boolean {
     is_interior();
   }
-  public set interior(value: boolean): void {
+  public set interior(value): void {
     set_interior(value);
   }
   public get use_denoiser(): boolean {
     is_using_denoiser();
   }
-  public set use_denoiser(value: boolean): void {
+  public set use_denoiser(value): void {
     set_use_denoiser(value);
   }
   public get denoiser_strength(): number {
     get_denoiser_strength();
   }
-  public set denoiser_strength(value: number): void {
+  public set denoiser_strength(value): void {
     set_denoiser_strength(value);
   }
   public get denoiser_range(): number {
     get_denoiser_range();
   }
-  public set denoiser_range(value: number): void {
+  public set denoiser_range(value): void {
     set_denoiser_range(value);
   }
   public get bias(): number {
     get_bias();
   }
-  public set bias(value: number): void {
+  public set bias(value): void {
     set_bias(value);
   }
   public get texel_scale(): number {
     get_texel_scale();
   }
-  public set texel_scale(value: number): void {
+  public set texel_scale(value): void {
     set_texel_scale(value);
   }
   public get max_texture_size(): number {
     get_max_texture_size();
   }
-  public set max_texture_size(value: number): void {
+  public set max_texture_size(value): void {
     set_max_texture_size(value);
   }
   public get environment_mode(): number {
     get_environment_mode();
   }
-  public set environment_mode(value: number): void {
+  public set environment_mode(value): void {
     set_environment_mode(value);
   }
   public get environment_custom_sky(): Sky {
     get_environment_custom_sky();
   }
-  public set environment_custom_sky(value: Sky): void {
+  public set environment_custom_sky(value): void {
     set_environment_custom_sky(value);
   }
   public get environment_custom_color(): Color {
     get_environment_custom_color();
   }
-  public set environment_custom_color(value: Color): void {
+  public set environment_custom_color(value): void {
     set_environment_custom_color(value);
   }
   public get environment_custom_energy(): number {
     get_environment_custom_energy();
   }
-  public set environment_custom_energy(value: number): void {
+  public set environment_custom_energy(value): void {
     set_environment_custom_energy(value);
   }
-  public get camera_attributes(): CameraAttributesPractical,CameraAttributesPhysical {
+  public get camera_attributes(): CameraAttributesPractical {
     get_camera_attributes();
   }
-  public set camera_attributes(value: CameraAttributesPractical,CameraAttributesPhysical): void {
+  public set camera_attributes(value): void {
     set_camera_attributes(value);
   }
   public get generate_probes_subdiv(): number {
     get_generate_probes();
   }
-  public set generate_probes_subdiv(value: number): void {
+  public set generate_probes_subdiv(value): void {
     set_generate_probes(value);
   }
   public get light_data(): LightmapGIData {
     get_light_data();
   }
-  public set light_data(value: LightmapGIData): void {
+  public set light_data(value): void {
     set_light_data(value);
   }
   static BakeQuality = {

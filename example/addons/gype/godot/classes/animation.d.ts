@@ -25,15 +25,15 @@ export declare class Animation extends Resource{
   public rotation_track_interpolate(_track_idx: number, _time_sec: number, _backward: boolean): Quaternion;
   public scale_track_interpolate(_track_idx: number, _time_sec: number, _backward: boolean): Vector3;
   public blend_shape_track_interpolate(_track_idx: number, _time_sec: number, _backward: boolean): number;
-  public track_insert_key(_track_idx: number, _time: number, _key: Variant, _transition: number): number;
+  public track_insert_key(_track_idx: number, _time: number, _key: any, _transition: number): number;
   public track_remove_key(_track_idx: number, _key_idx: number): void;
   public track_remove_key_at_time(_track_idx: number, _time: number): void;
-  public track_set_key_value(_track_idx: number, _key: number, _value: Variant): void;
+  public track_set_key_value(_track_idx: number, _key: number, _value: any): void;
   public track_set_key_transition(_track_idx: number, _key_idx: number, _transition: number): void;
   public track_set_key_time(_track_idx: number, _key_idx: number, _time: number): void;
   public track_get_key_transition(_track_idx: number, _key_idx: number): number;
   public track_get_key_count(_track_idx: number): number;
-  public track_get_key_value(_track_idx: number, _key_idx: number): Variant;
+  public track_get_key_value(_track_idx: number, _key_idx: number): any;
   public track_get_key_time(_track_idx: number, _key_idx: number): number;
   public track_find_key(_track_idx: number, _time: number, _find_mode: number, _limit: boolean, _backward: boolean): number;
   public track_set_interpolation_type(_track_idx: number, _interpolation: number): void;
@@ -43,7 +43,7 @@ export declare class Animation extends Resource{
   public track_is_compressed(_track_idx: number): boolean;
   public value_track_set_update_mode(_track_idx: number, _mode: number): void;
   public value_track_get_update_mode(_track_idx: number): number;
-  public value_track_interpolate(_track_idx: number, _time_sec: number, _backward: boolean): Variant;
+  public value_track_interpolate(_track_idx: number, _time_sec: number, _backward: boolean): any;
   public method_track_get_name(_track_idx: number, _key_idx: number): StringName;
   public method_track_get_params(_track_idx: number, _key_idx: number): GDArray;
   public bezier_track_insert_key(_track_idx: number, _time: number, _value: number, _in_handle: Vector2, _out_handle: Vector2): number;
@@ -79,19 +79,19 @@ export declare class Animation extends Resource{
   public get length(): number {
     get_length();
   }
-  public set length(value: number): void {
+  public set length(value): void {
     set_length(value);
   }
   public get loop_mode(): number {
     get_loop_mode();
   }
-  public set loop_mode(value: number): void {
+  public set loop_mode(value): void {
     set_loop_mode(value);
   }
   public get step(): number {
     get_step();
   }
-  public set step(value: number): void {
+  public set step(value): void {
     set_step(value);
   }
   public get capture_included(): boolean {

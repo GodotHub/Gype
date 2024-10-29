@@ -12,19 +12,19 @@ export declare class VisualShaderNodeCubemap extends VisualShaderNode{
   public get source(): number {
     get_source();
   }
-  public set source(value: number): void {
+  public set source(value): void {
     set_source(value);
   }
   public get cube_map(): Cubemap {
     get_cube_map();
   }
-  public set cube_map(value: Cubemap): void {
+  public set cube_map(value): void {
     set_cube_map(value);
   }
   public get texture_type(): number {
     get_texture_type();
   }
-  public set texture_type(value: number): void {
+  public set texture_type(value): void {
     set_texture_type(value);
   }
   static Source = {

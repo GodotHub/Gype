@@ -31,79 +31,79 @@ export declare class CharFXTransform extends RefCounted{
   public get transform(): Transform2D {
     get_transform();
   }
-  public set transform(value: Transform2D): void {
+  public set transform(value): void {
     set_transform(value);
   }
   public get range(): Vector2i {
     get_range();
   }
-  public set range(value: Vector2i): void {
+  public set range(value): void {
     set_range(value);
   }
   public get elapsed_time(): number {
     get_elapsed_time();
   }
-  public set elapsed_time(value: number): void {
+  public set elapsed_time(value): void {
     set_elapsed_time(value);
   }
   public get visible(): boolean {
     is_visible();
   }
-  public set visible(value: boolean): void {
+  public set visible(value): void {
     set_visibility(value);
   }
   public get outline(): boolean {
     is_outline();
   }
-  public set outline(value: boolean): void {
+  public set outline(value): void {
     set_outline(value);
   }
   public get offset(): Vector2 {
     get_offset();
   }
-  public set offset(value: Vector2): void {
+  public set offset(value): void {
     set_offset(value);
   }
   public get color(): Color {
     get_color();
   }
-  public set color(value: Color): void {
+  public set color(value): void {
     set_color(value);
   }
   public get env(): Dictionary {
     get_environment();
   }
-  public set env(value: Dictionary): void {
+  public set env(value): void {
     set_environment(value);
   }
   public get glyph_index(): number {
     get_glyph_index();
   }
-  public set glyph_index(value: number): void {
+  public set glyph_index(value): void {
     set_glyph_index(value);
   }
   public get glyph_count(): number {
     get_glyph_count();
   }
-  public set glyph_count(value: number): void {
+  public set glyph_count(value): void {
     set_glyph_count(value);
   }
   public get glyph_flags(): number {
     get_glyph_flags();
   }
-  public set glyph_flags(value: number): void {
+  public set glyph_flags(value): void {
     set_glyph_flags(value);
   }
   public get relative_index(): number {
     get_relative_index();
   }
-  public set relative_index(value: number): void {
+  public set relative_index(value): void {
     set_relative_index(value);
   }
   public get font(): RID {
     get_font();
   }
-  public set font(value: RID): void {
+  public set font(value): void {
     set_font(value);
   }
 }

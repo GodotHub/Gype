@@ -47,127 +47,127 @@ export declare class FastNoiseLite extends Noise{
   public get noise_type(): number {
     get_noise_type();
   }
-  public set noise_type(value: number): void {
+  public set noise_type(value): void {
     set_noise_type(value);
   }
   public get seed(): number {
     get_seed();
   }
-  public set seed(value: number): void {
+  public set seed(value): void {
     set_seed(value);
   }
   public get frequency(): number {
     get_frequency();
   }
-  public set frequency(value: number): void {
+  public set frequency(value): void {
     set_frequency(value);
   }
   public get offset(): Vector3 {
     get_offset();
   }
-  public set offset(value: Vector3): void {
+  public set offset(value): void {
     set_offset(value);
   }
   public get fractal_type(): number {
     get_fractal_type();
   }
-  public set fractal_type(value: number): void {
+  public set fractal_type(value): void {
     set_fractal_type(value);
   }
   public get fractal_octaves(): number {
     get_fractal_octaves();
   }
-  public set fractal_octaves(value: number): void {
+  public set fractal_octaves(value): void {
     set_fractal_octaves(value);
   }
   public get fractal_lacunarity(): number {
     get_fractal_lacunarity();
   }
-  public set fractal_lacunarity(value: number): void {
+  public set fractal_lacunarity(value): void {
     set_fractal_lacunarity(value);
   }
   public get fractal_gain(): number {
     get_fractal_gain();
   }
-  public set fractal_gain(value: number): void {
+  public set fractal_gain(value): void {
     set_fractal_gain(value);
   }
   public get fractal_weighted_strength(): number {
     get_fractal_weighted_strength();
   }
-  public set fractal_weighted_strength(value: number): void {
+  public set fractal_weighted_strength(value): void {
     set_fractal_weighted_strength(value);
   }
   public get fractal_ping_pong_strength(): number {
     get_fractal_ping_pong_strength();
   }
-  public set fractal_ping_pong_strength(value: number): void {
+  public set fractal_ping_pong_strength(value): void {
     set_fractal_ping_pong_strength(value);
   }
   public get cellular_distance_function(): number {
     get_cellular_distance_function();
   }
-  public set cellular_distance_function(value: number): void {
+  public set cellular_distance_function(value): void {
     set_cellular_distance_function(value);
   }
   public get cellular_jitter(): number {
     get_cellular_jitter();
   }
-  public set cellular_jitter(value: number): void {
+  public set cellular_jitter(value): void {
     set_cellular_jitter(value);
   }
   public get cellular_return_type(): number {
     get_cellular_return_type();
   }
-  public set cellular_return_type(value: number): void {
+  public set cellular_return_type(value): void {
     set_cellular_return_type(value);
   }
   public get domain_warp_enabled(): boolean {
     is_domain_warp_enabled();
   }
-  public set domain_warp_enabled(value: boolean): void {
+  public set domain_warp_enabled(value): void {
     set_domain_warp_enabled(value);
   }
   public get domain_warp_type(): number {
     get_domain_warp_type();
   }
-  public set domain_warp_type(value: number): void {
+  public set domain_warp_type(value): void {
     set_domain_warp_type(value);
   }
   public get domain_warp_amplitude(): number {
     get_domain_warp_amplitude();
   }
-  public set domain_warp_amplitude(value: number): void {
+  public set domain_warp_amplitude(value): void {
     set_domain_warp_amplitude(value);
   }
   public get domain_warp_frequency(): number {
     get_domain_warp_frequency();
   }
-  public set domain_warp_frequency(value: number): void {
+  public set domain_warp_frequency(value): void {
     set_domain_warp_frequency(value);
   }
   public get domain_warp_fractal_type(): number {
     get_domain_warp_fractal_type();
   }
-  public set domain_warp_fractal_type(value: number): void {
+  public set domain_warp_fractal_type(value): void {
     set_domain_warp_fractal_type(value);
   }
   public get domain_warp_fractal_octaves(): number {
     get_domain_warp_fractal_octaves();
   }
-  public set domain_warp_fractal_octaves(value: number): void {
+  public set domain_warp_fractal_octaves(value): void {
     set_domain_warp_fractal_octaves(value);
   }
   public get domain_warp_fractal_lacunarity(): number {
     get_domain_warp_fractal_lacunarity();
   }
-  public set domain_warp_fractal_lacunarity(value: number): void {
+  public set domain_warp_fractal_lacunarity(value): void {
     set_domain_warp_fractal_lacunarity(value);
   }
   public get domain_warp_fractal_gain(): number {
     get_domain_warp_fractal_gain();
   }
-  public set domain_warp_fractal_gain(value: number): void {
+  public set domain_warp_fractal_gain(value): void {
     set_domain_warp_fractal_gain(value);
   }
   static NoiseType = {

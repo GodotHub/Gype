@@ -7,7 +7,7 @@ export declare class VisualShaderNodeTransformConstant extends VisualShaderNodeC
   public get constant(): Transform3D {
     get_constant();
   }
-  public set constant(value: Transform3D): void {
+  public set constant(value): void {
     set_constant(value);
   }
 }

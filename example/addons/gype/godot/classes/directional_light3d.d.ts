@@ -11,55 +11,55 @@ export declare class DirectionalLight3D extends Light3D{
   public get directional_shadow_mode(): number {
     get_shadow_mode();
   }
-  public set directional_shadow_mode(value: number): void {
+  public set directional_shadow_mode(value): void {
     set_shadow_mode(value);
   }
   public get directional_shadow_split_1(): number {
     get_param();
   }
-  public set directional_shadow_split_1(value: number): void {
+  public set directional_shadow_split_1(value): void {
     set_param(value);
   }
   public get directional_shadow_split_2(): number {
     get_param();
   }
-  public set directional_shadow_split_2(value: number): void {
+  public set directional_shadow_split_2(value): void {
     set_param(value);
   }
   public get directional_shadow_split_3(): number {
     get_param();
   }
-  public set directional_shadow_split_3(value: number): void {
+  public set directional_shadow_split_3(value): void {
     set_param(value);
   }
   public get directional_shadow_blend_splits(): boolean {
     is_blend_splits_enabled();
   }
-  public set directional_shadow_blend_splits(value: boolean): void {
+  public set directional_shadow_blend_splits(value): void {
     set_blend_splits(value);
   }
   public get directional_shadow_fade_start(): number {
     get_param();
   }
-  public set directional_shadow_fade_start(value: number): void {
+  public set directional_shadow_fade_start(value): void {
     set_param(value);
   }
   public get directional_shadow_max_distance(): number {
     get_param();
   }
-  public set directional_shadow_max_distance(value: number): void {
+  public set directional_shadow_max_distance(value): void {
     set_param(value);
   }
   public get directional_shadow_pancake_size(): number {
     get_param();
   }
-  public set directional_shadow_pancake_size(value: number): void {
+  public set directional_shadow_pancake_size(value): void {
     set_param(value);
   }
   public get sky_mode(): number {
     get_sky_mode();
   }
-  public set sky_mode(value: number): void {
+  public set sky_mode(value): void {
     set_sky_mode(value);
   }
   static ShadowMode = {

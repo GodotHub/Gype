@@ -19,31 +19,31 @@ export declare class Timer extends Node{
   public get process_callback(): number {
     get_timer_process_callback();
   }
-  public set process_callback(value: number): void {
+  public set process_callback(value): void {
     set_timer_process_callback(value);
   }
   public get wait_time(): number {
     get_wait_time();
   }
-  public set wait_time(value: number): void {
+  public set wait_time(value): void {
     set_wait_time(value);
   }
   public get one_shot(): boolean {
     is_one_shot();
   }
-  public set one_shot(value: boolean): void {
+  public set one_shot(value): void {
     set_one_shot(value);
   }
   public get autostart(): boolean {
     has_autostart();
   }
-  public set autostart(value: boolean): void {
+  public set autostart(value): void {
     set_autostart(value);
   }
   public get paused(): boolean {
     is_paused();
   }
-  public set paused(value: boolean): void {
+  public set paused(value): void {
     set_paused(value);
   }
   public get time_left(): number {

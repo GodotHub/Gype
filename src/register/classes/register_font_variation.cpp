@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/font_variation.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void font_variation_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue font_variation_class_constructor(JSContext *ctx, JSValueConst new
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, font_variation_class);
+	JS_SetOpaque(obj, font_variation_class);	
 	return obj;
 }
 static JSValue font_variation_class_set_base_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&FontVariation::set_base_font, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&FontVariation::set_base_font, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_variation_class_get_base_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue font_variation_class_get_base_font(JSContext *ctx, JSValueConst t
 };
 static JSValue font_variation_class_set_variation_opentype(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&FontVariation::set_variation_opentype, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&FontVariation::set_variation_opentype, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_variation_class_get_variation_opentype(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,7 +55,7 @@ static JSValue font_variation_class_get_variation_opentype(JSContext *ctx, JSVal
 };
 static JSValue font_variation_class_set_variation_embolden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&FontVariation::set_variation_embolden, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&FontVariation::set_variation_embolden, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_variation_class_get_variation_embolden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +64,7 @@ static JSValue font_variation_class_get_variation_embolden(JSContext *ctx, JSVal
 };
 static JSValue font_variation_class_set_variation_face_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&FontVariation::set_variation_face_index, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&FontVariation::set_variation_face_index, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_variation_class_get_variation_face_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,7 +73,7 @@ static JSValue font_variation_class_get_variation_face_index(JSContext *ctx, JSV
 };
 static JSValue font_variation_class_set_variation_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&FontVariation::set_variation_transform, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&FontVariation::set_variation_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_variation_class_get_variation_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -80,17 +82,17 @@ static JSValue font_variation_class_get_variation_transform(JSContext *ctx, JSVa
 };
 static JSValue font_variation_class_set_opentype_features(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&FontVariation::set_opentype_features, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&FontVariation::set_opentype_features, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_variation_class_set_spacing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&FontVariation::set_spacing, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&FontVariation::set_spacing, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_variation_class_set_baseline_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&FontVariation::set_baseline_offset, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&FontVariation::set_baseline_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_variation_class_get_baseline_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -115,89 +117,101 @@ static const JSCFunctionListEntry font_variation_class_proto_funcs[] = {
 };
 
 void define_font_variation_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "base_font"),
-			JS_NewCFunction(ctx, font_variation_class_get_base_font, "get_base_font", 0),
-			JS_NewCFunction(ctx, font_variation_class_set_base_font, "set_base_font", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "variation_opentype"),
-			JS_NewCFunction(ctx, font_variation_class_get_variation_opentype, "get_variation_opentype", 0),
-			JS_NewCFunction(ctx, font_variation_class_set_variation_opentype, "set_variation_opentype", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "variation_face_index"),
-			JS_NewCFunction(ctx, font_variation_class_get_variation_face_index, "get_variation_face_index", 0),
-			JS_NewCFunction(ctx, font_variation_class_set_variation_face_index, "set_variation_face_index", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "variation_embolden"),
-			JS_NewCFunction(ctx, font_variation_class_get_variation_embolden, "get_variation_embolden", 0),
-			JS_NewCFunction(ctx, font_variation_class_set_variation_embolden, "set_variation_embolden", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "variation_transform"),
-			JS_NewCFunction(ctx, font_variation_class_get_variation_transform, "get_variation_transform", 0),
-			JS_NewCFunction(ctx, font_variation_class_set_variation_transform, "set_variation_transform", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "opentype_features"),
-			JS_UNDEFINED,
-			JS_NewCFunction(ctx, font_variation_class_set_opentype_features, "set_opentype_features", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "spacing_glyph"),
-			JS_UNDEFINED,
-			JS_NewCFunction(ctx, font_variation_class_set_spacing, "set_spacing", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "spacing_space"),
-			JS_UNDEFINED,
-			JS_NewCFunction(ctx, font_variation_class_set_spacing, "set_spacing", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "spacing_top"),
-			JS_UNDEFINED,
-			JS_NewCFunction(ctx, font_variation_class_set_spacing, "set_spacing", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "spacing_bottom"),
-			JS_UNDEFINED,
-			JS_NewCFunction(ctx, font_variation_class_set_spacing, "set_spacing", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "baseline_offset"),
-			JS_NewCFunction(ctx, font_variation_class_get_baseline_offset, "get_baseline_offset", 0),
-			JS_NewCFunction(ctx, font_variation_class_set_baseline_offset, "set_baseline_offset", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "base_font"),
+        JS_NewCFunction(ctx, font_variation_class_get_base_font, "get_base_font", 0),
+        JS_NewCFunction(ctx, font_variation_class_set_base_font, "set_base_font", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "variation_opentype"),
+        JS_NewCFunction(ctx, font_variation_class_get_variation_opentype, "get_variation_opentype", 0),
+        JS_NewCFunction(ctx, font_variation_class_set_variation_opentype, "set_variation_opentype", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "variation_face_index"),
+        JS_NewCFunction(ctx, font_variation_class_get_variation_face_index, "get_variation_face_index", 0),
+        JS_NewCFunction(ctx, font_variation_class_set_variation_face_index, "set_variation_face_index", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "variation_embolden"),
+        JS_NewCFunction(ctx, font_variation_class_get_variation_embolden, "get_variation_embolden", 0),
+        JS_NewCFunction(ctx, font_variation_class_set_variation_embolden, "set_variation_embolden", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "variation_transform"),
+        JS_NewCFunction(ctx, font_variation_class_get_variation_transform, "get_variation_transform", 0),
+        JS_NewCFunction(ctx, font_variation_class_set_variation_transform, "set_variation_transform", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "opentype_features"),
+        JS_UNDEFINED,
+        JS_NewCFunction(ctx, font_variation_class_set_opentype_features, "set_opentype_features", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "spacing_glyph"),
+        JS_UNDEFINED,
+        JS_NewCFunction(ctx, font_variation_class_set_spacing, "set_spacing", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "spacing_space"),
+        JS_UNDEFINED,
+        JS_NewCFunction(ctx, font_variation_class_set_spacing, "set_spacing", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "spacing_top"),
+        JS_UNDEFINED,
+        JS_NewCFunction(ctx, font_variation_class_set_spacing, "set_spacing", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "spacing_bottom"),
+        JS_UNDEFINED,
+        JS_NewCFunction(ctx, font_variation_class_set_spacing, "set_spacing", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "baseline_offset"),
+        JS_NewCFunction(ctx, font_variation_class_get_baseline_offset, "get_baseline_offset", 0),
+        JS_NewCFunction(ctx, font_variation_class_set_baseline_offset, "set_baseline_offset", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_font_variation_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&FontVariation::__class_id);
 	classes["FontVariation"] = FontVariation::__class_id;
 	class_id_list.insert(FontVariation::__class_id);
@@ -220,7 +234,7 @@ static int js_font_variation_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_font_variation_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/font';";
+	const char *code = "import * as _ from '@godot/classes/font';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -232,7 +246,7 @@ JSModuleDef *_js_init_font_variation_module(JSContext *ctx, const char *module_n
 }
 
 JSModuleDef *js_init_font_variation_module(JSContext *ctx) {
-	return _js_init_font_variation_module(ctx, "godot/classes/font_variation");
+	return _js_init_font_variation_module(ctx, "@godot/classes/font_variation");
 }
 
 void register_font_variation() {

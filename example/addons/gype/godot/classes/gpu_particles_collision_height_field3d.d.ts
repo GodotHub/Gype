@@ -13,25 +13,25 @@ export declare class GPUParticlesCollisionHeightField3D extends GPUParticlesColl
   public get size(): Vector3 {
     get_size();
   }
-  public set size(value: Vector3): void {
+  public set size(value): void {
     set_size(value);
   }
   public get resolution(): number {
     get_resolution();
   }
-  public set resolution(value: number): void {
+  public set resolution(value): void {
     set_resolution(value);
   }
   public get update_mode(): number {
     get_update_mode();
   }
-  public set update_mode(value: number): void {
+  public set update_mode(value): void {
     set_update_mode(value);
   }
   public get follow_camera_enabled(): boolean {
     is_follow_camera_enabled();
   }
-  public set follow_camera_enabled(value: boolean): void {
+  public set follow_camera_enabled(value): void {
     set_follow_camera_enabled(value);
   }
   static Resolution = {

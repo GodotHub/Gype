@@ -9,13 +9,13 @@ export declare class VisualShaderNodeBillboard extends VisualShaderNode{
   public get billboard_type(): number {
     get_billboard_type();
   }
-  public set billboard_type(value: number): void {
+  public set billboard_type(value): void {
     set_billboard_type(value);
   }
   public get keep_scale(): boolean {
     is_keep_scale_enabled();
   }
-  public set keep_scale(value: boolean): void {
+  public set keep_scale(value): void {
     set_keep_scale_enabled(value);
   }
   static BillboardType = {

@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/directional_light3d.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/light3d.hpp>
+#include <godot_cpp/classes/directional_light3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void directional_light3d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue directional_light3d_class_constructor(JSContext *ctx, JSValueCons
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, directional_light3d_class);
+	JS_SetOpaque(obj, directional_light3d_class);	
 	return obj;
 }
 static JSValue directional_light3d_class_set_shadow_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&DirectionalLight3D::set_shadow_mode, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&DirectionalLight3D::set_shadow_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue directional_light3d_class_get_shadow_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue directional_light3d_class_get_shadow_mode(JSContext *ctx, JSValue
 };
 static JSValue directional_light3d_class_set_blend_splits(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&DirectionalLight3D::set_blend_splits, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&DirectionalLight3D::set_blend_splits, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue directional_light3d_class_is_blend_splits_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,7 +55,7 @@ static JSValue directional_light3d_class_is_blend_splits_enabled(JSContext *ctx,
 };
 static JSValue directional_light3d_class_set_sky_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&DirectionalLight3D::set_sky_mode, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&DirectionalLight3D::set_sky_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue directional_light3d_class_get_sky_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,27 +72,30 @@ static const JSCFunctionListEntry directional_light3d_class_proto_funcs[] = {
 };
 
 void define_directional_light3d_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "directional_shadow_mode"),
-			JS_NewCFunction(ctx, directional_light3d_class_get_shadow_mode, "get_shadow_mode", 0),
-			JS_NewCFunction(ctx, directional_light3d_class_set_shadow_mode, "set_shadow_mode", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "directional_shadow_blend_splits"),
-			JS_NewCFunction(ctx, directional_light3d_class_is_blend_splits_enabled, "is_blend_splits_enabled", 0),
-			JS_NewCFunction(ctx, directional_light3d_class_set_blend_splits, "set_blend_splits", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "sky_mode"),
-			JS_NewCFunction(ctx, directional_light3d_class_get_sky_mode, "get_sky_mode", 0),
-			JS_NewCFunction(ctx, directional_light3d_class_set_sky_mode, "set_sky_mode", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "directional_shadow_mode"),
+        JS_NewCFunction(ctx, directional_light3d_class_get_shadow_mode, "get_shadow_mode", 0),
+        JS_NewCFunction(ctx, directional_light3d_class_set_shadow_mode, "set_shadow_mode", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "directional_shadow_blend_splits"),
+        JS_NewCFunction(ctx, directional_light3d_class_is_blend_splits_enabled, "is_blend_splits_enabled", 0),
+        JS_NewCFunction(ctx, directional_light3d_class_set_blend_splits, "set_blend_splits", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "sky_mode"),
+        JS_NewCFunction(ctx, directional_light3d_class_get_sky_mode, "get_sky_mode", 0),
+        JS_NewCFunction(ctx, directional_light3d_class_set_sky_mode, "set_sky_mode", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -107,6 +112,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_directional_light3d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&DirectionalLight3D::__class_id);
 	classes["DirectionalLight3D"] = DirectionalLight3D::__class_id;
 	class_id_list.insert(DirectionalLight3D::__class_id);
@@ -129,7 +135,7 @@ static int js_directional_light3d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_directional_light3d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/light3d';";
+	const char *code = "import * as _ from '@godot/classes/light3d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -141,7 +147,7 @@ JSModuleDef *_js_init_directional_light3d_module(JSContext *ctx, const char *mod
 }
 
 JSModuleDef *js_init_directional_light3d_module(JSContext *ctx) {
-	return _js_init_directional_light3d_module(ctx, "godot/classes/directional_light3d");
+	return _js_init_directional_light3d_module(ctx, "@godot/classes/directional_light3d");
 }
 
 void register_directional_light3d() {

@@ -13,25 +13,25 @@ export declare class OpenXRCompositionLayerCylinder extends OpenXRCompositionLay
   public get radius(): number {
     get_radius();
   }
-  public set radius(value: number): void {
+  public set radius(value): void {
     set_radius(value);
   }
   public get aspect_ratio(): number {
     get_aspect_ratio();
   }
-  public set aspect_ratio(value: number): void {
+  public set aspect_ratio(value): void {
     set_aspect_ratio(value);
   }
   public get central_angle(): number {
     get_central_angle();
   }
-  public set central_angle(value: number): void {
+  public set central_angle(value): void {
     set_central_angle(value);
   }
   public get fallback_segments(): number {
     get_fallback_segments();
   }
-  public set fallback_segments(value: number): void {
+  public set fallback_segments(value): void {
     set_fallback_segments(value);
   }
 }

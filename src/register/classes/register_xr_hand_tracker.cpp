@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/xr_hand_tracker.hpp>
 #include <godot_cpp/classes/xr_positional_tracker.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void xr_hand_tracker_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue xr_hand_tracker_class_constructor(JSContext *ctx, JSValueConst ne
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, xr_hand_tracker_class);
+	JS_SetOpaque(obj, xr_hand_tracker_class);	
 	return obj;
 }
 static JSValue xr_hand_tracker_class_set_has_tracking_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&XRHandTracker::set_has_tracking_data, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&XRHandTracker::set_has_tracking_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_hand_tracker_class_get_has_tracking_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue xr_hand_tracker_class_get_has_tracking_data(JSContext *ctx, JSVal
 };
 static JSValue xr_hand_tracker_class_set_hand_tracking_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&XRHandTracker::set_hand_tracking_source, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&XRHandTracker::set_hand_tracking_source, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_hand_tracker_class_get_hand_tracking_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,7 +55,7 @@ static JSValue xr_hand_tracker_class_get_hand_tracking_source(JSContext *ctx, JS
 };
 static JSValue xr_hand_tracker_class_set_hand_joint_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_flags, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_flags, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_hand_tracker_class_get_hand_joint_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +64,7 @@ static JSValue xr_hand_tracker_class_get_hand_joint_flags(JSContext *ctx, JSValu
 };
 static JSValue xr_hand_tracker_class_set_hand_joint_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_transform, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_hand_tracker_class_get_hand_joint_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,7 +73,7 @@ static JSValue xr_hand_tracker_class_get_hand_joint_transform(JSContext *ctx, JS
 };
 static JSValue xr_hand_tracker_class_set_hand_joint_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_radius, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_hand_tracker_class_get_hand_joint_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -80,7 +82,7 @@ static JSValue xr_hand_tracker_class_get_hand_joint_radius(JSContext *ctx, JSVal
 };
 static JSValue xr_hand_tracker_class_set_hand_joint_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_linear_velocity, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_linear_velocity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_hand_tracker_class_get_hand_joint_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -89,7 +91,7 @@ static JSValue xr_hand_tracker_class_get_hand_joint_linear_velocity(JSContext *c
 };
 static JSValue xr_hand_tracker_class_set_hand_joint_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_angular_velocity, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&XRHandTracker::set_hand_joint_angular_velocity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue xr_hand_tracker_class_get_hand_joint_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -114,20 +116,22 @@ static const JSCFunctionListEntry xr_hand_tracker_class_proto_funcs[] = {
 };
 
 void define_xr_hand_tracker_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "has_tracking_data"),
-			JS_NewCFunction(ctx, xr_hand_tracker_class_get_has_tracking_data, "get_has_tracking_data", 0),
-			JS_NewCFunction(ctx, xr_hand_tracker_class_set_has_tracking_data, "set_has_tracking_data", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "hand_tracking_source"),
-			JS_NewCFunction(ctx, xr_hand_tracker_class_get_hand_tracking_source, "get_hand_tracking_source", 0),
-			JS_NewCFunction(ctx, xr_hand_tracker_class_set_hand_tracking_source, "set_hand_tracking_source", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "has_tracking_data"),
+        JS_NewCFunction(ctx, xr_hand_tracker_class_get_has_tracking_data, "get_has_tracking_data", 0),
+        JS_NewCFunction(ctx, xr_hand_tracker_class_set_has_tracking_data, "set_has_tracking_data", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "hand_tracking_source"),
+        JS_NewCFunction(ctx, xr_hand_tracker_class_get_hand_tracking_source, "get_hand_tracking_source", 0),
+        JS_NewCFunction(ctx, xr_hand_tracker_class_set_hand_tracking_source, "set_hand_tracking_source", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -177,6 +181,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_xr_hand_tracker_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&XRHandTracker::__class_id);
 	classes["XRHandTracker"] = XRHandTracker::__class_id;
 	class_id_list.insert(XRHandTracker::__class_id);
@@ -199,7 +204,7 @@ static int js_xr_hand_tracker_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_xr_hand_tracker_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/xr_positional_tracker';";
+	const char *code = "import * as _ from '@godot/classes/xr_positional_tracker';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -211,7 +216,7 @@ JSModuleDef *_js_init_xr_hand_tracker_module(JSContext *ctx, const char *module_
 }
 
 JSModuleDef *js_init_xr_hand_tracker_module(JSContext *ctx) {
-	return _js_init_xr_hand_tracker_module(ctx, "godot/classes/xr_hand_tracker");
+	return _js_init_xr_hand_tracker_module(ctx, "@godot/classes/xr_hand_tracker");
 }
 
 void register_xr_hand_tracker() {

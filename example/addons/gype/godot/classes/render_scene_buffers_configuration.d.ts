@@ -23,55 +23,55 @@ export declare class RenderSceneBuffersConfiguration extends RefCounted{
   public get render_target(): RID {
     get_render_target();
   }
-  public set render_target(value: RID): void {
+  public set render_target(value): void {
     set_render_target(value);
   }
   public get internal_size(): Vector2i {
     get_internal_size();
   }
-  public set internal_size(value: Vector2i): void {
+  public set internal_size(value): void {
     set_internal_size(value);
   }
   public get target_size(): Vector2i {
     get_target_size();
   }
-  public set target_size(value: Vector2i): void {
+  public set target_size(value): void {
     set_target_size(value);
   }
   public get view_count(): number {
     get_view_count();
   }
-  public set view_count(value: number): void {
+  public set view_count(value): void {
     set_view_count(value);
   }
   public get scaling_3d_mode(): number {
     get_scaling_3d_mode();
   }
-  public set scaling_3d_mode(value: number): void {
+  public set scaling_3d_mode(value): void {
     set_scaling_3d_mode(value);
   }
   public get msaa_3d(): number {
     get_msaa_3d();
   }
-  public set msaa_3d(value: number): void {
+  public set msaa_3d(value): void {
     set_msaa_3d(value);
   }
   public get screen_space_aa(): number {
     get_screen_space_aa();
   }
-  public set screen_space_aa(value: number): void {
+  public set screen_space_aa(value): void {
     set_screen_space_aa(value);
   }
   public get fsr_sharpness(): boolean {
     get_fsr_sharpness();
   }
-  public set fsr_sharpness(value: boolean): void {
+  public set fsr_sharpness(value): void {
     set_fsr_sharpness(value);
   }
   public get texture_mipmap_bias(): boolean {
     get_texture_mipmap_bias();
   }
-  public set texture_mipmap_bias(value: boolean): void {
+  public set texture_mipmap_bias(value): void {
     set_texture_mipmap_bias(value);
   }
 }

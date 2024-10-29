@@ -19,43 +19,43 @@ export declare class AnimationNodeAnimation extends AnimationRootNode{
   public get animation(): StringName {
     get_animation();
   }
-  public set animation(value: StringName): void {
+  public set animation(value): void {
     set_animation(value);
   }
   public get play_mode(): number {
     get_play_mode();
   }
-  public set play_mode(value: number): void {
+  public set play_mode(value): void {
     set_play_mode(value);
   }
   public get use_custom_timeline(): boolean {
     is_using_custom_timeline();
   }
-  public set use_custom_timeline(value: boolean): void {
+  public set use_custom_timeline(value): void {
     set_use_custom_timeline(value);
   }
   public get timeline_length(): number {
     get_timeline_length();
   }
-  public set timeline_length(value: number): void {
+  public set timeline_length(value): void {
     set_timeline_length(value);
   }
   public get stretch_time_scale(): boolean {
     is_stretching_time_scale();
   }
-  public set stretch_time_scale(value: boolean): void {
+  public set stretch_time_scale(value): void {
     set_stretch_time_scale(value);
   }
   public get start_offset(): number {
     get_start_offset();
   }
-  public set start_offset(value: number): void {
+  public set start_offset(value): void {
     set_start_offset(value);
   }
   public get loop_mode(): number {
     get_loop_mode();
   }
-  public set loop_mode(value: number): void {
+  public set loop_mode(value): void {
     set_loop_mode(value);
   }
   static PlayMode = {

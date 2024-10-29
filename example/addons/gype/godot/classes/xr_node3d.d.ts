@@ -1,6 +1,6 @@
 
-import { Node3D } from "@godot/classes/node3d";
 import { XRPose } from "@godot/classes/xr_pose";
+import { Node3D } from "@godot/classes/node3d";
 
 export declare class XRNode3D extends Node3D{
   public set_tracker(_tracker_name: StringName): void;
@@ -16,19 +16,19 @@ export declare class XRNode3D extends Node3D{
   public get tracker(): String {
     get_tracker();
   }
-  public set tracker(value: String): void {
+  public set tracker(value): void {
     set_tracker(value);
   }
   public get pose(): String {
     get_pose_name();
   }
-  public set pose(value: String): void {
+  public set pose(value): void {
     set_pose_name(value);
   }
   public get show_when_tracked(): boolean {
     get_show_when_tracked();
   }
-  public set show_when_tracked(value: boolean): void {
+  public set show_when_tracked(value): void {
     set_show_when_tracked(value);
   }
 }

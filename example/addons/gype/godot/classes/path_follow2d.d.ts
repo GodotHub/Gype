@@ -19,43 +19,43 @@ export declare class PathFollow2D extends Node2D{
   public get progress(): number {
     get_progress();
   }
-  public set progress(value: number): void {
+  public set progress(value): void {
     set_progress(value);
   }
   public get progress_ratio(): number {
     get_progress_ratio();
   }
-  public set progress_ratio(value: number): void {
+  public set progress_ratio(value): void {
     set_progress_ratio(value);
   }
   public get h_offset(): number {
     get_h_offset();
   }
-  public set h_offset(value: number): void {
+  public set h_offset(value): void {
     set_h_offset(value);
   }
   public get v_offset(): number {
     get_v_offset();
   }
-  public set v_offset(value: number): void {
+  public set v_offset(value): void {
     set_v_offset(value);
   }
   public get rotates(): boolean {
     is_rotating();
   }
-  public set rotates(value: boolean): void {
+  public set rotates(value): void {
     set_rotates(value);
   }
   public get cubic_interp(): boolean {
     get_cubic_interpolation();
   }
-  public set cubic_interp(value: boolean): void {
+  public set cubic_interp(value): void {
     set_cubic_interpolation(value);
   }
   public get loop(): boolean {
     has_loop();
   }
-  public set loop(value: boolean): void {
+  public set loop(value): void {
     set_loop(value);
   }
 }

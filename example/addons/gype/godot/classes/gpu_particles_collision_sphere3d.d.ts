@@ -7,7 +7,7 @@ export declare class GPUParticlesCollisionSphere3D extends GPUParticlesCollision
   public get radius(): number {
     get_radius();
   }
-  public set radius(value: number): void {
+  public set radius(value): void {
     set_radius(value);
   }
 }

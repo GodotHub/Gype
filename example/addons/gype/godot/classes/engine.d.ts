@@ -1,7 +1,7 @@
 
 import { MainLoop } from "@godot/classes/main_loop";
-import { Object } from "@godot/classes/object";
 import { ScriptLanguage } from "@godot/classes/script_language";
+import { Object } from "@godot/classes/object";
 
 export declare class Engine extends Object{
   public set_physics_ticks_per_second(_physics_ticks_per_second: number): void;
@@ -22,7 +22,7 @@ export declare class Engine extends Object{
   public get_main_loop(): MainLoop;
   public get_version_info(): Dictionary;
   public get_author_info(): Dictionary;
-  public get_copyright_info(): Array;
+  public get_copyright_info(): GDArray;
   public get_donor_info(): Dictionary;
   public get_license_info(): Dictionary;
   public get_license_text(): String;
@@ -44,37 +44,37 @@ export declare class Engine extends Object{
   public get print_error_messages(): boolean {
     is_printing_error_messages();
   }
-  public set print_error_messages(value: boolean): void {
+  public set print_error_messages(value): void {
     set_print_error_messages(value);
   }
   public get physics_ticks_per_second(): number {
     get_physics_ticks_per_second();
   }
-  public set physics_ticks_per_second(value: number): void {
+  public set physics_ticks_per_second(value): void {
     set_physics_ticks_per_second(value);
   }
   public get max_physics_steps_per_frame(): number {
     get_max_physics_steps_per_frame();
   }
-  public set max_physics_steps_per_frame(value: number): void {
+  public set max_physics_steps_per_frame(value): void {
     set_max_physics_steps_per_frame(value);
   }
   public get max_fps(): number {
     get_max_fps();
   }
-  public set max_fps(value: number): void {
+  public set max_fps(value): void {
     set_max_fps(value);
   }
   public get time_scale(): number {
     get_time_scale();
   }
-  public set time_scale(value: number): void {
+  public set time_scale(value): void {
     set_time_scale(value);
   }
   public get physics_jitter_fix(): number {
     get_physics_jitter_fix();
   }
-  public set physics_jitter_fix(value: number): void {
+  public set physics_jitter_fix(value): void {
     set_physics_jitter_fix(value);
   }
 }

@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/classes/panel_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void panel_container_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue panel_container_class_constructor(JSContext *ctx, JSValueConst ne
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, panel_container_class);
+	JS_SetOpaque(obj, panel_container_class);	
 	return obj;
 }
 
@@ -41,6 +43,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_panel_container_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&PanelContainer::__class_id);
 	classes["PanelContainer"] = PanelContainer::__class_id;
 	class_id_list.insert(PanelContainer::__class_id);
@@ -62,7 +65,7 @@ static int js_panel_container_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_panel_container_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/container';";
+	const char *code = "import * as _ from '@godot/classes/container';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -74,7 +77,7 @@ JSModuleDef *_js_init_panel_container_module(JSContext *ctx, const char *module_
 }
 
 JSModuleDef *js_init_panel_container_module(JSContext *ctx) {
-	return _js_init_panel_container_module(ctx, "godot/classes/panel_container");
+	return _js_init_panel_container_module(ctx, "@godot/classes/panel_container");
 }
 
 void register_panel_container() {

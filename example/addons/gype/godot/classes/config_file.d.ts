@@ -2,8 +2,8 @@
 import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class ConfigFile extends RefCounted{
-  public set_value(_section: String, _key: String, _value: Variant): void;
-  public get_value(_section: String, _key: String, _default: Variant): Variant;
+  public set_value(_section: String, _key: String, _value: any): void;
+  public get_value(_section: String, _key: String, _default: any): any;
   public has_section(_section: String): boolean;
   public has_section_key(_section: String, _key: String): boolean;
   public get_sections(): PackedStringArray;

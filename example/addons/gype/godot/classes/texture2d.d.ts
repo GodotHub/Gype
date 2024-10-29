@@ -1,6 +1,6 @@
 
-import { Image } from "@godot/classes/image";
 import { Texture } from "@godot/classes/texture";
+import { Image } from "@godot/classes/image";
 import { Resource } from "@godot/classes/resource";
 
 export declare class Texture2D extends Texture{

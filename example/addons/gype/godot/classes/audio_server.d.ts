@@ -1,9 +1,9 @@
 
-import { AudioBusLayout } from "@godot/classes/audio_bus_layout";
-import { AudioStream } from "@godot/classes/audio_stream";
-import { AudioEffect } from "@godot/classes/audio_effect";
 import { AudioEffectInstance } from "@godot/classes/audio_effect_instance";
+import { AudioEffect } from "@godot/classes/audio_effect";
+import { AudioStream } from "@godot/classes/audio_stream";
 import { Object } from "@godot/classes/object";
+import { AudioBusLayout } from "@godot/classes/audio_bus_layout";
 
 export declare class AudioServer extends Object{
   public set_bus_count(_amount: number): void;
@@ -58,25 +58,25 @@ export declare class AudioServer extends Object{
   public get bus_count(): number {
     get_bus_count();
   }
-  public set bus_count(value: number): void {
+  public set bus_count(value): void {
     set_bus_count(value);
   }
   public get output_device(): String {
     get_output_device();
   }
-  public set output_device(value: String): void {
+  public set output_device(value): void {
     set_output_device(value);
   }
   public get input_device(): String {
     get_input_device();
   }
-  public set input_device(value: String): void {
+  public set input_device(value): void {
     set_input_device(value);
   }
   public get playback_speed_scale(): number {
     get_playback_speed_scale();
   }
-  public set playback_speed_scale(value: number): void {
+  public set playback_speed_scale(value): void {
     set_playback_speed_scale(value);
   }
   static SpeakerMode = {

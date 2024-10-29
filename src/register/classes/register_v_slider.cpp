@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/slider.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/v_slider.hpp>
+#include <godot_cpp/classes/slider.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void v_slider_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue v_slider_class_constructor(JSContext *ctx, JSValueConst new_targe
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, v_slider_class);
+	JS_SetOpaque(obj, v_slider_class);	
 	return obj;
 }
 
@@ -41,6 +43,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_v_slider_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&VSlider::__class_id);
 	classes["VSlider"] = VSlider::__class_id;
 	class_id_list.insert(VSlider::__class_id);
@@ -62,7 +65,7 @@ static int js_v_slider_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_v_slider_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/slider';";
+	const char *code = "import * as _ from '@godot/classes/slider';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -74,7 +77,7 @@ JSModuleDef *_js_init_v_slider_module(JSContext *ctx, const char *module_name) {
 }
 
 JSModuleDef *js_init_v_slider_module(JSContext *ctx) {
-	return _js_init_v_slider_module(ctx, "godot/classes/v_slider");
+	return _js_init_v_slider_module(ctx, "@godot/classes/v_slider");
 }
 
 void register_v_slider() {

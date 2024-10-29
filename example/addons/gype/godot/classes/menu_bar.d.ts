@@ -1,6 +1,6 @@
 
-import { PopupMenu } from "@godot/classes/popup_menu";
 import { Control } from "@godot/classes/control";
+import { PopupMenu } from "@godot/classes/popup_menu";
 
 export declare class MenuBar extends Control{
   public set_switch_on_hover(_enable: boolean): void;
@@ -30,37 +30,37 @@ export declare class MenuBar extends Control{
   public get flat(): boolean {
     is_flat();
   }
-  public set flat(value: boolean): void {
+  public set flat(value): void {
     set_flat(value);
   }
   public get start_index(): number {
     get_start_index();
   }
-  public set start_index(value: number): void {
+  public set start_index(value): void {
     set_start_index(value);
   }
   public get switch_on_hover(): boolean {
     is_switch_on_hover();
   }
-  public set switch_on_hover(value: boolean): void {
+  public set switch_on_hover(value): void {
     set_switch_on_hover(value);
   }
   public get prefer_global_menu(): boolean {
     is_prefer_global_menu();
   }
-  public set prefer_global_menu(value: boolean): void {
+  public set prefer_global_menu(value): void {
     set_prefer_global_menu(value);
   }
   public get text_direction(): number {
     get_text_direction();
   }
-  public set text_direction(value: number): void {
+  public set text_direction(value): void {
     set_text_direction(value);
   }
   public get language(): String {
     get_language();
   }
-  public set language(value: String): void {
+  public set language(value): void {
     set_language(value);
   }
 }

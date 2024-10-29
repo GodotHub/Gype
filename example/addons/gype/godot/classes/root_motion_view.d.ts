@@ -15,31 +15,31 @@ export declare class RootMotionView extends VisualInstance3D{
   public get animation_path(): NodePath {
     get_animation_path();
   }
-  public set animation_path(value: NodePath): void {
+  public set animation_path(value): void {
     set_animation_path(value);
   }
   public get color(): Color {
     get_color();
   }
-  public set color(value: Color): void {
+  public set color(value): void {
     set_color(value);
   }
   public get cell_size(): number {
     get_cell_size();
   }
-  public set cell_size(value: number): void {
+  public set cell_size(value): void {
     set_cell_size(value);
   }
   public get radius(): number {
     get_radius();
   }
-  public set radius(value: number): void {
+  public set radius(value): void {
     set_radius(value);
   }
   public get zero_y(): boolean {
     get_zero_y();
   }
-  public set zero_y(value: boolean): void {
+  public set zero_y(value): void {
     set_zero_y(value);
   }
 }

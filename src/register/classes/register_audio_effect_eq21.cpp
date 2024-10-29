@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/audio_effect_eq.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/audio_effect_eq21.hpp>
+#include <godot_cpp/classes/audio_effect_eq.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void audio_effect_eq21_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue audio_effect_eq21_class_constructor(JSContext *ctx, JSValueConst 
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_eq21_class);
+	JS_SetOpaque(obj, audio_effect_eq21_class);	
 	return obj;
 }
 
@@ -41,6 +43,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_effect_eq21_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AudioEffectEQ21::__class_id);
 	classes["AudioEffectEQ21"] = AudioEffectEQ21::__class_id;
 	class_id_list.insert(AudioEffectEQ21::__class_id);
@@ -62,7 +65,7 @@ static int js_audio_effect_eq21_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_audio_effect_eq21_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/audio_effect_eq';";
+	const char *code = "import * as _ from '@godot/classes/audio_effect_eq';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -74,7 +77,7 @@ JSModuleDef *_js_init_audio_effect_eq21_module(JSContext *ctx, const char *modul
 }
 
 JSModuleDef *js_init_audio_effect_eq21_module(JSContext *ctx) {
-	return _js_init_audio_effect_eq21_module(ctx, "godot/classes/audio_effect_eq21");
+	return _js_init_audio_effect_eq21_module(ctx, "@godot/classes/audio_effect_eq21");
 }
 
 void register_audio_effect_eq21() {

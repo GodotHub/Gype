@@ -13,25 +13,25 @@ export declare class GLTFTextureSampler extends Resource{
   public get mag_filter(): number {
     get_mag_filter();
   }
-  public set mag_filter(value: number): void {
+  public set mag_filter(value): void {
     set_mag_filter(value);
   }
   public get min_filter(): number {
     get_min_filter();
   }
-  public set min_filter(value: number): void {
+  public set min_filter(value): void {
     set_min_filter(value);
   }
   public get wrap_s(): number {
     get_wrap_s();
   }
-  public set wrap_s(value: number): void {
+  public set wrap_s(value): void {
     set_wrap_s(value);
   }
   public get wrap_t(): number {
     get_wrap_t();
   }
-  public set wrap_t(value: number): void {
+  public set wrap_t(value): void {
     set_wrap_t(value);
   }
 }

@@ -1,6 +1,6 @@
 
-import { Container } from "@godot/classes/container";
 import { Control } from "@godot/classes/control";
+import { Container } from "@godot/classes/container";
 
 export declare class BoxContainer extends Container{
   public add_spacer(_begin: boolean): Control;
@@ -11,13 +11,13 @@ export declare class BoxContainer extends Container{
   public get alignment(): number {
     get_alignment();
   }
-  public set alignment(value: number): void {
+  public set alignment(value): void {
     set_alignment(value);
   }
   public get vertical(): boolean {
     is_vertical();
   }
-  public set vertical(value: boolean): void {
+  public set vertical(value): void {
     set_vertical(value);
   }
   static AlignmentMode = {

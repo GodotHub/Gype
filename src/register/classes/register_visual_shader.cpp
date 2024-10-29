@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/shader.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/visual_shader.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/classes/shader.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void visual_shader_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,17 +33,17 @@ static JSValue visual_shader_class_constructor(JSContext *ctx, JSValueConst new_
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_class);
+	JS_SetOpaque(obj, visual_shader_class);	
 	return obj;
 }
 static JSValue visual_shader_class_set_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShader::set_mode, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShader::set_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_class_add_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShader::add_node, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShader::add_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_class_get_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -50,7 +52,7 @@ static JSValue visual_shader_class_get_node(JSContext *ctx, JSValueConst this_va
 };
 static JSValue visual_shader_class_set_node_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShader::set_node_position, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShader::set_node_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_class_get_node_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,12 +69,12 @@ static JSValue visual_shader_class_get_valid_node_id(JSContext *ctx, JSValueCons
 };
 static JSValue visual_shader_class_remove_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShader::remove_node, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShader::remove_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_class_replace_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShader::replace_node, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShader::replace_node, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_class_is_node_connection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -89,12 +91,12 @@ static JSValue visual_shader_class_connect_nodes(JSContext *ctx, JSValueConst th
 };
 static JSValue visual_shader_class_disconnect_nodes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShader::disconnect_nodes, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShader::disconnect_nodes, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_class_connect_nodes_forced(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShader::connect_nodes_forced, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShader::connect_nodes_forced, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_class_get_node_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -103,7 +105,7 @@ static JSValue visual_shader_class_get_node_connections(JSContext *ctx, JSValueC
 };
 static JSValue visual_shader_class_set_graph_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShader::set_graph_offset, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShader::set_graph_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_class_get_graph_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -112,22 +114,22 @@ static JSValue visual_shader_class_get_graph_offset(JSContext *ctx, JSValueConst
 };
 static JSValue visual_shader_class_attach_node_to_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShader::attach_node_to_frame, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShader::attach_node_to_frame, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_class_detach_node_from_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShader::detach_node_from_frame, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShader::detach_node_from_frame, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_class_add_varying(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShader::add_varying, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShader::add_varying, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_class_remove_varying(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&VisualShader::remove_varying, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&VisualShader::remove_varying, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue visual_shader_class_has_varying(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -160,13 +162,14 @@ static const JSCFunctionListEntry visual_shader_class_proto_funcs[] = {
 };
 
 void define_visual_shader_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "graph_offset"),
-			JS_NewCFunction(ctx, visual_shader_class_get_graph_offset, "get_graph_offset", 0),
-			JS_NewCFunction(ctx, visual_shader_class_set_graph_offset, "set_graph_offset", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "graph_offset"),
+        JS_NewCFunction(ctx, visual_shader_class_get_graph_offset, "get_graph_offset", 0),
+        JS_NewCFunction(ctx, visual_shader_class_set_graph_offset, "set_graph_offset", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -202,6 +205,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&VisualShader::__class_id);
 	classes["VisualShader"] = VisualShader::__class_id;
 	class_id_list.insert(VisualShader::__class_id);
@@ -224,7 +228,7 @@ static int js_visual_shader_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_visual_shader_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/shader';";
+	const char *code = "import * as _ from '@godot/classes/shader';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -236,7 +240,7 @@ JSModuleDef *_js_init_visual_shader_module(JSContext *ctx, const char *module_na
 }
 
 JSModuleDef *js_init_visual_shader_module(JSContext *ctx) {
-	return _js_init_visual_shader_module(ctx, "godot/classes/visual_shader");
+	return _js_init_visual_shader_module(ctx, "@godot/classes/visual_shader");
 }
 
 void register_visual_shader() {

@@ -8,7 +8,7 @@ export declare class TileMapPattern extends Resource{
   public get_cell_source_id(_coords: Vector2i): number;
   public get_cell_atlas_coords(_coords: Vector2i): Vector2i;
   public get_cell_alternative_tile(_coords: Vector2i): number;
-  public get_used_cells(): Array;
+  public get_used_cells(): GDArray;
   public get_size(): Vector2i;
   public set_size(_size: Vector2i): void;
   public is_empty(): boolean;

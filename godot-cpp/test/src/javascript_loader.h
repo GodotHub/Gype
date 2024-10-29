@@ -11,13 +11,13 @@ namespace godot {
 class Variant;
 class Object;
 
-class JavaScriptLoader : public ResourceFormatLoader {
-	GDCLASS(JavaScriptLoader, ResourceFormatLoader)
-	static JavaScriptLoader *singleton;
-	HashMap<const String, JavaScript *> scripts;
+class TypeScriptLoader : public ResourceFormatLoader {
+	GDCLASS(TypeScriptLoader, ResourceFormatLoader)
+	static TypeScriptLoader *singleton;
+	HashMap<const String, TypeScript *> scripts;
 
 public:
-	static JavaScriptLoader *get_singleton();
+	static TypeScriptLoader *get_singleton();
 	PackedStringArray _get_recognized_extensions() const;
 	bool _recognize_path(const String &p_path, const StringName &p_type) const;
 	bool _handles_type(const StringName &p_type) const;

@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void stream_peer_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue stream_peer_class_constructor(JSContext *ctx, JSValueConst new_ta
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, stream_peer_class);
+	JS_SetOpaque(obj, stream_peer_class);	
 	return obj;
 }
 static JSValue stream_peer_class_put_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,7 +57,7 @@ static JSValue stream_peer_class_get_available_bytes(JSContext *ctx, JSValueCons
 };
 static JSValue stream_peer_class_set_big_endian(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StreamPeer::set_big_endian, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StreamPeer::set_big_endian, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_is_big_endian_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -64,67 +66,67 @@ static JSValue stream_peer_class_is_big_endian_enabled(JSContext *ctx, JSValueCo
 };
 static JSValue stream_peer_class_put_8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StreamPeer::put_8, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StreamPeer::put_8, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_u8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StreamPeer::put_u8, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StreamPeer::put_u8, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_16(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StreamPeer::put_16, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StreamPeer::put_16, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_u16(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StreamPeer::put_u16, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StreamPeer::put_u16, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_32(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StreamPeer::put_32, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StreamPeer::put_32, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_u32(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StreamPeer::put_u32, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StreamPeer::put_u32, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_64(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StreamPeer::put_64, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StreamPeer::put_64, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_u64(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StreamPeer::put_u64, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StreamPeer::put_u64, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_float(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StreamPeer::put_float, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StreamPeer::put_float, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_double(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StreamPeer::put_double, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StreamPeer::put_double, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StreamPeer::put_string, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StreamPeer::put_string, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_utf8_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StreamPeer::put_utf8_string, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StreamPeer::put_utf8_string, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_put_var(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StreamPeer::put_var, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StreamPeer::put_var, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_class_get_8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -216,19 +218,21 @@ static const JSCFunctionListEntry stream_peer_class_proto_funcs[] = {
 };
 
 void define_stream_peer_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "big_endian"),
-			JS_NewCFunction(ctx, stream_peer_class_is_big_endian_enabled, "is_big_endian_enabled", 0),
-			JS_NewCFunction(ctx, stream_peer_class_set_big_endian, "set_big_endian", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "big_endian"),
+        JS_NewCFunction(ctx, stream_peer_class_is_big_endian_enabled, "is_big_endian_enabled", 0),
+        JS_NewCFunction(ctx, stream_peer_class_set_big_endian, "set_big_endian", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_stream_peer_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&StreamPeer::__class_id);
 	classes["StreamPeer"] = StreamPeer::__class_id;
 	class_id_list.insert(StreamPeer::__class_id);
@@ -251,7 +255,7 @@ static int js_stream_peer_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_stream_peer_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -263,7 +267,7 @@ JSModuleDef *_js_init_stream_peer_module(JSContext *ctx, const char *module_name
 }
 
 JSModuleDef *js_init_stream_peer_module(JSContext *ctx) {
-	return _js_init_stream_peer_module(ctx, "godot/classes/stream_peer");
+	return _js_init_stream_peer_module(ctx, "@godot/classes/stream_peer");
 }
 
 void register_stream_peer() {

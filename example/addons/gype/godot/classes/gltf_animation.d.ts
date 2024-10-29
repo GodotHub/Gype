@@ -6,18 +6,18 @@ export declare class GLTFAnimation extends Resource{
   public set_original_name(_original_name: String): void;
   public get_loop(): boolean;
   public set_loop(_loop: boolean): void;
-  public get_additional_data(_extension_name: StringName): Variant;
-  public set_additional_data(_extension_name: StringName, _additional_data: Variant): void;
+  public get_additional_data(_extension_name: StringName): any;
+  public set_additional_data(_extension_name: StringName, _additional_data: any): void;
   public get original_name(): String {
     get_original_name();
   }
-  public set original_name(value: String): void {
+  public set original_name(value): void {
     set_original_name(value);
   }
   public get loop(): boolean {
     get_loop();
   }
-  public set loop(value: boolean): void {
+  public set loop(value): void {
     set_loop(value);
   }
 }

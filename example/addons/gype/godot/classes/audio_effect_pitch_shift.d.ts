@@ -11,19 +11,19 @@ export declare class AudioEffectPitchShift extends AudioEffect{
   public get pitch_scale(): number {
     get_pitch_scale();
   }
-  public set pitch_scale(value: number): void {
+  public set pitch_scale(value): void {
     set_pitch_scale(value);
   }
   public get oversampling(): number {
     get_oversampling();
   }
-  public set oversampling(value: number): void {
+  public set oversampling(value): void {
     set_oversampling(value);
   }
   public get fft_size(): number {
     get_fft_size();
   }
-  public set fft_size(value: number): void {
+  public set fft_size(value): void {
     set_fft_size(value);
   }
   static FFTSize = {

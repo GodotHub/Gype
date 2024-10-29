@@ -1,6 +1,6 @@
 
-import { RefCounted } from "@godot/classes/ref_counted";
 import { Resource } from "@godot/classes/resource";
+import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class EditorResourceConversionPlugin extends RefCounted{
   public _converts_to(): String;

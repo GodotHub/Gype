@@ -1,6 +1,6 @@
 
-import { XRInterface } from "@godot/classes/xr_interface";
 import { XRTracker } from "@godot/classes/xr_tracker";
+import { XRInterface } from "@godot/classes/xr_interface";
 import { Object } from "@godot/classes/object";
 
 export declare class XRServer extends Object{
@@ -16,7 +16,7 @@ export declare class XRServer extends Object{
   public get_interface_count(): number;
   public remove_interface(_interface: XRInterface): void;
   public get_interface(_idx: number): XRInterface;
-  public get_interfaces(): Array;
+  public get_interfaces(): GDArray;
   public find_interface(_name: String): XRInterface;
   public add_tracker(_tracker: XRTracker): void;
   public remove_tracker(_tracker: XRTracker): void;
@@ -27,19 +27,19 @@ export declare class XRServer extends Object{
   public get world_scale(): number {
     get_world_scale();
   }
-  public set world_scale(value: number): void {
+  public set world_scale(value): void {
     set_world_scale(value);
   }
   public get world_origin(): Vector3 {
     get_world_origin();
   }
-  public set world_origin(value: Vector3): void {
+  public set world_origin(value): void {
     set_world_origin(value);
   }
   public get primary_interface(): Object {
     get_primary_interface();
   }
-  public set primary_interface(value: Object): void {
+  public set primary_interface(value): void {
     set_primary_interface(value);
   }
   static TrackerType = {

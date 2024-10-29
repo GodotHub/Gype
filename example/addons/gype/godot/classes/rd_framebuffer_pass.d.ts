@@ -15,31 +15,31 @@ export declare class RDFramebufferPass extends RefCounted{
   public get color_attachments(): PackedInt32Array {
     get_color_attachments();
   }
-  public set color_attachments(value: PackedInt32Array): void {
+  public set color_attachments(value): void {
     set_color_attachments(value);
   }
   public get input_attachments(): PackedInt32Array {
     get_input_attachments();
   }
-  public set input_attachments(value: PackedInt32Array): void {
+  public set input_attachments(value): void {
     set_input_attachments(value);
   }
   public get resolve_attachments(): PackedInt32Array {
     get_resolve_attachments();
   }
-  public set resolve_attachments(value: PackedInt32Array): void {
+  public set resolve_attachments(value): void {
     set_resolve_attachments(value);
   }
   public get preserve_attachments(): PackedInt32Array {
     get_preserve_attachments();
   }
-  public set preserve_attachments(value: PackedInt32Array): void {
+  public set preserve_attachments(value): void {
     set_preserve_attachments(value);
   }
   public get depth_attachment(): number {
     get_depth_attachment();
   }
-  public set depth_attachment(value: number): void {
+  public set depth_attachment(value): void {
     set_depth_attachment(value);
   }
 }

@@ -7,7 +7,7 @@ export declare class VisualShaderNodeExpression extends VisualShaderNodeGroupBas
   public get expression(): String {
     get_expression();
   }
-  public set expression(value: String): void {
+  public set expression(value): void {
     set_expression(value);
   }
 }

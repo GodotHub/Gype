@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/gltf_animation.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void gltf_animation_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue gltf_animation_class_constructor(JSContext *ctx, JSValueConst new
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_animation_class);
+	JS_SetOpaque(obj, gltf_animation_class);	
 	return obj;
 }
 static JSValue gltf_animation_class_get_original_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -39,7 +41,7 @@ static JSValue gltf_animation_class_get_original_name(JSContext *ctx, JSValueCon
 };
 static JSValue gltf_animation_class_set_original_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GLTFAnimation::set_original_name, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GLTFAnimation::set_original_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_animation_class_get_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,7 +50,7 @@ static JSValue gltf_animation_class_get_loop(JSContext *ctx, JSValueConst this_v
 };
 static JSValue gltf_animation_class_set_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GLTFAnimation::set_loop, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GLTFAnimation::set_loop, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_animation_class_get_additional_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,7 +59,7 @@ static JSValue gltf_animation_class_get_additional_data(JSContext *ctx, JSValueC
 };
 static JSValue gltf_animation_class_set_additional_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GLTFAnimation::set_additional_data, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GLTFAnimation::set_additional_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry gltf_animation_class_proto_funcs[] = {
@@ -70,26 +72,29 @@ static const JSCFunctionListEntry gltf_animation_class_proto_funcs[] = {
 };
 
 void define_gltf_animation_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "original_name"),
-			JS_NewCFunction(ctx, gltf_animation_class_get_original_name, "get_original_name", 0),
-			JS_NewCFunction(ctx, gltf_animation_class_set_original_name, "set_original_name", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "loop"),
-			JS_NewCFunction(ctx, gltf_animation_class_get_loop, "get_loop", 0),
-			JS_NewCFunction(ctx, gltf_animation_class_set_loop, "set_loop", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "original_name"),
+        JS_NewCFunction(ctx, gltf_animation_class_get_original_name, "get_original_name", 0),
+        JS_NewCFunction(ctx, gltf_animation_class_set_original_name, "set_original_name", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "loop"),
+        JS_NewCFunction(ctx, gltf_animation_class_get_loop, "get_loop", 0),
+        JS_NewCFunction(ctx, gltf_animation_class_set_loop, "set_loop", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_gltf_animation_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&GLTFAnimation::__class_id);
 	classes["GLTFAnimation"] = GLTFAnimation::__class_id;
 	class_id_list.insert(GLTFAnimation::__class_id);
@@ -112,7 +117,7 @@ static int js_gltf_animation_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_gltf_animation_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/resource';";
+	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -124,7 +129,7 @@ JSModuleDef *_js_init_gltf_animation_module(JSContext *ctx, const char *module_n
 }
 
 JSModuleDef *js_init_gltf_animation_module(JSContext *ctx) {
-	return _js_init_gltf_animation_module(ctx, "godot/classes/gltf_animation");
+	return _js_init_gltf_animation_module(ctx, "@godot/classes/gltf_animation");
 }
 
 void register_gltf_animation() {

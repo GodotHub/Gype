@@ -21,43 +21,43 @@ export declare class CompositorEffect extends Resource{
   public get enabled(): boolean {
     get_enabled();
   }
-  public set enabled(value: boolean): void {
+  public set enabled(value): void {
     set_enabled(value);
   }
   public get effect_callback_type(): number {
     get_effect_callback_type();
   }
-  public set effect_callback_type(value: number): void {
+  public set effect_callback_type(value): void {
     set_effect_callback_type(value);
   }
   public get access_resolved_color(): boolean {
     get_access_resolved_color();
   }
-  public set access_resolved_color(value: boolean): void {
+  public set access_resolved_color(value): void {
     set_access_resolved_color(value);
   }
   public get access_resolved_depth(): boolean {
     get_access_resolved_depth();
   }
-  public set access_resolved_depth(value: boolean): void {
+  public set access_resolved_depth(value): void {
     set_access_resolved_depth(value);
   }
   public get needs_motion_vectors(): boolean {
     get_needs_motion_vectors();
   }
-  public set needs_motion_vectors(value: boolean): void {
+  public set needs_motion_vectors(value): void {
     set_needs_motion_vectors(value);
   }
   public get needs_normal_roughness(): boolean {
     get_needs_normal_roughness();
   }
-  public set needs_normal_roughness(value: boolean): void {
+  public set needs_normal_roughness(value): void {
     set_needs_normal_roughness(value);
   }
   public get needs_separate_specular(): boolean {
     get_needs_separate_specular();
   }
-  public set needs_separate_specular(value: boolean): void {
+  public set needs_separate_specular(value): void {
     set_needs_separate_specular(value);
   }
   static EffectCallbackType = {

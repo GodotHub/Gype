@@ -35,7 +35,7 @@ export declare class FileAccess extends RefCounted{
   public is_big_endian(): boolean;
   public set_big_endian(_big_endian: boolean): void;
   public get_error(): number;
-  public get_var(_allow_objects: boolean): Variant;
+  public get_var(_allow_objects: boolean): any;
   public store_8(_value: number): void;
   public store_16(_value: number): void;
   public store_32(_value: number): void;
@@ -47,7 +47,7 @@ export declare class FileAccess extends RefCounted{
   public store_line(_line: String): void;
   public store_csv_line(_values: PackedStringArray, _delim: String): void;
   public store_string(_string: String): void;
-  public store_var(_value: Variant, _full_objects: boolean): void;
+  public store_var(_value: any, _full_objects: boolean): void;
   public store_pascal_string(_string: String): void;
   public get_pascal_string(): String;
   public close(): void;
@@ -62,7 +62,7 @@ export declare class FileAccess extends RefCounted{
   public get big_endian(): boolean {
     is_big_endian();
   }
-  public set big_endian(value: boolean): void {
+  public set big_endian(value): void {
     set_big_endian(value);
   }
   static ModeFlags = {

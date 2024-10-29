@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/mobile_vr_interface.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/xr_interface.hpp>
+#include <godot_cpp/classes/mobile_vr_interface.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void mobile_vr_interface_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue mobile_vr_interface_class_constructor(JSContext *ctx, JSValueCons
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, mobile_vr_interface_class);
+	JS_SetOpaque(obj, mobile_vr_interface_class);	
 	return obj;
 }
 static JSValue mobile_vr_interface_class_set_eye_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MobileVRInterface::set_eye_height, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MobileVRInterface::set_eye_height, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mobile_vr_interface_class_get_eye_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue mobile_vr_interface_class_get_eye_height(JSContext *ctx, JSValueC
 };
 static JSValue mobile_vr_interface_class_set_iod(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MobileVRInterface::set_iod, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MobileVRInterface::set_iod, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mobile_vr_interface_class_get_iod(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,7 +55,7 @@ static JSValue mobile_vr_interface_class_get_iod(JSContext *ctx, JSValueConst th
 };
 static JSValue mobile_vr_interface_class_set_display_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MobileVRInterface::set_display_width, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MobileVRInterface::set_display_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mobile_vr_interface_class_get_display_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +64,7 @@ static JSValue mobile_vr_interface_class_get_display_width(JSContext *ctx, JSVal
 };
 static JSValue mobile_vr_interface_class_set_display_to_lens(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MobileVRInterface::set_display_to_lens, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MobileVRInterface::set_display_to_lens, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mobile_vr_interface_class_get_display_to_lens(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,7 +73,7 @@ static JSValue mobile_vr_interface_class_get_display_to_lens(JSContext *ctx, JSV
 };
 static JSValue mobile_vr_interface_class_set_offset_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MobileVRInterface::set_offset_rect, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MobileVRInterface::set_offset_rect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mobile_vr_interface_class_get_offset_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -80,7 +82,7 @@ static JSValue mobile_vr_interface_class_get_offset_rect(JSContext *ctx, JSValue
 };
 static JSValue mobile_vr_interface_class_set_oversample(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MobileVRInterface::set_oversample, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MobileVRInterface::set_oversample, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mobile_vr_interface_class_get_oversample(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -89,7 +91,7 @@ static JSValue mobile_vr_interface_class_get_oversample(JSContext *ctx, JSValueC
 };
 static JSValue mobile_vr_interface_class_set_k1(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MobileVRInterface::set_k1, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MobileVRInterface::set_k1, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mobile_vr_interface_class_get_k1(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -98,7 +100,7 @@ static JSValue mobile_vr_interface_class_get_k1(JSContext *ctx, JSValueConst thi
 };
 static JSValue mobile_vr_interface_class_set_k2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MobileVRInterface::set_k2, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MobileVRInterface::set_k2, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mobile_vr_interface_class_get_k2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -111,7 +113,7 @@ static JSValue mobile_vr_interface_class_get_vrs_min_radius(JSContext *ctx, JSVa
 };
 static JSValue mobile_vr_interface_class_set_vrs_min_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MobileVRInterface::set_vrs_min_radius, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MobileVRInterface::set_vrs_min_radius, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue mobile_vr_interface_class_get_vrs_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -120,7 +122,7 @@ static JSValue mobile_vr_interface_class_get_vrs_strength(JSContext *ctx, JSValu
 };
 static JSValue mobile_vr_interface_class_set_vrs_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MobileVRInterface::set_vrs_strength, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MobileVRInterface::set_vrs_strength, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry mobile_vr_interface_class_proto_funcs[] = {
@@ -147,82 +149,93 @@ static const JSCFunctionListEntry mobile_vr_interface_class_proto_funcs[] = {
 };
 
 void define_mobile_vr_interface_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "eye_height"),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_get_eye_height, "get_eye_height", 0),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_set_eye_height, "set_eye_height", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "iod"),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_get_iod, "get_iod", 0),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_set_iod, "set_iod", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "display_width"),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_get_display_width, "get_display_width", 0),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_set_display_width, "set_display_width", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "display_to_lens"),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_get_display_to_lens, "get_display_to_lens", 0),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_set_display_to_lens, "set_display_to_lens", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "offset_rect"),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_get_offset_rect, "get_offset_rect", 0),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_set_offset_rect, "set_offset_rect", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "oversample"),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_get_oversample, "get_oversample", 0),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_set_oversample, "set_oversample", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "k1"),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_get_k1, "get_k1", 0),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_set_k1, "set_k1", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "k2"),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_get_k2, "get_k2", 0),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_set_k2, "set_k2", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "vrs_min_radius"),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_get_vrs_min_radius, "get_vrs_min_radius", 0),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_set_vrs_min_radius, "set_vrs_min_radius", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "vrs_strength"),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_get_vrs_strength, "get_vrs_strength", 0),
-			JS_NewCFunction(ctx, mobile_vr_interface_class_set_vrs_strength, "set_vrs_strength", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "eye_height"),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_get_eye_height, "get_eye_height", 0),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_eye_height, "set_eye_height", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "iod"),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_get_iod, "get_iod", 0),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_iod, "set_iod", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "display_width"),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_get_display_width, "get_display_width", 0),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_display_width, "set_display_width", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "display_to_lens"),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_get_display_to_lens, "get_display_to_lens", 0),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_display_to_lens, "set_display_to_lens", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "offset_rect"),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_get_offset_rect, "get_offset_rect", 0),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_offset_rect, "set_offset_rect", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "oversample"),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_get_oversample, "get_oversample", 0),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_oversample, "set_oversample", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "k1"),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_get_k1, "get_k1", 0),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_k1, "set_k1", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "k2"),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_get_k2, "get_k2", 0),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_k2, "set_k2", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "vrs_min_radius"),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_get_vrs_min_radius, "get_vrs_min_radius", 0),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_vrs_min_radius, "set_vrs_min_radius", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "vrs_strength"),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_get_vrs_strength, "get_vrs_strength", 0),
+        JS_NewCFunction(ctx, mobile_vr_interface_class_set_vrs_strength, "set_vrs_strength", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_mobile_vr_interface_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&MobileVRInterface::__class_id);
 	classes["MobileVRInterface"] = MobileVRInterface::__class_id;
 	class_id_list.insert(MobileVRInterface::__class_id);
@@ -245,7 +258,7 @@ static int js_mobile_vr_interface_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_mobile_vr_interface_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/xr_interface';";
+	const char *code = "import * as _ from '@godot/classes/xr_interface';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -257,7 +270,7 @@ JSModuleDef *_js_init_mobile_vr_interface_module(JSContext *ctx, const char *mod
 }
 
 JSModuleDef *js_init_mobile_vr_interface_module(JSContext *ctx) {
-	return _js_init_mobile_vr_interface_module(ctx, "godot/classes/mobile_vr_interface");
+	return _js_init_mobile_vr_interface_module(ctx, "@godot/classes/mobile_vr_interface");
 }
 
 void register_mobile_vr_interface() {

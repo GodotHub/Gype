@@ -11,7 +11,7 @@ export declare class BoneMap extends Resource{
   public get profile(): SkeletonProfile {
     get_profile();
   }
-  public set profile(value: SkeletonProfile): void {
+  public set profile(value): void {
     set_profile(value);
   }
 }

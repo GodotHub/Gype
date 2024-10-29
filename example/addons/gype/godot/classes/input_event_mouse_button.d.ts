@@ -13,31 +13,31 @@ export declare class InputEventMouseButton extends InputEventMouse{
   public get factor(): number {
     get_factor();
   }
-  public set factor(value: number): void {
+  public set factor(value): void {
     set_factor(value);
   }
   public get button_index(): number {
     get_button_index();
   }
-  public set button_index(value: number): void {
+  public set button_index(value): void {
     set_button_index(value);
   }
   public get canceled(): boolean {
     is_canceled();
   }
-  public set canceled(value: boolean): void {
+  public set canceled(value): void {
     set_canceled(value);
   }
   public get pressed(): boolean {
     is_pressed();
   }
-  public set pressed(value: boolean): void {
+  public set pressed(value): void {
     set_pressed(value);
   }
   public get double_click(): boolean {
     is_double_click();
   }
-  public set double_click(value: boolean): void {
+  public set double_click(value): void {
     set_double_click(value);
   }
 }

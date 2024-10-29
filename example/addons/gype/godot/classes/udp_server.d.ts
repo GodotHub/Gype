@@ -1,6 +1,6 @@
 
-import { PacketPeerUDP } from "@godot/classes/packet_peer_udp";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { PacketPeerUDP } from "@godot/classes/packet_peer_udp";
 
 export declare class UDPServer extends RefCounted{
   public listen(_port: number, _bind_address: String): number;
@@ -15,7 +15,7 @@ export declare class UDPServer extends RefCounted{
   public get max_pending_connections(): number {
     get_max_pending_connections();
   }
-  public set max_pending_connections(value: number): void {
+  public set max_pending_connections(value): void {
     set_max_pending_connections(value);
   }
 }

@@ -1,6 +1,6 @@
 
-import { RefCounted } from "@godot/classes/ref_counted";
 import { Image } from "@godot/classes/image";
+import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class TextServer extends RefCounted{
   public has_feature(_feature: number): boolean;
@@ -68,7 +68,7 @@ export declare class TextServer extends RefCounted{
   public font_get_variation_coordinates(_font_rid: RID): Dictionary;
   public font_set_oversampling(_font_rid: RID, _oversampling: number): void;
   public font_get_oversampling(_font_rid: RID): number;
-  public font_get_size_cache_list(_font_rid: RID): Array;
+  public font_get_size_cache_list(_font_rid: RID): GDArray;
   public font_clear_size_cache(_font_rid: RID): void;
   public font_remove_size_cache(_font_rid: RID, _size: Vector2i): void;
   public font_set_ascent(_font_rid: RID, _size: number, _ascent: number): void;
@@ -104,7 +104,7 @@ export declare class TextServer extends RefCounted{
   public font_get_glyph_texture_rid(_font_rid: RID, _size: Vector2i, _glyph: number): RID;
   public font_get_glyph_texture_size(_font_rid: RID, _size: Vector2i, _glyph: number): Vector2;
   public font_get_glyph_contours(_font: RID, _size: number, _index: number): Dictionary;
-  public font_get_kerning_list(_font_rid: RID, _size: number): Array;
+  public font_get_kerning_list(_font_rid: RID, _size: number): GDArray;
   public font_clear_kerning_map(_font_rid: RID, _size: number): void;
   public font_remove_kerning(_font_rid: RID, _size: number, _glyph_pair: Vector2i): void;
   public font_set_kerning(_font_rid: RID, _size: number, _glyph_pair: Vector2i, _kerning: Vector2): void;
@@ -153,12 +153,12 @@ export declare class TextServer extends RefCounted{
   public shaped_text_get_preserve_control(_shaped: RID): boolean;
   public shaped_text_set_spacing(_shaped: RID, _spacing: number, _value: number): void;
   public shaped_text_get_spacing(_shaped: RID, _spacing: number): number;
-  public shaped_text_add_string(_shaped: RID, _text: String, _fonts: typedarray::RID, _size: number, _opentype_features: Dictionary, _language: String, _meta: Variant): boolean;
-  public shaped_text_add_object(_shaped: RID, _key: Variant, _size: Vector2, _inline_align: number, _length: number, _baseline: number): boolean;
-  public shaped_text_resize_object(_shaped: RID, _key: Variant, _size: Vector2, _inline_align: number, _baseline: number): boolean;
+  public shaped_text_add_string(_shaped: RID, _text: String, _fonts: GDArray, _size: number, _opentype_features: Dictionary, _language: String, _meta: any): boolean;
+  public shaped_text_add_object(_shaped: RID, _key: any, _size: Vector2, _inline_align: number, _length: number, _baseline: number): boolean;
+  public shaped_text_resize_object(_shaped: RID, _key: any, _size: Vector2, _inline_align: number, _baseline: number): boolean;
   public shaped_get_span_count(_shaped: RID): number;
-  public shaped_get_span_meta(_shaped: RID, _index: number): Variant;
-  public shaped_set_span_update_font(_shaped: RID, _index: number, _fonts: typedarray::RID, _size: number, _opentype_features: Dictionary): void;
+  public shaped_get_span_meta(_shaped: RID, _index: number): any;
+  public shaped_set_span_update_font(_shaped: RID, _index: number, _fonts: GDArray, _size: number, _opentype_features: Dictionary): void;
   public shaped_text_substr(_shaped: RID, _start: number, _length: number): RID;
   public shaped_text_get_parent(_shaped: RID): RID;
   public shaped_text_fit_to_width(_shaped: RID, _width: number, _justification_flags: number): number;
@@ -166,8 +166,8 @@ export declare class TextServer extends RefCounted{
   public shaped_text_shape(_shaped: RID): boolean;
   public shaped_text_is_ready(_shaped: RID): boolean;
   public shaped_text_has_visible_chars(_shaped: RID): boolean;
-  public shaped_text_get_glyphs(_shaped: RID): Array;
-  public shaped_text_sort_logical(_shaped: RID): Array;
+  public shaped_text_get_glyphs(_shaped: RID): GDArray;
+  public shaped_text_sort_logical(_shaped: RID): GDArray;
   public shaped_text_get_glyph_count(_shaped: RID): number;
   public shaped_text_get_range(_shaped: RID): Vector2i;
   public shaped_text_get_line_breaks_adv(_shaped: RID, _width: PackedFloat32Array, _start: number, _once: boolean, _break_flags: number): PackedInt32Array;
@@ -175,13 +175,13 @@ export declare class TextServer extends RefCounted{
   public shaped_text_get_word_breaks(_shaped: RID, _grapheme_flags: number, _skip_grapheme_flags: number): PackedInt32Array;
   public shaped_text_get_trim_pos(_shaped: RID): number;
   public shaped_text_get_ellipsis_pos(_shaped: RID): number;
-  public shaped_text_get_ellipsis_glyphs(_shaped: RID): Array;
+  public shaped_text_get_ellipsis_glyphs(_shaped: RID): GDArray;
   public shaped_text_get_ellipsis_glyph_count(_shaped: RID): number;
   public shaped_text_overrun_trim_to_width(_shaped: RID, _width: number, _overrun_trim_flags: number): void;
   public shaped_text_get_objects(_shaped: RID): GDArray;
-  public shaped_text_get_object_rect(_shaped: RID, _key: Variant): Rect2;
-  public shaped_text_get_object_range(_shaped: RID, _key: Variant): Vector2i;
-  public shaped_text_get_object_glyph(_shaped: RID, _key: Variant): number;
+  public shaped_text_get_object_rect(_shaped: RID, _key: any): Rect2;
+  public shaped_text_get_object_range(_shaped: RID, _key: any): Vector2i;
+  public shaped_text_get_object_glyph(_shaped: RID, _key: any): number;
   public shaped_text_get_size(_shaped: RID): Vector2;
   public shaped_text_get_ascent(_shaped: RID): number;
   public shaped_text_get_descent(_shaped: RID): number;
@@ -215,7 +215,7 @@ export declare class TextServer extends RefCounted{
   public string_to_upper(_string: String, _language: String): String;
   public string_to_lower(_string: String, _language: String): String;
   public string_to_title(_string: String, _language: String): String;
-  public parse_structured_text(_parser_type: number, _args: GDArray, _text: String): Array;
+  public parse_structured_text(_parser_type: number, _args: GDArray, _text: String): GDArray;
   static FontAntialiasing = {
     FONT_ANTIALIASING_NONE = 0,
     FONT_ANTIALIASING_GRAY = 1,

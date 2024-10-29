@@ -17,13 +17,13 @@ export declare class SkeletonModification2DFABRIK extends SkeletonModification2D
   public get target_nodepath(): NodePath {
     get_target_node();
   }
-  public set target_nodepath(value: NodePath): void {
+  public set target_nodepath(value): void {
     set_target_node(value);
   }
   public get fabrik_data_chain_length(): number {
     get_fabrik_data_chain_length();
   }
-  public set fabrik_data_chain_length(value: number): void {
+  public set fabrik_data_chain_length(value): void {
     set_fabrik_data_chain_length(value);
   }
 }

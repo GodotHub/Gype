@@ -1,7 +1,7 @@
 
+import { AnimationNodeStateMachineTransition } from "@godot/classes/animation_node_state_machine_transition";
 import { AnimationNode } from "@godot/classes/animation_node";
 import { AnimationRootNode } from "@godot/classes/animation_root_node";
-import { AnimationNodeStateMachineTransition } from "@godot/classes/animation_node_state_machine_transition";
 
 export declare class AnimationNodeStateMachine extends AnimationRootNode{
   public add_node(_name: StringName, _node: AnimationNode, _position: Vector2): void;
@@ -32,19 +32,19 @@ export declare class AnimationNodeStateMachine extends AnimationRootNode{
   public get state_machine_type(): number {
     get_state_machine_type();
   }
-  public set state_machine_type(value: number): void {
+  public set state_machine_type(value): void {
     set_state_machine_type(value);
   }
   public get allow_transition_to_self(): boolean {
     is_allow_transition_to_self();
   }
-  public set allow_transition_to_self(value: boolean): void {
+  public set allow_transition_to_self(value): void {
     set_allow_transition_to_self(value);
   }
   public get reset_ends(): boolean {
     are_ends_reset();
   }
-  public set reset_ends(value: boolean): void {
+  public set reset_ends(value): void {
     set_reset_ends(value);
   }
   static StateMachineType = {

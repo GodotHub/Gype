@@ -7,7 +7,7 @@ export declare class VisualShaderNodeVec3Constant extends VisualShaderNodeConsta
   public get constant(): Vector3 {
     get_constant();
   }
-  public set constant(value: Vector3): void {
+  public set constant(value): void {
     set_constant(value);
   }
 }

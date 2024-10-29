@@ -20,25 +20,25 @@ export declare class AudioStreamRandomizer extends AudioStream{
   public get playback_mode(): number {
     get_playback_mode();
   }
-  public set playback_mode(value: number): void {
+  public set playback_mode(value): void {
     set_playback_mode(value);
   }
   public get random_pitch(): number {
     get_random_pitch();
   }
-  public set random_pitch(value: number): void {
+  public set random_pitch(value): void {
     set_random_pitch(value);
   }
   public get random_volume_offset_db(): number {
     get_random_volume_offset_db();
   }
-  public set random_volume_offset_db(value: number): void {
+  public set random_volume_offset_db(value): void {
     set_random_volume_offset_db(value);
   }
   public get streams_count(): number {
     get_streams_count();
   }
-  public set streams_count(value: number): void {
+  public set streams_count(value): void {
     set_streams_count(value);
   }
   static PlaybackMode = {

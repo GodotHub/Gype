@@ -23,19 +23,19 @@ export declare class AudioEffectChorus extends AudioEffect{
   public get voice_count(): number {
     get_voice_count();
   }
-  public set voice_count(value: number): void {
+  public set voice_count(value): void {
     set_voice_count(value);
   }
   public get dry(): number {
     get_dry();
   }
-  public set dry(value: number): void {
+  public set dry(value): void {
     set_dry(value);
   }
   public get wet(): number {
     get_wet();
   }
-  public set wet(value: number): void {
+  public set wet(value): void {
     set_wet(value);
   }
 }

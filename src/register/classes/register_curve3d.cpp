@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/curve3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void curve3d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue curve3d_class_constructor(JSContext *ctx, JSValueConst new_target
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, curve3d_class);
+	JS_SetOpaque(obj, curve3d_class);	
 	return obj;
 }
 static JSValue curve3d_class_get_point_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -39,17 +41,17 @@ static JSValue curve3d_class_get_point_count(JSContext *ctx, JSValueConst this_v
 };
 static JSValue curve3d_class_set_point_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Curve3D::set_point_count, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Curve3D::set_point_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_add_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Curve3D::add_point, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Curve3D::add_point, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_set_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Curve3D::set_point_position, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Curve3D::set_point_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_get_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -58,7 +60,7 @@ static JSValue curve3d_class_get_point_position(JSContext *ctx, JSValueConst thi
 };
 static JSValue curve3d_class_set_point_tilt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Curve3D::set_point_tilt, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Curve3D::set_point_tilt, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_get_point_tilt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,7 +69,7 @@ static JSValue curve3d_class_get_point_tilt(JSContext *ctx, JSValueConst this_va
 };
 static JSValue curve3d_class_set_point_in(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Curve3D::set_point_in, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Curve3D::set_point_in, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_get_point_in(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -76,7 +78,7 @@ static JSValue curve3d_class_get_point_in(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue curve3d_class_set_point_out(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Curve3D::set_point_out, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Curve3D::set_point_out, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_get_point_out(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -85,12 +87,12 @@ static JSValue curve3d_class_get_point_out(JSContext *ctx, JSValueConst this_val
 };
 static JSValue curve3d_class_remove_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Curve3D::remove_point, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Curve3D::remove_point, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_clear_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Curve3D::clear_points, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Curve3D::clear_points, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_sample(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -103,7 +105,7 @@ static JSValue curve3d_class_samplef(JSContext *ctx, JSValueConst this_val, int 
 };
 static JSValue curve3d_class_set_bake_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Curve3D::set_bake_interval, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Curve3D::set_bake_interval, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_get_bake_interval(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -112,7 +114,7 @@ static JSValue curve3d_class_get_bake_interval(JSContext *ctx, JSValueConst this
 };
 static JSValue curve3d_class_set_up_vector_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Curve3D::set_up_vector_enabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Curve3D::set_up_vector_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue curve3d_class_is_up_vector_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -197,33 +199,37 @@ static const JSCFunctionListEntry curve3d_class_proto_funcs[] = {
 };
 
 void define_curve3d_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "bake_interval"),
-			JS_NewCFunction(ctx, curve3d_class_get_bake_interval, "get_bake_interval", 0),
-			JS_NewCFunction(ctx, curve3d_class_set_bake_interval, "set_bake_interval", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "point_count"),
-			JS_NewCFunction(ctx, curve3d_class_get_point_count, "get_point_count", 0),
-			JS_NewCFunction(ctx, curve3d_class_set_point_count, "set_point_count", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "up_vector_enabled"),
-			JS_NewCFunction(ctx, curve3d_class_is_up_vector_enabled, "is_up_vector_enabled", 0),
-			JS_NewCFunction(ctx, curve3d_class_set_up_vector_enabled, "set_up_vector_enabled", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "bake_interval"),
+        JS_NewCFunction(ctx, curve3d_class_get_bake_interval, "get_bake_interval", 0),
+        JS_NewCFunction(ctx, curve3d_class_set_bake_interval, "set_bake_interval", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "point_count"),
+        JS_NewCFunction(ctx, curve3d_class_get_point_count, "get_point_count", 0),
+        JS_NewCFunction(ctx, curve3d_class_set_point_count, "set_point_count", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "up_vector_enabled"),
+        JS_NewCFunction(ctx, curve3d_class_is_up_vector_enabled, "is_up_vector_enabled", 0),
+        JS_NewCFunction(ctx, curve3d_class_set_up_vector_enabled, "set_up_vector_enabled", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_curve3d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Curve3D::__class_id);
 	classes["Curve3D"] = Curve3D::__class_id;
 	class_id_list.insert(Curve3D::__class_id);
@@ -246,7 +252,7 @@ static int js_curve3d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_curve3d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/resource';";
+	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -258,7 +264,7 @@ JSModuleDef *_js_init_curve3d_module(JSContext *ctx, const char *module_name) {
 }
 
 JSModuleDef *js_init_curve3d_module(JSContext *ctx) {
-	return _js_init_curve3d_module(ctx, "godot/classes/curve3d");
+	return _js_init_curve3d_module(ctx, "@godot/classes/curve3d");
 }
 
 void register_curve3d() {

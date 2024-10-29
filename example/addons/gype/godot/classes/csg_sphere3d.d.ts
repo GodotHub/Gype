@@ -1,6 +1,6 @@
 
-import { CSGPrimitive3D } from "@godot/classes/csg_primitive3d";
 import { Material } from "@godot/classes/material";
+import { CSGPrimitive3D } from "@godot/classes/csg_primitive3d";
 
 export declare class CSGSphere3D extends CSGPrimitive3D{
   public set_radius(_radius: number): void;
@@ -16,31 +16,31 @@ export declare class CSGSphere3D extends CSGPrimitive3D{
   public get radius(): number {
     get_radius();
   }
-  public set radius(value: number): void {
+  public set radius(value): void {
     set_radius(value);
   }
   public get radial_segments(): number {
     get_radial_segments();
   }
-  public set radial_segments(value: number): void {
+  public set radial_segments(value): void {
     set_radial_segments(value);
   }
   public get rings(): number {
     get_rings();
   }
-  public set rings(value: number): void {
+  public set rings(value): void {
     set_rings(value);
   }
   public get smooth_faces(): boolean {
     get_smooth_faces();
   }
-  public set smooth_faces(value: boolean): void {
+  public set smooth_faces(value): void {
     set_smooth_faces(value);
   }
-  public get material(): BaseMaterial3D,ShaderMaterial {
+  public get material(): BaseMaterial3D {
     get_material();
   }
-  public set material(value: BaseMaterial3D,ShaderMaterial): void {
+  public set material(value): void {
     set_material(value);
   }
 }

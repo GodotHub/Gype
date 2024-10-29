@@ -1,6 +1,6 @@
 
-import { Node } from "@godot/classes/node";
 import { EditorFileSystemDirectory } from "@godot/classes/editor_file_system_directory";
+import { Node } from "@godot/classes/node";
 
 export declare class EditorFileSystem extends Node{
   public get_filesystem(): EditorFileSystemDirectory;

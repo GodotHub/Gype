@@ -1,19 +1,21 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/multiplayer_api.hpp>
-#include <godot_cpp/classes/multiplayer_peer.hpp>
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/multiplayer_api.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void multiplayer_api_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -32,7 +34,7 @@ static JSValue multiplayer_api_class_constructor(JSContext *ctx, JSValueConst ne
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, multiplayer_api_class);
+	JS_SetOpaque(obj, multiplayer_api_class);	
 	return obj;
 }
 static JSValue multiplayer_api_class_has_multiplayer_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -45,7 +47,7 @@ static JSValue multiplayer_api_class_get_multiplayer_peer(JSContext *ctx, JSValu
 };
 static JSValue multiplayer_api_class_set_multiplayer_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&MultiplayerAPI::set_multiplayer_peer, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&MultiplayerAPI::set_multiplayer_peer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_api_class_get_unique_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -81,7 +83,7 @@ static JSValue multiplayer_api_class_get_peers(JSContext *ctx, JSValueConst this
 	return call_builtin_method_ret(&MultiplayerAPI::get_peers, ctx, this_val, argc, argv);
 };
 static JSValue multiplayer_api_class_set_default_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_method_no_ret(&MultiplayerAPI::set_default_interface, ctx, this_val, argc, argv);
+    call_builtin_static_method_no_ret(&MultiplayerAPI::set_default_interface, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue multiplayer_api_class_get_default_interface(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,13 +112,14 @@ static const JSCFunctionListEntry multiplayer_api_class_static_funcs[] = {
 };
 
 void define_multiplayer_api_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "multiplayer_peer"),
-			JS_NewCFunction(ctx, multiplayer_api_class_get_multiplayer_peer, "get_multiplayer_peer", 0),
-			JS_NewCFunction(ctx, multiplayer_api_class_set_multiplayer_peer, "set_multiplayer_peer", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "multiplayer_peer"),
+        JS_NewCFunction(ctx, multiplayer_api_class_get_multiplayer_peer, "get_multiplayer_peer", 0),
+        JS_NewCFunction(ctx, multiplayer_api_class_set_multiplayer_peer, "set_multiplayer_peer", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -128,6 +131,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_multiplayer_api_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&MultiplayerAPI::__class_id);
 	classes["MultiplayerAPI"] = MultiplayerAPI::__class_id;
 	class_id_list.insert(MultiplayerAPI::__class_id);
@@ -151,7 +155,7 @@ static int js_multiplayer_api_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_multiplayer_api_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -163,7 +167,7 @@ JSModuleDef *_js_init_multiplayer_api_module(JSContext *ctx, const char *module_
 }
 
 JSModuleDef *js_init_multiplayer_api_module(JSContext *ctx) {
-	return _js_init_multiplayer_api_module(ctx, "godot/classes/multiplayer_api");
+	return _js_init_multiplayer_api_module(ctx, "@godot/classes/multiplayer_api");
 }
 
 void register_multiplayer_api() {

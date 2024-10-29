@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/gltf_light.hpp>
 #include <godot_cpp/classes/light3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void gltf_light_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,7 +33,7 @@ static JSValue gltf_light_class_constructor(JSContext *ctx, JSValueConst new_tar
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_light_class);
+	JS_SetOpaque(obj, gltf_light_class);	
 	return obj;
 }
 static JSValue gltf_light_class_to_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,7 +50,7 @@ static JSValue gltf_light_class_get_color(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue gltf_light_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GLTFLight::set_color, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GLTFLight::set_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_light_class_get_intensity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,7 +59,7 @@ static JSValue gltf_light_class_get_intensity(JSContext *ctx, JSValueConst this_
 };
 static JSValue gltf_light_class_set_intensity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GLTFLight::set_intensity, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GLTFLight::set_intensity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_light_class_get_light_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -66,7 +68,7 @@ static JSValue gltf_light_class_get_light_type(JSContext *ctx, JSValueConst this
 };
 static JSValue gltf_light_class_set_light_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GLTFLight::set_light_type, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GLTFLight::set_light_type, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_light_class_get_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,7 +77,7 @@ static JSValue gltf_light_class_get_range(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue gltf_light_class_set_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GLTFLight::set_range, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GLTFLight::set_range, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_light_class_get_inner_cone_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -84,7 +86,7 @@ static JSValue gltf_light_class_get_inner_cone_angle(JSContext *ctx, JSValueCons
 };
 static JSValue gltf_light_class_set_inner_cone_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GLTFLight::set_inner_cone_angle, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GLTFLight::set_inner_cone_angle, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_light_class_get_outer_cone_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -93,7 +95,7 @@ static JSValue gltf_light_class_get_outer_cone_angle(JSContext *ctx, JSValueCons
 };
 static JSValue gltf_light_class_set_outer_cone_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GLTFLight::set_outer_cone_angle, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GLTFLight::set_outer_cone_angle, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_light_class_get_additional_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -102,7 +104,7 @@ static JSValue gltf_light_class_get_additional_data(JSContext *ctx, JSValueConst
 };
 static JSValue gltf_light_class_set_additional_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&GLTFLight::set_additional_data, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&GLTFLight::set_additional_data, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue gltf_light_class_from_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -135,54 +137,61 @@ static const JSCFunctionListEntry gltf_light_class_static_funcs[] = {
 };
 
 void define_gltf_light_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "color"),
-			JS_NewCFunction(ctx, gltf_light_class_get_color, "get_color", 0),
-			JS_NewCFunction(ctx, gltf_light_class_set_color, "set_color", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "intensity"),
-			JS_NewCFunction(ctx, gltf_light_class_get_intensity, "get_intensity", 0),
-			JS_NewCFunction(ctx, gltf_light_class_set_intensity, "set_intensity", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "light_type"),
-			JS_NewCFunction(ctx, gltf_light_class_get_light_type, "get_light_type", 0),
-			JS_NewCFunction(ctx, gltf_light_class_set_light_type, "set_light_type", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "range"),
-			JS_NewCFunction(ctx, gltf_light_class_get_range, "get_range", 0),
-			JS_NewCFunction(ctx, gltf_light_class_set_range, "set_range", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "inner_cone_angle"),
-			JS_NewCFunction(ctx, gltf_light_class_get_inner_cone_angle, "get_inner_cone_angle", 0),
-			JS_NewCFunction(ctx, gltf_light_class_set_inner_cone_angle, "set_inner_cone_angle", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "outer_cone_angle"),
-			JS_NewCFunction(ctx, gltf_light_class_get_outer_cone_angle, "get_outer_cone_angle", 0),
-			JS_NewCFunction(ctx, gltf_light_class_set_outer_cone_angle, "set_outer_cone_angle", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "color"),
+        JS_NewCFunction(ctx, gltf_light_class_get_color, "get_color", 0),
+        JS_NewCFunction(ctx, gltf_light_class_set_color, "set_color", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "intensity"),
+        JS_NewCFunction(ctx, gltf_light_class_get_intensity, "get_intensity", 0),
+        JS_NewCFunction(ctx, gltf_light_class_set_intensity, "set_intensity", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "light_type"),
+        JS_NewCFunction(ctx, gltf_light_class_get_light_type, "get_light_type", 0),
+        JS_NewCFunction(ctx, gltf_light_class_set_light_type, "set_light_type", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "range"),
+        JS_NewCFunction(ctx, gltf_light_class_get_range, "get_range", 0),
+        JS_NewCFunction(ctx, gltf_light_class_set_range, "set_range", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "inner_cone_angle"),
+        JS_NewCFunction(ctx, gltf_light_class_get_inner_cone_angle, "get_inner_cone_angle", 0),
+        JS_NewCFunction(ctx, gltf_light_class_set_inner_cone_angle, "set_inner_cone_angle", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "outer_cone_angle"),
+        JS_NewCFunction(ctx, gltf_light_class_get_outer_cone_angle, "get_outer_cone_angle", 0),
+        JS_NewCFunction(ctx, gltf_light_class_set_outer_cone_angle, "set_outer_cone_angle", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_gltf_light_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&GLTFLight::__class_id);
 	classes["GLTFLight"] = GLTFLight::__class_id;
 	class_id_list.insert(GLTFLight::__class_id);
@@ -206,7 +215,7 @@ static int js_gltf_light_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_gltf_light_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/resource';";
+	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -218,7 +227,7 @@ JSModuleDef *_js_init_gltf_light_module(JSContext *ctx, const char *module_name)
 }
 
 JSModuleDef *js_init_gltf_light_module(JSContext *ctx) {
-	return _js_init_gltf_light_module(ctx, "godot/classes/gltf_light");
+	return _js_init_gltf_light_module(ctx, "@godot/classes/gltf_light");
 }
 
 void register_gltf_light() {

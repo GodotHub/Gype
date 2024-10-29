@@ -32,55 +32,55 @@ export declare class AnimationNodeBlendSpace2D extends AnimationRootNode{
   public get auto_triangles(): boolean {
     get_auto_triangles();
   }
-  public set auto_triangles(value: boolean): void {
+  public set auto_triangles(value): void {
     set_auto_triangles(value);
   }
   public get triangles(): PackedInt32Array {
     _get_triangles();
   }
-  public set triangles(value: PackedInt32Array): void {
+  public set triangles(value): void {
     _set_triangles(value);
   }
   public get min_space(): Vector2 {
     get_min_space();
   }
-  public set min_space(value: Vector2): void {
+  public set min_space(value): void {
     set_min_space(value);
   }
   public get max_space(): Vector2 {
     get_max_space();
   }
-  public set max_space(value: Vector2): void {
+  public set max_space(value): void {
     set_max_space(value);
   }
   public get snap(): Vector2 {
     get_snap();
   }
-  public set snap(value: Vector2): void {
+  public set snap(value): void {
     set_snap(value);
   }
   public get x_label(): String {
     get_x_label();
   }
-  public set x_label(value: String): void {
+  public set x_label(value): void {
     set_x_label(value);
   }
   public get y_label(): String {
     get_y_label();
   }
-  public set y_label(value: String): void {
+  public set y_label(value): void {
     set_y_label(value);
   }
   public get blend_mode(): number {
     get_blend_mode();
   }
-  public set blend_mode(value: number): void {
+  public set blend_mode(value): void {
     set_blend_mode(value);
   }
   public get sync(): boolean {
     is_using_sync();
   }
-  public set sync(value: boolean): void {
+  public set sync(value): void {
     set_use_sync(value);
   }
   static BlendMode = {

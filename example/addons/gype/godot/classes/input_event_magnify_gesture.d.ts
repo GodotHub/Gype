@@ -7,7 +7,7 @@ export declare class InputEventMagnifyGesture extends InputEventGesture{
   public get factor(): number {
     get_factor();
   }
-  public set factor(value: number): void {
+  public set factor(value): void {
     set_factor(value);
   }
 }

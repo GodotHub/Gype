@@ -1,8 +1,8 @@
 
 import { Texture2D } from "@godot/classes/texture2d";
 import { Object } from "@godot/classes/object";
-import { Tree } from "@godot/classes/tree";
 import { Font } from "@godot/classes/font";
+import { Tree } from "@godot/classes/tree";
 
 export declare class TreeItem extends Object{
   public set_cell_mode(_column: number, _mode: number): void;
@@ -42,8 +42,8 @@ export declare class TreeItem extends Object{
   public get_range(_column: number): number;
   public set_range_config(_column: number, _min: number, _max: number, _step: number, _expr: boolean): void;
   public get_range_config(_column: number): Dictionary;
-  public set_metadata(_column: number, _meta: Variant): void;
-  public get_metadata(_column: number): Variant;
+  public set_metadata(_column: number, _meta: any): void;
+  public get_metadata(_column: number): any;
   public set_custom_draw(_column: number, _object: Object, _callback: StringName): void;
   public set_custom_draw_callback(_column: number, _callback: Callable): void;
   public get_custom_draw_callback(_column: number): Callable;
@@ -111,7 +111,7 @@ export declare class TreeItem extends Object{
   public get_prev_visible(_wrap: boolean): TreeItem;
   public get_child(_index: number): TreeItem;
   public get_child_count(): number;
-  public get_children(): Array;
+  public get_children(): GDArray;
   public get_index(): number;
   public move_before(_item: TreeItem): void;
   public move_after(_item: TreeItem): void;
@@ -119,25 +119,25 @@ export declare class TreeItem extends Object{
   public get collapsed(): boolean {
     is_collapsed();
   }
-  public set collapsed(value: boolean): void {
+  public set collapsed(value): void {
     set_collapsed(value);
   }
   public get visible(): boolean {
     is_visible();
   }
-  public set visible(value: boolean): void {
+  public set visible(value): void {
     set_visible(value);
   }
   public get disable_folding(): boolean {
     is_folding_disabled();
   }
-  public set disable_folding(value: boolean): void {
+  public set disable_folding(value): void {
     set_disable_folding(value);
   }
   public get custom_minimum_height(): number {
     get_custom_minimum_height();
   }
-  public set custom_minimum_height(value: number): void {
+  public set custom_minimum_height(value): void {
     set_custom_minimum_height(value);
   }
   static TreeCellMode = {

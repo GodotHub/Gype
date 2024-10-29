@@ -1,7 +1,7 @@
 
-import { Noise } from "@godot/classes/noise";
-import { Texture2D } from "@godot/classes/texture2d";
 import { Gradient } from "@godot/classes/gradient";
+import { Texture2D } from "@godot/classes/texture2d";
+import { Noise } from "@godot/classes/noise";
 
 export declare class NoiseTexture2D extends Texture2D{
   public set_width(_width: number): void;
@@ -29,73 +29,73 @@ export declare class NoiseTexture2D extends Texture2D{
   public get width(): number {
     get_width();
   }
-  public set width(value: number): void {
+  public set width(value): void {
     set_width(value);
   }
   public get height(): number {
     get_height();
   }
-  public set height(value: number): void {
+  public set height(value): void {
     set_height(value);
   }
   public get invert(): boolean {
     get_invert();
   }
-  public set invert(value: boolean): void {
+  public set invert(value): void {
     set_invert(value);
   }
   public get in_3d_space(): boolean {
     is_in_3d_space();
   }
-  public set in_3d_space(value: boolean): void {
+  public set in_3d_space(value): void {
     set_in_3d_space(value);
   }
   public get generate_mipmaps(): boolean {
     is_generating_mipmaps();
   }
-  public set generate_mipmaps(value: boolean): void {
+  public set generate_mipmaps(value): void {
     set_generate_mipmaps(value);
   }
   public get seamless(): boolean {
     get_seamless();
   }
-  public set seamless(value: boolean): void {
+  public set seamless(value): void {
     set_seamless(value);
   }
   public get seamless_blend_skirt(): number {
     get_seamless_blend_skirt();
   }
-  public set seamless_blend_skirt(value: number): void {
+  public set seamless_blend_skirt(value): void {
     set_seamless_blend_skirt(value);
   }
   public get as_normal_map(): boolean {
     is_normal_map();
   }
-  public set as_normal_map(value: boolean): void {
+  public set as_normal_map(value): void {
     set_as_normal_map(value);
   }
   public get bump_strength(): number {
     get_bump_strength();
   }
-  public set bump_strength(value: number): void {
+  public set bump_strength(value): void {
     set_bump_strength(value);
   }
   public get normalize(): boolean {
     is_normalized();
   }
-  public set normalize(value: boolean): void {
+  public set normalize(value): void {
     set_normalize(value);
   }
   public get color_ramp(): Gradient {
     get_color_ramp();
   }
-  public set color_ramp(value: Gradient): void {
+  public set color_ramp(value): void {
     set_color_ramp(value);
   }
   public get noise(): Noise {
     get_noise();
   }
-  public set noise(value: Noise): void {
+  public set noise(value): void {
     set_noise(value);
   }
 }

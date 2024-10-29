@@ -1,10 +1,10 @@
 
 import { PhysicsDirectSpaceState3D } from "@godot/classes/physics_direct_space_state3d";
+import { PhysicsTestMotionResult3D } from "@godot/classes/physics_test_motion_result3d";
 import { Object } from "@godot/classes/object";
 import { PhysicsTestMotionParameters3D } from "@godot/classes/physics_test_motion_parameters3d";
 import { PhysicsServer3DRenderingServerHandler } from "@godot/classes/physics_server3d_rendering_server_handler";
 import { PhysicsDirectBodyState3D } from "@godot/classes/physics_direct_body_state3d";
-import { PhysicsTestMotionResult3D } from "@godot/classes/physics_test_motion_result3d";
 
 export declare class PhysicsServer3D extends Object{
   public world_boundary_shape_create(): RID;
@@ -17,10 +17,10 @@ export declare class PhysicsServer3D extends Object{
   public concave_polygon_shape_create(): RID;
   public heightmap_shape_create(): RID;
   public custom_shape_create(): RID;
-  public shape_set_data(_shape: RID, _data: Variant): void;
+  public shape_set_data(_shape: RID, _data: any): void;
   public shape_set_margin(_shape: RID, _margin: number): void;
   public shape_get_type(_shape: RID): number;
-  public shape_get_data(_shape: RID): Variant;
+  public shape_get_data(_shape: RID): any;
   public shape_get_margin(_shape: RID): number;
   public space_create(): RID;
   public space_set_active(_space: RID, _active: boolean): void;
@@ -44,9 +44,9 @@ export declare class PhysicsServer3D extends Object{
   public area_get_collision_layer(_area: RID): number;
   public area_set_collision_mask(_area: RID, _mask: number): void;
   public area_get_collision_mask(_area: RID): number;
-  public area_set_param(_area: RID, _param: number, _value: Variant): void;
+  public area_set_param(_area: RID, _param: number, _value: any): void;
   public area_set_transform(_area: RID, _transform: Transform3D): void;
-  public area_get_param(_area: RID, _param: number): Variant;
+  public area_get_param(_area: RID, _param: number): any;
   public area_get_transform(_area: RID): Transform3D;
   public area_attach_object_instance_id(_area: RID, _id: number): void;
   public area_get_object_instance_id(_area: RID): number;
@@ -78,11 +78,11 @@ export declare class PhysicsServer3D extends Object{
   public body_get_object_instance_id(_body: RID): number;
   public body_set_enable_continuous_collision_detection(_body: RID, _enable: boolean): void;
   public body_is_continuous_collision_detection_enabled(_body: RID): boolean;
-  public body_set_param(_body: RID, _param: number, _value: Variant): void;
-  public body_get_param(_body: RID, _param: number): Variant;
+  public body_set_param(_body: RID, _param: number, _value: any): void;
+  public body_get_param(_body: RID, _param: number): any;
   public body_reset_mass_properties(_body: RID): void;
-  public body_set_state(_body: RID, _state: number, _value: Variant): void;
-  public body_get_state(_body: RID, _state: number): Variant;
+  public body_set_state(_body: RID, _state: number, _value: any): void;
+  public body_get_state(_body: RID, _state: number): any;
   public body_apply_central_impulse(_body: RID, _impulse: Vector3): void;
   public body_apply_impulse(_body: RID, _impulse: Vector3, _position: Vector3): void;
   public body_apply_torque_impulse(_body: RID, _impulse: Vector3): void;
@@ -106,7 +106,7 @@ export declare class PhysicsServer3D extends Object{
   public body_set_omit_force_integration(_body: RID, _enable: boolean): void;
   public body_is_omitting_force_integration(_body: RID): boolean;
   public body_set_state_sync_callback(_body: RID, _callable: Callable): void;
-  public body_set_force_integration_callback(_body: RID, _callable: Callable, _userdata: Variant): void;
+  public body_set_force_integration_callback(_body: RID, _callable: Callable, _userdata: any): void;
   public body_set_ray_pickable(_body: RID, _enable: boolean): void;
   public body_test_motion(_body: RID, _parameters: PhysicsTestMotionParameters3D, _result: PhysicsTestMotionResult3D): boolean;
   public body_get_direct_state(_body: RID): PhysicsDirectBodyState3D;
@@ -122,8 +122,8 @@ export declare class PhysicsServer3D extends Object{
   public soft_body_get_collision_mask(_body: RID): number;
   public soft_body_add_collision_exception(_body: RID, _body_b: RID): void;
   public soft_body_remove_collision_exception(_body: RID, _body_b: RID): void;
-  public soft_body_set_state(_body: RID, _state: number, _variant: Variant): void;
-  public soft_body_get_state(_body: RID, _state: number): Variant;
+  public soft_body_set_state(_body: RID, _state: number, _variant: any): void;
+  public soft_body_get_state(_body: RID, _state: number): any;
   public soft_body_set_transform(_body: RID, _transform: Transform3D): void;
   public soft_body_set_ray_pickable(_body: RID, _enable: boolean): void;
   public soft_body_set_simulation_precision(_body: RID, _simulation_precision: number): void;

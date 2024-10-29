@@ -7,7 +7,7 @@ export declare class AudioEffectAmplify extends AudioEffect{
   public get volume_db(): number {
     get_volume_db();
   }
-  public set volume_db(value: number): void {
+  public set volume_db(value): void {
     set_volume_db(value);
   }
 }

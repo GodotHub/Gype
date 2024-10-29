@@ -1,13 +1,13 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/native_menu.hpp>
-#include <godot_cpp/classes/object.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/native_menu.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
@@ -17,6 +17,7 @@ static JSValue native_menu_instance;
 static void js_native_menu_singleton();
 
 static void native_menu_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -40,292 +41,292 @@ static JSValue native_menu_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue native_menu_class_has_feature(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::has_feature, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_has_system_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::has_system_menu, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_get_system_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::get_system_menu, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_get_system_menu_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::get_system_menu_name, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_create_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_method_ret(&NativeMenu::create_menu, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_has_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::has_menu, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_free_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::free_menu, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::free_menu, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::get_size, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_popup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::popup, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::popup, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_set_interface_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_interface_direction, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_interface_direction, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_set_popup_open_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_popup_open_callback, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_popup_open_callback, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_get_popup_open_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::get_popup_open_callback, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_set_popup_close_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_popup_close_callback, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_popup_close_callback, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_get_popup_close_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::get_popup_close_callback, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_set_minimum_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_minimum_width, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_minimum_width, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_get_minimum_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::get_minimum_width, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_is_opened(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::is_opened, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_add_submenu_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_method_ret(&NativeMenu::add_submenu_item, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_add_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_method_ret(&NativeMenu::add_item, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_add_check_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_method_ret(&NativeMenu::add_check_item, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_add_icon_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_method_ret(&NativeMenu::add_icon_item, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_add_icon_check_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_method_ret(&NativeMenu::add_icon_check_item, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_add_radio_check_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_method_ret(&NativeMenu::add_radio_check_item, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_add_icon_radio_check_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_method_ret(&NativeMenu::add_icon_radio_check_item, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_add_multistate_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_method_ret(&NativeMenu::add_multistate_item, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_add_separator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_method_ret(&NativeMenu::add_separator, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_find_item_index_with_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::find_item_index_with_text, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_find_item_index_with_tag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::find_item_index_with_tag, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_find_item_index_with_submenu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::find_item_index_with_submenu, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_is_item_checked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::is_item_checked, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_is_item_checkable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::is_item_checkable, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_is_item_radio_checkable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::is_item_radio_checkable, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_get_item_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::get_item_callback, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_get_item_key_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::get_item_key_callback, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_get_item_tag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::get_item_tag, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_get_item_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::get_item_text, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_get_item_submenu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::get_item_submenu, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_get_item_accelerator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::get_item_accelerator, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_is_item_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::is_item_disabled, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_is_item_hidden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::is_item_hidden, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_get_item_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::get_item_tooltip, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_get_item_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::get_item_state, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_get_item_max_states(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::get_item_max_states, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_get_item_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::get_item_icon, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_get_item_indentation_level(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::get_item_indentation_level, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_set_item_checked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_item_checked, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_item_checked, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_set_item_checkable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_item_checkable, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_item_checkable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_set_item_radio_checkable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_item_radio_checkable, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_item_radio_checkable, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_set_item_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_item_callback, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_item_callback, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_set_item_hover_callbacks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_item_hover_callbacks, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_item_hover_callbacks, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_set_item_key_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_item_key_callback, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_item_key_callback, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_set_item_tag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_item_tag, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_item_tag, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_set_item_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_item_text, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_item_text, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_set_item_submenu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_item_submenu, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_item_submenu, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_set_item_accelerator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_item_accelerator, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_item_accelerator, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_set_item_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_item_disabled, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_item_disabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_set_item_hidden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_item_hidden, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_item_hidden, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_set_item_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_item_tooltip, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_item_tooltip, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_set_item_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_item_state, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_item_state, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_set_item_max_states(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_item_max_states, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_item_max_states, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_set_item_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_item_icon, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_item_icon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_set_item_indentation_level(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::set_item_indentation_level, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::set_item_indentation_level, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_get_item_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::get_item_count, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_is_system_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
+    js_native_menu_singleton();
 	return call_builtin_const_method_ret(&NativeMenu::is_system_menu, ctx, this_val, argc, argv);
 };
 static JSValue native_menu_class_remove_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::remove_item, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::remove_item, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue native_menu_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	js_native_menu_singleton();
-	call_builtin_method_no_ret(&NativeMenu::clear, ctx, this_val, argc, argv);
+    js_native_menu_singleton();
+    call_builtin_method_no_ret(&NativeMenu::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry native_menu_class_proto_funcs[] = {
@@ -417,6 +418,7 @@ static void js_native_menu_singleton() {
 		JS_SetPropertyStr(ctx, global, "NativeMenu", native_menu_instance);
 	}
 }
+
 
 void register_native_menu() {
 	js_native_menu_class_init(ctx);

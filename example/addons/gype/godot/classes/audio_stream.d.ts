@@ -1,7 +1,7 @@
 
 import { AudioSample } from "@godot/classes/audio_sample";
-import { Resource } from "@godot/classes/resource";
 import { AudioStreamPlayback } from "@godot/classes/audio_stream_playback";
+import { Resource } from "@godot/classes/resource";
 
 export declare class AudioStream extends Resource{
   public _instantiate_playback(): AudioStreamPlayback;
@@ -10,7 +10,7 @@ export declare class AudioStream extends Resource{
   public _is_monophonic(): boolean;
   public _get_bpm(): number;
   public _get_beat_count(): number;
-  public _get_parameter_list(): Array;
+  public _get_parameter_list(): GDArray;
   public get_length(): number;
   public is_monophonic(): boolean;
   public instantiate_playback(): AudioStreamPlayback;

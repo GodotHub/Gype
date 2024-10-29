@@ -79,19 +79,19 @@ export declare class OS extends Object{
   public get low_processor_usage_mode(): boolean {
     is_in_low_processor_usage_mode();
   }
-  public set low_processor_usage_mode(value: boolean): void {
+  public set low_processor_usage_mode(value): void {
     set_low_processor_usage_mode(value);
   }
   public get low_processor_usage_mode_sleep_usec(): number {
     get_low_processor_usage_mode_sleep_usec();
   }
-  public set low_processor_usage_mode_sleep_usec(value: number): void {
+  public set low_processor_usage_mode_sleep_usec(value): void {
     set_low_processor_usage_mode_sleep_usec(value);
   }
   public get delta_smoothing(): boolean {
     is_delta_smoothing_enabled();
   }
-  public set delta_smoothing(value: boolean): void {
+  public set delta_smoothing(value): void {
     set_delta_smoothing(value);
   }
   static RenderingDriver = {

@@ -9,61 +9,61 @@ export declare class RDShaderSPIRV extends Resource{
   public get bytecode_vertex(): PackedByteArray {
     get_stage_bytecode();
   }
-  public set bytecode_vertex(value: PackedByteArray): void {
+  public set bytecode_vertex(value): void {
     set_stage_bytecode(value);
   }
   public get bytecode_fragment(): PackedByteArray {
     get_stage_bytecode();
   }
-  public set bytecode_fragment(value: PackedByteArray): void {
+  public set bytecode_fragment(value): void {
     set_stage_bytecode(value);
   }
   public get bytecode_tesselation_control(): PackedByteArray {
     get_stage_bytecode();
   }
-  public set bytecode_tesselation_control(value: PackedByteArray): void {
+  public set bytecode_tesselation_control(value): void {
     set_stage_bytecode(value);
   }
   public get bytecode_tesselation_evaluation(): PackedByteArray {
     get_stage_bytecode();
   }
-  public set bytecode_tesselation_evaluation(value: PackedByteArray): void {
+  public set bytecode_tesselation_evaluation(value): void {
     set_stage_bytecode(value);
   }
   public get bytecode_compute(): PackedByteArray {
     get_stage_bytecode();
   }
-  public set bytecode_compute(value: PackedByteArray): void {
+  public set bytecode_compute(value): void {
     set_stage_bytecode(value);
   }
   public get compile_error_vertex(): String {
     get_stage_compile_error();
   }
-  public set compile_error_vertex(value: String): void {
+  public set compile_error_vertex(value): void {
     set_stage_compile_error(value);
   }
   public get compile_error_fragment(): String {
     get_stage_compile_error();
   }
-  public set compile_error_fragment(value: String): void {
+  public set compile_error_fragment(value): void {
     set_stage_compile_error(value);
   }
   public get compile_error_tesselation_control(): String {
     get_stage_compile_error();
   }
-  public set compile_error_tesselation_control(value: String): void {
+  public set compile_error_tesselation_control(value): void {
     set_stage_compile_error(value);
   }
   public get compile_error_tesselation_evaluation(): String {
     get_stage_compile_error();
   }
-  public set compile_error_tesselation_evaluation(value: String): void {
+  public set compile_error_tesselation_evaluation(value): void {
     set_stage_compile_error(value);
   }
   public get compile_error_compute(): String {
     get_stage_compile_error();
   }
-  public set compile_error_compute(value: String): void {
+  public set compile_error_compute(value): void {
     set_stage_compile_error(value);
   }
 }

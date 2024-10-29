@@ -18,37 +18,37 @@ export declare class RibbonTrailMesh extends PrimitiveMesh{
   public get shape(): number {
     get_shape();
   }
-  public set shape(value: number): void {
+  public set shape(value): void {
     set_shape(value);
   }
   public get size(): number {
     get_size();
   }
-  public set size(value: number): void {
+  public set size(value): void {
     set_size(value);
   }
   public get sections(): number {
     get_sections();
   }
-  public set sections(value: number): void {
+  public set sections(value): void {
     set_sections(value);
   }
   public get section_length(): number {
     get_section_length();
   }
-  public set section_length(value: number): void {
+  public set section_length(value): void {
     set_section_length(value);
   }
   public get section_segments(): number {
     get_section_segments();
   }
-  public set section_segments(value: number): void {
+  public set section_segments(value): void {
     set_section_segments(value);
   }
   public get curve(): Curve {
     get_curve();
   }
-  public set curve(value: Curve): void {
+  public set curve(value): void {
     set_curve(value);
   }
   static Shape = {

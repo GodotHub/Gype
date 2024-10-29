@@ -7,7 +7,7 @@ export declare class AudioEffectPanner extends AudioEffect{
   public get pan(): number {
     get_pan();
   }
-  public set pan(value: number): void {
+  public set pan(value): void {
     set_pan(value);
   }
 }

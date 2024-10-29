@@ -11,19 +11,19 @@ export declare class MissingNode extends Node{
   public get original_class(): String {
     get_original_class();
   }
-  public set original_class(value: String): void {
+  public set original_class(value): void {
     set_original_class(value);
   }
   public get original_scene(): String {
     get_original_scene();
   }
-  public set original_scene(value: String): void {
+  public set original_scene(value): void {
     set_original_scene(value);
   }
   public get recording_properties(): boolean {
     is_recording_properties();
   }
-  public set recording_properties(value: boolean): void {
+  public set recording_properties(value): void {
     set_recording_properties(value);
   }
 }

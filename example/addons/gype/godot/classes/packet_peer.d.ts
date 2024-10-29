@@ -2,8 +2,8 @@
 import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class PacketPeer extends RefCounted{
-  public get_var(_allow_objects: boolean): Variant;
-  public put_var(_var: Variant, _full_objects: boolean): number;
+  public get_var(_allow_objects: boolean): any;
+  public put_var(_var: any, _full_objects: boolean): number;
   public get_packet(): PackedByteArray;
   public put_packet(_buffer: PackedByteArray): number;
   public get_packet_error(): number;
@@ -13,7 +13,7 @@ export declare class PacketPeer extends RefCounted{
   public get encode_buffer_max_size(): number {
     get_encode_buffer_max_size();
   }
-  public set encode_buffer_max_size(value: number): void {
+  public set encode_buffer_max_size(value): void {
     set_encode_buffer_max_size(value);
   }
 }

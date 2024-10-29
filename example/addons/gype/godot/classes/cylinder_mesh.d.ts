@@ -19,43 +19,43 @@ export declare class CylinderMesh extends PrimitiveMesh{
   public get top_radius(): number {
     get_top_radius();
   }
-  public set top_radius(value: number): void {
+  public set top_radius(value): void {
     set_top_radius(value);
   }
   public get bottom_radius(): number {
     get_bottom_radius();
   }
-  public set bottom_radius(value: number): void {
+  public set bottom_radius(value): void {
     set_bottom_radius(value);
   }
   public get height(): number {
     get_height();
   }
-  public set height(value: number): void {
+  public set height(value): void {
     set_height(value);
   }
   public get radial_segments(): number {
     get_radial_segments();
   }
-  public set radial_segments(value: number): void {
+  public set radial_segments(value): void {
     set_radial_segments(value);
   }
   public get rings(): number {
     get_rings();
   }
-  public set rings(value: number): void {
+  public set rings(value): void {
     set_rings(value);
   }
   public get cap_top(): boolean {
     is_cap_top();
   }
-  public set cap_top(value: boolean): void {
+  public set cap_top(value): void {
     set_cap_top(value);
   }
   public get cap_bottom(): boolean {
     is_cap_bottom();
   }
-  public set cap_bottom(value: boolean): void {
+  public set cap_bottom(value): void {
     set_cap_bottom(value);
   }
 }

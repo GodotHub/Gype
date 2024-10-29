@@ -1,6 +1,6 @@
 
-import { Node2D } from "@godot/classes/node2d";
 import { Shape2D } from "@godot/classes/shape2d";
+import { Node2D } from "@godot/classes/node2d";
 
 export declare class CollisionShape2D extends Node2D{
   public set_shape(_shape: Shape2D): void;
@@ -16,31 +16,31 @@ export declare class CollisionShape2D extends Node2D{
   public get shape(): Shape2D {
     get_shape();
   }
-  public set shape(value: Shape2D): void {
+  public set shape(value): void {
     set_shape(value);
   }
   public get disabled(): boolean {
     is_disabled();
   }
-  public set disabled(value: boolean): void {
+  public set disabled(value): void {
     set_disabled(value);
   }
   public get one_way_collision(): boolean {
     is_one_way_collision_enabled();
   }
-  public set one_way_collision(value: boolean): void {
+  public set one_way_collision(value): void {
     set_one_way_collision(value);
   }
   public get one_way_collision_margin(): number {
     get_one_way_collision_margin();
   }
-  public set one_way_collision_margin(value: number): void {
+  public set one_way_collision_margin(value): void {
     set_one_way_collision_margin(value);
   }
   public get debug_color(): Color {
     get_debug_color();
   }
-  public set debug_color(value: Color): void {
+  public set debug_color(value): void {
     set_debug_color(value);
   }
 }

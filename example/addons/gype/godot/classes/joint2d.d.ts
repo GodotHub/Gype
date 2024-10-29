@@ -14,25 +14,25 @@ export declare class Joint2D extends Node2D{
   public get node_a(): NodePath {
     get_node_a();
   }
-  public set node_a(value: NodePath): void {
+  public set node_a(value): void {
     set_node_a(value);
   }
   public get node_b(): NodePath {
     get_node_b();
   }
-  public set node_b(value: NodePath): void {
+  public set node_b(value): void {
     set_node_b(value);
   }
   public get bias(): number {
     get_bias();
   }
-  public set bias(value: number): void {
+  public set bias(value): void {
     set_bias(value);
   }
   public get disable_collision(): boolean {
     get_exclude_nodes_from_collision();
   }
-  public set disable_collision(value: boolean): void {
+  public set disable_collision(value): void {
     set_exclude_nodes_from_collision(value);
   }
 }

@@ -13,7 +13,7 @@ export declare class Shape2D extends Resource{
   public get custom_solver_bias(): number {
     get_custom_solver_bias();
   }
-  public set custom_solver_bias(value: number): void {
+  public set custom_solver_bias(value): void {
     set_custom_solver_bias(value);
   }
 }

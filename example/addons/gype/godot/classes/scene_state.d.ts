@@ -1,6 +1,6 @@
 
-import { PackedScene } from "@godot/classes/packed_scene";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { PackedScene } from "@godot/classes/packed_scene";
 
 export declare class SceneState extends RefCounted{
   public get_node_count(): number;
@@ -15,7 +15,7 @@ export declare class SceneState extends RefCounted{
   public get_node_index(_idx: number): number;
   public get_node_property_count(_idx: number): number;
   public get_node_property_name(_idx: number, _prop_idx: number): StringName;
-  public get_node_property_value(_idx: number, _prop_idx: number): Variant;
+  public get_node_property_value(_idx: number, _prop_idx: number): any;
   public get_connection_count(): number;
   public get_connection_source(_idx: number): NodePath;
   public get_connection_signal(_idx: number): StringName;

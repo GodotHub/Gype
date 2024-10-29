@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/audio_effect.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/audio_effect_instance.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void audio_effect_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,7 +33,7 @@ static JSValue audio_effect_class_constructor(JSContext *ctx, JSValueConst new_t
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_class);
+	JS_SetOpaque(obj, audio_effect_class);	
 	return obj;
 }
 
@@ -42,6 +44,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_effect_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AudioEffect::__class_id);
 	classes["AudioEffect"] = AudioEffect::__class_id;
 	class_id_list.insert(AudioEffect::__class_id);
@@ -63,7 +66,7 @@ static int js_audio_effect_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_audio_effect_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/resource';";
+	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -75,7 +78,7 @@ JSModuleDef *_js_init_audio_effect_module(JSContext *ctx, const char *module_nam
 }
 
 JSModuleDef *js_init_audio_effect_module(JSContext *ctx) {
-	return _js_init_audio_effect_module(ctx, "godot/classes/audio_effect");
+	return _js_init_audio_effect_module(ctx, "@godot/classes/audio_effect");
 }
 
 void register_audio_effect() {

@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/node3d.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/path_follow3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void path_follow3d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue path_follow3d_class_constructor(JSContext *ctx, JSValueConst new_
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, path_follow3d_class);
+	JS_SetOpaque(obj, path_follow3d_class);	
 	return obj;
 }
 static JSValue path_follow3d_class_set_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PathFollow3D::set_progress, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PathFollow3D::set_progress, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue path_follow3d_class_get_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue path_follow3d_class_get_progress(JSContext *ctx, JSValueConst thi
 };
 static JSValue path_follow3d_class_set_h_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PathFollow3D::set_h_offset, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PathFollow3D::set_h_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue path_follow3d_class_get_h_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,7 +55,7 @@ static JSValue path_follow3d_class_get_h_offset(JSContext *ctx, JSValueConst thi
 };
 static JSValue path_follow3d_class_set_v_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PathFollow3D::set_v_offset, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PathFollow3D::set_v_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue path_follow3d_class_get_v_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +64,7 @@ static JSValue path_follow3d_class_get_v_offset(JSContext *ctx, JSValueConst thi
 };
 static JSValue path_follow3d_class_set_progress_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PathFollow3D::set_progress_ratio, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PathFollow3D::set_progress_ratio, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue path_follow3d_class_get_progress_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,7 +73,7 @@ static JSValue path_follow3d_class_get_progress_ratio(JSContext *ctx, JSValueCon
 };
 static JSValue path_follow3d_class_set_rotation_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PathFollow3D::set_rotation_mode, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PathFollow3D::set_rotation_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue path_follow3d_class_get_rotation_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -80,7 +82,7 @@ static JSValue path_follow3d_class_get_rotation_mode(JSContext *ctx, JSValueCons
 };
 static JSValue path_follow3d_class_set_cubic_interpolation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PathFollow3D::set_cubic_interpolation, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PathFollow3D::set_cubic_interpolation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue path_follow3d_class_get_cubic_interpolation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -89,7 +91,7 @@ static JSValue path_follow3d_class_get_cubic_interpolation(JSContext *ctx, JSVal
 };
 static JSValue path_follow3d_class_set_use_model_front(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PathFollow3D::set_use_model_front, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PathFollow3D::set_use_model_front, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue path_follow3d_class_is_using_model_front(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -98,7 +100,7 @@ static JSValue path_follow3d_class_is_using_model_front(JSContext *ctx, JSValueC
 };
 static JSValue path_follow3d_class_set_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PathFollow3D::set_loop, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PathFollow3D::set_loop, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue path_follow3d_class_has_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -107,7 +109,7 @@ static JSValue path_follow3d_class_has_loop(JSContext *ctx, JSValueConst this_va
 };
 static JSValue path_follow3d_class_set_tilt_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PathFollow3D::set_tilt_enabled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PathFollow3D::set_tilt_enabled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue path_follow3d_class_is_tilt_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -142,69 +144,78 @@ static const JSCFunctionListEntry path_follow3d_class_static_funcs[] = {
 };
 
 void define_path_follow3d_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "progress"),
-			JS_NewCFunction(ctx, path_follow3d_class_get_progress, "get_progress", 0),
-			JS_NewCFunction(ctx, path_follow3d_class_set_progress, "set_progress", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "progress_ratio"),
-			JS_NewCFunction(ctx, path_follow3d_class_get_progress_ratio, "get_progress_ratio", 0),
-			JS_NewCFunction(ctx, path_follow3d_class_set_progress_ratio, "set_progress_ratio", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "h_offset"),
-			JS_NewCFunction(ctx, path_follow3d_class_get_h_offset, "get_h_offset", 0),
-			JS_NewCFunction(ctx, path_follow3d_class_set_h_offset, "set_h_offset", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "v_offset"),
-			JS_NewCFunction(ctx, path_follow3d_class_get_v_offset, "get_v_offset", 0),
-			JS_NewCFunction(ctx, path_follow3d_class_set_v_offset, "set_v_offset", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "rotation_mode"),
-			JS_NewCFunction(ctx, path_follow3d_class_get_rotation_mode, "get_rotation_mode", 0),
-			JS_NewCFunction(ctx, path_follow3d_class_set_rotation_mode, "set_rotation_mode", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "use_model_front"),
-			JS_NewCFunction(ctx, path_follow3d_class_is_using_model_front, "is_using_model_front", 0),
-			JS_NewCFunction(ctx, path_follow3d_class_set_use_model_front, "set_use_model_front", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "cubic_interp"),
-			JS_NewCFunction(ctx, path_follow3d_class_get_cubic_interpolation, "get_cubic_interpolation", 0),
-			JS_NewCFunction(ctx, path_follow3d_class_set_cubic_interpolation, "set_cubic_interpolation", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "loop"),
-			JS_NewCFunction(ctx, path_follow3d_class_has_loop, "has_loop", 0),
-			JS_NewCFunction(ctx, path_follow3d_class_set_loop, "set_loop", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "tilt_enabled"),
-			JS_NewCFunction(ctx, path_follow3d_class_is_tilt_enabled, "is_tilt_enabled", 0),
-			JS_NewCFunction(ctx, path_follow3d_class_set_tilt_enabled, "set_tilt_enabled", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "progress"),
+        JS_NewCFunction(ctx, path_follow3d_class_get_progress, "get_progress", 0),
+        JS_NewCFunction(ctx, path_follow3d_class_set_progress, "set_progress", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "progress_ratio"),
+        JS_NewCFunction(ctx, path_follow3d_class_get_progress_ratio, "get_progress_ratio", 0),
+        JS_NewCFunction(ctx, path_follow3d_class_set_progress_ratio, "set_progress_ratio", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "h_offset"),
+        JS_NewCFunction(ctx, path_follow3d_class_get_h_offset, "get_h_offset", 0),
+        JS_NewCFunction(ctx, path_follow3d_class_set_h_offset, "set_h_offset", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "v_offset"),
+        JS_NewCFunction(ctx, path_follow3d_class_get_v_offset, "get_v_offset", 0),
+        JS_NewCFunction(ctx, path_follow3d_class_set_v_offset, "set_v_offset", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "rotation_mode"),
+        JS_NewCFunction(ctx, path_follow3d_class_get_rotation_mode, "get_rotation_mode", 0),
+        JS_NewCFunction(ctx, path_follow3d_class_set_rotation_mode, "set_rotation_mode", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "use_model_front"),
+        JS_NewCFunction(ctx, path_follow3d_class_is_using_model_front, "is_using_model_front", 0),
+        JS_NewCFunction(ctx, path_follow3d_class_set_use_model_front, "set_use_model_front", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "cubic_interp"),
+        JS_NewCFunction(ctx, path_follow3d_class_get_cubic_interpolation, "get_cubic_interpolation", 0),
+        JS_NewCFunction(ctx, path_follow3d_class_set_cubic_interpolation, "set_cubic_interpolation", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "loop"),
+        JS_NewCFunction(ctx, path_follow3d_class_has_loop, "has_loop", 0),
+        JS_NewCFunction(ctx, path_follow3d_class_set_loop, "set_loop", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "tilt_enabled"),
+        JS_NewCFunction(ctx, path_follow3d_class_is_tilt_enabled, "is_tilt_enabled", 0),
+        JS_NewCFunction(ctx, path_follow3d_class_set_tilt_enabled, "set_tilt_enabled", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -218,6 +229,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_path_follow3d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&PathFollow3D::__class_id);
 	classes["PathFollow3D"] = PathFollow3D::__class_id;
 	class_id_list.insert(PathFollow3D::__class_id);
@@ -241,7 +253,7 @@ static int js_path_follow3d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_path_follow3d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/node3d';";
+	const char *code = "import * as _ from '@godot/classes/node3d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -253,7 +265,7 @@ JSModuleDef *_js_init_path_follow3d_module(JSContext *ctx, const char *module_na
 }
 
 JSModuleDef *js_init_path_follow3d_module(JSContext *ctx) {
-	return _js_init_path_follow3d_module(ctx, "godot/classes/path_follow3d");
+	return _js_init_path_follow3d_module(ctx, "@godot/classes/path_follow3d");
 }
 
 void register_path_follow3d() {

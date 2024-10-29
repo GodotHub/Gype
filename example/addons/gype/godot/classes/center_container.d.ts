@@ -7,7 +7,7 @@ export declare class CenterContainer extends Container{
   public get use_top_left(): boolean {
     is_using_top_left();
   }
-  public set use_top_left(value: boolean): void {
+  public set use_top_left(value): void {
     set_use_top_left(value);
   }
 }

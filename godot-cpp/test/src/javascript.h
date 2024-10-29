@@ -8,23 +8,23 @@
 
 namespace godot {
 
-class JavaScriptInstance;
-class JavaScript;
+class TypeScriptInstance;
+class TypeScript;
 class Variant;
 class Object;
 class ScriptExtension;
 
-class JavaScript : public ScriptExtension {
-	GDCLASS(JavaScript, ScriptExtension)
+class TypeScript : public ScriptExtension {
+	GDCLASS(TypeScript, ScriptExtension)
 
-	friend class JavaScriptLanguage;
-	friend class JavaScriptSaver;
-	friend class JavaScriptInstance;
+	friend class TypeScriptLanguage;
+	friend class TypeScriptSaver;
+	friend class TypeScriptInstance;
 
 	String source_code;
 	String origin_path;
-	JavaScript *baseScript = nullptr;
-	HashMap<const Object *, const JavaScriptInstance *> instances;
+	TypeScript *baseScript = nullptr;
+	HashMap<const Object *, const TypeScriptInstance *> instances;
 
 public:
 	bool _editor_can_reload_from_file();
@@ -64,8 +64,8 @@ public:
 	bool _is_placeholder_fallback_enabled() const;
 	Variant _get_rpc_config() const;
 
-	JavaScript();
-	JavaScript(const String &origin_path) :
+	TypeScript();
+	TypeScript(const String &origin_path) :
 			origin_path(origin_path) {};
 
 protected:

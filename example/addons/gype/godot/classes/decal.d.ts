@@ -30,91 +30,91 @@ export declare class Decal extends VisualInstance3D{
   public get size(): Vector3 {
     get_size();
   }
-  public set size(value: Vector3): void {
+  public set size(value): void {
     set_size(value);
   }
   public get texture_albedo(): Texture2D {
     get_texture();
   }
-  public set texture_albedo(value: Texture2D): void {
+  public set texture_albedo(value): void {
     set_texture(value);
   }
   public get texture_normal(): Texture2D {
     get_texture();
   }
-  public set texture_normal(value: Texture2D): void {
+  public set texture_normal(value): void {
     set_texture(value);
   }
   public get texture_orm(): Texture2D {
     get_texture();
   }
-  public set texture_orm(value: Texture2D): void {
+  public set texture_orm(value): void {
     set_texture(value);
   }
   public get texture_emission(): Texture2D {
     get_texture();
   }
-  public set texture_emission(value: Texture2D): void {
+  public set texture_emission(value): void {
     set_texture(value);
   }
   public get emission_energy(): number {
     get_emission_energy();
   }
-  public set emission_energy(value: number): void {
+  public set emission_energy(value): void {
     set_emission_energy(value);
   }
   public get modulate(): Color {
     get_modulate();
   }
-  public set modulate(value: Color): void {
+  public set modulate(value): void {
     set_modulate(value);
   }
   public get albedo_mix(): number {
     get_albedo_mix();
   }
-  public set albedo_mix(value: number): void {
+  public set albedo_mix(value): void {
     set_albedo_mix(value);
   }
   public get normal_fade(): number {
     get_normal_fade();
   }
-  public set normal_fade(value: number): void {
+  public set normal_fade(value): void {
     set_normal_fade(value);
   }
   public get upper_fade(): number {
     get_upper_fade();
   }
-  public set upper_fade(value: number): void {
+  public set upper_fade(value): void {
     set_upper_fade(value);
   }
   public get lower_fade(): number {
     get_lower_fade();
   }
-  public set lower_fade(value: number): void {
+  public set lower_fade(value): void {
     set_lower_fade(value);
   }
   public get distance_fade_enabled(): boolean {
     is_distance_fade_enabled();
   }
-  public set distance_fade_enabled(value: boolean): void {
+  public set distance_fade_enabled(value): void {
     set_enable_distance_fade(value);
   }
   public get distance_fade_begin(): number {
     get_distance_fade_begin();
   }
-  public set distance_fade_begin(value: number): void {
+  public set distance_fade_begin(value): void {
     set_distance_fade_begin(value);
   }
   public get distance_fade_length(): number {
     get_distance_fade_length();
   }
-  public set distance_fade_length(value: number): void {
+  public set distance_fade_length(value): void {
     set_distance_fade_length(value);
   }
   public get cull_mask(): number {
     get_cull_mask();
   }
-  public set cull_mask(value: number): void {
+  public set cull_mask(value): void {
     set_cull_mask(value);
   }
   static DecalTexture = {

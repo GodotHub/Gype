@@ -13,25 +13,25 @@ export declare class DampedSpringJoint2D extends Joint2D{
   public get length(): number {
     get_length();
   }
-  public set length(value: number): void {
+  public set length(value): void {
     set_length(value);
   }
   public get rest_length(): number {
     get_rest_length();
   }
-  public set rest_length(value: number): void {
+  public set rest_length(value): void {
     set_rest_length(value);
   }
   public get stiffness(): number {
     get_stiffness();
   }
-  public set stiffness(value: number): void {
+  public set stiffness(value): void {
     set_stiffness(value);
   }
   public get damping(): number {
     get_damping();
   }
-  public set damping(value: number): void {
+  public set damping(value): void {
     set_damping(value);
   }
 }

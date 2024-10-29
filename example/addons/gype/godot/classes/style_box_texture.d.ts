@@ -24,85 +24,85 @@ export declare class StyleBoxTexture extends StyleBox{
   public get texture(): Texture2D {
     get_texture();
   }
-  public set texture(value: Texture2D): void {
+  public set texture(value): void {
     set_texture(value);
   }
   public get texture_margin_left(): number {
     get_texture_margin();
   }
-  public set texture_margin_left(value: number): void {
+  public set texture_margin_left(value): void {
     set_texture_margin(value);
   }
   public get texture_margin_top(): number {
     get_texture_margin();
   }
-  public set texture_margin_top(value: number): void {
+  public set texture_margin_top(value): void {
     set_texture_margin(value);
   }
   public get texture_margin_right(): number {
     get_texture_margin();
   }
-  public set texture_margin_right(value: number): void {
+  public set texture_margin_right(value): void {
     set_texture_margin(value);
   }
   public get texture_margin_bottom(): number {
     get_texture_margin();
   }
-  public set texture_margin_bottom(value: number): void {
+  public set texture_margin_bottom(value): void {
     set_texture_margin(value);
   }
   public get expand_margin_left(): number {
     get_expand_margin();
   }
-  public set expand_margin_left(value: number): void {
+  public set expand_margin_left(value): void {
     set_expand_margin(value);
   }
   public get expand_margin_top(): number {
     get_expand_margin();
   }
-  public set expand_margin_top(value: number): void {
+  public set expand_margin_top(value): void {
     set_expand_margin(value);
   }
   public get expand_margin_right(): number {
     get_expand_margin();
   }
-  public set expand_margin_right(value: number): void {
+  public set expand_margin_right(value): void {
     set_expand_margin(value);
   }
   public get expand_margin_bottom(): number {
     get_expand_margin();
   }
-  public set expand_margin_bottom(value: number): void {
+  public set expand_margin_bottom(value): void {
     set_expand_margin(value);
   }
   public get axis_stretch_horizontal(): number {
     get_h_axis_stretch_mode();
   }
-  public set axis_stretch_horizontal(value: number): void {
+  public set axis_stretch_horizontal(value): void {
     set_h_axis_stretch_mode(value);
   }
   public get axis_stretch_vertical(): number {
     get_v_axis_stretch_mode();
   }
-  public set axis_stretch_vertical(value: number): void {
+  public set axis_stretch_vertical(value): void {
     set_v_axis_stretch_mode(value);
   }
   public get region_rect(): Rect2 {
     get_region_rect();
   }
-  public set region_rect(value: Rect2): void {
+  public set region_rect(value): void {
     set_region_rect(value);
   }
   public get modulate_color(): Color {
     get_modulate();
   }
-  public set modulate_color(value: Color): void {
+  public set modulate_color(value): void {
     set_modulate(value);
   }
   public get draw_center(): boolean {
     is_draw_center_enabled();
   }
-  public set draw_center(value: boolean): void {
+  public set draw_center(value): void {
     set_draw_center(value);
   }
   static AxisStretchMode = {

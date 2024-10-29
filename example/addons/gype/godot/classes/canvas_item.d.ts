@@ -1,14 +1,14 @@
 
+import { Mesh } from "@godot/classes/mesh";
 import { Texture2D } from "@godot/classes/texture2d";
 import { World2D } from "@godot/classes/world2d";
-import { MultiMesh } from "@godot/classes/multi_mesh";
-import { Node } from "@godot/classes/node";
 import { Material } from "@godot/classes/material";
 import { StyleBox } from "@godot/classes/style_box";
+import { Node } from "@godot/classes/node";
+import { Font } from "@godot/classes/font";
+import { MultiMesh } from "@godot/classes/multi_mesh";
 import { InputEvent } from "@godot/classes/input_event";
 import { CanvasLayer } from "@godot/classes/canvas_layer";
-import { Font } from "@godot/classes/font";
-import { Mesh } from "@godot/classes/mesh";
 
 export declare class CanvasItem extends Node{
   public _draw(): void;
@@ -102,91 +102,91 @@ export declare class CanvasItem extends Node{
   public get visible(): boolean {
     is_visible();
   }
-  public set visible(value: boolean): void {
+  public set visible(value): void {
     set_visible(value);
   }
   public get modulate(): Color {
     get_modulate();
   }
-  public set modulate(value: Color): void {
+  public set modulate(value): void {
     set_modulate(value);
   }
   public get self_modulate(): Color {
     get_self_modulate();
   }
-  public set self_modulate(value: Color): void {
+  public set self_modulate(value): void {
     set_self_modulate(value);
   }
   public get show_behind_parent(): boolean {
     is_draw_behind_parent_enabled();
   }
-  public set show_behind_parent(value: boolean): void {
+  public set show_behind_parent(value): void {
     set_draw_behind_parent(value);
   }
   public get top_level(): boolean {
     is_set_as_top_level();
   }
-  public set top_level(value: boolean): void {
+  public set top_level(value): void {
     set_as_top_level(value);
   }
   public get clip_children(): number {
     get_clip_children_mode();
   }
-  public set clip_children(value: number): void {
+  public set clip_children(value): void {
     set_clip_children_mode(value);
   }
   public get light_mask(): number {
     get_light_mask();
   }
-  public set light_mask(value: number): void {
+  public set light_mask(value): void {
     set_light_mask(value);
   }
   public get visibility_layer(): number {
     get_visibility_layer();
   }
-  public set visibility_layer(value: number): void {
+  public set visibility_layer(value): void {
     set_visibility_layer(value);
   }
   public get z_index(): number {
     get_z_index();
   }
-  public set z_index(value: number): void {
+  public set z_index(value): void {
     set_z_index(value);
   }
   public get z_as_relative(): boolean {
     is_z_relative();
   }
-  public set z_as_relative(value: boolean): void {
+  public set z_as_relative(value): void {
     set_z_as_relative(value);
   }
   public get y_sort_enabled(): boolean {
     is_y_sort_enabled();
   }
-  public set y_sort_enabled(value: boolean): void {
+  public set y_sort_enabled(value): void {
     set_y_sort_enabled(value);
   }
   public get texture_filter(): number {
     get_texture_filter();
   }
-  public set texture_filter(value: number): void {
+  public set texture_filter(value): void {
     set_texture_filter(value);
   }
   public get texture_repeat(): number {
     get_texture_repeat();
   }
-  public set texture_repeat(value: number): void {
+  public set texture_repeat(value): void {
     set_texture_repeat(value);
   }
-  public get material(): CanvasItemMaterial,ShaderMaterial {
+  public get material(): CanvasItemMaterial {
     get_material();
   }
-  public set material(value: CanvasItemMaterial,ShaderMaterial): void {
+  public set material(value): void {
     set_material(value);
   }
   public get use_parent_material(): boolean {
     get_use_parent_material();
   }
-  public set use_parent_material(value: boolean): void {
+  public set use_parent_material(value): void {
     set_use_parent_material(value);
   }
   static TextureFilter = {

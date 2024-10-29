@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/compositor.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/compositor_effect.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/compositor.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void compositor_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,12 +33,12 @@ static JSValue compositor_class_constructor(JSContext *ctx, JSValueConst new_tar
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, compositor_class);
+	JS_SetOpaque(obj, compositor_class);	
 	return obj;
 }
 static JSValue compositor_class_set_compositor_effects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Compositor::set_compositor_effects, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Compositor::set_compositor_effects, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue compositor_class_get_compositor_effects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -49,19 +51,21 @@ static const JSCFunctionListEntry compositor_class_proto_funcs[] = {
 };
 
 void define_compositor_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "compositor_effects"),
-			JS_NewCFunction(ctx, compositor_class_get_compositor_effects, "get_compositor_effects", 0),
-			JS_NewCFunction(ctx, compositor_class_set_compositor_effects, "set_compositor_effects", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "compositor_effects"),
+        JS_NewCFunction(ctx, compositor_class_get_compositor_effects, "get_compositor_effects", 0),
+        JS_NewCFunction(ctx, compositor_class_set_compositor_effects, "set_compositor_effects", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_compositor_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Compositor::__class_id);
 	classes["Compositor"] = Compositor::__class_id;
 	class_id_list.insert(Compositor::__class_id);
@@ -84,7 +88,7 @@ static int js_compositor_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_compositor_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/resource';";
+	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -96,7 +100,7 @@ JSModuleDef *_js_init_compositor_module(JSContext *ctx, const char *module_name)
 }
 
 JSModuleDef *js_init_compositor_module(JSContext *ctx) {
-	return _js_init_compositor_module(ctx, "godot/classes/compositor");
+	return _js_init_compositor_module(ctx, "@godot/classes/compositor");
 }
 
 void register_compositor() {

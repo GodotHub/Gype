@@ -33,85 +33,85 @@ export declare class ReflectionProbe extends VisualInstance3D{
   public get update_mode(): number {
     get_update_mode();
   }
-  public set update_mode(value: number): void {
+  public set update_mode(value): void {
     set_update_mode(value);
   }
   public get intensity(): number {
     get_intensity();
   }
-  public set intensity(value: number): void {
+  public set intensity(value): void {
     set_intensity(value);
   }
   public get max_distance(): number {
     get_max_distance();
   }
-  public set max_distance(value: number): void {
+  public set max_distance(value): void {
     set_max_distance(value);
   }
   public get size(): Vector3 {
     get_size();
   }
-  public set size(value: Vector3): void {
+  public set size(value): void {
     set_size(value);
   }
   public get origin_offset(): Vector3 {
     get_origin_offset();
   }
-  public set origin_offset(value: Vector3): void {
+  public set origin_offset(value): void {
     set_origin_offset(value);
   }
   public get box_projection(): boolean {
     is_box_projection_enabled();
   }
-  public set box_projection(value: boolean): void {
+  public set box_projection(value): void {
     set_enable_box_projection(value);
   }
   public get interior(): boolean {
     is_set_as_interior();
   }
-  public set interior(value: boolean): void {
+  public set interior(value): void {
     set_as_interior(value);
   }
   public get enable_shadows(): boolean {
     are_shadows_enabled();
   }
-  public set enable_shadows(value: boolean): void {
+  public set enable_shadows(value): void {
     set_enable_shadows(value);
   }
   public get cull_mask(): number {
     get_cull_mask();
   }
-  public set cull_mask(value: number): void {
+  public set cull_mask(value): void {
     set_cull_mask(value);
   }
   public get reflection_mask(): number {
     get_reflection_mask();
   }
-  public set reflection_mask(value: number): void {
+  public set reflection_mask(value): void {
     set_reflection_mask(value);
   }
   public get mesh_lod_threshold(): number {
     get_mesh_lod_threshold();
   }
-  public set mesh_lod_threshold(value: number): void {
+  public set mesh_lod_threshold(value): void {
     set_mesh_lod_threshold(value);
   }
   public get ambient_mode(): number {
     get_ambient_mode();
   }
-  public set ambient_mode(value: number): void {
+  public set ambient_mode(value): void {
     set_ambient_mode(value);
   }
   public get ambient_color(): Color {
     get_ambient_color();
   }
-  public set ambient_color(value: Color): void {
+  public set ambient_color(value): void {
     set_ambient_color(value);
   }
   public get ambient_color_energy(): number {
     get_ambient_color_energy();
   }
-  public set ambient_color_energy(value: number): void {
+  public set ambient_color_energy(value): void {
     set_ambient_color_energy(value);
   }
   static UpdateMode = {

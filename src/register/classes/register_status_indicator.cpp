@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/node.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/status_indicator.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void status_indicator_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,12 +33,12 @@ static JSValue status_indicator_class_constructor(JSContext *ctx, JSValueConst n
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, status_indicator_class);
+	JS_SetOpaque(obj, status_indicator_class);	
 	return obj;
 }
 static JSValue status_indicator_class_set_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StatusIndicator::set_tooltip, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StatusIndicator::set_tooltip, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue status_indicator_class_get_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -45,7 +47,7 @@ static JSValue status_indicator_class_get_tooltip(JSContext *ctx, JSValueConst t
 };
 static JSValue status_indicator_class_set_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StatusIndicator::set_icon, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StatusIndicator::set_icon, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue status_indicator_class_get_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -54,7 +56,7 @@ static JSValue status_indicator_class_get_icon(JSContext *ctx, JSValueConst this
 };
 static JSValue status_indicator_class_set_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StatusIndicator::set_visible, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StatusIndicator::set_visible, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue status_indicator_class_is_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -63,7 +65,7 @@ static JSValue status_indicator_class_is_visible(JSContext *ctx, JSValueConst th
 };
 static JSValue status_indicator_class_set_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StatusIndicator::set_menu, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StatusIndicator::set_menu, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue status_indicator_class_get_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -87,40 +89,45 @@ static const JSCFunctionListEntry status_indicator_class_proto_funcs[] = {
 };
 
 void define_status_indicator_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "tooltip"),
-			JS_NewCFunction(ctx, status_indicator_class_get_tooltip, "get_tooltip", 0),
-			JS_NewCFunction(ctx, status_indicator_class_set_tooltip, "set_tooltip", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "icon"),
-			JS_NewCFunction(ctx, status_indicator_class_get_icon, "get_icon", 0),
-			JS_NewCFunction(ctx, status_indicator_class_set_icon, "set_icon", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "menu"),
-			JS_NewCFunction(ctx, status_indicator_class_get_menu, "get_menu", 0),
-			JS_NewCFunction(ctx, status_indicator_class_set_menu, "set_menu", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "visible"),
-			JS_NewCFunction(ctx, status_indicator_class_is_visible, "is_visible", 0),
-			JS_NewCFunction(ctx, status_indicator_class_set_visible, "set_visible", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "tooltip"),
+        JS_NewCFunction(ctx, status_indicator_class_get_tooltip, "get_tooltip", 0),
+        JS_NewCFunction(ctx, status_indicator_class_set_tooltip, "set_tooltip", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "icon"),
+        JS_NewCFunction(ctx, status_indicator_class_get_icon, "get_icon", 0),
+        JS_NewCFunction(ctx, status_indicator_class_set_icon, "set_icon", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "menu"),
+        JS_NewCFunction(ctx, status_indicator_class_get_menu, "get_menu", 0),
+        JS_NewCFunction(ctx, status_indicator_class_set_menu, "set_menu", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "visible"),
+        JS_NewCFunction(ctx, status_indicator_class_is_visible, "is_visible", 0),
+        JS_NewCFunction(ctx, status_indicator_class_set_visible, "set_visible", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_status_indicator_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&StatusIndicator::__class_id);
 	classes["StatusIndicator"] = StatusIndicator::__class_id;
 	class_id_list.insert(StatusIndicator::__class_id);
@@ -143,7 +150,7 @@ static int js_status_indicator_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_status_indicator_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/node';";
+	const char *code = "import * as _ from '@godot/classes/node';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -155,7 +162,7 @@ JSModuleDef *_js_init_status_indicator_module(JSContext *ctx, const char *module
 }
 
 JSModuleDef *js_init_status_indicator_module(JSContext *ctx) {
-	return _js_init_status_indicator_module(ctx, "godot/classes/status_indicator");
+	return _js_init_status_indicator_module(ctx, "@godot/classes/status_indicator");
 }
 
 void register_status_indicator() {

@@ -7,7 +7,7 @@ export declare class VisualShaderNodeIntFunc extends VisualShaderNode{
   public get function(): number {
     get_function();
   }
-  public set function(value: number): void {
+  public set function(value): void {
     set_function(value);
   }
   static Function = {

@@ -1,7 +1,7 @@
 
-import { BitMap } from "@godot/classes/bit_map";
 import { Texture2D } from "@godot/classes/texture2d";
 import { BaseButton } from "@godot/classes/base_button";
+import { BitMap } from "@godot/classes/bit_map";
 
 export declare class TextureButton extends BaseButton{
   public set_texture_normal(_texture: Texture2D): void;
@@ -27,61 +27,61 @@ export declare class TextureButton extends BaseButton{
   public get texture_normal(): Texture2D {
     get_texture_normal();
   }
-  public set texture_normal(value: Texture2D): void {
+  public set texture_normal(value): void {
     set_texture_normal(value);
   }
   public get texture_pressed(): Texture2D {
     get_texture_pressed();
   }
-  public set texture_pressed(value: Texture2D): void {
+  public set texture_pressed(value): void {
     set_texture_pressed(value);
   }
   public get texture_hover(): Texture2D {
     get_texture_hover();
   }
-  public set texture_hover(value: Texture2D): void {
+  public set texture_hover(value): void {
     set_texture_hover(value);
   }
   public get texture_disabled(): Texture2D {
     get_texture_disabled();
   }
-  public set texture_disabled(value: Texture2D): void {
+  public set texture_disabled(value): void {
     set_texture_disabled(value);
   }
   public get texture_focused(): Texture2D {
     get_texture_focused();
   }
-  public set texture_focused(value: Texture2D): void {
+  public set texture_focused(value): void {
     set_texture_focused(value);
   }
   public get texture_click_mask(): BitMap {
     get_click_mask();
   }
-  public set texture_click_mask(value: BitMap): void {
+  public set texture_click_mask(value): void {
     set_click_mask(value);
   }
   public get ignore_texture_size(): boolean {
     get_ignore_texture_size();
   }
-  public set ignore_texture_size(value: boolean): void {
+  public set ignore_texture_size(value): void {
     set_ignore_texture_size(value);
   }
   public get stretch_mode(): number {
     get_stretch_mode();
   }
-  public set stretch_mode(value: number): void {
+  public set stretch_mode(value): void {
     set_stretch_mode(value);
   }
   public get flip_h(): boolean {
     is_flipped_h();
   }
-  public set flip_h(value: boolean): void {
+  public set flip_h(value): void {
     set_flip_h(value);
   }
   public get flip_v(): boolean {
     is_flipped_v();
   }
-  public set flip_v(value: boolean): void {
+  public set flip_v(value): void {
     set_flip_v(value);
   }
   static StretchMode = {

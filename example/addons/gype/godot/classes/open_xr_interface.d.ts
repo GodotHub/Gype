@@ -34,37 +34,37 @@ export declare class OpenXRInterface extends XRInterface{
   public get display_refresh_rate(): number {
     get_display_refresh_rate();
   }
-  public set display_refresh_rate(value: number): void {
+  public set display_refresh_rate(value): void {
     set_display_refresh_rate(value);
   }
   public get render_target_size_multiplier(): number {
     get_render_target_size_multiplier();
   }
-  public set render_target_size_multiplier(value: number): void {
+  public set render_target_size_multiplier(value): void {
     set_render_target_size_multiplier(value);
   }
   public get foveation_level(): number {
     get_foveation_level();
   }
-  public set foveation_level(value: number): void {
+  public set foveation_level(value): void {
     set_foveation_level(value);
   }
   public get foveation_dynamic(): boolean {
     get_foveation_dynamic();
   }
-  public set foveation_dynamic(value: boolean): void {
+  public set foveation_dynamic(value): void {
     set_foveation_dynamic(value);
   }
   public get vrs_min_radius(): number {
     get_vrs_min_radius();
   }
-  public set vrs_min_radius(value: number): void {
+  public set vrs_min_radius(value): void {
     set_vrs_min_radius(value);
   }
   public get vrs_strength(): number {
     get_vrs_strength();
   }
-  public set vrs_strength(value: number): void {
+  public set vrs_strength(value): void {
     set_vrs_strength(value);
   }
   static Hand = {

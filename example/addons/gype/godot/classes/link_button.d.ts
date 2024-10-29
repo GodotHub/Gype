@@ -19,43 +19,43 @@ export declare class LinkButton extends BaseButton{
   public get text(): String {
     get_text();
   }
-  public set text(value: String): void {
+  public set text(value): void {
     set_text(value);
   }
   public get underline(): number {
     get_underline_mode();
   }
-  public set underline(value: number): void {
+  public set underline(value): void {
     set_underline_mode(value);
   }
   public get uri(): String {
     get_uri();
   }
-  public set uri(value: String): void {
+  public set uri(value): void {
     set_uri(value);
   }
   public get text_direction(): number {
     get_text_direction();
   }
-  public set text_direction(value: number): void {
+  public set text_direction(value): void {
     set_text_direction(value);
   }
   public get language(): String {
     get_language();
   }
-  public set language(value: String): void {
+  public set language(value): void {
     set_language(value);
   }
   public get structured_text_bidi_override(): number {
     get_structured_text_bidi_override();
   }
-  public set structured_text_bidi_override(value: number): void {
+  public set structured_text_bidi_override(value): void {
     set_structured_text_bidi_override(value);
   }
-  public get structured_text_bidi_override_options(): Array {
+  public get structured_text_bidi_override_options(): GDArray {
     get_structured_text_bidi_override_options();
   }
-  public set structured_text_bidi_override_options(value: Array): void {
+  public set structured_text_bidi_override_options(value): void {
     set_structured_text_bidi_override_options(value);
   }
   static UnderlineMode = {

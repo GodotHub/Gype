@@ -1,6 +1,6 @@
 
-import { Resource } from "@godot/classes/resource";
 import { Object } from "@godot/classes/object";
+import { Resource } from "@godot/classes/resource";
 
 export declare class Script extends Resource{
   public can_instantiate(): boolean;
@@ -13,17 +13,17 @@ export declare class Script extends Resource{
   public get_instance_base_type(): StringName;
   public get_global_name(): StringName;
   public has_script_signal(_signal_name: StringName): boolean;
-  public get_script_property_list(): Array;
-  public get_script_method_list(): Array;
-  public get_script_signal_list(): Array;
+  public get_script_property_list(): GDArray;
+  public get_script_method_list(): GDArray;
+  public get_script_signal_list(): GDArray;
   public get_script_constant_map(): Dictionary;
-  public get_property_default_value(_property: StringName): Variant;
+  public get_property_default_value(_property: StringName): any;
   public is_tool(): boolean;
   public is_abstract(): boolean;
   public get source_code(): String {
     get_source_code();
   }
-  public set source_code(value: String): void {
+  public set source_code(value): void {
     set_source_code(value);
   }
 }

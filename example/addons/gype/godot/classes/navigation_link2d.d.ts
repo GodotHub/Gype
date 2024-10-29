@@ -26,43 +26,43 @@ export declare class NavigationLink2D extends Node2D{
   public get enabled(): boolean {
     is_enabled();
   }
-  public set enabled(value: boolean): void {
+  public set enabled(value): void {
     set_enabled(value);
   }
   public get bidirectional(): boolean {
     is_bidirectional();
   }
-  public set bidirectional(value: boolean): void {
+  public set bidirectional(value): void {
     set_bidirectional(value);
   }
   public get navigation_layers(): number {
     get_navigation_layers();
   }
-  public set navigation_layers(value: number): void {
+  public set navigation_layers(value): void {
     set_navigation_layers(value);
   }
   public get start_position(): Vector2 {
     get_start_position();
   }
-  public set start_position(value: Vector2): void {
+  public set start_position(value): void {
     set_start_position(value);
   }
   public get end_position(): Vector2 {
     get_end_position();
   }
-  public set end_position(value: Vector2): void {
+  public set end_position(value): void {
     set_end_position(value);
   }
   public get enter_cost(): number {
     get_enter_cost();
   }
-  public set enter_cost(value: number): void {
+  public set enter_cost(value): void {
     set_enter_cost(value);
   }
   public get travel_cost(): number {
     get_travel_cost();
   }
-  public set travel_cost(value: number): void {
+  public set travel_cost(value): void {
     set_travel_cost(value);
   }
 }

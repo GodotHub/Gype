@@ -1,13 +1,13 @@
 
-import { NavigationMeshSourceGeometryData3D } from "@godot/classes/navigation_mesh_source_geometry_data3d";
-import { Node } from "@godot/classes/node";
 import { NavigationPathQueryParameters3D } from "@godot/classes/navigation_path_query_parameters3d";
 import { NavigationPathQueryResult3D } from "@godot/classes/navigation_path_query_result3d";
-import { Object } from "@godot/classes/object";
 import { NavigationMesh } from "@godot/classes/navigation_mesh";
+import { NavigationMeshSourceGeometryData3D } from "@godot/classes/navigation_mesh_source_geometry_data3d";
+import { Object } from "@godot/classes/object";
+import { Node } from "@godot/classes/node";
 
 export declare class NavigationServer3D extends Object{
-  public get_maps(): Array;
+  public get_maps(): GDArray;
   public map_create(): RID;
   public map_set_active(_map: RID, _active: boolean): void;
   public map_is_active(_map: RID): boolean;
@@ -30,10 +30,10 @@ export declare class NavigationServer3D extends Object{
   public map_get_closest_point(_map: RID, _to_point: Vector3): Vector3;
   public map_get_closest_point_normal(_map: RID, _to_point: Vector3): Vector3;
   public map_get_closest_point_owner(_map: RID, _to_point: Vector3): RID;
-  public map_get_links(_map: RID): Array;
-  public map_get_regions(_map: RID): Array;
-  public map_get_agents(_map: RID): Array;
-  public map_get_obstacles(_map: RID): Array;
+  public map_get_links(_map: RID): GDArray;
+  public map_get_regions(_map: RID): GDArray;
+  public map_get_agents(_map: RID): GDArray;
+  public map_get_obstacles(_map: RID): GDArray;
   public map_force_update(_map: RID): void;
   public map_get_iteration_id(_map: RID): number;
   public map_get_random_point(_map: RID, _navigation_layers: number, _uniformly: boolean): Vector3;

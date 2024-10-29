@@ -7,7 +7,7 @@ export declare class VisibleOnScreenNotifier3D extends VisualInstance3D{
   public get aabb(): AABB {
     get_aabb();
   }
-  public set aabb(value: AABB): void {
+  public set aabb(value): void {
     set_aabb(value);
   }
 }

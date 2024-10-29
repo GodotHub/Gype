@@ -25,61 +25,61 @@ export declare class MobileVRInterface extends XRInterface{
   public get eye_height(): number {
     get_eye_height();
   }
-  public set eye_height(value: number): void {
+  public set eye_height(value): void {
     set_eye_height(value);
   }
   public get iod(): number {
     get_iod();
   }
-  public set iod(value: number): void {
+  public set iod(value): void {
     set_iod(value);
   }
   public get display_width(): number {
     get_display_width();
   }
-  public set display_width(value: number): void {
+  public set display_width(value): void {
     set_display_width(value);
   }
   public get display_to_lens(): number {
     get_display_to_lens();
   }
-  public set display_to_lens(value: number): void {
+  public set display_to_lens(value): void {
     set_display_to_lens(value);
   }
   public get offset_rect(): Rect2 {
     get_offset_rect();
   }
-  public set offset_rect(value: Rect2): void {
+  public set offset_rect(value): void {
     set_offset_rect(value);
   }
   public get oversample(): number {
     get_oversample();
   }
-  public set oversample(value: number): void {
+  public set oversample(value): void {
     set_oversample(value);
   }
   public get k1(): number {
     get_k1();
   }
-  public set k1(value: number): void {
+  public set k1(value): void {
     set_k1(value);
   }
   public get k2(): number {
     get_k2();
   }
-  public set k2(value: number): void {
+  public set k2(value): void {
     set_k2(value);
   }
   public get vrs_min_radius(): number {
     get_vrs_min_radius();
   }
-  public set vrs_min_radius(value: number): void {
+  public set vrs_min_radius(value): void {
     set_vrs_min_radius(value);
   }
   public get vrs_strength(): number {
     get_vrs_strength();
   }
-  public set vrs_strength(value: number): void {
+  public set vrs_strength(value): void {
     set_vrs_strength(value);
   }
 }

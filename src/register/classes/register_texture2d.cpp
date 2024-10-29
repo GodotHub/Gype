@@ -1,19 +1,21 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/resource.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void texture2d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -32,7 +34,7 @@ static JSValue texture2d_class_constructor(JSContext *ctx, JSValueConst new_targ
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, texture2d_class);
+	JS_SetOpaque(obj, texture2d_class);	
 	return obj;
 }
 static JSValue texture2d_class_get_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,17 +55,17 @@ static JSValue texture2d_class_has_alpha(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue texture2d_class_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_const_method_no_ret(&Texture2D::draw, ctx, this_val, argc, argv);
+    call_builtin_const_method_no_ret(&Texture2D::draw, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture2d_class_draw_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_const_method_no_ret(&Texture2D::draw_rect, ctx, this_val, argc, argv);
+    call_builtin_const_method_no_ret(&Texture2D::draw_rect, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture2d_class_draw_rect_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_const_method_no_ret(&Texture2D::draw_rect_region, ctx, this_val, argc, argv);
+    call_builtin_const_method_no_ret(&Texture2D::draw_rect_region, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue texture2d_class_get_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -93,6 +95,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_texture2d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Texture2D::__class_id);
 	classes["Texture2D"] = Texture2D::__class_id;
 	class_id_list.insert(Texture2D::__class_id);
@@ -115,7 +118,7 @@ static int js_texture2d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_texture2d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/texture';";
+	const char *code = "import * as _ from '@godot/classes/texture';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -127,7 +130,7 @@ JSModuleDef *_js_init_texture2d_module(JSContext *ctx, const char *module_name) 
 }
 
 JSModuleDef *js_init_texture2d_module(JSContext *ctx) {
-	return _js_init_texture2d_module(ctx, "godot/classes/texture2d");
+	return _js_init_texture2d_module(ctx, "@godot/classes/texture2d");
 }
 
 void register_texture2d() {

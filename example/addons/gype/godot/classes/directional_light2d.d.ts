@@ -7,13 +7,13 @@ export declare class DirectionalLight2D extends Light2D{
   public get height(): number {
     get_height();
   }
-  public set height(value: number): void {
+  public set height(value): void {
     set_height(value);
   }
   public get max_distance(): number {
     get_max_distance();
   }
-  public set max_distance(value: number): void {
+  public set max_distance(value): void {
     set_max_distance(value);
   }
 }

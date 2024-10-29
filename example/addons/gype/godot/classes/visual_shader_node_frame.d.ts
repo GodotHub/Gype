@@ -17,31 +17,31 @@ export declare class VisualShaderNodeFrame extends VisualShaderNodeResizableBase
   public get title(): String {
     get_title();
   }
-  public set title(value: String): void {
+  public set title(value): void {
     set_title(value);
   }
   public get tint_color_enabled(): boolean {
     is_tint_color_enabled();
   }
-  public set tint_color_enabled(value: boolean): void {
+  public set tint_color_enabled(value): void {
     set_tint_color_enabled(value);
   }
   public get tint_color(): Color {
     get_tint_color();
   }
-  public set tint_color(value: Color): void {
+  public set tint_color(value): void {
     set_tint_color(value);
   }
   public get autoshrink(): boolean {
     is_autoshrink_enabled();
   }
-  public set autoshrink(value: boolean): void {
+  public set autoshrink(value): void {
     set_autoshrink_enabled(value);
   }
   public get attached_nodes(): PackedInt32Array {
     get_attached_nodes();
   }
-  public set attached_nodes(value: PackedInt32Array): void {
+  public set attached_nodes(value): void {
     set_attached_nodes(value);
   }
 }

@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/packed_scene.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/scene_state.hpp>
+#include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void scene_state_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,7 +33,7 @@ static JSValue scene_state_class_constructor(JSContext *ctx, JSValueConst new_ta
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, scene_state_class);
+	JS_SetOpaque(obj, scene_state_class);	
 	return obj;
 }
 static JSValue scene_state_class_get_node_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -155,6 +157,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_scene_state_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&SceneState::__class_id);
 	classes["SceneState"] = SceneState::__class_id;
 	class_id_list.insert(SceneState::__class_id);
@@ -177,7 +180,7 @@ static int js_scene_state_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_scene_state_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -189,7 +192,7 @@ JSModuleDef *_js_init_scene_state_module(JSContext *ctx, const char *module_name
 }
 
 JSModuleDef *js_init_scene_state_module(JSContext *ctx) {
-	return _js_init_scene_state_module(ctx, "godot/classes/scene_state");
+	return _js_init_scene_state_module(ctx, "@godot/classes/scene_state");
 }
 
 void register_scene_state() {

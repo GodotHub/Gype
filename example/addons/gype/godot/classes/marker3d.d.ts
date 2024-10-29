@@ -7,7 +7,7 @@ export declare class Marker3D extends Node3D{
   public get gizmo_extents(): number {
     get_gizmo_extents();
   }
-  public set gizmo_extents(value: number): void {
+  public set gizmo_extents(value): void {
     set_gizmo_extents(value);
   }
 }

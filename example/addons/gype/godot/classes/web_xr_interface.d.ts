@@ -24,25 +24,25 @@ export declare class WebXRInterface extends XRInterface{
   public get session_mode(): String {
     get_session_mode();
   }
-  public set session_mode(value: String): void {
+  public set session_mode(value): void {
     set_session_mode(value);
   }
   public get required_features(): String {
     get_required_features();
   }
-  public set required_features(value: String): void {
+  public set required_features(value): void {
     set_required_features(value);
   }
   public get optional_features(): String {
     get_optional_features();
   }
-  public set optional_features(value: String): void {
+  public set optional_features(value): void {
     set_optional_features(value);
   }
   public get requested_reference_space_types(): String {
     get_requested_reference_space_types();
   }
-  public set requested_reference_space_types(value: String): void {
+  public set requested_reference_space_types(value): void {
     set_requested_reference_space_types(value);
   }
   public get reference_space_type(): String {

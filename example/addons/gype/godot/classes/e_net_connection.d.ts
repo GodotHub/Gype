@@ -1,8 +1,8 @@
 
-import { ENetPacketPeer } from "@godot/classes/e_net_packet_peer";
+import { RefCounted } from "@godot/classes/ref_counted";
 import { ENetPacketPeer } from "@godot/classes/e_net_packet_peer";
 import { TLSOptions } from "@godot/classes/tls_options";
-import { RefCounted } from "@godot/classes/ref_counted";
+import { ENetPacketPeer } from "@godot/classes/e_net_packet_peer";
 
 export declare class ENetConnection extends RefCounted{
   public create_host_bound(_bind_address: String, _bind_port: number, _max_peers: number, _max_channels: number, _in_bandwidth: number, _out_bandwidth: number): number;
@@ -21,7 +21,7 @@ export declare class ENetConnection extends RefCounted{
   public pop_statistic(_statistic: number): number;
   public get_max_channels(): number;
   public get_local_port(): number;
-  public get_peers(): Array;
+  public get_peers(): GDArray;
   public socket_send(_destination_address: String, _destination_port: number, _packet: PackedByteArray): void;
   static CompressionMode = {
     COMPRESS_NONE = 0,

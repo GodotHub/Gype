@@ -2,7 +2,7 @@
 import { Resource } from "@godot/classes/resource";
 
 export declare class SceneReplicationConfig extends Resource{
-  public get_properties(): Array;
+  public get_properties(): GDArray;
   public add_property(_path: NodePath, _index: number): void;
   public has_property(_path: NodePath): boolean;
   public remove_property(_path: NodePath): void;

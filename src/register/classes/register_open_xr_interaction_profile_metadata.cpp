@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/open_xr_interaction_profile_metadata.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void open_xr_interaction_profile_metadata_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,27 +32,27 @@ static JSValue open_xr_interaction_profile_metadata_class_constructor(JSContext 
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, open_xr_interaction_profile_metadata_class);
+	JS_SetOpaque(obj, open_xr_interaction_profile_metadata_class);	
 	return obj;
 }
 static JSValue open_xr_interaction_profile_metadata_class_register_profile_rename(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_profile_rename, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_profile_rename, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_interaction_profile_metadata_class_register_top_level_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_top_level_path, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_top_level_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_interaction_profile_metadata_class_register_interaction_profile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_interaction_profile, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_interaction_profile, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue open_xr_interaction_profile_metadata_class_register_io_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_io_path, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_io_path, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry open_xr_interaction_profile_metadata_class_proto_funcs[] = {
@@ -67,6 +69,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_open_xr_interaction_profile_metadata_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&OpenXRInteractionProfileMetadata::__class_id);
 	classes["OpenXRInteractionProfileMetadata"] = OpenXRInteractionProfileMetadata::__class_id;
 	class_id_list.insert(OpenXRInteractionProfileMetadata::__class_id);
@@ -89,7 +92,7 @@ static int js_open_xr_interaction_profile_metadata_class_init(JSContext *ctx, JS
 }
 
 JSModuleDef *_js_init_open_xr_interaction_profile_metadata_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -101,7 +104,7 @@ JSModuleDef *_js_init_open_xr_interaction_profile_metadata_module(JSContext *ctx
 }
 
 JSModuleDef *js_init_open_xr_interaction_profile_metadata_module(JSContext *ctx) {
-	return _js_init_open_xr_interaction_profile_metadata_module(ctx, "godot/classes/open_xr_interaction_profile_metadata");
+	return _js_init_open_xr_interaction_profile_metadata_module(ctx, "@godot/classes/open_xr_interaction_profile_metadata");
 }
 
 void register_open_xr_interaction_profile_metadata() {

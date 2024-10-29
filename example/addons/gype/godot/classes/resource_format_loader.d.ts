@@ -12,7 +12,7 @@ export declare class ResourceFormatLoader extends RefCounted{
   public _rename_dependencies(_path: String, _renames: Dictionary): number;
   public _exists(_path: String): boolean;
   public _get_classes_used(_path: String): PackedStringArray;
-  public _load(_path: String, _original_path: String, _use_sub_threads: boolean, _cache_mode: number): Variant;
+  public _load(_path: String, _original_path: String, _use_sub_threads: boolean, _cache_mode: number): any;
   static CacheMode = {
     CACHE_MODE_IGNORE = 0,
     CACHE_MODE_REUSE = 1,

@@ -7,7 +7,7 @@ export declare class CompressedTexture2D extends Texture2D{
   public get load_path(): String {
     get_load_path();
   }
-  public set load_path(value: String): void {
+  public set load_path(value): void {
     load(value);
   }
 }

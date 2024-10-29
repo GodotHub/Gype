@@ -1,8 +1,8 @@
 
 import { CameraAttributes } from "@godot/classes/camera_attributes";
 import { PhysicsDirectSpaceState3D } from "@godot/classes/physics_direct_space_state3d";
-import { Environment } from "@godot/classes/environment";
 import { Resource } from "@godot/classes/resource";
+import { Environment } from "@godot/classes/environment";
 
 export declare class World3D extends Resource{
   public get_space(): RID;
@@ -18,19 +18,19 @@ export declare class World3D extends Resource{
   public get environment(): Environment {
     get_environment();
   }
-  public set environment(value: Environment): void {
+  public set environment(value): void {
     set_environment(value);
   }
   public get fallback_environment(): Environment {
     get_fallback_environment();
   }
-  public set fallback_environment(value: Environment): void {
+  public set fallback_environment(value): void {
     set_fallback_environment(value);
   }
-  public get camera_attributes(): CameraAttributesPractical,CameraAttributesPhysical {
+  public get camera_attributes(): CameraAttributesPractical {
     get_camera_attributes();
   }
-  public set camera_attributes(value: CameraAttributesPractical,CameraAttributesPhysical): void {
+  public set camera_attributes(value): void {
     set_camera_attributes(value);
   }
   public get space(): RID {

@@ -20,43 +20,43 @@ export declare class AudioStreamWAV extends AudioStream{
   public get data(): PackedByteArray {
     get_data();
   }
-  public set data(value: PackedByteArray): void {
+  public set data(value): void {
     set_data(value);
   }
   public get format(): number {
     get_format();
   }
-  public set format(value: number): void {
+  public set format(value): void {
     set_format(value);
   }
   public get loop_mode(): number {
     get_loop_mode();
   }
-  public set loop_mode(value: number): void {
+  public set loop_mode(value): void {
     set_loop_mode(value);
   }
   public get loop_begin(): number {
     get_loop_begin();
   }
-  public set loop_begin(value: number): void {
+  public set loop_begin(value): void {
     set_loop_begin(value);
   }
   public get loop_end(): number {
     get_loop_end();
   }
-  public set loop_end(value: number): void {
+  public set loop_end(value): void {
     set_loop_end(value);
   }
   public get mix_rate(): number {
     get_mix_rate();
   }
-  public set mix_rate(value: number): void {
+  public set mix_rate(value): void {
     set_mix_rate(value);
   }
   public get stereo(): boolean {
     is_stereo();
   }
-  public set stereo(value: boolean): void {
+  public set stereo(value): void {
     set_stereo(value);
   }
   static Format = {

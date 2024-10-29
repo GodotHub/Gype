@@ -24,55 +24,55 @@ export declare class PathFollow3D extends Node3D{
   public get progress(): number {
     get_progress();
   }
-  public set progress(value: number): void {
+  public set progress(value): void {
     set_progress(value);
   }
   public get progress_ratio(): number {
     get_progress_ratio();
   }
-  public set progress_ratio(value: number): void {
+  public set progress_ratio(value): void {
     set_progress_ratio(value);
   }
   public get h_offset(): number {
     get_h_offset();
   }
-  public set h_offset(value: number): void {
+  public set h_offset(value): void {
     set_h_offset(value);
   }
   public get v_offset(): number {
     get_v_offset();
   }
-  public set v_offset(value: number): void {
+  public set v_offset(value): void {
     set_v_offset(value);
   }
   public get rotation_mode(): number {
     get_rotation_mode();
   }
-  public set rotation_mode(value: number): void {
+  public set rotation_mode(value): void {
     set_rotation_mode(value);
   }
   public get use_model_front(): boolean {
     is_using_model_front();
   }
-  public set use_model_front(value: boolean): void {
+  public set use_model_front(value): void {
     set_use_model_front(value);
   }
   public get cubic_interp(): boolean {
     get_cubic_interpolation();
   }
-  public set cubic_interp(value: boolean): void {
+  public set cubic_interp(value): void {
     set_cubic_interpolation(value);
   }
   public get loop(): boolean {
     has_loop();
   }
-  public set loop(value: boolean): void {
+  public set loop(value): void {
     set_loop(value);
   }
   public get tilt_enabled(): boolean {
     is_tilt_enabled();
   }
-  public set tilt_enabled(value: boolean): void {
+  public set tilt_enabled(value): void {
     set_tilt_enabled(value);
   }
   static RotationMode = {

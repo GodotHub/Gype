@@ -1,7 +1,7 @@
 
 import { Object } from "@godot/classes/object";
-import { InputEvent } from "@godot/classes/input_event";
 import { Resource } from "@godot/classes/resource";
+import { InputEvent } from "@godot/classes/input_event";
 
 export declare class Input extends Object{
   public is_anything_pressed(): boolean;
@@ -25,7 +25,7 @@ export declare class Input extends Object{
   public get_joy_guid(_device: number): String;
   public get_joy_info(_device: number): Dictionary;
   public should_ignore_device(_vendor_id: number, _product_id: number): boolean;
-  public get_connected_joypads(): Array;
+  public get_connected_joypads(): GDArray;
   public get_joy_vibration_strength(_device: number): Vector2;
   public get_joy_vibration_duration(_device: number): number;
   public start_joy_vibration(_device: number, _weak_magnitude: number, _strong_magnitude: number, _duration: number): void;
@@ -61,25 +61,25 @@ export declare class Input extends Object{
   public get mouse_mode(): number {
     get_mouse_mode();
   }
-  public set mouse_mode(value: number): void {
+  public set mouse_mode(value): void {
     set_mouse_mode(value);
   }
   public get use_accumulated_input(): boolean {
     is_using_accumulated_input();
   }
-  public set use_accumulated_input(value: boolean): void {
+  public set use_accumulated_input(value): void {
     set_use_accumulated_input(value);
   }
   public get emulate_mouse_from_touch(): boolean {
     is_emulating_mouse_from_touch();
   }
-  public set emulate_mouse_from_touch(value: boolean): void {
+  public set emulate_mouse_from_touch(value): void {
     set_emulate_mouse_from_touch(value);
   }
   public get emulate_touch_from_mouse(): boolean {
     is_emulating_touch_from_mouse();
   }
-  public set emulate_touch_from_mouse(value: boolean): void {
+  public set emulate_touch_from_mouse(value): void {
     set_emulate_touch_from_mouse(value);
   }
   static MouseMode = {

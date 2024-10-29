@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/editor_export_platform.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void editor_export_platform_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue editor_export_platform_class_constructor(JSContext *ctx, JSValueC
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_export_platform_class);
+	JS_SetOpaque(obj, editor_export_platform_class);	
 	return obj;
 }
 static JSValue editor_export_platform_class_get_os_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,6 +50,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_export_platform_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&EditorExportPlatform::__class_id);
 	classes["EditorExportPlatform"] = EditorExportPlatform::__class_id;
 	class_id_list.insert(EditorExportPlatform::__class_id);
@@ -70,7 +73,7 @@ static int js_editor_export_platform_class_init(JSContext *ctx, JSModuleDef *m) 
 }
 
 JSModuleDef *_js_init_editor_export_platform_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/ref_counted';";
+	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -82,7 +85,7 @@ JSModuleDef *_js_init_editor_export_platform_module(JSContext *ctx, const char *
 }
 
 JSModuleDef *js_init_editor_export_platform_module(JSContext *ctx) {
-	return _js_init_editor_export_platform_module(ctx, "godot/classes/editor_export_platform");
+	return _js_init_editor_export_platform_module(ctx, "@godot/classes/editor_export_platform");
 }
 
 void register_editor_export_platform() {

@@ -7,7 +7,7 @@ export declare class VisualShaderNodeTransformVecMult extends VisualShaderNode{
   public get operator(): number {
     get_operator();
   }
-  public set operator(value: number): void {
+  public set operator(value): void {
     set_operator(value);
   }
   static Operator = {

@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/optimized_translation.hpp>
 #include <godot_cpp/classes/translation.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void optimized_translation_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue optimized_translation_class_constructor(JSContext *ctx, JSValueCo
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, optimized_translation_class);
+	JS_SetOpaque(obj, optimized_translation_class);	
 	return obj;
 }
 static JSValue optimized_translation_class_generate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&OptimizedTranslation::generate, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&OptimizedTranslation::generate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry optimized_translation_class_proto_funcs[] = {
@@ -49,6 +51,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_optimized_translation_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&OptimizedTranslation::__class_id);
 	classes["OptimizedTranslation"] = OptimizedTranslation::__class_id;
 	class_id_list.insert(OptimizedTranslation::__class_id);
@@ -71,7 +74,7 @@ static int js_optimized_translation_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_optimized_translation_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/translation';";
+	const char *code = "import * as _ from '@godot/classes/translation';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -83,7 +86,7 @@ JSModuleDef *_js_init_optimized_translation_module(JSContext *ctx, const char *m
 }
 
 JSModuleDef *js_init_optimized_translation_module(JSContext *ctx) {
-	return _js_init_optimized_translation_module(ctx, "godot/classes/optimized_translation");
+	return _js_init_optimized_translation_module(ctx, "@godot/classes/optimized_translation");
 }
 
 void register_optimized_translation() {

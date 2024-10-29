@@ -7,7 +7,7 @@ export declare class InputEventGesture extends InputEventWithModifiers{
   public get position(): Vector2 {
     get_position();
   }
-  public set position(value: Vector2): void {
+  public set position(value): void {
     set_position(value);
   }
 }

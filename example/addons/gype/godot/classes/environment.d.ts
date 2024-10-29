@@ -1,7 +1,7 @@
 
+import { Texture } from "@godot/classes/texture";
 import { Sky } from "@godot/classes/sky";
 import { Resource } from "@godot/classes/resource";
-import { Texture } from "@godot/classes/texture";
 
 export declare class Environment extends Resource{
   public set_background(_mode: number): void;
@@ -191,547 +191,547 @@ export declare class Environment extends Resource{
   public get background_mode(): number {
     get_background();
   }
-  public set background_mode(value: number): void {
+  public set background_mode(value): void {
     set_background(value);
   }
   public get background_color(): Color {
     get_bg_color();
   }
-  public set background_color(value: Color): void {
+  public set background_color(value): void {
     set_bg_color(value);
   }
   public get background_energy_multiplier(): number {
     get_bg_energy_multiplier();
   }
-  public set background_energy_multiplier(value: number): void {
+  public set background_energy_multiplier(value): void {
     set_bg_energy_multiplier(value);
   }
   public get background_intensity(): number {
     get_bg_intensity();
   }
-  public set background_intensity(value: number): void {
+  public set background_intensity(value): void {
     set_bg_intensity(value);
   }
   public get background_canvas_max_layer(): number {
     get_canvas_max_layer();
   }
-  public set background_canvas_max_layer(value: number): void {
+  public set background_canvas_max_layer(value): void {
     set_canvas_max_layer(value);
   }
   public get background_camera_feed_id(): number {
     get_camera_feed_id();
   }
-  public set background_camera_feed_id(value: number): void {
+  public set background_camera_feed_id(value): void {
     set_camera_feed_id(value);
   }
   public get sky(): Sky {
     get_sky();
   }
-  public set sky(value: Sky): void {
+  public set sky(value): void {
     set_sky(value);
   }
   public get sky_custom_fov(): number {
     get_sky_custom_fov();
   }
-  public set sky_custom_fov(value: number): void {
+  public set sky_custom_fov(value): void {
     set_sky_custom_fov(value);
   }
   public get sky_rotation(): Vector3 {
     get_sky_rotation();
   }
-  public set sky_rotation(value: Vector3): void {
+  public set sky_rotation(value): void {
     set_sky_rotation(value);
   }
   public get ambient_light_source(): number {
     get_ambient_source();
   }
-  public set ambient_light_source(value: number): void {
+  public set ambient_light_source(value): void {
     set_ambient_source(value);
   }
   public get ambient_light_color(): Color {
     get_ambient_light_color();
   }
-  public set ambient_light_color(value: Color): void {
+  public set ambient_light_color(value): void {
     set_ambient_light_color(value);
   }
   public get ambient_light_sky_contribution(): number {
     get_ambient_light_sky_contribution();
   }
-  public set ambient_light_sky_contribution(value: number): void {
+  public set ambient_light_sky_contribution(value): void {
     set_ambient_light_sky_contribution(value);
   }
   public get ambient_light_energy(): number {
     get_ambient_light_energy();
   }
-  public set ambient_light_energy(value: number): void {
+  public set ambient_light_energy(value): void {
     set_ambient_light_energy(value);
   }
   public get reflected_light_source(): number {
     get_reflection_source();
   }
-  public set reflected_light_source(value: number): void {
+  public set reflected_light_source(value): void {
     set_reflection_source(value);
   }
   public get tonemap_mode(): number {
     get_tonemapper();
   }
-  public set tonemap_mode(value: number): void {
+  public set tonemap_mode(value): void {
     set_tonemapper(value);
   }
   public get tonemap_exposure(): number {
     get_tonemap_exposure();
   }
-  public set tonemap_exposure(value: number): void {
+  public set tonemap_exposure(value): void {
     set_tonemap_exposure(value);
   }
   public get tonemap_white(): number {
     get_tonemap_white();
   }
-  public set tonemap_white(value: number): void {
+  public set tonemap_white(value): void {
     set_tonemap_white(value);
   }
   public get ssr_enabled(): boolean {
     is_ssr_enabled();
   }
-  public set ssr_enabled(value: boolean): void {
+  public set ssr_enabled(value): void {
     set_ssr_enabled(value);
   }
   public get ssr_max_steps(): number {
     get_ssr_max_steps();
   }
-  public set ssr_max_steps(value: number): void {
+  public set ssr_max_steps(value): void {
     set_ssr_max_steps(value);
   }
   public get ssr_fade_in(): number {
     get_ssr_fade_in();
   }
-  public set ssr_fade_in(value: number): void {
+  public set ssr_fade_in(value): void {
     set_ssr_fade_in(value);
   }
   public get ssr_fade_out(): number {
     get_ssr_fade_out();
   }
-  public set ssr_fade_out(value: number): void {
+  public set ssr_fade_out(value): void {
     set_ssr_fade_out(value);
   }
   public get ssr_depth_tolerance(): number {
     get_ssr_depth_tolerance();
   }
-  public set ssr_depth_tolerance(value: number): void {
+  public set ssr_depth_tolerance(value): void {
     set_ssr_depth_tolerance(value);
   }
   public get ssao_enabled(): boolean {
     is_ssao_enabled();
   }
-  public set ssao_enabled(value: boolean): void {
+  public set ssao_enabled(value): void {
     set_ssao_enabled(value);
   }
   public get ssao_radius(): number {
     get_ssao_radius();
   }
-  public set ssao_radius(value: number): void {
+  public set ssao_radius(value): void {
     set_ssao_radius(value);
   }
   public get ssao_intensity(): number {
     get_ssao_intensity();
   }
-  public set ssao_intensity(value: number): void {
+  public set ssao_intensity(value): void {
     set_ssao_intensity(value);
   }
   public get ssao_power(): number {
     get_ssao_power();
   }
-  public set ssao_power(value: number): void {
+  public set ssao_power(value): void {
     set_ssao_power(value);
   }
   public get ssao_detail(): number {
     get_ssao_detail();
   }
-  public set ssao_detail(value: number): void {
+  public set ssao_detail(value): void {
     set_ssao_detail(value);
   }
   public get ssao_horizon(): number {
     get_ssao_horizon();
   }
-  public set ssao_horizon(value: number): void {
+  public set ssao_horizon(value): void {
     set_ssao_horizon(value);
   }
   public get ssao_sharpness(): number {
     get_ssao_sharpness();
   }
-  public set ssao_sharpness(value: number): void {
+  public set ssao_sharpness(value): void {
     set_ssao_sharpness(value);
   }
   public get ssao_light_affect(): number {
     get_ssao_direct_light_affect();
   }
-  public set ssao_light_affect(value: number): void {
+  public set ssao_light_affect(value): void {
     set_ssao_direct_light_affect(value);
   }
   public get ssao_ao_channel_affect(): number {
     get_ssao_ao_channel_affect();
   }
-  public set ssao_ao_channel_affect(value: number): void {
+  public set ssao_ao_channel_affect(value): void {
     set_ssao_ao_channel_affect(value);
   }
   public get ssil_enabled(): boolean {
     is_ssil_enabled();
   }
-  public set ssil_enabled(value: boolean): void {
+  public set ssil_enabled(value): void {
     set_ssil_enabled(value);
   }
   public get ssil_radius(): number {
     get_ssil_radius();
   }
-  public set ssil_radius(value: number): void {
+  public set ssil_radius(value): void {
     set_ssil_radius(value);
   }
   public get ssil_intensity(): number {
     get_ssil_intensity();
   }
-  public set ssil_intensity(value: number): void {
+  public set ssil_intensity(value): void {
     set_ssil_intensity(value);
   }
   public get ssil_sharpness(): number {
     get_ssil_sharpness();
   }
-  public set ssil_sharpness(value: number): void {
+  public set ssil_sharpness(value): void {
     set_ssil_sharpness(value);
   }
   public get ssil_normal_rejection(): number {
     get_ssil_normal_rejection();
   }
-  public set ssil_normal_rejection(value: number): void {
+  public set ssil_normal_rejection(value): void {
     set_ssil_normal_rejection(value);
   }
   public get sdfgi_enabled(): boolean {
     is_sdfgi_enabled();
   }
-  public set sdfgi_enabled(value: boolean): void {
+  public set sdfgi_enabled(value): void {
     set_sdfgi_enabled(value);
   }
   public get sdfgi_use_occlusion(): boolean {
     is_sdfgi_using_occlusion();
   }
-  public set sdfgi_use_occlusion(value: boolean): void {
+  public set sdfgi_use_occlusion(value): void {
     set_sdfgi_use_occlusion(value);
   }
   public get sdfgi_read_sky_light(): boolean {
     is_sdfgi_reading_sky_light();
   }
-  public set sdfgi_read_sky_light(value: boolean): void {
+  public set sdfgi_read_sky_light(value): void {
     set_sdfgi_read_sky_light(value);
   }
   public get sdfgi_bounce_feedback(): number {
     get_sdfgi_bounce_feedback();
   }
-  public set sdfgi_bounce_feedback(value: number): void {
+  public set sdfgi_bounce_feedback(value): void {
     set_sdfgi_bounce_feedback(value);
   }
   public get sdfgi_cascades(): number {
     get_sdfgi_cascades();
   }
-  public set sdfgi_cascades(value: number): void {
+  public set sdfgi_cascades(value): void {
     set_sdfgi_cascades(value);
   }
   public get sdfgi_min_cell_size(): number {
     get_sdfgi_min_cell_size();
   }
-  public set sdfgi_min_cell_size(value: number): void {
+  public set sdfgi_min_cell_size(value): void {
     set_sdfgi_min_cell_size(value);
   }
   public get sdfgi_cascade0_distance(): number {
     get_sdfgi_cascade0_distance();
   }
-  public set sdfgi_cascade0_distance(value: number): void {
+  public set sdfgi_cascade0_distance(value): void {
     set_sdfgi_cascade0_distance(value);
   }
   public get sdfgi_max_distance(): number {
     get_sdfgi_max_distance();
   }
-  public set sdfgi_max_distance(value: number): void {
+  public set sdfgi_max_distance(value): void {
     set_sdfgi_max_distance(value);
   }
   public get sdfgi_y_scale(): number {
     get_sdfgi_y_scale();
   }
-  public set sdfgi_y_scale(value: number): void {
+  public set sdfgi_y_scale(value): void {
     set_sdfgi_y_scale(value);
   }
   public get sdfgi_energy(): number {
     get_sdfgi_energy();
   }
-  public set sdfgi_energy(value: number): void {
+  public set sdfgi_energy(value): void {
     set_sdfgi_energy(value);
   }
   public get sdfgi_normal_bias(): number {
     get_sdfgi_normal_bias();
   }
-  public set sdfgi_normal_bias(value: number): void {
+  public set sdfgi_normal_bias(value): void {
     set_sdfgi_normal_bias(value);
   }
   public get sdfgi_probe_bias(): number {
     get_sdfgi_probe_bias();
   }
-  public set sdfgi_probe_bias(value: number): void {
+  public set sdfgi_probe_bias(value): void {
     set_sdfgi_probe_bias(value);
   }
   public get glow_enabled(): boolean {
     is_glow_enabled();
   }
-  public set glow_enabled(value: boolean): void {
+  public set glow_enabled(value): void {
     set_glow_enabled(value);
   }
   public get glow_normalized(): boolean {
     is_glow_normalized();
   }
-  public set glow_normalized(value: boolean): void {
+  public set glow_normalized(value): void {
     set_glow_normalized(value);
   }
   public get glow_intensity(): number {
     get_glow_intensity();
   }
-  public set glow_intensity(value: number): void {
+  public set glow_intensity(value): void {
     set_glow_intensity(value);
   }
   public get glow_strength(): number {
     get_glow_strength();
   }
-  public set glow_strength(value: number): void {
+  public set glow_strength(value): void {
     set_glow_strength(value);
   }
   public get glow_mix(): number {
     get_glow_mix();
   }
-  public set glow_mix(value: number): void {
+  public set glow_mix(value): void {
     set_glow_mix(value);
   }
   public get glow_bloom(): number {
     get_glow_bloom();
   }
-  public set glow_bloom(value: number): void {
+  public set glow_bloom(value): void {
     set_glow_bloom(value);
   }
   public get glow_blend_mode(): number {
     get_glow_blend_mode();
   }
-  public set glow_blend_mode(value: number): void {
+  public set glow_blend_mode(value): void {
     set_glow_blend_mode(value);
   }
   public get glow_hdr_threshold(): number {
     get_glow_hdr_bleed_threshold();
   }
-  public set glow_hdr_threshold(value: number): void {
+  public set glow_hdr_threshold(value): void {
     set_glow_hdr_bleed_threshold(value);
   }
   public get glow_hdr_scale(): number {
     get_glow_hdr_bleed_scale();
   }
-  public set glow_hdr_scale(value: number): void {
+  public set glow_hdr_scale(value): void {
     set_glow_hdr_bleed_scale(value);
   }
   public get glow_hdr_luminance_cap(): number {
     get_glow_hdr_luminance_cap();
   }
-  public set glow_hdr_luminance_cap(value: number): void {
+  public set glow_hdr_luminance_cap(value): void {
     set_glow_hdr_luminance_cap(value);
   }
   public get glow_map_strength(): number {
     get_glow_map_strength();
   }
-  public set glow_map_strength(value: number): void {
+  public set glow_map_strength(value): void {
     set_glow_map_strength(value);
   }
   public get glow_map(): Texture2D {
     get_glow_map();
   }
-  public set glow_map(value: Texture2D): void {
+  public set glow_map(value): void {
     set_glow_map(value);
   }
   public get fog_enabled(): boolean {
     is_fog_enabled();
   }
-  public set fog_enabled(value: boolean): void {
+  public set fog_enabled(value): void {
     set_fog_enabled(value);
   }
   public get fog_mode(): number {
     get_fog_mode();
   }
-  public set fog_mode(value: number): void {
+  public set fog_mode(value): void {
     set_fog_mode(value);
   }
   public get fog_light_color(): Color {
     get_fog_light_color();
   }
-  public set fog_light_color(value: Color): void {
+  public set fog_light_color(value): void {
     set_fog_light_color(value);
   }
   public get fog_light_energy(): number {
     get_fog_light_energy();
   }
-  public set fog_light_energy(value: number): void {
+  public set fog_light_energy(value): void {
     set_fog_light_energy(value);
   }
   public get fog_sun_scatter(): number {
     get_fog_sun_scatter();
   }
-  public set fog_sun_scatter(value: number): void {
+  public set fog_sun_scatter(value): void {
     set_fog_sun_scatter(value);
   }
   public get fog_density(): number {
     get_fog_density();
   }
-  public set fog_density(value: number): void {
+  public set fog_density(value): void {
     set_fog_density(value);
   }
   public get fog_aerial_perspective(): number {
     get_fog_aerial_perspective();
   }
-  public set fog_aerial_perspective(value: number): void {
+  public set fog_aerial_perspective(value): void {
     set_fog_aerial_perspective(value);
   }
   public get fog_sky_affect(): number {
     get_fog_sky_affect();
   }
-  public set fog_sky_affect(value: number): void {
+  public set fog_sky_affect(value): void {
     set_fog_sky_affect(value);
   }
   public get fog_height(): number {
     get_fog_height();
   }
-  public set fog_height(value: number): void {
+  public set fog_height(value): void {
     set_fog_height(value);
   }
   public get fog_height_density(): number {
     get_fog_height_density();
   }
-  public set fog_height_density(value: number): void {
+  public set fog_height_density(value): void {
     set_fog_height_density(value);
   }
   public get fog_depth_curve(): number {
     get_fog_depth_curve();
   }
-  public set fog_depth_curve(value: number): void {
+  public set fog_depth_curve(value): void {
     set_fog_depth_curve(value);
   }
   public get fog_depth_begin(): number {
     get_fog_depth_begin();
   }
-  public set fog_depth_begin(value: number): void {
+  public set fog_depth_begin(value): void {
     set_fog_depth_begin(value);
   }
   public get fog_depth_end(): number {
     get_fog_depth_end();
   }
-  public set fog_depth_end(value: number): void {
+  public set fog_depth_end(value): void {
     set_fog_depth_end(value);
   }
   public get volumetric_fog_enabled(): boolean {
     is_volumetric_fog_enabled();
   }
-  public set volumetric_fog_enabled(value: boolean): void {
+  public set volumetric_fog_enabled(value): void {
     set_volumetric_fog_enabled(value);
   }
   public get volumetric_fog_density(): number {
     get_volumetric_fog_density();
   }
-  public set volumetric_fog_density(value: number): void {
+  public set volumetric_fog_density(value): void {
     set_volumetric_fog_density(value);
   }
   public get volumetric_fog_albedo(): Color {
     get_volumetric_fog_albedo();
   }
-  public set volumetric_fog_albedo(value: Color): void {
+  public set volumetric_fog_albedo(value): void {
     set_volumetric_fog_albedo(value);
   }
   public get volumetric_fog_emission(): Color {
     get_volumetric_fog_emission();
   }
-  public set volumetric_fog_emission(value: Color): void {
+  public set volumetric_fog_emission(value): void {
     set_volumetric_fog_emission(value);
   }
   public get volumetric_fog_emission_energy(): number {
     get_volumetric_fog_emission_energy();
   }
-  public set volumetric_fog_emission_energy(value: number): void {
+  public set volumetric_fog_emission_energy(value): void {
     set_volumetric_fog_emission_energy(value);
   }
   public get volumetric_fog_gi_inject(): number {
     get_volumetric_fog_gi_inject();
   }
-  public set volumetric_fog_gi_inject(value: number): void {
+  public set volumetric_fog_gi_inject(value): void {
     set_volumetric_fog_gi_inject(value);
   }
   public get volumetric_fog_anisotropy(): number {
     get_volumetric_fog_anisotropy();
   }
-  public set volumetric_fog_anisotropy(value: number): void {
+  public set volumetric_fog_anisotropy(value): void {
     set_volumetric_fog_anisotropy(value);
   }
   public get volumetric_fog_length(): number {
     get_volumetric_fog_length();
   }
-  public set volumetric_fog_length(value: number): void {
+  public set volumetric_fog_length(value): void {
     set_volumetric_fog_length(value);
   }
   public get volumetric_fog_detail_spread(): number {
     get_volumetric_fog_detail_spread();
   }
-  public set volumetric_fog_detail_spread(value: number): void {
+  public set volumetric_fog_detail_spread(value): void {
     set_volumetric_fog_detail_spread(value);
   }
   public get volumetric_fog_ambient_inject(): number {
     get_volumetric_fog_ambient_inject();
   }
-  public set volumetric_fog_ambient_inject(value: number): void {
+  public set volumetric_fog_ambient_inject(value): void {
     set_volumetric_fog_ambient_inject(value);
   }
   public get volumetric_fog_sky_affect(): number {
     get_volumetric_fog_sky_affect();
   }
-  public set volumetric_fog_sky_affect(value: number): void {
+  public set volumetric_fog_sky_affect(value): void {
     set_volumetric_fog_sky_affect(value);
   }
   public get volumetric_fog_temporal_reprojection_enabled(): boolean {
     is_volumetric_fog_temporal_reprojection_enabled();
   }
-  public set volumetric_fog_temporal_reprojection_enabled(value: boolean): void {
+  public set volumetric_fog_temporal_reprojection_enabled(value): void {
     set_volumetric_fog_temporal_reprojection_enabled(value);
   }
   public get volumetric_fog_temporal_reprojection_amount(): number {
     get_volumetric_fog_temporal_reprojection_amount();
   }
-  public set volumetric_fog_temporal_reprojection_amount(value: number): void {
+  public set volumetric_fog_temporal_reprojection_amount(value): void {
     set_volumetric_fog_temporal_reprojection_amount(value);
   }
   public get adjustment_enabled(): boolean {
     is_adjustment_enabled();
   }
-  public set adjustment_enabled(value: boolean): void {
+  public set adjustment_enabled(value): void {
     set_adjustment_enabled(value);
   }
   public get adjustment_brightness(): number {
     get_adjustment_brightness();
   }
-  public set adjustment_brightness(value: number): void {
+  public set adjustment_brightness(value): void {
     set_adjustment_brightness(value);
   }
   public get adjustment_contrast(): number {
     get_adjustment_contrast();
   }
-  public set adjustment_contrast(value: number): void {
+  public set adjustment_contrast(value): void {
     set_adjustment_contrast(value);
   }
   public get adjustment_saturation(): number {
     get_adjustment_saturation();
   }
-  public set adjustment_saturation(value: number): void {
+  public set adjustment_saturation(value): void {
     set_adjustment_saturation(value);
   }
-  public get adjustment_color_correction(): Texture2D,Texture3D {
+  public get adjustment_color_correction(): Texture2D {
     get_adjustment_color_correction();
   }
-  public set adjustment_color_correction(value: Texture2D,Texture3D): void {
+  public set adjustment_color_correction(value): void {
     set_adjustment_color_correction(value);
   }
   static BGMode = {

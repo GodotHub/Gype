@@ -17,7 +17,7 @@ export declare class AnimationNodeBlendTree extends AnimationRootNode{
   public get graph_offset(): Vector2 {
     get_graph_offset();
   }
-  public set graph_offset(value: Vector2): void {
+  public set graph_offset(value): void {
     set_graph_offset(value);
   }
 }

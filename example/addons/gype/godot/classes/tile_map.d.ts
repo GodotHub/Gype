@@ -1,8 +1,8 @@
 
+import { TileSet } from "@godot/classes/tile_set";
+import { TileData } from "@godot/classes/tile_data";
 import { TileMapPattern } from "@godot/classes/tile_map_pattern";
 import { Node2D } from "@godot/classes/node2d";
-import { TileData } from "@godot/classes/tile_data";
-import { TileSet } from "@godot/classes/tile_set";
 
 export declare class TileMap extends Node2D{
   public _use_tile_data_runtime_update(_layer: number, _coords: Vector2i): boolean;
@@ -48,19 +48,19 @@ export declare class TileMap extends Node2D{
   public get_cell_tile_data(_layer: number, _coords: Vector2i, _use_proxies: boolean): TileData;
   public get_coords_for_body_rid(_body: RID): Vector2i;
   public get_layer_for_body_rid(_body: RID): number;
-  public get_pattern(_layer: number, _coords_array: typedarray::Vector2i): TileMapPattern;
+  public get_pattern(_layer: number, _coords_array: GDArray): TileMapPattern;
   public map_pattern(_position_in_tilemap: Vector2i, _coords_in_pattern: Vector2i, _pattern: TileMapPattern): Vector2i;
   public set_pattern(_layer: number, _position: Vector2i, _pattern: TileMapPattern): void;
-  public set_cells_terrain_connect(_layer: number, _cells: typedarray::Vector2i, _terrain_set: number, _terrain: number, _ignore_empty_terrains: boolean): void;
-  public set_cells_terrain_path(_layer: number, _path: typedarray::Vector2i, _terrain_set: number, _terrain: number, _ignore_empty_terrains: boolean): void;
+  public set_cells_terrain_connect(_layer: number, _cells: GDArray, _terrain_set: number, _terrain: number, _ignore_empty_terrains: boolean): void;
+  public set_cells_terrain_path(_layer: number, _path: GDArray, _terrain_set: number, _terrain: number, _ignore_empty_terrains: boolean): void;
   public fix_invalid_tiles(): void;
   public clear_layer(_layer: number): void;
   public clear(): void;
   public update_internals(): void;
   public notify_runtime_tile_data_update(_layer: number): void;
-  public get_surrounding_cells(_coords: Vector2i): Array;
-  public get_used_cells(_layer: number): Array;
-  public get_used_cells_by_id(_layer: number, _source_id: number, _atlas_coords: Vector2i, _alternative_tile: number): Array;
+  public get_surrounding_cells(_coords: Vector2i): GDArray;
+  public get_used_cells(_layer: number): GDArray;
+  public get_used_cells_by_id(_layer: number, _source_id: number, _atlas_coords: Vector2i, _alternative_tile: number): GDArray;
   public get_used_rect(): Rect2i;
   public map_to_local(_map_position: Vector2i): Vector2;
   public local_to_map(_local_position: Vector2): Vector2i;
@@ -68,31 +68,31 @@ export declare class TileMap extends Node2D{
   public get tile_set(): TileSet {
     get_tileset();
   }
-  public set tile_set(value: TileSet): void {
+  public set tile_set(value): void {
     set_tileset(value);
   }
   public get rendering_quadrant_size(): number {
     get_rendering_quadrant_size();
   }
-  public set rendering_quadrant_size(value: number): void {
+  public set rendering_quadrant_size(value): void {
     set_rendering_quadrant_size(value);
   }
   public get collision_animatable(): boolean {
     is_collision_animatable();
   }
-  public set collision_animatable(value: boolean): void {
+  public set collision_animatable(value): void {
     set_collision_animatable(value);
   }
   public get collision_visibility_mode(): number {
     get_collision_visibility_mode();
   }
-  public set collision_visibility_mode(value: number): void {
+  public set collision_visibility_mode(value): void {
     set_collision_visibility_mode(value);
   }
   public get navigation_visibility_mode(): number {
     get_navigation_visibility_mode();
   }
-  public set navigation_visibility_mode(value: number): void {
+  public set navigation_visibility_mode(value): void {
     set_navigation_visibility_mode(value);
   }
   static VisibilityMode = {

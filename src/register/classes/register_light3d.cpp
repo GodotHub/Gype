@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/light3d.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/light3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void light3d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,12 +33,12 @@ static JSValue light3d_class_constructor(JSContext *ctx, JSValueConst new_target
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, light3d_class);
+	JS_SetOpaque(obj, light3d_class);	
 	return obj;
 }
 static JSValue light3d_class_set_editor_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Light3D::set_editor_only, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Light3D::set_editor_only, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_is_editor_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -45,7 +47,7 @@ static JSValue light3d_class_is_editor_only(JSContext *ctx, JSValueConst this_va
 };
 static JSValue light3d_class_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Light3D::set_param, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Light3D::set_param, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -54,7 +56,7 @@ static JSValue light3d_class_get_param(JSContext *ctx, JSValueConst this_val, in
 };
 static JSValue light3d_class_set_shadow(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Light3D::set_shadow, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Light3D::set_shadow, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_has_shadow(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -63,7 +65,7 @@ static JSValue light3d_class_has_shadow(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue light3d_class_set_negative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Light3D::set_negative, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Light3D::set_negative, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_is_negative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,7 +74,7 @@ static JSValue light3d_class_is_negative(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue light3d_class_set_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Light3D::set_cull_mask, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Light3D::set_cull_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -81,7 +83,7 @@ static JSValue light3d_class_get_cull_mask(JSContext *ctx, JSValueConst this_val
 };
 static JSValue light3d_class_set_enable_distance_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Light3D::set_enable_distance_fade, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Light3D::set_enable_distance_fade, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_is_distance_fade_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -90,7 +92,7 @@ static JSValue light3d_class_is_distance_fade_enabled(JSContext *ctx, JSValueCon
 };
 static JSValue light3d_class_set_distance_fade_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Light3D::set_distance_fade_begin, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Light3D::set_distance_fade_begin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_distance_fade_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -99,7 +101,7 @@ static JSValue light3d_class_get_distance_fade_begin(JSContext *ctx, JSValueCons
 };
 static JSValue light3d_class_set_distance_fade_shadow(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Light3D::set_distance_fade_shadow, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Light3D::set_distance_fade_shadow, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_distance_fade_shadow(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -108,7 +110,7 @@ static JSValue light3d_class_get_distance_fade_shadow(JSContext *ctx, JSValueCon
 };
 static JSValue light3d_class_set_distance_fade_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Light3D::set_distance_fade_length, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Light3D::set_distance_fade_length, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_distance_fade_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -117,7 +119,7 @@ static JSValue light3d_class_get_distance_fade_length(JSContext *ctx, JSValueCon
 };
 static JSValue light3d_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Light3D::set_color, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Light3D::set_color, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -126,7 +128,7 @@ static JSValue light3d_class_get_color(JSContext *ctx, JSValueConst this_val, in
 };
 static JSValue light3d_class_set_shadow_reverse_cull_face(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Light3D::set_shadow_reverse_cull_face, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Light3D::set_shadow_reverse_cull_face, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_shadow_reverse_cull_face(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -135,7 +137,7 @@ static JSValue light3d_class_get_shadow_reverse_cull_face(JSContext *ctx, JSValu
 };
 static JSValue light3d_class_set_bake_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Light3D::set_bake_mode, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Light3D::set_bake_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_bake_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -144,7 +146,7 @@ static JSValue light3d_class_get_bake_mode(JSContext *ctx, JSValueConst this_val
 };
 static JSValue light3d_class_set_projector(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Light3D::set_projector, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Light3D::set_projector, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_projector(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -153,7 +155,7 @@ static JSValue light3d_class_get_projector(JSContext *ctx, JSValueConst this_val
 };
 static JSValue light3d_class_set_temperature(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Light3D::set_temperature, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Light3D::set_temperature, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue light3d_class_get_temperature(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -197,188 +199,214 @@ static const JSCFunctionListEntry light3d_class_proto_funcs[] = {
 };
 
 void define_light3d_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "light_intensity_lumens"),
-			JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-			JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "light_intensity_lux"),
-			JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-			JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "light_temperature"),
-			JS_NewCFunction(ctx, light3d_class_get_temperature, "get_temperature", 0),
-			JS_NewCFunction(ctx, light3d_class_set_temperature, "set_temperature", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "light_color"),
-			JS_NewCFunction(ctx, light3d_class_get_color, "get_color", 0),
-			JS_NewCFunction(ctx, light3d_class_set_color, "set_color", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "light_energy"),
-			JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-			JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "light_indirect_energy"),
-			JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-			JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "light_volumetric_fog_energy"),
-			JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-			JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "light_projector"),
-			JS_NewCFunction(ctx, light3d_class_get_projector, "get_projector", 0),
-			JS_NewCFunction(ctx, light3d_class_set_projector, "set_projector", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "light_size"),
-			JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-			JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "light_angular_distance"),
-			JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-			JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "light_negative"),
-			JS_NewCFunction(ctx, light3d_class_is_negative, "is_negative", 0),
-			JS_NewCFunction(ctx, light3d_class_set_negative, "set_negative", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "light_specular"),
-			JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-			JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "light_bake_mode"),
-			JS_NewCFunction(ctx, light3d_class_get_bake_mode, "get_bake_mode", 0),
-			JS_NewCFunction(ctx, light3d_class_set_bake_mode, "set_bake_mode", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "light_cull_mask"),
-			JS_NewCFunction(ctx, light3d_class_get_cull_mask, "get_cull_mask", 0),
-			JS_NewCFunction(ctx, light3d_class_set_cull_mask, "set_cull_mask", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "shadow_enabled"),
-			JS_NewCFunction(ctx, light3d_class_has_shadow, "has_shadow", 0),
-			JS_NewCFunction(ctx, light3d_class_set_shadow, "set_shadow", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "shadow_bias"),
-			JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-			JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "shadow_normal_bias"),
-			JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-			JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "shadow_reverse_cull_face"),
-			JS_NewCFunction(ctx, light3d_class_get_shadow_reverse_cull_face, "get_shadow_reverse_cull_face", 0),
-			JS_NewCFunction(ctx, light3d_class_set_shadow_reverse_cull_face, "set_shadow_reverse_cull_face", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "shadow_transmittance_bias"),
-			JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-			JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "shadow_opacity"),
-			JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-			JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "shadow_blur"),
-			JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
-			JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "distance_fade_enabled"),
-			JS_NewCFunction(ctx, light3d_class_is_distance_fade_enabled, "is_distance_fade_enabled", 0),
-			JS_NewCFunction(ctx, light3d_class_set_enable_distance_fade, "set_enable_distance_fade", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "distance_fade_begin"),
-			JS_NewCFunction(ctx, light3d_class_get_distance_fade_begin, "get_distance_fade_begin", 0),
-			JS_NewCFunction(ctx, light3d_class_set_distance_fade_begin, "set_distance_fade_begin", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "distance_fade_shadow"),
-			JS_NewCFunction(ctx, light3d_class_get_distance_fade_shadow, "get_distance_fade_shadow", 0),
-			JS_NewCFunction(ctx, light3d_class_set_distance_fade_shadow, "set_distance_fade_shadow", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "distance_fade_length"),
-			JS_NewCFunction(ctx, light3d_class_get_distance_fade_length, "get_distance_fade_length", 0),
-			JS_NewCFunction(ctx, light3d_class_set_distance_fade_length, "set_distance_fade_length", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "editor_only"),
-			JS_NewCFunction(ctx, light3d_class_is_editor_only, "is_editor_only", 0),
-			JS_NewCFunction(ctx, light3d_class_set_editor_only, "set_editor_only", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "light_intensity_lumens"),
+        JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "light_intensity_lux"),
+        JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "light_temperature"),
+        JS_NewCFunction(ctx, light3d_class_get_temperature, "get_temperature", 0),
+        JS_NewCFunction(ctx, light3d_class_set_temperature, "set_temperature", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "light_color"),
+        JS_NewCFunction(ctx, light3d_class_get_color, "get_color", 0),
+        JS_NewCFunction(ctx, light3d_class_set_color, "set_color", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "light_energy"),
+        JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "light_indirect_energy"),
+        JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "light_volumetric_fog_energy"),
+        JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "light_projector"),
+        JS_NewCFunction(ctx, light3d_class_get_projector, "get_projector", 0),
+        JS_NewCFunction(ctx, light3d_class_set_projector, "set_projector", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "light_size"),
+        JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "light_angular_distance"),
+        JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "light_negative"),
+        JS_NewCFunction(ctx, light3d_class_is_negative, "is_negative", 0),
+        JS_NewCFunction(ctx, light3d_class_set_negative, "set_negative", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "light_specular"),
+        JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "light_bake_mode"),
+        JS_NewCFunction(ctx, light3d_class_get_bake_mode, "get_bake_mode", 0),
+        JS_NewCFunction(ctx, light3d_class_set_bake_mode, "set_bake_mode", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "light_cull_mask"),
+        JS_NewCFunction(ctx, light3d_class_get_cull_mask, "get_cull_mask", 0),
+        JS_NewCFunction(ctx, light3d_class_set_cull_mask, "set_cull_mask", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "shadow_enabled"),
+        JS_NewCFunction(ctx, light3d_class_has_shadow, "has_shadow", 0),
+        JS_NewCFunction(ctx, light3d_class_set_shadow, "set_shadow", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "shadow_bias"),
+        JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "shadow_normal_bias"),
+        JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "shadow_reverse_cull_face"),
+        JS_NewCFunction(ctx, light3d_class_get_shadow_reverse_cull_face, "get_shadow_reverse_cull_face", 0),
+        JS_NewCFunction(ctx, light3d_class_set_shadow_reverse_cull_face, "set_shadow_reverse_cull_face", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "shadow_transmittance_bias"),
+        JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "shadow_opacity"),
+        JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "shadow_blur"),
+        JS_NewCFunction(ctx, light3d_class_get_param, "get_param", 0),
+        JS_NewCFunction(ctx, light3d_class_set_param, "set_param", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "distance_fade_enabled"),
+        JS_NewCFunction(ctx, light3d_class_is_distance_fade_enabled, "is_distance_fade_enabled", 0),
+        JS_NewCFunction(ctx, light3d_class_set_enable_distance_fade, "set_enable_distance_fade", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "distance_fade_begin"),
+        JS_NewCFunction(ctx, light3d_class_get_distance_fade_begin, "get_distance_fade_begin", 0),
+        JS_NewCFunction(ctx, light3d_class_set_distance_fade_begin, "set_distance_fade_begin", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "distance_fade_shadow"),
+        JS_NewCFunction(ctx, light3d_class_get_distance_fade_shadow, "get_distance_fade_shadow", 0),
+        JS_NewCFunction(ctx, light3d_class_set_distance_fade_shadow, "set_distance_fade_shadow", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "distance_fade_length"),
+        JS_NewCFunction(ctx, light3d_class_get_distance_fade_length, "get_distance_fade_length", 0),
+        JS_NewCFunction(ctx, light3d_class_set_distance_fade_length, "set_distance_fade_length", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "editor_only"),
+        JS_NewCFunction(ctx, light3d_class_is_editor_only, "is_editor_only", 0),
+        JS_NewCFunction(ctx, light3d_class_set_editor_only, "set_editor_only", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -414,6 +442,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_light3d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Light3D::__class_id);
 	classes["Light3D"] = Light3D::__class_id;
 	class_id_list.insert(Light3D::__class_id);
@@ -436,7 +465,7 @@ static int js_light3d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_light3d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/visual_instance3d';";
+	const char *code = "import * as _ from '@godot/classes/visual_instance3d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -448,7 +477,7 @@ JSModuleDef *_js_init_light3d_module(JSContext *ctx, const char *module_name) {
 }
 
 JSModuleDef *js_init_light3d_module(JSContext *ctx) {
-	return _js_init_light3d_module(ctx, "godot/classes/light3d");
+	return _js_init_light3d_module(ctx, "@godot/classes/light3d");
 }
 
 void register_light3d() {

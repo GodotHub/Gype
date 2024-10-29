@@ -1,5 +1,5 @@
 #include "quickjs/quickjs.h"
-#include "support/javascript.hpp"
+#include "support/typescript.hpp"
 #include <godot_cpp/classes/resource_loader.hpp>
 #include <godot_cpp/variant/string.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
@@ -15,11 +15,11 @@ JSModuleDef *module_loader(JSContext *ctx, const char *module_name, void *opaque
 	String path = godot::String(filepath);
 	if (path.begins_with("@res")) {
 		path = path.replace("@res", "res://");
-	} else if (path.begins_with("@godot")) {
+	} else if (path.begins_with("@godot/core")) {
 		path = path.replace("@godot", "res://addons/gype/godot");
 	}
 
-	Ref<JavaScript> script = godot::ResourceLoader::get_singleton()->load(path);
+	Ref<TypeScript> script = godot::ResourceLoader::get_singleton()->load(path);
 
 	if (script.is_null()) {
 		return NULL;

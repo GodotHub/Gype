@@ -9,13 +9,13 @@ export declare class XRHandModifier3D extends SkeletonModifier3D{
   public get hand_tracker(): String {
     get_hand_tracker();
   }
-  public set hand_tracker(value: String): void {
+  public set hand_tracker(value): void {
     set_hand_tracker(value);
   }
   public get bone_update(): number {
     get_bone_update();
   }
-  public set bone_update(value: number): void {
+  public set bone_update(value): void {
     set_bone_update(value);
   }
   static BoneUpdate = {

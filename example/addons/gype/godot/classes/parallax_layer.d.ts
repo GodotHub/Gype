@@ -11,19 +11,19 @@ export declare class ParallaxLayer extends Node2D{
   public get motion_scale(): Vector2 {
     get_motion_scale();
   }
-  public set motion_scale(value: Vector2): void {
+  public set motion_scale(value): void {
     set_motion_scale(value);
   }
   public get motion_offset(): Vector2 {
     get_motion_offset();
   }
-  public set motion_offset(value: Vector2): void {
+  public set motion_offset(value): void {
     set_motion_offset(value);
   }
   public get motion_mirroring(): Vector2 {
     get_mirroring();
   }
-  public set motion_mirroring(value: Vector2): void {
+  public set motion_mirroring(value): void {
     set_mirroring(value);
   }
 }

@@ -1,8 +1,8 @@
 
 import { CameraAttributes } from "@godot/classes/camera_attributes";
+import { Compositor } from "@godot/classes/compositor";
 import { Node3D } from "@godot/classes/node3d";
 import { Environment } from "@godot/classes/environment";
-import { Compositor } from "@godot/classes/compositor";
 
 export declare class Camera3D extends Node3D{
   public project_ray_normal(_screen_point: Vector2): Vector3;
@@ -48,7 +48,7 @@ export declare class Camera3D extends Node3D{
   public get_keep_aspect_mode(): number;
   public set_doppler_tracking(_mode: number): void;
   public get_doppler_tracking(): number;
-  public get_frustum(): Array;
+  public get_frustum(): GDArray;
   public is_position_in_frustum(_world_point: Vector3): boolean;
   public get_camera_rid(): RID;
   public get_pyramid_shape_rid(): RID;
@@ -57,91 +57,91 @@ export declare class Camera3D extends Node3D{
   public get keep_aspect(): number {
     get_keep_aspect_mode();
   }
-  public set keep_aspect(value: number): void {
+  public set keep_aspect(value): void {
     set_keep_aspect_mode(value);
   }
   public get cull_mask(): number {
     get_cull_mask();
   }
-  public set cull_mask(value: number): void {
+  public set cull_mask(value): void {
     set_cull_mask(value);
   }
   public get environment(): Environment {
     get_environment();
   }
-  public set environment(value: Environment): void {
+  public set environment(value): void {
     set_environment(value);
   }
-  public get attributes(): CameraAttributesPractical,CameraAttributesPhysical {
+  public get attributes(): CameraAttributesPractical {
     get_attributes();
   }
-  public set attributes(value: CameraAttributesPractical,CameraAttributesPhysical): void {
+  public set attributes(value): void {
     set_attributes(value);
   }
   public get compositor(): Compositor {
     get_compositor();
   }
-  public set compositor(value: Compositor): void {
+  public set compositor(value): void {
     set_compositor(value);
   }
   public get h_offset(): number {
     get_h_offset();
   }
-  public set h_offset(value: number): void {
+  public set h_offset(value): void {
     set_h_offset(value);
   }
   public get v_offset(): number {
     get_v_offset();
   }
-  public set v_offset(value: number): void {
+  public set v_offset(value): void {
     set_v_offset(value);
   }
   public get doppler_tracking(): number {
     get_doppler_tracking();
   }
-  public set doppler_tracking(value: number): void {
+  public set doppler_tracking(value): void {
     set_doppler_tracking(value);
   }
   public get projection(): number {
     get_projection();
   }
-  public set projection(value: number): void {
+  public set projection(value): void {
     set_projection(value);
   }
   public get current(): boolean {
     is_current();
   }
-  public set current(value: boolean): void {
+  public set current(value): void {
     set_current(value);
   }
   public get fov(): number {
     get_fov();
   }
-  public set fov(value: number): void {
+  public set fov(value): void {
     set_fov(value);
   }
   public get size(): number {
     get_size();
   }
-  public set size(value: number): void {
+  public set size(value): void {
     set_size(value);
   }
   public get frustum_offset(): Vector2 {
     get_frustum_offset();
   }
-  public set frustum_offset(value: Vector2): void {
+  public set frustum_offset(value): void {
     set_frustum_offset(value);
   }
   public get near(): number {
     get_near();
   }
-  public set near(value: number): void {
+  public set near(value): void {
     set_near(value);
   }
   public get far(): number {
     get_far();
   }
-  public set far(value: number): void {
+  public set far(value): void {
     set_far(value);
   }
   static ProjectionType = {

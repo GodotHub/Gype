@@ -14,25 +14,25 @@ export declare class FlowContainer extends Container{
   public get alignment(): number {
     get_alignment();
   }
-  public set alignment(value: number): void {
+  public set alignment(value): void {
     set_alignment(value);
   }
   public get last_wrap_alignment(): number {
     get_last_wrap_alignment();
   }
-  public set last_wrap_alignment(value: number): void {
+  public set last_wrap_alignment(value): void {
     set_last_wrap_alignment(value);
   }
   public get vertical(): boolean {
     is_vertical();
   }
-  public set vertical(value: boolean): void {
+  public set vertical(value): void {
     set_vertical(value);
   }
   public get reverse_fill(): boolean {
     is_reverse_fill();
   }
-  public set reverse_fill(value: boolean): void {
+  public set reverse_fill(value): void {
     set_reverse_fill(value);
   }
   static AlignmentMode = {

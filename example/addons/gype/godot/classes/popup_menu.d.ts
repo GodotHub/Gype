@@ -1,7 +1,7 @@
 
-import { InputEvent } from "@godot/classes/input_event";
 import { Popup } from "@godot/classes/popup";
 import { Texture2D } from "@godot/classes/texture2d";
+import { InputEvent } from "@godot/classes/input_event";
 import { Shortcut } from "@godot/classes/shortcut";
 
 export declare class PopupMenu extends Popup{
@@ -33,7 +33,7 @@ export declare class PopupMenu extends Popup{
   public set_item_checked(_index: number, _checked: boolean): void;
   public set_item_id(_index: number, _id: number): void;
   public set_item_accelerator(_index: number, _accel: number): void;
-  public set_item_metadata(_index: number, _metadata: Variant): void;
+  public set_item_metadata(_index: number, _metadata: any): void;
   public set_item_disabled(_index: number, _disabled: boolean): void;
   public set_item_submenu(_index: number, _submenu: String): void;
   public set_item_submenu_node(_index: number, _submenu: PopupMenu): void;
@@ -58,7 +58,7 @@ export declare class PopupMenu extends Popup{
   public get_item_id(_index: number): number;
   public get_item_index(_id: number): number;
   public get_item_accelerator(_index: number): number;
-  public get_item_metadata(_index: number): Variant;
+  public get_item_metadata(_index: number): any;
   public is_item_disabled(_index: number): boolean;
   public get_item_submenu(_index: number): String;
   public get_item_submenu_node(_index: number): PopupMenu;
@@ -95,49 +95,49 @@ export declare class PopupMenu extends Popup{
   public get hide_on_item_selection(): boolean {
     is_hide_on_item_selection();
   }
-  public set hide_on_item_selection(value: boolean): void {
+  public set hide_on_item_selection(value): void {
     set_hide_on_item_selection(value);
   }
   public get hide_on_checkable_item_selection(): boolean {
     is_hide_on_checkable_item_selection();
   }
-  public set hide_on_checkable_item_selection(value: boolean): void {
+  public set hide_on_checkable_item_selection(value): void {
     set_hide_on_checkable_item_selection(value);
   }
   public get hide_on_state_item_selection(): boolean {
     is_hide_on_state_item_selection();
   }
-  public set hide_on_state_item_selection(value: boolean): void {
+  public set hide_on_state_item_selection(value): void {
     set_hide_on_state_item_selection(value);
   }
   public get submenu_popup_delay(): number {
     get_submenu_popup_delay();
   }
-  public set submenu_popup_delay(value: number): void {
+  public set submenu_popup_delay(value): void {
     set_submenu_popup_delay(value);
   }
   public get allow_search(): boolean {
     get_allow_search();
   }
-  public set allow_search(value: boolean): void {
+  public set allow_search(value): void {
     set_allow_search(value);
   }
   public get system_menu_id(): number {
     get_system_menu();
   }
-  public set system_menu_id(value: number): void {
+  public set system_menu_id(value): void {
     set_system_menu(value);
   }
   public get prefer_native_menu(): boolean {
     is_prefer_native_menu();
   }
-  public set prefer_native_menu(value: boolean): void {
+  public set prefer_native_menu(value): void {
     set_prefer_native_menu(value);
   }
   public get item_count(): number {
     get_item_count();
   }
-  public set item_count(value: number): void {
+  public set item_count(value): void {
     set_item_count(value);
   }
 }

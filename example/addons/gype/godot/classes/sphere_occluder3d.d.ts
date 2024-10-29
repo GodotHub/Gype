@@ -7,7 +7,7 @@ export declare class SphereOccluder3D extends Occluder3D{
   public get radius(): number {
     get_radius();
   }
-  public set radius(value: number): void {
+  public set radius(value): void {
     set_radius(value);
   }
 }

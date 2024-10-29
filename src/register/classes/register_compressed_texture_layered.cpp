@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/compressed_texture_layered.hpp>
 #include <godot_cpp/classes/texture_layered.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void compressed_texture_layered_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,7 +32,7 @@ static JSValue compressed_texture_layered_class_constructor(JSContext *ctx, JSVa
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, compressed_texture_layered_class);
+	JS_SetOpaque(obj, compressed_texture_layered_class);	
 	return obj;
 }
 static JSValue compressed_texture_layered_class_load(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -47,19 +49,21 @@ static const JSCFunctionListEntry compressed_texture_layered_class_proto_funcs[]
 };
 
 void define_compressed_texture_layered_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "load_path"),
-			JS_NewCFunction(ctx, compressed_texture_layered_class_get_load_path, "get_load_path", 0),
-			JS_NewCFunction(ctx, compressed_texture_layered_class_load, "load", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "load_path"),
+        JS_NewCFunction(ctx, compressed_texture_layered_class_get_load_path, "get_load_path", 0),
+        JS_NewCFunction(ctx, compressed_texture_layered_class_load, "load", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_compressed_texture_layered_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&CompressedTextureLayered::__class_id);
 	classes["CompressedTextureLayered"] = CompressedTextureLayered::__class_id;
 	class_id_list.insert(CompressedTextureLayered::__class_id);
@@ -82,7 +86,7 @@ static int js_compressed_texture_layered_class_init(JSContext *ctx, JSModuleDef 
 }
 
 JSModuleDef *_js_init_compressed_texture_layered_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/texture_layered';";
+	const char *code = "import * as _ from '@godot/classes/texture_layered';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -94,7 +98,7 @@ JSModuleDef *_js_init_compressed_texture_layered_module(JSContext *ctx, const ch
 }
 
 JSModuleDef *js_init_compressed_texture_layered_module(JSContext *ctx) {
-	return _js_init_compressed_texture_layered_module(ctx, "godot/classes/compressed_texture_layered");
+	return _js_init_compressed_texture_layered_module(ctx, "@godot/classes/compressed_texture_layered");
 }
 
 void register_compressed_texture_layered() {

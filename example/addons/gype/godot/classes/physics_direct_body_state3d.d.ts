@@ -82,25 +82,25 @@ export declare class PhysicsDirectBodyState3D extends Object{
   public get angular_velocity(): Vector3 {
     get_angular_velocity();
   }
-  public set angular_velocity(value: Vector3): void {
+  public set angular_velocity(value): void {
     set_angular_velocity(value);
   }
   public get linear_velocity(): Vector3 {
     get_linear_velocity();
   }
-  public set linear_velocity(value: Vector3): void {
+  public set linear_velocity(value): void {
     set_linear_velocity(value);
   }
   public get sleeping(): boolean {
     is_sleeping();
   }
-  public set sleeping(value: boolean): void {
+  public set sleeping(value): void {
     set_sleep_state(value);
   }
   public get transform(): Transform3D {
     get_transform();
   }
-  public set transform(value: Transform3D): void {
+  public set transform(value): void {
     set_transform(value);
   }
 }

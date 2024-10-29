@@ -18,19 +18,19 @@ export declare class VisualInstance3D extends Node3D{
   public get layers(): number {
     get_layer_mask();
   }
-  public set layers(value: number): void {
+  public set layers(value): void {
     set_layer_mask(value);
   }
   public get sorting_offset(): number {
     get_sorting_offset();
   }
-  public set sorting_offset(value: number): void {
+  public set sorting_offset(value): void {
     set_sorting_offset(value);
   }
   public get sorting_use_aabb_center(): boolean {
     is_sorting_use_aabb_center();
   }
-  public set sorting_use_aabb_center(value: boolean): void {
+  public set sorting_use_aabb_center(value): void {
     set_sorting_use_aabb_center(value);
   }
 }

@@ -13,25 +13,25 @@ export declare class CapsuleMesh extends PrimitiveMesh{
   public get radius(): number {
     get_radius();
   }
-  public set radius(value: number): void {
+  public set radius(value): void {
     set_radius(value);
   }
   public get height(): number {
     get_height();
   }
-  public set height(value: number): void {
+  public set height(value): void {
     set_height(value);
   }
   public get radial_segments(): number {
     get_radial_segments();
   }
-  public set radial_segments(value: number): void {
+  public set radial_segments(value): void {
     set_radial_segments(value);
   }
   public get rings(): number {
     get_rings();
   }
-  public set rings(value: number): void {
+  public set rings(value): void {
     set_rings(value);
   }
 }

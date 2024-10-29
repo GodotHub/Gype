@@ -42,73 +42,73 @@ export declare class NavigationPolygon extends Resource{
   public get vertices(): PackedVector2Array {
     get_vertices();
   }
-  public set vertices(value: PackedVector2Array): void {
+  public set vertices(value): void {
     set_vertices(value);
   }
-  public get polygons(): Array {
+  public get polygons(): GDArray {
     _get_polygons();
   }
-  public set polygons(value: Array): void {
+  public set polygons(value): void {
     _set_polygons(value);
   }
-  public get outlines(): Array {
+  public get outlines(): GDArray {
     _get_outlines();
   }
-  public set outlines(value: Array): void {
+  public set outlines(value): void {
     _set_outlines(value);
   }
   public get parsed_geometry_type(): number {
     get_parsed_geometry_type();
   }
-  public set parsed_geometry_type(value: number): void {
+  public set parsed_geometry_type(value): void {
     set_parsed_geometry_type(value);
   }
   public get parsed_collision_mask(): number {
     get_parsed_collision_mask();
   }
-  public set parsed_collision_mask(value: number): void {
+  public set parsed_collision_mask(value): void {
     set_parsed_collision_mask(value);
   }
   public get source_geometry_mode(): number {
     get_source_geometry_mode();
   }
-  public set source_geometry_mode(value: number): void {
+  public set source_geometry_mode(value): void {
     set_source_geometry_mode(value);
   }
   public get source_geometry_group_name(): String {
     get_source_geometry_group_name();
   }
-  public set source_geometry_group_name(value: String): void {
+  public set source_geometry_group_name(value): void {
     set_source_geometry_group_name(value);
   }
   public get cell_size(): number {
     get_cell_size();
   }
-  public set cell_size(value: number): void {
+  public set cell_size(value): void {
     set_cell_size(value);
   }
   public get border_size(): number {
     get_border_size();
   }
-  public set border_size(value: number): void {
+  public set border_size(value): void {
     set_border_size(value);
   }
   public get agent_radius(): number {
     get_agent_radius();
   }
-  public set agent_radius(value: number): void {
+  public set agent_radius(value): void {
     set_agent_radius(value);
   }
   public get baking_rect(): Rect2 {
     get_baking_rect();
   }
-  public set baking_rect(value: Rect2): void {
+  public set baking_rect(value): void {
     set_baking_rect(value);
   }
   public get baking_rect_offset(): Vector2 {
     get_baking_rect_offset();
   }
-  public set baking_rect_offset(value: Vector2): void {
+  public set baking_rect_offset(value): void {
     set_baking_rect_offset(value);
   }
   static ParsedGeometryType = {

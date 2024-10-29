@@ -1,7 +1,7 @@
 
-import { Resource } from "@godot/classes/resource";
 import { ArrayMesh } from "@godot/classes/array_mesh";
 import { Material } from "@godot/classes/material";
+import { Resource } from "@godot/classes/resource";
 
 export declare class ImporterMesh extends Resource{
   public add_blend_shape(_name: String): void;
@@ -9,7 +9,7 @@ export declare class ImporterMesh extends Resource{
   public get_blend_shape_name(_blend_shape_idx: number): String;
   public set_blend_shape_mode(_mode: number): void;
   public get_blend_shape_mode(): number;
-  public add_surface(_primitive: number, _arrays: GDArray, _blend_shapes: typedarray::Array, _lods: Dictionary, _material: Material, _name: String, _flags: number): void;
+  public add_surface(_primitive: number, _arrays: GDArray, _blend_shapes: GDArray, _lods: Dictionary, _material: Material, _name: String, _flags: number): void;
   public get_surface_count(): number;
   public get_surface_primitive_type(_surface_idx: number): number;
   public get_surface_name(_surface_idx: number): String;

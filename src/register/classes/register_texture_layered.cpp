@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/image.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/texture.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/texture_layered.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void texture_layered_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,7 +33,7 @@ static JSValue texture_layered_class_constructor(JSContext *ctx, JSValueConst ne
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, texture_layered_class);
+	JS_SetOpaque(obj, texture_layered_class);	
 	return obj;
 }
 static JSValue texture_layered_class_get_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -84,6 +86,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_texture_layered_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&TextureLayered::__class_id);
 	classes["TextureLayered"] = TextureLayered::__class_id;
 	class_id_list.insert(TextureLayered::__class_id);
@@ -106,7 +109,7 @@ static int js_texture_layered_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_texture_layered_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/texture';";
+	const char *code = "import * as _ from '@godot/classes/texture';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -118,7 +121,7 @@ JSModuleDef *_js_init_texture_layered_module(JSContext *ctx, const char *module_
 }
 
 JSModuleDef *js_init_texture_layered_module(JSContext *ctx) {
-	return _js_init_texture_layered_module(ctx, "godot/classes/texture_layered");
+	return _js_init_texture_layered_module(ctx, "@godot/classes/texture_layered");
 }
 
 void register_texture_layered() {

@@ -1,8 +1,8 @@
 
-import { Control } from "@godot/classes/control";
-import { Node } from "@godot/classes/node";
-import { Object } from "@godot/classes/object";
 import { GraphFrame } from "@godot/classes/graph_frame";
+import { Object } from "@godot/classes/object";
+import { Node } from "@godot/classes/node";
+import { Control } from "@godot/classes/control";
 import { HBoxContainer } from "@godot/classes/h_box_container";
 
 export declare class GraphEdit extends Control{
@@ -14,9 +14,9 @@ export declare class GraphEdit extends Control{
   public is_node_connected(_from_node: StringName, _from_port: number, _to_node: StringName, _to_port: number): boolean;
   public disconnect_node(_from_node: StringName, _from_port: number, _to_node: StringName, _to_port: number): void;
   public set_connection_activity(_from_node: StringName, _from_port: number, _to_node: StringName, _to_port: number, _amount: number): void;
-  public get_connection_list(): Array;
+  public get_connection_list(): GDArray;
   public get_closest_connection_at_point(_point: Vector2, _max_distance: number): Dictionary;
-  public get_connections_intersecting_with_rect(_rect: Rect2): Array;
+  public get_connections_intersecting_with_rect(_rect: Rect2): GDArray;
   public clear_connections(): void;
   public force_connection_drag_end(): void;
   public get_scroll_offset(): Vector2;
@@ -32,7 +32,7 @@ export declare class GraphEdit extends Control{
   public attach_graph_element_to_frame(_element: StringName, _frame: StringName): void;
   public detach_graph_element_from_frame(_element: StringName): void;
   public get_element_frame(_element: StringName): GraphFrame;
-  public get_attached_nodes_of_frame(_frame: StringName): Array;
+  public get_attached_nodes_of_frame(_frame: StringName): GDArray;
   public set_panning_scheme(_scheme: number): void;
   public get_panning_scheme(): number;
   public set_zoom(_zoom: number): void;
@@ -83,139 +83,139 @@ export declare class GraphEdit extends Control{
   public get scroll_offset(): Vector2 {
     get_scroll_offset();
   }
-  public set scroll_offset(value: Vector2): void {
+  public set scroll_offset(value): void {
     set_scroll_offset(value);
   }
   public get show_grid(): boolean {
     is_showing_grid();
   }
-  public set show_grid(value: boolean): void {
+  public set show_grid(value): void {
     set_show_grid(value);
   }
   public get grid_pattern(): number {
     get_grid_pattern();
   }
-  public set grid_pattern(value: number): void {
+  public set grid_pattern(value): void {
     set_grid_pattern(value);
   }
   public get snapping_enabled(): boolean {
     is_snapping_enabled();
   }
-  public set snapping_enabled(value: boolean): void {
+  public set snapping_enabled(value): void {
     set_snapping_enabled(value);
   }
   public get snapping_distance(): number {
     get_snapping_distance();
   }
-  public set snapping_distance(value: number): void {
+  public set snapping_distance(value): void {
     set_snapping_distance(value);
   }
   public get panning_scheme(): number {
     get_panning_scheme();
   }
-  public set panning_scheme(value: number): void {
+  public set panning_scheme(value): void {
     set_panning_scheme(value);
   }
   public get right_disconnects(): boolean {
     is_right_disconnects_enabled();
   }
-  public set right_disconnects(value: boolean): void {
+  public set right_disconnects(value): void {
     set_right_disconnects(value);
   }
   public get connection_lines_curvature(): number {
     get_connection_lines_curvature();
   }
-  public set connection_lines_curvature(value: number): void {
+  public set connection_lines_curvature(value): void {
     set_connection_lines_curvature(value);
   }
   public get connection_lines_thickness(): number {
     get_connection_lines_thickness();
   }
-  public set connection_lines_thickness(value: number): void {
+  public set connection_lines_thickness(value): void {
     set_connection_lines_thickness(value);
   }
   public get connection_lines_antialiased(): boolean {
     is_connection_lines_antialiased();
   }
-  public set connection_lines_antialiased(value: boolean): void {
+  public set connection_lines_antialiased(value): void {
     set_connection_lines_antialiased(value);
   }
   public get zoom(): number {
     get_zoom();
   }
-  public set zoom(value: number): void {
+  public set zoom(value): void {
     set_zoom(value);
   }
   public get zoom_min(): number {
     get_zoom_min();
   }
-  public set zoom_min(value: number): void {
+  public set zoom_min(value): void {
     set_zoom_min(value);
   }
   public get zoom_max(): number {
     get_zoom_max();
   }
-  public set zoom_max(value: number): void {
+  public set zoom_max(value): void {
     set_zoom_max(value);
   }
   public get zoom_step(): number {
     get_zoom_step();
   }
-  public set zoom_step(value: number): void {
+  public set zoom_step(value): void {
     set_zoom_step(value);
   }
   public get minimap_enabled(): boolean {
     is_minimap_enabled();
   }
-  public set minimap_enabled(value: boolean): void {
+  public set minimap_enabled(value): void {
     set_minimap_enabled(value);
   }
   public get minimap_size(): Vector2 {
     get_minimap_size();
   }
-  public set minimap_size(value: Vector2): void {
+  public set minimap_size(value): void {
     set_minimap_size(value);
   }
   public get minimap_opacity(): number {
     get_minimap_opacity();
   }
-  public set minimap_opacity(value: number): void {
+  public set minimap_opacity(value): void {
     set_minimap_opacity(value);
   }
   public get show_menu(): boolean {
     is_showing_menu();
   }
-  public set show_menu(value: boolean): void {
+  public set show_menu(value): void {
     set_show_menu(value);
   }
   public get show_zoom_label(): boolean {
     is_showing_zoom_label();
   }
-  public set show_zoom_label(value: boolean): void {
+  public set show_zoom_label(value): void {
     set_show_zoom_label(value);
   }
   public get show_zoom_buttons(): boolean {
     is_showing_zoom_buttons();
   }
-  public set show_zoom_buttons(value: boolean): void {
+  public set show_zoom_buttons(value): void {
     set_show_zoom_buttons(value);
   }
   public get show_grid_buttons(): boolean {
     is_showing_grid_buttons();
   }
-  public set show_grid_buttons(value: boolean): void {
+  public set show_grid_buttons(value): void {
     set_show_grid_buttons(value);
   }
   public get show_minimap_button(): boolean {
     is_showing_minimap_button();
   }
-  public set show_minimap_button(value: boolean): void {
+  public set show_minimap_button(value): void {
     set_show_minimap_button(value);
   }
   public get show_arrange_button(): boolean {
     is_showing_arrange_button();
   }
-  public set show_arrange_button(value: boolean): void {
+  public set show_arrange_button(value): void {
     set_show_arrange_button(value);
   }
   static PanningScheme = {

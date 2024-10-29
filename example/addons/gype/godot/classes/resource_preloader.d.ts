@@ -1,6 +1,6 @@
 
-import { Node } from "@godot/classes/node";
 import { Resource } from "@godot/classes/resource";
+import { Node } from "@godot/classes/node";
 
 export declare class ResourcePreloader extends Node{
   public add_resource(_name: StringName, _resource: Resource): void;
@@ -9,10 +9,10 @@ export declare class ResourcePreloader extends Node{
   public has_resource(_name: StringName): boolean;
   public get_resource(_name: StringName): Resource;
   public get_resource_list(): PackedStringArray;
-  public get resources(): Array {
+  public get resources(): GDArray {
     _get_resources();
   }
-  public set resources(value: Array): void {
+  public set resources(value): void {
     _set_resources(value);
   }
 }

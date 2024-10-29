@@ -1,24 +1,24 @@
 
-import { EditorInspector } from "@godot/classes/editor_inspector";
-import { Script } from "@godot/classes/script";
+import { Window } from "@godot/classes/window";
 import { Theme } from "@godot/classes/theme";
-import { Control } from "@godot/classes/control";
-import { EditorCommandPalette } from "@godot/classes/editor_command_palette";
-import { ScriptEditor } from "@godot/classes/script_editor";
-import { Node } from "@godot/classes/node";
-import { VBoxContainer } from "@godot/classes/v_box_container";
-import { EditorResourcePreview } from "@godot/classes/editor_resource_preview";
-import { EditorPaths } from "@godot/classes/editor_paths";
-import { Object } from "@godot/classes/object";
+import { Texture2D } from "@godot/classes/texture2d";
+import { EditorFileSystem } from "@godot/classes/editor_file_system";
 import { EditorSettings } from "@godot/classes/editor_settings";
 import { SubViewport } from "@godot/classes/sub_viewport";
-import { Texture2D } from "@godot/classes/texture2d";
-import { FileSystemDock } from "@godot/classes/file_system_dock";
-import { Window } from "@godot/classes/window";
 import { EditorSelection } from "@godot/classes/editor_selection";
+import { Object } from "@godot/classes/object";
+import { FileSystemDock } from "@godot/classes/file_system_dock";
+import { Node } from "@godot/classes/node";
+import { Script } from "@godot/classes/script";
+import { Control } from "@godot/classes/control";
+import { EditorResourcePreview } from "@godot/classes/editor_resource_preview";
+import { ScriptEditor } from "@godot/classes/script_editor";
+import { EditorCommandPalette } from "@godot/classes/editor_command_palette";
 import { Resource } from "@godot/classes/resource";
+import { VBoxContainer } from "@godot/classes/v_box_container";
+import { EditorPaths } from "@godot/classes/editor_paths";
 import { Mesh } from "@godot/classes/mesh";
-import { EditorFileSystem } from "@godot/classes/editor_file_system";
+import { EditorInspector } from "@godot/classes/editor_inspector";
 
 export declare class EditorInterface extends Object{
   public restart_editor(_save: boolean): void;
@@ -28,7 +28,7 @@ export declare class EditorInterface extends Object{
   public get_resource_previewer(): EditorResourcePreview;
   public get_selection(): EditorSelection;
   public get_editor_settings(): EditorSettings;
-  public make_mesh_previews(_meshes: typedarray::Mesh, _preview_size: number): Array;
+  public make_mesh_previews(_meshes: GDArray, _preview_size: number): GDArray;
   public set_plugin_enabled(_plugin: String, _enabled: boolean): void;
   public is_plugin_enabled(_plugin: String): boolean;
   public get_editor_theme(): Theme;
@@ -48,7 +48,7 @@ export declare class EditorInterface extends Object{
   public popup_dialog_centered_clamped(_dialog: Window, _minsize: Vector2i, _fallback_ratio: number): void;
   public get_current_feature_profile(): String;
   public set_current_feature_profile(_profile_name: String): void;
-  public popup_node_selector(_callback: Callable, _valid_types: typedarray::StringName): void;
+  public popup_node_selector(_callback: Callable, _valid_types: GDArray): void;
   public popup_property_selector(_object: Object, _callback: Callable, _type_filter: PackedInt32Array): void;
   public get_file_system_dock(): FileSystemDock;
   public select_file(_file: String): void;
@@ -79,13 +79,13 @@ export declare class EditorInterface extends Object{
   public get distraction_free_mode(): boolean {
     is_distraction_free_mode_enabled();
   }
-  public set distraction_free_mode(value: boolean): void {
+  public set distraction_free_mode(value): void {
     set_distraction_free_mode(value);
   }
   public get movie_maker_enabled(): boolean {
     is_movie_maker_enabled();
   }
-  public set movie_maker_enabled(value: boolean): void {
+  public set movie_maker_enabled(value): void {
     set_movie_maker_enabled(value);
   }
 }

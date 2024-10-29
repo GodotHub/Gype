@@ -21,19 +21,19 @@ export declare class SkeletonModification2DLookAt extends SkeletonModification2D
   public get bone_index(): number {
     get_bone_index();
   }
-  public set bone_index(value: number): void {
+  public set bone_index(value): void {
     set_bone_index(value);
   }
   public get bone2d_node(): NodePath {
     get_bone2d_node();
   }
-  public set bone2d_node(value: NodePath): void {
+  public set bone2d_node(value): void {
     set_bone2d_node(value);
   }
   public get target_nodepath(): NodePath {
     get_target_node();
   }
-  public set target_nodepath(value: NodePath): void {
+  public set target_nodepath(value): void {
     set_target_node(value);
   }
 }

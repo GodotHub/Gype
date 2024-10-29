@@ -1,8 +1,8 @@
 
 import { ArrayMesh } from "@godot/classes/array_mesh";
-import { RefCounted } from "@godot/classes/ref_counted";
-import { Material } from "@godot/classes/material";
 import { Mesh } from "@godot/classes/mesh";
+import { Material } from "@godot/classes/material";
+import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class SurfaceTool extends RefCounted{
   public set_skin_weight_count(_count: number): void;
@@ -20,7 +20,7 @@ export declare class SurfaceTool extends RefCounted{
   public set_weights(_weights: PackedFloat32Array): void;
   public set_custom(_channel_index: number, _custom_color: Color): void;
   public set_smooth_group(_index: number): void;
-  public add_triangle_fan(_vertices: PackedVector3Array, _uvs: PackedVector2Array, _colors: PackedColorArray, _uv2s: PackedVector2Array, _normals: PackedVector3Array, _tangents: typedarray::Plane): void;
+  public add_triangle_fan(_vertices: PackedVector3Array, _uvs: PackedVector2Array, _colors: PackedColorArray, _uv2s: PackedVector2Array, _normals: PackedVector3Array, _tangents: GDArray): void;
   public add_index(_index: number): void;
   public index(): void;
   public deindex(): void;

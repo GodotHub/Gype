@@ -1,17 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void font_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +33,12 @@ static JSValue font_class_constructor(JSContext *ctx, JSValueConst new_target, i
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, font_class);
+	JS_SetOpaque(obj, font_class);	
 	return obj;
 }
 static JSValue font_class_set_fallbacks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Font::set_fallbacks, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Font::set_fallbacks, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_class_get_fallbacks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -104,7 +107,7 @@ static JSValue font_class_get_opentype_features(JSContext *ctx, JSValueConst thi
 };
 static JSValue font_class_set_cache_capacity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Font::set_cache_capacity, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Font::set_cache_capacity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_class_get_string_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -117,22 +120,22 @@ static JSValue font_class_get_multiline_string_size(JSContext *ctx, JSValueConst
 };
 static JSValue font_class_draw_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_const_method_no_ret(&Font::draw_string, ctx, this_val, argc, argv);
+    call_builtin_const_method_no_ret(&Font::draw_string, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_class_draw_multiline_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_const_method_no_ret(&Font::draw_multiline_string, ctx, this_val, argc, argv);
+    call_builtin_const_method_no_ret(&Font::draw_multiline_string, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_class_draw_string_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_const_method_no_ret(&Font::draw_string_outline, ctx, this_val, argc, argv);
+    call_builtin_const_method_no_ret(&Font::draw_string_outline, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_class_draw_multiline_string_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_const_method_no_ret(&Font::draw_multiline_string_outline, ctx, this_val, argc, argv);
+    call_builtin_const_method_no_ret(&Font::draw_multiline_string_outline, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue font_class_get_char_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -213,19 +216,21 @@ static const JSCFunctionListEntry font_class_proto_funcs[] = {
 };
 
 void define_font_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "fallbacks"),
-			JS_NewCFunction(ctx, font_class_get_fallbacks, "get_fallbacks", 0),
-			JS_NewCFunction(ctx, font_class_set_fallbacks, "set_fallbacks", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "fallbacks"),
+        JS_NewCFunction(ctx, font_class_get_fallbacks, "get_fallbacks", 0),
+        JS_NewCFunction(ctx, font_class_set_fallbacks, "set_fallbacks", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_font_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Font::__class_id);
 	classes["Font"] = Font::__class_id;
 	class_id_list.insert(Font::__class_id);
@@ -248,7 +253,7 @@ static int js_font_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_font_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/resource';";
+	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -260,7 +265,7 @@ JSModuleDef *_js_init_font_module(JSContext *ctx, const char *module_name) {
 }
 
 JSModuleDef *js_init_font_module(JSContext *ctx) {
-	return _js_init_font_module(ctx, "godot/classes/font");
+	return _js_init_font_module(ctx, "@godot/classes/font");
 }
 
 void register_font() {

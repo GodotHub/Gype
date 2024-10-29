@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/resource.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/skin.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void skin_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue skin_class_constructor(JSContext *ctx, JSValueConst new_target, i
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, skin_class);
+	JS_SetOpaque(obj, skin_class);	
 	return obj;
 }
 static JSValue skin_class_set_bind_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Skin::set_bind_count, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Skin::set_bind_count, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skin_class_get_bind_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,17 +46,17 @@ static JSValue skin_class_get_bind_count(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue skin_class_add_bind(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Skin::add_bind, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Skin::add_bind, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skin_class_add_named_bind(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Skin::add_named_bind, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Skin::add_named_bind, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skin_class_set_bind_pose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Skin::set_bind_pose, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Skin::set_bind_pose, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skin_class_get_bind_pose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -63,7 +65,7 @@ static JSValue skin_class_get_bind_pose(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue skin_class_set_bind_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Skin::set_bind_name, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Skin::set_bind_name, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skin_class_get_bind_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,7 +74,7 @@ static JSValue skin_class_get_bind_name(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue skin_class_set_bind_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Skin::set_bind_bone, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Skin::set_bind_bone, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue skin_class_get_bind_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -81,7 +83,7 @@ static JSValue skin_class_get_bind_bone(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue skin_class_clear_binds(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Skin::clear_binds, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Skin::clear_binds, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static const JSCFunctionListEntry skin_class_proto_funcs[] = {
@@ -105,6 +107,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_skin_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Skin::__class_id);
 	classes["Skin"] = Skin::__class_id;
 	class_id_list.insert(Skin::__class_id);
@@ -127,7 +130,7 @@ static int js_skin_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_skin_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/resource';";
+	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -139,7 +142,7 @@ JSModuleDef *_js_init_skin_module(JSContext *ctx, const char *module_name) {
 }
 
 JSModuleDef *js_init_skin_module(JSContext *ctx) {
-	return _js_init_skin_module(ctx, "godot/classes/skin");
+	return _js_init_skin_module(ctx, "@godot/classes/skin");
 }
 
 void register_skin() {

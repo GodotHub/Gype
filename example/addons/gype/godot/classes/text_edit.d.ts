@@ -1,9 +1,9 @@
 
 import { Texture2D } from "@godot/classes/texture2d";
-import { Control } from "@godot/classes/control";
-import { SyntaxHighlighter } from "@godot/classes/syntax_highlighter";
-import { PopupMenu } from "@godot/classes/popup_menu";
 import { VScrollBar } from "@godot/classes/v_scroll_bar";
+import { SyntaxHighlighter } from "@godot/classes/syntax_highlighter";
+import { Control } from "@godot/classes/control";
+import { PopupMenu } from "@godot/classes/popup_menu";
 import { HScrollBar } from "@godot/classes/h_scroll_bar";
 
 export declare class TextEdit extends Control{
@@ -146,7 +146,7 @@ export declare class TextEdit extends Control{
   public has_selection(_caret_index: number): boolean;
   public get_selected_text(_caret_index: number): String;
   public get_selection_at_line_column(_line: number, _column: number, _include_edges: boolean, _only_selections: boolean): number;
-  public get_line_ranges_from_carets(_only_selections: boolean, _merge_adjacent: boolean): Array;
+  public get_line_ranges_from_carets(_only_selections: boolean, _merge_adjacent: boolean): GDArray;
   public get_selection_origin_line(_caret_index: number): number;
   public get_selection_origin_column(_caret_index: number): number;
   public set_selection_origin_line(_line: number, _can_be_hidden: boolean, _wrap_index: number, _caret_index: number): void;
@@ -215,8 +215,8 @@ export declare class TextEdit extends Control{
   public merge_gutters(_from_line: number, _to_line: number): void;
   public set_gutter_custom_draw(_column: number, _draw_callback: Callable): void;
   public get_total_gutter_width(): number;
-  public set_line_gutter_metadata(_line: number, _gutter: number, _metadata: Variant): void;
-  public get_line_gutter_metadata(_line: number, _gutter: number): Variant;
+  public set_line_gutter_metadata(_line: number, _gutter: number, _metadata: any): void;
+  public get_line_gutter_metadata(_line: number, _gutter: number): any;
   public set_line_gutter_text(_line: number, _gutter: number, _text: String): void;
   public get_line_gutter_text(_line: number, _gutter: number): String;
   public set_line_gutter_icon(_line: number, _gutter: number, _icon: Texture2D): void;
@@ -249,247 +249,247 @@ export declare class TextEdit extends Control{
   public get text(): String {
     get_text();
   }
-  public set text(value: String): void {
+  public set text(value): void {
     set_text(value);
   }
   public get placeholder_text(): String {
     get_placeholder();
   }
-  public set placeholder_text(value: String): void {
+  public set placeholder_text(value): void {
     set_placeholder(value);
   }
   public get editable(): boolean {
     is_editable();
   }
-  public set editable(value: boolean): void {
+  public set editable(value): void {
     set_editable(value);
   }
   public get context_menu_enabled(): boolean {
     is_context_menu_enabled();
   }
-  public set context_menu_enabled(value: boolean): void {
+  public set context_menu_enabled(value): void {
     set_context_menu_enabled(value);
   }
   public get shortcut_keys_enabled(): boolean {
     is_shortcut_keys_enabled();
   }
-  public set shortcut_keys_enabled(value: boolean): void {
+  public set shortcut_keys_enabled(value): void {
     set_shortcut_keys_enabled(value);
   }
   public get selecting_enabled(): boolean {
     is_selecting_enabled();
   }
-  public set selecting_enabled(value: boolean): void {
+  public set selecting_enabled(value): void {
     set_selecting_enabled(value);
   }
   public get deselect_on_focus_loss_enabled(): boolean {
     is_deselect_on_focus_loss_enabled();
   }
-  public set deselect_on_focus_loss_enabled(value: boolean): void {
+  public set deselect_on_focus_loss_enabled(value): void {
     set_deselect_on_focus_loss_enabled(value);
   }
   public get drag_and_drop_selection_enabled(): boolean {
     is_drag_and_drop_selection_enabled();
   }
-  public set drag_and_drop_selection_enabled(value: boolean): void {
+  public set drag_and_drop_selection_enabled(value): void {
     set_drag_and_drop_selection_enabled(value);
   }
   public get virtual_keyboard_enabled(): boolean {
     is_virtual_keyboard_enabled();
   }
-  public set virtual_keyboard_enabled(value: boolean): void {
+  public set virtual_keyboard_enabled(value): void {
     set_virtual_keyboard_enabled(value);
   }
   public get middle_mouse_paste_enabled(): boolean {
     is_middle_mouse_paste_enabled();
   }
-  public set middle_mouse_paste_enabled(value: boolean): void {
+  public set middle_mouse_paste_enabled(value): void {
     set_middle_mouse_paste_enabled(value);
   }
   public get wrap_mode(): number {
     get_line_wrapping_mode();
   }
-  public set wrap_mode(value: number): void {
+  public set wrap_mode(value): void {
     set_line_wrapping_mode(value);
   }
   public get autowrap_mode(): number {
     get_autowrap_mode();
   }
-  public set autowrap_mode(value: number): void {
+  public set autowrap_mode(value): void {
     set_autowrap_mode(value);
   }
   public get indent_wrapped_lines(): boolean {
     is_indent_wrapped_lines();
   }
-  public set indent_wrapped_lines(value: boolean): void {
+  public set indent_wrapped_lines(value): void {
     set_indent_wrapped_lines(value);
   }
   public get scroll_smooth(): boolean {
     is_smooth_scroll_enabled();
   }
-  public set scroll_smooth(value: boolean): void {
+  public set scroll_smooth(value): void {
     set_smooth_scroll_enabled(value);
   }
   public get scroll_v_scroll_speed(): number {
     get_v_scroll_speed();
   }
-  public set scroll_v_scroll_speed(value: number): void {
+  public set scroll_v_scroll_speed(value): void {
     set_v_scroll_speed(value);
   }
   public get scroll_past_end_of_file(): boolean {
     is_scroll_past_end_of_file_enabled();
   }
-  public set scroll_past_end_of_file(value: boolean): void {
+  public set scroll_past_end_of_file(value): void {
     set_scroll_past_end_of_file_enabled(value);
   }
   public get scroll_vertical(): number {
     get_v_scroll();
   }
-  public set scroll_vertical(value: number): void {
+  public set scroll_vertical(value): void {
     set_v_scroll(value);
   }
   public get scroll_horizontal(): number {
     get_h_scroll();
   }
-  public set scroll_horizontal(value: number): void {
+  public set scroll_horizontal(value): void {
     set_h_scroll(value);
   }
   public get scroll_fit_content_height(): boolean {
     is_fit_content_height_enabled();
   }
-  public set scroll_fit_content_height(value: boolean): void {
+  public set scroll_fit_content_height(value): void {
     set_fit_content_height_enabled(value);
   }
   public get minimap_draw(): boolean {
     is_drawing_minimap();
   }
-  public set minimap_draw(value: boolean): void {
+  public set minimap_draw(value): void {
     set_draw_minimap(value);
   }
   public get minimap_width(): number {
     get_minimap_width();
   }
-  public set minimap_width(value: number): void {
+  public set minimap_width(value): void {
     set_minimap_width(value);
   }
   public get caret_type(): number {
     get_caret_type();
   }
-  public set caret_type(value: number): void {
+  public set caret_type(value): void {
     set_caret_type(value);
   }
   public get caret_blink(): boolean {
     is_caret_blink_enabled();
   }
-  public set caret_blink(value: boolean): void {
+  public set caret_blink(value): void {
     set_caret_blink_enabled(value);
   }
   public get caret_blink_interval(): number {
     get_caret_blink_interval();
   }
-  public set caret_blink_interval(value: number): void {
+  public set caret_blink_interval(value): void {
     set_caret_blink_interval(value);
   }
   public get caret_draw_when_editable_disabled(): boolean {
     is_drawing_caret_when_editable_disabled();
   }
-  public set caret_draw_when_editable_disabled(value: boolean): void {
+  public set caret_draw_when_editable_disabled(value): void {
     set_draw_caret_when_editable_disabled(value);
   }
   public get caret_move_on_right_click(): boolean {
     is_move_caret_on_right_click_enabled();
   }
-  public set caret_move_on_right_click(value: boolean): void {
+  public set caret_move_on_right_click(value): void {
     set_move_caret_on_right_click_enabled(value);
   }
   public get caret_mid_grapheme(): boolean {
     is_caret_mid_grapheme_enabled();
   }
-  public set caret_mid_grapheme(value: boolean): void {
+  public set caret_mid_grapheme(value): void {
     set_caret_mid_grapheme_enabled(value);
   }
   public get caret_multiple(): boolean {
     is_multiple_carets_enabled();
   }
-  public set caret_multiple(value: boolean): void {
+  public set caret_multiple(value): void {
     set_multiple_carets_enabled(value);
   }
   public get use_default_word_separators(): boolean {
     is_default_word_separators_enabled();
   }
-  public set use_default_word_separators(value: boolean): void {
+  public set use_default_word_separators(value): void {
     set_use_default_word_separators(value);
   }
   public get use_custom_word_separators(): boolean {
     is_custom_word_separators_enabled();
   }
-  public set use_custom_word_separators(value: boolean): void {
+  public set use_custom_word_separators(value): void {
     set_use_custom_word_separators(value);
   }
   public get custom_word_separators(): String {
     get_custom_word_separators();
   }
-  public set custom_word_separators(value: String): void {
+  public set custom_word_separators(value): void {
     set_custom_word_separators(value);
   }
   public get syntax_highlighter(): SyntaxHighlighter {
     get_syntax_highlighter();
   }
-  public set syntax_highlighter(value: SyntaxHighlighter): void {
+  public set syntax_highlighter(value): void {
     set_syntax_highlighter(value);
   }
   public get highlight_all_occurrences(): boolean {
     is_highlight_all_occurrences_enabled();
   }
-  public set highlight_all_occurrences(value: boolean): void {
+  public set highlight_all_occurrences(value): void {
     set_highlight_all_occurrences(value);
   }
   public get highlight_current_line(): boolean {
     is_highlight_current_line_enabled();
   }
-  public set highlight_current_line(value: boolean): void {
+  public set highlight_current_line(value): void {
     set_highlight_current_line(value);
   }
   public get draw_control_chars(): boolean {
     get_draw_control_chars();
   }
-  public set draw_control_chars(value: boolean): void {
+  public set draw_control_chars(value): void {
     set_draw_control_chars(value);
   }
   public get draw_tabs(): boolean {
     is_drawing_tabs();
   }
-  public set draw_tabs(value: boolean): void {
+  public set draw_tabs(value): void {
     set_draw_tabs(value);
   }
   public get draw_spaces(): boolean {
     is_drawing_spaces();
   }
-  public set draw_spaces(value: boolean): void {
+  public set draw_spaces(value): void {
     set_draw_spaces(value);
   }
   public get text_direction(): number {
     get_text_direction();
   }
-  public set text_direction(value: number): void {
+  public set text_direction(value): void {
     set_text_direction(value);
   }
   public get language(): String {
     get_language();
   }
-  public set language(value: String): void {
+  public set language(value): void {
     set_language(value);
   }
   public get structured_text_bidi_override(): number {
     get_structured_text_bidi_override();
   }
-  public set structured_text_bidi_override(value: number): void {
+  public set structured_text_bidi_override(value): void {
     set_structured_text_bidi_override(value);
   }
-  public get structured_text_bidi_override_options(): Array {
+  public get structured_text_bidi_override_options(): GDArray {
     get_structured_text_bidi_override_options();
   }
-  public set structured_text_bidi_override_options(value: Array): void {
+  public set structured_text_bidi_override_options(value): void {
     set_structured_text_bidi_override_options(value);
   }
   static MenuItems = {

@@ -30,7 +30,7 @@ export declare class StringName {
   public is_subsequence_ofn(_text: String): void;
   public bigrams(): void;
   public similarity(_text: String): void;
-  public format(_values: Variant, _placeholder: String): void;
+  public format(_values: any, _placeholder: String): void;
   public replace(_what: String, _forwhat: String): void;
   public replacen(_what: String, _forwhat: String): void;
   public repeat(_count: number): void;

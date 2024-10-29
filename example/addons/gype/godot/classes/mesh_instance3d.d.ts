@@ -1,11 +1,11 @@
 
-import { MeshConvexDecompositionSettings } from "@godot/classes/mesh_convex_decomposition_settings";
-import { Skin } from "@godot/classes/skin";
-import { GeometryInstance3D } from "@godot/classes/geometry_instance3d";
-import { Mesh } from "@godot/classes/mesh";
 import { ArrayMesh } from "@godot/classes/array_mesh";
+import { Mesh } from "@godot/classes/mesh";
+import { Skin } from "@godot/classes/skin";
 import { Material } from "@godot/classes/material";
+import { GeometryInstance3D } from "@godot/classes/geometry_instance3d";
 import { SkinReference } from "@godot/classes/skin_reference";
+import { MeshConvexDecompositionSettings } from "@godot/classes/mesh_convex_decomposition_settings";
 
 export declare class MeshInstance3D extends GeometryInstance3D{
   public set_mesh(_mesh: Mesh): void;
@@ -31,19 +31,19 @@ export declare class MeshInstance3D extends GeometryInstance3D{
   public get mesh(): Mesh {
     get_mesh();
   }
-  public set mesh(value: Mesh): void {
+  public set mesh(value): void {
     set_mesh(value);
   }
   public get skin(): Skin {
     get_skin();
   }
-  public set skin(value: Skin): void {
+  public set skin(value): void {
     set_skin(value);
   }
   public get skeleton(): NodePath {
     get_skeleton_path();
   }
-  public set skeleton(value: NodePath): void {
+  public set skeleton(value): void {
     set_skeleton_path(value);
   }
 }

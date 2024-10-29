@@ -7,7 +7,7 @@ export declare class AnimationNodeSync extends AnimationNode{
   public get sync(): boolean {
     is_using_sync();
   }
-  public set sync(value: boolean): void {
+  public set sync(value): void {
     set_use_sync(value);
   }
 }

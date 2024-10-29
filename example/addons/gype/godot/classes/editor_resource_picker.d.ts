@@ -1,7 +1,7 @@
 
 import { Object } from "@godot/classes/object";
-import { HBoxContainer } from "@godot/classes/h_box_container";
 import { Resource } from "@godot/classes/resource";
+import { HBoxContainer } from "@godot/classes/h_box_container";
 
 export declare class EditorResourcePicker extends HBoxContainer{
   public _set_create_options(_menu_node: Object): void;
@@ -19,25 +19,25 @@ export declare class EditorResourcePicker extends HBoxContainer{
   public get base_type(): String {
     get_base_type();
   }
-  public set base_type(value: String): void {
+  public set base_type(value): void {
     set_base_type(value);
   }
   public get edited_resource(): Resource {
     get_edited_resource();
   }
-  public set edited_resource(value: Resource): void {
+  public set edited_resource(value): void {
     set_edited_resource(value);
   }
   public get editable(): boolean {
     is_editable();
   }
-  public set editable(value: boolean): void {
+  public set editable(value): void {
     set_editable(value);
   }
   public get toggle_mode(): boolean {
     is_toggle_mode();
   }
-  public set toggle_mode(value: boolean): void {
+  public set toggle_mode(value): void {
     set_toggle_mode(value);
   }
 }

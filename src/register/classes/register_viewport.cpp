@@ -1,26 +1,28 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/camera2d.hpp>
+#include <godot_cpp/classes/world2d.hpp>
+#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/viewport_texture.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/viewport.hpp>
-#include <godot_cpp/classes/viewport_texture.hpp>
-#include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/classes/world2d.hpp>
 #include <godot_cpp/classes/world3d.hpp>
+#include <godot_cpp/classes/viewport.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void viewport_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -39,12 +41,12 @@ static JSValue viewport_class_constructor(JSContext *ctx, JSValueConst new_targe
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, viewport_class);
+	JS_SetOpaque(obj, viewport_class);	
 	return obj;
 }
 static JSValue viewport_class_set_world_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_world_2d, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_world_2d, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_world_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,7 +59,7 @@ static JSValue viewport_class_find_world_2d(JSContext *ctx, JSValueConst this_va
 };
 static JSValue viewport_class_set_canvas_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_canvas_transform, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_canvas_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_canvas_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -66,7 +68,7 @@ static JSValue viewport_class_get_canvas_transform(JSContext *ctx, JSValueConst 
 };
 static JSValue viewport_class_set_global_canvas_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_global_canvas_transform, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_global_canvas_transform, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_global_canvas_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -87,7 +89,7 @@ static JSValue viewport_class_get_visible_rect(JSContext *ctx, JSValueConst this
 };
 static JSValue viewport_class_set_transparent_background(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_transparent_background, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_transparent_background, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_has_transparent_background(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -96,7 +98,7 @@ static JSValue viewport_class_has_transparent_background(JSContext *ctx, JSValue
 };
 static JSValue viewport_class_set_use_hdr_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_use_hdr_2d, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_use_hdr_2d, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_using_hdr_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -105,7 +107,7 @@ static JSValue viewport_class_is_using_hdr_2d(JSContext *ctx, JSValueConst this_
 };
 static JSValue viewport_class_set_msaa_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_msaa_2d, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_msaa_2d, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_msaa_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -114,7 +116,7 @@ static JSValue viewport_class_get_msaa_2d(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue viewport_class_set_msaa_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_msaa_3d, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_msaa_3d, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_msaa_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -123,7 +125,7 @@ static JSValue viewport_class_get_msaa_3d(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue viewport_class_set_screen_space_aa(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_screen_space_aa, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_screen_space_aa, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_screen_space_aa(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -132,7 +134,7 @@ static JSValue viewport_class_get_screen_space_aa(JSContext *ctx, JSValueConst t
 };
 static JSValue viewport_class_set_use_taa(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_use_taa, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_use_taa, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_using_taa(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -141,7 +143,7 @@ static JSValue viewport_class_is_using_taa(JSContext *ctx, JSValueConst this_val
 };
 static JSValue viewport_class_set_use_debanding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_use_debanding, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_use_debanding, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_using_debanding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -150,7 +152,7 @@ static JSValue viewport_class_is_using_debanding(JSContext *ctx, JSValueConst th
 };
 static JSValue viewport_class_set_use_occlusion_culling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_use_occlusion_culling, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_use_occlusion_culling, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_using_occlusion_culling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -159,7 +161,7 @@ static JSValue viewport_class_is_using_occlusion_culling(JSContext *ctx, JSValue
 };
 static JSValue viewport_class_set_debug_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_debug_draw, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_debug_draw, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_debug_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -176,7 +178,7 @@ static JSValue viewport_class_get_texture(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue viewport_class_set_physics_object_picking(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_physics_object_picking, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_physics_object_picking, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_physics_object_picking(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -185,7 +187,7 @@ static JSValue viewport_class_get_physics_object_picking(JSContext *ctx, JSValue
 };
 static JSValue viewport_class_set_physics_object_picking_sort(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_physics_object_picking_sort, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_physics_object_picking_sort, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_physics_object_picking_sort(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -194,7 +196,7 @@ static JSValue viewport_class_get_physics_object_picking_sort(JSContext *ctx, JS
 };
 static JSValue viewport_class_set_physics_object_picking_first_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_physics_object_picking_first_only, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_physics_object_picking_first_only, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_physics_object_picking_first_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -207,17 +209,17 @@ static JSValue viewport_class_get_viewport_rid(JSContext *ctx, JSValueConst this
 };
 static JSValue viewport_class_push_text_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::push_text_input, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::push_text_input, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_push_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::push_input, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::push_input, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_push_unhandled_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::push_unhandled_input, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::push_unhandled_input, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_mouse_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -226,12 +228,12 @@ static JSValue viewport_class_get_mouse_position(JSContext *ctx, JSValueConst th
 };
 static JSValue viewport_class_warp_mouse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::warp_mouse, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::warp_mouse, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_update_mouse_cursor_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::update_mouse_cursor_state, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::update_mouse_cursor_state, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_gui_get_drag_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -248,7 +250,7 @@ static JSValue viewport_class_gui_is_drag_successful(JSContext *ctx, JSValueCons
 };
 static JSValue viewport_class_gui_release_focus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::gui_release_focus, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::gui_release_focus, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_gui_get_focus_owner(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -261,7 +263,7 @@ static JSValue viewport_class_gui_get_hovered_control(JSContext *ctx, JSValueCon
 };
 static JSValue viewport_class_set_disable_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_disable_input, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_disable_input, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_input_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -270,7 +272,7 @@ static JSValue viewport_class_is_input_disabled(JSContext *ctx, JSValueConst thi
 };
 static JSValue viewport_class_set_positional_shadow_atlas_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_positional_shadow_atlas_size, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_positional_shadow_atlas_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_positional_shadow_atlas_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -279,7 +281,7 @@ static JSValue viewport_class_get_positional_shadow_atlas_size(JSContext *ctx, J
 };
 static JSValue viewport_class_set_positional_shadow_atlas_16_bits(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_positional_shadow_atlas_16_bits, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_positional_shadow_atlas_16_bits, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_positional_shadow_atlas_16_bits(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -288,7 +290,7 @@ static JSValue viewport_class_get_positional_shadow_atlas_16_bits(JSContext *ctx
 };
 static JSValue viewport_class_set_snap_controls_to_pixels(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_snap_controls_to_pixels, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_snap_controls_to_pixels, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_snap_controls_to_pixels_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -297,7 +299,7 @@ static JSValue viewport_class_is_snap_controls_to_pixels_enabled(JSContext *ctx,
 };
 static JSValue viewport_class_set_snap_2d_transforms_to_pixel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_snap_2d_transforms_to_pixel, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_snap_2d_transforms_to_pixel, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_snap_2d_transforms_to_pixel_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -306,7 +308,7 @@ static JSValue viewport_class_is_snap_2d_transforms_to_pixel_enabled(JSContext *
 };
 static JSValue viewport_class_set_snap_2d_vertices_to_pixel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_snap_2d_vertices_to_pixel, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_snap_2d_vertices_to_pixel, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_snap_2d_vertices_to_pixel_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -315,7 +317,7 @@ static JSValue viewport_class_is_snap_2d_vertices_to_pixel_enabled(JSContext *ct
 };
 static JSValue viewport_class_set_positional_shadow_atlas_quadrant_subdiv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_positional_shadow_atlas_quadrant_subdiv, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_positional_shadow_atlas_quadrant_subdiv, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_positional_shadow_atlas_quadrant_subdiv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -324,7 +326,7 @@ static JSValue viewport_class_get_positional_shadow_atlas_quadrant_subdiv(JSCont
 };
 static JSValue viewport_class_set_input_as_handled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_input_as_handled, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_input_as_handled, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_input_handled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -333,7 +335,7 @@ static JSValue viewport_class_is_input_handled(JSContext *ctx, JSValueConst this
 };
 static JSValue viewport_class_set_handle_input_locally(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_handle_input_locally, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_handle_input_locally, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_handling_input_locally(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -342,7 +344,7 @@ static JSValue viewport_class_is_handling_input_locally(JSContext *ctx, JSValueC
 };
 static JSValue viewport_class_set_default_canvas_item_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_default_canvas_item_texture_filter, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_default_canvas_item_texture_filter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_default_canvas_item_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -351,7 +353,7 @@ static JSValue viewport_class_get_default_canvas_item_texture_filter(JSContext *
 };
 static JSValue viewport_class_set_embedding_subwindows(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_embedding_subwindows, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_embedding_subwindows, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_embedding_subwindows(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -364,7 +366,7 @@ static JSValue viewport_class_get_embedded_subwindows(JSContext *ctx, JSValueCon
 };
 static JSValue viewport_class_set_canvas_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_canvas_cull_mask, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_canvas_cull_mask, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_canvas_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -373,7 +375,7 @@ static JSValue viewport_class_get_canvas_cull_mask(JSContext *ctx, JSValueConst 
 };
 static JSValue viewport_class_set_canvas_cull_mask_bit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_canvas_cull_mask_bit, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_canvas_cull_mask_bit, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_canvas_cull_mask_bit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -382,7 +384,7 @@ static JSValue viewport_class_get_canvas_cull_mask_bit(JSContext *ctx, JSValueCo
 };
 static JSValue viewport_class_set_default_canvas_item_texture_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_default_canvas_item_texture_repeat, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_default_canvas_item_texture_repeat, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_default_canvas_item_texture_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -391,7 +393,7 @@ static JSValue viewport_class_get_default_canvas_item_texture_repeat(JSContext *
 };
 static JSValue viewport_class_set_sdf_oversize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_sdf_oversize, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_sdf_oversize, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_sdf_oversize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -400,7 +402,7 @@ static JSValue viewport_class_get_sdf_oversize(JSContext *ctx, JSValueConst this
 };
 static JSValue viewport_class_set_sdf_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_sdf_scale, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_sdf_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_sdf_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -409,7 +411,7 @@ static JSValue viewport_class_get_sdf_scale(JSContext *ctx, JSValueConst this_va
 };
 static JSValue viewport_class_set_mesh_lod_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_mesh_lod_threshold, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_mesh_lod_threshold, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_mesh_lod_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -418,7 +420,7 @@ static JSValue viewport_class_get_mesh_lod_threshold(JSContext *ctx, JSValueCons
 };
 static JSValue viewport_class_set_as_audio_listener_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_as_audio_listener_2d, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_as_audio_listener_2d, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_audio_listener_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -431,7 +433,7 @@ static JSValue viewport_class_get_camera_2d(JSContext *ctx, JSValueConst this_va
 };
 static JSValue viewport_class_set_world_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_world_3d, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_world_3d, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_world_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -444,7 +446,7 @@ static JSValue viewport_class_find_world_3d(JSContext *ctx, JSValueConst this_va
 };
 static JSValue viewport_class_set_use_own_world_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_use_own_world_3d, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_use_own_world_3d, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_using_own_world_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -457,7 +459,7 @@ static JSValue viewport_class_get_camera_3d(JSContext *ctx, JSValueConst this_va
 };
 static JSValue viewport_class_set_as_audio_listener_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_as_audio_listener_3d, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_as_audio_listener_3d, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_audio_listener_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -466,7 +468,7 @@ static JSValue viewport_class_is_audio_listener_3d(JSContext *ctx, JSValueConst 
 };
 static JSValue viewport_class_set_disable_3d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_disable_3d, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_disable_3d, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_3d_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -475,7 +477,7 @@ static JSValue viewport_class_is_3d_disabled(JSContext *ctx, JSValueConst this_v
 };
 static JSValue viewport_class_set_use_xr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_use_xr, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_use_xr, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_is_using_xr(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -484,7 +486,7 @@ static JSValue viewport_class_is_using_xr(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue viewport_class_set_scaling_3d_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_scaling_3d_mode, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_scaling_3d_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_scaling_3d_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -493,7 +495,7 @@ static JSValue viewport_class_get_scaling_3d_mode(JSContext *ctx, JSValueConst t
 };
 static JSValue viewport_class_set_scaling_3d_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_scaling_3d_scale, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_scaling_3d_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_scaling_3d_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -502,7 +504,7 @@ static JSValue viewport_class_get_scaling_3d_scale(JSContext *ctx, JSValueConst 
 };
 static JSValue viewport_class_set_fsr_sharpness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_fsr_sharpness, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_fsr_sharpness, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_fsr_sharpness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -511,7 +513,7 @@ static JSValue viewport_class_get_fsr_sharpness(JSContext *ctx, JSValueConst thi
 };
 static JSValue viewport_class_set_texture_mipmap_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_texture_mipmap_bias, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_texture_mipmap_bias, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_texture_mipmap_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -520,7 +522,7 @@ static JSValue viewport_class_get_texture_mipmap_bias(JSContext *ctx, JSValueCon
 };
 static JSValue viewport_class_set_vrs_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_vrs_mode, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_vrs_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_vrs_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -529,7 +531,7 @@ static JSValue viewport_class_get_vrs_mode(JSContext *ctx, JSValueConst this_val
 };
 static JSValue viewport_class_set_vrs_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_vrs_update_mode, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_vrs_update_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_vrs_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -538,7 +540,7 @@ static JSValue viewport_class_get_vrs_update_mode(JSContext *ctx, JSValueConst t
 };
 static JSValue viewport_class_set_vrs_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Viewport::set_vrs_texture, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Viewport::set_vrs_texture, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue viewport_class_get_vrs_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -662,328 +664,374 @@ static const JSCFunctionListEntry viewport_class_proto_funcs[] = {
 };
 
 void define_viewport_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "disable_3d"),
-			JS_NewCFunction(ctx, viewport_class_is_3d_disabled, "is_3d_disabled", 0),
-			JS_NewCFunction(ctx, viewport_class_set_disable_3d, "set_disable_3d", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "use_xr"),
-			JS_NewCFunction(ctx, viewport_class_is_using_xr, "is_using_xr", 0),
-			JS_NewCFunction(ctx, viewport_class_set_use_xr, "set_use_xr", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "own_world_3d"),
-			JS_NewCFunction(ctx, viewport_class_is_using_own_world_3d, "is_using_own_world_3d", 0),
-			JS_NewCFunction(ctx, viewport_class_set_use_own_world_3d, "set_use_own_world_3d", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "world_3d"),
-			JS_NewCFunction(ctx, viewport_class_get_world_3d, "get_world_3d", 0),
-			JS_NewCFunction(ctx, viewport_class_set_world_3d, "set_world_3d", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "world_2d"),
-			JS_NewCFunction(ctx, viewport_class_get_world_2d, "get_world_2d", 0),
-			JS_NewCFunction(ctx, viewport_class_set_world_2d, "set_world_2d", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "transparent_bg"),
-			JS_NewCFunction(ctx, viewport_class_has_transparent_background, "has_transparent_background", 0),
-			JS_NewCFunction(ctx, viewport_class_set_transparent_background, "set_transparent_background", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "handle_input_locally"),
-			JS_NewCFunction(ctx, viewport_class_is_handling_input_locally, "is_handling_input_locally", 0),
-			JS_NewCFunction(ctx, viewport_class_set_handle_input_locally, "set_handle_input_locally", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "snap_2d_transforms_to_pixel"),
-			JS_NewCFunction(ctx, viewport_class_is_snap_2d_transforms_to_pixel_enabled, "is_snap_2d_transforms_to_pixel_enabled", 0),
-			JS_NewCFunction(ctx, viewport_class_set_snap_2d_transforms_to_pixel, "set_snap_2d_transforms_to_pixel", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "snap_2d_vertices_to_pixel"),
-			JS_NewCFunction(ctx, viewport_class_is_snap_2d_vertices_to_pixel_enabled, "is_snap_2d_vertices_to_pixel_enabled", 0),
-			JS_NewCFunction(ctx, viewport_class_set_snap_2d_vertices_to_pixel, "set_snap_2d_vertices_to_pixel", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "msaa_2d"),
-			JS_NewCFunction(ctx, viewport_class_get_msaa_2d, "get_msaa_2d", 0),
-			JS_NewCFunction(ctx, viewport_class_set_msaa_2d, "set_msaa_2d", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "msaa_3d"),
-			JS_NewCFunction(ctx, viewport_class_get_msaa_3d, "get_msaa_3d", 0),
-			JS_NewCFunction(ctx, viewport_class_set_msaa_3d, "set_msaa_3d", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "screen_space_aa"),
-			JS_NewCFunction(ctx, viewport_class_get_screen_space_aa, "get_screen_space_aa", 0),
-			JS_NewCFunction(ctx, viewport_class_set_screen_space_aa, "set_screen_space_aa", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "use_taa"),
-			JS_NewCFunction(ctx, viewport_class_is_using_taa, "is_using_taa", 0),
-			JS_NewCFunction(ctx, viewport_class_set_use_taa, "set_use_taa", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "use_debanding"),
-			JS_NewCFunction(ctx, viewport_class_is_using_debanding, "is_using_debanding", 0),
-			JS_NewCFunction(ctx, viewport_class_set_use_debanding, "set_use_debanding", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "use_occlusion_culling"),
-			JS_NewCFunction(ctx, viewport_class_is_using_occlusion_culling, "is_using_occlusion_culling", 0),
-			JS_NewCFunction(ctx, viewport_class_set_use_occlusion_culling, "set_use_occlusion_culling", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "mesh_lod_threshold"),
-			JS_NewCFunction(ctx, viewport_class_get_mesh_lod_threshold, "get_mesh_lod_threshold", 0),
-			JS_NewCFunction(ctx, viewport_class_set_mesh_lod_threshold, "set_mesh_lod_threshold", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "debug_draw"),
-			JS_NewCFunction(ctx, viewport_class_get_debug_draw, "get_debug_draw", 0),
-			JS_NewCFunction(ctx, viewport_class_set_debug_draw, "set_debug_draw", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "use_hdr_2d"),
-			JS_NewCFunction(ctx, viewport_class_is_using_hdr_2d, "is_using_hdr_2d", 0),
-			JS_NewCFunction(ctx, viewport_class_set_use_hdr_2d, "set_use_hdr_2d", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "scaling_3d_mode"),
-			JS_NewCFunction(ctx, viewport_class_get_scaling_3d_mode, "get_scaling_3d_mode", 0),
-			JS_NewCFunction(ctx, viewport_class_set_scaling_3d_mode, "set_scaling_3d_mode", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "scaling_3d_scale"),
-			JS_NewCFunction(ctx, viewport_class_get_scaling_3d_scale, "get_scaling_3d_scale", 0),
-			JS_NewCFunction(ctx, viewport_class_set_scaling_3d_scale, "set_scaling_3d_scale", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "texture_mipmap_bias"),
-			JS_NewCFunction(ctx, viewport_class_get_texture_mipmap_bias, "get_texture_mipmap_bias", 0),
-			JS_NewCFunction(ctx, viewport_class_set_texture_mipmap_bias, "set_texture_mipmap_bias", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "fsr_sharpness"),
-			JS_NewCFunction(ctx, viewport_class_get_fsr_sharpness, "get_fsr_sharpness", 0),
-			JS_NewCFunction(ctx, viewport_class_set_fsr_sharpness, "set_fsr_sharpness", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "vrs_mode"),
-			JS_NewCFunction(ctx, viewport_class_get_vrs_mode, "get_vrs_mode", 0),
-			JS_NewCFunction(ctx, viewport_class_set_vrs_mode, "set_vrs_mode", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "vrs_update_mode"),
-			JS_NewCFunction(ctx, viewport_class_get_vrs_update_mode, "get_vrs_update_mode", 0),
-			JS_NewCFunction(ctx, viewport_class_set_vrs_update_mode, "set_vrs_update_mode", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "vrs_texture"),
-			JS_NewCFunction(ctx, viewport_class_get_vrs_texture, "get_vrs_texture", 0),
-			JS_NewCFunction(ctx, viewport_class_set_vrs_texture, "set_vrs_texture", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "canvas_item_default_texture_filter"),
-			JS_NewCFunction(ctx, viewport_class_get_default_canvas_item_texture_filter, "get_default_canvas_item_texture_filter", 0),
-			JS_NewCFunction(ctx, viewport_class_set_default_canvas_item_texture_filter, "set_default_canvas_item_texture_filter", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "canvas_item_default_texture_repeat"),
-			JS_NewCFunction(ctx, viewport_class_get_default_canvas_item_texture_repeat, "get_default_canvas_item_texture_repeat", 0),
-			JS_NewCFunction(ctx, viewport_class_set_default_canvas_item_texture_repeat, "set_default_canvas_item_texture_repeat", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "audio_listener_enable_2d"),
-			JS_NewCFunction(ctx, viewport_class_is_audio_listener_2d, "is_audio_listener_2d", 0),
-			JS_NewCFunction(ctx, viewport_class_set_as_audio_listener_2d, "set_as_audio_listener_2d", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "audio_listener_enable_3d"),
-			JS_NewCFunction(ctx, viewport_class_is_audio_listener_3d, "is_audio_listener_3d", 0),
-			JS_NewCFunction(ctx, viewport_class_set_as_audio_listener_3d, "set_as_audio_listener_3d", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "physics_object_picking"),
-			JS_NewCFunction(ctx, viewport_class_get_physics_object_picking, "get_physics_object_picking", 0),
-			JS_NewCFunction(ctx, viewport_class_set_physics_object_picking, "set_physics_object_picking", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "physics_object_picking_sort"),
-			JS_NewCFunction(ctx, viewport_class_get_physics_object_picking_sort, "get_physics_object_picking_sort", 0),
-			JS_NewCFunction(ctx, viewport_class_set_physics_object_picking_sort, "set_physics_object_picking_sort", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "physics_object_picking_first_only"),
-			JS_NewCFunction(ctx, viewport_class_get_physics_object_picking_first_only, "get_physics_object_picking_first_only", 0),
-			JS_NewCFunction(ctx, viewport_class_set_physics_object_picking_first_only, "set_physics_object_picking_first_only", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "gui_disable_input"),
-			JS_NewCFunction(ctx, viewport_class_is_input_disabled, "is_input_disabled", 0),
-			JS_NewCFunction(ctx, viewport_class_set_disable_input, "set_disable_input", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "gui_snap_controls_to_pixels"),
-			JS_NewCFunction(ctx, viewport_class_is_snap_controls_to_pixels_enabled, "is_snap_controls_to_pixels_enabled", 0),
-			JS_NewCFunction(ctx, viewport_class_set_snap_controls_to_pixels, "set_snap_controls_to_pixels", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "gui_embed_subwindows"),
-			JS_NewCFunction(ctx, viewport_class_is_embedding_subwindows, "is_embedding_subwindows", 0),
-			JS_NewCFunction(ctx, viewport_class_set_embedding_subwindows, "set_embedding_subwindows", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "sdf_oversize"),
-			JS_NewCFunction(ctx, viewport_class_get_sdf_oversize, "get_sdf_oversize", 0),
-			JS_NewCFunction(ctx, viewport_class_set_sdf_oversize, "set_sdf_oversize", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "sdf_scale"),
-			JS_NewCFunction(ctx, viewport_class_get_sdf_scale, "get_sdf_scale", 0),
-			JS_NewCFunction(ctx, viewport_class_set_sdf_scale, "set_sdf_scale", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "positional_shadow_atlas_size"),
-			JS_NewCFunction(ctx, viewport_class_get_positional_shadow_atlas_size, "get_positional_shadow_atlas_size", 0),
-			JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_size, "set_positional_shadow_atlas_size", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "positional_shadow_atlas_16_bits"),
-			JS_NewCFunction(ctx, viewport_class_get_positional_shadow_atlas_16_bits, "get_positional_shadow_atlas_16_bits", 0),
-			JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_16_bits, "set_positional_shadow_atlas_16_bits", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "positional_shadow_atlas_quad_0"),
-			JS_NewCFunction(ctx, viewport_class_get_positional_shadow_atlas_quadrant_subdiv, "get_positional_shadow_atlas_quadrant_subdiv", 0),
-			JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_quadrant_subdiv, "set_positional_shadow_atlas_quadrant_subdiv", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "positional_shadow_atlas_quad_1"),
-			JS_NewCFunction(ctx, viewport_class_get_positional_shadow_atlas_quadrant_subdiv, "get_positional_shadow_atlas_quadrant_subdiv", 0),
-			JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_quadrant_subdiv, "set_positional_shadow_atlas_quadrant_subdiv", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "positional_shadow_atlas_quad_2"),
-			JS_NewCFunction(ctx, viewport_class_get_positional_shadow_atlas_quadrant_subdiv, "get_positional_shadow_atlas_quadrant_subdiv", 0),
-			JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_quadrant_subdiv, "set_positional_shadow_atlas_quadrant_subdiv", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "positional_shadow_atlas_quad_3"),
-			JS_NewCFunction(ctx, viewport_class_get_positional_shadow_atlas_quadrant_subdiv, "get_positional_shadow_atlas_quadrant_subdiv", 0),
-			JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_quadrant_subdiv, "set_positional_shadow_atlas_quadrant_subdiv", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "canvas_transform"),
-			JS_NewCFunction(ctx, viewport_class_get_canvas_transform, "get_canvas_transform", 0),
-			JS_NewCFunction(ctx, viewport_class_set_canvas_transform, "set_canvas_transform", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "global_canvas_transform"),
-			JS_NewCFunction(ctx, viewport_class_get_global_canvas_transform, "get_global_canvas_transform", 0),
-			JS_NewCFunction(ctx, viewport_class_set_global_canvas_transform, "set_global_canvas_transform", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "canvas_cull_mask"),
-			JS_NewCFunction(ctx, viewport_class_get_canvas_cull_mask, "get_canvas_cull_mask", 0),
-			JS_NewCFunction(ctx, viewport_class_set_canvas_cull_mask, "set_canvas_cull_mask", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "disable_3d"),
+        JS_NewCFunction(ctx, viewport_class_is_3d_disabled, "is_3d_disabled", 0),
+        JS_NewCFunction(ctx, viewport_class_set_disable_3d, "set_disable_3d", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "use_xr"),
+        JS_NewCFunction(ctx, viewport_class_is_using_xr, "is_using_xr", 0),
+        JS_NewCFunction(ctx, viewport_class_set_use_xr, "set_use_xr", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "own_world_3d"),
+        JS_NewCFunction(ctx, viewport_class_is_using_own_world_3d, "is_using_own_world_3d", 0),
+        JS_NewCFunction(ctx, viewport_class_set_use_own_world_3d, "set_use_own_world_3d", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "world_3d"),
+        JS_NewCFunction(ctx, viewport_class_get_world_3d, "get_world_3d", 0),
+        JS_NewCFunction(ctx, viewport_class_set_world_3d, "set_world_3d", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "world_2d"),
+        JS_NewCFunction(ctx, viewport_class_get_world_2d, "get_world_2d", 0),
+        JS_NewCFunction(ctx, viewport_class_set_world_2d, "set_world_2d", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "transparent_bg"),
+        JS_NewCFunction(ctx, viewport_class_has_transparent_background, "has_transparent_background", 0),
+        JS_NewCFunction(ctx, viewport_class_set_transparent_background, "set_transparent_background", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "handle_input_locally"),
+        JS_NewCFunction(ctx, viewport_class_is_handling_input_locally, "is_handling_input_locally", 0),
+        JS_NewCFunction(ctx, viewport_class_set_handle_input_locally, "set_handle_input_locally", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "snap_2d_transforms_to_pixel"),
+        JS_NewCFunction(ctx, viewport_class_is_snap_2d_transforms_to_pixel_enabled, "is_snap_2d_transforms_to_pixel_enabled", 0),
+        JS_NewCFunction(ctx, viewport_class_set_snap_2d_transforms_to_pixel, "set_snap_2d_transforms_to_pixel", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "snap_2d_vertices_to_pixel"),
+        JS_NewCFunction(ctx, viewport_class_is_snap_2d_vertices_to_pixel_enabled, "is_snap_2d_vertices_to_pixel_enabled", 0),
+        JS_NewCFunction(ctx, viewport_class_set_snap_2d_vertices_to_pixel, "set_snap_2d_vertices_to_pixel", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "msaa_2d"),
+        JS_NewCFunction(ctx, viewport_class_get_msaa_2d, "get_msaa_2d", 0),
+        JS_NewCFunction(ctx, viewport_class_set_msaa_2d, "set_msaa_2d", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "msaa_3d"),
+        JS_NewCFunction(ctx, viewport_class_get_msaa_3d, "get_msaa_3d", 0),
+        JS_NewCFunction(ctx, viewport_class_set_msaa_3d, "set_msaa_3d", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "screen_space_aa"),
+        JS_NewCFunction(ctx, viewport_class_get_screen_space_aa, "get_screen_space_aa", 0),
+        JS_NewCFunction(ctx, viewport_class_set_screen_space_aa, "set_screen_space_aa", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "use_taa"),
+        JS_NewCFunction(ctx, viewport_class_is_using_taa, "is_using_taa", 0),
+        JS_NewCFunction(ctx, viewport_class_set_use_taa, "set_use_taa", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "use_debanding"),
+        JS_NewCFunction(ctx, viewport_class_is_using_debanding, "is_using_debanding", 0),
+        JS_NewCFunction(ctx, viewport_class_set_use_debanding, "set_use_debanding", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "use_occlusion_culling"),
+        JS_NewCFunction(ctx, viewport_class_is_using_occlusion_culling, "is_using_occlusion_culling", 0),
+        JS_NewCFunction(ctx, viewport_class_set_use_occlusion_culling, "set_use_occlusion_culling", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "mesh_lod_threshold"),
+        JS_NewCFunction(ctx, viewport_class_get_mesh_lod_threshold, "get_mesh_lod_threshold", 0),
+        JS_NewCFunction(ctx, viewport_class_set_mesh_lod_threshold, "set_mesh_lod_threshold", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "debug_draw"),
+        JS_NewCFunction(ctx, viewport_class_get_debug_draw, "get_debug_draw", 0),
+        JS_NewCFunction(ctx, viewport_class_set_debug_draw, "set_debug_draw", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "use_hdr_2d"),
+        JS_NewCFunction(ctx, viewport_class_is_using_hdr_2d, "is_using_hdr_2d", 0),
+        JS_NewCFunction(ctx, viewport_class_set_use_hdr_2d, "set_use_hdr_2d", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "scaling_3d_mode"),
+        JS_NewCFunction(ctx, viewport_class_get_scaling_3d_mode, "get_scaling_3d_mode", 0),
+        JS_NewCFunction(ctx, viewport_class_set_scaling_3d_mode, "set_scaling_3d_mode", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "scaling_3d_scale"),
+        JS_NewCFunction(ctx, viewport_class_get_scaling_3d_scale, "get_scaling_3d_scale", 0),
+        JS_NewCFunction(ctx, viewport_class_set_scaling_3d_scale, "set_scaling_3d_scale", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "texture_mipmap_bias"),
+        JS_NewCFunction(ctx, viewport_class_get_texture_mipmap_bias, "get_texture_mipmap_bias", 0),
+        JS_NewCFunction(ctx, viewport_class_set_texture_mipmap_bias, "set_texture_mipmap_bias", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "fsr_sharpness"),
+        JS_NewCFunction(ctx, viewport_class_get_fsr_sharpness, "get_fsr_sharpness", 0),
+        JS_NewCFunction(ctx, viewport_class_set_fsr_sharpness, "set_fsr_sharpness", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "vrs_mode"),
+        JS_NewCFunction(ctx, viewport_class_get_vrs_mode, "get_vrs_mode", 0),
+        JS_NewCFunction(ctx, viewport_class_set_vrs_mode, "set_vrs_mode", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "vrs_update_mode"),
+        JS_NewCFunction(ctx, viewport_class_get_vrs_update_mode, "get_vrs_update_mode", 0),
+        JS_NewCFunction(ctx, viewport_class_set_vrs_update_mode, "set_vrs_update_mode", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "vrs_texture"),
+        JS_NewCFunction(ctx, viewport_class_get_vrs_texture, "get_vrs_texture", 0),
+        JS_NewCFunction(ctx, viewport_class_set_vrs_texture, "set_vrs_texture", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "canvas_item_default_texture_filter"),
+        JS_NewCFunction(ctx, viewport_class_get_default_canvas_item_texture_filter, "get_default_canvas_item_texture_filter", 0),
+        JS_NewCFunction(ctx, viewport_class_set_default_canvas_item_texture_filter, "set_default_canvas_item_texture_filter", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "canvas_item_default_texture_repeat"),
+        JS_NewCFunction(ctx, viewport_class_get_default_canvas_item_texture_repeat, "get_default_canvas_item_texture_repeat", 0),
+        JS_NewCFunction(ctx, viewport_class_set_default_canvas_item_texture_repeat, "set_default_canvas_item_texture_repeat", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "audio_listener_enable_2d"),
+        JS_NewCFunction(ctx, viewport_class_is_audio_listener_2d, "is_audio_listener_2d", 0),
+        JS_NewCFunction(ctx, viewport_class_set_as_audio_listener_2d, "set_as_audio_listener_2d", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "audio_listener_enable_3d"),
+        JS_NewCFunction(ctx, viewport_class_is_audio_listener_3d, "is_audio_listener_3d", 0),
+        JS_NewCFunction(ctx, viewport_class_set_as_audio_listener_3d, "set_as_audio_listener_3d", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "physics_object_picking"),
+        JS_NewCFunction(ctx, viewport_class_get_physics_object_picking, "get_physics_object_picking", 0),
+        JS_NewCFunction(ctx, viewport_class_set_physics_object_picking, "set_physics_object_picking", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "physics_object_picking_sort"),
+        JS_NewCFunction(ctx, viewport_class_get_physics_object_picking_sort, "get_physics_object_picking_sort", 0),
+        JS_NewCFunction(ctx, viewport_class_set_physics_object_picking_sort, "set_physics_object_picking_sort", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "physics_object_picking_first_only"),
+        JS_NewCFunction(ctx, viewport_class_get_physics_object_picking_first_only, "get_physics_object_picking_first_only", 0),
+        JS_NewCFunction(ctx, viewport_class_set_physics_object_picking_first_only, "set_physics_object_picking_first_only", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "gui_disable_input"),
+        JS_NewCFunction(ctx, viewport_class_is_input_disabled, "is_input_disabled", 0),
+        JS_NewCFunction(ctx, viewport_class_set_disable_input, "set_disable_input", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "gui_snap_controls_to_pixels"),
+        JS_NewCFunction(ctx, viewport_class_is_snap_controls_to_pixels_enabled, "is_snap_controls_to_pixels_enabled", 0),
+        JS_NewCFunction(ctx, viewport_class_set_snap_controls_to_pixels, "set_snap_controls_to_pixels", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "gui_embed_subwindows"),
+        JS_NewCFunction(ctx, viewport_class_is_embedding_subwindows, "is_embedding_subwindows", 0),
+        JS_NewCFunction(ctx, viewport_class_set_embedding_subwindows, "set_embedding_subwindows", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "sdf_oversize"),
+        JS_NewCFunction(ctx, viewport_class_get_sdf_oversize, "get_sdf_oversize", 0),
+        JS_NewCFunction(ctx, viewport_class_set_sdf_oversize, "set_sdf_oversize", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "sdf_scale"),
+        JS_NewCFunction(ctx, viewport_class_get_sdf_scale, "get_sdf_scale", 0),
+        JS_NewCFunction(ctx, viewport_class_set_sdf_scale, "set_sdf_scale", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "positional_shadow_atlas_size"),
+        JS_NewCFunction(ctx, viewport_class_get_positional_shadow_atlas_size, "get_positional_shadow_atlas_size", 0),
+        JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_size, "set_positional_shadow_atlas_size", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "positional_shadow_atlas_16_bits"),
+        JS_NewCFunction(ctx, viewport_class_get_positional_shadow_atlas_16_bits, "get_positional_shadow_atlas_16_bits", 0),
+        JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_16_bits, "set_positional_shadow_atlas_16_bits", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "positional_shadow_atlas_quad_0"),
+        JS_NewCFunction(ctx, viewport_class_get_positional_shadow_atlas_quadrant_subdiv, "get_positional_shadow_atlas_quadrant_subdiv", 0),
+        JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_quadrant_subdiv, "set_positional_shadow_atlas_quadrant_subdiv", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "positional_shadow_atlas_quad_1"),
+        JS_NewCFunction(ctx, viewport_class_get_positional_shadow_atlas_quadrant_subdiv, "get_positional_shadow_atlas_quadrant_subdiv", 0),
+        JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_quadrant_subdiv, "set_positional_shadow_atlas_quadrant_subdiv", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "positional_shadow_atlas_quad_2"),
+        JS_NewCFunction(ctx, viewport_class_get_positional_shadow_atlas_quadrant_subdiv, "get_positional_shadow_atlas_quadrant_subdiv", 0),
+        JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_quadrant_subdiv, "set_positional_shadow_atlas_quadrant_subdiv", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "positional_shadow_atlas_quad_3"),
+        JS_NewCFunction(ctx, viewport_class_get_positional_shadow_atlas_quadrant_subdiv, "get_positional_shadow_atlas_quadrant_subdiv", 0),
+        JS_NewCFunction(ctx, viewport_class_set_positional_shadow_atlas_quadrant_subdiv, "set_positional_shadow_atlas_quadrant_subdiv", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "canvas_transform"),
+        JS_NewCFunction(ctx, viewport_class_get_canvas_transform, "get_canvas_transform", 0),
+        JS_NewCFunction(ctx, viewport_class_set_canvas_transform, "set_canvas_transform", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "global_canvas_transform"),
+        JS_NewCFunction(ctx, viewport_class_get_global_canvas_transform, "get_global_canvas_transform", 0),
+        JS_NewCFunction(ctx, viewport_class_set_global_canvas_transform, "set_global_canvas_transform", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "canvas_cull_mask"),
+        JS_NewCFunction(ctx, viewport_class_get_canvas_cull_mask, "get_canvas_cull_mask", 0),
+        JS_NewCFunction(ctx, viewport_class_set_canvas_cull_mask, "set_canvas_cull_mask", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -1097,6 +1145,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_viewport_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Viewport::__class_id);
 	classes["Viewport"] = Viewport::__class_id;
 	class_id_list.insert(Viewport::__class_id);
@@ -1119,7 +1168,7 @@ static int js_viewport_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_viewport_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/node';";
+	const char *code = "import * as _ from '@godot/classes/node';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -1131,7 +1180,7 @@ JSModuleDef *_js_init_viewport_module(JSContext *ctx, const char *module_name) {
 }
 
 JSModuleDef *js_init_viewport_module(JSContext *ctx) {
-	return _js_init_viewport_module(ctx, "godot/classes/viewport");
+	return _js_init_viewport_module(ctx, "@godot/classes/viewport");
 }
 
 void register_viewport() {

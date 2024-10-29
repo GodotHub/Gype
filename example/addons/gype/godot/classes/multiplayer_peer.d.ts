@@ -22,19 +22,19 @@ export declare class MultiplayerPeer extends PacketPeer{
   public get refuse_new_connections(): boolean {
     is_refusing_new_connections();
   }
-  public set refuse_new_connections(value: boolean): void {
+  public set refuse_new_connections(value): void {
     set_refuse_new_connections(value);
   }
   public get transfer_mode(): number {
     get_transfer_mode();
   }
-  public set transfer_mode(value: number): void {
+  public set transfer_mode(value): void {
     set_transfer_mode(value);
   }
   public get transfer_channel(): number {
     get_transfer_channel();
   }
-  public set transfer_channel(value: number): void {
+  public set transfer_channel(value): void {
     set_transfer_channel(value);
   }
   static ConnectionStatus = {

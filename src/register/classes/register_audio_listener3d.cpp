@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/audio_listener3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void audio_listener3d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,17 +32,17 @@ static JSValue audio_listener3d_class_constructor(JSContext *ctx, JSValueConst n
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_listener3d_class);
+	JS_SetOpaque(obj, audio_listener3d_class);	
 	return obj;
 }
 static JSValue audio_listener3d_class_make_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioListener3D::make_current, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioListener3D::make_current, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_listener3d_class_clear_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AudioListener3D::clear_current, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AudioListener3D::clear_current, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue audio_listener3d_class_is_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,6 +67,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_listener3d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AudioListener3D::__class_id);
 	classes["AudioListener3D"] = AudioListener3D::__class_id;
 	class_id_list.insert(AudioListener3D::__class_id);
@@ -87,7 +90,7 @@ static int js_audio_listener3d_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_audio_listener3d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/node3d';";
+	const char *code = "import * as _ from '@godot/classes/node3d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -99,7 +102,7 @@ JSModuleDef *_js_init_audio_listener3d_module(JSContext *ctx, const char *module
 }
 
 JSModuleDef *js_init_audio_listener3d_module(JSContext *ctx) {
-	return _js_init_audio_listener3d_module(ctx, "godot/classes/audio_listener3d");
+	return _js_init_audio_listener3d_module(ctx, "@godot/classes/audio_listener3d");
 }
 
 void register_audio_listener3d() {

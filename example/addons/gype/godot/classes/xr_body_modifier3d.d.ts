@@ -11,19 +11,19 @@ export declare class XRBodyModifier3D extends SkeletonModifier3D{
   public get body_tracker(): String {
     get_body_tracker();
   }
-  public set body_tracker(value: String): void {
+  public set body_tracker(value): void {
     set_body_tracker(value);
   }
   public get body_update(): number {
     get_body_update();
   }
-  public set body_update(value: number): void {
+  public set body_update(value): void {
     set_body_update(value);
   }
   public get bone_update(): number {
     get_bone_update();
   }
-  public set bone_update(value: number): void {
+  public set bone_update(value): void {
     set_bone_update(value);
   }
   static BodyUpdate = {

@@ -11,7 +11,7 @@ export declare class AudioStreamSynchronized extends AudioStream{
   public get stream_count(): number {
     get_stream_count();
   }
-  public set stream_count(value: number): void {
+  public set stream_count(value): void {
     set_stream_count(value);
   }
 }

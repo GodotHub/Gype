@@ -35,157 +35,157 @@ export declare class Light3D extends VisualInstance3D{
   public get light_intensity_lumens(): number {
     get_param();
   }
-  public set light_intensity_lumens(value: number): void {
+  public set light_intensity_lumens(value): void {
     set_param(value);
   }
   public get light_intensity_lux(): number {
     get_param();
   }
-  public set light_intensity_lux(value: number): void {
+  public set light_intensity_lux(value): void {
     set_param(value);
   }
   public get light_temperature(): number {
     get_temperature();
   }
-  public set light_temperature(value: number): void {
+  public set light_temperature(value): void {
     set_temperature(value);
   }
   public get light_color(): Color {
     get_color();
   }
-  public set light_color(value: Color): void {
+  public set light_color(value): void {
     set_color(value);
   }
   public get light_energy(): number {
     get_param();
   }
-  public set light_energy(value: number): void {
+  public set light_energy(value): void {
     set_param(value);
   }
   public get light_indirect_energy(): number {
     get_param();
   }
-  public set light_indirect_energy(value: number): void {
+  public set light_indirect_energy(value): void {
     set_param(value);
   }
   public get light_volumetric_fog_energy(): number {
     get_param();
   }
-  public set light_volumetric_fog_energy(value: number): void {
+  public set light_volumetric_fog_energy(value): void {
     set_param(value);
   }
   public get light_projector(): Texture2D {
     get_projector();
   }
-  public set light_projector(value: Texture2D): void {
+  public set light_projector(value): void {
     set_projector(value);
   }
   public get light_size(): number {
     get_param();
   }
-  public set light_size(value: number): void {
+  public set light_size(value): void {
     set_param(value);
   }
   public get light_angular_distance(): number {
     get_param();
   }
-  public set light_angular_distance(value: number): void {
+  public set light_angular_distance(value): void {
     set_param(value);
   }
   public get light_negative(): boolean {
     is_negative();
   }
-  public set light_negative(value: boolean): void {
+  public set light_negative(value): void {
     set_negative(value);
   }
   public get light_specular(): number {
     get_param();
   }
-  public set light_specular(value: number): void {
+  public set light_specular(value): void {
     set_param(value);
   }
   public get light_bake_mode(): number {
     get_bake_mode();
   }
-  public set light_bake_mode(value: number): void {
+  public set light_bake_mode(value): void {
     set_bake_mode(value);
   }
   public get light_cull_mask(): number {
     get_cull_mask();
   }
-  public set light_cull_mask(value: number): void {
+  public set light_cull_mask(value): void {
     set_cull_mask(value);
   }
   public get shadow_enabled(): boolean {
     has_shadow();
   }
-  public set shadow_enabled(value: boolean): void {
+  public set shadow_enabled(value): void {
     set_shadow(value);
   }
   public get shadow_bias(): number {
     get_param();
   }
-  public set shadow_bias(value: number): void {
+  public set shadow_bias(value): void {
     set_param(value);
   }
   public get shadow_normal_bias(): number {
     get_param();
   }
-  public set shadow_normal_bias(value: number): void {
+  public set shadow_normal_bias(value): void {
     set_param(value);
   }
   public get shadow_reverse_cull_face(): boolean {
     get_shadow_reverse_cull_face();
   }
-  public set shadow_reverse_cull_face(value: boolean): void {
+  public set shadow_reverse_cull_face(value): void {
     set_shadow_reverse_cull_face(value);
   }
   public get shadow_transmittance_bias(): number {
     get_param();
   }
-  public set shadow_transmittance_bias(value: number): void {
+  public set shadow_transmittance_bias(value): void {
     set_param(value);
   }
   public get shadow_opacity(): number {
     get_param();
   }
-  public set shadow_opacity(value: number): void {
+  public set shadow_opacity(value): void {
     set_param(value);
   }
   public get shadow_blur(): number {
     get_param();
   }
-  public set shadow_blur(value: number): void {
+  public set shadow_blur(value): void {
     set_param(value);
   }
   public get distance_fade_enabled(): boolean {
     is_distance_fade_enabled();
   }
-  public set distance_fade_enabled(value: boolean): void {
+  public set distance_fade_enabled(value): void {
     set_enable_distance_fade(value);
   }
   public get distance_fade_begin(): number {
     get_distance_fade_begin();
   }
-  public set distance_fade_begin(value: number): void {
+  public set distance_fade_begin(value): void {
     set_distance_fade_begin(value);
   }
   public get distance_fade_shadow(): number {
     get_distance_fade_shadow();
   }
-  public set distance_fade_shadow(value: number): void {
+  public set distance_fade_shadow(value): void {
     set_distance_fade_shadow(value);
   }
   public get distance_fade_length(): number {
     get_distance_fade_length();
   }
-  public set distance_fade_length(value: number): void {
+  public set distance_fade_length(value): void {
     set_distance_fade_length(value);
   }
   public get editor_only(): boolean {
     is_editor_only();
   }
-  public set editor_only(value: boolean): void {
+  public set editor_only(value): void {
     set_editor_only(value);
   }
   static Param = {

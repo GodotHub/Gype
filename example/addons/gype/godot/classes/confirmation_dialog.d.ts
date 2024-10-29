@@ -1,6 +1,6 @@
 
-import { Button } from "@godot/classes/button";
 import { AcceptDialog } from "@godot/classes/accept_dialog";
+import { Button } from "@godot/classes/button";
 
 export declare class ConfirmationDialog extends AcceptDialog{
   public get_cancel_button(): Button;
@@ -9,7 +9,7 @@ export declare class ConfirmationDialog extends AcceptDialog{
   public get cancel_button_text(): String {
     get_cancel_button_text();
   }
-  public set cancel_button_text(value: String): void {
+  public set cancel_button_text(value): void {
     set_cancel_button_text(value);
   }
 }

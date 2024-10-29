@@ -26,49 +26,49 @@ export declare class GLTFPhysicsBody extends Resource{
   public get body_type(): String {
     get_body_type();
   }
-  public set body_type(value: String): void {
+  public set body_type(value): void {
     set_body_type(value);
   }
   public get mass(): number {
     get_mass();
   }
-  public set mass(value: number): void {
+  public set mass(value): void {
     set_mass(value);
   }
   public get linear_velocity(): Vector3 {
     get_linear_velocity();
   }
-  public set linear_velocity(value: Vector3): void {
+  public set linear_velocity(value): void {
     set_linear_velocity(value);
   }
   public get angular_velocity(): Vector3 {
     get_angular_velocity();
   }
-  public set angular_velocity(value: Vector3): void {
+  public set angular_velocity(value): void {
     set_angular_velocity(value);
   }
   public get center_of_mass(): Vector3 {
     get_center_of_mass();
   }
-  public set center_of_mass(value: Vector3): void {
+  public set center_of_mass(value): void {
     set_center_of_mass(value);
   }
   public get inertia_diagonal(): Vector3 {
     get_inertia_diagonal();
   }
-  public set inertia_diagonal(value: Vector3): void {
+  public set inertia_diagonal(value): void {
     set_inertia_diagonal(value);
   }
   public get inertia_orientation(): Quaternion {
     get_inertia_orientation();
   }
-  public set inertia_orientation(value: Quaternion): void {
+  public set inertia_orientation(value): void {
     set_inertia_orientation(value);
   }
   public get inertia_tensor(): Basis {
     get_inertia_tensor();
   }
-  public set inertia_tensor(value: Basis): void {
+  public set inertia_tensor(value): void {
     set_inertia_tensor(value);
   }
 }

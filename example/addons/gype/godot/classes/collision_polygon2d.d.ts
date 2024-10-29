@@ -15,31 +15,31 @@ export declare class CollisionPolygon2D extends Node2D{
   public get build_mode(): number {
     get_build_mode();
   }
-  public set build_mode(value: number): void {
+  public set build_mode(value): void {
     set_build_mode(value);
   }
   public get polygon(): PackedVector2Array {
     get_polygon();
   }
-  public set polygon(value: PackedVector2Array): void {
+  public set polygon(value): void {
     set_polygon(value);
   }
   public get disabled(): boolean {
     is_disabled();
   }
-  public set disabled(value: boolean): void {
+  public set disabled(value): void {
     set_disabled(value);
   }
   public get one_way_collision(): boolean {
     is_one_way_collision_enabled();
   }
-  public set one_way_collision(value: boolean): void {
+  public set one_way_collision(value): void {
     set_one_way_collision(value);
   }
   public get one_way_collision_margin(): number {
     get_one_way_collision_margin();
   }
-  public set one_way_collision_margin(value: number): void {
+  public set one_way_collision_margin(value): void {
     set_one_way_collision_margin(value);
   }
   static BuildMode = {

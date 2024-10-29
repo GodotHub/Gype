@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/stream_peer.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/stream_peer_buffer.hpp>
+#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void stream_peer_buffer_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue stream_peer_buffer_class_constructor(JSContext *ctx, JSValueConst
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, stream_peer_buffer_class);
+	JS_SetOpaque(obj, stream_peer_buffer_class);	
 	return obj;
 }
 static JSValue stream_peer_buffer_class_seek(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StreamPeerBuffer::seek, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StreamPeerBuffer::seek, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_buffer_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -48,12 +50,12 @@ static JSValue stream_peer_buffer_class_get_position(JSContext *ctx, JSValueCons
 };
 static JSValue stream_peer_buffer_class_resize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StreamPeerBuffer::resize, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StreamPeerBuffer::resize, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_buffer_class_set_data_array(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StreamPeerBuffer::set_data_array, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StreamPeerBuffer::set_data_array, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_buffer_class_get_data_array(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +64,7 @@ static JSValue stream_peer_buffer_class_get_data_array(JSContext *ctx, JSValueCo
 };
 static JSValue stream_peer_buffer_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&StreamPeerBuffer::clear, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&StreamPeerBuffer::clear, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue stream_peer_buffer_class_duplicate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -81,19 +83,21 @@ static const JSCFunctionListEntry stream_peer_buffer_class_proto_funcs[] = {
 };
 
 void define_stream_peer_buffer_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "data_array"),
-			JS_NewCFunction(ctx, stream_peer_buffer_class_get_data_array, "get_data_array", 0),
-			JS_NewCFunction(ctx, stream_peer_buffer_class_set_data_array, "set_data_array", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "data_array"),
+        JS_NewCFunction(ctx, stream_peer_buffer_class_get_data_array, "get_data_array", 0),
+        JS_NewCFunction(ctx, stream_peer_buffer_class_set_data_array, "set_data_array", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_stream_peer_buffer_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&StreamPeerBuffer::__class_id);
 	classes["StreamPeerBuffer"] = StreamPeerBuffer::__class_id;
 	class_id_list.insert(StreamPeerBuffer::__class_id);
@@ -116,7 +120,7 @@ static int js_stream_peer_buffer_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_stream_peer_buffer_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/stream_peer';";
+	const char *code = "import * as _ from '@godot/classes/stream_peer';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -128,7 +132,7 @@ JSModuleDef *_js_init_stream_peer_buffer_module(JSContext *ctx, const char *modu
 }
 
 JSModuleDef *js_init_stream_peer_buffer_module(JSContext *ctx) {
-	return _js_init_stream_peer_buffer_module(ctx, "godot/classes/stream_peer_buffer");
+	return _js_init_stream_peer_buffer_module(ctx, "@godot/classes/stream_peer_buffer");
 }
 
 void register_stream_peer_buffer() {

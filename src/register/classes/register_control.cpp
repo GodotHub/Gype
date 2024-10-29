@@ -1,24 +1,26 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/theme.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/canvas_item.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/theme.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void control_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -37,12 +39,12 @@ static JSValue control_class_constructor(JSContext *ctx, JSValueConst new_target
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, control_class);
+	JS_SetOpaque(obj, control_class);	
 	return obj;
 }
 static JSValue control_class_accept_event(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::accept_event, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::accept_event, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_minimum_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -55,22 +57,22 @@ static JSValue control_class_get_combined_minimum_size(JSContext *ctx, JSValueCo
 };
 static JSValue control_class_set_anchors_preset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_anchors_preset, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_anchors_preset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_set_offsets_preset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_offsets_preset, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_offsets_preset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_set_anchors_and_offsets_preset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_anchors_and_offsets_preset, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_anchors_and_offsets_preset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_set_anchor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_anchor, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_anchor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_anchor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -79,7 +81,7 @@ static JSValue control_class_get_anchor(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue control_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_offset, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,62 +90,62 @@ static JSValue control_class_get_offset(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue control_class_set_anchor_and_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_anchor_and_offset, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_anchor_and_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_set_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_begin, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_begin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_set_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_end, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_end, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_position, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_size, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_reset_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::reset_size, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::reset_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_set_custom_minimum_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_custom_minimum_size, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_custom_minimum_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_set_global_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_global_position, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_global_position, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_set_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_rotation, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_rotation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_set_rotation_degrees(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_rotation_degrees, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_rotation_degrees, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_set_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_scale, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_scale, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_set_pivot_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_pivot_offset, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_pivot_offset, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -204,7 +206,7 @@ static JSValue control_class_get_global_rect(JSContext *ctx, JSValueConst this_v
 };
 static JSValue control_class_set_focus_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_focus_mode, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_focus_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_focus_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -217,12 +219,12 @@ static JSValue control_class_has_focus(JSContext *ctx, JSValueConst this_val, in
 };
 static JSValue control_class_grab_focus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::grab_focus, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::grab_focus, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_release_focus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::release_focus, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::release_focus, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_find_prev_valid_focus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -239,7 +241,7 @@ static JSValue control_class_find_valid_focus_neighbor(JSContext *ctx, JSValueCo
 };
 static JSValue control_class_set_h_size_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_h_size_flags, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_h_size_flags, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_h_size_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -248,7 +250,7 @@ static JSValue control_class_get_h_size_flags(JSContext *ctx, JSValueConst this_
 };
 static JSValue control_class_set_stretch_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_stretch_ratio, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_stretch_ratio, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_stretch_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -257,7 +259,7 @@ static JSValue control_class_get_stretch_ratio(JSContext *ctx, JSValueConst this
 };
 static JSValue control_class_set_v_size_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_v_size_flags, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_v_size_flags, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_v_size_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -266,7 +268,7 @@ static JSValue control_class_get_v_size_flags(JSContext *ctx, JSValueConst this_
 };
 static JSValue control_class_set_theme(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_theme, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_theme, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_theme(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -275,7 +277,7 @@ static JSValue control_class_get_theme(JSContext *ctx, JSValueConst this_val, in
 };
 static JSValue control_class_set_theme_type_variation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_theme_type_variation, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_theme_type_variation, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_theme_type_variation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -284,72 +286,72 @@ static JSValue control_class_get_theme_type_variation(JSContext *ctx, JSValueCon
 };
 static JSValue control_class_begin_bulk_theme_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::begin_bulk_theme_override, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::begin_bulk_theme_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_end_bulk_theme_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::end_bulk_theme_override, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::end_bulk_theme_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_add_theme_icon_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::add_theme_icon_override, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::add_theme_icon_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_add_theme_stylebox_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::add_theme_stylebox_override, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::add_theme_stylebox_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_add_theme_font_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::add_theme_font_override, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::add_theme_font_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_add_theme_font_size_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::add_theme_font_size_override, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::add_theme_font_size_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_add_theme_color_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::add_theme_color_override, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::add_theme_color_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_add_theme_constant_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::add_theme_constant_override, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::add_theme_constant_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_remove_theme_icon_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::remove_theme_icon_override, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::remove_theme_icon_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_remove_theme_stylebox_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::remove_theme_stylebox_override, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::remove_theme_stylebox_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_remove_theme_font_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::remove_theme_font_override, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::remove_theme_font_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_remove_theme_font_size_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::remove_theme_font_size_override, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::remove_theme_font_size_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_remove_theme_color_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::remove_theme_color_override, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::remove_theme_color_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_remove_theme_constant_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::remove_theme_constant_override, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::remove_theme_constant_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_theme_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -442,7 +444,7 @@ static JSValue control_class_get_parent_control(JSContext *ctx, JSValueConst thi
 };
 static JSValue control_class_set_h_grow_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_h_grow_direction, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_h_grow_direction, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_h_grow_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -451,7 +453,7 @@ static JSValue control_class_get_h_grow_direction(JSContext *ctx, JSValueConst t
 };
 static JSValue control_class_set_v_grow_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_v_grow_direction, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_v_grow_direction, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_v_grow_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -460,7 +462,7 @@ static JSValue control_class_get_v_grow_direction(JSContext *ctx, JSValueConst t
 };
 static JSValue control_class_set_tooltip_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_tooltip_text, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_tooltip_text, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_tooltip_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -473,7 +475,7 @@ static JSValue control_class_get_tooltip(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue control_class_set_default_cursor_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_default_cursor_shape, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_default_cursor_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_default_cursor_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -486,7 +488,7 @@ static JSValue control_class_get_cursor_shape(JSContext *ctx, JSValueConst this_
 };
 static JSValue control_class_set_focus_neighbor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_focus_neighbor, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_focus_neighbor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_focus_neighbor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -495,7 +497,7 @@ static JSValue control_class_get_focus_neighbor(JSContext *ctx, JSValueConst thi
 };
 static JSValue control_class_set_focus_next(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_focus_next, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_focus_next, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_focus_next(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -504,7 +506,7 @@ static JSValue control_class_get_focus_next(JSContext *ctx, JSValueConst this_va
 };
 static JSValue control_class_set_focus_previous(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_focus_previous, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_focus_previous, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_focus_previous(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -513,12 +515,12 @@ static JSValue control_class_get_focus_previous(JSContext *ctx, JSValueConst thi
 };
 static JSValue control_class_force_drag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::force_drag, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::force_drag, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_set_mouse_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_mouse_filter, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_mouse_filter, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_mouse_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -527,7 +529,7 @@ static JSValue control_class_get_mouse_filter(JSContext *ctx, JSValueConst this_
 };
 static JSValue control_class_set_force_pass_scroll_events(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_force_pass_scroll_events, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_force_pass_scroll_events, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_is_force_pass_scroll_events(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -536,7 +538,7 @@ static JSValue control_class_is_force_pass_scroll_events(JSContext *ctx, JSValue
 };
 static JSValue control_class_set_clip_contents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_clip_contents, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_clip_contents, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_is_clipping_contents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -545,17 +547,17 @@ static JSValue control_class_is_clipping_contents(JSContext *ctx, JSValueConst t
 };
 static JSValue control_class_grab_click_focus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::grab_click_focus, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::grab_click_focus, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_set_drag_forwarding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_drag_forwarding, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_drag_forwarding, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_set_drag_preview(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_drag_preview, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_drag_preview, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_is_drag_successful(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -564,12 +566,12 @@ static JSValue control_class_is_drag_successful(JSContext *ctx, JSValueConst thi
 };
 static JSValue control_class_warp_mouse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::warp_mouse, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::warp_mouse, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_set_shortcut_context(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_shortcut_context, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_shortcut_context, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_shortcut_context(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -578,12 +580,12 @@ static JSValue control_class_get_shortcut_context(JSContext *ctx, JSValueConst t
 };
 static JSValue control_class_update_minimum_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::update_minimum_size, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::update_minimum_size, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_set_layout_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_layout_direction, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_layout_direction, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_get_layout_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -596,7 +598,7 @@ static JSValue control_class_is_layout_rtl(JSContext *ctx, JSValueConst this_val
 };
 static JSValue control_class_set_auto_translate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_auto_translate, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_auto_translate, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_is_auto_translating(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -605,7 +607,7 @@ static JSValue control_class_is_auto_translating(JSContext *ctx, JSValueConst th
 };
 static JSValue control_class_set_localize_numeral_system(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&Control::set_localize_numeral_system, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&Control::set_localize_numeral_system, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue control_class_is_localizing_numeral_system(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -744,279 +746,318 @@ static const JSCFunctionListEntry control_class_proto_funcs[] = {
 };
 
 void define_control_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "clip_contents"),
-			JS_NewCFunction(ctx, control_class_is_clipping_contents, "is_clipping_contents", 0),
-			JS_NewCFunction(ctx, control_class_set_clip_contents, "set_clip_contents", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "custom_minimum_size"),
-			JS_NewCFunction(ctx, control_class_get_custom_minimum_size, "get_custom_minimum_size", 0),
-			JS_NewCFunction(ctx, control_class_set_custom_minimum_size, "set_custom_minimum_size", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "layout_direction"),
-			JS_NewCFunction(ctx, control_class_get_layout_direction, "get_layout_direction", 0),
-			JS_NewCFunction(ctx, control_class_set_layout_direction, "set_layout_direction", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "anchor_left"),
-			JS_NewCFunction(ctx, control_class_get_anchor, "get_anchor", 0),
-			JS_UNDEFINED,
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "anchor_top"),
-			JS_NewCFunction(ctx, control_class_get_anchor, "get_anchor", 0),
-			JS_UNDEFINED,
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "anchor_right"),
-			JS_NewCFunction(ctx, control_class_get_anchor, "get_anchor", 0),
-			JS_UNDEFINED,
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "anchor_bottom"),
-			JS_NewCFunction(ctx, control_class_get_anchor, "get_anchor", 0),
-			JS_UNDEFINED,
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "offset_left"),
-			JS_NewCFunction(ctx, control_class_get_offset, "get_offset", 0),
-			JS_NewCFunction(ctx, control_class_set_offset, "set_offset", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "offset_top"),
-			JS_NewCFunction(ctx, control_class_get_offset, "get_offset", 0),
-			JS_NewCFunction(ctx, control_class_set_offset, "set_offset", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "offset_right"),
-			JS_NewCFunction(ctx, control_class_get_offset, "get_offset", 0),
-			JS_NewCFunction(ctx, control_class_set_offset, "set_offset", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "offset_bottom"),
-			JS_NewCFunction(ctx, control_class_get_offset, "get_offset", 0),
-			JS_NewCFunction(ctx, control_class_set_offset, "set_offset", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "grow_horizontal"),
-			JS_NewCFunction(ctx, control_class_get_h_grow_direction, "get_h_grow_direction", 0),
-			JS_NewCFunction(ctx, control_class_set_h_grow_direction, "set_h_grow_direction", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "grow_vertical"),
-			JS_NewCFunction(ctx, control_class_get_v_grow_direction, "get_v_grow_direction", 0),
-			JS_NewCFunction(ctx, control_class_set_v_grow_direction, "set_v_grow_direction", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "size"),
-			JS_NewCFunction(ctx, control_class_get_size, "get_size", 0),
-			JS_UNDEFINED,
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "position"),
-			JS_NewCFunction(ctx, control_class_get_position, "get_position", 0),
-			JS_UNDEFINED,
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "global_position"),
-			JS_NewCFunction(ctx, control_class_get_global_position, "get_global_position", 0),
-			JS_UNDEFINED,
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "rotation"),
-			JS_NewCFunction(ctx, control_class_get_rotation, "get_rotation", 0),
-			JS_NewCFunction(ctx, control_class_set_rotation, "set_rotation", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "rotation_degrees"),
-			JS_NewCFunction(ctx, control_class_get_rotation_degrees, "get_rotation_degrees", 0),
-			JS_NewCFunction(ctx, control_class_set_rotation_degrees, "set_rotation_degrees", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "scale"),
-			JS_NewCFunction(ctx, control_class_get_scale, "get_scale", 0),
-			JS_NewCFunction(ctx, control_class_set_scale, "set_scale", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "pivot_offset"),
-			JS_NewCFunction(ctx, control_class_get_pivot_offset, "get_pivot_offset", 0),
-			JS_NewCFunction(ctx, control_class_set_pivot_offset, "set_pivot_offset", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "size_flags_horizontal"),
-			JS_NewCFunction(ctx, control_class_get_h_size_flags, "get_h_size_flags", 0),
-			JS_NewCFunction(ctx, control_class_set_h_size_flags, "set_h_size_flags", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "size_flags_vertical"),
-			JS_NewCFunction(ctx, control_class_get_v_size_flags, "get_v_size_flags", 0),
-			JS_NewCFunction(ctx, control_class_set_v_size_flags, "set_v_size_flags", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "size_flags_stretch_ratio"),
-			JS_NewCFunction(ctx, control_class_get_stretch_ratio, "get_stretch_ratio", 0),
-			JS_NewCFunction(ctx, control_class_set_stretch_ratio, "set_stretch_ratio", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "localize_numeral_system"),
-			JS_NewCFunction(ctx, control_class_is_localizing_numeral_system, "is_localizing_numeral_system", 0),
-			JS_NewCFunction(ctx, control_class_set_localize_numeral_system, "set_localize_numeral_system", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "auto_translate"),
-			JS_NewCFunction(ctx, control_class_is_auto_translating, "is_auto_translating", 0),
-			JS_NewCFunction(ctx, control_class_set_auto_translate, "set_auto_translate", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "tooltip_text"),
-			JS_NewCFunction(ctx, control_class_get_tooltip_text, "get_tooltip_text", 0),
-			JS_NewCFunction(ctx, control_class_set_tooltip_text, "set_tooltip_text", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "focus_neighbor_left"),
-			JS_NewCFunction(ctx, control_class_get_focus_neighbor, "get_focus_neighbor", 0),
-			JS_NewCFunction(ctx, control_class_set_focus_neighbor, "set_focus_neighbor", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "focus_neighbor_top"),
-			JS_NewCFunction(ctx, control_class_get_focus_neighbor, "get_focus_neighbor", 0),
-			JS_NewCFunction(ctx, control_class_set_focus_neighbor, "set_focus_neighbor", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "focus_neighbor_right"),
-			JS_NewCFunction(ctx, control_class_get_focus_neighbor, "get_focus_neighbor", 0),
-			JS_NewCFunction(ctx, control_class_set_focus_neighbor, "set_focus_neighbor", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "focus_neighbor_bottom"),
-			JS_NewCFunction(ctx, control_class_get_focus_neighbor, "get_focus_neighbor", 0),
-			JS_NewCFunction(ctx, control_class_set_focus_neighbor, "set_focus_neighbor", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "focus_next"),
-			JS_NewCFunction(ctx, control_class_get_focus_next, "get_focus_next", 0),
-			JS_NewCFunction(ctx, control_class_set_focus_next, "set_focus_next", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "focus_previous"),
-			JS_NewCFunction(ctx, control_class_get_focus_previous, "get_focus_previous", 0),
-			JS_NewCFunction(ctx, control_class_set_focus_previous, "set_focus_previous", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "focus_mode"),
-			JS_NewCFunction(ctx, control_class_get_focus_mode, "get_focus_mode", 0),
-			JS_NewCFunction(ctx, control_class_set_focus_mode, "set_focus_mode", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "mouse_filter"),
-			JS_NewCFunction(ctx, control_class_get_mouse_filter, "get_mouse_filter", 0),
-			JS_NewCFunction(ctx, control_class_set_mouse_filter, "set_mouse_filter", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "mouse_force_pass_scroll_events"),
-			JS_NewCFunction(ctx, control_class_is_force_pass_scroll_events, "is_force_pass_scroll_events", 0),
-			JS_NewCFunction(ctx, control_class_set_force_pass_scroll_events, "set_force_pass_scroll_events", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "mouse_default_cursor_shape"),
-			JS_NewCFunction(ctx, control_class_get_default_cursor_shape, "get_default_cursor_shape", 0),
-			JS_NewCFunction(ctx, control_class_set_default_cursor_shape, "set_default_cursor_shape", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "shortcut_context"),
-			JS_NewCFunction(ctx, control_class_get_shortcut_context, "get_shortcut_context", 0),
-			JS_NewCFunction(ctx, control_class_set_shortcut_context, "set_shortcut_context", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "theme"),
-			JS_NewCFunction(ctx, control_class_get_theme, "get_theme", 0),
-			JS_NewCFunction(ctx, control_class_set_theme, "set_theme", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "theme_type_variation"),
-			JS_NewCFunction(ctx, control_class_get_theme_type_variation, "get_theme_type_variation", 0),
-			JS_NewCFunction(ctx, control_class_set_theme_type_variation, "set_theme_type_variation", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "clip_contents"),
+        JS_NewCFunction(ctx, control_class_is_clipping_contents, "is_clipping_contents", 0),
+        JS_NewCFunction(ctx, control_class_set_clip_contents, "set_clip_contents", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "custom_minimum_size"),
+        JS_NewCFunction(ctx, control_class_get_custom_minimum_size, "get_custom_minimum_size", 0),
+        JS_NewCFunction(ctx, control_class_set_custom_minimum_size, "set_custom_minimum_size", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "layout_direction"),
+        JS_NewCFunction(ctx, control_class_get_layout_direction, "get_layout_direction", 0),
+        JS_NewCFunction(ctx, control_class_set_layout_direction, "set_layout_direction", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "anchor_left"),
+        JS_NewCFunction(ctx, control_class_get_anchor, "get_anchor", 0),
+        JS_UNDEFINED,
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "anchor_top"),
+        JS_NewCFunction(ctx, control_class_get_anchor, "get_anchor", 0),
+        JS_UNDEFINED,
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "anchor_right"),
+        JS_NewCFunction(ctx, control_class_get_anchor, "get_anchor", 0),
+        JS_UNDEFINED,
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "anchor_bottom"),
+        JS_NewCFunction(ctx, control_class_get_anchor, "get_anchor", 0),
+        JS_UNDEFINED,
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "offset_left"),
+        JS_NewCFunction(ctx, control_class_get_offset, "get_offset", 0),
+        JS_NewCFunction(ctx, control_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "offset_top"),
+        JS_NewCFunction(ctx, control_class_get_offset, "get_offset", 0),
+        JS_NewCFunction(ctx, control_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "offset_right"),
+        JS_NewCFunction(ctx, control_class_get_offset, "get_offset", 0),
+        JS_NewCFunction(ctx, control_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "offset_bottom"),
+        JS_NewCFunction(ctx, control_class_get_offset, "get_offset", 0),
+        JS_NewCFunction(ctx, control_class_set_offset, "set_offset", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "grow_horizontal"),
+        JS_NewCFunction(ctx, control_class_get_h_grow_direction, "get_h_grow_direction", 0),
+        JS_NewCFunction(ctx, control_class_set_h_grow_direction, "set_h_grow_direction", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "grow_vertical"),
+        JS_NewCFunction(ctx, control_class_get_v_grow_direction, "get_v_grow_direction", 0),
+        JS_NewCFunction(ctx, control_class_set_v_grow_direction, "set_v_grow_direction", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "size"),
+        JS_NewCFunction(ctx, control_class_get_size, "get_size", 0),
+        JS_UNDEFINED,
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "position"),
+        JS_NewCFunction(ctx, control_class_get_position, "get_position", 0),
+        JS_UNDEFINED,
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "global_position"),
+        JS_NewCFunction(ctx, control_class_get_global_position, "get_global_position", 0),
+        JS_UNDEFINED,
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "rotation"),
+        JS_NewCFunction(ctx, control_class_get_rotation, "get_rotation", 0),
+        JS_NewCFunction(ctx, control_class_set_rotation, "set_rotation", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "rotation_degrees"),
+        JS_NewCFunction(ctx, control_class_get_rotation_degrees, "get_rotation_degrees", 0),
+        JS_NewCFunction(ctx, control_class_set_rotation_degrees, "set_rotation_degrees", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "scale"),
+        JS_NewCFunction(ctx, control_class_get_scale, "get_scale", 0),
+        JS_NewCFunction(ctx, control_class_set_scale, "set_scale", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "pivot_offset"),
+        JS_NewCFunction(ctx, control_class_get_pivot_offset, "get_pivot_offset", 0),
+        JS_NewCFunction(ctx, control_class_set_pivot_offset, "set_pivot_offset", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "size_flags_horizontal"),
+        JS_NewCFunction(ctx, control_class_get_h_size_flags, "get_h_size_flags", 0),
+        JS_NewCFunction(ctx, control_class_set_h_size_flags, "set_h_size_flags", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "size_flags_vertical"),
+        JS_NewCFunction(ctx, control_class_get_v_size_flags, "get_v_size_flags", 0),
+        JS_NewCFunction(ctx, control_class_set_v_size_flags, "set_v_size_flags", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "size_flags_stretch_ratio"),
+        JS_NewCFunction(ctx, control_class_get_stretch_ratio, "get_stretch_ratio", 0),
+        JS_NewCFunction(ctx, control_class_set_stretch_ratio, "set_stretch_ratio", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "localize_numeral_system"),
+        JS_NewCFunction(ctx, control_class_is_localizing_numeral_system, "is_localizing_numeral_system", 0),
+        JS_NewCFunction(ctx, control_class_set_localize_numeral_system, "set_localize_numeral_system", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "auto_translate"),
+        JS_NewCFunction(ctx, control_class_is_auto_translating, "is_auto_translating", 0),
+        JS_NewCFunction(ctx, control_class_set_auto_translate, "set_auto_translate", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "tooltip_text"),
+        JS_NewCFunction(ctx, control_class_get_tooltip_text, "get_tooltip_text", 0),
+        JS_NewCFunction(ctx, control_class_set_tooltip_text, "set_tooltip_text", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "focus_neighbor_left"),
+        JS_NewCFunction(ctx, control_class_get_focus_neighbor, "get_focus_neighbor", 0),
+        JS_NewCFunction(ctx, control_class_set_focus_neighbor, "set_focus_neighbor", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "focus_neighbor_top"),
+        JS_NewCFunction(ctx, control_class_get_focus_neighbor, "get_focus_neighbor", 0),
+        JS_NewCFunction(ctx, control_class_set_focus_neighbor, "set_focus_neighbor", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "focus_neighbor_right"),
+        JS_NewCFunction(ctx, control_class_get_focus_neighbor, "get_focus_neighbor", 0),
+        JS_NewCFunction(ctx, control_class_set_focus_neighbor, "set_focus_neighbor", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "focus_neighbor_bottom"),
+        JS_NewCFunction(ctx, control_class_get_focus_neighbor, "get_focus_neighbor", 0),
+        JS_NewCFunction(ctx, control_class_set_focus_neighbor, "set_focus_neighbor", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "focus_next"),
+        JS_NewCFunction(ctx, control_class_get_focus_next, "get_focus_next", 0),
+        JS_NewCFunction(ctx, control_class_set_focus_next, "set_focus_next", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "focus_previous"),
+        JS_NewCFunction(ctx, control_class_get_focus_previous, "get_focus_previous", 0),
+        JS_NewCFunction(ctx, control_class_set_focus_previous, "set_focus_previous", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "focus_mode"),
+        JS_NewCFunction(ctx, control_class_get_focus_mode, "get_focus_mode", 0),
+        JS_NewCFunction(ctx, control_class_set_focus_mode, "set_focus_mode", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "mouse_filter"),
+        JS_NewCFunction(ctx, control_class_get_mouse_filter, "get_mouse_filter", 0),
+        JS_NewCFunction(ctx, control_class_set_mouse_filter, "set_mouse_filter", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "mouse_force_pass_scroll_events"),
+        JS_NewCFunction(ctx, control_class_is_force_pass_scroll_events, "is_force_pass_scroll_events", 0),
+        JS_NewCFunction(ctx, control_class_set_force_pass_scroll_events, "set_force_pass_scroll_events", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "mouse_default_cursor_shape"),
+        JS_NewCFunction(ctx, control_class_get_default_cursor_shape, "get_default_cursor_shape", 0),
+        JS_NewCFunction(ctx, control_class_set_default_cursor_shape, "set_default_cursor_shape", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "shortcut_context"),
+        JS_NewCFunction(ctx, control_class_get_shortcut_context, "get_shortcut_context", 0),
+        JS_NewCFunction(ctx, control_class_set_shortcut_context, "set_shortcut_context", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "theme"),
+        JS_NewCFunction(ctx, control_class_get_theme, "get_theme", 0),
+        JS_NewCFunction(ctx, control_class_set_theme, "set_theme", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "theme_type_variation"),
+        JS_NewCFunction(ctx, control_class_get_theme_type_variation, "get_theme_type_variation", 0),
+        JS_NewCFunction(ctx, control_class_set_theme_type_variation, "set_theme_type_variation", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -1105,6 +1146,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_control_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&Control::__class_id);
 	classes["Control"] = Control::__class_id;
 	class_id_list.insert(Control::__class_id);
@@ -1127,7 +1169,7 @@ static int js_control_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_control_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/canvas_item';";
+	const char *code = "import * as _ from '@godot/classes/canvas_item';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -1139,7 +1181,7 @@ JSModuleDef *_js_init_control_module(JSContext *ctx, const char *module_name) {
 }
 
 JSModuleDef *js_init_control_module(JSContext *ctx) {
-	return _js_init_control_module(ctx, "godot/classes/control");
+	return _js_init_control_module(ctx, "@godot/classes/control");
 }
 
 void register_control() {

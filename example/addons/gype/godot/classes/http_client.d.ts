@@ -1,7 +1,7 @@
 
-import { StreamPeer } from "@godot/classes/stream_peer";
-import { TLSOptions } from "@godot/classes/tls_options";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { TLSOptions } from "@godot/classes/tls_options";
+import { StreamPeer } from "@godot/classes/stream_peer";
 
 export declare class HTTPClient extends RefCounted{
   public connect_to_host(_host: String, _port: number, _tls_options: TLSOptions): number;
@@ -29,19 +29,19 @@ export declare class HTTPClient extends RefCounted{
   public get blocking_mode_enabled(): boolean {
     is_blocking_mode_enabled();
   }
-  public set blocking_mode_enabled(value: boolean): void {
+  public set blocking_mode_enabled(value): void {
     set_blocking_mode(value);
   }
   public get connection(): StreamPeer {
     get_connection();
   }
-  public set connection(value: StreamPeer): void {
+  public set connection(value): void {
     set_connection(value);
   }
   public get read_chunk_size(): number {
     get_read_chunk_size();
   }
-  public set read_chunk_size(value: number): void {
+  public set read_chunk_size(value): void {
     set_read_chunk_size(value);
   }
   static Method = {

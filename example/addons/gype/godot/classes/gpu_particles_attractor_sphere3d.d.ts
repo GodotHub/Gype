@@ -7,7 +7,7 @@ export declare class GPUParticlesAttractorSphere3D extends GPUParticlesAttractor
   public get radius(): number {
     get_radius();
   }
-  public set radius(value: number): void {
+  public set radius(value): void {
     set_radius(value);
   }
 }

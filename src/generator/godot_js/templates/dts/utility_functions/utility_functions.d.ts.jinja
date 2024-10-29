@@ -1,0 +1,9 @@
+declare global {
+    declare class UtilityFunctions {
+        {%- for func in utility_functions %}
+        {{func['name']}}({{connect_args(func['arguments'])}}){{set_return(func['return_type'])}};
+        {%- endfor %}
+    }
+    const GD: UtilityFunctions;
+}
+export {};

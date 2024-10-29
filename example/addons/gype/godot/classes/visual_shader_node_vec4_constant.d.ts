@@ -7,7 +7,7 @@ export declare class VisualShaderNodeVec4Constant extends VisualShaderNodeConsta
   public get constant(): Quaternion {
     get_constant();
   }
-  public set constant(value: Quaternion): void {
+  public set constant(value): void {
     set_constant(value);
   }
 }

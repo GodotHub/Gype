@@ -9,7 +9,7 @@ export declare class VideoStream extends Resource{
   public get file(): String {
     get_file();
   }
-  public set file(value: String): void {
+  public set file(value): void {
     set_file(value);
   }
 }

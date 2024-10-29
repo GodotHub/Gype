@@ -1,8 +1,8 @@
 
 import { CameraAttributes } from "@godot/classes/camera_attributes";
-import { Node } from "@godot/classes/node";
-import { Environment } from "@godot/classes/environment";
 import { Compositor } from "@godot/classes/compositor";
+import { Environment } from "@godot/classes/environment";
+import { Node } from "@godot/classes/node";
 
 export declare class WorldEnvironment extends Node{
   public set_environment(_env: Environment): void;
@@ -14,19 +14,19 @@ export declare class WorldEnvironment extends Node{
   public get environment(): Environment {
     get_environment();
   }
-  public set environment(value: Environment): void {
+  public set environment(value): void {
     set_environment(value);
   }
-  public get camera_attributes(): CameraAttributesPractical,CameraAttributesPhysical {
+  public get camera_attributes(): CameraAttributesPractical {
     get_camera_attributes();
   }
-  public set camera_attributes(value: CameraAttributesPractical,CameraAttributesPhysical): void {
+  public set camera_attributes(value): void {
     set_camera_attributes(value);
   }
   public get compositor(): Compositor {
     get_compositor();
   }
-  public set compositor(value: Compositor): void {
+  public set compositor(value): void {
     set_compositor(value);
   }
 }

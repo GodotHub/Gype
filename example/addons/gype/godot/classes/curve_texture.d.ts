@@ -1,6 +1,6 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { Curve } from "@godot/classes/curve";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class CurveTexture extends Texture2D{
   public set_width(_width: number): void;
@@ -11,19 +11,19 @@ export declare class CurveTexture extends Texture2D{
   public get width(): number {
     get_width();
   }
-  public set width(value: number): void {
+  public set width(value): void {
     set_width(value);
   }
   public get texture_mode(): number {
     get_texture_mode();
   }
-  public set texture_mode(value: number): void {
+  public set texture_mode(value): void {
     set_texture_mode(value);
   }
   public get curve(): Curve {
     get_curve();
   }
-  public set curve(value: Curve): void {
+  public set curve(value): void {
     set_curve(value);
   }
   static TextureMode = {

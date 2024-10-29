@@ -1,6 +1,6 @@
 
-import { Font } from "@godot/classes/font";
 import { Image } from "@godot/classes/image";
+import { Font } from "@godot/classes/font";
 
 export declare class FontFile extends Font{
   public load_bitmap_font(_path: String): number;
@@ -41,7 +41,7 @@ export declare class FontFile extends Font{
   public get_cache_count(): number;
   public clear_cache(): void;
   public remove_cache(_cache_index: number): void;
-  public get_size_cache_list(_cache_index: number): Array;
+  public get_size_cache_list(_cache_index: number): GDArray;
   public clear_size_cache(_cache_index: number): void;
   public remove_size_cache(_cache_index: number, _size: Vector2i): void;
   public set_variation_coordinates(_cache_index: number, _variation_coordinates: Dictionary): void;
@@ -86,7 +86,7 @@ export declare class FontFile extends Font{
   public get_glyph_uv_rect(_cache_index: number, _size: Vector2i, _glyph: number): Rect2;
   public set_glyph_texture_idx(_cache_index: number, _size: Vector2i, _glyph: number, _texture_idx: number): void;
   public get_glyph_texture_idx(_cache_index: number, _size: Vector2i, _glyph: number): number;
-  public get_kerning_list(_cache_index: number, _size: number): Array;
+  public get_kerning_list(_cache_index: number, _size: number): GDArray;
   public clear_kerning_map(_cache_index: number, _size: number): void;
   public remove_kerning(_cache_index: number, _size: number, _glyph_pair: Vector2i): void;
   public set_kerning(_cache_index: number, _size: number, _glyph_pair: Vector2i, _kerning: Vector2): void;
@@ -108,121 +108,121 @@ export declare class FontFile extends Font{
   public get data(): PackedByteArray {
     get_data();
   }
-  public set data(value: PackedByteArray): void {
+  public set data(value): void {
     set_data(value);
   }
   public get generate_mipmaps(): boolean {
     get_generate_mipmaps();
   }
-  public set generate_mipmaps(value: boolean): void {
+  public set generate_mipmaps(value): void {
     set_generate_mipmaps(value);
   }
   public get disable_embedded_bitmaps(): boolean {
     get_disable_embedded_bitmaps();
   }
-  public set disable_embedded_bitmaps(value: boolean): void {
+  public set disable_embedded_bitmaps(value): void {
     set_disable_embedded_bitmaps(value);
   }
   public get antialiasing(): number {
     get_antialiasing();
   }
-  public set antialiasing(value: number): void {
+  public set antialiasing(value): void {
     set_antialiasing(value);
   }
   public get font_name(): String {
     get_font_name();
   }
-  public set font_name(value: String): void {
+  public set font_name(value): void {
     set_font_name(value);
   }
   public get style_name(): String {
     get_font_style_name();
   }
-  public set style_name(value: String): void {
+  public set style_name(value): void {
     set_font_style_name(value);
   }
   public get font_style(): number {
     get_font_style();
   }
-  public set font_style(value: number): void {
+  public set font_style(value): void {
     set_font_style(value);
   }
   public get font_weight(): number {
     get_font_weight();
   }
-  public set font_weight(value: number): void {
+  public set font_weight(value): void {
     set_font_weight(value);
   }
   public get font_stretch(): number {
     get_font_stretch();
   }
-  public set font_stretch(value: number): void {
+  public set font_stretch(value): void {
     set_font_stretch(value);
   }
   public get subpixel_positioning(): number {
     get_subpixel_positioning();
   }
-  public set subpixel_positioning(value: number): void {
+  public set subpixel_positioning(value): void {
     set_subpixel_positioning(value);
   }
   public get multichannel_signed_distance_field(): boolean {
     is_multichannel_signed_distance_field();
   }
-  public set multichannel_signed_distance_field(value: boolean): void {
+  public set multichannel_signed_distance_field(value): void {
     set_multichannel_signed_distance_field(value);
   }
   public get msdf_pixel_range(): number {
     get_msdf_pixel_range();
   }
-  public set msdf_pixel_range(value: number): void {
+  public set msdf_pixel_range(value): void {
     set_msdf_pixel_range(value);
   }
   public get msdf_size(): number {
     get_msdf_size();
   }
-  public set msdf_size(value: number): void {
+  public set msdf_size(value): void {
     set_msdf_size(value);
   }
   public get allow_system_fallback(): boolean {
     is_allow_system_fallback();
   }
-  public set allow_system_fallback(value: boolean): void {
+  public set allow_system_fallback(value): void {
     set_allow_system_fallback(value);
   }
   public get force_autohinter(): boolean {
     is_force_autohinter();
   }
-  public set force_autohinter(value: boolean): void {
+  public set force_autohinter(value): void {
     set_force_autohinter(value);
   }
   public get hinting(): number {
     get_hinting();
   }
-  public set hinting(value: number): void {
+  public set hinting(value): void {
     set_hinting(value);
   }
   public get oversampling(): number {
     get_oversampling();
   }
-  public set oversampling(value: number): void {
+  public set oversampling(value): void {
     set_oversampling(value);
   }
   public get fixed_size(): number {
     get_fixed_size();
   }
-  public set fixed_size(value: number): void {
+  public set fixed_size(value): void {
     set_fixed_size(value);
   }
   public get fixed_size_scale_mode(): number {
     get_fixed_size_scale_mode();
   }
-  public set fixed_size_scale_mode(value: number): void {
+  public set fixed_size_scale_mode(value): void {
     set_fixed_size_scale_mode(value);
   }
   public get opentype_feature_overrides(): Dictionary {
     get_opentype_feature_overrides();
   }
-  public set opentype_feature_overrides(value: Dictionary): void {
+  public set opentype_feature_overrides(value): void {
     set_opentype_feature_overrides(value);
   }
 }

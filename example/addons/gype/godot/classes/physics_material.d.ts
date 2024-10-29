@@ -13,25 +13,25 @@ export declare class PhysicsMaterial extends Resource{
   public get friction(): number {
     get_friction();
   }
-  public set friction(value: number): void {
+  public set friction(value): void {
     set_friction(value);
   }
   public get rough(): boolean {
     is_rough();
   }
-  public set rough(value: boolean): void {
+  public set rough(value): void {
     set_rough(value);
   }
   public get bounce(): number {
     get_bounce();
   }
-  public set bounce(value: number): void {
+  public set bounce(value): void {
     set_bounce(value);
   }
   public get absorbent(): boolean {
     is_absorbent();
   }
-  public set absorbent(value: boolean): void {
+  public set absorbent(value): void {
     set_absorbent(value);
   }
 }

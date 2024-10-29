@@ -9,13 +9,13 @@ export declare class GrooveJoint2D extends Joint2D{
   public get length(): number {
     get_length();
   }
-  public set length(value: number): void {
+  public set length(value): void {
     set_length(value);
   }
   public get initial_offset(): number {
     get_initial_offset();
   }
-  public set initial_offset(value: number): void {
+  public set initial_offset(value): void {
     set_initial_offset(value);
   }
 }

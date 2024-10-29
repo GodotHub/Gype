@@ -1,18 +1,20 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
-#include <godot_cpp/classes/image.hpp>
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/portable_compressed_texture2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+
 
 using namespace godot;
 
 static void portable_compressed_texture2d_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -31,12 +33,12 @@ static JSValue portable_compressed_texture2d_class_constructor(JSContext *ctx, J
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, portable_compressed_texture2d_class);
+	JS_SetOpaque(obj, portable_compressed_texture2d_class);	
 	return obj;
 }
 static JSValue portable_compressed_texture2d_class_create_from_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PortableCompressedTexture2D::create_from_image, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PortableCompressedTexture2D::create_from_image, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue portable_compressed_texture2d_class_get_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -49,7 +51,7 @@ static JSValue portable_compressed_texture2d_class_get_compression_mode(JSContex
 };
 static JSValue portable_compressed_texture2d_class_set_size_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PortableCompressedTexture2D::set_size_override, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PortableCompressedTexture2D::set_size_override, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue portable_compressed_texture2d_class_get_size_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -58,7 +60,7 @@ static JSValue portable_compressed_texture2d_class_get_size_override(JSContext *
 };
 static JSValue portable_compressed_texture2d_class_set_keep_compressed_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&PortableCompressedTexture2D::set_keep_compressed_buffer, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&PortableCompressedTexture2D::set_keep_compressed_buffer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue portable_compressed_texture2d_class_is_keeping_compressed_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -66,7 +68,7 @@ static JSValue portable_compressed_texture2d_class_is_keeping_compressed_buffer(
 	return call_builtin_const_method_ret(&PortableCompressedTexture2D::is_keeping_compressed_buffer, ctx, this_val, argc, argv);
 };
 static JSValue portable_compressed_texture2d_class_set_keep_all_compressed_buffers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	call_builtin_static_method_no_ret(&PortableCompressedTexture2D::set_keep_all_compressed_buffers, ctx, this_val, argc, argv);
+    call_builtin_static_method_no_ret(&PortableCompressedTexture2D::set_keep_all_compressed_buffers, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue portable_compressed_texture2d_class_is_keeping_all_compressed_buffers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -87,20 +89,22 @@ static const JSCFunctionListEntry portable_compressed_texture2d_class_static_fun
 };
 
 void define_portable_compressed_texture2d_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "size_override"),
-			JS_NewCFunction(ctx, portable_compressed_texture2d_class_get_size_override, "get_size_override", 0),
-			JS_NewCFunction(ctx, portable_compressed_texture2d_class_set_size_override, "set_size_override", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "keep_compressed_buffer"),
-			JS_NewCFunction(ctx, portable_compressed_texture2d_class_is_keeping_compressed_buffer, "is_keeping_compressed_buffer", 0),
-			JS_NewCFunction(ctx, portable_compressed_texture2d_class_set_keep_compressed_buffer, "set_keep_compressed_buffer", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "size_override"),
+        JS_NewCFunction(ctx, portable_compressed_texture2d_class_get_size_override, "get_size_override", 0),
+        JS_NewCFunction(ctx, portable_compressed_texture2d_class_set_size_override, "set_size_override", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "keep_compressed_buffer"),
+        JS_NewCFunction(ctx, portable_compressed_texture2d_class_is_keeping_compressed_buffer, "is_keeping_compressed_buffer", 0),
+        JS_NewCFunction(ctx, portable_compressed_texture2d_class_set_keep_compressed_buffer, "set_keep_compressed_buffer", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
@@ -115,6 +119,7 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_portable_compressed_texture2d_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&PortableCompressedTexture2D::__class_id);
 	classes["PortableCompressedTexture2D"] = PortableCompressedTexture2D::__class_id;
 	class_id_list.insert(PortableCompressedTexture2D::__class_id);
@@ -138,7 +143,7 @@ static int js_portable_compressed_texture2d_class_init(JSContext *ctx, JSModuleD
 }
 
 JSModuleDef *_js_init_portable_compressed_texture2d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/texture2d';";
+	const char *code = "import * as _ from '@godot/classes/texture2d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -150,7 +155,7 @@ JSModuleDef *_js_init_portable_compressed_texture2d_module(JSContext *ctx, const
 }
 
 JSModuleDef *js_init_portable_compressed_texture2d_module(JSContext *ctx) {
-	return _js_init_portable_compressed_texture2d_module(ctx, "godot/classes/portable_compressed_texture2d");
+	return _js_init_portable_compressed_texture2d_module(ctx, "@godot/classes/portable_compressed_texture2d");
 }
 
 void register_portable_compressed_texture2d() {

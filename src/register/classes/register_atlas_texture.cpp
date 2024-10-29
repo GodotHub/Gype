@@ -1,17 +1,19 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
 #include "register/classes/register_classes.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/atlas_texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
+
 using namespace godot;
 
 static void atlas_texture_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	// nothing
 }
 
@@ -30,12 +32,12 @@ static JSValue atlas_texture_class_constructor(JSContext *ctx, JSValueConst new_
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, atlas_texture_class);
+	JS_SetOpaque(obj, atlas_texture_class);	
 	return obj;
 }
 static JSValue atlas_texture_class_set_atlas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AtlasTexture::set_atlas, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AtlasTexture::set_atlas, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue atlas_texture_class_get_atlas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -44,7 +46,7 @@ static JSValue atlas_texture_class_get_atlas(JSContext *ctx, JSValueConst this_v
 };
 static JSValue atlas_texture_class_set_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AtlasTexture::set_region, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AtlasTexture::set_region, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue atlas_texture_class_get_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -53,7 +55,7 @@ static JSValue atlas_texture_class_get_region(JSContext *ctx, JSValueConst this_
 };
 static JSValue atlas_texture_class_set_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AtlasTexture::set_margin, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AtlasTexture::set_margin, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue atlas_texture_class_get_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +64,7 @@ static JSValue atlas_texture_class_get_margin(JSContext *ctx, JSValueConst this_
 };
 static JSValue atlas_texture_class_set_filter_clip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(&AtlasTexture::set_filter_clip, ctx, this_val, argc, argv);
+    call_builtin_method_no_ret(&AtlasTexture::set_filter_clip, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue atlas_texture_class_has_filter_clip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -81,40 +83,45 @@ static const JSCFunctionListEntry atlas_texture_class_proto_funcs[] = {
 };
 
 void define_atlas_texture_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "atlas"),
-			JS_NewCFunction(ctx, atlas_texture_class_get_atlas, "get_atlas", 0),
-			JS_NewCFunction(ctx, atlas_texture_class_set_atlas, "set_atlas", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "region"),
-			JS_NewCFunction(ctx, atlas_texture_class_get_region, "get_region", 0),
-			JS_NewCFunction(ctx, atlas_texture_class_set_region, "set_region", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "margin"),
-			JS_NewCFunction(ctx, atlas_texture_class_get_margin, "get_margin", 0),
-			JS_NewCFunction(ctx, atlas_texture_class_set_margin, "set_margin", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "filter_clip"),
-			JS_NewCFunction(ctx, atlas_texture_class_has_filter_clip, "has_filter_clip", 0),
-			JS_NewCFunction(ctx, atlas_texture_class_set_filter_clip, "set_filter_clip", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "atlas"),
+        JS_NewCFunction(ctx, atlas_texture_class_get_atlas, "get_atlas", 0),
+        JS_NewCFunction(ctx, atlas_texture_class_set_atlas, "set_atlas", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "region"),
+        JS_NewCFunction(ctx, atlas_texture_class_get_region, "get_region", 0),
+        JS_NewCFunction(ctx, atlas_texture_class_set_region, "set_region", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "margin"),
+        JS_NewCFunction(ctx, atlas_texture_class_get_margin, "get_margin", 0),
+        JS_NewCFunction(ctx, atlas_texture_class_set_margin, "set_margin", 1),
+        JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "filter_clip"),
+        JS_NewCFunction(ctx, atlas_texture_class_has_filter_clip, "has_filter_clip", 0),
+        JS_NewCFunction(ctx, atlas_texture_class_set_filter_clip, "set_filter_clip", 1),
+        JS_PROP_GETSET
+    );
 }
 
 static void define_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_atlas_texture_class_init(JSContext *ctx, JSModuleDef *m) {
+	
 	JS_NewClassID(&AtlasTexture::__class_id);
 	classes["AtlasTexture"] = AtlasTexture::__class_id;
 	class_id_list.insert(AtlasTexture::__class_id);
@@ -137,7 +144,7 @@ static int js_atlas_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_atlas_texture_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from 'godot/classes/texture2d';";
+	const char *code = "import * as _ from '@godot/classes/texture2d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -149,7 +156,7 @@ JSModuleDef *_js_init_atlas_texture_module(JSContext *ctx, const char *module_na
 }
 
 JSModuleDef *js_init_atlas_texture_module(JSContext *ctx) {
-	return _js_init_atlas_texture_module(ctx, "godot/classes/atlas_texture");
+	return _js_init_atlas_texture_module(ctx, "@godot/classes/atlas_texture");
 }
 
 void register_atlas_texture() {

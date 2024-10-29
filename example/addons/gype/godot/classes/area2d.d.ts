@@ -1,7 +1,7 @@
 
+import { Node2D } from "@godot/classes/node2d";
 import { CollisionObject2D } from "@godot/classes/collision_object2d";
 import { Node } from "@godot/classes/node";
-import { Node2D } from "@godot/classes/node2d";
 
 export declare class Area2D extends CollisionObject2D{
   public set_gravity_space_override_mode(_space_override_mode: number): void;
@@ -30,8 +30,8 @@ export declare class Area2D extends CollisionObject2D{
   public is_monitoring(): boolean;
   public set_monitorable(_enable: boolean): void;
   public is_monitorable(): boolean;
-  public get_overlapping_bodies(): Array;
-  public get_overlapping_areas(): Array;
+  public get_overlapping_bodies(): GDArray;
+  public get_overlapping_areas(): GDArray;
   public has_overlapping_bodies(): boolean;
   public has_overlapping_areas(): boolean;
   public overlaps_body(_body: Node): boolean;
@@ -43,91 +43,91 @@ export declare class Area2D extends CollisionObject2D{
   public get monitoring(): boolean {
     is_monitoring();
   }
-  public set monitoring(value: boolean): void {
+  public set monitoring(value): void {
     set_monitoring(value);
   }
   public get monitorable(): boolean {
     is_monitorable();
   }
-  public set monitorable(value: boolean): void {
+  public set monitorable(value): void {
     set_monitorable(value);
   }
   public get priority(): number {
     get_priority();
   }
-  public set priority(value: number): void {
+  public set priority(value): void {
     set_priority(value);
   }
   public get gravity_space_override(): number {
     get_gravity_space_override_mode();
   }
-  public set gravity_space_override(value: number): void {
+  public set gravity_space_override(value): void {
     set_gravity_space_override_mode(value);
   }
   public get gravity_point(): boolean {
     is_gravity_a_point();
   }
-  public set gravity_point(value: boolean): void {
+  public set gravity_point(value): void {
     set_gravity_is_point(value);
   }
   public get gravity_point_unit_distance(): number {
     get_gravity_point_unit_distance();
   }
-  public set gravity_point_unit_distance(value: number): void {
+  public set gravity_point_unit_distance(value): void {
     set_gravity_point_unit_distance(value);
   }
   public get gravity_point_center(): Vector2 {
     get_gravity_point_center();
   }
-  public set gravity_point_center(value: Vector2): void {
+  public set gravity_point_center(value): void {
     set_gravity_point_center(value);
   }
   public get gravity_direction(): Vector2 {
     get_gravity_direction();
   }
-  public set gravity_direction(value: Vector2): void {
+  public set gravity_direction(value): void {
     set_gravity_direction(value);
   }
   public get gravity(): number {
     get_gravity();
   }
-  public set gravity(value: number): void {
+  public set gravity(value): void {
     set_gravity(value);
   }
   public get linear_damp_space_override(): number {
     get_linear_damp_space_override_mode();
   }
-  public set linear_damp_space_override(value: number): void {
+  public set linear_damp_space_override(value): void {
     set_linear_damp_space_override_mode(value);
   }
   public get linear_damp(): number {
     get_linear_damp();
   }
-  public set linear_damp(value: number): void {
+  public set linear_damp(value): void {
     set_linear_damp(value);
   }
   public get angular_damp_space_override(): number {
     get_angular_damp_space_override_mode();
   }
-  public set angular_damp_space_override(value: number): void {
+  public set angular_damp_space_override(value): void {
     set_angular_damp_space_override_mode(value);
   }
   public get angular_damp(): number {
     get_angular_damp();
   }
-  public set angular_damp(value: number): void {
+  public set angular_damp(value): void {
     set_angular_damp(value);
   }
   public get audio_bus_override(): boolean {
     is_overriding_audio_bus();
   }
-  public set audio_bus_override(value: boolean): void {
+  public set audio_bus_override(value): void {
     set_audio_bus_override(value);
   }
   public get audio_bus_name(): StringName {
     get_audio_bus_name();
   }
-  public set audio_bus_name(value: StringName): void {
+  public set audio_bus_name(value): void {
     set_audio_bus_name(value);
   }
   static SpaceOverride = {

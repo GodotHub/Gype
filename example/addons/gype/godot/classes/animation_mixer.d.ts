@@ -4,13 +4,13 @@ import { Animation } from "@godot/classes/animation";
 import { AnimationLibrary } from "@godot/classes/animation_library";
 
 export declare class AnimationMixer extends Node{
-  public _post_process_key_value(_animation: Animation, _track: number, _value: Variant, _object_id: number, _object_sub_idx: number): Variant;
+  public _post_process_key_value(_animation: Animation, _track: number, _value: any, _object_id: number, _object_sub_idx: number): any;
   public add_animation_library(_name: StringName, _library: AnimationLibrary): number;
   public remove_animation_library(_name: StringName): void;
   public rename_animation_library(_name: StringName, _newname: StringName): void;
   public has_animation_library(_name: StringName): boolean;
   public get_animation_library(_name: StringName): AnimationLibrary;
-  public get_animation_library_list(): Array;
+  public get_animation_library_list(): GDArray;
   public has_animation(_name: StringName): boolean;
   public get_animation(_name: StringName): Animation;
   public get_animation_list(): PackedStringArray;
@@ -46,55 +46,55 @@ export declare class AnimationMixer extends Node{
   public get active(): boolean {
     is_active();
   }
-  public set active(value: boolean): void {
+  public set active(value): void {
     set_active(value);
   }
   public get deterministic(): boolean {
     is_deterministic();
   }
-  public set deterministic(value: boolean): void {
+  public set deterministic(value): void {
     set_deterministic(value);
   }
   public get reset_on_save(): boolean {
     is_reset_on_save_enabled();
   }
-  public set reset_on_save(value: boolean): void {
+  public set reset_on_save(value): void {
     set_reset_on_save_enabled(value);
   }
   public get root_node(): NodePath {
     get_root_node();
   }
-  public set root_node(value: NodePath): void {
+  public set root_node(value): void {
     set_root_node(value);
   }
   public get root_motion_track(): NodePath {
     get_root_motion_track();
   }
-  public set root_motion_track(value: NodePath): void {
+  public set root_motion_track(value): void {
     set_root_motion_track(value);
   }
   public get audio_max_polyphony(): number {
     get_audio_max_polyphony();
   }
-  public set audio_max_polyphony(value: number): void {
+  public set audio_max_polyphony(value): void {
     set_audio_max_polyphony(value);
   }
   public get callback_mode_process(): number {
     get_callback_mode_process();
   }
-  public set callback_mode_process(value: number): void {
+  public set callback_mode_process(value): void {
     set_callback_mode_process(value);
   }
   public get callback_mode_method(): number {
     get_callback_mode_method();
   }
-  public set callback_mode_method(value: number): void {
+  public set callback_mode_method(value): void {
     set_callback_mode_method(value);
   }
   public get callback_mode_discrete(): number {
     get_callback_mode_discrete();
   }
-  public set callback_mode_discrete(value: number): void {
+  public set callback_mode_discrete(value): void {
     set_callback_mode_discrete(value);
   }
   static AnimationCallbackModeProcess = {

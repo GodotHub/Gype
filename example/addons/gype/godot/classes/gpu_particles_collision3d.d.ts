@@ -7,7 +7,7 @@ export declare class GPUParticlesCollision3D extends VisualInstance3D{
   public get cull_mask(): number {
     get_cull_mask();
   }
-  public set cull_mask(value: number): void {
+  public set cull_mask(value): void {
     set_cull_mask(value);
   }
 }
