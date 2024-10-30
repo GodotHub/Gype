@@ -45,8 +45,7 @@ StringName TypeScript::_get_instance_base_type() const {
 }
 
 void *TypeScript::_instance_create(Object *p_for_object) const {
-	complie(false);
-	String path = this->path.replace("res://", "res://.dist/").replace(".ts", ".js");
+	String path = get_path().replace("res://", "res://.dist/").replace(".ts", ".js");
 	Ref<TypeScript> script = ResourceLoader::get_singleton()->load(path);
 	return internal::gdextension_interface_script_instance_create3(&InstanceInfo, memnew(TypeScriptInstance(p_for_object, script.ptr(), false)));
 }
@@ -72,24 +71,10 @@ String TypeScript::get_dist_source_code() const {
 	return dist_source_code;
 }
 
-void TypeScript::complie(bool force = false) const {
-	int exit_code = 0;
-	if (force)
-		exit_code = OS::get_singleton()->execute("cmd.exe", { "/c", "tsc", "--build", "tsconfig.json", "--force" });
-	else
-		exit_code = OS::get_singleton()->execute("cmd.exe", { "/c", "tsc", "--build", "tsconfig.json" });
-	ERR_FAIL_COND_EDMSG(exit_code == -1, "Error executing tsc.");
-}
-
-void TypeScript::_set_source_code(const String &p_code) {
-	source_code = p_code;
+void TypeScript::analyze() {
 	is_tool = false;
-	if (!path.begins_with("res://.dist/") && !path.begins_with("res://addons/")) {
-		complie(true);
-
-		Ref<TypeScript> dist_script = ResourceLoader::get_singleton()->load(path.replace("res://", "res://.dist/").replace(".ts", ".js"));
-		dist_source_code = dist_script->_get_source_code();
-
+	String path = get_path();
+	if (path != "" && !path.begins_with("res://.dist/") && !path.begins_with("res://addons/")) {
 		String code = _get_source_code();
 		std::string origin_string = code.ascii().get_data();
 		const char *c_code = origin_string.c_str();
@@ -132,6 +117,21 @@ void TypeScript::_set_source_code(const String &p_code) {
 	}
 }
 
+void TypeScript::complie(bool force = false) {
+	int exit_code = 0;
+	if (force)
+		exit_code = OS::get_singleton()->execute("cmd.exe", { "/c", "tsc", "--build", "tsconfig.json", "--force" });
+	else
+		exit_code = OS::get_singleton()->execute("cmd.exe", { "/c", "tsc", "--build", "tsconfig.json" });
+	ERR_FAIL_COND_EDMSG(exit_code == -1, "Error executing tsc.");
+}
+
+void TypeScript::_set_source_code(const String &p_code) {
+	source_code = p_code;
+	complie(false);
+	analyze();
+}
+
 void TypeScript::remove_dist() {
 	Ref<DirAccess> dir = DirAccess::open("res://.dist");
 	Error err = dir->get_open_error();
@@ -166,6 +166,7 @@ String TypeScript::_get_class_icon_path() const {
 }
 
 bool TypeScript::_has_method(const StringName &p_method) const {
+	String path = get_path();
 	if (!path.begins_with("res://dist") && !path.begins_with("res://addons")) {
 	}
 	return false;

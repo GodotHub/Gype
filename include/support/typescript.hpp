@@ -1,10 +1,11 @@
 #ifndef __JAVASCRIPT_H__
 #define __JAVASCRIPT_H__
 
+#include "support/placeholder_javascript_instance.hpp"
 #include "support/typescript_instance.hpp"
 #include "support/typescript_language.hpp"
+#include "support/typescript_loader.hpp"
 #include "support/typescript_saver.hpp"
-#include "support/placeholder_javascript_instance.hpp"
 #include "tree_sitter/api.h"
 #include "typescript/tree_sitter/tree-sitter-typescript.h"
 #include <godot_cpp/classes/script_extension.hpp>
@@ -24,6 +25,7 @@ class TypeScript : public ScriptExtension {
 
 	friend class TypeScriptLanguage;
 	friend class TypeScriptSaver;
+	friend class TypeScriptLoader;
 	friend class TypeScriptInstance;
 	friend class PlaceholderJavaScriptInstance;
 
@@ -39,7 +41,7 @@ class TypeScript : public ScriptExtension {
 	String global_class_name;
 	String base_class_name;
 	TypeScript *baseScript;
-	bool is_tool;
+	bool is_tool = false;
 
 	HashSet<int64_t> instances;
 
@@ -102,7 +104,8 @@ private:
 	void remove_dist();
 	void remove_dist_internal(const String &path);
 	String get_dist_source_code() const;
-	void complie(bool force) const;
+	void complie(bool force);
+	void analyze();
 };
 
 } // namespace godot
