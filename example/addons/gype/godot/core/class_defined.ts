@@ -1,5 +1,6 @@
 import { Node } from "@godot/classes/node";
 import { GodotObject } from "@godot/classes/godot_object";
+import { RefCounted } from "../classes/ref_counted";
 
 const _GodotClass = Symbol("_GodotClass");
 export function GodotClass(target: any) {
@@ -13,16 +14,18 @@ export function Tool(target: any) {
   return target;
 }
 
-export function ToSignal(instance: GodotObject, signal: string) {
+// flag = 4 确保在await后释放连接
+export function ToSignal(instance: GodotObject, signal: string): Promise<any> {
   return new Promise((resolve, reject) => {
-    if (!GD.is_instance_id_valid(instance.get_instance_id())) reject();
+    if (!GD.is_instance_id_valid(instance.get_instance_id()))
+      reject("instance invalid");
     const resolveWrapper = new Resolver(instance, signal, resolve);
     const callback: Callable = resolveWrapper.callback;
-    instance.connect(signal, callback, 0);
+    instance.connect(signal, callback, 4);
   });
 }
 
-class Resolver extends Node {
+class Resolver extends RefCounted {
   #resolve: Function;
   #instance: GodotObject;
   #callback: Callable;
@@ -31,7 +34,7 @@ class Resolver extends Node {
     super();
     this.#resolve = resolve;
     this.#instance = instance;
-    this.#callback = new Callable(this, this.resolve);
+    this.#callback = new Callable(this, this.#resolve);
     this.#signal = signal;
   }
 
@@ -39,8 +42,9 @@ class Resolver extends Node {
     return this.#callback;
   }
 
-  resolve() {
+  public resolve(): void {
     this.#instance.disconnect(this.#signal, this.#callback);
     this.#resolve();
+    this.unreference();
   }
 }

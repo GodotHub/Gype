@@ -26,7 +26,7 @@ JSModuleDef *module_loader(JSContext *ctx, const char *module_name, void *opaque
 	}
 
 	String code = script->_get_source_code();
-	std::string code_str = code.ascii().get_data();
+	std::string code_str = code.utf8().get_data();
 	const char *buf = code_str.c_str();
 	size_t buf_len = strlen(buf);
 

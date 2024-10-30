@@ -35,6 +35,6 @@ void execute_events() {
 }
 
 void create_event_loop(JSRuntime *rt) {
-	pthread_t event_thread;
-	pthread_create(&event_thread, NULL, event_loop, rt);
+	pthread_t main_thread;
+	pthread_create(&main_thread, NULL, event_loop, rt);
 }

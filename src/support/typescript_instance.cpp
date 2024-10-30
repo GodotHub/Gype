@@ -95,29 +95,28 @@ JSValue TypeScriptInstance::find_ns_property(JSModuleDef *md, const char *name) 
 	return true;
 
 GDExtensionBool TypeScriptInstance::set(GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_variant) {
-	if (!script->is_tool || Engine::get_singleton()->is_editor_hint())
-		return false;
-	JSValue js_instance = binding->js_instance;
 	const char *name = to_chars(*reinterpret_cast<const StringName *>(p_name));
-	Variant varg;
-	internal::gdextension_interface_variant_new_copy(varg._native_ptr(), p_variant);
-	JSValue jsarg = varg;
-	if (JS_SetPropertyStr(ctx, js_instance, name, jsarg) > 0)
-		return true;
+	if (script->is_tool || !Engine::get_singleton()->is_editor_hint()) {
+		JSValue js_instance = binding->js_instance;
+		Variant varg;
+		internal::gdextension_interface_variant_new_copy(varg._native_ptr(), p_variant);
+		return JS_SetPropertyStr(ctx, js_instance, name, varg) > 0;
+	}
 	return false;
 }
 
 GDExtensionBool TypeScriptInstance::get(GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
-	if (!script->is_tool || Engine::get_singleton()->is_editor_hint())
-		return false;
-	JSValue js_instance = binding->js_instance;
 	const char *name = to_chars(*reinterpret_cast<const StringName *>(p_name));
-	JSValue js_ret = JS_GetPropertyStr(ctx, js_instance, name);
-	if (JS_IsUndefined(js_ret))
-		return false;
-	Variant ret = js_ret;
-	internal::gdextension_interface_variant_new_copy(r_ret, ret._native_ptr());
-	return true;
+	if (script->is_tool || !Engine::get_singleton()->is_editor_hint()) {
+		JSValue js_instance = binding->js_instance;
+		JSValue js_ret = JS_GetPropertyStr(ctx, js_instance, name);
+		if (JS_IsUndefined(js_ret))
+			return false;
+		Variant ret = js_ret;
+		internal::gdextension_interface_variant_new_copy(r_ret, ret._native_ptr());
+		return true;
+	}
+	return false;
 }
 
 // const GDExtensionPropertyInfo *JavaScriptInstance::get_property_list(uint32_t *r_count) {
@@ -158,8 +157,10 @@ void TypeScriptInstance::call(GDExtensionConstStringNamePtr p_method, const GDEx
 	const char *method = to_chars(*reinterpret_cast<const StringName *>(p_method));
 	JSAtom atom = JS_NewAtom(ctx, method);
 
-	if (!script->is_tool && Engine::get_singleton()->is_editor_hint() && method[0] == '_')
+	if (!script->is_tool && Engine::get_singleton()->is_editor_hint() && method[0] == '_') {
+		r_error->error = GDExtensionCallErrorType::GDEXTENSION_CALL_ERROR_INVALID_METHOD;
 		return;
+	}
 	int it = 0;
 	while (!JS_IsNull(prototype)) {
 		JSPropertyDescriptor prop;
@@ -173,16 +174,16 @@ void TypeScriptInstance::call(GDExtensionConstStringNamePtr p_method, const GDEx
 			std::vector<JSValue> js_args(p_argument_count);
 			for (int i = 0; i < p_argument_count; i++)
 				js_args[i] = static_cast<JSValue>(variant_args[i]);
-			JSValue js_ret = JS_Call(ctx, js_method, js_instance, p_argument_count, js_args.data());
-			execute_events();
-			Variant ret = Variant(js_ret);
+			Variant ret = JS_Call(ctx, js_method, js_instance, p_argument_count, js_args.data());
 			internal::gdextension_interface_variant_new_copy(r_return, ret._native_ptr());
 			r_error->error = GDExtensionCallErrorType::GDEXTENSION_CALL_OK;
+			execute_events();
 			return;
 		}
 		prototype = JS_GetPrototype(ctx, prototype);
 		++it;
 	}
+	r_error->error = GDExtensionCallErrorType::GDEXTENSION_CALL_ERROR_INVALID_METHOD;
 }
 
 void TypeScriptInstance::notification(int32_t p_what, GDExtensionBool p_reversed) {
