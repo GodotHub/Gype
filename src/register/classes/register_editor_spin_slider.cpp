@@ -27,7 +27,13 @@ static JSValue editor_spin_slider_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorSpinSlider::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorSpinSlider *editor_spin_slider_class = memnew(EditorSpinSlider);
+	EditorSpinSlider *editor_spin_slider_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_spin_slider_class = static_cast<EditorSpinSlider *>(static_cast<Object *>(vobj));
+	} else {
+		editor_spin_slider_class = memnew(EditorSpinSlider);
+	}
 	if (!editor_spin_slider_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

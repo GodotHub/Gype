@@ -5,14 +5,14 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/mesh_instance3d.hpp>
+#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/mesh_convex_decomposition_settings.hpp>
+#include <godot_cpp/classes/geometry_instance3d.hpp>
+#include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/classes/array_mesh.hpp>
 #include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/skin.hpp>
-#include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/skin_reference.hpp>
-#include <godot_cpp/classes/mesh_convex_decomposition_settings.hpp>
-#include <godot_cpp/classes/mesh_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -33,7 +33,13 @@ static JSValue mesh_instance3d_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MeshInstance3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	MeshInstance3D *mesh_instance3d_class = memnew(MeshInstance3D);
+	MeshInstance3D *mesh_instance3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		mesh_instance3d_class = static_cast<MeshInstance3D *>(static_cast<Object *>(vobj));
+	} else {
+		mesh_instance3d_class = memnew(MeshInstance3D);
+	}
 	if (!mesh_instance3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

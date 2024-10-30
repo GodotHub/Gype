@@ -28,7 +28,13 @@ static JSValue resource_preloader_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourcePreloader::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ResourcePreloader *resource_preloader_class = memnew(ResourcePreloader);
+	ResourcePreloader *resource_preloader_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		resource_preloader_class = static_cast<ResourcePreloader *>(static_cast<Object *>(vobj));
+	} else {
+		resource_preloader_class = memnew(ResourcePreloader);
+	}
 	if (!resource_preloader_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

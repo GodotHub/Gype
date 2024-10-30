@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_modification2d_stack_holder.hpp>
 #include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
+#include <godot_cpp/classes/skeleton_modification2d_stack_holder.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue skeleton_modification2d_stack_holder_class_constructor(JSContext 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkeletonModification2DStackHolder::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SkeletonModification2DStackHolder *skeleton_modification2d_stack_holder_class = memnew(SkeletonModification2DStackHolder);
+	SkeletonModification2DStackHolder *skeleton_modification2d_stack_holder_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		skeleton_modification2d_stack_holder_class = static_cast<SkeletonModification2DStackHolder *>(static_cast<Object *>(vobj));
+	} else {
+		skeleton_modification2d_stack_holder_class = memnew(SkeletonModification2DStackHolder);
+	}
 	if (!skeleton_modification2d_stack_holder_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

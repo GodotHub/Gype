@@ -27,7 +27,13 @@ static JSValue xr_controller_tracker_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRControllerTracker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	XRControllerTracker *xr_controller_tracker_class = memnew(XRControllerTracker);
+	XRControllerTracker *xr_controller_tracker_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		xr_controller_tracker_class = static_cast<XRControllerTracker *>(static_cast<Object *>(vobj));
+	} else {
+		xr_controller_tracker_class = memnew(XRControllerTracker);
+	}
 	if (!xr_controller_tracker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

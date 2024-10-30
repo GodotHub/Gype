@@ -27,7 +27,13 @@ static JSValue visual_shader_node_transform_op_class_constructor(JSContext *ctx,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeTransformOp::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeTransformOp *visual_shader_node_transform_op_class = memnew(VisualShaderNodeTransformOp);
+	VisualShaderNodeTransformOp *visual_shader_node_transform_op_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_transform_op_class = static_cast<VisualShaderNodeTransformOp *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_transform_op_class = memnew(VisualShaderNodeTransformOp);
+	}
 	if (!visual_shader_node_transform_op_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

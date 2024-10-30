@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/classes/editor_debugger_plugin.hpp>
+#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/classes/editor_debugger_session.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue editor_debugger_plugin_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorDebuggerPlugin::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorDebuggerPlugin *editor_debugger_plugin_class = memnew(EditorDebuggerPlugin);
+	EditorDebuggerPlugin *editor_debugger_plugin_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_debugger_plugin_class = static_cast<EditorDebuggerPlugin *>(static_cast<Object *>(vobj));
+	} else {
+		editor_debugger_plugin_class = memnew(EditorDebuggerPlugin);
+	}
 	if (!editor_debugger_plugin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

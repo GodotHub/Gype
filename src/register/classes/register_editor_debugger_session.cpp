@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/editor_debugger_session.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/editor_debugger_session.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue editor_debugger_session_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorDebuggerSession::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorDebuggerSession *editor_debugger_session_class = memnew(EditorDebuggerSession);
+	EditorDebuggerSession *editor_debugger_session_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_debugger_session_class = static_cast<EditorDebuggerSession *>(static_cast<Object *>(vobj));
+	} else {
+		editor_debugger_session_class = memnew(EditorDebuggerSession);
+	}
 	if (!editor_debugger_session_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

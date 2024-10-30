@@ -27,7 +27,13 @@ static JSValue xr_hand_modifier3d_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRHandModifier3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	XRHandModifier3D *xr_hand_modifier3d_class = memnew(XRHandModifier3D);
+	XRHandModifier3D *xr_hand_modifier3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		xr_hand_modifier3d_class = static_cast<XRHandModifier3D *>(static_cast<Object *>(vobj));
+	} else {
+		xr_hand_modifier3d_class = memnew(XRHandModifier3D);
+	}
 	if (!xr_hand_modifier3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

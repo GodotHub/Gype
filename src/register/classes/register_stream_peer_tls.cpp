@@ -28,7 +28,13 @@ static JSValue stream_peer_tls_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StreamPeerTLS::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	StreamPeerTLS *stream_peer_tls_class = memnew(StreamPeerTLS);
+	StreamPeerTLS *stream_peer_tls_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		stream_peer_tls_class = static_cast<StreamPeerTLS *>(static_cast<Object *>(vobj));
+	} else {
+		stream_peer_tls_class = memnew(StreamPeerTLS);
+	}
 	if (!stream_peer_tls_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

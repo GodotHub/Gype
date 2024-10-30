@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skin.hpp>
-#include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/classes/skin_reference.hpp>
+#include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue skeleton3d_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Skeleton3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Skeleton3D *skeleton3d_class = memnew(Skeleton3D);
+	Skeleton3D *skeleton3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		skeleton3d_class = static_cast<Skeleton3D *>(static_cast<Object *>(vobj));
+	} else {
+		skeleton3d_class = memnew(Skeleton3D);
+	}
 	if (!skeleton3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

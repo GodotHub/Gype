@@ -2,7 +2,7 @@
 import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class RDShaderSource extends RefCounted{
-  public set_stage_source(_stage: number, _source: String): void;
+  public set_stage_source(_stage: number, _source: String | StringName | string): void;
   public get_stage_source(_stage: number): String;
   public set_language(_language: number): void;
   public get_language(): number;

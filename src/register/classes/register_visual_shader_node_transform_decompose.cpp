@@ -27,7 +27,13 @@ static JSValue visual_shader_node_transform_decompose_class_constructor(JSContex
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeTransformDecompose::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeTransformDecompose *visual_shader_node_transform_decompose_class = memnew(VisualShaderNodeTransformDecompose);
+	VisualShaderNodeTransformDecompose *visual_shader_node_transform_decompose_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_transform_decompose_class = static_cast<VisualShaderNodeTransformDecompose *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_transform_decompose_class = memnew(VisualShaderNodeTransformDecompose);
+	}
 	if (!visual_shader_node_transform_decompose_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

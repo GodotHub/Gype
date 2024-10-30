@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/text_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/text_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue text_mesh_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TextMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	TextMesh *text_mesh_class = memnew(TextMesh);
+	TextMesh *text_mesh_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		text_mesh_class = static_cast<TextMesh *>(static_cast<Object *>(vobj));
+	} else {
+		text_mesh_class = memnew(TextMesh);
+	}
 	if (!text_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

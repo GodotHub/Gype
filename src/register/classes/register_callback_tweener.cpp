@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/callback_tweener.hpp>
 #include <godot_cpp/classes/tweener.hpp>
+#include <godot_cpp/classes/callback_tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue callback_tweener_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CallbackTweener::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CallbackTweener *callback_tweener_class = memnew(CallbackTweener);
+	CallbackTweener *callback_tweener_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		callback_tweener_class = static_cast<CallbackTweener *>(static_cast<Object *>(vobj));
+	} else {
+		callback_tweener_class = memnew(CallbackTweener);
+	}
 	if (!callback_tweener_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

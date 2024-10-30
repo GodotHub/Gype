@@ -1,7 +1,7 @@
 
-import { Object } from "@godot/classes/object";
+import { GodotObject } from "@godot/classes/godot_object";
 
-export declare class EditorFileSystemDirectory extends Object{
+export declare class EditorFileSystemDirectory extends GodotObject{
   public get_subdir_count(): number;
   public get_subdir(_idx: number): EditorFileSystemDirectory;
   public get_file_count(): number;
@@ -14,6 +14,6 @@ export declare class EditorFileSystemDirectory extends Object{
   public get_name(): String;
   public get_path(): String;
   public get_parent(): EditorFileSystemDirectory;
-  public find_file_index(_name: String): number;
-  public find_dir_index(_name: String): number;
+  public find_file_index(_name: String | StringName | string): number;
+  public find_dir_index(_name: String | StringName | string): number;
 }

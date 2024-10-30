@@ -27,7 +27,13 @@ static JSValue gltf_node_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFNode::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GLTFNode *gltf_node_class = memnew(GLTFNode);
+	GLTFNode *gltf_node_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gltf_node_class = static_cast<GLTFNode *>(static_cast<Object *>(vobj));
+	} else {
+		gltf_node_class = memnew(GLTFNode);
+	}
 	if (!gltf_node_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

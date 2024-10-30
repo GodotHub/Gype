@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/h_box_container.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/graph_node.hpp>
 #include <godot_cpp/classes/graph_element.hpp>
+#include <godot_cpp/classes/graph_node.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue graph_node_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GraphNode::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GraphNode *graph_node_class = memnew(GraphNode);
+	GraphNode *graph_node_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		graph_node_class = static_cast<GraphNode *>(static_cast<Object *>(vobj));
+	} else {
+		graph_node_class = memnew(GraphNode);
+	}
 	if (!graph_node_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

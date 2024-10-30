@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/sprite3d.hpp>
 #include <godot_cpp/classes/sprite_base3d.hpp>
+#include <godot_cpp/classes/sprite3d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue sprite3d_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Sprite3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Sprite3D *sprite3d_class = memnew(Sprite3D);
+	Sprite3D *sprite3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		sprite3d_class = static_cast<Sprite3D *>(static_cast<Object *>(vobj));
+	} else {
+		sprite3d_class = memnew(Sprite3D);
+	}
 	if (!sprite3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

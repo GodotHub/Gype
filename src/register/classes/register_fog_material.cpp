@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/fog_material.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/fog_material.hpp>
 #include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue fog_material_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, FogMaterial::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	FogMaterial *fog_material_class = memnew(FogMaterial);
+	FogMaterial *fog_material_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		fog_material_class = static_cast<FogMaterial *>(static_cast<Object *>(vobj));
+	} else {
+		fog_material_class = memnew(FogMaterial);
+	}
 	if (!fog_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -1,6 +1,6 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { Material } from "@godot/classes/material";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class ProceduralSkyMaterial extends Material{
   public set_sky_top_color(_color: Color): void;

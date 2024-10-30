@@ -1,6 +1,6 @@
 
-import { Material } from "@godot/classes/material";
 import { CSGPrimitive3D } from "@godot/classes/csg_primitive3d";
+import { Material } from "@godot/classes/material";
 
 export declare class CSGSphere3D extends CSGPrimitive3D{
   public set_radius(_radius: number): void;

@@ -1,6 +1,6 @@
 
-import { TileSetSource } from "@godot/classes/tile_set_source";
 import { TileData } from "@godot/classes/tile_data";
+import { TileSetSource } from "@godot/classes/tile_set_source";
 import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class TileSetAtlasSource extends TileSetSource{

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_node_one_shot.hpp>
 #include <godot_cpp/classes/animation_node_sync.hpp>
+#include <godot_cpp/classes/animation_node_one_shot.hpp>
 #include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue animation_node_one_shot_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeOneShot::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AnimationNodeOneShot *animation_node_one_shot_class = memnew(AnimationNodeOneShot);
+	AnimationNodeOneShot *animation_node_one_shot_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		animation_node_one_shot_class = static_cast<AnimationNodeOneShot *>(static_cast<Object *>(vobj));
+	} else {
+		animation_node_one_shot_class = memnew(AnimationNodeOneShot);
+	}
 	if (!animation_node_one_shot_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

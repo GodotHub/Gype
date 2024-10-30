@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/code_edit.hpp>
-#include <godot_cpp/classes/text_edit.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/text_edit.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue code_edit_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CodeEdit::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CodeEdit *code_edit_class = memnew(CodeEdit);
+	CodeEdit *code_edit_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		code_edit_class = static_cast<CodeEdit *>(static_cast<Object *>(vobj));
+	} else {
+		code_edit_class = memnew(CodeEdit);
+	}
 	if (!code_edit_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

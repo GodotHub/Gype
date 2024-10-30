@@ -57,4 +57,5 @@ export declare class Curve extends Resource{
     TANGENT_LINEAR = 1,
     TANGENT_MODE_COUNT = 2,
   }
+  public const range_changed: string = "range_changed";
 }

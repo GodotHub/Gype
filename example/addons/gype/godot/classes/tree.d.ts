@@ -38,13 +38,13 @@ export declare class Tree extends Control{
   public ensure_cursor_is_visible(): void;
   public set_column_titles_visible(_visible: boolean): void;
   public are_column_titles_visible(): boolean;
-  public set_column_title(_column: number, _title: String): void;
+  public set_column_title(_column: number, _title: String | StringName | string): void;
   public get_column_title(_column: number): String;
   public set_column_title_alignment(_column: number, _title_alignment: number): void;
   public get_column_title_alignment(_column: number): number;
   public set_column_title_direction(_column: number, _direction: number): void;
   public get_column_title_direction(_column: number): number;
-  public set_column_title_language(_column: number, _language: String): void;
+  public set_column_title_language(_column: number, _language: String | StringName | string): void;
   public get_column_title_language(_column: number): String;
   public get_scroll(): Vector2;
   public scroll_to_item(_item: TreeItem, _center_on_item: boolean): void;
@@ -146,4 +146,19 @@ export declare class Tree extends Control{
     DROP_MODE_ON_ITEM = 1,
     DROP_MODE_INBETWEEN = 2,
   }
+  public const item_selected: string = "item_selected";
+  public const cell_selected: string = "cell_selected";
+  public const multi_selected: string = "multi_selected";
+  public const item_mouse_selected: string = "item_mouse_selected";
+  public const empty_clicked: string = "empty_clicked";
+  public const item_edited: string = "item_edited";
+  public const custom_item_clicked: string = "custom_item_clicked";
+  public const item_icon_double_clicked: string = "item_icon_double_clicked";
+  public const item_collapsed: string = "item_collapsed";
+  public const check_propagated_to_item: string = "check_propagated_to_item";
+  public const button_clicked: string = "button_clicked";
+  public const custom_popup_edited: string = "custom_popup_edited";
+  public const item_activated: string = "item_activated";
+  public const column_title_clicked: string = "column_title_clicked";
+  public const nothing_selected: string = "nothing_selected";
 }

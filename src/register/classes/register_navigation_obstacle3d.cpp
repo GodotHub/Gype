@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/navigation_obstacle3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/navigation_obstacle3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue navigation_obstacle3d_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, NavigationObstacle3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	NavigationObstacle3D *navigation_obstacle3d_class = memnew(NavigationObstacle3D);
+	NavigationObstacle3D *navigation_obstacle3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		navigation_obstacle3d_class = static_cast<NavigationObstacle3D *>(static_cast<Object *>(vobj));
+	} else {
+		navigation_obstacle3d_class = memnew(NavigationObstacle3D);
+	}
 	if (!navigation_obstacle3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

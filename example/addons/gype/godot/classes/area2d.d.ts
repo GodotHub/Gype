@@ -36,7 +36,7 @@ export declare class Area2D extends CollisionObject2D{
   public has_overlapping_areas(): boolean;
   public overlaps_body(_body: Node): boolean;
   public overlaps_area(_area: Node): boolean;
-  public set_audio_bus_name(_name: StringName): void;
+  public set_audio_bus_name(_name: String | StringName | string): void;
   public get_audio_bus_name(): StringName;
   public set_audio_bus_override(_enable: boolean): void;
   public is_overriding_audio_bus(): boolean;
@@ -137,4 +137,12 @@ export declare class Area2D extends CollisionObject2D{
     SPACE_OVERRIDE_REPLACE = 3,
     SPACE_OVERRIDE_REPLACE_COMBINE = 4,
   }
+  public const body_shape_entered: string = "body_shape_entered";
+  public const body_shape_exited: string = "body_shape_exited";
+  public const body_entered: string = "body_entered";
+  public const body_exited: string = "body_exited";
+  public const area_shape_entered: string = "area_shape_entered";
+  public const area_shape_exited: string = "area_shape_exited";
+  public const area_entered: string = "area_entered";
+  public const area_exited: string = "area_exited";
 }

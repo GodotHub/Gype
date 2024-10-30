@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/web_rtc_data_channel.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/web_rtc_peer_connection.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/web_rtc_data_channel.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue web_rtc_peer_connection_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WebRTCPeerConnection::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	WebRTCPeerConnection *web_rtc_peer_connection_class = memnew(WebRTCPeerConnection);
+	WebRTCPeerConnection *web_rtc_peer_connection_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		web_rtc_peer_connection_class = static_cast<WebRTCPeerConnection *>(static_cast<Object *>(vobj));
+	} else {
+		web_rtc_peer_connection_class = memnew(WebRTCPeerConnection);
+	}
 	if (!web_rtc_peer_connection_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

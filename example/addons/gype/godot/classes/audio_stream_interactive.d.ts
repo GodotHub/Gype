@@ -6,7 +6,7 @@ export declare class AudioStreamInteractive extends AudioStream{
   public get_clip_count(): number;
   public set_initial_clip(_clip_index: number): void;
   public get_initial_clip(): number;
-  public set_clip_name(_clip_index: number, _name: StringName): void;
+  public set_clip_name(_clip_index: number, _name: String | StringName | string): void;
   public get_clip_name(_clip_index: number): StringName;
   public set_clip_stream(_clip_index: number, _stream: AudioStream): void;
   public get_clip_stream(_clip_index: number): AudioStream;

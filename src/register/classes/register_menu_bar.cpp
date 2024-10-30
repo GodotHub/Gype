@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/menu_bar.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue menu_bar_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MenuBar::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	MenuBar *menu_bar_class = memnew(MenuBar);
+	MenuBar *menu_bar_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		menu_bar_class = static_cast<MenuBar *>(static_cast<Object *>(vobj));
+	} else {
+		menu_bar_class = memnew(MenuBar);
+	}
 	if (!menu_bar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_screen_drag.hpp>
 #include <godot_cpp/classes/input_event_from_window.hpp>
+#include <godot_cpp/classes/input_event_screen_drag.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue input_event_screen_drag_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventScreenDrag::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	InputEventScreenDrag *input_event_screen_drag_class = memnew(InputEventScreenDrag);
+	InputEventScreenDrag *input_event_screen_drag_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		input_event_screen_drag_class = static_cast<InputEventScreenDrag *>(static_cast<Object *>(vobj));
+	} else {
+		input_event_screen_drag_class = memnew(InputEventScreenDrag);
+	}
 	if (!input_event_screen_drag_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

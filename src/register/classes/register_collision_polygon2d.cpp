@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/collision_polygon2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/collision_polygon2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue collision_polygon2d_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CollisionPolygon2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CollisionPolygon2D *collision_polygon2d_class = memnew(CollisionPolygon2D);
+	CollisionPolygon2D *collision_polygon2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		collision_polygon2d_class = static_cast<CollisionPolygon2D *>(static_cast<Object *>(vobj));
+	} else {
+		collision_polygon2d_class = memnew(CollisionPolygon2D);
+	}
 	if (!collision_polygon2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

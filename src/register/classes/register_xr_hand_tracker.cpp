@@ -27,7 +27,13 @@ static JSValue xr_hand_tracker_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRHandTracker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	XRHandTracker *xr_hand_tracker_class = memnew(XRHandTracker);
+	XRHandTracker *xr_hand_tracker_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		xr_hand_tracker_class = static_cast<XRHandTracker *>(static_cast<Object *>(vobj));
+	} else {
+		xr_hand_tracker_class = memnew(XRHandTracker);
+	}
 	if (!xr_hand_tracker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

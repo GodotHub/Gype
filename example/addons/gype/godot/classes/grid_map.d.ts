@@ -1,7 +1,7 @@
 
 import { PhysicsMaterial } from "@godot/classes/physics_material";
-import { MeshLibrary } from "@godot/classes/mesh_library";
 import { Resource } from "@godot/classes/resource";
+import { MeshLibrary } from "@godot/classes/mesh_library";
 import { Node3D } from "@godot/classes/node3d";
 
 export declare class GridMap extends Node3D{
@@ -124,4 +124,6 @@ export declare class GridMap extends Node3D{
   public set bake_navigation(value): void {
     set_bake_navigation(value);
   }
+  public const cell_size_changed: string = "cell_size_changed";
+  public const changed: string = "changed";
 }

@@ -13,7 +13,7 @@ export declare class TextLine extends RefCounted{
   public set_preserve_control(_enabled: boolean): void;
   public get_preserve_control(): boolean;
   public set_bidi_override(_override: GDArray): void;
-  public add_string(_text: String, _font: Font, _font_size: number, _language: String, _meta: any): boolean;
+  public add_string(_text: String | StringName | string, _font: Font, _font_size: number, _language: String | StringName | string, _meta: any): boolean;
   public add_object(_key: any, _size: Vector2, _inline_align: number, _length: number, _baseline: number): boolean;
   public resize_object(_key: any, _size: Vector2, _inline_align: number, _baseline: number): boolean;
   public set_width(_width: number): void;
@@ -25,7 +25,7 @@ export declare class TextLine extends RefCounted{
   public get_flags(): number;
   public set_text_overrun_behavior(_overrun_behavior: number): void;
   public get_text_overrun_behavior(): number;
-  public set_ellipsis_char(_char: String): void;
+  public set_ellipsis_char(_char: String | StringName | string): void;
   public get_ellipsis_char(): String;
   public get_objects(): GDArray;
   public get_object_rect(_key: any): Rect2;

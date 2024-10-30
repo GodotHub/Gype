@@ -27,7 +27,13 @@ static JSValue input_event_mouse_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventMouse::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	InputEventMouse *input_event_mouse_class = memnew(InputEventMouse);
+	InputEventMouse *input_event_mouse_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		input_event_mouse_class = static_cast<InputEventMouse *>(static_cast<Object *>(vobj));
+	} else {
+		input_event_mouse_class = memnew(InputEventMouse);
+	}
 	if (!input_event_mouse_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

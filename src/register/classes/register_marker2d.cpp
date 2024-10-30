@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/marker2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/marker2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue marker2d_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Marker2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Marker2D *marker2d_class = memnew(Marker2D);
+	Marker2D *marker2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		marker2d_class = static_cast<Marker2D *>(static_cast<Object *>(vobj));
+	} else {
+		marker2d_class = memnew(Marker2D);
+	}
 	if (!marker2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

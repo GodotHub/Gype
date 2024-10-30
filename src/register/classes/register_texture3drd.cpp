@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture3drd.hpp>
 #include <godot_cpp/classes/texture3d.hpp>
+#include <godot_cpp/classes/texture3drd.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue texture3drd_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Texture3DRD::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Texture3DRD *texture3drd_class = memnew(Texture3DRD);
+	Texture3DRD *texture3drd_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		texture3drd_class = static_cast<Texture3DRD *>(static_cast<Object *>(vobj));
+	} else {
+		texture3drd_class = memnew(Texture3DRD);
+	}
 	if (!texture3drd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

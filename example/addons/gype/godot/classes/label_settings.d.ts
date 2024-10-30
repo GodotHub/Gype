@@ -1,6 +1,6 @@
 
-import { Font } from "@godot/classes/font";
 import { Resource } from "@godot/classes/resource";
+import { Font } from "@godot/classes/font";
 
 export declare class LabelSettings extends Resource{
   public set_line_spacing(_spacing: number): void;

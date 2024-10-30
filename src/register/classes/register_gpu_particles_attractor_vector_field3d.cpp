@@ -28,7 +28,13 @@ static JSValue gpu_particles_attractor_vector_field3d_class_constructor(JSContex
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GPUParticlesAttractorVectorField3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GPUParticlesAttractorVectorField3D *gpu_particles_attractor_vector_field3d_class = memnew(GPUParticlesAttractorVectorField3D);
+	GPUParticlesAttractorVectorField3D *gpu_particles_attractor_vector_field3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gpu_particles_attractor_vector_field3d_class = static_cast<GPUParticlesAttractorVectorField3D *>(static_cast<Object *>(vobj));
+	} else {
+		gpu_particles_attractor_vector_field3d_class = memnew(GPUParticlesAttractorVectorField3D);
+	}
 	if (!gpu_particles_attractor_vector_field3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

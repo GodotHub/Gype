@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/aes_context.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue aes_context_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AESContext::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AESContext *aes_context_class = memnew(AESContext);
+	AESContext *aes_context_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		aes_context_class = static_cast<AESContext *>(static_cast<Object *>(vobj));
+	} else {
+		aes_context_class = memnew(AESContext);
+	}
 	if (!aes_context_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

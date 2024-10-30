@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/theme.hpp>
-#include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,7 +30,13 @@ static JSValue theme_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Theme::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Theme *theme_class = memnew(Theme);
+	Theme *theme_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		theme_class = static_cast<Theme *>(static_cast<Object *>(vobj));
+	} else {
+		theme_class = memnew(Theme);
+	}
 	if (!theme_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -1,6 +1,6 @@
 
-import { Control } from "@godot/classes/control";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Control } from "@godot/classes/control";
 
 export declare class TextureRect extends Control{
   public set_texture(_texture: Texture2D): void;

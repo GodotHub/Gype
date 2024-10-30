@@ -27,7 +27,13 @@ static JSValue visual_shader_node_sdf_raymarch_class_constructor(JSContext *ctx,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeSDFRaymarch::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeSDFRaymarch *visual_shader_node_sdf_raymarch_class = memnew(VisualShaderNodeSDFRaymarch);
+	VisualShaderNodeSDFRaymarch *visual_shader_node_sdf_raymarch_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_sdf_raymarch_class = static_cast<VisualShaderNodeSDFRaymarch *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_sdf_raymarch_class = memnew(VisualShaderNodeSDFRaymarch);
+	}
 	if (!visual_shader_node_sdf_raymarch_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

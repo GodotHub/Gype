@@ -28,7 +28,13 @@ static JSValue navigation_agent2d_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, NavigationAgent2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	NavigationAgent2D *navigation_agent2d_class = memnew(NavigationAgent2D);
+	NavigationAgent2D *navigation_agent2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		navigation_agent2d_class = static_cast<NavigationAgent2D *>(static_cast<Object *>(vobj));
+	} else {
+		navigation_agent2d_class = memnew(NavigationAgent2D);
+	}
 	if (!navigation_agent2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

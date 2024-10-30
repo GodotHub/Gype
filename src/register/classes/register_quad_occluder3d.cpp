@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/quad_occluder3d.hpp>
 #include <godot_cpp/classes/occluder3d.hpp>
+#include <godot_cpp/classes/quad_occluder3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue quad_occluder3d_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, QuadOccluder3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	QuadOccluder3D *quad_occluder3d_class = memnew(QuadOccluder3D);
+	QuadOccluder3D *quad_occluder3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		quad_occluder3d_class = static_cast<QuadOccluder3D *>(static_cast<Object *>(vobj));
+	} else {
+		quad_occluder3d_class = memnew(QuadOccluder3D);
+	}
 	if (!quad_occluder3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

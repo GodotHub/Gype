@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/physics_test_motion_result2d.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue physics_test_motion_result2d_class_constructor(JSContext *ctx, JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsTestMotionResult2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PhysicsTestMotionResult2D *physics_test_motion_result2d_class = memnew(PhysicsTestMotionResult2D);
+	PhysicsTestMotionResult2D *physics_test_motion_result2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		physics_test_motion_result2d_class = static_cast<PhysicsTestMotionResult2D *>(static_cast<Object *>(vobj));
+	} else {
+		physics_test_motion_result2d_class = memnew(PhysicsTestMotionResult2D);
+	}
 	if (!physics_test_motion_result2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -27,7 +27,13 @@ static JSValue rd_pipeline_multisample_state_class_constructor(JSContext *ctx, J
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDPipelineMultisampleState::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RDPipelineMultisampleState *rd_pipeline_multisample_state_class = memnew(RDPipelineMultisampleState);
+	RDPipelineMultisampleState *rd_pipeline_multisample_state_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		rd_pipeline_multisample_state_class = static_cast<RDPipelineMultisampleState *>(static_cast<Object *>(vobj));
+	} else {
+		rd_pipeline_multisample_state_class = memnew(RDPipelineMultisampleState);
+	}
 	if (!rd_pipeline_multisample_state_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

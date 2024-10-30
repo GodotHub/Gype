@@ -1,8 +1,8 @@
 
-import { Control } from "@godot/classes/control";
-import { Container } from "@godot/classes/container";
 import { HScrollBar } from "@godot/classes/h_scroll_bar";
 import { VScrollBar } from "@godot/classes/v_scroll_bar";
+import { Control } from "@godot/classes/control";
+import { Container } from "@godot/classes/container";
 
 export declare class ScrollContainer extends Container{
   public set_h_scroll(_value: number): void;
@@ -78,4 +78,6 @@ export declare class ScrollContainer extends Container{
     SCROLL_MODE_SHOW_ALWAYS = 2,
     SCROLL_MODE_SHOW_NEVER = 3,
   }
+  public const scroll_started: string = "scroll_started";
+  public const scroll_ended: string = "scroll_ended";
 }

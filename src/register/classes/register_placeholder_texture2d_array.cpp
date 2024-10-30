@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/placeholder_texture2d_array.hpp>
 #include <godot_cpp/classes/placeholder_texture_layered.hpp>
+#include <godot_cpp/classes/placeholder_texture2d_array.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue placeholder_texture2d_array_class_constructor(JSContext *ctx, JSV
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PlaceholderTexture2DArray::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PlaceholderTexture2DArray *placeholder_texture2d_array_class = memnew(PlaceholderTexture2DArray);
+	PlaceholderTexture2DArray *placeholder_texture2d_array_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		placeholder_texture2d_array_class = static_cast<PlaceholderTexture2DArray *>(static_cast<Object *>(vobj));
+	} else {
+		placeholder_texture2d_array_class = memnew(PlaceholderTexture2DArray);
+	}
 	if (!placeholder_texture2d_array_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

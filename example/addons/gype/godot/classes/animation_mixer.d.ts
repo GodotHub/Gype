@@ -1,18 +1,18 @@
 
-import { Node } from "@godot/classes/node";
 import { Animation } from "@godot/classes/animation";
 import { AnimationLibrary } from "@godot/classes/animation_library";
+import { Node } from "@godot/classes/node";
 
 export declare class AnimationMixer extends Node{
   public _post_process_key_value(_animation: Animation, _track: number, _value: any, _object_id: number, _object_sub_idx: number): any;
-  public add_animation_library(_name: StringName, _library: AnimationLibrary): number;
-  public remove_animation_library(_name: StringName): void;
-  public rename_animation_library(_name: StringName, _newname: StringName): void;
-  public has_animation_library(_name: StringName): boolean;
-  public get_animation_library(_name: StringName): AnimationLibrary;
+  public add_animation_library(_name: String | StringName | string, _library: AnimationLibrary): number;
+  public remove_animation_library(_name: String | StringName | string): void;
+  public rename_animation_library(_name: String | StringName | string, _newname: String | StringName | string): void;
+  public has_animation_library(_name: String | StringName | string): boolean;
+  public get_animation_library(_name: String | StringName | string): AnimationLibrary;
   public get_animation_library_list(): GDArray;
-  public has_animation(_name: StringName): boolean;
-  public get_animation(_name: StringName): Animation;
+  public has_animation(_name: String | StringName | string): boolean;
+  public get_animation(_name: String | StringName | string): Animation;
   public get_animation_list(): PackedStringArray;
   public set_active(_active: boolean): void;
   public is_active(): boolean;
@@ -38,7 +38,7 @@ export declare class AnimationMixer extends Node{
   public get_root_motion_scale_accumulator(): Vector3;
   public clear_caches(): void;
   public advance(_delta: number): void;
-  public capture(_name: StringName, _duration: number, _trans_type: number, _ease_type: number): void;
+  public capture(_name: String | StringName | string, _duration: number, _trans_type: number, _ease_type: number): void;
   public set_reset_on_save_enabled(_enabled: boolean): void;
   public is_reset_on_save_enabled(): boolean;
   public find_animation(_animation: Animation): StringName;
@@ -111,4 +111,11 @@ export declare class AnimationMixer extends Node{
     ANIMATION_CALLBACK_MODE_DISCRETE_RECESSIVE = 1,
     ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS = 2,
   }
+  public const animation_list_changed: string = "animation_list_changed";
+  public const animation_libraries_updated: string = "animation_libraries_updated";
+  public const animation_finished: string = "animation_finished";
+  public const animation_started: string = "animation_started";
+  public const caches_cleared: string = "caches_cleared";
+  public const mixer_applied: string = "mixer_applied";
+  public const mixer_updated: string = "mixer_updated";
 }

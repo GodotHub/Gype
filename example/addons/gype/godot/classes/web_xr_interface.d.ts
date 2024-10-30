@@ -3,16 +3,16 @@ import { XRInterface } from "@godot/classes/xr_interface";
 import { XRControllerTracker } from "@godot/classes/xr_controller_tracker";
 
 export declare class WebXRInterface extends XRInterface{
-  public is_session_supported(_session_mode: String): void;
-  public set_session_mode(_session_mode: String): void;
+  public is_session_supported(_session_mode: String | StringName | string): void;
+  public set_session_mode(_session_mode: String | StringName | string): void;
   public get_session_mode(): String;
-  public set_required_features(_required_features: String): void;
+  public set_required_features(_required_features: String | StringName | string): void;
   public get_required_features(): String;
-  public set_optional_features(_optional_features: String): void;
+  public set_optional_features(_optional_features: String | StringName | string): void;
   public get_optional_features(): String;
   public get_reference_space_type(): String;
   public get_enabled_features(): String;
-  public set_requested_reference_space_types(_requested_reference_space_types: String): void;
+  public set_requested_reference_space_types(_requested_reference_space_types: String | StringName | string): void;
   public get_requested_reference_space_types(): String;
   public is_input_source_active(_input_source_id: number): boolean;
   public get_input_source_tracker(_input_source_id: number): XRControllerTracker;
@@ -60,4 +60,17 @@ export declare class WebXRInterface extends XRInterface{
     TARGET_RAY_MODE_TRACKED_POINTER = 2,
     TARGET_RAY_MODE_SCREEN = 3,
   }
+  public const session_supported: string = "session_supported";
+  public const session_started: string = "session_started";
+  public const session_ended: string = "session_ended";
+  public const session_failed: string = "session_failed";
+  public const selectstart: string = "selectstart";
+  public const select: string = "select";
+  public const selectend: string = "selectend";
+  public const squeezestart: string = "squeezestart";
+  public const squeeze: string = "squeeze";
+  public const squeezeend: string = "squeezeend";
+  public const visibility_state_changed: string = "visibility_state_changed";
+  public const reference_space_reset: string = "reference_space_reset";
+  public const display_refresh_rate_changed: string = "display_refresh_rate_changed";
 }

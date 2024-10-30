@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/array_mesh.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue shape3d_class_constructor(JSContext *ctx, JSValueConst new_target
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Shape3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Shape3D *shape3d_class = memnew(Shape3D);
+	Shape3D *shape3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		shape3d_class = static_cast<Shape3D *>(static_cast<Object *>(vobj));
+	} else {
+		shape3d_class = memnew(Shape3D);
+	}
 	if (!shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

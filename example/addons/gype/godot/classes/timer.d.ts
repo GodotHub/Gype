@@ -53,4 +53,5 @@ export declare class Timer extends Node{
     TIMER_PROCESS_PHYSICS = 0,
     TIMER_PROCESS_IDLE = 1,
   }
+  public const timeout: string = "timeout";
 }

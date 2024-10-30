@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_export_platform_windows.hpp>
 #include <godot_cpp/classes/editor_export_platform_pc.hpp>
+#include <godot_cpp/classes/editor_export_platform_windows.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue editor_export_platform_windows_class_constructor(JSContext *ctx, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorExportPlatformWindows::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorExportPlatformWindows *editor_export_platform_windows_class = memnew(EditorExportPlatformWindows);
+	EditorExportPlatformWindows *editor_export_platform_windows_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_export_platform_windows_class = static_cast<EditorExportPlatformWindows *>(static_cast<Object *>(vobj));
+	} else {
+		editor_export_platform_windows_class = memnew(EditorExportPlatformWindows);
+	}
 	if (!editor_export_platform_windows_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

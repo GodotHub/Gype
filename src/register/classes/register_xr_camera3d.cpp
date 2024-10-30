@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/xr_camera3d.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue xr_camera3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRCamera3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	XRCamera3D *xr_camera3d_class = memnew(XRCamera3D);
+	XRCamera3D *xr_camera3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		xr_camera3d_class = static_cast<XRCamera3D *>(static_cast<Object *>(vobj));
+	} else {
+		xr_camera3d_class = memnew(XRCamera3D);
+	}
 	if (!xr_camera3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

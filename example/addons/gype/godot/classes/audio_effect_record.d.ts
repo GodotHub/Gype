@@ -1,6 +1,6 @@
 
-import { AudioStreamWAV } from "@godot/classes/audio_stream_wav";
 import { AudioEffect } from "@godot/classes/audio_effect";
+import { AudioStreamWAV } from "@godot/classes/audio_stream_wav";
 
 export declare class AudioEffectRecord extends AudioEffect{
   public set_recording_active(_record: boolean): void;

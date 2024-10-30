@@ -1,6 +1,6 @@
 
-import { RenderData } from "@godot/classes/render_data";
 import { Resource } from "@godot/classes/resource";
+import { RenderData } from "@godot/classes/render_data";
 
 export declare class CompositorEffect extends Resource{
   public _render_callback(_effect_callback_type: number, _render_data: RenderData): void;

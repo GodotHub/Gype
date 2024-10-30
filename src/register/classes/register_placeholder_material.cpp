@@ -27,7 +27,13 @@ static JSValue placeholder_material_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PlaceholderMaterial::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PlaceholderMaterial *placeholder_material_class = memnew(PlaceholderMaterial);
+	PlaceholderMaterial *placeholder_material_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		placeholder_material_class = static_cast<PlaceholderMaterial *>(static_cast<Object *>(vobj));
+	} else {
+		placeholder_material_class = memnew(PlaceholderMaterial);
+	}
 	if (!placeholder_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

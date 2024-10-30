@@ -28,7 +28,13 @@ static JSValue csg_sphere3d_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CSGSphere3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CSGSphere3D *csg_sphere3d_class = memnew(CSGSphere3D);
+	CSGSphere3D *csg_sphere3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		csg_sphere3d_class = static_cast<CSGSphere3D *>(static_cast<Object *>(vobj));
+	} else {
+		csg_sphere3d_class = memnew(CSGSphere3D);
+	}
 	if (!csg_sphere3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

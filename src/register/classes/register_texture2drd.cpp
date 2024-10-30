@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2drd.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/texture2drd.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue texture2drd_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Texture2DRD::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Texture2DRD *texture2drd_class = memnew(Texture2DRD);
+	Texture2DRD *texture2drd_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		texture2drd_class = static_cast<Texture2DRD *>(static_cast<Object *>(vobj));
+	} else {
+		texture2drd_class = memnew(Texture2DRD);
+	}
 	if (!texture2drd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

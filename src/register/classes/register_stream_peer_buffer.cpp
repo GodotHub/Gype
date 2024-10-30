@@ -27,7 +27,13 @@ static JSValue stream_peer_buffer_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StreamPeerBuffer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	StreamPeerBuffer *stream_peer_buffer_class = memnew(StreamPeerBuffer);
+	StreamPeerBuffer *stream_peer_buffer_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		stream_peer_buffer_class = static_cast<StreamPeerBuffer *>(static_cast<Object *>(vobj));
+	} else {
+		stream_peer_buffer_class = memnew(StreamPeerBuffer);
+	}
 	if (!stream_peer_buffer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

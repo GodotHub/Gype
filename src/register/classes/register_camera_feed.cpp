@@ -27,7 +27,13 @@ static JSValue camera_feed_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CameraFeed::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CameraFeed *camera_feed_class = memnew(CameraFeed);
+	CameraFeed *camera_feed_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		camera_feed_class = static_cast<CameraFeed *>(static_cast<Object *>(vobj));
+	} else {
+		camera_feed_class = memnew(CameraFeed);
+	}
 	if (!camera_feed_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

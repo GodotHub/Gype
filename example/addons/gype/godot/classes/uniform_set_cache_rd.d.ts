@@ -1,7 +1,7 @@
 
 import { RDUniform } from "@godot/classes/rd_uniform";
-import { Object } from "@godot/classes/object";
+import { GodotObject } from "@godot/classes/godot_object";
 
-export declare class UniformSetCacheRD extends Object{
+export declare class UniformSetCacheRD extends GodotObject{
   public get_cache(_shader: RID, _set: number, _uniforms: GDArray): RID;
 }

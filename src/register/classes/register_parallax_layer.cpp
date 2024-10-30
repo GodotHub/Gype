@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/parallax_layer.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/parallax_layer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue parallax_layer_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ParallaxLayer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ParallaxLayer *parallax_layer_class = memnew(ParallaxLayer);
+	ParallaxLayer *parallax_layer_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		parallax_layer_class = static_cast<ParallaxLayer *>(static_cast<Object *>(vobj));
+	} else {
+		parallax_layer_class = memnew(ParallaxLayer);
+	}
 	if (!parallax_layer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

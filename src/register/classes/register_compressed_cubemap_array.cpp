@@ -27,7 +27,13 @@ static JSValue compressed_cubemap_array_class_constructor(JSContext *ctx, JSValu
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CompressedCubemapArray::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CompressedCubemapArray *compressed_cubemap_array_class = memnew(CompressedCubemapArray);
+	CompressedCubemapArray *compressed_cubemap_array_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		compressed_cubemap_array_class = static_cast<CompressedCubemapArray *>(static_cast<Object *>(vobj));
+	} else {
+		compressed_cubemap_array_class = memnew(CompressedCubemapArray);
+	}
 	if (!compressed_cubemap_array_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

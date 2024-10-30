@@ -1,10 +1,10 @@
 
-import { Object } from "@godot/classes/object";
-import { Resource } from "@godot/classes/resource";
 import { ResourceFormatSaver } from "@godot/classes/resource_format_saver";
+import { Resource } from "@godot/classes/resource";
+import { GodotObject } from "@godot/classes/godot_object";
 
-export declare class ResourceSaver extends Object{
-  public save(_resource: Resource, _path: String, _flags: number): number;
+export declare class ResourceSaver extends GodotObject{
+  public save(_resource: Resource, _path: String | StringName | string, _flags: number): number;
   public get_recognized_extensions(_type: Resource): PackedStringArray;
   public add_resource_format_saver(_format_saver: ResourceFormatSaver, _at_front: boolean): void;
   public remove_resource_format_saver(_format_saver: ResourceFormatSaver): void;

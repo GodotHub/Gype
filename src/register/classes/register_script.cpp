@@ -28,7 +28,13 @@ static JSValue script_class_constructor(JSContext *ctx, JSValueConst new_target,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Script::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Script *script_class = memnew(Script);
+	Script *script_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		script_class = static_cast<Script *>(static_cast<Object *>(vobj));
+	} else {
+		script_class = memnew(Script);
+	}
 	if (!script_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

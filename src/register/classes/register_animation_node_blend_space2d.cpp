@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/classes/animation_node_blend_space2d.hpp>
+#include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue animation_node_blend_space2d_class_constructor(JSContext *ctx, JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeBlendSpace2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AnimationNodeBlendSpace2D *animation_node_blend_space2d_class = memnew(AnimationNodeBlendSpace2D);
+	AnimationNodeBlendSpace2D *animation_node_blend_space2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		animation_node_blend_space2d_class = static_cast<AnimationNodeBlendSpace2D *>(static_cast<Object *>(vobj));
+	} else {
+		animation_node_blend_space2d_class = memnew(AnimationNodeBlendSpace2D);
+	}
 	if (!animation_node_blend_space2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

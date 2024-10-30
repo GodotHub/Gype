@@ -1,7 +1,7 @@
 
-import { Object } from "@godot/classes/object";
+import { GodotObject } from "@godot/classes/godot_object";
 
-export declare class EditorPaths extends Object{
+export declare class EditorPaths extends GodotObject{
   public get_data_dir(): String;
   public get_config_dir(): String;
   public get_cache_dir(): String;

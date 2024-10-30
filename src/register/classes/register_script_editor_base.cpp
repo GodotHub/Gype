@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/v_box_container.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/script_editor_base.hpp>
 #include <godot_cpp/classes/editor_syntax_highlighter.hpp>
+#include <godot_cpp/classes/v_box_container.hpp>
+#include <godot_cpp/classes/script_editor_base.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue script_editor_base_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ScriptEditorBase::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ScriptEditorBase *script_editor_base_class = memnew(ScriptEditorBase);
+	ScriptEditorBase *script_editor_base_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		script_editor_base_class = static_cast<ScriptEditorBase *>(static_cast<Object *>(vobj));
+	} else {
+		script_editor_base_class = memnew(ScriptEditorBase);
+	}
 	if (!script_editor_base_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

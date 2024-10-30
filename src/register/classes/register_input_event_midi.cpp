@@ -27,7 +27,13 @@ static JSValue input_event_midi_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventMIDI::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	InputEventMIDI *input_event_midi_class = memnew(InputEventMIDI);
+	InputEventMIDI *input_event_midi_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		input_event_midi_class = static_cast<InputEventMIDI *>(static_cast<Object *>(vobj));
+	} else {
+		input_event_midi_class = memnew(InputEventMIDI);
+	}
 	if (!input_event_midi_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

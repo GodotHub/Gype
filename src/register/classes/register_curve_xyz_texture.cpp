@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/curve_xyz_texture.hpp>
-#include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue curve_xyz_texture_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CurveXYZTexture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CurveXYZTexture *curve_xyz_texture_class = memnew(CurveXYZTexture);
+	CurveXYZTexture *curve_xyz_texture_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		curve_xyz_texture_class = static_cast<CurveXYZTexture *>(static_cast<Object *>(vobj));
+	} else {
+		curve_xyz_texture_class = memnew(CurveXYZTexture);
+	}
 	if (!curve_xyz_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

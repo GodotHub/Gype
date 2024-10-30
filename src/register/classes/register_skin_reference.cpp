@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/skin_reference.hpp>
 #include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/skin_reference.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue skin_reference_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkinReference::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SkinReference *skin_reference_class = memnew(SkinReference);
+	SkinReference *skin_reference_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		skin_reference_class = static_cast<SkinReference *>(static_cast<Object *>(vobj));
+	} else {
+		skin_reference_class = memnew(SkinReference);
+	}
 	if (!skin_reference_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

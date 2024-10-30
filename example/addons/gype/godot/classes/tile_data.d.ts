@@ -1,10 +1,10 @@
 
-import { NavigationPolygon } from "@godot/classes/navigation_polygon";
-import { Material } from "@godot/classes/material";
-import { Object } from "@godot/classes/object";
 import { OccluderPolygon2D } from "@godot/classes/occluder_polygon2d";
+import { Material } from "@godot/classes/material";
+import { NavigationPolygon } from "@godot/classes/navigation_polygon";
+import { GodotObject } from "@godot/classes/godot_object";
 
-export declare class TileData extends Object{
+export declare class TileData extends GodotObject{
   public set_flip_h(_flip_h: boolean): void;
   public get_flip_h(): boolean;
   public set_flip_v(_flip_v: boolean): void;
@@ -48,8 +48,8 @@ export declare class TileData extends Object{
   public get_navigation_polygon(_layer_id: number, _flip_h: boolean, _flip_v: boolean, _transpose: boolean): NavigationPolygon;
   public set_probability(_probability: number): void;
   public get_probability(): number;
-  public set_custom_data(_layer_name: String, _value: any): void;
-  public get_custom_data(_layer_name: String): any;
+  public set_custom_data(_layer_name: String | StringName | string, _value: any): void;
+  public get_custom_data(_layer_name: String | StringName | string): any;
   public set_custom_data_by_layer_id(_layer_id: number, _value: any): void;
   public get_custom_data_by_layer_id(_layer_id: number): any;
   public get flip_h(): boolean {
@@ -118,4 +118,5 @@ export declare class TileData extends Object{
   public set probability(value): void {
     set_probability(value);
   }
+  public const changed: string = "changed";
 }

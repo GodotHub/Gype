@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/collision_object3d.hpp>
-#include <godot_cpp/classes/gltf_physics_body.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/gltf_physics_body.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue gltf_physics_body_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFPhysicsBody::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GLTFPhysicsBody *gltf_physics_body_class = memnew(GLTFPhysicsBody);
+	GLTFPhysicsBody *gltf_physics_body_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gltf_physics_body_class = static_cast<GLTFPhysicsBody *>(static_cast<Object *>(vobj));
+	} else {
+		gltf_physics_body_class = memnew(GLTFPhysicsBody);
+	}
 	if (!gltf_physics_body_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

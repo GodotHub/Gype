@@ -27,7 +27,13 @@ static JSValue scene_tree_timer_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SceneTreeTimer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SceneTreeTimer *scene_tree_timer_class = memnew(SceneTreeTimer);
+	SceneTreeTimer *scene_tree_timer_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		scene_tree_timer_class = static_cast<SceneTreeTimer *>(static_cast<Object *>(vobj));
+	} else {
+		scene_tree_timer_class = memnew(SceneTreeTimer);
+	}
 	if (!scene_tree_timer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

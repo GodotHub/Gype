@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/pck_packer.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue pck_packer_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PCKPacker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PCKPacker *pck_packer_class = memnew(PCKPacker);
+	PCKPacker *pck_packer_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		pck_packer_class = static_cast<PCKPacker *>(static_cast<Object *>(vobj));
+	} else {
+		pck_packer_class = memnew(PCKPacker);
+	}
 	if (!pck_packer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

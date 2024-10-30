@@ -27,7 +27,13 @@ static JSValue margin_container_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MarginContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	MarginContainer *margin_container_class = memnew(MarginContainer);
+	MarginContainer *margin_container_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		margin_container_class = static_cast<MarginContainer *>(static_cast<Object *>(vobj));
+	} else {
+		margin_container_class = memnew(MarginContainer);
+	}
 	if (!margin_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

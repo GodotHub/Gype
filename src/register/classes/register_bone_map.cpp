@@ -28,7 +28,13 @@ static JSValue bone_map_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, BoneMap::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	BoneMap *bone_map_class = memnew(BoneMap);
+	BoneMap *bone_map_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		bone_map_class = static_cast<BoneMap *>(static_cast<Object *>(vobj));
+	} else {
+		bone_map_class = memnew(BoneMap);
+	}
 	if (!bone_map_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

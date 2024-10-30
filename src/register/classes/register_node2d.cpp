@@ -28,7 +28,13 @@ static JSValue node2d_class_constructor(JSContext *ctx, JSValueConst new_target,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Node2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Node2D *node2d_class = memnew(Node2D);
+	Node2D *node2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		node2d_class = static_cast<Node2D *>(static_cast<Object *>(vobj));
+	} else {
+		node2d_class = memnew(Node2D);
+	}
 	if (!node2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

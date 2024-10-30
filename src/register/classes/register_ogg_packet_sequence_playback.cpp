@@ -27,7 +27,13 @@ static JSValue ogg_packet_sequence_playback_class_constructor(JSContext *ctx, JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OggPacketSequencePlayback::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	OggPacketSequencePlayback *ogg_packet_sequence_playback_class = memnew(OggPacketSequencePlayback);
+	OggPacketSequencePlayback *ogg_packet_sequence_playback_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		ogg_packet_sequence_playback_class = static_cast<OggPacketSequencePlayback *>(static_cast<Object *>(vobj));
+	} else {
+		ogg_packet_sequence_playback_class = memnew(OggPacketSequencePlayback);
+	}
 	if (!ogg_packet_sequence_playback_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

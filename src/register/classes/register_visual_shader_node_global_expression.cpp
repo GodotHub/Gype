@@ -27,7 +27,13 @@ static JSValue visual_shader_node_global_expression_class_constructor(JSContext 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeGlobalExpression::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeGlobalExpression *visual_shader_node_global_expression_class = memnew(VisualShaderNodeGlobalExpression);
+	VisualShaderNodeGlobalExpression *visual_shader_node_global_expression_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_global_expression_class = static_cast<VisualShaderNodeGlobalExpression *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_global_expression_class = memnew(VisualShaderNodeGlobalExpression);
+	}
 	if (!visual_shader_node_global_expression_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

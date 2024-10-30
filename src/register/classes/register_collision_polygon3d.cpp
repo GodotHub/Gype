@@ -27,7 +27,13 @@ static JSValue collision_polygon3d_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CollisionPolygon3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CollisionPolygon3D *collision_polygon3d_class = memnew(CollisionPolygon3D);
+	CollisionPolygon3D *collision_polygon3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		collision_polygon3d_class = static_cast<CollisionPolygon3D *>(static_cast<Object *>(vobj));
+	} else {
+		collision_polygon3d_class = memnew(CollisionPolygon3D);
+	}
 	if (!collision_polygon3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

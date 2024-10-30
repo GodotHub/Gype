@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/classes/packet_peer_udp.hpp>
+#include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue packet_peer_udp_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PacketPeerUDP::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PacketPeerUDP *packet_peer_udp_class = memnew(PacketPeerUDP);
+	PacketPeerUDP *packet_peer_udp_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		packet_peer_udp_class = static_cast<PacketPeerUDP *>(static_cast<Object *>(vobj));
+	} else {
+		packet_peer_udp_class = memnew(PacketPeerUDP);
+	}
 	if (!packet_peer_udp_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

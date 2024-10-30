@@ -5,6 +5,7 @@ export declare class Signal {
   constructor();
   constructor(_from: Signal);
   constructor(_object: Object, _signal: StringName);
+  constructor(_object: Object, _signal: String);
   public is_null(): void;
   public get_object(): void;
   public get_object_id(): void;

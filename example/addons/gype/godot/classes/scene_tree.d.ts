@@ -1,18 +1,18 @@
 
-import { Window } from "@godot/classes/window";
-import { Tween } from "@godot/classes/tween";
-import { MultiplayerAPI } from "@godot/classes/multiplayer_api";
-import { SceneTreeTimer } from "@godot/classes/scene_tree_timer";
-import { Tween } from "@godot/classes/tween";
-import { Object } from "@godot/classes/object";
 import { Node } from "@godot/classes/node";
 import { MainLoop } from "@godot/classes/main_loop";
-import { Node } from "@godot/classes/node";
+import { Window } from "@godot/classes/window";
 import { PackedScene } from "@godot/classes/packed_scene";
+import { MultiplayerAPI } from "@godot/classes/multiplayer_api";
+import { GodotObject } from "@godot/classes/godot_object";
+import { Tween } from "@godot/classes/tween";
+import { SceneTreeTimer } from "@godot/classes/scene_tree_timer";
+import { Node } from "@godot/classes/node";
+import { Tween } from "@godot/classes/tween";
 
 export declare class SceneTree extends MainLoop{
   public get_root(): Window;
-  public has_group(_name: StringName): boolean;
+  public has_group(_name: String | StringName | string): boolean;
   public is_auto_accept_quit(): boolean;
   public set_auto_accept_quit(_enabled: boolean): void;
   public is_quit_on_go_back(): boolean;
@@ -36,18 +36,18 @@ export declare class SceneTree extends MainLoop{
   public set_physics_interpolation_enabled(_enabled: boolean): void;
   public is_physics_interpolation_enabled(): boolean;
   public queue_delete(_obj: Object): void;
-  public call_group_flags(_flags: number, _group: StringName, _method: StringName): void;
-  public notify_group_flags(_call_flags: number, _group: StringName, _notification: number): void;
-  public set_group_flags(_call_flags: number, _group: StringName, _property: String, _value: any): void;
-  public call_group(_group: StringName, _method: StringName): void;
-  public notify_group(_group: StringName, _notification: number): void;
-  public set_group(_group: StringName, _property: String, _value: any): void;
-  public get_nodes_in_group(_group: StringName): GDArray;
-  public get_first_node_in_group(_group: StringName): Node;
-  public get_node_count_in_group(_group: StringName): number;
+  public call_group_flags(_flags: number, _group: String | StringName | string, _method: String | StringName | string): void;
+  public notify_group_flags(_call_flags: number, _group: String | StringName | string, _notification: number): void;
+  public set_group_flags(_call_flags: number, _group: String | StringName | string, _property: String | StringName | string, _value: any): void;
+  public call_group(_group: String | StringName | string, _method: String | StringName | string): void;
+  public notify_group(_group: String | StringName | string, _notification: number): void;
+  public set_group(_group: String | StringName | string, _property: String | StringName | string, _value: any): void;
+  public get_nodes_in_group(_group: String | StringName | string): GDArray;
+  public get_first_node_in_group(_group: String | StringName | string): Node;
+  public get_node_count_in_group(_group: String | StringName | string): number;
   public set_current_scene(_child_node: Node): void;
   public get_current_scene(): Node;
-  public change_scene_to_file(_path: String): number;
+  public change_scene_to_file(_path: String | StringName | string): number;
   public change_scene_to_packed(_packed_scene: PackedScene): number;
   public reload_current_scene(): number;
   public unload_current_scene(): void;
@@ -124,4 +124,12 @@ export declare class SceneTree extends MainLoop{
     GROUP_CALL_DEFERRED = 2,
     GROUP_CALL_UNIQUE = 4,
   }
+  public const tree_changed: string = "tree_changed";
+  public const tree_process_mode_changed: string = "tree_process_mode_changed";
+  public const node_added: string = "node_added";
+  public const node_removed: string = "node_removed";
+  public const node_renamed: string = "node_renamed";
+  public const node_configuration_warning_changed: string = "node_configuration_warning_changed";
+  public const process_frame: string = "process_frame";
+  public const physics_frame: string = "physics_frame";
 }

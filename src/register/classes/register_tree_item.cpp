@@ -5,12 +5,12 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/tree_item.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/tree.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/tree_item.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,7 +31,13 @@ static JSValue tree_item_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TreeItem::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	TreeItem *tree_item_class = memnew(TreeItem);
+	TreeItem *tree_item_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		tree_item_class = static_cast<TreeItem *>(static_cast<Object *>(vobj));
+	} else {
+		tree_item_class = memnew(TreeItem);
+	}
 	if (!tree_item_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -719,7 +725,7 @@ static int js_tree_item_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_tree_item_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

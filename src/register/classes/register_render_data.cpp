@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/render_scene_data.hpp>
-#include <godot_cpp/classes/render_scene_buffers.hpp>
 #include <godot_cpp/classes/render_data.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/render_scene_data.hpp>
+#include <godot_cpp/classes/render_scene_buffers.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue render_data_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RenderData::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RenderData *render_data_class = memnew(RenderData);
+	RenderData *render_data_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		render_data_class = static_cast<RenderData *>(static_cast<Object *>(vobj));
+	} else {
+		render_data_class = memnew(RenderData);
+	}
 	if (!render_data_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -90,7 +96,7 @@ static int js_render_data_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_render_data_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

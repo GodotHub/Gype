@@ -27,7 +27,13 @@ static JSValue resource_importer_bit_map_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterBitMap::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ResourceImporterBitMap *resource_importer_bit_map_class = memnew(ResourceImporterBitMap);
+	ResourceImporterBitMap *resource_importer_bit_map_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		resource_importer_bit_map_class = static_cast<ResourceImporterBitMap *>(static_cast<Object *>(vobj));
+	} else {
+		resource_importer_bit_map_class = memnew(ResourceImporterBitMap);
+	}
 	if (!resource_importer_bit_map_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

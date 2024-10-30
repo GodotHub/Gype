@@ -11,15 +11,17 @@ export function Tool(target) {
 }
 export function ToSignal(instance, signal) {
     return new Promise((resolve, reject) => {
-        const resolveWrapper = new ResolveWrapper(instance, signal, resolve);
+        if (!GD.is_instance_id_valid(instance.get_instance_id()))
+            reject();
+        const resolveWrapper = new Resolver(instance, signal, resolve);
         const callback = resolveWrapper.callback;
-        instance.connect(signal, callback);
+        instance.connect(signal, callback, 0);
     });
 }
-class ResolveWrapper extends Node {
-    #resolve = null;
-    #instance = null;
-    #callback = null;
+class Resolver extends Node {
+    #resolve;
+    #instance;
+    #callback;
     #signal = "";
     constructor(instance, signal, resolve) {
         super();

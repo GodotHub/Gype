@@ -27,7 +27,13 @@ static JSValue resource_importer_obj_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterOBJ::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ResourceImporterOBJ *resource_importer_obj_class = memnew(ResourceImporterOBJ);
+	ResourceImporterOBJ *resource_importer_obj_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		resource_importer_obj_class = static_cast<ResourceImporterOBJ *>(static_cast<Object *>(vobj));
+	} else {
+		resource_importer_obj_class = memnew(ResourceImporterOBJ);
+	}
 	if (!resource_importer_obj_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

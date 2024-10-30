@@ -27,7 +27,13 @@ static JSValue fast_noise_lite_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, FastNoiseLite::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	FastNoiseLite *fast_noise_lite_class = memnew(FastNoiseLite);
+	FastNoiseLite *fast_noise_lite_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		fast_noise_lite_class = static_cast<FastNoiseLite *>(static_cast<Object *>(vobj));
+	} else {
+		fast_noise_lite_class = memnew(FastNoiseLite);
+	}
 	if (!fast_noise_lite_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

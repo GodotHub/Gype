@@ -1,17 +1,17 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
-import { Button } from "@godot/classes/button";
 import { PopupMenu } from "@godot/classes/popup_menu";
+import { Button } from "@godot/classes/button";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class OptionButton extends Button{
-  public add_item(_label: String, _id: number): void;
-  public add_icon_item(_texture: Texture2D, _label: String, _id: number): void;
-  public set_item_text(_idx: number, _text: String): void;
+  public add_item(_label: String | StringName | string, _id: number): void;
+  public add_icon_item(_texture: Texture2D, _label: String | StringName | string, _id: number): void;
+  public set_item_text(_idx: number, _text: String | StringName | string): void;
   public set_item_icon(_idx: number, _texture: Texture2D): void;
   public set_item_disabled(_idx: number, _disabled: boolean): void;
   public set_item_id(_idx: number, _id: number): void;
   public set_item_metadata(_idx: number, _metadata: any): void;
-  public set_item_tooltip(_idx: number, _tooltip: String): void;
+  public set_item_tooltip(_idx: number, _tooltip: String | StringName | string): void;
   public get_item_text(_idx: number): String;
   public get_item_icon(_idx: number): Texture2D;
   public get_item_id(_idx: number): number;
@@ -20,7 +20,7 @@ export declare class OptionButton extends Button{
   public get_item_tooltip(_idx: number): String;
   public is_item_disabled(_idx: number): boolean;
   public is_item_separator(_idx: number): boolean;
-  public add_separator(_text: String): void;
+  public add_separator(_text: String | StringName | string): void;
   public clear(): void;
   public select(_idx: number): void;
   public get_selected(): number;
@@ -62,4 +62,6 @@ export declare class OptionButton extends Button{
   public set item_count(value): void {
     set_item_count(value);
   }
+  public const item_selected: string = "item_selected";
+  public const item_focused: string = "item_focused";
 }

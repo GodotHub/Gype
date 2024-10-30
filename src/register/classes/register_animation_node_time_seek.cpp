@@ -27,7 +27,13 @@ static JSValue animation_node_time_seek_class_constructor(JSContext *ctx, JSValu
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeTimeSeek::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AnimationNodeTimeSeek *animation_node_time_seek_class = memnew(AnimationNodeTimeSeek);
+	AnimationNodeTimeSeek *animation_node_time_seek_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		animation_node_time_seek_class = static_cast<AnimationNodeTimeSeek *>(static_cast<Object *>(vobj));
+	} else {
+		animation_node_time_seek_class = memnew(AnimationNodeTimeSeek);
+	}
 	if (!animation_node_time_seek_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

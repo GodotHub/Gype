@@ -27,7 +27,13 @@ static JSValue open_xr_action_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRAction::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	OpenXRAction *open_xr_action_class = memnew(OpenXRAction);
+	OpenXRAction *open_xr_action_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		open_xr_action_class = static_cast<OpenXRAction *>(static_cast<Object *>(vobj));
+	} else {
+		open_xr_action_class = memnew(OpenXRAction);
+	}
 	if (!open_xr_action_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

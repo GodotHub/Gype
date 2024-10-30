@@ -3,7 +3,7 @@ import { HBoxContainer } from "@godot/classes/h_box_container";
 import { GraphElement } from "@godot/classes/graph_element";
 
 export declare class GraphFrame extends GraphElement{
-  public set_title(_title: String): void;
+  public set_title(_title: String | StringName | string): void;
   public get_title(): String;
   public get_titlebar_hbox(): HBoxContainer;
   public set_autoshrink_enabled(_shrink: boolean): void;
@@ -52,4 +52,5 @@ export declare class GraphFrame extends GraphElement{
   public set tint_color(value): void {
     set_tint_color(value);
   }
+  public const autoshrink_changed: string = "autoshrink_changed";
 }

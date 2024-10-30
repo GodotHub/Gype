@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/classes/multiplayer_peer.hpp>
+#include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue multiplayer_peer_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MultiplayerPeer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	MultiplayerPeer *multiplayer_peer_class = memnew(MultiplayerPeer);
+	MultiplayerPeer *multiplayer_peer_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		multiplayer_peer_class = static_cast<MultiplayerPeer *>(static_cast<Object *>(vobj));
+	} else {
+		multiplayer_peer_class = memnew(MultiplayerPeer);
+	}
 	if (!multiplayer_peer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

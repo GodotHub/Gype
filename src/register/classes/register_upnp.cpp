@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/upnp.hpp>
 #include <godot_cpp/classes/upnp_device.hpp>
+#include <godot_cpp/classes/upnp.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue upnp_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, UPNP::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	UPNP *upnp_class = memnew(UPNP);
+	UPNP *upnp_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		upnp_class = static_cast<UPNP *>(static_cast<Object *>(vobj));
+	} else {
+		upnp_class = memnew(UPNP);
+	}
 	if (!upnp_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

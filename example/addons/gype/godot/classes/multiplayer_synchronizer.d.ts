@@ -61,4 +61,7 @@ export declare class MultiplayerSynchronizer extends Node{
     VISIBILITY_PROCESS_PHYSICS = 1,
     VISIBILITY_PROCESS_NONE = 2,
   }
+  public const synchronized: string = "synchronized";
+  public const delta_synchronized: string = "delta_synchronized";
+  public const visibility_changed: string = "visibility_changed";
 }

@@ -1,12 +1,12 @@
 
+import { GodotObject } from "@godot/classes/godot_object";
 import { Control } from "@godot/classes/control";
 import { Container } from "@godot/classes/container";
-import { Object } from "@godot/classes/object";
 
 export declare class EditorProperty extends Container{
   public _update_property(): void;
   public _set_read_only(_read_only: boolean): void;
-  public set_label(_text: String): void;
+  public set_label(_text: String | StringName | string): void;
   public get_label(): String;
   public set_read_only(_read_only: boolean): void;
   public is_read_only(): boolean;
@@ -25,7 +25,7 @@ export declare class EditorProperty extends Container{
   public update_property(): void;
   public add_focusable(_control: Control): void;
   public set_bottom_editor(_editor: Control): void;
-  public emit_changed(_property: StringName, _value: any, _field: StringName, _changing: boolean): void;
+  public emit_changed(_property: String | StringName | string, _value: any, _field: String | StringName | string, _changing: boolean): void;
   public get label(): String {
     get_label();
   }
@@ -68,4 +68,15 @@ export declare class EditorProperty extends Container{
   public set deletable(value): void {
     set_deletable(value);
   }
+  public const property_changed: string = "property_changed";
+  public const multiple_properties_changed: string = "multiple_properties_changed";
+  public const property_keyed: string = "property_keyed";
+  public const property_deleted: string = "property_deleted";
+  public const property_keyed_with_value: string = "property_keyed_with_value";
+  public const property_checked: string = "property_checked";
+  public const property_pinned: string = "property_pinned";
+  public const property_can_revert_changed: string = "property_can_revert_changed";
+  public const resource_selected: string = "resource_selected";
+  public const object_id_selected: string = "object_id_selected";
+  public const selected: string = "selected";
 }

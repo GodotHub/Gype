@@ -27,7 +27,13 @@ static JSValue stream_peer_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StreamPeer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	StreamPeer *stream_peer_class = memnew(StreamPeer);
+	StreamPeer *stream_peer_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		stream_peer_class = static_cast<StreamPeer *>(static_cast<Object *>(vobj));
+	} else {
+		stream_peer_class = memnew(StreamPeer);
+	}
 	if (!stream_peer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

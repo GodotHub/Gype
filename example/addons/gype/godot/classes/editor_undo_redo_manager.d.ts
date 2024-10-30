@@ -1,16 +1,16 @@
 
+import { GodotObject } from "@godot/classes/godot_object";
 import { UndoRedo } from "@godot/classes/undo_redo";
-import { Object } from "@godot/classes/object";
 
-export declare class EditorUndoRedoManager extends Object{
-  public create_action(_name: String, _merge_mode: number, _custom_context: Object, _backward_undo_ops: boolean): void;
+export declare class EditorUndoRedoManager extends GodotObject{
+  public create_action(_name: String | StringName | string, _merge_mode: number, _custom_context: Object, _backward_undo_ops: boolean): void;
   public commit_action(_execute: boolean): void;
   public is_committing_action(): boolean;
   public force_fixed_history(): void;
-  public add_do_method(_object: Object, _method: StringName): void;
-  public add_undo_method(_object: Object, _method: StringName): void;
-  public add_do_property(_object: Object, _property: StringName, _value: any): void;
-  public add_undo_property(_object: Object, _property: StringName, _value: any): void;
+  public add_do_method(_object: Object, _method: String | StringName | string): void;
+  public add_undo_method(_object: Object, _method: String | StringName | string): void;
+  public add_do_property(_object: Object, _property: String | StringName | string, _value: any): void;
+  public add_undo_property(_object: Object, _property: String | StringName | string, _value: any): void;
   public add_do_reference(_object: Object): void;
   public add_undo_reference(_object: Object): void;
   public get_object_history_id(_object: Object): number;
@@ -20,4 +20,6 @@ export declare class EditorUndoRedoManager extends Object{
     REMOTE_HISTORY = -9,
     INVALID_HISTORY = -99,
   }
+  public const history_changed: string = "history_changed";
+  public const version_changed: string = "version_changed";
 }

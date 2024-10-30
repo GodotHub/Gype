@@ -28,7 +28,13 @@ static JSValue instance_placeholder_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InstancePlaceholder::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	InstancePlaceholder *instance_placeholder_class = memnew(InstancePlaceholder);
+	InstancePlaceholder *instance_placeholder_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		instance_placeholder_class = static_cast<InstancePlaceholder *>(static_cast<Object *>(vobj));
+	} else {
+		instance_placeholder_class = memnew(InstancePlaceholder);
+	}
 	if (!instance_placeholder_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

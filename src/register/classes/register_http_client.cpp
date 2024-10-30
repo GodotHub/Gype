@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/classes/http_client.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -29,7 +29,13 @@ static JSValue http_client_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HTTPClient::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	HTTPClient *http_client_class = memnew(HTTPClient);
+	HTTPClient *http_client_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		http_client_class = static_cast<HTTPClient *>(static_cast<Object *>(vobj));
+	} else {
+		http_client_class = memnew(HTTPClient);
+	}
 	if (!http_client_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

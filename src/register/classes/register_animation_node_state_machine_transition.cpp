@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/animation_node_state_machine_transition.hpp>
 #include <godot_cpp/classes/curve.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue animation_node_state_machine_transition_class_constructor(JSConte
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeStateMachineTransition::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AnimationNodeStateMachineTransition *animation_node_state_machine_transition_class = memnew(AnimationNodeStateMachineTransition);
+	AnimationNodeStateMachineTransition *animation_node_state_machine_transition_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		animation_node_state_machine_transition_class = static_cast<AnimationNodeStateMachineTransition *>(static_cast<Object *>(vobj));
+	} else {
+		animation_node_state_machine_transition_class = memnew(AnimationNodeStateMachineTransition);
+	}
 	if (!animation_node_state_machine_transition_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

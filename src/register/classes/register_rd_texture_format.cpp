@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_texture_format.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue rd_texture_format_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDTextureFormat::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RDTextureFormat *rd_texture_format_class = memnew(RDTextureFormat);
+	RDTextureFormat *rd_texture_format_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		rd_texture_format_class = static_cast<RDTextureFormat *>(static_cast<Object *>(vobj));
+	} else {
+		rd_texture_format_class = memnew(RDTextureFormat);
+	}
 	if (!rd_texture_format_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

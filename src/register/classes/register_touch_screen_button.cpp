@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shape2d.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/touch_screen_button.hpp>
+#include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/classes/bit_map.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,7 +30,13 @@ static JSValue touch_screen_button_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TouchScreenButton::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	TouchScreenButton *touch_screen_button_class = memnew(TouchScreenButton);
+	TouchScreenButton *touch_screen_button_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		touch_screen_button_class = static_cast<TouchScreenButton *>(static_cast<Object *>(vobj));
+	} else {
+		touch_screen_button_class = memnew(TouchScreenButton);
+	}
 	if (!touch_screen_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

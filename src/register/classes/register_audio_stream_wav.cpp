@@ -27,7 +27,13 @@ static JSValue audio_stream_wav_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamWAV::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioStreamWAV *audio_stream_wav_class = memnew(AudioStreamWAV);
+	AudioStreamWAV *audio_stream_wav_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_stream_wav_class = static_cast<AudioStreamWAV *>(static_cast<Object *>(vobj));
+	} else {
+		audio_stream_wav_class = memnew(AudioStreamWAV);
+	}
 	if (!audio_stream_wav_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

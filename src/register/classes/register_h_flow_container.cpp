@@ -27,7 +27,13 @@ static JSValue h_flow_container_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HFlowContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	HFlowContainer *h_flow_container_class = memnew(HFlowContainer);
+	HFlowContainer *h_flow_container_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		h_flow_container_class = static_cast<HFlowContainer *>(static_cast<Object *>(vobj));
+	} else {
+		h_flow_container_class = memnew(HFlowContainer);
+	}
 	if (!h_flow_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

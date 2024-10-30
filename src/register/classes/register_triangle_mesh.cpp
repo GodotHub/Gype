@@ -27,7 +27,13 @@ static JSValue triangle_mesh_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TriangleMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	TriangleMesh *triangle_mesh_class = memnew(TriangleMesh);
+	TriangleMesh *triangle_mesh_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		triangle_mesh_class = static_cast<TriangleMesh *>(static_cast<Object *>(vobj));
+	} else {
+		triangle_mesh_class = memnew(TriangleMesh);
+	}
 	if (!triangle_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -1,9 +1,9 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { BaseButton } from "@godot/classes/base_button";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class Button extends BaseButton{
-  public set_text(_text: String): void;
+  public set_text(_text: String | StringName | string): void;
   public get_text(): String;
   public set_text_overrun_behavior(_overrun_behavior: number): void;
   public get_text_overrun_behavior(): number;
@@ -11,7 +11,7 @@ export declare class Button extends BaseButton{
   public get_autowrap_mode(): number;
   public set_text_direction(_direction: number): void;
   public get_text_direction(): number;
-  public set_language(_language: String): void;
+  public set_language(_language: String | StringName | string): void;
   public get_language(): String;
   public set_button_icon(_texture: Texture2D): void;
   public get_button_icon(): Texture2D;

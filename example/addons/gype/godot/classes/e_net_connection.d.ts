@@ -1,14 +1,14 @@
 
+import { ENetPacketPeer } from "@godot/classes/e_net_packet_peer";
+import { ENetPacketPeer } from "@godot/classes/e_net_packet_peer";
 import { RefCounted } from "@godot/classes/ref_counted";
-import { ENetPacketPeer } from "@godot/classes/e_net_packet_peer";
 import { TLSOptions } from "@godot/classes/tls_options";
-import { ENetPacketPeer } from "@godot/classes/e_net_packet_peer";
 
 export declare class ENetConnection extends RefCounted{
-  public create_host_bound(_bind_address: String, _bind_port: number, _max_peers: number, _max_channels: number, _in_bandwidth: number, _out_bandwidth: number): number;
+  public create_host_bound(_bind_address: String | StringName | string, _bind_port: number, _max_peers: number, _max_channels: number, _in_bandwidth: number, _out_bandwidth: number): number;
   public create_host(_max_peers: number, _max_channels: number, _in_bandwidth: number, _out_bandwidth: number): number;
   public destroy(): void;
-  public connect_to_host(_address: String, _port: number, _channels: number, _data: number): ENetPacketPeer;
+  public connect_to_host(_address: String | StringName | string, _port: number, _channels: number, _data: number): ENetPacketPeer;
   public service(_timeout: number): GDArray;
   public flush(): void;
   public bandwidth_limit(_in_bandwidth: number, _out_bandwidth: number): void;
@@ -16,13 +16,13 @@ export declare class ENetConnection extends RefCounted{
   public broadcast(_channel: number, _packet: PackedByteArray, _flags: number): void;
   public compress(_mode: number): void;
   public dtls_server_setup(_server_options: TLSOptions): number;
-  public dtls_client_setup(_hostname: String, _client_options: TLSOptions): number;
+  public dtls_client_setup(_hostname: String | StringName | string, _client_options: TLSOptions): number;
   public refuse_new_connections(_refuse: boolean): void;
   public pop_statistic(_statistic: number): number;
   public get_max_channels(): number;
   public get_local_port(): number;
   public get_peers(): GDArray;
-  public socket_send(_destination_address: String, _destination_port: number, _packet: PackedByteArray): void;
+  public socket_send(_destination_address: String | StringName | string, _destination_port: number, _packet: PackedByteArray): void;
   static CompressionMode = {
     COMPRESS_NONE = 0,
     COMPRESS_RANGE_CODER = 1,

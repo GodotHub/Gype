@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/fog_volume.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue fog_volume_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, FogVolume::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	FogVolume *fog_volume_class = memnew(FogVolume);
+	FogVolume *fog_volume_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		fog_volume_class = static_cast<FogVolume *>(static_cast<Object *>(vobj));
+	} else {
+		fog_volume_class = memnew(FogVolume);
+	}
 	if (!fog_volume_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

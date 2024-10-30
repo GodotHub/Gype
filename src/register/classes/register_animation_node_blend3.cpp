@@ -27,7 +27,13 @@ static JSValue animation_node_blend3_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeBlend3::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AnimationNodeBlend3 *animation_node_blend3_class = memnew(AnimationNodeBlend3);
+	AnimationNodeBlend3 *animation_node_blend3_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		animation_node_blend3_class = static_cast<AnimationNodeBlend3 *>(static_cast<Object *>(vobj));
+	} else {
+		animation_node_blend3_class = memnew(AnimationNodeBlend3);
+	}
 	if (!animation_node_blend3_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

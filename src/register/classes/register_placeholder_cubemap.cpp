@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/placeholder_texture_layered.hpp>
 #include <godot_cpp/classes/placeholder_cubemap.hpp>
+#include <godot_cpp/classes/placeholder_texture_layered.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue placeholder_cubemap_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PlaceholderCubemap::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PlaceholderCubemap *placeholder_cubemap_class = memnew(PlaceholderCubemap);
+	PlaceholderCubemap *placeholder_cubemap_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		placeholder_cubemap_class = static_cast<PlaceholderCubemap *>(static_cast<Object *>(vobj));
+	} else {
+		placeholder_cubemap_class = memnew(PlaceholderCubemap);
+	}
 	if (!placeholder_cubemap_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

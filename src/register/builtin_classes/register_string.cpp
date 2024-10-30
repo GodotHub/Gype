@@ -15,7 +15,7 @@ static void string_class_finalizer(JSRuntime *rt, JSValue val) {
 }
 
 static JSClassDef string_class_def = {
-	"String",
+	"GDString",
 	.finalizer = string_class_finalizer
 };
 
@@ -494,7 +494,7 @@ static const JSCFunctionListEntry string_class_static_funcs[] = {
 
 static int js_string_class_init(JSContext *ctx) {
 	JS_NewClassID(&String::__class_id);
-	classes["String"] = String::__class_id;
+	classes["GDString"] = String::__class_id;
 	class_id_list.insert(String::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), String::__class_id, &string_class_def);
 
@@ -502,12 +502,12 @@ static int js_string_class_init(JSContext *ctx) {
 	JS_SetClassProto(ctx, String::__class_id, proto);
 	JS_SetPropertyFunctionList(ctx, proto, string_class_proto_funcs, _countof(string_class_proto_funcs));
 
-	JSValue ctor = JS_NewCFunction2(ctx, string_class_constructor, "String", 0, JS_CFUNC_constructor, 0);
+	JSValue ctor = JS_NewCFunction2(ctx, string_class_constructor, "GDString", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, string_class_static_funcs, _countof(string_class_static_funcs));
 
 	JSValue global = JS_GetGlobalObject(ctx);
-	JS_SetPropertyStr(ctx, global, "String", ctor);
+	JS_SetPropertyStr(ctx, global, "GDString", ctor);
 
 	return 0;
 }

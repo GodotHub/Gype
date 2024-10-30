@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/curve_texture.hpp>
 #include <godot_cpp/classes/visual_shader_node_resizable_base.hpp>
 #include <godot_cpp/classes/visual_shader_node_curve_texture.hpp>
+#include <godot_cpp/classes/curve_texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue visual_shader_node_curve_texture_class_constructor(JSContext *ctx
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeCurveTexture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeCurveTexture *visual_shader_node_curve_texture_class = memnew(VisualShaderNodeCurveTexture);
+	VisualShaderNodeCurveTexture *visual_shader_node_curve_texture_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_curve_texture_class = static_cast<VisualShaderNodeCurveTexture *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_curve_texture_class = memnew(VisualShaderNodeCurveTexture);
+	}
 	if (!visual_shader_node_curve_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

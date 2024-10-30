@@ -27,7 +27,13 @@ static JSValue canvas_group_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CanvasGroup::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CanvasGroup *canvas_group_class = memnew(CanvasGroup);
+	CanvasGroup *canvas_group_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		canvas_group_class = static_cast<CanvasGroup *>(static_cast<Object *>(vobj));
+	} else {
+		canvas_group_class = memnew(CanvasGroup);
+	}
 	if (!canvas_group_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

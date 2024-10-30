@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/panorama_sky_material.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue panorama_sky_material_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PanoramaSkyMaterial::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PanoramaSkyMaterial *panorama_sky_material_class = memnew(PanoramaSkyMaterial);
+	PanoramaSkyMaterial *panorama_sky_material_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		panorama_sky_material_class = static_cast<PanoramaSkyMaterial *>(static_cast<Object *>(vobj));
+	} else {
+		panorama_sky_material_class = memnew(PanoramaSkyMaterial);
+	}
 	if (!panorama_sky_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

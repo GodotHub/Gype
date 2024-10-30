@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/editor_resource_preview_generator.hpp>
-#include <godot_cpp/classes/editor_resource_preview.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/editor_resource_preview.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,7 +30,13 @@ static JSValue editor_resource_preview_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorResourcePreview::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorResourcePreview *editor_resource_preview_class = memnew(EditorResourcePreview);
+	EditorResourcePreview *editor_resource_preview_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_resource_preview_class = static_cast<EditorResourcePreview *>(static_cast<Object *>(vobj));
+	} else {
+		editor_resource_preview_class = memnew(EditorResourcePreview);
+	}
 	if (!editor_resource_preview_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

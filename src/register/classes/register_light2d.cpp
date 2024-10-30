@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/light2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/light2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue light2d_class_constructor(JSContext *ctx, JSValueConst new_target
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Light2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Light2D *light2d_class = memnew(Light2D);
+	Light2D *light2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		light2d_class = static_cast<Light2D *>(static_cast<Object *>(vobj));
+	} else {
+		light2d_class = memnew(Light2D);
+	}
 	if (!light2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

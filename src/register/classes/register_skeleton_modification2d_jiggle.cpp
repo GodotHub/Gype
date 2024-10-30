@@ -27,7 +27,13 @@ static JSValue skeleton_modification2d_jiggle_class_constructor(JSContext *ctx, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkeletonModification2DJiggle::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SkeletonModification2DJiggle *skeleton_modification2d_jiggle_class = memnew(SkeletonModification2DJiggle);
+	SkeletonModification2DJiggle *skeleton_modification2d_jiggle_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		skeleton_modification2d_jiggle_class = static_cast<SkeletonModification2DJiggle *>(static_cast<Object *>(vobj));
+	} else {
+		skeleton_modification2d_jiggle_class = memnew(SkeletonModification2DJiggle);
+	}
 	if (!skeleton_modification2d_jiggle_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

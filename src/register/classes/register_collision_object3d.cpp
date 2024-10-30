@@ -5,12 +5,12 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/collision_object3d.hpp>
-#include <godot_cpp/classes/shape3d.hpp>
-#include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,7 +31,13 @@ static JSValue collision_object3d_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CollisionObject3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CollisionObject3D *collision_object3d_class = memnew(CollisionObject3D);
+	CollisionObject3D *collision_object3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		collision_object3d_class = static_cast<CollisionObject3D *>(static_cast<Object *>(vobj));
+	} else {
+		collision_object3d_class = memnew(CollisionObject3D);
+	}
 	if (!collision_object3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

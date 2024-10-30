@@ -1,8 +1,8 @@
 
 import { LineEdit } from "@godot/classes/line_edit";
-import { Window } from "@godot/classes/window";
-import { Label } from "@godot/classes/label";
 import { Button } from "@godot/classes/button";
+import { Label } from "@godot/classes/label";
+import { Window } from "@godot/classes/window";
 
 export declare class AcceptDialog extends Window{
   public get_ok_button(): Button;
@@ -11,15 +11,15 @@ export declare class AcceptDialog extends Window{
   public get_hide_on_ok(): boolean;
   public set_close_on_escape(_enabled: boolean): void;
   public get_close_on_escape(): boolean;
-  public add_button(_text: String, _right: boolean, _action: String): Button;
-  public add_cancel_button(_name: String): Button;
+  public add_button(_text: String | StringName | string, _right: boolean, _action: String | StringName | string): Button;
+  public add_cancel_button(_name: String | StringName | string): Button;
   public remove_button(_button: Button): void;
   public register_text_enter(_line_edit: LineEdit): void;
-  public set_text(_text: String): void;
+  public set_text(_text: String | StringName | string): void;
   public get_text(): String;
   public set_autowrap(_autowrap: boolean): void;
   public has_autowrap(): boolean;
-  public set_ok_button_text(_text: String): void;
+  public set_ok_button_text(_text: String | StringName | string): void;
   public get_ok_button_text(): String;
   public get ok_button_text(): String {
     get_ok_button_text();
@@ -51,4 +51,7 @@ export declare class AcceptDialog extends Window{
   public set dialog_autowrap(value): void {
     set_autowrap(value);
   }
+  public const confirmed: string = "confirmed";
+  public const canceled: string = "canceled";
+  public const custom_action: string = "custom_action";
 }

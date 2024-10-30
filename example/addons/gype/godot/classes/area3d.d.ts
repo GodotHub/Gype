@@ -44,11 +44,11 @@ export declare class Area3D extends CollisionObject3D{
   public overlaps_area(_area: Node): boolean;
   public set_audio_bus_override(_enable: boolean): void;
   public is_overriding_audio_bus(): boolean;
-  public set_audio_bus_name(_name: StringName): void;
+  public set_audio_bus_name(_name: String | StringName | string): void;
   public get_audio_bus_name(): StringName;
   public set_use_reverb_bus(_enable: boolean): void;
   public is_using_reverb_bus(): boolean;
-  public set_reverb_bus_name(_name: StringName): void;
+  public set_reverb_bus_name(_name: String | StringName | string): void;
   public get_reverb_bus_name(): StringName;
   public set_reverb_amount(_amount: number): void;
   public get_reverb_amount(): number;
@@ -193,4 +193,12 @@ export declare class Area3D extends CollisionObject3D{
     SPACE_OVERRIDE_REPLACE = 3,
     SPACE_OVERRIDE_REPLACE_COMBINE = 4,
   }
+  public const body_shape_entered: string = "body_shape_entered";
+  public const body_shape_exited: string = "body_shape_exited";
+  public const body_entered: string = "body_entered";
+  public const body_exited: string = "body_exited";
+  public const area_shape_entered: string = "area_shape_entered";
+  public const area_shape_exited: string = "area_shape_exited";
+  public const area_entered: string = "area_entered";
+  public const area_exited: string = "area_exited";
 }

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/dtls_server.hpp>
 #include <godot_cpp/classes/packet_peer_dtls.hpp>
 #include <godot_cpp/classes/packet_peer_udp.hpp>
@@ -30,7 +30,13 @@ static JSValue dtls_server_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, DTLSServer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	DTLSServer *dtls_server_class = memnew(DTLSServer);
+	DTLSServer *dtls_server_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		dtls_server_class = static_cast<DTLSServer *>(static_cast<Object *>(vobj));
+	} else {
+		dtls_server_class = memnew(DTLSServer);
+	}
 	if (!dtls_server_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

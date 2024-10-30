@@ -27,7 +27,13 @@ static JSValue packet_peer_extension_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PacketPeerExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PacketPeerExtension *packet_peer_extension_class = memnew(PacketPeerExtension);
+	PacketPeerExtension *packet_peer_extension_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		packet_peer_extension_class = static_cast<PacketPeerExtension *>(static_cast<Object *>(vobj));
+	} else {
+		packet_peer_extension_class = memnew(PacketPeerExtension);
+	}
 	if (!packet_peer_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

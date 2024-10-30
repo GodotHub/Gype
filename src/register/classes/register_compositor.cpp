@@ -28,7 +28,13 @@ static JSValue compositor_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Compositor::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Compositor *compositor_class = memnew(Compositor);
+	Compositor *compositor_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		compositor_class = static_cast<Compositor *>(static_cast<Object *>(vobj));
+	} else {
+		compositor_class = memnew(Compositor);
+	}
 	if (!compositor_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

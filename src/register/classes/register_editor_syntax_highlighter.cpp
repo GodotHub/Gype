@@ -27,7 +27,13 @@ static JSValue editor_syntax_highlighter_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorSyntaxHighlighter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorSyntaxHighlighter *editor_syntax_highlighter_class = memnew(EditorSyntaxHighlighter);
+	EditorSyntaxHighlighter *editor_syntax_highlighter_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_syntax_highlighter_class = static_cast<EditorSyntaxHighlighter *>(static_cast<Object *>(vobj));
+	} else {
+		editor_syntax_highlighter_class = memnew(EditorSyntaxHighlighter);
+	}
 	if (!editor_syntax_highlighter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

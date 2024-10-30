@@ -27,7 +27,13 @@ static JSValue editor_command_palette_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorCommandPalette::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorCommandPalette *editor_command_palette_class = memnew(EditorCommandPalette);
+	EditorCommandPalette *editor_command_palette_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_command_palette_class = static_cast<EditorCommandPalette *>(static_cast<Object *>(vobj));
+	} else {
+		editor_command_palette_class = memnew(EditorCommandPalette);
+	}
 	if (!editor_command_palette_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

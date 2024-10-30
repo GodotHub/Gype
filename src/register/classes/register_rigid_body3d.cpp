@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/physics_material.hpp>
+#include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/rigid_body3d.hpp>
 #include <godot_cpp/classes/physics_direct_body_state3d.hpp>
-#include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,7 +30,13 @@ static JSValue rigid_body3d_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RigidBody3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RigidBody3D *rigid_body3d_class = memnew(RigidBody3D);
+	RigidBody3D *rigid_body3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		rigid_body3d_class = static_cast<RigidBody3D *>(static_cast<Object *>(vobj));
+	} else {
+		rigid_body3d_class = memnew(RigidBody3D);
+	}
 	if (!rigid_body3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

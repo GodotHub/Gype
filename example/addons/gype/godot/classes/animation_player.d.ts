@@ -2,10 +2,10 @@
 import { AnimationMixer } from "@godot/classes/animation_mixer";
 
 export declare class AnimationPlayer extends AnimationMixer{
-  public animation_set_next(_animation_from: StringName, _animation_to: StringName): void;
-  public animation_get_next(_animation_from: StringName): StringName;
-  public set_blend_time(_animation_from: StringName, _animation_to: StringName, _sec: number): void;
-  public get_blend_time(_animation_from: StringName, _animation_to: StringName): number;
+  public animation_set_next(_animation_from: String | StringName | string, _animation_to: String | StringName | string): void;
+  public animation_get_next(_animation_from: String | StringName | string): StringName;
+  public set_blend_time(_animation_from: String | StringName | string, _animation_to: String | StringName | string, _sec: number): void;
+  public get_blend_time(_animation_from: String | StringName | string, _animation_to: String | StringName | string): number;
   public set_default_blend_time(_sec: number): void;
   public get_default_blend_time(): number;
   public set_auto_capture(_auto_capture: boolean): void;
@@ -16,23 +16,23 @@ export declare class AnimationPlayer extends AnimationMixer{
   public get_auto_capture_transition_type(): number;
   public set_auto_capture_ease_type(_auto_capture_ease_type: number): void;
   public get_auto_capture_ease_type(): number;
-  public play(_name: StringName, _custom_blend: number, _custom_speed: number, _from_end: boolean): void;
-  public play_backwards(_name: StringName, _custom_blend: number): void;
-  public play_with_capture(_name: StringName, _duration: number, _custom_blend: number, _custom_speed: number, _from_end: boolean, _trans_type: number, _ease_type: number): void;
+  public play(_name: String | StringName | string, _custom_blend: number, _custom_speed: number, _from_end: boolean): void;
+  public play_backwards(_name: String | StringName | string, _custom_blend: number): void;
+  public play_with_capture(_name: String | StringName | string, _duration: number, _custom_blend: number, _custom_speed: number, _from_end: boolean, _trans_type: number, _ease_type: number): void;
   public pause(): void;
   public stop(_keep_state: boolean): void;
   public is_playing(): boolean;
-  public set_current_animation(_animation: String): void;
+  public set_current_animation(_animation: String | StringName | string): void;
   public get_current_animation(): String;
-  public set_assigned_animation(_animation: String): void;
+  public set_assigned_animation(_animation: String | StringName | string): void;
   public get_assigned_animation(): String;
-  public queue(_name: StringName): void;
+  public queue(_name: String | StringName | string): void;
   public get_queue(): PackedStringArray;
   public clear_queue(): void;
   public set_speed_scale(_speed: number): void;
   public get_speed_scale(): number;
   public get_playing_speed(): number;
-  public set_autoplay(_name: String): void;
+  public set_autoplay(_name: String | StringName | string): void;
   public get_autoplay(): String;
   public set_movie_quit_on_finish_enabled(_enabled: boolean): void;
   public is_movie_quit_on_finish_enabled(): boolean;
@@ -120,4 +120,6 @@ export declare class AnimationPlayer extends AnimationMixer{
     ANIMATION_METHOD_CALL_DEFERRED = 0,
     ANIMATION_METHOD_CALL_IMMEDIATE = 1,
   }
+  public const current_animation_changed: string = "current_animation_changed";
+  public const animation_changed: string = "animation_changed";
 }

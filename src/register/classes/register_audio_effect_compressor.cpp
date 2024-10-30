@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_compressor.hpp>
 #include <godot_cpp/classes/audio_effect.hpp>
+#include <godot_cpp/classes/audio_effect_compressor.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue audio_effect_compressor_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectCompressor::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioEffectCompressor *audio_effect_compressor_class = memnew(AudioEffectCompressor);
+	AudioEffectCompressor *audio_effect_compressor_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_effect_compressor_class = static_cast<AudioEffectCompressor *>(static_cast<Object *>(vobj));
+	} else {
+		audio_effect_compressor_class = memnew(AudioEffectCompressor);
+	}
 	if (!audio_effect_compressor_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

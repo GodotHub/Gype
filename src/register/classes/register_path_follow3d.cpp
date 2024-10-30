@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/path_follow3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/path_follow3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue path_follow3d_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PathFollow3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PathFollow3D *path_follow3d_class = memnew(PathFollow3D);
+	PathFollow3D *path_follow3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		path_follow3d_class = static_cast<PathFollow3D *>(static_cast<Object *>(vobj));
+	} else {
+		path_follow3d_class = memnew(PathFollow3D);
+	}
 	if (!path_follow3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -28,7 +28,13 @@ static JSValue syntax_highlighter_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SyntaxHighlighter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SyntaxHighlighter *syntax_highlighter_class = memnew(SyntaxHighlighter);
+	SyntaxHighlighter *syntax_highlighter_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		syntax_highlighter_class = static_cast<SyntaxHighlighter *>(static_cast<Object *>(vobj));
+	} else {
+		syntax_highlighter_class = memnew(SyntaxHighlighter);
+	}
 	if (!syntax_highlighter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

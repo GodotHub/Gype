@@ -27,7 +27,13 @@ static JSValue weak_ref_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WeakRef::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	WeakRef *weak_ref_class = memnew(WeakRef);
+	WeakRef *weak_ref_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		weak_ref_class = static_cast<WeakRef *>(static_cast<Object *>(vobj));
+	} else {
+		weak_ref_class = memnew(WeakRef);
+	}
 	if (!weak_ref_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

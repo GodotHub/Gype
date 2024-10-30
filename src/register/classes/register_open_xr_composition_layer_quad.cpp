@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/open_xr_composition_layer_quad.hpp>
 #include <godot_cpp/classes/open_xr_composition_layer.hpp>
+#include <godot_cpp/classes/open_xr_composition_layer_quad.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue open_xr_composition_layer_quad_class_constructor(JSContext *ctx, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRCompositionLayerQuad::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	OpenXRCompositionLayerQuad *open_xr_composition_layer_quad_class = memnew(OpenXRCompositionLayerQuad);
+	OpenXRCompositionLayerQuad *open_xr_composition_layer_quad_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		open_xr_composition_layer_quad_class = static_cast<OpenXRCompositionLayerQuad *>(static_cast<Object *>(vobj));
+	} else {
+		open_xr_composition_layer_quad_class = memnew(OpenXRCompositionLayerQuad);
+	}
 	if (!open_xr_composition_layer_quad_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

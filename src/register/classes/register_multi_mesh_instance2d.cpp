@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/multi_mesh.hpp>
-#include <godot_cpp/classes/multi_mesh_instance2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/multi_mesh.hpp>
+#include <godot_cpp/classes/multi_mesh_instance2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue multi_mesh_instance2d_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MultiMeshInstance2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	MultiMeshInstance2D *multi_mesh_instance2d_class = memnew(MultiMeshInstance2D);
+	MultiMeshInstance2D *multi_mesh_instance2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		multi_mesh_instance2d_class = static_cast<MultiMeshInstance2D *>(static_cast<Object *>(vobj));
+	} else {
+		multi_mesh_instance2d_class = memnew(MultiMeshInstance2D);
+	}
 	if (!multi_mesh_instance2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

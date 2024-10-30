@@ -27,7 +27,13 @@ static JSValue gpu_particles_attractor_box3d_class_constructor(JSContext *ctx, J
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GPUParticlesAttractorBox3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GPUParticlesAttractorBox3D *gpu_particles_attractor_box3d_class = memnew(GPUParticlesAttractorBox3D);
+	GPUParticlesAttractorBox3D *gpu_particles_attractor_box3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gpu_particles_attractor_box3d_class = static_cast<GPUParticlesAttractorBox3D *>(static_cast<Object *>(vobj));
+	} else {
+		gpu_particles_attractor_box3d_class = memnew(GPUParticlesAttractorBox3D);
+	}
 	if (!gpu_particles_attractor_box3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

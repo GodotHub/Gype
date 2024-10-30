@@ -1,6 +1,6 @@
 
-import { CameraAttributes } from "@godot/classes/camera_attributes";
 import { LightmapGIData } from "@godot/classes/lightmap_gi_data";
+import { CameraAttributes } from "@godot/classes/camera_attributes";
 import { Sky } from "@godot/classes/sky";
 import { VisualInstance3D } from "@godot/classes/visual_instance3d";
 

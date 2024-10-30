@@ -1,30 +1,30 @@
 
 import { LineEdit } from "@godot/classes/line_edit";
-import { Control } from "@godot/classes/control";
 import { VBoxContainer } from "@godot/classes/v_box_container";
+import { Control } from "@godot/classes/control";
 import { ConfirmationDialog } from "@godot/classes/confirmation_dialog";
 
 export declare class EditorFileDialog extends ConfirmationDialog{
   public clear_filters(): void;
-  public add_filter(_filter: String, _description: String): void;
+  public add_filter(_filter: String | StringName | string, _description: String | StringName | string): void;
   public set_filters(_filters: PackedStringArray): void;
   public get_filters(): PackedStringArray;
   public get_option_name(_option: number): String;
   public get_option_values(_option: number): PackedStringArray;
   public get_option_default(_option: number): number;
-  public set_option_name(_option: number, _name: String): void;
+  public set_option_name(_option: number, _name: String | StringName | string): void;
   public set_option_values(_option: number, _values: PackedStringArray): void;
   public set_option_default(_option: number, _default_value_index: number): void;
   public set_option_count(_count: number): void;
   public get_option_count(): number;
-  public add_option(_name: String, _values: PackedStringArray, _default_value_index: number): void;
+  public add_option(_name: String | StringName | string, _values: PackedStringArray, _default_value_index: number): void;
   public get_selected_options(): Dictionary;
   public get_current_dir(): String;
   public get_current_file(): String;
   public get_current_path(): String;
-  public set_current_dir(_dir: String): void;
-  public set_current_file(_file: String): void;
-  public set_current_path(_path: String): void;
+  public set_current_dir(_dir: String | StringName | string): void;
+  public set_current_file(_file: String | StringName | string): void;
+  public set_current_path(_path: String | StringName | string): void;
   public set_file_mode(_mode: number): void;
   public get_file_mode(): number;
   public get_vbox(): VBoxContainer;
@@ -37,7 +37,7 @@ export declare class EditorFileDialog extends ConfirmationDialog{
   public get_display_mode(): number;
   public set_disable_overwrite_warning(_disable: boolean): void;
   public is_overwrite_warning_disabled(): boolean;
-  public add_side_menu(_menu: Control, _title: String): void;
+  public add_side_menu(_menu: Control, _title: String | StringName | string): void;
   public popup_file_dialog(): void;
   public invalidate(): void;
   public get access(): number {
@@ -116,4 +116,7 @@ export declare class EditorFileDialog extends ConfirmationDialog{
     DISPLAY_THUMBNAILS = 0,
     DISPLAY_LIST = 1,
   }
+  public const file_selected: string = "file_selected";
+  public const files_selected: string = "files_selected";
+  public const dir_selected: string = "dir_selected";
 }

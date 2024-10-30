@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/navigation_path_query_parameters2d.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue navigation_path_query_parameters2d_class_constructor(JSContext *c
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, NavigationPathQueryParameters2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	NavigationPathQueryParameters2D *navigation_path_query_parameters2d_class = memnew(NavigationPathQueryParameters2D);
+	NavigationPathQueryParameters2D *navigation_path_query_parameters2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		navigation_path_query_parameters2d_class = static_cast<NavigationPathQueryParameters2D *>(static_cast<Object *>(vobj));
+	} else {
+		navigation_path_query_parameters2d_class = memnew(NavigationPathQueryParameters2D);
+	}
 	if (!navigation_path_query_parameters2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

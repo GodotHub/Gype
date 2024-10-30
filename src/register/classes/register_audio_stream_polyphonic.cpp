@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/classes/audio_stream_polyphonic.hpp>
+#include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue audio_stream_polyphonic_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamPolyphonic::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioStreamPolyphonic *audio_stream_polyphonic_class = memnew(AudioStreamPolyphonic);
+	AudioStreamPolyphonic *audio_stream_polyphonic_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_stream_polyphonic_class = static_cast<AudioStreamPolyphonic *>(static_cast<Object *>(vobj));
+	} else {
+		audio_stream_polyphonic_class = memnew(AudioStreamPolyphonic);
+	}
 	if (!audio_stream_polyphonic_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

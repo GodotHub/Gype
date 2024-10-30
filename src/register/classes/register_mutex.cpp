@@ -27,7 +27,13 @@ static JSValue mutex_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Mutex::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Mutex *mutex_class = memnew(Mutex);
+	Mutex *mutex_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		mutex_class = static_cast<Mutex *>(static_cast<Object *>(vobj));
+	} else {
+		mutex_class = memnew(Mutex);
+	}
 	if (!mutex_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

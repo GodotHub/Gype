@@ -27,7 +27,13 @@ static JSValue stream_peer_gzip_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StreamPeerGZIP::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	StreamPeerGZIP *stream_peer_gzip_class = memnew(StreamPeerGZIP);
+	StreamPeerGZIP *stream_peer_gzip_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		stream_peer_gzip_class = static_cast<StreamPeerGZIP *>(static_cast<Object *>(vobj));
+	} else {
+		stream_peer_gzip_class = memnew(StreamPeerGZIP);
+	}
 	if (!stream_peer_gzip_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

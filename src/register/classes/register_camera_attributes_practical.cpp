@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/classes/camera_attributes_practical.hpp>
+#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue camera_attributes_practical_class_constructor(JSContext *ctx, JSV
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CameraAttributesPractical::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CameraAttributesPractical *camera_attributes_practical_class = memnew(CameraAttributesPractical);
+	CameraAttributesPractical *camera_attributes_practical_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		camera_attributes_practical_class = static_cast<CameraAttributesPractical *>(static_cast<Object *>(vobj));
+	} else {
+		camera_attributes_practical_class = memnew(CameraAttributesPractical);
+	}
 	if (!camera_attributes_practical_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

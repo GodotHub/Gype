@@ -1,6 +1,6 @@
 
-import { Mesh } from "@godot/classes/mesh";
 import { Resource } from "@godot/classes/resource";
+import { Mesh } from "@godot/classes/mesh";
 
 export declare class NavigationMesh extends Resource{
   public set_sample_partition_type(_sample_partition_type: number): void;
@@ -13,7 +13,7 @@ export declare class NavigationMesh extends Resource{
   public get_collision_mask_value(_layer_number: number): boolean;
   public set_source_geometry_mode(_mask: number): void;
   public get_source_geometry_mode(): number;
-  public set_source_group_name(_mask: StringName): void;
+  public set_source_group_name(_mask: String | StringName | string): void;
   public get_source_group_name(): StringName;
   public set_cell_size(_cell_size: number): void;
   public get_cell_size(): number;

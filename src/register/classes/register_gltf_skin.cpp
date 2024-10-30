@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/skin.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/gltf_skin.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue gltf_skin_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFSkin::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GLTFSkin *gltf_skin_class = memnew(GLTFSkin);
+	GLTFSkin *gltf_skin_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gltf_skin_class = static_cast<GLTFSkin *>(static_cast<Object *>(vobj));
+	} else {
+		gltf_skin_class = memnew(GLTFSkin);
+	}
 	if (!gltf_skin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

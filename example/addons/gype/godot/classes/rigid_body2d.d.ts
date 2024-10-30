@@ -1,8 +1,8 @@
 
-import { PhysicsDirectBodyState2D } from "@godot/classes/physics_direct_body_state2d";
 import { Node2D } from "@godot/classes/node2d";
-import { PhysicsBody2D } from "@godot/classes/physics_body2d";
 import { PhysicsMaterial } from "@godot/classes/physics_material";
+import { PhysicsBody2D } from "@godot/classes/physics_body2d";
+import { PhysicsDirectBodyState2D } from "@godot/classes/physics_direct_body_state2d";
 
 export declare class RigidBody2D extends PhysicsBody2D{
   public _integrate_forces(_state: PhysicsDirectBodyState2D): void;
@@ -219,4 +219,9 @@ export declare class RigidBody2D extends PhysicsBody2D{
     CCD_MODE_CAST_RAY = 1,
     CCD_MODE_CAST_SHAPE = 2,
   }
+  public const body_shape_entered: string = "body_shape_entered";
+  public const body_shape_exited: string = "body_shape_exited";
+  public const body_entered: string = "body_entered";
+  public const body_exited: string = "body_exited";
+  public const sleeping_state_changed: string = "sleeping_state_changed";
 }

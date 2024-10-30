@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/render_scene_buffers_extension.hpp>
 #include <godot_cpp/classes/render_scene_buffers.hpp>
 #include <godot_cpp/classes/render_scene_buffers_configuration.hpp>
-#include <godot_cpp/classes/render_scene_buffers_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue render_scene_buffers_extension_class_constructor(JSContext *ctx, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RenderSceneBuffersExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RenderSceneBuffersExtension *render_scene_buffers_extension_class = memnew(RenderSceneBuffersExtension);
+	RenderSceneBuffersExtension *render_scene_buffers_extension_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		render_scene_buffers_extension_class = static_cast<RenderSceneBuffersExtension *>(static_cast<Object *>(vobj));
+	} else {
+		render_scene_buffers_extension_class = memnew(RenderSceneBuffersExtension);
+	}
 	if (!render_scene_buffers_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_frame.hpp>
 #include <godot_cpp/classes/visual_shader_node_comment.hpp>
+#include <godot_cpp/classes/visual_shader_node_frame.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue visual_shader_node_comment_class_constructor(JSContext *ctx, JSVa
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeComment::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeComment *visual_shader_node_comment_class = memnew(VisualShaderNodeComment);
+	VisualShaderNodeComment *visual_shader_node_comment_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_comment_class = static_cast<VisualShaderNodeComment *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_comment_class = memnew(VisualShaderNodeComment);
+	}
 	if (!visual_shader_node_comment_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

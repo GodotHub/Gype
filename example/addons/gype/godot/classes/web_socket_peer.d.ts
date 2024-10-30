@@ -1,16 +1,16 @@
 
+import { StreamPeer } from "@godot/classes/stream_peer";
 import { PacketPeer } from "@godot/classes/packet_peer";
 import { TLSOptions } from "@godot/classes/tls_options";
-import { StreamPeer } from "@godot/classes/stream_peer";
 
 export declare class WebSocketPeer extends PacketPeer{
-  public connect_to_url(_url: String, _tls_client_options: TLSOptions): number;
+  public connect_to_url(_url: String | StringName | string, _tls_client_options: TLSOptions): number;
   public accept_stream(_stream: StreamPeer): number;
   public send(_message: PackedByteArray, _write_mode: number): number;
-  public send_text(_message: String): number;
+  public send_text(_message: String | StringName | string): number;
   public was_string_packet(): boolean;
   public poll(): void;
-  public close(_code: number, _reason: String): void;
+  public close(_code: number, _reason: String | StringName | string): void;
   public get_connected_host(): String;
   public get_connected_port(): number;
   public get_selected_protocol(): String;

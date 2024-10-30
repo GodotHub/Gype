@@ -27,7 +27,13 @@ static JSValue color_rect_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ColorRect::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ColorRect *color_rect_class = memnew(ColorRect);
+	ColorRect *color_rect_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		color_rect_class = static_cast<ColorRect *>(static_cast<Object *>(vobj));
+	} else {
+		color_rect_class = memnew(ColorRect);
+	}
 	if (!color_rect_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

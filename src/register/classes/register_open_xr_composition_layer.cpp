@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/sub_viewport.hpp>
 #include <godot_cpp/classes/open_xr_composition_layer.hpp>
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue open_xr_composition_layer_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRCompositionLayer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	OpenXRCompositionLayer *open_xr_composition_layer_class = memnew(OpenXRCompositionLayer);
+	OpenXRCompositionLayer *open_xr_composition_layer_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		open_xr_composition_layer_class = static_cast<OpenXRCompositionLayer *>(static_cast<Object *>(vobj));
+	} else {
+		open_xr_composition_layer_class = memnew(OpenXRCompositionLayer);
+	}
 	if (!open_xr_composition_layer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

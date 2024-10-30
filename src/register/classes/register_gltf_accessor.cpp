@@ -27,7 +27,13 @@ static JSValue gltf_accessor_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFAccessor::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GLTFAccessor *gltf_accessor_class = memnew(GLTFAccessor);
+	GLTFAccessor *gltf_accessor_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gltf_accessor_class = static_cast<GLTFAccessor *>(static_cast<Object *>(vobj));
+	} else {
+		gltf_accessor_class = memnew(GLTFAccessor);
+	}
 	if (!gltf_accessor_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

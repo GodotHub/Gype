@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/primitive_mesh.hpp>
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue primitive_mesh_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PrimitiveMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PrimitiveMesh *primitive_mesh_class = memnew(PrimitiveMesh);
+	PrimitiveMesh *primitive_mesh_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		primitive_mesh_class = static_cast<PrimitiveMesh *>(static_cast<Object *>(vobj));
+	} else {
+		primitive_mesh_class = memnew(PrimitiveMesh);
+	}
 	if (!primitive_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

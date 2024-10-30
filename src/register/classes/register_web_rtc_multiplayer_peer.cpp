@@ -28,7 +28,13 @@ static JSValue web_rtc_multiplayer_peer_class_constructor(JSContext *ctx, JSValu
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WebRTCMultiplayerPeer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	WebRTCMultiplayerPeer *web_rtc_multiplayer_peer_class = memnew(WebRTCMultiplayerPeer);
+	WebRTCMultiplayerPeer *web_rtc_multiplayer_peer_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		web_rtc_multiplayer_peer_class = static_cast<WebRTCMultiplayerPeer *>(static_cast<Object *>(vobj));
+	} else {
+		web_rtc_multiplayer_peer_class = memnew(WebRTCMultiplayerPeer);
+	}
 	if (!web_rtc_multiplayer_peer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

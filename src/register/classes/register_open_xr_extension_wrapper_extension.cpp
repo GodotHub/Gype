@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/open_xrapi_extension.hpp>
-#include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue open_xr_extension_wrapper_extension_class_constructor(JSContext *
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRExtensionWrapperExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	OpenXRExtensionWrapperExtension *open_xr_extension_wrapper_extension_class = memnew(OpenXRExtensionWrapperExtension);
+	OpenXRExtensionWrapperExtension *open_xr_extension_wrapper_extension_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		open_xr_extension_wrapper_extension_class = static_cast<OpenXRExtensionWrapperExtension *>(static_cast<Object *>(vobj));
+	} else {
+		open_xr_extension_wrapper_extension_class = memnew(OpenXRExtensionWrapperExtension);
+	}
 	if (!open_xr_extension_wrapper_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -80,7 +86,7 @@ static int js_open_xr_extension_wrapper_extension_class_init(JSContext *ctx, JSM
 }
 
 JSModuleDef *_js_init_open_xr_extension_wrapper_extension_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

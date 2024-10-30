@@ -27,7 +27,13 @@ static JSValue input_event_pan_gesture_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventPanGesture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	InputEventPanGesture *input_event_pan_gesture_class = memnew(InputEventPanGesture);
+	InputEventPanGesture *input_event_pan_gesture_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		input_event_pan_gesture_class = static_cast<InputEventPanGesture *>(static_cast<Object *>(vobj));
+	} else {
+		input_event_pan_gesture_class = memnew(InputEventPanGesture);
+	}
 	if (!input_event_pan_gesture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -1,7 +1,7 @@
 
-import { TriangleMesh } from "@godot/classes/triangle_mesh";
-import { GeometryInstance3D } from "@godot/classes/geometry_instance3d";
 import { Font } from "@godot/classes/font";
+import { GeometryInstance3D } from "@godot/classes/geometry_instance3d";
+import { TriangleMesh } from "@godot/classes/triangle_mesh";
 
 export declare class Label3D extends GeometryInstance3D{
   public set_horizontal_alignment(_alignment: number): void;
@@ -12,11 +12,11 @@ export declare class Label3D extends GeometryInstance3D{
   public get_modulate(): Color;
   public set_outline_modulate(_modulate: Color): void;
   public get_outline_modulate(): Color;
-  public set_text(_text: String): void;
+  public set_text(_text: String | StringName | string): void;
   public get_text(): String;
   public set_text_direction(_direction: number): void;
   public get_text_direction(): number;
-  public set_language(_language: String): void;
+  public set_language(_language: String | StringName | string): void;
   public get_language(): String;
   public set_structured_text_bidi_override(_parser: number): void;
   public get_structured_text_bidi_override(): number;

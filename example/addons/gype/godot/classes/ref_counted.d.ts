@@ -1,7 +1,7 @@
 
-import { Object } from "@godot/classes/object";
+import { GodotObject } from "@godot/classes/godot_object";
 
-export declare class RefCounted extends Object{
+export declare class RefCounted extends GodotObject{
   public init_ref(): boolean;
   public reference(): boolean;
   public unreference(): boolean;

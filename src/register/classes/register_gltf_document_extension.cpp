@@ -5,14 +5,14 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gltf_document_extension.hpp>
-#include <godot_cpp/classes/gltf_state.hpp>
-#include <godot_cpp/classes/gltf_texture.hpp>
-#include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/gltf_node.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/gltf_node.hpp>
+#include <godot_cpp/classes/gltf_texture.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/gltf_document_extension.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/gltf_state.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -33,7 +33,13 @@ static JSValue gltf_document_extension_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFDocumentExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GLTFDocumentExtension *gltf_document_extension_class = memnew(GLTFDocumentExtension);
+	GLTFDocumentExtension *gltf_document_extension_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gltf_document_extension_class = static_cast<GLTFDocumentExtension *>(static_cast<Object *>(vobj));
+	} else {
+		gltf_document_extension_class = memnew(GLTFDocumentExtension);
+	}
 	if (!gltf_document_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

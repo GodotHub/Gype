@@ -27,7 +27,13 @@ static JSValue rd_shader_source_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDShaderSource::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RDShaderSource *rd_shader_source_class = memnew(RDShaderSource);
+	RDShaderSource *rd_shader_source_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		rd_shader_source_class = static_cast<RDShaderSource *>(static_cast<Object *>(vobj));
+	} else {
+		rd_shader_source_class = memnew(RDShaderSource);
+	}
 	if (!rd_shader_source_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

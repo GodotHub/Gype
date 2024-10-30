@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
 #include <godot_cpp/classes/open_xrapi_extension.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue open_xrapi_extension_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRAPIExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	OpenXRAPIExtension *open_xrapi_extension_class = memnew(OpenXRAPIExtension);
+	OpenXRAPIExtension *open_xrapi_extension_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		open_xrapi_extension_class = static_cast<OpenXRAPIExtension *>(static_cast<Object *>(vobj));
+	} else {
+		open_xrapi_extension_class = memnew(OpenXRAPIExtension);
+	}
 	if (!open_xrapi_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

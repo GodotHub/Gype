@@ -27,7 +27,13 @@ static JSValue h_scroll_bar_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HScrollBar::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	HScrollBar *h_scroll_bar_class = memnew(HScrollBar);
+	HScrollBar *h_scroll_bar_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		h_scroll_bar_class = static_cast<HScrollBar *>(static_cast<Object *>(vobj));
+	} else {
+		h_scroll_bar_class = memnew(HScrollBar);
+	}
 	if (!h_scroll_bar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

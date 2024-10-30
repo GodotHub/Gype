@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_filter.hpp>
 #include <godot_cpp/classes/audio_effect_high_pass_filter.hpp>
+#include <godot_cpp/classes/audio_effect_filter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue audio_effect_high_pass_filter_class_constructor(JSContext *ctx, J
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectHighPassFilter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioEffectHighPassFilter *audio_effect_high_pass_filter_class = memnew(AudioEffectHighPassFilter);
+	AudioEffectHighPassFilter *audio_effect_high_pass_filter_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_effect_high_pass_filter_class = static_cast<AudioEffectHighPassFilter *>(static_cast<Object *>(vobj));
+	} else {
+		audio_effect_high_pass_filter_class = memnew(AudioEffectHighPassFilter);
+	}
 	if (!audio_effect_high_pass_filter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

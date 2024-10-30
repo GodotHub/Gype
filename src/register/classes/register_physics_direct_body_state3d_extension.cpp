@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/physics_direct_body_state3d_extension.hpp>
-#include <godot_cpp/classes/physics_direct_space_state3d.hpp>
-#include <godot_cpp/classes/physics_direct_body_state3d.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/physics_direct_body_state3d.hpp>
+#include <godot_cpp/classes/physics_direct_space_state3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue physics_direct_body_state3d_extension_class_constructor(JSContext
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsDirectBodyState3DExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PhysicsDirectBodyState3DExtension *physics_direct_body_state3d_extension_class = memnew(PhysicsDirectBodyState3DExtension);
+	PhysicsDirectBodyState3DExtension *physics_direct_body_state3d_extension_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		physics_direct_body_state3d_extension_class = static_cast<PhysicsDirectBodyState3DExtension *>(static_cast<Object *>(vobj));
+	} else {
+		physics_direct_body_state3d_extension_class = memnew(PhysicsDirectBodyState3DExtension);
+	}
 	if (!physics_direct_body_state3d_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

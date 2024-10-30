@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/navigation_agent3d.hpp>
 #include <godot_cpp/classes/navigation_path_query_result3d.hpp>
+#include <godot_cpp/classes/navigation_agent3d.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue navigation_agent3d_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, NavigationAgent3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	NavigationAgent3D *navigation_agent3d_class = memnew(NavigationAgent3D);
+	NavigationAgent3D *navigation_agent3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		navigation_agent3d_class = static_cast<NavigationAgent3D *>(static_cast<Object *>(vobj));
+	} else {
+		navigation_agent3d_class = memnew(NavigationAgent3D);
+	}
 	if (!navigation_agent3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

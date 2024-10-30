@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/light3d.hpp>
 #include <godot_cpp/classes/directional_light3d.hpp>
+#include <godot_cpp/classes/light3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue directional_light3d_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, DirectionalLight3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	DirectionalLight3D *directional_light3d_class = memnew(DirectionalLight3D);
+	DirectionalLight3D *directional_light3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		directional_light3d_class = static_cast<DirectionalLight3D *>(static_cast<Object *>(vobj));
+	} else {
+		directional_light3d_class = memnew(DirectionalLight3D);
+	}
 	if (!directional_light3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

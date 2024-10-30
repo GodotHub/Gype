@@ -27,7 +27,13 @@ static JSValue world_boundary_shape2d_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WorldBoundaryShape2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	WorldBoundaryShape2D *world_boundary_shape2d_class = memnew(WorldBoundaryShape2D);
+	WorldBoundaryShape2D *world_boundary_shape2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		world_boundary_shape2d_class = static_cast<WorldBoundaryShape2D *>(static_cast<Object *>(vobj));
+	} else {
+		world_boundary_shape2d_class = memnew(WorldBoundaryShape2D);
+	}
 	if (!world_boundary_shape2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -27,7 +27,13 @@ static JSValue physics_server3d_rendering_server_handler_class_constructor(JSCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsServer3DRenderingServerHandler::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PhysicsServer3DRenderingServerHandler *physics_server3d_rendering_server_handler_class = memnew(PhysicsServer3DRenderingServerHandler);
+	PhysicsServer3DRenderingServerHandler *physics_server3d_rendering_server_handler_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		physics_server3d_rendering_server_handler_class = static_cast<PhysicsServer3DRenderingServerHandler *>(static_cast<Object *>(vobj));
+	} else {
+		physics_server3d_rendering_server_handler_class = memnew(PhysicsServer3DRenderingServerHandler);
+	}
 	if (!physics_server3d_rendering_server_handler_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -86,7 +92,7 @@ static int js_physics_server3d_rendering_server_handler_class_init(JSContext *ct
 }
 
 JSModuleDef *_js_init_physics_server3d_rendering_server_handler_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

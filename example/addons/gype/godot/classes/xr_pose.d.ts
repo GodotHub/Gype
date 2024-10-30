@@ -4,7 +4,7 @@ import { RefCounted } from "@godot/classes/ref_counted";
 export declare class XRPose extends RefCounted{
   public set_has_tracking_data(_has_tracking_data: boolean): void;
   public get_has_tracking_data(): boolean;
-  public set_name(_name: StringName): void;
+  public set_name(_name: String | StringName | string): void;
   public get_name(): StringName;
   public set_transform(_transform: Transform3D): void;
   public get_transform(): Transform3D;

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/camera2d.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue camera2d_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Camera2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Camera2D *camera2d_class = memnew(Camera2D);
+	Camera2D *camera2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		camera2d_class = static_cast<Camera2D *>(static_cast<Object *>(vobj));
+	} else {
+		camera2d_class = memnew(Camera2D);
+	}
 	if (!camera2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

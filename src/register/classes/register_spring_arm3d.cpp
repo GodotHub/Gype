@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/spring_arm3d.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue spring_arm3d_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SpringArm3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SpringArm3D *spring_arm3d_class = memnew(SpringArm3D);
+	SpringArm3D *spring_arm3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		spring_arm3d_class = static_cast<SpringArm3D *>(static_cast<Object *>(vobj));
+	} else {
+		spring_arm3d_class = memnew(SpringArm3D);
+	}
 	if (!spring_arm3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

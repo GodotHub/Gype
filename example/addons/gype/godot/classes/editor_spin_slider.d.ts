@@ -2,9 +2,9 @@
 import { Range } from "@godot/classes/range";
 
 export declare class EditorSpinSlider extends Range{
-  public set_label(_label: String): void;
+  public set_label(_label: String | StringName | string): void;
   public get_label(): String;
-  public set_suffix(_suffix: String): void;
+  public set_suffix(_suffix: String | StringName | string): void;
   public get_suffix(): String;
   public set_read_only(_read_only: boolean): void;
   public is_read_only(): boolean;
@@ -42,4 +42,8 @@ export declare class EditorSpinSlider extends Range{
   public set hide_slider(value): void {
     set_hide_slider(value);
   }
+  public const grabbed: string = "grabbed";
+  public const ungrabbed: string = "ungrabbed";
+  public const value_focus_entered: string = "value_focus_entered";
+  public const value_focus_exited: string = "value_focus_exited";
 }

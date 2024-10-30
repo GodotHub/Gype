@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gltf_state.hpp>
-#include <godot_cpp/classes/gltf_buffer_view.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/gltf_buffer_view.hpp>
+#include <godot_cpp/classes/gltf_state.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue gltf_buffer_view_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFBufferView::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GLTFBufferView *gltf_buffer_view_class = memnew(GLTFBufferView);
+	GLTFBufferView *gltf_buffer_view_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gltf_buffer_view_class = static_cast<GLTFBufferView *>(static_cast<Object *>(vobj));
+	} else {
+		gltf_buffer_view_class = memnew(GLTFBufferView);
+	}
 	if (!gltf_buffer_view_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

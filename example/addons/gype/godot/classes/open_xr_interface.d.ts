@@ -11,8 +11,8 @@ export declare class OpenXRInterface extends XRInterface{
   public set_foveation_level(_foveation_level: number): void;
   public get_foveation_dynamic(): boolean;
   public set_foveation_dynamic(_foveation_dynamic: boolean): void;
-  public is_action_set_active(_name: String): boolean;
-  public set_action_set_active(_name: String, _active: boolean): void;
+  public is_action_set_active(_name: String | StringName | string): boolean;
+  public set_action_set_active(_name: String | StringName | string, _active: boolean): void;
   public get_action_sets(): GDArray;
   public get_available_display_refresh_rates(): GDArray;
   public set_motion_range(_hand: number, _motion_range: number): void;
@@ -121,4 +121,12 @@ export declare class OpenXRInterface extends XRInterface{
     HAND_JOINT_LINEAR_VELOCITY_VALID = 16,
     HAND_JOINT_ANGULAR_VELOCITY_VALID = 32,
   }
+  public const session_begun: string = "session_begun";
+  public const session_stopping: string = "session_stopping";
+  public const session_focussed: string = "session_focussed";
+  public const session_visible: string = "session_visible";
+  public const session_loss_pending: string = "session_loss_pending";
+  public const instance_exiting: string = "instance_exiting";
+  public const pose_recentered: string = "pose_recentered";
+  public const refresh_rate_changed: string = "refresh_rate_changed";
 }

@@ -27,7 +27,13 @@ static JSValue panel_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Panel::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Panel *panel_class = memnew(Panel);
+	Panel *panel_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		panel_class = static_cast<Panel *>(static_cast<Object *>(vobj));
+	} else {
+		panel_class = memnew(Panel);
+	}
 	if (!panel_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

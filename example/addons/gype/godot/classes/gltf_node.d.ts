@@ -3,7 +3,7 @@ import { Resource } from "@godot/classes/resource";
 
 export declare class GLTFNode extends Resource{
   public get_original_name(): String;
-  public set_original_name(_original_name: String): void;
+  public set_original_name(_original_name: String | StringName | string): void;
   public get_parent(): number;
   public set_parent(_parent: number): void;
   public get_height(): number;
@@ -28,8 +28,8 @@ export declare class GLTFNode extends Resource{
   public set_children(_children: PackedInt32Array): void;
   public get_light(): number;
   public set_light(_light: number): void;
-  public get_additional_data(_extension_name: StringName): any;
-  public set_additional_data(_extension_name: StringName, _additional_data: any): void;
+  public get_additional_data(_extension_name: String | StringName | string): any;
+  public set_additional_data(_extension_name: String | StringName | string, _additional_data: any): void;
   public get original_name(): String {
     get_original_name();
   }

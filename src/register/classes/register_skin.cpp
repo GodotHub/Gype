@@ -27,7 +27,13 @@ static JSValue skin_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Skin::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Skin *skin_class = memnew(Skin);
+	Skin *skin_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		skin_class = static_cast<Skin *>(static_cast<Object *>(vobj));
+	} else {
+		skin_class = memnew(Skin);
+	}
 	if (!skin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

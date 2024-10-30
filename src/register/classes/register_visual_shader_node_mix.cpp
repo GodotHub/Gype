@@ -27,7 +27,13 @@ static JSValue visual_shader_node_mix_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeMix::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeMix *visual_shader_node_mix_class = memnew(VisualShaderNodeMix);
+	VisualShaderNodeMix *visual_shader_node_mix_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_mix_class = static_cast<VisualShaderNodeMix *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_mix_class = memnew(VisualShaderNodeMix);
+	}
 	if (!visual_shader_node_mix_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

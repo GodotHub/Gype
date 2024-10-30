@@ -27,7 +27,13 @@ static JSValue groove_joint2d_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GrooveJoint2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GrooveJoint2D *groove_joint2d_class = memnew(GrooveJoint2D);
+	GrooveJoint2D *groove_joint2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		groove_joint2d_class = static_cast<GrooveJoint2D *>(static_cast<Object *>(vobj));
+	} else {
+		groove_joint2d_class = memnew(GrooveJoint2D);
+	}
 	if (!groove_joint2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

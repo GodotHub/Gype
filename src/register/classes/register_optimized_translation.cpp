@@ -27,7 +27,13 @@ static JSValue optimized_translation_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OptimizedTranslation::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	OptimizedTranslation *optimized_translation_class = memnew(OptimizedTranslation);
+	OptimizedTranslation *optimized_translation_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		optimized_translation_class = static_cast<OptimizedTranslation *>(static_cast<Object *>(vobj));
+	} else {
+		optimized_translation_class = memnew(OptimizedTranslation);
+	}
 	if (!optimized_translation_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

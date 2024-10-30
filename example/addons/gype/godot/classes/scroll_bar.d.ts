@@ -10,4 +10,5 @@ export declare class ScrollBar extends Range{
   public set custom_step(value): void {
     set_custom_step(value);
   }
+  public const scrolling: string = "scrolling";
 }

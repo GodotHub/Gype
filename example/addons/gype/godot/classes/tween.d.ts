@@ -1,11 +1,11 @@
 
-import { RefCounted } from "@godot/classes/ref_counted";
-import { PropertyTweener } from "@godot/classes/property_tweener";
-import { CallbackTweener } from "@godot/classes/callback_tweener";
 import { MethodTweener } from "@godot/classes/method_tweener";
+import { CallbackTweener } from "@godot/classes/callback_tweener";
 import { IntervalTweener } from "@godot/classes/interval_tweener";
-import { Object } from "@godot/classes/object";
 import { Node } from "@godot/classes/node";
+import { PropertyTweener } from "@godot/classes/property_tweener";
+import { GodotObject } from "@godot/classes/godot_object";
+import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class Tween extends RefCounted{
   public tween_property(_object: Object, _property: NodePath, _final_val: any, _duration: number): PropertyTweener;
@@ -61,4 +61,7 @@ export declare class Tween extends RefCounted{
     EASE_IN_OUT = 2,
     EASE_OUT_IN = 3,
   }
+  public const step_finished: string = "step_finished";
+  public const loop_finished: string = "loop_finished";
+  public const finished: string = "finished";
 }

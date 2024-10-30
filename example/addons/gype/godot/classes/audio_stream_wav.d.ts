@@ -16,7 +16,7 @@ export declare class AudioStreamWAV extends AudioStream{
   public get_mix_rate(): number;
   public set_stereo(_stereo: boolean): void;
   public is_stereo(): boolean;
-  public save_to_wav(_path: String): number;
+  public save_to_wav(_path: String | StringName | string): number;
   public get data(): PackedByteArray {
     get_data();
   }

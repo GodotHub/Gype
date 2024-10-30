@@ -27,7 +27,13 @@ static JSValue gd_extension_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GDExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GDExtension *gd_extension_class = memnew(GDExtension);
+	GDExtension *gd_extension_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gd_extension_class = static_cast<GDExtension *>(static_cast<Object *>(vobj));
+	} else {
+		gd_extension_class = memnew(GDExtension);
+	}
 	if (!gd_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -1,9 +1,9 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { Node } from "@godot/classes/node";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class StatusIndicator extends Node{
-  public set_tooltip(_tooltip: String): void;
+  public set_tooltip(_tooltip: String | StringName | string): void;
   public get_tooltip(): String;
   public set_icon(_texture: Texture2D): void;
   public get_icon(): Texture2D;
@@ -36,4 +36,5 @@ export declare class StatusIndicator extends Node{
   public set visible(value): void {
     set_visible(value);
   }
+  public const pressed: string = "pressed";
 }

@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/x509_certificate.hpp>
 #include <godot_cpp/classes/crypto_key.hpp>
-#include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue tls_options_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TLSOptions::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	TLSOptions *tls_options_class = memnew(TLSOptions);
+	TLSOptions *tls_options_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		tls_options_class = static_cast<TLSOptions *>(static_cast<Object *>(vobj));
+	} else {
+		tls_options_class = memnew(TLSOptions);
+	}
 	if (!tls_options_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

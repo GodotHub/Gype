@@ -1,13 +1,16 @@
 import { Node2D } from "@godot/classes/node2d";
-import { GodotClass } from "@godot/core/class_defined";
+import { GodotClass, ToSignal } from "@godot/core/class_defined";
 
 @GodotClass
 export class node_2d extends Node2D {
-	_ready(): void {
-		
+	public _enter_tree() {
+	}
+	
+	public _ready(): void {
 	}
 
-	_process(delta: number): void {
+	public _process(delta: number): void {
 
 	}
 }
+	

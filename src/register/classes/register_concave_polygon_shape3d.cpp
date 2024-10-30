@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/concave_polygon_shape3d.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue concave_polygon_shape3d_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ConcavePolygonShape3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ConcavePolygonShape3D *concave_polygon_shape3d_class = memnew(ConcavePolygonShape3D);
+	ConcavePolygonShape3D *concave_polygon_shape3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		concave_polygon_shape3d_class = static_cast<ConcavePolygonShape3D *>(static_cast<Object *>(vobj));
+	} else {
+		concave_polygon_shape3d_class = memnew(ConcavePolygonShape3D);
+	}
 	if (!concave_polygon_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

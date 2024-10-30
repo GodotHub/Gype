@@ -1,9 +1,9 @@
 
-import { XRTracker } from "@godot/classes/xr_tracker";
 import { XRInterface } from "@godot/classes/xr_interface";
-import { Object } from "@godot/classes/object";
+import { XRTracker } from "@godot/classes/xr_tracker";
+import { GodotObject } from "@godot/classes/godot_object";
 
-export declare class XRServer extends Object{
+export declare class XRServer extends GodotObject{
   public get_world_scale(): number;
   public set_world_scale(_scale: number): void;
   public get_world_origin(): Transform3D;
@@ -17,11 +17,11 @@ export declare class XRServer extends Object{
   public remove_interface(_interface: XRInterface): void;
   public get_interface(_idx: number): XRInterface;
   public get_interfaces(): GDArray;
-  public find_interface(_name: String): XRInterface;
+  public find_interface(_name: String | StringName | string): XRInterface;
   public add_tracker(_tracker: XRTracker): void;
   public remove_tracker(_tracker: XRTracker): void;
   public get_trackers(_tracker_types: number): Dictionary;
-  public get_tracker(_tracker_name: StringName): XRTracker;
+  public get_tracker(_tracker_name: String | StringName | string): XRTracker;
   public get_primary_interface(): XRInterface;
   public set_primary_interface(_interface: XRInterface): void;
   public get world_scale(): number {
@@ -59,4 +59,10 @@ export declare class XRServer extends Object{
     RESET_BUT_KEEP_TILT = 1,
     DONT_RESET_ROTATION = 2,
   }
+  public const reference_frame_changed: string = "reference_frame_changed";
+  public const interface_added: string = "interface_added";
+  public const interface_removed: string = "interface_removed";
+  public const tracker_added: string = "tracker_added";
+  public const tracker_updated: string = "tracker_updated";
+  public const tracker_removed: string = "tracker_removed";
 }

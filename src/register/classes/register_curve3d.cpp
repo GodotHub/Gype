@@ -27,7 +27,13 @@ static JSValue curve3d_class_constructor(JSContext *ctx, JSValueConst new_target
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Curve3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Curve3D *curve3d_class = memnew(Curve3D);
+	Curve3D *curve3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		curve3d_class = static_cast<Curve3D *>(static_cast<Object *>(vobj));
+	} else {
+		curve3d_class = memnew(Curve3D);
+	}
 	if (!curve3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

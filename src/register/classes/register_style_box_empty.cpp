@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/style_box_empty.hpp>
+#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue style_box_empty_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StyleBoxEmpty::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	StyleBoxEmpty *style_box_empty_class = memnew(StyleBoxEmpty);
+	StyleBoxEmpty *style_box_empty_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		style_box_empty_class = static_cast<StyleBoxEmpty *>(static_cast<Object *>(vobj));
+	} else {
+		style_box_empty_class = memnew(StyleBoxEmpty);
+	}
 	if (!style_box_empty_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

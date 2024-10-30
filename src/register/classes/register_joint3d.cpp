@@ -27,7 +27,13 @@ static JSValue joint3d_class_constructor(JSContext *ctx, JSValueConst new_target
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Joint3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Joint3D *joint3d_class = memnew(Joint3D);
+	Joint3D *joint3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		joint3d_class = static_cast<Joint3D *>(static_cast<Object *>(vobj));
+	} else {
+		joint3d_class = memnew(Joint3D);
+	}
 	if (!joint3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

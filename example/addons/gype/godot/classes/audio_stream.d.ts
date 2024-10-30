@@ -1,7 +1,7 @@
 
+import { Resource } from "@godot/classes/resource";
 import { AudioSample } from "@godot/classes/audio_sample";
 import { AudioStreamPlayback } from "@godot/classes/audio_stream_playback";
-import { Resource } from "@godot/classes/resource";
 
 export declare class AudioStream extends Resource{
   public _instantiate_playback(): AudioStreamPlayback;
@@ -17,4 +17,5 @@ export declare class AudioStream extends Resource{
   public can_be_sampled(): boolean;
   public generate_sample(): AudioSample;
   public is_meta_stream(): boolean;
+  public const parameter_list_changed: string = "parameter_list_changed";
 }

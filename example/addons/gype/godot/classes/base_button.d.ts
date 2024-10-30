@@ -1,7 +1,7 @@
 
-import { ButtonGroup } from "@godot/classes/button_group";
-import { Control } from "@godot/classes/control";
 import { Shortcut } from "@godot/classes/shortcut";
+import { Control } from "@godot/classes/control";
+import { ButtonGroup } from "@godot/classes/button_group";
 
 export declare class BaseButton extends Control{
   public _pressed(): void;
@@ -100,4 +100,8 @@ export declare class BaseButton extends Control{
     ACTION_MODE_BUTTON_PRESS = 0,
     ACTION_MODE_BUTTON_RELEASE = 1,
   }
+  public const pressed: string = "pressed";
+  public const button_up: string = "button_up";
+  public const button_down: string = "button_down";
+  public const toggled: string = "toggled";
 }

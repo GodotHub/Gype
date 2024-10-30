@@ -8,7 +8,7 @@ export declare class GLTFPhysicsBody extends Resource{
   public from_dictionary(_dictionary: Dictionary): GLTFPhysicsBody;
   public to_dictionary(): Dictionary;
   public get_body_type(): String;
-  public set_body_type(_body_type: String): void;
+  public set_body_type(_body_type: String | StringName | string): void;
   public get_mass(): number;
   public set_mass(_mass: number): void;
   public get_linear_velocity(): Vector3;

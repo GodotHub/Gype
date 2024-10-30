@@ -1,7 +1,7 @@
 
+import { Node3DGizmo } from "@godot/classes/node3d_gizmo";
 import { World3D } from "@godot/classes/world3d";
 import { Node } from "@godot/classes/node";
-import { Node3DGizmo } from "@godot/classes/node3d_gizmo";
 import { Node3DGizmo } from "@godot/classes/node3d_gizmo";
 
 export declare class Node3D extends Node{
@@ -182,4 +182,5 @@ export declare class Node3D extends Node{
     ROTATION_EDIT_MODE_QUATERNION = 1,
     ROTATION_EDIT_MODE_BASIS = 2,
   }
+  public const visibility_changed: string = "visibility_changed";
 }

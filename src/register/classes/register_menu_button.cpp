@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/menu_button.hpp>
+#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue menu_button_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MenuButton::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	MenuButton *menu_button_class = memnew(MenuButton);
+	MenuButton *menu_button_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		menu_button_class = static_cast<MenuButton *>(static_cast<Object *>(vobj));
+	} else {
+		menu_button_class = memnew(MenuButton);
+	}
 	if (!menu_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

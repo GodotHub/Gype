@@ -27,7 +27,13 @@ static JSValue bone2d_class_constructor(JSContext *ctx, JSValueConst new_target,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Bone2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Bone2D *bone2d_class = memnew(Bone2D);
+	Bone2D *bone2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		bone2d_class = static_cast<Bone2D *>(static_cast<Object *>(vobj));
+	} else {
+		bone2d_class = memnew(Bone2D);
+	}
 	if (!bone2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

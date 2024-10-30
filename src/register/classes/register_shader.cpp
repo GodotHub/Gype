@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/shader.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue shader_class_constructor(JSContext *ctx, JSValueConst new_target,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Shader::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Shader *shader_class = memnew(Shader);
+	Shader *shader_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		shader_class = static_cast<Shader *>(static_cast<Object *>(vobj));
+	} else {
+		shader_class = memnew(Shader);
+	}
 	if (!shader_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -27,7 +27,13 @@ static JSValue input_event_from_window_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventFromWindow::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	InputEventFromWindow *input_event_from_window_class = memnew(InputEventFromWindow);
+	InputEventFromWindow *input_event_from_window_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		input_event_from_window_class = static_cast<InputEventFromWindow *>(static_cast<Object *>(vobj));
+	} else {
+		input_event_from_window_class = memnew(InputEventFromWindow);
+	}
 	if (!input_event_from_window_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

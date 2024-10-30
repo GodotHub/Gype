@@ -1,7 +1,7 @@
 
-import { Object } from "@godot/classes/object";
+import { GodotObject } from "@godot/classes/godot_object";
 
-export declare class RenderSceneData extends Object{
+export declare class RenderSceneData extends GodotObject{
   public get_cam_transform(): Transform3D;
   public get_cam_projection(): Projection;
   public get_view_count(): number;

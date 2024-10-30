@@ -28,7 +28,13 @@ static JSValue input_event_shortcut_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventShortcut::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	InputEventShortcut *input_event_shortcut_class = memnew(InputEventShortcut);
+	InputEventShortcut *input_event_shortcut_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		input_event_shortcut_class = static_cast<InputEventShortcut *>(static_cast<Object *>(vobj));
+	} else {
+		input_event_shortcut_class = memnew(InputEventShortcut);
+	}
 	if (!input_event_shortcut_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -15,7 +15,7 @@ export declare class AnimationNodeBlendSpace1D extends AnimationRootNode{
   public get_max_space(): number;
   public set_snap(_snap: number): void;
   public get_snap(): number;
-  public set_value_label(_text: String): void;
+  public set_value_label(_text: String | StringName | string): void;
   public get_value_label(): String;
   public set_blend_mode(_mode: number): void;
   public get_blend_mode(): number;

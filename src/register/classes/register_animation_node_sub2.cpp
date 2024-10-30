@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_node_sub2.hpp>
 #include <godot_cpp/classes/animation_node_sync.hpp>
+#include <godot_cpp/classes/animation_node_sub2.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue animation_node_sub2_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeSub2::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AnimationNodeSub2 *animation_node_sub2_class = memnew(AnimationNodeSub2);
+	AnimationNodeSub2 *animation_node_sub2_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		animation_node_sub2_class = static_cast<AnimationNodeSub2 *>(static_cast<Object *>(vobj));
+	} else {
+		animation_node_sub2_class = memnew(AnimationNodeSub2);
+	}
 	if (!animation_node_sub2_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

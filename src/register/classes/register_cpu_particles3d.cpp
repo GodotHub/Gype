@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gradient.hpp>
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/curve.hpp>
-#include <godot_cpp/classes/cpu_particles3d.hpp>
 #include <godot_cpp/classes/geometry_instance3d.hpp>
+#include <godot_cpp/classes/cpu_particles3d.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/gradient.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,7 +31,13 @@ static JSValue cpu_particles3d_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CPUParticles3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CPUParticles3D *cpu_particles3d_class = memnew(CPUParticles3D);
+	CPUParticles3D *cpu_particles3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		cpu_particles3d_class = static_cast<CPUParticles3D *>(static_cast<Object *>(vobj));
+	} else {
+		cpu_particles3d_class = memnew(CPUParticles3D);
+	}
 	if (!cpu_particles3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

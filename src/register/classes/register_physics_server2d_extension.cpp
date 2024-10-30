@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_direct_body_state2d.hpp>
 #include <godot_cpp/classes/physics_direct_space_state2d.hpp>
-#include <godot_cpp/classes/physics_server2d.hpp>
 #include <godot_cpp/classes/physics_server2d_extension.hpp>
+#include <godot_cpp/classes/physics_server2d.hpp>
+#include <godot_cpp/classes/physics_direct_body_state2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue physics_server2d_extension_class_constructor(JSContext *ctx, JSVa
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsServer2DExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PhysicsServer2DExtension *physics_server2d_extension_class = memnew(PhysicsServer2DExtension);
+	PhysicsServer2DExtension *physics_server2d_extension_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		physics_server2d_extension_class = static_cast<PhysicsServer2DExtension *>(static_cast<Object *>(vobj));
+	} else {
+		physics_server2d_extension_class = memnew(PhysicsServer2DExtension);
+	}
 	if (!physics_server2d_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

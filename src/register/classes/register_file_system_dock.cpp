@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/file_system_dock.hpp>
-#include <godot_cpp/classes/v_box_container.hpp>
 #include <godot_cpp/classes/editor_resource_tooltip_plugin.hpp>
+#include <godot_cpp/classes/v_box_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue file_system_dock_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, FileSystemDock::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	FileSystemDock *file_system_dock_class = memnew(FileSystemDock);
+	FileSystemDock *file_system_dock_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		file_system_dock_class = static_cast<FileSystemDock *>(static_cast<Object *>(vobj));
+	} else {
+		file_system_dock_class = memnew(FileSystemDock);
+	}
 	if (!file_system_dock_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

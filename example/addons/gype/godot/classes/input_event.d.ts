@@ -4,10 +4,10 @@ import { Resource } from "@godot/classes/resource";
 export declare class InputEvent extends Resource{
   public set_device(_device: number): void;
   public get_device(): number;
-  public is_action(_action: StringName, _exact_match: boolean): boolean;
-  public is_action_pressed(_action: StringName, _allow_echo: boolean, _exact_match: boolean): boolean;
-  public is_action_released(_action: StringName, _exact_match: boolean): boolean;
-  public get_action_strength(_action: StringName, _exact_match: boolean): number;
+  public is_action(_action: String | StringName | string, _exact_match: boolean): boolean;
+  public is_action_pressed(_action: String | StringName | string, _allow_echo: boolean, _exact_match: boolean): boolean;
+  public is_action_released(_action: String | StringName | string, _exact_match: boolean): boolean;
+  public get_action_strength(_action: String | StringName | string, _exact_match: boolean): number;
   public is_canceled(): boolean;
   public is_pressed(): boolean;
   public is_released(): boolean;

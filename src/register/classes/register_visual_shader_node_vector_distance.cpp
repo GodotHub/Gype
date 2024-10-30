@@ -27,7 +27,13 @@ static JSValue visual_shader_node_vector_distance_class_constructor(JSContext *c
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeVectorDistance::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeVectorDistance *visual_shader_node_vector_distance_class = memnew(VisualShaderNodeVectorDistance);
+	VisualShaderNodeVectorDistance *visual_shader_node_vector_distance_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_vector_distance_class = static_cast<VisualShaderNodeVectorDistance *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_vector_distance_class = memnew(VisualShaderNodeVectorDistance);
+	}
 	if (!visual_shader_node_vector_distance_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

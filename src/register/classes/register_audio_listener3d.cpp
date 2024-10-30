@@ -27,7 +27,13 @@ static JSValue audio_listener3d_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioListener3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioListener3D *audio_listener3d_class = memnew(AudioListener3D);
+	AudioListener3D *audio_listener3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_listener3d_class = static_cast<AudioListener3D *>(static_cast<Object *>(vobj));
+	} else {
+		audio_listener3d_class = memnew(AudioListener3D);
+	}
 	if (!audio_listener3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

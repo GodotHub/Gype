@@ -5,17 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/multiplayer_api.hpp>
-#include <godot_cpp/classes/scene_tree_timer.hpp>
-#include <godot_cpp/classes/scene_tree.hpp>
-#include <godot_cpp/classes/tween.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/main_loop.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/packed_scene.hpp>
+#include <godot_cpp/classes/scene_tree.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/scene_tree_timer.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,7 +36,13 @@ static JSValue scene_tree_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SceneTree::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SceneTree *scene_tree_class = memnew(SceneTree);
+	SceneTree *scene_tree_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		scene_tree_class = static_cast<SceneTree *>(static_cast<Object *>(vobj));
+	} else {
+		scene_tree_class = memnew(SceneTree);
+	}
 	if (!scene_tree_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

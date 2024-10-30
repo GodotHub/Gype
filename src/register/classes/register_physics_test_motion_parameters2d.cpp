@@ -27,7 +27,13 @@ static JSValue physics_test_motion_parameters2d_class_constructor(JSContext *ctx
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsTestMotionParameters2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PhysicsTestMotionParameters2D *physics_test_motion_parameters2d_class = memnew(PhysicsTestMotionParameters2D);
+	PhysicsTestMotionParameters2D *physics_test_motion_parameters2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		physics_test_motion_parameters2d_class = static_cast<PhysicsTestMotionParameters2D *>(static_cast<Object *>(vobj));
+	} else {
+		physics_test_motion_parameters2d_class = memnew(PhysicsTestMotionParameters2D);
+	}
 	if (!physics_test_motion_parameters2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

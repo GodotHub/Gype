@@ -27,7 +27,13 @@ static JSValue segment_shape2d_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SegmentShape2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SegmentShape2D *segment_shape2d_class = memnew(SegmentShape2D);
+	SegmentShape2D *segment_shape2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		segment_shape2d_class = static_cast<SegmentShape2D *>(static_cast<Object *>(vobj));
+	} else {
+		segment_shape2d_class = memnew(SegmentShape2D);
+	}
 	if (!segment_shape2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

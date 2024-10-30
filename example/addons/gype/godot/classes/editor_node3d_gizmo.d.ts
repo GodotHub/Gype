@@ -1,13 +1,13 @@
 
+import { Node3DGizmo } from "@godot/classes/node3d_gizmo";
+import { Node3D } from "@godot/classes/node3d";
+import { EditorNode3DGizmoPlugin } from "@godot/classes/editor_node3d_gizmo_plugin";
+import { Camera3D } from "@godot/classes/camera3d";
+import { SkinReference } from "@godot/classes/skin_reference";
+import { Material } from "@godot/classes/material";
 import { Mesh } from "@godot/classes/mesh";
 import { TriangleMesh } from "@godot/classes/triangle_mesh";
-import { Material } from "@godot/classes/material";
-import { SkinReference } from "@godot/classes/skin_reference";
-import { Node3D } from "@godot/classes/node3d";
 import { Node } from "@godot/classes/node";
-import { Camera3D } from "@godot/classes/camera3d";
-import { Node3DGizmo } from "@godot/classes/node3d_gizmo";
-import { EditorNode3DGizmoPlugin } from "@godot/classes/editor_node3d_gizmo_plugin";
 
 export declare class EditorNode3DGizmo extends Node3DGizmo{
   public _redraw(): void;

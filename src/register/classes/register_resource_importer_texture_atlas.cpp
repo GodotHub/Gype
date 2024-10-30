@@ -27,7 +27,13 @@ static JSValue resource_importer_texture_atlas_class_constructor(JSContext *ctx,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterTextureAtlas::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ResourceImporterTextureAtlas *resource_importer_texture_atlas_class = memnew(ResourceImporterTextureAtlas);
+	ResourceImporterTextureAtlas *resource_importer_texture_atlas_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		resource_importer_texture_atlas_class = static_cast<ResourceImporterTextureAtlas *>(static_cast<Object *>(vobj));
+	} else {
+		resource_importer_texture_atlas_class = memnew(ResourceImporterTextureAtlas);
+	}
 	if (!resource_importer_texture_atlas_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

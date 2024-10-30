@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/animation.hpp>
-#include <godot_cpp/classes/animation_mixer.hpp>
 #include <godot_cpp/classes/animation_library.hpp>
+#include <godot_cpp/classes/animation.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/animation_mixer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue animation_mixer_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationMixer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AnimationMixer *animation_mixer_class = memnew(AnimationMixer);
+	AnimationMixer *animation_mixer_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		animation_mixer_class = static_cast<AnimationMixer *>(static_cast<Object *>(vobj));
+	} else {
+		animation_mixer_class = memnew(AnimationMixer);
+	}
 	if (!animation_mixer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -27,7 +27,13 @@ static JSValue rd_pipeline_color_blend_state_attachment_class_constructor(JSCont
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDPipelineColorBlendStateAttachment::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RDPipelineColorBlendStateAttachment *rd_pipeline_color_blend_state_attachment_class = memnew(RDPipelineColorBlendStateAttachment);
+	RDPipelineColorBlendStateAttachment *rd_pipeline_color_blend_state_attachment_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		rd_pipeline_color_blend_state_attachment_class = static_cast<RDPipelineColorBlendStateAttachment *>(static_cast<Object *>(vobj));
+	} else {
+		rd_pipeline_color_blend_state_attachment_class = memnew(RDPipelineColorBlendStateAttachment);
+	}
 	if (!rd_pipeline_color_blend_state_attachment_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -27,7 +27,13 @@ static JSValue animatable_body2d_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimatableBody2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AnimatableBody2D *animatable_body2d_class = memnew(AnimatableBody2D);
+	AnimatableBody2D *animatable_body2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		animatable_body2d_class = static_cast<AnimatableBody2D *>(static_cast<Object *>(vobj));
+	} else {
+		animatable_body2d_class = memnew(AnimatableBody2D);
+	}
 	if (!animatable_body2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

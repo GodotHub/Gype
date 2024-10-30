@@ -1,12 +1,12 @@
 
-import { Object } from "@godot/classes/object";
+import { GodotObject } from "@godot/classes/godot_object";
 
-export declare class Performance extends Object{
+export declare class Performance extends GodotObject{
   public get_monitor(_monitor: number): number;
-  public add_custom_monitor(_id: StringName, _callable: Callable, _arguments: GDArray): void;
-  public remove_custom_monitor(_id: StringName): void;
-  public has_custom_monitor(_id: StringName): boolean;
-  public get_custom_monitor(_id: StringName): any;
+  public add_custom_monitor(_id: String | StringName | string, _callable: Callable, _arguments: GDArray): void;
+  public remove_custom_monitor(_id: String | StringName | string): void;
+  public has_custom_monitor(_id: String | StringName | string): boolean;
+  public get_custom_monitor(_id: String | StringName | string): any;
   public get_monitor_modification_time(): number;
   public get_custom_monitor_names(): GDArray;
   static Monitor = {

@@ -72,4 +72,7 @@ export declare class SceneMultiplayer extends MultiplayerAPI{
   public set max_delta_packet_size(value): void {
     set_max_delta_packet_size(value);
   }
+  public const peer_authenticating: string = "peer_authenticating";
+  public const peer_authentication_failed: string = "peer_authentication_failed";
+  public const peer_packet: string = "peer_packet";
 }

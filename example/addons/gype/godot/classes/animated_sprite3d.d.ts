@@ -5,13 +5,13 @@ import { SpriteFrames } from "@godot/classes/sprite_frames";
 export declare class AnimatedSprite3D extends SpriteBase3D{
   public set_sprite_frames(_sprite_frames: SpriteFrames): void;
   public get_sprite_frames(): SpriteFrames;
-  public set_animation(_name: StringName): void;
+  public set_animation(_name: String | StringName | string): void;
   public get_animation(): StringName;
-  public set_autoplay(_name: String): void;
+  public set_autoplay(_name: String | StringName | string): void;
   public get_autoplay(): String;
   public is_playing(): boolean;
-  public play(_name: StringName, _custom_speed: number, _from_end: boolean): void;
-  public play_backwards(_name: StringName): void;
+  public play(_name: String | StringName | string, _custom_speed: number, _from_end: boolean): void;
+  public play_backwards(_name: String | StringName | string): void;
   public pause(): void;
   public stop(): void;
   public set_frame(_frame: number): void;
@@ -58,4 +58,9 @@ export declare class AnimatedSprite3D extends SpriteBase3D{
   public set speed_scale(value): void {
     set_speed_scale(value);
   }
+  public const sprite_frames_changed: string = "sprite_frames_changed";
+  public const animation_changed: string = "animation_changed";
+  public const frame_changed: string = "frame_changed";
+  public const animation_looped: string = "animation_looped";
+  public const animation_finished: string = "animation_finished";
 }

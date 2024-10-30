@@ -3,12 +3,12 @@ import { Image } from "@godot/classes/image";
 import { Font } from "@godot/classes/font";
 
 export declare class FontFile extends Font{
-  public load_bitmap_font(_path: String): number;
-  public load_dynamic_font(_path: String): number;
+  public load_bitmap_font(_path: String | StringName | string): number;
+  public load_dynamic_font(_path: String | StringName | string): number;
   public set_data(_data: PackedByteArray): void;
   public get_data(): PackedByteArray;
-  public set_font_name(_name: String): void;
-  public set_font_style_name(_name: String): void;
+  public set_font_name(_name: String | StringName | string): void;
+  public set_font_style_name(_name: String | StringName | string): void;
   public set_font_style(_style: number): void;
   public set_font_weight(_weight: number): void;
   public set_font_stretch(_stretch: number): void;
@@ -93,13 +93,13 @@ export declare class FontFile extends Font{
   public get_kerning(_cache_index: number, _size: number, _glyph_pair: Vector2i): Vector2;
   public render_range(_cache_index: number, _size: Vector2i, _start: number, _end: number): void;
   public render_glyph(_cache_index: number, _size: Vector2i, _index: number): void;
-  public set_language_support_override(_language: String, _supported: boolean): void;
-  public get_language_support_override(_language: String): boolean;
-  public remove_language_support_override(_language: String): void;
+  public set_language_support_override(_language: String | StringName | string, _supported: boolean): void;
+  public get_language_support_override(_language: String | StringName | string): boolean;
+  public remove_language_support_override(_language: String | StringName | string): void;
   public get_language_support_overrides(): PackedStringArray;
-  public set_script_support_override(_script: String, _supported: boolean): void;
-  public get_script_support_override(_script: String): boolean;
-  public remove_script_support_override(_script: String): void;
+  public set_script_support_override(_script: String | StringName | string, _supported: boolean): void;
+  public get_script_support_override(_script: String | StringName | string): boolean;
+  public remove_script_support_override(_script: String | StringName | string): void;
   public get_script_support_overrides(): PackedStringArray;
   public set_opentype_feature_overrides(_overrides: Dictionary): void;
   public get_opentype_feature_overrides(): Dictionary;

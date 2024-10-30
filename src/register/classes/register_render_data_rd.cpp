@@ -27,7 +27,13 @@ static JSValue render_data_rd_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RenderDataRD::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RenderDataRD *render_data_rd_class = memnew(RenderDataRD);
+	RenderDataRD *render_data_rd_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		render_data_rd_class = static_cast<RenderDataRD *>(static_cast<Object *>(vobj));
+	} else {
+		render_data_rd_class = memnew(RenderDataRD);
+	}
 	if (!render_data_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

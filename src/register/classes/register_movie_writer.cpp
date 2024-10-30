@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/movie_writer.hpp>
-#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue movie_writer_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MovieWriter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	MovieWriter *movie_writer_class = memnew(MovieWriter);
+	MovieWriter *movie_writer_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		movie_writer_class = static_cast<MovieWriter *>(static_cast<Object *>(vobj));
+	} else {
+		movie_writer_class = memnew(MovieWriter);
+	}
 	if (!movie_writer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -74,7 +80,7 @@ static int js_movie_writer_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_movie_writer_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

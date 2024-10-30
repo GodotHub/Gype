@@ -1,11 +1,11 @@
 
-import { TLSOptions } from "@godot/classes/tls_options";
 import { WebSocketPeer } from "@godot/classes/web_socket_peer";
+import { TLSOptions } from "@godot/classes/tls_options";
 import { MultiplayerPeer } from "@godot/classes/multiplayer_peer";
 
 export declare class WebSocketMultiplayerPeer extends MultiplayerPeer{
-  public create_client(_url: String, _tls_client_options: TLSOptions): number;
-  public create_server(_port: number, _bind_address: String, _tls_server_options: TLSOptions): number;
+  public create_client(_url: String | StringName | string, _tls_client_options: TLSOptions): number;
+  public create_server(_port: number, _bind_address: String | StringName | string, _tls_server_options: TLSOptions): number;
   public get_peer(_peer_id: number): WebSocketPeer;
   public get_peer_address(_id: number): String;
   public get_peer_port(_id: number): number;

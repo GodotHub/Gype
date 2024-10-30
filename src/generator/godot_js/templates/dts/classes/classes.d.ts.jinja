@@ -1,16 +1,33 @@
+{%- set inherits = class['inherits'] -%}
+{%- if inherits == 'Object'%}
+  {%- set inherits = 'GodotObject' -%}
+{%- endif %}
+
 {%- macro extends(class) -%}
-{%- if class['inherits'] -%}
- extends {{class['inherits']}}
+{%- if inherits -%}
+ extends {{inherits}}
 {%- endif -%}
 {%- endmacro -%}
 
-{%- for den in dependency %}
-{%- if den != class['name']%}
-import { {{den}} } from "@godot/classes/{{camel_to_snake(den)}}";
+{%- set class_name = class['name'] -%}
+{%- if class_name == 'Object'%}
+  {%- set class_name = 'GodotObject' -%}
 {%- endif %}
+
+{%- for den in dependency %}
+  {%- if den == 'Object' %}
+    {%- set den = 'GodotObject' %}
+    {%- if den != class_name %}
+import { {{den}} } from "@godot/classes/{{camel_to_snake(den)}}";
+    {%- endif %}
+  {%- else %}
+    {%- if den != class_name %}
+import { {{den}} } from "@godot/classes/{{camel_to_snake(den)}}";
+    {%- endif %}
+  {%- endif %}
 {%- endfor %}
 
-export declare class {{class['name']}} {{extends(class)}}{
+export declare class {{class_name}} {{extends(class)}}{
   {%- for method in class['methods'] %}
   public {{method['name']}}({{connect_args(method['arguments'])}}){{set_return(method['return_value']['type'] if method['return_value'] else None)}};
   {%- endfor %}
@@ -32,5 +49,8 @@ export declare class {{class['name']}} {{extends(class)}}{
     {{value['name']}} = {{value['value']}},
     {%- endfor %}
   }
+  {%- endfor %}
+  {%- for signal in class['signals'] %}
+  public const {{signal['name']}}: string = "{{signal['name']}}";
   {%- endfor %}
 }

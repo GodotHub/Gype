@@ -1,6 +1,6 @@
 
 import { CollisionObject3D } from "@godot/classes/collision_object3d";
-import { Object } from "@godot/classes/object";
+import { GodotObject } from "@godot/classes/godot_object";
 import { Node3D } from "@godot/classes/node3d";
 
 export declare class RayCast3D extends Node3D{

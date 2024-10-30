@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/crypto_key.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/crypto_key.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue crypto_key_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CryptoKey::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CryptoKey *crypto_key_class = memnew(CryptoKey);
+	CryptoKey *crypto_key_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		crypto_key_class = static_cast<CryptoKey *>(static_cast<Object *>(vobj));
+	} else {
+		crypto_key_class = memnew(CryptoKey);
+	}
 	if (!crypto_key_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

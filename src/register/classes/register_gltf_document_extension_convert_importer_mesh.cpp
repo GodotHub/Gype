@@ -27,7 +27,13 @@ static JSValue gltf_document_extension_convert_importer_mesh_class_constructor(J
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFDocumentExtensionConvertImporterMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GLTFDocumentExtensionConvertImporterMesh *gltf_document_extension_convert_importer_mesh_class = memnew(GLTFDocumentExtensionConvertImporterMesh);
+	GLTFDocumentExtensionConvertImporterMesh *gltf_document_extension_convert_importer_mesh_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gltf_document_extension_convert_importer_mesh_class = static_cast<GLTFDocumentExtensionConvertImporterMesh *>(static_cast<Object *>(vobj));
+	} else {
+		gltf_document_extension_convert_importer_mesh_class = memnew(GLTFDocumentExtensionConvertImporterMesh);
+	}
 	if (!gltf_document_extension_convert_importer_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -27,7 +27,13 @@ static JSValue script_create_dialog_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ScriptCreateDialog::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ScriptCreateDialog *script_create_dialog_class = memnew(ScriptCreateDialog);
+	ScriptCreateDialog *script_create_dialog_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		script_create_dialog_class = static_cast<ScriptCreateDialog *>(static_cast<Object *>(vobj));
+	} else {
+		script_create_dialog_class = memnew(ScriptCreateDialog);
+	}
 	if (!script_create_dialog_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

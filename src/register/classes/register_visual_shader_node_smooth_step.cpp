@@ -27,7 +27,13 @@ static JSValue visual_shader_node_smooth_step_class_constructor(JSContext *ctx, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeSmoothStep::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeSmoothStep *visual_shader_node_smooth_step_class = memnew(VisualShaderNodeSmoothStep);
+	VisualShaderNodeSmoothStep *visual_shader_node_smooth_step_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_smooth_step_class = static_cast<VisualShaderNodeSmoothStep *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_smooth_step_class = memnew(VisualShaderNodeSmoothStep);
+	}
 	if (!visual_shader_node_smooth_step_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -27,7 +27,13 @@ static JSValue v_slider_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VSlider::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VSlider *v_slider_class = memnew(VSlider);
+	VSlider *v_slider_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		v_slider_class = static_cast<VSlider *>(static_cast<Object *>(vobj));
+	} else {
+		v_slider_class = memnew(VSlider);
+	}
 	if (!v_slider_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

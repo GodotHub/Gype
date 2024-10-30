@@ -1,14 +1,14 @@
 
-import { Object } from "@godot/classes/object";
+import { GodotObject } from "@godot/classes/godot_object";
 
-export declare class UndoRedo extends Object{
-  public create_action(_name: String, _merge_mode: number, _backward_undo_ops: boolean): void;
+export declare class UndoRedo extends GodotObject{
+  public create_action(_name: String | StringName | string, _merge_mode: number, _backward_undo_ops: boolean): void;
   public commit_action(_execute: boolean): void;
   public is_committing_action(): boolean;
   public add_do_method(_callable: Callable): void;
   public add_undo_method(_callable: Callable): void;
-  public add_do_property(_object: Object, _property: StringName, _value: any): void;
-  public add_undo_property(_object: Object, _property: StringName, _value: any): void;
+  public add_do_property(_object: Object, _property: String | StringName | string, _value: any): void;
+  public add_undo_property(_object: Object, _property: String | StringName | string, _value: any): void;
   public add_do_reference(_object: Object): void;
   public add_undo_reference(_object: Object): void;
   public start_force_keep_in_merge_ends(): void;
@@ -36,4 +36,5 @@ export declare class UndoRedo extends Object{
     MERGE_ENDS = 1,
     MERGE_ALL = 2,
   }
+  public const version_changed: string = "version_changed";
 }

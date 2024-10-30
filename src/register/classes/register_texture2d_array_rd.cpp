@@ -27,7 +27,13 @@ static JSValue texture2d_array_rd_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Texture2DArrayRD::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Texture2DArrayRD *texture2d_array_rd_class = memnew(Texture2DArrayRD);
+	Texture2DArrayRD *texture2d_array_rd_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		texture2d_array_rd_class = static_cast<Texture2DArrayRD *>(static_cast<Object *>(vobj));
+	} else {
+		texture2d_array_rd_class = memnew(Texture2DArrayRD);
+	}
 	if (!texture2d_array_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

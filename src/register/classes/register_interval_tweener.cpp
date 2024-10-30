@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tweener.hpp>
 #include <godot_cpp/classes/interval_tweener.hpp>
+#include <godot_cpp/classes/tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue interval_tweener_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, IntervalTweener::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	IntervalTweener *interval_tweener_class = memnew(IntervalTweener);
+	IntervalTweener *interval_tweener_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		interval_tweener_class = static_cast<IntervalTweener *>(static_cast<Object *>(vobj));
+	} else {
+		interval_tweener_class = memnew(IntervalTweener);
+	}
 	if (!interval_tweener_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

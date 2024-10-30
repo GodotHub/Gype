@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/multiplayer_api.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/multiplayer_peer.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/multiplayer_api.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue multiplayer_api_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MultiplayerAPI::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	MultiplayerAPI *multiplayer_api_class = memnew(MultiplayerAPI);
+	MultiplayerAPI *multiplayer_api_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		multiplayer_api_class = static_cast<MultiplayerAPI *>(static_cast<Object *>(vobj));
+	} else {
+		multiplayer_api_class = memnew(MultiplayerAPI);
+	}
 	if (!multiplayer_api_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

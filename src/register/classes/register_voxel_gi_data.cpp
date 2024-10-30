@@ -27,7 +27,13 @@ static JSValue voxel_gi_data_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VoxelGIData::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VoxelGIData *voxel_gi_data_class = memnew(VoxelGIData);
+	VoxelGIData *voxel_gi_data_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		voxel_gi_data_class = static_cast<VoxelGIData *>(static_cast<Object *>(vobj));
+	} else {
+		voxel_gi_data_class = memnew(VoxelGIData);
+	}
 	if (!voxel_gi_data_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

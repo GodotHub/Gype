@@ -25,7 +25,7 @@ PackedStringArray TypeScriptLoader::_get_recognized_extensions() const {
 }
 
 bool TypeScriptLoader::_recognize_path(const String &p_path, const StringName &p_type) const {
-	return p_path.ends_with(".js") || p_path.ends_with(".ts");
+	return p_path.get_extension() == "js" || p_path.get_extension() == "ts";
 }
 
 bool TypeScriptLoader::_handles_type(const StringName &p_type) const {
@@ -68,7 +68,6 @@ Variant TypeScriptLoader::_load(const String &p_path, const String &p_original_p
 	String source_code = FileAccess::get_file_as_string(p_original_path);
 	Ref<TypeScript> script = memnew(TypeScript(p_path, p_original_path));
 	script->source_code = source_code;
-	// script->_set_source_code(source_code);
 	TypeScriptLanguage::get_singleton()->scripts.insert(script);
 	return script;
 }

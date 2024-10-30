@@ -27,7 +27,13 @@ static JSValue occluder_polygon2d_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OccluderPolygon2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	OccluderPolygon2D *occluder_polygon2d_class = memnew(OccluderPolygon2D);
+	OccluderPolygon2D *occluder_polygon2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		occluder_polygon2d_class = static_cast<OccluderPolygon2D *>(static_cast<Object *>(vobj));
+	} else {
+		occluder_polygon2d_class = memnew(OccluderPolygon2D);
+	}
 	if (!occluder_polygon2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

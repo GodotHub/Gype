@@ -34,4 +34,6 @@ export declare class Slider extends Range{
   public set ticks_on_borders(value): void {
     set_ticks_on_borders(value);
   }
+  public const drag_started: string = "drag_started";
+  public const drag_ended: string = "drag_ended";
 }

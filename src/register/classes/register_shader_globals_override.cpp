@@ -27,7 +27,13 @@ static JSValue shader_globals_override_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ShaderGlobalsOverride::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ShaderGlobalsOverride *shader_globals_override_class = memnew(ShaderGlobalsOverride);
+	ShaderGlobalsOverride *shader_globals_override_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		shader_globals_override_class = static_cast<ShaderGlobalsOverride *>(static_cast<Object *>(vobj));
+	} else {
+		shader_globals_override_class = memnew(ShaderGlobalsOverride);
+	}
 	if (!shader_globals_override_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

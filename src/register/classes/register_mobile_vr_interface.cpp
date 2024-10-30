@@ -27,7 +27,13 @@ static JSValue mobile_vr_interface_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MobileVRInterface::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	MobileVRInterface *mobile_vr_interface_class = memnew(MobileVRInterface);
+	MobileVRInterface *mobile_vr_interface_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		mobile_vr_interface_class = static_cast<MobileVRInterface *>(static_cast<Object *>(vobj));
+	} else {
+		mobile_vr_interface_class = memnew(MobileVRInterface);
+	}
 	if (!mobile_vr_interface_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

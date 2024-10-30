@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/triangle_mesh.hpp>
+#include <godot_cpp/classes/label3d.hpp>
 #include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/label3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue label3d_class_constructor(JSContext *ctx, JSValueConst new_target
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Label3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Label3D *label3d_class = memnew(Label3D);
+	Label3D *label3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		label3d_class = static_cast<Label3D *>(static_cast<Object *>(vobj));
+	} else {
+		label3d_class = memnew(Label3D);
+	}
 	if (!label3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

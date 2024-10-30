@@ -27,7 +27,13 @@ static JSValue marker3d_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Marker3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Marker3D *marker3d_class = memnew(Marker3D);
+	Marker3D *marker3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		marker3d_class = static_cast<Marker3D *>(static_cast<Object *>(vobj));
+	} else {
+		marker3d_class = memnew(Marker3D);
+	}
 	if (!marker3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

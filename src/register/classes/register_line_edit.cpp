@@ -7,8 +7,8 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue line_edit_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, LineEdit::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	LineEdit *line_edit_class = memnew(LineEdit);
+	LineEdit *line_edit_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		line_edit_class = static_cast<LineEdit *>(static_cast<Object *>(vobj));
+	} else {
+		line_edit_class = memnew(LineEdit);
+	}
 	if (!line_edit_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

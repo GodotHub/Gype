@@ -5,9 +5,9 @@ import { Range } from "@godot/classes/range";
 export declare class SpinBox extends Range{
   public set_horizontal_alignment(_alignment: number): void;
   public get_horizontal_alignment(): number;
-  public set_suffix(_suffix: String): void;
+  public set_suffix(_suffix: String | StringName | string): void;
   public get_suffix(): String;
-  public set_prefix(_prefix: String): void;
+  public set_prefix(_prefix: String | StringName | string): void;
   public get_prefix(): String;
   public set_editable(_enabled: boolean): void;
   public set_custom_arrow_step(_arrow_step: number): void;

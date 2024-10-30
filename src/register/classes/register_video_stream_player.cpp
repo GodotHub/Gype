@@ -29,7 +29,13 @@ static JSValue video_stream_player_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VideoStreamPlayer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VideoStreamPlayer *video_stream_player_class = memnew(VideoStreamPlayer);
+	VideoStreamPlayer *video_stream_player_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		video_stream_player_class = static_cast<VideoStreamPlayer *>(static_cast<Object *>(vobj));
+	} else {
+		video_stream_player_class = memnew(VideoStreamPlayer);
+	}
 	if (!video_stream_player_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

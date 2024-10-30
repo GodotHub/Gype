@@ -27,7 +27,13 @@ static JSValue editor_paths_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorPaths::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorPaths *editor_paths_class = memnew(EditorPaths);
+	EditorPaths *editor_paths_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_paths_class = static_cast<EditorPaths *>(static_cast<Object *>(vobj));
+	} else {
+		editor_paths_class = memnew(EditorPaths);
+	}
 	if (!editor_paths_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -98,7 +104,7 @@ static int js_editor_paths_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_editor_paths_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

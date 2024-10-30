@@ -27,7 +27,13 @@ static JSValue visual_shader_node_float_op_class_constructor(JSContext *ctx, JSV
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeFloatOp::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeFloatOp *visual_shader_node_float_op_class = memnew(VisualShaderNodeFloatOp);
+	VisualShaderNodeFloatOp *visual_shader_node_float_op_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_float_op_class = static_cast<VisualShaderNodeFloatOp *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_float_op_class = memnew(VisualShaderNodeFloatOp);
+	}
 	if (!visual_shader_node_float_op_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

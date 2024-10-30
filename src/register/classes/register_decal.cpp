@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/decal.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue decal_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Decal::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Decal *decal_class = memnew(Decal);
+	Decal *decal_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		decal_class = static_cast<Decal *>(static_cast<Object *>(vobj));
+	} else {
+		decal_class = memnew(Decal);
+	}
 	if (!decal_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

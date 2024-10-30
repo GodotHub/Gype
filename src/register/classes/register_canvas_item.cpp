@@ -5,16 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/world2d.hpp>
+#include <godot_cpp/classes/multi_mesh.hpp>
+#include <godot_cpp/classes/canvas_item.hpp>
+#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/world2d.hpp>
-#include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/classes/canvas_item.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/multi_mesh.hpp>
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/canvas_layer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -36,7 +36,13 @@ static JSValue canvas_item_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CanvasItem::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CanvasItem *canvas_item_class = memnew(CanvasItem);
+	CanvasItem *canvas_item_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		canvas_item_class = static_cast<CanvasItem *>(static_cast<Object *>(vobj));
+	} else {
+		canvas_item_class = memnew(CanvasItem);
+	}
 	if (!canvas_item_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

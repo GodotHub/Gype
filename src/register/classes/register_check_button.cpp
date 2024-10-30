@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/check_button.hpp>
 #include <godot_cpp/classes/button.hpp>
+#include <godot_cpp/classes/check_button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue check_button_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CheckButton::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CheckButton *check_button_class = memnew(CheckButton);
+	CheckButton *check_button_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		check_button_class = static_cast<CheckButton *>(static_cast<Object *>(vobj));
+	} else {
+		check_button_class = memnew(CheckButton);
+	}
 	if (!check_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

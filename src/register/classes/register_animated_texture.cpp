@@ -27,7 +27,13 @@ static JSValue animated_texture_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimatedTexture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AnimatedTexture *animated_texture_class = memnew(AnimatedTexture);
+	AnimatedTexture *animated_texture_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		animated_texture_class = static_cast<AnimatedTexture *>(static_cast<Object *>(vobj));
+	} else {
+		animated_texture_class = memnew(AnimatedTexture);
+	}
 	if (!animated_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

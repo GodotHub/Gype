@@ -27,7 +27,13 @@ static JSValue skeleton_modification2d_two_bone_ik_class_constructor(JSContext *
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkeletonModification2DTwoBoneIK::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SkeletonModification2DTwoBoneIK *skeleton_modification2d_two_bone_ik_class = memnew(SkeletonModification2DTwoBoneIK);
+	SkeletonModification2DTwoBoneIK *skeleton_modification2d_two_bone_ik_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		skeleton_modification2d_two_bone_ik_class = static_cast<SkeletonModification2DTwoBoneIK *>(static_cast<Object *>(vobj));
+	} else {
+		skeleton_modification2d_two_bone_ik_class = memnew(SkeletonModification2DTwoBoneIK);
+	}
 	if (!skeleton_modification2d_two_bone_ik_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

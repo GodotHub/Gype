@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/rd_texture_format.hpp>
+#include <godot_cpp/classes/rd_texture_view.hpp>
 #include <godot_cpp/classes/render_scene_buffers_rd.hpp>
 #include <godot_cpp/classes/render_scene_buffers.hpp>
-#include <godot_cpp/classes/rd_texture_view.hpp>
-#include <godot_cpp/classes/rd_texture_format.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue render_scene_buffers_rd_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RenderSceneBuffersRD::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RenderSceneBuffersRD *render_scene_buffers_rd_class = memnew(RenderSceneBuffersRD);
+	RenderSceneBuffersRD *render_scene_buffers_rd_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		render_scene_buffers_rd_class = static_cast<RenderSceneBuffersRD *>(static_cast<Object *>(vobj));
+	} else {
+		render_scene_buffers_rd_class = memnew(RenderSceneBuffersRD);
+	}
 	if (!render_scene_buffers_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

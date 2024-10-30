@@ -1,24 +1,24 @@
 
-import { Object } from "@godot/classes/object";
-import { Resource } from "@godot/classes/resource";
 import { InputEvent } from "@godot/classes/input_event";
+import { GodotObject } from "@godot/classes/godot_object";
+import { Resource } from "@godot/classes/resource";
 
-export declare class Input extends Object{
+export declare class Input extends GodotObject{
   public is_anything_pressed(): boolean;
   public is_key_pressed(_keycode: number): boolean;
   public is_physical_key_pressed(_keycode: number): boolean;
   public is_key_label_pressed(_keycode: number): boolean;
   public is_mouse_button_pressed(_button: number): boolean;
   public is_joy_button_pressed(_device: number, _button: number): boolean;
-  public is_action_pressed(_action: StringName, _exact_match: boolean): boolean;
-  public is_action_just_pressed(_action: StringName, _exact_match: boolean): boolean;
-  public is_action_just_released(_action: StringName, _exact_match: boolean): boolean;
-  public get_action_strength(_action: StringName, _exact_match: boolean): number;
-  public get_action_raw_strength(_action: StringName, _exact_match: boolean): number;
-  public get_axis(_negative_action: StringName, _positive_action: StringName): number;
-  public get_vector(_negative_x: StringName, _positive_x: StringName, _negative_y: StringName, _positive_y: StringName, _deadzone: number): Vector2;
-  public add_joy_mapping(_mapping: String, _update_existing: boolean): void;
-  public remove_joy_mapping(_guid: String): void;
+  public is_action_pressed(_action: String | StringName | string, _exact_match: boolean): boolean;
+  public is_action_just_pressed(_action: String | StringName | string, _exact_match: boolean): boolean;
+  public is_action_just_released(_action: String | StringName | string, _exact_match: boolean): boolean;
+  public get_action_strength(_action: String | StringName | string, _exact_match: boolean): number;
+  public get_action_raw_strength(_action: String | StringName | string, _exact_match: boolean): number;
+  public get_axis(_negative_action: String | StringName | string, _positive_action: String | StringName | string): number;
+  public get_vector(_negative_x: String | StringName | string, _positive_x: String | StringName | string, _negative_y: String | StringName | string, _positive_y: String | StringName | string, _deadzone: number): Vector2;
+  public add_joy_mapping(_mapping: String | StringName | string, _update_existing: boolean): void;
+  public remove_joy_mapping(_guid: String | StringName | string): void;
   public is_joy_known(_device: number): boolean;
   public get_joy_axis(_device: number, _axis: number): number;
   public get_joy_name(_device: number): String;
@@ -45,8 +45,8 @@ export declare class Input extends Object{
   public set_mouse_mode(_mode: number): void;
   public get_mouse_mode(): number;
   public warp_mouse(_position: Vector2): void;
-  public action_press(_action: StringName, _strength: number): void;
-  public action_release(_action: StringName): void;
+  public action_press(_action: String | StringName | string, _strength: number): void;
+  public action_release(_action: String | StringName | string): void;
   public set_default_cursor_shape(_shape: number): void;
   public get_current_cursor_shape(): number;
   public set_custom_mouse_cursor(_image: Resource, _shape: number, _hotspot: Vector2): void;
@@ -108,4 +108,5 @@ export declare class Input extends Object{
     CURSOR_HSPLIT = 15,
     CURSOR_HELP = 16,
   }
+  public const joy_connection_changed: string = "joy_connection_changed";
 }

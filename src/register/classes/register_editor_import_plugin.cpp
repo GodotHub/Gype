@@ -27,7 +27,13 @@ static JSValue editor_import_plugin_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorImportPlugin::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorImportPlugin *editor_import_plugin_class = memnew(EditorImportPlugin);
+	EditorImportPlugin *editor_import_plugin_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_import_plugin_class = static_cast<EditorImportPlugin *>(static_cast<Object *>(vobj));
+	} else {
+		editor_import_plugin_class = memnew(EditorImportPlugin);
+	}
 	if (!editor_import_plugin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -1,6 +1,6 @@
 
-import { Resource } from "@godot/classes/resource";
 import { PhysicsDirectSpaceState2D } from "@godot/classes/physics_direct_space_state2d";
+import { Resource } from "@godot/classes/resource";
 
 export declare class World2D extends Resource{
   public get_canvas(): RID;

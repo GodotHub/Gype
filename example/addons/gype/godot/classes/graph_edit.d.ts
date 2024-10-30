@@ -1,19 +1,19 @@
 
+import { HBoxContainer } from "@godot/classes/h_box_container";
+import { GodotObject } from "@godot/classes/godot_object";
 import { GraphFrame } from "@godot/classes/graph_frame";
-import { Object } from "@godot/classes/object";
 import { Node } from "@godot/classes/node";
 import { Control } from "@godot/classes/control";
-import { HBoxContainer } from "@godot/classes/h_box_container";
 
 export declare class GraphEdit extends Control{
   public _is_in_input_hotzone(_in_node: Object, _in_port: number, _mouse_position: Vector2): boolean;
   public _is_in_output_hotzone(_in_node: Object, _in_port: number, _mouse_position: Vector2): boolean;
   public _get_connection_line(_from_position: Vector2, _to_position: Vector2): PackedVector2Array;
-  public _is_node_hover_valid(_from_node: StringName, _from_port: number, _to_node: StringName, _to_port: number): boolean;
-  public connect_node(_from_node: StringName, _from_port: number, _to_node: StringName, _to_port: number): number;
-  public is_node_connected(_from_node: StringName, _from_port: number, _to_node: StringName, _to_port: number): boolean;
-  public disconnect_node(_from_node: StringName, _from_port: number, _to_node: StringName, _to_port: number): void;
-  public set_connection_activity(_from_node: StringName, _from_port: number, _to_node: StringName, _to_port: number, _amount: number): void;
+  public _is_node_hover_valid(_from_node: String | StringName | string, _from_port: number, _to_node: String | StringName | string, _to_port: number): boolean;
+  public connect_node(_from_node: String | StringName | string, _from_port: number, _to_node: String | StringName | string, _to_port: number): number;
+  public is_node_connected(_from_node: String | StringName | string, _from_port: number, _to_node: String | StringName | string, _to_port: number): boolean;
+  public disconnect_node(_from_node: String | StringName | string, _from_port: number, _to_node: String | StringName | string, _to_port: number): void;
+  public set_connection_activity(_from_node: String | StringName | string, _from_port: number, _to_node: String | StringName | string, _to_port: number, _amount: number): void;
   public get_connection_list(): GDArray;
   public get_closest_connection_at_point(_point: Vector2, _max_distance: number): Dictionary;
   public get_connections_intersecting_with_rect(_rect: Rect2): GDArray;
@@ -29,10 +29,10 @@ export declare class GraphEdit extends Control{
   public remove_valid_connection_type(_from_type: number, _to_type: number): void;
   public is_valid_connection_type(_from_type: number, _to_type: number): boolean;
   public get_connection_line(_from_node: Vector2, _to_node: Vector2): PackedVector2Array;
-  public attach_graph_element_to_frame(_element: StringName, _frame: StringName): void;
-  public detach_graph_element_from_frame(_element: StringName): void;
-  public get_element_frame(_element: StringName): GraphFrame;
-  public get_attached_nodes_of_frame(_frame: StringName): GDArray;
+  public attach_graph_element_to_frame(_element: String | StringName | string, _frame: String | StringName | string): void;
+  public detach_graph_element_from_frame(_element: String | StringName | string): void;
+  public get_element_frame(_element: String | StringName | string): GraphFrame;
+  public get_attached_nodes_of_frame(_frame: String | StringName | string): GDArray;
   public set_panning_scheme(_scheme: number): void;
   public get_panning_scheme(): number;
   public set_zoom(_zoom: number): void;
@@ -226,4 +226,22 @@ export declare class GraphEdit extends Control{
     GRID_PATTERN_LINES = 0,
     GRID_PATTERN_DOTS = 1,
   }
+  public const connection_request: string = "connection_request";
+  public const disconnection_request: string = "disconnection_request";
+  public const connection_to_empty: string = "connection_to_empty";
+  public const connection_from_empty: string = "connection_from_empty";
+  public const connection_drag_started: string = "connection_drag_started";
+  public const connection_drag_ended: string = "connection_drag_ended";
+  public const copy_nodes_request: string = "copy_nodes_request";
+  public const paste_nodes_request: string = "paste_nodes_request";
+  public const duplicate_nodes_request: string = "duplicate_nodes_request";
+  public const delete_nodes_request: string = "delete_nodes_request";
+  public const node_selected: string = "node_selected";
+  public const node_deselected: string = "node_deselected";
+  public const frame_rect_changed: string = "frame_rect_changed";
+  public const popup_request: string = "popup_request";
+  public const begin_node_move: string = "begin_node_move";
+  public const end_node_move: string = "end_node_move";
+  public const graph_elements_linked_to_frame_request: string = "graph_elements_linked_to_frame_request";
+  public const scroll_offset_changed: string = "scroll_offset_changed";
 }

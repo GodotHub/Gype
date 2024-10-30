@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ogg_packet_sequence.hpp>
 #include <godot_cpp/classes/audio_stream_ogg_vorbis.hpp>
+#include <godot_cpp/classes/ogg_packet_sequence.hpp>
 #include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue audio_stream_ogg_vorbis_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamOggVorbis::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioStreamOggVorbis *audio_stream_ogg_vorbis_class = memnew(AudioStreamOggVorbis);
+	AudioStreamOggVorbis *audio_stream_ogg_vorbis_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_stream_ogg_vorbis_class = static_cast<AudioStreamOggVorbis *>(static_cast<Object *>(vobj));
+	} else {
+		audio_stream_ogg_vorbis_class = memnew(AudioStreamOggVorbis);
+	}
 	if (!audio_stream_ogg_vorbis_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

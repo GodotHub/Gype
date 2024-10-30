@@ -28,7 +28,13 @@ static JSValue resource_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Resource::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Resource *resource_class = memnew(Resource);
+	Resource *resource_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		resource_class = static_cast<Resource *>(static_cast<Object *>(vobj));
+	} else {
+		resource_class = memnew(Resource);
+	}
 	if (!resource_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

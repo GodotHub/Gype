@@ -1,9 +1,9 @@
 
-import { Shape2D } from "@godot/classes/shape2d";
-import { Viewport } from "@godot/classes/viewport";
 import { InputEvent } from "@godot/classes/input_event";
-import { Object } from "@godot/classes/object";
+import { Shape2D } from "@godot/classes/shape2d";
 import { Node2D } from "@godot/classes/node2d";
+import { GodotObject } from "@godot/classes/godot_object";
+import { Viewport } from "@godot/classes/viewport";
 
 export declare class CollisionObject2D extends Node2D{
   public _input_event(_viewport: Viewport, _event: InputEvent, _shape_idx: number): void;
@@ -80,4 +80,9 @@ export declare class CollisionObject2D extends Node2D{
     DISABLE_MODE_MAKE_STATIC = 1,
     DISABLE_MODE_KEEP_ACTIVE = 2,
   }
+  public const input_event: string = "input_event";
+  public const mouse_entered: string = "mouse_entered";
+  public const mouse_exited: string = "mouse_exited";
+  public const mouse_shape_entered: string = "mouse_shape_entered";
+  public const mouse_shape_exited: string = "mouse_shape_exited";
 }

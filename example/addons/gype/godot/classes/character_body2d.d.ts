@@ -1,6 +1,6 @@
 
-import { KinematicCollision2D } from "@godot/classes/kinematic_collision2d";
 import { PhysicsBody2D } from "@godot/classes/physics_body2d";
+import { KinematicCollision2D } from "@godot/classes/kinematic_collision2d";
 
 export declare class CharacterBody2D extends PhysicsBody2D{
   public move_and_slide(): boolean;

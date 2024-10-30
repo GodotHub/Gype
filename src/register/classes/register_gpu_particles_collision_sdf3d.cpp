@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gpu_particles_collision_sdf3d.hpp>
-#include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/classes/gpu_particles_collision3d.hpp>
+#include <godot_cpp/classes/texture3d.hpp>
+#include <godot_cpp/classes/gpu_particles_collision_sdf3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue gpu_particles_collision_sdf3d_class_constructor(JSContext *ctx, J
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GPUParticlesCollisionSDF3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GPUParticlesCollisionSDF3D *gpu_particles_collision_sdf3d_class = memnew(GPUParticlesCollisionSDF3D);
+	GPUParticlesCollisionSDF3D *gpu_particles_collision_sdf3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gpu_particles_collision_sdf3d_class = static_cast<GPUParticlesCollisionSDF3D *>(static_cast<Object *>(vobj));
+	} else {
+		gpu_particles_collision_sdf3d_class = memnew(GPUParticlesCollisionSDF3D);
+	}
 	if (!gpu_particles_collision_sdf3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

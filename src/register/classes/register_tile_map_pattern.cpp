@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tile_map_pattern.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/tile_map_pattern.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue tile_map_pattern_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TileMapPattern::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	TileMapPattern *tile_map_pattern_class = memnew(TileMapPattern);
+	TileMapPattern *tile_map_pattern_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		tile_map_pattern_class = static_cast<TileMapPattern *>(static_cast<Object *>(vobj));
+	} else {
+		tile_map_pattern_class = memnew(TileMapPattern);
+	}
 	if (!tile_map_pattern_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

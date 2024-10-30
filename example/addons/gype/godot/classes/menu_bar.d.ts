@@ -1,6 +1,6 @@
 
-import { Control } from "@godot/classes/control";
 import { PopupMenu } from "@godot/classes/popup_menu";
+import { Control } from "@godot/classes/control";
 
 export declare class MenuBar extends Control{
   public set_switch_on_hover(_enable: boolean): void;
@@ -12,15 +12,15 @@ export declare class MenuBar extends Control{
   public get_menu_count(): number;
   public set_text_direction(_direction: number): void;
   public get_text_direction(): number;
-  public set_language(_language: String): void;
+  public set_language(_language: String | StringName | string): void;
   public get_language(): String;
   public set_flat(_enabled: boolean): void;
   public is_flat(): boolean;
   public set_start_index(_enabled: number): void;
   public get_start_index(): number;
-  public set_menu_title(_menu: number, _title: String): void;
+  public set_menu_title(_menu: number, _title: String | StringName | string): void;
   public get_menu_title(_menu: number): String;
-  public set_menu_tooltip(_menu: number, _tooltip: String): void;
+  public set_menu_tooltip(_menu: number, _tooltip: String | StringName | string): void;
   public get_menu_tooltip(_menu: number): String;
   public set_menu_disabled(_menu: number, _disabled: boolean): void;
   public is_menu_disabled(_menu: number): boolean;

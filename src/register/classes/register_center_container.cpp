@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/classes/center_container.hpp>
+#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue center_container_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CenterContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CenterContainer *center_container_class = memnew(CenterContainer);
+	CenterContainer *center_container_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		center_container_class = static_cast<CenterContainer *>(static_cast<Object *>(vobj));
+	} else {
+		center_container_class = memnew(CenterContainer);
+	}
 	if (!center_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

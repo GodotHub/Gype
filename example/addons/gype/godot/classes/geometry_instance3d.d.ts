@@ -23,8 +23,8 @@ export declare class GeometryInstance3D extends VisualInstance3D{
   public get_visibility_range_begin(): number;
   public set_visibility_range_fade_mode(_mode: number): void;
   public get_visibility_range_fade_mode(): number;
-  public set_instance_shader_parameter(_name: StringName, _value: any): void;
-  public get_instance_shader_parameter(_name: StringName): any;
+  public set_instance_shader_parameter(_name: String | StringName | string, _value: any): void;
+  public get_instance_shader_parameter(_name: String | StringName | string): any;
   public set_extra_cull_margin(_margin: number): void;
   public get_extra_cull_margin(): number;
   public set_lightmap_scale(_scale: number): void;

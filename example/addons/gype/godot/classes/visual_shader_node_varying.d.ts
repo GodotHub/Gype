@@ -2,7 +2,7 @@
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
 
 export declare class VisualShaderNodeVarying extends VisualShaderNode{
-  public set_varying_name(_name: String): void;
+  public set_varying_name(_name: String | StringName | string): void;
   public get_varying_name(): String;
   public set_varying_type(_type: number): void;
   public get_varying_type(): number;

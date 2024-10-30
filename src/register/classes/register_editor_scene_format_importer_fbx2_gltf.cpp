@@ -27,7 +27,13 @@ static JSValue editor_scene_format_importer_fbx2_gltf_class_constructor(JSContex
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorSceneFormatImporterFBX2GLTF::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorSceneFormatImporterFBX2GLTF *editor_scene_format_importer_fbx2_gltf_class = memnew(EditorSceneFormatImporterFBX2GLTF);
+	EditorSceneFormatImporterFBX2GLTF *editor_scene_format_importer_fbx2_gltf_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_scene_format_importer_fbx2_gltf_class = static_cast<EditorSceneFormatImporterFBX2GLTF *>(static_cast<Object *>(vobj));
+	} else {
+		editor_scene_format_importer_fbx2_gltf_class = memnew(EditorSceneFormatImporterFBX2GLTF);
+	}
 	if (!editor_scene_format_importer_fbx2_gltf_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

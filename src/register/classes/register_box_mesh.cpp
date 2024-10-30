@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/box_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/box_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue box_mesh_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, BoxMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	BoxMesh *box_mesh_class = memnew(BoxMesh);
+	BoxMesh *box_mesh_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		box_mesh_class = static_cast<BoxMesh *>(static_cast<Object *>(vobj));
+	} else {
+		box_mesh_class = memnew(BoxMesh);
+	}
 	if (!box_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

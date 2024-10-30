@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/classes/skeleton_modifier3d.hpp>
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue skeleton_modifier3d_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkeletonModifier3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SkeletonModifier3D *skeleton_modifier3d_class = memnew(SkeletonModifier3D);
+	SkeletonModifier3D *skeleton_modifier3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		skeleton_modifier3d_class = static_cast<SkeletonModifier3D *>(static_cast<Object *>(vobj));
+	} else {
+		skeleton_modifier3d_class = memnew(SkeletonModifier3D);
+	}
 	if (!skeleton_modifier3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

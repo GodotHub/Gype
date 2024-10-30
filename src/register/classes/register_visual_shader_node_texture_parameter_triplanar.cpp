@@ -27,7 +27,13 @@ static JSValue visual_shader_node_texture_parameter_triplanar_class_constructor(
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeTextureParameterTriplanar::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeTextureParameterTriplanar *visual_shader_node_texture_parameter_triplanar_class = memnew(VisualShaderNodeTextureParameterTriplanar);
+	VisualShaderNodeTextureParameterTriplanar *visual_shader_node_texture_parameter_triplanar_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_texture_parameter_triplanar_class = static_cast<VisualShaderNodeTextureParameterTriplanar *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_texture_parameter_triplanar_class = memnew(VisualShaderNodeTextureParameterTriplanar);
+	}
 	if (!visual_shader_node_texture_parameter_triplanar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

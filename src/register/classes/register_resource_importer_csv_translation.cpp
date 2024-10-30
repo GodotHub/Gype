@@ -27,7 +27,13 @@ static JSValue resource_importer_csv_translation_class_constructor(JSContext *ct
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterCSVTranslation::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ResourceImporterCSVTranslation *resource_importer_csv_translation_class = memnew(ResourceImporterCSVTranslation);
+	ResourceImporterCSVTranslation *resource_importer_csv_translation_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		resource_importer_csv_translation_class = static_cast<ResourceImporterCSVTranslation *>(static_cast<Object *>(vobj));
+	} else {
+		resource_importer_csv_translation_class = memnew(ResourceImporterCSVTranslation);
+	}
 	if (!resource_importer_csv_translation_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

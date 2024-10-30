@@ -1,6 +1,6 @@
 
-import { Button } from "@godot/classes/button";
 import { PopupMenu } from "@godot/classes/popup_menu";
+import { Button } from "@godot/classes/button";
 
 export declare class MenuButton extends Button{
   public get_popup(): PopupMenu;
@@ -22,4 +22,5 @@ export declare class MenuButton extends Button{
   public set item_count(value): void {
     set_item_count(value);
   }
+  public const about_to_popup: string = "about_to_popup";
 }

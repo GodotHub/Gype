@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/semaphore.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue semaphore_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Semaphore::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Semaphore *semaphore_class = memnew(Semaphore);
+	Semaphore *semaphore_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		semaphore_class = static_cast<Semaphore *>(static_cast<Object *>(vobj));
+	} else {
+		semaphore_class = memnew(Semaphore);
+	}
 	if (!semaphore_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

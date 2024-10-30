@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xrvrs.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/xrvrs.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue xrvrs_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRVRS::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	XRVRS *xrvrs_class = memnew(XRVRS);
+	XRVRS *xrvrs_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		xrvrs_class = static_cast<XRVRS *>(static_cast<Object *>(vobj));
+	} else {
+		xrvrs_class = memnew(XRVRS);
+	}
 	if (!xrvrs_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -111,7 +117,7 @@ static int js_xrvrs_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_xrvrs_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

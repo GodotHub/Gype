@@ -1,7 +1,7 @@
 
-import { Object } from "@godot/classes/object";
+import { GodotObject } from "@godot/classes/godot_object";
 
-export declare class Geometry3D extends Object{
+export declare class Geometry3D extends GodotObject{
   public compute_convex_mesh_points(_planes: GDArray): PackedVector3Array;
   public build_box_planes(_extents: Vector3): GDArray;
   public build_cylinder_planes(_radius: number, _height: number, _sides: number, _axis: number): GDArray;

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_uniform.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/rd_uniform.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue rd_uniform_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDUniform::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RDUniform *rd_uniform_class = memnew(RDUniform);
+	RDUniform *rd_uniform_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		rd_uniform_class = static_cast<RDUniform *>(static_cast<Object *>(vobj));
+	} else {
+		rd_uniform_class = memnew(RDUniform);
+	}
 	if (!rd_uniform_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

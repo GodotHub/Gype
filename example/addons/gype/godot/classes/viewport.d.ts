@@ -1,14 +1,14 @@
 
-import { Camera2D } from "@godot/classes/camera2d";
-import { World2D } from "@godot/classes/world2d";
-import { Window } from "@godot/classes/window";
-import { Texture2D } from "@godot/classes/texture2d";
-import { ViewportTexture } from "@godot/classes/viewport_texture";
-import { Node } from "@godot/classes/node";
-import { Camera3D } from "@godot/classes/camera3d";
-import { Control } from "@godot/classes/control";
-import { World3D } from "@godot/classes/world3d";
 import { InputEvent } from "@godot/classes/input_event";
+import { Camera2D } from "@godot/classes/camera2d";
+import { ViewportTexture } from "@godot/classes/viewport_texture";
+import { Window } from "@godot/classes/window";
+import { Camera3D } from "@godot/classes/camera3d";
+import { Texture2D } from "@godot/classes/texture2d";
+import { World2D } from "@godot/classes/world2d";
+import { World3D } from "@godot/classes/world3d";
+import { Node } from "@godot/classes/node";
+import { Control } from "@godot/classes/control";
 
 export declare class Viewport extends Node{
   public set_world_2d(_world_2d: World2D): void;
@@ -48,7 +48,7 @@ export declare class Viewport extends Node{
   public set_physics_object_picking_first_only(_enable: boolean): void;
   public get_physics_object_picking_first_only(): boolean;
   public get_viewport_rid(): RID;
-  public push_text_input(_text: String): void;
+  public push_text_input(_text: String | StringName | string): void;
   public push_input(_event: InputEvent, _in_local_coords: boolean): void;
   public push_unhandled_input(_event: InputEvent, _in_local_coords: boolean): void;
   public get_mouse_position(): Vector2;
@@ -507,4 +507,6 @@ export declare class Viewport extends Node{
     VRS_UPDATE_ALWAYS = 2,
     VRS_UPDATE_MAX = 3,
   }
+  public const size_changed: string = "size_changed";
+  public const gui_focus_changed: string = "gui_focus_changed";
 }

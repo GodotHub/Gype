@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_pipeline_color_blend_state.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_pipeline_color_blend_state_attachment.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue rd_pipeline_color_blend_state_class_constructor(JSContext *ctx, J
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDPipelineColorBlendState::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RDPipelineColorBlendState *rd_pipeline_color_blend_state_class = memnew(RDPipelineColorBlendState);
+	RDPipelineColorBlendState *rd_pipeline_color_blend_state_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		rd_pipeline_color_blend_state_class = static_cast<RDPipelineColorBlendState *>(static_cast<Object *>(vobj));
+	} else {
+		rd_pipeline_color_blend_state_class = memnew(RDPipelineColorBlendState);
+	}
 	if (!rd_pipeline_color_blend_state_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

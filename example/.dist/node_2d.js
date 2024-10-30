@@ -7,6 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { Node2D } from "@godot/classes/node2d";
 import { GodotClass } from "@godot/core/class_defined";
 let node_2d = class node_2d extends Node2D {
+    _enter_tree() {
+    }
     _ready() {
     }
     _process(delta) {

@@ -27,7 +27,13 @@ static JSValue sub_viewport_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SubViewport::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SubViewport *sub_viewport_class = memnew(SubViewport);
+	SubViewport *sub_viewport_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		sub_viewport_class = static_cast<SubViewport *>(static_cast<Object *>(vobj));
+	} else {
+		sub_viewport_class = memnew(SubViewport);
+	}
 	if (!sub_viewport_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

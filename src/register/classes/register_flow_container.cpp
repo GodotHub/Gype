@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/classes/flow_container.hpp>
+#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue flow_container_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, FlowContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	FlowContainer *flow_container_class = memnew(FlowContainer);
+	FlowContainer *flow_container_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		flow_container_class = static_cast<FlowContainer *>(static_cast<Object *>(vobj));
+	} else {
+		flow_container_class = memnew(FlowContainer);
+	}
 	if (!flow_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

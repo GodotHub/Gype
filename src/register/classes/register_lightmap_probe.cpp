@@ -27,7 +27,13 @@ static JSValue lightmap_probe_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, LightmapProbe::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	LightmapProbe *lightmap_probe_class = memnew(LightmapProbe);
+	LightmapProbe *lightmap_probe_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		lightmap_probe_class = static_cast<LightmapProbe *>(static_cast<Object *>(vobj));
+	} else {
+		lightmap_probe_class = memnew(LightmapProbe);
+	}
 	if (!lightmap_probe_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

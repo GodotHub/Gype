@@ -27,7 +27,13 @@ static JSValue convex_polygon_shape3d_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ConvexPolygonShape3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ConvexPolygonShape3D *convex_polygon_shape3d_class = memnew(ConvexPolygonShape3D);
+	ConvexPolygonShape3D *convex_polygon_shape3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		convex_polygon_shape3d_class = static_cast<ConvexPolygonShape3D *>(static_cast<Object *>(vobj));
+	} else {
+		convex_polygon_shape3d_class = memnew(ConvexPolygonShape3D);
+	}
 	if (!convex_polygon_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

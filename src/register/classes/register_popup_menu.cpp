@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/popup.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/shortcut.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/popup.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,7 +30,13 @@ static JSValue popup_menu_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PopupMenu::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PopupMenu *popup_menu_class = memnew(PopupMenu);
+	PopupMenu *popup_menu_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		popup_menu_class = static_cast<PopupMenu *>(static_cast<Object *>(vobj));
+	} else {
+		popup_menu_class = memnew(PopupMenu);
+	}
 	if (!popup_menu_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

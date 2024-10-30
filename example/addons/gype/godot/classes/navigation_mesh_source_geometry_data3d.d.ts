@@ -1,6 +1,6 @@
 
-import { Mesh } from "@godot/classes/mesh";
 import { Resource } from "@godot/classes/resource";
+import { Mesh } from "@godot/classes/mesh";
 
 export declare class NavigationMeshSourceGeometryData3D extends Resource{
   public set_vertices(_vertices: PackedFloat32Array): void;

@@ -4,7 +4,7 @@ import { Resource } from "@godot/classes/resource";
 export declare class RDShaderSPIRV extends Resource{
   public set_stage_bytecode(_stage: number, _bytecode: PackedByteArray): void;
   public get_stage_bytecode(_stage: number): PackedByteArray;
-  public set_stage_compile_error(_stage: number, _compile_error: String): void;
+  public set_stage_compile_error(_stage: number, _compile_error: String | StringName | string): void;
   public get_stage_compile_error(_stage: number): String;
   public get bytecode_vertex(): PackedByteArray {
     get_stage_bytecode();

@@ -27,7 +27,13 @@ static JSValue stream_peer_tcp_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StreamPeerTCP::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	StreamPeerTCP *stream_peer_tcp_class = memnew(StreamPeerTCP);
+	StreamPeerTCP *stream_peer_tcp_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		stream_peer_tcp_class = static_cast<StreamPeerTCP *>(static_cast<Object *>(vobj));
+	} else {
+		stream_peer_tcp_class = memnew(StreamPeerTCP);
+	}
 	if (!stream_peer_tcp_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

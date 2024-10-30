@@ -53,7 +53,13 @@ static JSValue {{snake_name}}_class_constructor(JSContext *ctx, JSValueConst new
 	{%- if clazz_name in (singletons | map(attribute='type') | list) %}
 	{{norm_name}} *{{snake_name}}_class = {{norm_name}}::get_singleton();
 	{%- else%}
-	{{norm_name}} *{{snake_name}}_class = memnew({{clazz_name}});
+	{{norm_name}} *{{snake_name}}_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		{{snake_name}}_class = static_cast<{{norm_name}} *>(static_cast<Object *>(vobj));
+	} else {
+		{{snake_name}}_class = memnew({{clazz_name}});
+	}
 	{%- endif %}
 	if (!{{snake_name}}_class) {
 		JS_FreeValue(ctx, obj);
@@ -193,9 +199,14 @@ static int js_{{snake_name}}_class_init(JSContext *ctx, JSModuleDef *m) {
 	return 0;
 }
 
+{%- set inherits = clazz['inherits'] %}
+{%- if clazz['inherits'] == 'Object' %}
+{%- set inherits = 'GodotObject' %}
+{%- endif %}
+
 JSModuleDef *_js_init_{{ snake_name }}_module(JSContext *ctx, const char *module_name) {
-	{%- if clazz['inherits'] %}
-	const char *code = "import * as _ from '@godot/classes/{{camel_to_snake(clazz['inherits'])}}';";
+	{%- if inherits %}
+	const char *code = "import * as _ from '@godot/classes/{{camel_to_snake(inherits)}}';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
@@ -208,7 +219,11 @@ JSModuleDef *_js_init_{{ snake_name }}_module(JSContext *ctx, const char *module
 }
 
 JSModuleDef *js_init_{{ snake_name }}_module(JSContext *ctx) {
-	return _js_init_{{ snake_name }}_module(ctx, "@godot/classes/{{snake_name}}");
+	{%- set class_name = clazz['name'] %}
+	{%- if clazz['name'] == 'Object' %}
+	{%- set class_name = 'GodotObject' %}
+	{%- endif %}
+	return _js_init_{{ snake_name }}_module(ctx, "@godot/classes/{{camel_to_snake(class_name)}}");
 }
 
 void register_{{ snake_name }}() {

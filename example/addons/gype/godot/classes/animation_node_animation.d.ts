@@ -2,7 +2,7 @@
 import { AnimationRootNode } from "@godot/classes/animation_root_node";
 
 export declare class AnimationNodeAnimation extends AnimationRootNode{
-  public set_animation(_name: StringName): void;
+  public set_animation(_name: String | StringName | string): void;
   public get_animation(): StringName;
   public set_play_mode(_mode: number): void;
   public get_play_mode(): number;

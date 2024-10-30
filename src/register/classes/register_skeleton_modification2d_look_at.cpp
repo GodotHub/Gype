@@ -27,7 +27,13 @@ static JSValue skeleton_modification2d_look_at_class_constructor(JSContext *ctx,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkeletonModification2DLookAt::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SkeletonModification2DLookAt *skeleton_modification2d_look_at_class = memnew(SkeletonModification2DLookAt);
+	SkeletonModification2DLookAt *skeleton_modification2d_look_at_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		skeleton_modification2d_look_at_class = static_cast<SkeletonModification2DLookAt *>(static_cast<Object *>(vobj));
+	} else {
+		skeleton_modification2d_look_at_class = memnew(SkeletonModification2DLookAt);
+	}
 	if (!skeleton_modification2d_look_at_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

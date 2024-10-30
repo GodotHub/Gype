@@ -27,7 +27,13 @@ static JSValue timer_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Timer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Timer *timer_class = memnew(Timer);
+	Timer *timer_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		timer_class = static_cast<Timer *>(static_cast<Object *>(vobj));
+	} else {
+		timer_class = memnew(Timer);
+	}
 	if (!timer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

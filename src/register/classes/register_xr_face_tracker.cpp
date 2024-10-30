@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_tracker.hpp>
 #include <godot_cpp/classes/xr_face_tracker.hpp>
+#include <godot_cpp/classes/xr_tracker.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue xr_face_tracker_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRFaceTracker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	XRFaceTracker *xr_face_tracker_class = memnew(XRFaceTracker);
+	XRFaceTracker *xr_face_tracker_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		xr_face_tracker_class = static_cast<XRFaceTracker *>(static_cast<Object *>(vobj));
+	} else {
+		xr_face_tracker_class = memnew(XRFaceTracker);
+	}
 	if (!xr_face_tracker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

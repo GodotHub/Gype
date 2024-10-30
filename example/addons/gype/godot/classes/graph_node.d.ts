@@ -5,7 +5,7 @@ import { GraphElement } from "@godot/classes/graph_element";
 
 export declare class GraphNode extends GraphElement{
   public _draw_port(_slot_index: number, _position: Vector2i, _left: boolean, _color: Color): void;
-  public set_title(_title: String): void;
+  public set_title(_title: String | StringName | string): void;
   public get_title(): String;
   public get_titlebar_hbox(): HBoxContainer;
   public set_slot(_slot_index: number, _enable_left_port: boolean, _type_left: number, _color_left: Color, _enable_right_port: boolean, _type_right: number, _color_right: Color, _custom_icon_left: Texture2D, _custom_icon_right: Texture2D, _draw_stylebox: boolean): void;
@@ -53,4 +53,5 @@ export declare class GraphNode extends GraphElement{
   public set ignore_invalid_connection_type(value): void {
     set_ignore_invalid_connection_type(value);
   }
+  public const slot_updated: string = "slot_updated";
 }

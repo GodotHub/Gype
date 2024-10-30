@@ -5,16 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/triangle_mesh.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
+#include <godot_cpp/classes/editor_node3d_gizmo.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/node3d_gizmo.hpp>
+#include <godot_cpp/classes/editor_node3d_gizmo_plugin.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/skin_reference.hpp>
-#include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/camera3d.hpp>
-#include <godot_cpp/classes/node3d_gizmo.hpp>
-#include <godot_cpp/classes/editor_node3d_gizmo.hpp>
-#include <godot_cpp/classes/editor_node3d_gizmo_plugin.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -35,7 +35,13 @@ static JSValue editor_node3d_gizmo_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorNode3DGizmo::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorNode3DGizmo *editor_node3d_gizmo_class = memnew(EditorNode3DGizmo);
+	EditorNode3DGizmo *editor_node3d_gizmo_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_node3d_gizmo_class = static_cast<EditorNode3DGizmo *>(static_cast<Object *>(vobj));
+	} else {
+		editor_node3d_gizmo_class = memnew(EditorNode3DGizmo);
+	}
 	if (!editor_node3d_gizmo_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

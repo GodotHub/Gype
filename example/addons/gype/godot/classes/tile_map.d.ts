@@ -1,8 +1,8 @@
 
-import { TileSet } from "@godot/classes/tile_set";
 import { TileData } from "@godot/classes/tile_data";
 import { TileMapPattern } from "@godot/classes/tile_map_pattern";
 import { Node2D } from "@godot/classes/node2d";
+import { TileSet } from "@godot/classes/tile_set";
 
 export declare class TileMap extends Node2D{
   public _use_tile_data_runtime_update(_layer: number, _coords: Vector2i): boolean;
@@ -18,7 +18,7 @@ export declare class TileMap extends Node2D{
   public add_layer(_to_position: number): void;
   public move_layer(_layer: number, _to_position: number): void;
   public remove_layer(_layer: number): void;
-  public set_layer_name(_layer: number, _name: String): void;
+  public set_layer_name(_layer: number, _name: String | StringName | string): void;
   public get_layer_name(_layer: number): String;
   public set_layer_enabled(_layer: number, _enabled: boolean): void;
   public is_layer_enabled(_layer: number): boolean;
@@ -100,4 +100,5 @@ export declare class TileMap extends Node2D{
     VISIBILITY_MODE_FORCE_HIDE = 2,
     VISIBILITY_MODE_FORCE_SHOW = 1,
   }
+  public const changed: string = "changed";
 }

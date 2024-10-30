@@ -27,7 +27,13 @@ static JSValue audio_stream_generator_playback_class_constructor(JSContext *ctx,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamGeneratorPlayback::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioStreamGeneratorPlayback *audio_stream_generator_playback_class = memnew(AudioStreamGeneratorPlayback);
+	AudioStreamGeneratorPlayback *audio_stream_generator_playback_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_stream_generator_playback_class = static_cast<AudioStreamGeneratorPlayback *>(static_cast<Object *>(vobj));
+	} else {
+		audio_stream_generator_playback_class = memnew(AudioStreamGeneratorPlayback);
+	}
 	if (!audio_stream_generator_playback_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

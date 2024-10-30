@@ -27,7 +27,13 @@ static JSValue navigation_path_query_parameters3d_class_constructor(JSContext *c
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, NavigationPathQueryParameters3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	NavigationPathQueryParameters3D *navigation_path_query_parameters3d_class = memnew(NavigationPathQueryParameters3D);
+	NavigationPathQueryParameters3D *navigation_path_query_parameters3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		navigation_path_query_parameters3d_class = static_cast<NavigationPathQueryParameters3D *>(static_cast<Object *>(vobj));
+	} else {
+		navigation_path_query_parameters3d_class = memnew(NavigationPathQueryParameters3D);
+	}
 	if (!navigation_path_query_parameters3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

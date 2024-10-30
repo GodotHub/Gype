@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/voxel_gi_data.hpp>
 #include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/classes/voxel_gi.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
-#include <godot_cpp/classes/voxel_gi_data.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -30,7 +30,13 @@ static JSValue voxel_gi_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VoxelGI::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VoxelGI *voxel_gi_class = memnew(VoxelGI);
+	VoxelGI *voxel_gi_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		voxel_gi_class = static_cast<VoxelGI *>(static_cast<Object *>(vobj));
+	} else {
+		voxel_gi_class = memnew(VoxelGI);
+	}
 	if (!voxel_gi_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -27,7 +27,13 @@ static JSValue quad_mesh_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, QuadMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	QuadMesh *quad_mesh_class = memnew(QuadMesh);
+	QuadMesh *quad_mesh_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		quad_mesh_class = static_cast<QuadMesh *>(static_cast<Object *>(vobj));
+	} else {
+		quad_mesh_class = memnew(QuadMesh);
+	}
 	if (!quad_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

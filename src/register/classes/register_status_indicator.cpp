@@ -28,7 +28,13 @@ static JSValue status_indicator_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StatusIndicator::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	StatusIndicator *status_indicator_class = memnew(StatusIndicator);
+	StatusIndicator *status_indicator_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		status_indicator_class = static_cast<StatusIndicator *>(static_cast<Object *>(vobj));
+	} else {
+		status_indicator_class = memnew(StatusIndicator);
+	}
 	if (!status_indicator_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

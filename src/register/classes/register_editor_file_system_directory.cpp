@@ -27,7 +27,13 @@ static JSValue editor_file_system_directory_class_constructor(JSContext *ctx, JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorFileSystemDirectory::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorFileSystemDirectory *editor_file_system_directory_class = memnew(EditorFileSystemDirectory);
+	EditorFileSystemDirectory *editor_file_system_directory_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_file_system_directory_class = static_cast<EditorFileSystemDirectory *>(static_cast<Object *>(vobj));
+	} else {
+		editor_file_system_directory_class = memnew(EditorFileSystemDirectory);
+	}
 	if (!editor_file_system_directory_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -138,7 +144,7 @@ static int js_editor_file_system_directory_class_init(JSContext *ctx, JSModuleDe
 }
 
 JSModuleDef *_js_init_editor_file_system_directory_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

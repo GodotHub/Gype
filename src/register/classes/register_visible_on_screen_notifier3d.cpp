@@ -27,7 +27,13 @@ static JSValue visible_on_screen_notifier3d_class_constructor(JSContext *ctx, JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisibleOnScreenNotifier3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisibleOnScreenNotifier3D *visible_on_screen_notifier3d_class = memnew(VisibleOnScreenNotifier3D);
+	VisibleOnScreenNotifier3D *visible_on_screen_notifier3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visible_on_screen_notifier3d_class = static_cast<VisibleOnScreenNotifier3D *>(static_cast<Object *>(vobj));
+	} else {
+		visible_on_screen_notifier3d_class = memnew(VisibleOnScreenNotifier3D);
+	}
 	if (!visible_on_screen_notifier3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

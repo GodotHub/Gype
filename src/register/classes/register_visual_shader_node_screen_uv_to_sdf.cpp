@@ -27,7 +27,13 @@ static JSValue visual_shader_node_screen_uv_to_sdf_class_constructor(JSContext *
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeScreenUVToSDF::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeScreenUVToSDF *visual_shader_node_screen_uv_to_sdf_class = memnew(VisualShaderNodeScreenUVToSDF);
+	VisualShaderNodeScreenUVToSDF *visual_shader_node_screen_uv_to_sdf_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_screen_uv_to_sdf_class = static_cast<VisualShaderNodeScreenUVToSDF *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_screen_uv_to_sdf_class = memnew(VisualShaderNodeScreenUVToSDF);
+	}
 	if (!visual_shader_node_screen_uv_to_sdf_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

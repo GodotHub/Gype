@@ -27,7 +27,13 @@ static JSValue visual_shader_node_particle_randomness_class_constructor(JSContex
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeParticleRandomness::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeParticleRandomness *visual_shader_node_particle_randomness_class = memnew(VisualShaderNodeParticleRandomness);
+	VisualShaderNodeParticleRandomness *visual_shader_node_particle_randomness_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_particle_randomness_class = static_cast<VisualShaderNodeParticleRandomness *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_particle_randomness_class = memnew(VisualShaderNodeParticleRandomness);
+	}
 	if (!visual_shader_node_particle_randomness_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

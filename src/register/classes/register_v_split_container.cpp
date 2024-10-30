@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/split_container.hpp>
 #include <godot_cpp/classes/v_split_container.hpp>
+#include <godot_cpp/classes/split_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue v_split_container_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VSplitContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VSplitContainer *v_split_container_class = memnew(VSplitContainer);
+	VSplitContainer *v_split_container_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		v_split_container_class = static_cast<VSplitContainer *>(static_cast<Object *>(vobj));
+	} else {
+		v_split_container_class = memnew(VSplitContainer);
+	}
 	if (!v_split_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

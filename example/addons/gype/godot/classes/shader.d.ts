@@ -1,13 +1,13 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { Resource } from "@godot/classes/resource";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class Shader extends Resource{
   public get_mode(): number;
-  public set_code(_code: String): void;
+  public set_code(_code: String | StringName | string): void;
   public get_code(): String;
-  public set_default_texture_parameter(_name: StringName, _texture: Texture2D, _index: number): void;
-  public get_default_texture_parameter(_name: StringName, _index: number): Texture2D;
+  public set_default_texture_parameter(_name: String | StringName | string, _texture: Texture2D, _index: number): void;
+  public get_default_texture_parameter(_name: String | StringName | string, _index: number): Texture2D;
   public get_shader_uniform_list(_get_groups: boolean): GDArray;
   public get code(): String {
     get_code();

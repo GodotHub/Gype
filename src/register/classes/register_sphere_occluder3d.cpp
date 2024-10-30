@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/sphere_occluder3d.hpp>
 #include <godot_cpp/classes/occluder3d.hpp>
+#include <godot_cpp/classes/sphere_occluder3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue sphere_occluder3d_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SphereOccluder3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SphereOccluder3D *sphere_occluder3d_class = memnew(SphereOccluder3D);
+	SphereOccluder3D *sphere_occluder3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		sphere_occluder3d_class = static_cast<SphereOccluder3D *>(static_cast<Object *>(vobj));
+	} else {
+		sphere_occluder3d_class = memnew(SphereOccluder3D);
+	}
 	if (!sphere_occluder3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -7,13 +7,13 @@ export declare class Label extends Control{
   public get_horizontal_alignment(): number;
   public set_vertical_alignment(_alignment: number): void;
   public get_vertical_alignment(): number;
-  public set_text(_text: String): void;
+  public set_text(_text: String | StringName | string): void;
   public get_text(): String;
   public set_label_settings(_settings: LabelSettings): void;
   public get_label_settings(): LabelSettings;
   public set_text_direction(_direction: number): void;
   public get_text_direction(): number;
-  public set_language(_language: String): void;
+  public set_language(_language: String | StringName | string): void;
   public get_language(): String;
   public set_autowrap_mode(_autowrap_mode: number): void;
   public get_autowrap_mode(): number;
@@ -25,7 +25,7 @@ export declare class Label extends Control{
   public get_tab_stops(): PackedFloat32Array;
   public set_text_overrun_behavior(_overrun_behavior: number): void;
   public get_text_overrun_behavior(): number;
-  public set_ellipsis_char(_char: String): void;
+  public set_ellipsis_char(_char: String | StringName | string): void;
   public get_ellipsis_char(): String;
   public set_uppercase(_enable: boolean): void;
   public is_uppercase(): boolean;

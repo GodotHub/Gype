@@ -28,7 +28,13 @@ static JSValue gradient_texture1d_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GradientTexture1D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GradientTexture1D *gradient_texture1d_class = memnew(GradientTexture1D);
+	GradientTexture1D *gradient_texture1d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gradient_texture1d_class = static_cast<GradientTexture1D *>(static_cast<Object *>(vobj));
+	} else {
+		gradient_texture1d_class = memnew(GradientTexture1D);
+	}
 	if (!gradient_texture1d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

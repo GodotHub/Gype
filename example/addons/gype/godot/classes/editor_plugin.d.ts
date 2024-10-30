@@ -1,27 +1,27 @@
 
-import { EditorSceneFormatImporter } from "@godot/classes/editor_scene_format_importer";
-import { EditorDebuggerPlugin } from "@godot/classes/editor_debugger_plugin";
-import { Texture2D } from "@godot/classes/texture2d";
-import { Shortcut } from "@godot/classes/shortcut";
-import { EditorInterface } from "@godot/classes/editor_interface";
-import { EditorScenePostImportPlugin } from "@godot/classes/editor_scene_post_import_plugin";
-import { EditorUndoRedoManager } from "@godot/classes/editor_undo_redo_manager";
-import { Object } from "@godot/classes/object";
-import { Node } from "@godot/classes/node";
-import { Camera3D } from "@godot/classes/camera3d";
-import { EditorImportPlugin } from "@godot/classes/editor_import_plugin";
-import { ConfigFile } from "@godot/classes/config_file";
 import { Script } from "@godot/classes/script";
-import { Control } from "@godot/classes/control";
-import { EditorInspectorPlugin } from "@godot/classes/editor_inspector_plugin";
-import { EditorResourceConversionPlugin } from "@godot/classes/editor_resource_conversion_plugin";
-import { EditorExportPlugin } from "@godot/classes/editor_export_plugin";
-import { PopupMenu } from "@godot/classes/popup_menu";
-import { EditorNode3DGizmoPlugin } from "@godot/classes/editor_node3d_gizmo_plugin";
-import { EditorTranslationParserPlugin } from "@godot/classes/editor_translation_parser_plugin";
-import { ScriptCreateDialog } from "@godot/classes/script_create_dialog";
+import { ConfigFile } from "@godot/classes/config_file";
+import { EditorScenePostImportPlugin } from "@godot/classes/editor_scene_post_import_plugin";
 import { InputEvent } from "@godot/classes/input_event";
+import { EditorNode3DGizmoPlugin } from "@godot/classes/editor_node3d_gizmo_plugin";
+import { EditorUndoRedoManager } from "@godot/classes/editor_undo_redo_manager";
+import { PopupMenu } from "@godot/classes/popup_menu";
+import { EditorSceneFormatImporter } from "@godot/classes/editor_scene_format_importer";
+import { Camera3D } from "@godot/classes/camera3d";
+import { GodotObject } from "@godot/classes/godot_object";
+import { Texture2D } from "@godot/classes/texture2d";
+import { EditorExportPlugin } from "@godot/classes/editor_export_plugin";
+import { EditorResourceConversionPlugin } from "@godot/classes/editor_resource_conversion_plugin";
+import { EditorInspectorPlugin } from "@godot/classes/editor_inspector_plugin";
+import { EditorImportPlugin } from "@godot/classes/editor_import_plugin";
+import { EditorInterface } from "@godot/classes/editor_interface";
+import { EditorDebuggerPlugin } from "@godot/classes/editor_debugger_plugin";
+import { EditorTranslationParserPlugin } from "@godot/classes/editor_translation_parser_plugin";
+import { Shortcut } from "@godot/classes/shortcut";
+import { Node } from "@godot/classes/node";
 import { Button } from "@godot/classes/button";
+import { Control } from "@godot/classes/control";
+import { ScriptCreateDialog } from "@godot/classes/script_create_dialog";
 
 export declare class EditorPlugin extends Node{
   public _forward_canvas_gui_input(_event: InputEvent): boolean;
@@ -39,7 +39,7 @@ export declare class EditorPlugin extends Node{
   public _get_state(): Dictionary;
   public _set_state(_state: Dictionary): void;
   public _clear(): void;
-  public _get_unsaved_status(_for_scene: String): String;
+  public _get_unsaved_status(_for_scene: String | StringName | string): String;
   public _save_external_data(): void;
   public _apply_changes(): void;
   public _get_breakpoints(): PackedStringArray;
@@ -49,20 +49,20 @@ export declare class EditorPlugin extends Node{
   public _enable_plugin(): void;
   public _disable_plugin(): void;
   public add_control_to_container(_container: number, _control: Control): void;
-  public add_control_to_bottom_panel(_control: Control, _title: String, _shortcut: Shortcut): Button;
+  public add_control_to_bottom_panel(_control: Control, _title: String | StringName | string, _shortcut: Shortcut): Button;
   public add_control_to_dock(_slot: number, _control: Control, _shortcut: Shortcut): void;
   public remove_control_from_docks(_control: Control): void;
   public remove_control_from_bottom_panel(_control: Control): void;
   public remove_control_from_container(_container: number, _control: Control): void;
   public set_dock_tab_icon(_control: Control, _icon: Texture2D): void;
-  public add_tool_menu_item(_name: String, _callable: Callable): void;
-  public add_tool_submenu_item(_name: String, _submenu: PopupMenu): void;
-  public remove_tool_menu_item(_name: String): void;
+  public add_tool_menu_item(_name: String | StringName | string, _callable: Callable): void;
+  public add_tool_submenu_item(_name: String | StringName | string, _submenu: PopupMenu): void;
+  public remove_tool_menu_item(_name: String | StringName | string): void;
   public get_export_as_menu(): PopupMenu;
-  public add_custom_type(_type: String, _base: String, _script: Script, _icon: Texture2D): void;
-  public remove_custom_type(_type: String): void;
-  public add_autoload_singleton(_name: String, _path: String): void;
-  public remove_autoload_singleton(_name: String): void;
+  public add_custom_type(_type: String | StringName | string, _base: String | StringName | string, _script: Script, _icon: Texture2D): void;
+  public remove_custom_type(_type: String | StringName | string): void;
+  public add_autoload_singleton(_name: String | StringName | string, _path: String | StringName | string): void;
+  public remove_autoload_singleton(_name: String | StringName | string): void;
   public update_overlays(): number;
   public make_bottom_panel_item_visible(_item: Control): void;
   public hide_bottom_panel(): void;
@@ -123,4 +123,10 @@ export declare class EditorPlugin extends Node{
     AFTER_GUI_INPUT_STOP = 1,
     AFTER_GUI_INPUT_CUSTOM = 2,
   }
+  public const scene_changed: string = "scene_changed";
+  public const scene_closed: string = "scene_closed";
+  public const main_screen_changed: string = "main_screen_changed";
+  public const resource_saved: string = "resource_saved";
+  public const scene_saved: string = "scene_saved";
+  public const project_settings_changed: string = "project_settings_changed";
 }

@@ -27,7 +27,13 @@ static JSValue physics_material_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsMaterial::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PhysicsMaterial *physics_material_class = memnew(PhysicsMaterial);
+	PhysicsMaterial *physics_material_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		physics_material_class = static_cast<PhysicsMaterial *>(static_cast<Object *>(vobj));
+	} else {
+		physics_material_class = memnew(PhysicsMaterial);
+	}
 	if (!physics_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -9,10 +9,15 @@ def gen_classes_d_ts():
     gen_path = Path.joinpath(generated_root_dir,'example','addons','gype','godot','classes')
     config_env(env)
     for clazz in gde_json['classes']:
-        if clazz['name'].find('Extension') != -1: continue
+        if clazz['name'].find('Extension') != -1 or clazz['name'] == 'Object': 
+            continue
         dependency = list(filter(lambda e: not is_variant(e), collect_dependency(clazz)))
         content = cpp_template.render({ 'class': clazz, 'dependency': dependency })
-        with open(file=Path.joinpath(gen_path, f'{camel_to_snake(clazz['name'])}.d.ts'), mode='w', encoding='utf8') as file:
+        if clazz['name'] == 'Object':
+            class_name = 'GodotObject'
+        else:
+            class_name = clazz['name']
+        with open(file=Path.joinpath(gen_path, f'{camel_to_snake(class_name)}.d.ts'), mode='w', encoding='utf8') as file:
             file.write(content)
 
 def config_env(env: Environment):

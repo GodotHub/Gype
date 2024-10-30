@@ -13,7 +13,7 @@ export declare class XRInterface extends RefCounted{
   public get_tracking_status(): number;
   public get_render_target_size(): Vector2;
   public get_view_count(): number;
-  public trigger_haptic_pulse(_action_name: String, _tracker_name: StringName, _frequency: number, _amplitude: number, _duration_sec: number, _delay_sec: number): void;
+  public trigger_haptic_pulse(_action_name: String | StringName | string, _tracker_name: String | StringName | string, _frequency: number, _amplitude: number, _duration_sec: number, _delay_sec: number): void;
   public supports_play_area_mode(_mode: number): boolean;
   public get_play_area_mode(): number;
   public set_play_area_mode(_mode: number): boolean;
@@ -82,4 +82,5 @@ export declare class XRInterface extends RefCounted{
     XR_ENV_BLEND_MODE_ADDITIVE = 1,
     XR_ENV_BLEND_MODE_ALPHA_BLEND = 2,
   }
+  public const play_area_changed: string = "play_area_changed";
 }

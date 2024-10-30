@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/thread.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/thread.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue thread_class_constructor(JSContext *ctx, JSValueConst new_target,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Thread::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Thread *thread_class = memnew(Thread);
+	Thread *thread_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		thread_class = static_cast<Thread *>(static_cast<Object *>(vobj));
+	} else {
+		thread_class = memnew(Thread);
+	}
 	if (!thread_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

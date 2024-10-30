@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/compressed_texture2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/compressed_texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue compressed_texture2d_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CompressedTexture2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CompressedTexture2D *compressed_texture2d_class = memnew(CompressedTexture2D);
+	CompressedTexture2D *compressed_texture2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		compressed_texture2d_class = static_cast<CompressedTexture2D *>(static_cast<Object *>(vobj));
+	} else {
+		compressed_texture2d_class = memnew(CompressedTexture2D);
+	}
 	if (!compressed_texture2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

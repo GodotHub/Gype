@@ -27,7 +27,13 @@ static JSValue gltf_animation_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFAnimation::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GLTFAnimation *gltf_animation_class = memnew(GLTFAnimation);
+	GLTFAnimation *gltf_animation_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gltf_animation_class = static_cast<GLTFAnimation *>(static_cast<Object *>(vobj));
+	} else {
+		gltf_animation_class = memnew(GLTFAnimation);
+	}
 	if (!gltf_animation_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

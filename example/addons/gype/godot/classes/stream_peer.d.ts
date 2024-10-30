@@ -19,8 +19,8 @@ export declare class StreamPeer extends RefCounted{
   public put_u64(_value: number): void;
   public put_float(_value: number): void;
   public put_double(_value: number): void;
-  public put_string(_value: String): void;
-  public put_utf8_string(_value: String): void;
+  public put_string(_value: String | StringName | string): void;
+  public put_utf8_string(_value: String | StringName | string): void;
   public put_var(_value: any, _full_objects: boolean): void;
   public get_8(): number;
   public get_u8(): number;

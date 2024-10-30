@@ -1,12 +1,12 @@
 
-import { PhysicsDirectSpaceState3D } from "@godot/classes/physics_direct_space_state3d";
+import { PhysicsDirectBodyState3D } from "@godot/classes/physics_direct_body_state3d";
 import { PhysicsTestMotionResult3D } from "@godot/classes/physics_test_motion_result3d";
-import { Object } from "@godot/classes/object";
+import { GodotObject } from "@godot/classes/godot_object";
+import { PhysicsDirectSpaceState3D } from "@godot/classes/physics_direct_space_state3d";
 import { PhysicsTestMotionParameters3D } from "@godot/classes/physics_test_motion_parameters3d";
 import { PhysicsServer3DRenderingServerHandler } from "@godot/classes/physics_server3d_rendering_server_handler";
-import { PhysicsDirectBodyState3D } from "@godot/classes/physics_direct_body_state3d";
 
-export declare class PhysicsServer3D extends Object{
+export declare class PhysicsServer3D extends GodotObject{
   public world_boundary_shape_create(): RID;
   public separation_ray_shape_create(): RID;
   public sphere_shape_create(): RID;

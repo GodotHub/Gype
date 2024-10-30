@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/kinematic_collision2d.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/kinematic_collision2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue kinematic_collision2d_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, KinematicCollision2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	KinematicCollision2D *kinematic_collision2d_class = memnew(KinematicCollision2D);
+	KinematicCollision2D *kinematic_collision2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		kinematic_collision2d_class = static_cast<KinematicCollision2D *>(static_cast<Object *>(vobj));
+	} else {
+		kinematic_collision2d_class = memnew(KinematicCollision2D);
+	}
 	if (!kinematic_collision2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

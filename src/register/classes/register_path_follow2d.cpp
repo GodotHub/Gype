@@ -27,7 +27,13 @@ static JSValue path_follow2d_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PathFollow2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PathFollow2D *path_follow2d_class = memnew(PathFollow2D);
+	PathFollow2D *path_follow2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		path_follow2d_class = static_cast<PathFollow2D *>(static_cast<Object *>(vobj));
+	} else {
+		path_follow2d_class = memnew(PathFollow2D);
+	}
 	if (!path_follow2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

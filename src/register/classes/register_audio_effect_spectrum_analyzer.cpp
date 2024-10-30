@@ -27,7 +27,13 @@ static JSValue audio_effect_spectrum_analyzer_class_constructor(JSContext *ctx, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectSpectrumAnalyzer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioEffectSpectrumAnalyzer *audio_effect_spectrum_analyzer_class = memnew(AudioEffectSpectrumAnalyzer);
+	AudioEffectSpectrumAnalyzer *audio_effect_spectrum_analyzer_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_effect_spectrum_analyzer_class = static_cast<AudioEffectSpectrumAnalyzer *>(static_cast<Object *>(vobj));
+	} else {
+		audio_effect_spectrum_analyzer_class = memnew(AudioEffectSpectrumAnalyzer);
+	}
 	if (!audio_effect_spectrum_analyzer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -2,10 +2,10 @@
 import { Mesh } from "@godot/classes/mesh";
 
 export declare class ArrayMesh extends Mesh{
-  public add_blend_shape(_name: StringName): void;
+  public add_blend_shape(_name: String | StringName | string): void;
   public get_blend_shape_count(): number;
   public get_blend_shape_name(_index: number): StringName;
-  public set_blend_shape_name(_index: number, _name: StringName): void;
+  public set_blend_shape_name(_index: number, _name: String | StringName | string): void;
   public clear_blend_shapes(): void;
   public set_blend_shape_mode(_mode: number): void;
   public get_blend_shape_mode(): number;
@@ -18,8 +18,8 @@ export declare class ArrayMesh extends Mesh{
   public surface_get_array_index_len(_surf_idx: number): number;
   public surface_get_format(_surf_idx: number): number;
   public surface_get_primitive_type(_surf_idx: number): number;
-  public surface_find_by_name(_name: String): number;
-  public surface_set_name(_surf_idx: number, _name: String): void;
+  public surface_find_by_name(_name: String | StringName | string): number;
+  public surface_set_name(_surf_idx: number, _name: String | StringName | string): void;
   public surface_get_name(_surf_idx: number): String;
   public regen_normal_maps(): void;
   public lightmap_unwrap(_transform: Transform3D, _texel_size: number): number;

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/shader.hpp>
+#include <godot_cpp/classes/visual_shader.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue visual_shader_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShader::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShader *visual_shader_class = memnew(VisualShader);
+	VisualShader *visual_shader_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_class = static_cast<VisualShader *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_class = memnew(VisualShader);
+	}
 	if (!visual_shader_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

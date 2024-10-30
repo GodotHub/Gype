@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/collision_object3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/ray_cast3d.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue ray_cast3d_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RayCast3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RayCast3D *ray_cast3d_class = memnew(RayCast3D);
+	RayCast3D *ray_cast3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		ray_cast3d_class = static_cast<RayCast3D *>(static_cast<Object *>(vobj));
+	} else {
+		ray_cast3d_class = memnew(RayCast3D);
+	}
 	if (!ray_cast3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

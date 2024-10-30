@@ -27,7 +27,13 @@ static JSValue xr_interface_extension_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRInterfaceExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	XRInterfaceExtension *xr_interface_extension_class = memnew(XRInterfaceExtension);
+	XRInterfaceExtension *xr_interface_extension_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		xr_interface_extension_class = static_cast<XRInterfaceExtension *>(static_cast<Object *>(vobj));
+	} else {
+		xr_interface_extension_class = memnew(XRInterfaceExtension);
+	}
 	if (!xr_interface_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

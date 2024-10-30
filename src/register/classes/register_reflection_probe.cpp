@@ -27,7 +27,13 @@ static JSValue reflection_probe_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ReflectionProbe::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ReflectionProbe *reflection_probe_class = memnew(ReflectionProbe);
+	ReflectionProbe *reflection_probe_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		reflection_probe_class = static_cast<ReflectionProbe *>(static_cast<Object *>(vobj));
+	} else {
+		reflection_probe_class = memnew(ReflectionProbe);
+	}
 	if (!reflection_probe_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

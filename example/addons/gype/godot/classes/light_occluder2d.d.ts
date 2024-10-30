@@ -1,6 +1,6 @@
 
-import { OccluderPolygon2D } from "@godot/classes/occluder_polygon2d";
 import { Node2D } from "@godot/classes/node2d";
+import { OccluderPolygon2D } from "@godot/classes/occluder_polygon2d";
 
 export declare class LightOccluder2D extends Node2D{
   public set_occluder_polygon(_polygon: OccluderPolygon2D): void;

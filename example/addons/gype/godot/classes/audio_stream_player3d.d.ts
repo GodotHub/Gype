@@ -1,7 +1,7 @@
 
 import { AudioStream } from "@godot/classes/audio_stream";
-import { AudioStreamPlayback } from "@godot/classes/audio_stream_playback";
 import { Node3D } from "@godot/classes/node3d";
+import { AudioStreamPlayback } from "@godot/classes/audio_stream_playback";
 
 export declare class AudioStreamPlayer3D extends Node3D{
   public set_stream(_stream: AudioStream): void;
@@ -19,7 +19,7 @@ export declare class AudioStreamPlayer3D extends Node3D{
   public stop(): void;
   public is_playing(): boolean;
   public get_playback_position(): number;
-  public set_bus(_bus: StringName): void;
+  public set_bus(_bus: String | StringName | string): void;
   public get_bus(): StringName;
   public set_autoplay(_enable: boolean): void;
   public is_autoplay_enabled(): boolean;
@@ -188,4 +188,5 @@ export declare class AudioStreamPlayer3D extends Node3D{
     DOPPLER_TRACKING_IDLE_STEP = 1,
     DOPPLER_TRACKING_PHYSICS_STEP = 2,
   }
+  public const finished: string = "finished";
 }

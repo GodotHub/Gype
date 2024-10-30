@@ -27,7 +27,13 @@ static JSValue multiplayer_peer_extension_class_constructor(JSContext *ctx, JSVa
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MultiplayerPeerExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	MultiplayerPeerExtension *multiplayer_peer_extension_class = memnew(MultiplayerPeerExtension);
+	MultiplayerPeerExtension *multiplayer_peer_extension_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		multiplayer_peer_extension_class = static_cast<MultiplayerPeerExtension *>(static_cast<Object *>(vobj));
+	} else {
+		multiplayer_peer_extension_class = memnew(MultiplayerPeerExtension);
+	}
 	if (!multiplayer_peer_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

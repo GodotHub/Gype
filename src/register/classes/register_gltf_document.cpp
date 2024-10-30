@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gltf_document_extension.hpp>
-#include <godot_cpp/classes/gltf_state.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/gltf_document.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/gltf_document_extension.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/gltf_state.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,7 +30,13 @@ static JSValue gltf_document_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFDocument::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GLTFDocument *gltf_document_class = memnew(GLTFDocument);
+	GLTFDocument *gltf_document_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gltf_document_class = static_cast<GLTFDocument *>(static_cast<Object *>(vobj));
+	} else {
+		gltf_document_class = memnew(GLTFDocument);
+	}
 	if (!gltf_document_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

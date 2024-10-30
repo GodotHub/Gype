@@ -27,7 +27,13 @@ static JSValue visual_shader_node_particle_multiply_by_axis_angle_class_construc
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeParticleMultiplyByAxisAngle::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeParticleMultiplyByAxisAngle *visual_shader_node_particle_multiply_by_axis_angle_class = memnew(VisualShaderNodeParticleMultiplyByAxisAngle);
+	VisualShaderNodeParticleMultiplyByAxisAngle *visual_shader_node_particle_multiply_by_axis_angle_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_particle_multiply_by_axis_angle_class = static_cast<VisualShaderNodeParticleMultiplyByAxisAngle *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_particle_multiply_by_axis_angle_class = memnew(VisualShaderNodeParticleMultiplyByAxisAngle);
+	}
 	if (!visual_shader_node_particle_multiply_by_axis_angle_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

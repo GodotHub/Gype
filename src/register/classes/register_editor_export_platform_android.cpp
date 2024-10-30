@@ -27,7 +27,13 @@ static JSValue editor_export_platform_android_class_constructor(JSContext *ctx, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorExportPlatformAndroid::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorExportPlatformAndroid *editor_export_platform_android_class = memnew(EditorExportPlatformAndroid);
+	EditorExportPlatformAndroid *editor_export_platform_android_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_export_platform_android_class = static_cast<EditorExportPlatformAndroid *>(static_cast<Object *>(vobj));
+	} else {
+		editor_export_platform_android_class = memnew(EditorExportPlatformAndroid);
+	}
 	if (!editor_export_platform_android_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

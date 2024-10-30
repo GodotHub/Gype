@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/video_stream_playback.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue video_stream_playback_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VideoStreamPlayback::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VideoStreamPlayback *video_stream_playback_class = memnew(VideoStreamPlayback);
+	VideoStreamPlayback *video_stream_playback_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		video_stream_playback_class = static_cast<VideoStreamPlayback *>(static_cast<Object *>(vobj));
+	} else {
+		video_stream_playback_class = memnew(VideoStreamPlayback);
+	}
 	if (!video_stream_playback_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

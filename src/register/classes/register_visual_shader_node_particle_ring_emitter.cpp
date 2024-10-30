@@ -27,7 +27,13 @@ static JSValue visual_shader_node_particle_ring_emitter_class_constructor(JSCont
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeParticleRingEmitter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeParticleRingEmitter *visual_shader_node_particle_ring_emitter_class = memnew(VisualShaderNodeParticleRingEmitter);
+	VisualShaderNodeParticleRingEmitter *visual_shader_node_particle_ring_emitter_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_particle_ring_emitter_class = static_cast<VisualShaderNodeParticleRingEmitter *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_particle_ring_emitter_class = memnew(VisualShaderNodeParticleRingEmitter);
+	}
 	if (!visual_shader_node_particle_ring_emitter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

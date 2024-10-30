@@ -1,6 +1,6 @@
 
-import { Light3D } from "@godot/classes/light3d";
 import { Resource } from "@godot/classes/resource";
+import { Light3D } from "@godot/classes/light3d";
 
 export declare class GLTFLight extends Resource{
   public from_node(_light_node: Light3D): GLTFLight;
@@ -12,15 +12,15 @@ export declare class GLTFLight extends Resource{
   public get_intensity(): number;
   public set_intensity(_intensity: number): void;
   public get_light_type(): String;
-  public set_light_type(_light_type: String): void;
+  public set_light_type(_light_type: String | StringName | string): void;
   public get_range(): number;
   public set_range(_range: number): void;
   public get_inner_cone_angle(): number;
   public set_inner_cone_angle(_inner_cone_angle: number): void;
   public get_outer_cone_angle(): number;
   public set_outer_cone_angle(_outer_cone_angle: number): void;
-  public get_additional_data(_extension_name: StringName): any;
-  public set_additional_data(_extension_name: StringName, _additional_data: any): void;
+  public get_additional_data(_extension_name: String | StringName | string): any;
+  public set_additional_data(_extension_name: String | StringName | string, _additional_data: any): void;
   public get color(): Color {
     get_color();
   }

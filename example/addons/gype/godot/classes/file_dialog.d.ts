@@ -5,25 +5,25 @@ import { ConfirmationDialog } from "@godot/classes/confirmation_dialog";
 
 export declare class FileDialog extends ConfirmationDialog{
   public clear_filters(): void;
-  public add_filter(_filter: String, _description: String): void;
+  public add_filter(_filter: String | StringName | string, _description: String | StringName | string): void;
   public set_filters(_filters: PackedStringArray): void;
   public get_filters(): PackedStringArray;
   public get_option_name(_option: number): String;
   public get_option_values(_option: number): PackedStringArray;
   public get_option_default(_option: number): number;
-  public set_option_name(_option: number, _name: String): void;
+  public set_option_name(_option: number, _name: String | StringName | string): void;
   public set_option_values(_option: number, _values: PackedStringArray): void;
   public set_option_default(_option: number, _default_value_index: number): void;
   public set_option_count(_count: number): void;
   public get_option_count(): number;
-  public add_option(_name: String, _values: PackedStringArray, _default_value_index: number): void;
+  public add_option(_name: String | StringName | string, _values: PackedStringArray, _default_value_index: number): void;
   public get_selected_options(): Dictionary;
   public get_current_dir(): String;
   public get_current_file(): String;
   public get_current_path(): String;
-  public set_current_dir(_dir: String): void;
-  public set_current_file(_file: String): void;
-  public set_current_path(_path: String): void;
+  public set_current_dir(_dir: String | StringName | string): void;
+  public set_current_file(_file: String | StringName | string): void;
+  public set_current_path(_path: String | StringName | string): void;
   public set_mode_overrides_title(_override: boolean): void;
   public is_mode_overriding_title(): boolean;
   public set_file_mode(_mode: number): void;
@@ -32,7 +32,7 @@ export declare class FileDialog extends ConfirmationDialog{
   public get_line_edit(): LineEdit;
   public set_access(_access: number): void;
   public get_access(): number;
-  public set_root_subfolder(_dir: String): void;
+  public set_root_subfolder(_dir: String | StringName | string): void;
   public get_root_subfolder(): String;
   public set_show_hidden_files(_show: boolean): void;
   public is_showing_hidden_files(): boolean;
@@ -118,4 +118,7 @@ export declare class FileDialog extends ConfirmationDialog{
     ACCESS_USERDATA = 1,
     ACCESS_FILESYSTEM = 2,
   }
+  public const file_selected: string = "file_selected";
+  public const files_selected: string = "files_selected";
+  public const dir_selected: string = "dir_selected";
 }

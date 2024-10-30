@@ -1,11 +1,11 @@
 
 import { ArrayMesh } from "@godot/classes/array_mesh";
-import { Mesh } from "@godot/classes/mesh";
-import { Skin } from "@godot/classes/skin";
-import { Material } from "@godot/classes/material";
 import { GeometryInstance3D } from "@godot/classes/geometry_instance3d";
-import { SkinReference } from "@godot/classes/skin_reference";
+import { Material } from "@godot/classes/material";
 import { MeshConvexDecompositionSettings } from "@godot/classes/mesh_convex_decomposition_settings";
+import { Mesh } from "@godot/classes/mesh";
+import { SkinReference } from "@godot/classes/skin_reference";
+import { Skin } from "@godot/classes/skin";
 
 export declare class MeshInstance3D extends GeometryInstance3D{
   public set_mesh(_mesh: Mesh): void;
@@ -23,7 +23,7 @@ export declare class MeshInstance3D extends GeometryInstance3D{
   public create_convex_collision(_clean: boolean, _simplify: boolean): void;
   public create_multiple_convex_collisions(_settings: MeshConvexDecompositionSettings): void;
   public get_blend_shape_count(): number;
-  public find_blend_shape_by_name(_name: StringName): number;
+  public find_blend_shape_by_name(_name: String | StringName | string): number;
   public get_blend_shape_value(_blend_shape_idx: number): number;
   public set_blend_shape_value(_blend_shape_idx: number, _value: number): void;
   public create_debug_tangents(): void;

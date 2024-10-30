@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/java_class.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue java_class_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, JavaClass::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	JavaClass *java_class_class = memnew(JavaClass);
+	JavaClass *java_class_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		java_class_class = static_cast<JavaClass *>(static_cast<Object *>(vobj));
+	} else {
+		java_class_class = memnew(JavaClass);
+	}
 	if (!java_class_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

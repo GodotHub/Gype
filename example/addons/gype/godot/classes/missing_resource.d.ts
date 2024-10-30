@@ -2,7 +2,7 @@
 import { Resource } from "@godot/classes/resource";
 
 export declare class MissingResource extends Resource{
-  public set_original_class(_name: String): void;
+  public set_original_class(_name: String | StringName | string): void;
   public get_original_class(): String;
   public set_recording_properties(_enable: boolean): void;
   public is_recording_properties(): boolean;

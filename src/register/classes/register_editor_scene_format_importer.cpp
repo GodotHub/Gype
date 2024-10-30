@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/editor_scene_format_importer.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue editor_scene_format_importer_class_constructor(JSContext *ctx, JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorSceneFormatImporter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorSceneFormatImporter *editor_scene_format_importer_class = memnew(EditorSceneFormatImporter);
+	EditorSceneFormatImporter *editor_scene_format_importer_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_scene_format_importer_class = static_cast<EditorSceneFormatImporter *>(static_cast<Object *>(vobj));
+	} else {
+		editor_scene_format_importer_class = memnew(EditorSceneFormatImporter);
+	}
 	if (!editor_scene_format_importer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

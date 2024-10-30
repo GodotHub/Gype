@@ -1,23 +1,23 @@
 
-import { AudioEffectInstance } from "@godot/classes/audio_effect_instance";
 import { AudioEffect } from "@godot/classes/audio_effect";
 import { AudioStream } from "@godot/classes/audio_stream";
-import { Object } from "@godot/classes/object";
+import { AudioEffectInstance } from "@godot/classes/audio_effect_instance";
 import { AudioBusLayout } from "@godot/classes/audio_bus_layout";
+import { GodotObject } from "@godot/classes/godot_object";
 
-export declare class AudioServer extends Object{
+export declare class AudioServer extends GodotObject{
   public set_bus_count(_amount: number): void;
   public get_bus_count(): number;
   public remove_bus(_index: number): void;
   public add_bus(_at_position: number): void;
   public move_bus(_index: number, _to_index: number): void;
-  public set_bus_name(_bus_idx: number, _name: String): void;
+  public set_bus_name(_bus_idx: number, _name: String | StringName | string): void;
   public get_bus_name(_bus_idx: number): String;
-  public get_bus_index(_bus_name: StringName): number;
+  public get_bus_index(_bus_name: String | StringName | string): number;
   public get_bus_channels(_bus_idx: number): number;
   public set_bus_volume_db(_bus_idx: number, _volume_db: number): void;
   public get_bus_volume_db(_bus_idx: number): number;
-  public set_bus_send(_bus_idx: number, _send: StringName): void;
+  public set_bus_send(_bus_idx: number, _send: String | StringName | string): void;
   public get_bus_send(_bus_idx: number): StringName;
   public set_bus_solo(_bus_idx: number, _enable: boolean): void;
   public is_bus_solo(_bus_idx: number): boolean;
@@ -43,13 +43,13 @@ export declare class AudioServer extends Object{
   public get_mix_rate(): number;
   public get_output_device_list(): PackedStringArray;
   public get_output_device(): String;
-  public set_output_device(_name: String): void;
+  public set_output_device(_name: String | StringName | string): void;
   public get_time_to_next_mix(): number;
   public get_time_since_last_mix(): number;
   public get_output_latency(): number;
   public get_input_device_list(): PackedStringArray;
   public get_input_device(): String;
-  public set_input_device(_name: String): void;
+  public set_input_device(_name: String | StringName | string): void;
   public set_bus_layout(_bus_layout: AudioBusLayout): void;
   public generate_bus_layout(): AudioBusLayout;
   public set_enable_tagging_used_audio_streams(_enable: boolean): void;
@@ -91,4 +91,6 @@ export declare class AudioServer extends Object{
     PLAYBACK_TYPE_SAMPLE = 2,
     PLAYBACK_TYPE_MAX = 3,
   }
+  public const bus_layout_changed: string = "bus_layout_changed";
+  public const bus_renamed: string = "bus_renamed";
 }

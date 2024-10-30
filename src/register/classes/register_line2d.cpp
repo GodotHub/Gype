@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/line2d.hpp>
 #include <godot_cpp/classes/gradient.hpp>
-#include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,7 +30,13 @@ static JSValue line2d_class_constructor(JSContext *ctx, JSValueConst new_target,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Line2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Line2D *line2d_class = memnew(Line2D);
+	Line2D *line2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		line2d_class = static_cast<Line2D *>(static_cast<Object *>(vobj));
+	} else {
+		line2d_class = memnew(Line2D);
+	}
 	if (!line2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

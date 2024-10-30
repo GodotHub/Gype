@@ -27,7 +27,13 @@ static JSValue editor_export_platform_web_class_constructor(JSContext *ctx, JSVa
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorExportPlatformWeb::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorExportPlatformWeb *editor_export_platform_web_class = memnew(EditorExportPlatformWeb);
+	EditorExportPlatformWeb *editor_export_platform_web_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_export_platform_web_class = static_cast<EditorExportPlatformWeb *>(static_cast<Object *>(vobj));
+	} else {
+		editor_export_platform_web_class = memnew(EditorExportPlatformWeb);
+	}
 	if (!editor_export_platform_web_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gpu_particles3d.hpp>
-#include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/geometry_instance3d.hpp>
+#include <godot_cpp/classes/skin.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/gpu_particles3d.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,7 +31,13 @@ static JSValue gpu_particles3d_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GPUParticles3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GPUParticles3D *gpu_particles3d_class = memnew(GPUParticles3D);
+	GPUParticles3D *gpu_particles3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gpu_particles3d_class = static_cast<GPUParticles3D *>(static_cast<Object *>(vobj));
+	} else {
+		gpu_particles3d_class = memnew(GPUParticles3D);
+	}
 	if (!gpu_particles3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

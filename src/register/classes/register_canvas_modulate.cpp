@@ -27,7 +27,13 @@ static JSValue canvas_modulate_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CanvasModulate::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CanvasModulate *canvas_modulate_class = memnew(CanvasModulate);
+	CanvasModulate *canvas_modulate_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		canvas_modulate_class = static_cast<CanvasModulate *>(static_cast<Object *>(vobj));
+	} else {
+		canvas_modulate_class = memnew(CanvasModulate);
+	}
 	if (!canvas_modulate_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

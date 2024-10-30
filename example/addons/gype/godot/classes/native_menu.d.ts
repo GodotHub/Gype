@@ -1,8 +1,8 @@
 
+import { GodotObject } from "@godot/classes/godot_object";
 import { Texture2D } from "@godot/classes/texture2d";
-import { Object } from "@godot/classes/object";
 
-export declare class NativeMenu extends Object{
+export declare class NativeMenu extends GodotObject{
   public has_feature(_feature: number): boolean;
   public has_system_menu(_menu_id: number): boolean;
   public get_system_menu(_menu_id: number): RID;
@@ -20,16 +20,16 @@ export declare class NativeMenu extends Object{
   public set_minimum_width(_rid: RID, _width: number): void;
   public get_minimum_width(_rid: RID): number;
   public is_opened(_rid: RID): boolean;
-  public add_submenu_item(_rid: RID, _label: String, _submenu_rid: RID, _tag: any, _index: number): number;
-  public add_item(_rid: RID, _label: String, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public add_check_item(_rid: RID, _label: String, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public add_icon_item(_rid: RID, _icon: Texture2D, _label: String, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public add_icon_check_item(_rid: RID, _icon: Texture2D, _label: String, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public add_radio_check_item(_rid: RID, _label: String, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public add_icon_radio_check_item(_rid: RID, _icon: Texture2D, _label: String, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public add_multistate_item(_rid: RID, _label: String, _max_states: number, _default_state: number, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
+  public add_submenu_item(_rid: RID, _label: String | StringName | string, _submenu_rid: RID, _tag: any, _index: number): number;
+  public add_item(_rid: RID, _label: String | StringName | string, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
+  public add_check_item(_rid: RID, _label: String | StringName | string, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
+  public add_icon_item(_rid: RID, _icon: Texture2D, _label: String | StringName | string, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
+  public add_icon_check_item(_rid: RID, _icon: Texture2D, _label: String | StringName | string, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
+  public add_radio_check_item(_rid: RID, _label: String | StringName | string, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
+  public add_icon_radio_check_item(_rid: RID, _icon: Texture2D, _label: String | StringName | string, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
+  public add_multistate_item(_rid: RID, _label: String | StringName | string, _max_states: number, _default_state: number, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
   public add_separator(_rid: RID, _index: number): number;
-  public find_item_index_with_text(_rid: RID, _text: String): number;
+  public find_item_index_with_text(_rid: RID, _text: String | StringName | string): number;
   public find_item_index_with_tag(_rid: RID, _tag: any): number;
   public find_item_index_with_submenu(_rid: RID, _submenu_rid: RID): number;
   public is_item_checked(_rid: RID, _idx: number): boolean;
@@ -55,12 +55,12 @@ export declare class NativeMenu extends Object{
   public set_item_hover_callbacks(_rid: RID, _idx: number, _callback: Callable): void;
   public set_item_key_callback(_rid: RID, _idx: number, _key_callback: Callable): void;
   public set_item_tag(_rid: RID, _idx: number, _tag: any): void;
-  public set_item_text(_rid: RID, _idx: number, _text: String): void;
+  public set_item_text(_rid: RID, _idx: number, _text: String | StringName | string): void;
   public set_item_submenu(_rid: RID, _idx: number, _submenu_rid: RID): void;
   public set_item_accelerator(_rid: RID, _idx: number, _keycode: number): void;
   public set_item_disabled(_rid: RID, _idx: number, _disabled: boolean): void;
   public set_item_hidden(_rid: RID, _idx: number, _hidden: boolean): void;
-  public set_item_tooltip(_rid: RID, _idx: number, _tooltip: String): void;
+  public set_item_tooltip(_rid: RID, _idx: number, _tooltip: String | StringName | string): void;
   public set_item_state(_rid: RID, _idx: number, _state: number): void;
   public set_item_max_states(_rid: RID, _idx: number, _max_states: number): void;
   public set_item_icon(_rid: RID, _idx: number, _icon: Texture2D): void;

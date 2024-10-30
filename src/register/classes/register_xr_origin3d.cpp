@@ -27,7 +27,13 @@ static JSValue xr_origin3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XROrigin3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	XROrigin3D *xr_origin3d_class = memnew(XROrigin3D);
+	XROrigin3D *xr_origin3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		xr_origin3d_class = static_cast<XROrigin3D *>(static_cast<Object *>(vobj));
+	} else {
+		xr_origin3d_class = memnew(XROrigin3D);
+	}
 	if (!xr_origin3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

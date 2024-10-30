@@ -27,7 +27,13 @@ static JSValue gltf_texture_sampler_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFTextureSampler::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GLTFTextureSampler *gltf_texture_sampler_class = memnew(GLTFTextureSampler);
+	GLTFTextureSampler *gltf_texture_sampler_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gltf_texture_sampler_class = static_cast<GLTFTextureSampler *>(static_cast<Object *>(vobj));
+	} else {
+		gltf_texture_sampler_class = memnew(GLTFTextureSampler);
+	}
 	if (!gltf_texture_sampler_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

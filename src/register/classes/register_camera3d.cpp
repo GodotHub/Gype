@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera_attributes.hpp>
-#include <godot_cpp/classes/camera3d.hpp>
-#include <godot_cpp/classes/compositor.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/camera_attributes.hpp>
+#include <godot_cpp/classes/compositor.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/environment.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -30,7 +30,13 @@ static JSValue camera3d_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Camera3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Camera3D *camera3d_class = memnew(Camera3D);
+	Camera3D *camera3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		camera3d_class = static_cast<Camera3D *>(static_cast<Object *>(vobj));
+	} else {
+		camera3d_class = memnew(Camera3D);
+	}
 	if (!camera3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

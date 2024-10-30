@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/csg_primitive3d.hpp>
-#include <godot_cpp/classes/csg_mesh3d.hpp>
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/csg_mesh3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue csg_mesh3d_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CSGMesh3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CSGMesh3D *csg_mesh3d_class = memnew(CSGMesh3D);
+	CSGMesh3D *csg_mesh3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		csg_mesh3d_class = static_cast<CSGMesh3D *>(static_cast<Object *>(vobj));
+	} else {
+		csg_mesh3d_class = memnew(CSGMesh3D);
+	}
 	if (!csg_mesh3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

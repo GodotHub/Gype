@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/framebuffer_cache_rd.hpp>
-#include <godot_cpp/classes/rd_framebuffer_pass.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/rd_framebuffer_pass.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue framebuffer_cache_rd_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, FramebufferCacheRD::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	FramebufferCacheRD *framebuffer_cache_rd_class = memnew(FramebufferCacheRD);
+	FramebufferCacheRD *framebuffer_cache_rd_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		framebuffer_cache_rd_class = static_cast<FramebufferCacheRD *>(static_cast<Object *>(vobj));
+	} else {
+		framebuffer_cache_rd_class = memnew(FramebufferCacheRD);
+	}
 	if (!framebuffer_cache_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -73,7 +79,7 @@ static int js_framebuffer_cache_rd_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_framebuffer_cache_rd_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

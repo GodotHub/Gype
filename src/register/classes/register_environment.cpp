@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/texture.hpp>
 #include <godot_cpp/classes/sky.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/environment.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -29,7 +29,13 @@ static JSValue environment_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Environment::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Environment *environment_class = memnew(Environment);
+	Environment *environment_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		environment_class = static_cast<Environment *>(static_cast<Object *>(vobj));
+	} else {
+		environment_class = memnew(Environment);
+	}
 	if (!environment_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/hashing_context.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue hashing_context_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HashingContext::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	HashingContext *hashing_context_class = memnew(HashingContext);
+	HashingContext *hashing_context_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		hashing_context_class = static_cast<HashingContext *>(static_cast<Object *>(vobj));
+	} else {
+		hashing_context_class = memnew(HashingContext);
+	}
 	if (!hashing_context_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_compare.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/classes/visual_shader_node_compare.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue visual_shader_node_compare_class_constructor(JSContext *ctx, JSVa
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeCompare::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeCompare *visual_shader_node_compare_class = memnew(VisualShaderNodeCompare);
+	VisualShaderNodeCompare *visual_shader_node_compare_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_compare_class = static_cast<VisualShaderNodeCompare *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_compare_class = memnew(VisualShaderNodeCompare);
+	}
 	if (!visual_shader_node_compare_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

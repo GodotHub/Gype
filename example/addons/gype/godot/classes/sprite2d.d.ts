@@ -1,6 +1,6 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { Node2D } from "@godot/classes/node2d";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class Sprite2D extends Node2D{
   public set_texture(_texture: Texture2D): void;
@@ -101,4 +101,6 @@ export declare class Sprite2D extends Node2D{
   public set region_filter_clip_enabled(value): void {
     set_region_filter_clip_enabled(value);
   }
+  public const frame_changed: string = "frame_changed";
+  public const texture_changed: string = "texture_changed";
 }

@@ -6,7 +6,7 @@ export declare class TextParagraph extends RefCounted{
   public clear(): void;
   public set_direction(_direction: number): void;
   public get_direction(): number;
-  public set_custom_punctuation(_custom_punctuation: String): void;
+  public set_custom_punctuation(_custom_punctuation: String | StringName | string): void;
   public get_custom_punctuation(): String;
   public set_orientation(_orientation: number): void;
   public get_orientation(): number;
@@ -15,9 +15,9 @@ export declare class TextParagraph extends RefCounted{
   public set_preserve_control(_enabled: boolean): void;
   public get_preserve_control(): boolean;
   public set_bidi_override(_override: GDArray): void;
-  public set_dropcap(_text: String, _font: Font, _font_size: number, _dropcap_margins: Rect2, _language: String): boolean;
+  public set_dropcap(_text: String | StringName | string, _font: Font, _font_size: number, _dropcap_margins: Rect2, _language: String | StringName | string): boolean;
   public clear_dropcap(): void;
-  public add_string(_text: String, _font: Font, _font_size: number, _language: String, _meta: any): boolean;
+  public add_string(_text: String | StringName | string, _font: Font, _font_size: number, _language: String | StringName | string, _meta: any): boolean;
   public add_object(_key: any, _size: Vector2, _inline_align: number, _length: number, _baseline: number): boolean;
   public resize_object(_key: any, _size: Vector2, _inline_align: number, _baseline: number): boolean;
   public set_alignment(_alignment: number): void;
@@ -29,7 +29,7 @@ export declare class TextParagraph extends RefCounted{
   public get_justification_flags(): number;
   public set_text_overrun_behavior(_overrun_behavior: number): void;
   public get_text_overrun_behavior(): number;
-  public set_ellipsis_char(_char: String): void;
+  public set_ellipsis_char(_char: String | StringName | string): void;
   public get_ellipsis_char(): String;
   public set_width(_width: number): void;
   public get_width(): number;

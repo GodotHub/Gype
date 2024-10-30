@@ -22,12 +22,12 @@ export declare class CodeEdit extends TextEdit{
   public is_auto_brace_completion_enabled(): boolean;
   public set_highlight_matching_braces_enabled(_enable: boolean): void;
   public is_highlight_matching_braces_enabled(): boolean;
-  public add_auto_brace_completion_pair(_start_key: String, _end_key: String): void;
+  public add_auto_brace_completion_pair(_start_key: String | StringName | string, _end_key: String | StringName | string): void;
   public set_auto_brace_completion_pairs(_pairs: Dictionary): void;
   public get_auto_brace_completion_pairs(): Dictionary;
-  public has_auto_brace_completion_open_key(_open_key: String): boolean;
-  public has_auto_brace_completion_close_key(_close_key: String): boolean;
-  public get_auto_brace_completion_close_key(_open_key: String): String;
+  public has_auto_brace_completion_open_key(_open_key: String | StringName | string): boolean;
+  public has_auto_brace_completion_close_key(_close_key: String | StringName | string): boolean;
+  public get_auto_brace_completion_close_key(_open_key: String | StringName | string): String;
   public set_draw_breakpoints_gutter(_enable: boolean): void;
   public is_drawing_breakpoints_gutter(): boolean;
   public set_draw_bookmarks_gutter(_enable: boolean): void;
@@ -66,19 +66,19 @@ export declare class CodeEdit extends TextEdit{
   public create_code_region(): void;
   public get_code_region_start_tag(): String;
   public get_code_region_end_tag(): String;
-  public set_code_region_tags(_start: String, _end: String): void;
+  public set_code_region_tags(_start: String | StringName | string, _end: String | StringName | string): void;
   public is_line_code_region_start(_line: number): boolean;
   public is_line_code_region_end(_line: number): boolean;
-  public add_string_delimiter(_start_key: String, _end_key: String, _line_only: boolean): void;
-  public remove_string_delimiter(_start_key: String): void;
-  public has_string_delimiter(_start_key: String): boolean;
+  public add_string_delimiter(_start_key: String | StringName | string, _end_key: String | StringName | string, _line_only: boolean): void;
+  public remove_string_delimiter(_start_key: String | StringName | string): void;
+  public has_string_delimiter(_start_key: String | StringName | string): boolean;
   public set_string_delimiters(_string_delimiters: GDArray): void;
   public clear_string_delimiters(): void;
   public get_string_delimiters(): GDArray;
   public is_in_string(_line: number, _column: number): number;
-  public add_comment_delimiter(_start_key: String, _end_key: String, _line_only: boolean): void;
-  public remove_comment_delimiter(_start_key: String): void;
-  public has_comment_delimiter(_start_key: String): boolean;
+  public add_comment_delimiter(_start_key: String | StringName | string, _end_key: String | StringName | string, _line_only: boolean): void;
+  public remove_comment_delimiter(_start_key: String | StringName | string): void;
+  public has_comment_delimiter(_start_key: String | StringName | string): boolean;
   public set_comment_delimiters(_comment_delimiters: GDArray): void;
   public clear_comment_delimiters(): void;
   public get_comment_delimiters(): GDArray;
@@ -87,11 +87,11 @@ export declare class CodeEdit extends TextEdit{
   public get_delimiter_end_key(_delimiter_index: number): String;
   public get_delimiter_start_position(_line: number, _column: number): Vector2;
   public get_delimiter_end_position(_line: number, _column: number): Vector2;
-  public set_code_hint(_code_hint: String): void;
+  public set_code_hint(_code_hint: String | StringName | string): void;
   public set_code_hint_draw_below(_draw_below: boolean): void;
   public get_text_for_code_completion(): String;
   public request_code_completion(_force: boolean): void;
-  public add_code_completion_option(_type: number, _display_text: String, _insert_text: String, _text_color: Color, _icon: Resource, _value: any, _location: number): void;
+  public add_code_completion_option(_type: number, _display_text: String | StringName | string, _insert_text: String | StringName | string, _text_color: Color, _icon: Resource, _value: any, _location: number): void;
   public update_code_completion_options(_force: boolean): void;
   public get_code_completion_options(): GDArray;
   public get_code_completion_option(_index: number): Dictionary;
@@ -253,4 +253,8 @@ export declare class CodeEdit extends TextEdit{
     LOCATION_OTHER_USER_CODE = 512,
     LOCATION_OTHER = 1024,
   }
+  public const breakpoint_toggled: string = "breakpoint_toggled";
+  public const code_completion_requested: string = "code_completion_requested";
+  public const symbol_lookup: string = "symbol_lookup";
+  public const symbol_validate: string = "symbol_validate";
 }

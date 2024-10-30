@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/file_access.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue file_access_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, FileAccess::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	FileAccess *file_access_class = memnew(FileAccess);
+	FileAccess *file_access_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		file_access_class = static_cast<FileAccess *>(static_cast<Object *>(vobj));
+	} else {
+		file_access_class = memnew(FileAccess);
+	}
 	if (!file_access_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

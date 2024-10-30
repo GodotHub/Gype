@@ -6,12 +6,12 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/rich_text_effect.hpp>
-#include <godot_cpp/classes/rich_text_label.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/v_scroll_bar.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/rich_text_label.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,7 +32,13 @@ static JSValue rich_text_label_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RichTextLabel::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RichTextLabel *rich_text_label_class = memnew(RichTextLabel);
+	RichTextLabel *rich_text_label_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		rich_text_label_class = static_cast<RichTextLabel *>(static_cast<Object *>(vobj));
+	} else {
+		rich_text_label_class = memnew(RichTextLabel);
+	}
 	if (!rich_text_label_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/video_stream.hpp>
 #include <godot_cpp/classes/video_stream_theora.hpp>
+#include <godot_cpp/classes/video_stream.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue video_stream_theora_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VideoStreamTheora::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VideoStreamTheora *video_stream_theora_class = memnew(VideoStreamTheora);
+	VideoStreamTheora *video_stream_theora_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		video_stream_theora_class = static_cast<VideoStreamTheora *>(static_cast<Object *>(vobj));
+	} else {
+		video_stream_theora_class = memnew(VideoStreamTheora);
+	}
 	if (!video_stream_theora_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

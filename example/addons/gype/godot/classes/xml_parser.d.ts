@@ -10,14 +10,14 @@ export declare class XMLParser extends RefCounted{
   public get_attribute_count(): number;
   public get_attribute_name(_idx: number): String;
   public get_attribute_value(_idx: number): String;
-  public has_attribute(_name: String): boolean;
-  public get_named_attribute_value(_name: String): String;
-  public get_named_attribute_value_safe(_name: String): String;
+  public has_attribute(_name: String | StringName | string): boolean;
+  public get_named_attribute_value(_name: String | StringName | string): String;
+  public get_named_attribute_value_safe(_name: String | StringName | string): String;
   public is_empty(): boolean;
   public get_current_line(): number;
   public skip_section(): void;
   public seek(_position: number): number;
-  public open(_file: String): number;
+  public open(_file: String | StringName | string): number;
   public open_buffer(_buffer: PackedByteArray): number;
   static NodeType = {
     NODE_NONE = 0,

@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/physics_material.hpp>
-#include <godot_cpp/classes/mesh_library.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/grid_map.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/mesh_library.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,7 +30,13 @@ static JSValue grid_map_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GridMap::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GridMap *grid_map_class = memnew(GridMap);
+	GridMap *grid_map_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		grid_map_class = static_cast<GridMap *>(static_cast<Object *>(vobj));
+	} else {
+		grid_map_class = memnew(GridMap);
+	}
 	if (!grid_map_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

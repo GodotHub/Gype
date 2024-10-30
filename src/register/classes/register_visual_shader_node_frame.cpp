@@ -27,7 +27,13 @@ static JSValue visual_shader_node_frame_class_constructor(JSContext *ctx, JSValu
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeFrame::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeFrame *visual_shader_node_frame_class = memnew(VisualShaderNodeFrame);
+	VisualShaderNodeFrame *visual_shader_node_frame_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_frame_class = static_cast<VisualShaderNodeFrame *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_frame_class = memnew(VisualShaderNodeFrame);
+	}
 	if (!visual_shader_node_frame_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

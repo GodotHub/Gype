@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_distortion.hpp>
 #include <godot_cpp/classes/audio_effect.hpp>
+#include <godot_cpp/classes/audio_effect_distortion.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue audio_effect_distortion_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectDistortion::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioEffectDistortion *audio_effect_distortion_class = memnew(AudioEffectDistortion);
+	AudioEffectDistortion *audio_effect_distortion_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_effect_distortion_class = static_cast<AudioEffectDistortion *>(static_cast<Object *>(vobj));
+	} else {
+		audio_effect_distortion_class = memnew(AudioEffectDistortion);
+	}
 	if (!audio_effect_distortion_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

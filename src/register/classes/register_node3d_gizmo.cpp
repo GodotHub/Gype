@@ -27,7 +27,13 @@ static JSValue node3d_gizmo_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Node3DGizmo::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Node3DGizmo *node3d_gizmo_class = memnew(Node3DGizmo);
+	Node3DGizmo *node3d_gizmo_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		node3d_gizmo_class = static_cast<Node3DGizmo *>(static_cast<Object *>(vobj));
+	} else {
+		node3d_gizmo_class = memnew(Node3DGizmo);
+	}
 	if (!node3d_gizmo_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

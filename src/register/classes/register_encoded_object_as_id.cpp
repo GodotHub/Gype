@@ -27,7 +27,13 @@ static JSValue encoded_object_as_id_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EncodedObjectAsID::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EncodedObjectAsID *encoded_object_as_id_class = memnew(EncodedObjectAsID);
+	EncodedObjectAsID *encoded_object_as_id_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		encoded_object_as_id_class = static_cast<EncodedObjectAsID *>(static_cast<Object *>(vobj));
+	} else {
+		encoded_object_as_id_class = memnew(EncodedObjectAsID);
+	}
 	if (!encoded_object_as_id_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

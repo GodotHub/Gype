@@ -27,7 +27,13 @@ static JSValue grid_container_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GridContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GridContainer *grid_container_class = memnew(GridContainer);
+	GridContainer *grid_container_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		grid_container_class = static_cast<GridContainer *>(static_cast<Object *>(vobj));
+	} else {
+		grid_container_class = memnew(GridContainer);
+	}
 	if (!grid_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

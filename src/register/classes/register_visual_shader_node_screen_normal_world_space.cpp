@@ -27,7 +27,13 @@ static JSValue visual_shader_node_screen_normal_world_space_class_constructor(JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeScreenNormalWorldSpace::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeScreenNormalWorldSpace *visual_shader_node_screen_normal_world_space_class = memnew(VisualShaderNodeScreenNormalWorldSpace);
+	VisualShaderNodeScreenNormalWorldSpace *visual_shader_node_screen_normal_world_space_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_screen_normal_world_space_class = static_cast<VisualShaderNodeScreenNormalWorldSpace *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_screen_normal_world_space_class = memnew(VisualShaderNodeScreenNormalWorldSpace);
+	}
 	if (!visual_shader_node_screen_normal_world_space_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

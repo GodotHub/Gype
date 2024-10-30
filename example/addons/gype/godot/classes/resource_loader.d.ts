@@ -1,21 +1,21 @@
 
 import { ResourceFormatLoader } from "@godot/classes/resource_format_loader";
-import { Object } from "@godot/classes/object";
 import { Resource } from "@godot/classes/resource";
+import { GodotObject } from "@godot/classes/godot_object";
 
-export declare class ResourceLoader extends Object{
-  public load_threaded_request(_path: String, _type_hint: String, _use_sub_threads: boolean, _cache_mode: number): number;
-  public load_threaded_get_status(_path: String, _progress: GDArray): number;
-  public load_threaded_get(_path: String): Resource;
-  public load(_path: String, _type_hint: String, _cache_mode: number): Resource;
-  public get_recognized_extensions_for_type(_type: String): PackedStringArray;
+export declare class ResourceLoader extends GodotObject{
+  public load_threaded_request(_path: String | StringName | string, _type_hint: String | StringName | string, _use_sub_threads: boolean, _cache_mode: number): number;
+  public load_threaded_get_status(_path: String | StringName | string, _progress: GDArray): number;
+  public load_threaded_get(_path: String | StringName | string): Resource;
+  public load(_path: String | StringName | string, _type_hint: String | StringName | string, _cache_mode: number): Resource;
+  public get_recognized_extensions_for_type(_type: String | StringName | string): PackedStringArray;
   public add_resource_format_loader(_format_loader: ResourceFormatLoader, _at_front: boolean): void;
   public remove_resource_format_loader(_format_loader: ResourceFormatLoader): void;
   public set_abort_on_missing_resources(_abort: boolean): void;
-  public get_dependencies(_path: String): PackedStringArray;
-  public has_cached(_path: String): boolean;
-  public exists(_path: String, _type_hint: String): boolean;
-  public get_resource_uid(_path: String): number;
+  public get_dependencies(_path: String | StringName | string): PackedStringArray;
+  public has_cached(_path: String | StringName | string): boolean;
+  public exists(_path: String | StringName | string, _type_hint: String | StringName | string): boolean;
+  public get_resource_uid(_path: String | StringName | string): number;
   static ThreadLoadStatus = {
     THREAD_LOAD_INVALID_RESOURCE = 0,
     THREAD_LOAD_IN_PROGRESS = 1,

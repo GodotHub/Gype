@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource_importer_scene.hpp>
 #include <godot_cpp/classes/resource_importer.hpp>
+#include <godot_cpp/classes/resource_importer_scene.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue resource_importer_scene_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterScene::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ResourceImporterScene *resource_importer_scene_class = memnew(ResourceImporterScene);
+	ResourceImporterScene *resource_importer_scene_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		resource_importer_scene_class = static_cast<ResourceImporterScene *>(static_cast<Object *>(vobj));
+	} else {
+		resource_importer_scene_class = memnew(ResourceImporterScene);
+	}
 	if (!resource_importer_scene_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

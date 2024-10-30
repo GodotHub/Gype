@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visible_on_screen_notifier2d.hpp>
 #include <godot_cpp/classes/visible_on_screen_enabler2d.hpp>
+#include <godot_cpp/classes/visible_on_screen_notifier2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue visible_on_screen_enabler2d_class_constructor(JSContext *ctx, JSV
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisibleOnScreenEnabler2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisibleOnScreenEnabler2D *visible_on_screen_enabler2d_class = memnew(VisibleOnScreenEnabler2D);
+	VisibleOnScreenEnabler2D *visible_on_screen_enabler2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visible_on_screen_enabler2d_class = static_cast<VisibleOnScreenEnabler2D *>(static_cast<Object *>(vobj));
+	} else {
+		visible_on_screen_enabler2d_class = memnew(VisibleOnScreenEnabler2D);
+	}
 	if (!visible_on_screen_enabler2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

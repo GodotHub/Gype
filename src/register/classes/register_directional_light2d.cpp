@@ -27,7 +27,13 @@ static JSValue directional_light2d_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, DirectionalLight2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	DirectionalLight2D *directional_light2d_class = memnew(DirectionalLight2D);
+	DirectionalLight2D *directional_light2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		directional_light2d_class = static_cast<DirectionalLight2D *>(static_cast<Object *>(vobj));
+	} else {
+		directional_light2d_class = memnew(DirectionalLight2D);
+	}
 	if (!directional_light2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

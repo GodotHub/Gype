@@ -7,8 +7,8 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/color_picker_button.hpp>
 #include <godot_cpp/classes/color_picker.hpp>
-#include <godot_cpp/classes/popup_panel.hpp>
 #include <godot_cpp/classes/button.hpp>
+#include <godot_cpp/classes/popup_panel.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue color_picker_button_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ColorPickerButton::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ColorPickerButton *color_picker_button_class = memnew(ColorPickerButton);
+	ColorPickerButton *color_picker_button_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		color_picker_button_class = static_cast<ColorPickerButton *>(static_cast<Object *>(vobj));
+	} else {
+		color_picker_button_class = memnew(ColorPickerButton);
+	}
 	if (!color_picker_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

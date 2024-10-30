@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/point_light2d.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/light2d.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue point_light2d_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PointLight2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PointLight2D *point_light2d_class = memnew(PointLight2D);
+	PointLight2D *point_light2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		point_light2d_class = static_cast<PointLight2D *>(static_cast<Object *>(vobj));
+	} else {
+		point_light2d_class = memnew(PointLight2D);
+	}
 	if (!point_light2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

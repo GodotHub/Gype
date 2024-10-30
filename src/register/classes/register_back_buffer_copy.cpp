@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/back_buffer_copy.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue back_buffer_copy_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, BackBufferCopy::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	BackBufferCopy *back_buffer_copy_class = memnew(BackBufferCopy);
+	BackBufferCopy *back_buffer_copy_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		back_buffer_copy_class = static_cast<BackBufferCopy *>(static_cast<Object *>(vobj));
+	} else {
+		back_buffer_copy_class = memnew(BackBufferCopy);
+	}
 	if (!back_buffer_copy_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

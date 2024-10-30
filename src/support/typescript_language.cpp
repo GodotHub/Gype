@@ -70,11 +70,11 @@ import { GodotClass } from "@godot/core/class_defined";
 
 @GodotClass
 export class %s extends %s {
-	_ready(): void {
+	public _ready(): void {
 
 	}
 
-	_process(delta: number): void {
+	public _process(delta: number): void {
 
 	}
 }

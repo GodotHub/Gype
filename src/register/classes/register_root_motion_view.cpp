@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/classes/root_motion_view.hpp>
+#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue root_motion_view_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RootMotionView::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RootMotionView *root_motion_view_class = memnew(RootMotionView);
+	RootMotionView *root_motion_view_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		root_motion_view_class = static_cast<RootMotionView *>(static_cast<Object *>(vobj));
+	} else {
+		root_motion_view_class = memnew(RootMotionView);
+	}
 	if (!root_motion_view_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

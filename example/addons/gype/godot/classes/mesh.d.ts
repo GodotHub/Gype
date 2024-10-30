@@ -1,9 +1,9 @@
 
-import { Material } from "@godot/classes/material";
 import { TriangleMesh } from "@godot/classes/triangle_mesh";
 import { Resource } from "@godot/classes/resource";
-import { ConvexPolygonShape3D } from "@godot/classes/convex_polygon_shape3d";
+import { Material } from "@godot/classes/material";
 import { ConcavePolygonShape3D } from "@godot/classes/concave_polygon_shape3d";
+import { ConvexPolygonShape3D } from "@godot/classes/convex_polygon_shape3d";
 
 export declare class Mesh extends Resource{
   public _get_surface_count(): number;
@@ -18,7 +18,7 @@ export declare class Mesh extends Resource{
   public _surface_get_material(_index: number): Material;
   public _get_blend_shape_count(): number;
   public _get_blend_shape_name(_index: number): StringName;
-  public _set_blend_shape_name(_index: number, _name: StringName): void;
+  public _set_blend_shape_name(_index: number, _name: String | StringName | string): void;
   public _get_aabb(): AABB;
   public set_lightmap_size_hint(_size: Vector2i): void;
   public get_lightmap_size_hint(): Vector2i;

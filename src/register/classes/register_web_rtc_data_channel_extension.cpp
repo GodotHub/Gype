@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/web_rtc_data_channel.hpp>
 #include <godot_cpp/classes/web_rtc_data_channel_extension.hpp>
+#include <godot_cpp/classes/web_rtc_data_channel.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue web_rtc_data_channel_extension_class_constructor(JSContext *ctx, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WebRTCDataChannelExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	WebRTCDataChannelExtension *web_rtc_data_channel_extension_class = memnew(WebRTCDataChannelExtension);
+	WebRTCDataChannelExtension *web_rtc_data_channel_extension_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		web_rtc_data_channel_extension_class = static_cast<WebRTCDataChannelExtension *>(static_cast<Object *>(vobj));
+	} else {
+		web_rtc_data_channel_extension_class = memnew(WebRTCDataChannelExtension);
+	}
 	if (!web_rtc_data_channel_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

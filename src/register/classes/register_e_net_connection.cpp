@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/e_net_packet_peer.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
+#include <godot_cpp/classes/e_net_packet_peer.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/e_net_packet_peer.hpp>
 #include <godot_cpp/classes/e_net_connection.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -30,7 +30,13 @@ static JSValue e_net_connection_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ENetConnection::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ENetConnection *e_net_connection_class = memnew(ENetConnection);
+	ENetConnection *e_net_connection_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		e_net_connection_class = static_cast<ENetConnection *>(static_cast<Object *>(vobj));
+	} else {
+		e_net_connection_class = memnew(ENetConnection);
+	}
 	if (!e_net_connection_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

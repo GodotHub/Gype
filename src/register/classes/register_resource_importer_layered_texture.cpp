@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource_importer.hpp>
 #include <godot_cpp/classes/resource_importer_layered_texture.hpp>
+#include <godot_cpp/classes/resource_importer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue resource_importer_layered_texture_class_constructor(JSContext *ct
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterLayeredTexture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ResourceImporterLayeredTexture *resource_importer_layered_texture_class = memnew(ResourceImporterLayeredTexture);
+	ResourceImporterLayeredTexture *resource_importer_layered_texture_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		resource_importer_layered_texture_class = static_cast<ResourceImporterLayeredTexture *>(static_cast<Object *>(vobj));
+	} else {
+		resource_importer_layered_texture_class = memnew(ResourceImporterLayeredTexture);
+	}
 	if (!resource_importer_layered_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -1,7 +1,7 @@
 
-import { Control } from "@godot/classes/control";
-import { Texture2D } from "@godot/classes/texture2d";
 import { PopupMenu } from "@godot/classes/popup_menu";
+import { Texture2D } from "@godot/classes/texture2d";
+import { Control } from "@godot/classes/control";
 
 export declare class LineEdit extends Control{
   public set_horizontal_alignment(_alignment: number): void;
@@ -14,19 +14,19 @@ export declare class LineEdit extends Control{
   public get_selected_text(): String;
   public get_selection_from_column(): number;
   public get_selection_to_column(): number;
-  public set_text(_text: String): void;
+  public set_text(_text: String | StringName | string): void;
   public get_text(): String;
   public get_draw_control_chars(): boolean;
   public set_draw_control_chars(_enable: boolean): void;
   public set_text_direction(_direction: number): void;
   public get_text_direction(): number;
-  public set_language(_language: String): void;
+  public set_language(_language: String | StringName | string): void;
   public get_language(): String;
   public set_structured_text_bidi_override(_parser: number): void;
   public get_structured_text_bidi_override(): number;
   public set_structured_text_bidi_override_options(_args: GDArray): void;
   public get_structured_text_bidi_override_options(): GDArray;
-  public set_placeholder(_text: String): void;
+  public set_placeholder(_text: String | StringName | string): void;
   public get_placeholder(): String;
   public set_caret_column(_position: number): void;
   public get_caret_column(): number;
@@ -43,14 +43,14 @@ export declare class LineEdit extends Control{
   public get_caret_blink_interval(): number;
   public set_max_length(_chars: number): void;
   public get_max_length(): number;
-  public insert_text_at_caret(_text: String): void;
+  public insert_text_at_caret(_text: String | StringName | string): void;
   public delete_char_at_caret(): void;
   public delete_text(_from_column: number, _to_column: number): void;
   public set_editable(_enabled: boolean): void;
   public is_editable(): boolean;
   public set_secret(_enabled: boolean): void;
   public is_secret(): boolean;
-  public set_secret_character(_character: String): void;
+  public set_secret_character(_character: String | StringName | string): void;
   public get_secret_character(): String;
   public menu_option(_option: number): void;
   public get_menu(): PopupMenu;
@@ -302,4 +302,7 @@ export declare class LineEdit extends Control{
     KEYBOARD_TYPE_PASSWORD = 6,
     KEYBOARD_TYPE_URL = 7,
   }
+  public const text_changed: string = "text_changed";
+  public const text_change_rejected: string = "text_change_rejected";
+  public const text_submitted: string = "text_submitted";
 }

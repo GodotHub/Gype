@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/lightmapper_rd.hpp>
 #include <godot_cpp/classes/lightmapper.hpp>
+#include <godot_cpp/classes/lightmapper_rd.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue lightmapper_rd_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, LightmapperRD::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	LightmapperRD *lightmapper_rd_class = memnew(LightmapperRD);
+	LightmapperRD *lightmapper_rd_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		lightmapper_rd_class = static_cast<LightmapperRD *>(static_cast<Object *>(vobj));
+	} else {
+		lightmapper_rd_class = memnew(LightmapperRD);
+	}
 	if (!lightmapper_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

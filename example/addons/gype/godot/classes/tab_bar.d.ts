@@ -1,6 +1,6 @@
 
-import { Control } from "@godot/classes/control";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Control } from "@godot/classes/control";
 
 export declare class TabBar extends Control{
   public set_tab_count(_count: number): void;
@@ -10,13 +10,13 @@ export declare class TabBar extends Control{
   public get_previous_tab(): number;
   public select_previous_available(): boolean;
   public select_next_available(): boolean;
-  public set_tab_title(_tab_idx: number, _title: String): void;
+  public set_tab_title(_tab_idx: number, _title: String | StringName | string): void;
   public get_tab_title(_tab_idx: number): String;
-  public set_tab_tooltip(_tab_idx: number, _tooltip: String): void;
+  public set_tab_tooltip(_tab_idx: number, _tooltip: String | StringName | string): void;
   public get_tab_tooltip(_tab_idx: number): String;
   public set_tab_text_direction(_tab_idx: number, _direction: number): void;
   public get_tab_text_direction(_tab_idx: number): number;
-  public set_tab_language(_tab_idx: number, _language: String): void;
+  public set_tab_language(_tab_idx: number, _language: String | StringName | string): void;
   public get_tab_language(_tab_idx: number): String;
   public set_tab_icon(_tab_idx: number, _icon: Texture2D): void;
   public get_tab_icon(_tab_idx: number): Texture2D;
@@ -31,7 +31,7 @@ export declare class TabBar extends Control{
   public set_tab_metadata(_tab_idx: number, _metadata: any): void;
   public get_tab_metadata(_tab_idx: number): any;
   public remove_tab(_tab_idx: number): void;
-  public add_tab(_title: String, _icon: Texture2D): void;
+  public add_tab(_title: String | StringName | string, _icon: Texture2D): void;
   public get_tab_idx_at_point(_point: Vector2): number;
   public set_tab_alignment(_alignment: number): void;
   public get_tab_alignment(): number;
@@ -143,4 +143,12 @@ export declare class TabBar extends Control{
     CLOSE_BUTTON_SHOW_ALWAYS = 2,
     CLOSE_BUTTON_MAX = 3,
   }
+  public const tab_selected: string = "tab_selected";
+  public const tab_changed: string = "tab_changed";
+  public const tab_clicked: string = "tab_clicked";
+  public const tab_rmb_clicked: string = "tab_rmb_clicked";
+  public const tab_close_pressed: string = "tab_close_pressed";
+  public const tab_button_pressed: string = "tab_button_pressed";
+  public const tab_hovered: string = "tab_hovered";
+  public const active_tab_rearranged: string = "active_tab_rearranged";
 }

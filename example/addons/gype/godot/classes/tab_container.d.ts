@@ -1,10 +1,10 @@
 
 import { Popup } from "@godot/classes/popup";
-import { Control } from "@godot/classes/control";
-import { Container } from "@godot/classes/container";
-import { Texture2D } from "@godot/classes/texture2d";
 import { TabBar } from "@godot/classes/tab_bar";
 import { Node } from "@godot/classes/node";
+import { Texture2D } from "@godot/classes/texture2d";
+import { Control } from "@godot/classes/control";
+import { Container } from "@godot/classes/container";
 
 export declare class TabContainer extends Container{
   public get_tab_count(): number;
@@ -26,9 +26,9 @@ export declare class TabContainer extends Container{
   public are_tabs_visible(): boolean;
   public set_all_tabs_in_front(_is_front: boolean): void;
   public is_all_tabs_in_front(): boolean;
-  public set_tab_title(_tab_idx: number, _title: String): void;
+  public set_tab_title(_tab_idx: number, _title: String | StringName | string): void;
   public get_tab_title(_tab_idx: number): String;
-  public set_tab_tooltip(_tab_idx: number, _tooltip: String): void;
+  public set_tab_tooltip(_tab_idx: number, _tooltip: String | StringName | string): void;
   public get_tab_tooltip(_tab_idx: number): String;
   public set_tab_icon(_tab_idx: number, _icon: Texture2D): void;
   public get_tab_icon(_tab_idx: number): Texture2D;
@@ -127,4 +127,11 @@ export declare class TabContainer extends Container{
     POSITION_BOTTOM = 1,
     POSITION_MAX = 2,
   }
+  public const active_tab_rearranged: string = "active_tab_rearranged";
+  public const tab_changed: string = "tab_changed";
+  public const tab_clicked: string = "tab_clicked";
+  public const tab_hovered: string = "tab_hovered";
+  public const tab_selected: string = "tab_selected";
+  public const tab_button_pressed: string = "tab_button_pressed";
+  public const pre_popup_pressed: string = "pre_popup_pressed";
 }

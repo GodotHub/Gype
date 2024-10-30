@@ -2,8 +2,8 @@
 import { StreamPeer } from "@godot/classes/stream_peer";
 
 export declare class StreamPeerTCP extends StreamPeer{
-  public bind(_port: number, _host: String): number;
-  public connect_to_host(_host: String, _port: number): number;
+  public bind(_port: number, _host: String | StringName | string): number;
+  public connect_to_host(_host: String | StringName | string, _port: number): number;
   public poll(): number;
   public get_status(): number;
   public get_connected_host(): String;

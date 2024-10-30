@@ -27,7 +27,13 @@ static JSValue web_rtc_data_channel_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WebRTCDataChannel::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	WebRTCDataChannel *web_rtc_data_channel_class = memnew(WebRTCDataChannel);
+	WebRTCDataChannel *web_rtc_data_channel_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		web_rtc_data_channel_class = static_cast<WebRTCDataChannel *>(static_cast<Object *>(vobj));
+	} else {
+		web_rtc_data_channel_class = memnew(WebRTCDataChannel);
+	}
 	if (!web_rtc_data_channel_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

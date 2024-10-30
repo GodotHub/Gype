@@ -27,7 +27,13 @@ static JSValue concave_polygon_shape2d_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ConcavePolygonShape2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ConcavePolygonShape2D *concave_polygon_shape2d_class = memnew(ConcavePolygonShape2D);
+	ConcavePolygonShape2D *concave_polygon_shape2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		concave_polygon_shape2d_class = static_cast<ConcavePolygonShape2D *>(static_cast<Object *>(vobj));
+	} else {
+		concave_polygon_shape2d_class = memnew(ConcavePolygonShape2D);
+	}
 	if (!concave_polygon_shape2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

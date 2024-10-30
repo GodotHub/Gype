@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/classes/convex_polygon_shape2d.hpp>
+#include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue convex_polygon_shape2d_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ConvexPolygonShape2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ConvexPolygonShape2D *convex_polygon_shape2d_class = memnew(ConvexPolygonShape2D);
+	ConvexPolygonShape2D *convex_polygon_shape2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		convex_polygon_shape2d_class = static_cast<ConvexPolygonShape2D *>(static_cast<Object *>(vobj));
+	} else {
+		convex_polygon_shape2d_class = memnew(ConvexPolygonShape2D);
+	}
 	if (!convex_polygon_shape2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

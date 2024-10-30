@@ -27,7 +27,13 @@ static JSValue dir_access_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, DirAccess::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	DirAccess *dir_access_class = memnew(DirAccess);
+	DirAccess *dir_access_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		dir_access_class = static_cast<DirAccess *>(static_cast<Object *>(vobj));
+	} else {
+		dir_access_class = memnew(DirAccess);
+	}
 	if (!dir_access_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

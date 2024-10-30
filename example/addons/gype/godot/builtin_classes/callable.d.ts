@@ -4,6 +4,7 @@ declare global {
 export declare class Callable {
   constructor();
   constructor(_from: Callable);
+  constructor(_object: Object, _method: Function);
   constructor(_object: Object, _method: StringName);
   public create(_variant: any, _method: StringName): void;
   public callv(_arguments: GDArray): void;

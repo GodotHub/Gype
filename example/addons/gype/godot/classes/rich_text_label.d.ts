@@ -1,17 +1,17 @@
 
-import { RichTextEffect } from "@godot/classes/rich_text_effect";
-import { Texture2D } from "@godot/classes/texture2d";
 import { VScrollBar } from "@godot/classes/v_scroll_bar";
-import { Control } from "@godot/classes/control";
 import { Font } from "@godot/classes/font";
 import { PopupMenu } from "@godot/classes/popup_menu";
+import { Texture2D } from "@godot/classes/texture2d";
+import { RichTextEffect } from "@godot/classes/rich_text_effect";
+import { Control } from "@godot/classes/control";
 
 export declare class RichTextLabel extends Control{
   public get_parsed_text(): String;
-  public add_text(_text: String): void;
-  public set_text(_text: String): void;
-  public add_image(_image: Texture2D, _width: number, _height: number, _color: Color, _inline_align: number, _region: Rect2, _key: any, _pad: boolean, _tooltip: String, _size_in_percent: boolean): void;
-  public update_image(_key: any, _mask: number, _image: Texture2D, _width: number, _height: number, _color: Color, _inline_align: number, _region: Rect2, _pad: boolean, _tooltip: String, _size_in_percent: boolean): void;
+  public add_text(_text: String | StringName | string): void;
+  public set_text(_text: String | StringName | string): void;
+  public add_image(_image: Texture2D, _width: number, _height: number, _color: Color, _inline_align: number, _region: Rect2, _key: any, _pad: boolean, _tooltip: String | StringName | string, _size_in_percent: boolean): void;
+  public update_image(_key: any, _mask: number, _image: Texture2D, _width: number, _height: number, _color: Color, _inline_align: number, _region: Rect2, _pad: boolean, _tooltip: String | StringName | string, _size_in_percent: boolean): void;
   public newline(): void;
   public remove_paragraph(_paragraph: number, _no_invalidate: boolean): boolean;
   public invalidate_paragraph(_paragraph: number): boolean;
@@ -25,16 +25,16 @@ export declare class RichTextLabel extends Control{
   public push_color(_color: Color): void;
   public push_outline_size(_outline_size: number): void;
   public push_outline_color(_color: Color): void;
-  public push_paragraph(_alignment: number, _base_direction: number, _language: String, _st_parser: number, _justification_flags: number, _tab_stops: PackedFloat32Array): void;
+  public push_paragraph(_alignment: number, _base_direction: number, _language: String | StringName | string, _st_parser: number, _justification_flags: number, _tab_stops: PackedFloat32Array): void;
   public push_indent(_level: number): void;
-  public push_list(_level: number, _type: number, _capitalize: boolean, _bullet: String): void;
+  public push_list(_level: number, _type: number, _capitalize: boolean, _bullet: String | StringName | string): void;
   public push_meta(_data: any, _underline_mode: number): void;
-  public push_hint(_description: String): void;
-  public push_language(_language: String): void;
+  public push_hint(_description: String | StringName | string): void;
+  public push_language(_language: String | StringName | string): void;
   public push_underline(): void;
   public push_strikethrough(): void;
   public push_table(_columns: number, _inline_align: number, _align_to_row: number): void;
-  public push_dropcap(_string: String, _font: Font, _size: number, _dropcap_margins: Rect2, _color: Color, _outline_size: number, _outline_color: Color): void;
+  public push_dropcap(_string: String | StringName | string, _font: Font, _size: number, _dropcap_margins: Rect2, _color: Color, _outline_size: number, _outline_color: Color): void;
   public set_table_column_expand(_column: number, _expand: boolean, _ratio: number): void;
   public set_cell_row_background_color(_odd_row_bg: Color, _even_row_bg: Color): void;
   public set_cell_border_color(_color: Color): void;
@@ -55,7 +55,7 @@ export declare class RichTextLabel extends Control{
   public get_structured_text_bidi_override_options(): GDArray;
   public set_text_direction(_direction: number): void;
   public get_text_direction(): number;
-  public set_language(_language: String): void;
+  public set_language(_language: String | StringName | string): void;
   public get_language(): String;
   public set_autowrap_mode(_autowrap_mode: number): void;
   public get_autowrap_mode(): number;
@@ -90,8 +90,8 @@ export declare class RichTextLabel extends Control{
   public select_all(): void;
   public get_selected_text(): String;
   public deselect(): void;
-  public parse_bbcode(_bbcode: String): void;
-  public append_text(_bbcode: String): void;
+  public parse_bbcode(_bbcode: String | StringName | string): void;
+  public append_text(_bbcode: String | StringName | string): void;
   public get_text(): String;
   public is_ready(): boolean;
   public set_threaded(_threaded: boolean): void;
@@ -294,4 +294,8 @@ export declare class RichTextLabel extends Control{
     UPDATE_TOOLTIP = 64,
     UPDATE_WIDTH_IN_PERCENT = 128,
   }
+  public const meta_clicked: string = "meta_clicked";
+  public const meta_hover_started: string = "meta_hover_started";
+  public const meta_hover_ended: string = "meta_hover_ended";
+  public const finished: string = "finished";
 }

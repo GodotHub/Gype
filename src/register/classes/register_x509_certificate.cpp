@@ -27,7 +27,13 @@ static JSValue x509_certificate_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, X509Certificate::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	X509Certificate *x509_certificate_class = memnew(X509Certificate);
+	X509Certificate *x509_certificate_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		x509_certificate_class = static_cast<X509Certificate *>(static_cast<Object *>(vobj));
+	} else {
+		x509_certificate_class = memnew(X509Certificate);
+	}
 	if (!x509_certificate_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

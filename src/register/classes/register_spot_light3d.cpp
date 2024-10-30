@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/light3d.hpp>
 #include <godot_cpp/classes/spot_light3d.hpp>
+#include <godot_cpp/classes/light3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue spot_light3d_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SpotLight3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SpotLight3D *spot_light3d_class = memnew(SpotLight3D);
+	SpotLight3D *spot_light3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		spot_light3d_class = static_cast<SpotLight3D *>(static_cast<Object *>(vobj));
+	} else {
+		spot_light3d_class = memnew(SpotLight3D);
+	}
 	if (!spot_light3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -27,7 +27,13 @@ static JSValue visual_shader_node_distance_fade_class_constructor(JSContext *ctx
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeDistanceFade::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeDistanceFade *visual_shader_node_distance_fade_class = memnew(VisualShaderNodeDistanceFade);
+	VisualShaderNodeDistanceFade *visual_shader_node_distance_fade_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_distance_fade_class = static_cast<VisualShaderNodeDistanceFade *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_distance_fade_class = memnew(VisualShaderNodeDistanceFade);
+	}
 	if (!visual_shader_node_distance_fade_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

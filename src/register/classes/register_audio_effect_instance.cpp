@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_instance.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/audio_effect_instance.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue audio_effect_instance_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectInstance::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioEffectInstance *audio_effect_instance_class = memnew(AudioEffectInstance);
+	AudioEffectInstance *audio_effect_instance_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_effect_instance_class = static_cast<AudioEffectInstance *>(static_cast<Object *>(vobj));
+	} else {
+		audio_effect_instance_class = memnew(AudioEffectInstance);
+	}
 	if (!audio_effect_instance_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

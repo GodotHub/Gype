@@ -220,6 +220,8 @@ def connect_args(args):
             return arg_name + ': ' + 'GDArray'
         elif arg_type == 'Variant':
             return arg_name + ': ' + 'any'
+        elif arg_type == "String" or arg_type == "StringName":
+            return arg_name + ": " + "String | StringName | string"
         else:
             return arg_name + ': ' + arg_type
 

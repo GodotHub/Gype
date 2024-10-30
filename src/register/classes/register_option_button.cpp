@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/option_button.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue option_button_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OptionButton::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	OptionButton *option_button_class = memnew(OptionButton);
+	OptionButton *option_button_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		option_button_class = static_cast<OptionButton *>(static_cast<Object *>(vobj));
+	} else {
+		option_button_class = memnew(OptionButton);
+	}
 	if (!option_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

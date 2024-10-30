@@ -14,4 +14,5 @@ export declare class ButtonGroup extends Resource{
   public set allow_unpress(value): void {
     set_allow_unpress(value);
   }
+  public const pressed: string = "pressed";
 }

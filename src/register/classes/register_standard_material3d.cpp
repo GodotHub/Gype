@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/base_material3d.hpp>
 #include <godot_cpp/classes/standard_material3d.hpp>
+#include <godot_cpp/classes/base_material3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue standard_material3d_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StandardMaterial3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	StandardMaterial3D *standard_material3d_class = memnew(StandardMaterial3D);
+	StandardMaterial3D *standard_material3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		standard_material3d_class = static_cast<StandardMaterial3D *>(static_cast<Object *>(vobj));
+	} else {
+		standard_material3d_class = memnew(StandardMaterial3D);
+	}
 	if (!standard_material3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

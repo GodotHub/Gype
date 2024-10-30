@@ -28,7 +28,13 @@ static JSValue animation_library_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationLibrary::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AnimationLibrary *animation_library_class = memnew(AnimationLibrary);
+	AnimationLibrary *animation_library_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		animation_library_class = static_cast<AnimationLibrary *>(static_cast<Object *>(vobj));
+	} else {
+		animation_library_class = memnew(AnimationLibrary);
+	}
 	if (!animation_library_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/reg_ex_match.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue reg_ex_match_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RegExMatch::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RegExMatch *reg_ex_match_class = memnew(RegExMatch);
+	RegExMatch *reg_ex_match_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		reg_ex_match_class = static_cast<RegExMatch *>(static_cast<Object *>(vobj));
+	} else {
+		reg_ex_match_class = memnew(RegExMatch);
+	}
 	if (!reg_ex_match_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

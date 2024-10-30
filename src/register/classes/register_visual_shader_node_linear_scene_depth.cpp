@@ -27,7 +27,13 @@ static JSValue visual_shader_node_linear_scene_depth_class_constructor(JSContext
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeLinearSceneDepth::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeLinearSceneDepth *visual_shader_node_linear_scene_depth_class = memnew(VisualShaderNodeLinearSceneDepth);
+	VisualShaderNodeLinearSceneDepth *visual_shader_node_linear_scene_depth_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_linear_scene_depth_class = static_cast<VisualShaderNodeLinearSceneDepth *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_linear_scene_depth_class = memnew(VisualShaderNodeLinearSceneDepth);
+	}
 	if (!visual_shader_node_linear_scene_depth_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

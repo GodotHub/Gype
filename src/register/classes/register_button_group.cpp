@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/base_button.hpp>
-#include <godot_cpp/classes/button_group.hpp>
 #include <godot_cpp/classes/base_button.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/button_group.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue button_group_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ButtonGroup::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ButtonGroup *button_group_class = memnew(ButtonGroup);
+	ButtonGroup *button_group_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		button_group_class = static_cast<ButtonGroup *>(static_cast<Object *>(vobj));
+	} else {
+		button_group_class = memnew(ButtonGroup);
+	}
 	if (!button_group_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -27,7 +27,13 @@ static JSValue hmac_context_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HMACContext::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	HMACContext *hmac_context_class = memnew(HMACContext);
+	HMACContext *hmac_context_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		hmac_context_class = static_cast<HMACContext *>(static_cast<Object *>(vobj));
+	} else {
+		hmac_context_class = memnew(HMACContext);
+	}
 	if (!hmac_context_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

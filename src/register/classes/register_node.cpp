@@ -5,13 +5,13 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/window.hpp>
 #include <godot_cpp/classes/tween.hpp>
+#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/viewport.hpp>
 #include <godot_cpp/classes/multiplayer_api.hpp>
 #include <godot_cpp/classes/scene_tree.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/viewport.hpp>
 #include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -34,7 +34,13 @@ static JSValue node_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Node::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Node *node_class = memnew(Node);
+	Node *node_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		node_class = static_cast<Node *>(static_cast<Object *>(vobj));
+	} else {
+		node_class = memnew(Node);
+	}
 	if (!node_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -849,7 +855,7 @@ static int js_node_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_node_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

@@ -1,11 +1,11 @@
 
-import { Skeleton3D } from "@godot/classes/skeleton3d";
 import { SkeletonModifier3D } from "@godot/classes/skeleton_modifier3d";
+import { Skeleton3D } from "@godot/classes/skeleton3d";
 
 export declare class SkeletonIK3D extends SkeletonModifier3D{
-  public set_root_bone(_root_bone: StringName): void;
+  public set_root_bone(_root_bone: String | StringName | string): void;
   public get_root_bone(): StringName;
-  public set_tip_bone(_tip_bone: StringName): void;
+  public set_tip_bone(_tip_bone: String | StringName | string): void;
   public get_tip_bone(): StringName;
   public set_target_transform(_target: Transform3D): void;
   public get_target_transform(): Transform3D;

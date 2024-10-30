@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/csg_torus3d.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/csg_torus3d.hpp>
 #include <godot_cpp/classes/csg_primitive3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue csg_torus3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CSGTorus3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CSGTorus3D *csg_torus3d_class = memnew(CSGTorus3D);
+	CSGTorus3D *csg_torus3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		csg_torus3d_class = static_cast<CSGTorus3D *>(static_cast<Object *>(vobj));
+	} else {
+		csg_torus3d_class = memnew(CSGTorus3D);
+	}
 	if (!csg_torus3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -27,7 +27,13 @@ static JSValue array_mesh_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ArrayMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ArrayMesh *array_mesh_class = memnew(ArrayMesh);
+	ArrayMesh *array_mesh_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		array_mesh_class = static_cast<ArrayMesh *>(static_cast<Object *>(vobj));
+	} else {
+		array_mesh_class = memnew(ArrayMesh);
+	}
 	if (!array_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

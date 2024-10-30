@@ -27,7 +27,13 @@ static JSValue visual_shader_node_clamp_class_constructor(JSContext *ctx, JSValu
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeClamp::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeClamp *visual_shader_node_clamp_class = memnew(VisualShaderNodeClamp);
+	VisualShaderNodeClamp *visual_shader_node_clamp_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_clamp_class = static_cast<VisualShaderNodeClamp *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_clamp_class = memnew(VisualShaderNodeClamp);
+	}
 	if (!visual_shader_node_clamp_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

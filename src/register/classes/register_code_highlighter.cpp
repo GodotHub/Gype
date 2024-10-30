@@ -27,7 +27,13 @@ static JSValue code_highlighter_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CodeHighlighter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CodeHighlighter *code_highlighter_class = memnew(CodeHighlighter);
+	CodeHighlighter *code_highlighter_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		code_highlighter_class = static_cast<CodeHighlighter *>(static_cast<Object *>(vobj));
+	} else {
+		code_highlighter_class = memnew(CodeHighlighter);
+	}
 	if (!code_highlighter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

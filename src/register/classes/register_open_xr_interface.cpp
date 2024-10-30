@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/classes/open_xr_interface.hpp>
+#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue open_xr_interface_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRInterface::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	OpenXRInterface *open_xr_interface_class = memnew(OpenXRInterface);
+	OpenXRInterface *open_xr_interface_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		open_xr_interface_class = static_cast<OpenXRInterface *>(static_cast<Object *>(vobj));
+	} else {
+		open_xr_interface_class = memnew(OpenXRInterface);
+	}
 	if (!open_xr_interface_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

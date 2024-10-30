@@ -1,26 +1,26 @@
 
 import { AnimationNodeStateMachineTransition } from "@godot/classes/animation_node_state_machine_transition";
-import { AnimationNode } from "@godot/classes/animation_node";
 import { AnimationRootNode } from "@godot/classes/animation_root_node";
+import { AnimationNode } from "@godot/classes/animation_node";
 
 export declare class AnimationNodeStateMachine extends AnimationRootNode{
-  public add_node(_name: StringName, _node: AnimationNode, _position: Vector2): void;
-  public replace_node(_name: StringName, _node: AnimationNode): void;
-  public get_node(_name: StringName): AnimationNode;
-  public remove_node(_name: StringName): void;
-  public rename_node(_name: StringName, _new_name: StringName): void;
-  public has_node(_name: StringName): boolean;
+  public add_node(_name: String | StringName | string, _node: AnimationNode, _position: Vector2): void;
+  public replace_node(_name: String | StringName | string, _node: AnimationNode): void;
+  public get_node(_name: String | StringName | string): AnimationNode;
+  public remove_node(_name: String | StringName | string): void;
+  public rename_node(_name: String | StringName | string, _new_name: String | StringName | string): void;
+  public has_node(_name: String | StringName | string): boolean;
   public get_node_name(_node: AnimationNode): StringName;
-  public set_node_position(_name: StringName, _position: Vector2): void;
-  public get_node_position(_name: StringName): Vector2;
-  public has_transition(_from: StringName, _to: StringName): boolean;
-  public add_transition(_from: StringName, _to: StringName, _transition: AnimationNodeStateMachineTransition): void;
+  public set_node_position(_name: String | StringName | string, _position: Vector2): void;
+  public get_node_position(_name: String | StringName | string): Vector2;
+  public has_transition(_from: String | StringName | string, _to: String | StringName | string): boolean;
+  public add_transition(_from: String | StringName | string, _to: String | StringName | string, _transition: AnimationNodeStateMachineTransition): void;
   public get_transition(_idx: number): AnimationNodeStateMachineTransition;
   public get_transition_from(_idx: number): StringName;
   public get_transition_to(_idx: number): StringName;
   public get_transition_count(): number;
   public remove_transition_by_index(_idx: number): void;
-  public remove_transition(_from: StringName, _to: StringName): void;
+  public remove_transition(_from: String | StringName | string, _to: String | StringName | string): void;
   public set_graph_offset(_offset: Vector2): void;
   public get_graph_offset(): Vector2;
   public set_state_machine_type(_state_machine_type: number): void;

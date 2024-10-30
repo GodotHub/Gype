@@ -1,7 +1,7 @@
 
-import { MultiMesh } from "@godot/classes/multi_mesh";
-import { Node2D } from "@godot/classes/node2d";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Node2D } from "@godot/classes/node2d";
+import { MultiMesh } from "@godot/classes/multi_mesh";
 
 export declare class MultiMeshInstance2D extends Node2D{
   public set_multimesh(_multimesh: MultiMesh): void;
@@ -20,4 +20,5 @@ export declare class MultiMeshInstance2D extends Node2D{
   public set texture(value): void {
     set_texture(value);
   }
+  public const texture_changed: string = "texture_changed";
 }

@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/importer_mesh.hpp>
-#include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/importer_mesh_instance3d.hpp>
+#include <godot_cpp/classes/skin.hpp>
+#include <godot_cpp/classes/importer_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue importer_mesh_instance3d_class_constructor(JSContext *ctx, JSValu
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ImporterMeshInstance3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ImporterMeshInstance3D *importer_mesh_instance3d_class = memnew(ImporterMeshInstance3D);
+	ImporterMeshInstance3D *importer_mesh_instance3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		importer_mesh_instance3d_class = static_cast<ImporterMeshInstance3D *>(static_cast<Object *>(vobj));
+	} else {
+		importer_mesh_instance3d_class = memnew(ImporterMeshInstance3D);
+	}
 	if (!importer_mesh_instance3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -27,7 +27,13 @@ static JSValue resource_format_loader_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceFormatLoader::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ResourceFormatLoader *resource_format_loader_class = memnew(ResourceFormatLoader);
+	ResourceFormatLoader *resource_format_loader_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		resource_format_loader_class = static_cast<ResourceFormatLoader *>(static_cast<Object *>(vobj));
+	} else {
+		resource_format_loader_class = memnew(ResourceFormatLoader);
+	}
 	if (!resource_format_loader_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

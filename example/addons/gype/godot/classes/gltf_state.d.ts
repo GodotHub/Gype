@@ -1,23 +1,23 @@
 
-import { GLTFCamera } from "@godot/classes/gltf_camera";
+import { GLTFMesh } from "@godot/classes/gltf_mesh";
+import { AnimationPlayer } from "@godot/classes/animation_player";
+import { GLTFAnimation } from "@godot/classes/gltf_animation";
+import { GLTFSkin } from "@godot/classes/gltf_skin";
+import { Texture2D } from "@godot/classes/texture2d";
 import { GLTFTextureSampler } from "@godot/classes/gltf_texture_sampler";
 import { GLTFSkeleton } from "@godot/classes/gltf_skeleton";
-import { GLTFMesh } from "@godot/classes/gltf_mesh";
-import { Texture2D } from "@godot/classes/texture2d";
-import { GLTFLight } from "@godot/classes/gltf_light";
 import { GLTFNode } from "@godot/classes/gltf_node";
-import { GLTFAnimation } from "@godot/classes/gltf_animation";
-import { AnimationPlayer } from "@godot/classes/animation_player";
-import { Node } from "@godot/classes/node";
-import { Resource } from "@godot/classes/resource";
 import { Material } from "@godot/classes/material";
-import { GLTFTexture } from "@godot/classes/gltf_texture";
 import { GLTFBufferView } from "@godot/classes/gltf_buffer_view";
+import { GLTFCamera } from "@godot/classes/gltf_camera";
 import { GLTFAccessor } from "@godot/classes/gltf_accessor";
-import { GLTFSkin } from "@godot/classes/gltf_skin";
+import { GLTFLight } from "@godot/classes/gltf_light";
+import { Resource } from "@godot/classes/resource";
+import { Node } from "@godot/classes/node";
+import { GLTFTexture } from "@godot/classes/gltf_texture";
 
 export declare class GLTFState extends Resource{
-  public add_used_extension(_extension_name: String, _required: boolean): void;
+  public add_used_extension(_extension_name: String | StringName | string, _required: boolean): void;
   public append_data_to_buffers(_data: PackedByteArray, _deduplication: boolean): number;
   public get_json(): Dictionary;
   public set_json(_json: Dictionary): void;
@@ -26,7 +26,7 @@ export declare class GLTFState extends Resource{
   public get_minor_version(): number;
   public set_minor_version(_minor_version: number): void;
   public get_copyright(): String;
-  public set_copyright(_copyright: String): void;
+  public set_copyright(_copyright: String | StringName | string): void;
   public get_glb_data(): PackedByteArray;
   public set_glb_data(_glb_data: PackedByteArray): void;
   public get_use_named_skin_binds(): boolean;
@@ -46,11 +46,11 @@ export declare class GLTFState extends Resource{
   public get_materials(): GDArray;
   public set_materials(_materials: GDArray): void;
   public get_scene_name(): String;
-  public set_scene_name(_scene_name: String): void;
+  public set_scene_name(_scene_name: String | StringName | string): void;
   public get_base_path(): String;
-  public set_base_path(_base_path: String): void;
+  public set_base_path(_base_path: String | StringName | string): void;
   public get_filename(): String;
-  public set_filename(_filename: String): void;
+  public set_filename(_filename: String | StringName | string): void;
   public get_root_nodes(): PackedInt32Array;
   public set_root_nodes(_root_nodes: PackedInt32Array): void;
   public get_textures(): GDArray;
@@ -79,8 +79,8 @@ export declare class GLTFState extends Resource{
   public set_animations(_animations: GDArray): void;
   public get_scene_node(_idx: number): Node;
   public get_node_index(_scene_node: Node): number;
-  public get_additional_data(_extension_name: StringName): any;
-  public set_additional_data(_extension_name: StringName, _additional_data: any): void;
+  public get_additional_data(_extension_name: String | StringName | string): any;
+  public set_additional_data(_extension_name: String | StringName | string, _additional_data: any): void;
   public get_handle_binary_image(): number;
   public set_handle_binary_image(_method: number): void;
   public set_bake_fps(_value: number): void;

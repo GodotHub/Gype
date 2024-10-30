@@ -28,7 +28,13 @@ static JSValue nine_patch_rect_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, NinePatchRect::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	NinePatchRect *nine_patch_rect_class = memnew(NinePatchRect);
+	NinePatchRect *nine_patch_rect_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		nine_patch_rect_class = static_cast<NinePatchRect *>(static_cast<Object *>(vobj));
+	} else {
+		nine_patch_rect_class = memnew(NinePatchRect);
+	}
 	if (!nine_patch_rect_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

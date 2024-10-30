@@ -1,13 +1,13 @@
 
-import { Curve } from "@godot/classes/curve";
 import { Resource } from "@godot/classes/resource";
+import { Curve } from "@godot/classes/curve";
 
 export declare class AnimationNodeStateMachineTransition extends Resource{
   public set_switch_mode(_mode: number): void;
   public get_switch_mode(): number;
   public set_advance_mode(_mode: number): void;
   public get_advance_mode(): number;
-  public set_advance_condition(_name: StringName): void;
+  public set_advance_condition(_name: String | StringName | string): void;
   public get_advance_condition(): StringName;
   public set_xfade_time(_secs: number): void;
   public get_xfade_time(): number;
@@ -19,7 +19,7 @@ export declare class AnimationNodeStateMachineTransition extends Resource{
   public is_reset(): boolean;
   public set_priority(_priority: number): void;
   public get_priority(): number;
-  public set_advance_expression(_text: String): void;
+  public set_advance_expression(_text: String | StringName | string): void;
   public get_advance_expression(): String;
   public get xfade_time(): number {
     get_xfade_time();
@@ -85,4 +85,5 @@ export declare class AnimationNodeStateMachineTransition extends Resource{
     ADVANCE_MODE_ENABLED = 1,
     ADVANCE_MODE_AUTO = 2,
   }
+  public const advance_condition_changed: string = "advance_condition_changed";
 }

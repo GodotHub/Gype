@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/classes/packet_peer_stream.hpp>
+#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue packet_peer_stream_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PacketPeerStream::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PacketPeerStream *packet_peer_stream_class = memnew(PacketPeerStream);
+	PacketPeerStream *packet_peer_stream_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		packet_peer_stream_class = static_cast<PacketPeerStream *>(static_cast<Object *>(vobj));
+	} else {
+		packet_peer_stream_class = memnew(PacketPeerStream);
+	}
 	if (!packet_peer_stream_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

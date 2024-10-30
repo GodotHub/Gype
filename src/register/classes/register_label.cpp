@@ -28,7 +28,13 @@ static JSValue label_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Label::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Label *label_class = memnew(Label);
+	Label *label_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		label_class = static_cast<Label *>(static_cast<Object *>(vobj));
+	} else {
+		label_class = memnew(Label);
+	}
 	if (!label_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

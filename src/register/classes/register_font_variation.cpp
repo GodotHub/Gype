@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/font_variation.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue font_variation_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, FontVariation::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	FontVariation *font_variation_class = memnew(FontVariation);
+	FontVariation *font_variation_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		font_variation_class = static_cast<FontVariation *>(static_cast<Object *>(vobj));
+	} else {
+		font_variation_class = memnew(FontVariation);
+	}
 	if (!font_variation_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

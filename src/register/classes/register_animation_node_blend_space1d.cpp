@@ -27,7 +27,13 @@ static JSValue animation_node_blend_space1d_class_constructor(JSContext *ctx, JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeBlendSpace1D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AnimationNodeBlendSpace1D *animation_node_blend_space1d_class = memnew(AnimationNodeBlendSpace1D);
+	AnimationNodeBlendSpace1D *animation_node_blend_space1d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		animation_node_blend_space1d_class = static_cast<AnimationNodeBlendSpace1D *>(static_cast<Object *>(vobj));
+	} else {
+		animation_node_blend_space1d_class = memnew(AnimationNodeBlendSpace1D);
+	}
 	if (!animation_node_blend_space1d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

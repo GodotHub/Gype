@@ -1,8 +1,8 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
-import { Material } from "@godot/classes/material";
 import { Node2D } from "@godot/classes/node2d";
 import { Node } from "@godot/classes/node";
+import { Material } from "@godot/classes/material";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class GPUParticles2D extends Node2D{
   public set_emitting(_emitting: boolean): void;
@@ -213,4 +213,5 @@ export declare class GPUParticles2D extends Node2D{
     EMIT_FLAG_COLOR = 8,
     EMIT_FLAG_CUSTOM = 16,
   }
+  public const finished: string = "finished";
 }

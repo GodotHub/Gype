@@ -27,7 +27,13 @@ static JSValue canvas_layer_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CanvasLayer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CanvasLayer *canvas_layer_class = memnew(CanvasLayer);
+	CanvasLayer *canvas_layer_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		canvas_layer_class = static_cast<CanvasLayer *>(static_cast<Object *>(vobj));
+	} else {
+		canvas_layer_class = memnew(CanvasLayer);
+	}
 	if (!canvas_layer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

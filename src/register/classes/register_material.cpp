@@ -27,7 +27,13 @@ static JSValue material_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Material::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Material *material_class = memnew(Material);
+	Material *material_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		material_class = static_cast<Material *>(static_cast<Object *>(vobj));
+	} else {
+		material_class = memnew(Material);
+	}
 	if (!material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

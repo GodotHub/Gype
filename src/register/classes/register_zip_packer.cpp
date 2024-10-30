@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/zip_packer.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue zip_packer_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ZIPPacker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ZIPPacker *zip_packer_class = memnew(ZIPPacker);
+	ZIPPacker *zip_packer_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		zip_packer_class = static_cast<ZIPPacker *>(static_cast<Object *>(vobj));
+	} else {
+		zip_packer_class = memnew(ZIPPacker);
+	}
 	if (!zip_packer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

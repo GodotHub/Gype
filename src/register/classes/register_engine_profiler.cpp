@@ -27,7 +27,13 @@ static JSValue engine_profiler_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EngineProfiler::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EngineProfiler *engine_profiler_class = memnew(EngineProfiler);
+	EngineProfiler *engine_profiler_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		engine_profiler_class = static_cast<EngineProfiler *>(static_cast<Object *>(vobj));
+	} else {
+		engine_profiler_class = memnew(EngineProfiler);
+	}
 	if (!engine_profiler_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

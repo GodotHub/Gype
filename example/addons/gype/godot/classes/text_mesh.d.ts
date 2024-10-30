@@ -7,7 +7,7 @@ export declare class TextMesh extends PrimitiveMesh{
   public get_horizontal_alignment(): number;
   public set_vertical_alignment(_alignment: number): void;
   public get_vertical_alignment(): number;
-  public set_text(_text: String): void;
+  public set_text(_text: String | StringName | string): void;
   public get_text(): String;
   public set_font(_font: Font): void;
   public get_font(): Font;
@@ -31,7 +31,7 @@ export declare class TextMesh extends PrimitiveMesh{
   public get_curve_step(): number;
   public set_text_direction(_direction: number): void;
   public get_text_direction(): number;
-  public set_language(_language: String): void;
+  public set_language(_language: String | StringName | string): void;
   public get_language(): String;
   public set_structured_text_bidi_override(_parser: number): void;
   public get_structured_text_bidi_override(): number;

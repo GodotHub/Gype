@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_modification2dfabrik.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include <godot_cpp/classes/skeleton_modification2dfabrik.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue skeleton_modification2dfabrik_class_constructor(JSContext *ctx, J
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkeletonModification2DFABRIK::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SkeletonModification2DFABRIK *skeleton_modification2dfabrik_class = memnew(SkeletonModification2DFABRIK);
+	SkeletonModification2DFABRIK *skeleton_modification2dfabrik_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		skeleton_modification2dfabrik_class = static_cast<SkeletonModification2DFABRIK *>(static_cast<Object *>(vobj));
+	} else {
+		skeleton_modification2dfabrik_class = memnew(SkeletonModification2DFABRIK);
+	}
 	if (!skeleton_modification2dfabrik_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

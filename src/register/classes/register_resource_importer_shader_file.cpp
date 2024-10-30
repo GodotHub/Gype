@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource_importer.hpp>
 #include <godot_cpp/classes/resource_importer_shader_file.hpp>
+#include <godot_cpp/classes/resource_importer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue resource_importer_shader_file_class_constructor(JSContext *ctx, J
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterShaderFile::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ResourceImporterShaderFile *resource_importer_shader_file_class = memnew(ResourceImporterShaderFile);
+	ResourceImporterShaderFile *resource_importer_shader_file_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		resource_importer_shader_file_class = static_cast<ResourceImporterShaderFile *>(static_cast<Object *>(vobj));
+	} else {
+		resource_importer_shader_file_class = memnew(ResourceImporterShaderFile);
+	}
 	if (!resource_importer_shader_file_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

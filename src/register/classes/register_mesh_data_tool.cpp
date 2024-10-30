@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh_data_tool.hpp>
-#include <godot_cpp/classes/array_mesh.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/array_mesh.hpp>
+#include <godot_cpp/classes/mesh_data_tool.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue mesh_data_tool_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MeshDataTool::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	MeshDataTool *mesh_data_tool_class = memnew(MeshDataTool);
+	MeshDataTool *mesh_data_tool_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		mesh_data_tool_class = static_cast<MeshDataTool *>(static_cast<Object *>(vobj));
+	} else {
+		mesh_data_tool_class = memnew(MeshDataTool);
+	}
 	if (!mesh_data_tool_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

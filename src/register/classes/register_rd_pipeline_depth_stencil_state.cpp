@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_pipeline_depth_stencil_state.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue rd_pipeline_depth_stencil_state_class_constructor(JSContext *ctx,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDPipelineDepthStencilState::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RDPipelineDepthStencilState *rd_pipeline_depth_stencil_state_class = memnew(RDPipelineDepthStencilState);
+	RDPipelineDepthStencilState *rd_pipeline_depth_stencil_state_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		rd_pipeline_depth_stencil_state_class = static_cast<RDPipelineDepthStencilState *>(static_cast<Object *>(vobj));
+	} else {
+		rd_pipeline_depth_stencil_state_class = memnew(RDPipelineDepthStencilState);
+	}
 	if (!rd_pipeline_depth_stencil_state_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -1,22 +1,22 @@
 
-import { GLTFDocumentExtension } from "@godot/classes/gltf_document_extension";
 import { GLTFState } from "@godot/classes/gltf_state";
 import { Resource } from "@godot/classes/resource";
 import { Node } from "@godot/classes/node";
+import { GLTFDocumentExtension } from "@godot/classes/gltf_document_extension";
 
 export declare class GLTFDocument extends Resource{
-  public set_image_format(_image_format: String): void;
+  public set_image_format(_image_format: String | StringName | string): void;
   public get_image_format(): String;
   public set_lossy_quality(_lossy_quality: number): void;
   public get_lossy_quality(): number;
   public set_root_node_mode(_root_node_mode: number): void;
   public get_root_node_mode(): number;
-  public append_from_file(_path: String, _state: GLTFState, _flags: number, _base_path: String): number;
-  public append_from_buffer(_bytes: PackedByteArray, _base_path: String, _state: GLTFState, _flags: number): number;
+  public append_from_file(_path: String | StringName | string, _state: GLTFState, _flags: number, _base_path: String | StringName | string): number;
+  public append_from_buffer(_bytes: PackedByteArray, _base_path: String | StringName | string, _state: GLTFState, _flags: number): number;
   public append_from_scene(_node: Node, _state: GLTFState, _flags: number): number;
   public generate_scene(_state: GLTFState, _bake_fps: number, _trimming: boolean, _remove_immutable_tracks: boolean): Node;
   public generate_buffer(_state: GLTFState): PackedByteArray;
-  public write_to_filesystem(_state: GLTFState, _path: String): number;
+  public write_to_filesystem(_state: GLTFState, _path: String | StringName | string): number;
   public register_gltf_document_extension(_extension: GLTFDocumentExtension, _first_priority: boolean): void;
   public unregister_gltf_document_extension(_extension: GLTFDocumentExtension): void;
   public get image_format(): String {

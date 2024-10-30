@@ -27,7 +27,13 @@ static JSValue placeholder_mesh_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PlaceholderMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PlaceholderMesh *placeholder_mesh_class = memnew(PlaceholderMesh);
+	PlaceholderMesh *placeholder_mesh_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		placeholder_mesh_class = static_cast<PlaceholderMesh *>(static_cast<Object *>(vobj));
+	} else {
+		placeholder_mesh_class = memnew(PlaceholderMesh);
+	}
 	if (!placeholder_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

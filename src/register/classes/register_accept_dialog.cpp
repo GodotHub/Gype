@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/classes/window.hpp>
 #include <godot_cpp/classes/label.hpp>
-#include <godot_cpp/classes/accept_dialog.hpp>
 #include <godot_cpp/classes/button.hpp>
+#include <godot_cpp/classes/accept_dialog.hpp>
+#include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,7 +30,13 @@ static JSValue accept_dialog_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AcceptDialog::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AcceptDialog *accept_dialog_class = memnew(AcceptDialog);
+	AcceptDialog *accept_dialog_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		accept_dialog_class = static_cast<AcceptDialog *>(static_cast<Object *>(vobj));
+	} else {
+		accept_dialog_class = memnew(AcceptDialog);
+	}
 	if (!accept_dialog_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

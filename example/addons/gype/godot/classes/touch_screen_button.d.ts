@@ -1,8 +1,8 @@
 
 import { Shape2D } from "@godot/classes/shape2d";
-import { Texture2D } from "@godot/classes/texture2d";
 import { Node2D } from "@godot/classes/node2d";
 import { BitMap } from "@godot/classes/bit_map";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class TouchScreenButton extends Node2D{
   public set_texture_normal(_texture: Texture2D): void;
@@ -17,7 +17,7 @@ export declare class TouchScreenButton extends Node2D{
   public is_shape_centered(): boolean;
   public set_shape_visible(_bool: boolean): void;
   public is_shape_visible(): boolean;
-  public set_action(_action: String): void;
+  public set_action(_action: String | StringName | string): void;
   public get_action(): String;
   public set_visibility_mode(_mode: number): void;
   public get_visibility_mode(): number;
@@ -82,4 +82,6 @@ export declare class TouchScreenButton extends Node2D{
     VISIBILITY_ALWAYS = 0,
     VISIBILITY_TOUCHSCREEN_ONLY = 1,
   }
+  public const pressed: string = "pressed";
+  public const released: string = "released";
 }

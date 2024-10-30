@@ -1,7 +1,7 @@
 
 import { AudioStream } from "@godot/classes/audio_stream";
-import { AudioStreamPlayback } from "@godot/classes/audio_stream_playback";
 import { Node } from "@godot/classes/node";
+import { AudioStreamPlayback } from "@godot/classes/audio_stream_playback";
 
 export declare class AudioStreamPlayer extends Node{
   public set_stream(_stream: AudioStream): void;
@@ -15,7 +15,7 @@ export declare class AudioStreamPlayer extends Node{
   public stop(): void;
   public is_playing(): boolean;
   public get_playback_position(): number;
-  public set_bus(_bus: StringName): void;
+  public set_bus(_bus: String | StringName | string): void;
   public get_bus(): StringName;
   public set_autoplay(_enable: boolean): void;
   public is_autoplay_enabled(): boolean;
@@ -94,4 +94,5 @@ export declare class AudioStreamPlayer extends Node{
     MIX_TARGET_SURROUND = 1,
     MIX_TARGET_CENTER = 2,
   }
+  public const finished: string = "finished";
 }

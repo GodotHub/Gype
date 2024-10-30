@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/open_xrip_binding.hpp>
-#include <godot_cpp/classes/open_xr_interaction_profile.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/open_xr_interaction_profile.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue open_xr_interaction_profile_class_constructor(JSContext *ctx, JSV
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRInteractionProfile::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	OpenXRInteractionProfile *open_xr_interaction_profile_class = memnew(OpenXRInteractionProfile);
+	OpenXRInteractionProfile *open_xr_interaction_profile_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		open_xr_interaction_profile_class = static_cast<OpenXRInteractionProfile *>(static_cast<Object *>(vobj));
+	} else {
+		open_xr_interaction_profile_class = memnew(OpenXRInteractionProfile);
+	}
 	if (!open_xr_interaction_profile_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

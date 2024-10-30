@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/sprite_frames.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue sprite_frames_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SpriteFrames::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SpriteFrames *sprite_frames_class = memnew(SpriteFrames);
+	SpriteFrames *sprite_frames_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		sprite_frames_class = static_cast<SpriteFrames *>(static_cast<Object *>(vobj));
+	} else {
+		sprite_frames_class = memnew(SpriteFrames);
+	}
 	if (!sprite_frames_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

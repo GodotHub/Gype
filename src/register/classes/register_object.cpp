@@ -26,7 +26,13 @@ static JSValue object_class_constructor(JSContext *ctx, JSValueConst new_target,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Object::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Object *object_class = memnew(Object);
+	Object *object_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		object_class = static_cast<Object *>(static_cast<Object *>(vobj));
+	} else {
+		object_class = memnew(Object);
+	}
 	if (!object_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -323,7 +329,7 @@ JSModuleDef *_js_init_object_module(JSContext *ctx, const char *module_name) {
 }
 
 JSModuleDef *js_init_object_module(JSContext *ctx) {
-	return _js_init_object_module(ctx, "@godot/classes/object");
+	return _js_init_object_module(ctx, "@godot/classes/godot_object");
 }
 
 void register_object() {

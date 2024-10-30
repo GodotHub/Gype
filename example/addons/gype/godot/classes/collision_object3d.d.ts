@@ -1,8 +1,8 @@
 
-import { Camera3D } from "@godot/classes/camera3d";
-import { Shape3D } from "@godot/classes/shape3d";
 import { InputEvent } from "@godot/classes/input_event";
-import { Object } from "@godot/classes/object";
+import { Shape3D } from "@godot/classes/shape3d";
+import { Camera3D } from "@godot/classes/camera3d";
+import { GodotObject } from "@godot/classes/godot_object";
 import { Node3D } from "@godot/classes/node3d";
 
 export declare class CollisionObject3D extends Node3D{
@@ -82,4 +82,7 @@ export declare class CollisionObject3D extends Node3D{
     DISABLE_MODE_MAKE_STATIC = 1,
     DISABLE_MODE_KEEP_ACTIVE = 2,
   }
+  public const input_event: string = "input_event";
+  public const mouse_entered: string = "mouse_entered";
+  public const mouse_exited: string = "mouse_exited";
 }

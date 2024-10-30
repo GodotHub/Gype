@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/classes/lightmap_gi_data.hpp>
 #include <godot_cpp/classes/lightmap_gi.hpp>
-#include <godot_cpp/classes/sky.hpp>
+#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/sky.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,7 +30,13 @@ static JSValue lightmap_gi_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, LightmapGI::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	LightmapGI *lightmap_gi_class = memnew(LightmapGI);
+	LightmapGI *lightmap_gi_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		lightmap_gi_class = static_cast<LightmapGI *>(static_cast<Object *>(vobj));
+	} else {
+		lightmap_gi_class = memnew(LightmapGI);
+	}
 	if (!lightmap_gi_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

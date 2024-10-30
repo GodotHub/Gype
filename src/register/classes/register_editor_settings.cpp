@@ -28,7 +28,13 @@ static JSValue editor_settings_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorSettings::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorSettings *editor_settings_class = memnew(EditorSettings);
+	EditorSettings *editor_settings_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_settings_class = static_cast<EditorSettings *>(static_cast<Object *>(vobj));
+	} else {
+		editor_settings_class = memnew(EditorSettings);
+	}
 	if (!editor_settings_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

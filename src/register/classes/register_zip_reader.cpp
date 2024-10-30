@@ -27,7 +27,13 @@ static JSValue zip_reader_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ZIPReader::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ZIPReader *zip_reader_class = memnew(ZIPReader);
+	ZIPReader *zip_reader_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		zip_reader_class = static_cast<ZIPReader *>(static_cast<Object *>(vobj));
+	} else {
+		zip_reader_class = memnew(ZIPReader);
+	}
 	if (!zip_reader_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

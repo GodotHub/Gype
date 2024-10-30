@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/portable_compressed_texture2d.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue portable_compressed_texture2d_class_constructor(JSContext *ctx, J
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PortableCompressedTexture2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PortableCompressedTexture2D *portable_compressed_texture2d_class = memnew(PortableCompressedTexture2D);
+	PortableCompressedTexture2D *portable_compressed_texture2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		portable_compressed_texture2d_class = static_cast<PortableCompressedTexture2D *>(static_cast<Object *>(vobj));
+	} else {
+		portable_compressed_texture2d_class = memnew(PortableCompressedTexture2D);
+	}
 	if (!portable_compressed_texture2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

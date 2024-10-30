@@ -27,7 +27,13 @@ static JSValue rd_vertex_attribute_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDVertexAttribute::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RDVertexAttribute *rd_vertex_attribute_class = memnew(RDVertexAttribute);
+	RDVertexAttribute *rd_vertex_attribute_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		rd_vertex_attribute_class = static_cast<RDVertexAttribute *>(static_cast<Object *>(vobj));
+	} else {
+		rd_vertex_attribute_class = memnew(RDVertexAttribute);
+	}
 	if (!rd_vertex_attribute_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

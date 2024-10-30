@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/pin_joint3d.hpp>
 #include <godot_cpp/classes/joint3d.hpp>
+#include <godot_cpp/classes/pin_joint3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue pin_joint3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PinJoint3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PinJoint3D *pin_joint3d_class = memnew(PinJoint3D);
+	PinJoint3D *pin_joint3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		pin_joint3d_class = static_cast<PinJoint3D *>(static_cast<Object *>(vobj));
+	} else {
+		pin_joint3d_class = memnew(PinJoint3D);
+	}
 	if (!pin_joint3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

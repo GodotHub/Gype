@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/scroll_bar.hpp>
 #include <godot_cpp/classes/range.hpp>
+#include <godot_cpp/classes/scroll_bar.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue scroll_bar_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ScrollBar::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ScrollBar *scroll_bar_class = memnew(ScrollBar);
+	ScrollBar *scroll_bar_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		scroll_bar_class = static_cast<ScrollBar *>(static_cast<Object *>(vobj));
+	} else {
+		scroll_bar_class = memnew(ScrollBar);
+	}
 	if (!scroll_bar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

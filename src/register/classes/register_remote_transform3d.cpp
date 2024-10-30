@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/remote_transform3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/remote_transform3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue remote_transform3d_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RemoteTransform3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RemoteTransform3D *remote_transform3d_class = memnew(RemoteTransform3D);
+	RemoteTransform3D *remote_transform3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		remote_transform3d_class = static_cast<RemoteTransform3D *>(static_cast<Object *>(vobj));
+	} else {
+		remote_transform3d_class = memnew(RemoteTransform3D);
+	}
 	if (!remote_transform3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

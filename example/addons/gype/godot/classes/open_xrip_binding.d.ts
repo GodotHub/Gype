@@ -1,6 +1,6 @@
 
-import { OpenXRAction } from "@godot/classes/open_xr_action";
 import { Resource } from "@godot/classes/resource";
+import { OpenXRAction } from "@godot/classes/open_xr_action";
 
 export declare class OpenXRIPBinding extends Resource{
   public set_action(_action: OpenXRAction): void;
@@ -8,9 +8,9 @@ export declare class OpenXRIPBinding extends Resource{
   public get_path_count(): number;
   public set_paths(_paths: PackedStringArray): void;
   public get_paths(): PackedStringArray;
-  public has_path(_path: String): boolean;
-  public add_path(_path: String): void;
-  public remove_path(_path: String): void;
+  public has_path(_path: String | StringName | string): boolean;
+  public add_path(_path: String | StringName | string): void;
+  public remove_path(_path: String | StringName | string): void;
   public get action(): OpenXRAction {
     get_action();
   }

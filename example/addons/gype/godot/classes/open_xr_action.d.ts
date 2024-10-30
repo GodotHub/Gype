@@ -2,7 +2,7 @@
 import { Resource } from "@godot/classes/resource";
 
 export declare class OpenXRAction extends Resource{
-  public set_localized_name(_localized_name: String): void;
+  public set_localized_name(_localized_name: String | StringName | string): void;
   public get_localized_name(): String;
   public set_action_type(_action_type: number): void;
   public get_action_type(): number;

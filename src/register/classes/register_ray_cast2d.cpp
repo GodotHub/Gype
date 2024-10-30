@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ray_cast2d.hpp>
-#include <godot_cpp/classes/collision_object2d.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/collision_object2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue ray_cast2d_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RayCast2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RayCast2D *ray_cast2d_class = memnew(RayCast2D);
+	RayCast2D *ray_cast2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		ray_cast2d_class = static_cast<RayCast2D *>(static_cast<Object *>(vobj));
+	} else {
+		ray_cast2d_class = memnew(RayCast2D);
+	}
 	if (!ray_cast2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

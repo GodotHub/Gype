@@ -1,14 +1,14 @@
 
-import { Mesh } from "@godot/classes/mesh";
+import { Font } from "@godot/classes/font";
+import { InputEvent } from "@godot/classes/input_event";
+import { MultiMesh } from "@godot/classes/multi_mesh";
 import { Texture2D } from "@godot/classes/texture2d";
 import { World2D } from "@godot/classes/world2d";
 import { Material } from "@godot/classes/material";
+import { Mesh } from "@godot/classes/mesh";
 import { StyleBox } from "@godot/classes/style_box";
-import { Node } from "@godot/classes/node";
-import { Font } from "@godot/classes/font";
-import { MultiMesh } from "@godot/classes/multi_mesh";
-import { InputEvent } from "@godot/classes/input_event";
 import { CanvasLayer } from "@godot/classes/canvas_layer";
+import { Node } from "@godot/classes/node";
 
 export declare class CanvasItem extends Node{
   public _draw(): void;
@@ -54,12 +54,12 @@ export declare class CanvasItem extends Node{
   public draw_primitive(_points: PackedVector2Array, _colors: PackedColorArray, _uvs: PackedVector2Array, _texture: Texture2D): void;
   public draw_polygon(_points: PackedVector2Array, _colors: PackedColorArray, _uvs: PackedVector2Array, _texture: Texture2D): void;
   public draw_colored_polygon(_points: PackedVector2Array, _color: Color, _uvs: PackedVector2Array, _texture: Texture2D): void;
-  public draw_string(_font: Font, _pos: Vector2, _text: String, _alignment: number, _width: number, _font_size: number, _modulate: Color, _justification_flags: number, _direction: number, _orientation: number): void;
-  public draw_multiline_string(_font: Font, _pos: Vector2, _text: String, _alignment: number, _width: number, _font_size: number, _max_lines: number, _modulate: Color, _brk_flags: number, _justification_flags: number, _direction: number, _orientation: number): void;
-  public draw_string_outline(_font: Font, _pos: Vector2, _text: String, _alignment: number, _width: number, _font_size: number, _size: number, _modulate: Color, _justification_flags: number, _direction: number, _orientation: number): void;
-  public draw_multiline_string_outline(_font: Font, _pos: Vector2, _text: String, _alignment: number, _width: number, _font_size: number, _max_lines: number, _size: number, _modulate: Color, _brk_flags: number, _justification_flags: number, _direction: number, _orientation: number): void;
-  public draw_char(_font: Font, _pos: Vector2, _char: String, _font_size: number, _modulate: Color): void;
-  public draw_char_outline(_font: Font, _pos: Vector2, _char: String, _font_size: number, _size: number, _modulate: Color): void;
+  public draw_string(_font: Font, _pos: Vector2, _text: String | StringName | string, _alignment: number, _width: number, _font_size: number, _modulate: Color, _justification_flags: number, _direction: number, _orientation: number): void;
+  public draw_multiline_string(_font: Font, _pos: Vector2, _text: String | StringName | string, _alignment: number, _width: number, _font_size: number, _max_lines: number, _modulate: Color, _brk_flags: number, _justification_flags: number, _direction: number, _orientation: number): void;
+  public draw_string_outline(_font: Font, _pos: Vector2, _text: String | StringName | string, _alignment: number, _width: number, _font_size: number, _size: number, _modulate: Color, _justification_flags: number, _direction: number, _orientation: number): void;
+  public draw_multiline_string_outline(_font: Font, _pos: Vector2, _text: String | StringName | string, _alignment: number, _width: number, _font_size: number, _max_lines: number, _size: number, _modulate: Color, _brk_flags: number, _justification_flags: number, _direction: number, _orientation: number): void;
+  public draw_char(_font: Font, _pos: Vector2, _char: String | StringName | string, _font_size: number, _modulate: Color): void;
+  public draw_char_outline(_font: Font, _pos: Vector2, _char: String | StringName | string, _font_size: number, _size: number, _modulate: Color): void;
   public draw_mesh(_mesh: Mesh, _texture: Texture2D, _transform: Transform2D, _modulate: Color): void;
   public draw_multimesh(_multimesh: MultiMesh, _texture: Texture2D): void;
   public draw_set_transform(_position: Vector2, _rotation: number, _scale: Vector2): void;
@@ -212,4 +212,8 @@ export declare class CanvasItem extends Node{
     CLIP_CHILDREN_AND_DRAW = 2,
     CLIP_CHILDREN_MAX = 3,
   }
+  public const draw: string = "draw";
+  public const visibility_changed: string = "visibility_changed";
+  public const hidden: string = "hidden";
+  public const item_rect_changed: string = "item_rect_changed";
 }

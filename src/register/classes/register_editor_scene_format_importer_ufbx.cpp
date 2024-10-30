@@ -27,7 +27,13 @@ static JSValue editor_scene_format_importer_ufbx_class_constructor(JSContext *ct
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorSceneFormatImporterUFBX::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorSceneFormatImporterUFBX *editor_scene_format_importer_ufbx_class = memnew(EditorSceneFormatImporterUFBX);
+	EditorSceneFormatImporterUFBX *editor_scene_format_importer_ufbx_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_scene_format_importer_ufbx_class = static_cast<EditorSceneFormatImporterUFBX *>(static_cast<Object *>(vobj));
+	} else {
+		editor_scene_format_importer_ufbx_class = memnew(EditorSceneFormatImporterUFBX);
+	}
 	if (!editor_scene_format_importer_ufbx_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

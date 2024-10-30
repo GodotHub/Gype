@@ -27,7 +27,13 @@ static JSValue parallax2d_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Parallax2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Parallax2D *parallax2d_class = memnew(Parallax2D);
+	Parallax2D *parallax2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		parallax2d_class = static_cast<Parallax2D *>(static_cast<Object *>(vobj));
+	} else {
+		parallax2d_class = memnew(Parallax2D);
+	}
 	if (!parallax2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

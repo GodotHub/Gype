@@ -29,7 +29,13 @@ static JSValue skeleton_modification_stack2d_class_constructor(JSContext *ctx, J
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkeletonModificationStack2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SkeletonModificationStack2D *skeleton_modification_stack2d_class = memnew(SkeletonModificationStack2D);
+	SkeletonModificationStack2D *skeleton_modification_stack2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		skeleton_modification_stack2d_class = static_cast<SkeletonModificationStack2D *>(static_cast<Object *>(vobj));
+	} else {
+		skeleton_modification_stack2d_class = memnew(SkeletonModificationStack2D);
+	}
 	if (!skeleton_modification_stack2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

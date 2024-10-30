@@ -2,9 +2,9 @@
 import { Node } from "@godot/classes/node";
 
 export declare class MissingNode extends Node{
-  public set_original_class(_name: String): void;
+  public set_original_class(_name: String | StringName | string): void;
   public get_original_class(): String;
-  public set_original_scene(_name: String): void;
+  public set_original_scene(_name: String | StringName | string): void;
   public get_original_scene(): String;
   public set_recording_properties(_enable: boolean): void;
   public is_recording_properties(): boolean;

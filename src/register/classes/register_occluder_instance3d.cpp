@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/classes/occluder3d.hpp>
 #include <godot_cpp/classes/occluder_instance3d.hpp>
-#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue occluder_instance3d_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OccluderInstance3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	OccluderInstance3D *occluder_instance3d_class = memnew(OccluderInstance3D);
+	OccluderInstance3D *occluder_instance3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		occluder_instance3d_class = static_cast<OccluderInstance3D *>(static_cast<Object *>(vobj));
+	} else {
+		occluder_instance3d_class = memnew(OccluderInstance3D);
+	}
 	if (!occluder_instance3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_varying_setter.hpp>
 #include <godot_cpp/classes/visual_shader_node_varying.hpp>
+#include <godot_cpp/classes/visual_shader_node_varying_setter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue visual_shader_node_varying_setter_class_constructor(JSContext *ct
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeVaryingSetter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeVaryingSetter *visual_shader_node_varying_setter_class = memnew(VisualShaderNodeVaryingSetter);
+	VisualShaderNodeVaryingSetter *visual_shader_node_varying_setter_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_varying_setter_class = static_cast<VisualShaderNodeVaryingSetter *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_varying_setter_class = memnew(VisualShaderNodeVaryingSetter);
+	}
 	if (!visual_shader_node_varying_setter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

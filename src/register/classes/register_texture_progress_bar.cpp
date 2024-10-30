@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/range.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/texture_progress_bar.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue texture_progress_bar_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TextureProgressBar::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	TextureProgressBar *texture_progress_bar_class = memnew(TextureProgressBar);
+	TextureProgressBar *texture_progress_bar_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		texture_progress_bar_class = static_cast<TextureProgressBar *>(static_cast<Object *>(vobj));
+	} else {
+		texture_progress_bar_class = memnew(TextureProgressBar);
+	}
 	if (!texture_progress_bar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

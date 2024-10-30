@@ -27,7 +27,13 @@ static JSValue audio_effect_hard_limiter_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectHardLimiter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioEffectHardLimiter *audio_effect_hard_limiter_class = memnew(AudioEffectHardLimiter);
+	AudioEffectHardLimiter *audio_effect_hard_limiter_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_effect_hard_limiter_class = static_cast<AudioEffectHardLimiter *>(static_cast<Object *>(vobj));
+	} else {
+		audio_effect_hard_limiter_class = memnew(AudioEffectHardLimiter);
+	}
 	if (!audio_effect_hard_limiter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

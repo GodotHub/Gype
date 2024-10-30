@@ -1,7 +1,7 @@
 
-import { Object } from "@godot/classes/object";
+import { GodotObject } from "@godot/classes/godot_object";
 
-export declare class Geometry2D extends Object{
+export declare class Geometry2D extends GodotObject{
   public is_point_in_circle(_point: Vector2, _circle_position: Vector2, _circle_radius: number): boolean;
   public segment_intersects_circle(_segment_from: Vector2, _segment_to: Vector2, _circle_position: Vector2, _circle_radius: number): number;
   public segment_intersects_segment(_from_a: Vector2, _to_a: Vector2, _from_b: Vector2, _to_b: Vector2): any;

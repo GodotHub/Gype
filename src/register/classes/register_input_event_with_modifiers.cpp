@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_with_modifiers.hpp>
 #include <godot_cpp/classes/input_event_from_window.hpp>
+#include <godot_cpp/classes/input_event_with_modifiers.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue input_event_with_modifiers_class_constructor(JSContext *ctx, JSVa
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventWithModifiers::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	InputEventWithModifiers *input_event_with_modifiers_class = memnew(InputEventWithModifiers);
+	InputEventWithModifiers *input_event_with_modifiers_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		input_event_with_modifiers_class = static_cast<InputEventWithModifiers *>(static_cast<Object *>(vobj));
+	} else {
+		input_event_with_modifiers_class = memnew(InputEventWithModifiers);
+	}
 	if (!input_event_with_modifiers_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

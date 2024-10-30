@@ -2,7 +2,7 @@
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
 
 export declare class VisualShaderNodeParameter extends VisualShaderNode{
-  public set_parameter_name(_name: String): void;
+  public set_parameter_name(_name: String | StringName | string): void;
   public get_parameter_name(): String;
   public set_qualifier(_qualifier: number): void;
   public get_qualifier(): number;

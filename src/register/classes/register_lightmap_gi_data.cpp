@@ -29,7 +29,13 @@ static JSValue lightmap_gi_data_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, LightmapGIData::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	LightmapGIData *lightmap_gi_data_class = memnew(LightmapGIData);
+	LightmapGIData *lightmap_gi_data_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		lightmap_gi_data_class = static_cast<LightmapGIData *>(static_cast<Object *>(vobj));
+	} else {
+		lightmap_gi_data_class = memnew(LightmapGIData);
+	}
 	if (!lightmap_gi_data_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

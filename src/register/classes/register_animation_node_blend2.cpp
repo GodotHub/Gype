@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_node_blend2.hpp>
 #include <godot_cpp/classes/animation_node_sync.hpp>
+#include <godot_cpp/classes/animation_node_blend2.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue animation_node_blend2_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeBlend2::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AnimationNodeBlend2 *animation_node_blend2_class = memnew(AnimationNodeBlend2);
+	AnimationNodeBlend2 *animation_node_blend2_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		animation_node_blend2_class = static_cast<AnimationNodeBlend2 *>(static_cast<Object *>(vobj));
+	} else {
+		animation_node_blend2_class = memnew(AnimationNodeBlend2);
+	}
 	if (!animation_node_blend2_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture_layered_rd.hpp>
 #include <godot_cpp/classes/texture_layered.hpp>
+#include <godot_cpp/classes/texture_layered_rd.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue texture_layered_rd_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TextureLayeredRD::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	TextureLayeredRD *texture_layered_rd_class = memnew(TextureLayeredRD);
+	TextureLayeredRD *texture_layered_rd_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		texture_layered_rd_class = static_cast<TextureLayeredRD *>(static_cast<Object *>(vobj));
+	} else {
+		texture_layered_rd_class = memnew(TextureLayeredRD);
+	}
 	if (!texture_layered_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

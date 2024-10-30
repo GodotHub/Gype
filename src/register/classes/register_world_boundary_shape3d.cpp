@@ -27,7 +27,13 @@ static JSValue world_boundary_shape3d_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WorldBoundaryShape3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	WorldBoundaryShape3D *world_boundary_shape3d_class = memnew(WorldBoundaryShape3D);
+	WorldBoundaryShape3D *world_boundary_shape3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		world_boundary_shape3d_class = static_cast<WorldBoundaryShape3D *>(static_cast<Object *>(vobj));
+	} else {
+		world_boundary_shape3d_class = memnew(WorldBoundaryShape3D);
+	}
 	if (!world_boundary_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

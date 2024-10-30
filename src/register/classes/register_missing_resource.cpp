@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/missing_resource.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue missing_resource_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MissingResource::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	MissingResource *missing_resource_class = memnew(MissingResource);
+	MissingResource *missing_resource_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		missing_resource_class = static_cast<MissingResource *>(static_cast<Object *>(vobj));
+	} else {
+		missing_resource_class = memnew(MissingResource);
+	}
 	if (!missing_resource_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

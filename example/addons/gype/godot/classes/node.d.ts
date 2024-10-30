@@ -1,13 +1,13 @@
 
 import { Window } from "@godot/classes/window";
-import { Tween } from "@godot/classes/tween";
-import { MultiplayerAPI } from "@godot/classes/multiplayer_api";
-import { SceneTree } from "@godot/classes/scene_tree";
-import { Object } from "@godot/classes/object";
-import { Viewport } from "@godot/classes/viewport";
 import { InputEvent } from "@godot/classes/input_event";
+import { MultiplayerAPI } from "@godot/classes/multiplayer_api";
+import { GodotObject } from "@godot/classes/godot_object";
+import { Viewport } from "@godot/classes/viewport";
+import { SceneTree } from "@godot/classes/scene_tree";
+import { Tween } from "@godot/classes/tween";
 
-export declare class Node extends Object{
+export declare class Node extends GodotObject{
   public _process(_delta: number): void;
   public _physics_process(_delta: number): void;
   public _enter_tree(): void;
@@ -20,7 +20,7 @@ export declare class Node extends Object{
   public _unhandled_key_input(_event: InputEvent): void;
   public print_orphan_nodes(): void;
   public add_sibling(_sibling: Node, _force_readable_name: boolean): void;
-  public set_name(_name: String): void;
+  public set_name(_name: String | StringName | string): void;
   public get_name(): StringName;
   public add_child(_node: Node, _force_readable_name: boolean, _internal: number): void;
   public remove_child(_node: Node): void;
@@ -32,9 +32,9 @@ export declare class Node extends Object{
   public get_node(_path: NodePath): Node;
   public get_node_or_null(_path: NodePath): Node;
   public get_parent(): Node;
-  public find_child(_pattern: String, _recursive: boolean, _owned: boolean): Node;
-  public find_children(_pattern: String, _type: String, _recursive: boolean, _owned: boolean): GDArray;
-  public find_parent(_pattern: String): Node;
+  public find_child(_pattern: String | StringName | string, _recursive: boolean, _owned: boolean): Node;
+  public find_children(_pattern: String | StringName | string, _type: String | StringName | string, _recursive: boolean, _owned: boolean): GDArray;
+  public find_parent(_pattern: String | StringName | string): Node;
   public has_node_and_resource(_path: NodePath): boolean;
   public get_node_and_resource(_path: NodePath): GDArray;
   public is_inside_tree(): boolean;
@@ -43,9 +43,9 @@ export declare class Node extends Object{
   public is_greater_than(_node: Node): boolean;
   public get_path(): NodePath;
   public get_path_to(_node: Node, _use_unique_path: boolean): NodePath;
-  public add_to_group(_group: StringName, _persistent: boolean): void;
-  public remove_from_group(_group: StringName): void;
-  public is_in_group(_group: StringName): boolean;
+  public add_to_group(_group: String | StringName | string, _persistent: boolean): void;
+  public remove_from_group(_group: String | StringName | string): void;
+  public is_in_group(_group: String | StringName | string): boolean;
   public move_child(_child_node: Node, _to_index: number): void;
   public get_groups(): GDArray;
   public set_owner(_owner: Node): void;
@@ -55,10 +55,10 @@ export declare class Node extends Object{
   public print_tree_pretty(): void;
   public get_tree_string(): String;
   public get_tree_string_pretty(): String;
-  public set_scene_file_path(_scene_file_path: String): void;
+  public set_scene_file_path(_scene_file_path: String | StringName | string): void;
   public get_scene_file_path(): String;
   public propagate_notification(_what: number): void;
-  public propagate_call(_method: StringName, _args: GDArray, _parent_first: boolean): void;
+  public propagate_call(_method: String | StringName | string, _args: GDArray, _parent_first: boolean): void;
   public set_physics_process(_enable: boolean): void;
   public get_physics_process_delta_time(): number;
   public is_physics_processing(): boolean;
@@ -117,21 +117,21 @@ export declare class Node extends Object{
   public get_multiplayer_authority(): number;
   public is_multiplayer_authority(): boolean;
   public get_multiplayer(): MultiplayerAPI;
-  public rpc_config(_method: StringName, _config: any): void;
-  public set_editor_description(_editor_description: String): void;
+  public rpc_config(_method: String | StringName | string, _config: any): void;
+  public set_editor_description(_editor_description: String | StringName | string): void;
   public get_editor_description(): String;
   public set_unique_name_in_owner(_enable: boolean): void;
   public is_unique_name_in_owner(): boolean;
-  public atr(_message: String, _context: StringName): String;
-  public atr_n(_message: String, _plural_message: StringName, _n: number, _context: StringName): String;
-  public rpc(_method: StringName): number;
-  public rpc_id(_peer_id: number, _method: StringName): number;
+  public atr(_message: String | StringName | string, _context: String | StringName | string): String;
+  public atr_n(_message: String | StringName | string, _plural_message: String | StringName | string, _n: number, _context: String | StringName | string): String;
+  public rpc(_method: String | StringName | string): number;
+  public rpc_id(_peer_id: number, _method: String | StringName | string): number;
   public update_configuration_warnings(): void;
-  public call_deferred_thread_group(_method: StringName): any;
-  public set_deferred_thread_group(_property: StringName, _value: any): void;
+  public call_deferred_thread_group(_method: String | StringName | string): any;
+  public set_deferred_thread_group(_property: String | StringName | string, _value: any): void;
   public notify_deferred_thread_group(_what: number): void;
-  public call_thread_safe(_method: StringName): any;
-  public set_thread_safe(_property: StringName, _value: any): void;
+  public call_thread_safe(_method: String | StringName | string): any;
+  public set_thread_safe(_property: String | StringName | string, _value: any): void;
   public notify_thread_safe(_what: number): void;
   public get name(): StringName {
     get_name();
@@ -252,4 +252,14 @@ export declare class Node extends Object{
     AUTO_TRANSLATE_MODE_ALWAYS = 1,
     AUTO_TRANSLATE_MODE_DISABLED = 2,
   }
+  public const ready: string = "ready";
+  public const renamed: string = "renamed";
+  public const tree_entered: string = "tree_entered";
+  public const tree_exiting: string = "tree_exiting";
+  public const tree_exited: string = "tree_exited";
+  public const child_entered_tree: string = "child_entered_tree";
+  public const child_exiting_tree: string = "child_exiting_tree";
+  public const child_order_changed: string = "child_order_changed";
+  public const replacing_by: string = "replacing_by";
+  public const editor_description_changed: string = "editor_description_changed";
 }

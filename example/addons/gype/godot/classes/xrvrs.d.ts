@@ -1,7 +1,7 @@
 
-import { Object } from "@godot/classes/object";
+import { GodotObject } from "@godot/classes/godot_object";
 
-export declare class XRVRS extends Object{
+export declare class XRVRS extends GodotObject{
   public get_vrs_min_radius(): number;
   public set_vrs_min_radius(_radius: number): void;
   public get_vrs_strength(): number;

@@ -27,7 +27,13 @@ static JSValue audio_bus_layout_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioBusLayout::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioBusLayout *audio_bus_layout_class = memnew(AudioBusLayout);
+	AudioBusLayout *audio_bus_layout_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_bus_layout_class = static_cast<AudioBusLayout *>(static_cast<Object *>(vobj));
+	} else {
+		audio_bus_layout_class = memnew(AudioBusLayout);
+	}
 	if (!audio_bus_layout_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

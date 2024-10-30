@@ -27,7 +27,13 @@ static JSValue rd_framebuffer_pass_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDFramebufferPass::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RDFramebufferPass *rd_framebuffer_pass_class = memnew(RDFramebufferPass);
+	RDFramebufferPass *rd_framebuffer_pass_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		rd_framebuffer_pass_class = static_cast<RDFramebufferPass *>(static_cast<Object *>(vobj));
+	} else {
+		rd_framebuffer_pass_class = memnew(RDFramebufferPass);
+	}
 	if (!rd_framebuffer_pass_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

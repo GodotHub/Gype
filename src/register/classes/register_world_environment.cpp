@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/camera_attributes.hpp>
-#include <godot_cpp/classes/compositor.hpp>
 #include <godot_cpp/classes/world_environment.hpp>
-#include <godot_cpp/classes/environment.hpp>
+#include <godot_cpp/classes/compositor.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/environment.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,7 +30,13 @@ static JSValue world_environment_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WorldEnvironment::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	WorldEnvironment *world_environment_class = memnew(WorldEnvironment);
+	WorldEnvironment *world_environment_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		world_environment_class = static_cast<WorldEnvironment *>(static_cast<Object *>(vobj));
+	} else {
+		world_environment_class = memnew(WorldEnvironment);
+	}
 	if (!world_environment_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

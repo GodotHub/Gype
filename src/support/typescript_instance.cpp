@@ -47,10 +47,8 @@ TypeScriptInstance::TypeScriptInstance(Object *p_godot_object, TypeScript *scrip
 					ret = JS_GetProperty(ctx, ret, symbol);
 					if (strcmp(symbol_mask, symbol_name) == 0 || true) {
 						binding = internal::get_object_instance_binding(p_godot_object->_owner);
-						JSValue js_instance = JS_CallConstructor(ctx, clazz, 0, NULL);
-						int class_id = binding->__get_js_class_id();
-						void *opaque = JS_GetOpaque(js_instance, class_id);
-						memdelete(reinterpret_cast<Object *>(opaque));
+						JSValue vbinding = static_cast<Variant>(binding);
+						JSValue js_instance = JS_CallConstructor(ctx, clazz, 1, &vbinding);
 						JS_SetOpaque(js_instance, binding);
 						binding->js_instance = js_instance;
 						script->instances.insert(binding->get_instance_id());

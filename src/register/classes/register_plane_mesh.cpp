@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/plane_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/plane_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue plane_mesh_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PlaneMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PlaneMesh *plane_mesh_class = memnew(PlaneMesh);
+	PlaneMesh *plane_mesh_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		plane_mesh_class = static_cast<PlaneMesh *>(static_cast<Object *>(vobj));
+	} else {
+		plane_mesh_class = memnew(PlaneMesh);
+	}
 	if (!plane_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

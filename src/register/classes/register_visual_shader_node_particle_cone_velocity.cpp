@@ -27,7 +27,13 @@ static JSValue visual_shader_node_particle_cone_velocity_class_constructor(JSCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeParticleConeVelocity::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeParticleConeVelocity *visual_shader_node_particle_cone_velocity_class = memnew(VisualShaderNodeParticleConeVelocity);
+	VisualShaderNodeParticleConeVelocity *visual_shader_node_particle_cone_velocity_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_particle_cone_velocity_class = static_cast<VisualShaderNodeParticleConeVelocity *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_particle_cone_velocity_class = memnew(VisualShaderNodeParticleConeVelocity);
+	}
 	if (!visual_shader_node_particle_cone_velocity_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

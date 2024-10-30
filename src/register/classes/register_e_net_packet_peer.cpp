@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/classes/e_net_packet_peer.hpp>
+#include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue e_net_packet_peer_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ENetPacketPeer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ENetPacketPeer *e_net_packet_peer_class = memnew(ENetPacketPeer);
+	ENetPacketPeer *e_net_packet_peer_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		e_net_packet_peer_class = static_cast<ENetPacketPeer *>(static_cast<Object *>(vobj));
+	} else {
+		e_net_packet_peer_class = memnew(ENetPacketPeer);
+	}
 	if (!e_net_packet_peer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_sampler_state.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue rd_sampler_state_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDSamplerState::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RDSamplerState *rd_sampler_state_class = memnew(RDSamplerState);
+	RDSamplerState *rd_sampler_state_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		rd_sampler_state_class = static_cast<RDSamplerState *>(static_cast<Object *>(vobj));
+	} else {
+		rd_sampler_state_class = memnew(RDSamplerState);
+	}
 	if (!rd_sampler_state_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -27,7 +27,13 @@ static JSValue visual_shader_node_particle_sphere_emitter_class_constructor(JSCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeParticleSphereEmitter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeParticleSphereEmitter *visual_shader_node_particle_sphere_emitter_class = memnew(VisualShaderNodeParticleSphereEmitter);
+	VisualShaderNodeParticleSphereEmitter *visual_shader_node_particle_sphere_emitter_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_particle_sphere_emitter_class = static_cast<VisualShaderNodeParticleSphereEmitter *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_particle_sphere_emitter_class = memnew(VisualShaderNodeParticleSphereEmitter);
+	}
 	if (!visual_shader_node_particle_sphere_emitter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

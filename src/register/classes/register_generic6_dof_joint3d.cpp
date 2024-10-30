@@ -27,7 +27,13 @@ static JSValue generic6_dof_joint3d_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Generic6DOFJoint3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Generic6DOFJoint3D *generic6_dof_joint3d_class = memnew(Generic6DOFJoint3D);
+	Generic6DOFJoint3D *generic6_dof_joint3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		generic6_dof_joint3d_class = static_cast<Generic6DOFJoint3D *>(static_cast<Object *>(vobj));
+	} else {
+		generic6_dof_joint3d_class = memnew(Generic6DOFJoint3D);
+	}
 	if (!generic6_dof_joint3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

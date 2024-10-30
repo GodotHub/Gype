@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/image_texture3d.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue image_texture3d_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ImageTexture3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ImageTexture3D *image_texture3d_class = memnew(ImageTexture3D);
+	ImageTexture3D *image_texture3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		image_texture3d_class = static_cast<ImageTexture3D *>(static_cast<Object *>(vobj));
+	} else {
+		image_texture3d_class = memnew(ImageTexture3D);
+	}
 	if (!image_texture3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

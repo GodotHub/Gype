@@ -1,6 +1,6 @@
 
-import { RefCounted } from "@godot/classes/ref_counted";
 import { UPNPDevice } from "@godot/classes/upnp_device";
+import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class UPNP extends RefCounted{
   public get_device_count(): number;
@@ -10,11 +10,11 @@ export declare class UPNP extends RefCounted{
   public remove_device(_index: number): void;
   public clear_devices(): void;
   public get_gateway(): UPNPDevice;
-  public discover(_timeout: number, _ttl: number, _device_filter: String): number;
+  public discover(_timeout: number, _ttl: number, _device_filter: String | StringName | string): number;
   public query_external_address(): String;
-  public add_port_mapping(_port: number, _port_internal: number, _desc: String, _proto: String, _duration: number): number;
-  public delete_port_mapping(_port: number, _proto: String): number;
-  public set_discover_multicast_if(_m_if: String): void;
+  public add_port_mapping(_port: number, _port_internal: number, _desc: String | StringName | string, _proto: String | StringName | string, _duration: number): number;
+  public delete_port_mapping(_port: number, _proto: String | StringName | string): number;
+  public set_discover_multicast_if(_m_if: String | StringName | string): void;
   public get_discover_multicast_if(): String;
   public set_discover_local_port(_port: number): void;
   public get_discover_local_port(): number;

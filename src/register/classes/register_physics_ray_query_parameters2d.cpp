@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/physics_ray_query_parameters2d.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue physics_ray_query_parameters2d_class_constructor(JSContext *ctx, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsRayQueryParameters2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PhysicsRayQueryParameters2D *physics_ray_query_parameters2d_class = memnew(PhysicsRayQueryParameters2D);
+	PhysicsRayQueryParameters2D *physics_ray_query_parameters2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		physics_ray_query_parameters2d_class = static_cast<PhysicsRayQueryParameters2D *>(static_cast<Object *>(vobj));
+	} else {
+		physics_ray_query_parameters2d_class = memnew(PhysicsRayQueryParameters2D);
+	}
 	if (!physics_ray_query_parameters2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

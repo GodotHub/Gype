@@ -28,7 +28,13 @@ static JSValue sprite_base3d_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SpriteBase3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SpriteBase3D *sprite_base3d_class = memnew(SpriteBase3D);
+	SpriteBase3D *sprite_base3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		sprite_base3d_class = static_cast<SpriteBase3D *>(static_cast<Object *>(vobj));
+	} else {
+		sprite_base3d_class = memnew(SpriteBase3D);
+	}
 	if (!sprite_base3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

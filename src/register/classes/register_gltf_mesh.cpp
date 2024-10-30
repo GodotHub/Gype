@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/importer_mesh.hpp>
 #include <godot_cpp/classes/gltf_mesh.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue gltf_mesh_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GLTFMesh *gltf_mesh_class = memnew(GLTFMesh);
+	GLTFMesh *gltf_mesh_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gltf_mesh_class = static_cast<GLTFMesh *>(static_cast<Object *>(vobj));
+	} else {
+		gltf_mesh_class = memnew(GLTFMesh);
+	}
 	if (!gltf_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

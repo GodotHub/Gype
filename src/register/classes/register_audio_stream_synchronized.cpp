@@ -27,7 +27,13 @@ static JSValue audio_stream_synchronized_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamSynchronized::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioStreamSynchronized *audio_stream_synchronized_class = memnew(AudioStreamSynchronized);
+	AudioStreamSynchronized *audio_stream_synchronized_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_stream_synchronized_class = static_cast<AudioStreamSynchronized *>(static_cast<Object *>(vobj));
+	} else {
+		audio_stream_synchronized_class = memnew(AudioStreamSynchronized);
+	}
 	if (!audio_stream_synchronized_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

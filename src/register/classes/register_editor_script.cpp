@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/editor_script.hpp>
-#include <godot_cpp/classes/editor_interface.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/editor_interface.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue editor_script_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorScript::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorScript *editor_script_class = memnew(EditorScript);
+	EditorScript *editor_script_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_script_class = static_cast<EditorScript *>(static_cast<Object *>(vobj));
+	} else {
+		editor_script_class = memnew(EditorScript);
+	}
 	if (!editor_script_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

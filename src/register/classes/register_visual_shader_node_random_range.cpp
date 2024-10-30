@@ -27,7 +27,13 @@ static JSValue visual_shader_node_random_range_class_constructor(JSContext *ctx,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeRandomRange::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeRandomRange *visual_shader_node_random_range_class = memnew(VisualShaderNodeRandomRange);
+	VisualShaderNodeRandomRange *visual_shader_node_random_range_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_random_range_class = static_cast<VisualShaderNodeRandomRange *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_random_range_class = memnew(VisualShaderNodeRandomRange);
+	}
 	if (!visual_shader_node_random_range_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

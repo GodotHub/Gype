@@ -27,7 +27,13 @@ static JSValue open_xr_interaction_profile_metadata_class_constructor(JSContext 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRInteractionProfileMetadata::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	OpenXRInteractionProfileMetadata *open_xr_interaction_profile_metadata_class = memnew(OpenXRInteractionProfileMetadata);
+	OpenXRInteractionProfileMetadata *open_xr_interaction_profile_metadata_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		open_xr_interaction_profile_metadata_class = static_cast<OpenXRInteractionProfileMetadata *>(static_cast<Object *>(vobj));
+	} else {
+		open_xr_interaction_profile_metadata_class = memnew(OpenXRInteractionProfileMetadata);
+	}
 	if (!open_xr_interaction_profile_metadata_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -92,7 +98,7 @@ static int js_open_xr_interaction_profile_metadata_class_init(JSContext *ctx, JS
 }
 
 JSModuleDef *_js_init_open_xr_interaction_profile_metadata_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

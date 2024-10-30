@@ -2,13 +2,13 @@
 import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class FileAccess extends RefCounted{
-  public open(_path: String, _flags: number): FileAccess;
-  public open_encrypted(_path: String, _mode_flags: number, _key: PackedByteArray): FileAccess;
-  public open_encrypted_with_pass(_path: String, _mode_flags: number, _pass: String): FileAccess;
-  public open_compressed(_path: String, _mode_flags: number, _compression_mode: number): FileAccess;
+  public open(_path: String | StringName | string, _flags: number): FileAccess;
+  public open_encrypted(_path: String | StringName | string, _mode_flags: number, _key: PackedByteArray): FileAccess;
+  public open_encrypted_with_pass(_path: String | StringName | string, _mode_flags: number, _pass: String | StringName | string): FileAccess;
+  public open_compressed(_path: String | StringName | string, _mode_flags: number, _compression_mode: number): FileAccess;
   public get_open_error(): number;
-  public get_file_as_bytes(_path: String): PackedByteArray;
-  public get_file_as_string(_path: String): String;
+  public get_file_as_bytes(_path: String | StringName | string): PackedByteArray;
+  public get_file_as_string(_path: String | StringName | string): String;
   public resize(_length: number): number;
   public flush(): void;
   public get_path(): String;
@@ -28,10 +28,10 @@ export declare class FileAccess extends RefCounted{
   public get_real(): number;
   public get_buffer(_length: number): PackedByteArray;
   public get_line(): String;
-  public get_csv_line(_delim: String): PackedStringArray;
+  public get_csv_line(_delim: String | StringName | string): PackedStringArray;
   public get_as_text(_skip_cr: boolean): String;
-  public get_md5(_path: String): String;
-  public get_sha256(_path: String): String;
+  public get_md5(_path: String | StringName | string): String;
+  public get_sha256(_path: String | StringName | string): String;
   public is_big_endian(): boolean;
   public set_big_endian(_big_endian: boolean): void;
   public get_error(): number;
@@ -44,21 +44,21 @@ export declare class FileAccess extends RefCounted{
   public store_double(_value: number): void;
   public store_real(_value: number): void;
   public store_buffer(_buffer: PackedByteArray): void;
-  public store_line(_line: String): void;
-  public store_csv_line(_values: PackedStringArray, _delim: String): void;
-  public store_string(_string: String): void;
+  public store_line(_line: String | StringName | string): void;
+  public store_csv_line(_values: PackedStringArray, _delim: String | StringName | string): void;
+  public store_string(_string: String | StringName | string): void;
   public store_var(_value: any, _full_objects: boolean): void;
-  public store_pascal_string(_string: String): void;
+  public store_pascal_string(_string: String | StringName | string): void;
   public get_pascal_string(): String;
   public close(): void;
-  public file_exists(_path: String): boolean;
-  public get_modified_time(_file: String): number;
-  public get_unix_permissions(_file: String): number;
-  public set_unix_permissions(_file: String, _permissions: number): number;
-  public get_hidden_attribute(_file: String): boolean;
-  public set_hidden_attribute(_file: String, _hidden: boolean): number;
-  public set_read_only_attribute(_file: String, _ro: boolean): number;
-  public get_read_only_attribute(_file: String): boolean;
+  public file_exists(_path: String | StringName | string): boolean;
+  public get_modified_time(_file: String | StringName | string): number;
+  public get_unix_permissions(_file: String | StringName | string): number;
+  public set_unix_permissions(_file: String | StringName | string, _permissions: number): number;
+  public get_hidden_attribute(_file: String | StringName | string): boolean;
+  public set_hidden_attribute(_file: String | StringName | string, _hidden: boolean): number;
+  public set_read_only_attribute(_file: String | StringName | string, _ro: boolean): number;
+  public get_read_only_attribute(_file: String | StringName | string): boolean;
   public get big_endian(): boolean {
     is_big_endian();
   }

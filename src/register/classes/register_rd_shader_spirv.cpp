@@ -27,7 +27,13 @@ static JSValue rd_shader_spirv_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDShaderSPIRV::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RDShaderSPIRV *rd_shader_spirv_class = memnew(RDShaderSPIRV);
+	RDShaderSPIRV *rd_shader_spirv_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		rd_shader_spirv_class = static_cast<RDShaderSPIRV *>(static_cast<Object *>(vobj));
+	} else {
+		rd_shader_spirv_class = memnew(RDShaderSPIRV);
+	}
 	if (!rd_shader_spirv_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

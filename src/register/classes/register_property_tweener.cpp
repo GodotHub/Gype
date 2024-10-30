@@ -27,7 +27,13 @@ static JSValue property_tweener_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PropertyTweener::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PropertyTweener *property_tweener_class = memnew(PropertyTweener);
+	PropertyTweener *property_tweener_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		property_tweener_class = static_cast<PropertyTweener *>(static_cast<Object *>(vobj));
+	} else {
+		property_tweener_class = memnew(PropertyTweener);
+	}
 	if (!property_tweener_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

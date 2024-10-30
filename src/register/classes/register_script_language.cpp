@@ -27,7 +27,13 @@ static JSValue script_language_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ScriptLanguage::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ScriptLanguage *script_language_class = memnew(ScriptLanguage);
+	ScriptLanguage *script_language_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		script_language_class = static_cast<ScriptLanguage *>(static_cast<Object *>(vobj));
+	} else {
+		script_language_class = memnew(ScriptLanguage);
+	}
 	if (!script_language_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -71,7 +77,7 @@ static int js_script_language_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_script_language_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

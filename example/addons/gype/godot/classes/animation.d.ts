@@ -63,8 +63,8 @@ export declare class Animation extends Resource{
   public audio_track_get_key_end_offset(_track_idx: number, _key_idx: number): number;
   public audio_track_set_use_blend(_track_idx: number, _enable: boolean): void;
   public audio_track_is_use_blend(_track_idx: number): boolean;
-  public animation_track_insert_key(_track_idx: number, _time: number, _animation: StringName): number;
-  public animation_track_set_key_animation(_track_idx: number, _key_idx: number, _animation: StringName): void;
+  public animation_track_insert_key(_track_idx: number, _time: number, _animation: String | StringName | string): number;
+  public animation_track_set_key_animation(_track_idx: number, _key_idx: number, _animation: String | StringName | string): void;
   public animation_track_get_key_animation(_track_idx: number, _key_idx: number): StringName;
   public set_length(_time_sec: number): void;
   public get_length(): number;

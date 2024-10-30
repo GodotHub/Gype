@@ -27,7 +27,13 @@ static JSValue style_box_line_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StyleBoxLine::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	StyleBoxLine *style_box_line_class = memnew(StyleBoxLine);
+	StyleBoxLine *style_box_line_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		style_box_line_class = static_cast<StyleBoxLine *>(static_cast<Object *>(vobj));
+	} else {
+		style_box_line_class = memnew(StyleBoxLine);
+	}
 	if (!style_box_line_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

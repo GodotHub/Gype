@@ -59,4 +59,6 @@ export declare class Sprite3D extends SpriteBase3D{
   public set region_rect(value): void {
     set_region_rect(value);
   }
+  public const frame_changed: string = "frame_changed";
+  public const texture_changed: string = "texture_changed";
 }

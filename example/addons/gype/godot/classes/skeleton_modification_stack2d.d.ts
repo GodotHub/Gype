@@ -1,6 +1,6 @@
 
-import { Skeleton2D } from "@godot/classes/skeleton2d";
 import { Resource } from "@godot/classes/resource";
+import { Skeleton2D } from "@godot/classes/skeleton2d";
 import { SkeletonModification2D } from "@godot/classes/skeleton_modification2d";
 
 export declare class SkeletonModificationStack2D extends Resource{

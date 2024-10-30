@@ -27,7 +27,13 @@ static JSValue csg_shape3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CSGShape3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CSGShape3D *csg_shape3d_class = memnew(CSGShape3D);
+	CSGShape3D *csg_shape3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		csg_shape3d_class = static_cast<CSGShape3D *>(static_cast<Object *>(vobj));
+	} else {
+		csg_shape3d_class = memnew(CSGShape3D);
+	}
 	if (!csg_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

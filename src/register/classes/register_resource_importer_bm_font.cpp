@@ -27,7 +27,13 @@ static JSValue resource_importer_bm_font_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterBMFont::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ResourceImporterBMFont *resource_importer_bm_font_class = memnew(ResourceImporterBMFont);
+	ResourceImporterBMFont *resource_importer_bm_font_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		resource_importer_bm_font_class = static_cast<ResourceImporterBMFont *>(static_cast<Object *>(vobj));
+	} else {
+		resource_importer_bm_font_class = memnew(ResourceImporterBMFont);
+	}
 	if (!resource_importer_bm_font_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

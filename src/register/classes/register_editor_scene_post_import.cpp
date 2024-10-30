@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/editor_scene_post_import.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/editor_scene_post_import.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -29,7 +29,13 @@ static JSValue editor_scene_post_import_class_constructor(JSContext *ctx, JSValu
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorScenePostImport::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorScenePostImport *editor_scene_post_import_class = memnew(EditorScenePostImport);
+	EditorScenePostImport *editor_scene_post_import_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_scene_post_import_class = static_cast<EditorScenePostImport *>(static_cast<Object *>(vobj));
+	} else {
+		editor_scene_post_import_class = memnew(EditorScenePostImport);
+	}
 	if (!editor_scene_post_import_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

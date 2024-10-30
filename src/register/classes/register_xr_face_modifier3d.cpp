@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_face_modifier3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/xr_face_modifier3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue xr_face_modifier3d_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRFaceModifier3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	XRFaceModifier3D *xr_face_modifier3d_class = memnew(XRFaceModifier3D);
+	XRFaceModifier3D *xr_face_modifier3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		xr_face_modifier3d_class = static_cast<XRFaceModifier3D *>(static_cast<Object *>(vobj));
+	} else {
+		xr_face_modifier3d_class = memnew(XRFaceModifier3D);
+	}
 	if (!xr_face_modifier3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

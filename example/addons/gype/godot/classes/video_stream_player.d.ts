@@ -1,7 +1,7 @@
 
+import { VideoStream } from "@godot/classes/video_stream";
 import { Control } from "@godot/classes/control";
 import { Texture2D } from "@godot/classes/texture2d";
-import { VideoStream } from "@godot/classes/video_stream";
 
 export declare class VideoStreamPlayer extends Control{
   public set_stream(_stream: VideoStream): void;
@@ -29,7 +29,7 @@ export declare class VideoStreamPlayer extends Control{
   public has_expand(): boolean;
   public set_buffering_msec(_msec: number): void;
   public get_buffering_msec(): number;
-  public set_bus(_bus: StringName): void;
+  public set_bus(_bus: String | StringName | string): void;
   public get_bus(): StringName;
   public get_video_texture(): Texture2D;
   public get audio_track(): number {
@@ -98,4 +98,5 @@ export declare class VideoStreamPlayer extends Control{
   public set bus(value): void {
     set_bus(value);
   }
+  public const finished: string = "finished";
 }

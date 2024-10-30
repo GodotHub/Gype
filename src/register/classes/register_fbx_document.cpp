@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gltf_document.hpp>
 #include <godot_cpp/classes/fbx_document.hpp>
+#include <godot_cpp/classes/gltf_document.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue fbx_document_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, FBXDocument::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	FBXDocument *fbx_document_class = memnew(FBXDocument);
+	FBXDocument *fbx_document_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		fbx_document_class = static_cast<FBXDocument *>(static_cast<Object *>(vobj));
+	} else {
+		fbx_document_class = memnew(FBXDocument);
+	}
 	if (!fbx_document_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

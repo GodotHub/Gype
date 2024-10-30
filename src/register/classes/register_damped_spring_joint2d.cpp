@@ -27,7 +27,13 @@ static JSValue damped_spring_joint2d_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, DampedSpringJoint2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	DampedSpringJoint2D *damped_spring_joint2d_class = memnew(DampedSpringJoint2D);
+	DampedSpringJoint2D *damped_spring_joint2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		damped_spring_joint2d_class = static_cast<DampedSpringJoint2D *>(static_cast<Object *>(vobj));
+	} else {
+		damped_spring_joint2d_class = memnew(DampedSpringJoint2D);
+	}
 	if (!damped_spring_joint2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/navigation_mesh.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/mesh_library.hpp>
+#include <godot_cpp/classes/navigation_mesh.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,7 +30,13 @@ static JSValue mesh_library_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MeshLibrary::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	MeshLibrary *mesh_library_class = memnew(MeshLibrary);
+	MeshLibrary *mesh_library_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		mesh_library_class = static_cast<MeshLibrary *>(static_cast<Object *>(vobj));
+	} else {
+		mesh_library_class = memnew(MeshLibrary);
+	}
 	if (!mesh_library_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -27,7 +27,13 @@ static JSValue reference_rect_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ReferenceRect::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ReferenceRect *reference_rect_class = memnew(ReferenceRect);
+	ReferenceRect *reference_rect_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		reference_rect_class = static_cast<ReferenceRect *>(static_cast<Object *>(vobj));
+	} else {
+		reference_rect_class = memnew(ReferenceRect);
+	}
 	if (!reference_rect_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

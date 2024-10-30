@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/navigation_mesh_source_geometry_data3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue navigation_mesh_source_geometry_data3d_class_constructor(JSContex
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, NavigationMeshSourceGeometryData3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	NavigationMeshSourceGeometryData3D *navigation_mesh_source_geometry_data3d_class = memnew(NavigationMeshSourceGeometryData3D);
+	NavigationMeshSourceGeometryData3D *navigation_mesh_source_geometry_data3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		navigation_mesh_source_geometry_data3d_class = static_cast<NavigationMeshSourceGeometryData3D *>(static_cast<Object *>(vobj));
+	} else {
+		navigation_mesh_source_geometry_data3d_class = memnew(NavigationMeshSourceGeometryData3D);
+	}
 	if (!navigation_mesh_source_geometry_data3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

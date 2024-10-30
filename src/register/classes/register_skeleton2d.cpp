@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
-#include <godot_cpp/classes/bone2d.hpp>
 #include <godot_cpp/classes/skeleton2d.hpp>
+#include <godot_cpp/classes/bone2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -29,7 +29,13 @@ static JSValue skeleton2d_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Skeleton2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Skeleton2D *skeleton2d_class = memnew(Skeleton2D);
+	Skeleton2D *skeleton2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		skeleton2d_class = static_cast<Skeleton2D *>(static_cast<Object *>(vobj));
+	} else {
+		skeleton2d_class = memnew(Skeleton2D);
+	}
 	if (!skeleton2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

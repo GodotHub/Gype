@@ -28,7 +28,13 @@ static JSValue render_scene_buffers_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RenderSceneBuffers::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RenderSceneBuffers *render_scene_buffers_class = memnew(RenderSceneBuffers);
+	RenderSceneBuffers *render_scene_buffers_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		render_scene_buffers_class = static_cast<RenderSceneBuffers *>(static_cast<Object *>(vobj));
+	} else {
+		render_scene_buffers_class = memnew(RenderSceneBuffers);
+	}
 	if (!render_scene_buffers_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

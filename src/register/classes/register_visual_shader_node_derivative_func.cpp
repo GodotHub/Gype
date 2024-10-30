@@ -27,7 +27,13 @@ static JSValue visual_shader_node_derivative_func_class_constructor(JSContext *c
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeDerivativeFunc::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeDerivativeFunc *visual_shader_node_derivative_func_class = memnew(VisualShaderNodeDerivativeFunc);
+	VisualShaderNodeDerivativeFunc *visual_shader_node_derivative_func_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_derivative_func_class = static_cast<VisualShaderNodeDerivativeFunc *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_derivative_func_class = memnew(VisualShaderNodeDerivativeFunc);
+	}
 	if (!visual_shader_node_derivative_func_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

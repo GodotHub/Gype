@@ -14,7 +14,7 @@ func _disable_plugin() -> void:
 	compile_button.free()
 
 func _compile():
-	var exit_code = OS.execute("cmd.exe", ["/c", "tsc", "--build", "tsconfig.json"]);
+	var exit_code = OS.execute("cmd.exe", ["/c", "tsc", "--build", "tsconfig.json", "--force"]);
 	if exit_code == -1:
-		printerr('compile js error')
+		printerr('error compile js')
 	pass

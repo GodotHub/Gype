@@ -27,7 +27,13 @@ static JSValue editor_feature_profile_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorFeatureProfile::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorFeatureProfile *editor_feature_profile_class = memnew(EditorFeatureProfile);
+	EditorFeatureProfile *editor_feature_profile_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_feature_profile_class = static_cast<EditorFeatureProfile *>(static_cast<Object *>(vobj));
+	} else {
+		editor_feature_profile_class = memnew(EditorFeatureProfile);
+	}
 	if (!editor_feature_profile_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

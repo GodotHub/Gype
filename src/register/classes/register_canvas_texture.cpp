@@ -27,7 +27,13 @@ static JSValue canvas_texture_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CanvasTexture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CanvasTexture *canvas_texture_class = memnew(CanvasTexture);
+	CanvasTexture *canvas_texture_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		canvas_texture_class = static_cast<CanvasTexture *>(static_cast<Object *>(vobj));
+	} else {
+		canvas_texture_class = memnew(CanvasTexture);
+	}
 	if (!canvas_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_sample3d.hpp>
 #include <godot_cpp/classes/visual_shader_node_texture3d.hpp>
 #include <godot_cpp/classes/texture3d.hpp>
+#include <godot_cpp/classes/visual_shader_node_sample3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue visual_shader_node_texture3d_class_constructor(JSContext *ctx, JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeTexture3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeTexture3D *visual_shader_node_texture3d_class = memnew(VisualShaderNodeTexture3D);
+	VisualShaderNodeTexture3D *visual_shader_node_texture3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_texture3d_class = static_cast<VisualShaderNodeTexture3D *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_texture3d_class = memnew(VisualShaderNodeTexture3D);
+	}
 	if (!visual_shader_node_texture3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

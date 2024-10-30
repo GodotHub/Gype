@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/audio_stream_ogg_vorbis.hpp>
-#include <godot_cpp/classes/resource_importer.hpp>
 #include <godot_cpp/classes/resource_importer_ogg_vorbis.hpp>
+#include <godot_cpp/classes/resource_importer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue resource_importer_ogg_vorbis_class_constructor(JSContext *ctx, JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterOggVorbis::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ResourceImporterOggVorbis *resource_importer_ogg_vorbis_class = memnew(ResourceImporterOggVorbis);
+	ResourceImporterOggVorbis *resource_importer_ogg_vorbis_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		resource_importer_ogg_vorbis_class = static_cast<ResourceImporterOggVorbis *>(static_cast<Object *>(vobj));
+	} else {
+		resource_importer_ogg_vorbis_class = memnew(ResourceImporterOggVorbis);
+	}
 	if (!resource_importer_ogg_vorbis_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -2,7 +2,7 @@
 import { Node3D } from "@godot/classes/node3d";
 
 export declare class BoneAttachment3D extends Node3D{
-  public set_bone_name(_bone_name: String): void;
+  public set_bone_name(_bone_name: String | StringName | string): void;
   public get_bone_name(): String;
   public set_bone_idx(_bone_idx: number): void;
   public get_bone_idx(): number;

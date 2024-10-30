@@ -27,7 +27,13 @@ static JSValue capsule_mesh_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CapsuleMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CapsuleMesh *capsule_mesh_class = memnew(CapsuleMesh);
+	CapsuleMesh *capsule_mesh_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		capsule_mesh_class = static_cast<CapsuleMesh *>(static_cast<Object *>(vobj));
+	} else {
+		capsule_mesh_class = memnew(CapsuleMesh);
+	}
 	if (!capsule_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

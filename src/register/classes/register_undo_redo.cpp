@@ -27,7 +27,13 @@ static JSValue undo_redo_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, UndoRedo::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	UndoRedo *undo_redo_class = memnew(UndoRedo);
+	UndoRedo *undo_redo_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		undo_redo_class = static_cast<UndoRedo *>(static_cast<Object *>(vobj));
+	} else {
+		undo_redo_class = memnew(UndoRedo);
+	}
 	if (!undo_redo_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -208,7 +214,7 @@ static int js_undo_redo_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_undo_redo_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

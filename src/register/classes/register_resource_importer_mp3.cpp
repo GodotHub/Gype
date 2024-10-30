@@ -27,7 +27,13 @@ static JSValue resource_importer_mp3_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterMP3::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ResourceImporterMP3 *resource_importer_mp3_class = memnew(ResourceImporterMP3);
+	ResourceImporterMP3 *resource_importer_mp3_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		resource_importer_mp3_class = static_cast<ResourceImporterMP3 *>(static_cast<Object *>(vobj));
+	} else {
+		resource_importer_mp3_class = memnew(ResourceImporterMP3);
+	}
 	if (!resource_importer_mp3_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

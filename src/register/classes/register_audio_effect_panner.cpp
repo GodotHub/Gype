@@ -27,7 +27,13 @@ static JSValue audio_effect_panner_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectPanner::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioEffectPanner *audio_effect_panner_class = memnew(AudioEffectPanner);
+	AudioEffectPanner *audio_effect_panner_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_effect_panner_class = static_cast<AudioEffectPanner *>(static_cast<Object *>(vobj));
+	} else {
+		audio_effect_panner_class = memnew(AudioEffectPanner);
+	}
 	if (!audio_effect_panner_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

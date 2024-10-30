@@ -27,7 +27,13 @@ static JSValue rd_pipeline_specialization_constant_class_constructor(JSContext *
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDPipelineSpecializationConstant::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RDPipelineSpecializationConstant *rd_pipeline_specialization_constant_class = memnew(RDPipelineSpecializationConstant);
+	RDPipelineSpecializationConstant *rd_pipeline_specialization_constant_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		rd_pipeline_specialization_constant_class = static_cast<RDPipelineSpecializationConstant *>(static_cast<Object *>(vobj));
+	} else {
+		rd_pipeline_specialization_constant_class = memnew(RDPipelineSpecializationConstant);
+	}
 	if (!rd_pipeline_specialization_constant_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

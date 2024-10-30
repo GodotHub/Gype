@@ -27,7 +27,13 @@ static JSValue rd_texture_view_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDTextureView::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RDTextureView *rd_texture_view_class = memnew(RDTextureView);
+	RDTextureView *rd_texture_view_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		rd_texture_view_class = static_cast<RDTextureView *>(static_cast<Object *>(vobj));
+	} else {
+		rd_texture_view_class = memnew(RDTextureView);
+	}
 	if (!rd_texture_view_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

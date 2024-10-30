@@ -27,7 +27,13 @@ static JSValue multiplayer_spawner_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MultiplayerSpawner::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	MultiplayerSpawner *multiplayer_spawner_class = memnew(MultiplayerSpawner);
+	MultiplayerSpawner *multiplayer_spawner_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		multiplayer_spawner_class = static_cast<MultiplayerSpawner *>(static_cast<Object *>(vobj));
+	} else {
+		multiplayer_spawner_class = memnew(MultiplayerSpawner);
+	}
 	if (!multiplayer_spawner_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

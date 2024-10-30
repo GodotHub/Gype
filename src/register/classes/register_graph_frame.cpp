@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/classes/graph_frame.hpp>
 #include <godot_cpp/classes/graph_element.hpp>
+#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue graph_frame_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GraphFrame::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GraphFrame *graph_frame_class = memnew(GraphFrame);
+	GraphFrame *graph_frame_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		graph_frame_class = static_cast<GraphFrame *>(static_cast<Object *>(vobj));
+	} else {
+		graph_frame_class = memnew(GraphFrame);
+	}
 	if (!graph_frame_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

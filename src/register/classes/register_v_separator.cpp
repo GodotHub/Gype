@@ -27,7 +27,13 @@ static JSValue v_separator_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VSeparator::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VSeparator *v_separator_class = memnew(VSeparator);
+	VSeparator *v_separator_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		v_separator_class = static_cast<VSeparator *>(static_cast<Object *>(vobj));
+	} else {
+		v_separator_class = memnew(VSeparator);
+	}
 	if (!v_separator_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

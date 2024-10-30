@@ -27,7 +27,13 @@ static JSValue audio_stream_playback_ogg_vorbis_class_constructor(JSContext *ctx
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamPlaybackOggVorbis::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioStreamPlaybackOggVorbis *audio_stream_playback_ogg_vorbis_class = memnew(AudioStreamPlaybackOggVorbis);
+	AudioStreamPlaybackOggVorbis *audio_stream_playback_ogg_vorbis_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_stream_playback_ogg_vorbis_class = static_cast<AudioStreamPlaybackOggVorbis *>(static_cast<Object *>(vobj));
+	} else {
+		audio_stream_playback_ogg_vorbis_class = memnew(AudioStreamPlaybackOggVorbis);
+	}
 	if (!audio_stream_playback_ogg_vorbis_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

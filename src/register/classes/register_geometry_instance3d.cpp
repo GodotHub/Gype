@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue geometry_instance3d_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GeometryInstance3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GeometryInstance3D *geometry_instance3d_class = memnew(GeometryInstance3D);
+	GeometryInstance3D *geometry_instance3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		geometry_instance3d_class = static_cast<GeometryInstance3D *>(static_cast<Object *>(vobj));
+	} else {
+		geometry_instance3d_class = memnew(GeometryInstance3D);
+	}
 	if (!geometry_instance3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

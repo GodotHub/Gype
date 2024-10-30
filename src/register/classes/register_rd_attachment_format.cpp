@@ -27,7 +27,13 @@ static JSValue rd_attachment_format_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDAttachmentFormat::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RDAttachmentFormat *rd_attachment_format_class = memnew(RDAttachmentFormat);
+	RDAttachmentFormat *rd_attachment_format_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		rd_attachment_format_class = static_cast<RDAttachmentFormat *>(static_cast<Object *>(vobj));
+	} else {
+		rd_attachment_format_class = memnew(RDAttachmentFormat);
+	}
 	if (!rd_attachment_format_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

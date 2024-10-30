@@ -27,7 +27,13 @@ static JSValue separation_ray_shape3d_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SeparationRayShape3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SeparationRayShape3D *separation_ray_shape3d_class = memnew(SeparationRayShape3D);
+	SeparationRayShape3D *separation_ray_shape3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		separation_ray_shape3d_class = static_cast<SeparationRayShape3D *>(static_cast<Object *>(vobj));
+	} else {
+		separation_ray_shape3d_class = memnew(SeparationRayShape3D);
+	}
 	if (!separation_ray_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

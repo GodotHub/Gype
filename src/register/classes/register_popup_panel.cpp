@@ -27,7 +27,13 @@ static JSValue popup_panel_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PopupPanel::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PopupPanel *popup_panel_class = memnew(PopupPanel);
+	PopupPanel *popup_panel_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		popup_panel_class = static_cast<PopupPanel *>(static_cast<Object *>(vobj));
+	} else {
+		popup_panel_class = memnew(PopupPanel);
+	}
 	if (!popup_panel_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

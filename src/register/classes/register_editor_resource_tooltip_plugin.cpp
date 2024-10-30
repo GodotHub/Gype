@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/editor_resource_tooltip_plugin.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/texture_rect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -29,7 +29,13 @@ static JSValue editor_resource_tooltip_plugin_class_constructor(JSContext *ctx, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorResourceTooltipPlugin::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorResourceTooltipPlugin *editor_resource_tooltip_plugin_class = memnew(EditorResourceTooltipPlugin);
+	EditorResourceTooltipPlugin *editor_resource_tooltip_plugin_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_resource_tooltip_plugin_class = static_cast<EditorResourceTooltipPlugin *>(static_cast<Object *>(vobj));
+	} else {
+		editor_resource_tooltip_plugin_class = memnew(EditorResourceTooltipPlugin);
+	}
 	if (!editor_resource_tooltip_plugin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

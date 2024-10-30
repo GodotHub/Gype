@@ -27,7 +27,13 @@ static JSValue system_font_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SystemFont::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SystemFont *system_font_class = memnew(SystemFont);
+	SystemFont *system_font_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		system_font_class = static_cast<SystemFont *>(static_cast<Object *>(vobj));
+	} else {
+		system_font_class = memnew(SystemFont);
+	}
 	if (!system_font_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

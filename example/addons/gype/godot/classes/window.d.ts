@@ -1,14 +1,14 @@
 
 import { Theme } from "@godot/classes/theme";
+import { Font } from "@godot/classes/font";
+import { Viewport } from "@godot/classes/viewport";
 import { Texture2D } from "@godot/classes/texture2d";
 import { StyleBox } from "@godot/classes/style_box";
 import { Node } from "@godot/classes/node";
-import { Font } from "@godot/classes/font";
-import { Viewport } from "@godot/classes/viewport";
 
 export declare class Window extends Viewport{
   public _get_contents_minimum_size(): Vector2;
-  public set_title(_title: String): void;
+  public set_title(_title: String | StringName | string): void;
   public get_title(): String;
   public get_window_id(): number;
   public set_initial_position(_initial_position: number): void;
@@ -75,40 +75,40 @@ export declare class Window extends Viewport{
   public child_controls_changed(): void;
   public set_theme(_theme: Theme): void;
   public get_theme(): Theme;
-  public set_theme_type_variation(_theme_type: StringName): void;
+  public set_theme_type_variation(_theme_type: String | StringName | string): void;
   public get_theme_type_variation(): StringName;
   public begin_bulk_theme_override(): void;
   public end_bulk_theme_override(): void;
-  public add_theme_icon_override(_name: StringName, _texture: Texture2D): void;
-  public add_theme_stylebox_override(_name: StringName, _stylebox: StyleBox): void;
-  public add_theme_font_override(_name: StringName, _font: Font): void;
-  public add_theme_font_size_override(_name: StringName, _font_size: number): void;
-  public add_theme_color_override(_name: StringName, _color: Color): void;
-  public add_theme_constant_override(_name: StringName, _constant: number): void;
-  public remove_theme_icon_override(_name: StringName): void;
-  public remove_theme_stylebox_override(_name: StringName): void;
-  public remove_theme_font_override(_name: StringName): void;
-  public remove_theme_font_size_override(_name: StringName): void;
-  public remove_theme_color_override(_name: StringName): void;
-  public remove_theme_constant_override(_name: StringName): void;
-  public get_theme_icon(_name: StringName, _theme_type: StringName): Texture2D;
-  public get_theme_stylebox(_name: StringName, _theme_type: StringName): StyleBox;
-  public get_theme_font(_name: StringName, _theme_type: StringName): Font;
-  public get_theme_font_size(_name: StringName, _theme_type: StringName): number;
-  public get_theme_color(_name: StringName, _theme_type: StringName): Color;
-  public get_theme_constant(_name: StringName, _theme_type: StringName): number;
-  public has_theme_icon_override(_name: StringName): boolean;
-  public has_theme_stylebox_override(_name: StringName): boolean;
-  public has_theme_font_override(_name: StringName): boolean;
-  public has_theme_font_size_override(_name: StringName): boolean;
-  public has_theme_color_override(_name: StringName): boolean;
-  public has_theme_constant_override(_name: StringName): boolean;
-  public has_theme_icon(_name: StringName, _theme_type: StringName): boolean;
-  public has_theme_stylebox(_name: StringName, _theme_type: StringName): boolean;
-  public has_theme_font(_name: StringName, _theme_type: StringName): boolean;
-  public has_theme_font_size(_name: StringName, _theme_type: StringName): boolean;
-  public has_theme_color(_name: StringName, _theme_type: StringName): boolean;
-  public has_theme_constant(_name: StringName, _theme_type: StringName): boolean;
+  public add_theme_icon_override(_name: String | StringName | string, _texture: Texture2D): void;
+  public add_theme_stylebox_override(_name: String | StringName | string, _stylebox: StyleBox): void;
+  public add_theme_font_override(_name: String | StringName | string, _font: Font): void;
+  public add_theme_font_size_override(_name: String | StringName | string, _font_size: number): void;
+  public add_theme_color_override(_name: String | StringName | string, _color: Color): void;
+  public add_theme_constant_override(_name: String | StringName | string, _constant: number): void;
+  public remove_theme_icon_override(_name: String | StringName | string): void;
+  public remove_theme_stylebox_override(_name: String | StringName | string): void;
+  public remove_theme_font_override(_name: String | StringName | string): void;
+  public remove_theme_font_size_override(_name: String | StringName | string): void;
+  public remove_theme_color_override(_name: String | StringName | string): void;
+  public remove_theme_constant_override(_name: String | StringName | string): void;
+  public get_theme_icon(_name: String | StringName | string, _theme_type: String | StringName | string): Texture2D;
+  public get_theme_stylebox(_name: String | StringName | string, _theme_type: String | StringName | string): StyleBox;
+  public get_theme_font(_name: String | StringName | string, _theme_type: String | StringName | string): Font;
+  public get_theme_font_size(_name: String | StringName | string, _theme_type: String | StringName | string): number;
+  public get_theme_color(_name: String | StringName | string, _theme_type: String | StringName | string): Color;
+  public get_theme_constant(_name: String | StringName | string, _theme_type: String | StringName | string): number;
+  public has_theme_icon_override(_name: String | StringName | string): boolean;
+  public has_theme_stylebox_override(_name: String | StringName | string): boolean;
+  public has_theme_font_override(_name: String | StringName | string): boolean;
+  public has_theme_font_size_override(_name: String | StringName | string): boolean;
+  public has_theme_color_override(_name: String | StringName | string): boolean;
+  public has_theme_constant_override(_name: String | StringName | string): boolean;
+  public has_theme_icon(_name: String | StringName | string, _theme_type: String | StringName | string): boolean;
+  public has_theme_stylebox(_name: String | StringName | string, _theme_type: String | StringName | string): boolean;
+  public has_theme_font(_name: String | StringName | string, _theme_type: String | StringName | string): boolean;
+  public has_theme_font_size(_name: String | StringName | string, _theme_type: String | StringName | string): boolean;
+  public has_theme_color(_name: String | StringName | string, _theme_type: String | StringName | string): boolean;
+  public has_theme_constant(_name: String | StringName | string, _theme_type: String | StringName | string): boolean;
   public get_theme_default_base_scale(): number;
   public get_theme_default_font(): Font;
   public get_theme_default_font_size(): number;
@@ -367,4 +367,17 @@ export declare class Window extends Viewport{
     WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_MOUSE_FOCUS = 4,
     WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_KEYBOARD_FOCUS = 5,
   }
+  public const window_input: string = "window_input";
+  public const files_dropped: string = "files_dropped";
+  public const mouse_entered: string = "mouse_entered";
+  public const mouse_exited: string = "mouse_exited";
+  public const focus_entered: string = "focus_entered";
+  public const focus_exited: string = "focus_exited";
+  public const close_requested: string = "close_requested";
+  public const go_back_requested: string = "go_back_requested";
+  public const visibility_changed: string = "visibility_changed";
+  public const about_to_popup: string = "about_to_popup";
+  public const theme_changed: string = "theme_changed";
+  public const dpi_changed: string = "dpi_changed";
+  public const titlebar_changed: string = "titlebar_changed";
 }

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/physics_body2d.hpp>
-#include <godot_cpp/classes/static_body2d.hpp>
 #include <godot_cpp/classes/physics_material.hpp>
+#include <godot_cpp/classes/static_body2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue static_body2d_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StaticBody2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	StaticBody2D *static_body2d_class = memnew(StaticBody2D);
+	StaticBody2D *static_body2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		static_body2d_class = static_cast<StaticBody2D *>(static_cast<Object *>(vobj));
+	} else {
+		static_body2d_class = memnew(StaticBody2D);
+	}
 	if (!static_body2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

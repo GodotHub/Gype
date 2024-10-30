@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/csg_shape3d.hpp>
 #include <godot_cpp/classes/csg_primitive3d.hpp>
+#include <godot_cpp/classes/csg_shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue csg_primitive3d_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CSGPrimitive3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CSGPrimitive3D *csg_primitive3d_class = memnew(CSGPrimitive3D);
+	CSGPrimitive3D *csg_primitive3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		csg_primitive3d_class = static_cast<CSGPrimitive3D *>(static_cast<Object *>(vobj));
+	} else {
+		csg_primitive3d_class = memnew(CSGPrimitive3D);
+	}
 	if (!csg_primitive3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -27,7 +27,13 @@ static JSValue ref_counted_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RefCounted::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RefCounted *ref_counted_class = memnew(RefCounted);
+	RefCounted *ref_counted_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		ref_counted_class = static_cast<RefCounted *>(static_cast<Object *>(vobj));
+	} else {
+		ref_counted_class = memnew(RefCounted);
+	}
 	if (!ref_counted_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -88,7 +94,7 @@ static int js_ref_counted_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_ref_counted_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

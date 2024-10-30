@@ -27,7 +27,13 @@ static JSValue editor_export_platform_mac_os_class_constructor(JSContext *ctx, J
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorExportPlatformMacOS::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorExportPlatformMacOS *editor_export_platform_mac_os_class = memnew(EditorExportPlatformMacOS);
+	EditorExportPlatformMacOS *editor_export_platform_mac_os_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_export_platform_mac_os_class = static_cast<EditorExportPlatformMacOS *>(static_cast<Object *>(vobj));
+	} else {
+		editor_export_platform_mac_os_class = memnew(EditorExportPlatformMacOS);
+	}
 	if (!editor_export_platform_mac_os_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

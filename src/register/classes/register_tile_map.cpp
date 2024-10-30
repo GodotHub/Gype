@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/tile_set.hpp>
-#include <godot_cpp/classes/tile_data.hpp>
-#include <godot_cpp/classes/tile_map_pattern.hpp>
 #include <godot_cpp/classes/tile_map.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/tile_data.hpp>
+#include <godot_cpp/classes/tile_map_pattern.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,7 +30,13 @@ static JSValue tile_map_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TileMap::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	TileMap *tile_map_class = memnew(TileMap);
+	TileMap *tile_map_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		tile_map_class = static_cast<TileMap *>(static_cast<Object *>(vobj));
+	} else {
+		tile_map_class = memnew(TileMap);
+	}
 	if (!tile_map_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/editor_vcs_interface.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue editor_vcs_interface_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorVCSInterface::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorVCSInterface *editor_vcs_interface_class = memnew(EditorVCSInterface);
+	EditorVCSInterface *editor_vcs_interface_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_vcs_interface_class = static_cast<EditorVCSInterface *>(static_cast<Object *>(vobj));
+	} else {
+		editor_vcs_interface_class = memnew(EditorVCSInterface);
+	}
 	if (!editor_vcs_interface_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -122,7 +128,7 @@ static int js_editor_vcs_interface_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_editor_vcs_interface_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

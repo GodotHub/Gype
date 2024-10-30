@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_uniform.hpp>
 #include <godot_cpp/classes/uniform_set_cache_rd.hpp>
+#include <godot_cpp/classes/rd_uniform.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue uniform_set_cache_rd_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, UniformSetCacheRD::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	UniformSetCacheRD *uniform_set_cache_rd_class = memnew(UniformSetCacheRD);
+	UniformSetCacheRD *uniform_set_cache_rd_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		uniform_set_cache_rd_class = static_cast<UniformSetCacheRD *>(static_cast<Object *>(vobj));
+	} else {
+		uniform_set_cache_rd_class = memnew(UniformSetCacheRD);
+	}
 	if (!uniform_set_cache_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -73,7 +79,7 @@ static int js_uniform_set_cache_rd_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_uniform_set_cache_rd_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

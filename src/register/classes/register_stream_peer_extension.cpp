@@ -27,7 +27,13 @@ static JSValue stream_peer_extension_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StreamPeerExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	StreamPeerExtension *stream_peer_extension_class = memnew(StreamPeerExtension);
+	StreamPeerExtension *stream_peer_extension_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		stream_peer_extension_class = static_cast<StreamPeerExtension *>(static_cast<Object *>(vobj));
+	} else {
+		stream_peer_extension_class = memnew(StreamPeerExtension);
+	}
 	if (!stream_peer_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

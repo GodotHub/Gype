@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/scroll_container.hpp>
 #include <godot_cpp/classes/editor_inspector.hpp>
+#include <godot_cpp/classes/scroll_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue editor_inspector_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorInspector::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorInspector *editor_inspector_class = memnew(EditorInspector);
+	EditorInspector *editor_inspector_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_inspector_class = static_cast<EditorInspector *>(static_cast<Object *>(vobj));
+	} else {
+		editor_inspector_class = memnew(EditorInspector);
+	}
 	if (!editor_inspector_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

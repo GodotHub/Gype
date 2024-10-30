@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/render_scene_buffers_configuration.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue render_scene_buffers_configuration_class_constructor(JSContext *c
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RenderSceneBuffersConfiguration::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RenderSceneBuffersConfiguration *render_scene_buffers_configuration_class = memnew(RenderSceneBuffersConfiguration);
+	RenderSceneBuffersConfiguration *render_scene_buffers_configuration_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		render_scene_buffers_configuration_class = static_cast<RenderSceneBuffersConfiguration *>(static_cast<Object *>(vobj));
+	} else {
+		render_scene_buffers_configuration_class = memnew(RenderSceneBuffersConfiguration);
+	}
 	if (!render_scene_buffers_configuration_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

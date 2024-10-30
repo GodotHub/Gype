@@ -27,7 +27,13 @@ static JSValue audio_effect_delay_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectDelay::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioEffectDelay *audio_effect_delay_class = memnew(AudioEffectDelay);
+	AudioEffectDelay *audio_effect_delay_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_effect_delay_class = static_cast<AudioEffectDelay *>(static_cast<Object *>(vobj));
+	} else {
+		audio_effect_delay_class = memnew(AudioEffectDelay);
+	}
 	if (!audio_effect_delay_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

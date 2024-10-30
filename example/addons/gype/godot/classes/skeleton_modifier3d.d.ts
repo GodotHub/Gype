@@ -1,6 +1,6 @@
 
-import { Skeleton3D } from "@godot/classes/skeleton3d";
 import { Node3D } from "@godot/classes/node3d";
+import { Skeleton3D } from "@godot/classes/skeleton3d";
 
 export declare class SkeletonModifier3D extends Node3D{
   public _process_modification(): void;
@@ -21,4 +21,5 @@ export declare class SkeletonModifier3D extends Node3D{
   public set influence(value): void {
     set_influence(value);
   }
+  public const modification_processed: string = "modification_processed";
 }

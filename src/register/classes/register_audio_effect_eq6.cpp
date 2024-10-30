@@ -27,7 +27,13 @@ static JSValue audio_effect_eq6_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectEQ6::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioEffectEQ6 *audio_effect_eq6_class = memnew(AudioEffectEQ6);
+	AudioEffectEQ6 *audio_effect_eq6_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_effect_eq6_class = static_cast<AudioEffectEQ6 *>(static_cast<Object *>(vobj));
+	} else {
+		audio_effect_eq6_class = memnew(AudioEffectEQ6);
+	}
 	if (!audio_effect_eq6_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

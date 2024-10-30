@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_selection.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/editor_selection.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -29,7 +29,13 @@ static JSValue editor_selection_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorSelection::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorSelection *editor_selection_class = memnew(EditorSelection);
+	EditorSelection *editor_selection_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_selection_class = static_cast<EditorSelection *>(static_cast<Object *>(vobj));
+	} else {
+		editor_selection_class = memnew(EditorSelection);
+	}
 	if (!editor_selection_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -98,7 +104,7 @@ static int js_editor_selection_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_editor_selection_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

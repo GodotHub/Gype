@@ -27,7 +27,13 @@ static JSValue visual_shader_node_vector_compose_class_constructor(JSContext *ct
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeVectorCompose::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeVectorCompose *visual_shader_node_vector_compose_class = memnew(VisualShaderNodeVectorCompose);
+	VisualShaderNodeVectorCompose *visual_shader_node_vector_compose_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_vector_compose_class = static_cast<VisualShaderNodeVectorCompose *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_vector_compose_class = memnew(VisualShaderNodeVectorCompose);
+	}
 	if (!visual_shader_node_vector_compose_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/stream_peer_tcp.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/tcp_server.hpp>
-#include <godot_cpp/classes/stream_peer_tcp.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue tcp_server_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TCPServer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	TCPServer *tcp_server_class = memnew(TCPServer);
+	TCPServer *tcp_server_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		tcp_server_class = static_cast<TCPServer *>(static_cast<Object *>(vobj));
+	} else {
+		tcp_server_class = memnew(TCPServer);
+	}
 	if (!tcp_server_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

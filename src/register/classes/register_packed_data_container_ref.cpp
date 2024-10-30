@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/packed_data_container_ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/packed_data_container_ref.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue packed_data_container_ref_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PackedDataContainerRef::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PackedDataContainerRef *packed_data_container_ref_class = memnew(PackedDataContainerRef);
+	PackedDataContainerRef *packed_data_container_ref_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		packed_data_container_ref_class = static_cast<PackedDataContainerRef *>(static_cast<Object *>(vobj));
+	} else {
+		packed_data_container_ref_class = memnew(PackedDataContainerRef);
+	}
 	if (!packed_data_container_ref_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

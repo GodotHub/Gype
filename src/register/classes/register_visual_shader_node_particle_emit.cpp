@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_particle_emit.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue visual_shader_node_particle_emit_class_constructor(JSContext *ctx
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeParticleEmit::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeParticleEmit *visual_shader_node_particle_emit_class = memnew(VisualShaderNodeParticleEmit);
+	VisualShaderNodeParticleEmit *visual_shader_node_particle_emit_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_particle_emit_class = static_cast<VisualShaderNodeParticleEmit *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_particle_emit_class = memnew(VisualShaderNodeParticleEmit);
+	}
 	if (!visual_shader_node_particle_emit_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

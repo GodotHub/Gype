@@ -28,7 +28,13 @@ static JSValue height_map_shape3d_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HeightMapShape3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	HeightMapShape3D *height_map_shape3d_class = memnew(HeightMapShape3D);
+	HeightMapShape3D *height_map_shape3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		height_map_shape3d_class = static_cast<HeightMapShape3D *>(static_cast<Object *>(vobj));
+	} else {
+		height_map_shape3d_class = memnew(HeightMapShape3D);
+	}
 	if (!height_map_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

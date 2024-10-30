@@ -27,7 +27,13 @@ static JSValue parallax_background_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ParallaxBackground::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ParallaxBackground *parallax_background_class = memnew(ParallaxBackground);
+	ParallaxBackground *parallax_background_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		parallax_background_class = static_cast<ParallaxBackground *>(static_cast<Object *>(vobj));
+	} else {
+		parallax_background_class = memnew(ParallaxBackground);
+	}
 	if (!parallax_background_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/navigation_polygon.hpp>
-#include <godot_cpp/classes/tile_data.hpp>
+#include <godot_cpp/classes/occluder_polygon2d.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/occluder_polygon2d.hpp>
+#include <godot_cpp/classes/navigation_polygon.hpp>
+#include <godot_cpp/classes/tile_data.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,7 +30,13 @@ static JSValue tile_data_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TileData::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	TileData *tile_data_class = memnew(TileData);
+	TileData *tile_data_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		tile_data_class = static_cast<TileData *>(static_cast<Object *>(vobj));
+	} else {
+		tile_data_class = memnew(TileData);
+	}
 	if (!tile_data_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -418,7 +424,7 @@ static int js_tile_data_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_tile_data_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

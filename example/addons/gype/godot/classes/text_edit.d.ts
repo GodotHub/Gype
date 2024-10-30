@@ -1,10 +1,10 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
+import { HScrollBar } from "@godot/classes/h_scroll_bar";
 import { VScrollBar } from "@godot/classes/v_scroll_bar";
 import { SyntaxHighlighter } from "@godot/classes/syntax_highlighter";
-import { Control } from "@godot/classes/control";
 import { PopupMenu } from "@godot/classes/popup_menu";
-import { HScrollBar } from "@godot/classes/h_scroll_bar";
+import { Texture2D } from "@godot/classes/texture2d";
+import { Control } from "@godot/classes/control";
 
 export declare class TextEdit extends Control{
   public _handle_unicode_input(_unicode_char: number, _caret_index: number): void;
@@ -20,7 +20,7 @@ export declare class TextEdit extends Control{
   public is_editable(): boolean;
   public set_text_direction(_direction: number): void;
   public get_text_direction(): number;
-  public set_language(_language: String): void;
+  public set_language(_language: String | StringName | string): void;
   public get_language(): String;
   public set_structured_text_bidi_override(_parser: number): void;
   public get_structured_text_bidi_override(): number;
@@ -41,22 +41,22 @@ export declare class TextEdit extends Control{
   public set_middle_mouse_paste_enabled(_enabled: boolean): void;
   public is_middle_mouse_paste_enabled(): boolean;
   public clear(): void;
-  public set_text(_text: String): void;
+  public set_text(_text: String | StringName | string): void;
   public get_text(): String;
   public get_line_count(): number;
-  public set_placeholder(_text: String): void;
+  public set_placeholder(_text: String | StringName | string): void;
   public get_placeholder(): String;
-  public set_line(_line: number, _new_text: String): void;
+  public set_line(_line: number, _new_text: String | StringName | string): void;
   public get_line(_line: number): String;
   public get_line_width(_line: number, _wrap_index: number): number;
   public get_line_height(): number;
   public get_indent_level(_line: number): number;
   public get_first_non_whitespace_column(_line: number): number;
   public swap_lines(_from_line: number, _to_line: number): void;
-  public insert_line_at(_line: number, _text: String): void;
+  public insert_line_at(_line: number, _text: String | StringName | string): void;
   public remove_line_at(_line: number, _move_carets_down: boolean): void;
-  public insert_text_at_caret(_text: String, _caret_index: number): void;
-  public insert_text(_text: String, _line: number, _column: number, _before_selection_begin: boolean, _before_selection_end: boolean): void;
+  public insert_text_at_caret(_text: String | StringName | string, _caret_index: number): void;
+  public insert_text(_text: String | StringName | string, _line: number, _column: number, _before_selection_begin: boolean, _before_selection_end: boolean): void;
   public remove_text(_from_line: number, _from_column: number, _to_line: number, _to_column: number): void;
   public get_last_unhidden_line(): number;
   public get_next_visible_line_offset_from(_line: number, _visible_amount: number): number;
@@ -78,9 +78,9 @@ export declare class TextEdit extends Control{
   public tag_saved_version(): void;
   public get_version(): number;
   public get_saved_version(): number;
-  public set_search_text(_search_text: String): void;
+  public set_search_text(_search_text: String | StringName | string): void;
   public set_search_flags(_flags: number): void;
-  public search(_text: String, _flags: number, _from_line: number, _from_column: number): Vector2i;
+  public search(_text: String | StringName | string, _flags: number, _from_line: number, _from_column: number): Vector2i;
   public set_tooltip_request_func(_callback: Callable): void;
   public get_local_mouse_pos(): Vector2;
   public get_word_at_pos(_position: Vector2): String;
@@ -128,7 +128,7 @@ export declare class TextEdit extends Control{
   public is_default_word_separators_enabled(): boolean;
   public set_use_custom_word_separators(_enabled: boolean): void;
   public is_custom_word_separators_enabled(): boolean;
-  public set_custom_word_separators(_custom_word_separators: String): void;
+  public set_custom_word_separators(_custom_word_separators: String | StringName | string): void;
   public get_custom_word_separators(): String;
   public set_selecting_enabled(_enable: boolean): void;
   public is_selecting_enabled(): boolean;
@@ -200,7 +200,7 @@ export declare class TextEdit extends Control{
   public add_gutter(_at: number): void;
   public remove_gutter(_gutter: number): void;
   public get_gutter_count(): number;
-  public set_gutter_name(_gutter: number, _name: String): void;
+  public set_gutter_name(_gutter: number, _name: String | StringName | string): void;
   public get_gutter_name(_gutter: number): String;
   public set_gutter_type(_gutter: number, _type: number): void;
   public get_gutter_type(_gutter: number): number;
@@ -217,7 +217,7 @@ export declare class TextEdit extends Control{
   public get_total_gutter_width(): number;
   public set_line_gutter_metadata(_line: number, _gutter: number, _metadata: any): void;
   public get_line_gutter_metadata(_line: number, _gutter: number): any;
-  public set_line_gutter_text(_line: number, _gutter: number, _text: String): void;
+  public set_line_gutter_text(_line: number, _gutter: number, _text: String | StringName | string): void;
   public get_line_gutter_text(_line: number, _gutter: number): String;
   public set_line_gutter_icon(_line: number, _gutter: number, _icon: Texture2D): void;
   public get_line_gutter_icon(_line: number, _gutter: number): Texture2D;
@@ -556,4 +556,11 @@ export declare class TextEdit extends Control{
     GUTTER_TYPE_ICON = 1,
     GUTTER_TYPE_CUSTOM = 2,
   }
+  public const text_set: string = "text_set";
+  public const text_changed: string = "text_changed";
+  public const lines_edited_from: string = "lines_edited_from";
+  public const caret_changed: string = "caret_changed";
+  public const gutter_clicked: string = "gutter_clicked";
+  public const gutter_added: string = "gutter_added";
+  public const gutter_removed: string = "gutter_removed";
 }

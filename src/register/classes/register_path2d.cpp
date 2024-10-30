@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/path2d.hpp>
 #include <godot_cpp/classes/curve2d.hpp>
+#include <godot_cpp/classes/path2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue path2d_class_constructor(JSContext *ctx, JSValueConst new_target,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Path2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Path2D *path2d_class = memnew(Path2D);
+	Path2D *path2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		path2d_class = static_cast<Path2D *>(static_cast<Object *>(vobj));
+	} else {
+		path2d_class = memnew(Path2D);
+	}
 	if (!path2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

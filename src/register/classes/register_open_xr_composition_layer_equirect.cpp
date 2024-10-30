@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/open_xr_composition_layer_equirect.hpp>
 #include <godot_cpp/classes/open_xr_composition_layer.hpp>
+#include <godot_cpp/classes/open_xr_composition_layer_equirect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue open_xr_composition_layer_equirect_class_constructor(JSContext *c
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRCompositionLayerEquirect::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	OpenXRCompositionLayerEquirect *open_xr_composition_layer_equirect_class = memnew(OpenXRCompositionLayerEquirect);
+	OpenXRCompositionLayerEquirect *open_xr_composition_layer_equirect_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		open_xr_composition_layer_equirect_class = static_cast<OpenXRCompositionLayerEquirect *>(static_cast<Object *>(vobj));
+	} else {
+		open_xr_composition_layer_equirect_class = memnew(OpenXRCompositionLayerEquirect);
+	}
 	if (!open_xr_composition_layer_equirect_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

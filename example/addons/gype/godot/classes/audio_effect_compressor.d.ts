@@ -14,7 +14,7 @@ export declare class AudioEffectCompressor extends AudioEffect{
   public get_release_ms(): number;
   public set_mix(_mix: number): void;
   public get_mix(): number;
-  public set_sidechain(_sidechain: StringName): void;
+  public set_sidechain(_sidechain: String | StringName | string): void;
   public get_sidechain(): StringName;
   public get threshold(): number {
     get_threshold();

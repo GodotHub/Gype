@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_stream_playback.hpp>
 #include <godot_cpp/classes/audio_stream_playback_playlist.hpp>
+#include <godot_cpp/classes/audio_stream_playback.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue audio_stream_playback_playlist_class_constructor(JSContext *ctx, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamPlaybackPlaylist::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioStreamPlaybackPlaylist *audio_stream_playback_playlist_class = memnew(AudioStreamPlaybackPlaylist);
+	AudioStreamPlaybackPlaylist *audio_stream_playback_playlist_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_stream_playback_playlist_class = static_cast<AudioStreamPlaybackPlaylist *>(static_cast<Object *>(vobj));
+	} else {
+		audio_stream_playback_playlist_class = memnew(AudioStreamPlaybackPlaylist);
+	}
 	if (!audio_stream_playback_playlist_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

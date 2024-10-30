@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/text_server_dummy.hpp>
 #include <godot_cpp/classes/text_server_extension.hpp>
+#include <godot_cpp/classes/text_server_dummy.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue text_server_dummy_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TextServerDummy::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	TextServerDummy *text_server_dummy_class = memnew(TextServerDummy);
+	TextServerDummy *text_server_dummy_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		text_server_dummy_class = static_cast<TextServerDummy *>(static_cast<Object *>(vobj));
+	} else {
+		text_server_dummy_class = memnew(TextServerDummy);
+	}
 	if (!text_server_dummy_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

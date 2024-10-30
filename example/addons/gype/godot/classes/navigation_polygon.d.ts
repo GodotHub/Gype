@@ -1,6 +1,6 @@
 
-import { NavigationMesh } from "@godot/classes/navigation_mesh";
 import { Resource } from "@godot/classes/resource";
+import { NavigationMesh } from "@godot/classes/navigation_mesh";
 
 export declare class NavigationPolygon extends Resource{
   public set_vertices(_vertices: PackedVector2Array): void;
@@ -30,7 +30,7 @@ export declare class NavigationPolygon extends Resource{
   public get_parsed_collision_mask_value(_layer_number: number): boolean;
   public set_source_geometry_mode(_geometry_mode: number): void;
   public get_source_geometry_mode(): number;
-  public set_source_geometry_group_name(_group_name: StringName): void;
+  public set_source_geometry_group_name(_group_name: String | StringName | string): void;
   public get_source_geometry_group_name(): StringName;
   public set_agent_radius(_agent_radius: number): void;
   public get_agent_radius(): number;

@@ -27,7 +27,13 @@ static JSValue polygon_path_finder_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PolygonPathFinder::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PolygonPathFinder *polygon_path_finder_class = memnew(PolygonPathFinder);
+	PolygonPathFinder *polygon_path_finder_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		polygon_path_finder_class = static_cast<PolygonPathFinder *>(static_cast<Object *>(vobj));
+	} else {
+		polygon_path_finder_class = memnew(PolygonPathFinder);
+	}
 	if (!polygon_path_finder_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

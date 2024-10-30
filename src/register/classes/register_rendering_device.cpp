@@ -5,22 +5,22 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_attachment_format.hpp>
-#include <godot_cpp/classes/rd_pipeline_multisample_state.hpp>
-#include <godot_cpp/classes/rd_shader_spirv.hpp>
-#include <godot_cpp/classes/rendering_device.hpp>
-#include <godot_cpp/classes/rd_framebuffer_pass.hpp>
-#include <godot_cpp/classes/rd_texture_format.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/rd_pipeline_specialization_constant.hpp>
-#include <godot_cpp/classes/rd_pipeline_color_blend_state.hpp>
-#include <godot_cpp/classes/rd_pipeline_rasterization_state.hpp>
-#include <godot_cpp/classes/rd_sampler_state.hpp>
-#include <godot_cpp/classes/rd_shader_source.hpp>
-#include <godot_cpp/classes/rd_uniform.hpp>
-#include <godot_cpp/classes/rd_vertex_attribute.hpp>
-#include <godot_cpp/classes/rd_texture_view.hpp>
 #include <godot_cpp/classes/rd_pipeline_depth_stencil_state.hpp>
+#include <godot_cpp/classes/rd_shader_spirv.hpp>
+#include <godot_cpp/classes/rd_framebuffer_pass.hpp>
+#include <godot_cpp/classes/rendering_device.hpp>
+#include <godot_cpp/classes/rd_vertex_attribute.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/rd_pipeline_multisample_state.hpp>
+#include <godot_cpp/classes/rd_pipeline_specialization_constant.hpp>
+#include <godot_cpp/classes/rd_texture_format.hpp>
+#include <godot_cpp/classes/rd_shader_source.hpp>
+#include <godot_cpp/classes/rd_pipeline_rasterization_state.hpp>
+#include <godot_cpp/classes/rd_texture_view.hpp>
+#include <godot_cpp/classes/rd_uniform.hpp>
+#include <godot_cpp/classes/rd_attachment_format.hpp>
+#include <godot_cpp/classes/rd_sampler_state.hpp>
+#include <godot_cpp/classes/rd_pipeline_color_blend_state.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -41,7 +41,13 @@ static JSValue rendering_device_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RenderingDevice::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RenderingDevice *rendering_device_class = memnew(RenderingDevice);
+	RenderingDevice *rendering_device_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		rendering_device_class = static_cast<RenderingDevice *>(static_cast<Object *>(vobj));
+	} else {
+		rendering_device_class = memnew(RenderingDevice);
+	}
 	if (!rendering_device_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -1144,7 +1150,7 @@ static int js_rendering_device_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_rendering_device_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

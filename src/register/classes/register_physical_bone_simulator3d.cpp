@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physical_bone_simulator3d.hpp>
 #include <godot_cpp/classes/skeleton_modifier3d.hpp>
+#include <godot_cpp/classes/physical_bone_simulator3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue physical_bone_simulator3d_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicalBoneSimulator3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PhysicalBoneSimulator3D *physical_bone_simulator3d_class = memnew(PhysicalBoneSimulator3D);
+	PhysicalBoneSimulator3D *physical_bone_simulator3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		physical_bone_simulator3d_class = static_cast<PhysicalBoneSimulator3D *>(static_cast<Object *>(vobj));
+	} else {
+		physical_bone_simulator3d_class = memnew(PhysicalBoneSimulator3D);
+	}
 	if (!physical_bone_simulator3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

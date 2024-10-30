@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/surface_tool.hpp>
 #include <godot_cpp/classes/array_mesh.hpp>
 #include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/surface_tool.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,7 +30,13 @@ static JSValue surface_tool_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SurfaceTool::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SurfaceTool *surface_tool_class = memnew(SurfaceTool);
+	SurfaceTool *surface_tool_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		surface_tool_class = static_cast<SurfaceTool *>(static_cast<Object *>(vobj));
+	} else {
+		surface_tool_class = memnew(SurfaceTool);
+	}
 	if (!surface_tool_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

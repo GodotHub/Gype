@@ -59,4 +59,6 @@ export declare class NavigationRegion3D extends Node3D{
   public set travel_cost(value): void {
     set_travel_cost(value);
   }
+  public const navigation_mesh_changed: string = "navigation_mesh_changed";
+  public const bake_finished: string = "bake_finished";
 }

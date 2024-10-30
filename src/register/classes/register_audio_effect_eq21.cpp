@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_eq21.hpp>
 #include <godot_cpp/classes/audio_effect_eq.hpp>
+#include <godot_cpp/classes/audio_effect_eq21.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue audio_effect_eq21_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectEQ21::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioEffectEQ21 *audio_effect_eq21_class = memnew(AudioEffectEQ21);
+	AudioEffectEQ21 *audio_effect_eq21_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_effect_eq21_class = static_cast<AudioEffectEQ21 *>(static_cast<Object *>(vobj));
+	} else {
+		audio_effect_eq21_class = memnew(AudioEffectEQ21);
+	}
 	if (!audio_effect_eq21_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

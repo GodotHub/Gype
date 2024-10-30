@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/navigation_mesh.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue navigation_mesh_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, NavigationMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	NavigationMesh *navigation_mesh_class = memnew(NavigationMesh);
+	NavigationMesh *navigation_mesh_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		navigation_mesh_class = static_cast<NavigationMesh *>(static_cast<Object *>(vobj));
+	} else {
+		navigation_mesh_class = memnew(NavigationMesh);
+	}
 	if (!navigation_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

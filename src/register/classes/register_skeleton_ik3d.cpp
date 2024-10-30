@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/classes/skeleton_ik3d.hpp>
+#include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/classes/skeleton_modifier3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue skeleton_ik3d_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkeletonIK3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SkeletonIK3D *skeleton_ik3d_class = memnew(SkeletonIK3D);
+	SkeletonIK3D *skeleton_ik3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		skeleton_ik3d_class = static_cast<SkeletonIK3D *>(static_cast<Object *>(vobj));
+	} else {
+		skeleton_ik3d_class = memnew(SkeletonIK3D);
+	}
 	if (!skeleton_ik3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

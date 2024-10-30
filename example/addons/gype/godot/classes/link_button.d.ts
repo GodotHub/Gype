@@ -2,13 +2,13 @@
 import { BaseButton } from "@godot/classes/base_button";
 
 export declare class LinkButton extends BaseButton{
-  public set_text(_text: String): void;
+  public set_text(_text: String | StringName | string): void;
   public get_text(): String;
   public set_text_direction(_direction: number): void;
   public get_text_direction(): number;
-  public set_language(_language: String): void;
+  public set_language(_language: String | StringName | string): void;
   public get_language(): String;
-  public set_uri(_uri: String): void;
+  public set_uri(_uri: String | StringName | string): void;
   public get_uri(): String;
   public set_underline_mode(_underline_mode: number): void;
   public get_underline_mode(): number;

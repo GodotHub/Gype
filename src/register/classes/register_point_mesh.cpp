@@ -27,7 +27,13 @@ static JSValue point_mesh_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PointMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PointMesh *point_mesh_class = memnew(PointMesh);
+	PointMesh *point_mesh_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		point_mesh_class = static_cast<PointMesh *>(static_cast<Object *>(vobj));
+	} else {
+		point_mesh_class = memnew(PointMesh);
+	}
 	if (!point_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

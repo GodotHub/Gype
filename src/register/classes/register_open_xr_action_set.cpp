@@ -28,7 +28,13 @@ static JSValue open_xr_action_set_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRActionSet::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	OpenXRActionSet *open_xr_action_set_class = memnew(OpenXRActionSet);
+	OpenXRActionSet *open_xr_action_set_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		open_xr_action_set_class = static_cast<OpenXRActionSet *>(static_cast<Object *>(vobj));
+	} else {
+		open_xr_action_set_class = memnew(OpenXRActionSet);
+	}
 	if (!open_xr_action_set_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -1,6 +1,6 @@
 
-import { Control } from "@godot/classes/control";
 import { Node } from "@godot/classes/node";
+import { Control } from "@godot/classes/control";
 
 export declare class Range extends Control{
   public _value_changed(_new_value: number): void;
@@ -87,4 +87,6 @@ export declare class Range extends Control{
   public set allow_lesser(value): void {
     set_allow_lesser(value);
   }
+  public const value_changed: string = "value_changed";
+  public const changed: string = "changed";
 }

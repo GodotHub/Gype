@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/scene_replication_config.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue scene_replication_config_class_constructor(JSContext *ctx, JSValu
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SceneReplicationConfig::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SceneReplicationConfig *scene_replication_config_class = memnew(SceneReplicationConfig);
+	SceneReplicationConfig *scene_replication_config_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		scene_replication_config_class = static_cast<SceneReplicationConfig *>(static_cast<Object *>(vobj));
+	} else {
+		scene_replication_config_class = memnew(SceneReplicationConfig);
+	}
 	if (!scene_replication_config_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -29,7 +29,13 @@ static JSValue editor_resource_picker_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorResourcePicker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorResourcePicker *editor_resource_picker_class = memnew(EditorResourcePicker);
+	EditorResourcePicker *editor_resource_picker_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_resource_picker_class = static_cast<EditorResourcePicker *>(static_cast<Object *>(vobj));
+	} else {
+		editor_resource_picker_class = memnew(EditorResourcePicker);
+	}
 	if (!editor_resource_picker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

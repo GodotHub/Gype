@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tweener.hpp>
 #include <godot_cpp/classes/method_tweener.hpp>
+#include <godot_cpp/classes/tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue method_tweener_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MethodTweener::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	MethodTweener *method_tweener_class = memnew(MethodTweener);
+	MethodTweener *method_tweener_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		method_tweener_class = static_cast<MethodTweener *>(static_cast<Object *>(vobj));
+	} else {
+		method_tweener_class = memnew(MethodTweener);
+	}
 	if (!method_tweener_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

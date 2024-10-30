@@ -1,7 +1,7 @@
 
 import { TileSetSource } from "@godot/classes/tile_set_source";
-import { TileMapPattern } from "@godot/classes/tile_map_pattern";
 import { PhysicsMaterial } from "@godot/classes/physics_material";
+import { TileMapPattern } from "@godot/classes/tile_map_pattern";
 import { Resource } from "@godot/classes/resource";
 
 export declare class TileSet extends Resource{
@@ -51,7 +51,7 @@ export declare class TileSet extends Resource{
   public add_terrain(_terrain_set: number, _to_position: number): void;
   public move_terrain(_terrain_set: number, _terrain_index: number, _to_position: number): void;
   public remove_terrain(_terrain_set: number, _terrain_index: number): void;
-  public set_terrain_name(_terrain_set: number, _terrain_index: number, _name: String): void;
+  public set_terrain_name(_terrain_set: number, _terrain_index: number, _name: String | StringName | string): void;
   public get_terrain_name(_terrain_set: number, _terrain_index: number): String;
   public set_terrain_color(_terrain_set: number, _terrain_index: number, _color: Color): void;
   public get_terrain_color(_terrain_set: number, _terrain_index: number): Color;
@@ -67,8 +67,8 @@ export declare class TileSet extends Resource{
   public add_custom_data_layer(_to_position: number): void;
   public move_custom_data_layer(_layer_index: number, _to_position: number): void;
   public remove_custom_data_layer(_layer_index: number): void;
-  public get_custom_data_layer_by_name(_layer_name: String): number;
-  public set_custom_data_layer_name(_layer_index: number, _layer_name: String): void;
+  public get_custom_data_layer_by_name(_layer_name: String | StringName | string): number;
+  public set_custom_data_layer_name(_layer_index: number, _layer_name: String | StringName | string): void;
   public get_custom_data_layer_name(_layer_index: number): String;
   public set_custom_data_layer_type(_layer_index: number, _layer_type: number): void;
   public get_custom_data_layer_type(_layer_index: number): number;

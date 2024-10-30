@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/container.hpp>
-#include <godot_cpp/classes/sub_viewport_container.hpp>
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/sub_viewport_container.hpp>
+#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue sub_viewport_container_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SubViewportContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SubViewportContainer *sub_viewport_container_class = memnew(SubViewportContainer);
+	SubViewportContainer *sub_viewport_container_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		sub_viewport_container_class = static_cast<SubViewportContainer *>(static_cast<Object *>(vobj));
+	} else {
+		sub_viewport_container_class = memnew(SubViewportContainer);
+	}
 	if (!sub_viewport_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

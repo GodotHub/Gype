@@ -27,7 +27,13 @@ static JSValue camera_texture_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CameraTexture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CameraTexture *camera_texture_class = memnew(CameraTexture);
+	CameraTexture *camera_texture_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		camera_texture_class = static_cast<CameraTexture *>(static_cast<Object *>(vobj));
+	} else {
+		camera_texture_class = memnew(CameraTexture);
+	}
 	if (!camera_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -27,7 +27,13 @@ static JSValue audio_effect_phaser_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectPhaser::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioEffectPhaser *audio_effect_phaser_class = memnew(AudioEffectPhaser);
+	AudioEffectPhaser *audio_effect_phaser_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_effect_phaser_class = static_cast<AudioEffectPhaser *>(static_cast<Object *>(vobj));
+	} else {
+		audio_effect_phaser_class = memnew(AudioEffectPhaser);
+	}
 	if (!audio_effect_phaser_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

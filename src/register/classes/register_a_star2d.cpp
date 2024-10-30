@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/a_star2d.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue a_star2d_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AStar2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AStar2D *a_star2d_class = memnew(AStar2D);
+	AStar2D *a_star2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		a_star2d_class = static_cast<AStar2D *>(static_cast<Object *>(vobj));
+	} else {
+		a_star2d_class = memnew(AStar2D);
+	}
 	if (!a_star2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

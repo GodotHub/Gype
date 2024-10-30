@@ -1,8 +1,8 @@
 
-import { CollisionShape3D } from "@godot/classes/collision_shape3d";
 import { ImporterMesh } from "@godot/classes/importer_mesh";
 import { Shape3D } from "@godot/classes/shape3d";
 import { Resource } from "@godot/classes/resource";
+import { CollisionShape3D } from "@godot/classes/collision_shape3d";
 
 export declare class GLTFPhysicsShape extends Resource{
   public from_node(_shape_node: CollisionShape3D): GLTFPhysicsShape;
@@ -12,7 +12,7 @@ export declare class GLTFPhysicsShape extends Resource{
   public from_dictionary(_dictionary: Dictionary): GLTFPhysicsShape;
   public to_dictionary(): Dictionary;
   public get_shape_type(): String;
-  public set_shape_type(_shape_type: String): void;
+  public set_shape_type(_shape_type: String | StringName | string): void;
   public get_size(): Vector3;
   public set_size(_size: Vector3): void;
   public get_radius(): number;

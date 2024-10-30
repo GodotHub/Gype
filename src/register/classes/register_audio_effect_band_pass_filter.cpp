@@ -27,7 +27,13 @@ static JSValue audio_effect_band_pass_filter_class_constructor(JSContext *ctx, J
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectBandPassFilter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioEffectBandPassFilter *audio_effect_band_pass_filter_class = memnew(AudioEffectBandPassFilter);
+	AudioEffectBandPassFilter *audio_effect_band_pass_filter_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_effect_band_pass_filter_class = static_cast<AudioEffectBandPassFilter *>(static_cast<Object *>(vobj));
+	} else {
+		audio_effect_band_pass_filter_class = memnew(AudioEffectBandPassFilter);
+	}
 	if (!audio_effect_band_pass_filter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

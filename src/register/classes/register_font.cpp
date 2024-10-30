@@ -28,7 +28,13 @@ static JSValue font_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Font::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Font *font_class = memnew(Font);
+	Font *font_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		font_class = static_cast<Font *>(static_cast<Object *>(vobj));
+	} else {
+		font_class = memnew(Font);
+	}
 	if (!font_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

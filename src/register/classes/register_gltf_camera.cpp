@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/gltf_camera.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue gltf_camera_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFCamera::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GLTFCamera *gltf_camera_class = memnew(GLTFCamera);
+	GLTFCamera *gltf_camera_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gltf_camera_class = static_cast<GLTFCamera *>(static_cast<Object *>(vobj));
+	} else {
+		gltf_camera_class = memnew(GLTFCamera);
+	}
 	if (!gltf_camera_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -1,6 +1,6 @@
 
-import { Control } from "@godot/classes/control";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Control } from "@godot/classes/control";
 
 export declare class NinePatchRect extends Control{
   public set_texture(_texture: Texture2D): void;
@@ -74,4 +74,5 @@ export declare class NinePatchRect extends Control{
     AXIS_STRETCH_MODE_TILE = 1,
     AXIS_STRETCH_MODE_TILE_FIT = 2,
   }
+  public const texture_changed: string = "texture_changed";
 }

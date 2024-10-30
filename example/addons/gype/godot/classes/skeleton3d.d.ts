@@ -1,13 +1,13 @@
 
-import { Skin } from "@godot/classes/skin";
-import { Node3D } from "@godot/classes/node3d";
 import { SkinReference } from "@godot/classes/skin_reference";
+import { Node3D } from "@godot/classes/node3d";
+import { Skin } from "@godot/classes/skin";
 
 export declare class Skeleton3D extends Node3D{
-  public add_bone(_name: String): number;
-  public find_bone(_name: String): number;
+  public add_bone(_name: String | StringName | string): number;
+  public find_bone(_name: String | StringName | string): number;
   public get_bone_name(_bone_idx: number): String;
-  public set_bone_name(_bone_idx: number, _name: String): void;
+  public set_bone_name(_bone_idx: number, _name: String | StringName | string): void;
   public get_concatenated_bone_names(): StringName;
   public get_bone_parent(_bone_idx: number): number;
   public set_bone_parent(_bone_idx: number, _parent_idx: number): void;
@@ -83,4 +83,9 @@ export declare class Skeleton3D extends Node3D{
     MODIFIER_CALLBACK_MODE_PROCESS_PHYSICS = 0,
     MODIFIER_CALLBACK_MODE_PROCESS_IDLE = 1,
   }
+  public const pose_updated: string = "pose_updated";
+  public const skeleton_updated: string = "skeleton_updated";
+  public const bone_enabled_changed: string = "bone_enabled_changed";
+  public const bone_list_changed: string = "bone_list_changed";
+  public const show_rest_only_changed: string = "show_rest_only_changed";
 }

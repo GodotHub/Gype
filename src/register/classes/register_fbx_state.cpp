@@ -27,7 +27,13 @@ static JSValue fbx_state_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, FBXState::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	FBXState *fbx_state_class = memnew(FBXState);
+	FBXState *fbx_state_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		fbx_state_class = static_cast<FBXState *>(static_cast<Object *>(vobj));
+	} else {
+		fbx_state_class = memnew(FBXState);
+	}
 	if (!fbx_state_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

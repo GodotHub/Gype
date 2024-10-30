@@ -27,7 +27,13 @@ static JSValue visual_shader_node_vec4_parameter_class_constructor(JSContext *ct
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeVec4Parameter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeVec4Parameter *visual_shader_node_vec4_parameter_class = memnew(VisualShaderNodeVec4Parameter);
+	VisualShaderNodeVec4Parameter *visual_shader_node_vec4_parameter_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_vec4_parameter_class = static_cast<VisualShaderNodeVec4Parameter *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_vec4_parameter_class = memnew(VisualShaderNodeVec4Parameter);
+	}
 	if (!visual_shader_node_vec4_parameter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

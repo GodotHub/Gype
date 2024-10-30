@@ -2,7 +2,7 @@
 import { Node } from "@godot/classes/node";
 
 export declare class MultiplayerSpawner extends Node{
-  public add_spawnable_scene(_path: String): void;
+  public add_spawnable_scene(_path: String | StringName | string): void;
   public get_spawnable_scene_count(): number;
   public get_spawnable_scene(_index: number): String;
   public clear_spawnable_scenes(): void;
@@ -31,4 +31,6 @@ export declare class MultiplayerSpawner extends Node{
   public set spawn_function(value): void {
     set_spawn_function(value);
   }
+  public const despawned: string = "despawned";
+  public const spawned: string = "spawned";
 }

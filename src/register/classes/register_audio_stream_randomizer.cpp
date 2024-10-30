@@ -27,7 +27,13 @@ static JSValue audio_stream_randomizer_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamRandomizer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioStreamRandomizer *audio_stream_randomizer_class = memnew(AudioStreamRandomizer);
+	AudioStreamRandomizer *audio_stream_randomizer_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_stream_randomizer_class = static_cast<AudioStreamRandomizer *>(static_cast<Object *>(vobj));
+	} else {
+		audio_stream_randomizer_class = memnew(AudioStreamRandomizer);
+	}
 	if (!audio_stream_randomizer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

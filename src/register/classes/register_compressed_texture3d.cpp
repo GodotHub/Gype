@@ -27,7 +27,13 @@ static JSValue compressed_texture3d_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CompressedTexture3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CompressedTexture3D *compressed_texture3d_class = memnew(CompressedTexture3D);
+	CompressedTexture3D *compressed_texture3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		compressed_texture3d_class = static_cast<CompressedTexture3D *>(static_cast<Object *>(vobj));
+	} else {
+		compressed_texture3d_class = memnew(CompressedTexture3D);
+	}
 	if (!compressed_texture3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

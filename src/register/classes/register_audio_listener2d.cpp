@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_listener2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/audio_listener2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue audio_listener2d_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioListener2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AudioListener2D *audio_listener2d_class = memnew(AudioListener2D);
+	AudioListener2D *audio_listener2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		audio_listener2d_class = static_cast<AudioListener2D *>(static_cast<Object *>(vobj));
+	} else {
+		audio_listener2d_class = memnew(AudioListener2D);
+	}
 	if (!audio_listener2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

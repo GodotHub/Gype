@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/particle_process_material.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue particle_process_material_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ParticleProcessMaterial::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ParticleProcessMaterial *particle_process_material_class = memnew(ParticleProcessMaterial);
+	ParticleProcessMaterial *particle_process_material_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		particle_process_material_class = static_cast<ParticleProcessMaterial *>(static_cast<Object *>(vobj));
+	} else {
+		particle_process_material_class = memnew(ParticleProcessMaterial);
+	}
 	if (!particle_process_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

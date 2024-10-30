@@ -2,7 +2,7 @@
 import { InputEvent } from "@godot/classes/input_event";
 
 export declare class InputEventAction extends InputEvent{
-  public set_action(_action: StringName): void;
+  public set_action(_action: String | StringName | string): void;
   public get_action(): StringName;
   public set_pressed(_pressed: boolean): void;
   public set_strength(_strength: number): void;

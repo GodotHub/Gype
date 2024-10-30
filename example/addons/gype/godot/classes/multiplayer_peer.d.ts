@@ -47,4 +47,6 @@ export declare class MultiplayerPeer extends PacketPeer{
     TRANSFER_MODE_UNRELIABLE_ORDERED = 1,
     TRANSFER_MODE_RELIABLE = 2,
   }
+  public const peer_connected: string = "peer_connected";
+  public const peer_disconnected: string = "peer_disconnected";
 }

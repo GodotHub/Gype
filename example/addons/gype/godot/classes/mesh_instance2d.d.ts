@@ -20,4 +20,5 @@ export declare class MeshInstance2D extends Node2D{
   public set texture(value): void {
     set_texture(value);
   }
+  public const texture_changed: string = "texture_changed";
 }

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_positional_tracker.hpp>
 #include <godot_cpp/classes/xr_body_tracker.hpp>
+#include <godot_cpp/classes/xr_positional_tracker.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue xr_body_tracker_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRBodyTracker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	XRBodyTracker *xr_body_tracker_class = memnew(XRBodyTracker);
+	XRBodyTracker *xr_body_tracker_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		xr_body_tracker_class = static_cast<XRBodyTracker *>(static_cast<Object *>(vobj));
+	} else {
+		xr_body_tracker_class = memnew(XRBodyTracker);
+	}
 	if (!xr_body_tracker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

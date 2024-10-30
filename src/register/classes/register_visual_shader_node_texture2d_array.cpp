@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/texture2d_array.hpp>
-#include <godot_cpp/classes/visual_shader_node_texture2d_array.hpp>
 #include <godot_cpp/classes/visual_shader_node_sample3d.hpp>
+#include <godot_cpp/classes/visual_shader_node_texture2d_array.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue visual_shader_node_texture2d_array_class_constructor(JSContext *c
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeTexture2DArray::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VisualShaderNodeTexture2DArray *visual_shader_node_texture2d_array_class = memnew(VisualShaderNodeTexture2DArray);
+	VisualShaderNodeTexture2DArray *visual_shader_node_texture2d_array_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		visual_shader_node_texture2d_array_class = static_cast<VisualShaderNodeTexture2DArray *>(static_cast<Object *>(vobj));
+	} else {
+		visual_shader_node_texture2d_array_class = memnew(VisualShaderNodeTexture2DArray);
+	}
 	if (!visual_shader_node_texture2d_array_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

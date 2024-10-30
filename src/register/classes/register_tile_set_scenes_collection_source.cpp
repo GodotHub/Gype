@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tile_set_source.hpp>
 #include <godot_cpp/classes/tile_set_scenes_collection_source.hpp>
 #include <godot_cpp/classes/packed_scene.hpp>
+#include <godot_cpp/classes/tile_set_source.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue tile_set_scenes_collection_source_class_constructor(JSContext *ct
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TileSetScenesCollectionSource::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	TileSetScenesCollectionSource *tile_set_scenes_collection_source_class = memnew(TileSetScenesCollectionSource);
+	TileSetScenesCollectionSource *tile_set_scenes_collection_source_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		tile_set_scenes_collection_source_class = static_cast<TileSetScenesCollectionSource *>(static_cast<Object *>(vobj));
+	} else {
+		tile_set_scenes_collection_source_class = memnew(TileSetScenesCollectionSource);
+	}
 	if (!tile_set_scenes_collection_source_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

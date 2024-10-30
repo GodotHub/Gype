@@ -27,7 +27,13 @@ static JSValue v_box_container_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VBoxContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	VBoxContainer *v_box_container_class = memnew(VBoxContainer);
+	VBoxContainer *v_box_container_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		v_box_container_class = static_cast<VBoxContainer *>(static_cast<Object *>(vobj));
+	} else {
+		v_box_container_class = memnew(VBoxContainer);
+	}
 	if (!v_box_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

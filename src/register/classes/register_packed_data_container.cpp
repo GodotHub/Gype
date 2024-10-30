@@ -27,7 +27,13 @@ static JSValue packed_data_container_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PackedDataContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PackedDataContainer *packed_data_container_class = memnew(PackedDataContainer);
+	PackedDataContainer *packed_data_container_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		packed_data_container_class = static_cast<PackedDataContainer *>(static_cast<Object *>(vobj));
+	} else {
+		packed_data_container_class = memnew(PackedDataContainer);
+	}
 	if (!packed_data_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

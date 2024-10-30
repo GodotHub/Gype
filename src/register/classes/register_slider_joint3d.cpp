@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/slider_joint3d.hpp>
 #include <godot_cpp/classes/joint3d.hpp>
+#include <godot_cpp/classes/slider_joint3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue slider_joint3d_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SliderJoint3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	SliderJoint3D *slider_joint3d_class = memnew(SliderJoint3D);
+	SliderJoint3D *slider_joint3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		slider_joint3d_class = static_cast<SliderJoint3D *>(static_cast<Object *>(vobj));
+	} else {
+		slider_joint3d_class = memnew(SliderJoint3D);
+	}
 	if (!slider_joint3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

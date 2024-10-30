@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/collision_shape3d.hpp>
-#include <godot_cpp/classes/shape3d.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
+#include <godot_cpp/classes/collision_shape3d.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue collision_shape3d_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CollisionShape3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CollisionShape3D *collision_shape3d_class = memnew(CollisionShape3D);
+	CollisionShape3D *collision_shape3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		collision_shape3d_class = static_cast<CollisionShape3D *>(static_cast<Object *>(vobj));
+	} else {
+		collision_shape3d_class = memnew(CollisionShape3D);
+	}
 	if (!collision_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

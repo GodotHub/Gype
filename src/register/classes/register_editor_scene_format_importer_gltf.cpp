@@ -27,7 +27,13 @@ static JSValue editor_scene_format_importer_gltf_class_constructor(JSContext *ct
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorSceneFormatImporterGLTF::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorSceneFormatImporterGLTF *editor_scene_format_importer_gltf_class = memnew(EditorSceneFormatImporterGLTF);
+	EditorSceneFormatImporterGLTF *editor_scene_format_importer_gltf_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_scene_format_importer_gltf_class = static_cast<EditorSceneFormatImporterGLTF *>(static_cast<Object *>(vobj));
+	} else {
+		editor_scene_format_importer_gltf_class = memnew(EditorSceneFormatImporterGLTF);
+	}
 	if (!editor_scene_format_importer_gltf_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

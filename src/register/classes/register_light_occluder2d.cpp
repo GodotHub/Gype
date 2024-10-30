@@ -28,7 +28,13 @@ static JSValue light_occluder2d_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, LightOccluder2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	LightOccluder2D *light_occluder2d_class = memnew(LightOccluder2D);
+	LightOccluder2D *light_occluder2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		light_occluder2d_class = static_cast<LightOccluder2D *>(static_cast<Object *>(vobj));
+	} else {
+		light_occluder2d_class = memnew(LightOccluder2D);
+	}
 	if (!light_occluder2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

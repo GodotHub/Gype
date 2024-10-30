@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/editor_property.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/container.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue editor_property_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorProperty::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorProperty *editor_property_class = memnew(EditorProperty);
+	EditorProperty *editor_property_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_property_class = static_cast<EditorProperty *>(static_cast<Object *>(vobj));
+	} else {
+		editor_property_class = memnew(EditorProperty);
+	}
 	if (!editor_property_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

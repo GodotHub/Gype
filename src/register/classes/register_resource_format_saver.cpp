@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/resource_format_saver.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/resource_format_saver.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue resource_format_saver_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceFormatSaver::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ResourceFormatSaver *resource_format_saver_class = memnew(ResourceFormatSaver);
+	ResourceFormatSaver *resource_format_saver_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		resource_format_saver_class = static_cast<ResourceFormatSaver *>(static_cast<Object *>(vobj));
+	} else {
+		resource_format_saver_class = memnew(ResourceFormatSaver);
+	}
 	if (!resource_format_saver_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

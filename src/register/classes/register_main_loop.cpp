@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/main_loop.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/main_loop.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue main_loop_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MainLoop::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	MainLoop *main_loop_class = memnew(MainLoop);
+	MainLoop *main_loop_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		main_loop_class = static_cast<MainLoop *>(static_cast<Object *>(vobj));
+	} else {
+		main_loop_class = memnew(MainLoop);
+	}
 	if (!main_loop_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -65,7 +71,7 @@ static int js_main_loop_class_init(JSContext *ctx, JSModuleDef *m) {
 }
 
 JSModuleDef *_js_init_main_loop_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

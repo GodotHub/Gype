@@ -27,7 +27,13 @@ static JSValue text_server_advanced_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TextServerAdvanced::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	TextServerAdvanced *text_server_advanced_class = memnew(TextServerAdvanced);
+	TextServerAdvanced *text_server_advanced_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		text_server_advanced_class = static_cast<TextServerAdvanced *>(static_cast<Object *>(vobj));
+	} else {
+		text_server_advanced_class = memnew(TextServerAdvanced);
+	}
 	if (!text_server_advanced_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

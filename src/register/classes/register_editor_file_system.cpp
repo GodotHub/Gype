@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_file_system.hpp>
 #include <godot_cpp/classes/editor_file_system_directory.hpp>
+#include <godot_cpp/classes/editor_file_system.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue editor_file_system_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorFileSystem::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorFileSystem *editor_file_system_class = memnew(EditorFileSystem);
+	EditorFileSystem *editor_file_system_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_file_system_class = static_cast<EditorFileSystem *>(static_cast<Object *>(vobj));
+	} else {
+		editor_file_system_class = memnew(EditorFileSystem);
+	}
 	if (!editor_file_system_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/classes/gltf_skeleton.hpp>
-#include <godot_cpp/classes/bone_attachment3d.hpp>
+#include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/bone_attachment3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue gltf_skeleton_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFSkeleton::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	GLTFSkeleton *gltf_skeleton_class = memnew(GLTFSkeleton);
+	GLTFSkeleton *gltf_skeleton_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		gltf_skeleton_class = static_cast<GLTFSkeleton *>(static_cast<Object *>(vobj));
+	} else {
+		gltf_skeleton_class = memnew(GLTFSkeleton);
+	}
 	if (!gltf_skeleton_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

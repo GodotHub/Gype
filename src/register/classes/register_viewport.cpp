@@ -5,17 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera2d.hpp>
 #include <godot_cpp/classes/world2d.hpp>
-#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/viewport.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/viewport_texture.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/camera3d.hpp>
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/world3d.hpp>
-#include <godot_cpp/classes/viewport.hpp>
+#include <godot_cpp/classes/window.hpp>
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/world3d.hpp>
+#include <godot_cpp/classes/camera2d.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,7 +36,13 @@ static JSValue viewport_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Viewport::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Viewport *viewport_class = memnew(Viewport);
+	Viewport *viewport_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		viewport_class = static_cast<Viewport *>(static_cast<Object *>(vobj));
+	} else {
+		viewport_class = memnew(Viewport);
+	}
 	if (!viewport_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

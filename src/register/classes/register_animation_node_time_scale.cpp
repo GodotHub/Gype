@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_node_time_scale.hpp>
 #include <godot_cpp/classes/animation_node.hpp>
+#include <godot_cpp/classes/animation_node_time_scale.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue animation_node_time_scale_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeTimeScale::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	AnimationNodeTimeScale *animation_node_time_scale_class = memnew(AnimationNodeTimeScale);
+	AnimationNodeTimeScale *animation_node_time_scale_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		animation_node_time_scale_class = static_cast<AnimationNodeTimeScale *>(static_cast<Object *>(vobj));
+	} else {
+		animation_node_time_scale_class = memnew(AnimationNodeTimeScale);
+	}
 	if (!animation_node_time_scale_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

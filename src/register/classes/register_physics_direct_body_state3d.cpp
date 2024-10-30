@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_direct_space_state3d.hpp>
-#include <godot_cpp/classes/physics_direct_body_state3d.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/physics_direct_body_state3d.hpp>
+#include <godot_cpp/classes/physics_direct_space_state3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue physics_direct_body_state3d_class_constructor(JSContext *ctx, JSV
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsDirectBodyState3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PhysicsDirectBodyState3D *physics_direct_body_state3d_class = memnew(PhysicsDirectBodyState3D);
+	PhysicsDirectBodyState3D *physics_direct_body_state3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		physics_direct_body_state3d_class = static_cast<PhysicsDirectBodyState3D *>(static_cast<Object *>(vobj));
+	} else {
+		physics_direct_body_state3d_class = memnew(PhysicsDirectBodyState3D);
+	}
 	if (!physics_direct_body_state3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -427,7 +433,7 @@ static int js_physics_direct_body_state3d_class_init(JSContext *ctx, JSModuleDef
 }
 
 JSModuleDef *_js_init_physics_direct_body_state3d_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/object';";
+	const char *code = "import * as _ from '@godot/classes/godot_object';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;

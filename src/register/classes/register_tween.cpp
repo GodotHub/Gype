@@ -5,14 +5,14 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/property_tweener.hpp>
-#include <godot_cpp/classes/callback_tweener.hpp>
-#include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/method_tweener.hpp>
+#include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/interval_tweener.hpp>
+#include <godot_cpp/classes/property_tweener.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/callback_tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -33,7 +33,13 @@ static JSValue tween_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Tween::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Tween *tween_class = memnew(Tween);
+	Tween *tween_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		tween_class = static_cast<Tween *>(static_cast<Object *>(vobj));
+	} else {
+		tween_class = memnew(Tween);
+	}
 	if (!tween_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

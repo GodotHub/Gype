@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/noise.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue noise_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Noise::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Noise *noise_class = memnew(Noise);
+	Noise *noise_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		noise_class = static_cast<Noise *>(static_cast<Object *>(vobj));
+	} else {
+		noise_class = memnew(Noise);
+	}
 	if (!noise_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

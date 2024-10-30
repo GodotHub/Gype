@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_joypad_motion.hpp>
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/input_event_joypad_motion.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue input_event_joypad_motion_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventJoypadMotion::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	InputEventJoypadMotion *input_event_joypad_motion_class = memnew(InputEventJoypadMotion);
+	InputEventJoypadMotion *input_event_joypad_motion_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		input_event_joypad_motion_class = static_cast<InputEventJoypadMotion *>(static_cast<Object *>(vobj));
+	} else {
+		input_event_joypad_motion_class = memnew(InputEventJoypadMotion);
+	}
 	if (!input_event_joypad_motion_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

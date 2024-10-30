@@ -27,7 +27,13 @@ static JSValue popup_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Popup::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Popup *popup_class = memnew(Popup);
+	Popup *popup_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		popup_class = static_cast<Popup *>(static_cast<Object *>(vobj));
+	} else {
+		popup_class = memnew(Popup);
+	}
 	if (!popup_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_anchor3d.hpp>
 #include <godot_cpp/classes/xr_node3d.hpp>
+#include <godot_cpp/classes/xr_anchor3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue xr_anchor3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRAnchor3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	XRAnchor3D *xr_anchor3d_class = memnew(XRAnchor3D);
+	XRAnchor3D *xr_anchor3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		xr_anchor3d_class = static_cast<XRAnchor3D *>(static_cast<Object *>(vobj));
+	} else {
+		xr_anchor3d_class = memnew(XRAnchor3D);
+	}
 	if (!xr_anchor3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

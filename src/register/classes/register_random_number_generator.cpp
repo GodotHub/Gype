@@ -27,7 +27,13 @@ static JSValue random_number_generator_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RandomNumberGenerator::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	RandomNumberGenerator *random_number_generator_class = memnew(RandomNumberGenerator);
+	RandomNumberGenerator *random_number_generator_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		random_number_generator_class = static_cast<RandomNumberGenerator *>(static_cast<Object *>(vobj));
+	} else {
+		random_number_generator_class = memnew(RandomNumberGenerator);
+	}
 	if (!random_number_generator_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

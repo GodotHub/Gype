@@ -1,18 +1,18 @@
 
+import { VScrollBar } from "@godot/classes/v_scroll_bar";
 import { Texture2D } from "@godot/classes/texture2d";
 import { Control } from "@godot/classes/control";
-import { VScrollBar } from "@godot/classes/v_scroll_bar";
 
 export declare class ItemList extends Control{
-  public add_item(_text: String, _icon: Texture2D, _selectable: boolean): number;
+  public add_item(_text: String | StringName | string, _icon: Texture2D, _selectable: boolean): number;
   public add_icon_item(_icon: Texture2D, _selectable: boolean): number;
-  public set_item_text(_idx: number, _text: String): void;
+  public set_item_text(_idx: number, _text: String | StringName | string): void;
   public get_item_text(_idx: number): String;
   public set_item_icon(_idx: number, _icon: Texture2D): void;
   public get_item_icon(_idx: number): Texture2D;
   public set_item_text_direction(_idx: number, _direction: number): void;
   public get_item_text_direction(_idx: number): number;
-  public set_item_language(_idx: number, _language: String): void;
+  public set_item_language(_idx: number, _language: String | StringName | string): void;
   public get_item_language(_idx: number): String;
   public set_item_icon_transposed(_idx: number, _transposed: boolean): void;
   public is_item_icon_transposed(_idx: number): boolean;
@@ -33,7 +33,7 @@ export declare class ItemList extends Control{
   public get_item_rect(_idx: number, _expand: boolean): Rect2;
   public set_item_tooltip_enabled(_idx: number, _enable: boolean): void;
   public is_item_tooltip_enabled(_idx: number): boolean;
-  public set_item_tooltip(_idx: number, _tooltip: String): void;
+  public set_item_tooltip(_idx: number, _tooltip: String | StringName | string): void;
   public get_item_tooltip(_idx: number): String;
   public select(_idx: number, _single: boolean): void;
   public deselect(_idx: number): void;
@@ -169,4 +169,9 @@ export declare class ItemList extends Control{
     SELECT_SINGLE = 0,
     SELECT_MULTI = 1,
   }
+  public const item_selected: string = "item_selected";
+  public const empty_clicked: string = "empty_clicked";
+  public const item_clicked: string = "item_clicked";
+  public const multi_selected: string = "multi_selected";
+  public const item_activated: string = "item_activated";
 }

@@ -27,7 +27,13 @@ static JSValue resource_importer_dynamic_font_class_constructor(JSContext *ctx, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterDynamicFont::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ResourceImporterDynamicFont *resource_importer_dynamic_font_class = memnew(ResourceImporterDynamicFont);
+	ResourceImporterDynamicFont *resource_importer_dynamic_font_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		resource_importer_dynamic_font_class = static_cast<ResourceImporterDynamicFont *>(static_cast<Object *>(vobj));
+	} else {
+		resource_importer_dynamic_font_class = memnew(ResourceImporterDynamicFont);
+	}
 	if (!resource_importer_dynamic_font_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

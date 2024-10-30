@@ -27,7 +27,13 @@ static JSValue upnp_device_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, UPNPDevice::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	UPNPDevice *upnp_device_class = memnew(UPNPDevice);
+	UPNPDevice *upnp_device_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		upnp_device_class = static_cast<UPNPDevice *>(static_cast<Object *>(vobj));
+	} else {
+		upnp_device_class = memnew(UPNPDevice);
+	}
 	if (!upnp_device_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

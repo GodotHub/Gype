@@ -1,6 +1,6 @@
 
-import { Material } from "@godot/classes/material";
 import { CSGPrimitive3D } from "@godot/classes/csg_primitive3d";
+import { Material } from "@godot/classes/material";
 import { Mesh } from "@godot/classes/mesh";
 
 export declare class CSGMesh3D extends CSGPrimitive3D{

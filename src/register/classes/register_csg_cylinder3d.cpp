@@ -28,7 +28,13 @@ static JSValue csg_cylinder3d_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CSGCylinder3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	CSGCylinder3D *csg_cylinder3d_class = memnew(CSGCylinder3D);
+	CSGCylinder3D *csg_cylinder3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		csg_cylinder3d_class = static_cast<CSGCylinder3D *>(static_cast<Object *>(vobj));
+	} else {
+		csg_cylinder3d_class = memnew(CSGCylinder3D);
+	}
 	if (!csg_cylinder3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

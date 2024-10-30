@@ -27,7 +27,13 @@ static JSValue editor_file_system_import_format_support_query_class_constructor(
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorFileSystemImportFormatSupportQuery::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	EditorFileSystemImportFormatSupportQuery *editor_file_system_import_format_support_query_class = memnew(EditorFileSystemImportFormatSupportQuery);
+	EditorFileSystemImportFormatSupportQuery *editor_file_system_import_format_support_query_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		editor_file_system_import_format_support_query_class = static_cast<EditorFileSystemImportFormatSupportQuery *>(static_cast<Object *>(vobj));
+	} else {
+		editor_file_system_import_format_support_query_class = memnew(EditorFileSystemImportFormatSupportQuery);
+	}
 	if (!editor_file_system_import_format_support_query_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

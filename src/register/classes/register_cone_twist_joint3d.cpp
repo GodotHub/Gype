@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/cone_twist_joint3d.hpp>
 #include <godot_cpp/classes/joint3d.hpp>
+#include <godot_cpp/classes/cone_twist_joint3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,7 +27,13 @@ static JSValue cone_twist_joint3d_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ConeTwistJoint3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	ConeTwistJoint3D *cone_twist_joint3d_class = memnew(ConeTwistJoint3D);
+	ConeTwistJoint3D *cone_twist_joint3d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		cone_twist_joint3d_class = static_cast<ConeTwistJoint3D *>(static_cast<Object *>(vobj));
+	} else {
+		cone_twist_joint3d_class = memnew(ConeTwistJoint3D);
+	}
 	if (!cone_twist_joint3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

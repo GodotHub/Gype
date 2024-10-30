@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/texture.hpp>
+#include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,7 +29,13 @@ static JSValue texture2d_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Texture2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Texture2D *texture2d_class = memnew(Texture2D);
+	Texture2D *texture2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		texture2d_class = static_cast<Texture2D *>(static_cast<Object *>(vobj));
+	} else {
+		texture2d_class = memnew(Texture2D);
+	}
 	if (!texture2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

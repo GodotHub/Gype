@@ -27,7 +27,13 @@ static JSValue placeholder_texture2d_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PlaceholderTexture2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	PlaceholderTexture2D *placeholder_texture2d_class = memnew(PlaceholderTexture2D);
+	PlaceholderTexture2D *placeholder_texture2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		placeholder_texture2d_class = static_cast<PlaceholderTexture2D *>(static_cast<Object *>(vobj));
+	} else {
+		placeholder_texture2d_class = memnew(PlaceholderTexture2D);
+	}
 	if (!placeholder_texture2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

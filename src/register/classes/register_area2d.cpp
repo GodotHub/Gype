@@ -7,9 +7,9 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/area2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/collision_object2d.hpp>
 #include <godot_cpp/classes/area2d.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/collision_object2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,7 +30,13 @@ static JSValue area2d_class_constructor(JSContext *ctx, JSValueConst new_target,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Area2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	Area2D *area2d_class = memnew(Area2D);
+	Area2D *area2d_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		area2d_class = static_cast<Area2D *>(static_cast<Object *>(vobj));
+	} else {
+		area2d_class = memnew(Area2D);
+	}
 	if (!area2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

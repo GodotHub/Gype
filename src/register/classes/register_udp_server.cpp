@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/udp_server.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/packet_peer_udp.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,7 +28,13 @@ static JSValue udp_server_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, UDPServer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	UDPServer *udp_server_class = memnew(UDPServer);
+	UDPServer *udp_server_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		udp_server_class = static_cast<UDPServer *>(static_cast<Object *>(vobj));
+	} else {
+		udp_server_class = memnew(UDPServer);
+	}
 	if (!udp_server_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

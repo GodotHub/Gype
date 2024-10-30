@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/text_server.hpp>
-#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/text_server.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,7 +28,13 @@ static JSValue text_server_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TextServer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	TextServer *text_server_class = memnew(TextServer);
+	TextServer *text_server_class;
+	if (argc == 1) {
+		Variant vobj = *argv;
+		text_server_class = static_cast<TextServer *>(static_cast<Object *>(vobj));
+	} else {
+		text_server_class = memnew(TextServer);
+	}
 	if (!text_server_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
