@@ -65,8 +65,8 @@ import { GodotClass, ToSignal } from "@godot/core/class_defined";
 
 @GodotClass
 export class node_2d extends Node2D {
-	async _enter_tree() {
-		await ToSignal(this, "ready");
+	public async _enter_tree(): Promise<void> {
+		await to_promise(this.ready);
 		GD.print("test");
 	}
 	
