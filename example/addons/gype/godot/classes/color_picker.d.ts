@@ -109,7 +109,7 @@ export declare class ColorPicker extends VBoxContainer{
     SHAPE_OKHSL_CIRCLE = 3,
     SHAPE_NONE = 4,
   }
-  public const color_changed: string = "color_changed";
-  public const preset_added: string = "preset_added";
-  public const preset_removed: string = "preset_removed";
+  public get color_changed(): Signal;
+  public get preset_added(): Signal;
+  public get preset_removed(): Signal;
 }

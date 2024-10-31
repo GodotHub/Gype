@@ -1,6 +1,6 @@
 
-import { Font } from "@godot/classes/font";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { Font } from "@godot/classes/font";
 
 export declare class TextLine extends RefCounted{
   public clear(): void;

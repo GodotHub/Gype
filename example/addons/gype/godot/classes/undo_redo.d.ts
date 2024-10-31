@@ -36,5 +36,5 @@ export declare class UndoRedo extends GodotObject{
     MERGE_ENDS = 1,
     MERGE_ALL = 2,
   }
-  public const version_changed: string = "version_changed";
+  public get version_changed(): Signal;
 }

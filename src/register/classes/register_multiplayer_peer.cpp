@@ -129,7 +129,7 @@ static const JSCFunctionListEntry multiplayer_peer_class_proto_funcs[] = {
 };
 static JSValue multiplayer_peer_class_get_peer_connected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	MultiplayerPeer *opaque = reinterpret_cast<MultiplayerPeer *>(JS_GetOpaque(this_val, MultiplayerPeer::__class_id));
+	MultiplayerPeer *opaque = reinterpret_cast<MultiplayerPeer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "peer_connected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "peer_connected").operator JSValue();
@@ -139,7 +139,7 @@ static JSValue multiplayer_peer_class_get_peer_connected_signal(JSContext *ctx, 
 }
 static JSValue multiplayer_peer_class_get_peer_disconnected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	MultiplayerPeer *opaque = reinterpret_cast<MultiplayerPeer *>(JS_GetOpaque(this_val, MultiplayerPeer::__class_id));
+	MultiplayerPeer *opaque = reinterpret_cast<MultiplayerPeer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "peer_disconnected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "peer_disconnected").operator JSValue();

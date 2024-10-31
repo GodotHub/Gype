@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_file_dialog.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/editor_file_dialog.hpp>
 #include <godot_cpp/classes/confirmation_dialog.hpp>
 #include <godot_cpp/classes/v_box_container.hpp>
 #include <godot_cpp/classes/line_edit.hpp>
@@ -222,7 +222,7 @@ static const JSCFunctionListEntry editor_file_dialog_class_proto_funcs[] = {
 };
 static JSValue editor_file_dialog_class_get_file_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorFileDialog *opaque = reinterpret_cast<EditorFileDialog *>(JS_GetOpaque(this_val, EditorFileDialog::__class_id));
+	EditorFileDialog *opaque = reinterpret_cast<EditorFileDialog *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "file_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "file_selected").operator JSValue();
@@ -232,7 +232,7 @@ static JSValue editor_file_dialog_class_get_file_selected_signal(JSContext *ctx,
 }
 static JSValue editor_file_dialog_class_get_files_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorFileDialog *opaque = reinterpret_cast<EditorFileDialog *>(JS_GetOpaque(this_val, EditorFileDialog::__class_id));
+	EditorFileDialog *opaque = reinterpret_cast<EditorFileDialog *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "files_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "files_selected").operator JSValue();
@@ -242,7 +242,7 @@ static JSValue editor_file_dialog_class_get_files_selected_signal(JSContext *ctx
 }
 static JSValue editor_file_dialog_class_get_dir_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorFileDialog *opaque = reinterpret_cast<EditorFileDialog *>(JS_GetOpaque(this_val, EditorFileDialog::__class_id));
+	EditorFileDialog *opaque = reinterpret_cast<EditorFileDialog *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "dir_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "dir_selected").operator JSValue();

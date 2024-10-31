@@ -5,13 +5,13 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/script_editor.hpp>
 #include <godot_cpp/classes/panel_container.hpp>
+#include <godot_cpp/classes/script_editor_base.hpp>
 #include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/classes/editor_syntax_highlighter.hpp>
-#include <godot_cpp/classes/script_editor_base.hpp>
-#include <godot_cpp/classes/script_editor_base.hpp>
 #include <godot_cpp/classes/script.hpp>
+#include <godot_cpp/classes/script_editor_base.hpp>
+#include <godot_cpp/classes/script_editor.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -94,7 +94,7 @@ static const JSCFunctionListEntry script_editor_class_proto_funcs[] = {
 };
 static JSValue script_editor_class_get_editor_script_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ScriptEditor *opaque = reinterpret_cast<ScriptEditor *>(JS_GetOpaque(this_val, ScriptEditor::__class_id));
+	ScriptEditor *opaque = reinterpret_cast<ScriptEditor *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "editor_script_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "editor_script_changed").operator JSValue();
@@ -104,7 +104,7 @@ static JSValue script_editor_class_get_editor_script_changed_signal(JSContext *c
 }
 static JSValue script_editor_class_get_script_close_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ScriptEditor *opaque = reinterpret_cast<ScriptEditor *>(JS_GetOpaque(this_val, ScriptEditor::__class_id));
+	ScriptEditor *opaque = reinterpret_cast<ScriptEditor *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "script_close_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "script_close").operator JSValue();

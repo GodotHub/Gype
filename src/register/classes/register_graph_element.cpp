@@ -94,7 +94,7 @@ static const JSCFunctionListEntry graph_element_class_proto_funcs[] = {
 };
 static JSValue graph_element_class_get_node_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, GraphElement::__class_id));
+	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "node_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "node_selected").operator JSValue();
@@ -104,7 +104,7 @@ static JSValue graph_element_class_get_node_selected_signal(JSContext *ctx, JSVa
 }
 static JSValue graph_element_class_get_node_deselected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, GraphElement::__class_id));
+	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "node_deselected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "node_deselected").operator JSValue();
@@ -114,7 +114,7 @@ static JSValue graph_element_class_get_node_deselected_signal(JSContext *ctx, JS
 }
 static JSValue graph_element_class_get_raise_request_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, GraphElement::__class_id));
+	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "raise_request_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "raise_request").operator JSValue();
@@ -124,7 +124,7 @@ static JSValue graph_element_class_get_raise_request_signal(JSContext *ctx, JSVa
 }
 static JSValue graph_element_class_get_delete_request_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, GraphElement::__class_id));
+	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "delete_request_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "delete_request").operator JSValue();
@@ -134,7 +134,7 @@ static JSValue graph_element_class_get_delete_request_signal(JSContext *ctx, JSV
 }
 static JSValue graph_element_class_get_resize_request_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, GraphElement::__class_id));
+	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "resize_request_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "resize_request").operator JSValue();
@@ -144,7 +144,7 @@ static JSValue graph_element_class_get_resize_request_signal(JSContext *ctx, JSV
 }
 static JSValue graph_element_class_get_resize_end_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, GraphElement::__class_id));
+	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "resize_end_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "resize_end").operator JSValue();
@@ -154,7 +154,7 @@ static JSValue graph_element_class_get_resize_end_signal(JSContext *ctx, JSValue
 }
 static JSValue graph_element_class_get_dragged_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, GraphElement::__class_id));
+	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "dragged_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "dragged").operator JSValue();
@@ -164,7 +164,7 @@ static JSValue graph_element_class_get_dragged_signal(JSContext *ctx, JSValueCon
 }
 static JSValue graph_element_class_get_position_offset_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, GraphElement::__class_id));
+	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "position_offset_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "position_offset_changed").operator JSValue();

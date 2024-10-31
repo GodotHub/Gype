@@ -1,6 +1,6 @@
 
-import { RefCounted } from "@godot/classes/ref_counted";
 import { RDPipelineColorBlendStateAttachment } from "@godot/classes/rd_pipeline_color_blend_state_attachment";
+import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class RDPipelineColorBlendState extends RefCounted{
   public set_enable_logic_op(_p_member: boolean): void;

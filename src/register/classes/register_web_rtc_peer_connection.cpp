@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/web_rtc_peer_connection.hpp>
 #include <godot_cpp/classes/web_rtc_data_channel.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -106,7 +106,7 @@ static const JSCFunctionListEntry web_rtc_peer_connection_class_static_funcs[] =
 };
 static JSValue web_rtc_peer_connection_class_get_session_description_created_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	WebRTCPeerConnection *opaque = reinterpret_cast<WebRTCPeerConnection *>(JS_GetOpaque(this_val, WebRTCPeerConnection::__class_id));
+	WebRTCPeerConnection *opaque = reinterpret_cast<WebRTCPeerConnection *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_description_created_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "session_description_created").operator JSValue();
@@ -116,7 +116,7 @@ static JSValue web_rtc_peer_connection_class_get_session_description_created_sig
 }
 static JSValue web_rtc_peer_connection_class_get_ice_candidate_created_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	WebRTCPeerConnection *opaque = reinterpret_cast<WebRTCPeerConnection *>(JS_GetOpaque(this_val, WebRTCPeerConnection::__class_id));
+	WebRTCPeerConnection *opaque = reinterpret_cast<WebRTCPeerConnection *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "ice_candidate_created_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "ice_candidate_created").operator JSValue();
@@ -126,7 +126,7 @@ static JSValue web_rtc_peer_connection_class_get_ice_candidate_created_signal(JS
 }
 static JSValue web_rtc_peer_connection_class_get_data_channel_received_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	WebRTCPeerConnection *opaque = reinterpret_cast<WebRTCPeerConnection *>(JS_GetOpaque(this_val, WebRTCPeerConnection::__class_id));
+	WebRTCPeerConnection *opaque = reinterpret_cast<WebRTCPeerConnection *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "data_channel_received_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "data_channel_received").operator JSValue();

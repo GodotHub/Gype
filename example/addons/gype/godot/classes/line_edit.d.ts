@@ -1,7 +1,7 @@
 
+import { Control } from "@godot/classes/control";
 import { PopupMenu } from "@godot/classes/popup_menu";
 import { Texture2D } from "@godot/classes/texture2d";
-import { Control } from "@godot/classes/control";
 
 export declare class LineEdit extends Control{
   public set_horizontal_alignment(_alignment: number): void;
@@ -302,7 +302,7 @@ export declare class LineEdit extends Control{
     KEYBOARD_TYPE_PASSWORD = 6,
     KEYBOARD_TYPE_URL = 7,
   }
-  public const text_changed: string = "text_changed";
-  public const text_change_rejected: string = "text_change_rejected";
-  public const text_submitted: string = "text_submitted";
+  public get text_changed(): Signal;
+  public get text_change_rejected(): Signal;
+  public get text_submitted(): Signal;
 }

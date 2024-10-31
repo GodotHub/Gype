@@ -6,12 +6,12 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/popup.hpp>
 #include <godot_cpp/classes/tab_bar.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/classes/tab_container.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -294,7 +294,7 @@ static const JSCFunctionListEntry tab_container_class_proto_funcs[] = {
 };
 static JSValue tab_container_class_get_active_tab_rearranged_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, TabContainer::__class_id));
+	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "active_tab_rearranged_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "active_tab_rearranged").operator JSValue();
@@ -304,7 +304,7 @@ static JSValue tab_container_class_get_active_tab_rearranged_signal(JSContext *c
 }
 static JSValue tab_container_class_get_tab_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, TabContainer::__class_id));
+	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "tab_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "tab_changed").operator JSValue();
@@ -314,7 +314,7 @@ static JSValue tab_container_class_get_tab_changed_signal(JSContext *ctx, JSValu
 }
 static JSValue tab_container_class_get_tab_clicked_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, TabContainer::__class_id));
+	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "tab_clicked_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "tab_clicked").operator JSValue();
@@ -324,7 +324,7 @@ static JSValue tab_container_class_get_tab_clicked_signal(JSContext *ctx, JSValu
 }
 static JSValue tab_container_class_get_tab_hovered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, TabContainer::__class_id));
+	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "tab_hovered_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "tab_hovered").operator JSValue();
@@ -334,7 +334,7 @@ static JSValue tab_container_class_get_tab_hovered_signal(JSContext *ctx, JSValu
 }
 static JSValue tab_container_class_get_tab_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, TabContainer::__class_id));
+	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "tab_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "tab_selected").operator JSValue();
@@ -344,7 +344,7 @@ static JSValue tab_container_class_get_tab_selected_signal(JSContext *ctx, JSVal
 }
 static JSValue tab_container_class_get_tab_button_pressed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, TabContainer::__class_id));
+	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "tab_button_pressed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "tab_button_pressed").operator JSValue();
@@ -354,7 +354,7 @@ static JSValue tab_container_class_get_tab_button_pressed_signal(JSContext *ctx,
 }
 static JSValue tab_container_class_get_pre_popup_pressed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, TabContainer::__class_id));
+	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "pre_popup_pressed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "pre_popup_pressed").operator JSValue();

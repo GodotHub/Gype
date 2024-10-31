@@ -1,7 +1,7 @@
 
 import { AudioStream } from "@godot/classes/audio_stream";
-import { Node3D } from "@godot/classes/node3d";
 import { AudioStreamPlayback } from "@godot/classes/audio_stream_playback";
+import { Node3D } from "@godot/classes/node3d";
 
 export declare class AudioStreamPlayer3D extends Node3D{
   public set_stream(_stream: AudioStream): void;
@@ -188,5 +188,5 @@ export declare class AudioStreamPlayer3D extends Node3D{
     DOPPLER_TRACKING_IDLE_STEP = 1,
     DOPPLER_TRACKING_PHYSICS_STEP = 2,
   }
-  public const finished: string = "finished";
+  public get finished(): Signal;
 }

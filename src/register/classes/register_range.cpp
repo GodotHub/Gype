@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -160,7 +160,7 @@ static const JSCFunctionListEntry range_class_proto_funcs[] = {
 };
 static JSValue range_class_get_value_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Range *opaque = reinterpret_cast<Range *>(JS_GetOpaque(this_val, Range::__class_id));
+	Range *opaque = reinterpret_cast<Range *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "value_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "value_changed").operator JSValue();
@@ -170,7 +170,7 @@ static JSValue range_class_get_value_changed_signal(JSContext *ctx, JSValueConst
 }
 static JSValue range_class_get_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Range *opaque = reinterpret_cast<Range *>(JS_GetOpaque(this_val, Range::__class_id));
+	Range *opaque = reinterpret_cast<Range *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "changed").operator JSValue();

@@ -105,7 +105,7 @@ static const JSCFunctionListEntry nine_patch_rect_class_proto_funcs[] = {
 };
 static JSValue nine_patch_rect_class_get_texture_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	NinePatchRect *opaque = reinterpret_cast<NinePatchRect *>(JS_GetOpaque(this_val, NinePatchRect::__class_id));
+	NinePatchRect *opaque = reinterpret_cast<NinePatchRect *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "texture_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "texture_changed").operator JSValue();

@@ -1,6 +1,6 @@
 
-import { Node2D } from "@godot/classes/node2d";
 import { NavigationPolygon } from "@godot/classes/navigation_polygon";
+import { Node2D } from "@godot/classes/node2d";
 
 export declare class NavigationRegion2D extends Node2D{
   public get_rid(): RID;
@@ -59,6 +59,6 @@ export declare class NavigationRegion2D extends Node2D{
   public set travel_cost(value): void {
     set_travel_cost(value);
   }
-  public const navigation_polygon_changed: string = "navigation_polygon_changed";
-  public const bake_finished: string = "bake_finished";
+  public get navigation_polygon_changed(): Signal;
+  public get bake_finished(): Signal;
 }

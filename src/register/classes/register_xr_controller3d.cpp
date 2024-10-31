@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_controller3d.hpp>
 #include <godot_cpp/classes/xr_node3d.hpp>
+#include <godot_cpp/classes/xr_controller3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -69,7 +69,7 @@ static const JSCFunctionListEntry xr_controller3d_class_proto_funcs[] = {
 };
 static JSValue xr_controller3d_class_get_button_pressed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	XRController3D *opaque = reinterpret_cast<XRController3D *>(JS_GetOpaque(this_val, XRController3D::__class_id));
+	XRController3D *opaque = reinterpret_cast<XRController3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "button_pressed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "button_pressed").operator JSValue();
@@ -79,7 +79,7 @@ static JSValue xr_controller3d_class_get_button_pressed_signal(JSContext *ctx, J
 }
 static JSValue xr_controller3d_class_get_button_released_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	XRController3D *opaque = reinterpret_cast<XRController3D *>(JS_GetOpaque(this_val, XRController3D::__class_id));
+	XRController3D *opaque = reinterpret_cast<XRController3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "button_released_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "button_released").operator JSValue();
@@ -89,7 +89,7 @@ static JSValue xr_controller3d_class_get_button_released_signal(JSContext *ctx, 
 }
 static JSValue xr_controller3d_class_get_input_float_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	XRController3D *opaque = reinterpret_cast<XRController3D *>(JS_GetOpaque(this_val, XRController3D::__class_id));
+	XRController3D *opaque = reinterpret_cast<XRController3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "input_float_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "input_float_changed").operator JSValue();
@@ -99,7 +99,7 @@ static JSValue xr_controller3d_class_get_input_float_changed_signal(JSContext *c
 }
 static JSValue xr_controller3d_class_get_input_vector2_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	XRController3D *opaque = reinterpret_cast<XRController3D *>(JS_GetOpaque(this_val, XRController3D::__class_id));
+	XRController3D *opaque = reinterpret_cast<XRController3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "input_vector2_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "input_vector2_changed").operator JSValue();
@@ -109,7 +109,7 @@ static JSValue xr_controller3d_class_get_input_vector2_changed_signal(JSContext 
 }
 static JSValue xr_controller3d_class_get_profile_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	XRController3D *opaque = reinterpret_cast<XRController3D *>(JS_GetOpaque(this_val, XRController3D::__class_id));
+	XRController3D *opaque = reinterpret_cast<XRController3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "profile_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "profile_changed").operator JSValue();

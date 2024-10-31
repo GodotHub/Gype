@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/xr_controller_tracker.hpp>
-#include <godot_cpp/classes/web_xr_interface.hpp>
 #include <godot_cpp/classes/xr_interface.hpp>
+#include <godot_cpp/classes/web_xr_interface.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -135,7 +135,7 @@ static const JSCFunctionListEntry web_xr_interface_class_proto_funcs[] = {
 };
 static JSValue web_xr_interface_class_get_session_supported_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_supported_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "session_supported").operator JSValue();
@@ -145,7 +145,7 @@ static JSValue web_xr_interface_class_get_session_supported_signal(JSContext *ct
 }
 static JSValue web_xr_interface_class_get_session_started_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_started_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "session_started").operator JSValue();
@@ -155,7 +155,7 @@ static JSValue web_xr_interface_class_get_session_started_signal(JSContext *ctx,
 }
 static JSValue web_xr_interface_class_get_session_ended_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_ended_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "session_ended").operator JSValue();
@@ -165,7 +165,7 @@ static JSValue web_xr_interface_class_get_session_ended_signal(JSContext *ctx, J
 }
 static JSValue web_xr_interface_class_get_session_failed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_failed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "session_failed").operator JSValue();
@@ -175,7 +175,7 @@ static JSValue web_xr_interface_class_get_session_failed_signal(JSContext *ctx, 
 }
 static JSValue web_xr_interface_class_get_selectstart_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "selectstart_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "selectstart").operator JSValue();
@@ -185,7 +185,7 @@ static JSValue web_xr_interface_class_get_selectstart_signal(JSContext *ctx, JSV
 }
 static JSValue web_xr_interface_class_get_select_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "select_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "select").operator JSValue();
@@ -195,7 +195,7 @@ static JSValue web_xr_interface_class_get_select_signal(JSContext *ctx, JSValueC
 }
 static JSValue web_xr_interface_class_get_selectend_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "selectend_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "selectend").operator JSValue();
@@ -205,7 +205,7 @@ static JSValue web_xr_interface_class_get_selectend_signal(JSContext *ctx, JSVal
 }
 static JSValue web_xr_interface_class_get_squeezestart_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "squeezestart_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "squeezestart").operator JSValue();
@@ -215,7 +215,7 @@ static JSValue web_xr_interface_class_get_squeezestart_signal(JSContext *ctx, JS
 }
 static JSValue web_xr_interface_class_get_squeeze_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "squeeze_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "squeeze").operator JSValue();
@@ -225,7 +225,7 @@ static JSValue web_xr_interface_class_get_squeeze_signal(JSContext *ctx, JSValue
 }
 static JSValue web_xr_interface_class_get_squeezeend_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "squeezeend_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "squeezeend").operator JSValue();
@@ -235,7 +235,7 @@ static JSValue web_xr_interface_class_get_squeezeend_signal(JSContext *ctx, JSVa
 }
 static JSValue web_xr_interface_class_get_visibility_state_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "visibility_state_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "visibility_state_changed").operator JSValue();
@@ -245,7 +245,7 @@ static JSValue web_xr_interface_class_get_visibility_state_changed_signal(JSCont
 }
 static JSValue web_xr_interface_class_get_reference_space_reset_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "reference_space_reset_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "reference_space_reset").operator JSValue();
@@ -255,7 +255,7 @@ static JSValue web_xr_interface_class_get_reference_space_reset_signal(JSContext
 }
 static JSValue web_xr_interface_class_get_display_refresh_rate_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "display_refresh_rate_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "display_refresh_rate_changed").operator JSValue();

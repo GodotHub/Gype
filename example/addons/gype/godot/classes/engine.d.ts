@@ -1,7 +1,7 @@
 
-import { MainLoop } from "@godot/classes/main_loop";
 import { ScriptLanguage } from "@godot/classes/script_language";
 import { GodotObject } from "@godot/classes/godot_object";
+import { MainLoop } from "@godot/classes/main_loop";
 
 export declare class Engine extends GodotObject{
   public set_physics_ticks_per_second(_physics_ticks_per_second: number): void;
@@ -29,7 +29,7 @@ export declare class Engine extends GodotObject{
   public get_architecture_name(): String;
   public is_in_physics_frame(): boolean;
   public has_singleton(_name: String | StringName | string): boolean;
-  public get_singleton(_name: String | StringName | string): Object;
+  public get_singleton(_name: String | StringName | string): GodotObject;
   public register_singleton(_name: String | StringName | string, _instance: Object): void;
   public unregister_singleton(_name: String | StringName | string): void;
   public get_singleton_list(): PackedStringArray;

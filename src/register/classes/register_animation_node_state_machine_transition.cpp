@@ -135,7 +135,7 @@ static const JSCFunctionListEntry animation_node_state_machine_transition_class_
 };
 static JSValue animation_node_state_machine_transition_class_get_advance_condition_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimationNodeStateMachineTransition *opaque = reinterpret_cast<AnimationNodeStateMachineTransition *>(JS_GetOpaque(this_val, AnimationNodeStateMachineTransition::__class_id));
+	AnimationNodeStateMachineTransition *opaque = reinterpret_cast<AnimationNodeStateMachineTransition *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "advance_condition_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "advance_condition_changed").operator JSValue();

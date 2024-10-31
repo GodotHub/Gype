@@ -1,7 +1,7 @@
 
-import { HBoxContainer } from "@godot/classes/h_box_container";
-import { Resource } from "@godot/classes/resource";
 import { GodotObject } from "@godot/classes/godot_object";
+import { Resource } from "@godot/classes/resource";
+import { HBoxContainer } from "@godot/classes/h_box_container";
 
 export declare class EditorResourcePicker extends HBoxContainer{
   public _set_create_options(_menu_node: Object): void;
@@ -40,6 +40,6 @@ export declare class EditorResourcePicker extends HBoxContainer{
   public set toggle_mode(value): void {
     set_toggle_mode(value);
   }
-  public const resource_selected: string = "resource_selected";
-  public const resource_changed: string = "resource_changed";
+  public get resource_selected(): Signal;
+  public get resource_changed(): Signal;
 }

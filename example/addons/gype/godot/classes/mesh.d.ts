@@ -1,9 +1,9 @@
 
 import { TriangleMesh } from "@godot/classes/triangle_mesh";
 import { Resource } from "@godot/classes/resource";
-import { Material } from "@godot/classes/material";
 import { ConcavePolygonShape3D } from "@godot/classes/concave_polygon_shape3d";
 import { ConvexPolygonShape3D } from "@godot/classes/convex_polygon_shape3d";
+import { Material } from "@godot/classes/material";
 
 export declare class Mesh extends Resource{
   public _get_surface_count(): number;

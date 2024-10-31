@@ -1,6 +1,6 @@
 
-import { TreeItem } from "@godot/classes/tree_item";
 import { Control } from "@godot/classes/control";
+import { TreeItem } from "@godot/classes/tree_item";
 
 export declare class Tree extends Control{
   public clear(): void;
@@ -146,19 +146,19 @@ export declare class Tree extends Control{
     DROP_MODE_ON_ITEM = 1,
     DROP_MODE_INBETWEEN = 2,
   }
-  public const item_selected: string = "item_selected";
-  public const cell_selected: string = "cell_selected";
-  public const multi_selected: string = "multi_selected";
-  public const item_mouse_selected: string = "item_mouse_selected";
-  public const empty_clicked: string = "empty_clicked";
-  public const item_edited: string = "item_edited";
-  public const custom_item_clicked: string = "custom_item_clicked";
-  public const item_icon_double_clicked: string = "item_icon_double_clicked";
-  public const item_collapsed: string = "item_collapsed";
-  public const check_propagated_to_item: string = "check_propagated_to_item";
-  public const button_clicked: string = "button_clicked";
-  public const custom_popup_edited: string = "custom_popup_edited";
-  public const item_activated: string = "item_activated";
-  public const column_title_clicked: string = "column_title_clicked";
-  public const nothing_selected: string = "nothing_selected";
+  public get item_selected(): Signal;
+  public get cell_selected(): Signal;
+  public get multi_selected(): Signal;
+  public get item_mouse_selected(): Signal;
+  public get empty_clicked(): Signal;
+  public get item_edited(): Signal;
+  public get custom_item_clicked(): Signal;
+  public get item_icon_double_clicked(): Signal;
+  public get item_collapsed(): Signal;
+  public get check_propagated_to_item(): Signal;
+  public get button_clicked(): Signal;
+  public get custom_popup_edited(): Signal;
+  public get item_activated(): Signal;
+  public get column_title_clicked(): Signal;
+  public get nothing_selected(): Signal;
 }

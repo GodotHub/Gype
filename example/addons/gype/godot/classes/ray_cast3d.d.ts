@@ -1,6 +1,6 @@
 
-import { CollisionObject3D } from "@godot/classes/collision_object3d";
 import { GodotObject } from "@godot/classes/godot_object";
+import { CollisionObject3D } from "@godot/classes/collision_object3d";
 import { Node3D } from "@godot/classes/node3d";
 
 export declare class RayCast3D extends Node3D{
@@ -10,7 +10,7 @@ export declare class RayCast3D extends Node3D{
   public get_target_position(): Vector3;
   public is_colliding(): boolean;
   public force_raycast_update(): void;
-  public get_collider(): Object;
+  public get_collider(): GodotObject;
   public get_collider_rid(): RID;
   public get_collider_shape(): number;
   public get_collision_point(): Vector3;

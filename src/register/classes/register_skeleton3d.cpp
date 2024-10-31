@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton3d.hpp>
-#include <godot_cpp/classes/skin_reference.hpp>
 #include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/skeleton3d.hpp>
+#include <godot_cpp/classes/skin_reference.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -301,7 +301,7 @@ static const JSCFunctionListEntry skeleton3d_class_proto_funcs[] = {
 };
 static JSValue skeleton3d_class_get_pose_updated_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Skeleton3D *opaque = reinterpret_cast<Skeleton3D *>(JS_GetOpaque(this_val, Skeleton3D::__class_id));
+	Skeleton3D *opaque = reinterpret_cast<Skeleton3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "pose_updated_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "pose_updated").operator JSValue();
@@ -311,7 +311,7 @@ static JSValue skeleton3d_class_get_pose_updated_signal(JSContext *ctx, JSValueC
 }
 static JSValue skeleton3d_class_get_skeleton_updated_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Skeleton3D *opaque = reinterpret_cast<Skeleton3D *>(JS_GetOpaque(this_val, Skeleton3D::__class_id));
+	Skeleton3D *opaque = reinterpret_cast<Skeleton3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "skeleton_updated_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "skeleton_updated").operator JSValue();
@@ -321,7 +321,7 @@ static JSValue skeleton3d_class_get_skeleton_updated_signal(JSContext *ctx, JSVa
 }
 static JSValue skeleton3d_class_get_bone_enabled_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Skeleton3D *opaque = reinterpret_cast<Skeleton3D *>(JS_GetOpaque(this_val, Skeleton3D::__class_id));
+	Skeleton3D *opaque = reinterpret_cast<Skeleton3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "bone_enabled_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "bone_enabled_changed").operator JSValue();
@@ -331,7 +331,7 @@ static JSValue skeleton3d_class_get_bone_enabled_changed_signal(JSContext *ctx, 
 }
 static JSValue skeleton3d_class_get_bone_list_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Skeleton3D *opaque = reinterpret_cast<Skeleton3D *>(JS_GetOpaque(this_val, Skeleton3D::__class_id));
+	Skeleton3D *opaque = reinterpret_cast<Skeleton3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "bone_list_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "bone_list_changed").operator JSValue();
@@ -341,7 +341,7 @@ static JSValue skeleton3d_class_get_bone_list_changed_signal(JSContext *ctx, JSV
 }
 static JSValue skeleton3d_class_get_show_rest_only_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Skeleton3D *opaque = reinterpret_cast<Skeleton3D *>(JS_GetOpaque(this_val, Skeleton3D::__class_id));
+	Skeleton3D *opaque = reinterpret_cast<Skeleton3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "show_rest_only_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "show_rest_only_changed").operator JSValue();

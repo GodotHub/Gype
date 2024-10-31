@@ -5,14 +5,14 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/method_tweener.hpp>
-#include <godot_cpp/classes/callback_tweener.hpp>
-#include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/interval_tweener.hpp>
-#include <godot_cpp/classes/property_tweener.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/callback_tweener.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/tween.hpp>
+#include <godot_cpp/classes/method_tweener.hpp>
+#include <godot_cpp/classes/property_tweener.hpp>
+#include <godot_cpp/classes/interval_tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -171,7 +171,7 @@ static const JSCFunctionListEntry tween_class_static_funcs[] = {
 };
 static JSValue tween_class_get_step_finished_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tween *opaque = reinterpret_cast<Tween *>(JS_GetOpaque(this_val, Tween::__class_id));
+	Tween *opaque = reinterpret_cast<Tween *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "step_finished_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "step_finished").operator JSValue();
@@ -181,7 +181,7 @@ static JSValue tween_class_get_step_finished_signal(JSContext *ctx, JSValueConst
 }
 static JSValue tween_class_get_loop_finished_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tween *opaque = reinterpret_cast<Tween *>(JS_GetOpaque(this_val, Tween::__class_id));
+	Tween *opaque = reinterpret_cast<Tween *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "loop_finished_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "loop_finished").operator JSValue();
@@ -191,7 +191,7 @@ static JSValue tween_class_get_loop_finished_signal(JSContext *ctx, JSValueConst
 }
 static JSValue tween_class_get_finished_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tween *opaque = reinterpret_cast<Tween *>(JS_GetOpaque(this_val, Tween::__class_id));
+	Tween *opaque = reinterpret_cast<Tween *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "finished_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "finished").operator JSValue();

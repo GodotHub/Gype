@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/v_box_container.hpp>
-#include <godot_cpp/classes/editor_resource_tooltip_plugin.hpp>
 #include <godot_cpp/classes/file_system_dock.hpp>
+#include <godot_cpp/classes/editor_resource_tooltip_plugin.hpp>
+#include <godot_cpp/classes/v_box_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -60,7 +60,7 @@ static const JSCFunctionListEntry file_system_dock_class_proto_funcs[] = {
 };
 static JSValue file_system_dock_class_get_inherit_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	FileSystemDock *opaque = reinterpret_cast<FileSystemDock *>(JS_GetOpaque(this_val, FileSystemDock::__class_id));
+	FileSystemDock *opaque = reinterpret_cast<FileSystemDock *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "inherit_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "inherit").operator JSValue();
@@ -70,7 +70,7 @@ static JSValue file_system_dock_class_get_inherit_signal(JSContext *ctx, JSValue
 }
 static JSValue file_system_dock_class_get_instantiate_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	FileSystemDock *opaque = reinterpret_cast<FileSystemDock *>(JS_GetOpaque(this_val, FileSystemDock::__class_id));
+	FileSystemDock *opaque = reinterpret_cast<FileSystemDock *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "instantiate_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "instantiate").operator JSValue();
@@ -80,7 +80,7 @@ static JSValue file_system_dock_class_get_instantiate_signal(JSContext *ctx, JSV
 }
 static JSValue file_system_dock_class_get_resource_removed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	FileSystemDock *opaque = reinterpret_cast<FileSystemDock *>(JS_GetOpaque(this_val, FileSystemDock::__class_id));
+	FileSystemDock *opaque = reinterpret_cast<FileSystemDock *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "resource_removed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "resource_removed").operator JSValue();
@@ -90,7 +90,7 @@ static JSValue file_system_dock_class_get_resource_removed_signal(JSContext *ctx
 }
 static JSValue file_system_dock_class_get_file_removed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	FileSystemDock *opaque = reinterpret_cast<FileSystemDock *>(JS_GetOpaque(this_val, FileSystemDock::__class_id));
+	FileSystemDock *opaque = reinterpret_cast<FileSystemDock *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "file_removed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "file_removed").operator JSValue();
@@ -100,7 +100,7 @@ static JSValue file_system_dock_class_get_file_removed_signal(JSContext *ctx, JS
 }
 static JSValue file_system_dock_class_get_folder_removed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	FileSystemDock *opaque = reinterpret_cast<FileSystemDock *>(JS_GetOpaque(this_val, FileSystemDock::__class_id));
+	FileSystemDock *opaque = reinterpret_cast<FileSystemDock *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "folder_removed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "folder_removed").operator JSValue();
@@ -110,7 +110,7 @@ static JSValue file_system_dock_class_get_folder_removed_signal(JSContext *ctx, 
 }
 static JSValue file_system_dock_class_get_files_moved_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	FileSystemDock *opaque = reinterpret_cast<FileSystemDock *>(JS_GetOpaque(this_val, FileSystemDock::__class_id));
+	FileSystemDock *opaque = reinterpret_cast<FileSystemDock *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "files_moved_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "files_moved").operator JSValue();
@@ -120,7 +120,7 @@ static JSValue file_system_dock_class_get_files_moved_signal(JSContext *ctx, JSV
 }
 static JSValue file_system_dock_class_get_folder_moved_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	FileSystemDock *opaque = reinterpret_cast<FileSystemDock *>(JS_GetOpaque(this_val, FileSystemDock::__class_id));
+	FileSystemDock *opaque = reinterpret_cast<FileSystemDock *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "folder_moved_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "folder_moved").operator JSValue();
@@ -130,7 +130,7 @@ static JSValue file_system_dock_class_get_folder_moved_signal(JSContext *ctx, JS
 }
 static JSValue file_system_dock_class_get_folder_color_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	FileSystemDock *opaque = reinterpret_cast<FileSystemDock *>(JS_GetOpaque(this_val, FileSystemDock::__class_id));
+	FileSystemDock *opaque = reinterpret_cast<FileSystemDock *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "folder_color_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "folder_color_changed").operator JSValue();
@@ -140,7 +140,7 @@ static JSValue file_system_dock_class_get_folder_color_changed_signal(JSContext 
 }
 static JSValue file_system_dock_class_get_display_mode_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	FileSystemDock *opaque = reinterpret_cast<FileSystemDock *>(JS_GetOpaque(this_val, FileSystemDock::__class_id));
+	FileSystemDock *opaque = reinterpret_cast<FileSystemDock *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "display_mode_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "display_mode_changed").operator JSValue();

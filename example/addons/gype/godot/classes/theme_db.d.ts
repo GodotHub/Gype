@@ -1,8 +1,8 @@
 
+import { StyleBox } from "@godot/classes/style_box";
+import { Theme } from "@godot/classes/theme";
 import { GodotObject } from "@godot/classes/godot_object";
 import { Texture2D } from "@godot/classes/texture2d";
-import { Theme } from "@godot/classes/theme";
-import { StyleBox } from "@godot/classes/style_box";
 import { Font } from "@godot/classes/font";
 
 export declare class ThemeDB extends GodotObject{
@@ -48,5 +48,5 @@ export declare class ThemeDB extends GodotObject{
   public set fallback_stylebox(value): void {
     set_fallback_stylebox(value);
   }
-  public const fallback_changed: string = "fallback_changed";
+  public get fallback_changed(): Signal;
 }

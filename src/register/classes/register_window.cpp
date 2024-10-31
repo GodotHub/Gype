@@ -5,13 +5,13 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/viewport.hpp>
 #include <godot_cpp/classes/theme.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/viewport.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/window.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -644,7 +644,7 @@ static const JSCFunctionListEntry window_class_proto_funcs[] = {
 };
 static JSValue window_class_get_window_input_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, Window::__class_id));
+	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "window_input_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "window_input").operator JSValue();
@@ -654,7 +654,7 @@ static JSValue window_class_get_window_input_signal(JSContext *ctx, JSValueConst
 }
 static JSValue window_class_get_files_dropped_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, Window::__class_id));
+	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "files_dropped_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "files_dropped").operator JSValue();
@@ -664,7 +664,7 @@ static JSValue window_class_get_files_dropped_signal(JSContext *ctx, JSValueCons
 }
 static JSValue window_class_get_mouse_entered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, Window::__class_id));
+	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "mouse_entered_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "mouse_entered").operator JSValue();
@@ -674,7 +674,7 @@ static JSValue window_class_get_mouse_entered_signal(JSContext *ctx, JSValueCons
 }
 static JSValue window_class_get_mouse_exited_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, Window::__class_id));
+	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "mouse_exited_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "mouse_exited").operator JSValue();
@@ -684,7 +684,7 @@ static JSValue window_class_get_mouse_exited_signal(JSContext *ctx, JSValueConst
 }
 static JSValue window_class_get_focus_entered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, Window::__class_id));
+	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "focus_entered_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "focus_entered").operator JSValue();
@@ -694,7 +694,7 @@ static JSValue window_class_get_focus_entered_signal(JSContext *ctx, JSValueCons
 }
 static JSValue window_class_get_focus_exited_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, Window::__class_id));
+	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "focus_exited_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "focus_exited").operator JSValue();
@@ -704,7 +704,7 @@ static JSValue window_class_get_focus_exited_signal(JSContext *ctx, JSValueConst
 }
 static JSValue window_class_get_close_requested_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, Window::__class_id));
+	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "close_requested_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "close_requested").operator JSValue();
@@ -714,7 +714,7 @@ static JSValue window_class_get_close_requested_signal(JSContext *ctx, JSValueCo
 }
 static JSValue window_class_get_go_back_requested_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, Window::__class_id));
+	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "go_back_requested_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "go_back_requested").operator JSValue();
@@ -724,7 +724,7 @@ static JSValue window_class_get_go_back_requested_signal(JSContext *ctx, JSValue
 }
 static JSValue window_class_get_visibility_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, Window::__class_id));
+	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "visibility_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "visibility_changed").operator JSValue();
@@ -734,7 +734,7 @@ static JSValue window_class_get_visibility_changed_signal(JSContext *ctx, JSValu
 }
 static JSValue window_class_get_about_to_popup_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, Window::__class_id));
+	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "about_to_popup_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "about_to_popup").operator JSValue();
@@ -744,7 +744,7 @@ static JSValue window_class_get_about_to_popup_signal(JSContext *ctx, JSValueCon
 }
 static JSValue window_class_get_theme_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, Window::__class_id));
+	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "theme_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "theme_changed").operator JSValue();
@@ -754,7 +754,7 @@ static JSValue window_class_get_theme_changed_signal(JSContext *ctx, JSValueCons
 }
 static JSValue window_class_get_dpi_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, Window::__class_id));
+	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "dpi_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "dpi_changed").operator JSValue();
@@ -764,7 +764,7 @@ static JSValue window_class_get_dpi_changed_signal(JSContext *ctx, JSValueConst 
 }
 static JSValue window_class_get_titlebar_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, Window::__class_id));
+	Window *opaque = reinterpret_cast<Window *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "titlebar_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "titlebar_changed").operator JSValue();

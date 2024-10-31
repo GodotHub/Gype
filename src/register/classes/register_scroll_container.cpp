@@ -7,9 +7,9 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/v_scroll_bar.hpp>
+#include <godot_cpp/classes/scroll_container.hpp>
 #include <godot_cpp/classes/h_scroll_bar.hpp>
 #include <godot_cpp/classes/container.hpp>
-#include <godot_cpp/classes/scroll_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -142,7 +142,7 @@ static const JSCFunctionListEntry scroll_container_class_proto_funcs[] = {
 };
 static JSValue scroll_container_class_get_scroll_started_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ScrollContainer *opaque = reinterpret_cast<ScrollContainer *>(JS_GetOpaque(this_val, ScrollContainer::__class_id));
+	ScrollContainer *opaque = reinterpret_cast<ScrollContainer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "scroll_started_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "scroll_started").operator JSValue();
@@ -152,7 +152,7 @@ static JSValue scroll_container_class_get_scroll_started_signal(JSContext *ctx, 
 }
 static JSValue scroll_container_class_get_scroll_ended_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ScrollContainer *opaque = reinterpret_cast<ScrollContainer *>(JS_GetOpaque(this_val, ScrollContainer::__class_id));
+	ScrollContainer *opaque = reinterpret_cast<ScrollContainer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "scroll_ended_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "scroll_ended").operator JSValue();

@@ -1,6 +1,6 @@
 
-import { SpriteBase3D } from "@godot/classes/sprite_base3d";
 import { SpriteFrames } from "@godot/classes/sprite_frames";
+import { SpriteBase3D } from "@godot/classes/sprite_base3d";
 
 export declare class AnimatedSprite3D extends SpriteBase3D{
   public set_sprite_frames(_sprite_frames: SpriteFrames): void;
@@ -58,9 +58,9 @@ export declare class AnimatedSprite3D extends SpriteBase3D{
   public set speed_scale(value): void {
     set_speed_scale(value);
   }
-  public const sprite_frames_changed: string = "sprite_frames_changed";
-  public const animation_changed: string = "animation_changed";
-  public const frame_changed: string = "frame_changed";
-  public const animation_looped: string = "animation_looped";
-  public const animation_finished: string = "animation_finished";
+  public get sprite_frames_changed(): Signal;
+  public get animation_changed(): Signal;
+  public get frame_changed(): Signal;
+  public get animation_looped(): Signal;
+  public get animation_finished(): Signal;
 }

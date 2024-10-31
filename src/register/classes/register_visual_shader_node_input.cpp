@@ -59,7 +59,7 @@ static const JSCFunctionListEntry visual_shader_node_input_class_proto_funcs[] =
 };
 static JSValue visual_shader_node_input_class_get_input_type_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	VisualShaderNodeInput *opaque = reinterpret_cast<VisualShaderNodeInput *>(JS_GetOpaque(this_val, VisualShaderNodeInput::__class_id));
+	VisualShaderNodeInput *opaque = reinterpret_cast<VisualShaderNodeInput *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "input_type_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "input_type_changed").operator JSValue();

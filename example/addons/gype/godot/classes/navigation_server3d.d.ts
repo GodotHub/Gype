@@ -1,10 +1,10 @@
 
-import { Node } from "@godot/classes/node";
-import { NavigationPathQueryResult3D } from "@godot/classes/navigation_path_query_result3d";
-import { NavigationMesh } from "@godot/classes/navigation_mesh";
 import { GodotObject } from "@godot/classes/godot_object";
-import { NavigationMeshSourceGeometryData3D } from "@godot/classes/navigation_mesh_source_geometry_data3d";
+import { NavigationPathQueryResult3D } from "@godot/classes/navigation_path_query_result3d";
 import { NavigationPathQueryParameters3D } from "@godot/classes/navigation_path_query_parameters3d";
+import { NavigationMeshSourceGeometryData3D } from "@godot/classes/navigation_mesh_source_geometry_data3d";
+import { Node } from "@godot/classes/node";
+import { NavigationMesh } from "@godot/classes/navigation_mesh";
 
 export declare class NavigationServer3D extends GodotObject{
   public get_maps(): GDArray;
@@ -162,7 +162,7 @@ export declare class NavigationServer3D extends GodotObject{
     INFO_EDGE_CONNECTION_COUNT = 7,
     INFO_EDGE_FREE_COUNT = 8,
   }
-  public const map_changed: string = "map_changed";
-  public const navigation_debug_changed: string = "navigation_debug_changed";
-  public const avoidance_debug_changed: string = "avoidance_debug_changed";
+  public get map_changed(): Signal;
+  public get navigation_debug_changed(): Signal;
+  public get avoidance_debug_changed(): Signal;
 }

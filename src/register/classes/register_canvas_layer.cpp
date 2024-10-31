@@ -154,7 +154,7 @@ static const JSCFunctionListEntry canvas_layer_class_proto_funcs[] = {
 };
 static JSValue canvas_layer_class_get_visibility_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	CanvasLayer *opaque = reinterpret_cast<CanvasLayer *>(JS_GetOpaque(this_val, CanvasLayer::__class_id));
+	CanvasLayer *opaque = reinterpret_cast<CanvasLayer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "visibility_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "visibility_changed").operator JSValue();

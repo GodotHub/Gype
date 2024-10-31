@@ -5,30 +5,30 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/popup_menu.hpp>
-#include <godot_cpp/classes/editor_translation_parser_plugin.hpp>
-#include <godot_cpp/classes/script.hpp>
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/editor_import_plugin.hpp>
-#include <godot_cpp/classes/editor_scene_post_import_plugin.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/editor_inspector_plugin.hpp>
-#include <godot_cpp/classes/camera3d.hpp>
-#include <godot_cpp/classes/editor_export_plugin.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/button.hpp>
-#include <godot_cpp/classes/editor_scene_format_importer.hpp>
-#include <godot_cpp/classes/editor_node3d_gizmo_plugin.hpp>
-#include <godot_cpp/classes/editor_interface.hpp>
-#include <godot_cpp/classes/shortcut.hpp>
-#include <godot_cpp/classes/editor_undo_redo_manager.hpp>
 #include <godot_cpp/classes/editor_plugin.hpp>
-#include <godot_cpp/classes/editor_resource_conversion_plugin.hpp>
-#include <godot_cpp/classes/script_create_dialog.hpp>
-#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/editor_interface.hpp>
 #include <godot_cpp/classes/editor_debugger_plugin.hpp>
-#include <godot_cpp/classes/config_file.hpp>
+#include <godot_cpp/classes/editor_scene_format_importer.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/editor_export_plugin.hpp>
+#include <godot_cpp/classes/editor_undo_redo_manager.hpp>
+#include <godot_cpp/classes/editor_translation_parser_plugin.hpp>
+#include <godot_cpp/classes/shortcut.hpp>
+#include <godot_cpp/classes/script_create_dialog.hpp>
+#include <godot_cpp/classes/editor_scene_post_import_plugin.hpp>
+#include <godot_cpp/classes/script.hpp>
+#include <godot_cpp/classes/editor_inspector_plugin.hpp>
+#include <godot_cpp/classes/editor_import_plugin.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/editor_resource_conversion_plugin.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/editor_node3d_gizmo_plugin.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/button.hpp>
+#include <godot_cpp/classes/config_file.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -291,7 +291,7 @@ static const JSCFunctionListEntry editor_plugin_class_proto_funcs[] = {
 };
 static JSValue editor_plugin_class_get_scene_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorPlugin *opaque = reinterpret_cast<EditorPlugin *>(JS_GetOpaque(this_val, EditorPlugin::__class_id));
+	EditorPlugin *opaque = reinterpret_cast<EditorPlugin *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "scene_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "scene_changed").operator JSValue();
@@ -301,7 +301,7 @@ static JSValue editor_plugin_class_get_scene_changed_signal(JSContext *ctx, JSVa
 }
 static JSValue editor_plugin_class_get_scene_closed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorPlugin *opaque = reinterpret_cast<EditorPlugin *>(JS_GetOpaque(this_val, EditorPlugin::__class_id));
+	EditorPlugin *opaque = reinterpret_cast<EditorPlugin *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "scene_closed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "scene_closed").operator JSValue();
@@ -311,7 +311,7 @@ static JSValue editor_plugin_class_get_scene_closed_signal(JSContext *ctx, JSVal
 }
 static JSValue editor_plugin_class_get_main_screen_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorPlugin *opaque = reinterpret_cast<EditorPlugin *>(JS_GetOpaque(this_val, EditorPlugin::__class_id));
+	EditorPlugin *opaque = reinterpret_cast<EditorPlugin *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "main_screen_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "main_screen_changed").operator JSValue();
@@ -321,7 +321,7 @@ static JSValue editor_plugin_class_get_main_screen_changed_signal(JSContext *ctx
 }
 static JSValue editor_plugin_class_get_resource_saved_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorPlugin *opaque = reinterpret_cast<EditorPlugin *>(JS_GetOpaque(this_val, EditorPlugin::__class_id));
+	EditorPlugin *opaque = reinterpret_cast<EditorPlugin *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "resource_saved_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "resource_saved").operator JSValue();
@@ -331,7 +331,7 @@ static JSValue editor_plugin_class_get_resource_saved_signal(JSContext *ctx, JSV
 }
 static JSValue editor_plugin_class_get_scene_saved_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorPlugin *opaque = reinterpret_cast<EditorPlugin *>(JS_GetOpaque(this_val, EditorPlugin::__class_id));
+	EditorPlugin *opaque = reinterpret_cast<EditorPlugin *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "scene_saved_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "scene_saved").operator JSValue();
@@ -341,7 +341,7 @@ static JSValue editor_plugin_class_get_scene_saved_signal(JSContext *ctx, JSValu
 }
 static JSValue editor_plugin_class_get_project_settings_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorPlugin *opaque = reinterpret_cast<EditorPlugin *>(JS_GetOpaque(this_val, EditorPlugin::__class_id));
+	EditorPlugin *opaque = reinterpret_cast<EditorPlugin *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "project_settings_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "project_settings_changed").operator JSValue();

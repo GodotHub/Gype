@@ -19,5 +19,5 @@ export declare class EditorSettings extends Resource{
   public check_changed_settings_in_group(_setting_prefix: String | StringName | string): boolean;
   public get_changed_settings(): PackedStringArray;
   public mark_setting_changed(_setting: String | StringName | string): void;
-  public const settings_changed: string = "settings_changed";
+  public get settings_changed(): Signal;
 }

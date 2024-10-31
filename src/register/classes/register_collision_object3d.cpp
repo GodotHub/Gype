@@ -5,12 +5,12 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shape3d.hpp>
-#include <godot_cpp/classes/collision_object3d.hpp>
-#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/collision_object3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -208,7 +208,7 @@ static const JSCFunctionListEntry collision_object3d_class_proto_funcs[] = {
 };
 static JSValue collision_object3d_class_get_input_event_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	CollisionObject3D *opaque = reinterpret_cast<CollisionObject3D *>(JS_GetOpaque(this_val, CollisionObject3D::__class_id));
+	CollisionObject3D *opaque = reinterpret_cast<CollisionObject3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "input_event_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "input_event").operator JSValue();
@@ -218,7 +218,7 @@ static JSValue collision_object3d_class_get_input_event_signal(JSContext *ctx, J
 }
 static JSValue collision_object3d_class_get_mouse_entered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	CollisionObject3D *opaque = reinterpret_cast<CollisionObject3D *>(JS_GetOpaque(this_val, CollisionObject3D::__class_id));
+	CollisionObject3D *opaque = reinterpret_cast<CollisionObject3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "mouse_entered_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "mouse_entered").operator JSValue();
@@ -228,7 +228,7 @@ static JSValue collision_object3d_class_get_mouse_entered_signal(JSContext *ctx,
 }
 static JSValue collision_object3d_class_get_mouse_exited_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	CollisionObject3D *opaque = reinterpret_cast<CollisionObject3D *>(JS_GetOpaque(this_val, CollisionObject3D::__class_id));
+	CollisionObject3D *opaque = reinterpret_cast<CollisionObject3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "mouse_exited_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "mouse_exited").operator JSValue();

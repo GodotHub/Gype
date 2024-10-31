@@ -1,10 +1,10 @@
 
-import { NavigationPathQueryResult2D } from "@godot/classes/navigation_path_query_result2d";
-import { Node } from "@godot/classes/node";
-import { NavigationPathQueryParameters2D } from "@godot/classes/navigation_path_query_parameters2d";
 import { NavigationPolygon } from "@godot/classes/navigation_polygon";
 import { NavigationMeshSourceGeometryData2D } from "@godot/classes/navigation_mesh_source_geometry_data2d";
+import { NavigationPathQueryParameters2D } from "@godot/classes/navigation_path_query_parameters2d";
 import { GodotObject } from "@godot/classes/godot_object";
+import { NavigationPathQueryResult2D } from "@godot/classes/navigation_path_query_result2d";
+import { Node } from "@godot/classes/node";
 
 export declare class NavigationServer2D extends GodotObject{
   public get_maps(): GDArray;
@@ -132,6 +132,6 @@ export declare class NavigationServer2D extends GodotObject{
   public free_rid(_rid: RID): void;
   public set_debug_enabled(_enabled: boolean): void;
   public get_debug_enabled(): boolean;
-  public const map_changed: string = "map_changed";
-  public const navigation_debug_changed: string = "navigation_debug_changed";
+  public get map_changed(): Signal;
+  public get navigation_debug_changed(): Signal;
 }

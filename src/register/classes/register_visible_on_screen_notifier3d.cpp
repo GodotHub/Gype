@@ -54,7 +54,7 @@ static const JSCFunctionListEntry visible_on_screen_notifier3d_class_proto_funcs
 };
 static JSValue visible_on_screen_notifier3d_class_get_screen_entered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	VisibleOnScreenNotifier3D *opaque = reinterpret_cast<VisibleOnScreenNotifier3D *>(JS_GetOpaque(this_val, VisibleOnScreenNotifier3D::__class_id));
+	VisibleOnScreenNotifier3D *opaque = reinterpret_cast<VisibleOnScreenNotifier3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "screen_entered_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "screen_entered").operator JSValue();
@@ -64,7 +64,7 @@ static JSValue visible_on_screen_notifier3d_class_get_screen_entered_signal(JSCo
 }
 static JSValue visible_on_screen_notifier3d_class_get_screen_exited_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	VisibleOnScreenNotifier3D *opaque = reinterpret_cast<VisibleOnScreenNotifier3D *>(JS_GetOpaque(this_val, VisibleOnScreenNotifier3D::__class_id));
+	VisibleOnScreenNotifier3D *opaque = reinterpret_cast<VisibleOnScreenNotifier3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "screen_exited_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "screen_exited").operator JSValue();

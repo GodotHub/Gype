@@ -1,7 +1,7 @@
 
-import { PopupMenu } from "@godot/classes/popup_menu";
-import { Button } from "@godot/classes/button";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Button } from "@godot/classes/button";
+import { PopupMenu } from "@godot/classes/popup_menu";
 
 export declare class OptionButton extends Button{
   public add_item(_label: String | StringName | string, _id: number): void;
@@ -62,6 +62,6 @@ export declare class OptionButton extends Button{
   public set item_count(value): void {
     set_item_count(value);
   }
-  public const item_selected: string = "item_selected";
-  public const item_focused: string = "item_focused";
+  public get item_selected(): Signal;
+  public get item_focused(): Signal;
 }

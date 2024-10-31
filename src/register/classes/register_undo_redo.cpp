@@ -159,7 +159,7 @@ static const JSCFunctionListEntry undo_redo_class_proto_funcs[] = {
 };
 static JSValue undo_redo_class_get_version_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	UndoRedo *opaque = reinterpret_cast<UndoRedo *>(JS_GetOpaque(this_val, UndoRedo::__class_id));
+	UndoRedo *opaque = reinterpret_cast<UndoRedo *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "version_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "version_changed").operator JSValue();

@@ -42,7 +42,7 @@ static JSValue popup_class_constructor(JSContext *ctx, JSValueConst new_target, 
 }
 static JSValue popup_class_get_popup_hide_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Popup *opaque = reinterpret_cast<Popup *>(JS_GetOpaque(this_val, Popup::__class_id));
+	Popup *opaque = reinterpret_cast<Popup *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "popup_hide_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "popup_hide").operator JSValue();

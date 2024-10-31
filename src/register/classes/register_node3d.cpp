@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/node3d_gizmo.hpp>
-#include <godot_cpp/classes/node3d_gizmo.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/world3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/node3d_gizmo.hpp>
+#include <godot_cpp/classes/world3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -397,7 +397,7 @@ static const JSCFunctionListEntry node3d_class_proto_funcs[] = {
 };
 static JSValue node3d_class_get_visibility_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Node3D *opaque = reinterpret_cast<Node3D *>(JS_GetOpaque(this_val, Node3D::__class_id));
+	Node3D *opaque = reinterpret_cast<Node3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "visibility_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "visibility_changed").operator JSValue();

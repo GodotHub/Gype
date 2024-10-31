@@ -5,12 +5,12 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/h_box_container.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/graph_edit.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/graph_frame.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/h_box_container.hpp>
-#include <godot_cpp/classes/graph_edit.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -398,7 +398,7 @@ static const JSCFunctionListEntry graph_edit_class_proto_funcs[] = {
 };
 static JSValue graph_edit_class_get_connection_request_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, GraphEdit::__class_id));
+	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "connection_request_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "connection_request").operator JSValue();
@@ -408,7 +408,7 @@ static JSValue graph_edit_class_get_connection_request_signal(JSContext *ctx, JS
 }
 static JSValue graph_edit_class_get_disconnection_request_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, GraphEdit::__class_id));
+	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "disconnection_request_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "disconnection_request").operator JSValue();
@@ -418,7 +418,7 @@ static JSValue graph_edit_class_get_disconnection_request_signal(JSContext *ctx,
 }
 static JSValue graph_edit_class_get_connection_to_empty_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, GraphEdit::__class_id));
+	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "connection_to_empty_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "connection_to_empty").operator JSValue();
@@ -428,7 +428,7 @@ static JSValue graph_edit_class_get_connection_to_empty_signal(JSContext *ctx, J
 }
 static JSValue graph_edit_class_get_connection_from_empty_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, GraphEdit::__class_id));
+	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "connection_from_empty_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "connection_from_empty").operator JSValue();
@@ -438,7 +438,7 @@ static JSValue graph_edit_class_get_connection_from_empty_signal(JSContext *ctx,
 }
 static JSValue graph_edit_class_get_connection_drag_started_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, GraphEdit::__class_id));
+	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "connection_drag_started_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "connection_drag_started").operator JSValue();
@@ -448,7 +448,7 @@ static JSValue graph_edit_class_get_connection_drag_started_signal(JSContext *ct
 }
 static JSValue graph_edit_class_get_connection_drag_ended_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, GraphEdit::__class_id));
+	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "connection_drag_ended_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "connection_drag_ended").operator JSValue();
@@ -458,7 +458,7 @@ static JSValue graph_edit_class_get_connection_drag_ended_signal(JSContext *ctx,
 }
 static JSValue graph_edit_class_get_copy_nodes_request_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, GraphEdit::__class_id));
+	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "copy_nodes_request_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "copy_nodes_request").operator JSValue();
@@ -468,7 +468,7 @@ static JSValue graph_edit_class_get_copy_nodes_request_signal(JSContext *ctx, JS
 }
 static JSValue graph_edit_class_get_paste_nodes_request_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, GraphEdit::__class_id));
+	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "paste_nodes_request_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "paste_nodes_request").operator JSValue();
@@ -478,7 +478,7 @@ static JSValue graph_edit_class_get_paste_nodes_request_signal(JSContext *ctx, J
 }
 static JSValue graph_edit_class_get_duplicate_nodes_request_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, GraphEdit::__class_id));
+	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "duplicate_nodes_request_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "duplicate_nodes_request").operator JSValue();
@@ -488,7 +488,7 @@ static JSValue graph_edit_class_get_duplicate_nodes_request_signal(JSContext *ct
 }
 static JSValue graph_edit_class_get_delete_nodes_request_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, GraphEdit::__class_id));
+	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "delete_nodes_request_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "delete_nodes_request").operator JSValue();
@@ -498,7 +498,7 @@ static JSValue graph_edit_class_get_delete_nodes_request_signal(JSContext *ctx, 
 }
 static JSValue graph_edit_class_get_node_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, GraphEdit::__class_id));
+	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "node_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "node_selected").operator JSValue();
@@ -508,7 +508,7 @@ static JSValue graph_edit_class_get_node_selected_signal(JSContext *ctx, JSValue
 }
 static JSValue graph_edit_class_get_node_deselected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, GraphEdit::__class_id));
+	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "node_deselected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "node_deselected").operator JSValue();
@@ -518,7 +518,7 @@ static JSValue graph_edit_class_get_node_deselected_signal(JSContext *ctx, JSVal
 }
 static JSValue graph_edit_class_get_frame_rect_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, GraphEdit::__class_id));
+	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "frame_rect_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "frame_rect_changed").operator JSValue();
@@ -528,7 +528,7 @@ static JSValue graph_edit_class_get_frame_rect_changed_signal(JSContext *ctx, JS
 }
 static JSValue graph_edit_class_get_popup_request_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, GraphEdit::__class_id));
+	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "popup_request_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "popup_request").operator JSValue();
@@ -538,7 +538,7 @@ static JSValue graph_edit_class_get_popup_request_signal(JSContext *ctx, JSValue
 }
 static JSValue graph_edit_class_get_begin_node_move_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, GraphEdit::__class_id));
+	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "begin_node_move_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "begin_node_move").operator JSValue();
@@ -548,7 +548,7 @@ static JSValue graph_edit_class_get_begin_node_move_signal(JSContext *ctx, JSVal
 }
 static JSValue graph_edit_class_get_end_node_move_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, GraphEdit::__class_id));
+	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "end_node_move_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "end_node_move").operator JSValue();
@@ -558,7 +558,7 @@ static JSValue graph_edit_class_get_end_node_move_signal(JSContext *ctx, JSValue
 }
 static JSValue graph_edit_class_get_graph_elements_linked_to_frame_request_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, GraphEdit::__class_id));
+	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "graph_elements_linked_to_frame_request_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "graph_elements_linked_to_frame_request").operator JSValue();
@@ -568,7 +568,7 @@ static JSValue graph_edit_class_get_graph_elements_linked_to_frame_request_signa
 }
 static JSValue graph_edit_class_get_scroll_offset_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, GraphEdit::__class_id));
+	GraphEdit *opaque = reinterpret_cast<GraphEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "scroll_offset_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "scroll_offset_changed").operator JSValue();

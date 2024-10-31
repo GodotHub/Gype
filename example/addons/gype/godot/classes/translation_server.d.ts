@@ -1,6 +1,6 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
 import { Translation } from "@godot/classes/translation";
+import { GodotObject } from "@godot/classes/godot_object";
 
 export declare class TranslationServer extends GodotObject{
   public set_locale(_locale: String | StringName | string): void;

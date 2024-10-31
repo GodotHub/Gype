@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/base_button.hpp>
 #include <godot_cpp/classes/button_group.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/base_button.hpp>
+#include <godot_cpp/classes/base_button.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -66,7 +66,7 @@ static const JSCFunctionListEntry button_group_class_proto_funcs[] = {
 };
 static JSValue button_group_class_get_pressed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ButtonGroup *opaque = reinterpret_cast<ButtonGroup *>(JS_GetOpaque(this_val, ButtonGroup::__class_id));
+	ButtonGroup *opaque = reinterpret_cast<ButtonGroup *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "pressed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "pressed").operator JSValue();

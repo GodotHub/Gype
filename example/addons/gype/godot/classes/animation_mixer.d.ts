@@ -1,7 +1,7 @@
 
-import { Animation } from "@godot/classes/animation";
 import { AnimationLibrary } from "@godot/classes/animation_library";
 import { Node } from "@godot/classes/node";
+import { Animation } from "@godot/classes/animation";
 
 export declare class AnimationMixer extends Node{
   public _post_process_key_value(_animation: Animation, _track: number, _value: any, _object_id: number, _object_sub_idx: number): any;
@@ -111,11 +111,11 @@ export declare class AnimationMixer extends Node{
     ANIMATION_CALLBACK_MODE_DISCRETE_RECESSIVE = 1,
     ANIMATION_CALLBACK_MODE_DISCRETE_FORCE_CONTINUOUS = 2,
   }
-  public const animation_list_changed: string = "animation_list_changed";
-  public const animation_libraries_updated: string = "animation_libraries_updated";
-  public const animation_finished: string = "animation_finished";
-  public const animation_started: string = "animation_started";
-  public const caches_cleared: string = "caches_cleared";
-  public const mixer_applied: string = "mixer_applied";
-  public const mixer_updated: string = "mixer_updated";
+  public get animation_list_changed(): Signal;
+  public get animation_libraries_updated(): Signal;
+  public get animation_finished(): Signal;
+  public get animation_started(): Signal;
+  public get caches_cleared(): Signal;
+  public get mixer_applied(): Signal;
+  public get mixer_updated(): Signal;
 }

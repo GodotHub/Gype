@@ -1,6 +1,6 @@
 
-import { NavigationPathQueryResult2D } from "@godot/classes/navigation_path_query_result2d";
 import { Node } from "@godot/classes/node";
+import { NavigationPathQueryResult2D } from "@godot/classes/navigation_path_query_result2d";
 
 export declare class NavigationAgent2D extends Node{
   public get_rid(): RID;
@@ -230,10 +230,10 @@ export declare class NavigationAgent2D extends Node{
   public set debug_path_custom_line_width(value): void {
     set_debug_path_custom_line_width(value);
   }
-  public const path_changed: string = "path_changed";
-  public const target_reached: string = "target_reached";
-  public const waypoint_reached: string = "waypoint_reached";
-  public const link_reached: string = "link_reached";
-  public const navigation_finished: string = "navigation_finished";
-  public const velocity_computed: string = "velocity_computed";
+  public get path_changed(): Signal;
+  public get target_reached(): Signal;
+  public get waypoint_reached(): Signal;
+  public get link_reached(): Signal;
+  public get navigation_finished(): Signal;
+  public get velocity_computed(): Signal;
 }

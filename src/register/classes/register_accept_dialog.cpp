@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/label.hpp>
-#include <godot_cpp/classes/window.hpp>
 #include <godot_cpp/classes/accept_dialog.hpp>
-#include <godot_cpp/classes/button.hpp>
+#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/label.hpp>
 #include <godot_cpp/classes/line_edit.hpp>
+#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -127,7 +127,7 @@ static const JSCFunctionListEntry accept_dialog_class_proto_funcs[] = {
 };
 static JSValue accept_dialog_class_get_confirmed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AcceptDialog *opaque = reinterpret_cast<AcceptDialog *>(JS_GetOpaque(this_val, AcceptDialog::__class_id));
+	AcceptDialog *opaque = reinterpret_cast<AcceptDialog *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "confirmed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "confirmed").operator JSValue();
@@ -137,7 +137,7 @@ static JSValue accept_dialog_class_get_confirmed_signal(JSContext *ctx, JSValueC
 }
 static JSValue accept_dialog_class_get_canceled_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AcceptDialog *opaque = reinterpret_cast<AcceptDialog *>(JS_GetOpaque(this_val, AcceptDialog::__class_id));
+	AcceptDialog *opaque = reinterpret_cast<AcceptDialog *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "canceled_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "canceled").operator JSValue();
@@ -147,7 +147,7 @@ static JSValue accept_dialog_class_get_canceled_signal(JSContext *ctx, JSValueCo
 }
 static JSValue accept_dialog_class_get_custom_action_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AcceptDialog *opaque = reinterpret_cast<AcceptDialog *>(JS_GetOpaque(this_val, AcceptDialog::__class_id));
+	AcceptDialog *opaque = reinterpret_cast<AcceptDialog *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "custom_action_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "custom_action").operator JSValue();

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/scene_tree_timer.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/scene_tree_timer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -54,7 +54,7 @@ static const JSCFunctionListEntry scene_tree_timer_class_proto_funcs[] = {
 };
 static JSValue scene_tree_timer_class_get_timeout_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	SceneTreeTimer *opaque = reinterpret_cast<SceneTreeTimer *>(JS_GetOpaque(this_val, SceneTreeTimer::__class_id));
+	SceneTreeTimer *opaque = reinterpret_cast<SceneTreeTimer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "timeout_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "timeout").operator JSValue();

@@ -1,9 +1,9 @@
 
 import { Node2D } from "@godot/classes/node2d";
 import { Gradient } from "@godot/classes/gradient";
-import { Curve } from "@godot/classes/curve";
-import { Node } from "@godot/classes/node";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Node } from "@godot/classes/node";
+import { Curve } from "@godot/classes/curve";
 
 export declare class CPUParticles2D extends Node2D{
   public set_emitting(_emitting: boolean): void;
@@ -498,5 +498,5 @@ export declare class CPUParticles2D extends Node2D{
     EMISSION_SHAPE_DIRECTED_POINTS = 5,
     EMISSION_SHAPE_MAX = 6,
   }
-  public const finished: string = "finished";
+  public get finished(): Signal;
 }

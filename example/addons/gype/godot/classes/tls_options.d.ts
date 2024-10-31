@@ -1,6 +1,6 @@
 
-import { CryptoKey } from "@godot/classes/crypto_key";
 import { X509Certificate } from "@godot/classes/x509_certificate";
+import { CryptoKey } from "@godot/classes/crypto_key";
 import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class TLSOptions extends RefCounted{

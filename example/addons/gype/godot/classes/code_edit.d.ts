@@ -1,6 +1,6 @@
 
-import { TextEdit } from "@godot/classes/text_edit";
 import { Resource } from "@godot/classes/resource";
+import { TextEdit } from "@godot/classes/text_edit";
 
 export declare class CodeEdit extends TextEdit{
   public _confirm_code_completion(_replace: boolean): void;
@@ -253,8 +253,8 @@ export declare class CodeEdit extends TextEdit{
     LOCATION_OTHER_USER_CODE = 512,
     LOCATION_OTHER = 1024,
   }
-  public const breakpoint_toggled: string = "breakpoint_toggled";
-  public const code_completion_requested: string = "code_completion_requested";
-  public const symbol_lookup: string = "symbol_lookup";
-  public const symbol_validate: string = "symbol_validate";
+  public get breakpoint_toggled(): Signal;
+  public get code_completion_requested(): Signal;
+  public get symbol_lookup(): Signal;
+  public get symbol_validate(): Signal;
 }

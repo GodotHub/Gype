@@ -273,7 +273,7 @@ static const JSCFunctionListEntry object_class_proto_funcs[] = {
 };
 static JSValue object_class_get_script_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Object *opaque = reinterpret_cast<Object *>(JS_GetOpaque(this_val, Object::__class_id));
+	Object *opaque = reinterpret_cast<Object *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "script_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "script_changed").operator JSValue();
@@ -283,7 +283,7 @@ static JSValue object_class_get_script_changed_signal(JSContext *ctx, JSValueCon
 }
 static JSValue object_class_get_property_list_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Object *opaque = reinterpret_cast<Object *>(JS_GetOpaque(this_val, Object::__class_id));
+	Object *opaque = reinterpret_cast<Object *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "property_list_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "property_list_changed").operator JSValue();

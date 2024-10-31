@@ -5,17 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/classes/world2d.hpp>
-#include <godot_cpp/classes/viewport_texture.hpp>
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/viewport.hpp>
-#include <godot_cpp/classes/world3d.hpp>
-#include <godot_cpp/classes/camera2d.hpp>
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/world2d.hpp>
+#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/viewport_texture.hpp>
+#include <godot_cpp/classes/world3d.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/viewport.hpp>
+#include <godot_cpp/classes/camera2d.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -618,7 +618,7 @@ static const JSCFunctionListEntry viewport_class_proto_funcs[] = {
 };
 static JSValue viewport_class_get_size_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Viewport *opaque = reinterpret_cast<Viewport *>(JS_GetOpaque(this_val, Viewport::__class_id));
+	Viewport *opaque = reinterpret_cast<Viewport *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "size_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "size_changed").operator JSValue();
@@ -628,7 +628,7 @@ static JSValue viewport_class_get_size_changed_signal(JSContext *ctx, JSValueCon
 }
 static JSValue viewport_class_get_gui_focus_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Viewport *opaque = reinterpret_cast<Viewport *>(JS_GetOpaque(this_val, Viewport::__class_id));
+	Viewport *opaque = reinterpret_cast<Viewport *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "gui_focus_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "gui_focus_changed").operator JSValue();

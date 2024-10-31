@@ -60,17 +60,17 @@ export declare class WebXRInterface extends XRInterface{
     TARGET_RAY_MODE_TRACKED_POINTER = 2,
     TARGET_RAY_MODE_SCREEN = 3,
   }
-  public const session_supported: string = "session_supported";
-  public const session_started: string = "session_started";
-  public const session_ended: string = "session_ended";
-  public const session_failed: string = "session_failed";
-  public const selectstart: string = "selectstart";
-  public const select: string = "select";
-  public const selectend: string = "selectend";
-  public const squeezestart: string = "squeezestart";
-  public const squeeze: string = "squeeze";
-  public const squeezeend: string = "squeezeend";
-  public const visibility_state_changed: string = "visibility_state_changed";
-  public const reference_space_reset: string = "reference_space_reset";
-  public const display_refresh_rate_changed: string = "display_refresh_rate_changed";
+  public get session_supported(): Signal;
+  public get session_started(): Signal;
+  public get session_ended(): Signal;
+  public get session_failed(): Signal;
+  public get selectstart(): Signal;
+  public get select(): Signal;
+  public get selectend(): Signal;
+  public get squeezestart(): Signal;
+  public get squeeze(): Signal;
+  public get squeezeend(): Signal;
+  public get visibility_state_changed(): Signal;
+  public get reference_space_reset(): Signal;
+  public get display_refresh_rate_changed(): Signal;
 }

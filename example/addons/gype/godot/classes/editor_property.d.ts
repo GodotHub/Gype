@@ -1,7 +1,7 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
-import { Control } from "@godot/classes/control";
 import { Container } from "@godot/classes/container";
+import { Control } from "@godot/classes/control";
+import { GodotObject } from "@godot/classes/godot_object";
 
 export declare class EditorProperty extends Container{
   public _update_property(): void;
@@ -21,7 +21,7 @@ export declare class EditorProperty extends Container{
   public set_deletable(_deletable: boolean): void;
   public is_deletable(): boolean;
   public get_edited_property(): StringName;
-  public get_edited_object(): Object;
+  public get_edited_object(): GodotObject;
   public update_property(): void;
   public add_focusable(_control: Control): void;
   public set_bottom_editor(_editor: Control): void;
@@ -68,15 +68,15 @@ export declare class EditorProperty extends Container{
   public set deletable(value): void {
     set_deletable(value);
   }
-  public const property_changed: string = "property_changed";
-  public const multiple_properties_changed: string = "multiple_properties_changed";
-  public const property_keyed: string = "property_keyed";
-  public const property_deleted: string = "property_deleted";
-  public const property_keyed_with_value: string = "property_keyed_with_value";
-  public const property_checked: string = "property_checked";
-  public const property_pinned: string = "property_pinned";
-  public const property_can_revert_changed: string = "property_can_revert_changed";
-  public const resource_selected: string = "resource_selected";
-  public const object_id_selected: string = "object_id_selected";
-  public const selected: string = "selected";
+  public get property_changed(): Signal;
+  public get multiple_properties_changed(): Signal;
+  public get property_keyed(): Signal;
+  public get property_deleted(): Signal;
+  public get property_keyed_with_value(): Signal;
+  public get property_checked(): Signal;
+  public get property_pinned(): Signal;
+  public get property_can_revert_changed(): Signal;
+  public get resource_selected(): Signal;
+  public get object_id_selected(): Signal;
+  public get selected(): Signal;
 }

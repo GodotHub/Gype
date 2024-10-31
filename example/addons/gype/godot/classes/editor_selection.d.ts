@@ -9,5 +9,5 @@ export declare class EditorSelection extends GodotObject{
   public remove_node(_node: Node): void;
   public get_selected_nodes(): GDArray;
   public get_transformable_selected_nodes(): GDArray;
-  public const selection_changed: string = "selection_changed";
+  public get selection_changed(): Signal;
 }

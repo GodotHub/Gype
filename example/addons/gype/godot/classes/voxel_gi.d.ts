@@ -1,8 +1,8 @@
 
 import { VoxelGIData } from "@godot/classes/voxel_gi_data";
 import { CameraAttributes } from "@godot/classes/camera_attributes";
-import { Node } from "@godot/classes/node";
 import { VisualInstance3D } from "@godot/classes/visual_instance3d";
+import { Node } from "@godot/classes/node";
 
 export declare class VoxelGI extends VisualInstance3D{
   public set_probe_data(_data: VoxelGIData): void;

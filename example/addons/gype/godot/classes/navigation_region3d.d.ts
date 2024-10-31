@@ -1,6 +1,6 @@
 
-import { NavigationMesh } from "@godot/classes/navigation_mesh";
 import { Node3D } from "@godot/classes/node3d";
+import { NavigationMesh } from "@godot/classes/navigation_mesh";
 
 export declare class NavigationRegion3D extends Node3D{
   public get_rid(): RID;
@@ -59,6 +59,6 @@ export declare class NavigationRegion3D extends Node3D{
   public set travel_cost(value): void {
     set_travel_cost(value);
   }
-  public const navigation_mesh_changed: string = "navigation_mesh_changed";
-  public const bake_finished: string = "bake_finished";
+  public get navigation_mesh_changed(): Signal;
+  public get bake_finished(): Signal;
 }

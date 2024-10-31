@@ -1,6 +1,6 @@
 
-import { Curve } from "@godot/classes/curve";
 import { AnimationNodeSync } from "@godot/classes/animation_node_sync";
+import { Curve } from "@godot/classes/curve";
 
 export declare class AnimationNodeTransition extends AnimationNodeSync{
   public set_input_count(_input_count: number): void;

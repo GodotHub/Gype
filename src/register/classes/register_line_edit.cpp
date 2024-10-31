@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -421,7 +421,7 @@ static const JSCFunctionListEntry line_edit_class_proto_funcs[] = {
 };
 static JSValue line_edit_class_get_text_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	LineEdit *opaque = reinterpret_cast<LineEdit *>(JS_GetOpaque(this_val, LineEdit::__class_id));
+	LineEdit *opaque = reinterpret_cast<LineEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "text_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "text_changed").operator JSValue();
@@ -431,7 +431,7 @@ static JSValue line_edit_class_get_text_changed_signal(JSContext *ctx, JSValueCo
 }
 static JSValue line_edit_class_get_text_change_rejected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	LineEdit *opaque = reinterpret_cast<LineEdit *>(JS_GetOpaque(this_val, LineEdit::__class_id));
+	LineEdit *opaque = reinterpret_cast<LineEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "text_change_rejected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "text_change_rejected").operator JSValue();
@@ -441,7 +441,7 @@ static JSValue line_edit_class_get_text_change_rejected_signal(JSContext *ctx, J
 }
 static JSValue line_edit_class_get_text_submitted_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	LineEdit *opaque = reinterpret_cast<LineEdit *>(JS_GetOpaque(this_val, LineEdit::__class_id));
+	LineEdit *opaque = reinterpret_cast<LineEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "text_submitted_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "text_submitted").operator JSValue();

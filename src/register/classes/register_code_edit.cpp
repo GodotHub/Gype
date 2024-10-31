@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/text_edit.hpp>
 #include <godot_cpp/classes/code_edit.hpp>
+#include <godot_cpp/classes/text_edit.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -590,7 +590,7 @@ static const JSCFunctionListEntry code_edit_class_proto_funcs[] = {
 };
 static JSValue code_edit_class_get_breakpoint_toggled_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	CodeEdit *opaque = reinterpret_cast<CodeEdit *>(JS_GetOpaque(this_val, CodeEdit::__class_id));
+	CodeEdit *opaque = reinterpret_cast<CodeEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "breakpoint_toggled_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "breakpoint_toggled").operator JSValue();
@@ -600,7 +600,7 @@ static JSValue code_edit_class_get_breakpoint_toggled_signal(JSContext *ctx, JSV
 }
 static JSValue code_edit_class_get_code_completion_requested_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	CodeEdit *opaque = reinterpret_cast<CodeEdit *>(JS_GetOpaque(this_val, CodeEdit::__class_id));
+	CodeEdit *opaque = reinterpret_cast<CodeEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "code_completion_requested_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "code_completion_requested").operator JSValue();
@@ -610,7 +610,7 @@ static JSValue code_edit_class_get_code_completion_requested_signal(JSContext *c
 }
 static JSValue code_edit_class_get_symbol_lookup_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	CodeEdit *opaque = reinterpret_cast<CodeEdit *>(JS_GetOpaque(this_val, CodeEdit::__class_id));
+	CodeEdit *opaque = reinterpret_cast<CodeEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "symbol_lookup_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "symbol_lookup").operator JSValue();
@@ -620,7 +620,7 @@ static JSValue code_edit_class_get_symbol_lookup_signal(JSContext *ctx, JSValueC
 }
 static JSValue code_edit_class_get_symbol_validate_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	CodeEdit *opaque = reinterpret_cast<CodeEdit *>(JS_GetOpaque(this_val, CodeEdit::__class_id));
+	CodeEdit *opaque = reinterpret_cast<CodeEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "symbol_validate_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "symbol_validate").operator JSValue();

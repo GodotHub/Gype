@@ -82,5 +82,5 @@ export declare class XRInterface extends RefCounted{
     XR_ENV_BLEND_MODE_ADDITIVE = 1,
     XR_ENV_BLEND_MODE_ALPHA_BLEND = 2,
   }
-  public const play_area_changed: string = "play_area_changed";
+  public get play_area_changed(): Signal;
 }

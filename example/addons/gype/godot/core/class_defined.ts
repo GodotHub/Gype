@@ -48,7 +48,7 @@ export function Tool(target: any) {
 //   }
 // }
 
-export function toPromise(signal: Signal) {
+export function to_promise(signal: Signal) {
   return new Promise((resolve, reject) => {
     const instance = signal.get_object();
     if (!GD.is_instance_id_valid(instance.get_instance_id()))

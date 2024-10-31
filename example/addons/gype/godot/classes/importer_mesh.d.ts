@@ -1,6 +1,6 @@
 
-import { Resource } from "@godot/classes/resource";
 import { ArrayMesh } from "@godot/classes/array_mesh";
+import { Resource } from "@godot/classes/resource";
 import { Material } from "@godot/classes/material";
 
 export declare class ImporterMesh extends Resource{

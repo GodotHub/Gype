@@ -1,27 +1,27 @@
 
-import { Script } from "@godot/classes/script";
 import { ConfigFile } from "@godot/classes/config_file";
-import { EditorScenePostImportPlugin } from "@godot/classes/editor_scene_post_import_plugin";
-import { InputEvent } from "@godot/classes/input_event";
-import { EditorNode3DGizmoPlugin } from "@godot/classes/editor_node3d_gizmo_plugin";
-import { EditorUndoRedoManager } from "@godot/classes/editor_undo_redo_manager";
-import { PopupMenu } from "@godot/classes/popup_menu";
-import { EditorSceneFormatImporter } from "@godot/classes/editor_scene_format_importer";
-import { Camera3D } from "@godot/classes/camera3d";
-import { GodotObject } from "@godot/classes/godot_object";
-import { Texture2D } from "@godot/classes/texture2d";
-import { EditorExportPlugin } from "@godot/classes/editor_export_plugin";
-import { EditorResourceConversionPlugin } from "@godot/classes/editor_resource_conversion_plugin";
-import { EditorInspectorPlugin } from "@godot/classes/editor_inspector_plugin";
-import { EditorImportPlugin } from "@godot/classes/editor_import_plugin";
-import { EditorInterface } from "@godot/classes/editor_interface";
-import { EditorDebuggerPlugin } from "@godot/classes/editor_debugger_plugin";
-import { EditorTranslationParserPlugin } from "@godot/classes/editor_translation_parser_plugin";
 import { Shortcut } from "@godot/classes/shortcut";
+import { EditorResourceConversionPlugin } from "@godot/classes/editor_resource_conversion_plugin";
 import { Node } from "@godot/classes/node";
-import { Button } from "@godot/classes/button";
+import { EditorSceneFormatImporter } from "@godot/classes/editor_scene_format_importer";
+import { EditorDebuggerPlugin } from "@godot/classes/editor_debugger_plugin";
+import { Camera3D } from "@godot/classes/camera3d";
+import { EditorUndoRedoManager } from "@godot/classes/editor_undo_redo_manager";
+import { Texture2D } from "@godot/classes/texture2d";
+import { EditorInterface } from "@godot/classes/editor_interface";
 import { Control } from "@godot/classes/control";
+import { Script } from "@godot/classes/script";
+import { GodotObject } from "@godot/classes/godot_object";
+import { EditorNode3DGizmoPlugin } from "@godot/classes/editor_node3d_gizmo_plugin";
+import { EditorTranslationParserPlugin } from "@godot/classes/editor_translation_parser_plugin";
+import { Button } from "@godot/classes/button";
+import { EditorScenePostImportPlugin } from "@godot/classes/editor_scene_post_import_plugin";
+import { EditorImportPlugin } from "@godot/classes/editor_import_plugin";
+import { InputEvent } from "@godot/classes/input_event";
+import { EditorExportPlugin } from "@godot/classes/editor_export_plugin";
+import { EditorInspectorPlugin } from "@godot/classes/editor_inspector_plugin";
 import { ScriptCreateDialog } from "@godot/classes/script_create_dialog";
+import { PopupMenu } from "@godot/classes/popup_menu";
 
 export declare class EditorPlugin extends Node{
   public _forward_canvas_gui_input(_event: InputEvent): boolean;
@@ -123,10 +123,10 @@ export declare class EditorPlugin extends Node{
     AFTER_GUI_INPUT_STOP = 1,
     AFTER_GUI_INPUT_CUSTOM = 2,
   }
-  public const scene_changed: string = "scene_changed";
-  public const scene_closed: string = "scene_closed";
-  public const main_screen_changed: string = "main_screen_changed";
-  public const resource_saved: string = "resource_saved";
-  public const scene_saved: string = "scene_saved";
-  public const project_settings_changed: string = "project_settings_changed";
+  public get scene_changed(): Signal;
+  public get scene_closed(): Signal;
+  public get main_screen_changed(): Signal;
+  public get resource_saved(): Signal;
+  public get scene_saved(): Signal;
+  public get project_settings_changed(): Signal;
 }

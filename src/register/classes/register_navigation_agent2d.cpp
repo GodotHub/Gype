@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/navigation_path_query_result2d.hpp>
 #include <godot_cpp/classes/navigation_agent2d.hpp>
+#include <godot_cpp/classes/navigation_path_query_result2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -400,7 +400,7 @@ static const JSCFunctionListEntry navigation_agent2d_class_proto_funcs[] = {
 };
 static JSValue navigation_agent2d_class_get_path_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	NavigationAgent2D *opaque = reinterpret_cast<NavigationAgent2D *>(JS_GetOpaque(this_val, NavigationAgent2D::__class_id));
+	NavigationAgent2D *opaque = reinterpret_cast<NavigationAgent2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "path_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "path_changed").operator JSValue();
@@ -410,7 +410,7 @@ static JSValue navigation_agent2d_class_get_path_changed_signal(JSContext *ctx, 
 }
 static JSValue navigation_agent2d_class_get_target_reached_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	NavigationAgent2D *opaque = reinterpret_cast<NavigationAgent2D *>(JS_GetOpaque(this_val, NavigationAgent2D::__class_id));
+	NavigationAgent2D *opaque = reinterpret_cast<NavigationAgent2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "target_reached_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "target_reached").operator JSValue();
@@ -420,7 +420,7 @@ static JSValue navigation_agent2d_class_get_target_reached_signal(JSContext *ctx
 }
 static JSValue navigation_agent2d_class_get_waypoint_reached_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	NavigationAgent2D *opaque = reinterpret_cast<NavigationAgent2D *>(JS_GetOpaque(this_val, NavigationAgent2D::__class_id));
+	NavigationAgent2D *opaque = reinterpret_cast<NavigationAgent2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "waypoint_reached_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "waypoint_reached").operator JSValue();
@@ -430,7 +430,7 @@ static JSValue navigation_agent2d_class_get_waypoint_reached_signal(JSContext *c
 }
 static JSValue navigation_agent2d_class_get_link_reached_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	NavigationAgent2D *opaque = reinterpret_cast<NavigationAgent2D *>(JS_GetOpaque(this_val, NavigationAgent2D::__class_id));
+	NavigationAgent2D *opaque = reinterpret_cast<NavigationAgent2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "link_reached_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "link_reached").operator JSValue();
@@ -440,7 +440,7 @@ static JSValue navigation_agent2d_class_get_link_reached_signal(JSContext *ctx, 
 }
 static JSValue navigation_agent2d_class_get_navigation_finished_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	NavigationAgent2D *opaque = reinterpret_cast<NavigationAgent2D *>(JS_GetOpaque(this_val, NavigationAgent2D::__class_id));
+	NavigationAgent2D *opaque = reinterpret_cast<NavigationAgent2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "navigation_finished_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "navigation_finished").operator JSValue();
@@ -450,7 +450,7 @@ static JSValue navigation_agent2d_class_get_navigation_finished_signal(JSContext
 }
 static JSValue navigation_agent2d_class_get_velocity_computed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	NavigationAgent2D *opaque = reinterpret_cast<NavigationAgent2D *>(JS_GetOpaque(this_val, NavigationAgent2D::__class_id));
+	NavigationAgent2D *opaque = reinterpret_cast<NavigationAgent2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "velocity_computed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "velocity_computed").operator JSValue();

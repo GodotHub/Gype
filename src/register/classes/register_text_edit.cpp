@@ -8,10 +8,10 @@
 #include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/text_edit.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/v_scroll_bar.hpp>
-#include <godot_cpp/classes/syntax_highlighter.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/h_scroll_bar.hpp>
+#include <godot_cpp/classes/syntax_highlighter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -1214,7 +1214,7 @@ static const JSCFunctionListEntry text_edit_class_proto_funcs[] = {
 };
 static JSValue text_edit_class_get_text_set_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	TextEdit *opaque = reinterpret_cast<TextEdit *>(JS_GetOpaque(this_val, TextEdit::__class_id));
+	TextEdit *opaque = reinterpret_cast<TextEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "text_set_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "text_set").operator JSValue();
@@ -1224,7 +1224,7 @@ static JSValue text_edit_class_get_text_set_signal(JSContext *ctx, JSValueConst 
 }
 static JSValue text_edit_class_get_text_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	TextEdit *opaque = reinterpret_cast<TextEdit *>(JS_GetOpaque(this_val, TextEdit::__class_id));
+	TextEdit *opaque = reinterpret_cast<TextEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "text_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "text_changed").operator JSValue();
@@ -1234,7 +1234,7 @@ static JSValue text_edit_class_get_text_changed_signal(JSContext *ctx, JSValueCo
 }
 static JSValue text_edit_class_get_lines_edited_from_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	TextEdit *opaque = reinterpret_cast<TextEdit *>(JS_GetOpaque(this_val, TextEdit::__class_id));
+	TextEdit *opaque = reinterpret_cast<TextEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "lines_edited_from_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "lines_edited_from").operator JSValue();
@@ -1244,7 +1244,7 @@ static JSValue text_edit_class_get_lines_edited_from_signal(JSContext *ctx, JSVa
 }
 static JSValue text_edit_class_get_caret_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	TextEdit *opaque = reinterpret_cast<TextEdit *>(JS_GetOpaque(this_val, TextEdit::__class_id));
+	TextEdit *opaque = reinterpret_cast<TextEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "caret_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "caret_changed").operator JSValue();
@@ -1254,7 +1254,7 @@ static JSValue text_edit_class_get_caret_changed_signal(JSContext *ctx, JSValueC
 }
 static JSValue text_edit_class_get_gutter_clicked_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	TextEdit *opaque = reinterpret_cast<TextEdit *>(JS_GetOpaque(this_val, TextEdit::__class_id));
+	TextEdit *opaque = reinterpret_cast<TextEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "gutter_clicked_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "gutter_clicked").operator JSValue();
@@ -1264,7 +1264,7 @@ static JSValue text_edit_class_get_gutter_clicked_signal(JSContext *ctx, JSValue
 }
 static JSValue text_edit_class_get_gutter_added_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	TextEdit *opaque = reinterpret_cast<TextEdit *>(JS_GetOpaque(this_val, TextEdit::__class_id));
+	TextEdit *opaque = reinterpret_cast<TextEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "gutter_added_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "gutter_added").operator JSValue();
@@ -1274,7 +1274,7 @@ static JSValue text_edit_class_get_gutter_added_signal(JSContext *ctx, JSValueCo
 }
 static JSValue text_edit_class_get_gutter_removed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	TextEdit *opaque = reinterpret_cast<TextEdit *>(JS_GetOpaque(this_val, TextEdit::__class_id));
+	TextEdit *opaque = reinterpret_cast<TextEdit *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "gutter_removed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "gutter_removed").operator JSValue();

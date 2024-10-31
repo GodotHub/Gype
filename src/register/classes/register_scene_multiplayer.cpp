@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/multiplayer_api.hpp>
 #include <godot_cpp/classes/scene_multiplayer.hpp>
+#include <godot_cpp/classes/multiplayer_api.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -154,7 +154,7 @@ static const JSCFunctionListEntry scene_multiplayer_class_proto_funcs[] = {
 };
 static JSValue scene_multiplayer_class_get_peer_authenticating_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	SceneMultiplayer *opaque = reinterpret_cast<SceneMultiplayer *>(JS_GetOpaque(this_val, SceneMultiplayer::__class_id));
+	SceneMultiplayer *opaque = reinterpret_cast<SceneMultiplayer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "peer_authenticating_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "peer_authenticating").operator JSValue();
@@ -164,7 +164,7 @@ static JSValue scene_multiplayer_class_get_peer_authenticating_signal(JSContext 
 }
 static JSValue scene_multiplayer_class_get_peer_authentication_failed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	SceneMultiplayer *opaque = reinterpret_cast<SceneMultiplayer *>(JS_GetOpaque(this_val, SceneMultiplayer::__class_id));
+	SceneMultiplayer *opaque = reinterpret_cast<SceneMultiplayer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "peer_authentication_failed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "peer_authentication_failed").operator JSValue();
@@ -174,7 +174,7 @@ static JSValue scene_multiplayer_class_get_peer_authentication_failed_signal(JSC
 }
 static JSValue scene_multiplayer_class_get_peer_packet_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	SceneMultiplayer *opaque = reinterpret_cast<SceneMultiplayer *>(JS_GetOpaque(this_val, SceneMultiplayer::__class_id));
+	SceneMultiplayer *opaque = reinterpret_cast<SceneMultiplayer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "peer_packet_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "peer_packet").operator JSValue();

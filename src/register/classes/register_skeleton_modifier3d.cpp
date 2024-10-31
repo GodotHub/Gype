@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/classes/skeleton_modifier3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -70,7 +70,7 @@ static const JSCFunctionListEntry skeleton_modifier3d_class_proto_funcs[] = {
 };
 static JSValue skeleton_modifier3d_class_get_modification_processed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	SkeletonModifier3D *opaque = reinterpret_cast<SkeletonModifier3D *>(JS_GetOpaque(this_val, SkeletonModifier3D::__class_id));
+	SkeletonModifier3D *opaque = reinterpret_cast<SkeletonModifier3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "modification_processed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "modification_processed").operator JSValue();

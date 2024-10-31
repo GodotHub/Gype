@@ -6,6 +6,6 @@ export declare class Container extends Control{
   public _get_allowed_size_flags_vertical(): PackedInt32Array;
   public queue_sort(): void;
   public fit_child_in_rect(_child: Control, _rect: Rect2): void;
-  public const pre_sort_children: string = "pre_sort_children";
-  public const sort_children: string = "sort_children";
+  public get pre_sort_children(): Signal;
+  public get sort_children(): Signal;
 }

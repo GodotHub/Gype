@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/mesh_library.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/grid_map.hpp>
 #include <godot_cpp/classes/physics_material.hpp>
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/mesh_library.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -282,7 +282,7 @@ static const JSCFunctionListEntry grid_map_class_proto_funcs[] = {
 };
 static JSValue grid_map_class_get_cell_size_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GridMap *opaque = reinterpret_cast<GridMap *>(JS_GetOpaque(this_val, GridMap::__class_id));
+	GridMap *opaque = reinterpret_cast<GridMap *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "cell_size_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "cell_size_changed").operator JSValue();
@@ -292,7 +292,7 @@ static JSValue grid_map_class_get_cell_size_changed_signal(JSContext *ctx, JSVal
 }
 static JSValue grid_map_class_get_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GridMap *opaque = reinterpret_cast<GridMap *>(JS_GetOpaque(this_val, GridMap::__class_id));
+	GridMap *opaque = reinterpret_cast<GridMap *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "changed").operator JSValue();

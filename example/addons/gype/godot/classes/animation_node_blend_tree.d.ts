@@ -20,5 +20,5 @@ export declare class AnimationNodeBlendTree extends AnimationRootNode{
   public set graph_offset(value): void {
     set_graph_offset(value);
   }
-  public const node_changed: string = "node_changed";
+  public get node_changed(): Signal;
 }

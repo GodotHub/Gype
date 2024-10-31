@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/container.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/editor_property.hpp>
+#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -146,7 +146,7 @@ static const JSCFunctionListEntry editor_property_class_proto_funcs[] = {
 };
 static JSValue editor_property_class_get_property_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, EditorProperty::__class_id));
+	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "property_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "property_changed").operator JSValue();
@@ -156,7 +156,7 @@ static JSValue editor_property_class_get_property_changed_signal(JSContext *ctx,
 }
 static JSValue editor_property_class_get_multiple_properties_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, EditorProperty::__class_id));
+	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "multiple_properties_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "multiple_properties_changed").operator JSValue();
@@ -166,7 +166,7 @@ static JSValue editor_property_class_get_multiple_properties_changed_signal(JSCo
 }
 static JSValue editor_property_class_get_property_keyed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, EditorProperty::__class_id));
+	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "property_keyed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "property_keyed").operator JSValue();
@@ -176,7 +176,7 @@ static JSValue editor_property_class_get_property_keyed_signal(JSContext *ctx, J
 }
 static JSValue editor_property_class_get_property_deleted_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, EditorProperty::__class_id));
+	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "property_deleted_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "property_deleted").operator JSValue();
@@ -186,7 +186,7 @@ static JSValue editor_property_class_get_property_deleted_signal(JSContext *ctx,
 }
 static JSValue editor_property_class_get_property_keyed_with_value_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, EditorProperty::__class_id));
+	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "property_keyed_with_value_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "property_keyed_with_value").operator JSValue();
@@ -196,7 +196,7 @@ static JSValue editor_property_class_get_property_keyed_with_value_signal(JSCont
 }
 static JSValue editor_property_class_get_property_checked_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, EditorProperty::__class_id));
+	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "property_checked_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "property_checked").operator JSValue();
@@ -206,7 +206,7 @@ static JSValue editor_property_class_get_property_checked_signal(JSContext *ctx,
 }
 static JSValue editor_property_class_get_property_pinned_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, EditorProperty::__class_id));
+	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "property_pinned_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "property_pinned").operator JSValue();
@@ -216,7 +216,7 @@ static JSValue editor_property_class_get_property_pinned_signal(JSContext *ctx, 
 }
 static JSValue editor_property_class_get_property_can_revert_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, EditorProperty::__class_id));
+	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "property_can_revert_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "property_can_revert_changed").operator JSValue();
@@ -226,7 +226,7 @@ static JSValue editor_property_class_get_property_can_revert_changed_signal(JSCo
 }
 static JSValue editor_property_class_get_resource_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, EditorProperty::__class_id));
+	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "resource_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "resource_selected").operator JSValue();
@@ -236,7 +236,7 @@ static JSValue editor_property_class_get_resource_selected_signal(JSContext *ctx
 }
 static JSValue editor_property_class_get_object_id_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, EditorProperty::__class_id));
+	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "object_id_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "object_id_selected").operator JSValue();
@@ -246,7 +246,7 @@ static JSValue editor_property_class_get_object_id_selected_signal(JSContext *ct
 }
 static JSValue editor_property_class_get_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, EditorProperty::__class_id));
+	EditorProperty *opaque = reinterpret_cast<EditorProperty *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "selected").operator JSValue();

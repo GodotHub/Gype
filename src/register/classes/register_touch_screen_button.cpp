@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/bit_map.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/shape2d.hpp>
-#include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/bit_map.hpp>
 #include <godot_cpp/classes/touch_screen_button.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -142,7 +142,7 @@ static const JSCFunctionListEntry touch_screen_button_class_proto_funcs[] = {
 };
 static JSValue touch_screen_button_class_get_pressed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	TouchScreenButton *opaque = reinterpret_cast<TouchScreenButton *>(JS_GetOpaque(this_val, TouchScreenButton::__class_id));
+	TouchScreenButton *opaque = reinterpret_cast<TouchScreenButton *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "pressed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "pressed").operator JSValue();
@@ -152,7 +152,7 @@ static JSValue touch_screen_button_class_get_pressed_signal(JSContext *ctx, JSVa
 }
 static JSValue touch_screen_button_class_get_released_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	TouchScreenButton *opaque = reinterpret_cast<TouchScreenButton *>(JS_GetOpaque(this_val, TouchScreenButton::__class_id));
+	TouchScreenButton *opaque = reinterpret_cast<TouchScreenButton *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "released_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "released").operator JSValue();

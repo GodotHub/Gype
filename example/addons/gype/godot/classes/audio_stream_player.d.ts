@@ -1,7 +1,7 @@
 
 import { AudioStream } from "@godot/classes/audio_stream";
-import { Node } from "@godot/classes/node";
 import { AudioStreamPlayback } from "@godot/classes/audio_stream_playback";
+import { Node } from "@godot/classes/node";
 
 export declare class AudioStreamPlayer extends Node{
   public set_stream(_stream: AudioStream): void;
@@ -94,5 +94,5 @@ export declare class AudioStreamPlayer extends Node{
     MIX_TARGET_SURROUND = 1,
     MIX_TARGET_CENTER = 2,
   }
-  public const finished: string = "finished";
+  public get finished(): Signal;
 }

@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/animation_library.hpp>
-#include <godot_cpp/classes/animation.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/animation_mixer.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/animation.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -236,7 +236,7 @@ static const JSCFunctionListEntry animation_mixer_class_proto_funcs[] = {
 };
 static JSValue animation_mixer_class_get_animation_list_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimationMixer *opaque = reinterpret_cast<AnimationMixer *>(JS_GetOpaque(this_val, AnimationMixer::__class_id));
+	AnimationMixer *opaque = reinterpret_cast<AnimationMixer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "animation_list_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "animation_list_changed").operator JSValue();
@@ -246,7 +246,7 @@ static JSValue animation_mixer_class_get_animation_list_changed_signal(JSContext
 }
 static JSValue animation_mixer_class_get_animation_libraries_updated_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimationMixer *opaque = reinterpret_cast<AnimationMixer *>(JS_GetOpaque(this_val, AnimationMixer::__class_id));
+	AnimationMixer *opaque = reinterpret_cast<AnimationMixer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "animation_libraries_updated_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "animation_libraries_updated").operator JSValue();
@@ -256,7 +256,7 @@ static JSValue animation_mixer_class_get_animation_libraries_updated_signal(JSCo
 }
 static JSValue animation_mixer_class_get_animation_finished_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimationMixer *opaque = reinterpret_cast<AnimationMixer *>(JS_GetOpaque(this_val, AnimationMixer::__class_id));
+	AnimationMixer *opaque = reinterpret_cast<AnimationMixer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "animation_finished_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "animation_finished").operator JSValue();
@@ -266,7 +266,7 @@ static JSValue animation_mixer_class_get_animation_finished_signal(JSContext *ct
 }
 static JSValue animation_mixer_class_get_animation_started_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimationMixer *opaque = reinterpret_cast<AnimationMixer *>(JS_GetOpaque(this_val, AnimationMixer::__class_id));
+	AnimationMixer *opaque = reinterpret_cast<AnimationMixer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "animation_started_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "animation_started").operator JSValue();
@@ -276,7 +276,7 @@ static JSValue animation_mixer_class_get_animation_started_signal(JSContext *ctx
 }
 static JSValue animation_mixer_class_get_caches_cleared_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimationMixer *opaque = reinterpret_cast<AnimationMixer *>(JS_GetOpaque(this_val, AnimationMixer::__class_id));
+	AnimationMixer *opaque = reinterpret_cast<AnimationMixer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "caches_cleared_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "caches_cleared").operator JSValue();
@@ -286,7 +286,7 @@ static JSValue animation_mixer_class_get_caches_cleared_signal(JSContext *ctx, J
 }
 static JSValue animation_mixer_class_get_mixer_applied_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimationMixer *opaque = reinterpret_cast<AnimationMixer *>(JS_GetOpaque(this_val, AnimationMixer::__class_id));
+	AnimationMixer *opaque = reinterpret_cast<AnimationMixer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "mixer_applied_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "mixer_applied").operator JSValue();
@@ -296,7 +296,7 @@ static JSValue animation_mixer_class_get_mixer_applied_signal(JSContext *ctx, JS
 }
 static JSValue animation_mixer_class_get_mixer_updated_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimationMixer *opaque = reinterpret_cast<AnimationMixer *>(JS_GetOpaque(this_val, AnimationMixer::__class_id));
+	AnimationMixer *opaque = reinterpret_cast<AnimationMixer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "mixer_updated_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "mixer_updated").operator JSValue();

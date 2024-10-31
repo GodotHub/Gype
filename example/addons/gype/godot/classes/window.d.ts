@@ -1,10 +1,10 @@
 
-import { Theme } from "@godot/classes/theme";
-import { Font } from "@godot/classes/font";
-import { Viewport } from "@godot/classes/viewport";
-import { Texture2D } from "@godot/classes/texture2d";
 import { StyleBox } from "@godot/classes/style_box";
 import { Node } from "@godot/classes/node";
+import { Theme } from "@godot/classes/theme";
+import { Texture2D } from "@godot/classes/texture2d";
+import { Viewport } from "@godot/classes/viewport";
+import { Font } from "@godot/classes/font";
 
 export declare class Window extends Viewport{
   public _get_contents_minimum_size(): Vector2;
@@ -367,17 +367,17 @@ export declare class Window extends Viewport{
     WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_MOUSE_FOCUS = 4,
     WINDOW_INITIAL_POSITION_CENTER_SCREEN_WITH_KEYBOARD_FOCUS = 5,
   }
-  public const window_input: string = "window_input";
-  public const files_dropped: string = "files_dropped";
-  public const mouse_entered: string = "mouse_entered";
-  public const mouse_exited: string = "mouse_exited";
-  public const focus_entered: string = "focus_entered";
-  public const focus_exited: string = "focus_exited";
-  public const close_requested: string = "close_requested";
-  public const go_back_requested: string = "go_back_requested";
-  public const visibility_changed: string = "visibility_changed";
-  public const about_to_popup: string = "about_to_popup";
-  public const theme_changed: string = "theme_changed";
-  public const dpi_changed: string = "dpi_changed";
-  public const titlebar_changed: string = "titlebar_changed";
+  public get window_input(): Signal;
+  public get files_dropped(): Signal;
+  public get mouse_entered(): Signal;
+  public get mouse_exited(): Signal;
+  public get focus_entered(): Signal;
+  public get focus_exited(): Signal;
+  public get close_requested(): Signal;
+  public get go_back_requested(): Signal;
+  public get visibility_changed(): Signal;
+  public get about_to_popup(): Signal;
+  public get theme_changed(): Signal;
+  public get dpi_changed(): Signal;
+  public get titlebar_changed(): Signal;
 }

@@ -40,5 +40,5 @@ export declare class SplitContainer extends Container{
     DRAGGER_HIDDEN = 1,
     DRAGGER_HIDDEN_COLLAPSED = 2,
   }
-  public const dragged: string = "dragged";
+  public get dragged(): Signal;
 }

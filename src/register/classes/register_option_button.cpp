@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/option_button.hpp>
+#include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -216,7 +216,7 @@ static const JSCFunctionListEntry option_button_class_proto_funcs[] = {
 };
 static JSValue option_button_class_get_item_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	OptionButton *opaque = reinterpret_cast<OptionButton *>(JS_GetOpaque(this_val, OptionButton::__class_id));
+	OptionButton *opaque = reinterpret_cast<OptionButton *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "item_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "item_selected").operator JSValue();
@@ -226,7 +226,7 @@ static JSValue option_button_class_get_item_selected_signal(JSContext *ctx, JSVa
 }
 static JSValue option_button_class_get_item_focused_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	OptionButton *opaque = reinterpret_cast<OptionButton *>(JS_GetOpaque(this_val, OptionButton::__class_id));
+	OptionButton *opaque = reinterpret_cast<OptionButton *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "item_focused_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "item_focused").operator JSValue();

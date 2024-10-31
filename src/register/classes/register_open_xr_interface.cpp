@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/classes/open_xr_interface.hpp>
+#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -189,7 +189,7 @@ static const JSCFunctionListEntry open_xr_interface_class_proto_funcs[] = {
 };
 static JSValue open_xr_interface_class_get_session_begun_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, OpenXRInterface::__class_id));
+	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_begun_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "session_begun").operator JSValue();
@@ -199,7 +199,7 @@ static JSValue open_xr_interface_class_get_session_begun_signal(JSContext *ctx, 
 }
 static JSValue open_xr_interface_class_get_session_stopping_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, OpenXRInterface::__class_id));
+	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_stopping_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "session_stopping").operator JSValue();
@@ -209,7 +209,7 @@ static JSValue open_xr_interface_class_get_session_stopping_signal(JSContext *ct
 }
 static JSValue open_xr_interface_class_get_session_focussed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, OpenXRInterface::__class_id));
+	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_focussed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "session_focussed").operator JSValue();
@@ -219,7 +219,7 @@ static JSValue open_xr_interface_class_get_session_focussed_signal(JSContext *ct
 }
 static JSValue open_xr_interface_class_get_session_visible_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, OpenXRInterface::__class_id));
+	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_visible_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "session_visible").operator JSValue();
@@ -229,7 +229,7 @@ static JSValue open_xr_interface_class_get_session_visible_signal(JSContext *ctx
 }
 static JSValue open_xr_interface_class_get_session_loss_pending_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, OpenXRInterface::__class_id));
+	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_loss_pending_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "session_loss_pending").operator JSValue();
@@ -239,7 +239,7 @@ static JSValue open_xr_interface_class_get_session_loss_pending_signal(JSContext
 }
 static JSValue open_xr_interface_class_get_instance_exiting_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, OpenXRInterface::__class_id));
+	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "instance_exiting_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "instance_exiting").operator JSValue();
@@ -249,7 +249,7 @@ static JSValue open_xr_interface_class_get_instance_exiting_signal(JSContext *ct
 }
 static JSValue open_xr_interface_class_get_pose_recentered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, OpenXRInterface::__class_id));
+	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "pose_recentered_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "pose_recentered").operator JSValue();
@@ -259,7 +259,7 @@ static JSValue open_xr_interface_class_get_pose_recentered_signal(JSContext *ctx
 }
 static JSValue open_xr_interface_class_get_refresh_rate_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, OpenXRInterface::__class_id));
+	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "refresh_rate_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "refresh_rate_changed").operator JSValue();

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/tree.hpp>
 #include <godot_cpp/classes/tree_item.hpp>
+#include <godot_cpp/classes/tree.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -350,7 +350,7 @@ static const JSCFunctionListEntry tree_class_proto_funcs[] = {
 };
 static JSValue tree_class_get_item_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, Tree::__class_id));
+	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "item_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "item_selected").operator JSValue();
@@ -360,7 +360,7 @@ static JSValue tree_class_get_item_selected_signal(JSContext *ctx, JSValueConst 
 }
 static JSValue tree_class_get_cell_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, Tree::__class_id));
+	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "cell_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "cell_selected").operator JSValue();
@@ -370,7 +370,7 @@ static JSValue tree_class_get_cell_selected_signal(JSContext *ctx, JSValueConst 
 }
 static JSValue tree_class_get_multi_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, Tree::__class_id));
+	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "multi_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "multi_selected").operator JSValue();
@@ -380,7 +380,7 @@ static JSValue tree_class_get_multi_selected_signal(JSContext *ctx, JSValueConst
 }
 static JSValue tree_class_get_item_mouse_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, Tree::__class_id));
+	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "item_mouse_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "item_mouse_selected").operator JSValue();
@@ -390,7 +390,7 @@ static JSValue tree_class_get_item_mouse_selected_signal(JSContext *ctx, JSValue
 }
 static JSValue tree_class_get_empty_clicked_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, Tree::__class_id));
+	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "empty_clicked_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "empty_clicked").operator JSValue();
@@ -400,7 +400,7 @@ static JSValue tree_class_get_empty_clicked_signal(JSContext *ctx, JSValueConst 
 }
 static JSValue tree_class_get_item_edited_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, Tree::__class_id));
+	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "item_edited_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "item_edited").operator JSValue();
@@ -410,7 +410,7 @@ static JSValue tree_class_get_item_edited_signal(JSContext *ctx, JSValueConst th
 }
 static JSValue tree_class_get_custom_item_clicked_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, Tree::__class_id));
+	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "custom_item_clicked_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "custom_item_clicked").operator JSValue();
@@ -420,7 +420,7 @@ static JSValue tree_class_get_custom_item_clicked_signal(JSContext *ctx, JSValue
 }
 static JSValue tree_class_get_item_icon_double_clicked_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, Tree::__class_id));
+	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "item_icon_double_clicked_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "item_icon_double_clicked").operator JSValue();
@@ -430,7 +430,7 @@ static JSValue tree_class_get_item_icon_double_clicked_signal(JSContext *ctx, JS
 }
 static JSValue tree_class_get_item_collapsed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, Tree::__class_id));
+	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "item_collapsed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "item_collapsed").operator JSValue();
@@ -440,7 +440,7 @@ static JSValue tree_class_get_item_collapsed_signal(JSContext *ctx, JSValueConst
 }
 static JSValue tree_class_get_check_propagated_to_item_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, Tree::__class_id));
+	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "check_propagated_to_item_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "check_propagated_to_item").operator JSValue();
@@ -450,7 +450,7 @@ static JSValue tree_class_get_check_propagated_to_item_signal(JSContext *ctx, JS
 }
 static JSValue tree_class_get_button_clicked_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, Tree::__class_id));
+	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "button_clicked_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "button_clicked").operator JSValue();
@@ -460,7 +460,7 @@ static JSValue tree_class_get_button_clicked_signal(JSContext *ctx, JSValueConst
 }
 static JSValue tree_class_get_custom_popup_edited_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, Tree::__class_id));
+	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "custom_popup_edited_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "custom_popup_edited").operator JSValue();
@@ -470,7 +470,7 @@ static JSValue tree_class_get_custom_popup_edited_signal(JSContext *ctx, JSValue
 }
 static JSValue tree_class_get_item_activated_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, Tree::__class_id));
+	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "item_activated_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "item_activated").operator JSValue();
@@ -480,7 +480,7 @@ static JSValue tree_class_get_item_activated_signal(JSContext *ctx, JSValueConst
 }
 static JSValue tree_class_get_column_title_clicked_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, Tree::__class_id));
+	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "column_title_clicked_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "column_title_clicked").operator JSValue();
@@ -490,7 +490,7 @@ static JSValue tree_class_get_column_title_clicked_signal(JSContext *ctx, JSValu
 }
 static JSValue tree_class_get_nothing_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, Tree::__class_id));
+	Tree *opaque = reinterpret_cast<Tree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "nothing_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "nothing_selected").operator JSValue();

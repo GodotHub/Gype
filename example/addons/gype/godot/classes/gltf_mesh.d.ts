@@ -1,7 +1,7 @@
 
-import { ImporterMesh } from "@godot/classes/importer_mesh";
 import { Resource } from "@godot/classes/resource";
 import { Material } from "@godot/classes/material";
+import { ImporterMesh } from "@godot/classes/importer_mesh";
 
 export declare class GLTFMesh extends Resource{
   public get_original_name(): String;
@@ -20,7 +20,7 @@ export declare class GLTFMesh extends Resource{
   public set original_name(value): void {
     set_original_name(value);
   }
-  public get mesh(): Object {
+  public get mesh(): GodotObject {
     get_mesh();
   }
   public set mesh(value): void {

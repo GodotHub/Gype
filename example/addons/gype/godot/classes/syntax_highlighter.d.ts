@@ -1,6 +1,6 @@
 
-import { TextEdit } from "@godot/classes/text_edit";
 import { Resource } from "@godot/classes/resource";
+import { TextEdit } from "@godot/classes/text_edit";
 
 export declare class SyntaxHighlighter extends Resource{
   public _get_line_syntax_highlighting(_line: number): Dictionary;

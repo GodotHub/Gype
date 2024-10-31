@@ -54,7 +54,7 @@ static const JSCFunctionListEntry container_class_proto_funcs[] = {
 };
 static JSValue container_class_get_pre_sort_children_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Container *opaque = reinterpret_cast<Container *>(JS_GetOpaque(this_val, Container::__class_id));
+	Container *opaque = reinterpret_cast<Container *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "pre_sort_children_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "pre_sort_children").operator JSValue();
@@ -64,7 +64,7 @@ static JSValue container_class_get_pre_sort_children_signal(JSContext *ctx, JSVa
 }
 static JSValue container_class_get_sort_children_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Container *opaque = reinterpret_cast<Container *>(JS_GetOpaque(this_val, Container::__class_id));
+	Container *opaque = reinterpret_cast<Container *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "sort_children_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "sort_children").operator JSValue();

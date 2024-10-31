@@ -61,5 +61,5 @@ export declare class SkeletonProfile extends Resource{
     TAIL_DIRECTION_SPECIFIC_CHILD = 1,
     TAIL_DIRECTION_END = 2,
   }
-  public const profile_updated: string = "profile_updated";
+  public get profile_updated(): Signal;
 }

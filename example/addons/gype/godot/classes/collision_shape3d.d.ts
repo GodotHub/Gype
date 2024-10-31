@@ -1,6 +1,6 @@
 
-import { Shape3D } from "@godot/classes/shape3d";
 import { Resource } from "@godot/classes/resource";
+import { Shape3D } from "@godot/classes/shape3d";
 import { Node3D } from "@godot/classes/node3d";
 
 export declare class CollisionShape3D extends Node3D{

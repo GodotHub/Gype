@@ -1,6 +1,6 @@
 
-import { GPUParticlesAttractor3D } from "@godot/classes/gpu_particles_attractor3d";
 import { Texture3D } from "@godot/classes/texture3d";
+import { GPUParticlesAttractor3D } from "@godot/classes/gpu_particles_attractor3d";
 
 export declare class GPUParticlesAttractorVectorField3D extends GPUParticlesAttractor3D{
   public set_size(_size: Vector3): void;

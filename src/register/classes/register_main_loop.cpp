@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/main_loop.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/main_loop.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -42,7 +42,7 @@ static JSValue main_loop_class_constructor(JSContext *ctx, JSValueConst new_targ
 }
 static JSValue main_loop_class_get_on_request_permissions_result_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	MainLoop *opaque = reinterpret_cast<MainLoop *>(JS_GetOpaque(this_val, MainLoop::__class_id));
+	MainLoop *opaque = reinterpret_cast<MainLoop *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "on_request_permissions_result_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "on_request_permissions_result").operator JSValue();

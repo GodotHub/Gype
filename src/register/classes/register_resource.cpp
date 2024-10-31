@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -121,7 +121,7 @@ static const JSCFunctionListEntry resource_class_static_funcs[] = {
 };
 static JSValue resource_class_get_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Resource *opaque = reinterpret_cast<Resource *>(JS_GetOpaque(this_val, Resource::__class_id));
+	Resource *opaque = reinterpret_cast<Resource *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "changed").operator JSValue();
@@ -131,7 +131,7 @@ static JSValue resource_class_get_changed_signal(JSContext *ctx, JSValueConst th
 }
 static JSValue resource_class_get_setup_local_to_scene_requested_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Resource *opaque = reinterpret_cast<Resource *>(JS_GetOpaque(this_val, Resource::__class_id));
+	Resource *opaque = reinterpret_cast<Resource *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "setup_local_to_scene_requested_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "setup_local_to_scene_requested").operator JSValue();

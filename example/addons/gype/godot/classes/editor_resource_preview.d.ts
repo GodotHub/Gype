@@ -1,7 +1,7 @@
 
+import { GodotObject } from "@godot/classes/godot_object";
 import { Resource } from "@godot/classes/resource";
 import { Node } from "@godot/classes/node";
-import { GodotObject } from "@godot/classes/godot_object";
 import { EditorResourcePreviewGenerator } from "@godot/classes/editor_resource_preview_generator";
 
 export declare class EditorResourcePreview extends Node{
@@ -10,5 +10,5 @@ export declare class EditorResourcePreview extends Node{
   public add_preview_generator(_generator: EditorResourcePreviewGenerator): void;
   public remove_preview_generator(_generator: EditorResourcePreviewGenerator): void;
   public check_for_invalidation(_path: String | StringName | string): void;
-  public const preview_invalidated: string = "preview_invalidated";
+  public get preview_invalidated(): Signal;
 }

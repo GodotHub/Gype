@@ -1,8 +1,8 @@
 
-import { InputEvent } from "@godot/classes/input_event";
-import { Shape3D } from "@godot/classes/shape3d";
 import { Camera3D } from "@godot/classes/camera3d";
+import { InputEvent } from "@godot/classes/input_event";
 import { GodotObject } from "@godot/classes/godot_object";
+import { Shape3D } from "@godot/classes/shape3d";
 import { Node3D } from "@godot/classes/node3d";
 
 export declare class CollisionObject3D extends Node3D{
@@ -31,7 +31,7 @@ export declare class CollisionObject3D extends Node3D{
   public get_shape_owners(): PackedInt32Array;
   public shape_owner_set_transform(_owner_id: number, _transform: Transform3D): void;
   public shape_owner_get_transform(_owner_id: number): Transform3D;
-  public shape_owner_get_owner(_owner_id: number): Object;
+  public shape_owner_get_owner(_owner_id: number): GodotObject;
   public shape_owner_set_disabled(_owner_id: number, _disabled: boolean): void;
   public is_shape_owner_disabled(_owner_id: number): boolean;
   public shape_owner_add_shape(_owner_id: number, _shape: Shape3D): void;
@@ -82,7 +82,7 @@ export declare class CollisionObject3D extends Node3D{
     DISABLE_MODE_MAKE_STATIC = 1,
     DISABLE_MODE_KEEP_ACTIVE = 2,
   }
-  public const input_event: string = "input_event";
-  public const mouse_entered: string = "mouse_entered";
-  public const mouse_exited: string = "mouse_exited";
+  public get input_event(): Signal;
+  public get mouse_entered(): Signal;
+  public get mouse_exited(): Signal;
 }

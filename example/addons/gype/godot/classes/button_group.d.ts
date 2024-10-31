@@ -1,7 +1,7 @@
 
 import { BaseButton } from "@godot/classes/base_button";
-import { BaseButton } from "@godot/classes/base_button";
 import { Resource } from "@godot/classes/resource";
+import { BaseButton } from "@godot/classes/base_button";
 
 export declare class ButtonGroup extends Resource{
   public get_pressed_button(): BaseButton;
@@ -14,5 +14,5 @@ export declare class ButtonGroup extends Resource{
   public set allow_unpress(value): void {
     set_allow_unpress(value);
   }
-  public const pressed: string = "pressed";
+  public get pressed(): Signal;
 }

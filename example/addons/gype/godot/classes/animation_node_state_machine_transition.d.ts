@@ -85,5 +85,5 @@ export declare class AnimationNodeStateMachineTransition extends Resource{
     ADVANCE_MODE_ENABLED = 1,
     ADVANCE_MODE_AUTO = 2,
   }
-  public const advance_condition_changed: string = "advance_condition_changed";
+  public get advance_condition_changed(): Signal;
 }

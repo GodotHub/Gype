@@ -27,9 +27,21 @@ import { {{den}} } from "@godot/classes/{{camel_to_snake(den)}}";
   {%- endif %}
 {%- endfor %}
 
+{%- macro process_vararg(is_vararg, arg) %}
+  {%- if is_vararg -%}
+    {%- if arg -%}
+, ...arg: {{set_type(arg['type'])}}
+    {%- else -%}
+...arg: any
+    {%- endif -%}
+  {%- endif -%}
+{%- endmacro %}
+
 export declare class {{class_name}} {{extends(class)}}{
   {%- for method in class['methods'] %}
-  public {{method['name']}}({{connect_args(method['arguments'])}}){{set_return(method['return_value']['type'] if method['return_value'] else None)}};
+    {%- if not method['invalid'] %}
+  public {{method['name']}}({{connect_args(method['arguments']) + process_vararg(method['is_vararg'], method['arguments']|last)}}){{set_return(method['return_value']['type'] if method['return_value'] else None)}};
+    {%- endif %}
   {%- endfor %}
   {%- for prop in class['properties'] %}
   {%- if prop['getter'] %}
@@ -51,6 +63,6 @@ export declare class {{class_name}} {{extends(class)}}{
   }
   {%- endfor %}
   {%- for signal in class['signals'] %}
-  public const {{signal['name']}}: string = "{{signal['name']}}";
+  public get {{signal['name']}}(): Signal;
   {%- endfor %}
 }

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/graph_element.hpp>
-#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/classes/graph_frame.hpp>
+#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -110,7 +110,7 @@ static const JSCFunctionListEntry graph_frame_class_proto_funcs[] = {
 };
 static JSValue graph_frame_class_get_autoshrink_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphFrame *opaque = reinterpret_cast<GraphFrame *>(JS_GetOpaque(this_val, GraphFrame::__class_id));
+	GraphFrame *opaque = reinterpret_cast<GraphFrame *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "autoshrink_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "autoshrink_changed").operator JSValue();

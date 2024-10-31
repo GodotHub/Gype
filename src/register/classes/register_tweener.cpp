@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tweener.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -42,7 +42,7 @@ static JSValue tweener_class_constructor(JSContext *ctx, JSValueConst new_target
 }
 static JSValue tweener_class_get_finished_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Tweener *opaque = reinterpret_cast<Tweener *>(JS_GetOpaque(this_val, Tweener::__class_id));
+	Tweener *opaque = reinterpret_cast<Tweener *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "finished_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "finished").operator JSValue();

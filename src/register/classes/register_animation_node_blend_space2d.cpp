@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_node_blend_space2d.hpp>
 #include <godot_cpp/classes/animation_root_node.hpp>
+#include <godot_cpp/classes/animation_node_blend_space2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -179,7 +179,7 @@ static const JSCFunctionListEntry animation_node_blend_space2d_class_proto_funcs
 };
 static JSValue animation_node_blend_space2d_class_get_triangles_updated_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimationNodeBlendSpace2D *opaque = reinterpret_cast<AnimationNodeBlendSpace2D *>(JS_GetOpaque(this_val, AnimationNodeBlendSpace2D::__class_id));
+	AnimationNodeBlendSpace2D *opaque = reinterpret_cast<AnimationNodeBlendSpace2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "triangles_updated_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "triangles_updated").operator JSValue();

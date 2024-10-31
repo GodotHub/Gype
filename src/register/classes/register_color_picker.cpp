@@ -184,7 +184,7 @@ static const JSCFunctionListEntry color_picker_class_proto_funcs[] = {
 };
 static JSValue color_picker_class_get_color_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ColorPicker *opaque = reinterpret_cast<ColorPicker *>(JS_GetOpaque(this_val, ColorPicker::__class_id));
+	ColorPicker *opaque = reinterpret_cast<ColorPicker *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "color_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "color_changed").operator JSValue();
@@ -194,7 +194,7 @@ static JSValue color_picker_class_get_color_changed_signal(JSContext *ctx, JSVal
 }
 static JSValue color_picker_class_get_preset_added_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ColorPicker *opaque = reinterpret_cast<ColorPicker *>(JS_GetOpaque(this_val, ColorPicker::__class_id));
+	ColorPicker *opaque = reinterpret_cast<ColorPicker *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "preset_added_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "preset_added").operator JSValue();
@@ -204,7 +204,7 @@ static JSValue color_picker_class_get_preset_added_signal(JSContext *ctx, JSValu
 }
 static JSValue color_picker_class_get_preset_removed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ColorPicker *opaque = reinterpret_cast<ColorPicker *>(JS_GetOpaque(this_val, ColorPicker::__class_id));
+	ColorPicker *opaque = reinterpret_cast<ColorPicker *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "preset_removed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "preset_removed").operator JSValue();

@@ -1,9 +1,9 @@
 
 import { HBoxContainer } from "@godot/classes/h_box_container";
-import { GodotObject } from "@godot/classes/godot_object";
-import { GraphFrame } from "@godot/classes/graph_frame";
 import { Node } from "@godot/classes/node";
+import { GraphFrame } from "@godot/classes/graph_frame";
 import { Control } from "@godot/classes/control";
+import { GodotObject } from "@godot/classes/godot_object";
 
 export declare class GraphEdit extends Control{
   public _is_in_input_hotzone(_in_node: Object, _in_port: number, _mouse_position: Vector2): boolean;
@@ -226,22 +226,22 @@ export declare class GraphEdit extends Control{
     GRID_PATTERN_LINES = 0,
     GRID_PATTERN_DOTS = 1,
   }
-  public const connection_request: string = "connection_request";
-  public const disconnection_request: string = "disconnection_request";
-  public const connection_to_empty: string = "connection_to_empty";
-  public const connection_from_empty: string = "connection_from_empty";
-  public const connection_drag_started: string = "connection_drag_started";
-  public const connection_drag_ended: string = "connection_drag_ended";
-  public const copy_nodes_request: string = "copy_nodes_request";
-  public const paste_nodes_request: string = "paste_nodes_request";
-  public const duplicate_nodes_request: string = "duplicate_nodes_request";
-  public const delete_nodes_request: string = "delete_nodes_request";
-  public const node_selected: string = "node_selected";
-  public const node_deselected: string = "node_deselected";
-  public const frame_rect_changed: string = "frame_rect_changed";
-  public const popup_request: string = "popup_request";
-  public const begin_node_move: string = "begin_node_move";
-  public const end_node_move: string = "end_node_move";
-  public const graph_elements_linked_to_frame_request: string = "graph_elements_linked_to_frame_request";
-  public const scroll_offset_changed: string = "scroll_offset_changed";
+  public get connection_request(): Signal;
+  public get disconnection_request(): Signal;
+  public get connection_to_empty(): Signal;
+  public get connection_from_empty(): Signal;
+  public get connection_drag_started(): Signal;
+  public get connection_drag_ended(): Signal;
+  public get copy_nodes_request(): Signal;
+  public get paste_nodes_request(): Signal;
+  public get duplicate_nodes_request(): Signal;
+  public get delete_nodes_request(): Signal;
+  public get node_selected(): Signal;
+  public get node_deselected(): Signal;
+  public get frame_rect_changed(): Signal;
+  public get popup_request(): Signal;
+  public get begin_node_move(): Signal;
+  public get end_node_move(): Signal;
+  public get graph_elements_linked_to_frame_request(): Signal;
+  public get scroll_offset_changed(): Signal;
 }

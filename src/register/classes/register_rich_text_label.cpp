@@ -6,11 +6,11 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/rich_text_label.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/rich_text_effect.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/rich_text_label.hpp>
 #include <godot_cpp/classes/v_scroll_bar.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -634,7 +634,7 @@ static const JSCFunctionListEntry rich_text_label_class_proto_funcs[] = {
 };
 static JSValue rich_text_label_class_get_meta_clicked_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	RichTextLabel *opaque = reinterpret_cast<RichTextLabel *>(JS_GetOpaque(this_val, RichTextLabel::__class_id));
+	RichTextLabel *opaque = reinterpret_cast<RichTextLabel *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "meta_clicked_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "meta_clicked").operator JSValue();
@@ -644,7 +644,7 @@ static JSValue rich_text_label_class_get_meta_clicked_signal(JSContext *ctx, JSV
 }
 static JSValue rich_text_label_class_get_meta_hover_started_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	RichTextLabel *opaque = reinterpret_cast<RichTextLabel *>(JS_GetOpaque(this_val, RichTextLabel::__class_id));
+	RichTextLabel *opaque = reinterpret_cast<RichTextLabel *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "meta_hover_started_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "meta_hover_started").operator JSValue();
@@ -654,7 +654,7 @@ static JSValue rich_text_label_class_get_meta_hover_started_signal(JSContext *ct
 }
 static JSValue rich_text_label_class_get_meta_hover_ended_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	RichTextLabel *opaque = reinterpret_cast<RichTextLabel *>(JS_GetOpaque(this_val, RichTextLabel::__class_id));
+	RichTextLabel *opaque = reinterpret_cast<RichTextLabel *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "meta_hover_ended_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "meta_hover_ended").operator JSValue();
@@ -664,7 +664,7 @@ static JSValue rich_text_label_class_get_meta_hover_ended_signal(JSContext *ctx,
 }
 static JSValue rich_text_label_class_get_finished_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	RichTextLabel *opaque = reinterpret_cast<RichTextLabel *>(JS_GetOpaque(this_val, RichTextLabel::__class_id));
+	RichTextLabel *opaque = reinterpret_cast<RichTextLabel *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "finished_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "finished").operator JSValue();

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/editor_undo_redo_manager.hpp>
 #include <godot_cpp/classes/undo_redo.hpp>
+#include <godot_cpp/classes/editor_undo_redo_manager.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -105,7 +105,7 @@ static const JSCFunctionListEntry editor_undo_redo_manager_class_proto_funcs[] =
 };
 static JSValue editor_undo_redo_manager_class_get_history_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorUndoRedoManager *opaque = reinterpret_cast<EditorUndoRedoManager *>(JS_GetOpaque(this_val, EditorUndoRedoManager::__class_id));
+	EditorUndoRedoManager *opaque = reinterpret_cast<EditorUndoRedoManager *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "history_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "history_changed").operator JSValue();
@@ -115,7 +115,7 @@ static JSValue editor_undo_redo_manager_class_get_history_changed_signal(JSConte
 }
 static JSValue editor_undo_redo_manager_class_get_version_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorUndoRedoManager *opaque = reinterpret_cast<EditorUndoRedoManager *>(JS_GetOpaque(this_val, EditorUndoRedoManager::__class_id));
+	EditorUndoRedoManager *opaque = reinterpret_cast<EditorUndoRedoManager *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "version_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "version_changed").operator JSValue();

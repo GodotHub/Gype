@@ -11,5 +11,5 @@ export declare class VisualShaderNodeInput extends VisualShaderNode{
   public set input_name(value): void {
     set_input_name(value);
   }
-  public const input_type_changed: string = "input_type_changed";
+  public get input_type_changed(): Signal;
 }

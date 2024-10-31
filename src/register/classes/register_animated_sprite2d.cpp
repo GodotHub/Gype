@@ -180,7 +180,7 @@ static const JSCFunctionListEntry animated_sprite2d_class_proto_funcs[] = {
 };
 static JSValue animated_sprite2d_class_get_sprite_frames_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimatedSprite2D *opaque = reinterpret_cast<AnimatedSprite2D *>(JS_GetOpaque(this_val, AnimatedSprite2D::__class_id));
+	AnimatedSprite2D *opaque = reinterpret_cast<AnimatedSprite2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "sprite_frames_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "sprite_frames_changed").operator JSValue();
@@ -190,7 +190,7 @@ static JSValue animated_sprite2d_class_get_sprite_frames_changed_signal(JSContex
 }
 static JSValue animated_sprite2d_class_get_animation_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimatedSprite2D *opaque = reinterpret_cast<AnimatedSprite2D *>(JS_GetOpaque(this_val, AnimatedSprite2D::__class_id));
+	AnimatedSprite2D *opaque = reinterpret_cast<AnimatedSprite2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "animation_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "animation_changed").operator JSValue();
@@ -200,7 +200,7 @@ static JSValue animated_sprite2d_class_get_animation_changed_signal(JSContext *c
 }
 static JSValue animated_sprite2d_class_get_frame_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimatedSprite2D *opaque = reinterpret_cast<AnimatedSprite2D *>(JS_GetOpaque(this_val, AnimatedSprite2D::__class_id));
+	AnimatedSprite2D *opaque = reinterpret_cast<AnimatedSprite2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "frame_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "frame_changed").operator JSValue();
@@ -210,7 +210,7 @@ static JSValue animated_sprite2d_class_get_frame_changed_signal(JSContext *ctx, 
 }
 static JSValue animated_sprite2d_class_get_animation_looped_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimatedSprite2D *opaque = reinterpret_cast<AnimatedSprite2D *>(JS_GetOpaque(this_val, AnimatedSprite2D::__class_id));
+	AnimatedSprite2D *opaque = reinterpret_cast<AnimatedSprite2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "animation_looped_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "animation_looped").operator JSValue();
@@ -220,7 +220,7 @@ static JSValue animated_sprite2d_class_get_animation_looped_signal(JSContext *ct
 }
 static JSValue animated_sprite2d_class_get_animation_finished_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimatedSprite2D *opaque = reinterpret_cast<AnimatedSprite2D *>(JS_GetOpaque(this_val, AnimatedSprite2D::__class_id));
+	AnimatedSprite2D *opaque = reinterpret_cast<AnimatedSprite2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "animation_finished_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "animation_finished").operator JSValue();

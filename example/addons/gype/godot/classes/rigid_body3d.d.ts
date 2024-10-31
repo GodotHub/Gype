@@ -1,7 +1,7 @@
 
-import { PhysicsMaterial } from "@godot/classes/physics_material";
 import { Node3D } from "@godot/classes/node3d";
 import { PhysicsBody3D } from "@godot/classes/physics_body3d";
+import { PhysicsMaterial } from "@godot/classes/physics_material";
 import { PhysicsDirectBodyState3D } from "@godot/classes/physics_direct_body_state3d";
 
 export declare class RigidBody3D extends PhysicsBody3D{
@@ -215,9 +215,9 @@ export declare class RigidBody3D extends PhysicsBody3D{
     DAMP_MODE_COMBINE = 0,
     DAMP_MODE_REPLACE = 1,
   }
-  public const body_shape_entered: string = "body_shape_entered";
-  public const body_shape_exited: string = "body_shape_exited";
-  public const body_entered: string = "body_entered";
-  public const body_exited: string = "body_exited";
-  public const sleeping_state_changed: string = "sleeping_state_changed";
+  public get body_shape_entered(): Signal;
+  public get body_shape_exited(): Signal;
+  public get body_entered(): Signal;
+  public get body_exited(): Signal;
+  public get sleeping_state_changed(): Signal;
 }

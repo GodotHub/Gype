@@ -1,7 +1,16 @@
+{%- macro process_vararg(is_vararg, arg) -%}
+  {%- if is_vararg %}
+    {%- if arg -%}
+, ...arg: {{set_type(arg['type'])}}
+    {%- else -%}
+, ...arg: any
+    {%- endif -%}
+  {%- endif %}
+{%- endmacro -%}
 declare global {
     declare class UtilityFunctions {
         {%- for func in utility_functions %}
-        {{func['name']}}({{connect_args(func['arguments'])}}){{set_return(func['return_type'])}};
+        {{func['name']}}({{connect_args(func['arguments']) + process_vararg(func['is_vararg'], func['arguments']|last)}}){{set_return(func['return_type'])}};
         {%- endfor %}
     }
     const GD: UtilityFunctions;

@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/navigation_polygon.hpp>
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/occluder_polygon2d.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/tile_data.hpp>
+#include <godot_cpp/classes/navigation_polygon.hpp>
+#include <godot_cpp/classes/occluder_polygon2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -282,7 +282,7 @@ static const JSCFunctionListEntry tile_data_class_proto_funcs[] = {
 };
 static JSValue tile_data_class_get_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	TileData *opaque = reinterpret_cast<TileData *>(JS_GetOpaque(this_val, TileData::__class_id));
+	TileData *opaque = reinterpret_cast<TileData *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "changed").operator JSValue();

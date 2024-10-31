@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/tls_options.hpp>
-#include <godot_cpp/classes/http_request.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/http_request.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -160,7 +160,7 @@ static const JSCFunctionListEntry http_request_class_proto_funcs[] = {
 };
 static JSValue http_request_class_get_request_completed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	HTTPRequest *opaque = reinterpret_cast<HTTPRequest *>(JS_GetOpaque(this_val, HTTPRequest::__class_id));
+	HTTPRequest *opaque = reinterpret_cast<HTTPRequest *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "request_completed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "request_completed").operator JSValue();

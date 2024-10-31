@@ -11,6 +11,6 @@ export declare class TextServerManager extends GodotObject{
   public find_interface(_name: String | StringName | string): TextServer;
   public set_primary_interface(_index: TextServer): void;
   public get_primary_interface(): TextServer;
-  public const interface_added: string = "interface_added";
-  public const interface_removed: string = "interface_removed";
+  public get interface_added(): Signal;
+  public get interface_removed(): Signal;
 }

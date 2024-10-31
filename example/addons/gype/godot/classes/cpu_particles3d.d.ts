@@ -1,9 +1,9 @@
 
 import { Gradient } from "@godot/classes/gradient";
-import { Curve } from "@godot/classes/curve";
-import { Node } from "@godot/classes/node";
 import { GeometryInstance3D } from "@godot/classes/geometry_instance3d";
+import { Node } from "@godot/classes/node";
 import { Mesh } from "@godot/classes/mesh";
+import { Curve } from "@godot/classes/curve";
 
 export declare class CPUParticles3D extends GeometryInstance3D{
   public set_emitting(_emitting: boolean): void;
@@ -568,5 +568,5 @@ export declare class CPUParticles3D extends GeometryInstance3D{
     EMISSION_SHAPE_RING = 6,
     EMISSION_SHAPE_MAX = 7,
   }
-  public const finished: string = "finished";
+  public get finished(): Signal;
 }

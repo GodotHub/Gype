@@ -42,8 +42,8 @@ export declare class EditorSpinSlider extends Range{
   public set hide_slider(value): void {
     set_hide_slider(value);
   }
-  public const grabbed: string = "grabbed";
-  public const ungrabbed: string = "ungrabbed";
-  public const value_focus_entered: string = "value_focus_entered";
-  public const value_focus_exited: string = "value_focus_exited";
+  public get grabbed(): Signal;
+  public get ungrabbed(): Signal;
+  public get value_focus_entered(): Signal;
+  public get value_focus_exited(): Signal;
 }

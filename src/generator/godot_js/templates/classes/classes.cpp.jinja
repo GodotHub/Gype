@@ -133,7 +133,7 @@ static const JSCFunctionListEntry {{snake_name}}_class_static_funcs[] = {
 {%- for signal in clazz['signals'] %}
 static JSValue {{snake_name}}_class_get_{{signal['name']}}_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	{{clazz['name']}} *opaque = reinterpret_cast<{{clazz['name']}} *>(JS_GetOpaque(this_val, {{clazz['name']}}::__class_id));
+	{{clazz['name']}} *opaque = reinterpret_cast<{{clazz['name']}} *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "{{signal['name']}}_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "{{signal['name']}}").operator JSValue();

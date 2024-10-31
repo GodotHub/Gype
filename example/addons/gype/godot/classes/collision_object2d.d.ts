@@ -1,9 +1,9 @@
 
-import { InputEvent } from "@godot/classes/input_event";
-import { Shape2D } from "@godot/classes/shape2d";
 import { Node2D } from "@godot/classes/node2d";
-import { GodotObject } from "@godot/classes/godot_object";
+import { Shape2D } from "@godot/classes/shape2d";
+import { InputEvent } from "@godot/classes/input_event";
 import { Viewport } from "@godot/classes/viewport";
+import { GodotObject } from "@godot/classes/godot_object";
 
 export declare class CollisionObject2D extends Node2D{
   public _input_event(_viewport: Viewport, _event: InputEvent, _shape_idx: number): void;
@@ -31,7 +31,7 @@ export declare class CollisionObject2D extends Node2D{
   public get_shape_owners(): PackedInt32Array;
   public shape_owner_set_transform(_owner_id: number, _transform: Transform2D): void;
   public shape_owner_get_transform(_owner_id: number): Transform2D;
-  public shape_owner_get_owner(_owner_id: number): Object;
+  public shape_owner_get_owner(_owner_id: number): GodotObject;
   public shape_owner_set_disabled(_owner_id: number, _disabled: boolean): void;
   public is_shape_owner_disabled(_owner_id: number): boolean;
   public shape_owner_set_one_way_collision(_owner_id: number, _enable: boolean): void;
@@ -80,9 +80,9 @@ export declare class CollisionObject2D extends Node2D{
     DISABLE_MODE_MAKE_STATIC = 1,
     DISABLE_MODE_KEEP_ACTIVE = 2,
   }
-  public const input_event: string = "input_event";
-  public const mouse_entered: string = "mouse_entered";
-  public const mouse_exited: string = "mouse_exited";
-  public const mouse_shape_entered: string = "mouse_shape_entered";
-  public const mouse_shape_exited: string = "mouse_shape_exited";
+  public get input_event(): Signal;
+  public get mouse_entered(): Signal;
+  public get mouse_exited(): Signal;
+  public get mouse_shape_entered(): Signal;
+  public get mouse_shape_exited(): Signal;
 }

@@ -11,5 +11,5 @@ export declare class Path3D extends Node3D{
   public set curve(value): void {
     set_curve(value);
   }
-  public const curve_changed: string = "curve_changed";
+  public get curve_changed(): Signal;
 }

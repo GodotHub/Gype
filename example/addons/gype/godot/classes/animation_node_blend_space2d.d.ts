@@ -88,5 +88,5 @@ export declare class AnimationNodeBlendSpace2D extends AnimationRootNode{
     BLEND_MODE_DISCRETE = 1,
     BLEND_MODE_DISCRETE_CARRY = 2,
   }
-  public const triangles_updated: string = "triangles_updated";
+  public get triangles_updated(): Signal;
 }

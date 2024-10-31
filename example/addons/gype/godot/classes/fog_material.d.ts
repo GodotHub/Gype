@@ -1,6 +1,6 @@
 
-import { Material } from "@godot/classes/material";
 import { Texture3D } from "@godot/classes/texture3d";
+import { Material } from "@godot/classes/material";
 
 export declare class FogMaterial extends Material{
   public set_density(_density: number): void;

@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/editor_selection.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/editor_selection.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -71,7 +71,7 @@ static const JSCFunctionListEntry editor_selection_class_proto_funcs[] = {
 };
 static JSValue editor_selection_class_get_selection_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorSelection *opaque = reinterpret_cast<EditorSelection *>(JS_GetOpaque(this_val, EditorSelection::__class_id));
+	EditorSelection *opaque = reinterpret_cast<EditorSelection *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "selection_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "selection_changed").operator JSValue();

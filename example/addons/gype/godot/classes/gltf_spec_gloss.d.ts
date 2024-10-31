@@ -13,7 +13,7 @@ export declare class GLTFSpecGloss extends Resource{
   public set_specular_factor(_specular_factor: Color): void;
   public get_spec_gloss_img(): Image;
   public set_spec_gloss_img(_spec_gloss_img: Image): void;
-  public get diffuse_img(): Object {
+  public get diffuse_img(): GodotObject {
     get_diffuse_img();
   }
   public set diffuse_img(value): void {
@@ -37,7 +37,7 @@ export declare class GLTFSpecGloss extends Resource{
   public set specular_factor(value): void {
     set_specular_factor(value);
   }
-  public get spec_gloss_img(): Object {
+  public get spec_gloss_img(): GodotObject {
     get_spec_gloss_img();
   }
   public set spec_gloss_img(value): void {

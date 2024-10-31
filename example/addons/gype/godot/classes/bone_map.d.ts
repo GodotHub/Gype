@@ -1,6 +1,6 @@
 
-import { SkeletonProfile } from "@godot/classes/skeleton_profile";
 import { Resource } from "@godot/classes/resource";
+import { SkeletonProfile } from "@godot/classes/skeleton_profile";
 
 export declare class BoneMap extends Resource{
   public get_profile(): SkeletonProfile;
@@ -14,6 +14,6 @@ export declare class BoneMap extends Resource{
   public set profile(value): void {
     set_profile(value);
   }
-  public const bone_map_updated: string = "bone_map_updated";
-  public const profile_updated: string = "profile_updated";
+  public get bone_map_updated(): Signal;
+  public get profile_updated(): Signal;
 }

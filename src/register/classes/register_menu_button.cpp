@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/popup_menu.hpp>
-#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/menu_button.hpp>
+#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -80,7 +80,7 @@ static const JSCFunctionListEntry menu_button_class_proto_funcs[] = {
 };
 static JSValue menu_button_class_get_about_to_popup_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	MenuButton *opaque = reinterpret_cast<MenuButton *>(JS_GetOpaque(this_val, MenuButton::__class_id));
+	MenuButton *opaque = reinterpret_cast<MenuButton *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "about_to_popup_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "about_to_popup").operator JSValue();

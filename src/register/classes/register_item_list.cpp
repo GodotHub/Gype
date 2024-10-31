@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/item_list.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/v_scroll_bar.hpp>
-#include <godot_cpp/classes/item_list.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -411,7 +411,7 @@ static const JSCFunctionListEntry item_list_class_proto_funcs[] = {
 };
 static JSValue item_list_class_get_item_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ItemList *opaque = reinterpret_cast<ItemList *>(JS_GetOpaque(this_val, ItemList::__class_id));
+	ItemList *opaque = reinterpret_cast<ItemList *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "item_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "item_selected").operator JSValue();
@@ -421,7 +421,7 @@ static JSValue item_list_class_get_item_selected_signal(JSContext *ctx, JSValueC
 }
 static JSValue item_list_class_get_empty_clicked_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ItemList *opaque = reinterpret_cast<ItemList *>(JS_GetOpaque(this_val, ItemList::__class_id));
+	ItemList *opaque = reinterpret_cast<ItemList *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "empty_clicked_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "empty_clicked").operator JSValue();
@@ -431,7 +431,7 @@ static JSValue item_list_class_get_empty_clicked_signal(JSContext *ctx, JSValueC
 }
 static JSValue item_list_class_get_item_clicked_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ItemList *opaque = reinterpret_cast<ItemList *>(JS_GetOpaque(this_val, ItemList::__class_id));
+	ItemList *opaque = reinterpret_cast<ItemList *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "item_clicked_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "item_clicked").operator JSValue();
@@ -441,7 +441,7 @@ static JSValue item_list_class_get_item_clicked_signal(JSContext *ctx, JSValueCo
 }
 static JSValue item_list_class_get_multi_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ItemList *opaque = reinterpret_cast<ItemList *>(JS_GetOpaque(this_val, ItemList::__class_id));
+	ItemList *opaque = reinterpret_cast<ItemList *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "multi_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "multi_selected").operator JSValue();
@@ -451,7 +451,7 @@ static JSValue item_list_class_get_multi_selected_signal(JSContext *ctx, JSValue
 }
 static JSValue item_list_class_get_item_activated_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ItemList *opaque = reinterpret_cast<ItemList *>(JS_GetOpaque(this_val, ItemList::__class_id));
+	ItemList *opaque = reinterpret_cast<ItemList *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "item_activated_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "item_activated").operator JSValue();

@@ -1,8 +1,8 @@
 
 import { ENetPacketPeer } from "@godot/classes/e_net_packet_peer";
 import { ENetPacketPeer } from "@godot/classes/e_net_packet_peer";
-import { RefCounted } from "@godot/classes/ref_counted";
 import { TLSOptions } from "@godot/classes/tls_options";
+import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class ENetConnection extends RefCounted{
   public create_host_bound(_bind_address: String | StringName | string, _bind_port: number, _max_peers: number, _max_channels: number, _in_bandwidth: number, _out_bandwidth: number): number;

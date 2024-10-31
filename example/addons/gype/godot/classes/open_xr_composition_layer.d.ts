@@ -1,6 +1,6 @@
 
-import { SubViewport } from "@godot/classes/sub_viewport";
 import { Node3D } from "@godot/classes/node3d";
+import { SubViewport } from "@godot/classes/sub_viewport";
 
 export declare class OpenXRCompositionLayer extends Node3D{
   public set_layer_viewport(_viewport: SubViewport): void;
@@ -13,7 +13,7 @@ export declare class OpenXRCompositionLayer extends Node3D{
   public get_alpha_blend(): boolean;
   public is_natively_supported(): boolean;
   public intersects_ray(_origin: Vector3, _direction: Vector3): Vector2;
-  public get layer_viewport(): Object {
+  public get layer_viewport(): GodotObject {
     get_layer_viewport();
   }
   public set layer_viewport(value): void {

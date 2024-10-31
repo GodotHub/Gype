@@ -1,8 +1,8 @@
 
+import { RenderingDevice } from "@godot/classes/rendering_device";
 import { Image } from "@godot/classes/image";
 import { GodotObject } from "@godot/classes/godot_object";
 import { Image } from "@godot/classes/image";
-import { RenderingDevice } from "@godot/classes/rendering_device";
 
 export declare class RenderingServer extends GodotObject{
   public texture_2d_create(_image: Image): RID;
@@ -1110,6 +1110,6 @@ export declare class RenderingServer extends GodotObject{
     FEATURE_SHADERS = 0,
     FEATURE_MULTITHREADED = 1,
   }
-  public const frame_pre_draw: string = "frame_pre_draw";
-  public const frame_post_draw: string = "frame_post_draw";
+  public get frame_pre_draw(): Signal;
+  public get frame_post_draw(): Signal;
 }

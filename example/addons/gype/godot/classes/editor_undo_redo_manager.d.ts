@@ -7,8 +7,8 @@ export declare class EditorUndoRedoManager extends GodotObject{
   public commit_action(_execute: boolean): void;
   public is_committing_action(): boolean;
   public force_fixed_history(): void;
-  public add_do_method(_object: Object, _method: String | StringName | string): void;
-  public add_undo_method(_object: Object, _method: String | StringName | string): void;
+  public add_do_method(_object: Object, _method: String | StringName | string, ...arg: StringName): void;
+  public add_undo_method(_object: Object, _method: String | StringName | string, ...arg: StringName): void;
   public add_do_property(_object: Object, _property: String | StringName | string, _value: any): void;
   public add_undo_property(_object: Object, _property: String | StringName | string, _value: any): void;
   public add_do_reference(_object: Object): void;
@@ -20,6 +20,6 @@ export declare class EditorUndoRedoManager extends GodotObject{
     REMOTE_HISTORY = -9,
     INVALID_HISTORY = -99,
   }
-  public const history_changed: string = "history_changed";
-  public const version_changed: string = "version_changed";
+  public get history_changed(): Signal;
+  public get version_changed(): Signal;
 }

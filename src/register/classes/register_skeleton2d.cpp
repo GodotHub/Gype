@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/skeleton2d.hpp>
+#include <godot_cpp/classes/bone2d.hpp>
 #include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/bone2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -86,7 +86,7 @@ static const JSCFunctionListEntry skeleton2d_class_proto_funcs[] = {
 };
 static JSValue skeleton2d_class_get_bone_setup_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Skeleton2D *opaque = reinterpret_cast<Skeleton2D *>(JS_GetOpaque(this_val, Skeleton2D::__class_id));
+	Skeleton2D *opaque = reinterpret_cast<Skeleton2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "bone_setup_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "bone_setup_changed").operator JSValue();

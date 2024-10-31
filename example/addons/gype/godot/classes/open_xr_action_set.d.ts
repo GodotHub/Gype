@@ -1,6 +1,6 @@
 
-import { Resource } from "@godot/classes/resource";
 import { OpenXRAction } from "@godot/classes/open_xr_action";
+import { Resource } from "@godot/classes/resource";
 
 export declare class OpenXRActionSet extends Resource{
   public set_localized_name(_localized_name: String | StringName | string): void;

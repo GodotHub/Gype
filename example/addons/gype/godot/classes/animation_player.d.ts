@@ -120,6 +120,6 @@ export declare class AnimationPlayer extends AnimationMixer{
     ANIMATION_METHOD_CALL_DEFERRED = 0,
     ANIMATION_METHOD_CALL_IMMEDIATE = 1,
   }
-  public const current_animation_changed: string = "current_animation_changed";
-  public const animation_changed: string = "animation_changed";
+  public get current_animation_changed(): Signal;
+  public get animation_changed(): Signal;
 }

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/button_group.hpp>
 #include <godot_cpp/classes/shortcut.hpp>
+#include <godot_cpp/classes/button_group.hpp>
 #include <godot_cpp/classes/base_button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -161,7 +161,7 @@ static const JSCFunctionListEntry base_button_class_proto_funcs[] = {
 };
 static JSValue base_button_class_get_pressed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	BaseButton *opaque = reinterpret_cast<BaseButton *>(JS_GetOpaque(this_val, BaseButton::__class_id));
+	BaseButton *opaque = reinterpret_cast<BaseButton *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "pressed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "pressed").operator JSValue();
@@ -171,7 +171,7 @@ static JSValue base_button_class_get_pressed_signal(JSContext *ctx, JSValueConst
 }
 static JSValue base_button_class_get_button_up_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	BaseButton *opaque = reinterpret_cast<BaseButton *>(JS_GetOpaque(this_val, BaseButton::__class_id));
+	BaseButton *opaque = reinterpret_cast<BaseButton *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "button_up_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "button_up").operator JSValue();
@@ -181,7 +181,7 @@ static JSValue base_button_class_get_button_up_signal(JSContext *ctx, JSValueCon
 }
 static JSValue base_button_class_get_button_down_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	BaseButton *opaque = reinterpret_cast<BaseButton *>(JS_GetOpaque(this_val, BaseButton::__class_id));
+	BaseButton *opaque = reinterpret_cast<BaseButton *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "button_down_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "button_down").operator JSValue();
@@ -191,7 +191,7 @@ static JSValue base_button_class_get_button_down_signal(JSContext *ctx, JSValueC
 }
 static JSValue base_button_class_get_toggled_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	BaseButton *opaque = reinterpret_cast<BaseButton *>(JS_GetOpaque(this_val, BaseButton::__class_id));
+	BaseButton *opaque = reinterpret_cast<BaseButton *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "toggled_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "toggled").operator JSValue();

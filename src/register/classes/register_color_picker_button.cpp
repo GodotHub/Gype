@@ -7,8 +7,8 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/color_picker_button.hpp>
 #include <godot_cpp/classes/popup_panel.hpp>
-#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/color_picker.hpp>
+#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -76,7 +76,7 @@ static const JSCFunctionListEntry color_picker_button_class_proto_funcs[] = {
 };
 static JSValue color_picker_button_class_get_color_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ColorPickerButton *opaque = reinterpret_cast<ColorPickerButton *>(JS_GetOpaque(this_val, ColorPickerButton::__class_id));
+	ColorPickerButton *opaque = reinterpret_cast<ColorPickerButton *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "color_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "color_changed").operator JSValue();
@@ -86,7 +86,7 @@ static JSValue color_picker_button_class_get_color_changed_signal(JSContext *ctx
 }
 static JSValue color_picker_button_class_get_popup_closed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ColorPickerButton *opaque = reinterpret_cast<ColorPickerButton *>(JS_GetOpaque(this_val, ColorPickerButton::__class_id));
+	ColorPickerButton *opaque = reinterpret_cast<ColorPickerButton *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "popup_closed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "popup_closed").operator JSValue();
@@ -96,7 +96,7 @@ static JSValue color_picker_button_class_get_popup_closed_signal(JSContext *ctx,
 }
 static JSValue color_picker_button_class_get_picker_created_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ColorPickerButton *opaque = reinterpret_cast<ColorPickerButton *>(JS_GetOpaque(this_val, ColorPickerButton::__class_id));
+	ColorPickerButton *opaque = reinterpret_cast<ColorPickerButton *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "picker_created_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "picker_created").operator JSValue();

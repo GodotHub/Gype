@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/engine_debugger.hpp>
 #include <godot_cpp/classes/script_language.hpp>
 #include <godot_cpp/classes/engine_profiler.hpp>
-#include <godot_cpp/classes/engine_debugger.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;

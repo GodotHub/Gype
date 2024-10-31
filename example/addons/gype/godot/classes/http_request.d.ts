@@ -84,5 +84,5 @@ export declare class HTTPRequest extends Node{
     RESULT_REDIRECT_LIMIT_REACHED = 12,
     RESULT_TIMEOUT = 13,
   }
-  public const request_completed: string = "request_completed";
+  public get request_completed(): Signal;
 }

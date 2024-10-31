@@ -1,6 +1,6 @@
 
-import { Image } from "@godot/classes/image";
 import { GodotObject } from "@godot/classes/godot_object";
+import { Image } from "@godot/classes/image";
 
 export declare class MovieWriter extends GodotObject{
   public _get_audio_mix_rate(): number;

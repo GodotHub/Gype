@@ -1,14 +1,14 @@
 
-import { Node } from "@godot/classes/node";
-import { MainLoop } from "@godot/classes/main_loop";
-import { Window } from "@godot/classes/window";
-import { PackedScene } from "@godot/classes/packed_scene";
-import { MultiplayerAPI } from "@godot/classes/multiplayer_api";
-import { GodotObject } from "@godot/classes/godot_object";
 import { Tween } from "@godot/classes/tween";
+import { Window } from "@godot/classes/window";
+import { MultiplayerAPI } from "@godot/classes/multiplayer_api";
+import { Tween } from "@godot/classes/tween";
+import { Node } from "@godot/classes/node";
+import { PackedScene } from "@godot/classes/packed_scene";
 import { SceneTreeTimer } from "@godot/classes/scene_tree_timer";
 import { Node } from "@godot/classes/node";
-import { Tween } from "@godot/classes/tween";
+import { MainLoop } from "@godot/classes/main_loop";
+import { GodotObject } from "@godot/classes/godot_object";
 
 export declare class SceneTree extends MainLoop{
   public get_root(): Window;
@@ -36,10 +36,10 @@ export declare class SceneTree extends MainLoop{
   public set_physics_interpolation_enabled(_enabled: boolean): void;
   public is_physics_interpolation_enabled(): boolean;
   public queue_delete(_obj: Object): void;
-  public call_group_flags(_flags: number, _group: String | StringName | string, _method: String | StringName | string): void;
+  public call_group_flags(_flags: number, _group: String | StringName | string, _method: String | StringName | string, ...arg: StringName): void;
   public notify_group_flags(_call_flags: number, _group: String | StringName | string, _notification: number): void;
   public set_group_flags(_call_flags: number, _group: String | StringName | string, _property: String | StringName | string, _value: any): void;
-  public call_group(_group: String | StringName | string, _method: String | StringName | string): void;
+  public call_group(_group: String | StringName | string, _method: String | StringName | string, ...arg: StringName): void;
   public notify_group(_group: String | StringName | string, _notification: number): void;
   public set_group(_group: String | StringName | string, _property: String | StringName | string, _value: any): void;
   public get_nodes_in_group(_group: String | StringName | string): GDArray;
@@ -124,12 +124,12 @@ export declare class SceneTree extends MainLoop{
     GROUP_CALL_DEFERRED = 2,
     GROUP_CALL_UNIQUE = 4,
   }
-  public const tree_changed: string = "tree_changed";
-  public const tree_process_mode_changed: string = "tree_process_mode_changed";
-  public const node_added: string = "node_added";
-  public const node_removed: string = "node_removed";
-  public const node_renamed: string = "node_renamed";
-  public const node_configuration_warning_changed: string = "node_configuration_warning_changed";
-  public const process_frame: string = "process_frame";
-  public const physics_frame: string = "physics_frame";
+  public get tree_changed(): Signal;
+  public get tree_process_mode_changed(): Signal;
+  public get node_added(): Signal;
+  public get node_removed(): Signal;
+  public get node_renamed(): Signal;
+  public get node_configuration_warning_changed(): Signal;
+  public get process_frame(): Signal;
+  public get physics_frame(): Signal;
 }

@@ -101,6 +101,6 @@ export declare class Sprite2D extends Node2D{
   public set region_filter_clip_enabled(value): void {
     set_region_filter_clip_enabled(value);
   }
-  public const frame_changed: string = "frame_changed";
-  public const texture_changed: string = "texture_changed";
+  public get frame_changed(): Signal;
+  public get texture_changed(): Signal;
 }

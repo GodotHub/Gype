@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/slider.hpp>
 #include <godot_cpp/classes/range.hpp>
+#include <godot_cpp/classes/slider.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -84,7 +84,7 @@ static const JSCFunctionListEntry slider_class_proto_funcs[] = {
 };
 static JSValue slider_class_get_drag_started_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Slider *opaque = reinterpret_cast<Slider *>(JS_GetOpaque(this_val, Slider::__class_id));
+	Slider *opaque = reinterpret_cast<Slider *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "drag_started_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "drag_started").operator JSValue();
@@ -94,7 +94,7 @@ static JSValue slider_class_get_drag_started_signal(JSContext *ctx, JSValueConst
 }
 static JSValue slider_class_get_drag_ended_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Slider *opaque = reinterpret_cast<Slider *>(JS_GetOpaque(this_val, Slider::__class_id));
+	Slider *opaque = reinterpret_cast<Slider *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "drag_ended_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "drag_ended").operator JSValue();

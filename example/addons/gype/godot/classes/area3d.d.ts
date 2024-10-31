@@ -1,6 +1,6 @@
 
-import { CollisionObject3D } from "@godot/classes/collision_object3d";
 import { Node3D } from "@godot/classes/node3d";
+import { CollisionObject3D } from "@godot/classes/collision_object3d";
 import { Node } from "@godot/classes/node";
 
 export declare class Area3D extends CollisionObject3D{
@@ -193,12 +193,12 @@ export declare class Area3D extends CollisionObject3D{
     SPACE_OVERRIDE_REPLACE = 3,
     SPACE_OVERRIDE_REPLACE_COMBINE = 4,
   }
-  public const body_shape_entered: string = "body_shape_entered";
-  public const body_shape_exited: string = "body_shape_exited";
-  public const body_entered: string = "body_entered";
-  public const body_exited: string = "body_exited";
-  public const area_shape_entered: string = "area_shape_entered";
-  public const area_shape_exited: string = "area_shape_exited";
-  public const area_entered: string = "area_entered";
-  public const area_exited: string = "area_exited";
+  public get body_shape_entered(): Signal;
+  public get body_shape_exited(): Signal;
+  public get body_entered(): Signal;
+  public get body_exited(): Signal;
+  public get area_shape_entered(): Signal;
+  public get area_shape_exited(): Signal;
+  public get area_entered(): Signal;
+  public get area_exited(): Signal;
 }

@@ -1,7 +1,7 @@
 
 import { VScrollBar } from "@godot/classes/v_scroll_bar";
-import { Texture2D } from "@godot/classes/texture2d";
 import { Control } from "@godot/classes/control";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class ItemList extends Control{
   public add_item(_text: String | StringName | string, _icon: Texture2D, _selectable: boolean): number;
@@ -169,9 +169,9 @@ export declare class ItemList extends Control{
     SELECT_SINGLE = 0,
     SELECT_MULTI = 1,
   }
-  public const item_selected: string = "item_selected";
-  public const empty_clicked: string = "empty_clicked";
-  public const item_clicked: string = "item_clicked";
-  public const multi_selected: string = "multi_selected";
-  public const item_activated: string = "item_activated";
+  public get item_selected(): Signal;
+  public get empty_clicked(): Signal;
+  public get item_clicked(): Signal;
+  public get multi_selected(): Signal;
+  public get item_activated(): Signal;
 }

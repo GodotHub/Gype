@@ -1,8 +1,8 @@
 
-import { Font } from "@godot/classes/font";
 import { Tree } from "@godot/classes/tree";
-import { GodotObject } from "@godot/classes/godot_object";
 import { Texture2D } from "@godot/classes/texture2d";
+import { GodotObject } from "@godot/classes/godot_object";
+import { Font } from "@godot/classes/font";
 
 export declare class TreeItem extends GodotObject{
   public set_cell_mode(_column: number, _mode: number): void;
@@ -115,7 +115,7 @@ export declare class TreeItem extends GodotObject{
   public get_index(): number;
   public move_before(_item: TreeItem): void;
   public move_after(_item: TreeItem): void;
-  public call_recursive(_method: String | StringName | string): void;
+  public call_recursive(_method: String | StringName | string, ...arg: StringName): void;
   public get collapsed(): boolean {
     is_collapsed();
   }

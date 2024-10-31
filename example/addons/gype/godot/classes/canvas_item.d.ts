@@ -1,14 +1,14 @@
 
-import { Font } from "@godot/classes/font";
-import { InputEvent } from "@godot/classes/input_event";
-import { MultiMesh } from "@godot/classes/multi_mesh";
-import { Texture2D } from "@godot/classes/texture2d";
-import { World2D } from "@godot/classes/world2d";
-import { Material } from "@godot/classes/material";
-import { Mesh } from "@godot/classes/mesh";
 import { StyleBox } from "@godot/classes/style_box";
-import { CanvasLayer } from "@godot/classes/canvas_layer";
+import { MultiMesh } from "@godot/classes/multi_mesh";
+import { World2D } from "@godot/classes/world2d";
 import { Node } from "@godot/classes/node";
+import { CanvasLayer } from "@godot/classes/canvas_layer";
+import { Texture2D } from "@godot/classes/texture2d";
+import { Mesh } from "@godot/classes/mesh";
+import { Material } from "@godot/classes/material";
+import { InputEvent } from "@godot/classes/input_event";
+import { Font } from "@godot/classes/font";
 
 export declare class CanvasItem extends Node{
   public _draw(): void;
@@ -212,8 +212,8 @@ export declare class CanvasItem extends Node{
     CLIP_CHILDREN_AND_DRAW = 2,
     CLIP_CHILDREN_MAX = 3,
   }
-  public const draw: string = "draw";
-  public const visibility_changed: string = "visibility_changed";
-  public const hidden: string = "hidden";
-  public const item_rect_changed: string = "item_rect_changed";
+  public get draw(): Signal;
+  public get visibility_changed(): Signal;
+  public get hidden(): Signal;
+  public get item_rect_changed(): Signal;
 }

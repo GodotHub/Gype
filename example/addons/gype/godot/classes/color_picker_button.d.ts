@@ -1,7 +1,7 @@
 
+import { ColorPicker } from "@godot/classes/color_picker";
 import { PopupPanel } from "@godot/classes/popup_panel";
 import { Button } from "@godot/classes/button";
-import { ColorPicker } from "@godot/classes/color_picker";
 
 export declare class ColorPickerButton extends Button{
   public set_pick_color(_color: Color): void;
@@ -22,7 +22,7 @@ export declare class ColorPickerButton extends Button{
   public set edit_alpha(value): void {
     set_edit_alpha(value);
   }
-  public const color_changed: string = "color_changed";
-  public const popup_closed: string = "popup_closed";
-  public const picker_created: string = "picker_created";
+  public get color_changed(): Signal;
+  public get popup_closed(): Signal;
+  public get picker_created(): Signal;
 }

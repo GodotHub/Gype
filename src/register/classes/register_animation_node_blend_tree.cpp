@@ -100,7 +100,7 @@ static const JSCFunctionListEntry animation_node_blend_tree_class_proto_funcs[] 
 };
 static JSValue animation_node_blend_tree_class_get_node_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimationNodeBlendTree *opaque = reinterpret_cast<AnimationNodeBlendTree *>(JS_GetOpaque(this_val, AnimationNodeBlendTree::__class_id));
+	AnimationNodeBlendTree *opaque = reinterpret_cast<AnimationNodeBlendTree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "node_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "node_changed").operator JSValue();

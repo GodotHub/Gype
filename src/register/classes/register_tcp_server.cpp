@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/stream_peer_tcp.hpp>
-#include <godot_cpp/classes/tcp_server.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/tcp_server.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

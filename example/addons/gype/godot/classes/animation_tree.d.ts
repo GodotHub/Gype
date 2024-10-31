@@ -34,5 +34,5 @@ export declare class AnimationTree extends AnimationMixer{
     ANIMATION_PROCESS_IDLE = 1,
     ANIMATION_PROCESS_MANUAL = 2,
   }
-  public const animation_player_changed: string = "animation_player_changed";
+  public get animation_player_changed(): Signal;
 }

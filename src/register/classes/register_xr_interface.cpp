@@ -184,7 +184,7 @@ static const JSCFunctionListEntry xr_interface_class_proto_funcs[] = {
 };
 static JSValue xr_interface_class_get_play_area_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	XRInterface *opaque = reinterpret_cast<XRInterface *>(JS_GetOpaque(this_val, XRInterface::__class_id));
+	XRInterface *opaque = reinterpret_cast<XRInterface *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "play_area_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "play_area_changed").operator JSValue();

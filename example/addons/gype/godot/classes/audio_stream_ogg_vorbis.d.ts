@@ -1,6 +1,6 @@
 
-import { AudioStream } from "@godot/classes/audio_stream";
 import { OggPacketSequence } from "@godot/classes/ogg_packet_sequence";
+import { AudioStream } from "@godot/classes/audio_stream";
 
 export declare class AudioStreamOggVorbis extends AudioStream{
   public load_from_buffer(_buffer: PackedByteArray): AudioStreamOggVorbis;
@@ -17,7 +17,7 @@ export declare class AudioStreamOggVorbis extends AudioStream{
   public get_beat_count(): number;
   public set_bar_beats(_count: number): void;
   public get_bar_beats(): number;
-  public get packet_sequence(): Object {
+  public get packet_sequence(): GodotObject {
     get_packet_sequence();
   }
   public set packet_sequence(value): void {

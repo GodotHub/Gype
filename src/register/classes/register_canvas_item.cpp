@@ -5,17 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/multi_mesh.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/world2d.hpp>
 #include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/classes/canvas_item.hpp>
-#include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/canvas_layer.hpp>
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/multi_mesh.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/canvas_item.hpp>
+#include <godot_cpp/classes/canvas_layer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -488,7 +488,7 @@ static const JSCFunctionListEntry canvas_item_class_proto_funcs[] = {
 };
 static JSValue canvas_item_class_get_draw_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	CanvasItem *opaque = reinterpret_cast<CanvasItem *>(JS_GetOpaque(this_val, CanvasItem::__class_id));
+	CanvasItem *opaque = reinterpret_cast<CanvasItem *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "draw_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "draw").operator JSValue();
@@ -498,7 +498,7 @@ static JSValue canvas_item_class_get_draw_signal(JSContext *ctx, JSValueConst th
 }
 static JSValue canvas_item_class_get_visibility_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	CanvasItem *opaque = reinterpret_cast<CanvasItem *>(JS_GetOpaque(this_val, CanvasItem::__class_id));
+	CanvasItem *opaque = reinterpret_cast<CanvasItem *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "visibility_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "visibility_changed").operator JSValue();
@@ -508,7 +508,7 @@ static JSValue canvas_item_class_get_visibility_changed_signal(JSContext *ctx, J
 }
 static JSValue canvas_item_class_get_hidden_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	CanvasItem *opaque = reinterpret_cast<CanvasItem *>(JS_GetOpaque(this_val, CanvasItem::__class_id));
+	CanvasItem *opaque = reinterpret_cast<CanvasItem *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "hidden_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "hidden").operator JSValue();
@@ -518,7 +518,7 @@ static JSValue canvas_item_class_get_hidden_signal(JSContext *ctx, JSValueConst 
 }
 static JSValue canvas_item_class_get_item_rect_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	CanvasItem *opaque = reinterpret_cast<CanvasItem *>(JS_GetOpaque(this_val, CanvasItem::__class_id));
+	CanvasItem *opaque = reinterpret_cast<CanvasItem *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "item_rect_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "item_rect_changed").operator JSValue();

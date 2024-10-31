@@ -1,6 +1,6 @@
 
-import { SpriteBase3D } from "@godot/classes/sprite_base3d";
 import { Texture2D } from "@godot/classes/texture2d";
+import { SpriteBase3D } from "@godot/classes/sprite_base3d";
 
 export declare class Sprite3D extends SpriteBase3D{
   public set_texture(_texture: Texture2D): void;
@@ -59,6 +59,6 @@ export declare class Sprite3D extends SpriteBase3D{
   public set region_rect(value): void {
     set_region_rect(value);
   }
-  public const frame_changed: string = "frame_changed";
-  public const texture_changed: string = "texture_changed";
+  public get frame_changed(): Signal;
+  public get texture_changed(): Signal;
 }

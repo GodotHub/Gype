@@ -1,10 +1,10 @@
 
 import { HScrollBar } from "@godot/classes/h_scroll_bar";
 import { VScrollBar } from "@godot/classes/v_scroll_bar";
-import { SyntaxHighlighter } from "@godot/classes/syntax_highlighter";
-import { PopupMenu } from "@godot/classes/popup_menu";
 import { Texture2D } from "@godot/classes/texture2d";
 import { Control } from "@godot/classes/control";
+import { SyntaxHighlighter } from "@godot/classes/syntax_highlighter";
+import { PopupMenu } from "@godot/classes/popup_menu";
 
 export declare class TextEdit extends Control{
   public _handle_unicode_input(_unicode_char: number, _caret_index: number): void;
@@ -556,11 +556,11 @@ export declare class TextEdit extends Control{
     GUTTER_TYPE_ICON = 1,
     GUTTER_TYPE_CUSTOM = 2,
   }
-  public const text_set: string = "text_set";
-  public const text_changed: string = "text_changed";
-  public const lines_edited_from: string = "lines_edited_from";
-  public const caret_changed: string = "caret_changed";
-  public const gutter_clicked: string = "gutter_clicked";
-  public const gutter_added: string = "gutter_added";
-  public const gutter_removed: string = "gutter_removed";
+  public get text_set(): Signal;
+  public get text_changed(): Signal;
+  public get lines_edited_from(): Signal;
+  public get caret_changed(): Signal;
+  public get gutter_clicked(): Signal;
+  public get gutter_added(): Signal;
+  public get gutter_removed(): Signal;
 }

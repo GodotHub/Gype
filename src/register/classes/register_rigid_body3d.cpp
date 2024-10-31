@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/rigid_body3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/physics_direct_body_state3d.hpp>
 #include <godot_cpp/classes/physics_material.hpp>
 #include <godot_cpp/classes/physics_body3d.hpp>
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -342,7 +342,7 @@ static const JSCFunctionListEntry rigid_body3d_class_proto_funcs[] = {
 };
 static JSValue rigid_body3d_class_get_body_shape_entered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	RigidBody3D *opaque = reinterpret_cast<RigidBody3D *>(JS_GetOpaque(this_val, RigidBody3D::__class_id));
+	RigidBody3D *opaque = reinterpret_cast<RigidBody3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "body_shape_entered_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "body_shape_entered").operator JSValue();
@@ -352,7 +352,7 @@ static JSValue rigid_body3d_class_get_body_shape_entered_signal(JSContext *ctx, 
 }
 static JSValue rigid_body3d_class_get_body_shape_exited_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	RigidBody3D *opaque = reinterpret_cast<RigidBody3D *>(JS_GetOpaque(this_val, RigidBody3D::__class_id));
+	RigidBody3D *opaque = reinterpret_cast<RigidBody3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "body_shape_exited_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "body_shape_exited").operator JSValue();
@@ -362,7 +362,7 @@ static JSValue rigid_body3d_class_get_body_shape_exited_signal(JSContext *ctx, J
 }
 static JSValue rigid_body3d_class_get_body_entered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	RigidBody3D *opaque = reinterpret_cast<RigidBody3D *>(JS_GetOpaque(this_val, RigidBody3D::__class_id));
+	RigidBody3D *opaque = reinterpret_cast<RigidBody3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "body_entered_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "body_entered").operator JSValue();
@@ -372,7 +372,7 @@ static JSValue rigid_body3d_class_get_body_entered_signal(JSContext *ctx, JSValu
 }
 static JSValue rigid_body3d_class_get_body_exited_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	RigidBody3D *opaque = reinterpret_cast<RigidBody3D *>(JS_GetOpaque(this_val, RigidBody3D::__class_id));
+	RigidBody3D *opaque = reinterpret_cast<RigidBody3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "body_exited_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "body_exited").operator JSValue();
@@ -382,7 +382,7 @@ static JSValue rigid_body3d_class_get_body_exited_signal(JSContext *ctx, JSValue
 }
 static JSValue rigid_body3d_class_get_sleeping_state_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	RigidBody3D *opaque = reinterpret_cast<RigidBody3D *>(JS_GetOpaque(this_val, RigidBody3D::__class_id));
+	RigidBody3D *opaque = reinterpret_cast<RigidBody3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "sleeping_state_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "sleeping_state_changed").operator JSValue();

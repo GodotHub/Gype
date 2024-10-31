@@ -1,10 +1,10 @@
 
 import { VScrollBar } from "@godot/classes/v_scroll_bar";
+import { Texture2D } from "@godot/classes/texture2d";
+import { Control } from "@godot/classes/control";
+import { RichTextEffect } from "@godot/classes/rich_text_effect";
 import { Font } from "@godot/classes/font";
 import { PopupMenu } from "@godot/classes/popup_menu";
-import { Texture2D } from "@godot/classes/texture2d";
-import { RichTextEffect } from "@godot/classes/rich_text_effect";
-import { Control } from "@godot/classes/control";
 
 export declare class RichTextLabel extends Control{
   public get_parsed_text(): String;
@@ -294,8 +294,8 @@ export declare class RichTextLabel extends Control{
     UPDATE_TOOLTIP = 64,
     UPDATE_WIDTH_IN_PERCENT = 128,
   }
-  public const meta_clicked: string = "meta_clicked";
-  public const meta_hover_started: string = "meta_hover_started";
-  public const meta_hover_ended: string = "meta_hover_ended";
-  public const finished: string = "finished";
+  public get meta_clicked(): Signal;
+  public get meta_hover_started(): Signal;
+  public get meta_hover_ended(): Signal;
+  public get finished(): Signal;
 }

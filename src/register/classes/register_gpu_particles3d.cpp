@@ -5,12 +5,12 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/gpu_particles3d.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/skin.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/geometry_instance3d.hpp>
+#include <godot_cpp/classes/gpu_particles3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -318,7 +318,7 @@ static const JSCFunctionListEntry gpu_particles3d_class_proto_funcs[] = {
 };
 static JSValue gpu_particles3d_class_get_finished_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GPUParticles3D *opaque = reinterpret_cast<GPUParticles3D *>(JS_GetOpaque(this_val, GPUParticles3D::__class_id));
+	GPUParticles3D *opaque = reinterpret_cast<GPUParticles3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "finished_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "finished").operator JSValue();

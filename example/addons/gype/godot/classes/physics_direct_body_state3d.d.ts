@@ -1,6 +1,6 @@
 
-import { PhysicsDirectSpaceState3D } from "@godot/classes/physics_direct_space_state3d";
 import { GodotObject } from "@godot/classes/godot_object";
+import { PhysicsDirectSpaceState3D } from "@godot/classes/physics_direct_space_state3d";
 
 export declare class PhysicsDirectBodyState3D extends GodotObject{
   public get_total_gravity(): Vector3;
@@ -43,7 +43,7 @@ export declare class PhysicsDirectBodyState3D extends GodotObject{
   public get_contact_collider(_contact_idx: number): RID;
   public get_contact_collider_position(_contact_idx: number): Vector3;
   public get_contact_collider_id(_contact_idx: number): number;
-  public get_contact_collider_object(_contact_idx: number): Object;
+  public get_contact_collider_object(_contact_idx: number): GodotObject;
   public get_contact_collider_shape(_contact_idx: number): number;
   public get_contact_collider_velocity_at_position(_contact_idx: number): Vector3;
   public get_step(): number;

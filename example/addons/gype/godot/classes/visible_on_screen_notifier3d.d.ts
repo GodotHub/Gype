@@ -10,6 +10,6 @@ export declare class VisibleOnScreenNotifier3D extends VisualInstance3D{
   public set aabb(value): void {
     set_aabb(value);
   }
-  public const screen_entered: string = "screen_entered";
-  public const screen_exited: string = "screen_exited";
+  public get screen_entered(): Signal;
+  public get screen_exited(): Signal;
 }

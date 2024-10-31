@@ -1,6 +1,6 @@
 
-import { Gradient } from "@godot/classes/gradient";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Gradient } from "@godot/classes/gradient";
 
 export declare class GradientTexture2D extends Texture2D{
   public set_gradient(_gradient: Gradient): void;

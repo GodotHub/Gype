@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/multiplayer_spawner.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/multiplayer_spawner.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -99,7 +99,7 @@ static const JSCFunctionListEntry multiplayer_spawner_class_proto_funcs[] = {
 };
 static JSValue multiplayer_spawner_class_get_despawned_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	MultiplayerSpawner *opaque = reinterpret_cast<MultiplayerSpawner *>(JS_GetOpaque(this_val, MultiplayerSpawner::__class_id));
+	MultiplayerSpawner *opaque = reinterpret_cast<MultiplayerSpawner *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "despawned_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "despawned").operator JSValue();
@@ -109,7 +109,7 @@ static JSValue multiplayer_spawner_class_get_despawned_signal(JSContext *ctx, JS
 }
 static JSValue multiplayer_spawner_class_get_spawned_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	MultiplayerSpawner *opaque = reinterpret_cast<MultiplayerSpawner *>(JS_GetOpaque(this_val, MultiplayerSpawner::__class_id));
+	MultiplayerSpawner *opaque = reinterpret_cast<MultiplayerSpawner *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "spawned_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "spawned").operator JSValue();

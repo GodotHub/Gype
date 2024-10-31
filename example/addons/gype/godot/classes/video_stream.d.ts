@@ -1,6 +1,6 @@
 
-import { VideoStreamPlayback } from "@godot/classes/video_stream_playback";
 import { Resource } from "@godot/classes/resource";
+import { VideoStreamPlayback } from "@godot/classes/video_stream_playback";
 
 export declare class VideoStream extends Resource{
   public _instantiate_playback(): VideoStreamPlayback;

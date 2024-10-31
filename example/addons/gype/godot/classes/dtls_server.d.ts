@@ -1,7 +1,7 @@
 
 import { PacketPeerUDP } from "@godot/classes/packet_peer_udp";
-import { PacketPeerDTLS } from "@godot/classes/packet_peer_dtls";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { PacketPeerDTLS } from "@godot/classes/packet_peer_dtls";
 import { TLSOptions } from "@godot/classes/tls_options";
 
 export declare class DTLSServer extends RefCounted{

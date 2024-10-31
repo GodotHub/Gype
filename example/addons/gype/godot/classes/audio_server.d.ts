@@ -1,9 +1,9 @@
 
-import { AudioEffect } from "@godot/classes/audio_effect";
 import { AudioStream } from "@godot/classes/audio_stream";
-import { AudioEffectInstance } from "@godot/classes/audio_effect_instance";
-import { AudioBusLayout } from "@godot/classes/audio_bus_layout";
 import { GodotObject } from "@godot/classes/godot_object";
+import { AudioEffect } from "@godot/classes/audio_effect";
+import { AudioBusLayout } from "@godot/classes/audio_bus_layout";
+import { AudioEffectInstance } from "@godot/classes/audio_effect_instance";
 
 export declare class AudioServer extends GodotObject{
   public set_bus_count(_amount: number): void;
@@ -91,6 +91,6 @@ export declare class AudioServer extends GodotObject{
     PLAYBACK_TYPE_SAMPLE = 2,
     PLAYBACK_TYPE_MAX = 3,
   }
-  public const bus_layout_changed: string = "bus_layout_changed";
-  public const bus_renamed: string = "bus_renamed";
+  public get bus_layout_changed(): Signal;
+  public get bus_renamed(): Signal;
 }

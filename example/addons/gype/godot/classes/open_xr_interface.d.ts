@@ -121,12 +121,12 @@ export declare class OpenXRInterface extends XRInterface{
     HAND_JOINT_LINEAR_VELOCITY_VALID = 16,
     HAND_JOINT_ANGULAR_VELOCITY_VALID = 32,
   }
-  public const session_begun: string = "session_begun";
-  public const session_stopping: string = "session_stopping";
-  public const session_focussed: string = "session_focussed";
-  public const session_visible: string = "session_visible";
-  public const session_loss_pending: string = "session_loss_pending";
-  public const instance_exiting: string = "instance_exiting";
-  public const pose_recentered: string = "pose_recentered";
-  public const refresh_rate_changed: string = "refresh_rate_changed";
+  public get session_begun(): Signal;
+  public get session_stopping(): Signal;
+  public get session_focussed(): Signal;
+  public get session_visible(): Signal;
+  public get session_loss_pending(): Signal;
+  public get instance_exiting(): Signal;
+  public get pose_recentered(): Signal;
+  public get refresh_rate_changed(): Signal;
 }

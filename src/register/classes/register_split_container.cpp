@@ -89,7 +89,7 @@ static const JSCFunctionListEntry split_container_class_proto_funcs[] = {
 };
 static JSValue split_container_class_get_dragged_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	SplitContainer *opaque = reinterpret_cast<SplitContainer *>(JS_GetOpaque(this_val, SplitContainer::__class_id));
+	SplitContainer *opaque = reinterpret_cast<SplitContainer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "dragged_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "dragged").operator JSValue();

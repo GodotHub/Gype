@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/timer.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/timer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -114,7 +114,7 @@ static const JSCFunctionListEntry timer_class_proto_funcs[] = {
 };
 static JSValue timer_class_get_timeout_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Timer *opaque = reinterpret_cast<Timer *>(JS_GetOpaque(this_val, Timer::__class_id));
+	Timer *opaque = reinterpret_cast<Timer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "timeout_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "timeout").operator JSValue();

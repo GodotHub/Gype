@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/animation_node.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -119,7 +119,7 @@ static const JSCFunctionListEntry animation_node_class_proto_funcs[] = {
 };
 static JSValue animation_node_class_get_tree_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimationNode *opaque = reinterpret_cast<AnimationNode *>(JS_GetOpaque(this_val, AnimationNode::__class_id));
+	AnimationNode *opaque = reinterpret_cast<AnimationNode *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "tree_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "tree_changed").operator JSValue();
@@ -129,7 +129,7 @@ static JSValue animation_node_class_get_tree_changed_signal(JSContext *ctx, JSVa
 }
 static JSValue animation_node_class_get_animation_node_renamed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimationNode *opaque = reinterpret_cast<AnimationNode *>(JS_GetOpaque(this_val, AnimationNode::__class_id));
+	AnimationNode *opaque = reinterpret_cast<AnimationNode *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "animation_node_renamed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "animation_node_renamed").operator JSValue();
@@ -139,7 +139,7 @@ static JSValue animation_node_class_get_animation_node_renamed_signal(JSContext 
 }
 static JSValue animation_node_class_get_animation_node_removed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimationNode *opaque = reinterpret_cast<AnimationNode *>(JS_GetOpaque(this_val, AnimationNode::__class_id));
+	AnimationNode *opaque = reinterpret_cast<AnimationNode *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "animation_node_removed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "animation_node_removed").operator JSValue();

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/sprite_base3d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/sprite3d.hpp>
+#include <godot_cpp/classes/sprite_base3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -115,7 +115,7 @@ static const JSCFunctionListEntry sprite3d_class_proto_funcs[] = {
 };
 static JSValue sprite3d_class_get_frame_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Sprite3D *opaque = reinterpret_cast<Sprite3D *>(JS_GetOpaque(this_val, Sprite3D::__class_id));
+	Sprite3D *opaque = reinterpret_cast<Sprite3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "frame_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "frame_changed").operator JSValue();
@@ -125,7 +125,7 @@ static JSValue sprite3d_class_get_frame_changed_signal(JSContext *ctx, JSValueCo
 }
 static JSValue sprite3d_class_get_texture_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Sprite3D *opaque = reinterpret_cast<Sprite3D *>(JS_GetOpaque(this_val, Sprite3D::__class_id));
+	Sprite3D *opaque = reinterpret_cast<Sprite3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "texture_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "texture_changed").operator JSValue();

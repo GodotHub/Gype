@@ -7,8 +7,8 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/image_texture_layered.hpp>
 #include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/texture_layered.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

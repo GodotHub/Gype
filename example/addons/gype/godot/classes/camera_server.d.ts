@@ -15,6 +15,6 @@ export declare class CameraServer extends GodotObject{
     FEED_Y_IMAGE = 0,
     FEED_CBCR_IMAGE = 1,
   }
-  public const camera_feed_added: string = "camera_feed_added";
-  public const camera_feed_removed: string = "camera_feed_removed";
+  public get camera_feed_added(): Signal;
+  public get camera_feed_removed(): Signal;
 }

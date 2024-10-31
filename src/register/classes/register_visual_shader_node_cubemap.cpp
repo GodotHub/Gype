@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/cubemap.hpp>
-#include <godot_cpp/classes/visual_shader_node_cubemap.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/classes/visual_shader_node_cubemap.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

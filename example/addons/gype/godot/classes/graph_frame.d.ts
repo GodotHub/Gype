@@ -1,6 +1,6 @@
 
-import { HBoxContainer } from "@godot/classes/h_box_container";
 import { GraphElement } from "@godot/classes/graph_element";
+import { HBoxContainer } from "@godot/classes/h_box_container";
 
 export declare class GraphFrame extends GraphElement{
   public set_title(_title: String | StringName | string): void;
@@ -52,5 +52,5 @@ export declare class GraphFrame extends GraphElement{
   public set tint_color(value): void {
     set_tint_color(value);
   }
-  public const autoshrink_changed: string = "autoshrink_changed";
+  public get autoshrink_changed(): Signal;
 }

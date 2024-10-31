@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_pose.hpp>
-#include <godot_cpp/classes/xr_positional_tracker.hpp>
 #include <godot_cpp/classes/xr_tracker.hpp>
+#include <godot_cpp/classes/xr_positional_tracker.hpp>
+#include <godot_cpp/classes/xr_pose.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -95,7 +95,7 @@ static const JSCFunctionListEntry xr_positional_tracker_class_proto_funcs[] = {
 };
 static JSValue xr_positional_tracker_class_get_pose_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	XRPositionalTracker *opaque = reinterpret_cast<XRPositionalTracker *>(JS_GetOpaque(this_val, XRPositionalTracker::__class_id));
+	XRPositionalTracker *opaque = reinterpret_cast<XRPositionalTracker *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "pose_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "pose_changed").operator JSValue();
@@ -105,7 +105,7 @@ static JSValue xr_positional_tracker_class_get_pose_changed_signal(JSContext *ct
 }
 static JSValue xr_positional_tracker_class_get_pose_lost_tracking_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	XRPositionalTracker *opaque = reinterpret_cast<XRPositionalTracker *>(JS_GetOpaque(this_val, XRPositionalTracker::__class_id));
+	XRPositionalTracker *opaque = reinterpret_cast<XRPositionalTracker *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "pose_lost_tracking_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "pose_lost_tracking").operator JSValue();
@@ -115,7 +115,7 @@ static JSValue xr_positional_tracker_class_get_pose_lost_tracking_signal(JSConte
 }
 static JSValue xr_positional_tracker_class_get_button_pressed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	XRPositionalTracker *opaque = reinterpret_cast<XRPositionalTracker *>(JS_GetOpaque(this_val, XRPositionalTracker::__class_id));
+	XRPositionalTracker *opaque = reinterpret_cast<XRPositionalTracker *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "button_pressed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "button_pressed").operator JSValue();
@@ -125,7 +125,7 @@ static JSValue xr_positional_tracker_class_get_button_pressed_signal(JSContext *
 }
 static JSValue xr_positional_tracker_class_get_button_released_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	XRPositionalTracker *opaque = reinterpret_cast<XRPositionalTracker *>(JS_GetOpaque(this_val, XRPositionalTracker::__class_id));
+	XRPositionalTracker *opaque = reinterpret_cast<XRPositionalTracker *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "button_released_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "button_released").operator JSValue();
@@ -135,7 +135,7 @@ static JSValue xr_positional_tracker_class_get_button_released_signal(JSContext 
 }
 static JSValue xr_positional_tracker_class_get_input_float_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	XRPositionalTracker *opaque = reinterpret_cast<XRPositionalTracker *>(JS_GetOpaque(this_val, XRPositionalTracker::__class_id));
+	XRPositionalTracker *opaque = reinterpret_cast<XRPositionalTracker *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "input_float_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "input_float_changed").operator JSValue();
@@ -145,7 +145,7 @@ static JSValue xr_positional_tracker_class_get_input_float_changed_signal(JSCont
 }
 static JSValue xr_positional_tracker_class_get_input_vector2_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	XRPositionalTracker *opaque = reinterpret_cast<XRPositionalTracker *>(JS_GetOpaque(this_val, XRPositionalTracker::__class_id));
+	XRPositionalTracker *opaque = reinterpret_cast<XRPositionalTracker *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "input_vector2_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "input_vector2_changed").operator JSValue();
@@ -155,7 +155,7 @@ static JSValue xr_positional_tracker_class_get_input_vector2_changed_signal(JSCo
 }
 static JSValue xr_positional_tracker_class_get_profile_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	XRPositionalTracker *opaque = reinterpret_cast<XRPositionalTracker *>(JS_GetOpaque(this_val, XRPositionalTracker::__class_id));
+	XRPositionalTracker *opaque = reinterpret_cast<XRPositionalTracker *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "profile_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "profile_changed").operator JSValue();

@@ -113,5 +113,5 @@ export declare class AudioStreamPlayer2D extends Node2D{
   public set playback_type(value): void {
     set_playback_type(value);
   }
-  public const finished: string = "finished";
+  public get finished(): Signal;
 }

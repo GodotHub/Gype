@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/classes/editor_resource_picker.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -96,7 +96,7 @@ static const JSCFunctionListEntry editor_resource_picker_class_proto_funcs[] = {
 };
 static JSValue editor_resource_picker_class_get_resource_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorResourcePicker *opaque = reinterpret_cast<EditorResourcePicker *>(JS_GetOpaque(this_val, EditorResourcePicker::__class_id));
+	EditorResourcePicker *opaque = reinterpret_cast<EditorResourcePicker *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "resource_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "resource_selected").operator JSValue();
@@ -106,7 +106,7 @@ static JSValue editor_resource_picker_class_get_resource_selected_signal(JSConte
 }
 static JSValue editor_resource_picker_class_get_resource_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorResourcePicker *opaque = reinterpret_cast<EditorResourcePicker *>(JS_GetOpaque(this_val, EditorResourcePicker::__class_id));
+	EditorResourcePicker *opaque = reinterpret_cast<EditorResourcePicker *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "resource_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "resource_changed").operator JSValue();

@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/multiplayer_api.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/multiplayer_api.hpp>
+#include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -115,7 +115,7 @@ static const JSCFunctionListEntry multiplayer_api_class_static_funcs[] = {
 };
 static JSValue multiplayer_api_class_get_peer_connected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	MultiplayerAPI *opaque = reinterpret_cast<MultiplayerAPI *>(JS_GetOpaque(this_val, MultiplayerAPI::__class_id));
+	MultiplayerAPI *opaque = reinterpret_cast<MultiplayerAPI *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "peer_connected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "peer_connected").operator JSValue();
@@ -125,7 +125,7 @@ static JSValue multiplayer_api_class_get_peer_connected_signal(JSContext *ctx, J
 }
 static JSValue multiplayer_api_class_get_peer_disconnected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	MultiplayerAPI *opaque = reinterpret_cast<MultiplayerAPI *>(JS_GetOpaque(this_val, MultiplayerAPI::__class_id));
+	MultiplayerAPI *opaque = reinterpret_cast<MultiplayerAPI *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "peer_disconnected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "peer_disconnected").operator JSValue();
@@ -135,7 +135,7 @@ static JSValue multiplayer_api_class_get_peer_disconnected_signal(JSContext *ctx
 }
 static JSValue multiplayer_api_class_get_connected_to_server_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	MultiplayerAPI *opaque = reinterpret_cast<MultiplayerAPI *>(JS_GetOpaque(this_val, MultiplayerAPI::__class_id));
+	MultiplayerAPI *opaque = reinterpret_cast<MultiplayerAPI *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "connected_to_server_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "connected_to_server").operator JSValue();
@@ -145,7 +145,7 @@ static JSValue multiplayer_api_class_get_connected_to_server_signal(JSContext *c
 }
 static JSValue multiplayer_api_class_get_connection_failed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	MultiplayerAPI *opaque = reinterpret_cast<MultiplayerAPI *>(JS_GetOpaque(this_val, MultiplayerAPI::__class_id));
+	MultiplayerAPI *opaque = reinterpret_cast<MultiplayerAPI *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "connection_failed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "connection_failed").operator JSValue();
@@ -155,7 +155,7 @@ static JSValue multiplayer_api_class_get_connection_failed_signal(JSContext *ctx
 }
 static JSValue multiplayer_api_class_get_server_disconnected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	MultiplayerAPI *opaque = reinterpret_cast<MultiplayerAPI *>(JS_GetOpaque(this_val, MultiplayerAPI::__class_id));
+	MultiplayerAPI *opaque = reinterpret_cast<MultiplayerAPI *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "server_disconnected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "server_disconnected").operator JSValue();

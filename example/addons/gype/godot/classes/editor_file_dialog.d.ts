@@ -1,8 +1,8 @@
 
+import { ConfirmationDialog } from "@godot/classes/confirmation_dialog";
+import { Control } from "@godot/classes/control";
 import { LineEdit } from "@godot/classes/line_edit";
 import { VBoxContainer } from "@godot/classes/v_box_container";
-import { Control } from "@godot/classes/control";
-import { ConfirmationDialog } from "@godot/classes/confirmation_dialog";
 
 export declare class EditorFileDialog extends ConfirmationDialog{
   public clear_filters(): void;
@@ -116,7 +116,7 @@ export declare class EditorFileDialog extends ConfirmationDialog{
     DISPLAY_THUMBNAILS = 0,
     DISPLAY_LIST = 1,
   }
-  public const file_selected: string = "file_selected";
-  public const files_selected: string = "files_selected";
-  public const dir_selected: string = "dir_selected";
+  public get file_selected(): Signal;
+  public get files_selected(): Signal;
+  public get dir_selected(): Signal;
 }

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/multiplayer_synchronizer.hpp>
-#include <godot_cpp/classes/scene_replication_config.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/scene_replication_config.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -130,7 +130,7 @@ static const JSCFunctionListEntry multiplayer_synchronizer_class_proto_funcs[] =
 };
 static JSValue multiplayer_synchronizer_class_get_synchronized_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	MultiplayerSynchronizer *opaque = reinterpret_cast<MultiplayerSynchronizer *>(JS_GetOpaque(this_val, MultiplayerSynchronizer::__class_id));
+	MultiplayerSynchronizer *opaque = reinterpret_cast<MultiplayerSynchronizer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "synchronized_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "synchronized").operator JSValue();
@@ -140,7 +140,7 @@ static JSValue multiplayer_synchronizer_class_get_synchronized_signal(JSContext 
 }
 static JSValue multiplayer_synchronizer_class_get_delta_synchronized_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	MultiplayerSynchronizer *opaque = reinterpret_cast<MultiplayerSynchronizer *>(JS_GetOpaque(this_val, MultiplayerSynchronizer::__class_id));
+	MultiplayerSynchronizer *opaque = reinterpret_cast<MultiplayerSynchronizer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "delta_synchronized_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "delta_synchronized").operator JSValue();
@@ -150,7 +150,7 @@ static JSValue multiplayer_synchronizer_class_get_delta_synchronized_signal(JSCo
 }
 static JSValue multiplayer_synchronizer_class_get_visibility_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	MultiplayerSynchronizer *opaque = reinterpret_cast<MultiplayerSynchronizer *>(JS_GetOpaque(this_val, MultiplayerSynchronizer::__class_id));
+	MultiplayerSynchronizer *opaque = reinterpret_cast<MultiplayerSynchronizer *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "visibility_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "visibility_changed").operator JSValue();

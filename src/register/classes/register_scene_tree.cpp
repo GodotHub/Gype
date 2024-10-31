@@ -5,17 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/window.hpp>
 #include <godot_cpp/classes/packed_scene.hpp>
-#include <godot_cpp/classes/tween.hpp>
-#include <godot_cpp/classes/tween.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/scene_tree_timer.hpp>
-#include <godot_cpp/classes/main_loop.hpp>
-#include <godot_cpp/classes/scene_tree.hpp>
+#include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/multiplayer_api.hpp>
+#include <godot_cpp/classes/main_loop.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/scene_tree.hpp>
+#include <godot_cpp/classes/window.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -273,7 +273,7 @@ static const JSCFunctionListEntry scene_tree_class_proto_funcs[] = {
 };
 static JSValue scene_tree_class_get_tree_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	SceneTree *opaque = reinterpret_cast<SceneTree *>(JS_GetOpaque(this_val, SceneTree::__class_id));
+	SceneTree *opaque = reinterpret_cast<SceneTree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "tree_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "tree_changed").operator JSValue();
@@ -283,7 +283,7 @@ static JSValue scene_tree_class_get_tree_changed_signal(JSContext *ctx, JSValueC
 }
 static JSValue scene_tree_class_get_tree_process_mode_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	SceneTree *opaque = reinterpret_cast<SceneTree *>(JS_GetOpaque(this_val, SceneTree::__class_id));
+	SceneTree *opaque = reinterpret_cast<SceneTree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "tree_process_mode_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "tree_process_mode_changed").operator JSValue();
@@ -293,7 +293,7 @@ static JSValue scene_tree_class_get_tree_process_mode_changed_signal(JSContext *
 }
 static JSValue scene_tree_class_get_node_added_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	SceneTree *opaque = reinterpret_cast<SceneTree *>(JS_GetOpaque(this_val, SceneTree::__class_id));
+	SceneTree *opaque = reinterpret_cast<SceneTree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "node_added_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "node_added").operator JSValue();
@@ -303,7 +303,7 @@ static JSValue scene_tree_class_get_node_added_signal(JSContext *ctx, JSValueCon
 }
 static JSValue scene_tree_class_get_node_removed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	SceneTree *opaque = reinterpret_cast<SceneTree *>(JS_GetOpaque(this_val, SceneTree::__class_id));
+	SceneTree *opaque = reinterpret_cast<SceneTree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "node_removed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "node_removed").operator JSValue();
@@ -313,7 +313,7 @@ static JSValue scene_tree_class_get_node_removed_signal(JSContext *ctx, JSValueC
 }
 static JSValue scene_tree_class_get_node_renamed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	SceneTree *opaque = reinterpret_cast<SceneTree *>(JS_GetOpaque(this_val, SceneTree::__class_id));
+	SceneTree *opaque = reinterpret_cast<SceneTree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "node_renamed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "node_renamed").operator JSValue();
@@ -323,7 +323,7 @@ static JSValue scene_tree_class_get_node_renamed_signal(JSContext *ctx, JSValueC
 }
 static JSValue scene_tree_class_get_node_configuration_warning_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	SceneTree *opaque = reinterpret_cast<SceneTree *>(JS_GetOpaque(this_val, SceneTree::__class_id));
+	SceneTree *opaque = reinterpret_cast<SceneTree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "node_configuration_warning_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "node_configuration_warning_changed").operator JSValue();
@@ -333,7 +333,7 @@ static JSValue scene_tree_class_get_node_configuration_warning_changed_signal(JS
 }
 static JSValue scene_tree_class_get_process_frame_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	SceneTree *opaque = reinterpret_cast<SceneTree *>(JS_GetOpaque(this_val, SceneTree::__class_id));
+	SceneTree *opaque = reinterpret_cast<SceneTree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "process_frame_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "process_frame").operator JSValue();
@@ -343,7 +343,7 @@ static JSValue scene_tree_class_get_process_frame_signal(JSContext *ctx, JSValue
 }
 static JSValue scene_tree_class_get_physics_frame_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	SceneTree *opaque = reinterpret_cast<SceneTree *>(JS_GetOpaque(this_val, SceneTree::__class_id));
+	SceneTree *opaque = reinterpret_cast<SceneTree *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "physics_frame_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "physics_frame").operator JSValue();

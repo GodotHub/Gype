@@ -43,6 +43,6 @@ export declare class Resource extends RefCounted{
   public set resource_scene_unique_id(value): void {
     set_scene_unique_id(value);
   }
-  public const changed: string = "changed";
-  public const setup_local_to_scene_requested: string = "setup_local_to_scene_requested";
+  public get changed(): Signal;
+  public get setup_local_to_scene_requested(): Signal;
 }

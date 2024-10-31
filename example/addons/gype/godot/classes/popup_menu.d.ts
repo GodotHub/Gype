@@ -1,8 +1,8 @@
 
 import { InputEvent } from "@godot/classes/input_event";
 import { Shortcut } from "@godot/classes/shortcut";
-import { Popup } from "@godot/classes/popup";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Popup } from "@godot/classes/popup";
 
 export declare class PopupMenu extends Popup{
   public activate_item_by_event(_event: InputEvent, _for_global_only: boolean): boolean;
@@ -140,8 +140,8 @@ export declare class PopupMenu extends Popup{
   public set item_count(value): void {
     set_item_count(value);
   }
-  public const id_pressed: string = "id_pressed";
-  public const id_focused: string = "id_focused";
-  public const index_pressed: string = "index_pressed";
-  public const menu_changed: string = "menu_changed";
+  public get id_pressed(): Signal;
+  public get id_focused(): Signal;
+  public get index_pressed(): Signal;
+  public get menu_changed(): Signal;
 }

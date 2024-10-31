@@ -1,7 +1,7 @@
 
-import { EditorDebuggerSession } from "@godot/classes/editor_debugger_session";
 import { Script } from "@godot/classes/script";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { EditorDebuggerSession } from "@godot/classes/editor_debugger_session";
 
 export declare class EditorDebuggerPlugin extends RefCounted{
   public _setup_session(_session_id: number): void;

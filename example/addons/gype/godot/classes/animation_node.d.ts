@@ -43,7 +43,7 @@ export declare class AnimationNode extends Resource{
     FILTER_STOP = 2,
     FILTER_BLEND = 3,
   }
-  public const tree_changed: string = "tree_changed";
-  public const animation_node_renamed: string = "animation_node_renamed";
-  public const animation_node_removed: string = "animation_node_removed";
+  public get tree_changed(): Signal;
+  public get animation_node_renamed(): Signal;
+  public get animation_node_removed(): Signal;
 }

@@ -10,7 +10,7 @@ export declare class RayCast2D extends Node2D{
   public get_target_position(): Vector2;
   public is_colliding(): boolean;
   public force_raycast_update(): void;
-  public get_collider(): Object;
+  public get_collider(): GodotObject;
   public get_collider_rid(): RID;
   public get_collider_shape(): number;
   public get_collision_point(): Vector2;

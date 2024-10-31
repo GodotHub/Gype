@@ -1,6 +1,6 @@
 
-import { RefCounted } from "@godot/classes/ref_counted";
 import { GodotObject } from "@godot/classes/godot_object";
+import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class PhysicsTestMotionResult2D extends RefCounted{
   public get_travel(): Vector2;
@@ -10,7 +10,7 @@ export declare class PhysicsTestMotionResult2D extends RefCounted{
   public get_collider_velocity(): Vector2;
   public get_collider_id(): number;
   public get_collider_rid(): RID;
-  public get_collider(): Object;
+  public get_collider(): GodotObject;
   public get_collider_shape(): number;
   public get_collision_local_shape(): number;
   public get_collision_depth(): number;

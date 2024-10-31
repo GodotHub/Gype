@@ -1,7 +1,7 @@
 
+import { BoneAttachment3D } from "@godot/classes/bone_attachment3d";
 import { Resource } from "@godot/classes/resource";
 import { Skeleton3D } from "@godot/classes/skeleton3d";
-import { BoneAttachment3D } from "@godot/classes/bone_attachment3d";
 
 export declare class GLTFSkeleton extends Resource{
   public get_joints(): PackedInt32Array;

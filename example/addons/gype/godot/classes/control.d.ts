@@ -1,12 +1,12 @@
 
-import { Theme } from "@godot/classes/theme";
-import { Font } from "@godot/classes/font";
-import { CanvasItem } from "@godot/classes/canvas_item";
-import { InputEvent } from "@godot/classes/input_event";
-import { GodotObject } from "@godot/classes/godot_object";
-import { Texture2D } from "@godot/classes/texture2d";
 import { StyleBox } from "@godot/classes/style_box";
 import { Node } from "@godot/classes/node";
+import { Theme } from "@godot/classes/theme";
+import { Texture2D } from "@godot/classes/texture2d";
+import { GodotObject } from "@godot/classes/godot_object";
+import { CanvasItem } from "@godot/classes/canvas_item";
+import { InputEvent } from "@godot/classes/input_event";
+import { Font } from "@godot/classes/font";
 
 export declare class Control extends CanvasItem{
   public _has_point(_point: Vector2): boolean;
@@ -16,7 +16,7 @@ export declare class Control extends CanvasItem{
   public _get_drag_data(_at_position: Vector2): any;
   public _can_drop_data(_at_position: Vector2, _data: any): boolean;
   public _drop_data(_at_position: Vector2, _data: any): void;
-  public _make_custom_tooltip(_for_text: String | StringName | string): Object;
+  public _make_custom_tooltip(_for_text: String | StringName | string): GodotObject;
   public _gui_input(_event: InputEvent): void;
   public accept_event(): void;
   public get_minimum_size(): Vector2;
@@ -374,7 +374,7 @@ export declare class Control extends CanvasItem{
   public set mouse_default_cursor_shape(value): void {
     set_default_cursor_shape(value);
   }
-  public get shortcut_context(): Object {
+  public get shortcut_context(): GodotObject {
     get_shortcut_context();
   }
   public set shortcut_context(value): void {
@@ -474,13 +474,13 @@ export declare class Control extends CanvasItem{
     TEXT_DIRECTION_LTR = 1,
     TEXT_DIRECTION_RTL = 2,
   }
-  public const resized: string = "resized";
-  public const gui_input: string = "gui_input";
-  public const mouse_entered: string = "mouse_entered";
-  public const mouse_exited: string = "mouse_exited";
-  public const focus_entered: string = "focus_entered";
-  public const focus_exited: string = "focus_exited";
-  public const size_flags_changed: string = "size_flags_changed";
-  public const minimum_size_changed: string = "minimum_size_changed";
-  public const theme_changed: string = "theme_changed";
+  public get resized(): Signal;
+  public get gui_input(): Signal;
+  public get mouse_entered(): Signal;
+  public get mouse_exited(): Signal;
+  public get focus_entered(): Signal;
+  public get focus_exited(): Signal;
+  public get size_flags_changed(): Signal;
+  public get minimum_size_changed(): Signal;
+  public get theme_changed(): Signal;
 }

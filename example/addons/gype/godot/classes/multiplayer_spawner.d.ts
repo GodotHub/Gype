@@ -31,6 +31,6 @@ export declare class MultiplayerSpawner extends Node{
   public set spawn_function(value): void {
     set_spawn_function(value);
   }
-  public const despawned: string = "despawned";
-  public const spawned: string = "spawned";
+  public get despawned(): Signal;
+  public get spawned(): Signal;
 }

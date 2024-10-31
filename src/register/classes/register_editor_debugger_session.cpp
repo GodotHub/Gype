@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/editor_debugger_session.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -85,7 +85,7 @@ static const JSCFunctionListEntry editor_debugger_session_class_proto_funcs[] = 
 };
 static JSValue editor_debugger_session_class_get_started_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorDebuggerSession *opaque = reinterpret_cast<EditorDebuggerSession *>(JS_GetOpaque(this_val, EditorDebuggerSession::__class_id));
+	EditorDebuggerSession *opaque = reinterpret_cast<EditorDebuggerSession *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "started_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "started").operator JSValue();
@@ -95,7 +95,7 @@ static JSValue editor_debugger_session_class_get_started_signal(JSContext *ctx, 
 }
 static JSValue editor_debugger_session_class_get_stopped_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorDebuggerSession *opaque = reinterpret_cast<EditorDebuggerSession *>(JS_GetOpaque(this_val, EditorDebuggerSession::__class_id));
+	EditorDebuggerSession *opaque = reinterpret_cast<EditorDebuggerSession *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "stopped_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "stopped").operator JSValue();
@@ -105,7 +105,7 @@ static JSValue editor_debugger_session_class_get_stopped_signal(JSContext *ctx, 
 }
 static JSValue editor_debugger_session_class_get_breaked_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorDebuggerSession *opaque = reinterpret_cast<EditorDebuggerSession *>(JS_GetOpaque(this_val, EditorDebuggerSession::__class_id));
+	EditorDebuggerSession *opaque = reinterpret_cast<EditorDebuggerSession *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "breaked_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "breaked").operator JSValue();
@@ -115,7 +115,7 @@ static JSValue editor_debugger_session_class_get_breaked_signal(JSContext *ctx, 
 }
 static JSValue editor_debugger_session_class_get_continued_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorDebuggerSession *opaque = reinterpret_cast<EditorDebuggerSession *>(JS_GetOpaque(this_val, EditorDebuggerSession::__class_id));
+	EditorDebuggerSession *opaque = reinterpret_cast<EditorDebuggerSession *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "continued_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "continued").operator JSValue();

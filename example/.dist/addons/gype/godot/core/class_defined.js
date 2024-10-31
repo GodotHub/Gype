@@ -39,7 +39,7 @@ export function Tool(target) {
 //     this.queue_free();
 //   }
 // }
-export function toPromise(signal) {
+export function to_promise(signal) {
     return new Promise((resolve, reject) => {
         const instance = signal.get_object();
         if (!GD.is_instance_id_valid(instance.get_instance_id()))

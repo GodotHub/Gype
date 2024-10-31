@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/xr_node3d.hpp>
-#include <godot_cpp/classes/xr_pose.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/xr_pose.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -95,7 +95,7 @@ static const JSCFunctionListEntry xr_node3d_class_proto_funcs[] = {
 };
 static JSValue xr_node3d_class_get_tracking_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	XRNode3D *opaque = reinterpret_cast<XRNode3D *>(JS_GetOpaque(this_val, XRNode3D::__class_id));
+	XRNode3D *opaque = reinterpret_cast<XRNode3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "tracking_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "tracking_changed").operator JSValue();

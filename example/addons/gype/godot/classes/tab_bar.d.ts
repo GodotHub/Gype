@@ -1,6 +1,6 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { Control } from "@godot/classes/control";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class TabBar extends Control{
   public set_tab_count(_count: number): void;
@@ -143,12 +143,12 @@ export declare class TabBar extends Control{
     CLOSE_BUTTON_SHOW_ALWAYS = 2,
     CLOSE_BUTTON_MAX = 3,
   }
-  public const tab_selected: string = "tab_selected";
-  public const tab_changed: string = "tab_changed";
-  public const tab_clicked: string = "tab_clicked";
-  public const tab_rmb_clicked: string = "tab_rmb_clicked";
-  public const tab_close_pressed: string = "tab_close_pressed";
-  public const tab_button_pressed: string = "tab_button_pressed";
-  public const tab_hovered: string = "tab_hovered";
-  public const active_tab_rearranged: string = "active_tab_rearranged";
+  public get tab_selected(): Signal;
+  public get tab_changed(): Signal;
+  public get tab_clicked(): Signal;
+  public get tab_rmb_clicked(): Signal;
+  public get tab_close_pressed(): Signal;
+  public get tab_button_pressed(): Signal;
+  public get tab_hovered(): Signal;
+  public get active_tab_rearranged(): Signal;
 }

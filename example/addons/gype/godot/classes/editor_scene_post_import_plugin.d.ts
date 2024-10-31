@@ -1,7 +1,7 @@
 
 import { Resource } from "@godot/classes/resource";
-import { Node } from "@godot/classes/node";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { Node } from "@godot/classes/node";
 
 export declare class EditorScenePostImportPlugin extends RefCounted{
   public _get_internal_import_options(_category: number): void;

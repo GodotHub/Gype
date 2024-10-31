@@ -90,7 +90,7 @@ static const JSCFunctionListEntry editor_file_system_class_proto_funcs[] = {
 };
 static JSValue editor_file_system_class_get_filesystem_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorFileSystem *opaque = reinterpret_cast<EditorFileSystem *>(JS_GetOpaque(this_val, EditorFileSystem::__class_id));
+	EditorFileSystem *opaque = reinterpret_cast<EditorFileSystem *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "filesystem_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "filesystem_changed").operator JSValue();
@@ -100,7 +100,7 @@ static JSValue editor_file_system_class_get_filesystem_changed_signal(JSContext 
 }
 static JSValue editor_file_system_class_get_script_classes_updated_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorFileSystem *opaque = reinterpret_cast<EditorFileSystem *>(JS_GetOpaque(this_val, EditorFileSystem::__class_id));
+	EditorFileSystem *opaque = reinterpret_cast<EditorFileSystem *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "script_classes_updated_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "script_classes_updated").operator JSValue();
@@ -110,7 +110,7 @@ static JSValue editor_file_system_class_get_script_classes_updated_signal(JSCont
 }
 static JSValue editor_file_system_class_get_sources_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorFileSystem *opaque = reinterpret_cast<EditorFileSystem *>(JS_GetOpaque(this_val, EditorFileSystem::__class_id));
+	EditorFileSystem *opaque = reinterpret_cast<EditorFileSystem *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "sources_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "sources_changed").operator JSValue();
@@ -120,7 +120,7 @@ static JSValue editor_file_system_class_get_sources_changed_signal(JSContext *ct
 }
 static JSValue editor_file_system_class_get_resources_reimporting_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorFileSystem *opaque = reinterpret_cast<EditorFileSystem *>(JS_GetOpaque(this_val, EditorFileSystem::__class_id));
+	EditorFileSystem *opaque = reinterpret_cast<EditorFileSystem *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "resources_reimporting_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "resources_reimporting").operator JSValue();
@@ -130,7 +130,7 @@ static JSValue editor_file_system_class_get_resources_reimporting_signal(JSConte
 }
 static JSValue editor_file_system_class_get_resources_reimported_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorFileSystem *opaque = reinterpret_cast<EditorFileSystem *>(JS_GetOpaque(this_val, EditorFileSystem::__class_id));
+	EditorFileSystem *opaque = reinterpret_cast<EditorFileSystem *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "resources_reimported_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "resources_reimported").operator JSValue();
@@ -140,7 +140,7 @@ static JSValue editor_file_system_class_get_resources_reimported_signal(JSContex
 }
 static JSValue editor_file_system_class_get_resources_reload_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorFileSystem *opaque = reinterpret_cast<EditorFileSystem *>(JS_GetOpaque(this_val, EditorFileSystem::__class_id));
+	EditorFileSystem *opaque = reinterpret_cast<EditorFileSystem *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "resources_reload_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "resources_reload").operator JSValue();

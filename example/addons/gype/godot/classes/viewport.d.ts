@@ -1,14 +1,14 @@
 
-import { InputEvent } from "@godot/classes/input_event";
-import { Camera2D } from "@godot/classes/camera2d";
 import { ViewportTexture } from "@godot/classes/viewport_texture";
-import { Window } from "@godot/classes/window";
+import { World2D } from "@godot/classes/world2d";
+import { Node } from "@godot/classes/node";
 import { Camera3D } from "@godot/classes/camera3d";
 import { Texture2D } from "@godot/classes/texture2d";
-import { World2D } from "@godot/classes/world2d";
-import { World3D } from "@godot/classes/world3d";
-import { Node } from "@godot/classes/node";
 import { Control } from "@godot/classes/control";
+import { Window } from "@godot/classes/window";
+import { InputEvent } from "@godot/classes/input_event";
+import { Camera2D } from "@godot/classes/camera2d";
+import { World3D } from "@godot/classes/world3d";
 
 export declare class Viewport extends Node{
   public set_world_2d(_world_2d: World2D): void;
@@ -507,6 +507,6 @@ export declare class Viewport extends Node{
     VRS_UPDATE_ALWAYS = 2,
     VRS_UPDATE_MAX = 3,
   }
-  public const size_changed: string = "size_changed";
-  public const gui_focus_changed: string = "gui_focus_changed";
+  public get size_changed(): Signal;
+  public get gui_focus_changed(): Signal;
 }

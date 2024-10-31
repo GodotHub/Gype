@@ -42,12 +42,12 @@ export declare class GraphElement extends Container{
   public set selected(value): void {
     set_selected(value);
   }
-  public const node_selected: string = "node_selected";
-  public const node_deselected: string = "node_deselected";
-  public const raise_request: string = "raise_request";
-  public const delete_request: string = "delete_request";
-  public const resize_request: string = "resize_request";
-  public const resize_end: string = "resize_end";
-  public const dragged: string = "dragged";
-  public const position_offset_changed: string = "position_offset_changed";
+  public get node_selected(): Signal;
+  public get node_deselected(): Signal;
+  public get raise_request(): Signal;
+  public get delete_request(): Signal;
+  public get resize_request(): Signal;
+  public get resize_end(): Signal;
+  public get dragged(): Signal;
+  public get position_offset_changed(): Signal;
 }

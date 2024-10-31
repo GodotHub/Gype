@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/skeleton_profile.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/skeleton_profile.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -190,7 +190,7 @@ static const JSCFunctionListEntry skeleton_profile_class_proto_funcs[] = {
 };
 static JSValue skeleton_profile_class_get_profile_updated_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	SkeletonProfile *opaque = reinterpret_cast<SkeletonProfile *>(JS_GetOpaque(this_val, SkeletonProfile::__class_id));
+	SkeletonProfile *opaque = reinterpret_cast<SkeletonProfile *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "profile_updated_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "profile_updated").operator JSValue();

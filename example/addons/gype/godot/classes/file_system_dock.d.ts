@@ -6,13 +6,13 @@ export declare class FileSystemDock extends VBoxContainer{
   public navigate_to_path(_path: String | StringName | string): void;
   public add_resource_tooltip_plugin(_plugin: EditorResourceTooltipPlugin): void;
   public remove_resource_tooltip_plugin(_plugin: EditorResourceTooltipPlugin): void;
-  public const inherit: string = "inherit";
-  public const instantiate: string = "instantiate";
-  public const resource_removed: string = "resource_removed";
-  public const file_removed: string = "file_removed";
-  public const folder_removed: string = "folder_removed";
-  public const files_moved: string = "files_moved";
-  public const folder_moved: string = "folder_moved";
-  public const folder_color_changed: string = "folder_color_changed";
-  public const display_mode_changed: string = "display_mode_changed";
+  public get inherit(): Signal;
+  public get instantiate(): Signal;
+  public get resource_removed(): Signal;
+  public get file_removed(): Signal;
+  public get folder_removed(): Signal;
+  public get files_moved(): Signal;
+  public get folder_moved(): Signal;
+  public get folder_color_changed(): Signal;
+  public get display_mode_changed(): Signal;
 }

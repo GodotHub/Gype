@@ -1,10 +1,10 @@
 
+import { Container } from "@godot/classes/container";
+import { Control } from "@godot/classes/control";
+import { Texture2D } from "@godot/classes/texture2d";
+import { Node } from "@godot/classes/node";
 import { Popup } from "@godot/classes/popup";
 import { TabBar } from "@godot/classes/tab_bar";
-import { Node } from "@godot/classes/node";
-import { Texture2D } from "@godot/classes/texture2d";
-import { Control } from "@godot/classes/control";
-import { Container } from "@godot/classes/container";
 
 export declare class TabContainer extends Container{
   public get_tab_count(): number;
@@ -127,11 +127,11 @@ export declare class TabContainer extends Container{
     POSITION_BOTTOM = 1,
     POSITION_MAX = 2,
   }
-  public const active_tab_rearranged: string = "active_tab_rearranged";
-  public const tab_changed: string = "tab_changed";
-  public const tab_clicked: string = "tab_clicked";
-  public const tab_hovered: string = "tab_hovered";
-  public const tab_selected: string = "tab_selected";
-  public const tab_button_pressed: string = "tab_button_pressed";
-  public const pre_popup_pressed: string = "pre_popup_pressed";
+  public get active_tab_rearranged(): Signal;
+  public get tab_changed(): Signal;
+  public get tab_clicked(): Signal;
+  public get tab_hovered(): Signal;
+  public get tab_selected(): Signal;
+  public get tab_button_pressed(): Signal;
+  public get pre_popup_pressed(): Signal;
 }

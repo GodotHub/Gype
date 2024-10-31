@@ -1,6 +1,6 @@
 
-import { RefCounted } from "@godot/classes/ref_counted";
 import { GodotObject } from "@godot/classes/godot_object";
+import { RefCounted } from "@godot/classes/ref_counted";
 import { MultiplayerPeer } from "@godot/classes/multiplayer_peer";
 
 export declare class MultiplayerAPI extends RefCounted{
@@ -29,9 +29,9 @@ export declare class MultiplayerAPI extends RefCounted{
     RPC_MODE_ANY_PEER = 1,
     RPC_MODE_AUTHORITY = 2,
   }
-  public const peer_connected: string = "peer_connected";
-  public const peer_disconnected: string = "peer_disconnected";
-  public const connected_to_server: string = "connected_to_server";
-  public const connection_failed: string = "connection_failed";
-  public const server_disconnected: string = "server_disconnected";
+  public get peer_connected(): Signal;
+  public get peer_disconnected(): Signal;
+  public get connected_to_server(): Signal;
+  public get connection_failed(): Signal;
+  public get server_disconnected(): Signal;
 }

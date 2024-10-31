@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/navigation_region3d.hpp>
 #include <godot_cpp/classes/navigation_mesh.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/navigation_region3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -145,7 +145,7 @@ static const JSCFunctionListEntry navigation_region3d_class_proto_funcs[] = {
 };
 static JSValue navigation_region3d_class_get_navigation_mesh_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	NavigationRegion3D *opaque = reinterpret_cast<NavigationRegion3D *>(JS_GetOpaque(this_val, NavigationRegion3D::__class_id));
+	NavigationRegion3D *opaque = reinterpret_cast<NavigationRegion3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "navigation_mesh_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "navigation_mesh_changed").operator JSValue();
@@ -155,7 +155,7 @@ static JSValue navigation_region3d_class_get_navigation_mesh_changed_signal(JSCo
 }
 static JSValue navigation_region3d_class_get_bake_finished_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	NavigationRegion3D *opaque = reinterpret_cast<NavigationRegion3D *>(JS_GetOpaque(this_val, NavigationRegion3D::__class_id));
+	NavigationRegion3D *opaque = reinterpret_cast<NavigationRegion3D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "bake_finished_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "bake_finished").operator JSValue();

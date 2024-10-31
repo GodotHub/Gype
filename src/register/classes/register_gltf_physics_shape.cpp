@@ -7,8 +7,8 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/importer_mesh.hpp>
-#include <godot_cpp/classes/gltf_physics_shape.hpp>
 #include <godot_cpp/classes/collision_shape3d.hpp>
+#include <godot_cpp/classes/gltf_physics_shape.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 

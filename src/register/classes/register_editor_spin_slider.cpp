@@ -94,7 +94,7 @@ static const JSCFunctionListEntry editor_spin_slider_class_proto_funcs[] = {
 };
 static JSValue editor_spin_slider_class_get_grabbed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorSpinSlider *opaque = reinterpret_cast<EditorSpinSlider *>(JS_GetOpaque(this_val, EditorSpinSlider::__class_id));
+	EditorSpinSlider *opaque = reinterpret_cast<EditorSpinSlider *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "grabbed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "grabbed").operator JSValue();
@@ -104,7 +104,7 @@ static JSValue editor_spin_slider_class_get_grabbed_signal(JSContext *ctx, JSVal
 }
 static JSValue editor_spin_slider_class_get_ungrabbed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorSpinSlider *opaque = reinterpret_cast<EditorSpinSlider *>(JS_GetOpaque(this_val, EditorSpinSlider::__class_id));
+	EditorSpinSlider *opaque = reinterpret_cast<EditorSpinSlider *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "ungrabbed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "ungrabbed").operator JSValue();
@@ -114,7 +114,7 @@ static JSValue editor_spin_slider_class_get_ungrabbed_signal(JSContext *ctx, JSV
 }
 static JSValue editor_spin_slider_class_get_value_focus_entered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorSpinSlider *opaque = reinterpret_cast<EditorSpinSlider *>(JS_GetOpaque(this_val, EditorSpinSlider::__class_id));
+	EditorSpinSlider *opaque = reinterpret_cast<EditorSpinSlider *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "value_focus_entered_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "value_focus_entered").operator JSValue();
@@ -124,7 +124,7 @@ static JSValue editor_spin_slider_class_get_value_focus_entered_signal(JSContext
 }
 static JSValue editor_spin_slider_class_get_value_focus_exited_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorSpinSlider *opaque = reinterpret_cast<EditorSpinSlider *>(JS_GetOpaque(this_val, EditorSpinSlider::__class_id));
+	EditorSpinSlider *opaque = reinterpret_cast<EditorSpinSlider *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "value_focus_exited_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "value_focus_exited").operator JSValue();

@@ -1,6 +1,6 @@
 
-import { OpenXRInteractionProfile } from "@godot/classes/open_xr_interaction_profile";
 import { Resource } from "@godot/classes/resource";
+import { OpenXRInteractionProfile } from "@godot/classes/open_xr_interaction_profile";
 import { OpenXRActionSet } from "@godot/classes/open_xr_action_set";
 
 export declare class OpenXRActionMap extends Resource{

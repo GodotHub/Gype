@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/script_editor_base.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/v_box_container.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/editor_syntax_highlighter.hpp>
+#include <godot_cpp/classes/script_editor_base.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -56,7 +56,7 @@ static const JSCFunctionListEntry script_editor_base_class_proto_funcs[] = {
 };
 static JSValue script_editor_base_class_get_name_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, ScriptEditorBase::__class_id));
+	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "name_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "name_changed").operator JSValue();
@@ -66,7 +66,7 @@ static JSValue script_editor_base_class_get_name_changed_signal(JSContext *ctx, 
 }
 static JSValue script_editor_base_class_get_edited_script_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, ScriptEditorBase::__class_id));
+	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "edited_script_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "edited_script_changed").operator JSValue();
@@ -76,7 +76,7 @@ static JSValue script_editor_base_class_get_edited_script_changed_signal(JSConte
 }
 static JSValue script_editor_base_class_get_request_help_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, ScriptEditorBase::__class_id));
+	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "request_help_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "request_help").operator JSValue();
@@ -86,7 +86,7 @@ static JSValue script_editor_base_class_get_request_help_signal(JSContext *ctx, 
 }
 static JSValue script_editor_base_class_get_request_open_script_at_line_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, ScriptEditorBase::__class_id));
+	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "request_open_script_at_line_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "request_open_script_at_line").operator JSValue();
@@ -96,7 +96,7 @@ static JSValue script_editor_base_class_get_request_open_script_at_line_signal(J
 }
 static JSValue script_editor_base_class_get_request_save_history_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, ScriptEditorBase::__class_id));
+	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "request_save_history_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "request_save_history").operator JSValue();
@@ -106,7 +106,7 @@ static JSValue script_editor_base_class_get_request_save_history_signal(JSContex
 }
 static JSValue script_editor_base_class_get_request_save_previous_state_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, ScriptEditorBase::__class_id));
+	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "request_save_previous_state_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "request_save_previous_state").operator JSValue();
@@ -116,7 +116,7 @@ static JSValue script_editor_base_class_get_request_save_previous_state_signal(J
 }
 static JSValue script_editor_base_class_get_go_to_help_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, ScriptEditorBase::__class_id));
+	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "go_to_help_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "go_to_help").operator JSValue();
@@ -126,7 +126,7 @@ static JSValue script_editor_base_class_get_go_to_help_signal(JSContext *ctx, JS
 }
 static JSValue script_editor_base_class_get_search_in_files_requested_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, ScriptEditorBase::__class_id));
+	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "search_in_files_requested_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "search_in_files_requested").operator JSValue();
@@ -136,7 +136,7 @@ static JSValue script_editor_base_class_get_search_in_files_requested_signal(JSC
 }
 static JSValue script_editor_base_class_get_replace_in_files_requested_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, ScriptEditorBase::__class_id));
+	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "replace_in_files_requested_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "replace_in_files_requested").operator JSValue();
@@ -146,7 +146,7 @@ static JSValue script_editor_base_class_get_replace_in_files_requested_signal(JS
 }
 static JSValue script_editor_base_class_get_go_to_method_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, ScriptEditorBase::__class_id));
+	ScriptEditorBase *opaque = reinterpret_cast<ScriptEditorBase *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "go_to_method_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "go_to_method").operator JSValue();

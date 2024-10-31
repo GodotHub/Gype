@@ -12,10 +12,10 @@ export declare class EditorFileSystem extends Node{
   public get_filesystem_path(_path: String | StringName | string): EditorFileSystemDirectory;
   public get_file_type(_path: String | StringName | string): String;
   public reimport_files(_files: PackedStringArray): void;
-  public const filesystem_changed: string = "filesystem_changed";
-  public const script_classes_updated: string = "script_classes_updated";
-  public const sources_changed: string = "sources_changed";
-  public const resources_reimporting: string = "resources_reimporting";
-  public const resources_reimported: string = "resources_reimported";
-  public const resources_reload: string = "resources_reload";
+  public get filesystem_changed(): Signal;
+  public get script_classes_updated(): Signal;
+  public get sources_changed(): Signal;
+  public get resources_reimporting(): Signal;
+  public get resources_reimported(): Signal;
+  public get resources_reload(): Signal;
 }

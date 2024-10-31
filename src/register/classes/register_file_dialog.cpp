@@ -226,7 +226,7 @@ static const JSCFunctionListEntry file_dialog_class_proto_funcs[] = {
 };
 static JSValue file_dialog_class_get_file_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	FileDialog *opaque = reinterpret_cast<FileDialog *>(JS_GetOpaque(this_val, FileDialog::__class_id));
+	FileDialog *opaque = reinterpret_cast<FileDialog *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "file_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "file_selected").operator JSValue();
@@ -236,7 +236,7 @@ static JSValue file_dialog_class_get_file_selected_signal(JSContext *ctx, JSValu
 }
 static JSValue file_dialog_class_get_files_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	FileDialog *opaque = reinterpret_cast<FileDialog *>(JS_GetOpaque(this_val, FileDialog::__class_id));
+	FileDialog *opaque = reinterpret_cast<FileDialog *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "files_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "files_selected").operator JSValue();
@@ -246,7 +246,7 @@ static JSValue file_dialog_class_get_files_selected_signal(JSContext *ctx, JSVal
 }
 static JSValue file_dialog_class_get_dir_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	FileDialog *opaque = reinterpret_cast<FileDialog *>(JS_GetOpaque(this_val, FileDialog::__class_id));
+	FileDialog *opaque = reinterpret_cast<FileDialog *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "dir_selected_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "dir_selected").operator JSValue();

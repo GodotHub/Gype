@@ -1,8 +1,8 @@
 
-import { ArrayMesh } from "@godot/classes/array_mesh";
+import { Mesh } from "@godot/classes/mesh";
 import { RefCounted } from "@godot/classes/ref_counted";
 import { Material } from "@godot/classes/material";
-import { Mesh } from "@godot/classes/mesh";
+import { ArrayMesh } from "@godot/classes/array_mesh";
 
 export declare class SurfaceTool extends RefCounted{
   public set_skin_weight_count(_count: number): void;

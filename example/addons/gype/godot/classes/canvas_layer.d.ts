@@ -78,5 +78,5 @@ export declare class CanvasLayer extends Node{
   public set follow_viewport_scale(value): void {
     set_follow_viewport_scale(value);
   }
-  public const visibility_changed: string = "visibility_changed";
+  public get visibility_changed(): Signal;
 }

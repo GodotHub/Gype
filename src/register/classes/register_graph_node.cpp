@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/graph_element.hpp>
-#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/classes/graph_node.hpp>
+#include <godot_cpp/classes/graph_element.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -226,7 +226,7 @@ static const JSCFunctionListEntry graph_node_class_proto_funcs[] = {
 };
 static JSValue graph_node_class_get_slot_updated_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	GraphNode *opaque = reinterpret_cast<GraphNode *>(JS_GetOpaque(this_val, GraphNode::__class_id));
+	GraphNode *opaque = reinterpret_cast<GraphNode *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "slot_updated_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "slot_updated").operator JSValue();

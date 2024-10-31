@@ -1,6 +1,6 @@
 
-import { PhysicsBody3D } from "@godot/classes/physics_body3d";
 import { PhysicsMaterial } from "@godot/classes/physics_material";
+import { PhysicsBody3D } from "@godot/classes/physics_body3d";
 
 export declare class StaticBody3D extends PhysicsBody3D{
   public set_constant_linear_velocity(_vel: Vector3): void;

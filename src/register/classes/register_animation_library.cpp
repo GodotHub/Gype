@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_library.hpp>
 #include <godot_cpp/classes/animation.hpp>
+#include <godot_cpp/classes/animation_library.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -75,7 +75,7 @@ static const JSCFunctionListEntry animation_library_class_proto_funcs[] = {
 };
 static JSValue animation_library_class_get_animation_added_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimationLibrary *opaque = reinterpret_cast<AnimationLibrary *>(JS_GetOpaque(this_val, AnimationLibrary::__class_id));
+	AnimationLibrary *opaque = reinterpret_cast<AnimationLibrary *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "animation_added_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "animation_added").operator JSValue();
@@ -85,7 +85,7 @@ static JSValue animation_library_class_get_animation_added_signal(JSContext *ctx
 }
 static JSValue animation_library_class_get_animation_removed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimationLibrary *opaque = reinterpret_cast<AnimationLibrary *>(JS_GetOpaque(this_val, AnimationLibrary::__class_id));
+	AnimationLibrary *opaque = reinterpret_cast<AnimationLibrary *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "animation_removed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "animation_removed").operator JSValue();
@@ -95,7 +95,7 @@ static JSValue animation_library_class_get_animation_removed_signal(JSContext *c
 }
 static JSValue animation_library_class_get_animation_renamed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimationLibrary *opaque = reinterpret_cast<AnimationLibrary *>(JS_GetOpaque(this_val, AnimationLibrary::__class_id));
+	AnimationLibrary *opaque = reinterpret_cast<AnimationLibrary *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "animation_renamed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "animation_renamed").operator JSValue();
@@ -105,7 +105,7 @@ static JSValue animation_library_class_get_animation_renamed_signal(JSContext *c
 }
 static JSValue animation_library_class_get_animation_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	AnimationLibrary *opaque = reinterpret_cast<AnimationLibrary *>(JS_GetOpaque(this_val, AnimationLibrary::__class_id));
+	AnimationLibrary *opaque = reinterpret_cast<AnimationLibrary *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "animation_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "animation_changed").operator JSValue();

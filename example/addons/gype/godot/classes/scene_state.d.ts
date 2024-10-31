@@ -1,6 +1,6 @@
 
-import { PackedScene } from "@godot/classes/packed_scene";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { PackedScene } from "@godot/classes/packed_scene";
 
 export declare class SceneState extends RefCounted{
   public get_node_count(): number;

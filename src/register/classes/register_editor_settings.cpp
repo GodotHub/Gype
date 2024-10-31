@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/editor_settings.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -125,7 +125,7 @@ static const JSCFunctionListEntry editor_settings_class_proto_funcs[] = {
 };
 static JSValue editor_settings_class_get_settings_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	EditorSettings *opaque = reinterpret_cast<EditorSettings *>(JS_GetOpaque(this_val, EditorSettings::__class_id));
+	EditorSettings *opaque = reinterpret_cast<EditorSettings *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "settings_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "settings_changed").operator JSValue();

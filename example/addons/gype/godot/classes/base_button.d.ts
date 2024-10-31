@@ -100,8 +100,8 @@ export declare class BaseButton extends Control{
     ACTION_MODE_BUTTON_PRESS = 0,
     ACTION_MODE_BUTTON_RELEASE = 1,
   }
-  public const pressed: string = "pressed";
-  public const button_up: string = "button_up";
-  public const button_down: string = "button_down";
-  public const toggled: string = "toggled";
+  public get pressed(): Signal;
+  public get button_up(): Signal;
+  public get button_down(): Signal;
+  public get toggled(): Signal;
 }

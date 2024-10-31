@@ -1,8 +1,8 @@
 
 import { Environment } from "@godot/classes/environment";
+import { Compositor } from "@godot/classes/compositor";
 import { CameraAttributes } from "@godot/classes/camera_attributes";
 import { Node3D } from "@godot/classes/node3d";
-import { Compositor } from "@godot/classes/compositor";
 
 export declare class Camera3D extends Node3D{
   public project_ray_normal(_screen_point: Vector2): Vector3;

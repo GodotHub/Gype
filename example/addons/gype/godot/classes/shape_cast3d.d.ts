@@ -1,8 +1,8 @@
 
-import { CollisionObject3D } from "@godot/classes/collision_object3d";
-import { Shape3D } from "@godot/classes/shape3d";
-import { Resource } from "@godot/classes/resource";
 import { GodotObject } from "@godot/classes/godot_object";
+import { Resource } from "@godot/classes/resource";
+import { Shape3D } from "@godot/classes/shape3d";
+import { CollisionObject3D } from "@godot/classes/collision_object3d";
 import { Node3D } from "@godot/classes/node3d";
 
 export declare class ShapeCast3D extends Node3D{
@@ -20,7 +20,7 @@ export declare class ShapeCast3D extends Node3D{
   public is_colliding(): boolean;
   public get_collision_count(): number;
   public force_shapecast_update(): void;
-  public get_collider(_index: number): Object;
+  public get_collider(_index: number): GodotObject;
   public get_collider_rid(_index: number): RID;
   public get_collider_shape(_index: number): number;
   public get_collision_point(_index: number): Vector3;

@@ -20,5 +20,5 @@ export declare class ProjectSettings extends GodotObject{
   public save(): number;
   public load_resource_pack(_pack: String | StringName | string, _replace_files: boolean, _offset: number): boolean;
   public save_custom(_file: String | StringName | string): number;
-  public const settings_changed: string = "settings_changed";
+  public get settings_changed(): Signal;
 }

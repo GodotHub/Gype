@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/area2d.hpp>
-#include <godot_cpp/classes/collision_object2d.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/area2d.hpp>
+#include <godot_cpp/classes/collision_object2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -227,7 +227,7 @@ static const JSCFunctionListEntry area2d_class_proto_funcs[] = {
 };
 static JSValue area2d_class_get_body_shape_entered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Area2D *opaque = reinterpret_cast<Area2D *>(JS_GetOpaque(this_val, Area2D::__class_id));
+	Area2D *opaque = reinterpret_cast<Area2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "body_shape_entered_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "body_shape_entered").operator JSValue();
@@ -237,7 +237,7 @@ static JSValue area2d_class_get_body_shape_entered_signal(JSContext *ctx, JSValu
 }
 static JSValue area2d_class_get_body_shape_exited_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Area2D *opaque = reinterpret_cast<Area2D *>(JS_GetOpaque(this_val, Area2D::__class_id));
+	Area2D *opaque = reinterpret_cast<Area2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "body_shape_exited_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "body_shape_exited").operator JSValue();
@@ -247,7 +247,7 @@ static JSValue area2d_class_get_body_shape_exited_signal(JSContext *ctx, JSValue
 }
 static JSValue area2d_class_get_body_entered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Area2D *opaque = reinterpret_cast<Area2D *>(JS_GetOpaque(this_val, Area2D::__class_id));
+	Area2D *opaque = reinterpret_cast<Area2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "body_entered_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "body_entered").operator JSValue();
@@ -257,7 +257,7 @@ static JSValue area2d_class_get_body_entered_signal(JSContext *ctx, JSValueConst
 }
 static JSValue area2d_class_get_body_exited_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Area2D *opaque = reinterpret_cast<Area2D *>(JS_GetOpaque(this_val, Area2D::__class_id));
+	Area2D *opaque = reinterpret_cast<Area2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "body_exited_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "body_exited").operator JSValue();
@@ -267,7 +267,7 @@ static JSValue area2d_class_get_body_exited_signal(JSContext *ctx, JSValueConst 
 }
 static JSValue area2d_class_get_area_shape_entered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Area2D *opaque = reinterpret_cast<Area2D *>(JS_GetOpaque(this_val, Area2D::__class_id));
+	Area2D *opaque = reinterpret_cast<Area2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "area_shape_entered_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "area_shape_entered").operator JSValue();
@@ -277,7 +277,7 @@ static JSValue area2d_class_get_area_shape_entered_signal(JSContext *ctx, JSValu
 }
 static JSValue area2d_class_get_area_shape_exited_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Area2D *opaque = reinterpret_cast<Area2D *>(JS_GetOpaque(this_val, Area2D::__class_id));
+	Area2D *opaque = reinterpret_cast<Area2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "area_shape_exited_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "area_shape_exited").operator JSValue();
@@ -287,7 +287,7 @@ static JSValue area2d_class_get_area_shape_exited_signal(JSContext *ctx, JSValue
 }
 static JSValue area2d_class_get_area_entered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Area2D *opaque = reinterpret_cast<Area2D *>(JS_GetOpaque(this_val, Area2D::__class_id));
+	Area2D *opaque = reinterpret_cast<Area2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "area_entered_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "area_entered").operator JSValue();
@@ -297,7 +297,7 @@ static JSValue area2d_class_get_area_entered_signal(JSContext *ctx, JSValueConst
 }
 static JSValue area2d_class_get_area_exited_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Area2D *opaque = reinterpret_cast<Area2D *>(JS_GetOpaque(this_val, Area2D::__class_id));
+	Area2D *opaque = reinterpret_cast<Area2D *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "area_exited_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "area_exited").operator JSValue();

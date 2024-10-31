@@ -1,8 +1,8 @@
 
-import { GLTFState } from "@godot/classes/gltf_state";
 import { Resource } from "@godot/classes/resource";
-import { Node } from "@godot/classes/node";
+import { GLTFState } from "@godot/classes/gltf_state";
 import { GLTFDocumentExtension } from "@godot/classes/gltf_document_extension";
+import { Node } from "@godot/classes/node";
 
 export declare class GLTFDocument extends Resource{
   public set_image_format(_image_format: String | StringName | string): void;

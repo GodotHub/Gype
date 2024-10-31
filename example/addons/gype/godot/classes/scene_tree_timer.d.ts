@@ -10,5 +10,5 @@ export declare class SceneTreeTimer extends RefCounted{
   public set time_left(value): void {
     set_time_left(value);
   }
-  public const timeout: string = "timeout";
+  public get timeout(): Signal;
 }

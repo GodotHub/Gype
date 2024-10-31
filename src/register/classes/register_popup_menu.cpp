@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/shortcut.hpp>
 #include <godot_cpp/classes/popup.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -482,7 +482,7 @@ static const JSCFunctionListEntry popup_menu_class_proto_funcs[] = {
 };
 static JSValue popup_menu_class_get_id_pressed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	PopupMenu *opaque = reinterpret_cast<PopupMenu *>(JS_GetOpaque(this_val, PopupMenu::__class_id));
+	PopupMenu *opaque = reinterpret_cast<PopupMenu *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "id_pressed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "id_pressed").operator JSValue();
@@ -492,7 +492,7 @@ static JSValue popup_menu_class_get_id_pressed_signal(JSContext *ctx, JSValueCon
 }
 static JSValue popup_menu_class_get_id_focused_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	PopupMenu *opaque = reinterpret_cast<PopupMenu *>(JS_GetOpaque(this_val, PopupMenu::__class_id));
+	PopupMenu *opaque = reinterpret_cast<PopupMenu *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "id_focused_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "id_focused").operator JSValue();
@@ -502,7 +502,7 @@ static JSValue popup_menu_class_get_id_focused_signal(JSContext *ctx, JSValueCon
 }
 static JSValue popup_menu_class_get_index_pressed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	PopupMenu *opaque = reinterpret_cast<PopupMenu *>(JS_GetOpaque(this_val, PopupMenu::__class_id));
+	PopupMenu *opaque = reinterpret_cast<PopupMenu *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "index_pressed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "index_pressed").operator JSValue();
@@ -512,7 +512,7 @@ static JSValue popup_menu_class_get_index_pressed_signal(JSContext *ctx, JSValue
 }
 static JSValue popup_menu_class_get_menu_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	PopupMenu *opaque = reinterpret_cast<PopupMenu *>(JS_GetOpaque(this_val, PopupMenu::__class_id));
+	PopupMenu *opaque = reinterpret_cast<PopupMenu *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "menu_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "menu_changed").operator JSValue();

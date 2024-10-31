@@ -1,7 +1,7 @@
 
 import { XRInterface } from "@godot/classes/xr_interface";
-import { XRTracker } from "@godot/classes/xr_tracker";
 import { GodotObject } from "@godot/classes/godot_object";
+import { XRTracker } from "@godot/classes/xr_tracker";
 
 export declare class XRServer extends GodotObject{
   public get_world_scale(): number;
@@ -36,7 +36,7 @@ export declare class XRServer extends GodotObject{
   public set world_origin(value): void {
     set_world_origin(value);
   }
-  public get primary_interface(): Object {
+  public get primary_interface(): GodotObject {
     get_primary_interface();
   }
   public set primary_interface(value): void {
@@ -59,10 +59,10 @@ export declare class XRServer extends GodotObject{
     RESET_BUT_KEEP_TILT = 1,
     DONT_RESET_ROTATION = 2,
   }
-  public const reference_frame_changed: string = "reference_frame_changed";
-  public const interface_added: string = "interface_added";
-  public const interface_removed: string = "interface_removed";
-  public const tracker_added: string = "tracker_added";
-  public const tracker_updated: string = "tracker_updated";
-  public const tracker_removed: string = "tracker_removed";
+  public get reference_frame_changed(): Signal;
+  public get interface_added(): Signal;
+  public get interface_removed(): Signal;
+  public get tracker_added(): Signal;
+  public get tracker_updated(): Signal;
+  public get tracker_removed(): Signal;
 }

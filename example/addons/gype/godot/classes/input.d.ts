@@ -1,6 +1,6 @@
 
-import { InputEvent } from "@godot/classes/input_event";
 import { GodotObject } from "@godot/classes/godot_object";
+import { InputEvent } from "@godot/classes/input_event";
 import { Resource } from "@godot/classes/resource";
 
 export declare class Input extends GodotObject{
@@ -108,5 +108,5 @@ export declare class Input extends GodotObject{
     CURSOR_HSPLIT = 15,
     CURSOR_HELP = 16,
   }
-  public const joy_connection_changed: string = "joy_connection_changed";
+  public get joy_connection_changed(): Signal;
 }

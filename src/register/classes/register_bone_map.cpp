@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/skeleton_profile.hpp>
 #include <godot_cpp/classes/bone_map.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -70,7 +70,7 @@ static const JSCFunctionListEntry bone_map_class_proto_funcs[] = {
 };
 static JSValue bone_map_class_get_bone_map_updated_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	BoneMap *opaque = reinterpret_cast<BoneMap *>(JS_GetOpaque(this_val, BoneMap::__class_id));
+	BoneMap *opaque = reinterpret_cast<BoneMap *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "bone_map_updated_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "bone_map_updated").operator JSValue();
@@ -80,7 +80,7 @@ static JSValue bone_map_class_get_bone_map_updated_signal(JSContext *ctx, JSValu
 }
 static JSValue bone_map_class_get_profile_updated_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	BoneMap *opaque = reinterpret_cast<BoneMap *>(JS_GetOpaque(this_val, BoneMap::__class_id));
+	BoneMap *opaque = reinterpret_cast<BoneMap *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "profile_updated_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "profile_updated").operator JSValue();

@@ -1,7 +1,7 @@
 
+import { Texture2D } from "@godot/classes/texture2d";
 import { Image } from "@godot/classes/image";
 import { GodotObject } from "@godot/classes/godot_object";
-import { Texture2D } from "@godot/classes/texture2d";
 import { Resource } from "@godot/classes/resource";
 
 export declare class DisplayServer extends GodotObject{

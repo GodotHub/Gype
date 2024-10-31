@@ -21,5 +21,5 @@ export declare class SkeletonModifier3D extends Node3D{
   public set influence(value): void {
     set_influence(value);
   }
-  public const modification_processed: string = "modification_processed";
+  public get modification_processed(): Signal;
 }

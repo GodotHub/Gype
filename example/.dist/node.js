@@ -5,15 +5,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { Node } from "@godot/classes/node";
-import { GodotClass, toPromise } from "@godot/core/class_defined";
+import { GodotClass } from "@godot/core/class_defined";
 let node = class node extends Node {
-    async _enter_tree() {
-        GD.print("test1");
-        await toPromise(this.ready);
-        GD.print("test2");
+    _enter_tree() {
     }
     _ready() {
-        GD.print("test3");
     }
     _process(delta) {
     }

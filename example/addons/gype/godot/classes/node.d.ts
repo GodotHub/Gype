@@ -1,11 +1,11 @@
 
-import { Window } from "@godot/classes/window";
-import { InputEvent } from "@godot/classes/input_event";
-import { MultiplayerAPI } from "@godot/classes/multiplayer_api";
-import { GodotObject } from "@godot/classes/godot_object";
-import { Viewport } from "@godot/classes/viewport";
-import { SceneTree } from "@godot/classes/scene_tree";
 import { Tween } from "@godot/classes/tween";
+import { Window } from "@godot/classes/window";
+import { MultiplayerAPI } from "@godot/classes/multiplayer_api";
+import { SceneTree } from "@godot/classes/scene_tree";
+import { Viewport } from "@godot/classes/viewport";
+import { GodotObject } from "@godot/classes/godot_object";
+import { InputEvent } from "@godot/classes/input_event";
 
 export declare class Node extends GodotObject{
   public _process(_delta: number): void;
@@ -124,13 +124,13 @@ export declare class Node extends GodotObject{
   public is_unique_name_in_owner(): boolean;
   public atr(_message: String | StringName | string, _context: String | StringName | string): String;
   public atr_n(_message: String | StringName | string, _plural_message: String | StringName | string, _n: number, _context: String | StringName | string): String;
-  public rpc(_method: String | StringName | string): number;
-  public rpc_id(_peer_id: number, _method: String | StringName | string): number;
+  public rpc(_method: String | StringName | string, ...arg: StringName): number;
+  public rpc_id(_peer_id: number, _method: String | StringName | string, ...arg: StringName): number;
   public update_configuration_warnings(): void;
-  public call_deferred_thread_group(_method: String | StringName | string): any;
+  public call_deferred_thread_group(_method: String | StringName | string, ...arg: StringName): any;
   public set_deferred_thread_group(_property: String | StringName | string, _value: any): void;
   public notify_deferred_thread_group(_what: number): void;
-  public call_thread_safe(_method: String | StringName | string): any;
+  public call_thread_safe(_method: String | StringName | string, ...arg: StringName): any;
   public set_thread_safe(_property: String | StringName | string, _value: any): void;
   public notify_thread_safe(_what: number): void;
   public get name(): StringName {
@@ -252,15 +252,14 @@ export declare class Node extends GodotObject{
     AUTO_TRANSLATE_MODE_ALWAYS = 1,
     AUTO_TRANSLATE_MODE_DISABLED = 2,
   }
-  public const ready: Signal;
-  // public const ready: string = "ready";
-  // public const renamed: string = "renamed";
-  // public const tree_entered: string = "tree_entered";
-  // public const tree_exiting: string = "tree_exiting";
-  // public const tree_exited: string = "tree_exited";
-  // public const child_entered_tree: string = "child_entered_tree";
-  // public const child_exiting_tree: string = "child_exiting_tree";
-  // public const child_order_changed: string = "child_order_changed";
-  // public const replacing_by: string = "replacing_by";
-  // public const editor_description_changed: string = "editor_description_changed";
+  public get ready(): Signal;
+  public get renamed(): Signal;
+  public get tree_entered(): Signal;
+  public get tree_exiting(): Signal;
+  public get tree_exited(): Signal;
+  public get child_entered_tree(): Signal;
+  public get child_exiting_tree(): Signal;
+  public get child_order_changed(): Signal;
+  public get replacing_by(): Signal;
+  public get editor_description_changed(): Signal;
 }

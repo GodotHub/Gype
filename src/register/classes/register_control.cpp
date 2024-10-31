@@ -5,15 +5,15 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/theme.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/classes/canvas_item.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/theme.hpp>
-#include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/canvas_item.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -691,7 +691,7 @@ static const JSCFunctionListEntry control_class_proto_funcs[] = {
 };
 static JSValue control_class_get_resized_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Control *opaque = reinterpret_cast<Control *>(JS_GetOpaque(this_val, Control::__class_id));
+	Control *opaque = reinterpret_cast<Control *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "resized_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "resized").operator JSValue();
@@ -701,7 +701,7 @@ static JSValue control_class_get_resized_signal(JSContext *ctx, JSValueConst thi
 }
 static JSValue control_class_get_gui_input_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Control *opaque = reinterpret_cast<Control *>(JS_GetOpaque(this_val, Control::__class_id));
+	Control *opaque = reinterpret_cast<Control *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "gui_input_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "gui_input").operator JSValue();
@@ -711,7 +711,7 @@ static JSValue control_class_get_gui_input_signal(JSContext *ctx, JSValueConst t
 }
 static JSValue control_class_get_mouse_entered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Control *opaque = reinterpret_cast<Control *>(JS_GetOpaque(this_val, Control::__class_id));
+	Control *opaque = reinterpret_cast<Control *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "mouse_entered_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "mouse_entered").operator JSValue();
@@ -721,7 +721,7 @@ static JSValue control_class_get_mouse_entered_signal(JSContext *ctx, JSValueCon
 }
 static JSValue control_class_get_mouse_exited_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Control *opaque = reinterpret_cast<Control *>(JS_GetOpaque(this_val, Control::__class_id));
+	Control *opaque = reinterpret_cast<Control *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "mouse_exited_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "mouse_exited").operator JSValue();
@@ -731,7 +731,7 @@ static JSValue control_class_get_mouse_exited_signal(JSContext *ctx, JSValueCons
 }
 static JSValue control_class_get_focus_entered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Control *opaque = reinterpret_cast<Control *>(JS_GetOpaque(this_val, Control::__class_id));
+	Control *opaque = reinterpret_cast<Control *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "focus_entered_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "focus_entered").operator JSValue();
@@ -741,7 +741,7 @@ static JSValue control_class_get_focus_entered_signal(JSContext *ctx, JSValueCon
 }
 static JSValue control_class_get_focus_exited_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Control *opaque = reinterpret_cast<Control *>(JS_GetOpaque(this_val, Control::__class_id));
+	Control *opaque = reinterpret_cast<Control *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "focus_exited_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "focus_exited").operator JSValue();
@@ -751,7 +751,7 @@ static JSValue control_class_get_focus_exited_signal(JSContext *ctx, JSValueCons
 }
 static JSValue control_class_get_size_flags_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Control *opaque = reinterpret_cast<Control *>(JS_GetOpaque(this_val, Control::__class_id));
+	Control *opaque = reinterpret_cast<Control *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "size_flags_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "size_flags_changed").operator JSValue();
@@ -761,7 +761,7 @@ static JSValue control_class_get_size_flags_changed_signal(JSContext *ctx, JSVal
 }
 static JSValue control_class_get_minimum_size_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Control *opaque = reinterpret_cast<Control *>(JS_GetOpaque(this_val, Control::__class_id));
+	Control *opaque = reinterpret_cast<Control *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "minimum_size_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "minimum_size_changed").operator JSValue();
@@ -771,7 +771,7 @@ static JSValue control_class_get_minimum_size_changed_signal(JSContext *ctx, JSV
 }
 static JSValue control_class_get_theme_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	Control *opaque = reinterpret_cast<Control *>(JS_GetOpaque(this_val, Control::__class_id));
+	Control *opaque = reinterpret_cast<Control *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "theme_changed_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "theme_changed").operator JSValue();

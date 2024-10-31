@@ -1,6 +1,6 @@
 
-import { Shader } from "@godot/classes/shader";
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
+import { Shader } from "@godot/classes/shader";
 
 export declare class VisualShader extends Shader{
   public set_mode(_mode: number): void;

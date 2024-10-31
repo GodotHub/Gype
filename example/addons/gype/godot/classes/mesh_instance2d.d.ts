@@ -1,6 +1,6 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { Node2D } from "@godot/classes/node2d";
+import { Texture2D } from "@godot/classes/texture2d";
 import { Mesh } from "@godot/classes/mesh";
 
 export declare class MeshInstance2D extends Node2D{
@@ -20,5 +20,5 @@ export declare class MeshInstance2D extends Node2D{
   public set texture(value): void {
     set_texture(value);
   }
-  public const texture_changed: string = "texture_changed";
+  public get texture_changed(): Signal;
 }

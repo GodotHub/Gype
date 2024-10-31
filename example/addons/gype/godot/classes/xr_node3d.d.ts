@@ -31,5 +31,5 @@ export declare class XRNode3D extends Node3D{
   public set show_when_tracked(value): void {
     set_show_when_tracked(value);
   }
-  public const tracking_changed: string = "tracking_changed";
+  public get tracking_changed(): Signal;
 }

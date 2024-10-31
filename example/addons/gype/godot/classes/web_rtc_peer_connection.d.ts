@@ -36,7 +36,7 @@ export declare class WebRTCPeerConnection extends RefCounted{
     SIGNALING_STATE_HAVE_REMOTE_PRANSWER = 4,
     SIGNALING_STATE_CLOSED = 5,
   }
-  public const session_description_created: string = "session_description_created";
-  public const ice_candidate_created: string = "ice_candidate_created";
-  public const data_channel_received: string = "data_channel_received";
+  public get session_description_created(): Signal;
+  public get ice_candidate_created(): Signal;
+  public get data_channel_received(): Signal;
 }

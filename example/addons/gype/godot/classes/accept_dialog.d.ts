@@ -1,8 +1,8 @@
 
+import { Window } from "@godot/classes/window";
+import { Label } from "@godot/classes/label";
 import { LineEdit } from "@godot/classes/line_edit";
 import { Button } from "@godot/classes/button";
-import { Label } from "@godot/classes/label";
-import { Window } from "@godot/classes/window";
 
 export declare class AcceptDialog extends Window{
   public get_ok_button(): Button;
@@ -51,7 +51,7 @@ export declare class AcceptDialog extends Window{
   public set dialog_autowrap(value): void {
     set_autowrap(value);
   }
-  public const confirmed: string = "confirmed";
-  public const canceled: string = "canceled";
-  public const custom_action: string = "custom_action";
+  public get confirmed(): Signal;
+  public get canceled(): Signal;
+  public get custom_action(): Signal;
 }

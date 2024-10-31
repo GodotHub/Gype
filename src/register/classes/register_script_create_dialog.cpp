@@ -49,7 +49,7 @@ static const JSCFunctionListEntry script_create_dialog_class_proto_funcs[] = {
 };
 static JSValue script_create_dialog_class_get_script_created_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	ScriptCreateDialog *opaque = reinterpret_cast<ScriptCreateDialog *>(JS_GetOpaque(this_val, ScriptCreateDialog::__class_id));
+	ScriptCreateDialog *opaque = reinterpret_cast<ScriptCreateDialog *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "script_created_signal");
 	if (JS_IsUndefined(js_signal)) {
 		js_signal = Signal(opaque, "script_created").operator JSValue();
