@@ -14,7 +14,6 @@ let spin_box = class spin_box extends SpinBox {
         this.value_changed.connect(new Callable(this, this.update), 0);
     }
     _process(delta) {
-        GD.print(1);
     }
 };
 spin_box = __decorate([
