@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/array_mesh.hpp>
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/array_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue array_mesh_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ArrayMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ArrayMesh *array_mesh_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		array_mesh_class = static_cast<ArrayMesh *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		array_mesh_class = static_cast<ArrayMesh *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		array_mesh_class = memnew(ArrayMesh);
-	}
 	if (!array_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue array_mesh_class_constructor(JSContext *ctx, JSValueConst new_tar
 }
 static JSValue array_mesh_class_add_blend_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ArrayMesh::add_blend_shape, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ArrayMesh::add_blend_shape, ctx, this_val, argc, argv);
 };
 static JSValue array_mesh_class_get_blend_shape_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,18 +54,15 @@ static JSValue array_mesh_class_get_blend_shape_name(JSContext *ctx, JSValueCons
 };
 static JSValue array_mesh_class_set_blend_shape_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ArrayMesh::set_blend_shape_name, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ArrayMesh::set_blend_shape_name, ctx, this_val, argc, argv);
 };
 static JSValue array_mesh_class_clear_blend_shapes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ArrayMesh::clear_blend_shapes, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ArrayMesh::clear_blend_shapes, ctx, this_val, argc, argv);
 };
 static JSValue array_mesh_class_set_blend_shape_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ArrayMesh::set_blend_shape_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ArrayMesh::set_blend_shape_mode, ctx, this_val, argc, argv);
 };
 static JSValue array_mesh_class_get_blend_shape_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -75,28 +70,23 @@ static JSValue array_mesh_class_get_blend_shape_mode(JSContext *ctx, JSValueCons
 };
 static JSValue array_mesh_class_add_surface_from_arrays(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ArrayMesh::add_surface_from_arrays, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ArrayMesh::add_surface_from_arrays, ctx, this_val, argc, argv);
 };
 static JSValue array_mesh_class_clear_surfaces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ArrayMesh::clear_surfaces, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ArrayMesh::clear_surfaces, ctx, this_val, argc, argv);
 };
 static JSValue array_mesh_class_surface_update_vertex_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ArrayMesh::surface_update_vertex_region, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ArrayMesh::surface_update_vertex_region, ctx, this_val, argc, argv);
 };
 static JSValue array_mesh_class_surface_update_attribute_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ArrayMesh::surface_update_attribute_region, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ArrayMesh::surface_update_attribute_region, ctx, this_val, argc, argv);
 };
 static JSValue array_mesh_class_surface_update_skin_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ArrayMesh::surface_update_skin_region, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ArrayMesh::surface_update_skin_region, ctx, this_val, argc, argv);
 };
 static JSValue array_mesh_class_surface_get_array_len(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -120,8 +110,7 @@ static JSValue array_mesh_class_surface_find_by_name(JSContext *ctx, JSValueCons
 };
 static JSValue array_mesh_class_surface_set_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ArrayMesh::surface_set_name, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ArrayMesh::surface_set_name, ctx, this_val, argc, argv);
 };
 static JSValue array_mesh_class_surface_get_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -129,8 +118,7 @@ static JSValue array_mesh_class_surface_get_name(JSContext *ctx, JSValueConst th
 };
 static JSValue array_mesh_class_regen_normal_maps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ArrayMesh::regen_normal_maps, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ArrayMesh::regen_normal_maps, ctx, this_val, argc, argv);
 };
 static JSValue array_mesh_class_lightmap_unwrap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -138,8 +126,7 @@ static JSValue array_mesh_class_lightmap_unwrap(JSContext *ctx, JSValueConst thi
 };
 static JSValue array_mesh_class_set_custom_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ArrayMesh::set_custom_aabb, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ArrayMesh::set_custom_aabb, ctx, this_val, argc, argv);
 };
 static JSValue array_mesh_class_get_custom_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -147,8 +134,7 @@ static JSValue array_mesh_class_get_custom_aabb(JSContext *ctx, JSValueConst thi
 };
 static JSValue array_mesh_class_set_shadow_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ArrayMesh::set_shadow_mesh, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ArrayMesh::set_shadow_mesh, ctx, this_val, argc, argv);
 };
 static JSValue array_mesh_class_get_shadow_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -182,10 +168,10 @@ static const JSCFunctionListEntry array_mesh_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_shadow_mesh", 0, &array_mesh_class_get_shadow_mesh),
 };
 
-void define_array_mesh_property(JSContext *ctx, JSValue obj) {
+static void define_array_mesh_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "blend_shape_mode"),
         JS_NewCFunction(ctx, array_mesh_class_get_blend_shape_mode, "get_blend_shape_mode", 0),
         JS_NewCFunction(ctx, array_mesh_class_set_blend_shape_mode, "set_blend_shape_mode", 1),
@@ -193,7 +179,7 @@ void define_array_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "custom_aabb"),
         JS_NewCFunction(ctx, array_mesh_class_get_custom_aabb, "get_custom_aabb", 0),
         JS_NewCFunction(ctx, array_mesh_class_set_custom_aabb, "set_custom_aabb", 1),
@@ -201,15 +187,16 @@ void define_array_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "shadow_mesh"),
         JS_NewCFunction(ctx, array_mesh_class_get_shadow_mesh, "get_shadow_mesh", 0),
         JS_NewCFunction(ctx, array_mesh_class_set_shadow_mesh, "set_shadow_mesh", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_array_mesh_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_array_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -225,7 +212,7 @@ static int js_array_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ArrayMesh::__class_id, proto);
 
 	define_array_mesh_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_array_mesh_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, array_mesh_class_proto_funcs, _countof(array_mesh_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, array_mesh_class_constructor, "ArrayMesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

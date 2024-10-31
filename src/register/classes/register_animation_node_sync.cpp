@@ -27,13 +27,12 @@ static JSValue animation_node_sync_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeSync::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AnimationNodeSync *animation_node_sync_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		animation_node_sync_class = static_cast<AnimationNodeSync *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		animation_node_sync_class = static_cast<AnimationNodeSync *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		animation_node_sync_class = memnew(AnimationNodeSync);
-	}
 	if (!animation_node_sync_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue animation_node_sync_class_constructor(JSContext *ctx, JSValueCons
 }
 static JSValue animation_node_sync_class_set_use_sync(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeSync::set_use_sync, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeSync::set_use_sync, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_sync_class_is_using_sync(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry animation_node_sync_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_using_sync", 0, &animation_node_sync_class_is_using_sync),
 };
 
-void define_animation_node_sync_property(JSContext *ctx, JSValue obj) {
+static void define_animation_node_sync_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sync"),
         JS_NewCFunction(ctx, animation_node_sync_class_is_using_sync, "is_using_sync", 0),
         JS_NewCFunction(ctx, animation_node_sync_class_set_use_sync, "set_use_sync", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_animation_node_sync_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_animation_node_sync_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -82,7 +81,7 @@ static int js_animation_node_sync_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, AnimationNodeSync::__class_id, proto);
 
 	define_animation_node_sync_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_animation_node_sync_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animation_node_sync_class_proto_funcs, _countof(animation_node_sync_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, animation_node_sync_class_constructor, "AnimationNodeSync", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/classes/shape_cast2d.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/collision_object2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,13 +30,12 @@ static JSValue shape_cast2d_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ShapeCast2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ShapeCast2D *shape_cast2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		shape_cast2d_class = static_cast<ShapeCast2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		shape_cast2d_class = static_cast<ShapeCast2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		shape_cast2d_class = memnew(ShapeCast2D);
-	}
 	if (!shape_cast2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -46,8 +45,7 @@ static JSValue shape_cast2d_class_constructor(JSContext *ctx, JSValueConst new_t
 }
 static JSValue shape_cast2d_class_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShapeCast2D::set_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShapeCast2D::set_enabled, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast2d_class_is_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,8 +53,7 @@ static JSValue shape_cast2d_class_is_enabled(JSContext *ctx, JSValueConst this_v
 };
 static JSValue shape_cast2d_class_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShapeCast2D::set_shape, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShapeCast2D::set_shape, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast2d_class_get_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -64,8 +61,7 @@ static JSValue shape_cast2d_class_get_shape(JSContext *ctx, JSValueConst this_va
 };
 static JSValue shape_cast2d_class_set_target_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShapeCast2D::set_target_position, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShapeCast2D::set_target_position, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast2d_class_get_target_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -73,8 +69,7 @@ static JSValue shape_cast2d_class_get_target_position(JSContext *ctx, JSValueCon
 };
 static JSValue shape_cast2d_class_set_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShapeCast2D::set_margin, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShapeCast2D::set_margin, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast2d_class_get_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -82,8 +77,7 @@ static JSValue shape_cast2d_class_get_margin(JSContext *ctx, JSValueConst this_v
 };
 static JSValue shape_cast2d_class_set_max_results(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShapeCast2D::set_max_results, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShapeCast2D::set_max_results, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast2d_class_get_max_results(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -99,8 +93,7 @@ static JSValue shape_cast2d_class_get_collision_count(JSContext *ctx, JSValueCon
 };
 static JSValue shape_cast2d_class_force_shapecast_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShapeCast2D::force_shapecast_update, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShapeCast2D::force_shapecast_update, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast2d_class_get_collider(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -132,33 +125,27 @@ static JSValue shape_cast2d_class_get_closest_collision_unsafe_fraction(JSContex
 };
 static JSValue shape_cast2d_class_add_exception_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShapeCast2D::add_exception_rid, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShapeCast2D::add_exception_rid, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast2d_class_add_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShapeCast2D::add_exception, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShapeCast2D::add_exception, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast2d_class_remove_exception_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShapeCast2D::remove_exception_rid, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShapeCast2D::remove_exception_rid, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast2d_class_remove_exception(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShapeCast2D::remove_exception, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShapeCast2D::remove_exception, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast2d_class_clear_exceptions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShapeCast2D::clear_exceptions, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShapeCast2D::clear_exceptions, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast2d_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShapeCast2D::set_collision_mask, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShapeCast2D::set_collision_mask, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast2d_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -166,8 +153,7 @@ static JSValue shape_cast2d_class_get_collision_mask(JSContext *ctx, JSValueCons
 };
 static JSValue shape_cast2d_class_set_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShapeCast2D::set_collision_mask_value, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShapeCast2D::set_collision_mask_value, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast2d_class_get_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -175,8 +161,7 @@ static JSValue shape_cast2d_class_get_collision_mask_value(JSContext *ctx, JSVal
 };
 static JSValue shape_cast2d_class_set_exclude_parent_body(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShapeCast2D::set_exclude_parent_body, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShapeCast2D::set_exclude_parent_body, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast2d_class_get_exclude_parent_body(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -184,8 +169,7 @@ static JSValue shape_cast2d_class_get_exclude_parent_body(JSContext *ctx, JSValu
 };
 static JSValue shape_cast2d_class_set_collide_with_areas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShapeCast2D::set_collide_with_areas, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShapeCast2D::set_collide_with_areas, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast2d_class_is_collide_with_areas_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -193,8 +177,7 @@ static JSValue shape_cast2d_class_is_collide_with_areas_enabled(JSContext *ctx, 
 };
 static JSValue shape_cast2d_class_set_collide_with_bodies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShapeCast2D::set_collide_with_bodies, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShapeCast2D::set_collide_with_bodies, ctx, this_val, argc, argv);
 };
 static JSValue shape_cast2d_class_is_collide_with_bodies_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -238,10 +221,10 @@ static const JSCFunctionListEntry shape_cast2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_collide_with_bodies_enabled", 0, &shape_cast2d_class_is_collide_with_bodies_enabled),
 };
 
-void define_shape_cast2d_property(JSContext *ctx, JSValue obj) {
+static void define_shape_cast2d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "enabled"),
         JS_NewCFunction(ctx, shape_cast2d_class_is_enabled, "is_enabled", 0),
         JS_NewCFunction(ctx, shape_cast2d_class_set_enabled, "set_enabled", 1),
@@ -249,7 +232,7 @@ void define_shape_cast2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "shape"),
         JS_NewCFunction(ctx, shape_cast2d_class_get_shape, "get_shape", 0),
         JS_NewCFunction(ctx, shape_cast2d_class_set_shape, "set_shape", 1),
@@ -257,7 +240,7 @@ void define_shape_cast2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "exclude_parent"),
         JS_NewCFunction(ctx, shape_cast2d_class_get_exclude_parent_body, "get_exclude_parent_body", 0),
         JS_NewCFunction(ctx, shape_cast2d_class_set_exclude_parent_body, "set_exclude_parent_body", 1),
@@ -265,7 +248,7 @@ void define_shape_cast2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "target_position"),
         JS_NewCFunction(ctx, shape_cast2d_class_get_target_position, "get_target_position", 0),
         JS_NewCFunction(ctx, shape_cast2d_class_set_target_position, "set_target_position", 1),
@@ -273,7 +256,7 @@ void define_shape_cast2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "margin"),
         JS_NewCFunction(ctx, shape_cast2d_class_get_margin, "get_margin", 0),
         JS_NewCFunction(ctx, shape_cast2d_class_set_margin, "set_margin", 1),
@@ -281,7 +264,7 @@ void define_shape_cast2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "max_results"),
         JS_NewCFunction(ctx, shape_cast2d_class_get_max_results, "get_max_results", 0),
         JS_NewCFunction(ctx, shape_cast2d_class_set_max_results, "set_max_results", 1),
@@ -289,7 +272,7 @@ void define_shape_cast2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "collision_mask"),
         JS_NewCFunction(ctx, shape_cast2d_class_get_collision_mask, "get_collision_mask", 0),
         JS_NewCFunction(ctx, shape_cast2d_class_set_collision_mask, "set_collision_mask", 1),
@@ -297,7 +280,7 @@ void define_shape_cast2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "collide_with_areas"),
         JS_NewCFunction(ctx, shape_cast2d_class_is_collide_with_areas_enabled, "is_collide_with_areas_enabled", 0),
         JS_NewCFunction(ctx, shape_cast2d_class_set_collide_with_areas, "set_collide_with_areas", 1),
@@ -305,15 +288,16 @@ void define_shape_cast2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "collide_with_bodies"),
         JS_NewCFunction(ctx, shape_cast2d_class_is_collide_with_bodies_enabled, "is_collide_with_bodies_enabled", 0),
         JS_NewCFunction(ctx, shape_cast2d_class_set_collide_with_bodies, "set_collide_with_bodies", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_shape_cast2d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_shape_cast2d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -329,7 +313,7 @@ static int js_shape_cast2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ShapeCast2D::__class_id, proto);
 
 	define_shape_cast2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_shape_cast2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, shape_cast2d_class_proto_funcs, _countof(shape_cast2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, shape_cast2d_class_constructor, "ShapeCast2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

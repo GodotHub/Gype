@@ -27,13 +27,12 @@ static JSValue progress_bar_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ProgressBar::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ProgressBar *progress_bar_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		progress_bar_class = static_cast<ProgressBar *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		progress_bar_class = static_cast<ProgressBar *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		progress_bar_class = memnew(ProgressBar);
-	}
 	if (!progress_bar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue progress_bar_class_constructor(JSContext *ctx, JSValueConst new_t
 }
 static JSValue progress_bar_class_set_fill_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ProgressBar::set_fill_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ProgressBar::set_fill_mode, ctx, this_val, argc, argv);
 };
 static JSValue progress_bar_class_get_fill_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue progress_bar_class_get_fill_mode(JSContext *ctx, JSValueConst thi
 };
 static JSValue progress_bar_class_set_show_percentage(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ProgressBar::set_show_percentage, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ProgressBar::set_show_percentage, ctx, this_val, argc, argv);
 };
 static JSValue progress_bar_class_is_percentage_shown(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue progress_bar_class_is_percentage_shown(JSContext *ctx, JSValueCon
 };
 static JSValue progress_bar_class_set_indeterminate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ProgressBar::set_indeterminate, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ProgressBar::set_indeterminate, ctx, this_val, argc, argv);
 };
 static JSValue progress_bar_class_is_indeterminate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue progress_bar_class_is_indeterminate(JSContext *ctx, JSValueConst 
 };
 static JSValue progress_bar_class_set_editor_preview_indeterminate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ProgressBar::set_editor_preview_indeterminate, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ProgressBar::set_editor_preview_indeterminate, ctx, this_val, argc, argv);
 };
 static JSValue progress_bar_class_is_editor_preview_indeterminate_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,10 +83,10 @@ static const JSCFunctionListEntry progress_bar_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_editor_preview_indeterminate_enabled", 0, &progress_bar_class_is_editor_preview_indeterminate_enabled),
 };
 
-void define_progress_bar_property(JSContext *ctx, JSValue obj) {
+static void define_progress_bar_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "fill_mode"),
         JS_NewCFunction(ctx, progress_bar_class_get_fill_mode, "get_fill_mode", 0),
         JS_NewCFunction(ctx, progress_bar_class_set_fill_mode, "set_fill_mode", 1),
@@ -99,7 +94,7 @@ void define_progress_bar_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "show_percentage"),
         JS_NewCFunction(ctx, progress_bar_class_is_percentage_shown, "is_percentage_shown", 0),
         JS_NewCFunction(ctx, progress_bar_class_set_show_percentage, "set_show_percentage", 1),
@@ -107,7 +102,7 @@ void define_progress_bar_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "indeterminate"),
         JS_NewCFunction(ctx, progress_bar_class_is_indeterminate, "is_indeterminate", 0),
         JS_NewCFunction(ctx, progress_bar_class_set_indeterminate, "set_indeterminate", 1),
@@ -115,15 +110,16 @@ void define_progress_bar_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "editor_preview_indeterminate"),
         JS_NewCFunction(ctx, progress_bar_class_is_editor_preview_indeterminate_enabled, "is_editor_preview_indeterminate_enabled", 0),
         JS_NewCFunction(ctx, progress_bar_class_set_editor_preview_indeterminate, "set_editor_preview_indeterminate", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_progress_bar_enum(JSContext *ctx, JSValue proto) {
 	JSValue FillMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, FillMode_obj, "FILL_BEGIN_TO_END", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, FillMode_obj, "FILL_END_TO_BEGIN", JS_NewInt64(ctx, 1));
@@ -145,7 +141,7 @@ static int js_progress_bar_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ProgressBar::__class_id, proto);
 
 	define_progress_bar_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_progress_bar_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, progress_bar_class_proto_funcs, _countof(progress_bar_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, progress_bar_class_constructor, "ProgressBar", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

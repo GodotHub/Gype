@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/input_event_joypad_motion.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue input_event_joypad_motion_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventJoypadMotion::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	InputEventJoypadMotion *input_event_joypad_motion_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		input_event_joypad_motion_class = static_cast<InputEventJoypadMotion *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		input_event_joypad_motion_class = static_cast<InputEventJoypadMotion *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		input_event_joypad_motion_class = memnew(InputEventJoypadMotion);
-	}
 	if (!input_event_joypad_motion_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue input_event_joypad_motion_class_constructor(JSContext *ctx, JSVal
 }
 static JSValue input_event_joypad_motion_class_set_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventJoypadMotion::set_axis, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventJoypadMotion::set_axis, ctx, this_val, argc, argv);
 };
 static JSValue input_event_joypad_motion_class_get_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue input_event_joypad_motion_class_get_axis(JSContext *ctx, JSValueC
 };
 static JSValue input_event_joypad_motion_class_set_axis_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventJoypadMotion::set_axis_value, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventJoypadMotion::set_axis_value, ctx, this_val, argc, argv);
 };
 static JSValue input_event_joypad_motion_class_get_axis_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,10 +63,10 @@ static const JSCFunctionListEntry input_event_joypad_motion_class_proto_funcs[] 
 	JS_CFUNC_DEF("get_axis_value", 0, &input_event_joypad_motion_class_get_axis_value),
 };
 
-void define_input_event_joypad_motion_property(JSContext *ctx, JSValue obj) {
+static void define_input_event_joypad_motion_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "axis"),
         JS_NewCFunction(ctx, input_event_joypad_motion_class_get_axis, "get_axis", 0),
         JS_NewCFunction(ctx, input_event_joypad_motion_class_set_axis, "set_axis", 1),
@@ -77,15 +74,16 @@ void define_input_event_joypad_motion_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "axis_value"),
         JS_NewCFunction(ctx, input_event_joypad_motion_class_get_axis_value, "get_axis_value", 0),
         JS_NewCFunction(ctx, input_event_joypad_motion_class_set_axis_value, "set_axis_value", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_input_event_joypad_motion_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_input_event_joypad_motion_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -101,7 +99,7 @@ static int js_input_event_joypad_motion_class_init(JSContext *ctx, JSModuleDef *
 	JS_SetClassProto(ctx, InputEventJoypadMotion::__class_id, proto);
 
 	define_input_event_joypad_motion_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_input_event_joypad_motion_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, input_event_joypad_motion_class_proto_funcs, _countof(input_event_joypad_motion_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, input_event_joypad_motion_class_constructor, "InputEventJoypadMotion", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

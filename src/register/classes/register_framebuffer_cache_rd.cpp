@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/framebuffer_cache_rd.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/rd_framebuffer_pass.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/framebuffer_cache_rd.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue framebuffer_cache_rd_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, FramebufferCacheRD::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	FramebufferCacheRD *framebuffer_cache_rd_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		framebuffer_cache_rd_class = static_cast<FramebufferCacheRD *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		framebuffer_cache_rd_class = static_cast<FramebufferCacheRD *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		framebuffer_cache_rd_class = memnew(FramebufferCacheRD);
-	}
 	if (!framebuffer_cache_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -49,10 +48,11 @@ static const JSCFunctionListEntry framebuffer_cache_rd_class_static_funcs[] = {
 	JS_CFUNC_DEF("get_cache_multipass", 3, &framebuffer_cache_rd_class_get_cache_multipass),
 };
 
-void define_framebuffer_cache_rd_property(JSContext *ctx, JSValue obj) {
+static void define_framebuffer_cache_rd_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_framebuffer_cache_rd_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_framebuffer_cache_rd_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -68,7 +68,7 @@ static int js_framebuffer_cache_rd_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, FramebufferCacheRD::__class_id, proto);
 
 	define_framebuffer_cache_rd_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_framebuffer_cache_rd_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, framebuffer_cache_rd_class_constructor, "FramebufferCacheRD", 0, JS_CFUNC_constructor, 0);
 	JS_SetPropertyFunctionList(ctx, ctor, framebuffer_cache_rd_class_static_funcs, _countof(framebuffer_cache_rd_class_static_funcs));
 	JS_SetConstructor(ctx, ctor, proto);

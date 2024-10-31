@@ -14,17 +14,17 @@ export declare class Plane {
   public z: float;
   public d: float;
   public normal: Vector3;
-  public normalized(): void;
-  public get_center(): void;
-  public is_equal_approx(_to_plane: Plane): void;
-  public is_finite(): void;
-  public is_point_over(_point: Vector3): void;
-  public distance_to(_point: Vector3): void;
-  public has_point(_point: Vector3, _tolerance: number): void;
-  public project(_point: Vector3): void;
-  public intersect_3(_b: Plane, _c: Plane): void;
-  public intersects_ray(_from: Vector3, _dir: Vector3): void;
-  public intersects_segment(_from: Vector3, _to: Vector3): void;
+  public normalized(): Plane;
+  public get_center(): Vector3;
+  public is_equal_approx(_to_plane: Plane): boolean;
+  public is_finite(): boolean;
+  public is_point_over(_point: Vector3): boolean;
+  public distance_to(_point: Vector3): number;
+  public has_point(_point: Vector3, _tolerance: number): boolean;
+  public project(_point: Vector3): Vector3;
+  public intersect_3(_b: Plane, _c: Plane): any;
+  public intersects_ray(_from: Vector3, _dir: Vector3): any;
+  public intersects_segment(_from: Vector3, _to: Vector3): any;
 }
 }
 

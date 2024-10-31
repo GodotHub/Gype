@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/color_picker_button.hpp>
+#include <godot_cpp/classes/popup_panel.hpp>
 #include <godot_cpp/classes/color_picker.hpp>
 #include <godot_cpp/classes/button.hpp>
-#include <godot_cpp/classes/popup_panel.hpp>
+#include <godot_cpp/classes/color_picker_button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue color_picker_button_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ColorPickerButton::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ColorPickerButton *color_picker_button_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		color_picker_button_class = static_cast<ColorPickerButton *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		color_picker_button_class = static_cast<ColorPickerButton *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		color_picker_button_class = memnew(ColorPickerButton);
-	}
 	if (!color_picker_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -45,8 +44,7 @@ static JSValue color_picker_button_class_constructor(JSContext *ctx, JSValueCons
 }
 static JSValue color_picker_button_class_set_pick_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ColorPickerButton::set_pick_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ColorPickerButton::set_pick_color, ctx, this_val, argc, argv);
 };
 static JSValue color_picker_button_class_get_pick_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +60,7 @@ static JSValue color_picker_button_class_get_popup(JSContext *ctx, JSValueConst 
 };
 static JSValue color_picker_button_class_set_edit_alpha(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ColorPickerButton::set_edit_alpha, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ColorPickerButton::set_edit_alpha, ctx, this_val, argc, argv);
 };
 static JSValue color_picker_button_class_is_editing_alpha(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -77,11 +74,41 @@ static const JSCFunctionListEntry color_picker_button_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_edit_alpha", 1, &color_picker_button_class_set_edit_alpha),
 	JS_CFUNC_DEF("is_editing_alpha", 0, &color_picker_button_class_is_editing_alpha),
 };
+static JSValue color_picker_button_class_get_color_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	ColorPickerButton *opaque = reinterpret_cast<ColorPickerButton *>(JS_GetOpaque(this_val, ColorPickerButton::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "color_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "color_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "color_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue color_picker_button_class_get_popup_closed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	ColorPickerButton *opaque = reinterpret_cast<ColorPickerButton *>(JS_GetOpaque(this_val, ColorPickerButton::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "popup_closed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "popup_closed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "popup_closed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue color_picker_button_class_get_picker_created_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	ColorPickerButton *opaque = reinterpret_cast<ColorPickerButton *>(JS_GetOpaque(this_val, ColorPickerButton::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "picker_created_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "picker_created").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "picker_created_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_color_picker_button_property(JSContext *ctx, JSValue obj) {
+static void define_color_picker_button_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "color"),
         JS_NewCFunction(ctx, color_picker_button_class_get_pick_color, "get_pick_color", 0),
         JS_NewCFunction(ctx, color_picker_button_class_set_pick_color, "set_pick_color", 1),
@@ -89,15 +116,40 @@ void define_color_picker_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "edit_alpha"),
         JS_NewCFunction(ctx, color_picker_button_class_is_editing_alpha, "is_editing_alpha", 0),
         JS_NewCFunction(ctx, color_picker_button_class_set_edit_alpha, "set_edit_alpha", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "color_changed"),
+		JS_NewCFunction(ctx, color_picker_button_class_get_color_changed_signal, "get_color_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "popup_closed"),
+		JS_NewCFunction(ctx, color_picker_button_class_get_popup_closed_signal, "get_popup_closed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "picker_created"),
+		JS_NewCFunction(ctx, color_picker_button_class_get_picker_created_signal, "get_picker_created_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_color_picker_button_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_color_picker_button_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -113,7 +165,7 @@ static int js_color_picker_button_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ColorPickerButton::__class_id, proto);
 
 	define_color_picker_button_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_color_picker_button_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, color_picker_button_class_proto_funcs, _countof(color_picker_button_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, color_picker_button_class_constructor, "ColorPickerButton", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

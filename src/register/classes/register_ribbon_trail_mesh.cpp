@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/primitive_mesh.hpp>
-#include <godot_cpp/classes/ribbon_trail_mesh.hpp>
 #include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/ribbon_trail_mesh.hpp>
+#include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue ribbon_trail_mesh_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RibbonTrailMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	RibbonTrailMesh *ribbon_trail_mesh_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		ribbon_trail_mesh_class = static_cast<RibbonTrailMesh *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		ribbon_trail_mesh_class = static_cast<RibbonTrailMesh *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		ribbon_trail_mesh_class = memnew(RibbonTrailMesh);
-	}
 	if (!ribbon_trail_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue ribbon_trail_mesh_class_constructor(JSContext *ctx, JSValueConst 
 }
 static JSValue ribbon_trail_mesh_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RibbonTrailMesh::set_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RibbonTrailMesh::set_size, ctx, this_val, argc, argv);
 };
 static JSValue ribbon_trail_mesh_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue ribbon_trail_mesh_class_get_size(JSContext *ctx, JSValueConst thi
 };
 static JSValue ribbon_trail_mesh_class_set_sections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RibbonTrailMesh::set_sections, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RibbonTrailMesh::set_sections, ctx, this_val, argc, argv);
 };
 static JSValue ribbon_trail_mesh_class_get_sections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue ribbon_trail_mesh_class_get_sections(JSContext *ctx, JSValueConst
 };
 static JSValue ribbon_trail_mesh_class_set_section_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RibbonTrailMesh::set_section_length, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RibbonTrailMesh::set_section_length, ctx, this_val, argc, argv);
 };
 static JSValue ribbon_trail_mesh_class_get_section_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -71,8 +67,7 @@ static JSValue ribbon_trail_mesh_class_get_section_length(JSContext *ctx, JSValu
 };
 static JSValue ribbon_trail_mesh_class_set_section_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RibbonTrailMesh::set_section_segments, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RibbonTrailMesh::set_section_segments, ctx, this_val, argc, argv);
 };
 static JSValue ribbon_trail_mesh_class_get_section_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -80,8 +75,7 @@ static JSValue ribbon_trail_mesh_class_get_section_segments(JSContext *ctx, JSVa
 };
 static JSValue ribbon_trail_mesh_class_set_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RibbonTrailMesh::set_curve, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RibbonTrailMesh::set_curve, ctx, this_val, argc, argv);
 };
 static JSValue ribbon_trail_mesh_class_get_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -89,8 +83,7 @@ static JSValue ribbon_trail_mesh_class_get_curve(JSContext *ctx, JSValueConst th
 };
 static JSValue ribbon_trail_mesh_class_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RibbonTrailMesh::set_shape, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RibbonTrailMesh::set_shape, ctx, this_val, argc, argv);
 };
 static JSValue ribbon_trail_mesh_class_get_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -111,10 +104,10 @@ static const JSCFunctionListEntry ribbon_trail_mesh_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_shape", 0, &ribbon_trail_mesh_class_get_shape),
 };
 
-void define_ribbon_trail_mesh_property(JSContext *ctx, JSValue obj) {
+static void define_ribbon_trail_mesh_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "shape"),
         JS_NewCFunction(ctx, ribbon_trail_mesh_class_get_shape, "get_shape", 0),
         JS_NewCFunction(ctx, ribbon_trail_mesh_class_set_shape, "set_shape", 1),
@@ -122,7 +115,7 @@ void define_ribbon_trail_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, ribbon_trail_mesh_class_get_size, "get_size", 0),
         JS_NewCFunction(ctx, ribbon_trail_mesh_class_set_size, "set_size", 1),
@@ -130,7 +123,7 @@ void define_ribbon_trail_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sections"),
         JS_NewCFunction(ctx, ribbon_trail_mesh_class_get_sections, "get_sections", 0),
         JS_NewCFunction(ctx, ribbon_trail_mesh_class_set_sections, "set_sections", 1),
@@ -138,7 +131,7 @@ void define_ribbon_trail_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "section_length"),
         JS_NewCFunction(ctx, ribbon_trail_mesh_class_get_section_length, "get_section_length", 0),
         JS_NewCFunction(ctx, ribbon_trail_mesh_class_set_section_length, "set_section_length", 1),
@@ -146,7 +139,7 @@ void define_ribbon_trail_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "section_segments"),
         JS_NewCFunction(ctx, ribbon_trail_mesh_class_get_section_segments, "get_section_segments", 0),
         JS_NewCFunction(ctx, ribbon_trail_mesh_class_set_section_segments, "set_section_segments", 1),
@@ -154,15 +147,16 @@ void define_ribbon_trail_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "curve"),
         JS_NewCFunction(ctx, ribbon_trail_mesh_class_get_curve, "get_curve", 0),
         JS_NewCFunction(ctx, ribbon_trail_mesh_class_set_curve, "set_curve", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_ribbon_trail_mesh_enum(JSContext *ctx, JSValue proto) {
 	JSValue Shape_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Shape_obj, "SHAPE_FLAT", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Shape_obj, "SHAPE_CROSS", JS_NewInt64(ctx, 1));
@@ -182,7 +176,7 @@ static int js_ribbon_trail_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, RibbonTrailMesh::__class_id, proto);
 
 	define_ribbon_trail_mesh_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_ribbon_trail_mesh_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, ribbon_trail_mesh_class_proto_funcs, _countof(ribbon_trail_mesh_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, ribbon_trail_mesh_class_constructor, "RibbonTrailMesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

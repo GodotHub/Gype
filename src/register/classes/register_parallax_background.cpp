@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/canvas_layer.hpp>
 #include <godot_cpp/classes/parallax_background.hpp>
+#include <godot_cpp/classes/canvas_layer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue parallax_background_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ParallaxBackground::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ParallaxBackground *parallax_background_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		parallax_background_class = static_cast<ParallaxBackground *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		parallax_background_class = static_cast<ParallaxBackground *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		parallax_background_class = memnew(ParallaxBackground);
-	}
 	if (!parallax_background_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue parallax_background_class_constructor(JSContext *ctx, JSValueCons
 }
 static JSValue parallax_background_class_set_scroll_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ParallaxBackground::set_scroll_offset, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ParallaxBackground::set_scroll_offset, ctx, this_val, argc, argv);
 };
 static JSValue parallax_background_class_get_scroll_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue parallax_background_class_get_scroll_offset(JSContext *ctx, JSVal
 };
 static JSValue parallax_background_class_set_scroll_base_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ParallaxBackground::set_scroll_base_offset, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ParallaxBackground::set_scroll_base_offset, ctx, this_val, argc, argv);
 };
 static JSValue parallax_background_class_get_scroll_base_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue parallax_background_class_get_scroll_base_offset(JSContext *ctx, 
 };
 static JSValue parallax_background_class_set_scroll_base_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ParallaxBackground::set_scroll_base_scale, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ParallaxBackground::set_scroll_base_scale, ctx, this_val, argc, argv);
 };
 static JSValue parallax_background_class_get_scroll_base_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue parallax_background_class_get_scroll_base_scale(JSContext *ctx, J
 };
 static JSValue parallax_background_class_set_limit_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ParallaxBackground::set_limit_begin, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ParallaxBackground::set_limit_begin, ctx, this_val, argc, argv);
 };
 static JSValue parallax_background_class_get_limit_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue parallax_background_class_get_limit_begin(JSContext *ctx, JSValue
 };
 static JSValue parallax_background_class_set_limit_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ParallaxBackground::set_limit_end, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ParallaxBackground::set_limit_end, ctx, this_val, argc, argv);
 };
 static JSValue parallax_background_class_get_limit_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,8 +82,7 @@ static JSValue parallax_background_class_get_limit_end(JSContext *ctx, JSValueCo
 };
 static JSValue parallax_background_class_set_ignore_camera_zoom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ParallaxBackground::set_ignore_camera_zoom, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ParallaxBackground::set_ignore_camera_zoom, ctx, this_val, argc, argv);
 };
 static JSValue parallax_background_class_is_ignore_camera_zoom(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -110,10 +103,10 @@ static const JSCFunctionListEntry parallax_background_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_ignore_camera_zoom", 0, &parallax_background_class_is_ignore_camera_zoom),
 };
 
-void define_parallax_background_property(JSContext *ctx, JSValue obj) {
+static void define_parallax_background_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "scroll_offset"),
         JS_NewCFunction(ctx, parallax_background_class_get_scroll_offset, "get_scroll_offset", 0),
         JS_NewCFunction(ctx, parallax_background_class_set_scroll_offset, "set_scroll_offset", 1),
@@ -121,7 +114,7 @@ void define_parallax_background_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "scroll_base_offset"),
         JS_NewCFunction(ctx, parallax_background_class_get_scroll_base_offset, "get_scroll_base_offset", 0),
         JS_NewCFunction(ctx, parallax_background_class_set_scroll_base_offset, "set_scroll_base_offset", 1),
@@ -129,7 +122,7 @@ void define_parallax_background_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "scroll_base_scale"),
         JS_NewCFunction(ctx, parallax_background_class_get_scroll_base_scale, "get_scroll_base_scale", 0),
         JS_NewCFunction(ctx, parallax_background_class_set_scroll_base_scale, "set_scroll_base_scale", 1),
@@ -137,7 +130,7 @@ void define_parallax_background_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "scroll_limit_begin"),
         JS_NewCFunction(ctx, parallax_background_class_get_limit_begin, "get_limit_begin", 0),
         JS_NewCFunction(ctx, parallax_background_class_set_limit_begin, "set_limit_begin", 1),
@@ -145,7 +138,7 @@ void define_parallax_background_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "scroll_limit_end"),
         JS_NewCFunction(ctx, parallax_background_class_get_limit_end, "get_limit_end", 0),
         JS_NewCFunction(ctx, parallax_background_class_set_limit_end, "set_limit_end", 1),
@@ -153,15 +146,16 @@ void define_parallax_background_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "scroll_ignore_camera_zoom"),
         JS_NewCFunction(ctx, parallax_background_class_is_ignore_camera_zoom, "is_ignore_camera_zoom", 0),
         JS_NewCFunction(ctx, parallax_background_class_set_ignore_camera_zoom, "set_ignore_camera_zoom", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_parallax_background_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_parallax_background_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -177,7 +171,7 @@ static int js_parallax_background_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ParallaxBackground::__class_id, proto);
 
 	define_parallax_background_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_parallax_background_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, parallax_background_class_proto_funcs, _countof(parallax_background_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, parallax_background_class_constructor, "ParallaxBackground", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

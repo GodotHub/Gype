@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_shader_source.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/rd_shader_source.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue rd_shader_source_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDShaderSource::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	RDShaderSource *rd_shader_source_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		rd_shader_source_class = static_cast<RDShaderSource *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		rd_shader_source_class = static_cast<RDShaderSource *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		rd_shader_source_class = memnew(RDShaderSource);
-	}
 	if (!rd_shader_source_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue rd_shader_source_class_constructor(JSContext *ctx, JSValueConst n
 }
 static JSValue rd_shader_source_class_set_stage_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDShaderSource::set_stage_source, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDShaderSource::set_stage_source, ctx, this_val, argc, argv);
 };
 static JSValue rd_shader_source_class_get_stage_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue rd_shader_source_class_get_stage_source(JSContext *ctx, JSValueCo
 };
 static JSValue rd_shader_source_class_set_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDShaderSource::set_language, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDShaderSource::set_language, ctx, this_val, argc, argv);
 };
 static JSValue rd_shader_source_class_get_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,10 +63,10 @@ static const JSCFunctionListEntry rd_shader_source_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_language", 0, &rd_shader_source_class_get_language),
 };
 
-void define_rd_shader_source_property(JSContext *ctx, JSValue obj) {
+static void define_rd_shader_source_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "source_vertex"),
         JS_NewCFunction(ctx, rd_shader_source_class_get_stage_source, "get_stage_source", 0),
         JS_NewCFunction(ctx, rd_shader_source_class_set_stage_source, "set_stage_source", 1),
@@ -77,7 +74,7 @@ void define_rd_shader_source_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "source_fragment"),
         JS_NewCFunction(ctx, rd_shader_source_class_get_stage_source, "get_stage_source", 0),
         JS_NewCFunction(ctx, rd_shader_source_class_set_stage_source, "set_stage_source", 1),
@@ -85,7 +82,7 @@ void define_rd_shader_source_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "source_tesselation_control"),
         JS_NewCFunction(ctx, rd_shader_source_class_get_stage_source, "get_stage_source", 0),
         JS_NewCFunction(ctx, rd_shader_source_class_set_stage_source, "set_stage_source", 1),
@@ -93,7 +90,7 @@ void define_rd_shader_source_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "source_tesselation_evaluation"),
         JS_NewCFunction(ctx, rd_shader_source_class_get_stage_source, "get_stage_source", 0),
         JS_NewCFunction(ctx, rd_shader_source_class_set_stage_source, "set_stage_source", 1),
@@ -101,7 +98,7 @@ void define_rd_shader_source_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "source_compute"),
         JS_NewCFunction(ctx, rd_shader_source_class_get_stage_source, "get_stage_source", 0),
         JS_NewCFunction(ctx, rd_shader_source_class_set_stage_source, "set_stage_source", 1),
@@ -109,15 +106,16 @@ void define_rd_shader_source_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "language"),
         JS_NewCFunction(ctx, rd_shader_source_class_get_language, "get_language", 0),
         JS_NewCFunction(ctx, rd_shader_source_class_set_language, "set_language", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_rd_shader_source_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_rd_shader_source_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -133,7 +131,7 @@ static int js_rd_shader_source_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, RDShaderSource::__class_id, proto);
 
 	define_rd_shader_source_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_rd_shader_source_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, rd_shader_source_class_proto_funcs, _countof(rd_shader_source_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, rd_shader_source_class_constructor, "RDShaderSource", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

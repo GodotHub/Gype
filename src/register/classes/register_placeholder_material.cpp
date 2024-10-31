@@ -27,13 +27,12 @@ static JSValue placeholder_material_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PlaceholderMaterial::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PlaceholderMaterial *placeholder_material_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		placeholder_material_class = static_cast<PlaceholderMaterial *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		placeholder_material_class = static_cast<PlaceholderMaterial *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		placeholder_material_class = memnew(PlaceholderMaterial);
-	}
 	if (!placeholder_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue placeholder_material_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 
-void define_placeholder_material_property(JSContext *ctx, JSValue obj) {
+static void define_placeholder_material_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_placeholder_material_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_placeholder_material_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_placeholder_material_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, PlaceholderMaterial::__class_id, proto);
 
 	define_placeholder_material_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_placeholder_material_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, placeholder_material_class_constructor, "PlaceholderMaterial", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

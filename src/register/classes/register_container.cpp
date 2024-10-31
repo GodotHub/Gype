@@ -27,13 +27,12 @@ static JSValue container_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Container::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Container *container_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		container_class = static_cast<Container *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		container_class = static_cast<Container *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		container_class = memnew(Container);
-	}
 	if (!container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,23 +42,58 @@ static JSValue container_class_constructor(JSContext *ctx, JSValueConst new_targ
 }
 static JSValue container_class_queue_sort(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Container::queue_sort, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Container::queue_sort, ctx, this_val, argc, argv);
 };
 static JSValue container_class_fit_child_in_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Container::fit_child_in_rect, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Container::fit_child_in_rect, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry container_class_proto_funcs[] = {
 	JS_CFUNC_DEF("queue_sort", 0, &container_class_queue_sort),
 	JS_CFUNC_DEF("fit_child_in_rect", 2, &container_class_fit_child_in_rect),
 };
-
-void define_container_property(JSContext *ctx, JSValue obj) {
+static JSValue container_class_get_pre_sort_children_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	Container *opaque = reinterpret_cast<Container *>(JS_GetOpaque(this_val, Container::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "pre_sort_children_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "pre_sort_children").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "pre_sort_children_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue container_class_get_sort_children_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	Container *opaque = reinterpret_cast<Container *>(JS_GetOpaque(this_val, Container::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "sort_children_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "sort_children").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "sort_children_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_container_property(JSContext *ctx, JSValue proto) {
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "pre_sort_children"),
+		JS_NewCFunction(ctx, container_class_get_pre_sort_children_signal, "get_pre_sort_children_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "sort_children"),
+		JS_NewCFunction(ctx, container_class_get_sort_children_signal, "get_sort_children_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+}
+
+static void define_container_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_container_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -75,7 +109,7 @@ static int js_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Container::__class_id, proto);
 
 	define_container_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_container_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, container_class_proto_funcs, _countof(container_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, container_class_constructor, "Container", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

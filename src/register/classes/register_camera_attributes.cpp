@@ -27,13 +27,12 @@ static JSValue camera_attributes_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CameraAttributes::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	CameraAttributes *camera_attributes_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		camera_attributes_class = static_cast<CameraAttributes *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		camera_attributes_class = static_cast<CameraAttributes *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		camera_attributes_class = memnew(CameraAttributes);
-	}
 	if (!camera_attributes_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue camera_attributes_class_constructor(JSContext *ctx, JSValueConst 
 }
 static JSValue camera_attributes_class_set_exposure_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CameraAttributes::set_exposure_multiplier, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CameraAttributes::set_exposure_multiplier, ctx, this_val, argc, argv);
 };
 static JSValue camera_attributes_class_get_exposure_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue camera_attributes_class_get_exposure_multiplier(JSContext *ctx, J
 };
 static JSValue camera_attributes_class_set_exposure_sensitivity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CameraAttributes::set_exposure_sensitivity, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CameraAttributes::set_exposure_sensitivity, ctx, this_val, argc, argv);
 };
 static JSValue camera_attributes_class_get_exposure_sensitivity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue camera_attributes_class_get_exposure_sensitivity(JSContext *ctx, 
 };
 static JSValue camera_attributes_class_set_auto_exposure_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CameraAttributes::set_auto_exposure_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CameraAttributes::set_auto_exposure_enabled, ctx, this_val, argc, argv);
 };
 static JSValue camera_attributes_class_is_auto_exposure_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue camera_attributes_class_is_auto_exposure_enabled(JSContext *ctx, 
 };
 static JSValue camera_attributes_class_set_auto_exposure_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CameraAttributes::set_auto_exposure_speed, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CameraAttributes::set_auto_exposure_speed, ctx, this_val, argc, argv);
 };
 static JSValue camera_attributes_class_get_auto_exposure_speed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue camera_attributes_class_get_auto_exposure_speed(JSContext *ctx, J
 };
 static JSValue camera_attributes_class_set_auto_exposure_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CameraAttributes::set_auto_exposure_scale, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CameraAttributes::set_auto_exposure_scale, ctx, this_val, argc, argv);
 };
 static JSValue camera_attributes_class_get_auto_exposure_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -99,10 +93,10 @@ static const JSCFunctionListEntry camera_attributes_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_auto_exposure_scale", 0, &camera_attributes_class_get_auto_exposure_scale),
 };
 
-void define_camera_attributes_property(JSContext *ctx, JSValue obj) {
+static void define_camera_attributes_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "exposure_sensitivity"),
         JS_NewCFunction(ctx, camera_attributes_class_get_exposure_sensitivity, "get_exposure_sensitivity", 0),
         JS_NewCFunction(ctx, camera_attributes_class_set_exposure_sensitivity, "set_exposure_sensitivity", 1),
@@ -110,7 +104,7 @@ void define_camera_attributes_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "exposure_multiplier"),
         JS_NewCFunction(ctx, camera_attributes_class_get_exposure_multiplier, "get_exposure_multiplier", 0),
         JS_NewCFunction(ctx, camera_attributes_class_set_exposure_multiplier, "set_exposure_multiplier", 1),
@@ -118,7 +112,7 @@ void define_camera_attributes_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "auto_exposure_enabled"),
         JS_NewCFunction(ctx, camera_attributes_class_is_auto_exposure_enabled, "is_auto_exposure_enabled", 0),
         JS_NewCFunction(ctx, camera_attributes_class_set_auto_exposure_enabled, "set_auto_exposure_enabled", 1),
@@ -126,7 +120,7 @@ void define_camera_attributes_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "auto_exposure_scale"),
         JS_NewCFunction(ctx, camera_attributes_class_get_auto_exposure_scale, "get_auto_exposure_scale", 0),
         JS_NewCFunction(ctx, camera_attributes_class_set_auto_exposure_scale, "set_auto_exposure_scale", 1),
@@ -134,15 +128,16 @@ void define_camera_attributes_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "auto_exposure_speed"),
         JS_NewCFunction(ctx, camera_attributes_class_get_auto_exposure_speed, "get_auto_exposure_speed", 0),
         JS_NewCFunction(ctx, camera_attributes_class_set_auto_exposure_speed, "set_auto_exposure_speed", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_camera_attributes_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_camera_attributes_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -158,7 +153,7 @@ static int js_camera_attributes_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, CameraAttributes::__class_id, proto);
 
 	define_camera_attributes_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_camera_attributes_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, camera_attributes_class_proto_funcs, _countof(camera_attributes_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, camera_attributes_class_constructor, "CameraAttributes", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

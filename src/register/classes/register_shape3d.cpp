@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/array_mesh.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue shape3d_class_constructor(JSContext *ctx, JSValueConst new_target
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Shape3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Shape3D *shape3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		shape3d_class = static_cast<Shape3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		shape3d_class = static_cast<Shape3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		shape3d_class = memnew(Shape3D);
-	}
 	if (!shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue shape3d_class_constructor(JSContext *ctx, JSValueConst new_target
 }
 static JSValue shape3d_class_set_custom_solver_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Shape3D::set_custom_solver_bias, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Shape3D::set_custom_solver_bias, ctx, this_val, argc, argv);
 };
 static JSValue shape3d_class_get_custom_solver_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue shape3d_class_get_custom_solver_bias(JSContext *ctx, JSValueConst
 };
 static JSValue shape3d_class_set_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Shape3D::set_margin, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Shape3D::set_margin, ctx, this_val, argc, argv);
 };
 static JSValue shape3d_class_get_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -72,10 +69,10 @@ static const JSCFunctionListEntry shape3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_debug_mesh", 0, &shape3d_class_get_debug_mesh),
 };
 
-void define_shape3d_property(JSContext *ctx, JSValue obj) {
+static void define_shape3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "custom_solver_bias"),
         JS_NewCFunction(ctx, shape3d_class_get_custom_solver_bias, "get_custom_solver_bias", 0),
         JS_NewCFunction(ctx, shape3d_class_set_custom_solver_bias, "set_custom_solver_bias", 1),
@@ -83,15 +80,16 @@ void define_shape3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "margin"),
         JS_NewCFunction(ctx, shape3d_class_get_margin, "get_margin", 0),
         JS_NewCFunction(ctx, shape3d_class_set_margin, "set_margin", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_shape3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -107,7 +105,7 @@ static int js_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Shape3D::__class_id, proto);
 
 	define_shape3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_shape3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, shape3d_class_proto_funcs, _countof(shape3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, shape3d_class_constructor, "Shape3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

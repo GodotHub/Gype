@@ -27,13 +27,12 @@ static JSValue resource_importer_csv_translation_class_constructor(JSContext *ct
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterCSVTranslation::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ResourceImporterCSVTranslation *resource_importer_csv_translation_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		resource_importer_csv_translation_class = static_cast<ResourceImporterCSVTranslation *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		resource_importer_csv_translation_class = static_cast<ResourceImporterCSVTranslation *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		resource_importer_csv_translation_class = memnew(ResourceImporterCSVTranslation);
-	}
 	if (!resource_importer_csv_translation_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue resource_importer_csv_translation_class_constructor(JSContext *ct
 	return obj;
 }
 
-void define_resource_importer_csv_translation_property(JSContext *ctx, JSValue obj) {
+static void define_resource_importer_csv_translation_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_resource_importer_csv_translation_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_resource_importer_csv_translation_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_resource_importer_csv_translation_class_init(JSContext *ctx, JSMod
 	JS_SetClassProto(ctx, ResourceImporterCSVTranslation::__class_id, proto);
 
 	define_resource_importer_csv_translation_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_resource_importer_csv_translation_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, resource_importer_csv_translation_class_constructor, "ResourceImporterCSVTranslation", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

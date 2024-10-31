@@ -27,13 +27,12 @@ static JSValue editor_vcs_interface_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorVCSInterface::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	EditorVCSInterface *editor_vcs_interface_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		editor_vcs_interface_class = static_cast<EditorVCSInterface *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		editor_vcs_interface_class = static_cast<EditorVCSInterface *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		editor_vcs_interface_class = memnew(EditorVCSInterface);
-	}
 	if (!editor_vcs_interface_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -71,8 +70,7 @@ static JSValue editor_vcs_interface_class_add_line_diffs_into_diff_hunk(JSContex
 };
 static JSValue editor_vcs_interface_class_popup_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorVCSInterface::popup_error, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorVCSInterface::popup_error, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_vcs_interface_class_proto_funcs[] = {
 	JS_CFUNC_DEF("create_diff_line", 4, &editor_vcs_interface_class_create_diff_line),
@@ -85,10 +83,11 @@ static const JSCFunctionListEntry editor_vcs_interface_class_proto_funcs[] = {
 	JS_CFUNC_DEF("popup_error", 1, &editor_vcs_interface_class_popup_error),
 };
 
-void define_editor_vcs_interface_property(JSContext *ctx, JSValue obj) {
+static void define_editor_vcs_interface_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_editor_vcs_interface_enum(JSContext *ctx, JSValue proto) {
 	JSValue ChangeType_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, ChangeType_obj, "CHANGE_TYPE_NEW", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, ChangeType_obj, "CHANGE_TYPE_MODIFIED", JS_NewInt64(ctx, 1));
@@ -117,7 +116,7 @@ static int js_editor_vcs_interface_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, EditorVCSInterface::__class_id, proto);
 
 	define_editor_vcs_interface_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_editor_vcs_interface_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_vcs_interface_class_proto_funcs, _countof(editor_vcs_interface_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, editor_vcs_interface_class_constructor, "EditorVCSInterface", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

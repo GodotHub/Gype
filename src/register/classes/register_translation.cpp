@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/translation.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue translation_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Translation::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Translation *translation_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		translation_class = static_cast<Translation *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		translation_class = static_cast<Translation *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		translation_class = memnew(Translation);
-	}
 	if (!translation_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue translation_class_constructor(JSContext *ctx, JSValueConst new_ta
 }
 static JSValue translation_class_set_locale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Translation::set_locale, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Translation::set_locale, ctx, this_val, argc, argv);
 };
 static JSValue translation_class_get_locale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,13 +50,11 @@ static JSValue translation_class_get_locale(JSContext *ctx, JSValueConst this_va
 };
 static JSValue translation_class_add_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Translation::add_message, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Translation::add_message, ctx, this_val, argc, argv);
 };
 static JSValue translation_class_add_plural_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Translation::add_plural_message, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Translation::add_plural_message, ctx, this_val, argc, argv);
 };
 static JSValue translation_class_get_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue translation_class_get_plural_message(JSContext *ctx, JSValueConst
 };
 static JSValue translation_class_erase_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Translation::erase_message, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Translation::erase_message, ctx, this_val, argc, argv);
 };
 static JSValue translation_class_get_message_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -98,18 +93,19 @@ static const JSCFunctionListEntry translation_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_message_count", 0, &translation_class_get_message_count),
 };
 
-void define_translation_property(JSContext *ctx, JSValue obj) {
+static void define_translation_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "locale"),
         JS_NewCFunction(ctx, translation_class_get_locale, "get_locale", 0),
         JS_NewCFunction(ctx, translation_class_set_locale, "set_locale", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_translation_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_translation_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -125,7 +121,7 @@ static int js_translation_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Translation::__class_id, proto);
 
 	define_translation_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_translation_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, translation_class_proto_funcs, _countof(translation_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, translation_class_constructor, "Translation", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

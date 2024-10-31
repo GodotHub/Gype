@@ -28,13 +28,12 @@ static JSValue visual_shader_node_texture3d_class_constructor(JSContext *ctx, JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeTexture3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeTexture3D *visual_shader_node_texture3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_texture3d_class = static_cast<VisualShaderNodeTexture3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_texture3d_class = static_cast<VisualShaderNodeTexture3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_texture3d_class = memnew(VisualShaderNodeTexture3D);
-	}
 	if (!visual_shader_node_texture3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue visual_shader_node_texture3d_class_constructor(JSContext *ctx, JS
 }
 static JSValue visual_shader_node_texture3d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeTexture3D::set_texture, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeTexture3D::set_texture, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_texture3d_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,18 +54,19 @@ static const JSCFunctionListEntry visual_shader_node_texture3d_class_proto_funcs
 	JS_CFUNC_DEF("get_texture", 0, &visual_shader_node_texture3d_class_get_texture),
 };
 
-void define_visual_shader_node_texture3d_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_texture3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, visual_shader_node_texture3d_class_get_texture, "get_texture", 0),
         JS_NewCFunction(ctx, visual_shader_node_texture3d_class_set_texture, "set_texture", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_texture3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_texture3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -83,7 +82,7 @@ static int js_visual_shader_node_texture3d_class_init(JSContext *ctx, JSModuleDe
 	JS_SetClassProto(ctx, VisualShaderNodeTexture3D::__class_id, proto);
 
 	define_visual_shader_node_texture3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_texture3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_texture3d_class_proto_funcs, _countof(visual_shader_node_texture3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_texture3d_class_constructor, "VisualShaderNodeTexture3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

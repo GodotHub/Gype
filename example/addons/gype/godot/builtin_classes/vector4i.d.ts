@@ -10,22 +10,22 @@ export declare class Vector4i {
   public y: int;
   public z: int;
   public w: int;
-  public min_axis_index(): void;
-  public max_axis_index(): void;
-  public length(): void;
-  public length_squared(): void;
-  public sign(): void;
-  public abs(): void;
-  public clamp(_min: Vector4i, _max: Vector4i): void;
-  public clampi(_min: number, _max: number): void;
-  public snapped(_step: Vector4i): void;
-  public snappedi(_step: number): void;
-  public min(_with: Vector4i): void;
-  public mini(_with: number): void;
-  public max(_with: Vector4i): void;
-  public maxi(_with: number): void;
-  public distance_to(_to: Vector4i): void;
-  public distance_squared_to(_to: Vector4i): void;
+  public min_axis_index(): number;
+  public max_axis_index(): number;
+  public length(): number;
+  public length_squared(): number;
+  public sign(): Vector4i;
+  public abs(): Vector4i;
+  public clamp(_min: Vector4i, _max: Vector4i): Vector4i;
+  public clampi(_min: number, _max: number): Vector4i;
+  public snapped(_step: Vector4i): Vector4i;
+  public snappedi(_step: number): Vector4i;
+  public min(_with: Vector4i): Vector4i;
+  public mini(_with: number): Vector4i;
+  public max(_with: Vector4i): Vector4i;
+  public maxi(_with: number): Vector4i;
+  public distance_to(_to: Vector4i): number;
+  public distance_squared_to(_to: Vector4i): number;
   static Axis = {
     AXIS_X = 0,
     AXIS_Y = 1,

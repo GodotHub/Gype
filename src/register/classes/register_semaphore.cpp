@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/semaphore.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/semaphore.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue semaphore_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Semaphore::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Semaphore *semaphore_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		semaphore_class = static_cast<Semaphore *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		semaphore_class = static_cast<Semaphore *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		semaphore_class = memnew(Semaphore);
-	}
 	if (!semaphore_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue semaphore_class_constructor(JSContext *ctx, JSValueConst new_targ
 }
 static JSValue semaphore_class_wait(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Semaphore::wait, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Semaphore::wait, ctx, this_val, argc, argv);
 };
 static JSValue semaphore_class_try_wait(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue semaphore_class_try_wait(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue semaphore_class_post(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Semaphore::post, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Semaphore::post, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry semaphore_class_proto_funcs[] = {
 	JS_CFUNC_DEF("wait", 0, &semaphore_class_wait),
@@ -61,10 +58,11 @@ static const JSCFunctionListEntry semaphore_class_proto_funcs[] = {
 	JS_CFUNC_DEF("post", 0, &semaphore_class_post),
 };
 
-void define_semaphore_property(JSContext *ctx, JSValue obj) {
+static void define_semaphore_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_semaphore_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_semaphore_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -80,7 +78,7 @@ static int js_semaphore_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Semaphore::__class_id, proto);
 
 	define_semaphore_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_semaphore_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, semaphore_class_proto_funcs, _countof(semaphore_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, semaphore_class_constructor, "Semaphore", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

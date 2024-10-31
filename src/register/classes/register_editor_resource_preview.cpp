@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/editor_resource_preview_generator.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/editor_resource_preview.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -30,13 +30,12 @@ static JSValue editor_resource_preview_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorResourcePreview::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	EditorResourcePreview *editor_resource_preview_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		editor_resource_preview_class = static_cast<EditorResourcePreview *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		editor_resource_preview_class = static_cast<EditorResourcePreview *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		editor_resource_preview_class = memnew(EditorResourcePreview);
-	}
 	if (!editor_resource_preview_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -46,28 +45,23 @@ static JSValue editor_resource_preview_class_constructor(JSContext *ctx, JSValue
 }
 static JSValue editor_resource_preview_class_queue_resource_preview(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorResourcePreview::queue_resource_preview, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorResourcePreview::queue_resource_preview, ctx, this_val, argc, argv);
 };
 static JSValue editor_resource_preview_class_queue_edited_resource_preview(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorResourcePreview::queue_edited_resource_preview, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorResourcePreview::queue_edited_resource_preview, ctx, this_val, argc, argv);
 };
 static JSValue editor_resource_preview_class_add_preview_generator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorResourcePreview::add_preview_generator, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorResourcePreview::add_preview_generator, ctx, this_val, argc, argv);
 };
 static JSValue editor_resource_preview_class_remove_preview_generator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorResourcePreview::remove_preview_generator, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorResourcePreview::remove_preview_generator, ctx, this_val, argc, argv);
 };
 static JSValue editor_resource_preview_class_check_for_invalidation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorResourcePreview::check_for_invalidation, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorResourcePreview::check_for_invalidation, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_resource_preview_class_proto_funcs[] = {
 	JS_CFUNC_DEF("queue_resource_preview", 4, &editor_resource_preview_class_queue_resource_preview),
@@ -76,11 +70,30 @@ static const JSCFunctionListEntry editor_resource_preview_class_proto_funcs[] = 
 	JS_CFUNC_DEF("remove_preview_generator", 1, &editor_resource_preview_class_remove_preview_generator),
 	JS_CFUNC_DEF("check_for_invalidation", 1, &editor_resource_preview_class_check_for_invalidation),
 };
-
-void define_editor_resource_preview_property(JSContext *ctx, JSValue obj) {
+static JSValue editor_resource_preview_class_get_preview_invalidated_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	EditorResourcePreview *opaque = reinterpret_cast<EditorResourcePreview *>(JS_GetOpaque(this_val, EditorResourcePreview::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "preview_invalidated_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "preview_invalidated").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "preview_invalidated_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_editor_resource_preview_property(JSContext *ctx, JSValue proto) {
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "preview_invalidated"),
+		JS_NewCFunction(ctx, editor_resource_preview_class_get_preview_invalidated_signal, "get_preview_invalidated_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+}
+
+static void define_editor_resource_preview_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_resource_preview_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -96,7 +109,7 @@ static int js_editor_resource_preview_class_init(JSContext *ctx, JSModuleDef *m)
 	JS_SetClassProto(ctx, EditorResourcePreview::__class_id, proto);
 
 	define_editor_resource_preview_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_editor_resource_preview_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_resource_preview_class_proto_funcs, _countof(editor_resource_preview_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, editor_resource_preview_class_constructor, "EditorResourcePreview", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -27,13 +27,12 @@ static JSValue animation_node_state_machine_playback_class_constructor(JSContext
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeStateMachinePlayback::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AnimationNodeStateMachinePlayback *animation_node_state_machine_playback_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		animation_node_state_machine_playback_class = static_cast<AnimationNodeStateMachinePlayback *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		animation_node_state_machine_playback_class = static_cast<AnimationNodeStateMachinePlayback *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		animation_node_state_machine_playback_class = memnew(AnimationNodeStateMachinePlayback);
-	}
 	if (!animation_node_state_machine_playback_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,23 +42,19 @@ static JSValue animation_node_state_machine_playback_class_constructor(JSContext
 }
 static JSValue animation_node_state_machine_playback_class_travel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeStateMachinePlayback::travel, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeStateMachinePlayback::travel, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_playback_class_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeStateMachinePlayback::start, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeStateMachinePlayback::start, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_playback_class_next(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeStateMachinePlayback::next, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeStateMachinePlayback::next, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_playback_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeStateMachinePlayback::stop, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeStateMachinePlayback::stop, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_state_machine_playback_class_is_playing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -98,10 +93,11 @@ static const JSCFunctionListEntry animation_node_state_machine_playback_class_pr
 	JS_CFUNC_DEF("get_travel_path", 0, &animation_node_state_machine_playback_class_get_travel_path),
 };
 
-void define_animation_node_state_machine_playback_property(JSContext *ctx, JSValue obj) {
+static void define_animation_node_state_machine_playback_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_animation_node_state_machine_playback_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_animation_node_state_machine_playback_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -117,7 +113,7 @@ static int js_animation_node_state_machine_playback_class_init(JSContext *ctx, J
 	JS_SetClassProto(ctx, AnimationNodeStateMachinePlayback::__class_id, proto);
 
 	define_animation_node_state_machine_playback_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_animation_node_state_machine_playback_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animation_node_state_machine_playback_class_proto_funcs, _countof(animation_node_state_machine_playback_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, animation_node_state_machine_playback_class_constructor, "AnimationNodeStateMachinePlayback", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

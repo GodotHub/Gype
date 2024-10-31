@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/rd_texture_format.hpp>
+#include <godot_cpp/classes/render_scene_buffers.hpp>
 #include <godot_cpp/classes/rd_texture_view.hpp>
 #include <godot_cpp/classes/render_scene_buffers_rd.hpp>
-#include <godot_cpp/classes/render_scene_buffers.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue render_scene_buffers_rd_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RenderSceneBuffersRD::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	RenderSceneBuffersRD *render_scene_buffers_rd_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		render_scene_buffers_rd_class = static_cast<RenderSceneBuffersRD *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		render_scene_buffers_rd_class = static_cast<RenderSceneBuffersRD *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		render_scene_buffers_rd_class = memnew(RenderSceneBuffersRD);
-	}
 	if (!render_scene_buffers_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -81,8 +80,7 @@ static JSValue render_scene_buffers_rd_class_get_texture_slice_size(JSContext *c
 };
 static JSValue render_scene_buffers_rd_class_clear_context(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderSceneBuffersRD::clear_context, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderSceneBuffersRD::clear_context, ctx, this_val, argc, argv);
 };
 static JSValue render_scene_buffers_rd_class_get_color_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -182,10 +180,11 @@ static const JSCFunctionListEntry render_scene_buffers_rd_class_proto_funcs[] = 
 	JS_CFUNC_DEF("get_use_debanding", 0, &render_scene_buffers_rd_class_get_use_debanding),
 };
 
-void define_render_scene_buffers_rd_property(JSContext *ctx, JSValue obj) {
+static void define_render_scene_buffers_rd_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_render_scene_buffers_rd_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_render_scene_buffers_rd_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -201,7 +200,7 @@ static int js_render_scene_buffers_rd_class_init(JSContext *ctx, JSModuleDef *m)
 	JS_SetClassProto(ctx, RenderSceneBuffersRD::__class_id, proto);
 
 	define_render_scene_buffers_rd_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_render_scene_buffers_rd_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, render_scene_buffers_rd_class_proto_funcs, _countof(render_scene_buffers_rd_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, render_scene_buffers_rd_class_constructor, "RenderSceneBuffersRD", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

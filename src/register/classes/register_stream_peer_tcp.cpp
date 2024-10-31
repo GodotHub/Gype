@@ -27,13 +27,12 @@ static JSValue stream_peer_tcp_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StreamPeerTCP::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	StreamPeerTCP *stream_peer_tcp_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		stream_peer_tcp_class = static_cast<StreamPeerTCP *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		stream_peer_tcp_class = static_cast<StreamPeerTCP *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		stream_peer_tcp_class = memnew(StreamPeerTCP);
-	}
 	if (!stream_peer_tcp_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -71,13 +70,11 @@ static JSValue stream_peer_tcp_class_get_local_port(JSContext *ctx, JSValueConst
 };
 static JSValue stream_peer_tcp_class_disconnect_from_host(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StreamPeerTCP::disconnect_from_host, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&StreamPeerTCP::disconnect_from_host, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_tcp_class_set_no_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StreamPeerTCP::set_no_delay, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&StreamPeerTCP::set_no_delay, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry stream_peer_tcp_class_proto_funcs[] = {
 	JS_CFUNC_DEF("bind", 2, &stream_peer_tcp_class_bind),
@@ -91,10 +88,11 @@ static const JSCFunctionListEntry stream_peer_tcp_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_no_delay", 1, &stream_peer_tcp_class_set_no_delay),
 };
 
-void define_stream_peer_tcp_property(JSContext *ctx, JSValue obj) {
+static void define_stream_peer_tcp_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_stream_peer_tcp_enum(JSContext *ctx, JSValue proto) {
 	JSValue Status_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Status_obj, "STATUS_NONE", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Status_obj, "STATUS_CONNECTING", JS_NewInt64(ctx, 1));
@@ -116,7 +114,7 @@ static int js_stream_peer_tcp_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, StreamPeerTCP::__class_id, proto);
 
 	define_stream_peer_tcp_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_stream_peer_tcp_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, stream_peer_tcp_class_proto_funcs, _countof(stream_peer_tcp_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, stream_peer_tcp_class_constructor, "StreamPeerTCP", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

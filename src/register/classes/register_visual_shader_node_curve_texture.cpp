@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_resizable_base.hpp>
-#include <godot_cpp/classes/visual_shader_node_curve_texture.hpp>
 #include <godot_cpp/classes/curve_texture.hpp>
+#include <godot_cpp/classes/visual_shader_node_curve_texture.hpp>
+#include <godot_cpp/classes/visual_shader_node_resizable_base.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue visual_shader_node_curve_texture_class_constructor(JSContext *ctx
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeCurveTexture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeCurveTexture *visual_shader_node_curve_texture_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_curve_texture_class = static_cast<VisualShaderNodeCurveTexture *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_curve_texture_class = static_cast<VisualShaderNodeCurveTexture *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_curve_texture_class = memnew(VisualShaderNodeCurveTexture);
-	}
 	if (!visual_shader_node_curve_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue visual_shader_node_curve_texture_class_constructor(JSContext *ctx
 }
 static JSValue visual_shader_node_curve_texture_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeCurveTexture::set_texture, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeCurveTexture::set_texture, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_curve_texture_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,18 +54,19 @@ static const JSCFunctionListEntry visual_shader_node_curve_texture_class_proto_f
 	JS_CFUNC_DEF("get_texture", 0, &visual_shader_node_curve_texture_class_get_texture),
 };
 
-void define_visual_shader_node_curve_texture_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_curve_texture_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, visual_shader_node_curve_texture_class_get_texture, "get_texture", 0),
         JS_NewCFunction(ctx, visual_shader_node_curve_texture_class_set_texture, "set_texture", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_curve_texture_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_curve_texture_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -83,7 +82,7 @@ static int js_visual_shader_node_curve_texture_class_init(JSContext *ctx, JSModu
 	JS_SetClassProto(ctx, VisualShaderNodeCurveTexture::__class_id, proto);
 
 	define_visual_shader_node_curve_texture_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_curve_texture_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_curve_texture_class_proto_funcs, _countof(visual_shader_node_curve_texture_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_curve_texture_class_constructor, "VisualShaderNodeCurveTexture", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

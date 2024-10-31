@@ -27,13 +27,12 @@ static JSValue hashing_context_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HashingContext::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	HashingContext *hashing_context_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		hashing_context_class = static_cast<HashingContext *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		hashing_context_class = static_cast<HashingContext *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		hashing_context_class = memnew(HashingContext);
-	}
 	if (!hashing_context_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -59,10 +58,11 @@ static const JSCFunctionListEntry hashing_context_class_proto_funcs[] = {
 	JS_CFUNC_DEF("finish", 0, &hashing_context_class_finish),
 };
 
-void define_hashing_context_property(JSContext *ctx, JSValue obj) {
+static void define_hashing_context_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_hashing_context_enum(JSContext *ctx, JSValue proto) {
 	JSValue HashType_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, HashType_obj, "HASH_MD5", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, HashType_obj, "HASH_SHA1", JS_NewInt64(ctx, 1));
@@ -83,7 +83,7 @@ static int js_hashing_context_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, HashingContext::__class_id, proto);
 
 	define_hashing_context_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_hashing_context_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, hashing_context_class_proto_funcs, _countof(hashing_context_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, hashing_context_class_constructor, "HashingContext", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

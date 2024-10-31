@@ -27,13 +27,12 @@ static JSValue open_xr_action_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRAction::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	OpenXRAction *open_xr_action_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		open_xr_action_class = static_cast<OpenXRAction *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		open_xr_action_class = static_cast<OpenXRAction *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		open_xr_action_class = memnew(OpenXRAction);
-	}
 	if (!open_xr_action_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue open_xr_action_class_constructor(JSContext *ctx, JSValueConst new
 }
 static JSValue open_xr_action_class_set_localized_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRAction::set_localized_name, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRAction::set_localized_name, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_class_get_localized_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue open_xr_action_class_get_localized_name(JSContext *ctx, JSValueCo
 };
 static JSValue open_xr_action_class_set_action_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRAction::set_action_type, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRAction::set_action_type, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_class_get_action_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue open_xr_action_class_get_action_type(JSContext *ctx, JSValueConst
 };
 static JSValue open_xr_action_class_set_toplevel_paths(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRAction::set_toplevel_paths, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRAction::set_toplevel_paths, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_class_get_toplevel_paths(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -77,10 +73,10 @@ static const JSCFunctionListEntry open_xr_action_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_toplevel_paths", 0, &open_xr_action_class_get_toplevel_paths),
 };
 
-void define_open_xr_action_property(JSContext *ctx, JSValue obj) {
+static void define_open_xr_action_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "localized_name"),
         JS_NewCFunction(ctx, open_xr_action_class_get_localized_name, "get_localized_name", 0),
         JS_NewCFunction(ctx, open_xr_action_class_set_localized_name, "set_localized_name", 1),
@@ -88,7 +84,7 @@ void define_open_xr_action_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "action_type"),
         JS_NewCFunction(ctx, open_xr_action_class_get_action_type, "get_action_type", 0),
         JS_NewCFunction(ctx, open_xr_action_class_set_action_type, "set_action_type", 1),
@@ -96,15 +92,16 @@ void define_open_xr_action_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "toplevel_paths"),
         JS_NewCFunction(ctx, open_xr_action_class_get_toplevel_paths, "get_toplevel_paths", 0),
         JS_NewCFunction(ctx, open_xr_action_class_set_toplevel_paths, "set_toplevel_paths", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_open_xr_action_enum(JSContext *ctx, JSValue proto) {
 	JSValue ActionType_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, ActionType_obj, "OPENXR_ACTION_BOOL", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, ActionType_obj, "OPENXR_ACTION_FLOAT", JS_NewInt64(ctx, 1));
@@ -126,7 +123,7 @@ static int js_open_xr_action_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, OpenXRAction::__class_id, proto);
 
 	define_open_xr_action_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_open_xr_action_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, open_xr_action_class_proto_funcs, _countof(open_xr_action_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, open_xr_action_class_constructor, "OpenXRAction", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

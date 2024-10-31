@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_debugger_plugin.hpp>
 #include <godot_cpp/classes/script.hpp>
+#include <godot_cpp/classes/editor_debugger_plugin.hpp>
 #include <godot_cpp/classes/editor_debugger_session.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -29,13 +29,12 @@ static JSValue editor_debugger_plugin_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorDebuggerPlugin::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	EditorDebuggerPlugin *editor_debugger_plugin_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		editor_debugger_plugin_class = static_cast<EditorDebuggerPlugin *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		editor_debugger_plugin_class = static_cast<EditorDebuggerPlugin *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		editor_debugger_plugin_class = memnew(EditorDebuggerPlugin);
-	}
 	if (!editor_debugger_plugin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -56,10 +55,11 @@ static const JSCFunctionListEntry editor_debugger_plugin_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_sessions", 0, &editor_debugger_plugin_class_get_sessions),
 };
 
-void define_editor_debugger_plugin_property(JSContext *ctx, JSValue obj) {
+static void define_editor_debugger_plugin_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_editor_debugger_plugin_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_debugger_plugin_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -75,7 +75,7 @@ static int js_editor_debugger_plugin_class_init(JSContext *ctx, JSModuleDef *m) 
 	JS_SetClassProto(ctx, EditorDebuggerPlugin::__class_id, proto);
 
 	define_editor_debugger_plugin_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_editor_debugger_plugin_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_debugger_plugin_class_proto_funcs, _countof(editor_debugger_plugin_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, editor_debugger_plugin_class_constructor, "EditorDebuggerPlugin", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

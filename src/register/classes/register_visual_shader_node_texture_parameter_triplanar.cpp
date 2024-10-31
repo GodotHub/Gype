@@ -27,13 +27,12 @@ static JSValue visual_shader_node_texture_parameter_triplanar_class_constructor(
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeTextureParameterTriplanar::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeTextureParameterTriplanar *visual_shader_node_texture_parameter_triplanar_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_texture_parameter_triplanar_class = static_cast<VisualShaderNodeTextureParameterTriplanar *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_texture_parameter_triplanar_class = static_cast<VisualShaderNodeTextureParameterTriplanar *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_texture_parameter_triplanar_class = memnew(VisualShaderNodeTextureParameterTriplanar);
-	}
 	if (!visual_shader_node_texture_parameter_triplanar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue visual_shader_node_texture_parameter_triplanar_class_constructor(
 	return obj;
 }
 
-void define_visual_shader_node_texture_parameter_triplanar_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_texture_parameter_triplanar_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_texture_parameter_triplanar_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_texture_parameter_triplanar_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_visual_shader_node_texture_parameter_triplanar_class_init(JSContex
 	JS_SetClassProto(ctx, VisualShaderNodeTextureParameterTriplanar::__class_id, proto);
 
 	define_visual_shader_node_texture_parameter_triplanar_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_texture_parameter_triplanar_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_texture_parameter_triplanar_class_constructor, "VisualShaderNodeTextureParameterTriplanar", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

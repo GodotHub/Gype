@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/image_format_loader.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/image_format_loader.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue image_format_loader_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ImageFormatLoader::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ImageFormatLoader *image_format_loader_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		image_format_loader_class = static_cast<ImageFormatLoader *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		image_format_loader_class = static_cast<ImageFormatLoader *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		image_format_loader_class = memnew(ImageFormatLoader);
-	}
 	if (!image_format_loader_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue image_format_loader_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 
-void define_image_format_loader_property(JSContext *ctx, JSValue obj) {
+static void define_image_format_loader_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_image_format_loader_enum(JSContext *ctx, JSValue proto) {
 	JSValue LoaderFlags_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, LoaderFlags_obj, "FLAG_NONE", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, LoaderFlags_obj, "FLAG_FORCE_LINEAR", JS_NewInt64(ctx, 1));
@@ -66,7 +66,7 @@ static int js_image_format_loader_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ImageFormatLoader::__class_id, proto);
 
 	define_image_format_loader_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_image_format_loader_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, image_format_loader_class_constructor, "ImageFormatLoader", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

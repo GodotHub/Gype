@@ -10,27 +10,27 @@ export declare class Transform2D {
   public x: Vector2;
   public y: Vector2;
   public origin: Vector2;
-  public inverse(): void;
-  public affine_inverse(): void;
-  public get_rotation(): void;
-  public get_origin(): void;
-  public get_scale(): void;
-  public get_skew(): void;
-  public orthonormalized(): void;
-  public rotated(_angle: number): void;
-  public rotated_local(_angle: number): void;
-  public scaled(_scale: Vector2): void;
-  public scaled_local(_scale: Vector2): void;
-  public translated(_offset: Vector2): void;
-  public translated_local(_offset: Vector2): void;
-  public determinant(): void;
-  public basis_xform(_v: Vector2): void;
-  public basis_xform_inv(_v: Vector2): void;
-  public interpolate_with(_xform: Transform2D, _weight: number): void;
-  public is_conformal(): void;
-  public is_equal_approx(_xform: Transform2D): void;
-  public is_finite(): void;
-  public looking_at(_target: Vector2): void;
+  public inverse(): Transform2D;
+  public affine_inverse(): Transform2D;
+  public get_rotation(): number;
+  public get_origin(): Vector2;
+  public get_scale(): Vector2;
+  public get_skew(): number;
+  public orthonormalized(): Transform2D;
+  public rotated(_angle: number): Transform2D;
+  public rotated_local(_angle: number): Transform2D;
+  public scaled(_scale: Vector2): Transform2D;
+  public scaled_local(_scale: Vector2): Transform2D;
+  public translated(_offset: Vector2): Transform2D;
+  public translated_local(_offset: Vector2): Transform2D;
+  public determinant(): number;
+  public basis_xform(_v: Vector2): Vector2;
+  public basis_xform_inv(_v: Vector2): Vector2;
+  public interpolate_with(_xform: Transform2D, _weight: number): Transform2D;
+  public is_conformal(): boolean;
+  public is_equal_approx(_xform: Transform2D): boolean;
+  public is_finite(): boolean;
+  public looking_at(_target: Vector2): Transform2D;
 }
 }
 

@@ -28,13 +28,12 @@ static JSValue font_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Font::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Font *font_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		font_class = static_cast<Font *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		font_class = static_cast<Font *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		font_class = memnew(Font);
-	}
 	if (!font_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue font_class_constructor(JSContext *ctx, JSValueConst new_target, i
 }
 static JSValue font_class_set_fallbacks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Font::set_fallbacks, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Font::set_fallbacks, ctx, this_val, argc, argv);
 };
 static JSValue font_class_get_fallbacks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -113,8 +111,7 @@ static JSValue font_class_get_opentype_features(JSContext *ctx, JSValueConst thi
 };
 static JSValue font_class_set_cache_capacity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Font::set_cache_capacity, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Font::set_cache_capacity, ctx, this_val, argc, argv);
 };
 static JSValue font_class_get_string_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -126,23 +123,19 @@ static JSValue font_class_get_multiline_string_size(JSContext *ctx, JSValueConst
 };
 static JSValue font_class_draw_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_const_method_no_ret(&Font::draw_string, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_const_method_no_ret(&Font::draw_string, ctx, this_val, argc, argv);
 };
 static JSValue font_class_draw_multiline_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_const_method_no_ret(&Font::draw_multiline_string, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_const_method_no_ret(&Font::draw_multiline_string, ctx, this_val, argc, argv);
 };
 static JSValue font_class_draw_string_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_const_method_no_ret(&Font::draw_string_outline, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_const_method_no_ret(&Font::draw_string_outline, ctx, this_val, argc, argv);
 };
 static JSValue font_class_draw_multiline_string_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_const_method_no_ret(&Font::draw_multiline_string_outline, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_const_method_no_ret(&Font::draw_multiline_string_outline, ctx, this_val, argc, argv);
 };
 static JSValue font_class_get_char_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -221,18 +214,19 @@ static const JSCFunctionListEntry font_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_face_count", 0, &font_class_get_face_count),
 };
 
-void define_font_property(JSContext *ctx, JSValue obj) {
+static void define_font_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "fallbacks"),
         JS_NewCFunction(ctx, font_class_get_fallbacks, "get_fallbacks", 0),
         JS_NewCFunction(ctx, font_class_set_fallbacks, "set_fallbacks", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_font_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_font_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -248,7 +242,7 @@ static int js_font_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Font::__class_id, proto);
 
 	define_font_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_font_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, font_class_proto_funcs, _countof(font_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, font_class_constructor, "Font", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

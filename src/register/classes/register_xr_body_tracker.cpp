@@ -27,13 +27,12 @@ static JSValue xr_body_tracker_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRBodyTracker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	XRBodyTracker *xr_body_tracker_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		xr_body_tracker_class = static_cast<XRBodyTracker *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		xr_body_tracker_class = static_cast<XRBodyTracker *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		xr_body_tracker_class = memnew(XRBodyTracker);
-	}
 	if (!xr_body_tracker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue xr_body_tracker_class_constructor(JSContext *ctx, JSValueConst ne
 }
 static JSValue xr_body_tracker_class_set_has_tracking_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRBodyTracker::set_has_tracking_data, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRBodyTracker::set_has_tracking_data, ctx, this_val, argc, argv);
 };
 static JSValue xr_body_tracker_class_get_has_tracking_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue xr_body_tracker_class_get_has_tracking_data(JSContext *ctx, JSVal
 };
 static JSValue xr_body_tracker_class_set_body_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRBodyTracker::set_body_flags, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRBodyTracker::set_body_flags, ctx, this_val, argc, argv);
 };
 static JSValue xr_body_tracker_class_get_body_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue xr_body_tracker_class_get_body_flags(JSContext *ctx, JSValueConst
 };
 static JSValue xr_body_tracker_class_set_joint_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRBodyTracker::set_joint_flags, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRBodyTracker::set_joint_flags, ctx, this_val, argc, argv);
 };
 static JSValue xr_body_tracker_class_get_joint_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue xr_body_tracker_class_get_joint_flags(JSContext *ctx, JSValueCons
 };
 static JSValue xr_body_tracker_class_set_joint_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRBodyTracker::set_joint_transform, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRBodyTracker::set_joint_transform, ctx, this_val, argc, argv);
 };
 static JSValue xr_body_tracker_class_get_joint_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,10 +83,10 @@ static const JSCFunctionListEntry xr_body_tracker_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_joint_transform", 1, &xr_body_tracker_class_get_joint_transform),
 };
 
-void define_xr_body_tracker_property(JSContext *ctx, JSValue obj) {
+static void define_xr_body_tracker_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "has_tracking_data"),
         JS_NewCFunction(ctx, xr_body_tracker_class_get_has_tracking_data, "get_has_tracking_data", 0),
         JS_NewCFunction(ctx, xr_body_tracker_class_set_has_tracking_data, "set_has_tracking_data", 1),
@@ -99,15 +94,16 @@ void define_xr_body_tracker_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "body_flags"),
         JS_NewCFunction(ctx, xr_body_tracker_class_get_body_flags, "get_body_flags", 0),
         JS_NewCFunction(ctx, xr_body_tracker_class_set_body_flags, "set_body_flags", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_xr_body_tracker_enum(JSContext *ctx, JSValue proto) {
 	JSValue BodyFlags_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, BodyFlags_obj, "BODY_FLAG_UPPER_BODY_SUPPORTED", JS_NewInt64(ctx, 1));
 	JS_SetPropertyStr(ctx, BodyFlags_obj, "BODY_FLAG_LOWER_BODY_SUPPORTED", JS_NewInt64(ctx, 2));
@@ -213,7 +209,7 @@ static int js_xr_body_tracker_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, XRBodyTracker::__class_id, proto);
 
 	define_xr_body_tracker_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_xr_body_tracker_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_body_tracker_class_proto_funcs, _countof(xr_body_tracker_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, xr_body_tracker_class_constructor, "XRBodyTracker", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

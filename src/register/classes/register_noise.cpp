@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/noise.hpp>
 #include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -29,13 +29,12 @@ static JSValue noise_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Noise::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Noise *noise_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		noise_class = static_cast<Noise *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		noise_class = static_cast<Noise *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		noise_class = memnew(Noise);
-	}
 	if (!noise_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -91,10 +90,11 @@ static const JSCFunctionListEntry noise_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_seamless_image_3d", 6, &noise_class_get_seamless_image_3d),
 };
 
-void define_noise_property(JSContext *ctx, JSValue obj) {
+static void define_noise_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_noise_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_noise_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -110,7 +110,7 @@ static int js_noise_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Noise::__class_id, proto);
 
 	define_noise_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_noise_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, noise_class_proto_funcs, _countof(noise_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, noise_class_constructor, "Noise", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

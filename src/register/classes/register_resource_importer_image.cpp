@@ -27,13 +27,12 @@ static JSValue resource_importer_image_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterImage::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ResourceImporterImage *resource_importer_image_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		resource_importer_image_class = static_cast<ResourceImporterImage *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		resource_importer_image_class = static_cast<ResourceImporterImage *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		resource_importer_image_class = memnew(ResourceImporterImage);
-	}
 	if (!resource_importer_image_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue resource_importer_image_class_constructor(JSContext *ctx, JSValue
 	return obj;
 }
 
-void define_resource_importer_image_property(JSContext *ctx, JSValue obj) {
+static void define_resource_importer_image_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_resource_importer_image_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_resource_importer_image_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_resource_importer_image_class_init(JSContext *ctx, JSModuleDef *m)
 	JS_SetClassProto(ctx, ResourceImporterImage::__class_id, proto);
 
 	define_resource_importer_image_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_resource_importer_image_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, resource_importer_image_class_constructor, "ResourceImporterImage", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

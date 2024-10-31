@@ -27,13 +27,12 @@ static JSValue zip_packer_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ZIPPacker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ZIPPacker *zip_packer_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		zip_packer_class = static_cast<ZIPPacker *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		zip_packer_class = static_cast<ZIPPacker *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		zip_packer_class = memnew(ZIPPacker);
-	}
 	if (!zip_packer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -69,10 +68,11 @@ static const JSCFunctionListEntry zip_packer_class_proto_funcs[] = {
 	JS_CFUNC_DEF("close", 0, &zip_packer_class_close),
 };
 
-void define_zip_packer_property(JSContext *ctx, JSValue obj) {
+static void define_zip_packer_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_zip_packer_enum(JSContext *ctx, JSValue proto) {
 	JSValue ZipAppend_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, ZipAppend_obj, "APPEND_CREATE", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, ZipAppend_obj, "APPEND_CREATEAFTER", JS_NewInt64(ctx, 1));
@@ -93,7 +93,7 @@ static int js_zip_packer_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ZIPPacker::__class_id, proto);
 
 	define_zip_packer_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_zip_packer_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, zip_packer_class_proto_funcs, _countof(zip_packer_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, zip_packer_class_constructor, "ZIPPacker", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

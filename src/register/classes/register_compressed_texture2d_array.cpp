@@ -27,13 +27,12 @@ static JSValue compressed_texture2d_array_class_constructor(JSContext *ctx, JSVa
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CompressedTexture2DArray::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	CompressedTexture2DArray *compressed_texture2d_array_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		compressed_texture2d_array_class = static_cast<CompressedTexture2DArray *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		compressed_texture2d_array_class = static_cast<CompressedTexture2DArray *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		compressed_texture2d_array_class = memnew(CompressedTexture2DArray);
-	}
 	if (!compressed_texture2d_array_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue compressed_texture2d_array_class_constructor(JSContext *ctx, JSVa
 	return obj;
 }
 
-void define_compressed_texture2d_array_property(JSContext *ctx, JSValue obj) {
+static void define_compressed_texture2d_array_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_compressed_texture2d_array_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_compressed_texture2d_array_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_compressed_texture2d_array_class_init(JSContext *ctx, JSModuleDef 
 	JS_SetClassProto(ctx, CompressedTexture2DArray::__class_id, proto);
 
 	define_compressed_texture2d_array_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_compressed_texture2d_array_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, compressed_texture2d_array_class_constructor, "CompressedTexture2DArray", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

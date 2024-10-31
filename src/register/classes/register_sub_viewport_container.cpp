@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/sub_viewport_container.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,13 +28,12 @@ static JSValue sub_viewport_container_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SubViewportContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	SubViewportContainer *sub_viewport_container_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		sub_viewport_container_class = static_cast<SubViewportContainer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		sub_viewport_container_class = static_cast<SubViewportContainer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		sub_viewport_container_class = memnew(SubViewportContainer);
-	}
 	if (!sub_viewport_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue sub_viewport_container_class_constructor(JSContext *ctx, JSValueC
 }
 static JSValue sub_viewport_container_class_set_stretch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SubViewportContainer::set_stretch, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SubViewportContainer::set_stretch, ctx, this_val, argc, argv);
 };
 static JSValue sub_viewport_container_class_is_stretch_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue sub_viewport_container_class_is_stretch_enabled(JSContext *ctx, J
 };
 static JSValue sub_viewport_container_class_set_stretch_shrink(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SubViewportContainer::set_stretch_shrink, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SubViewportContainer::set_stretch_shrink, ctx, this_val, argc, argv);
 };
 static JSValue sub_viewport_container_class_get_stretch_shrink(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -67,10 +64,10 @@ static const JSCFunctionListEntry sub_viewport_container_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_stretch_shrink", 0, &sub_viewport_container_class_get_stretch_shrink),
 };
 
-void define_sub_viewport_container_property(JSContext *ctx, JSValue obj) {
+static void define_sub_viewport_container_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "stretch"),
         JS_NewCFunction(ctx, sub_viewport_container_class_is_stretch_enabled, "is_stretch_enabled", 0),
         JS_NewCFunction(ctx, sub_viewport_container_class_set_stretch, "set_stretch", 1),
@@ -78,15 +75,16 @@ void define_sub_viewport_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "stretch_shrink"),
         JS_NewCFunction(ctx, sub_viewport_container_class_get_stretch_shrink, "get_stretch_shrink", 0),
         JS_NewCFunction(ctx, sub_viewport_container_class_set_stretch_shrink, "set_stretch_shrink", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_sub_viewport_container_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_sub_viewport_container_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -102,7 +100,7 @@ static int js_sub_viewport_container_class_init(JSContext *ctx, JSModuleDef *m) 
 	JS_SetClassProto(ctx, SubViewportContainer::__class_id, proto);
 
 	define_sub_viewport_container_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_sub_viewport_container_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, sub_viewport_container_class_proto_funcs, _countof(sub_viewport_container_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, sub_viewport_container_class_constructor, "SubViewportContainer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

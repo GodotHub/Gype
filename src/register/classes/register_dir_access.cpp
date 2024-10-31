@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/dir_access.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue dir_access_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, DirAccess::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	DirAccess *dir_access_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		dir_access_class = static_cast<DirAccess *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		dir_access_class = static_cast<DirAccess *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		dir_access_class = memnew(DirAccess);
-	}
 	if (!dir_access_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -55,8 +54,7 @@ static JSValue dir_access_class_current_is_dir(JSContext *ctx, JSValueConst this
 };
 static JSValue dir_access_class_list_dir_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&DirAccess::list_dir_end, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&DirAccess::list_dir_end, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_get_files(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -124,8 +122,7 @@ static JSValue dir_access_class_create_link(JSContext *ctx, JSValueConst this_va
 };
 static JSValue dir_access_class_set_include_navigational(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&DirAccess::set_include_navigational, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&DirAccess::set_include_navigational, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_get_include_navigational(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -133,8 +130,7 @@ static JSValue dir_access_class_get_include_navigational(JSContext *ctx, JSValue
 };
 static JSValue dir_access_class_set_include_hidden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&DirAccess::set_include_hidden, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&DirAccess::set_include_hidden, ctx, this_val, argc, argv);
 };
 static JSValue dir_access_class_get_include_hidden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -222,10 +218,10 @@ static const JSCFunctionListEntry dir_access_class_static_funcs[] = {
 	JS_CFUNC_DEF("remove_absolute", 1, &dir_access_class_remove_absolute),
 };
 
-void define_dir_access_property(JSContext *ctx, JSValue obj) {
+static void define_dir_access_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "include_navigational"),
         JS_NewCFunction(ctx, dir_access_class_get_include_navigational, "get_include_navigational", 0),
         JS_NewCFunction(ctx, dir_access_class_set_include_navigational, "set_include_navigational", 1),
@@ -233,15 +229,16 @@ void define_dir_access_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "include_hidden"),
         JS_NewCFunction(ctx, dir_access_class_get_include_hidden, "get_include_hidden", 0),
         JS_NewCFunction(ctx, dir_access_class_set_include_hidden, "set_include_hidden", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_dir_access_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_dir_access_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -257,7 +254,7 @@ static int js_dir_access_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, DirAccess::__class_id, proto);
 
 	define_dir_access_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_dir_access_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, dir_access_class_proto_funcs, _countof(dir_access_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, dir_access_class_constructor, "DirAccess", 0, JS_CFUNC_constructor, 0);
 	JS_SetPropertyFunctionList(ctx, ctor, dir_access_class_static_funcs, _countof(dir_access_class_static_funcs));

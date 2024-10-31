@@ -27,13 +27,12 @@ static JSValue input_event_gesture_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventGesture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	InputEventGesture *input_event_gesture_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		input_event_gesture_class = static_cast<InputEventGesture *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		input_event_gesture_class = static_cast<InputEventGesture *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		input_event_gesture_class = memnew(InputEventGesture);
-	}
 	if (!input_event_gesture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue input_event_gesture_class_constructor(JSContext *ctx, JSValueCons
 }
 static JSValue input_event_gesture_class_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventGesture::set_position, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventGesture::set_position, ctx, this_val, argc, argv);
 };
 static JSValue input_event_gesture_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry input_event_gesture_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_position", 0, &input_event_gesture_class_get_position),
 };
 
-void define_input_event_gesture_property(JSContext *ctx, JSValue obj) {
+static void define_input_event_gesture_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "position"),
         JS_NewCFunction(ctx, input_event_gesture_class_get_position, "get_position", 0),
         JS_NewCFunction(ctx, input_event_gesture_class_set_position, "set_position", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_input_event_gesture_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_input_event_gesture_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -82,7 +81,7 @@ static int js_input_event_gesture_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, InputEventGesture::__class_id, proto);
 
 	define_input_event_gesture_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_input_event_gesture_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, input_event_gesture_class_proto_funcs, _countof(input_event_gesture_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, input_event_gesture_class_constructor, "InputEventGesture", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

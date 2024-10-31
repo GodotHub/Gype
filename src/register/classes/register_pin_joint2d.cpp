@@ -27,13 +27,12 @@ static JSValue pin_joint2d_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PinJoint2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PinJoint2D *pin_joint2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		pin_joint2d_class = static_cast<PinJoint2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		pin_joint2d_class = static_cast<PinJoint2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		pin_joint2d_class = memnew(PinJoint2D);
-	}
 	if (!pin_joint2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue pin_joint2d_class_constructor(JSContext *ctx, JSValueConst new_ta
 }
 static JSValue pin_joint2d_class_set_softness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PinJoint2D::set_softness, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PinJoint2D::set_softness, ctx, this_val, argc, argv);
 };
 static JSValue pin_joint2d_class_get_softness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue pin_joint2d_class_get_softness(JSContext *ctx, JSValueConst this_
 };
 static JSValue pin_joint2d_class_set_angular_limit_lower(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PinJoint2D::set_angular_limit_lower, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PinJoint2D::set_angular_limit_lower, ctx, this_val, argc, argv);
 };
 static JSValue pin_joint2d_class_get_angular_limit_lower(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue pin_joint2d_class_get_angular_limit_lower(JSContext *ctx, JSValue
 };
 static JSValue pin_joint2d_class_set_angular_limit_upper(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PinJoint2D::set_angular_limit_upper, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PinJoint2D::set_angular_limit_upper, ctx, this_val, argc, argv);
 };
 static JSValue pin_joint2d_class_get_angular_limit_upper(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue pin_joint2d_class_get_angular_limit_upper(JSContext *ctx, JSValue
 };
 static JSValue pin_joint2d_class_set_motor_target_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PinJoint2D::set_motor_target_velocity, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PinJoint2D::set_motor_target_velocity, ctx, this_val, argc, argv);
 };
 static JSValue pin_joint2d_class_get_motor_target_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue pin_joint2d_class_get_motor_target_velocity(JSContext *ctx, JSVal
 };
 static JSValue pin_joint2d_class_set_motor_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PinJoint2D::set_motor_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PinJoint2D::set_motor_enabled, ctx, this_val, argc, argv);
 };
 static JSValue pin_joint2d_class_is_motor_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,8 +82,7 @@ static JSValue pin_joint2d_class_is_motor_enabled(JSContext *ctx, JSValueConst t
 };
 static JSValue pin_joint2d_class_set_angular_limit_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PinJoint2D::set_angular_limit_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PinJoint2D::set_angular_limit_enabled, ctx, this_val, argc, argv);
 };
 static JSValue pin_joint2d_class_is_angular_limit_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -110,10 +103,10 @@ static const JSCFunctionListEntry pin_joint2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_angular_limit_enabled", 0, &pin_joint2d_class_is_angular_limit_enabled),
 };
 
-void define_pin_joint2d_property(JSContext *ctx, JSValue obj) {
+static void define_pin_joint2d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "softness"),
         JS_NewCFunction(ctx, pin_joint2d_class_get_softness, "get_softness", 0),
         JS_NewCFunction(ctx, pin_joint2d_class_set_softness, "set_softness", 1),
@@ -121,7 +114,7 @@ void define_pin_joint2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "angular_limit_enabled"),
         JS_NewCFunction(ctx, pin_joint2d_class_is_angular_limit_enabled, "is_angular_limit_enabled", 0),
         JS_NewCFunction(ctx, pin_joint2d_class_set_angular_limit_enabled, "set_angular_limit_enabled", 1),
@@ -129,7 +122,7 @@ void define_pin_joint2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "angular_limit_lower"),
         JS_NewCFunction(ctx, pin_joint2d_class_get_angular_limit_lower, "get_angular_limit_lower", 0),
         JS_NewCFunction(ctx, pin_joint2d_class_set_angular_limit_lower, "set_angular_limit_lower", 1),
@@ -137,7 +130,7 @@ void define_pin_joint2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "angular_limit_upper"),
         JS_NewCFunction(ctx, pin_joint2d_class_get_angular_limit_upper, "get_angular_limit_upper", 0),
         JS_NewCFunction(ctx, pin_joint2d_class_set_angular_limit_upper, "set_angular_limit_upper", 1),
@@ -145,7 +138,7 @@ void define_pin_joint2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "motor_enabled"),
         JS_NewCFunction(ctx, pin_joint2d_class_is_motor_enabled, "is_motor_enabled", 0),
         JS_NewCFunction(ctx, pin_joint2d_class_set_motor_enabled, "set_motor_enabled", 1),
@@ -153,15 +146,16 @@ void define_pin_joint2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "motor_target_velocity"),
         JS_NewCFunction(ctx, pin_joint2d_class_get_motor_target_velocity, "get_motor_target_velocity", 0),
         JS_NewCFunction(ctx, pin_joint2d_class_set_motor_target_velocity, "set_motor_target_velocity", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_pin_joint2d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_pin_joint2d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -177,7 +171,7 @@ static int js_pin_joint2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, PinJoint2D::__class_id, proto);
 
 	define_pin_joint2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_pin_joint2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, pin_joint2d_class_proto_funcs, _countof(pin_joint2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, pin_joint2d_class_constructor, "PinJoint2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

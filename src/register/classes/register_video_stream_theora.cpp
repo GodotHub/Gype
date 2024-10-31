@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/video_stream_theora.hpp>
 #include <godot_cpp/classes/video_stream.hpp>
+#include <godot_cpp/classes/video_stream_theora.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue video_stream_theora_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VideoStreamTheora::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VideoStreamTheora *video_stream_theora_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		video_stream_theora_class = static_cast<VideoStreamTheora *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		video_stream_theora_class = static_cast<VideoStreamTheora *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		video_stream_theora_class = memnew(VideoStreamTheora);
-	}
 	if (!video_stream_theora_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue video_stream_theora_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 
-void define_video_stream_theora_property(JSContext *ctx, JSValue obj) {
+static void define_video_stream_theora_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_video_stream_theora_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_video_stream_theora_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_video_stream_theora_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, VideoStreamTheora::__class_id, proto);
 
 	define_video_stream_theora_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_video_stream_theora_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, video_stream_theora_class_constructor, "VideoStreamTheora", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

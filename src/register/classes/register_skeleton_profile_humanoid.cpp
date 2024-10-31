@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_profile_humanoid.hpp>
 #include <godot_cpp/classes/skeleton_profile.hpp>
+#include <godot_cpp/classes/skeleton_profile_humanoid.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue skeleton_profile_humanoid_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkeletonProfileHumanoid::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	SkeletonProfileHumanoid *skeleton_profile_humanoid_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		skeleton_profile_humanoid_class = static_cast<SkeletonProfileHumanoid *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		skeleton_profile_humanoid_class = static_cast<SkeletonProfileHumanoid *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		skeleton_profile_humanoid_class = memnew(SkeletonProfileHumanoid);
-	}
 	if (!skeleton_profile_humanoid_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue skeleton_profile_humanoid_class_constructor(JSContext *ctx, JSVal
 	return obj;
 }
 
-void define_skeleton_profile_humanoid_property(JSContext *ctx, JSValue obj) {
+static void define_skeleton_profile_humanoid_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_skeleton_profile_humanoid_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_skeleton_profile_humanoid_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_skeleton_profile_humanoid_class_init(JSContext *ctx, JSModuleDef *
 	JS_SetClassProto(ctx, SkeletonProfileHumanoid::__class_id, proto);
 
 	define_skeleton_profile_humanoid_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_skeleton_profile_humanoid_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, skeleton_profile_humanoid_class_constructor, "SkeletonProfileHumanoid", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

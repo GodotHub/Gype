@@ -27,13 +27,12 @@ static JSValue java_script_object_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, JavaScriptObject::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	JavaScriptObject *java_script_object_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		java_script_object_class = static_cast<JavaScriptObject *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		java_script_object_class = static_cast<JavaScriptObject *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		java_script_object_class = memnew(JavaScriptObject);
-	}
 	if (!java_script_object_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue java_script_object_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 
-void define_java_script_object_property(JSContext *ctx, JSValue obj) {
+static void define_java_script_object_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_java_script_object_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_java_script_object_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_java_script_object_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, JavaScriptObject::__class_id, proto);
 
 	define_java_script_object_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_java_script_object_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, java_script_object_class_constructor, "JavaScriptObject", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

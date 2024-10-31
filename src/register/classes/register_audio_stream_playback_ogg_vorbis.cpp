@@ -27,13 +27,12 @@ static JSValue audio_stream_playback_ogg_vorbis_class_constructor(JSContext *ctx
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamPlaybackOggVorbis::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AudioStreamPlaybackOggVorbis *audio_stream_playback_ogg_vorbis_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		audio_stream_playback_ogg_vorbis_class = static_cast<AudioStreamPlaybackOggVorbis *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		audio_stream_playback_ogg_vorbis_class = static_cast<AudioStreamPlaybackOggVorbis *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		audio_stream_playback_ogg_vorbis_class = memnew(AudioStreamPlaybackOggVorbis);
-	}
 	if (!audio_stream_playback_ogg_vorbis_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue audio_stream_playback_ogg_vorbis_class_constructor(JSContext *ctx
 	return obj;
 }
 
-void define_audio_stream_playback_ogg_vorbis_property(JSContext *ctx, JSValue obj) {
+static void define_audio_stream_playback_ogg_vorbis_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_audio_stream_playback_ogg_vorbis_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_stream_playback_ogg_vorbis_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_audio_stream_playback_ogg_vorbis_class_init(JSContext *ctx, JSModu
 	JS_SetClassProto(ctx, AudioStreamPlaybackOggVorbis::__class_id, proto);
 
 	define_audio_stream_playback_ogg_vorbis_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_audio_stream_playback_ogg_vorbis_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, audio_stream_playback_ogg_vorbis_class_constructor, "AudioStreamPlaybackOggVorbis", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

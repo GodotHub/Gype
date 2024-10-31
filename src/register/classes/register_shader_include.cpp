@@ -27,13 +27,12 @@ static JSValue shader_include_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ShaderInclude::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ShaderInclude *shader_include_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		shader_include_class = static_cast<ShaderInclude *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		shader_include_class = static_cast<ShaderInclude *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		shader_include_class = memnew(ShaderInclude);
-	}
 	if (!shader_include_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue shader_include_class_constructor(JSContext *ctx, JSValueConst new
 }
 static JSValue shader_include_class_set_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShaderInclude::set_code, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShaderInclude::set_code, ctx, this_val, argc, argv);
 };
 static JSValue shader_include_class_get_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry shader_include_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_code", 0, &shader_include_class_get_code),
 };
 
-void define_shader_include_property(JSContext *ctx, JSValue obj) {
+static void define_shader_include_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "code"),
         JS_NewCFunction(ctx, shader_include_class_get_code, "get_code", 0),
         JS_NewCFunction(ctx, shader_include_class_set_code, "set_code", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_shader_include_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_shader_include_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -82,7 +81,7 @@ static int js_shader_include_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ShaderInclude::__class_id, proto);
 
 	define_shader_include_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_shader_include_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, shader_include_class_proto_funcs, _countof(shader_include_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, shader_include_class_constructor, "ShaderInclude", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/open_xr_interface.hpp>
 #include <godot_cpp/classes/xr_interface.hpp>
+#include <godot_cpp/classes/open_xr_interface.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue open_xr_interface_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRInterface::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	OpenXRInterface *open_xr_interface_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		open_xr_interface_class = static_cast<OpenXRInterface *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		open_xr_interface_class = static_cast<OpenXRInterface *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		open_xr_interface_class = memnew(OpenXRInterface);
-	}
 	if (!open_xr_interface_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -47,8 +46,7 @@ static JSValue open_xr_interface_class_get_display_refresh_rate(JSContext *ctx, 
 };
 static JSValue open_xr_interface_class_set_display_refresh_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInterface::set_display_refresh_rate, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRInterface::set_display_refresh_rate, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_interface_class_get_render_target_size_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,8 +54,7 @@ static JSValue open_xr_interface_class_get_render_target_size_multiplier(JSConte
 };
 static JSValue open_xr_interface_class_set_render_target_size_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInterface::set_render_target_size_multiplier, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRInterface::set_render_target_size_multiplier, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_interface_class_is_foveation_supported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -69,8 +66,7 @@ static JSValue open_xr_interface_class_get_foveation_level(JSContext *ctx, JSVal
 };
 static JSValue open_xr_interface_class_set_foveation_level(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInterface::set_foveation_level, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRInterface::set_foveation_level, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_interface_class_get_foveation_dynamic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -78,8 +74,7 @@ static JSValue open_xr_interface_class_get_foveation_dynamic(JSContext *ctx, JSV
 };
 static JSValue open_xr_interface_class_set_foveation_dynamic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInterface::set_foveation_dynamic, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRInterface::set_foveation_dynamic, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_interface_class_is_action_set_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -87,8 +82,7 @@ static JSValue open_xr_interface_class_is_action_set_active(JSContext *ctx, JSVa
 };
 static JSValue open_xr_interface_class_set_action_set_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInterface::set_action_set_active, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRInterface::set_action_set_active, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_interface_class_get_action_sets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -100,8 +94,7 @@ static JSValue open_xr_interface_class_get_available_display_refresh_rates(JSCon
 };
 static JSValue open_xr_interface_class_set_motion_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInterface::set_motion_range, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRInterface::set_motion_range, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_interface_class_get_motion_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -153,8 +146,7 @@ static JSValue open_xr_interface_class_get_vrs_min_radius(JSContext *ctx, JSValu
 };
 static JSValue open_xr_interface_class_set_vrs_min_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInterface::set_vrs_min_radius, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRInterface::set_vrs_min_radius, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_interface_class_get_vrs_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -162,8 +154,7 @@ static JSValue open_xr_interface_class_get_vrs_strength(JSContext *ctx, JSValueC
 };
 static JSValue open_xr_interface_class_set_vrs_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInterface::set_vrs_strength, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRInterface::set_vrs_strength, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry open_xr_interface_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_display_refresh_rate", 0, &open_xr_interface_class_get_display_refresh_rate),
@@ -196,11 +187,91 @@ static const JSCFunctionListEntry open_xr_interface_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_vrs_strength", 0, &open_xr_interface_class_get_vrs_strength),
 	JS_CFUNC_DEF("set_vrs_strength", 1, &open_xr_interface_class_set_vrs_strength),
 };
+static JSValue open_xr_interface_class_get_session_begun_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, OpenXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_begun_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "session_begun").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "session_begun_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue open_xr_interface_class_get_session_stopping_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, OpenXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_stopping_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "session_stopping").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "session_stopping_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue open_xr_interface_class_get_session_focussed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, OpenXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_focussed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "session_focussed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "session_focussed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue open_xr_interface_class_get_session_visible_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, OpenXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_visible_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "session_visible").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "session_visible_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue open_xr_interface_class_get_session_loss_pending_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, OpenXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_loss_pending_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "session_loss_pending").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "session_loss_pending_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue open_xr_interface_class_get_instance_exiting_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, OpenXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "instance_exiting_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "instance_exiting").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "instance_exiting_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue open_xr_interface_class_get_pose_recentered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, OpenXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "pose_recentered_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "pose_recentered").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "pose_recentered_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue open_xr_interface_class_get_refresh_rate_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	OpenXRInterface *opaque = reinterpret_cast<OpenXRInterface *>(JS_GetOpaque(this_val, OpenXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "refresh_rate_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "refresh_rate_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "refresh_rate_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_open_xr_interface_property(JSContext *ctx, JSValue obj) {
+static void define_open_xr_interface_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "display_refresh_rate"),
         JS_NewCFunction(ctx, open_xr_interface_class_get_display_refresh_rate, "get_display_refresh_rate", 0),
         JS_NewCFunction(ctx, open_xr_interface_class_set_display_refresh_rate, "set_display_refresh_rate", 1),
@@ -208,7 +279,7 @@ void define_open_xr_interface_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "render_target_size_multiplier"),
         JS_NewCFunction(ctx, open_xr_interface_class_get_render_target_size_multiplier, "get_render_target_size_multiplier", 0),
         JS_NewCFunction(ctx, open_xr_interface_class_set_render_target_size_multiplier, "set_render_target_size_multiplier", 1),
@@ -216,7 +287,7 @@ void define_open_xr_interface_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "foveation_level"),
         JS_NewCFunction(ctx, open_xr_interface_class_get_foveation_level, "get_foveation_level", 0),
         JS_NewCFunction(ctx, open_xr_interface_class_set_foveation_level, "set_foveation_level", 1),
@@ -224,7 +295,7 @@ void define_open_xr_interface_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "foveation_dynamic"),
         JS_NewCFunction(ctx, open_xr_interface_class_get_foveation_dynamic, "get_foveation_dynamic", 0),
         JS_NewCFunction(ctx, open_xr_interface_class_set_foveation_dynamic, "set_foveation_dynamic", 1),
@@ -232,7 +303,7 @@ void define_open_xr_interface_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "vrs_min_radius"),
         JS_NewCFunction(ctx, open_xr_interface_class_get_vrs_min_radius, "get_vrs_min_radius", 0),
         JS_NewCFunction(ctx, open_xr_interface_class_set_vrs_min_radius, "set_vrs_min_radius", 1),
@@ -240,15 +311,80 @@ void define_open_xr_interface_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "vrs_strength"),
         JS_NewCFunction(ctx, open_xr_interface_class_get_vrs_strength, "get_vrs_strength", 0),
         JS_NewCFunction(ctx, open_xr_interface_class_set_vrs_strength, "set_vrs_strength", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "session_begun"),
+		JS_NewCFunction(ctx, open_xr_interface_class_get_session_begun_signal, "get_session_begun_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "session_stopping"),
+		JS_NewCFunction(ctx, open_xr_interface_class_get_session_stopping_signal, "get_session_stopping_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "session_focussed"),
+		JS_NewCFunction(ctx, open_xr_interface_class_get_session_focussed_signal, "get_session_focussed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "session_visible"),
+		JS_NewCFunction(ctx, open_xr_interface_class_get_session_visible_signal, "get_session_visible_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "session_loss_pending"),
+		JS_NewCFunction(ctx, open_xr_interface_class_get_session_loss_pending_signal, "get_session_loss_pending_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "instance_exiting"),
+		JS_NewCFunction(ctx, open_xr_interface_class_get_instance_exiting_signal, "get_instance_exiting_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "pose_recentered"),
+		JS_NewCFunction(ctx, open_xr_interface_class_get_pose_recentered_signal, "get_pose_recentered_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "refresh_rate_changed"),
+		JS_NewCFunction(ctx, open_xr_interface_class_get_refresh_rate_changed_signal, "get_refresh_rate_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_open_xr_interface_enum(JSContext *ctx, JSValue proto) {
 	JSValue Hand_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Hand_obj, "HAND_LEFT", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Hand_obj, "HAND_RIGHT", JS_NewInt64(ctx, 1));
@@ -318,7 +454,7 @@ static int js_open_xr_interface_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, OpenXRInterface::__class_id, proto);
 
 	define_open_xr_interface_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_open_xr_interface_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, open_xr_interface_class_proto_funcs, _countof(open_xr_interface_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, open_xr_interface_class_constructor, "OpenXRInterface", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

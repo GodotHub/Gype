@@ -27,13 +27,12 @@ static JSValue input_event_key_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventKey::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	InputEventKey *input_event_key_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		input_event_key_class = static_cast<InputEventKey *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		input_event_key_class = static_cast<InputEventKey *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		input_event_key_class = memnew(InputEventKey);
-	}
 	if (!input_event_key_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,13 +42,11 @@ static JSValue input_event_key_class_constructor(JSContext *ctx, JSValueConst ne
 }
 static JSValue input_event_key_class_set_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventKey::set_pressed, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventKey::set_pressed, ctx, this_val, argc, argv);
 };
 static JSValue input_event_key_class_set_keycode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventKey::set_keycode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventKey::set_keycode, ctx, this_val, argc, argv);
 };
 static JSValue input_event_key_class_get_keycode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -57,8 +54,7 @@ static JSValue input_event_key_class_get_keycode(JSContext *ctx, JSValueConst th
 };
 static JSValue input_event_key_class_set_physical_keycode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventKey::set_physical_keycode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventKey::set_physical_keycode, ctx, this_val, argc, argv);
 };
 static JSValue input_event_key_class_get_physical_keycode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,8 +62,7 @@ static JSValue input_event_key_class_get_physical_keycode(JSContext *ctx, JSValu
 };
 static JSValue input_event_key_class_set_key_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventKey::set_key_label, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventKey::set_key_label, ctx, this_val, argc, argv);
 };
 static JSValue input_event_key_class_get_key_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -75,8 +70,7 @@ static JSValue input_event_key_class_get_key_label(JSContext *ctx, JSValueConst 
 };
 static JSValue input_event_key_class_set_unicode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventKey::set_unicode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventKey::set_unicode, ctx, this_val, argc, argv);
 };
 static JSValue input_event_key_class_get_unicode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -84,8 +78,7 @@ static JSValue input_event_key_class_get_unicode(JSContext *ctx, JSValueConst th
 };
 static JSValue input_event_key_class_set_location(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventKey::set_location, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventKey::set_location, ctx, this_val, argc, argv);
 };
 static JSValue input_event_key_class_get_location(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -93,8 +86,7 @@ static JSValue input_event_key_class_get_location(JSContext *ctx, JSValueConst t
 };
 static JSValue input_event_key_class_set_echo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventKey::set_echo, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventKey::set_echo, ctx, this_val, argc, argv);
 };
 static JSValue input_event_key_class_get_keycode_with_modifiers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -146,10 +138,10 @@ static const JSCFunctionListEntry input_event_key_class_proto_funcs[] = {
 	JS_CFUNC_DEF("as_text_location", 0, &input_event_key_class_as_text_location),
 };
 
-void define_input_event_key_property(JSContext *ctx, JSValue obj) {
+static void define_input_event_key_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "pressed"),
         JS_UNDEFINED,
         JS_NewCFunction(ctx, input_event_key_class_set_pressed, "set_pressed", 1),
@@ -157,7 +149,7 @@ void define_input_event_key_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "keycode"),
         JS_NewCFunction(ctx, input_event_key_class_get_keycode, "get_keycode", 0),
         JS_NewCFunction(ctx, input_event_key_class_set_keycode, "set_keycode", 1),
@@ -165,7 +157,7 @@ void define_input_event_key_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "physical_keycode"),
         JS_NewCFunction(ctx, input_event_key_class_get_physical_keycode, "get_physical_keycode", 0),
         JS_NewCFunction(ctx, input_event_key_class_set_physical_keycode, "set_physical_keycode", 1),
@@ -173,7 +165,7 @@ void define_input_event_key_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "key_label"),
         JS_NewCFunction(ctx, input_event_key_class_get_key_label, "get_key_label", 0),
         JS_NewCFunction(ctx, input_event_key_class_set_key_label, "set_key_label", 1),
@@ -181,7 +173,7 @@ void define_input_event_key_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "unicode"),
         JS_NewCFunction(ctx, input_event_key_class_get_unicode, "get_unicode", 0),
         JS_NewCFunction(ctx, input_event_key_class_set_unicode, "set_unicode", 1),
@@ -189,7 +181,7 @@ void define_input_event_key_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "location"),
         JS_NewCFunction(ctx, input_event_key_class_get_location, "get_location", 0),
         JS_NewCFunction(ctx, input_event_key_class_set_location, "set_location", 1),
@@ -197,15 +189,16 @@ void define_input_event_key_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "echo"),
         JS_UNDEFINED,
         JS_NewCFunction(ctx, input_event_key_class_set_echo, "set_echo", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_input_event_key_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_input_event_key_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -221,7 +214,7 @@ static int js_input_event_key_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, InputEventKey::__class_id, proto);
 
 	define_input_event_key_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_input_event_key_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, input_event_key_class_proto_funcs, _countof(input_event_key_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, input_event_key_class_constructor, "InputEventKey", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

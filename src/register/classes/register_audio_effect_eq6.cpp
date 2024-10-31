@@ -27,13 +27,12 @@ static JSValue audio_effect_eq6_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectEQ6::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AudioEffectEQ6 *audio_effect_eq6_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		audio_effect_eq6_class = static_cast<AudioEffectEQ6 *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		audio_effect_eq6_class = static_cast<AudioEffectEQ6 *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		audio_effect_eq6_class = memnew(AudioEffectEQ6);
-	}
 	if (!audio_effect_eq6_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue audio_effect_eq6_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 
-void define_audio_effect_eq6_property(JSContext *ctx, JSValue obj) {
+static void define_audio_effect_eq6_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_audio_effect_eq6_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_effect_eq6_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_audio_effect_eq6_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, AudioEffectEQ6::__class_id, proto);
 
 	define_audio_effect_eq6_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_audio_effect_eq6_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, audio_effect_eq6_class_constructor, "AudioEffectEQ6", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

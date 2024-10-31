@@ -27,13 +27,12 @@ static JSValue visual_shader_node_comment_class_constructor(JSContext *ctx, JSVa
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeComment::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeComment *visual_shader_node_comment_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_comment_class = static_cast<VisualShaderNodeComment *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_comment_class = static_cast<VisualShaderNodeComment *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_comment_class = memnew(VisualShaderNodeComment);
-	}
 	if (!visual_shader_node_comment_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue visual_shader_node_comment_class_constructor(JSContext *ctx, JSVa
 }
 static JSValue visual_shader_node_comment_class_set_description(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeComment::set_description, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeComment::set_description, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_comment_class_get_description(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry visual_shader_node_comment_class_proto_funcs[]
 	JS_CFUNC_DEF("get_description", 0, &visual_shader_node_comment_class_get_description),
 };
 
-void define_visual_shader_node_comment_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_comment_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "description"),
         JS_NewCFunction(ctx, visual_shader_node_comment_class_get_description, "get_description", 0),
         JS_NewCFunction(ctx, visual_shader_node_comment_class_set_description, "set_description", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_comment_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_comment_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -82,7 +81,7 @@ static int js_visual_shader_node_comment_class_init(JSContext *ctx, JSModuleDef 
 	JS_SetClassProto(ctx, VisualShaderNodeComment::__class_id, proto);
 
 	define_visual_shader_node_comment_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_comment_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_comment_class_proto_funcs, _countof(visual_shader_node_comment_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_comment_class_constructor, "VisualShaderNodeComment", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

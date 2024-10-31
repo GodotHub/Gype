@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/status_indicator.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/status_indicator.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue status_indicator_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StatusIndicator::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	StatusIndicator *status_indicator_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		status_indicator_class = static_cast<StatusIndicator *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		status_indicator_class = static_cast<StatusIndicator *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		status_indicator_class = memnew(StatusIndicator);
-	}
 	if (!status_indicator_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue status_indicator_class_constructor(JSContext *ctx, JSValueConst n
 }
 static JSValue status_indicator_class_set_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StatusIndicator::set_tooltip, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&StatusIndicator::set_tooltip, ctx, this_val, argc, argv);
 };
 static JSValue status_indicator_class_get_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue status_indicator_class_get_tooltip(JSContext *ctx, JSValueConst t
 };
 static JSValue status_indicator_class_set_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StatusIndicator::set_icon, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&StatusIndicator::set_icon, ctx, this_val, argc, argv);
 };
 static JSValue status_indicator_class_get_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue status_indicator_class_get_icon(JSContext *ctx, JSValueConst this
 };
 static JSValue status_indicator_class_set_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StatusIndicator::set_visible, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&StatusIndicator::set_visible, ctx, this_val, argc, argv);
 };
 static JSValue status_indicator_class_is_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -71,8 +67,7 @@ static JSValue status_indicator_class_is_visible(JSContext *ctx, JSValueConst th
 };
 static JSValue status_indicator_class_set_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StatusIndicator::set_menu, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&StatusIndicator::set_menu, ctx, this_val, argc, argv);
 };
 static JSValue status_indicator_class_get_menu(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -93,11 +88,21 @@ static const JSCFunctionListEntry status_indicator_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_menu", 0, &status_indicator_class_get_menu),
 	JS_CFUNC_DEF("get_rect", 0, &status_indicator_class_get_rect),
 };
+static JSValue status_indicator_class_get_pressed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	StatusIndicator *opaque = reinterpret_cast<StatusIndicator *>(JS_GetOpaque(this_val, StatusIndicator::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "pressed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "pressed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "pressed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_status_indicator_property(JSContext *ctx, JSValue obj) {
+static void define_status_indicator_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "tooltip"),
         JS_NewCFunction(ctx, status_indicator_class_get_tooltip, "get_tooltip", 0),
         JS_NewCFunction(ctx, status_indicator_class_set_tooltip, "set_tooltip", 1),
@@ -105,7 +110,7 @@ void define_status_indicator_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "icon"),
         JS_NewCFunction(ctx, status_indicator_class_get_icon, "get_icon", 0),
         JS_NewCFunction(ctx, status_indicator_class_set_icon, "set_icon", 1),
@@ -113,7 +118,7 @@ void define_status_indicator_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "menu"),
         JS_NewCFunction(ctx, status_indicator_class_get_menu, "get_menu", 0),
         JS_NewCFunction(ctx, status_indicator_class_set_menu, "set_menu", 1),
@@ -121,15 +126,24 @@ void define_status_indicator_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "visible"),
         JS_NewCFunction(ctx, status_indicator_class_is_visible, "is_visible", 0),
         JS_NewCFunction(ctx, status_indicator_class_set_visible, "set_visible", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "pressed"),
+		JS_NewCFunction(ctx, status_indicator_class_get_pressed_signal, "get_pressed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_status_indicator_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_status_indicator_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -145,7 +159,7 @@ static int js_status_indicator_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, StatusIndicator::__class_id, proto);
 
 	define_status_indicator_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_status_indicator_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, status_indicator_class_proto_funcs, _countof(status_indicator_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, status_indicator_class_constructor, "StatusIndicator", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_node_sync.hpp>
 #include <godot_cpp/classes/animation_node_transition.hpp>
+#include <godot_cpp/classes/animation_node_sync.hpp>
 #include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,13 +28,12 @@ static JSValue animation_node_transition_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeTransition::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AnimationNodeTransition *animation_node_transition_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		animation_node_transition_class = static_cast<AnimationNodeTransition *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		animation_node_transition_class = static_cast<AnimationNodeTransition *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		animation_node_transition_class = memnew(AnimationNodeTransition);
-	}
 	if (!animation_node_transition_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,13 +43,11 @@ static JSValue animation_node_transition_class_constructor(JSContext *ctx, JSVal
 }
 static JSValue animation_node_transition_class_set_input_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeTransition::set_input_count, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeTransition::set_input_count, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_transition_class_set_input_as_auto_advance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeTransition::set_input_as_auto_advance, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeTransition::set_input_as_auto_advance, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_transition_class_is_input_set_as_auto_advance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -58,8 +55,7 @@ static JSValue animation_node_transition_class_is_input_set_as_auto_advance(JSCo
 };
 static JSValue animation_node_transition_class_set_input_break_loop_at_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeTransition::set_input_break_loop_at_end, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeTransition::set_input_break_loop_at_end, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_transition_class_is_input_loop_broken_at_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -67,8 +63,7 @@ static JSValue animation_node_transition_class_is_input_loop_broken_at_end(JSCon
 };
 static JSValue animation_node_transition_class_set_input_reset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeTransition::set_input_reset, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeTransition::set_input_reset, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_transition_class_is_input_reset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -76,8 +71,7 @@ static JSValue animation_node_transition_class_is_input_reset(JSContext *ctx, JS
 };
 static JSValue animation_node_transition_class_set_xfade_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeTransition::set_xfade_time, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeTransition::set_xfade_time, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_transition_class_get_xfade_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -85,8 +79,7 @@ static JSValue animation_node_transition_class_get_xfade_time(JSContext *ctx, JS
 };
 static JSValue animation_node_transition_class_set_xfade_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeTransition::set_xfade_curve, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeTransition::set_xfade_curve, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_transition_class_get_xfade_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -94,8 +87,7 @@ static JSValue animation_node_transition_class_get_xfade_curve(JSContext *ctx, J
 };
 static JSValue animation_node_transition_class_set_allow_transition_to_self(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeTransition::set_allow_transition_to_self, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeTransition::set_allow_transition_to_self, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_transition_class_is_allow_transition_to_self(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -117,10 +109,10 @@ static const JSCFunctionListEntry animation_node_transition_class_proto_funcs[] 
 	JS_CFUNC_DEF("is_allow_transition_to_self", 0, &animation_node_transition_class_is_allow_transition_to_self),
 };
 
-void define_animation_node_transition_property(JSContext *ctx, JSValue obj) {
+static void define_animation_node_transition_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "xfade_time"),
         JS_NewCFunction(ctx, animation_node_transition_class_get_xfade_time, "get_xfade_time", 0),
         JS_NewCFunction(ctx, animation_node_transition_class_set_xfade_time, "set_xfade_time", 1),
@@ -128,7 +120,7 @@ void define_animation_node_transition_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "xfade_curve"),
         JS_NewCFunction(ctx, animation_node_transition_class_get_xfade_curve, "get_xfade_curve", 0),
         JS_NewCFunction(ctx, animation_node_transition_class_set_xfade_curve, "set_xfade_curve", 1),
@@ -136,7 +128,7 @@ void define_animation_node_transition_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "allow_transition_to_self"),
         JS_NewCFunction(ctx, animation_node_transition_class_is_allow_transition_to_self, "is_allow_transition_to_self", 0),
         JS_NewCFunction(ctx, animation_node_transition_class_set_allow_transition_to_self, "set_allow_transition_to_self", 1),
@@ -144,15 +136,16 @@ void define_animation_node_transition_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "input_count"),
         JS_UNDEFINED,
         JS_NewCFunction(ctx, animation_node_transition_class_set_input_count, "set_input_count", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_animation_node_transition_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_animation_node_transition_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -168,7 +161,7 @@ static int js_animation_node_transition_class_init(JSContext *ctx, JSModuleDef *
 	JS_SetClassProto(ctx, AnimationNodeTransition::__class_id, proto);
 
 	define_animation_node_transition_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_animation_node_transition_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animation_node_transition_class_proto_funcs, _countof(animation_node_transition_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, animation_node_transition_class_constructor, "AnimationNodeTransition", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

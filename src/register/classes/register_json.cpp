@@ -27,13 +27,12 @@ static JSValue json_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, JSON::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	JSON *json_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		json_class = static_cast<JSON *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		json_class = static_cast<JSON *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		json_class = memnew(JSON);
-	}
 	if (!json_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -51,8 +50,7 @@ static JSValue json_class_get_data(JSContext *ctx, JSValueConst this_val, int ar
 };
 static JSValue json_class_set_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&JSON::set_data, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&JSON::set_data, ctx, this_val, argc, argv);
 };
 static JSValue json_class_get_parsed_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -85,18 +83,19 @@ static const JSCFunctionListEntry json_class_static_funcs[] = {
 	JS_CFUNC_DEF("parse_string", 1, &json_class_parse_string),
 };
 
-void define_json_property(JSContext *ctx, JSValue obj) {
+static void define_json_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "data"),
         JS_NewCFunction(ctx, json_class_get_data, "get_data", 0),
         JS_NewCFunction(ctx, json_class_set_data, "set_data", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_json_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_json_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -112,7 +111,7 @@ static int js_json_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, JSON::__class_id, proto);
 
 	define_json_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_json_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, json_class_proto_funcs, _countof(json_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, json_class_constructor, "JSON", 0, JS_CFUNC_constructor, 0);
 	JS_SetPropertyFunctionList(ctx, ctor, json_class_static_funcs, _countof(json_class_static_funcs));

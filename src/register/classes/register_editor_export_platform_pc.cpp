@@ -27,13 +27,12 @@ static JSValue editor_export_platform_pc_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorExportPlatformPC::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	EditorExportPlatformPC *editor_export_platform_pc_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		editor_export_platform_pc_class = static_cast<EditorExportPlatformPC *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		editor_export_platform_pc_class = static_cast<EditorExportPlatformPC *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		editor_export_platform_pc_class = memnew(EditorExportPlatformPC);
-	}
 	if (!editor_export_platform_pc_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue editor_export_platform_pc_class_constructor(JSContext *ctx, JSVal
 	return obj;
 }
 
-void define_editor_export_platform_pc_property(JSContext *ctx, JSValue obj) {
+static void define_editor_export_platform_pc_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_editor_export_platform_pc_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_export_platform_pc_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_editor_export_platform_pc_class_init(JSContext *ctx, JSModuleDef *
 	JS_SetClassProto(ctx, EditorExportPlatformPC::__class_id, proto);
 
 	define_editor_export_platform_pc_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_editor_export_platform_pc_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, editor_export_platform_pc_class_constructor, "EditorExportPlatformPC", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

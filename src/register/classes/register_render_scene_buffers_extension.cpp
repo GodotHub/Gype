@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/render_scene_buffers_extension.hpp>
 #include <godot_cpp/classes/render_scene_buffers.hpp>
+#include <godot_cpp/classes/render_scene_buffers_extension.hpp>
 #include <godot_cpp/classes/render_scene_buffers_configuration.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,13 +28,12 @@ static JSValue render_scene_buffers_extension_class_constructor(JSContext *ctx, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RenderSceneBuffersExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	RenderSceneBuffersExtension *render_scene_buffers_extension_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		render_scene_buffers_extension_class = static_cast<RenderSceneBuffersExtension *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		render_scene_buffers_extension_class = static_cast<RenderSceneBuffersExtension *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		render_scene_buffers_extension_class = memnew(RenderSceneBuffersExtension);
-	}
 	if (!render_scene_buffers_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,10 +42,11 @@ static JSValue render_scene_buffers_extension_class_constructor(JSContext *ctx, 
 	return obj;
 }
 
-void define_render_scene_buffers_extension_property(JSContext *ctx, JSValue obj) {
+static void define_render_scene_buffers_extension_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_render_scene_buffers_extension_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_render_scene_buffers_extension_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -62,7 +62,7 @@ static int js_render_scene_buffers_extension_class_init(JSContext *ctx, JSModule
 	JS_SetClassProto(ctx, RenderSceneBuffersExtension::__class_id, proto);
 
 	define_render_scene_buffers_extension_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_render_scene_buffers_extension_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, render_scene_buffers_extension_class_constructor, "RenderSceneBuffersExtension", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/web_rtc_peer_connection.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/web_rtc_data_channel.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue web_rtc_peer_connection_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WebRTCPeerConnection::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	WebRTCPeerConnection *web_rtc_peer_connection_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		web_rtc_peer_connection_class = static_cast<WebRTCPeerConnection *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		web_rtc_peer_connection_class = static_cast<WebRTCPeerConnection *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		web_rtc_peer_connection_class = memnew(WebRTCPeerConnection);
-	}
 	if (!web_rtc_peer_connection_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -72,8 +71,7 @@ static JSValue web_rtc_peer_connection_class_poll(JSContext *ctx, JSValueConst t
 };
 static JSValue web_rtc_peer_connection_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebRTCPeerConnection::close, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebRTCPeerConnection::close, ctx, this_val, argc, argv);
 };
 static JSValue web_rtc_peer_connection_class_get_connection_state(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,8 +86,7 @@ static JSValue web_rtc_peer_connection_class_get_signaling_state(JSContext *ctx,
 	return call_builtin_const_method_ret(&WebRTCPeerConnection::get_signaling_state, ctx, this_val, argc, argv);
 };
 static JSValue web_rtc_peer_connection_class_set_default_extension(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_static_method_no_ret(&WebRTCPeerConnection::set_default_extension, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_static_method_no_ret(&WebRTCPeerConnection::set_default_extension, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry web_rtc_peer_connection_class_proto_funcs[] = {
 	JS_CFUNC_DEF("initialize", 1, &web_rtc_peer_connection_class_initialize),
@@ -107,11 +104,66 @@ static const JSCFunctionListEntry web_rtc_peer_connection_class_proto_funcs[] = 
 static const JSCFunctionListEntry web_rtc_peer_connection_class_static_funcs[] = {
 	JS_CFUNC_DEF("set_default_extension", 1, &web_rtc_peer_connection_class_set_default_extension),
 };
-
-void define_web_rtc_peer_connection_property(JSContext *ctx, JSValue obj) {
+static JSValue web_rtc_peer_connection_class_get_session_description_created_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	WebRTCPeerConnection *opaque = reinterpret_cast<WebRTCPeerConnection *>(JS_GetOpaque(this_val, WebRTCPeerConnection::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_description_created_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "session_description_created").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "session_description_created_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue web_rtc_peer_connection_class_get_ice_candidate_created_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	WebRTCPeerConnection *opaque = reinterpret_cast<WebRTCPeerConnection *>(JS_GetOpaque(this_val, WebRTCPeerConnection::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "ice_candidate_created_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "ice_candidate_created").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "ice_candidate_created_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue web_rtc_peer_connection_class_get_data_channel_received_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	WebRTCPeerConnection *opaque = reinterpret_cast<WebRTCPeerConnection *>(JS_GetOpaque(this_val, WebRTCPeerConnection::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "data_channel_received_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "data_channel_received").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "data_channel_received_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_web_rtc_peer_connection_property(JSContext *ctx, JSValue proto) {
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "session_description_created"),
+		JS_NewCFunction(ctx, web_rtc_peer_connection_class_get_session_description_created_signal, "get_session_description_created_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "ice_candidate_created"),
+		JS_NewCFunction(ctx, web_rtc_peer_connection_class_get_ice_candidate_created_signal, "get_ice_candidate_created_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "data_channel_received"),
+		JS_NewCFunction(ctx, web_rtc_peer_connection_class_get_data_channel_received_signal, "get_data_channel_received_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+}
+
+static void define_web_rtc_peer_connection_enum(JSContext *ctx, JSValue proto) {
 	JSValue ConnectionState_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, ConnectionState_obj, "STATE_NEW", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, ConnectionState_obj, "STATE_CONNECTING", JS_NewInt64(ctx, 1));
@@ -148,7 +200,7 @@ static int js_web_rtc_peer_connection_class_init(JSContext *ctx, JSModuleDef *m)
 	JS_SetClassProto(ctx, WebRTCPeerConnection::__class_id, proto);
 
 	define_web_rtc_peer_connection_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_web_rtc_peer_connection_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, web_rtc_peer_connection_class_proto_funcs, _countof(web_rtc_peer_connection_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, web_rtc_peer_connection_class_constructor, "WebRTCPeerConnection", 0, JS_CFUNC_constructor, 0);
 	JS_SetPropertyFunctionList(ctx, ctor, web_rtc_peer_connection_class_static_funcs, _countof(web_rtc_peer_connection_class_static_funcs));

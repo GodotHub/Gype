@@ -27,13 +27,12 @@ static JSValue input_event_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEvent::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	InputEvent *input_event_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		input_event_class = static_cast<InputEvent *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		input_event_class = static_cast<InputEvent *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		input_event_class = memnew(InputEvent);
-	}
 	if (!input_event_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue input_event_class_constructor(JSContext *ctx, JSValueConst new_ta
 }
 static JSValue input_event_class_set_device(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEvent::set_device, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEvent::set_device, ctx, this_val, argc, argv);
 };
 static JSValue input_event_class_get_device(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -120,18 +118,19 @@ static const JSCFunctionListEntry input_event_class_proto_funcs[] = {
 	JS_CFUNC_DEF("xformed_by", 2, &input_event_class_xformed_by),
 };
 
-void define_input_event_property(JSContext *ctx, JSValue obj) {
+static void define_input_event_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "device"),
         JS_NewCFunction(ctx, input_event_class_get_device, "get_device", 0),
         JS_NewCFunction(ctx, input_event_class_set_device, "set_device", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_input_event_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_input_event_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -147,7 +146,7 @@ static int js_input_event_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, InputEvent::__class_id, proto);
 
 	define_input_event_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_input_event_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, input_event_class_proto_funcs, _countof(input_event_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, input_event_class_constructor, "InputEvent", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

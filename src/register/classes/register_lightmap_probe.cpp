@@ -27,13 +27,12 @@ static JSValue lightmap_probe_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, LightmapProbe::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	LightmapProbe *lightmap_probe_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		lightmap_probe_class = static_cast<LightmapProbe *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		lightmap_probe_class = static_cast<LightmapProbe *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		lightmap_probe_class = memnew(LightmapProbe);
-	}
 	if (!lightmap_probe_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue lightmap_probe_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 
-void define_lightmap_probe_property(JSContext *ctx, JSValue obj) {
+static void define_lightmap_probe_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_lightmap_probe_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_lightmap_probe_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_lightmap_probe_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, LightmapProbe::__class_id, proto);
 
 	define_lightmap_probe_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_lightmap_probe_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, lightmap_probe_class_constructor, "LightmapProbe", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

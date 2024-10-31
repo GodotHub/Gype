@@ -27,13 +27,12 @@ static JSValue placeholder_texture_layered_class_constructor(JSContext *ctx, JSV
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PlaceholderTextureLayered::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PlaceholderTextureLayered *placeholder_texture_layered_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		placeholder_texture_layered_class = static_cast<PlaceholderTextureLayered *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		placeholder_texture_layered_class = static_cast<PlaceholderTextureLayered *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		placeholder_texture_layered_class = memnew(PlaceholderTextureLayered);
-	}
 	if (!placeholder_texture_layered_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue placeholder_texture_layered_class_constructor(JSContext *ctx, JSV
 }
 static JSValue placeholder_texture_layered_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PlaceholderTextureLayered::set_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PlaceholderTextureLayered::set_size, ctx, this_val, argc, argv);
 };
 static JSValue placeholder_texture_layered_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue placeholder_texture_layered_class_get_size(JSContext *ctx, JSValu
 };
 static JSValue placeholder_texture_layered_class_set_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PlaceholderTextureLayered::set_layers, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PlaceholderTextureLayered::set_layers, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry placeholder_texture_layered_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_size", 1, &placeholder_texture_layered_class_set_size),
@@ -61,10 +58,10 @@ static const JSCFunctionListEntry placeholder_texture_layered_class_proto_funcs[
 	JS_CFUNC_DEF("set_layers", 1, &placeholder_texture_layered_class_set_layers),
 };
 
-void define_placeholder_texture_layered_property(JSContext *ctx, JSValue obj) {
+static void define_placeholder_texture_layered_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, placeholder_texture_layered_class_get_size, "get_size", 0),
         JS_NewCFunction(ctx, placeholder_texture_layered_class_set_size, "set_size", 1),
@@ -72,15 +69,16 @@ void define_placeholder_texture_layered_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "layers"),
         JS_UNDEFINED,
         JS_NewCFunction(ctx, placeholder_texture_layered_class_set_layers, "set_layers", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_placeholder_texture_layered_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_placeholder_texture_layered_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -96,7 +94,7 @@ static int js_placeholder_texture_layered_class_init(JSContext *ctx, JSModuleDef
 	JS_SetClassProto(ctx, PlaceholderTextureLayered::__class_id, proto);
 
 	define_placeholder_texture_layered_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_placeholder_texture_layered_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, placeholder_texture_layered_class_proto_funcs, _countof(placeholder_texture_layered_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, placeholder_texture_layered_class_constructor, "PlaceholderTextureLayered", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

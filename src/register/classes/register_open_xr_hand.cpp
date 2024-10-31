@@ -27,13 +27,12 @@ static JSValue open_xr_hand_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRHand::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	OpenXRHand *open_xr_hand_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		open_xr_hand_class = static_cast<OpenXRHand *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		open_xr_hand_class = static_cast<OpenXRHand *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		open_xr_hand_class = memnew(OpenXRHand);
-	}
 	if (!open_xr_hand_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue open_xr_hand_class_constructor(JSContext *ctx, JSValueConst new_t
 }
 static JSValue open_xr_hand_class_set_hand(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRHand::set_hand, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRHand::set_hand, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_hand_class_get_hand(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue open_xr_hand_class_get_hand(JSContext *ctx, JSValueConst this_val
 };
 static JSValue open_xr_hand_class_set_hand_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRHand::set_hand_skeleton, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRHand::set_hand_skeleton, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_hand_class_get_hand_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue open_xr_hand_class_get_hand_skeleton(JSContext *ctx, JSValueConst
 };
 static JSValue open_xr_hand_class_set_motion_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRHand::set_motion_range, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRHand::set_motion_range, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_hand_class_get_motion_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue open_xr_hand_class_get_motion_range(JSContext *ctx, JSValueConst 
 };
 static JSValue open_xr_hand_class_set_skeleton_rig(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRHand::set_skeleton_rig, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRHand::set_skeleton_rig, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_hand_class_get_skeleton_rig(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue open_xr_hand_class_get_skeleton_rig(JSContext *ctx, JSValueConst 
 };
 static JSValue open_xr_hand_class_set_bone_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRHand::set_bone_update, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRHand::set_bone_update, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_hand_class_get_bone_update(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -99,10 +93,10 @@ static const JSCFunctionListEntry open_xr_hand_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_bone_update", 0, &open_xr_hand_class_get_bone_update),
 };
 
-void define_open_xr_hand_property(JSContext *ctx, JSValue obj) {
+static void define_open_xr_hand_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "hand"),
         JS_NewCFunction(ctx, open_xr_hand_class_get_hand, "get_hand", 0),
         JS_NewCFunction(ctx, open_xr_hand_class_set_hand, "set_hand", 1),
@@ -110,7 +104,7 @@ void define_open_xr_hand_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "motion_range"),
         JS_NewCFunction(ctx, open_xr_hand_class_get_motion_range, "get_motion_range", 0),
         JS_NewCFunction(ctx, open_xr_hand_class_set_motion_range, "set_motion_range", 1),
@@ -118,7 +112,7 @@ void define_open_xr_hand_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "hand_skeleton"),
         JS_NewCFunction(ctx, open_xr_hand_class_get_hand_skeleton, "get_hand_skeleton", 0),
         JS_NewCFunction(ctx, open_xr_hand_class_set_hand_skeleton, "set_hand_skeleton", 1),
@@ -126,7 +120,7 @@ void define_open_xr_hand_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "skeleton_rig"),
         JS_NewCFunction(ctx, open_xr_hand_class_get_skeleton_rig, "get_skeleton_rig", 0),
         JS_NewCFunction(ctx, open_xr_hand_class_set_skeleton_rig, "set_skeleton_rig", 1),
@@ -134,15 +128,16 @@ void define_open_xr_hand_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "bone_update"),
         JS_NewCFunction(ctx, open_xr_hand_class_get_bone_update, "get_bone_update", 0),
         JS_NewCFunction(ctx, open_xr_hand_class_set_bone_update, "set_bone_update", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_open_xr_hand_enum(JSContext *ctx, JSValue proto) {
 	JSValue Hands_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Hands_obj, "HAND_LEFT", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Hands_obj, "HAND_RIGHT", JS_NewInt64(ctx, 1));
@@ -178,7 +173,7 @@ static int js_open_xr_hand_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, OpenXRHand::__class_id, proto);
 
 	define_open_xr_hand_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_open_xr_hand_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, open_xr_hand_class_proto_funcs, _countof(open_xr_hand_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, open_xr_hand_class_constructor, "OpenXRHand", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

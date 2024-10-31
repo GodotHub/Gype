@@ -27,13 +27,12 @@ static JSValue compressed_texture3d_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CompressedTexture3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	CompressedTexture3D *compressed_texture3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		compressed_texture3d_class = static_cast<CompressedTexture3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		compressed_texture3d_class = static_cast<CompressedTexture3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		compressed_texture3d_class = memnew(CompressedTexture3D);
-	}
 	if (!compressed_texture3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -54,18 +53,19 @@ static const JSCFunctionListEntry compressed_texture3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_load_path", 0, &compressed_texture3d_class_get_load_path),
 };
 
-void define_compressed_texture3d_property(JSContext *ctx, JSValue obj) {
+static void define_compressed_texture3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "load_path"),
         JS_NewCFunction(ctx, compressed_texture3d_class_get_load_path, "get_load_path", 0),
         JS_NewCFunction(ctx, compressed_texture3d_class_load, "load", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_compressed_texture3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_compressed_texture3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -81,7 +81,7 @@ static int js_compressed_texture3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, CompressedTexture3D::__class_id, proto);
 
 	define_compressed_texture3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_compressed_texture3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, compressed_texture3d_class_proto_funcs, _countof(compressed_texture3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, compressed_texture3d_class_constructor, "CompressedTexture3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

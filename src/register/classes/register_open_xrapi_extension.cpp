@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
 #include <godot_cpp/classes/open_xrapi_extension.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue open_xrapi_extension_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRAPIExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	OpenXRAPIExtension *open_xrapi_extension_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		open_xrapi_extension_class = static_cast<OpenXRAPIExtension *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		open_xrapi_extension_class = static_cast<OpenXRAPIExtension *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		open_xrapi_extension_class = memnew(OpenXRAPIExtension);
-	}
 	if (!open_xrapi_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -104,18 +103,15 @@ static JSValue open_xrapi_extension_class_get_hand_tracker(JSContext *ctx, JSVal
 };
 static JSValue open_xrapi_extension_class_register_composition_layer_provider(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRAPIExtension::register_composition_layer_provider, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRAPIExtension::register_composition_layer_provider, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_unregister_composition_layer_provider(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRAPIExtension::unregister_composition_layer_provider, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRAPIExtension::unregister_composition_layer_provider, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_set_emulate_environment_blend_mode_alpha_blend(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRAPIExtension::set_emulate_environment_blend_mode_alpha_blend, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRAPIExtension::set_emulate_environment_blend_mode_alpha_blend, ctx, this_val, argc, argv);
 };
 static JSValue open_xrapi_extension_class_is_environment_blend_mode_alpha_supported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -149,10 +145,11 @@ static const JSCFunctionListEntry open_xrapi_extension_class_static_funcs[] = {
 	JS_CFUNC_DEF("openxr_is_enabled", 1, &open_xrapi_extension_class_openxr_is_enabled),
 };
 
-void define_open_xrapi_extension_property(JSContext *ctx, JSValue obj) {
+static void define_open_xrapi_extension_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_open_xrapi_extension_enum(JSContext *ctx, JSValue proto) {
 	JSValue OpenXRAlphaBlendModeSupport_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, OpenXRAlphaBlendModeSupport_obj, "OPENXR_ALPHA_BLEND_MODE_SUPPORT_NONE", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, OpenXRAlphaBlendModeSupport_obj, "OPENXR_ALPHA_BLEND_MODE_SUPPORT_REAL", JS_NewInt64(ctx, 1));
@@ -173,7 +170,7 @@ static int js_open_xrapi_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, OpenXRAPIExtension::__class_id, proto);
 
 	define_open_xrapi_extension_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_open_xrapi_extension_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, open_xrapi_extension_class_proto_funcs, _countof(open_xrapi_extension_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, open_xrapi_extension_class_constructor, "OpenXRAPIExtension", 0, JS_CFUNC_constructor, 0);
 	JS_SetPropertyFunctionList(ctx, ctor, open_xrapi_extension_class_static_funcs, _countof(open_xrapi_extension_class_static_funcs));

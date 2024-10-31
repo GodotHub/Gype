@@ -27,13 +27,12 @@ static JSValue center_container_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CenterContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	CenterContainer *center_container_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		center_container_class = static_cast<CenterContainer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		center_container_class = static_cast<CenterContainer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		center_container_class = memnew(CenterContainer);
-	}
 	if (!center_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue center_container_class_constructor(JSContext *ctx, JSValueConst n
 }
 static JSValue center_container_class_set_use_top_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CenterContainer::set_use_top_left, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CenterContainer::set_use_top_left, ctx, this_val, argc, argv);
 };
 static JSValue center_container_class_is_using_top_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry center_container_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_using_top_left", 0, &center_container_class_is_using_top_left),
 };
 
-void define_center_container_property(JSContext *ctx, JSValue obj) {
+static void define_center_container_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "use_top_left"),
         JS_NewCFunction(ctx, center_container_class_is_using_top_left, "is_using_top_left", 0),
         JS_NewCFunction(ctx, center_container_class_set_use_top_left, "set_use_top_left", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_center_container_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_center_container_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -82,7 +81,7 @@ static int js_center_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, CenterContainer::__class_id, proto);
 
 	define_center_container_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_center_container_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, center_container_class_proto_funcs, _countof(center_container_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, center_container_class_constructor, "CenterContainer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

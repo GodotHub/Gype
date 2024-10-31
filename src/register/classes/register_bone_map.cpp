@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/skeleton_profile.hpp>
 #include <godot_cpp/classes/bone_map.hpp>
+#include <godot_cpp/classes/skeleton_profile.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue bone_map_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, BoneMap::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	BoneMap *bone_map_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		bone_map_class = static_cast<BoneMap *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		bone_map_class = static_cast<BoneMap *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		bone_map_class = memnew(BoneMap);
-	}
 	if (!bone_map_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -48,8 +47,7 @@ static JSValue bone_map_class_get_profile(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue bone_map_class_set_profile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&BoneMap::set_profile, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&BoneMap::set_profile, ctx, this_val, argc, argv);
 };
 static JSValue bone_map_class_get_skeleton_bone_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -57,8 +55,7 @@ static JSValue bone_map_class_get_skeleton_bone_name(JSContext *ctx, JSValueCons
 };
 static JSValue bone_map_class_set_skeleton_bone_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&BoneMap::set_skeleton_bone_name, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&BoneMap::set_skeleton_bone_name, ctx, this_val, argc, argv);
 };
 static JSValue bone_map_class_find_profile_bone_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -71,19 +68,56 @@ static const JSCFunctionListEntry bone_map_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_skeleton_bone_name", 2, &bone_map_class_set_skeleton_bone_name),
 	JS_CFUNC_DEF("find_profile_bone_name", 1, &bone_map_class_find_profile_bone_name),
 };
+static JSValue bone_map_class_get_bone_map_updated_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	BoneMap *opaque = reinterpret_cast<BoneMap *>(JS_GetOpaque(this_val, BoneMap::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "bone_map_updated_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "bone_map_updated").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "bone_map_updated_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue bone_map_class_get_profile_updated_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	BoneMap *opaque = reinterpret_cast<BoneMap *>(JS_GetOpaque(this_val, BoneMap::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "profile_updated_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "profile_updated").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "profile_updated_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_bone_map_property(JSContext *ctx, JSValue obj) {
+static void define_bone_map_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "profile"),
         JS_NewCFunction(ctx, bone_map_class_get_profile, "get_profile", 0),
         JS_NewCFunction(ctx, bone_map_class_set_profile, "set_profile", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "bone_map_updated"),
+		JS_NewCFunction(ctx, bone_map_class_get_bone_map_updated_signal, "get_bone_map_updated_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "profile_updated"),
+		JS_NewCFunction(ctx, bone_map_class_get_profile_updated_signal, "get_profile_updated_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_bone_map_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_bone_map_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -99,7 +133,7 @@ static int js_bone_map_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, BoneMap::__class_id, proto);
 
 	define_bone_map_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_bone_map_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, bone_map_class_proto_funcs, _countof(bone_map_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, bone_map_class_constructor, "BoneMap", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

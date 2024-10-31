@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/procedural_sky_material.hpp>
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue procedural_sky_material_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ProceduralSkyMaterial::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ProceduralSkyMaterial *procedural_sky_material_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		procedural_sky_material_class = static_cast<ProceduralSkyMaterial *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		procedural_sky_material_class = static_cast<ProceduralSkyMaterial *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		procedural_sky_material_class = memnew(ProceduralSkyMaterial);
-	}
 	if (!procedural_sky_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue procedural_sky_material_class_constructor(JSContext *ctx, JSValue
 }
 static JSValue procedural_sky_material_class_set_sky_top_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sky_top_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sky_top_color, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_get_sky_top_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue procedural_sky_material_class_get_sky_top_color(JSContext *ctx, J
 };
 static JSValue procedural_sky_material_class_set_sky_horizon_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sky_horizon_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sky_horizon_color, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_get_sky_horizon_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue procedural_sky_material_class_get_sky_horizon_color(JSContext *ct
 };
 static JSValue procedural_sky_material_class_set_sky_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sky_curve, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sky_curve, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_get_sky_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -71,8 +67,7 @@ static JSValue procedural_sky_material_class_get_sky_curve(JSContext *ctx, JSVal
 };
 static JSValue procedural_sky_material_class_set_sky_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sky_energy_multiplier, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sky_energy_multiplier, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_get_sky_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -80,8 +75,7 @@ static JSValue procedural_sky_material_class_get_sky_energy_multiplier(JSContext
 };
 static JSValue procedural_sky_material_class_set_sky_cover(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sky_cover, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sky_cover, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_get_sky_cover(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -89,8 +83,7 @@ static JSValue procedural_sky_material_class_get_sky_cover(JSContext *ctx, JSVal
 };
 static JSValue procedural_sky_material_class_set_sky_cover_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sky_cover_modulate, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sky_cover_modulate, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_get_sky_cover_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -98,8 +91,7 @@ static JSValue procedural_sky_material_class_get_sky_cover_modulate(JSContext *c
 };
 static JSValue procedural_sky_material_class_set_ground_bottom_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ProceduralSkyMaterial::set_ground_bottom_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ProceduralSkyMaterial::set_ground_bottom_color, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_get_ground_bottom_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -107,8 +99,7 @@ static JSValue procedural_sky_material_class_get_ground_bottom_color(JSContext *
 };
 static JSValue procedural_sky_material_class_set_ground_horizon_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ProceduralSkyMaterial::set_ground_horizon_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ProceduralSkyMaterial::set_ground_horizon_color, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_get_ground_horizon_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -116,8 +107,7 @@ static JSValue procedural_sky_material_class_get_ground_horizon_color(JSContext 
 };
 static JSValue procedural_sky_material_class_set_ground_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ProceduralSkyMaterial::set_ground_curve, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ProceduralSkyMaterial::set_ground_curve, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_get_ground_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -125,8 +115,7 @@ static JSValue procedural_sky_material_class_get_ground_curve(JSContext *ctx, JS
 };
 static JSValue procedural_sky_material_class_set_ground_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ProceduralSkyMaterial::set_ground_energy_multiplier, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ProceduralSkyMaterial::set_ground_energy_multiplier, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_get_ground_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -134,8 +123,7 @@ static JSValue procedural_sky_material_class_get_ground_energy_multiplier(JSCont
 };
 static JSValue procedural_sky_material_class_set_sun_angle_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sun_angle_max, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sun_angle_max, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_get_sun_angle_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -143,8 +131,7 @@ static JSValue procedural_sky_material_class_get_sun_angle_max(JSContext *ctx, J
 };
 static JSValue procedural_sky_material_class_set_sun_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sun_curve, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ProceduralSkyMaterial::set_sun_curve, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_get_sun_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -152,8 +139,7 @@ static JSValue procedural_sky_material_class_get_sun_curve(JSContext *ctx, JSVal
 };
 static JSValue procedural_sky_material_class_set_use_debanding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ProceduralSkyMaterial::set_use_debanding, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ProceduralSkyMaterial::set_use_debanding, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_get_use_debanding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -161,8 +147,7 @@ static JSValue procedural_sky_material_class_get_use_debanding(JSContext *ctx, J
 };
 static JSValue procedural_sky_material_class_set_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ProceduralSkyMaterial::set_energy_multiplier, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ProceduralSkyMaterial::set_energy_multiplier, ctx, this_val, argc, argv);
 };
 static JSValue procedural_sky_material_class_get_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -199,10 +184,10 @@ static const JSCFunctionListEntry procedural_sky_material_class_proto_funcs[] = 
 	JS_CFUNC_DEF("get_energy_multiplier", 0, &procedural_sky_material_class_get_energy_multiplier),
 };
 
-void define_procedural_sky_material_property(JSContext *ctx, JSValue obj) {
+static void define_procedural_sky_material_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sky_top_color"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_sky_top_color, "get_sky_top_color", 0),
         JS_NewCFunction(ctx, procedural_sky_material_class_set_sky_top_color, "set_sky_top_color", 1),
@@ -210,7 +195,7 @@ void define_procedural_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sky_horizon_color"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_sky_horizon_color, "get_sky_horizon_color", 0),
         JS_NewCFunction(ctx, procedural_sky_material_class_set_sky_horizon_color, "set_sky_horizon_color", 1),
@@ -218,7 +203,7 @@ void define_procedural_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sky_curve"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_sky_curve, "get_sky_curve", 0),
         JS_NewCFunction(ctx, procedural_sky_material_class_set_sky_curve, "set_sky_curve", 1),
@@ -226,7 +211,7 @@ void define_procedural_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sky_energy_multiplier"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_sky_energy_multiplier, "get_sky_energy_multiplier", 0),
         JS_NewCFunction(ctx, procedural_sky_material_class_set_sky_energy_multiplier, "set_sky_energy_multiplier", 1),
@@ -234,7 +219,7 @@ void define_procedural_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sky_cover"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_sky_cover, "get_sky_cover", 0),
         JS_NewCFunction(ctx, procedural_sky_material_class_set_sky_cover, "set_sky_cover", 1),
@@ -242,7 +227,7 @@ void define_procedural_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sky_cover_modulate"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_sky_cover_modulate, "get_sky_cover_modulate", 0),
         JS_NewCFunction(ctx, procedural_sky_material_class_set_sky_cover_modulate, "set_sky_cover_modulate", 1),
@@ -250,7 +235,7 @@ void define_procedural_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "ground_bottom_color"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_ground_bottom_color, "get_ground_bottom_color", 0),
         JS_NewCFunction(ctx, procedural_sky_material_class_set_ground_bottom_color, "set_ground_bottom_color", 1),
@@ -258,7 +243,7 @@ void define_procedural_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "ground_horizon_color"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_ground_horizon_color, "get_ground_horizon_color", 0),
         JS_NewCFunction(ctx, procedural_sky_material_class_set_ground_horizon_color, "set_ground_horizon_color", 1),
@@ -266,7 +251,7 @@ void define_procedural_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "ground_curve"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_ground_curve, "get_ground_curve", 0),
         JS_NewCFunction(ctx, procedural_sky_material_class_set_ground_curve, "set_ground_curve", 1),
@@ -274,7 +259,7 @@ void define_procedural_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "ground_energy_multiplier"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_ground_energy_multiplier, "get_ground_energy_multiplier", 0),
         JS_NewCFunction(ctx, procedural_sky_material_class_set_ground_energy_multiplier, "set_ground_energy_multiplier", 1),
@@ -282,7 +267,7 @@ void define_procedural_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sun_angle_max"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_sun_angle_max, "get_sun_angle_max", 0),
         JS_NewCFunction(ctx, procedural_sky_material_class_set_sun_angle_max, "set_sun_angle_max", 1),
@@ -290,7 +275,7 @@ void define_procedural_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sun_curve"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_sun_curve, "get_sun_curve", 0),
         JS_NewCFunction(ctx, procedural_sky_material_class_set_sun_curve, "set_sun_curve", 1),
@@ -298,7 +283,7 @@ void define_procedural_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "use_debanding"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_use_debanding, "get_use_debanding", 0),
         JS_NewCFunction(ctx, procedural_sky_material_class_set_use_debanding, "set_use_debanding", 1),
@@ -306,15 +291,16 @@ void define_procedural_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "energy_multiplier"),
         JS_NewCFunction(ctx, procedural_sky_material_class_get_energy_multiplier, "get_energy_multiplier", 0),
         JS_NewCFunction(ctx, procedural_sky_material_class_set_energy_multiplier, "set_energy_multiplier", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_procedural_sky_material_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_procedural_sky_material_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -330,7 +316,7 @@ static int js_procedural_sky_material_class_init(JSContext *ctx, JSModuleDef *m)
 	JS_SetClassProto(ctx, ProceduralSkyMaterial::__class_id, proto);
 
 	define_procedural_sky_material_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_procedural_sky_material_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, procedural_sky_material_class_proto_funcs, _countof(procedural_sky_material_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, procedural_sky_material_class_constructor, "ProceduralSkyMaterial", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/web_xr_interface.hpp>
-#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/classes/xr_controller_tracker.hpp>
+#include <godot_cpp/classes/xr_interface.hpp>
+#include <godot_cpp/classes/web_xr_interface.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue web_xr_interface_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WebXRInterface::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	WebXRInterface *web_xr_interface_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		web_xr_interface_class = static_cast<WebXRInterface *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		web_xr_interface_class = static_cast<WebXRInterface *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		web_xr_interface_class = memnew(WebXRInterface);
-	}
 	if (!web_xr_interface_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,13 +43,11 @@ static JSValue web_xr_interface_class_constructor(JSContext *ctx, JSValueConst n
 }
 static JSValue web_xr_interface_class_is_session_supported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebXRInterface::is_session_supported, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebXRInterface::is_session_supported, ctx, this_val, argc, argv);
 };
 static JSValue web_xr_interface_class_set_session_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebXRInterface::set_session_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebXRInterface::set_session_mode, ctx, this_val, argc, argv);
 };
 static JSValue web_xr_interface_class_get_session_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -58,8 +55,7 @@ static JSValue web_xr_interface_class_get_session_mode(JSContext *ctx, JSValueCo
 };
 static JSValue web_xr_interface_class_set_required_features(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebXRInterface::set_required_features, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebXRInterface::set_required_features, ctx, this_val, argc, argv);
 };
 static JSValue web_xr_interface_class_get_required_features(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -67,8 +63,7 @@ static JSValue web_xr_interface_class_get_required_features(JSContext *ctx, JSVa
 };
 static JSValue web_xr_interface_class_set_optional_features(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebXRInterface::set_optional_features, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebXRInterface::set_optional_features, ctx, this_val, argc, argv);
 };
 static JSValue web_xr_interface_class_get_optional_features(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -84,8 +79,7 @@ static JSValue web_xr_interface_class_get_enabled_features(JSContext *ctx, JSVal
 };
 static JSValue web_xr_interface_class_set_requested_reference_space_types(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebXRInterface::set_requested_reference_space_types, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebXRInterface::set_requested_reference_space_types, ctx, this_val, argc, argv);
 };
 static JSValue web_xr_interface_class_get_requested_reference_space_types(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -113,8 +107,7 @@ static JSValue web_xr_interface_class_get_display_refresh_rate(JSContext *ctx, J
 };
 static JSValue web_xr_interface_class_set_display_refresh_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebXRInterface::set_display_refresh_rate, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebXRInterface::set_display_refresh_rate, ctx, this_val, argc, argv);
 };
 static JSValue web_xr_interface_class_get_available_display_refresh_rates(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -140,11 +133,141 @@ static const JSCFunctionListEntry web_xr_interface_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_display_refresh_rate", 1, &web_xr_interface_class_set_display_refresh_rate),
 	JS_CFUNC_DEF("get_available_display_refresh_rates", 0, &web_xr_interface_class_get_available_display_refresh_rates),
 };
+static JSValue web_xr_interface_class_get_session_supported_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_supported_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "session_supported").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "session_supported_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue web_xr_interface_class_get_session_started_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_started_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "session_started").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "session_started_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue web_xr_interface_class_get_session_ended_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_ended_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "session_ended").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "session_ended_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue web_xr_interface_class_get_session_failed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "session_failed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "session_failed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "session_failed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue web_xr_interface_class_get_selectstart_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "selectstart_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "selectstart").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "selectstart_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue web_xr_interface_class_get_select_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "select_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "select").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "select_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue web_xr_interface_class_get_selectend_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "selectend_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "selectend").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "selectend_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue web_xr_interface_class_get_squeezestart_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "squeezestart_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "squeezestart").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "squeezestart_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue web_xr_interface_class_get_squeeze_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "squeeze_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "squeeze").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "squeeze_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue web_xr_interface_class_get_squeezeend_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "squeezeend_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "squeezeend").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "squeezeend_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue web_xr_interface_class_get_visibility_state_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "visibility_state_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "visibility_state_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "visibility_state_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue web_xr_interface_class_get_reference_space_reset_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "reference_space_reset_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "reference_space_reset").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "reference_space_reset_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue web_xr_interface_class_get_display_refresh_rate_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	WebXRInterface *opaque = reinterpret_cast<WebXRInterface *>(JS_GetOpaque(this_val, WebXRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "display_refresh_rate_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "display_refresh_rate_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "display_refresh_rate_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_web_xr_interface_property(JSContext *ctx, JSValue obj) {
+static void define_web_xr_interface_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "session_mode"),
         JS_NewCFunction(ctx, web_xr_interface_class_get_session_mode, "get_session_mode", 0),
         JS_NewCFunction(ctx, web_xr_interface_class_set_session_mode, "set_session_mode", 1),
@@ -152,7 +275,7 @@ void define_web_xr_interface_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "required_features"),
         JS_NewCFunction(ctx, web_xr_interface_class_get_required_features, "get_required_features", 0),
         JS_NewCFunction(ctx, web_xr_interface_class_set_required_features, "set_required_features", 1),
@@ -160,7 +283,7 @@ void define_web_xr_interface_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "optional_features"),
         JS_NewCFunction(ctx, web_xr_interface_class_get_optional_features, "get_optional_features", 0),
         JS_NewCFunction(ctx, web_xr_interface_class_set_optional_features, "set_optional_features", 1),
@@ -168,7 +291,7 @@ void define_web_xr_interface_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "requested_reference_space_types"),
         JS_NewCFunction(ctx, web_xr_interface_class_get_requested_reference_space_types, "get_requested_reference_space_types", 0),
         JS_NewCFunction(ctx, web_xr_interface_class_set_requested_reference_space_types, "set_requested_reference_space_types", 1),
@@ -176,7 +299,7 @@ void define_web_xr_interface_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "reference_space_type"),
         JS_NewCFunction(ctx, web_xr_interface_class_get_reference_space_type, "get_reference_space_type", 0),
         JS_UNDEFINED,
@@ -184,7 +307,7 @@ void define_web_xr_interface_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "enabled_features"),
         JS_NewCFunction(ctx, web_xr_interface_class_get_enabled_features, "get_enabled_features", 0),
         JS_UNDEFINED,
@@ -192,15 +315,120 @@ void define_web_xr_interface_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "visibility_state"),
         JS_NewCFunction(ctx, web_xr_interface_class_get_visibility_state, "get_visibility_state", 0),
         JS_UNDEFINED,
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "session_supported"),
+		JS_NewCFunction(ctx, web_xr_interface_class_get_session_supported_signal, "get_session_supported_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "session_started"),
+		JS_NewCFunction(ctx, web_xr_interface_class_get_session_started_signal, "get_session_started_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "session_ended"),
+		JS_NewCFunction(ctx, web_xr_interface_class_get_session_ended_signal, "get_session_ended_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "session_failed"),
+		JS_NewCFunction(ctx, web_xr_interface_class_get_session_failed_signal, "get_session_failed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "selectstart"),
+		JS_NewCFunction(ctx, web_xr_interface_class_get_selectstart_signal, "get_selectstart_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "select"),
+		JS_NewCFunction(ctx, web_xr_interface_class_get_select_signal, "get_select_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "selectend"),
+		JS_NewCFunction(ctx, web_xr_interface_class_get_selectend_signal, "get_selectend_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "squeezestart"),
+		JS_NewCFunction(ctx, web_xr_interface_class_get_squeezestart_signal, "get_squeezestart_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "squeeze"),
+		JS_NewCFunction(ctx, web_xr_interface_class_get_squeeze_signal, "get_squeeze_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "squeezeend"),
+		JS_NewCFunction(ctx, web_xr_interface_class_get_squeezeend_signal, "get_squeezeend_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "visibility_state_changed"),
+		JS_NewCFunction(ctx, web_xr_interface_class_get_visibility_state_changed_signal, "get_visibility_state_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "reference_space_reset"),
+		JS_NewCFunction(ctx, web_xr_interface_class_get_reference_space_reset_signal, "get_reference_space_reset_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "display_refresh_rate_changed"),
+		JS_NewCFunction(ctx, web_xr_interface_class_get_display_refresh_rate_changed_signal, "get_display_refresh_rate_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_web_xr_interface_enum(JSContext *ctx, JSValue proto) {
 	JSValue TargetRayMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, TargetRayMode_obj, "TARGET_RAY_MODE_UNKNOWN", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, TargetRayMode_obj, "TARGET_RAY_MODE_GAZE", JS_NewInt64(ctx, 1));
@@ -222,7 +450,7 @@ static int js_web_xr_interface_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, WebXRInterface::__class_id, proto);
 
 	define_web_xr_interface_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_web_xr_interface_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, web_xr_interface_class_proto_funcs, _countof(web_xr_interface_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, web_xr_interface_class_constructor, "WebXRInterface", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

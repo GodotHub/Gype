@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/java_class.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/java_class.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue java_class_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, JavaClass::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	JavaClass *java_class_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		java_class_class = static_cast<JavaClass *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		java_class_class = static_cast<JavaClass *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		java_class_class = memnew(JavaClass);
-	}
 	if (!java_class_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue java_class_class_constructor(JSContext *ctx, JSValueConst new_tar
 	return obj;
 }
 
-void define_java_class_property(JSContext *ctx, JSValue obj) {
+static void define_java_class_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_java_class_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_java_class_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_java_class_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, JavaClass::__class_id, proto);
 
 	define_java_class_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_java_class_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, java_class_class_constructor, "JavaClass", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

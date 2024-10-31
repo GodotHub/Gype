@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/stream_peer_buffer.hpp>
 #include <godot_cpp/classes/stream_peer.hpp>
+#include <godot_cpp/classes/stream_peer_buffer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue stream_peer_buffer_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StreamPeerBuffer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	StreamPeerBuffer *stream_peer_buffer_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		stream_peer_buffer_class = static_cast<StreamPeerBuffer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		stream_peer_buffer_class = static_cast<StreamPeerBuffer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		stream_peer_buffer_class = memnew(StreamPeerBuffer);
-	}
 	if (!stream_peer_buffer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue stream_peer_buffer_class_constructor(JSContext *ctx, JSValueConst
 }
 static JSValue stream_peer_buffer_class_seek(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StreamPeerBuffer::seek, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&StreamPeerBuffer::seek, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_buffer_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,13 +54,11 @@ static JSValue stream_peer_buffer_class_get_position(JSContext *ctx, JSValueCons
 };
 static JSValue stream_peer_buffer_class_resize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StreamPeerBuffer::resize, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&StreamPeerBuffer::resize, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_buffer_class_set_data_array(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StreamPeerBuffer::set_data_array, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&StreamPeerBuffer::set_data_array, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_buffer_class_get_data_array(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue stream_peer_buffer_class_get_data_array(JSContext *ctx, JSValueCo
 };
 static JSValue stream_peer_buffer_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StreamPeerBuffer::clear, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&StreamPeerBuffer::clear, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_buffer_class_duplicate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,18 +83,19 @@ static const JSCFunctionListEntry stream_peer_buffer_class_proto_funcs[] = {
 	JS_CFUNC_DEF("duplicate", 0, &stream_peer_buffer_class_duplicate),
 };
 
-void define_stream_peer_buffer_property(JSContext *ctx, JSValue obj) {
+static void define_stream_peer_buffer_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "data_array"),
         JS_NewCFunction(ctx, stream_peer_buffer_class_get_data_array, "get_data_array", 0),
         JS_NewCFunction(ctx, stream_peer_buffer_class_set_data_array, "set_data_array", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_stream_peer_buffer_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_stream_peer_buffer_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -115,7 +111,7 @@ static int js_stream_peer_buffer_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, StreamPeerBuffer::__class_id, proto);
 
 	define_stream_peer_buffer_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_stream_peer_buffer_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, stream_peer_buffer_class_proto_funcs, _countof(stream_peer_buffer_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, stream_peer_buffer_class_constructor, "StreamPeerBuffer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

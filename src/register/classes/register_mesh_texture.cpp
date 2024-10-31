@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh_texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/mesh_texture.hpp>
 #include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,13 +28,12 @@ static JSValue mesh_texture_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MeshTexture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	MeshTexture *mesh_texture_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		mesh_texture_class = static_cast<MeshTexture *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		mesh_texture_class = static_cast<MeshTexture *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		mesh_texture_class = memnew(MeshTexture);
-	}
 	if (!mesh_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue mesh_texture_class_constructor(JSContext *ctx, JSValueConst new_t
 }
 static JSValue mesh_texture_class_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MeshTexture::set_mesh, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&MeshTexture::set_mesh, ctx, this_val, argc, argv);
 };
 static JSValue mesh_texture_class_get_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue mesh_texture_class_get_mesh(JSContext *ctx, JSValueConst this_val
 };
 static JSValue mesh_texture_class_set_image_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MeshTexture::set_image_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&MeshTexture::set_image_size, ctx, this_val, argc, argv);
 };
 static JSValue mesh_texture_class_get_image_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue mesh_texture_class_get_image_size(JSContext *ctx, JSValueConst th
 };
 static JSValue mesh_texture_class_set_base_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MeshTexture::set_base_texture, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&MeshTexture::set_base_texture, ctx, this_val, argc, argv);
 };
 static JSValue mesh_texture_class_get_base_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -78,10 +74,10 @@ static const JSCFunctionListEntry mesh_texture_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_base_texture", 0, &mesh_texture_class_get_base_texture),
 };
 
-void define_mesh_texture_property(JSContext *ctx, JSValue obj) {
+static void define_mesh_texture_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "mesh"),
         JS_NewCFunction(ctx, mesh_texture_class_get_mesh, "get_mesh", 0),
         JS_NewCFunction(ctx, mesh_texture_class_set_mesh, "set_mesh", 1),
@@ -89,7 +85,7 @@ void define_mesh_texture_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "base_texture"),
         JS_NewCFunction(ctx, mesh_texture_class_get_base_texture, "get_base_texture", 0),
         JS_NewCFunction(ctx, mesh_texture_class_set_base_texture, "set_base_texture", 1),
@@ -97,15 +93,16 @@ void define_mesh_texture_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "image_size"),
         JS_NewCFunction(ctx, mesh_texture_class_get_image_size, "get_image_size", 0),
         JS_NewCFunction(ctx, mesh_texture_class_set_image_size, "set_image_size", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_mesh_texture_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_mesh_texture_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -121,7 +118,7 @@ static int js_mesh_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, MeshTexture::__class_id, proto);
 
 	define_mesh_texture_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_mesh_texture_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, mesh_texture_class_proto_funcs, _countof(mesh_texture_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, mesh_texture_class_constructor, "MeshTexture", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

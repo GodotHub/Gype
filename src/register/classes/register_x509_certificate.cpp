@@ -27,13 +27,12 @@ static JSValue x509_certificate_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, X509Certificate::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	X509Certificate *x509_certificate_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		x509_certificate_class = static_cast<X509Certificate *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		x509_certificate_class = static_cast<X509Certificate *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		x509_certificate_class = memnew(X509Certificate);
-	}
 	if (!x509_certificate_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -64,10 +63,11 @@ static const JSCFunctionListEntry x509_certificate_class_proto_funcs[] = {
 	JS_CFUNC_DEF("load_from_string", 1, &x509_certificate_class_load_from_string),
 };
 
-void define_x509_certificate_property(JSContext *ctx, JSValue obj) {
+static void define_x509_certificate_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_x509_certificate_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_x509_certificate_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -83,7 +83,7 @@ static int js_x509_certificate_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, X509Certificate::__class_id, proto);
 
 	define_x509_certificate_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_x509_certificate_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, x509_certificate_class_proto_funcs, _countof(x509_certificate_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, x509_certificate_class_constructor, "X509Certificate", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/editor_feature_profile.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue editor_feature_profile_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorFeatureProfile::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	EditorFeatureProfile *editor_feature_profile_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		editor_feature_profile_class = static_cast<EditorFeatureProfile *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		editor_feature_profile_class = static_cast<EditorFeatureProfile *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		editor_feature_profile_class = memnew(EditorFeatureProfile);
-	}
 	if (!editor_feature_profile_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue editor_feature_profile_class_constructor(JSContext *ctx, JSValueC
 }
 static JSValue editor_feature_profile_class_set_disable_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorFeatureProfile::set_disable_class, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorFeatureProfile::set_disable_class, ctx, this_val, argc, argv);
 };
 static JSValue editor_feature_profile_class_is_class_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue editor_feature_profile_class_is_class_disabled(JSContext *ctx, JS
 };
 static JSValue editor_feature_profile_class_set_disable_class_editor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorFeatureProfile::set_disable_class_editor, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorFeatureProfile::set_disable_class_editor, ctx, this_val, argc, argv);
 };
 static JSValue editor_feature_profile_class_is_class_editor_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue editor_feature_profile_class_is_class_editor_disabled(JSContext *
 };
 static JSValue editor_feature_profile_class_set_disable_class_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorFeatureProfile::set_disable_class_property, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorFeatureProfile::set_disable_class_property, ctx, this_val, argc, argv);
 };
 static JSValue editor_feature_profile_class_is_class_property_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue editor_feature_profile_class_is_class_property_disabled(JSContext
 };
 static JSValue editor_feature_profile_class_set_disable_feature(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorFeatureProfile::set_disable_feature, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorFeatureProfile::set_disable_feature, ctx, this_val, argc, argv);
 };
 static JSValue editor_feature_profile_class_is_feature_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -103,10 +98,11 @@ static const JSCFunctionListEntry editor_feature_profile_class_proto_funcs[] = {
 	JS_CFUNC_DEF("load_from_file", 1, &editor_feature_profile_class_load_from_file),
 };
 
-void define_editor_feature_profile_property(JSContext *ctx, JSValue obj) {
+static void define_editor_feature_profile_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_editor_feature_profile_enum(JSContext *ctx, JSValue proto) {
 	JSValue Feature_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Feature_obj, "FEATURE_3D", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Feature_obj, "FEATURE_SCRIPT", JS_NewInt64(ctx, 1));
@@ -133,7 +129,7 @@ static int js_editor_feature_profile_class_init(JSContext *ctx, JSModuleDef *m) 
 	JS_SetClassProto(ctx, EditorFeatureProfile::__class_id, proto);
 
 	define_editor_feature_profile_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_editor_feature_profile_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_feature_profile_class_proto_funcs, _countof(editor_feature_profile_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, editor_feature_profile_class_constructor, "EditorFeatureProfile", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -27,13 +27,12 @@ static JSValue open_xr_composition_layer_cylinder_class_constructor(JSContext *c
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRCompositionLayerCylinder::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	OpenXRCompositionLayerCylinder *open_xr_composition_layer_cylinder_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		open_xr_composition_layer_cylinder_class = static_cast<OpenXRCompositionLayerCylinder *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		open_xr_composition_layer_cylinder_class = static_cast<OpenXRCompositionLayerCylinder *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		open_xr_composition_layer_cylinder_class = memnew(OpenXRCompositionLayerCylinder);
-	}
 	if (!open_xr_composition_layer_cylinder_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue open_xr_composition_layer_cylinder_class_constructor(JSContext *c
 }
 static JSValue open_xr_composition_layer_cylinder_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRCompositionLayerCylinder::set_radius, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRCompositionLayerCylinder::set_radius, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_composition_layer_cylinder_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue open_xr_composition_layer_cylinder_class_get_radius(JSContext *ct
 };
 static JSValue open_xr_composition_layer_cylinder_class_set_aspect_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRCompositionLayerCylinder::set_aspect_ratio, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRCompositionLayerCylinder::set_aspect_ratio, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_composition_layer_cylinder_class_get_aspect_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue open_xr_composition_layer_cylinder_class_get_aspect_ratio(JSConte
 };
 static JSValue open_xr_composition_layer_cylinder_class_set_central_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRCompositionLayerCylinder::set_central_angle, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRCompositionLayerCylinder::set_central_angle, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_composition_layer_cylinder_class_get_central_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue open_xr_composition_layer_cylinder_class_get_central_angle(JSCont
 };
 static JSValue open_xr_composition_layer_cylinder_class_set_fallback_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRCompositionLayerCylinder::set_fallback_segments, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRCompositionLayerCylinder::set_fallback_segments, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_composition_layer_cylinder_class_get_fallback_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,10 +83,10 @@ static const JSCFunctionListEntry open_xr_composition_layer_cylinder_class_proto
 	JS_CFUNC_DEF("get_fallback_segments", 0, &open_xr_composition_layer_cylinder_class_get_fallback_segments),
 };
 
-void define_open_xr_composition_layer_cylinder_property(JSContext *ctx, JSValue obj) {
+static void define_open_xr_composition_layer_cylinder_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "radius"),
         JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_get_radius, "get_radius", 0),
         JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_set_radius, "set_radius", 1),
@@ -99,7 +94,7 @@ void define_open_xr_composition_layer_cylinder_property(JSContext *ctx, JSValue 
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "aspect_ratio"),
         JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_get_aspect_ratio, "get_aspect_ratio", 0),
         JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_set_aspect_ratio, "set_aspect_ratio", 1),
@@ -107,7 +102,7 @@ void define_open_xr_composition_layer_cylinder_property(JSContext *ctx, JSValue 
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "central_angle"),
         JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_get_central_angle, "get_central_angle", 0),
         JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_set_central_angle, "set_central_angle", 1),
@@ -115,15 +110,16 @@ void define_open_xr_composition_layer_cylinder_property(JSContext *ctx, JSValue 
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "fallback_segments"),
         JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_get_fallback_segments, "get_fallback_segments", 0),
         JS_NewCFunction(ctx, open_xr_composition_layer_cylinder_class_set_fallback_segments, "set_fallback_segments", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_open_xr_composition_layer_cylinder_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_open_xr_composition_layer_cylinder_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -139,7 +135,7 @@ static int js_open_xr_composition_layer_cylinder_class_init(JSContext *ctx, JSMo
 	JS_SetClassProto(ctx, OpenXRCompositionLayerCylinder::__class_id, proto);
 
 	define_open_xr_composition_layer_cylinder_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_open_xr_composition_layer_cylinder_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, open_xr_composition_layer_cylinder_class_proto_funcs, _countof(open_xr_composition_layer_cylinder_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, open_xr_composition_layer_cylinder_class_constructor, "OpenXRCompositionLayerCylinder", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

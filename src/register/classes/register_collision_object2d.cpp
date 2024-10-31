@@ -5,12 +5,12 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/viewport.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/classes/collision_object2d.hpp>
+#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/viewport.hpp>
+#include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,13 +31,12 @@ static JSValue collision_object2d_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CollisionObject2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	CollisionObject2D *collision_object2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		collision_object2d_class = static_cast<CollisionObject2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		collision_object2d_class = static_cast<CollisionObject2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		collision_object2d_class = memnew(CollisionObject2D);
-	}
 	if (!collision_object2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -51,8 +50,7 @@ static JSValue collision_object2d_class_get_rid(JSContext *ctx, JSValueConst thi
 };
 static JSValue collision_object2d_class_set_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionObject2D::set_collision_layer, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionObject2D::set_collision_layer, ctx, this_val, argc, argv);
 };
 static JSValue collision_object2d_class_get_collision_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -60,8 +58,7 @@ static JSValue collision_object2d_class_get_collision_layer(JSContext *ctx, JSVa
 };
 static JSValue collision_object2d_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionObject2D::set_collision_mask, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionObject2D::set_collision_mask, ctx, this_val, argc, argv);
 };
 static JSValue collision_object2d_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -69,8 +66,7 @@ static JSValue collision_object2d_class_get_collision_mask(JSContext *ctx, JSVal
 };
 static JSValue collision_object2d_class_set_collision_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionObject2D::set_collision_layer_value, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionObject2D::set_collision_layer_value, ctx, this_val, argc, argv);
 };
 static JSValue collision_object2d_class_get_collision_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -78,8 +74,7 @@ static JSValue collision_object2d_class_get_collision_layer_value(JSContext *ctx
 };
 static JSValue collision_object2d_class_set_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionObject2D::set_collision_mask_value, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionObject2D::set_collision_mask_value, ctx, this_val, argc, argv);
 };
 static JSValue collision_object2d_class_get_collision_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -87,8 +82,7 @@ static JSValue collision_object2d_class_get_collision_mask_value(JSContext *ctx,
 };
 static JSValue collision_object2d_class_set_collision_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionObject2D::set_collision_priority, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionObject2D::set_collision_priority, ctx, this_val, argc, argv);
 };
 static JSValue collision_object2d_class_get_collision_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -96,8 +90,7 @@ static JSValue collision_object2d_class_get_collision_priority(JSContext *ctx, J
 };
 static JSValue collision_object2d_class_set_disable_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionObject2D::set_disable_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionObject2D::set_disable_mode, ctx, this_val, argc, argv);
 };
 static JSValue collision_object2d_class_get_disable_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -105,8 +98,7 @@ static JSValue collision_object2d_class_get_disable_mode(JSContext *ctx, JSValue
 };
 static JSValue collision_object2d_class_set_pickable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionObject2D::set_pickable, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionObject2D::set_pickable, ctx, this_val, argc, argv);
 };
 static JSValue collision_object2d_class_is_pickable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -118,8 +110,7 @@ static JSValue collision_object2d_class_create_shape_owner(JSContext *ctx, JSVal
 };
 static JSValue collision_object2d_class_remove_shape_owner(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionObject2D::remove_shape_owner, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionObject2D::remove_shape_owner, ctx, this_val, argc, argv);
 };
 static JSValue collision_object2d_class_get_shape_owners(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -127,8 +118,7 @@ static JSValue collision_object2d_class_get_shape_owners(JSContext *ctx, JSValue
 };
 static JSValue collision_object2d_class_shape_owner_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionObject2D::shape_owner_set_transform, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionObject2D::shape_owner_set_transform, ctx, this_val, argc, argv);
 };
 static JSValue collision_object2d_class_shape_owner_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -140,8 +130,7 @@ static JSValue collision_object2d_class_shape_owner_get_owner(JSContext *ctx, JS
 };
 static JSValue collision_object2d_class_shape_owner_set_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionObject2D::shape_owner_set_disabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionObject2D::shape_owner_set_disabled, ctx, this_val, argc, argv);
 };
 static JSValue collision_object2d_class_is_shape_owner_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -149,8 +138,7 @@ static JSValue collision_object2d_class_is_shape_owner_disabled(JSContext *ctx, 
 };
 static JSValue collision_object2d_class_shape_owner_set_one_way_collision(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionObject2D::shape_owner_set_one_way_collision, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionObject2D::shape_owner_set_one_way_collision, ctx, this_val, argc, argv);
 };
 static JSValue collision_object2d_class_is_shape_owner_one_way_collision_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -158,8 +146,7 @@ static JSValue collision_object2d_class_is_shape_owner_one_way_collision_enabled
 };
 static JSValue collision_object2d_class_shape_owner_set_one_way_collision_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionObject2D::shape_owner_set_one_way_collision_margin, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionObject2D::shape_owner_set_one_way_collision_margin, ctx, this_val, argc, argv);
 };
 static JSValue collision_object2d_class_get_shape_owner_one_way_collision_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -167,8 +154,7 @@ static JSValue collision_object2d_class_get_shape_owner_one_way_collision_margin
 };
 static JSValue collision_object2d_class_shape_owner_add_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionObject2D::shape_owner_add_shape, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionObject2D::shape_owner_add_shape, ctx, this_val, argc, argv);
 };
 static JSValue collision_object2d_class_shape_owner_get_shape_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -184,13 +170,11 @@ static JSValue collision_object2d_class_shape_owner_get_shape_index(JSContext *c
 };
 static JSValue collision_object2d_class_shape_owner_remove_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionObject2D::shape_owner_remove_shape, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionObject2D::shape_owner_remove_shape, ctx, this_val, argc, argv);
 };
 static JSValue collision_object2d_class_shape_owner_clear_shapes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionObject2D::shape_owner_clear_shapes, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionObject2D::shape_owner_clear_shapes, ctx, this_val, argc, argv);
 };
 static JSValue collision_object2d_class_shape_find_owner(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -232,11 +216,61 @@ static const JSCFunctionListEntry collision_object2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("shape_owner_clear_shapes", 1, &collision_object2d_class_shape_owner_clear_shapes),
 	JS_CFUNC_DEF("shape_find_owner", 1, &collision_object2d_class_shape_find_owner),
 };
+static JSValue collision_object2d_class_get_input_event_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	CollisionObject2D *opaque = reinterpret_cast<CollisionObject2D *>(JS_GetOpaque(this_val, CollisionObject2D::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "input_event_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "input_event").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "input_event_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue collision_object2d_class_get_mouse_entered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	CollisionObject2D *opaque = reinterpret_cast<CollisionObject2D *>(JS_GetOpaque(this_val, CollisionObject2D::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "mouse_entered_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "mouse_entered").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "mouse_entered_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue collision_object2d_class_get_mouse_exited_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	CollisionObject2D *opaque = reinterpret_cast<CollisionObject2D *>(JS_GetOpaque(this_val, CollisionObject2D::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "mouse_exited_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "mouse_exited").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "mouse_exited_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue collision_object2d_class_get_mouse_shape_entered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	CollisionObject2D *opaque = reinterpret_cast<CollisionObject2D *>(JS_GetOpaque(this_val, CollisionObject2D::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "mouse_shape_entered_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "mouse_shape_entered").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "mouse_shape_entered_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue collision_object2d_class_get_mouse_shape_exited_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	CollisionObject2D *opaque = reinterpret_cast<CollisionObject2D *>(JS_GetOpaque(this_val, CollisionObject2D::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "mouse_shape_exited_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "mouse_shape_exited").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "mouse_shape_exited_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_collision_object2d_property(JSContext *ctx, JSValue obj) {
+static void define_collision_object2d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "disable_mode"),
         JS_NewCFunction(ctx, collision_object2d_class_get_disable_mode, "get_disable_mode", 0),
         JS_NewCFunction(ctx, collision_object2d_class_set_disable_mode, "set_disable_mode", 1),
@@ -244,7 +278,7 @@ void define_collision_object2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "collision_layer"),
         JS_NewCFunction(ctx, collision_object2d_class_get_collision_layer, "get_collision_layer", 0),
         JS_NewCFunction(ctx, collision_object2d_class_set_collision_layer, "set_collision_layer", 1),
@@ -252,7 +286,7 @@ void define_collision_object2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "collision_mask"),
         JS_NewCFunction(ctx, collision_object2d_class_get_collision_mask, "get_collision_mask", 0),
         JS_NewCFunction(ctx, collision_object2d_class_set_collision_mask, "set_collision_mask", 1),
@@ -260,7 +294,7 @@ void define_collision_object2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "collision_priority"),
         JS_NewCFunction(ctx, collision_object2d_class_get_collision_priority, "get_collision_priority", 0),
         JS_NewCFunction(ctx, collision_object2d_class_set_collision_priority, "set_collision_priority", 1),
@@ -268,15 +302,56 @@ void define_collision_object2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "input_pickable"),
         JS_NewCFunction(ctx, collision_object2d_class_is_pickable, "is_pickable", 0),
         JS_NewCFunction(ctx, collision_object2d_class_set_pickable, "set_pickable", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "input_event"),
+		JS_NewCFunction(ctx, collision_object2d_class_get_input_event_signal, "get_input_event_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "mouse_entered"),
+		JS_NewCFunction(ctx, collision_object2d_class_get_mouse_entered_signal, "get_mouse_entered_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "mouse_exited"),
+		JS_NewCFunction(ctx, collision_object2d_class_get_mouse_exited_signal, "get_mouse_exited_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "mouse_shape_entered"),
+		JS_NewCFunction(ctx, collision_object2d_class_get_mouse_shape_entered_signal, "get_mouse_shape_entered_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "mouse_shape_exited"),
+		JS_NewCFunction(ctx, collision_object2d_class_get_mouse_shape_exited_signal, "get_mouse_shape_exited_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_collision_object2d_enum(JSContext *ctx, JSValue proto) {
 	JSValue DisableMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, DisableMode_obj, "DISABLE_MODE_REMOVE", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, DisableMode_obj, "DISABLE_MODE_MAKE_STATIC", JS_NewInt64(ctx, 1));
@@ -297,7 +372,7 @@ static int js_collision_object2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, CollisionObject2D::__class_id, proto);
 
 	define_collision_object2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_collision_object2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, collision_object2d_class_proto_funcs, _countof(collision_object2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, collision_object2d_class_constructor, "CollisionObject2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

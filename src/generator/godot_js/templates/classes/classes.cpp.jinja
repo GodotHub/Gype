@@ -53,13 +53,13 @@ static JSValue {{snake_name}}_class_constructor(JSContext *ctx, JSValueConst new
 	{%- if clazz_name in (singletons | map(attribute='type') | list) %}
 	{{norm_name}} *{{snake_name}}_class = {{norm_name}}::get_singleton();
 	{%- else%}
+
 	{{norm_name}} *{{snake_name}}_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		{{snake_name}}_class = static_cast<{{norm_name}} *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		{{snake_name}}_class = static_cast<{{norm_name}} *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		{{snake_name}}_class = memnew({{clazz_name}});
-	}
+	
 	{%- endif %}
 	if (!{{snake_name}}_class) {
 		JS_FreeValue(ctx, obj);
@@ -81,8 +81,7 @@ static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueCo
 	{% elif clazz_name == 'FileAccess' and method['name'] == 'store_buffer' %}
 static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-	call_builtin_method_no_ret(static_cast<void(FileAccess::*)(const PackedByteArray &)>(&FileAccess::store_buffer), ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+	return call_builtin_method_no_ret(static_cast<void(FileAccess::*)(const PackedByteArray &)>(&FileAccess::store_buffer), ctx, this_val, argc, argv);
 };
 	{%- else %}
 static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -90,8 +89,7 @@ static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueCo
 		{%- if method['return_value'] %}
 	return call_builtin{{get_const(method)}}_method_ret(&{{norm_name}}::{{method['name']}}, ctx, this_val, argc, argv);
 		{%- else %}
-    call_builtin{{get_const(method)}}_method_no_ret(&{{norm_name}}::{{method['name']}}, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin{{get_const(method)}}_method_no_ret(&{{norm_name}}::{{method['name']}}, ctx, this_val, argc, argv);
 		{%- endif %}
 };
 	{%- endif %}
@@ -101,8 +99,7 @@ static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueCo
     {%- if method['return_value'] %}
 	return call_builtin_static{{get_const(method)}}_method_ret(&{{norm_name}}::{{method['name']}}, ctx, this_val, argc, argv);
     {%- else %}
-    call_builtin_static{{get_const(method)}}_method_no_ret(&{{norm_name}}::{{method['name']}}, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_static{{get_const(method)}}_method_no_ret(&{{norm_name}}::{{method['name']}}, ctx, this_val, argc, argv);
     {%- endif %}
 };
 {%- endfor %}
@@ -112,8 +109,7 @@ static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueCo
     {%- if method['return_value'] %}
 	return call_builtin_vararg_method_ret(&{{norm_name}}::js_{{method['name']}}, ctx, this_val, argc, argv);
     {%- else %}
-    call_builtin_vararg_method_no_ret(&{{norm_name}}::js_{{method['name']}}, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_vararg_method_no_ret(&{{norm_name}}::js_{{method['name']}}, ctx, this_val, argc, argv);
     {%- endif %}
 }
 {%- endfor %}
@@ -134,6 +130,19 @@ static const JSCFunctionListEntry {{snake_name}}_class_static_funcs[] = {
 };
 {%- endif %}
 
+{%- for signal in clazz['signals'] %}
+static JSValue {{snake_name}}_class_get_{{signal['name']}}_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	{{clazz['name']}} *opaque = reinterpret_cast<{{clazz['name']}} *>(JS_GetOpaque(this_val, {{clazz['name']}}::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "{{signal['name']}}_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "{{signal['name']}}").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "{{signal['name']}}_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+{%- endfor %}
+
 {%- macro getset(gs,method,type) %}
 	{%-  if (gs in clazz['methods'] | map(attribute='name')) and type == 'getter' -%}
 	JS_NewCFunction(ctx, {{snake_name}}_class_{{gs}}, "{{gs}}", 0)
@@ -144,12 +153,12 @@ static const JSCFunctionListEntry {{snake_name}}_class_static_funcs[] = {
 	{%- endif -%}
 {%- endmacro %}
 
-void define_{{snake_name}}_property(JSContext *ctx, JSValue obj) {
+static void define_{{snake_name}}_property(JSContext *ctx, JSValue proto) {
 	{%- for prop in clazz['properties'] %}
 		{%- if prop['getter'] in clazz['methods'] | map(attribute='name') or prop['setter'] in clazz['methods'] | map(attribute='name') %}
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "{{prop['name']}}"),
         {{ getset(prop['getter'], clazz['methods'], 'getter') }},
         {{ getset(prop['setter'], clazz['methods'], 'setter') }},
@@ -157,9 +166,18 @@ void define_{{snake_name}}_property(JSContext *ctx, JSValue obj) {
     );
 		{%- endif %}
 	{%- endfor %}
+	{% for signal in clazz['signals'] %}
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "{{signal['name']}}"),
+		JS_NewCFunction(ctx, {{snake_name}}_class_get_{{signal['name']}}_signal, "get_{{signal['name']}}_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	{% endfor %}
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_{{snake_name}}_enum(JSContext *ctx, JSValue proto) {
 	{%- for enum in clazz['enums'] %}
 	JSValue {{enum['name']}}_obj = JS_NewObject(ctx);
 		{%- for value in enum['values'] %}
@@ -184,7 +202,7 @@ static int js_{{snake_name}}_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, {{class_id}}, proto);
 
 	define_{{snake_name}}_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_{{snake_name}}_enum(ctx, proto);
 		{%- if instance_methods or vararg_methods %}
 	JS_SetPropertyFunctionList(ctx, proto, {{snake_name}}_class_proto_funcs, _countof({{snake_name}}_class_proto_funcs));
 	{%- endif %}

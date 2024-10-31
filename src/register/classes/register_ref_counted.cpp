@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue ref_counted_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RefCounted::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	RefCounted *ref_counted_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		ref_counted_class = static_cast<RefCounted *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		ref_counted_class = static_cast<RefCounted *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		ref_counted_class = memnew(RefCounted);
-	}
 	if (!ref_counted_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -64,10 +63,11 @@ static const JSCFunctionListEntry ref_counted_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_reference_count", 0, &ref_counted_class_get_reference_count),
 };
 
-void define_ref_counted_property(JSContext *ctx, JSValue obj) {
+static void define_ref_counted_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_ref_counted_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_ref_counted_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -83,7 +83,7 @@ static int js_ref_counted_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, RefCounted::__class_id, proto);
 
 	define_ref_counted_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_ref_counted_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, ref_counted_class_proto_funcs, _countof(ref_counted_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, ref_counted_class_constructor, "RefCounted", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

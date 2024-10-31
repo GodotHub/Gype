@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/property_tweener.hpp>
 #include <godot_cpp/classes/tweener.hpp>
+#include <godot_cpp/classes/property_tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue property_tweener_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PropertyTweener::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PropertyTweener *property_tweener_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		property_tweener_class = static_cast<PropertyTweener *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		property_tweener_class = static_cast<PropertyTweener *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		property_tweener_class = memnew(PropertyTweener);
-	}
 	if (!property_tweener_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -79,10 +78,11 @@ static const JSCFunctionListEntry property_tweener_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_delay", 1, &property_tweener_class_set_delay),
 };
 
-void define_property_tweener_property(JSContext *ctx, JSValue obj) {
+static void define_property_tweener_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_property_tweener_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_property_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -98,7 +98,7 @@ static int js_property_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, PropertyTweener::__class_id, proto);
 
 	define_property_tweener_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_property_tweener_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, property_tweener_class_proto_funcs, _countof(property_tweener_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, property_tweener_class_constructor, "PropertyTweener", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

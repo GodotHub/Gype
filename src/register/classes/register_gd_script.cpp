@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gd_script.hpp>
 #include <godot_cpp/classes/script.hpp>
+#include <godot_cpp/classes/gd_script.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue gd_script_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GDScript::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	GDScript *gd_script_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		gd_script_class = static_cast<GDScript *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		gd_script_class = static_cast<GDScript *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		gd_script_class = memnew(GDScript);
-	}
 	if (!gd_script_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -49,10 +48,11 @@ static const JSCFunctionListEntry gd_script_class_proto_funcs[] = {
 	JS_CFUNC_DEF("new_", 0, &gd_script_class_new_),
 };
 
-void define_gd_script_property(JSContext *ctx, JSValue obj) {
+static void define_gd_script_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_gd_script_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_gd_script_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -68,7 +68,7 @@ static int js_gd_script_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, GDScript::__class_id, proto);
 
 	define_gd_script_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_gd_script_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gd_script_class_proto_funcs, _countof(gd_script_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, gd_script_class_constructor, "GDScript", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

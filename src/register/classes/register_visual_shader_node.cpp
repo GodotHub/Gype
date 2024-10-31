@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue visual_shader_node_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNode::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNode *visual_shader_node_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_class = static_cast<VisualShaderNode *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_class = static_cast<VisualShaderNode *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_class = memnew(VisualShaderNode);
-	}
 	if (!visual_shader_node_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -47,8 +46,7 @@ static JSValue visual_shader_node_class_get_default_input_port(JSContext *ctx, J
 };
 static JSValue visual_shader_node_class_set_output_port_for_preview(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNode::set_output_port_for_preview, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNode::set_output_port_for_preview, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_class_get_output_port_for_preview(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,8 +54,7 @@ static JSValue visual_shader_node_class_get_output_port_for_preview(JSContext *c
 };
 static JSValue visual_shader_node_class_set_input_port_default_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNode::set_input_port_default_value, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNode::set_input_port_default_value, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_class_get_input_port_default_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -65,18 +62,15 @@ static JSValue visual_shader_node_class_get_input_port_default_value(JSContext *
 };
 static JSValue visual_shader_node_class_remove_input_port_default_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNode::remove_input_port_default_value, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNode::remove_input_port_default_value, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_class_clear_default_input_values(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNode::clear_default_input_values, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNode::clear_default_input_values, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_class_set_default_input_values(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNode::set_default_input_values, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNode::set_default_input_values, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_class_get_default_input_values(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -84,8 +78,7 @@ static JSValue visual_shader_node_class_get_default_input_values(JSContext *ctx,
 };
 static JSValue visual_shader_node_class_set_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNode::set_frame, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNode::set_frame, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_class_get_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -105,10 +98,10 @@ static const JSCFunctionListEntry visual_shader_node_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_frame", 0, &visual_shader_node_class_get_frame),
 };
 
-void define_visual_shader_node_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "output_port_for_preview"),
         JS_NewCFunction(ctx, visual_shader_node_class_get_output_port_for_preview, "get_output_port_for_preview", 0),
         JS_NewCFunction(ctx, visual_shader_node_class_set_output_port_for_preview, "set_output_port_for_preview", 1),
@@ -116,7 +109,7 @@ void define_visual_shader_node_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "default_input_values"),
         JS_NewCFunction(ctx, visual_shader_node_class_get_default_input_values, "get_default_input_values", 0),
         JS_NewCFunction(ctx, visual_shader_node_class_set_default_input_values, "set_default_input_values", 1),
@@ -124,15 +117,16 @@ void define_visual_shader_node_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "linked_parent_graph_frame"),
         JS_NewCFunction(ctx, visual_shader_node_class_get_frame, "get_frame", 0),
         JS_NewCFunction(ctx, visual_shader_node_class_set_frame, "set_frame", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_enum(JSContext *ctx, JSValue proto) {
 	JSValue PortType_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, PortType_obj, "PORT_TYPE_SCALAR", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, PortType_obj, "PORT_TYPE_SCALAR_INT", JS_NewInt64(ctx, 1));
@@ -160,7 +154,7 @@ static int js_visual_shader_node_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, VisualShaderNode::__class_id, proto);
 
 	define_visual_shader_node_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_class_proto_funcs, _countof(visual_shader_node_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_class_constructor, "VisualShaderNode", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

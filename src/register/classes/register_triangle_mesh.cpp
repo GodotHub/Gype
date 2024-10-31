@@ -27,13 +27,12 @@ static JSValue triangle_mesh_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TriangleMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	TriangleMesh *triangle_mesh_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		triangle_mesh_class = static_cast<TriangleMesh *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		triangle_mesh_class = static_cast<TriangleMesh *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		triangle_mesh_class = memnew(TriangleMesh);
-	}
 	if (!triangle_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue triangle_mesh_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 
-void define_triangle_mesh_property(JSContext *ctx, JSValue obj) {
+static void define_triangle_mesh_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_triangle_mesh_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_triangle_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_triangle_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, TriangleMesh::__class_id, proto);
 
 	define_triangle_mesh_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_triangle_mesh_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, triangle_mesh_class_constructor, "TriangleMesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

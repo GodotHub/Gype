@@ -5,27 +5,27 @@ export declare class PackedVector2Array {
   constructor();
   constructor(_from: PackedVector2Array);
   constructor(_from: GDArray);
-  public size(): void;
-  public is_empty(): void;
+  public size(): number;
+  public is_empty(): boolean;
   public set(_index: number, _value: Vector2): void;
-  public push_back(_value: Vector2): void;
-  public append(_value: Vector2): void;
+  public push_back(_value: Vector2): boolean;
+  public append(_value: Vector2): boolean;
   public append_array(_array: PackedVector2Array): void;
   public remove_at(_index: number): void;
-  public insert(_at_index: number, _value: Vector2): void;
+  public insert(_at_index: number, _value: Vector2): number;
   public fill(_value: Vector2): void;
-  public resize(_new_size: number): void;
+  public resize(_new_size: number): number;
   public clear(): void;
-  public has(_value: Vector2): void;
+  public has(_value: Vector2): boolean;
   public reverse(): void;
-  public slice(_begin: number, _end: number): void;
-  public to_byte_array(): void;
+  public slice(_begin: number, _end: number): PackedVector2Array;
+  public to_byte_array(): PackedByteArray;
   public sort(): void;
-  public bsearch(_value: Vector2, _before: boolean): void;
-  public duplicate(): void;
-  public find(_value: Vector2, _from: number): void;
-  public rfind(_value: Vector2, _from: number): void;
-  public count(_value: Vector2): void;
+  public bsearch(_value: Vector2, _before: boolean): number;
+  public duplicate(): PackedVector2Array;
+  public find(_value: Vector2, _from: number): number;
+  public rfind(_value: Vector2, _from: number): number;
+  public count(_value: Vector2): number;
 }
 }
 

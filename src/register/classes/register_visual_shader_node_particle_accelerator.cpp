@@ -27,13 +27,12 @@ static JSValue visual_shader_node_particle_accelerator_class_constructor(JSConte
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeParticleAccelerator::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeParticleAccelerator *visual_shader_node_particle_accelerator_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_particle_accelerator_class = static_cast<VisualShaderNodeParticleAccelerator *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_particle_accelerator_class = static_cast<VisualShaderNodeParticleAccelerator *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_particle_accelerator_class = memnew(VisualShaderNodeParticleAccelerator);
-	}
 	if (!visual_shader_node_particle_accelerator_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue visual_shader_node_particle_accelerator_class_constructor(JSConte
 }
 static JSValue visual_shader_node_particle_accelerator_class_set_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeParticleAccelerator::set_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeParticleAccelerator::set_mode, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_particle_accelerator_class_get_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry visual_shader_node_particle_accelerator_class_
 	JS_CFUNC_DEF("get_mode", 0, &visual_shader_node_particle_accelerator_class_get_mode),
 };
 
-void define_visual_shader_node_particle_accelerator_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_particle_accelerator_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "mode"),
         JS_NewCFunction(ctx, visual_shader_node_particle_accelerator_class_get_mode, "get_mode", 0),
         JS_NewCFunction(ctx, visual_shader_node_particle_accelerator_class_set_mode, "set_mode", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_particle_accelerator_enum(JSContext *ctx, JSValue proto) {
 	JSValue Mode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Mode_obj, "MODE_LINEAR", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Mode_obj, "MODE_RADIAL", JS_NewInt64(ctx, 1));
@@ -88,7 +87,7 @@ static int js_visual_shader_node_particle_accelerator_class_init(JSContext *ctx,
 	JS_SetClassProto(ctx, VisualShaderNodeParticleAccelerator::__class_id, proto);
 
 	define_visual_shader_node_particle_accelerator_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_particle_accelerator_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_particle_accelerator_class_proto_funcs, _countof(visual_shader_node_particle_accelerator_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_particle_accelerator_class_constructor, "VisualShaderNodeParticleAccelerator", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

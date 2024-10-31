@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_parameter.hpp>
 #include <godot_cpp/classes/visual_shader_node_texture_parameter.hpp>
+#include <godot_cpp/classes/visual_shader_node_parameter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue visual_shader_node_texture_parameter_class_constructor(JSContext 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeTextureParameter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeTextureParameter *visual_shader_node_texture_parameter_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_texture_parameter_class = static_cast<VisualShaderNodeTextureParameter *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_texture_parameter_class = static_cast<VisualShaderNodeTextureParameter *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_texture_parameter_class = memnew(VisualShaderNodeTextureParameter);
-	}
 	if (!visual_shader_node_texture_parameter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue visual_shader_node_texture_parameter_class_constructor(JSContext 
 }
 static JSValue visual_shader_node_texture_parameter_class_set_texture_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeTextureParameter::set_texture_type, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeTextureParameter::set_texture_type, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_texture_parameter_class_get_texture_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue visual_shader_node_texture_parameter_class_get_texture_type(JSCon
 };
 static JSValue visual_shader_node_texture_parameter_class_set_color_default(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeTextureParameter::set_color_default, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeTextureParameter::set_color_default, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_texture_parameter_class_get_color_default(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue visual_shader_node_texture_parameter_class_get_color_default(JSCo
 };
 static JSValue visual_shader_node_texture_parameter_class_set_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeTextureParameter::set_texture_filter, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeTextureParameter::set_texture_filter, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_texture_parameter_class_get_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue visual_shader_node_texture_parameter_class_get_texture_filter(JSC
 };
 static JSValue visual_shader_node_texture_parameter_class_set_texture_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeTextureParameter::set_texture_repeat, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeTextureParameter::set_texture_repeat, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_texture_parameter_class_get_texture_repeat(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue visual_shader_node_texture_parameter_class_get_texture_repeat(JSC
 };
 static JSValue visual_shader_node_texture_parameter_class_set_texture_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeTextureParameter::set_texture_source, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeTextureParameter::set_texture_source, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_texture_parameter_class_get_texture_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -99,10 +93,10 @@ static const JSCFunctionListEntry visual_shader_node_texture_parameter_class_pro
 	JS_CFUNC_DEF("get_texture_source", 0, &visual_shader_node_texture_parameter_class_get_texture_source),
 };
 
-void define_visual_shader_node_texture_parameter_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_texture_parameter_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texture_type"),
         JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_get_texture_type, "get_texture_type", 0),
         JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_set_texture_type, "set_texture_type", 1),
@@ -110,7 +104,7 @@ void define_visual_shader_node_texture_parameter_property(JSContext *ctx, JSValu
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "color_default"),
         JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_get_color_default, "get_color_default", 0),
         JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_set_color_default, "set_color_default", 1),
@@ -118,7 +112,7 @@ void define_visual_shader_node_texture_parameter_property(JSContext *ctx, JSValu
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texture_filter"),
         JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_get_texture_filter, "get_texture_filter", 0),
         JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_set_texture_filter, "set_texture_filter", 1),
@@ -126,7 +120,7 @@ void define_visual_shader_node_texture_parameter_property(JSContext *ctx, JSValu
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texture_repeat"),
         JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_get_texture_repeat, "get_texture_repeat", 0),
         JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_set_texture_repeat, "set_texture_repeat", 1),
@@ -134,15 +128,16 @@ void define_visual_shader_node_texture_parameter_property(JSContext *ctx, JSValu
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texture_source"),
         JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_get_texture_source, "get_texture_source", 0),
         JS_NewCFunction(ctx, visual_shader_node_texture_parameter_class_set_texture_source, "set_texture_source", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_texture_parameter_enum(JSContext *ctx, JSValue proto) {
 	JSValue TextureType_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, TextureType_obj, "TYPE_DATA", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, TextureType_obj, "TYPE_COLOR", JS_NewInt64(ctx, 1));
@@ -194,7 +189,7 @@ static int js_visual_shader_node_texture_parameter_class_init(JSContext *ctx, JS
 	JS_SetClassProto(ctx, VisualShaderNodeTextureParameter::__class_id, proto);
 
 	define_visual_shader_node_texture_parameter_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_texture_parameter_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_texture_parameter_class_proto_funcs, _countof(visual_shader_node_texture_parameter_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_texture_parameter_class_constructor, "VisualShaderNodeTextureParameter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

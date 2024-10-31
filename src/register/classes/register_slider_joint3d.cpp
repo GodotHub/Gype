@@ -27,13 +27,12 @@ static JSValue slider_joint3d_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SliderJoint3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	SliderJoint3D *slider_joint3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		slider_joint3d_class = static_cast<SliderJoint3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		slider_joint3d_class = static_cast<SliderJoint3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		slider_joint3d_class = memnew(SliderJoint3D);
-	}
 	if (!slider_joint3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue slider_joint3d_class_constructor(JSContext *ctx, JSValueConst new
 }
 static JSValue slider_joint3d_class_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SliderJoint3D::set_param, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SliderJoint3D::set_param, ctx, this_val, argc, argv);
 };
 static JSValue slider_joint3d_class_get_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,10 +53,11 @@ static const JSCFunctionListEntry slider_joint3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_param", 1, &slider_joint3d_class_get_param),
 };
 
-void define_slider_joint3d_property(JSContext *ctx, JSValue obj) {
+static void define_slider_joint3d_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_slider_joint3d_enum(JSContext *ctx, JSValue proto) {
 	JSValue Param_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Param_obj, "PARAM_LINEAR_LIMIT_UPPER", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Param_obj, "PARAM_LINEAR_LIMIT_LOWER", JS_NewInt64(ctx, 1));
@@ -99,7 +98,7 @@ static int js_slider_joint3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, SliderJoint3D::__class_id, proto);
 
 	define_slider_joint3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_slider_joint3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, slider_joint3d_class_proto_funcs, _countof(slider_joint3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, slider_joint3d_class_constructor, "SliderJoint3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

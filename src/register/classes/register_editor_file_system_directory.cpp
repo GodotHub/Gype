@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_file_system_directory.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/editor_file_system_directory.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue editor_file_system_directory_class_constructor(JSContext *ctx, JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorFileSystemDirectory::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	EditorFileSystemDirectory *editor_file_system_directory_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		editor_file_system_directory_class = static_cast<EditorFileSystemDirectory *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		editor_file_system_directory_class = static_cast<EditorFileSystemDirectory *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		editor_file_system_directory_class = memnew(EditorFileSystemDirectory);
-	}
 	if (!editor_file_system_directory_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -114,10 +113,11 @@ static const JSCFunctionListEntry editor_file_system_directory_class_proto_funcs
 	JS_CFUNC_DEF("find_dir_index", 1, &editor_file_system_directory_class_find_dir_index),
 };
 
-void define_editor_file_system_directory_property(JSContext *ctx, JSValue obj) {
+static void define_editor_file_system_directory_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_editor_file_system_directory_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_file_system_directory_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -133,7 +133,7 @@ static int js_editor_file_system_directory_class_init(JSContext *ctx, JSModuleDe
 	JS_SetClassProto(ctx, EditorFileSystemDirectory::__class_id, proto);
 
 	define_editor_file_system_directory_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_editor_file_system_directory_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_file_system_directory_class_proto_funcs, _countof(editor_file_system_directory_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, editor_file_system_directory_class_constructor, "EditorFileSystemDirectory", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

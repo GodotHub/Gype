@@ -27,13 +27,12 @@ static JSValue resource_importer_shader_file_class_constructor(JSContext *ctx, J
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterShaderFile::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ResourceImporterShaderFile *resource_importer_shader_file_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		resource_importer_shader_file_class = static_cast<ResourceImporterShaderFile *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		resource_importer_shader_file_class = static_cast<ResourceImporterShaderFile *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		resource_importer_shader_file_class = memnew(ResourceImporterShaderFile);
-	}
 	if (!resource_importer_shader_file_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue resource_importer_shader_file_class_constructor(JSContext *ctx, J
 	return obj;
 }
 
-void define_resource_importer_shader_file_property(JSContext *ctx, JSValue obj) {
+static void define_resource_importer_shader_file_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_resource_importer_shader_file_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_resource_importer_shader_file_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_resource_importer_shader_file_class_init(JSContext *ctx, JSModuleD
 	JS_SetClassProto(ctx, ResourceImporterShaderFile::__class_id, proto);
 
 	define_resource_importer_shader_file_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_resource_importer_shader_file_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, resource_importer_shader_file_class_constructor, "ResourceImporterShaderFile", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

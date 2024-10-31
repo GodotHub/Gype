@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/char_fx_transform.hpp>
 #include <godot_cpp/classes/rich_text_effect.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/char_fx_transform.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue rich_text_effect_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RichTextEffect::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	RichTextEffect *rich_text_effect_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		rich_text_effect_class = static_cast<RichTextEffect *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		rich_text_effect_class = static_cast<RichTextEffect *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		rich_text_effect_class = memnew(RichTextEffect);
-	}
 	if (!rich_text_effect_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,10 +42,11 @@ static JSValue rich_text_effect_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 
-void define_rich_text_effect_property(JSContext *ctx, JSValue obj) {
+static void define_rich_text_effect_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_rich_text_effect_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_rich_text_effect_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -62,7 +62,7 @@ static int js_rich_text_effect_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, RichTextEffect::__class_id, proto);
 
 	define_rich_text_effect_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_rich_text_effect_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, rich_text_effect_class_constructor, "RichTextEffect", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

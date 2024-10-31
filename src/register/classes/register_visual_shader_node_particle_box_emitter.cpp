@@ -27,13 +27,12 @@ static JSValue visual_shader_node_particle_box_emitter_class_constructor(JSConte
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeParticleBoxEmitter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeParticleBoxEmitter *visual_shader_node_particle_box_emitter_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_particle_box_emitter_class = static_cast<VisualShaderNodeParticleBoxEmitter *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_particle_box_emitter_class = static_cast<VisualShaderNodeParticleBoxEmitter *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_particle_box_emitter_class = memnew(VisualShaderNodeParticleBoxEmitter);
-	}
 	if (!visual_shader_node_particle_box_emitter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue visual_shader_node_particle_box_emitter_class_constructor(JSConte
 	return obj;
 }
 
-void define_visual_shader_node_particle_box_emitter_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_particle_box_emitter_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_particle_box_emitter_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_particle_box_emitter_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_visual_shader_node_particle_box_emitter_class_init(JSContext *ctx,
 	JS_SetClassProto(ctx, VisualShaderNodeParticleBoxEmitter::__class_id, proto);
 
 	define_visual_shader_node_particle_box_emitter_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_particle_box_emitter_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_particle_box_emitter_class_constructor, "VisualShaderNodeParticleBoxEmitter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -27,13 +27,12 @@ static JSValue split_container_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SplitContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	SplitContainer *split_container_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		split_container_class = static_cast<SplitContainer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		split_container_class = static_cast<SplitContainer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		split_container_class = memnew(SplitContainer);
-	}
 	if (!split_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue split_container_class_constructor(JSContext *ctx, JSValueConst ne
 }
 static JSValue split_container_class_set_split_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SplitContainer::set_split_offset, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SplitContainer::set_split_offset, ctx, this_val, argc, argv);
 };
 static JSValue split_container_class_get_split_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,13 +50,11 @@ static JSValue split_container_class_get_split_offset(JSContext *ctx, JSValueCon
 };
 static JSValue split_container_class_clamp_split_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SplitContainer::clamp_split_offset, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SplitContainer::clamp_split_offset, ctx, this_val, argc, argv);
 };
 static JSValue split_container_class_set_collapsed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SplitContainer::set_collapsed, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SplitContainer::set_collapsed, ctx, this_val, argc, argv);
 };
 static JSValue split_container_class_is_collapsed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,8 +62,7 @@ static JSValue split_container_class_is_collapsed(JSContext *ctx, JSValueConst t
 };
 static JSValue split_container_class_set_dragger_visibility(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SplitContainer::set_dragger_visibility, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SplitContainer::set_dragger_visibility, ctx, this_val, argc, argv);
 };
 static JSValue split_container_class_get_dragger_visibility(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -75,8 +70,7 @@ static JSValue split_container_class_get_dragger_visibility(JSContext *ctx, JSVa
 };
 static JSValue split_container_class_set_vertical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SplitContainer::set_vertical, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SplitContainer::set_vertical, ctx, this_val, argc, argv);
 };
 static JSValue split_container_class_is_vertical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -93,11 +87,21 @@ static const JSCFunctionListEntry split_container_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_vertical", 1, &split_container_class_set_vertical),
 	JS_CFUNC_DEF("is_vertical", 0, &split_container_class_is_vertical),
 };
+static JSValue split_container_class_get_dragged_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	SplitContainer *opaque = reinterpret_cast<SplitContainer *>(JS_GetOpaque(this_val, SplitContainer::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "dragged_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "dragged").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "dragged_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_split_container_property(JSContext *ctx, JSValue obj) {
+static void define_split_container_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "split_offset"),
         JS_NewCFunction(ctx, split_container_class_get_split_offset, "get_split_offset", 0),
         JS_NewCFunction(ctx, split_container_class_set_split_offset, "set_split_offset", 1),
@@ -105,7 +109,7 @@ void define_split_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "collapsed"),
         JS_NewCFunction(ctx, split_container_class_is_collapsed, "is_collapsed", 0),
         JS_NewCFunction(ctx, split_container_class_set_collapsed, "set_collapsed", 1),
@@ -113,7 +117,7 @@ void define_split_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "dragger_visibility"),
         JS_NewCFunction(ctx, split_container_class_get_dragger_visibility, "get_dragger_visibility", 0),
         JS_NewCFunction(ctx, split_container_class_set_dragger_visibility, "set_dragger_visibility", 1),
@@ -121,15 +125,24 @@ void define_split_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "vertical"),
         JS_NewCFunction(ctx, split_container_class_is_vertical, "is_vertical", 0),
         JS_NewCFunction(ctx, split_container_class_set_vertical, "set_vertical", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "dragged"),
+		JS_NewCFunction(ctx, split_container_class_get_dragged_signal, "get_dragged_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_split_container_enum(JSContext *ctx, JSValue proto) {
 	JSValue DraggerVisibility_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, DraggerVisibility_obj, "DRAGGER_VISIBLE", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, DraggerVisibility_obj, "DRAGGER_HIDDEN", JS_NewInt64(ctx, 1));
@@ -150,7 +163,7 @@ static int js_split_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, SplitContainer::__class_id, proto);
 
 	define_split_container_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_split_container_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, split_container_class_proto_funcs, _countof(split_container_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, split_container_class_constructor, "SplitContainer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

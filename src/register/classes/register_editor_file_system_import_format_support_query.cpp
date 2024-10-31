@@ -27,13 +27,12 @@ static JSValue editor_file_system_import_format_support_query_class_constructor(
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorFileSystemImportFormatSupportQuery::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	EditorFileSystemImportFormatSupportQuery *editor_file_system_import_format_support_query_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		editor_file_system_import_format_support_query_class = static_cast<EditorFileSystemImportFormatSupportQuery *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		editor_file_system_import_format_support_query_class = static_cast<EditorFileSystemImportFormatSupportQuery *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		editor_file_system_import_format_support_query_class = memnew(EditorFileSystemImportFormatSupportQuery);
-	}
 	if (!editor_file_system_import_format_support_query_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue editor_file_system_import_format_support_query_class_constructor(
 	return obj;
 }
 
-void define_editor_file_system_import_format_support_query_property(JSContext *ctx, JSValue obj) {
+static void define_editor_file_system_import_format_support_query_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_editor_file_system_import_format_support_query_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_file_system_import_format_support_query_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_editor_file_system_import_format_support_query_class_init(JSContex
 	JS_SetClassProto(ctx, EditorFileSystemImportFormatSupportQuery::__class_id, proto);
 
 	define_editor_file_system_import_format_support_query_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_editor_file_system_import_format_support_query_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, editor_file_system_import_format_support_query_class_constructor, "EditorFileSystemImportFormatSupportQuery", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

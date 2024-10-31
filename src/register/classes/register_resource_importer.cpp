@@ -27,13 +27,12 @@ static JSValue resource_importer_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ResourceImporter *resource_importer_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		resource_importer_class = static_cast<ResourceImporter *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		resource_importer_class = static_cast<ResourceImporter *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		resource_importer_class = memnew(ResourceImporter);
-	}
 	if (!resource_importer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue resource_importer_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 
-void define_resource_importer_property(JSContext *ctx, JSValue obj) {
+static void define_resource_importer_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_resource_importer_enum(JSContext *ctx, JSValue proto) {
 	JSValue ImportOrder_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, ImportOrder_obj, "IMPORT_ORDER_DEFAULT", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, ImportOrder_obj, "IMPORT_ORDER_SCENE", JS_NewInt64(ctx, 100));
@@ -65,7 +65,7 @@ static int js_resource_importer_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ResourceImporter::__class_id, proto);
 
 	define_resource_importer_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_resource_importer_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, resource_importer_class_constructor, "ResourceImporter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

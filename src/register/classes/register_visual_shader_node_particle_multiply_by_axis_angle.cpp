@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_particle_multiply_by_axis_angle.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue visual_shader_node_particle_multiply_by_axis_angle_class_construc
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeParticleMultiplyByAxisAngle::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeParticleMultiplyByAxisAngle *visual_shader_node_particle_multiply_by_axis_angle_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_particle_multiply_by_axis_angle_class = static_cast<VisualShaderNodeParticleMultiplyByAxisAngle *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_particle_multiply_by_axis_angle_class = static_cast<VisualShaderNodeParticleMultiplyByAxisAngle *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_particle_multiply_by_axis_angle_class = memnew(VisualShaderNodeParticleMultiplyByAxisAngle);
-	}
 	if (!visual_shader_node_particle_multiply_by_axis_angle_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue visual_shader_node_particle_multiply_by_axis_angle_class_construc
 }
 static JSValue visual_shader_node_particle_multiply_by_axis_angle_class_set_degrees_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeParticleMultiplyByAxisAngle::set_degrees_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeParticleMultiplyByAxisAngle::set_degrees_mode, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_particle_multiply_by_axis_angle_class_is_degrees_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry visual_shader_node_particle_multiply_by_axis_a
 	JS_CFUNC_DEF("is_degrees_mode", 0, &visual_shader_node_particle_multiply_by_axis_angle_class_is_degrees_mode),
 };
 
-void define_visual_shader_node_particle_multiply_by_axis_angle_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_particle_multiply_by_axis_angle_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "degrees_mode"),
         JS_NewCFunction(ctx, visual_shader_node_particle_multiply_by_axis_angle_class_is_degrees_mode, "is_degrees_mode", 0),
         JS_NewCFunction(ctx, visual_shader_node_particle_multiply_by_axis_angle_class_set_degrees_mode, "set_degrees_mode", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_particle_multiply_by_axis_angle_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_particle_multiply_by_axis_angle_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -82,7 +81,7 @@ static int js_visual_shader_node_particle_multiply_by_axis_angle_class_init(JSCo
 	JS_SetClassProto(ctx, VisualShaderNodeParticleMultiplyByAxisAngle::__class_id, proto);
 
 	define_visual_shader_node_particle_multiply_by_axis_angle_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_particle_multiply_by_axis_angle_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_particle_multiply_by_axis_angle_class_proto_funcs, _countof(visual_shader_node_particle_multiply_by_axis_angle_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_particle_multiply_by_axis_angle_class_constructor, "VisualShaderNodeParticleMultiplyByAxisAngle", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

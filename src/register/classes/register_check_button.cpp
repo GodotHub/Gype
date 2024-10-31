@@ -27,13 +27,12 @@ static JSValue check_button_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CheckButton::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	CheckButton *check_button_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		check_button_class = static_cast<CheckButton *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		check_button_class = static_cast<CheckButton *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		check_button_class = memnew(CheckButton);
-	}
 	if (!check_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue check_button_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 
-void define_check_button_property(JSContext *ctx, JSValue obj) {
+static void define_check_button_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_check_button_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_check_button_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_check_button_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, CheckButton::__class_id, proto);
 
 	define_check_button_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_check_button_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, check_button_class_constructor, "CheckButton", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

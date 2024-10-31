@@ -27,13 +27,12 @@ static JSValue texture_layered_rd_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TextureLayeredRD::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	TextureLayeredRD *texture_layered_rd_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		texture_layered_rd_class = static_cast<TextureLayeredRD *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		texture_layered_rd_class = static_cast<TextureLayeredRD *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		texture_layered_rd_class = memnew(TextureLayeredRD);
-	}
 	if (!texture_layered_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue texture_layered_rd_class_constructor(JSContext *ctx, JSValueConst
 }
 static JSValue texture_layered_rd_class_set_texture_rd_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureLayeredRD::set_texture_rd_rid, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextureLayeredRD::set_texture_rd_rid, ctx, this_val, argc, argv);
 };
 static JSValue texture_layered_rd_class_get_texture_rd_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry texture_layered_rd_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_texture_rd_rid", 0, &texture_layered_rd_class_get_texture_rd_rid),
 };
 
-void define_texture_layered_rd_property(JSContext *ctx, JSValue obj) {
+static void define_texture_layered_rd_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texture_rd_rid"),
         JS_NewCFunction(ctx, texture_layered_rd_class_get_texture_rd_rid, "get_texture_rd_rid", 0),
         JS_NewCFunction(ctx, texture_layered_rd_class_set_texture_rd_rid, "set_texture_rd_rid", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_texture_layered_rd_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_texture_layered_rd_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -82,7 +81,7 @@ static int js_texture_layered_rd_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, TextureLayeredRD::__class_id, proto);
 
 	define_texture_layered_rd_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_texture_layered_rd_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, texture_layered_rd_class_proto_funcs, _countof(texture_layered_rd_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, texture_layered_rd_class_constructor, "TextureLayeredRD", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

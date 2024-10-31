@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gltf_document_extension.hpp>
 #include <godot_cpp/classes/gltf_document_extension_convert_importer_mesh.hpp>
+#include <godot_cpp/classes/gltf_document_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue gltf_document_extension_convert_importer_mesh_class_constructor(J
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFDocumentExtensionConvertImporterMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	GLTFDocumentExtensionConvertImporterMesh *gltf_document_extension_convert_importer_mesh_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		gltf_document_extension_convert_importer_mesh_class = static_cast<GLTFDocumentExtensionConvertImporterMesh *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		gltf_document_extension_convert_importer_mesh_class = static_cast<GLTFDocumentExtensionConvertImporterMesh *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		gltf_document_extension_convert_importer_mesh_class = memnew(GLTFDocumentExtensionConvertImporterMesh);
-	}
 	if (!gltf_document_extension_convert_importer_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue gltf_document_extension_convert_importer_mesh_class_constructor(J
 	return obj;
 }
 
-void define_gltf_document_extension_convert_importer_mesh_property(JSContext *ctx, JSValue obj) {
+static void define_gltf_document_extension_convert_importer_mesh_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_gltf_document_extension_convert_importer_mesh_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_gltf_document_extension_convert_importer_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_gltf_document_extension_convert_importer_mesh_class_init(JSContext
 	JS_SetClassProto(ctx, GLTFDocumentExtensionConvertImporterMesh::__class_id, proto);
 
 	define_gltf_document_extension_convert_importer_mesh_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_gltf_document_extension_convert_importer_mesh_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, gltf_document_extension_convert_importer_mesh_class_constructor, "GLTFDocumentExtensionConvertImporterMesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

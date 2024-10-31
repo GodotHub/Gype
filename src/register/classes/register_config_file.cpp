@@ -27,13 +27,12 @@ static JSValue config_file_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ConfigFile::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ConfigFile *config_file_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		config_file_class = static_cast<ConfigFile *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		config_file_class = static_cast<ConfigFile *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		config_file_class = memnew(ConfigFile);
-	}
 	if (!config_file_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue config_file_class_constructor(JSContext *ctx, JSValueConst new_ta
 }
 static JSValue config_file_class_set_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ConfigFile::set_value, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ConfigFile::set_value, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_get_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -68,13 +66,11 @@ static JSValue config_file_class_get_section_keys(JSContext *ctx, JSValueConst t
 };
 static JSValue config_file_class_erase_section(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ConfigFile::erase_section, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ConfigFile::erase_section, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_erase_section_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ConfigFile::erase_section_key, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ConfigFile::erase_section_key, ctx, this_val, argc, argv);
 };
 static JSValue config_file_class_load(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -110,8 +106,7 @@ static JSValue config_file_class_save_encrypted_pass(JSContext *ctx, JSValueCons
 };
 static JSValue config_file_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ConfigFile::clear, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ConfigFile::clear, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry config_file_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_value", 3, &config_file_class_set_value),
@@ -133,10 +128,11 @@ static const JSCFunctionListEntry config_file_class_proto_funcs[] = {
 	JS_CFUNC_DEF("clear", 0, &config_file_class_clear),
 };
 
-void define_config_file_property(JSContext *ctx, JSValue obj) {
+static void define_config_file_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_config_file_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_config_file_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -152,7 +148,7 @@ static int js_config_file_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ConfigFile::__class_id, proto);
 
 	define_config_file_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_config_file_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, config_file_class_proto_funcs, _countof(config_file_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, config_file_class_constructor, "ConfigFile", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

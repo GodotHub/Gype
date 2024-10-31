@@ -27,13 +27,12 @@ static JSValue pck_packer_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PCKPacker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PCKPacker *pck_packer_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		pck_packer_class = static_cast<PCKPacker *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		pck_packer_class = static_cast<PCKPacker *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		pck_packer_class = memnew(PCKPacker);
-	}
 	if (!pck_packer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -59,10 +58,11 @@ static const JSCFunctionListEntry pck_packer_class_proto_funcs[] = {
 	JS_CFUNC_DEF("flush", 1, &pck_packer_class_flush),
 };
 
-void define_pck_packer_property(JSContext *ctx, JSValue obj) {
+static void define_pck_packer_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_pck_packer_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_pck_packer_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -78,7 +78,7 @@ static int js_pck_packer_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, PCKPacker::__class_id, proto);
 
 	define_pck_packer_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_pck_packer_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, pck_packer_class_proto_funcs, _countof(pck_packer_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, pck_packer_class_constructor, "PCKPacker", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

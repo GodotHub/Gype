@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/spring_arm3d.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue spring_arm3d_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SpringArm3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	SpringArm3D *spring_arm3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		spring_arm3d_class = static_cast<SpringArm3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		spring_arm3d_class = static_cast<SpringArm3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		spring_arm3d_class = memnew(SpringArm3D);
-	}
 	if (!spring_arm3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -48,8 +47,7 @@ static JSValue spring_arm3d_class_get_hit_length(JSContext *ctx, JSValueConst th
 };
 static JSValue spring_arm3d_class_set_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpringArm3D::set_length, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SpringArm3D::set_length, ctx, this_val, argc, argv);
 };
 static JSValue spring_arm3d_class_get_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -57,8 +55,7 @@ static JSValue spring_arm3d_class_get_length(JSContext *ctx, JSValueConst this_v
 };
 static JSValue spring_arm3d_class_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpringArm3D::set_shape, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SpringArm3D::set_shape, ctx, this_val, argc, argv);
 };
 static JSValue spring_arm3d_class_get_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,8 +63,7 @@ static JSValue spring_arm3d_class_get_shape(JSContext *ctx, JSValueConst this_va
 };
 static JSValue spring_arm3d_class_add_excluded_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpringArm3D::add_excluded_object, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SpringArm3D::add_excluded_object, ctx, this_val, argc, argv);
 };
 static JSValue spring_arm3d_class_remove_excluded_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -75,13 +71,11 @@ static JSValue spring_arm3d_class_remove_excluded_object(JSContext *ctx, JSValue
 };
 static JSValue spring_arm3d_class_clear_excluded_objects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpringArm3D::clear_excluded_objects, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SpringArm3D::clear_excluded_objects, ctx, this_val, argc, argv);
 };
 static JSValue spring_arm3d_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpringArm3D::set_collision_mask, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SpringArm3D::set_collision_mask, ctx, this_val, argc, argv);
 };
 static JSValue spring_arm3d_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -89,8 +83,7 @@ static JSValue spring_arm3d_class_get_collision_mask(JSContext *ctx, JSValueCons
 };
 static JSValue spring_arm3d_class_set_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SpringArm3D::set_margin, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SpringArm3D::set_margin, ctx, this_val, argc, argv);
 };
 static JSValue spring_arm3d_class_get_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -111,10 +104,10 @@ static const JSCFunctionListEntry spring_arm3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_margin", 0, &spring_arm3d_class_get_margin),
 };
 
-void define_spring_arm3d_property(JSContext *ctx, JSValue obj) {
+static void define_spring_arm3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "collision_mask"),
         JS_NewCFunction(ctx, spring_arm3d_class_get_collision_mask, "get_collision_mask", 0),
         JS_NewCFunction(ctx, spring_arm3d_class_set_collision_mask, "set_collision_mask", 1),
@@ -122,7 +115,7 @@ void define_spring_arm3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "shape"),
         JS_NewCFunction(ctx, spring_arm3d_class_get_shape, "get_shape", 0),
         JS_NewCFunction(ctx, spring_arm3d_class_set_shape, "set_shape", 1),
@@ -130,7 +123,7 @@ void define_spring_arm3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "spring_length"),
         JS_NewCFunction(ctx, spring_arm3d_class_get_length, "get_length", 0),
         JS_NewCFunction(ctx, spring_arm3d_class_set_length, "set_length", 1),
@@ -138,15 +131,16 @@ void define_spring_arm3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "margin"),
         JS_NewCFunction(ctx, spring_arm3d_class_get_margin, "get_margin", 0),
         JS_NewCFunction(ctx, spring_arm3d_class_set_margin, "set_margin", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_spring_arm3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_spring_arm3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -162,7 +156,7 @@ static int js_spring_arm3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, SpringArm3D::__class_id, proto);
 
 	define_spring_arm3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_spring_arm3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, spring_arm3d_class_proto_funcs, _countof(spring_arm3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, spring_arm3d_class_constructor, "SpringArm3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

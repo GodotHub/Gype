@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/base_button.hpp>
-#include <godot_cpp/classes/bit_map.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/texture_button.hpp>
+#include <godot_cpp/classes/bit_map.hpp>
+#include <godot_cpp/classes/base_button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue texture_button_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TextureButton::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	TextureButton *texture_button_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		texture_button_class = static_cast<TextureButton *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		texture_button_class = static_cast<TextureButton *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		texture_button_class = memnew(TextureButton);
-	}
 	if (!texture_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -45,48 +44,39 @@ static JSValue texture_button_class_constructor(JSContext *ctx, JSValueConst new
 }
 static JSValue texture_button_class_set_texture_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureButton::set_texture_normal, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextureButton::set_texture_normal, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_set_texture_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureButton::set_texture_pressed, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextureButton::set_texture_pressed, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_set_texture_hover(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureButton::set_texture_hover, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextureButton::set_texture_hover, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_set_texture_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureButton::set_texture_disabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextureButton::set_texture_disabled, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_set_texture_focused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureButton::set_texture_focused, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextureButton::set_texture_focused, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_set_click_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureButton::set_click_mask, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextureButton::set_click_mask, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_set_ignore_texture_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureButton::set_ignore_texture_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextureButton::set_ignore_texture_size, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_set_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureButton::set_stretch_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextureButton::set_stretch_mode, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_set_flip_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureButton::set_flip_h, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextureButton::set_flip_h, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_is_flipped_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -94,8 +84,7 @@ static JSValue texture_button_class_is_flipped_h(JSContext *ctx, JSValueConst th
 };
 static JSValue texture_button_class_set_flip_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextureButton::set_flip_v, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextureButton::set_flip_v, ctx, this_val, argc, argv);
 };
 static JSValue texture_button_class_is_flipped_v(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -156,10 +145,10 @@ static const JSCFunctionListEntry texture_button_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_stretch_mode", 0, &texture_button_class_get_stretch_mode),
 };
 
-void define_texture_button_property(JSContext *ctx, JSValue obj) {
+static void define_texture_button_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texture_normal"),
         JS_NewCFunction(ctx, texture_button_class_get_texture_normal, "get_texture_normal", 0),
         JS_NewCFunction(ctx, texture_button_class_set_texture_normal, "set_texture_normal", 1),
@@ -167,7 +156,7 @@ void define_texture_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texture_pressed"),
         JS_NewCFunction(ctx, texture_button_class_get_texture_pressed, "get_texture_pressed", 0),
         JS_NewCFunction(ctx, texture_button_class_set_texture_pressed, "set_texture_pressed", 1),
@@ -175,7 +164,7 @@ void define_texture_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texture_hover"),
         JS_NewCFunction(ctx, texture_button_class_get_texture_hover, "get_texture_hover", 0),
         JS_NewCFunction(ctx, texture_button_class_set_texture_hover, "set_texture_hover", 1),
@@ -183,7 +172,7 @@ void define_texture_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texture_disabled"),
         JS_NewCFunction(ctx, texture_button_class_get_texture_disabled, "get_texture_disabled", 0),
         JS_NewCFunction(ctx, texture_button_class_set_texture_disabled, "set_texture_disabled", 1),
@@ -191,7 +180,7 @@ void define_texture_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texture_focused"),
         JS_NewCFunction(ctx, texture_button_class_get_texture_focused, "get_texture_focused", 0),
         JS_NewCFunction(ctx, texture_button_class_set_texture_focused, "set_texture_focused", 1),
@@ -199,7 +188,7 @@ void define_texture_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texture_click_mask"),
         JS_NewCFunction(ctx, texture_button_class_get_click_mask, "get_click_mask", 0),
         JS_NewCFunction(ctx, texture_button_class_set_click_mask, "set_click_mask", 1),
@@ -207,7 +196,7 @@ void define_texture_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "ignore_texture_size"),
         JS_NewCFunction(ctx, texture_button_class_get_ignore_texture_size, "get_ignore_texture_size", 0),
         JS_NewCFunction(ctx, texture_button_class_set_ignore_texture_size, "set_ignore_texture_size", 1),
@@ -215,7 +204,7 @@ void define_texture_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "stretch_mode"),
         JS_NewCFunction(ctx, texture_button_class_get_stretch_mode, "get_stretch_mode", 0),
         JS_NewCFunction(ctx, texture_button_class_set_stretch_mode, "set_stretch_mode", 1),
@@ -223,7 +212,7 @@ void define_texture_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "flip_h"),
         JS_NewCFunction(ctx, texture_button_class_is_flipped_h, "is_flipped_h", 0),
         JS_NewCFunction(ctx, texture_button_class_set_flip_h, "set_flip_h", 1),
@@ -231,15 +220,16 @@ void define_texture_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "flip_v"),
         JS_NewCFunction(ctx, texture_button_class_is_flipped_v, "is_flipped_v", 0),
         JS_NewCFunction(ctx, texture_button_class_set_flip_v, "set_flip_v", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_texture_button_enum(JSContext *ctx, JSValue proto) {
 	JSValue StretchMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, StretchMode_obj, "STRETCH_SCALE", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, StretchMode_obj, "STRETCH_TILE", JS_NewInt64(ctx, 1));
@@ -264,7 +254,7 @@ static int js_texture_button_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, TextureButton::__class_id, proto);
 
 	define_texture_button_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_texture_button_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, texture_button_class_proto_funcs, _countof(texture_button_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, texture_button_class_constructor, "TextureButton", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

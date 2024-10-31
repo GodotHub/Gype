@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/sprite_base3d.hpp>
-#include <godot_cpp/classes/sprite3d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/sprite3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue sprite3d_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Sprite3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Sprite3D *sprite3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		sprite3d_class = static_cast<Sprite3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		sprite3d_class = static_cast<Sprite3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		sprite3d_class = memnew(Sprite3D);
-	}
 	if (!sprite3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue sprite3d_class_constructor(JSContext *ctx, JSValueConst new_targe
 }
 static JSValue sprite3d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Sprite3D::set_texture, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Sprite3D::set_texture, ctx, this_val, argc, argv);
 };
 static JSValue sprite3d_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue sprite3d_class_get_texture(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue sprite3d_class_set_region_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Sprite3D::set_region_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Sprite3D::set_region_enabled, ctx, this_val, argc, argv);
 };
 static JSValue sprite3d_class_is_region_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue sprite3d_class_is_region_enabled(JSContext *ctx, JSValueConst thi
 };
 static JSValue sprite3d_class_set_region_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Sprite3D::set_region_rect, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Sprite3D::set_region_rect, ctx, this_val, argc, argv);
 };
 static JSValue sprite3d_class_get_region_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -71,8 +67,7 @@ static JSValue sprite3d_class_get_region_rect(JSContext *ctx, JSValueConst this_
 };
 static JSValue sprite3d_class_set_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Sprite3D::set_frame, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Sprite3D::set_frame, ctx, this_val, argc, argv);
 };
 static JSValue sprite3d_class_get_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -80,8 +75,7 @@ static JSValue sprite3d_class_get_frame(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue sprite3d_class_set_frame_coords(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Sprite3D::set_frame_coords, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Sprite3D::set_frame_coords, ctx, this_val, argc, argv);
 };
 static JSValue sprite3d_class_get_frame_coords(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -89,8 +83,7 @@ static JSValue sprite3d_class_get_frame_coords(JSContext *ctx, JSValueConst this
 };
 static JSValue sprite3d_class_set_vframes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Sprite3D::set_vframes, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Sprite3D::set_vframes, ctx, this_val, argc, argv);
 };
 static JSValue sprite3d_class_get_vframes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -98,8 +91,7 @@ static JSValue sprite3d_class_get_vframes(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue sprite3d_class_set_hframes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Sprite3D::set_hframes, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Sprite3D::set_hframes, ctx, this_val, argc, argv);
 };
 static JSValue sprite3d_class_get_hframes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -121,11 +113,31 @@ static const JSCFunctionListEntry sprite3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_hframes", 1, &sprite3d_class_set_hframes),
 	JS_CFUNC_DEF("get_hframes", 0, &sprite3d_class_get_hframes),
 };
+static JSValue sprite3d_class_get_frame_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	Sprite3D *opaque = reinterpret_cast<Sprite3D *>(JS_GetOpaque(this_val, Sprite3D::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "frame_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "frame_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "frame_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue sprite3d_class_get_texture_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	Sprite3D *opaque = reinterpret_cast<Sprite3D *>(JS_GetOpaque(this_val, Sprite3D::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "texture_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "texture_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "texture_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_sprite3d_property(JSContext *ctx, JSValue obj) {
+static void define_sprite3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, sprite3d_class_get_texture, "get_texture", 0),
         JS_NewCFunction(ctx, sprite3d_class_set_texture, "set_texture", 1),
@@ -133,7 +145,7 @@ void define_sprite3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "hframes"),
         JS_NewCFunction(ctx, sprite3d_class_get_hframes, "get_hframes", 0),
         JS_NewCFunction(ctx, sprite3d_class_set_hframes, "set_hframes", 1),
@@ -141,7 +153,7 @@ void define_sprite3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "vframes"),
         JS_NewCFunction(ctx, sprite3d_class_get_vframes, "get_vframes", 0),
         JS_NewCFunction(ctx, sprite3d_class_set_vframes, "set_vframes", 1),
@@ -149,7 +161,7 @@ void define_sprite3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "frame"),
         JS_NewCFunction(ctx, sprite3d_class_get_frame, "get_frame", 0),
         JS_NewCFunction(ctx, sprite3d_class_set_frame, "set_frame", 1),
@@ -157,7 +169,7 @@ void define_sprite3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "frame_coords"),
         JS_NewCFunction(ctx, sprite3d_class_get_frame_coords, "get_frame_coords", 0),
         JS_NewCFunction(ctx, sprite3d_class_set_frame_coords, "set_frame_coords", 1),
@@ -165,7 +177,7 @@ void define_sprite3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "region_enabled"),
         JS_NewCFunction(ctx, sprite3d_class_is_region_enabled, "is_region_enabled", 0),
         JS_NewCFunction(ctx, sprite3d_class_set_region_enabled, "set_region_enabled", 1),
@@ -173,15 +185,32 @@ void define_sprite3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "region_rect"),
         JS_NewCFunction(ctx, sprite3d_class_get_region_rect, "get_region_rect", 0),
         JS_NewCFunction(ctx, sprite3d_class_set_region_rect, "set_region_rect", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "frame_changed"),
+		JS_NewCFunction(ctx, sprite3d_class_get_frame_changed_signal, "get_frame_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "texture_changed"),
+		JS_NewCFunction(ctx, sprite3d_class_get_texture_changed_signal, "get_texture_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_sprite3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_sprite3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -197,7 +226,7 @@ static int js_sprite3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Sprite3D::__class_id, proto);
 
 	define_sprite3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_sprite3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, sprite3d_class_proto_funcs, _countof(sprite3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, sprite3d_class_constructor, "Sprite3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

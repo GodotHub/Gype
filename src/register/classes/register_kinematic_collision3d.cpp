@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/kinematic_collision3d.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue kinematic_collision3d_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, KinematicCollision3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	KinematicCollision3D *kinematic_collision3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		kinematic_collision3d_class = static_cast<KinematicCollision3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		kinematic_collision3d_class = static_cast<KinematicCollision3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		kinematic_collision3d_class = memnew(KinematicCollision3D);
-	}
 	if (!kinematic_collision3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -115,10 +114,11 @@ static const JSCFunctionListEntry kinematic_collision3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_collider_velocity", 1, &kinematic_collision3d_class_get_collider_velocity),
 };
 
-void define_kinematic_collision3d_property(JSContext *ctx, JSValue obj) {
+static void define_kinematic_collision3d_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_kinematic_collision3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_kinematic_collision3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -134,7 +134,7 @@ static int js_kinematic_collision3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, KinematicCollision3D::__class_id, proto);
 
 	define_kinematic_collision3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_kinematic_collision3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, kinematic_collision3d_class_proto_funcs, _countof(kinematic_collision3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, kinematic_collision3d_class_constructor, "KinematicCollision3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

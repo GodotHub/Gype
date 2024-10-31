@@ -27,13 +27,12 @@ static JSValue input_event_screen_touch_class_constructor(JSContext *ctx, JSValu
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventScreenTouch::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	InputEventScreenTouch *input_event_screen_touch_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		input_event_screen_touch_class = static_cast<InputEventScreenTouch *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		input_event_screen_touch_class = static_cast<InputEventScreenTouch *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		input_event_screen_touch_class = memnew(InputEventScreenTouch);
-	}
 	if (!input_event_screen_touch_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue input_event_screen_touch_class_constructor(JSContext *ctx, JSValu
 }
 static JSValue input_event_screen_touch_class_set_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventScreenTouch::set_index, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventScreenTouch::set_index, ctx, this_val, argc, argv);
 };
 static JSValue input_event_screen_touch_class_get_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue input_event_screen_touch_class_get_index(JSContext *ctx, JSValueC
 };
 static JSValue input_event_screen_touch_class_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventScreenTouch::set_position, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventScreenTouch::set_position, ctx, this_val, argc, argv);
 };
 static JSValue input_event_screen_touch_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,18 +58,15 @@ static JSValue input_event_screen_touch_class_get_position(JSContext *ctx, JSVal
 };
 static JSValue input_event_screen_touch_class_set_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventScreenTouch::set_pressed, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventScreenTouch::set_pressed, ctx, this_val, argc, argv);
 };
 static JSValue input_event_screen_touch_class_set_canceled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventScreenTouch::set_canceled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventScreenTouch::set_canceled, ctx, this_val, argc, argv);
 };
 static JSValue input_event_screen_touch_class_set_double_tap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventScreenTouch::set_double_tap, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventScreenTouch::set_double_tap, ctx, this_val, argc, argv);
 };
 static JSValue input_event_screen_touch_class_is_double_tap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -89,10 +83,10 @@ static const JSCFunctionListEntry input_event_screen_touch_class_proto_funcs[] =
 	JS_CFUNC_DEF("is_double_tap", 0, &input_event_screen_touch_class_is_double_tap),
 };
 
-void define_input_event_screen_touch_property(JSContext *ctx, JSValue obj) {
+static void define_input_event_screen_touch_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "index"),
         JS_NewCFunction(ctx, input_event_screen_touch_class_get_index, "get_index", 0),
         JS_NewCFunction(ctx, input_event_screen_touch_class_set_index, "set_index", 1),
@@ -100,7 +94,7 @@ void define_input_event_screen_touch_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "position"),
         JS_NewCFunction(ctx, input_event_screen_touch_class_get_position, "get_position", 0),
         JS_NewCFunction(ctx, input_event_screen_touch_class_set_position, "set_position", 1),
@@ -108,7 +102,7 @@ void define_input_event_screen_touch_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "canceled"),
         JS_UNDEFINED,
         JS_NewCFunction(ctx, input_event_screen_touch_class_set_canceled, "set_canceled", 1),
@@ -116,7 +110,7 @@ void define_input_event_screen_touch_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "pressed"),
         JS_UNDEFINED,
         JS_NewCFunction(ctx, input_event_screen_touch_class_set_pressed, "set_pressed", 1),
@@ -124,15 +118,16 @@ void define_input_event_screen_touch_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "double_tap"),
         JS_NewCFunction(ctx, input_event_screen_touch_class_is_double_tap, "is_double_tap", 0),
         JS_NewCFunction(ctx, input_event_screen_touch_class_set_double_tap, "set_double_tap", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_input_event_screen_touch_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_input_event_screen_touch_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -148,7 +143,7 @@ static int js_input_event_screen_touch_class_init(JSContext *ctx, JSModuleDef *m
 	JS_SetClassProto(ctx, InputEventScreenTouch::__class_id, proto);
 
 	define_input_event_screen_touch_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_input_event_screen_touch_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, input_event_screen_touch_class_proto_funcs, _countof(input_event_screen_touch_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, input_event_screen_touch_class_constructor, "InputEventScreenTouch", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

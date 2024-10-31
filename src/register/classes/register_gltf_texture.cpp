@@ -27,13 +27,12 @@ static JSValue gltf_texture_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFTexture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	GLTFTexture *gltf_texture_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		gltf_texture_class = static_cast<GLTFTexture *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		gltf_texture_class = static_cast<GLTFTexture *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		gltf_texture_class = memnew(GLTFTexture);
-	}
 	if (!gltf_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -47,8 +46,7 @@ static JSValue gltf_texture_class_get_src_image(JSContext *ctx, JSValueConst thi
 };
 static JSValue gltf_texture_class_set_src_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFTexture::set_src_image, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFTexture::set_src_image, ctx, this_val, argc, argv);
 };
 static JSValue gltf_texture_class_get_sampler(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,8 +54,7 @@ static JSValue gltf_texture_class_get_sampler(JSContext *ctx, JSValueConst this_
 };
 static JSValue gltf_texture_class_set_sampler(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFTexture::set_sampler, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFTexture::set_sampler, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry gltf_texture_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_src_image", 0, &gltf_texture_class_get_src_image),
@@ -66,10 +63,10 @@ static const JSCFunctionListEntry gltf_texture_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_sampler", 1, &gltf_texture_class_set_sampler),
 };
 
-void define_gltf_texture_property(JSContext *ctx, JSValue obj) {
+static void define_gltf_texture_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "src_image"),
         JS_NewCFunction(ctx, gltf_texture_class_get_src_image, "get_src_image", 0),
         JS_NewCFunction(ctx, gltf_texture_class_set_src_image, "set_src_image", 1),
@@ -77,15 +74,16 @@ void define_gltf_texture_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sampler"),
         JS_NewCFunction(ctx, gltf_texture_class_get_sampler, "get_sampler", 0),
         JS_NewCFunction(ctx, gltf_texture_class_set_sampler, "set_sampler", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_gltf_texture_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_gltf_texture_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -101,7 +99,7 @@ static int js_gltf_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, GLTFTexture::__class_id, proto);
 
 	define_gltf_texture_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_gltf_texture_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gltf_texture_class_proto_funcs, _countof(gltf_texture_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, gltf_texture_class_constructor, "GLTFTexture", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

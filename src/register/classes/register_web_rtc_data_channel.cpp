@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/web_rtc_data_channel.hpp>
 #include <godot_cpp/classes/packet_peer.hpp>
+#include <godot_cpp/classes/web_rtc_data_channel.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue web_rtc_data_channel_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WebRTCDataChannel::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	WebRTCDataChannel *web_rtc_data_channel_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		web_rtc_data_channel_class = static_cast<WebRTCDataChannel *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		web_rtc_data_channel_class = static_cast<WebRTCDataChannel *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		web_rtc_data_channel_class = memnew(WebRTCDataChannel);
-	}
 	if (!web_rtc_data_channel_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -47,8 +46,7 @@ static JSValue web_rtc_data_channel_class_poll(JSContext *ctx, JSValueConst this
 };
 static JSValue web_rtc_data_channel_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebRTCDataChannel::close, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebRTCDataChannel::close, ctx, this_val, argc, argv);
 };
 static JSValue web_rtc_data_channel_class_was_string_packet(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,8 +54,7 @@ static JSValue web_rtc_data_channel_class_was_string_packet(JSContext *ctx, JSVa
 };
 static JSValue web_rtc_data_channel_class_set_write_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebRTCDataChannel::set_write_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebRTCDataChannel::set_write_mode, ctx, this_val, argc, argv);
 };
 static JSValue web_rtc_data_channel_class_get_write_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -116,18 +113,19 @@ static const JSCFunctionListEntry web_rtc_data_channel_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_buffered_amount", 0, &web_rtc_data_channel_class_get_buffered_amount),
 };
 
-void define_web_rtc_data_channel_property(JSContext *ctx, JSValue obj) {
+static void define_web_rtc_data_channel_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "write_mode"),
         JS_NewCFunction(ctx, web_rtc_data_channel_class_get_write_mode, "get_write_mode", 0),
         JS_NewCFunction(ctx, web_rtc_data_channel_class_set_write_mode, "set_write_mode", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_web_rtc_data_channel_enum(JSContext *ctx, JSValue proto) {
 	JSValue WriteMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, WriteMode_obj, "WRITE_MODE_TEXT", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, WriteMode_obj, "WRITE_MODE_BINARY", JS_NewInt64(ctx, 1));
@@ -153,7 +151,7 @@ static int js_web_rtc_data_channel_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, WebRTCDataChannel::__class_id, proto);
 
 	define_web_rtc_data_channel_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_web_rtc_data_channel_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, web_rtc_data_channel_class_proto_funcs, _countof(web_rtc_data_channel_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, web_rtc_data_channel_class_constructor, "WebRTCDataChannel", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

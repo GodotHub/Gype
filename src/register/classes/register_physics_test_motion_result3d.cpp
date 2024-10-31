@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/physics_test_motion_result3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,13 +28,12 @@ static JSValue physics_test_motion_result3d_class_constructor(JSContext *ctx, JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsTestMotionResult3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PhysicsTestMotionResult3D *physics_test_motion_result3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		physics_test_motion_result3d_class = static_cast<PhysicsTestMotionResult3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		physics_test_motion_result3d_class = static_cast<PhysicsTestMotionResult3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		physics_test_motion_result3d_class = memnew(PhysicsTestMotionResult3D);
-	}
 	if (!physics_test_motion_result3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -115,10 +114,11 @@ static const JSCFunctionListEntry physics_test_motion_result3d_class_proto_funcs
 	JS_CFUNC_DEF("get_collision_depth", 1, &physics_test_motion_result3d_class_get_collision_depth),
 };
 
-void define_physics_test_motion_result3d_property(JSContext *ctx, JSValue obj) {
+static void define_physics_test_motion_result3d_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_physics_test_motion_result3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_physics_test_motion_result3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -134,7 +134,7 @@ static int js_physics_test_motion_result3d_class_init(JSContext *ctx, JSModuleDe
 	JS_SetClassProto(ctx, PhysicsTestMotionResult3D::__class_id, proto);
 
 	define_physics_test_motion_result3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_physics_test_motion_result3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, physics_test_motion_result3d_class_proto_funcs, _countof(physics_test_motion_result3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, physics_test_motion_result3d_class_constructor, "PhysicsTestMotionResult3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

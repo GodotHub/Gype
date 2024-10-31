@@ -27,13 +27,12 @@ static JSValue tweener_class_constructor(JSContext *ctx, JSValueConst new_target
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Tweener::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Tweener *tweener_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		tweener_class = static_cast<Tweener *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		tweener_class = static_cast<Tweener *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		tweener_class = memnew(Tweener);
-	}
 	if (!tweener_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -41,11 +40,30 @@ static JSValue tweener_class_constructor(JSContext *ctx, JSValueConst new_target
 	JS_SetOpaque(obj, tweener_class);	
 	return obj;
 }
-
-void define_tweener_property(JSContext *ctx, JSValue obj) {
+static JSValue tweener_class_get_finished_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	Tweener *opaque = reinterpret_cast<Tweener *>(JS_GetOpaque(this_val, Tweener::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "finished_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "finished").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "finished_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_tweener_property(JSContext *ctx, JSValue proto) {
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "finished"),
+		JS_NewCFunction(ctx, tweener_class_get_finished_signal, "get_finished_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+}
+
+static void define_tweener_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +79,7 @@ static int js_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Tweener::__class_id, proto);
 
 	define_tweener_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_tweener_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, tweener_class_constructor, "Tweener", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

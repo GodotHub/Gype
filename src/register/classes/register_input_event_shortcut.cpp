@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/input_event_shortcut.hpp>
-#include <godot_cpp/classes/shortcut.hpp>
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/shortcut.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue input_event_shortcut_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventShortcut::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	InputEventShortcut *input_event_shortcut_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		input_event_shortcut_class = static_cast<InputEventShortcut *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		input_event_shortcut_class = static_cast<InputEventShortcut *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		input_event_shortcut_class = memnew(InputEventShortcut);
-	}
 	if (!input_event_shortcut_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue input_event_shortcut_class_constructor(JSContext *ctx, JSValueCon
 }
 static JSValue input_event_shortcut_class_set_shortcut(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventShortcut::set_shortcut, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventShortcut::set_shortcut, ctx, this_val, argc, argv);
 };
 static JSValue input_event_shortcut_class_get_shortcut(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,18 +54,19 @@ static const JSCFunctionListEntry input_event_shortcut_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_shortcut", 0, &input_event_shortcut_class_get_shortcut),
 };
 
-void define_input_event_shortcut_property(JSContext *ctx, JSValue obj) {
+static void define_input_event_shortcut_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "shortcut"),
         JS_NewCFunction(ctx, input_event_shortcut_class_get_shortcut, "get_shortcut", 0),
         JS_NewCFunction(ctx, input_event_shortcut_class_set_shortcut, "set_shortcut", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_input_event_shortcut_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_input_event_shortcut_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -83,7 +82,7 @@ static int js_input_event_shortcut_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, InputEventShortcut::__class_id, proto);
 
 	define_input_event_shortcut_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_input_event_shortcut_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, input_event_shortcut_class_proto_funcs, _countof(input_event_shortcut_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, input_event_shortcut_class_constructor, "InputEventShortcut", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

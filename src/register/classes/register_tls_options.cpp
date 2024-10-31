@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/tls_options.hpp>
+#include <godot_cpp/classes/crypto_key.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/x509_certificate.hpp>
-#include <godot_cpp/classes/crypto_key.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue tls_options_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TLSOptions::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	TLSOptions *tls_options_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		tls_options_class = static_cast<TLSOptions *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		tls_options_class = static_cast<TLSOptions *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		tls_options_class = memnew(TLSOptions);
-	}
 	if (!tls_options_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -90,10 +89,11 @@ static const JSCFunctionListEntry tls_options_class_static_funcs[] = {
 	JS_CFUNC_DEF("server", 2, &tls_options_class_server),
 };
 
-void define_tls_options_property(JSContext *ctx, JSValue obj) {
+static void define_tls_options_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_tls_options_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_tls_options_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -109,7 +109,7 @@ static int js_tls_options_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, TLSOptions::__class_id, proto);
 
 	define_tls_options_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_tls_options_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, tls_options_class_proto_funcs, _countof(tls_options_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, tls_options_class_constructor, "TLSOptions", 0, JS_CFUNC_constructor, 0);
 	JS_SetPropertyFunctionList(ctx, ctor, tls_options_class_static_funcs, _countof(tls_options_class_static_funcs));

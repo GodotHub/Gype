@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/uniform_set_cache_rd.hpp>
-#include <godot_cpp/classes/rd_uniform.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/rd_uniform.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue uniform_set_cache_rd_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, UniformSetCacheRD::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	UniformSetCacheRD *uniform_set_cache_rd_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		uniform_set_cache_rd_class = static_cast<UniformSetCacheRD *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		uniform_set_cache_rd_class = static_cast<UniformSetCacheRD *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		uniform_set_cache_rd_class = memnew(UniformSetCacheRD);
-	}
 	if (!uniform_set_cache_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -49,10 +48,11 @@ static const JSCFunctionListEntry uniform_set_cache_rd_class_static_funcs[] = {
 	JS_CFUNC_DEF("get_cache", 3, &uniform_set_cache_rd_class_get_cache),
 };
 
-void define_uniform_set_cache_rd_property(JSContext *ctx, JSValue obj) {
+static void define_uniform_set_cache_rd_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_uniform_set_cache_rd_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_uniform_set_cache_rd_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -68,7 +68,7 @@ static int js_uniform_set_cache_rd_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, UniformSetCacheRD::__class_id, proto);
 
 	define_uniform_set_cache_rd_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_uniform_set_cache_rd_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, uniform_set_cache_rd_class_constructor, "UniformSetCacheRD", 0, JS_CFUNC_constructor, 0);
 	JS_SetPropertyFunctionList(ctx, ctor, uniform_set_cache_rd_class_static_funcs, _countof(uniform_set_cache_rd_class_static_funcs));
 	JS_SetConstructor(ctx, ctor, proto);

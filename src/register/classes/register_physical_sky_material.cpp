@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/physical_sky_material.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue physical_sky_material_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicalSkyMaterial::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PhysicalSkyMaterial *physical_sky_material_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		physical_sky_material_class = static_cast<PhysicalSkyMaterial *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		physical_sky_material_class = static_cast<PhysicalSkyMaterial *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		physical_sky_material_class = memnew(PhysicalSkyMaterial);
-	}
 	if (!physical_sky_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue physical_sky_material_class_constructor(JSContext *ctx, JSValueCo
 }
 static JSValue physical_sky_material_class_set_rayleigh_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_rayleigh_coefficient, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicalSkyMaterial::set_rayleigh_coefficient, ctx, this_val, argc, argv);
 };
 static JSValue physical_sky_material_class_get_rayleigh_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue physical_sky_material_class_get_rayleigh_coefficient(JSContext *c
 };
 static JSValue physical_sky_material_class_set_rayleigh_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_rayleigh_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicalSkyMaterial::set_rayleigh_color, ctx, this_val, argc, argv);
 };
 static JSValue physical_sky_material_class_get_rayleigh_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue physical_sky_material_class_get_rayleigh_color(JSContext *ctx, JS
 };
 static JSValue physical_sky_material_class_set_mie_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_mie_coefficient, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicalSkyMaterial::set_mie_coefficient, ctx, this_val, argc, argv);
 };
 static JSValue physical_sky_material_class_get_mie_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -71,8 +67,7 @@ static JSValue physical_sky_material_class_get_mie_coefficient(JSContext *ctx, J
 };
 static JSValue physical_sky_material_class_set_mie_eccentricity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_mie_eccentricity, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicalSkyMaterial::set_mie_eccentricity, ctx, this_val, argc, argv);
 };
 static JSValue physical_sky_material_class_get_mie_eccentricity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -80,8 +75,7 @@ static JSValue physical_sky_material_class_get_mie_eccentricity(JSContext *ctx, 
 };
 static JSValue physical_sky_material_class_set_mie_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_mie_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicalSkyMaterial::set_mie_color, ctx, this_val, argc, argv);
 };
 static JSValue physical_sky_material_class_get_mie_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -89,8 +83,7 @@ static JSValue physical_sky_material_class_get_mie_color(JSContext *ctx, JSValue
 };
 static JSValue physical_sky_material_class_set_turbidity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_turbidity, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicalSkyMaterial::set_turbidity, ctx, this_val, argc, argv);
 };
 static JSValue physical_sky_material_class_get_turbidity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -98,8 +91,7 @@ static JSValue physical_sky_material_class_get_turbidity(JSContext *ctx, JSValue
 };
 static JSValue physical_sky_material_class_set_sun_disk_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_sun_disk_scale, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicalSkyMaterial::set_sun_disk_scale, ctx, this_val, argc, argv);
 };
 static JSValue physical_sky_material_class_get_sun_disk_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -107,8 +99,7 @@ static JSValue physical_sky_material_class_get_sun_disk_scale(JSContext *ctx, JS
 };
 static JSValue physical_sky_material_class_set_ground_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_ground_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicalSkyMaterial::set_ground_color, ctx, this_val, argc, argv);
 };
 static JSValue physical_sky_material_class_get_ground_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -116,8 +107,7 @@ static JSValue physical_sky_material_class_get_ground_color(JSContext *ctx, JSVa
 };
 static JSValue physical_sky_material_class_set_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_energy_multiplier, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicalSkyMaterial::set_energy_multiplier, ctx, this_val, argc, argv);
 };
 static JSValue physical_sky_material_class_get_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -125,8 +115,7 @@ static JSValue physical_sky_material_class_get_energy_multiplier(JSContext *ctx,
 };
 static JSValue physical_sky_material_class_set_use_debanding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_use_debanding, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicalSkyMaterial::set_use_debanding, ctx, this_val, argc, argv);
 };
 static JSValue physical_sky_material_class_get_use_debanding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -134,8 +123,7 @@ static JSValue physical_sky_material_class_get_use_debanding(JSContext *ctx, JSV
 };
 static JSValue physical_sky_material_class_set_night_sky(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicalSkyMaterial::set_night_sky, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicalSkyMaterial::set_night_sky, ctx, this_val, argc, argv);
 };
 static JSValue physical_sky_material_class_get_night_sky(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -166,10 +154,10 @@ static const JSCFunctionListEntry physical_sky_material_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_night_sky", 0, &physical_sky_material_class_get_night_sky),
 };
 
-void define_physical_sky_material_property(JSContext *ctx, JSValue obj) {
+static void define_physical_sky_material_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "rayleigh_coefficient"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_rayleigh_coefficient, "get_rayleigh_coefficient", 0),
         JS_NewCFunction(ctx, physical_sky_material_class_set_rayleigh_coefficient, "set_rayleigh_coefficient", 1),
@@ -177,7 +165,7 @@ void define_physical_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "rayleigh_color"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_rayleigh_color, "get_rayleigh_color", 0),
         JS_NewCFunction(ctx, physical_sky_material_class_set_rayleigh_color, "set_rayleigh_color", 1),
@@ -185,7 +173,7 @@ void define_physical_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "mie_coefficient"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_mie_coefficient, "get_mie_coefficient", 0),
         JS_NewCFunction(ctx, physical_sky_material_class_set_mie_coefficient, "set_mie_coefficient", 1),
@@ -193,7 +181,7 @@ void define_physical_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "mie_eccentricity"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_mie_eccentricity, "get_mie_eccentricity", 0),
         JS_NewCFunction(ctx, physical_sky_material_class_set_mie_eccentricity, "set_mie_eccentricity", 1),
@@ -201,7 +189,7 @@ void define_physical_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "mie_color"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_mie_color, "get_mie_color", 0),
         JS_NewCFunction(ctx, physical_sky_material_class_set_mie_color, "set_mie_color", 1),
@@ -209,7 +197,7 @@ void define_physical_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "turbidity"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_turbidity, "get_turbidity", 0),
         JS_NewCFunction(ctx, physical_sky_material_class_set_turbidity, "set_turbidity", 1),
@@ -217,7 +205,7 @@ void define_physical_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sun_disk_scale"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_sun_disk_scale, "get_sun_disk_scale", 0),
         JS_NewCFunction(ctx, physical_sky_material_class_set_sun_disk_scale, "set_sun_disk_scale", 1),
@@ -225,7 +213,7 @@ void define_physical_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "ground_color"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_ground_color, "get_ground_color", 0),
         JS_NewCFunction(ctx, physical_sky_material_class_set_ground_color, "set_ground_color", 1),
@@ -233,7 +221,7 @@ void define_physical_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "energy_multiplier"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_energy_multiplier, "get_energy_multiplier", 0),
         JS_NewCFunction(ctx, physical_sky_material_class_set_energy_multiplier, "set_energy_multiplier", 1),
@@ -241,7 +229,7 @@ void define_physical_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "use_debanding"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_use_debanding, "get_use_debanding", 0),
         JS_NewCFunction(ctx, physical_sky_material_class_set_use_debanding, "set_use_debanding", 1),
@@ -249,15 +237,16 @@ void define_physical_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "night_sky"),
         JS_NewCFunction(ctx, physical_sky_material_class_get_night_sky, "get_night_sky", 0),
         JS_NewCFunction(ctx, physical_sky_material_class_set_night_sky, "set_night_sky", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_physical_sky_material_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_physical_sky_material_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -273,7 +262,7 @@ static int js_physical_sky_material_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, PhysicalSkyMaterial::__class_id, proto);
 
 	define_physical_sky_material_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_physical_sky_material_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, physical_sky_material_class_proto_funcs, _countof(physical_sky_material_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, physical_sky_material_class_constructor, "PhysicalSkyMaterial", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

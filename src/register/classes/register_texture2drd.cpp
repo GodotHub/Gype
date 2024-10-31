@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/texture2drd.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue texture2drd_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Texture2DRD::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Texture2DRD *texture2drd_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		texture2drd_class = static_cast<Texture2DRD *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		texture2drd_class = static_cast<Texture2DRD *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		texture2drd_class = memnew(Texture2DRD);
-	}
 	if (!texture2drd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue texture2drd_class_constructor(JSContext *ctx, JSValueConst new_ta
 }
 static JSValue texture2drd_class_set_texture_rd_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Texture2DRD::set_texture_rd_rid, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Texture2DRD::set_texture_rd_rid, ctx, this_val, argc, argv);
 };
 static JSValue texture2drd_class_get_texture_rd_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry texture2drd_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_texture_rd_rid", 0, &texture2drd_class_get_texture_rd_rid),
 };
 
-void define_texture2drd_property(JSContext *ctx, JSValue obj) {
+static void define_texture2drd_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texture_rd_rid"),
         JS_NewCFunction(ctx, texture2drd_class_get_texture_rd_rid, "get_texture_rd_rid", 0),
         JS_NewCFunction(ctx, texture2drd_class_set_texture_rd_rid, "set_texture_rd_rid", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_texture2drd_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_texture2drd_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -82,7 +81,7 @@ static int js_texture2drd_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Texture2DRD::__class_id, proto);
 
 	define_texture2drd_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_texture2drd_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, texture2drd_class_proto_funcs, _countof(texture2drd_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, texture2drd_class_constructor, "Texture2DRD", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

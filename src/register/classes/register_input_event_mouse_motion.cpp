@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_mouse_motion.hpp>
 #include <godot_cpp/classes/input_event_mouse.hpp>
+#include <godot_cpp/classes/input_event_mouse_motion.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue input_event_mouse_motion_class_constructor(JSContext *ctx, JSValu
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventMouseMotion::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	InputEventMouseMotion *input_event_mouse_motion_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		input_event_mouse_motion_class = static_cast<InputEventMouseMotion *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		input_event_mouse_motion_class = static_cast<InputEventMouseMotion *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		input_event_mouse_motion_class = memnew(InputEventMouseMotion);
-	}
 	if (!input_event_mouse_motion_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue input_event_mouse_motion_class_constructor(JSContext *ctx, JSValu
 }
 static JSValue input_event_mouse_motion_class_set_tilt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventMouseMotion::set_tilt, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventMouseMotion::set_tilt, ctx, this_val, argc, argv);
 };
 static JSValue input_event_mouse_motion_class_get_tilt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue input_event_mouse_motion_class_get_tilt(JSContext *ctx, JSValueCo
 };
 static JSValue input_event_mouse_motion_class_set_pressure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventMouseMotion::set_pressure, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventMouseMotion::set_pressure, ctx, this_val, argc, argv);
 };
 static JSValue input_event_mouse_motion_class_get_pressure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue input_event_mouse_motion_class_get_pressure(JSContext *ctx, JSVal
 };
 static JSValue input_event_mouse_motion_class_set_pen_inverted(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventMouseMotion::set_pen_inverted, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventMouseMotion::set_pen_inverted, ctx, this_val, argc, argv);
 };
 static JSValue input_event_mouse_motion_class_get_pen_inverted(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue input_event_mouse_motion_class_get_pen_inverted(JSContext *ctx, J
 };
 static JSValue input_event_mouse_motion_class_set_relative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventMouseMotion::set_relative, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventMouseMotion::set_relative, ctx, this_val, argc, argv);
 };
 static JSValue input_event_mouse_motion_class_get_relative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue input_event_mouse_motion_class_get_relative(JSContext *ctx, JSVal
 };
 static JSValue input_event_mouse_motion_class_set_screen_relative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventMouseMotion::set_screen_relative, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventMouseMotion::set_screen_relative, ctx, this_val, argc, argv);
 };
 static JSValue input_event_mouse_motion_class_get_screen_relative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,8 +82,7 @@ static JSValue input_event_mouse_motion_class_get_screen_relative(JSContext *ctx
 };
 static JSValue input_event_mouse_motion_class_set_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventMouseMotion::set_velocity, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventMouseMotion::set_velocity, ctx, this_val, argc, argv);
 };
 static JSValue input_event_mouse_motion_class_get_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -97,8 +90,7 @@ static JSValue input_event_mouse_motion_class_get_velocity(JSContext *ctx, JSVal
 };
 static JSValue input_event_mouse_motion_class_set_screen_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventMouseMotion::set_screen_velocity, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventMouseMotion::set_screen_velocity, ctx, this_val, argc, argv);
 };
 static JSValue input_event_mouse_motion_class_get_screen_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -121,10 +113,10 @@ static const JSCFunctionListEntry input_event_mouse_motion_class_proto_funcs[] =
 	JS_CFUNC_DEF("get_screen_velocity", 0, &input_event_mouse_motion_class_get_screen_velocity),
 };
 
-void define_input_event_mouse_motion_property(JSContext *ctx, JSValue obj) {
+static void define_input_event_mouse_motion_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "tilt"),
         JS_NewCFunction(ctx, input_event_mouse_motion_class_get_tilt, "get_tilt", 0),
         JS_NewCFunction(ctx, input_event_mouse_motion_class_set_tilt, "set_tilt", 1),
@@ -132,7 +124,7 @@ void define_input_event_mouse_motion_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "pressure"),
         JS_NewCFunction(ctx, input_event_mouse_motion_class_get_pressure, "get_pressure", 0),
         JS_NewCFunction(ctx, input_event_mouse_motion_class_set_pressure, "set_pressure", 1),
@@ -140,7 +132,7 @@ void define_input_event_mouse_motion_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "pen_inverted"),
         JS_NewCFunction(ctx, input_event_mouse_motion_class_get_pen_inverted, "get_pen_inverted", 0),
         JS_NewCFunction(ctx, input_event_mouse_motion_class_set_pen_inverted, "set_pen_inverted", 1),
@@ -148,7 +140,7 @@ void define_input_event_mouse_motion_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "relative"),
         JS_NewCFunction(ctx, input_event_mouse_motion_class_get_relative, "get_relative", 0),
         JS_NewCFunction(ctx, input_event_mouse_motion_class_set_relative, "set_relative", 1),
@@ -156,7 +148,7 @@ void define_input_event_mouse_motion_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "screen_relative"),
         JS_NewCFunction(ctx, input_event_mouse_motion_class_get_screen_relative, "get_screen_relative", 0),
         JS_NewCFunction(ctx, input_event_mouse_motion_class_set_screen_relative, "set_screen_relative", 1),
@@ -164,7 +156,7 @@ void define_input_event_mouse_motion_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "velocity"),
         JS_NewCFunction(ctx, input_event_mouse_motion_class_get_velocity, "get_velocity", 0),
         JS_NewCFunction(ctx, input_event_mouse_motion_class_set_velocity, "set_velocity", 1),
@@ -172,15 +164,16 @@ void define_input_event_mouse_motion_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "screen_velocity"),
         JS_NewCFunction(ctx, input_event_mouse_motion_class_get_screen_velocity, "get_screen_velocity", 0),
         JS_NewCFunction(ctx, input_event_mouse_motion_class_set_screen_velocity, "set_screen_velocity", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_input_event_mouse_motion_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_input_event_mouse_motion_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -196,7 +189,7 @@ static int js_input_event_mouse_motion_class_init(JSContext *ctx, JSModuleDef *m
 	JS_SetClassProto(ctx, InputEventMouseMotion::__class_id, proto);
 
 	define_input_event_mouse_motion_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_input_event_mouse_motion_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, input_event_mouse_motion_class_proto_funcs, _countof(input_event_mouse_motion_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, input_event_mouse_motion_class_constructor, "InputEventMouseMotion", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -27,13 +27,12 @@ static JSValue visual_shader_node_proximity_fade_class_constructor(JSContext *ct
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeProximityFade::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeProximityFade *visual_shader_node_proximity_fade_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_proximity_fade_class = static_cast<VisualShaderNodeProximityFade *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_proximity_fade_class = static_cast<VisualShaderNodeProximityFade *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_proximity_fade_class = memnew(VisualShaderNodeProximityFade);
-	}
 	if (!visual_shader_node_proximity_fade_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue visual_shader_node_proximity_fade_class_constructor(JSContext *ct
 	return obj;
 }
 
-void define_visual_shader_node_proximity_fade_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_proximity_fade_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_proximity_fade_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_proximity_fade_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_visual_shader_node_proximity_fade_class_init(JSContext *ctx, JSMod
 	JS_SetClassProto(ctx, VisualShaderNodeProximityFade::__class_id, proto);
 
 	define_visual_shader_node_proximity_fade_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_proximity_fade_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_proximity_fade_class_constructor, "VisualShaderNodeProximityFade", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

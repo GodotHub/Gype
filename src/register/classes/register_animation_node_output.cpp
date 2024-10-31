@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_node.hpp>
 #include <godot_cpp/classes/animation_node_output.hpp>
+#include <godot_cpp/classes/animation_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue animation_node_output_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeOutput::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AnimationNodeOutput *animation_node_output_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		animation_node_output_class = static_cast<AnimationNodeOutput *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		animation_node_output_class = static_cast<AnimationNodeOutput *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		animation_node_output_class = memnew(AnimationNodeOutput);
-	}
 	if (!animation_node_output_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue animation_node_output_class_constructor(JSContext *ctx, JSValueCo
 	return obj;
 }
 
-void define_animation_node_output_property(JSContext *ctx, JSValue obj) {
+static void define_animation_node_output_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_animation_node_output_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_animation_node_output_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_animation_node_output_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, AnimationNodeOutput::__class_id, proto);
 
 	define_animation_node_output_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_animation_node_output_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, animation_node_output_class_constructor, "AnimationNodeOutput", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

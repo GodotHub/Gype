@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/omni_light3d.hpp>
 #include <godot_cpp/classes/light3d.hpp>
+#include <godot_cpp/classes/omni_light3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue omni_light3d_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OmniLight3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	OmniLight3D *omni_light3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		omni_light3d_class = static_cast<OmniLight3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		omni_light3d_class = static_cast<OmniLight3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		omni_light3d_class = memnew(OmniLight3D);
-	}
 	if (!omni_light3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue omni_light3d_class_constructor(JSContext *ctx, JSValueConst new_t
 }
 static JSValue omni_light3d_class_set_shadow_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OmniLight3D::set_shadow_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OmniLight3D::set_shadow_mode, ctx, this_val, argc, argv);
 };
 static JSValue omni_light3d_class_get_shadow_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry omni_light3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_shadow_mode", 0, &omni_light3d_class_get_shadow_mode),
 };
 
-void define_omni_light3d_property(JSContext *ctx, JSValue obj) {
+static void define_omni_light3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "omni_shadow_mode"),
         JS_NewCFunction(ctx, omni_light3d_class_get_shadow_mode, "get_shadow_mode", 0),
         JS_NewCFunction(ctx, omni_light3d_class_set_shadow_mode, "set_shadow_mode", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_omni_light3d_enum(JSContext *ctx, JSValue proto) {
 	JSValue ShadowMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, ShadowMode_obj, "SHADOW_DUAL_PARABOLOID", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, ShadowMode_obj, "SHADOW_CUBE", JS_NewInt64(ctx, 1));
@@ -86,7 +85,7 @@ static int js_omni_light3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, OmniLight3D::__class_id, proto);
 
 	define_omni_light3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_omni_light3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, omni_light3d_class_proto_funcs, _countof(omni_light3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, omni_light3d_class_constructor, "OmniLight3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

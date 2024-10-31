@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_import_plugin.hpp>
 #include <godot_cpp/classes/resource_importer.hpp>
+#include <godot_cpp/classes/editor_import_plugin.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue editor_import_plugin_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorImportPlugin::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	EditorImportPlugin *editor_import_plugin_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		editor_import_plugin_class = static_cast<EditorImportPlugin *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		editor_import_plugin_class = static_cast<EditorImportPlugin *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		editor_import_plugin_class = memnew(EditorImportPlugin);
-	}
 	if (!editor_import_plugin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -49,10 +48,11 @@ static const JSCFunctionListEntry editor_import_plugin_class_proto_funcs[] = {
 	JS_CFUNC_DEF("append_import_external_resource", 4, &editor_import_plugin_class_append_import_external_resource),
 };
 
-void define_editor_import_plugin_property(JSContext *ctx, JSValue obj) {
+static void define_editor_import_plugin_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_editor_import_plugin_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_import_plugin_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -68,7 +68,7 @@ static int js_editor_import_plugin_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, EditorImportPlugin::__class_id, proto);
 
 	define_editor_import_plugin_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_editor_import_plugin_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_import_plugin_class_proto_funcs, _countof(editor_import_plugin_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, editor_import_plugin_class_constructor, "EditorImportPlugin", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

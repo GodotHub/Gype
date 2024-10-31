@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/editor_scene_post_import_plugin.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue editor_scene_post_import_plugin_class_constructor(JSContext *ctx,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorScenePostImportPlugin::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	EditorScenePostImportPlugin *editor_scene_post_import_plugin_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		editor_scene_post_import_plugin_class = static_cast<EditorScenePostImportPlugin *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		editor_scene_post_import_plugin_class = static_cast<EditorScenePostImportPlugin *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		editor_scene_post_import_plugin_class = memnew(EditorScenePostImportPlugin);
-	}
 	if (!editor_scene_post_import_plugin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -49,13 +48,11 @@ static JSValue editor_scene_post_import_plugin_class_get_option_value(JSContext 
 };
 static JSValue editor_scene_post_import_plugin_class_add_import_option(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorScenePostImportPlugin::add_import_option, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorScenePostImportPlugin::add_import_option, ctx, this_val, argc, argv);
 };
 static JSValue editor_scene_post_import_plugin_class_add_import_option_advanced(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorScenePostImportPlugin::add_import_option_advanced, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorScenePostImportPlugin::add_import_option_advanced, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_scene_post_import_plugin_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_option_value", 1, &editor_scene_post_import_plugin_class_get_option_value),
@@ -63,10 +60,11 @@ static const JSCFunctionListEntry editor_scene_post_import_plugin_class_proto_fu
 	JS_CFUNC_DEF("add_import_option_advanced", 6, &editor_scene_post_import_plugin_class_add_import_option_advanced),
 };
 
-void define_editor_scene_post_import_plugin_property(JSContext *ctx, JSValue obj) {
+static void define_editor_scene_post_import_plugin_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_editor_scene_post_import_plugin_enum(JSContext *ctx, JSValue proto) {
 	JSValue InternalImportCategory_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, InternalImportCategory_obj, "INTERNAL_IMPORT_CATEGORY_NODE", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, InternalImportCategory_obj, "INTERNAL_IMPORT_CATEGORY_MESH_3D_NODE", JS_NewInt64(ctx, 1));
@@ -92,7 +90,7 @@ static int js_editor_scene_post_import_plugin_class_init(JSContext *ctx, JSModul
 	JS_SetClassProto(ctx, EditorScenePostImportPlugin::__class_id, proto);
 
 	define_editor_scene_post_import_plugin_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_editor_scene_post_import_plugin_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_scene_post_import_plugin_class_proto_funcs, _countof(editor_scene_post_import_plugin_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, editor_scene_post_import_plugin_class_constructor, "EditorScenePostImportPlugin", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

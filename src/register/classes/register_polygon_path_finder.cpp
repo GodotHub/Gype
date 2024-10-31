@@ -27,13 +27,12 @@ static JSValue polygon_path_finder_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PolygonPathFinder::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PolygonPathFinder *polygon_path_finder_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		polygon_path_finder_class = static_cast<PolygonPathFinder *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		polygon_path_finder_class = static_cast<PolygonPathFinder *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		polygon_path_finder_class = memnew(PolygonPathFinder);
-	}
 	if (!polygon_path_finder_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue polygon_path_finder_class_constructor(JSContext *ctx, JSValueCons
 }
 static JSValue polygon_path_finder_class_setup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PolygonPathFinder::setup, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PolygonPathFinder::setup, ctx, this_val, argc, argv);
 };
 static JSValue polygon_path_finder_class_find_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -64,8 +62,7 @@ static JSValue polygon_path_finder_class_is_point_inside(JSContext *ctx, JSValue
 };
 static JSValue polygon_path_finder_class_set_point_penalty(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PolygonPathFinder::set_point_penalty, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PolygonPathFinder::set_point_penalty, ctx, this_val, argc, argv);
 };
 static JSValue polygon_path_finder_class_get_point_penalty(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -86,10 +83,11 @@ static const JSCFunctionListEntry polygon_path_finder_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_bounds", 0, &polygon_path_finder_class_get_bounds),
 };
 
-void define_polygon_path_finder_property(JSContext *ctx, JSValue obj) {
+static void define_polygon_path_finder_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_polygon_path_finder_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_polygon_path_finder_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -105,7 +103,7 @@ static int js_polygon_path_finder_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, PolygonPathFinder::__class_id, proto);
 
 	define_polygon_path_finder_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_polygon_path_finder_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, polygon_path_finder_class_proto_funcs, _countof(polygon_path_finder_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, polygon_path_finder_class_constructor, "PolygonPathFinder", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

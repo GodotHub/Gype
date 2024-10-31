@@ -27,13 +27,12 @@ static JSValue scene_replication_config_class_constructor(JSContext *ctx, JSValu
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SceneReplicationConfig::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	SceneReplicationConfig *scene_replication_config_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		scene_replication_config_class = static_cast<SceneReplicationConfig *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		scene_replication_config_class = static_cast<SceneReplicationConfig *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		scene_replication_config_class = memnew(SceneReplicationConfig);
-	}
 	if (!scene_replication_config_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -47,8 +46,7 @@ static JSValue scene_replication_config_class_get_properties(JSContext *ctx, JSV
 };
 static JSValue scene_replication_config_class_add_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneReplicationConfig::add_property, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SceneReplicationConfig::add_property, ctx, this_val, argc, argv);
 };
 static JSValue scene_replication_config_class_has_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,8 +54,7 @@ static JSValue scene_replication_config_class_has_property(JSContext *ctx, JSVal
 };
 static JSValue scene_replication_config_class_remove_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneReplicationConfig::remove_property, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SceneReplicationConfig::remove_property, ctx, this_val, argc, argv);
 };
 static JSValue scene_replication_config_class_property_get_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -69,8 +66,7 @@ static JSValue scene_replication_config_class_property_get_spawn(JSContext *ctx,
 };
 static JSValue scene_replication_config_class_property_set_spawn(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneReplicationConfig::property_set_spawn, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SceneReplicationConfig::property_set_spawn, ctx, this_val, argc, argv);
 };
 static JSValue scene_replication_config_class_property_get_replication_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -78,8 +74,7 @@ static JSValue scene_replication_config_class_property_get_replication_mode(JSCo
 };
 static JSValue scene_replication_config_class_property_set_replication_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneReplicationConfig::property_set_replication_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SceneReplicationConfig::property_set_replication_mode, ctx, this_val, argc, argv);
 };
 static JSValue scene_replication_config_class_property_get_sync(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -87,8 +82,7 @@ static JSValue scene_replication_config_class_property_get_sync(JSContext *ctx, 
 };
 static JSValue scene_replication_config_class_property_set_sync(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneReplicationConfig::property_set_sync, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SceneReplicationConfig::property_set_sync, ctx, this_val, argc, argv);
 };
 static JSValue scene_replication_config_class_property_get_watch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -96,8 +90,7 @@ static JSValue scene_replication_config_class_property_get_watch(JSContext *ctx,
 };
 static JSValue scene_replication_config_class_property_set_watch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneReplicationConfig::property_set_watch, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SceneReplicationConfig::property_set_watch, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry scene_replication_config_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_properties", 0, &scene_replication_config_class_get_properties),
@@ -115,10 +108,11 @@ static const JSCFunctionListEntry scene_replication_config_class_proto_funcs[] =
 	JS_CFUNC_DEF("property_set_watch", 2, &scene_replication_config_class_property_set_watch),
 };
 
-void define_scene_replication_config_property(JSContext *ctx, JSValue obj) {
+static void define_scene_replication_config_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_scene_replication_config_enum(JSContext *ctx, JSValue proto) {
 	JSValue ReplicationMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, ReplicationMode_obj, "REPLICATION_MODE_NEVER", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, ReplicationMode_obj, "REPLICATION_MODE_ALWAYS", JS_NewInt64(ctx, 1));
@@ -139,7 +133,7 @@ static int js_scene_replication_config_class_init(JSContext *ctx, JSModuleDef *m
 	JS_SetClassProto(ctx, SceneReplicationConfig::__class_id, proto);
 
 	define_scene_replication_config_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_scene_replication_config_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, scene_replication_config_class_proto_funcs, _countof(scene_replication_config_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, scene_replication_config_class_constructor, "SceneReplicationConfig", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

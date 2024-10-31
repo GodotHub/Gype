@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_file_system_directory.hpp>
-#include <godot_cpp/classes/editor_file_system.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/editor_file_system.hpp>
+#include <godot_cpp/classes/editor_file_system_directory.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue editor_file_system_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorFileSystem::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	EditorFileSystem *editor_file_system_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		editor_file_system_class = static_cast<EditorFileSystem *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		editor_file_system_class = static_cast<EditorFileSystem *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		editor_file_system_class = memnew(EditorFileSystem);
-	}
 	if (!editor_file_system_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -56,18 +55,15 @@ static JSValue editor_file_system_class_get_scanning_progress(JSContext *ctx, JS
 };
 static JSValue editor_file_system_class_scan(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorFileSystem::scan, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorFileSystem::scan, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_class_scan_sources(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorFileSystem::scan_sources, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorFileSystem::scan_sources, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_class_update_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorFileSystem::update_file, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorFileSystem::update_file, ctx, this_val, argc, argv);
 };
 static JSValue editor_file_system_class_get_filesystem_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +75,7 @@ static JSValue editor_file_system_class_get_file_type(JSContext *ctx, JSValueCon
 };
 static JSValue editor_file_system_class_reimport_files(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorFileSystem::reimport_files, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorFileSystem::reimport_files, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_file_system_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_filesystem", 0, &editor_file_system_class_get_filesystem),
@@ -93,11 +88,120 @@ static const JSCFunctionListEntry editor_file_system_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_file_type", 1, &editor_file_system_class_get_file_type),
 	JS_CFUNC_DEF("reimport_files", 1, &editor_file_system_class_reimport_files),
 };
-
-void define_editor_file_system_property(JSContext *ctx, JSValue obj) {
+static JSValue editor_file_system_class_get_filesystem_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	EditorFileSystem *opaque = reinterpret_cast<EditorFileSystem *>(JS_GetOpaque(this_val, EditorFileSystem::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "filesystem_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "filesystem_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "filesystem_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue editor_file_system_class_get_script_classes_updated_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	EditorFileSystem *opaque = reinterpret_cast<EditorFileSystem *>(JS_GetOpaque(this_val, EditorFileSystem::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "script_classes_updated_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "script_classes_updated").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "script_classes_updated_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue editor_file_system_class_get_sources_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	EditorFileSystem *opaque = reinterpret_cast<EditorFileSystem *>(JS_GetOpaque(this_val, EditorFileSystem::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "sources_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "sources_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "sources_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue editor_file_system_class_get_resources_reimporting_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	EditorFileSystem *opaque = reinterpret_cast<EditorFileSystem *>(JS_GetOpaque(this_val, EditorFileSystem::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "resources_reimporting_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "resources_reimporting").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "resources_reimporting_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue editor_file_system_class_get_resources_reimported_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	EditorFileSystem *opaque = reinterpret_cast<EditorFileSystem *>(JS_GetOpaque(this_val, EditorFileSystem::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "resources_reimported_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "resources_reimported").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "resources_reimported_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue editor_file_system_class_get_resources_reload_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	EditorFileSystem *opaque = reinterpret_cast<EditorFileSystem *>(JS_GetOpaque(this_val, EditorFileSystem::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "resources_reload_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "resources_reload").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "resources_reload_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_editor_file_system_property(JSContext *ctx, JSValue proto) {
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "filesystem_changed"),
+		JS_NewCFunction(ctx, editor_file_system_class_get_filesystem_changed_signal, "get_filesystem_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "script_classes_updated"),
+		JS_NewCFunction(ctx, editor_file_system_class_get_script_classes_updated_signal, "get_script_classes_updated_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "sources_changed"),
+		JS_NewCFunction(ctx, editor_file_system_class_get_sources_changed_signal, "get_sources_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "resources_reimporting"),
+		JS_NewCFunction(ctx, editor_file_system_class_get_resources_reimporting_signal, "get_resources_reimporting_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "resources_reimported"),
+		JS_NewCFunction(ctx, editor_file_system_class_get_resources_reimported_signal, "get_resources_reimported_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "resources_reload"),
+		JS_NewCFunction(ctx, editor_file_system_class_get_resources_reload_signal, "get_resources_reload_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+}
+
+static void define_editor_file_system_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_file_system_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -113,7 +217,7 @@ static int js_editor_file_system_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, EditorFileSystem::__class_id, proto);
 
 	define_editor_file_system_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_editor_file_system_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_file_system_class_proto_funcs, _countof(editor_file_system_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, editor_file_system_class_constructor, "EditorFileSystem", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

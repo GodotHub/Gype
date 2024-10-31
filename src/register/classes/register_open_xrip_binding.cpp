@@ -28,13 +28,12 @@ static JSValue open_xrip_binding_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRIPBinding::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	OpenXRIPBinding *open_xrip_binding_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		open_xrip_binding_class = static_cast<OpenXRIPBinding *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		open_xrip_binding_class = static_cast<OpenXRIPBinding *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		open_xrip_binding_class = memnew(OpenXRIPBinding);
-	}
 	if (!open_xrip_binding_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue open_xrip_binding_class_constructor(JSContext *ctx, JSValueConst 
 }
 static JSValue open_xrip_binding_class_set_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRIPBinding::set_action, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRIPBinding::set_action, ctx, this_val, argc, argv);
 };
 static JSValue open_xrip_binding_class_get_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -57,8 +55,7 @@ static JSValue open_xrip_binding_class_get_path_count(JSContext *ctx, JSValueCon
 };
 static JSValue open_xrip_binding_class_set_paths(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRIPBinding::set_paths, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRIPBinding::set_paths, ctx, this_val, argc, argv);
 };
 static JSValue open_xrip_binding_class_get_paths(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,13 +67,11 @@ static JSValue open_xrip_binding_class_has_path(JSContext *ctx, JSValueConst thi
 };
 static JSValue open_xrip_binding_class_add_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRIPBinding::add_path, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRIPBinding::add_path, ctx, this_val, argc, argv);
 };
 static JSValue open_xrip_binding_class_remove_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRIPBinding::remove_path, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRIPBinding::remove_path, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry open_xrip_binding_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_action", 1, &open_xrip_binding_class_set_action),
@@ -89,10 +84,10 @@ static const JSCFunctionListEntry open_xrip_binding_class_proto_funcs[] = {
 	JS_CFUNC_DEF("remove_path", 1, &open_xrip_binding_class_remove_path),
 };
 
-void define_open_xrip_binding_property(JSContext *ctx, JSValue obj) {
+static void define_open_xrip_binding_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "action"),
         JS_NewCFunction(ctx, open_xrip_binding_class_get_action, "get_action", 0),
         JS_NewCFunction(ctx, open_xrip_binding_class_set_action, "set_action", 1),
@@ -100,15 +95,16 @@ void define_open_xrip_binding_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "paths"),
         JS_NewCFunction(ctx, open_xrip_binding_class_get_paths, "get_paths", 0),
         JS_NewCFunction(ctx, open_xrip_binding_class_set_paths, "set_paths", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_open_xrip_binding_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_open_xrip_binding_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -124,7 +120,7 @@ static int js_open_xrip_binding_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, OpenXRIPBinding::__class_id, proto);
 
 	define_open_xrip_binding_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_open_xrip_binding_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, open_xrip_binding_class_proto_funcs, _countof(open_xrip_binding_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, open_xrip_binding_class_constructor, "OpenXRIPBinding", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

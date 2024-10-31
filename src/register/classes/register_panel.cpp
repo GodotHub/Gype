@@ -27,13 +27,12 @@ static JSValue panel_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Panel::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Panel *panel_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		panel_class = static_cast<Panel *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		panel_class = static_cast<Panel *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		panel_class = memnew(Panel);
-	}
 	if (!panel_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue panel_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	return obj;
 }
 
-void define_panel_property(JSContext *ctx, JSValue obj) {
+static void define_panel_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_panel_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_panel_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_panel_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Panel::__class_id, proto);
 
 	define_panel_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_panel_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, panel_class_constructor, "Panel", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

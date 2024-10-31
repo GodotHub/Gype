@@ -27,13 +27,12 @@ static JSValue method_tweener_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MethodTweener::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	MethodTweener *method_tweener_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		method_tweener_class = static_cast<MethodTweener *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		method_tweener_class = static_cast<MethodTweener *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		method_tweener_class = memnew(MethodTweener);
-	}
 	if (!method_tweener_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -59,10 +58,11 @@ static const JSCFunctionListEntry method_tweener_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_ease", 1, &method_tweener_class_set_ease),
 };
 
-void define_method_tweener_property(JSContext *ctx, JSValue obj) {
+static void define_method_tweener_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_method_tweener_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_method_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -78,7 +78,7 @@ static int js_method_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, MethodTweener::__class_id, proto);
 
 	define_method_tweener_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_method_tweener_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, method_tweener_class_proto_funcs, _countof(method_tweener_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, method_tweener_class_constructor, "MethodTweener", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

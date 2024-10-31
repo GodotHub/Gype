@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq3c7i6s6fb5e"]
+
+[sub_resource type="TypeScript" id="TypeScript_xhnxr"]
+
+[node name="Node" type="Node"]
+script = SubResource("TypeScript_xhnxr")

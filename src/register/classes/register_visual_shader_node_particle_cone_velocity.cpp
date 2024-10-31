@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_particle_cone_velocity.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue visual_shader_node_particle_cone_velocity_class_constructor(JSCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeParticleConeVelocity::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeParticleConeVelocity *visual_shader_node_particle_cone_velocity_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_particle_cone_velocity_class = static_cast<VisualShaderNodeParticleConeVelocity *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_particle_cone_velocity_class = static_cast<VisualShaderNodeParticleConeVelocity *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_particle_cone_velocity_class = memnew(VisualShaderNodeParticleConeVelocity);
-	}
 	if (!visual_shader_node_particle_cone_velocity_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue visual_shader_node_particle_cone_velocity_class_constructor(JSCon
 	return obj;
 }
 
-void define_visual_shader_node_particle_cone_velocity_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_particle_cone_velocity_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_particle_cone_velocity_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_particle_cone_velocity_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_visual_shader_node_particle_cone_velocity_class_init(JSContext *ct
 	JS_SetClassProto(ctx, VisualShaderNodeParticleConeVelocity::__class_id, proto);
 
 	define_visual_shader_node_particle_cone_velocity_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_particle_cone_velocity_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_particle_cone_velocity_class_constructor, "VisualShaderNodeParticleConeVelocity", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

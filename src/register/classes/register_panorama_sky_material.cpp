@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/panorama_sky_material.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/panorama_sky_material.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue panorama_sky_material_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PanoramaSkyMaterial::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PanoramaSkyMaterial *panorama_sky_material_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		panorama_sky_material_class = static_cast<PanoramaSkyMaterial *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		panorama_sky_material_class = static_cast<PanoramaSkyMaterial *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		panorama_sky_material_class = memnew(PanoramaSkyMaterial);
-	}
 	if (!panorama_sky_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue panorama_sky_material_class_constructor(JSContext *ctx, JSValueCo
 }
 static JSValue panorama_sky_material_class_set_panorama(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PanoramaSkyMaterial::set_panorama, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PanoramaSkyMaterial::set_panorama, ctx, this_val, argc, argv);
 };
 static JSValue panorama_sky_material_class_get_panorama(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue panorama_sky_material_class_get_panorama(JSContext *ctx, JSValueC
 };
 static JSValue panorama_sky_material_class_set_filtering_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PanoramaSkyMaterial::set_filtering_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PanoramaSkyMaterial::set_filtering_enabled, ctx, this_val, argc, argv);
 };
 static JSValue panorama_sky_material_class_is_filtering_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue panorama_sky_material_class_is_filtering_enabled(JSContext *ctx, 
 };
 static JSValue panorama_sky_material_class_set_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PanoramaSkyMaterial::set_energy_multiplier, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PanoramaSkyMaterial::set_energy_multiplier, ctx, this_val, argc, argv);
 };
 static JSValue panorama_sky_material_class_get_energy_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -78,10 +74,10 @@ static const JSCFunctionListEntry panorama_sky_material_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_energy_multiplier", 0, &panorama_sky_material_class_get_energy_multiplier),
 };
 
-void define_panorama_sky_material_property(JSContext *ctx, JSValue obj) {
+static void define_panorama_sky_material_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "panorama"),
         JS_NewCFunction(ctx, panorama_sky_material_class_get_panorama, "get_panorama", 0),
         JS_NewCFunction(ctx, panorama_sky_material_class_set_panorama, "set_panorama", 1),
@@ -89,7 +85,7 @@ void define_panorama_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "filter"),
         JS_NewCFunction(ctx, panorama_sky_material_class_is_filtering_enabled, "is_filtering_enabled", 0),
         JS_NewCFunction(ctx, panorama_sky_material_class_set_filtering_enabled, "set_filtering_enabled", 1),
@@ -97,15 +93,16 @@ void define_panorama_sky_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "energy_multiplier"),
         JS_NewCFunction(ctx, panorama_sky_material_class_get_energy_multiplier, "get_energy_multiplier", 0),
         JS_NewCFunction(ctx, panorama_sky_material_class_set_energy_multiplier, "set_energy_multiplier", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_panorama_sky_material_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_panorama_sky_material_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -121,7 +118,7 @@ static int js_panorama_sky_material_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, PanoramaSkyMaterial::__class_id, proto);
 
 	define_panorama_sky_material_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_panorama_sky_material_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, panorama_sky_material_class_proto_funcs, _countof(panorama_sky_material_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, panorama_sky_material_class_constructor, "PanoramaSkyMaterial", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

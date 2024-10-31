@@ -29,13 +29,12 @@ static JSValue multiplayer_api_extension_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MultiplayerAPIExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	MultiplayerAPIExtension *multiplayer_api_extension_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		multiplayer_api_extension_class = static_cast<MultiplayerAPIExtension *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		multiplayer_api_extension_class = static_cast<MultiplayerAPIExtension *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		multiplayer_api_extension_class = memnew(MultiplayerAPIExtension);
-	}
 	if (!multiplayer_api_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,10 +43,11 @@ static JSValue multiplayer_api_extension_class_constructor(JSContext *ctx, JSVal
 	return obj;
 }
 
-void define_multiplayer_api_extension_property(JSContext *ctx, JSValue obj) {
+static void define_multiplayer_api_extension_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_multiplayer_api_extension_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_multiplayer_api_extension_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -63,7 +63,7 @@ static int js_multiplayer_api_extension_class_init(JSContext *ctx, JSModuleDef *
 	JS_SetClassProto(ctx, MultiplayerAPIExtension::__class_id, proto);
 
 	define_multiplayer_api_extension_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_multiplayer_api_extension_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, multiplayer_api_extension_class_constructor, "MultiplayerAPIExtension", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

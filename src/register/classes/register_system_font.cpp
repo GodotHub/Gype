@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/system_font.hpp>
 #include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/system_font.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue system_font_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SystemFont::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	SystemFont *system_font_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		system_font_class = static_cast<SystemFont *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		system_font_class = static_cast<SystemFont *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		system_font_class = memnew(SystemFont);
-	}
 	if (!system_font_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue system_font_class_constructor(JSContext *ctx, JSValueConst new_ta
 }
 static JSValue system_font_class_set_antialiasing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SystemFont::set_antialiasing, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SystemFont::set_antialiasing, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_get_antialiasing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue system_font_class_get_antialiasing(JSContext *ctx, JSValueConst t
 };
 static JSValue system_font_class_set_disable_embedded_bitmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SystemFont::set_disable_embedded_bitmaps, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SystemFont::set_disable_embedded_bitmaps, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_get_disable_embedded_bitmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue system_font_class_get_disable_embedded_bitmaps(JSContext *ctx, JS
 };
 static JSValue system_font_class_set_generate_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SystemFont::set_generate_mipmaps, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SystemFont::set_generate_mipmaps, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_get_generate_mipmaps(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue system_font_class_get_generate_mipmaps(JSContext *ctx, JSValueCon
 };
 static JSValue system_font_class_set_allow_system_fallback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SystemFont::set_allow_system_fallback, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SystemFont::set_allow_system_fallback, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_is_allow_system_fallback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue system_font_class_is_allow_system_fallback(JSContext *ctx, JSValu
 };
 static JSValue system_font_class_set_force_autohinter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SystemFont::set_force_autohinter, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SystemFont::set_force_autohinter, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_is_force_autohinter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,8 +82,7 @@ static JSValue system_font_class_is_force_autohinter(JSContext *ctx, JSValueCons
 };
 static JSValue system_font_class_set_hinting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SystemFont::set_hinting, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SystemFont::set_hinting, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_get_hinting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -97,8 +90,7 @@ static JSValue system_font_class_get_hinting(JSContext *ctx, JSValueConst this_v
 };
 static JSValue system_font_class_set_subpixel_positioning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SystemFont::set_subpixel_positioning, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SystemFont::set_subpixel_positioning, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_get_subpixel_positioning(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -106,8 +98,7 @@ static JSValue system_font_class_get_subpixel_positioning(JSContext *ctx, JSValu
 };
 static JSValue system_font_class_set_multichannel_signed_distance_field(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SystemFont::set_multichannel_signed_distance_field, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SystemFont::set_multichannel_signed_distance_field, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_is_multichannel_signed_distance_field(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -115,8 +106,7 @@ static JSValue system_font_class_is_multichannel_signed_distance_field(JSContext
 };
 static JSValue system_font_class_set_msdf_pixel_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SystemFont::set_msdf_pixel_range, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SystemFont::set_msdf_pixel_range, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_get_msdf_pixel_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -124,8 +114,7 @@ static JSValue system_font_class_get_msdf_pixel_range(JSContext *ctx, JSValueCon
 };
 static JSValue system_font_class_set_msdf_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SystemFont::set_msdf_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SystemFont::set_msdf_size, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_get_msdf_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -133,8 +122,7 @@ static JSValue system_font_class_get_msdf_size(JSContext *ctx, JSValueConst this
 };
 static JSValue system_font_class_set_oversampling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SystemFont::set_oversampling, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SystemFont::set_oversampling, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_get_oversampling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -146,8 +134,7 @@ static JSValue system_font_class_get_font_names(JSContext *ctx, JSValueConst thi
 };
 static JSValue system_font_class_set_font_names(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SystemFont::set_font_names, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SystemFont::set_font_names, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_get_font_italic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -155,18 +142,15 @@ static JSValue system_font_class_get_font_italic(JSContext *ctx, JSValueConst th
 };
 static JSValue system_font_class_set_font_italic(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SystemFont::set_font_italic, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SystemFont::set_font_italic, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_set_font_weight(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SystemFont::set_font_weight, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SystemFont::set_font_weight, ctx, this_val, argc, argv);
 };
 static JSValue system_font_class_set_font_stretch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SystemFont::set_font_stretch, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SystemFont::set_font_stretch, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry system_font_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_antialiasing", 1, &system_font_class_set_antialiasing),
@@ -199,10 +183,10 @@ static const JSCFunctionListEntry system_font_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_font_stretch", 1, &system_font_class_set_font_stretch),
 };
 
-void define_system_font_property(JSContext *ctx, JSValue obj) {
+static void define_system_font_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "font_names"),
         JS_NewCFunction(ctx, system_font_class_get_font_names, "get_font_names", 0),
         JS_NewCFunction(ctx, system_font_class_set_font_names, "set_font_names", 1),
@@ -210,7 +194,7 @@ void define_system_font_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "font_italic"),
         JS_NewCFunction(ctx, system_font_class_get_font_italic, "get_font_italic", 0),
         JS_NewCFunction(ctx, system_font_class_set_font_italic, "set_font_italic", 1),
@@ -218,7 +202,7 @@ void define_system_font_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "font_weight"),
         JS_UNDEFINED,
         JS_NewCFunction(ctx, system_font_class_set_font_weight, "set_font_weight", 1),
@@ -226,7 +210,7 @@ void define_system_font_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "font_stretch"),
         JS_UNDEFINED,
         JS_NewCFunction(ctx, system_font_class_set_font_stretch, "set_font_stretch", 1),
@@ -234,7 +218,7 @@ void define_system_font_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "antialiasing"),
         JS_NewCFunction(ctx, system_font_class_get_antialiasing, "get_antialiasing", 0),
         JS_NewCFunction(ctx, system_font_class_set_antialiasing, "set_antialiasing", 1),
@@ -242,7 +226,7 @@ void define_system_font_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "generate_mipmaps"),
         JS_NewCFunction(ctx, system_font_class_get_generate_mipmaps, "get_generate_mipmaps", 0),
         JS_NewCFunction(ctx, system_font_class_set_generate_mipmaps, "set_generate_mipmaps", 1),
@@ -250,7 +234,7 @@ void define_system_font_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "disable_embedded_bitmaps"),
         JS_NewCFunction(ctx, system_font_class_get_disable_embedded_bitmaps, "get_disable_embedded_bitmaps", 0),
         JS_NewCFunction(ctx, system_font_class_set_disable_embedded_bitmaps, "set_disable_embedded_bitmaps", 1),
@@ -258,7 +242,7 @@ void define_system_font_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "allow_system_fallback"),
         JS_NewCFunction(ctx, system_font_class_is_allow_system_fallback, "is_allow_system_fallback", 0),
         JS_NewCFunction(ctx, system_font_class_set_allow_system_fallback, "set_allow_system_fallback", 1),
@@ -266,7 +250,7 @@ void define_system_font_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "force_autohinter"),
         JS_NewCFunction(ctx, system_font_class_is_force_autohinter, "is_force_autohinter", 0),
         JS_NewCFunction(ctx, system_font_class_set_force_autohinter, "set_force_autohinter", 1),
@@ -274,7 +258,7 @@ void define_system_font_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "hinting"),
         JS_NewCFunction(ctx, system_font_class_get_hinting, "get_hinting", 0),
         JS_NewCFunction(ctx, system_font_class_set_hinting, "set_hinting", 1),
@@ -282,7 +266,7 @@ void define_system_font_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "subpixel_positioning"),
         JS_NewCFunction(ctx, system_font_class_get_subpixel_positioning, "get_subpixel_positioning", 0),
         JS_NewCFunction(ctx, system_font_class_set_subpixel_positioning, "set_subpixel_positioning", 1),
@@ -290,7 +274,7 @@ void define_system_font_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "multichannel_signed_distance_field"),
         JS_NewCFunction(ctx, system_font_class_is_multichannel_signed_distance_field, "is_multichannel_signed_distance_field", 0),
         JS_NewCFunction(ctx, system_font_class_set_multichannel_signed_distance_field, "set_multichannel_signed_distance_field", 1),
@@ -298,7 +282,7 @@ void define_system_font_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "msdf_pixel_range"),
         JS_NewCFunction(ctx, system_font_class_get_msdf_pixel_range, "get_msdf_pixel_range", 0),
         JS_NewCFunction(ctx, system_font_class_set_msdf_pixel_range, "set_msdf_pixel_range", 1),
@@ -306,7 +290,7 @@ void define_system_font_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "msdf_size"),
         JS_NewCFunction(ctx, system_font_class_get_msdf_size, "get_msdf_size", 0),
         JS_NewCFunction(ctx, system_font_class_set_msdf_size, "set_msdf_size", 1),
@@ -314,15 +298,16 @@ void define_system_font_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "oversampling"),
         JS_NewCFunction(ctx, system_font_class_get_oversampling, "get_oversampling", 0),
         JS_NewCFunction(ctx, system_font_class_set_oversampling, "set_oversampling", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_system_font_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_system_font_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -338,7 +323,7 @@ static int js_system_font_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, SystemFont::__class_id, proto);
 
 	define_system_font_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_system_font_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, system_font_class_proto_funcs, _countof(system_font_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, system_font_class_constructor, "SystemFont", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

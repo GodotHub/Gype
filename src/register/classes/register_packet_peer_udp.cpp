@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/packet_peer_udp.hpp>
 #include <godot_cpp/classes/packet_peer.hpp>
+#include <godot_cpp/classes/packet_peer_udp.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue packet_peer_udp_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PacketPeerUDP::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PacketPeerUDP *packet_peer_udp_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		packet_peer_udp_class = static_cast<PacketPeerUDP *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		packet_peer_udp_class = static_cast<PacketPeerUDP *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		packet_peer_udp_class = memnew(PacketPeerUDP);
-	}
 	if (!packet_peer_udp_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -47,8 +46,7 @@ static JSValue packet_peer_udp_class_bind(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue packet_peer_udp_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PacketPeerUDP::close, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PacketPeerUDP::close, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_udp_class_wait(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -84,8 +82,7 @@ static JSValue packet_peer_udp_class_set_dest_address(JSContext *ctx, JSValueCon
 };
 static JSValue packet_peer_udp_class_set_broadcast_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PacketPeerUDP::set_broadcast_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PacketPeerUDP::set_broadcast_enabled, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_udp_class_join_multicast_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -111,10 +108,11 @@ static const JSCFunctionListEntry packet_peer_udp_class_proto_funcs[] = {
 	JS_CFUNC_DEF("leave_multicast_group", 2, &packet_peer_udp_class_leave_multicast_group),
 };
 
-void define_packet_peer_udp_property(JSContext *ctx, JSValue obj) {
+static void define_packet_peer_udp_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_packet_peer_udp_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_packet_peer_udp_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -130,7 +128,7 @@ static int js_packet_peer_udp_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, PacketPeerUDP::__class_id, proto);
 
 	define_packet_peer_udp_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_packet_peer_udp_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, packet_peer_udp_class_proto_funcs, _countof(packet_peer_udp_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, packet_peer_udp_class_constructor, "PacketPeerUDP", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

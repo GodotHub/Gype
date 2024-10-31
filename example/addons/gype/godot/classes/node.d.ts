@@ -252,14 +252,15 @@ export declare class Node extends GodotObject{
     AUTO_TRANSLATE_MODE_ALWAYS = 1,
     AUTO_TRANSLATE_MODE_DISABLED = 2,
   }
-  public const ready: string = "ready";
-  public const renamed: string = "renamed";
-  public const tree_entered: string = "tree_entered";
-  public const tree_exiting: string = "tree_exiting";
-  public const tree_exited: string = "tree_exited";
-  public const child_entered_tree: string = "child_entered_tree";
-  public const child_exiting_tree: string = "child_exiting_tree";
-  public const child_order_changed: string = "child_order_changed";
-  public const replacing_by: string = "replacing_by";
-  public const editor_description_changed: string = "editor_description_changed";
+  public const ready: Signal;
+  // public const ready: string = "ready";
+  // public const renamed: string = "renamed";
+  // public const tree_entered: string = "tree_entered";
+  // public const tree_exiting: string = "tree_exiting";
+  // public const tree_exited: string = "tree_exited";
+  // public const child_entered_tree: string = "child_entered_tree";
+  // public const child_exiting_tree: string = "child_exiting_tree";
+  // public const child_order_changed: string = "child_order_changed";
+  // public const replacing_by: string = "replacing_by";
+  // public const editor_description_changed: string = "editor_description_changed";
 }

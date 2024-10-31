@@ -27,13 +27,12 @@ static JSValue camera_texture_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CameraTexture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	CameraTexture *camera_texture_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		camera_texture_class = static_cast<CameraTexture *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		camera_texture_class = static_cast<CameraTexture *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		camera_texture_class = memnew(CameraTexture);
-	}
 	if (!camera_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue camera_texture_class_constructor(JSContext *ctx, JSValueConst new
 }
 static JSValue camera_texture_class_set_camera_feed_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CameraTexture::set_camera_feed_id, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CameraTexture::set_camera_feed_id, ctx, this_val, argc, argv);
 };
 static JSValue camera_texture_class_get_camera_feed_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue camera_texture_class_get_camera_feed_id(JSContext *ctx, JSValueCo
 };
 static JSValue camera_texture_class_set_which_feed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CameraTexture::set_which_feed, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CameraTexture::set_which_feed, ctx, this_val, argc, argv);
 };
 static JSValue camera_texture_class_get_which_feed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue camera_texture_class_get_which_feed(JSContext *ctx, JSValueConst 
 };
 static JSValue camera_texture_class_set_camera_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CameraTexture::set_camera_active, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CameraTexture::set_camera_active, ctx, this_val, argc, argv);
 };
 static JSValue camera_texture_class_get_camera_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -77,10 +73,10 @@ static const JSCFunctionListEntry camera_texture_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_camera_active", 0, &camera_texture_class_get_camera_active),
 };
 
-void define_camera_texture_property(JSContext *ctx, JSValue obj) {
+static void define_camera_texture_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "camera_feed_id"),
         JS_NewCFunction(ctx, camera_texture_class_get_camera_feed_id, "get_camera_feed_id", 0),
         JS_NewCFunction(ctx, camera_texture_class_set_camera_feed_id, "set_camera_feed_id", 1),
@@ -88,7 +84,7 @@ void define_camera_texture_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "which_feed"),
         JS_NewCFunction(ctx, camera_texture_class_get_which_feed, "get_which_feed", 0),
         JS_NewCFunction(ctx, camera_texture_class_set_which_feed, "set_which_feed", 1),
@@ -96,15 +92,16 @@ void define_camera_texture_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "camera_is_active"),
         JS_NewCFunction(ctx, camera_texture_class_get_camera_active, "get_camera_active", 0),
         JS_NewCFunction(ctx, camera_texture_class_set_camera_active, "set_camera_active", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_camera_texture_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_camera_texture_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -120,7 +117,7 @@ static int js_camera_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, CameraTexture::__class_id, proto);
 
 	define_camera_texture_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_camera_texture_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, camera_texture_class_proto_funcs, _countof(camera_texture_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, camera_texture_class_constructor, "CameraTexture", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

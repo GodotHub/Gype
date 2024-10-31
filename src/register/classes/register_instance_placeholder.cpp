@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/instance_placeholder.hpp>
-#include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/packed_scene.hpp>
+#include <godot_cpp/classes/instance_placeholder.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue instance_placeholder_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InstancePlaceholder::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	InstancePlaceholder *instance_placeholder_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		instance_placeholder_class = static_cast<InstancePlaceholder *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		instance_placeholder_class = static_cast<InstancePlaceholder *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		instance_placeholder_class = memnew(InstancePlaceholder);
-	}
 	if (!instance_placeholder_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -60,10 +59,11 @@ static const JSCFunctionListEntry instance_placeholder_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_instance_path", 0, &instance_placeholder_class_get_instance_path),
 };
 
-void define_instance_placeholder_property(JSContext *ctx, JSValue obj) {
+static void define_instance_placeholder_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_instance_placeholder_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_instance_placeholder_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -79,7 +79,7 @@ static int js_instance_placeholder_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, InstancePlaceholder::__class_id, proto);
 
 	define_instance_placeholder_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_instance_placeholder_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, instance_placeholder_class_proto_funcs, _countof(instance_placeholder_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, instance_placeholder_class_constructor, "InstancePlaceholder", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

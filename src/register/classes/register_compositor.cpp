@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/compositor_effect.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/compositor_effect.hpp>
 #include <godot_cpp/classes/compositor.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,13 +28,12 @@ static JSValue compositor_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Compositor::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Compositor *compositor_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		compositor_class = static_cast<Compositor *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		compositor_class = static_cast<Compositor *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		compositor_class = memnew(Compositor);
-	}
 	if (!compositor_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue compositor_class_constructor(JSContext *ctx, JSValueConst new_tar
 }
 static JSValue compositor_class_set_compositor_effects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Compositor::set_compositor_effects, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Compositor::set_compositor_effects, ctx, this_val, argc, argv);
 };
 static JSValue compositor_class_get_compositor_effects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,18 +54,19 @@ static const JSCFunctionListEntry compositor_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_compositor_effects", 0, &compositor_class_get_compositor_effects),
 };
 
-void define_compositor_property(JSContext *ctx, JSValue obj) {
+static void define_compositor_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "compositor_effects"),
         JS_NewCFunction(ctx, compositor_class_get_compositor_effects, "get_compositor_effects", 0),
         JS_NewCFunction(ctx, compositor_class_set_compositor_effects, "set_compositor_effects", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_compositor_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_compositor_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -83,7 +82,7 @@ static int js_compositor_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Compositor::__class_id, proto);
 
 	define_compositor_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_compositor_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, compositor_class_proto_funcs, _countof(compositor_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, compositor_class_constructor, "Compositor", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

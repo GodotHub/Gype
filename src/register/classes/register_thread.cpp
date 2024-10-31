@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/thread.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue thread_class_constructor(JSContext *ctx, JSValueConst new_target,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Thread::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Thread *thread_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		thread_class = static_cast<Thread *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		thread_class = static_cast<Thread *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		thread_class = memnew(Thread);
-	}
 	if (!thread_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -62,8 +61,7 @@ static JSValue thread_class_wait_to_finish(JSContext *ctx, JSValueConst this_val
 	return call_builtin_method_ret(&Thread::wait_to_finish, ctx, this_val, argc, argv);
 };
 static JSValue thread_class_set_thread_safety_checks_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_static_method_no_ret(&Thread::set_thread_safety_checks_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_static_method_no_ret(&Thread::set_thread_safety_checks_enabled, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry thread_class_proto_funcs[] = {
 	JS_CFUNC_DEF("start", 2, &thread_class_start),
@@ -76,10 +74,11 @@ static const JSCFunctionListEntry thread_class_static_funcs[] = {
 	JS_CFUNC_DEF("set_thread_safety_checks_enabled", 1, &thread_class_set_thread_safety_checks_enabled),
 };
 
-void define_thread_property(JSContext *ctx, JSValue obj) {
+static void define_thread_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_thread_enum(JSContext *ctx, JSValue proto) {
 	JSValue Priority_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Priority_obj, "PRIORITY_LOW", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Priority_obj, "PRIORITY_NORMAL", JS_NewInt64(ctx, 1));
@@ -100,7 +99,7 @@ static int js_thread_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Thread::__class_id, proto);
 
 	define_thread_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_thread_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, thread_class_proto_funcs, _countof(thread_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, thread_class_constructor, "Thread", 0, JS_CFUNC_constructor, 0);
 	JS_SetPropertyFunctionList(ctx, ctor, thread_class_static_funcs, _countof(thread_class_static_funcs));

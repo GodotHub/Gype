@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_compressor.hpp>
+#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue audio_effect_compressor_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectCompressor::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AudioEffectCompressor *audio_effect_compressor_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		audio_effect_compressor_class = static_cast<AudioEffectCompressor *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		audio_effect_compressor_class = static_cast<AudioEffectCompressor *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		audio_effect_compressor_class = memnew(AudioEffectCompressor);
-	}
 	if (!audio_effect_compressor_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue audio_effect_compressor_class_constructor(JSContext *ctx, JSValue
 }
 static JSValue audio_effect_compressor_class_set_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectCompressor::set_threshold, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectCompressor::set_threshold, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_compressor_class_get_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue audio_effect_compressor_class_get_threshold(JSContext *ctx, JSVal
 };
 static JSValue audio_effect_compressor_class_set_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectCompressor::set_ratio, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectCompressor::set_ratio, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_compressor_class_get_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue audio_effect_compressor_class_get_ratio(JSContext *ctx, JSValueCo
 };
 static JSValue audio_effect_compressor_class_set_gain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectCompressor::set_gain, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectCompressor::set_gain, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_compressor_class_get_gain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue audio_effect_compressor_class_get_gain(JSContext *ctx, JSValueCon
 };
 static JSValue audio_effect_compressor_class_set_attack_us(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectCompressor::set_attack_us, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectCompressor::set_attack_us, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_compressor_class_get_attack_us(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue audio_effect_compressor_class_get_attack_us(JSContext *ctx, JSVal
 };
 static JSValue audio_effect_compressor_class_set_release_ms(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectCompressor::set_release_ms, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectCompressor::set_release_ms, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_compressor_class_get_release_ms(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,8 +82,7 @@ static JSValue audio_effect_compressor_class_get_release_ms(JSContext *ctx, JSVa
 };
 static JSValue audio_effect_compressor_class_set_mix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectCompressor::set_mix, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectCompressor::set_mix, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_compressor_class_get_mix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -97,8 +90,7 @@ static JSValue audio_effect_compressor_class_get_mix(JSContext *ctx, JSValueCons
 };
 static JSValue audio_effect_compressor_class_set_sidechain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectCompressor::set_sidechain, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectCompressor::set_sidechain, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_compressor_class_get_sidechain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -121,10 +113,10 @@ static const JSCFunctionListEntry audio_effect_compressor_class_proto_funcs[] = 
 	JS_CFUNC_DEF("get_sidechain", 0, &audio_effect_compressor_class_get_sidechain),
 };
 
-void define_audio_effect_compressor_property(JSContext *ctx, JSValue obj) {
+static void define_audio_effect_compressor_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "threshold"),
         JS_NewCFunction(ctx, audio_effect_compressor_class_get_threshold, "get_threshold", 0),
         JS_NewCFunction(ctx, audio_effect_compressor_class_set_threshold, "set_threshold", 1),
@@ -132,7 +124,7 @@ void define_audio_effect_compressor_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "ratio"),
         JS_NewCFunction(ctx, audio_effect_compressor_class_get_ratio, "get_ratio", 0),
         JS_NewCFunction(ctx, audio_effect_compressor_class_set_ratio, "set_ratio", 1),
@@ -140,7 +132,7 @@ void define_audio_effect_compressor_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "gain"),
         JS_NewCFunction(ctx, audio_effect_compressor_class_get_gain, "get_gain", 0),
         JS_NewCFunction(ctx, audio_effect_compressor_class_set_gain, "set_gain", 1),
@@ -148,7 +140,7 @@ void define_audio_effect_compressor_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "attack_us"),
         JS_NewCFunction(ctx, audio_effect_compressor_class_get_attack_us, "get_attack_us", 0),
         JS_NewCFunction(ctx, audio_effect_compressor_class_set_attack_us, "set_attack_us", 1),
@@ -156,7 +148,7 @@ void define_audio_effect_compressor_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "release_ms"),
         JS_NewCFunction(ctx, audio_effect_compressor_class_get_release_ms, "get_release_ms", 0),
         JS_NewCFunction(ctx, audio_effect_compressor_class_set_release_ms, "set_release_ms", 1),
@@ -164,7 +156,7 @@ void define_audio_effect_compressor_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "mix"),
         JS_NewCFunction(ctx, audio_effect_compressor_class_get_mix, "get_mix", 0),
         JS_NewCFunction(ctx, audio_effect_compressor_class_set_mix, "set_mix", 1),
@@ -172,15 +164,16 @@ void define_audio_effect_compressor_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sidechain"),
         JS_NewCFunction(ctx, audio_effect_compressor_class_get_sidechain, "get_sidechain", 0),
         JS_NewCFunction(ctx, audio_effect_compressor_class_set_sidechain, "set_sidechain", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_audio_effect_compressor_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_effect_compressor_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -196,7 +189,7 @@ static int js_audio_effect_compressor_class_init(JSContext *ctx, JSModuleDef *m)
 	JS_SetClassProto(ctx, AudioEffectCompressor::__class_id, proto);
 
 	define_audio_effect_compressor_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_audio_effect_compressor_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, audio_effect_compressor_class_proto_funcs, _countof(audio_effect_compressor_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, audio_effect_compressor_class_constructor, "AudioEffectCompressor", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

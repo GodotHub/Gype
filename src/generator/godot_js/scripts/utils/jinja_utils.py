@@ -234,17 +234,19 @@ def set_return(arg_type):
         arg_type = arg_type.split(',')[0]
     if arg_type:
         if is_number(arg_type):
-            return ': ' 'number'
+            return ': number'
         elif is_bool(arg_type):
-            return ': ' 'boolean'
+            return ': boolean'
         elif is_enum(arg_type):
-            return ': ' + 'number'
+            return ': number'
         elif arg_type.find('typedarray:') != -1:
-            return ': ' + 'GDArray'
+            return ': GDArray'
         elif arg_type == 'Array':
-            return ': ' + 'GDArray'
+            return ': GDArray'
         elif arg_type == 'Variant':
-            return ': ' + 'any'
+            return ': any'
+        elif arg_type == 'Object':
+            return ': GodotObject'
         else:
             return ': ' + arg_type
     return ': void'

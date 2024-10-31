@@ -45,7 +45,7 @@ StringName TypeScript::_get_instance_base_type() const {
 }
 
 void *TypeScript::_instance_create(Object *p_for_object) const {
-	String path = get_path().replace("res://", "res://.dist/").replace(".ts", ".js");
+	String path = get_path().replace("res://", "res://.dist/").replace(".tscn", ".js").split("::")[0];
 	Ref<TypeScript> script = ResourceLoader::get_singleton()->load(path);
 	return internal::gdextension_interface_script_instance_create3(&InstanceInfo, memnew(TypeScriptInstance(p_for_object, script.ptr(), false)));
 }

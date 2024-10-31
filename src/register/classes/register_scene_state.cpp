@@ -28,13 +28,12 @@ static JSValue scene_state_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SceneState::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	SceneState *scene_state_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		scene_state_class = static_cast<SceneState *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		scene_state_class = static_cast<SceneState *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		scene_state_class = memnew(SceneState);
-	}
 	if (!scene_state_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -150,10 +149,11 @@ static const JSCFunctionListEntry scene_state_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_connection_unbinds", 1, &scene_state_class_get_connection_unbinds),
 };
 
-void define_scene_state_property(JSContext *ctx, JSValue obj) {
+static void define_scene_state_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_scene_state_enum(JSContext *ctx, JSValue proto) {
 	JSValue GenEditState_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, GenEditState_obj, "GEN_EDIT_STATE_DISABLED", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, GenEditState_obj, "GEN_EDIT_STATE_INSTANCE", JS_NewInt64(ctx, 1));
@@ -175,7 +175,7 @@ static int js_scene_state_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, SceneState::__class_id, proto);
 
 	define_scene_state_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_scene_state_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, scene_state_class_proto_funcs, _countof(scene_state_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, scene_state_class_constructor, "SceneState", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

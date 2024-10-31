@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/editor_debugger_session.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue editor_debugger_session_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorDebuggerSession::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	EditorDebuggerSession *editor_debugger_session_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		editor_debugger_session_class = static_cast<EditorDebuggerSession *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		editor_debugger_session_class = static_cast<EditorDebuggerSession *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		editor_debugger_session_class = memnew(EditorDebuggerSession);
-	}
 	if (!editor_debugger_session_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,13 +43,11 @@ static JSValue editor_debugger_session_class_constructor(JSContext *ctx, JSValue
 }
 static JSValue editor_debugger_session_class_send_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorDebuggerSession::send_message, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorDebuggerSession::send_message, ctx, this_val, argc, argv);
 };
 static JSValue editor_debugger_session_class_toggle_profiler(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorDebuggerSession::toggle_profiler, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorDebuggerSession::toggle_profiler, ctx, this_val, argc, argv);
 };
 static JSValue editor_debugger_session_class_is_breaked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,18 +63,15 @@ static JSValue editor_debugger_session_class_is_active(JSContext *ctx, JSValueCo
 };
 static JSValue editor_debugger_session_class_add_session_tab(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorDebuggerSession::add_session_tab, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorDebuggerSession::add_session_tab, ctx, this_val, argc, argv);
 };
 static JSValue editor_debugger_session_class_remove_session_tab(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorDebuggerSession::remove_session_tab, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorDebuggerSession::remove_session_tab, ctx, this_val, argc, argv);
 };
 static JSValue editor_debugger_session_class_set_breakpoint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorDebuggerSession::set_breakpoint, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorDebuggerSession::set_breakpoint, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_debugger_session_class_proto_funcs[] = {
 	JS_CFUNC_DEF("send_message", 2, &editor_debugger_session_class_send_message),
@@ -89,11 +83,84 @@ static const JSCFunctionListEntry editor_debugger_session_class_proto_funcs[] = 
 	JS_CFUNC_DEF("remove_session_tab", 1, &editor_debugger_session_class_remove_session_tab),
 	JS_CFUNC_DEF("set_breakpoint", 3, &editor_debugger_session_class_set_breakpoint),
 };
-
-void define_editor_debugger_session_property(JSContext *ctx, JSValue obj) {
+static JSValue editor_debugger_session_class_get_started_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	EditorDebuggerSession *opaque = reinterpret_cast<EditorDebuggerSession *>(JS_GetOpaque(this_val, EditorDebuggerSession::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "started_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "started").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "started_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue editor_debugger_session_class_get_stopped_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	EditorDebuggerSession *opaque = reinterpret_cast<EditorDebuggerSession *>(JS_GetOpaque(this_val, EditorDebuggerSession::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "stopped_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "stopped").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "stopped_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue editor_debugger_session_class_get_breaked_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	EditorDebuggerSession *opaque = reinterpret_cast<EditorDebuggerSession *>(JS_GetOpaque(this_val, EditorDebuggerSession::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "breaked_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "breaked").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "breaked_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue editor_debugger_session_class_get_continued_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	EditorDebuggerSession *opaque = reinterpret_cast<EditorDebuggerSession *>(JS_GetOpaque(this_val, EditorDebuggerSession::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "continued_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "continued").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "continued_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_editor_debugger_session_property(JSContext *ctx, JSValue proto) {
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "started"),
+		JS_NewCFunction(ctx, editor_debugger_session_class_get_started_signal, "get_started_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "stopped"),
+		JS_NewCFunction(ctx, editor_debugger_session_class_get_stopped_signal, "get_stopped_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "breaked"),
+		JS_NewCFunction(ctx, editor_debugger_session_class_get_breaked_signal, "get_breaked_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "continued"),
+		JS_NewCFunction(ctx, editor_debugger_session_class_get_continued_signal, "get_continued_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+}
+
+static void define_editor_debugger_session_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_debugger_session_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -109,7 +176,7 @@ static int js_editor_debugger_session_class_init(JSContext *ctx, JSModuleDef *m)
 	JS_SetClassProto(ctx, EditorDebuggerSession::__class_id, proto);
 
 	define_editor_debugger_session_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_editor_debugger_session_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_debugger_session_class_proto_funcs, _countof(editor_debugger_session_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, editor_debugger_session_class_constructor, "EditorDebuggerSession", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/physics_ray_query_parameters3d.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue physics_ray_query_parameters3d_class_constructor(JSContext *ctx, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsRayQueryParameters3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PhysicsRayQueryParameters3D *physics_ray_query_parameters3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		physics_ray_query_parameters3d_class = static_cast<PhysicsRayQueryParameters3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		physics_ray_query_parameters3d_class = static_cast<PhysicsRayQueryParameters3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		physics_ray_query_parameters3d_class = memnew(PhysicsRayQueryParameters3D);
-	}
 	if (!physics_ray_query_parameters3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue physics_ray_query_parameters3d_class_constructor(JSContext *ctx, 
 }
 static JSValue physics_ray_query_parameters3d_class_set_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsRayQueryParameters3D::set_from, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsRayQueryParameters3D::set_from, ctx, this_val, argc, argv);
 };
 static JSValue physics_ray_query_parameters3d_class_get_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue physics_ray_query_parameters3d_class_get_from(JSContext *ctx, JSV
 };
 static JSValue physics_ray_query_parameters3d_class_set_to(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsRayQueryParameters3D::set_to, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsRayQueryParameters3D::set_to, ctx, this_val, argc, argv);
 };
 static JSValue physics_ray_query_parameters3d_class_get_to(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue physics_ray_query_parameters3d_class_get_to(JSContext *ctx, JSVal
 };
 static JSValue physics_ray_query_parameters3d_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsRayQueryParameters3D::set_collision_mask, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsRayQueryParameters3D::set_collision_mask, ctx, this_val, argc, argv);
 };
 static JSValue physics_ray_query_parameters3d_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue physics_ray_query_parameters3d_class_get_collision_mask(JSContext
 };
 static JSValue physics_ray_query_parameters3d_class_set_exclude(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsRayQueryParameters3D::set_exclude, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsRayQueryParameters3D::set_exclude, ctx, this_val, argc, argv);
 };
 static JSValue physics_ray_query_parameters3d_class_get_exclude(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue physics_ray_query_parameters3d_class_get_exclude(JSContext *ctx, 
 };
 static JSValue physics_ray_query_parameters3d_class_set_collide_with_bodies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsRayQueryParameters3D::set_collide_with_bodies, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsRayQueryParameters3D::set_collide_with_bodies, ctx, this_val, argc, argv);
 };
 static JSValue physics_ray_query_parameters3d_class_is_collide_with_bodies_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,8 +82,7 @@ static JSValue physics_ray_query_parameters3d_class_is_collide_with_bodies_enabl
 };
 static JSValue physics_ray_query_parameters3d_class_set_collide_with_areas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsRayQueryParameters3D::set_collide_with_areas, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsRayQueryParameters3D::set_collide_with_areas, ctx, this_val, argc, argv);
 };
 static JSValue physics_ray_query_parameters3d_class_is_collide_with_areas_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -97,8 +90,7 @@ static JSValue physics_ray_query_parameters3d_class_is_collide_with_areas_enable
 };
 static JSValue physics_ray_query_parameters3d_class_set_hit_from_inside(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsRayQueryParameters3D::set_hit_from_inside, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsRayQueryParameters3D::set_hit_from_inside, ctx, this_val, argc, argv);
 };
 static JSValue physics_ray_query_parameters3d_class_is_hit_from_inside_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -106,8 +98,7 @@ static JSValue physics_ray_query_parameters3d_class_is_hit_from_inside_enabled(J
 };
 static JSValue physics_ray_query_parameters3d_class_set_hit_back_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsRayQueryParameters3D::set_hit_back_faces, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsRayQueryParameters3D::set_hit_back_faces, ctx, this_val, argc, argv);
 };
 static JSValue physics_ray_query_parameters3d_class_is_hit_back_faces_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -138,10 +129,10 @@ static const JSCFunctionListEntry physics_ray_query_parameters3d_class_static_fu
 	JS_CFUNC_DEF("create", 4, &physics_ray_query_parameters3d_class_create),
 };
 
-void define_physics_ray_query_parameters3d_property(JSContext *ctx, JSValue obj) {
+static void define_physics_ray_query_parameters3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "from"),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_get_from, "get_from", 0),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_from, "set_from", 1),
@@ -149,7 +140,7 @@ void define_physics_ray_query_parameters3d_property(JSContext *ctx, JSValue obj)
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "to"),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_get_to, "get_to", 0),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_to, "set_to", 1),
@@ -157,7 +148,7 @@ void define_physics_ray_query_parameters3d_property(JSContext *ctx, JSValue obj)
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "collision_mask"),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_get_collision_mask, "get_collision_mask", 0),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_collision_mask, "set_collision_mask", 1),
@@ -165,7 +156,7 @@ void define_physics_ray_query_parameters3d_property(JSContext *ctx, JSValue obj)
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "exclude"),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_get_exclude, "get_exclude", 0),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_exclude, "set_exclude", 1),
@@ -173,7 +164,7 @@ void define_physics_ray_query_parameters3d_property(JSContext *ctx, JSValue obj)
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "collide_with_bodies"),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_is_collide_with_bodies_enabled, "is_collide_with_bodies_enabled", 0),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_collide_with_bodies, "set_collide_with_bodies", 1),
@@ -181,7 +172,7 @@ void define_physics_ray_query_parameters3d_property(JSContext *ctx, JSValue obj)
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "collide_with_areas"),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_is_collide_with_areas_enabled, "is_collide_with_areas_enabled", 0),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_collide_with_areas, "set_collide_with_areas", 1),
@@ -189,7 +180,7 @@ void define_physics_ray_query_parameters3d_property(JSContext *ctx, JSValue obj)
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "hit_from_inside"),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_is_hit_from_inside_enabled, "is_hit_from_inside_enabled", 0),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_hit_from_inside, "set_hit_from_inside", 1),
@@ -197,15 +188,16 @@ void define_physics_ray_query_parameters3d_property(JSContext *ctx, JSValue obj)
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "hit_back_faces"),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_is_hit_back_faces_enabled, "is_hit_back_faces_enabled", 0),
         JS_NewCFunction(ctx, physics_ray_query_parameters3d_class_set_hit_back_faces, "set_hit_back_faces", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_physics_ray_query_parameters3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_physics_ray_query_parameters3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -221,7 +213,7 @@ static int js_physics_ray_query_parameters3d_class_init(JSContext *ctx, JSModule
 	JS_SetClassProto(ctx, PhysicsRayQueryParameters3D::__class_id, proto);
 
 	define_physics_ray_query_parameters3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_physics_ray_query_parameters3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, physics_ray_query_parameters3d_class_proto_funcs, _countof(physics_ray_query_parameters3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, physics_ray_query_parameters3d_class_constructor, "PhysicsRayQueryParameters3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetPropertyFunctionList(ctx, ctor, physics_ray_query_parameters3d_class_static_funcs, _countof(physics_ray_query_parameters3d_class_static_funcs));

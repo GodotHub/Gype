@@ -27,13 +27,12 @@ static JSValue missing_resource_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MissingResource::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	MissingResource *missing_resource_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		missing_resource_class = static_cast<MissingResource *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		missing_resource_class = static_cast<MissingResource *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		missing_resource_class = memnew(MissingResource);
-	}
 	if (!missing_resource_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue missing_resource_class_constructor(JSContext *ctx, JSValueConst n
 }
 static JSValue missing_resource_class_set_original_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MissingResource::set_original_class, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&MissingResource::set_original_class, ctx, this_val, argc, argv);
 };
 static JSValue missing_resource_class_get_original_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue missing_resource_class_get_original_class(JSContext *ctx, JSValue
 };
 static JSValue missing_resource_class_set_recording_properties(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MissingResource::set_recording_properties, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&MissingResource::set_recording_properties, ctx, this_val, argc, argv);
 };
 static JSValue missing_resource_class_is_recording_properties(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,10 +63,10 @@ static const JSCFunctionListEntry missing_resource_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_recording_properties", 0, &missing_resource_class_is_recording_properties),
 };
 
-void define_missing_resource_property(JSContext *ctx, JSValue obj) {
+static void define_missing_resource_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "original_class"),
         JS_NewCFunction(ctx, missing_resource_class_get_original_class, "get_original_class", 0),
         JS_NewCFunction(ctx, missing_resource_class_set_original_class, "set_original_class", 1),
@@ -77,15 +74,16 @@ void define_missing_resource_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "recording_properties"),
         JS_NewCFunction(ctx, missing_resource_class_is_recording_properties, "is_recording_properties", 0),
         JS_NewCFunction(ctx, missing_resource_class_set_recording_properties, "set_recording_properties", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_missing_resource_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_missing_resource_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -101,7 +99,7 @@ static int js_missing_resource_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, MissingResource::__class_id, proto);
 
 	define_missing_resource_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_missing_resource_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, missing_resource_class_proto_funcs, _countof(missing_resource_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, missing_resource_class_constructor, "MissingResource", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

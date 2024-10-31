@@ -26,13 +26,12 @@ static JSValue object_class_constructor(JSContext *ctx, JSValueConst new_target,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Object::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Object *object_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		object_class = static_cast<Object *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		object_class = static_cast<Object *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		object_class = memnew(Object);
-	}
 	if (!object_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -50,8 +49,7 @@ static JSValue object_class_is_class(JSContext *ctx, JSValueConst this_val, int 
 };
 static JSValue object_class_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Object::set, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Object::set, ctx, this_val, argc, argv);
 };
 static JSValue object_class_get(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -59,8 +57,7 @@ static JSValue object_class_get(JSContext *ctx, JSValueConst this_val, int argc,
 };
 static JSValue object_class_set_indexed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Object::set_indexed, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Object::set_indexed, ctx, this_val, argc, argv);
 };
 static JSValue object_class_get_indexed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -84,8 +81,7 @@ static JSValue object_class_property_get_revert(JSContext *ctx, JSValueConst thi
 };
 static JSValue object_class_notification(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Object::notification, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Object::notification, ctx, this_val, argc, argv);
 };
 static JSValue object_class_to_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -97,8 +93,7 @@ static JSValue object_class_get_instance_id(JSContext *ctx, JSValueConst this_va
 };
 static JSValue object_class_set_script(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Object::set_script, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Object::set_script, ctx, this_val, argc, argv);
 };
 static JSValue object_class_get_script(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -106,13 +101,11 @@ static JSValue object_class_get_script(JSContext *ctx, JSValueConst this_val, in
 };
 static JSValue object_class_set_meta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Object::set_meta, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Object::set_meta, ctx, this_val, argc, argv);
 };
 static JSValue object_class_remove_meta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Object::remove_meta, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Object::remove_meta, ctx, this_val, argc, argv);
 };
 static JSValue object_class_get_meta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -128,8 +121,7 @@ static JSValue object_class_get_meta_list(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue object_class_add_user_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Object::add_user_signal, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Object::add_user_signal, ctx, this_val, argc, argv);
 };
 static JSValue object_class_has_user_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -137,13 +129,11 @@ static JSValue object_class_has_user_signal(JSContext *ctx, JSValueConst this_va
 };
 static JSValue object_class_remove_user_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Object::remove_user_signal, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Object::remove_user_signal, ctx, this_val, argc, argv);
 };
 static JSValue object_class_set_deferred(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Object::set_deferred, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Object::set_deferred, ctx, this_val, argc, argv);
 };
 static JSValue object_class_callv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -179,8 +169,7 @@ static JSValue object_class_connect(JSContext *ctx, JSValueConst this_val, int a
 };
 static JSValue object_class_disconnect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Object::disconnect, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Object::disconnect, ctx, this_val, argc, argv);
 };
 static JSValue object_class_is_connected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -188,8 +177,7 @@ static JSValue object_class_is_connected(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue object_class_set_block_signals(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Object::set_block_signals, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Object::set_block_signals, ctx, this_val, argc, argv);
 };
 static JSValue object_class_is_blocking_signals(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -197,13 +185,11 @@ static JSValue object_class_is_blocking_signals(JSContext *ctx, JSValueConst thi
 };
 static JSValue object_class_notify_property_list_changed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Object::notify_property_list_changed, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Object::notify_property_list_changed, ctx, this_val, argc, argv);
 };
 static JSValue object_class_set_message_translation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Object::set_message_translation, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Object::set_message_translation, ctx, this_val, argc, argv);
 };
 static JSValue object_class_can_translate_messages(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -223,8 +209,7 @@ static JSValue object_class_is_queued_for_deletion(JSContext *ctx, JSValueConst 
 };
 static JSValue object_class_cancel_free(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Object::cancel_free, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Object::cancel_free, ctx, this_val, argc, argv);
 };
 static JSValue object_class_emit_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -286,11 +271,48 @@ static const JSCFunctionListEntry object_class_proto_funcs[] = {
 	JS_CFUNC_DEF("call", 1, &object_class_call),
 	JS_CFUNC_DEF("call_deferred", 1, &object_class_call_deferred),
 };
-
-void define_object_property(JSContext *ctx, JSValue obj) {
+static JSValue object_class_get_script_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	Object *opaque = reinterpret_cast<Object *>(JS_GetOpaque(this_val, Object::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "script_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "script_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "script_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue object_class_get_property_list_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	Object *opaque = reinterpret_cast<Object *>(JS_GetOpaque(this_val, Object::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "property_list_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "property_list_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "property_list_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_object_property(JSContext *ctx, JSValue proto) {
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "script_changed"),
+		JS_NewCFunction(ctx, object_class_get_script_changed_signal, "get_script_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "property_list_changed"),
+		JS_NewCFunction(ctx, object_class_get_property_list_changed_signal, "get_property_list_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+}
+
+static void define_object_enum(JSContext *ctx, JSValue proto) {
 	JSValue ConnectFlags_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, ConnectFlags_obj, "CONNECT_DEFERRED", JS_NewInt64(ctx, 1));
 	JS_SetPropertyStr(ctx, ConnectFlags_obj, "CONNECT_PERSIST", JS_NewInt64(ctx, 2));
@@ -310,7 +332,7 @@ static int js_object_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Object::__class_id, proto);
 
 	define_object_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_object_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, object_class_proto_funcs, _countof(object_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, object_class_constructor, "Object", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

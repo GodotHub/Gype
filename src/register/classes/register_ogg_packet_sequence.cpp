@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ogg_packet_sequence.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/ogg_packet_sequence.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue ogg_packet_sequence_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OggPacketSequence::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	OggPacketSequence *ogg_packet_sequence_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		ogg_packet_sequence_class = static_cast<OggPacketSequence *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		ogg_packet_sequence_class = static_cast<OggPacketSequence *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		ogg_packet_sequence_class = memnew(OggPacketSequence);
-	}
 	if (!ogg_packet_sequence_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue ogg_packet_sequence_class_constructor(JSContext *ctx, JSValueCons
 }
 static JSValue ogg_packet_sequence_class_set_packet_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OggPacketSequence::set_packet_data, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OggPacketSequence::set_packet_data, ctx, this_val, argc, argv);
 };
 static JSValue ogg_packet_sequence_class_get_packet_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue ogg_packet_sequence_class_get_packet_data(JSContext *ctx, JSValue
 };
 static JSValue ogg_packet_sequence_class_set_packet_granule_positions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OggPacketSequence::set_packet_granule_positions, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OggPacketSequence::set_packet_granule_positions, ctx, this_val, argc, argv);
 };
 static JSValue ogg_packet_sequence_class_get_packet_granule_positions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue ogg_packet_sequence_class_get_packet_granule_positions(JSContext 
 };
 static JSValue ogg_packet_sequence_class_set_sampling_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OggPacketSequence::set_sampling_rate, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OggPacketSequence::set_sampling_rate, ctx, this_val, argc, argv);
 };
 static JSValue ogg_packet_sequence_class_get_sampling_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -82,10 +78,10 @@ static const JSCFunctionListEntry ogg_packet_sequence_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_length", 0, &ogg_packet_sequence_class_get_length),
 };
 
-void define_ogg_packet_sequence_property(JSContext *ctx, JSValue obj) {
+static void define_ogg_packet_sequence_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "packet_data"),
         JS_NewCFunction(ctx, ogg_packet_sequence_class_get_packet_data, "get_packet_data", 0),
         JS_NewCFunction(ctx, ogg_packet_sequence_class_set_packet_data, "set_packet_data", 1),
@@ -93,7 +89,7 @@ void define_ogg_packet_sequence_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "granule_positions"),
         JS_NewCFunction(ctx, ogg_packet_sequence_class_get_packet_granule_positions, "get_packet_granule_positions", 0),
         JS_NewCFunction(ctx, ogg_packet_sequence_class_set_packet_granule_positions, "set_packet_granule_positions", 1),
@@ -101,15 +97,16 @@ void define_ogg_packet_sequence_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sampling_rate"),
         JS_NewCFunction(ctx, ogg_packet_sequence_class_get_sampling_rate, "get_sampling_rate", 0),
         JS_NewCFunction(ctx, ogg_packet_sequence_class_set_sampling_rate, "set_sampling_rate", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_ogg_packet_sequence_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_ogg_packet_sequence_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -125,7 +122,7 @@ static int js_ogg_packet_sequence_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, OggPacketSequence::__class_id, proto);
 
 	define_ogg_packet_sequence_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_ogg_packet_sequence_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, ogg_packet_sequence_class_proto_funcs, _countof(ogg_packet_sequence_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, ogg_packet_sequence_class_constructor, "OggPacketSequence", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

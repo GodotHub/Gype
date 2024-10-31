@@ -27,13 +27,12 @@ static JSValue xr_anchor3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRAnchor3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	XRAnchor3D *xr_anchor3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		xr_anchor3d_class = static_cast<XRAnchor3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		xr_anchor3d_class = static_cast<XRAnchor3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		xr_anchor3d_class = memnew(XRAnchor3D);
-	}
 	if (!xr_anchor3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -54,10 +53,11 @@ static const JSCFunctionListEntry xr_anchor3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_plane", 0, &xr_anchor3d_class_get_plane),
 };
 
-void define_xr_anchor3d_property(JSContext *ctx, JSValue obj) {
+static void define_xr_anchor3d_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_xr_anchor3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_xr_anchor3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -73,7 +73,7 @@ static int js_xr_anchor3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, XRAnchor3D::__class_id, proto);
 
 	define_xr_anchor3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_xr_anchor3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_anchor3d_class_proto_funcs, _countof(xr_anchor3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, xr_anchor3d_class_constructor, "XRAnchor3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

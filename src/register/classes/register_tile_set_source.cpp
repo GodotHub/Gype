@@ -27,13 +27,12 @@ static JSValue tile_set_source_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TileSetSource::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	TileSetSource *tile_set_source_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		tile_set_source_class = static_cast<TileSetSource *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		tile_set_source_class = static_cast<TileSetSource *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		tile_set_source_class = memnew(TileSetSource);
-	}
 	if (!tile_set_source_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -74,10 +73,11 @@ static const JSCFunctionListEntry tile_set_source_class_proto_funcs[] = {
 	JS_CFUNC_DEF("has_alternative_tile", 2, &tile_set_source_class_has_alternative_tile),
 };
 
-void define_tile_set_source_property(JSContext *ctx, JSValue obj) {
+static void define_tile_set_source_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_tile_set_source_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_tile_set_source_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -93,7 +93,7 @@ static int js_tile_set_source_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, TileSetSource::__class_id, proto);
 
 	define_tile_set_source_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_tile_set_source_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, tile_set_source_class_proto_funcs, _countof(tile_set_source_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, tile_set_source_class_constructor, "TileSetSource", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

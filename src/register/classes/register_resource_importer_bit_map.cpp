@@ -27,13 +27,12 @@ static JSValue resource_importer_bit_map_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterBitMap::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ResourceImporterBitMap *resource_importer_bit_map_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		resource_importer_bit_map_class = static_cast<ResourceImporterBitMap *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		resource_importer_bit_map_class = static_cast<ResourceImporterBitMap *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		resource_importer_bit_map_class = memnew(ResourceImporterBitMap);
-	}
 	if (!resource_importer_bit_map_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue resource_importer_bit_map_class_constructor(JSContext *ctx, JSVal
 	return obj;
 }
 
-void define_resource_importer_bit_map_property(JSContext *ctx, JSValue obj) {
+static void define_resource_importer_bit_map_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_resource_importer_bit_map_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_resource_importer_bit_map_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_resource_importer_bit_map_class_init(JSContext *ctx, JSModuleDef *
 	JS_SetClassProto(ctx, ResourceImporterBitMap::__class_id, proto);
 
 	define_resource_importer_bit_map_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_resource_importer_bit_map_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, resource_importer_bit_map_class_constructor, "ResourceImporterBitMap", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

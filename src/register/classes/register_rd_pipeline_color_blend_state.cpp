@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_pipeline_color_blend_state.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/rd_pipeline_color_blend_state.hpp>
 #include <godot_cpp/classes/rd_pipeline_color_blend_state_attachment.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,13 +28,12 @@ static JSValue rd_pipeline_color_blend_state_class_constructor(JSContext *ctx, J
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDPipelineColorBlendState::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	RDPipelineColorBlendState *rd_pipeline_color_blend_state_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		rd_pipeline_color_blend_state_class = static_cast<RDPipelineColorBlendState *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		rd_pipeline_color_blend_state_class = static_cast<RDPipelineColorBlendState *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		rd_pipeline_color_blend_state_class = memnew(RDPipelineColorBlendState);
-	}
 	if (!rd_pipeline_color_blend_state_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue rd_pipeline_color_blend_state_class_constructor(JSContext *ctx, J
 }
 static JSValue rd_pipeline_color_blend_state_class_set_enable_logic_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineColorBlendState::set_enable_logic_op, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineColorBlendState::set_enable_logic_op, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_color_blend_state_class_get_enable_logic_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue rd_pipeline_color_blend_state_class_get_enable_logic_op(JSContext
 };
 static JSValue rd_pipeline_color_blend_state_class_set_logic_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineColorBlendState::set_logic_op, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineColorBlendState::set_logic_op, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_color_blend_state_class_get_logic_op(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue rd_pipeline_color_blend_state_class_get_logic_op(JSContext *ctx, 
 };
 static JSValue rd_pipeline_color_blend_state_class_set_blend_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineColorBlendState::set_blend_constant, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineColorBlendState::set_blend_constant, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_color_blend_state_class_get_blend_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -71,8 +67,7 @@ static JSValue rd_pipeline_color_blend_state_class_get_blend_constant(JSContext 
 };
 static JSValue rd_pipeline_color_blend_state_class_set_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineColorBlendState::set_attachments, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineColorBlendState::set_attachments, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_color_blend_state_class_get_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -89,10 +84,10 @@ static const JSCFunctionListEntry rd_pipeline_color_blend_state_class_proto_func
 	JS_CFUNC_DEF("get_attachments", 0, &rd_pipeline_color_blend_state_class_get_attachments),
 };
 
-void define_rd_pipeline_color_blend_state_property(JSContext *ctx, JSValue obj) {
+static void define_rd_pipeline_color_blend_state_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "enable_logic_op"),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_class_get_enable_logic_op, "get_enable_logic_op", 0),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_class_set_enable_logic_op, "set_enable_logic_op", 1),
@@ -100,7 +95,7 @@ void define_rd_pipeline_color_blend_state_property(JSContext *ctx, JSValue obj) 
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "logic_op"),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_class_get_logic_op, "get_logic_op", 0),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_class_set_logic_op, "set_logic_op", 1),
@@ -108,7 +103,7 @@ void define_rd_pipeline_color_blend_state_property(JSContext *ctx, JSValue obj) 
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "blend_constant"),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_class_get_blend_constant, "get_blend_constant", 0),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_class_set_blend_constant, "set_blend_constant", 1),
@@ -116,15 +111,16 @@ void define_rd_pipeline_color_blend_state_property(JSContext *ctx, JSValue obj) 
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "attachments"),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_class_get_attachments, "get_attachments", 0),
         JS_NewCFunction(ctx, rd_pipeline_color_blend_state_class_set_attachments, "set_attachments", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_rd_pipeline_color_blend_state_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_rd_pipeline_color_blend_state_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -140,7 +136,7 @@ static int js_rd_pipeline_color_blend_state_class_init(JSContext *ctx, JSModuleD
 	JS_SetClassProto(ctx, RDPipelineColorBlendState::__class_id, proto);
 
 	define_rd_pipeline_color_blend_state_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_rd_pipeline_color_blend_state_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, rd_pipeline_color_blend_state_class_proto_funcs, _countof(rd_pipeline_color_blend_state_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, rd_pipeline_color_blend_state_class_constructor, "RDPipelineColorBlendState", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -28,13 +28,12 @@ static JSValue resource_importer_ogg_vorbis_class_constructor(JSContext *ctx, JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterOggVorbis::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ResourceImporterOggVorbis *resource_importer_ogg_vorbis_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		resource_importer_ogg_vorbis_class = static_cast<ResourceImporterOggVorbis *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		resource_importer_ogg_vorbis_class = static_cast<ResourceImporterOggVorbis *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		resource_importer_ogg_vorbis_class = memnew(ResourceImporterOggVorbis);
-	}
 	if (!resource_importer_ogg_vorbis_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -53,10 +52,11 @@ static const JSCFunctionListEntry resource_importer_ogg_vorbis_class_static_func
 	JS_CFUNC_DEF("load_from_file", 1, &resource_importer_ogg_vorbis_class_load_from_file),
 };
 
-void define_resource_importer_ogg_vorbis_property(JSContext *ctx, JSValue obj) {
+static void define_resource_importer_ogg_vorbis_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_resource_importer_ogg_vorbis_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_resource_importer_ogg_vorbis_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -72,7 +72,7 @@ static int js_resource_importer_ogg_vorbis_class_init(JSContext *ctx, JSModuleDe
 	JS_SetClassProto(ctx, ResourceImporterOggVorbis::__class_id, proto);
 
 	define_resource_importer_ogg_vorbis_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_resource_importer_ogg_vorbis_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, resource_importer_ogg_vorbis_class_constructor, "ResourceImporterOggVorbis", 0, JS_CFUNC_constructor, 0);
 	JS_SetPropertyFunctionList(ctx, ctor, resource_importer_ogg_vorbis_class_static_funcs, _countof(resource_importer_ogg_vorbis_class_static_funcs));
 	JS_SetConstructor(ctx, ctor, proto);

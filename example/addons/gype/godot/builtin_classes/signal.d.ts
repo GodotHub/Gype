@@ -4,16 +4,15 @@ declare global {
 export declare class Signal {
   constructor();
   constructor(_from: Signal);
-  constructor(_object: Object, _signal: StringName);
-  constructor(_object: Object, _signal: String);
-  public is_null(): void;
-  public get_object(): void;
-  public get_object_id(): void;
-  public get_name(): void;
-  public connect(_callable: Callable, _flags: number): void;
+  constructor(_object: Object, _signal: String | StringName | string);
+  public is_null(): boolean;
+  public get_object(): GodotObject;
+  public get_object_id(): number;
+  public get_name(): StringName;
+  public connect(_callable: Callable, _flags: number): number;
   public disconnect(_callable: Callable): void;
-  public is_connected(_callable: Callable): void;
-  public get_connections(): void;
+  public is_connected(_callable: Callable): boolean;
+  public get_connections(): GDArray;
   public emit(): void;
 }
 }

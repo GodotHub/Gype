@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/visual_shader_node_particle_mesh_emitter.hpp>
 #include <godot_cpp/classes/visual_shader_node_particle_emitter.hpp>
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue visual_shader_node_particle_mesh_emitter_class_constructor(JSCont
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeParticleMeshEmitter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeParticleMeshEmitter *visual_shader_node_particle_mesh_emitter_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_particle_mesh_emitter_class = static_cast<VisualShaderNodeParticleMeshEmitter *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_particle_mesh_emitter_class = static_cast<VisualShaderNodeParticleMeshEmitter *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_particle_mesh_emitter_class = memnew(VisualShaderNodeParticleMeshEmitter);
-	}
 	if (!visual_shader_node_particle_mesh_emitter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue visual_shader_node_particle_mesh_emitter_class_constructor(JSCont
 }
 static JSValue visual_shader_node_particle_mesh_emitter_class_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeParticleMeshEmitter::set_mesh, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeParticleMeshEmitter::set_mesh, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_particle_mesh_emitter_class_get_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue visual_shader_node_particle_mesh_emitter_class_get_mesh(JSContext
 };
 static JSValue visual_shader_node_particle_mesh_emitter_class_set_use_all_surfaces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeParticleMeshEmitter::set_use_all_surfaces, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeParticleMeshEmitter::set_use_all_surfaces, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_particle_mesh_emitter_class_is_use_all_surfaces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue visual_shader_node_particle_mesh_emitter_class_is_use_all_surface
 };
 static JSValue visual_shader_node_particle_mesh_emitter_class_set_surface_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeParticleMeshEmitter::set_surface_index, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeParticleMeshEmitter::set_surface_index, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_particle_mesh_emitter_class_get_surface_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -78,10 +74,10 @@ static const JSCFunctionListEntry visual_shader_node_particle_mesh_emitter_class
 	JS_CFUNC_DEF("get_surface_index", 0, &visual_shader_node_particle_mesh_emitter_class_get_surface_index),
 };
 
-void define_visual_shader_node_particle_mesh_emitter_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_particle_mesh_emitter_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "mesh"),
         JS_NewCFunction(ctx, visual_shader_node_particle_mesh_emitter_class_get_mesh, "get_mesh", 0),
         JS_NewCFunction(ctx, visual_shader_node_particle_mesh_emitter_class_set_mesh, "set_mesh", 1),
@@ -89,7 +85,7 @@ void define_visual_shader_node_particle_mesh_emitter_property(JSContext *ctx, JS
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "use_all_surfaces"),
         JS_NewCFunction(ctx, visual_shader_node_particle_mesh_emitter_class_is_use_all_surfaces, "is_use_all_surfaces", 0),
         JS_NewCFunction(ctx, visual_shader_node_particle_mesh_emitter_class_set_use_all_surfaces, "set_use_all_surfaces", 1),
@@ -97,15 +93,16 @@ void define_visual_shader_node_particle_mesh_emitter_property(JSContext *ctx, JS
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "surface_index"),
         JS_NewCFunction(ctx, visual_shader_node_particle_mesh_emitter_class_get_surface_index, "get_surface_index", 0),
         JS_NewCFunction(ctx, visual_shader_node_particle_mesh_emitter_class_set_surface_index, "set_surface_index", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_particle_mesh_emitter_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_particle_mesh_emitter_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -121,7 +118,7 @@ static int js_visual_shader_node_particle_mesh_emitter_class_init(JSContext *ctx
 	JS_SetClassProto(ctx, VisualShaderNodeParticleMeshEmitter::__class_id, proto);
 
 	define_visual_shader_node_particle_mesh_emitter_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_particle_mesh_emitter_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_particle_mesh_emitter_class_proto_funcs, _countof(visual_shader_node_particle_mesh_emitter_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_particle_mesh_emitter_class_constructor, "VisualShaderNodeParticleMeshEmitter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

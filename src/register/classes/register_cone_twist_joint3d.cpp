@@ -27,13 +27,12 @@ static JSValue cone_twist_joint3d_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ConeTwistJoint3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ConeTwistJoint3D *cone_twist_joint3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		cone_twist_joint3d_class = static_cast<ConeTwistJoint3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		cone_twist_joint3d_class = static_cast<ConeTwistJoint3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		cone_twist_joint3d_class = memnew(ConeTwistJoint3D);
-	}
 	if (!cone_twist_joint3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue cone_twist_joint3d_class_constructor(JSContext *ctx, JSValueConst
 }
 static JSValue cone_twist_joint3d_class_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ConeTwistJoint3D::set_param, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ConeTwistJoint3D::set_param, ctx, this_val, argc, argv);
 };
 static JSValue cone_twist_joint3d_class_get_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,10 +53,10 @@ static const JSCFunctionListEntry cone_twist_joint3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_param", 1, &cone_twist_joint3d_class_get_param),
 };
 
-void define_cone_twist_joint3d_property(JSContext *ctx, JSValue obj) {
+static void define_cone_twist_joint3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "swing_span"),
         JS_NewCFunction(ctx, cone_twist_joint3d_class_get_param, "get_param", 0),
         JS_NewCFunction(ctx, cone_twist_joint3d_class_set_param, "set_param", 1),
@@ -66,7 +64,7 @@ void define_cone_twist_joint3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "twist_span"),
         JS_NewCFunction(ctx, cone_twist_joint3d_class_get_param, "get_param", 0),
         JS_NewCFunction(ctx, cone_twist_joint3d_class_set_param, "set_param", 1),
@@ -74,7 +72,7 @@ void define_cone_twist_joint3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "bias"),
         JS_NewCFunction(ctx, cone_twist_joint3d_class_get_param, "get_param", 0),
         JS_NewCFunction(ctx, cone_twist_joint3d_class_set_param, "set_param", 1),
@@ -82,7 +80,7 @@ void define_cone_twist_joint3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "softness"),
         JS_NewCFunction(ctx, cone_twist_joint3d_class_get_param, "get_param", 0),
         JS_NewCFunction(ctx, cone_twist_joint3d_class_set_param, "set_param", 1),
@@ -90,15 +88,16 @@ void define_cone_twist_joint3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "relaxation"),
         JS_NewCFunction(ctx, cone_twist_joint3d_class_get_param, "get_param", 0),
         JS_NewCFunction(ctx, cone_twist_joint3d_class_set_param, "set_param", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_cone_twist_joint3d_enum(JSContext *ctx, JSValue proto) {
 	JSValue Param_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Param_obj, "PARAM_SWING_SPAN", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Param_obj, "PARAM_TWIST_SPAN", JS_NewInt64(ctx, 1));
@@ -122,7 +121,7 @@ static int js_cone_twist_joint3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ConeTwistJoint3D::__class_id, proto);
 
 	define_cone_twist_joint3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_cone_twist_joint3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, cone_twist_joint3d_class_proto_funcs, _countof(cone_twist_joint3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, cone_twist_joint3d_class_constructor, "ConeTwistJoint3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/physics_test_motion_parameters2d.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue physics_test_motion_parameters2d_class_constructor(JSContext *ctx
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsTestMotionParameters2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PhysicsTestMotionParameters2D *physics_test_motion_parameters2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		physics_test_motion_parameters2d_class = static_cast<PhysicsTestMotionParameters2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		physics_test_motion_parameters2d_class = static_cast<PhysicsTestMotionParameters2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		physics_test_motion_parameters2d_class = memnew(PhysicsTestMotionParameters2D);
-	}
 	if (!physics_test_motion_parameters2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -47,8 +46,7 @@ static JSValue physics_test_motion_parameters2d_class_get_from(JSContext *ctx, J
 };
 static JSValue physics_test_motion_parameters2d_class_set_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsTestMotionParameters2D::set_from, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsTestMotionParameters2D::set_from, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_parameters2d_class_get_motion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,8 +54,7 @@ static JSValue physics_test_motion_parameters2d_class_get_motion(JSContext *ctx,
 };
 static JSValue physics_test_motion_parameters2d_class_set_motion(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsTestMotionParameters2D::set_motion, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsTestMotionParameters2D::set_motion, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_parameters2d_class_get_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -65,8 +62,7 @@ static JSValue physics_test_motion_parameters2d_class_get_margin(JSContext *ctx,
 };
 static JSValue physics_test_motion_parameters2d_class_set_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsTestMotionParameters2D::set_margin, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsTestMotionParameters2D::set_margin, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_parameters2d_class_is_collide_separation_ray_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -74,8 +70,7 @@ static JSValue physics_test_motion_parameters2d_class_is_collide_separation_ray_
 };
 static JSValue physics_test_motion_parameters2d_class_set_collide_separation_ray_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsTestMotionParameters2D::set_collide_separation_ray_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsTestMotionParameters2D::set_collide_separation_ray_enabled, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_parameters2d_class_get_exclude_bodies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -83,8 +78,7 @@ static JSValue physics_test_motion_parameters2d_class_get_exclude_bodies(JSConte
 };
 static JSValue physics_test_motion_parameters2d_class_set_exclude_bodies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsTestMotionParameters2D::set_exclude_bodies, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsTestMotionParameters2D::set_exclude_bodies, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_parameters2d_class_get_exclude_objects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -92,8 +86,7 @@ static JSValue physics_test_motion_parameters2d_class_get_exclude_objects(JSCont
 };
 static JSValue physics_test_motion_parameters2d_class_set_exclude_objects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsTestMotionParameters2D::set_exclude_objects, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsTestMotionParameters2D::set_exclude_objects, ctx, this_val, argc, argv);
 };
 static JSValue physics_test_motion_parameters2d_class_is_recovery_as_collision_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -101,8 +94,7 @@ static JSValue physics_test_motion_parameters2d_class_is_recovery_as_collision_e
 };
 static JSValue physics_test_motion_parameters2d_class_set_recovery_as_collision_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsTestMotionParameters2D::set_recovery_as_collision_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsTestMotionParameters2D::set_recovery_as_collision_enabled, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry physics_test_motion_parameters2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_from", 0, &physics_test_motion_parameters2d_class_get_from),
@@ -121,10 +113,10 @@ static const JSCFunctionListEntry physics_test_motion_parameters2d_class_proto_f
 	JS_CFUNC_DEF("set_recovery_as_collision_enabled", 1, &physics_test_motion_parameters2d_class_set_recovery_as_collision_enabled),
 };
 
-void define_physics_test_motion_parameters2d_property(JSContext *ctx, JSValue obj) {
+static void define_physics_test_motion_parameters2d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "from"),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_get_from, "get_from", 0),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_from, "set_from", 1),
@@ -132,7 +124,7 @@ void define_physics_test_motion_parameters2d_property(JSContext *ctx, JSValue ob
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "motion"),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_get_motion, "get_motion", 0),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_motion, "set_motion", 1),
@@ -140,7 +132,7 @@ void define_physics_test_motion_parameters2d_property(JSContext *ctx, JSValue ob
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "margin"),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_get_margin, "get_margin", 0),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_margin, "set_margin", 1),
@@ -148,7 +140,7 @@ void define_physics_test_motion_parameters2d_property(JSContext *ctx, JSValue ob
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "collide_separation_ray"),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_is_collide_separation_ray_enabled, "is_collide_separation_ray_enabled", 0),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_collide_separation_ray_enabled, "set_collide_separation_ray_enabled", 1),
@@ -156,7 +148,7 @@ void define_physics_test_motion_parameters2d_property(JSContext *ctx, JSValue ob
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "exclude_bodies"),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_get_exclude_bodies, "get_exclude_bodies", 0),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_exclude_bodies, "set_exclude_bodies", 1),
@@ -164,7 +156,7 @@ void define_physics_test_motion_parameters2d_property(JSContext *ctx, JSValue ob
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "exclude_objects"),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_get_exclude_objects, "get_exclude_objects", 0),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_exclude_objects, "set_exclude_objects", 1),
@@ -172,15 +164,16 @@ void define_physics_test_motion_parameters2d_property(JSContext *ctx, JSValue ob
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "recovery_as_collision"),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_is_recovery_as_collision_enabled, "is_recovery_as_collision_enabled", 0),
         JS_NewCFunction(ctx, physics_test_motion_parameters2d_class_set_recovery_as_collision_enabled, "set_recovery_as_collision_enabled", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_physics_test_motion_parameters2d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_physics_test_motion_parameters2d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -196,7 +189,7 @@ static int js_physics_test_motion_parameters2d_class_init(JSContext *ctx, JSModu
 	JS_SetClassProto(ctx, PhysicsTestMotionParameters2D::__class_id, proto);
 
 	define_physics_test_motion_parameters2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_physics_test_motion_parameters2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, physics_test_motion_parameters2d_class_proto_funcs, _countof(physics_test_motion_parameters2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, physics_test_motion_parameters2d_class_constructor, "PhysicsTestMotionParameters2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

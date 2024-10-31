@@ -27,13 +27,12 @@ static JSValue fbx_document_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, FBXDocument::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	FBXDocument *fbx_document_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		fbx_document_class = static_cast<FBXDocument *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		fbx_document_class = static_cast<FBXDocument *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		fbx_document_class = memnew(FBXDocument);
-	}
 	if (!fbx_document_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue fbx_document_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 
-void define_fbx_document_property(JSContext *ctx, JSValue obj) {
+static void define_fbx_document_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_fbx_document_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_fbx_document_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_fbx_document_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, FBXDocument::__class_id, proto);
 
 	define_fbx_document_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_fbx_document_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, fbx_document_class_constructor, "FBXDocument", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

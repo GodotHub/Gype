@@ -27,13 +27,12 @@ static JSValue rd_pipeline_specialization_constant_class_constructor(JSContext *
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDPipelineSpecializationConstant::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	RDPipelineSpecializationConstant *rd_pipeline_specialization_constant_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		rd_pipeline_specialization_constant_class = static_cast<RDPipelineSpecializationConstant *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		rd_pipeline_specialization_constant_class = static_cast<RDPipelineSpecializationConstant *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		rd_pipeline_specialization_constant_class = memnew(RDPipelineSpecializationConstant);
-	}
 	if (!rd_pipeline_specialization_constant_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue rd_pipeline_specialization_constant_class_constructor(JSContext *
 }
 static JSValue rd_pipeline_specialization_constant_class_set_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineSpecializationConstant::set_value, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineSpecializationConstant::set_value, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_specialization_constant_class_get_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue rd_pipeline_specialization_constant_class_get_value(JSContext *ct
 };
 static JSValue rd_pipeline_specialization_constant_class_set_constant_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineSpecializationConstant::set_constant_id, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineSpecializationConstant::set_constant_id, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_specialization_constant_class_get_constant_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,10 +63,10 @@ static const JSCFunctionListEntry rd_pipeline_specialization_constant_class_prot
 	JS_CFUNC_DEF("get_constant_id", 0, &rd_pipeline_specialization_constant_class_get_constant_id),
 };
 
-void define_rd_pipeline_specialization_constant_property(JSContext *ctx, JSValue obj) {
+static void define_rd_pipeline_specialization_constant_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "value"),
         JS_NewCFunction(ctx, rd_pipeline_specialization_constant_class_get_value, "get_value", 0),
         JS_NewCFunction(ctx, rd_pipeline_specialization_constant_class_set_value, "set_value", 1),
@@ -77,15 +74,16 @@ void define_rd_pipeline_specialization_constant_property(JSContext *ctx, JSValue
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "constant_id"),
         JS_NewCFunction(ctx, rd_pipeline_specialization_constant_class_get_constant_id, "get_constant_id", 0),
         JS_NewCFunction(ctx, rd_pipeline_specialization_constant_class_set_constant_id, "set_constant_id", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_rd_pipeline_specialization_constant_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_rd_pipeline_specialization_constant_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -101,7 +99,7 @@ static int js_rd_pipeline_specialization_constant_class_init(JSContext *ctx, JSM
 	JS_SetClassProto(ctx, RDPipelineSpecializationConstant::__class_id, proto);
 
 	define_rd_pipeline_specialization_constant_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_rd_pipeline_specialization_constant_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, rd_pipeline_specialization_constant_class_proto_funcs, _countof(rd_pipeline_specialization_constant_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, rd_pipeline_specialization_constant_class_constructor, "RDPipelineSpecializationConstant", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

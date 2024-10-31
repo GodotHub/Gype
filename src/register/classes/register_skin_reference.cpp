@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skin_reference.hpp>
 #include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/skin_reference.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue skin_reference_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkinReference::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	SkinReference *skin_reference_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		skin_reference_class = static_cast<SkinReference *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		skin_reference_class = static_cast<SkinReference *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		skin_reference_class = memnew(SkinReference);
-	}
 	if (!skin_reference_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -55,10 +54,11 @@ static const JSCFunctionListEntry skin_reference_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_skin", 0, &skin_reference_class_get_skin),
 };
 
-void define_skin_reference_property(JSContext *ctx, JSValue obj) {
+static void define_skin_reference_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_skin_reference_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_skin_reference_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -74,7 +74,7 @@ static int js_skin_reference_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, SkinReference::__class_id, proto);
 
 	define_skin_reference_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_skin_reference_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, skin_reference_class_proto_funcs, _countof(skin_reference_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, skin_reference_class_constructor, "SkinReference", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

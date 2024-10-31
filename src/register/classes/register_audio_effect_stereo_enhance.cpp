@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_stereo_enhance.hpp>
+#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue audio_effect_stereo_enhance_class_constructor(JSContext *ctx, JSV
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectStereoEnhance::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AudioEffectStereoEnhance *audio_effect_stereo_enhance_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		audio_effect_stereo_enhance_class = static_cast<AudioEffectStereoEnhance *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		audio_effect_stereo_enhance_class = static_cast<AudioEffectStereoEnhance *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		audio_effect_stereo_enhance_class = memnew(AudioEffectStereoEnhance);
-	}
 	if (!audio_effect_stereo_enhance_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue audio_effect_stereo_enhance_class_constructor(JSContext *ctx, JSV
 }
 static JSValue audio_effect_stereo_enhance_class_set_pan_pullout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectStereoEnhance::set_pan_pullout, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectStereoEnhance::set_pan_pullout, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_stereo_enhance_class_get_pan_pullout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue audio_effect_stereo_enhance_class_get_pan_pullout(JSContext *ctx,
 };
 static JSValue audio_effect_stereo_enhance_class_set_time_pullout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectStereoEnhance::set_time_pullout, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectStereoEnhance::set_time_pullout, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_stereo_enhance_class_get_time_pullout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue audio_effect_stereo_enhance_class_get_time_pullout(JSContext *ctx
 };
 static JSValue audio_effect_stereo_enhance_class_set_surround(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectStereoEnhance::set_surround, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectStereoEnhance::set_surround, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_stereo_enhance_class_get_surround(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -77,10 +73,10 @@ static const JSCFunctionListEntry audio_effect_stereo_enhance_class_proto_funcs[
 	JS_CFUNC_DEF("get_surround", 0, &audio_effect_stereo_enhance_class_get_surround),
 };
 
-void define_audio_effect_stereo_enhance_property(JSContext *ctx, JSValue obj) {
+static void define_audio_effect_stereo_enhance_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "pan_pullout"),
         JS_NewCFunction(ctx, audio_effect_stereo_enhance_class_get_pan_pullout, "get_pan_pullout", 0),
         JS_NewCFunction(ctx, audio_effect_stereo_enhance_class_set_pan_pullout, "set_pan_pullout", 1),
@@ -88,7 +84,7 @@ void define_audio_effect_stereo_enhance_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "time_pullout_ms"),
         JS_NewCFunction(ctx, audio_effect_stereo_enhance_class_get_time_pullout, "get_time_pullout", 0),
         JS_NewCFunction(ctx, audio_effect_stereo_enhance_class_set_time_pullout, "set_time_pullout", 1),
@@ -96,15 +92,16 @@ void define_audio_effect_stereo_enhance_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "surround"),
         JS_NewCFunction(ctx, audio_effect_stereo_enhance_class_get_surround, "get_surround", 0),
         JS_NewCFunction(ctx, audio_effect_stereo_enhance_class_set_surround, "set_surround", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_audio_effect_stereo_enhance_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_effect_stereo_enhance_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -120,7 +117,7 @@ static int js_audio_effect_stereo_enhance_class_init(JSContext *ctx, JSModuleDef
 	JS_SetClassProto(ctx, AudioEffectStereoEnhance::__class_id, proto);
 
 	define_audio_effect_stereo_enhance_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_audio_effect_stereo_enhance_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, audio_effect_stereo_enhance_class_proto_funcs, _countof(audio_effect_stereo_enhance_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, audio_effect_stereo_enhance_class_constructor, "AudioEffectStereoEnhance", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

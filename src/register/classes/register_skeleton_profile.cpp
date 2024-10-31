@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/skeleton_profile.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue skeleton_profile_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkeletonProfile::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	SkeletonProfile *skeleton_profile_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		skeleton_profile_class = static_cast<SkeletonProfile *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		skeleton_profile_class = static_cast<SkeletonProfile *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		skeleton_profile_class = memnew(SkeletonProfile);
-	}
 	if (!skeleton_profile_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue skeleton_profile_class_constructor(JSContext *ctx, JSValueConst n
 }
 static JSValue skeleton_profile_class_set_root_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonProfile::set_root_bone, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonProfile::set_root_bone, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_profile_class_get_root_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue skeleton_profile_class_get_root_bone(JSContext *ctx, JSValueConst
 };
 static JSValue skeleton_profile_class_set_scale_base_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonProfile::set_scale_base_bone, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonProfile::set_scale_base_bone, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_profile_class_get_scale_base_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue skeleton_profile_class_get_scale_base_bone(JSContext *ctx, JSValu
 };
 static JSValue skeleton_profile_class_set_group_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonProfile::set_group_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonProfile::set_group_size, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_profile_class_get_group_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -75,8 +71,7 @@ static JSValue skeleton_profile_class_get_group_name(JSContext *ctx, JSValueCons
 };
 static JSValue skeleton_profile_class_set_group_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonProfile::set_group_name, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonProfile::set_group_name, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_profile_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -84,13 +79,11 @@ static JSValue skeleton_profile_class_get_texture(JSContext *ctx, JSValueConst t
 };
 static JSValue skeleton_profile_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonProfile::set_texture, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonProfile::set_texture, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_profile_class_set_bone_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonProfile::set_bone_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonProfile::set_bone_size, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_profile_class_get_bone_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -106,8 +99,7 @@ static JSValue skeleton_profile_class_get_bone_name(JSContext *ctx, JSValueConst
 };
 static JSValue skeleton_profile_class_set_bone_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonProfile::set_bone_name, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonProfile::set_bone_name, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_profile_class_get_bone_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -115,8 +107,7 @@ static JSValue skeleton_profile_class_get_bone_parent(JSContext *ctx, JSValueCon
 };
 static JSValue skeleton_profile_class_set_bone_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonProfile::set_bone_parent, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonProfile::set_bone_parent, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_profile_class_get_tail_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -124,8 +115,7 @@ static JSValue skeleton_profile_class_get_tail_direction(JSContext *ctx, JSValue
 };
 static JSValue skeleton_profile_class_set_tail_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonProfile::set_tail_direction, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonProfile::set_tail_direction, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_profile_class_get_bone_tail(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -133,8 +123,7 @@ static JSValue skeleton_profile_class_get_bone_tail(JSContext *ctx, JSValueConst
 };
 static JSValue skeleton_profile_class_set_bone_tail(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonProfile::set_bone_tail, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonProfile::set_bone_tail, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_profile_class_get_reference_pose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -142,8 +131,7 @@ static JSValue skeleton_profile_class_get_reference_pose(JSContext *ctx, JSValue
 };
 static JSValue skeleton_profile_class_set_reference_pose(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonProfile::set_reference_pose, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonProfile::set_reference_pose, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_profile_class_get_handle_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -151,8 +139,7 @@ static JSValue skeleton_profile_class_get_handle_offset(JSContext *ctx, JSValueC
 };
 static JSValue skeleton_profile_class_set_handle_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonProfile::set_handle_offset, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonProfile::set_handle_offset, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_profile_class_get_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -160,8 +147,7 @@ static JSValue skeleton_profile_class_get_group(JSContext *ctx, JSValueConst thi
 };
 static JSValue skeleton_profile_class_set_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonProfile::set_group, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonProfile::set_group, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_profile_class_is_required(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -169,8 +155,7 @@ static JSValue skeleton_profile_class_is_required(JSContext *ctx, JSValueConst t
 };
 static JSValue skeleton_profile_class_set_required(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonProfile::set_required, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonProfile::set_required, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry skeleton_profile_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_root_bone", 1, &skeleton_profile_class_set_root_bone),
@@ -203,11 +188,21 @@ static const JSCFunctionListEntry skeleton_profile_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_required", 1, &skeleton_profile_class_is_required),
 	JS_CFUNC_DEF("set_required", 2, &skeleton_profile_class_set_required),
 };
+static JSValue skeleton_profile_class_get_profile_updated_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	SkeletonProfile *opaque = reinterpret_cast<SkeletonProfile *>(JS_GetOpaque(this_val, SkeletonProfile::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "profile_updated_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "profile_updated").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "profile_updated_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_skeleton_profile_property(JSContext *ctx, JSValue obj) {
+static void define_skeleton_profile_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "root_bone"),
         JS_NewCFunction(ctx, skeleton_profile_class_get_root_bone, "get_root_bone", 0),
         JS_NewCFunction(ctx, skeleton_profile_class_set_root_bone, "set_root_bone", 1),
@@ -215,7 +210,7 @@ void define_skeleton_profile_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "scale_base_bone"),
         JS_NewCFunction(ctx, skeleton_profile_class_get_scale_base_bone, "get_scale_base_bone", 0),
         JS_NewCFunction(ctx, skeleton_profile_class_set_scale_base_bone, "set_scale_base_bone", 1),
@@ -223,7 +218,7 @@ void define_skeleton_profile_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "group_size"),
         JS_NewCFunction(ctx, skeleton_profile_class_get_group_size, "get_group_size", 0),
         JS_NewCFunction(ctx, skeleton_profile_class_set_group_size, "set_group_size", 1),
@@ -231,15 +226,24 @@ void define_skeleton_profile_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "bone_size"),
         JS_NewCFunction(ctx, skeleton_profile_class_get_bone_size, "get_bone_size", 0),
         JS_NewCFunction(ctx, skeleton_profile_class_set_bone_size, "set_bone_size", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "profile_updated"),
+		JS_NewCFunction(ctx, skeleton_profile_class_get_profile_updated_signal, "get_profile_updated_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_skeleton_profile_enum(JSContext *ctx, JSValue proto) {
 	JSValue TailDirection_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, TailDirection_obj, "TAIL_DIRECTION_AVERAGE_CHILDREN", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, TailDirection_obj, "TAIL_DIRECTION_SPECIFIC_CHILD", JS_NewInt64(ctx, 1));
@@ -260,7 +264,7 @@ static int js_skeleton_profile_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, SkeletonProfile::__class_id, proto);
 
 	define_skeleton_profile_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_skeleton_profile_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, skeleton_profile_class_proto_funcs, _countof(skeleton_profile_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, skeleton_profile_class_constructor, "SkeletonProfile", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

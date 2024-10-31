@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/triangle_mesh.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/label3d.hpp>
 #include <godot_cpp/classes/geometry_instance3d.hpp>
-#include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/triangle_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue label3d_class_constructor(JSContext *ctx, JSValueConst new_target
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Label3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Label3D *label3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		label3d_class = static_cast<Label3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		label3d_class = static_cast<Label3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		label3d_class = memnew(Label3D);
-	}
 	if (!label3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -45,8 +44,7 @@ static JSValue label3d_class_constructor(JSContext *ctx, JSValueConst new_target
 }
 static JSValue label3d_class_set_horizontal_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_horizontal_alignment, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_horizontal_alignment, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_horizontal_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -54,8 +52,7 @@ static JSValue label3d_class_get_horizontal_alignment(JSContext *ctx, JSValueCon
 };
 static JSValue label3d_class_set_vertical_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_vertical_alignment, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_vertical_alignment, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_vertical_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -63,8 +60,7 @@ static JSValue label3d_class_get_vertical_alignment(JSContext *ctx, JSValueConst
 };
 static JSValue label3d_class_set_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_modulate, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_modulate, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -72,8 +68,7 @@ static JSValue label3d_class_get_modulate(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue label3d_class_set_outline_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_outline_modulate, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_outline_modulate, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_outline_modulate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -81,8 +76,7 @@ static JSValue label3d_class_get_outline_modulate(JSContext *ctx, JSValueConst t
 };
 static JSValue label3d_class_set_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_text, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_text, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -90,8 +84,7 @@ static JSValue label3d_class_get_text(JSContext *ctx, JSValueConst this_val, int
 };
 static JSValue label3d_class_set_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_text_direction, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_text_direction, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_text_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -99,8 +92,7 @@ static JSValue label3d_class_get_text_direction(JSContext *ctx, JSValueConst thi
 };
 static JSValue label3d_class_set_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_language, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_language, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_language(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -108,8 +100,7 @@ static JSValue label3d_class_get_language(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue label3d_class_set_structured_text_bidi_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_structured_text_bidi_override, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_structured_text_bidi_override, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_structured_text_bidi_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -117,8 +108,7 @@ static JSValue label3d_class_get_structured_text_bidi_override(JSContext *ctx, J
 };
 static JSValue label3d_class_set_structured_text_bidi_override_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_structured_text_bidi_override_options, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_structured_text_bidi_override_options, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_structured_text_bidi_override_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -126,8 +116,7 @@ static JSValue label3d_class_get_structured_text_bidi_override_options(JSContext
 };
 static JSValue label3d_class_set_uppercase(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_uppercase, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_uppercase, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_is_uppercase(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -135,8 +124,7 @@ static JSValue label3d_class_is_uppercase(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue label3d_class_set_render_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_render_priority, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_render_priority, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_render_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -144,8 +132,7 @@ static JSValue label3d_class_get_render_priority(JSContext *ctx, JSValueConst th
 };
 static JSValue label3d_class_set_outline_render_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_outline_render_priority, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_outline_render_priority, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_outline_render_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -153,8 +140,7 @@ static JSValue label3d_class_get_outline_render_priority(JSContext *ctx, JSValue
 };
 static JSValue label3d_class_set_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_font, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_font, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -162,8 +148,7 @@ static JSValue label3d_class_get_font(JSContext *ctx, JSValueConst this_val, int
 };
 static JSValue label3d_class_set_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_font_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_font_size, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -171,8 +156,7 @@ static JSValue label3d_class_get_font_size(JSContext *ctx, JSValueConst this_val
 };
 static JSValue label3d_class_set_outline_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_outline_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_outline_size, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_outline_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -180,8 +164,7 @@ static JSValue label3d_class_get_outline_size(JSContext *ctx, JSValueConst this_
 };
 static JSValue label3d_class_set_line_spacing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_line_spacing, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_line_spacing, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_line_spacing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -189,8 +172,7 @@ static JSValue label3d_class_get_line_spacing(JSContext *ctx, JSValueConst this_
 };
 static JSValue label3d_class_set_autowrap_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_autowrap_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_autowrap_mode, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_autowrap_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -198,8 +180,7 @@ static JSValue label3d_class_get_autowrap_mode(JSContext *ctx, JSValueConst this
 };
 static JSValue label3d_class_set_justification_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_justification_flags, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_justification_flags, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_justification_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -207,8 +188,7 @@ static JSValue label3d_class_get_justification_flags(JSContext *ctx, JSValueCons
 };
 static JSValue label3d_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_width, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_width, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -216,8 +196,7 @@ static JSValue label3d_class_get_width(JSContext *ctx, JSValueConst this_val, in
 };
 static JSValue label3d_class_set_pixel_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_pixel_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_pixel_size, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_pixel_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -225,8 +204,7 @@ static JSValue label3d_class_get_pixel_size(JSContext *ctx, JSValueConst this_va
 };
 static JSValue label3d_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_offset, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_offset, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -234,8 +212,7 @@ static JSValue label3d_class_get_offset(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue label3d_class_set_draw_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_draw_flag, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_draw_flag, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_draw_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -243,8 +220,7 @@ static JSValue label3d_class_get_draw_flag(JSContext *ctx, JSValueConst this_val
 };
 static JSValue label3d_class_set_billboard_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_billboard_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_billboard_mode, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_billboard_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -252,8 +228,7 @@ static JSValue label3d_class_get_billboard_mode(JSContext *ctx, JSValueConst thi
 };
 static JSValue label3d_class_set_alpha_cut_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_alpha_cut_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_alpha_cut_mode, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_alpha_cut_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -261,8 +236,7 @@ static JSValue label3d_class_get_alpha_cut_mode(JSContext *ctx, JSValueConst thi
 };
 static JSValue label3d_class_set_alpha_scissor_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_alpha_scissor_threshold, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_alpha_scissor_threshold, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_alpha_scissor_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -270,8 +244,7 @@ static JSValue label3d_class_get_alpha_scissor_threshold(JSContext *ctx, JSValue
 };
 static JSValue label3d_class_set_alpha_hash_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_alpha_hash_scale, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_alpha_hash_scale, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_alpha_hash_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -279,8 +252,7 @@ static JSValue label3d_class_get_alpha_hash_scale(JSContext *ctx, JSValueConst t
 };
 static JSValue label3d_class_set_alpha_antialiasing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_alpha_antialiasing, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_alpha_antialiasing, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_alpha_antialiasing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -288,8 +260,7 @@ static JSValue label3d_class_get_alpha_antialiasing(JSContext *ctx, JSValueConst
 };
 static JSValue label3d_class_set_alpha_antialiasing_edge(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_alpha_antialiasing_edge, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_alpha_antialiasing_edge, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_alpha_antialiasing_edge(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -297,8 +268,7 @@ static JSValue label3d_class_get_alpha_antialiasing_edge(JSContext *ctx, JSValue
 };
 static JSValue label3d_class_set_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Label3D::set_texture_filter, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Label3D::set_texture_filter, ctx, this_val, argc, argv);
 };
 static JSValue label3d_class_get_texture_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -370,10 +340,10 @@ static const JSCFunctionListEntry label3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("generate_triangle_mesh", 0, &label3d_class_generate_triangle_mesh),
 };
 
-void define_label3d_property(JSContext *ctx, JSValue obj) {
+static void define_label3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "pixel_size"),
         JS_NewCFunction(ctx, label3d_class_get_pixel_size, "get_pixel_size", 0),
         JS_NewCFunction(ctx, label3d_class_set_pixel_size, "set_pixel_size", 1),
@@ -381,7 +351,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "offset"),
         JS_NewCFunction(ctx, label3d_class_get_offset, "get_offset", 0),
         JS_NewCFunction(ctx, label3d_class_set_offset, "set_offset", 1),
@@ -389,7 +359,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "billboard"),
         JS_NewCFunction(ctx, label3d_class_get_billboard_mode, "get_billboard_mode", 0),
         JS_NewCFunction(ctx, label3d_class_set_billboard_mode, "set_billboard_mode", 1),
@@ -397,7 +367,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "shaded"),
         JS_NewCFunction(ctx, label3d_class_get_draw_flag, "get_draw_flag", 0),
         JS_NewCFunction(ctx, label3d_class_set_draw_flag, "set_draw_flag", 1),
@@ -405,7 +375,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "double_sided"),
         JS_NewCFunction(ctx, label3d_class_get_draw_flag, "get_draw_flag", 0),
         JS_NewCFunction(ctx, label3d_class_set_draw_flag, "set_draw_flag", 1),
@@ -413,7 +383,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "no_depth_test"),
         JS_NewCFunction(ctx, label3d_class_get_draw_flag, "get_draw_flag", 0),
         JS_NewCFunction(ctx, label3d_class_set_draw_flag, "set_draw_flag", 1),
@@ -421,7 +391,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "fixed_size"),
         JS_NewCFunction(ctx, label3d_class_get_draw_flag, "get_draw_flag", 0),
         JS_NewCFunction(ctx, label3d_class_set_draw_flag, "set_draw_flag", 1),
@@ -429,7 +399,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "alpha_cut"),
         JS_NewCFunction(ctx, label3d_class_get_alpha_cut_mode, "get_alpha_cut_mode", 0),
         JS_NewCFunction(ctx, label3d_class_set_alpha_cut_mode, "set_alpha_cut_mode", 1),
@@ -437,7 +407,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "alpha_scissor_threshold"),
         JS_NewCFunction(ctx, label3d_class_get_alpha_scissor_threshold, "get_alpha_scissor_threshold", 0),
         JS_NewCFunction(ctx, label3d_class_set_alpha_scissor_threshold, "set_alpha_scissor_threshold", 1),
@@ -445,7 +415,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "alpha_hash_scale"),
         JS_NewCFunction(ctx, label3d_class_get_alpha_hash_scale, "get_alpha_hash_scale", 0),
         JS_NewCFunction(ctx, label3d_class_set_alpha_hash_scale, "set_alpha_hash_scale", 1),
@@ -453,7 +423,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "alpha_antialiasing_mode"),
         JS_NewCFunction(ctx, label3d_class_get_alpha_antialiasing, "get_alpha_antialiasing", 0),
         JS_NewCFunction(ctx, label3d_class_set_alpha_antialiasing, "set_alpha_antialiasing", 1),
@@ -461,7 +431,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "alpha_antialiasing_edge"),
         JS_NewCFunction(ctx, label3d_class_get_alpha_antialiasing_edge, "get_alpha_antialiasing_edge", 0),
         JS_NewCFunction(ctx, label3d_class_set_alpha_antialiasing_edge, "set_alpha_antialiasing_edge", 1),
@@ -469,7 +439,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texture_filter"),
         JS_NewCFunction(ctx, label3d_class_get_texture_filter, "get_texture_filter", 0),
         JS_NewCFunction(ctx, label3d_class_set_texture_filter, "set_texture_filter", 1),
@@ -477,7 +447,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "render_priority"),
         JS_NewCFunction(ctx, label3d_class_get_render_priority, "get_render_priority", 0),
         JS_NewCFunction(ctx, label3d_class_set_render_priority, "set_render_priority", 1),
@@ -485,7 +455,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "outline_render_priority"),
         JS_NewCFunction(ctx, label3d_class_get_outline_render_priority, "get_outline_render_priority", 0),
         JS_NewCFunction(ctx, label3d_class_set_outline_render_priority, "set_outline_render_priority", 1),
@@ -493,7 +463,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "modulate"),
         JS_NewCFunction(ctx, label3d_class_get_modulate, "get_modulate", 0),
         JS_NewCFunction(ctx, label3d_class_set_modulate, "set_modulate", 1),
@@ -501,7 +471,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "outline_modulate"),
         JS_NewCFunction(ctx, label3d_class_get_outline_modulate, "get_outline_modulate", 0),
         JS_NewCFunction(ctx, label3d_class_set_outline_modulate, "set_outline_modulate", 1),
@@ -509,7 +479,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "text"),
         JS_NewCFunction(ctx, label3d_class_get_text, "get_text", 0),
         JS_NewCFunction(ctx, label3d_class_set_text, "set_text", 1),
@@ -517,7 +487,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "font"),
         JS_NewCFunction(ctx, label3d_class_get_font, "get_font", 0),
         JS_NewCFunction(ctx, label3d_class_set_font, "set_font", 1),
@@ -525,7 +495,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "font_size"),
         JS_NewCFunction(ctx, label3d_class_get_font_size, "get_font_size", 0),
         JS_NewCFunction(ctx, label3d_class_set_font_size, "set_font_size", 1),
@@ -533,7 +503,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "outline_size"),
         JS_NewCFunction(ctx, label3d_class_get_outline_size, "get_outline_size", 0),
         JS_NewCFunction(ctx, label3d_class_set_outline_size, "set_outline_size", 1),
@@ -541,7 +511,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "horizontal_alignment"),
         JS_NewCFunction(ctx, label3d_class_get_horizontal_alignment, "get_horizontal_alignment", 0),
         JS_NewCFunction(ctx, label3d_class_set_horizontal_alignment, "set_horizontal_alignment", 1),
@@ -549,7 +519,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "vertical_alignment"),
         JS_NewCFunction(ctx, label3d_class_get_vertical_alignment, "get_vertical_alignment", 0),
         JS_NewCFunction(ctx, label3d_class_set_vertical_alignment, "set_vertical_alignment", 1),
@@ -557,7 +527,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "uppercase"),
         JS_NewCFunction(ctx, label3d_class_is_uppercase, "is_uppercase", 0),
         JS_NewCFunction(ctx, label3d_class_set_uppercase, "set_uppercase", 1),
@@ -565,7 +535,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "line_spacing"),
         JS_NewCFunction(ctx, label3d_class_get_line_spacing, "get_line_spacing", 0),
         JS_NewCFunction(ctx, label3d_class_set_line_spacing, "set_line_spacing", 1),
@@ -573,7 +543,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "autowrap_mode"),
         JS_NewCFunction(ctx, label3d_class_get_autowrap_mode, "get_autowrap_mode", 0),
         JS_NewCFunction(ctx, label3d_class_set_autowrap_mode, "set_autowrap_mode", 1),
@@ -581,7 +551,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "justification_flags"),
         JS_NewCFunction(ctx, label3d_class_get_justification_flags, "get_justification_flags", 0),
         JS_NewCFunction(ctx, label3d_class_set_justification_flags, "set_justification_flags", 1),
@@ -589,7 +559,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "width"),
         JS_NewCFunction(ctx, label3d_class_get_width, "get_width", 0),
         JS_NewCFunction(ctx, label3d_class_set_width, "set_width", 1),
@@ -597,7 +567,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "text_direction"),
         JS_NewCFunction(ctx, label3d_class_get_text_direction, "get_text_direction", 0),
         JS_NewCFunction(ctx, label3d_class_set_text_direction, "set_text_direction", 1),
@@ -605,7 +575,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "language"),
         JS_NewCFunction(ctx, label3d_class_get_language, "get_language", 0),
         JS_NewCFunction(ctx, label3d_class_set_language, "set_language", 1),
@@ -613,7 +583,7 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "structured_text_bidi_override"),
         JS_NewCFunction(ctx, label3d_class_get_structured_text_bidi_override, "get_structured_text_bidi_override", 0),
         JS_NewCFunction(ctx, label3d_class_set_structured_text_bidi_override, "set_structured_text_bidi_override", 1),
@@ -621,15 +591,16 @@ void define_label3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "structured_text_bidi_override_options"),
         JS_NewCFunction(ctx, label3d_class_get_structured_text_bidi_override_options, "get_structured_text_bidi_override_options", 0),
         JS_NewCFunction(ctx, label3d_class_set_structured_text_bidi_override_options, "set_structured_text_bidi_override_options", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_label3d_enum(JSContext *ctx, JSValue proto) {
 	JSValue DrawFlags_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, DrawFlags_obj, "FLAG_SHADED", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, DrawFlags_obj, "FLAG_DOUBLE_SIDED", JS_NewInt64(ctx, 1));
@@ -658,7 +629,7 @@ static int js_label3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Label3D::__class_id, proto);
 
 	define_label3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_label3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, label3d_class_proto_funcs, _countof(label3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, label3d_class_constructor, "Label3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

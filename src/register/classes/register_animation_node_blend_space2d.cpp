@@ -27,13 +27,12 @@ static JSValue animation_node_blend_space2d_class_constructor(JSContext *ctx, JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeBlendSpace2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AnimationNodeBlendSpace2D *animation_node_blend_space2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		animation_node_blend_space2d_class = static_cast<AnimationNodeBlendSpace2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		animation_node_blend_space2d_class = static_cast<AnimationNodeBlendSpace2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		animation_node_blend_space2d_class = memnew(AnimationNodeBlendSpace2D);
-	}
 	if (!animation_node_blend_space2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,13 +42,11 @@ static JSValue animation_node_blend_space2d_class_constructor(JSContext *ctx, JS
 }
 static JSValue animation_node_blend_space2d_class_add_blend_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::add_blend_point, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::add_blend_point, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_blend_space2d_class_set_blend_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_blend_point_position, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_blend_point_position, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_blend_space2d_class_get_blend_point_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -57,8 +54,7 @@ static JSValue animation_node_blend_space2d_class_get_blend_point_position(JSCon
 };
 static JSValue animation_node_blend_space2d_class_set_blend_point_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_blend_point_node, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_blend_point_node, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_blend_space2d_class_get_blend_point_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,8 +62,7 @@ static JSValue animation_node_blend_space2d_class_get_blend_point_node(JSContext
 };
 static JSValue animation_node_blend_space2d_class_remove_blend_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::remove_blend_point, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::remove_blend_point, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_blend_space2d_class_get_blend_point_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -75,8 +70,7 @@ static JSValue animation_node_blend_space2d_class_get_blend_point_count(JSContex
 };
 static JSValue animation_node_blend_space2d_class_add_triangle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::add_triangle, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::add_triangle, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_blend_space2d_class_get_triangle_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -84,8 +78,7 @@ static JSValue animation_node_blend_space2d_class_get_triangle_point(JSContext *
 };
 static JSValue animation_node_blend_space2d_class_remove_triangle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::remove_triangle, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::remove_triangle, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_blend_space2d_class_get_triangle_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -93,8 +86,7 @@ static JSValue animation_node_blend_space2d_class_get_triangle_count(JSContext *
 };
 static JSValue animation_node_blend_space2d_class_set_min_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_min_space, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_min_space, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_blend_space2d_class_get_min_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -102,8 +94,7 @@ static JSValue animation_node_blend_space2d_class_get_min_space(JSContext *ctx, 
 };
 static JSValue animation_node_blend_space2d_class_set_max_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_max_space, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_max_space, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_blend_space2d_class_get_max_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -111,8 +102,7 @@ static JSValue animation_node_blend_space2d_class_get_max_space(JSContext *ctx, 
 };
 static JSValue animation_node_blend_space2d_class_set_snap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_snap, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_snap, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_blend_space2d_class_get_snap(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -120,8 +110,7 @@ static JSValue animation_node_blend_space2d_class_get_snap(JSContext *ctx, JSVal
 };
 static JSValue animation_node_blend_space2d_class_set_x_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_x_label, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_x_label, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_blend_space2d_class_get_x_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -129,8 +118,7 @@ static JSValue animation_node_blend_space2d_class_get_x_label(JSContext *ctx, JS
 };
 static JSValue animation_node_blend_space2d_class_set_y_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_y_label, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_y_label, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_blend_space2d_class_get_y_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -138,8 +126,7 @@ static JSValue animation_node_blend_space2d_class_get_y_label(JSContext *ctx, JS
 };
 static JSValue animation_node_blend_space2d_class_set_auto_triangles(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_auto_triangles, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_auto_triangles, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_blend_space2d_class_get_auto_triangles(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -147,8 +134,7 @@ static JSValue animation_node_blend_space2d_class_get_auto_triangles(JSContext *
 };
 static JSValue animation_node_blend_space2d_class_set_blend_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_blend_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_blend_mode, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_blend_space2d_class_get_blend_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -156,8 +142,7 @@ static JSValue animation_node_blend_space2d_class_get_blend_mode(JSContext *ctx,
 };
 static JSValue animation_node_blend_space2d_class_set_use_sync(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_use_sync, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeBlendSpace2D::set_use_sync, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_blend_space2d_class_is_using_sync(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -192,11 +177,21 @@ static const JSCFunctionListEntry animation_node_blend_space2d_class_proto_funcs
 	JS_CFUNC_DEF("set_use_sync", 1, &animation_node_blend_space2d_class_set_use_sync),
 	JS_CFUNC_DEF("is_using_sync", 0, &animation_node_blend_space2d_class_is_using_sync),
 };
+static JSValue animation_node_blend_space2d_class_get_triangles_updated_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	AnimationNodeBlendSpace2D *opaque = reinterpret_cast<AnimationNodeBlendSpace2D *>(JS_GetOpaque(this_val, AnimationNodeBlendSpace2D::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "triangles_updated_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "triangles_updated").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "triangles_updated_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_animation_node_blend_space2d_property(JSContext *ctx, JSValue obj) {
+static void define_animation_node_blend_space2d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "auto_triangles"),
         JS_NewCFunction(ctx, animation_node_blend_space2d_class_get_auto_triangles, "get_auto_triangles", 0),
         JS_NewCFunction(ctx, animation_node_blend_space2d_class_set_auto_triangles, "set_auto_triangles", 1),
@@ -204,7 +199,7 @@ void define_animation_node_blend_space2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "min_space"),
         JS_NewCFunction(ctx, animation_node_blend_space2d_class_get_min_space, "get_min_space", 0),
         JS_NewCFunction(ctx, animation_node_blend_space2d_class_set_min_space, "set_min_space", 1),
@@ -212,7 +207,7 @@ void define_animation_node_blend_space2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "max_space"),
         JS_NewCFunction(ctx, animation_node_blend_space2d_class_get_max_space, "get_max_space", 0),
         JS_NewCFunction(ctx, animation_node_blend_space2d_class_set_max_space, "set_max_space", 1),
@@ -220,7 +215,7 @@ void define_animation_node_blend_space2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "snap"),
         JS_NewCFunction(ctx, animation_node_blend_space2d_class_get_snap, "get_snap", 0),
         JS_NewCFunction(ctx, animation_node_blend_space2d_class_set_snap, "set_snap", 1),
@@ -228,7 +223,7 @@ void define_animation_node_blend_space2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "x_label"),
         JS_NewCFunction(ctx, animation_node_blend_space2d_class_get_x_label, "get_x_label", 0),
         JS_NewCFunction(ctx, animation_node_blend_space2d_class_set_x_label, "set_x_label", 1),
@@ -236,7 +231,7 @@ void define_animation_node_blend_space2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "y_label"),
         JS_NewCFunction(ctx, animation_node_blend_space2d_class_get_y_label, "get_y_label", 0),
         JS_NewCFunction(ctx, animation_node_blend_space2d_class_set_y_label, "set_y_label", 1),
@@ -244,7 +239,7 @@ void define_animation_node_blend_space2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "blend_mode"),
         JS_NewCFunction(ctx, animation_node_blend_space2d_class_get_blend_mode, "get_blend_mode", 0),
         JS_NewCFunction(ctx, animation_node_blend_space2d_class_set_blend_mode, "set_blend_mode", 1),
@@ -252,15 +247,24 @@ void define_animation_node_blend_space2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sync"),
         JS_NewCFunction(ctx, animation_node_blend_space2d_class_is_using_sync, "is_using_sync", 0),
         JS_NewCFunction(ctx, animation_node_blend_space2d_class_set_use_sync, "set_use_sync", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "triangles_updated"),
+		JS_NewCFunction(ctx, animation_node_blend_space2d_class_get_triangles_updated_signal, "get_triangles_updated_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_animation_node_blend_space2d_enum(JSContext *ctx, JSValue proto) {
 	JSValue BlendMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, BlendMode_obj, "BLEND_MODE_INTERPOLATED", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, BlendMode_obj, "BLEND_MODE_DISCRETE", JS_NewInt64(ctx, 1));
@@ -281,7 +285,7 @@ static int js_animation_node_blend_space2d_class_init(JSContext *ctx, JSModuleDe
 	JS_SetClassProto(ctx, AnimationNodeBlendSpace2D::__class_id, proto);
 
 	define_animation_node_blend_space2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_animation_node_blend_space2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animation_node_blend_space2d_class_proto_funcs, _countof(animation_node_blend_space2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, animation_node_blend_space2d_class_constructor, "AnimationNodeBlendSpace2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

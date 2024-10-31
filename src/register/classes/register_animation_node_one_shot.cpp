@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/animation_node_sync.hpp>
-#include <godot_cpp/classes/animation_node_one_shot.hpp>
 #include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/animation_node_one_shot.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue animation_node_one_shot_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeOneShot::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AnimationNodeOneShot *animation_node_one_shot_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		animation_node_one_shot_class = static_cast<AnimationNodeOneShot *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		animation_node_one_shot_class = static_cast<AnimationNodeOneShot *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		animation_node_one_shot_class = memnew(AnimationNodeOneShot);
-	}
 	if (!animation_node_one_shot_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue animation_node_one_shot_class_constructor(JSContext *ctx, JSValue
 }
 static JSValue animation_node_one_shot_class_set_fadein_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeOneShot::set_fadein_time, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeOneShot::set_fadein_time, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_one_shot_class_get_fadein_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue animation_node_one_shot_class_get_fadein_time(JSContext *ctx, JSV
 };
 static JSValue animation_node_one_shot_class_set_fadein_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeOneShot::set_fadein_curve, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeOneShot::set_fadein_curve, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_one_shot_class_get_fadein_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue animation_node_one_shot_class_get_fadein_curve(JSContext *ctx, JS
 };
 static JSValue animation_node_one_shot_class_set_fadeout_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeOneShot::set_fadeout_time, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeOneShot::set_fadeout_time, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_one_shot_class_get_fadeout_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -71,8 +67,7 @@ static JSValue animation_node_one_shot_class_get_fadeout_time(JSContext *ctx, JS
 };
 static JSValue animation_node_one_shot_class_set_fadeout_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeOneShot::set_fadeout_curve, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeOneShot::set_fadeout_curve, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_one_shot_class_get_fadeout_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -80,8 +75,7 @@ static JSValue animation_node_one_shot_class_get_fadeout_curve(JSContext *ctx, J
 };
 static JSValue animation_node_one_shot_class_set_break_loop_at_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeOneShot::set_break_loop_at_end, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeOneShot::set_break_loop_at_end, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_one_shot_class_is_loop_broken_at_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -89,8 +83,7 @@ static JSValue animation_node_one_shot_class_is_loop_broken_at_end(JSContext *ct
 };
 static JSValue animation_node_one_shot_class_set_autorestart(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeOneShot::set_autorestart, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeOneShot::set_autorestart, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_one_shot_class_has_autorestart(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -98,8 +91,7 @@ static JSValue animation_node_one_shot_class_has_autorestart(JSContext *ctx, JSV
 };
 static JSValue animation_node_one_shot_class_set_autorestart_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeOneShot::set_autorestart_delay, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeOneShot::set_autorestart_delay, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_one_shot_class_get_autorestart_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -107,8 +99,7 @@ static JSValue animation_node_one_shot_class_get_autorestart_delay(JSContext *ct
 };
 static JSValue animation_node_one_shot_class_set_autorestart_random_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeOneShot::set_autorestart_random_delay, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeOneShot::set_autorestart_random_delay, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_one_shot_class_get_autorestart_random_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -116,8 +107,7 @@ static JSValue animation_node_one_shot_class_get_autorestart_random_delay(JSCont
 };
 static JSValue animation_node_one_shot_class_set_mix_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationNodeOneShot::set_mix_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationNodeOneShot::set_mix_mode, ctx, this_val, argc, argv);
 };
 static JSValue animation_node_one_shot_class_get_mix_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -144,10 +134,10 @@ static const JSCFunctionListEntry animation_node_one_shot_class_proto_funcs[] = 
 	JS_CFUNC_DEF("get_mix_mode", 0, &animation_node_one_shot_class_get_mix_mode),
 };
 
-void define_animation_node_one_shot_property(JSContext *ctx, JSValue obj) {
+static void define_animation_node_one_shot_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "mix_mode"),
         JS_NewCFunction(ctx, animation_node_one_shot_class_get_mix_mode, "get_mix_mode", 0),
         JS_NewCFunction(ctx, animation_node_one_shot_class_set_mix_mode, "set_mix_mode", 1),
@@ -155,7 +145,7 @@ void define_animation_node_one_shot_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "fadein_time"),
         JS_NewCFunction(ctx, animation_node_one_shot_class_get_fadein_time, "get_fadein_time", 0),
         JS_NewCFunction(ctx, animation_node_one_shot_class_set_fadein_time, "set_fadein_time", 1),
@@ -163,7 +153,7 @@ void define_animation_node_one_shot_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "fadein_curve"),
         JS_NewCFunction(ctx, animation_node_one_shot_class_get_fadein_curve, "get_fadein_curve", 0),
         JS_NewCFunction(ctx, animation_node_one_shot_class_set_fadein_curve, "set_fadein_curve", 1),
@@ -171,7 +161,7 @@ void define_animation_node_one_shot_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "fadeout_time"),
         JS_NewCFunction(ctx, animation_node_one_shot_class_get_fadeout_time, "get_fadeout_time", 0),
         JS_NewCFunction(ctx, animation_node_one_shot_class_set_fadeout_time, "set_fadeout_time", 1),
@@ -179,7 +169,7 @@ void define_animation_node_one_shot_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "fadeout_curve"),
         JS_NewCFunction(ctx, animation_node_one_shot_class_get_fadeout_curve, "get_fadeout_curve", 0),
         JS_NewCFunction(ctx, animation_node_one_shot_class_set_fadeout_curve, "set_fadeout_curve", 1),
@@ -187,7 +177,7 @@ void define_animation_node_one_shot_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "break_loop_at_end"),
         JS_NewCFunction(ctx, animation_node_one_shot_class_is_loop_broken_at_end, "is_loop_broken_at_end", 0),
         JS_NewCFunction(ctx, animation_node_one_shot_class_set_break_loop_at_end, "set_break_loop_at_end", 1),
@@ -195,7 +185,7 @@ void define_animation_node_one_shot_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "autorestart"),
         JS_NewCFunction(ctx, animation_node_one_shot_class_has_autorestart, "has_autorestart", 0),
         JS_NewCFunction(ctx, animation_node_one_shot_class_set_autorestart, "set_autorestart", 1),
@@ -203,7 +193,7 @@ void define_animation_node_one_shot_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "autorestart_delay"),
         JS_NewCFunction(ctx, animation_node_one_shot_class_get_autorestart_delay, "get_autorestart_delay", 0),
         JS_NewCFunction(ctx, animation_node_one_shot_class_set_autorestart_delay, "set_autorestart_delay", 1),
@@ -211,15 +201,16 @@ void define_animation_node_one_shot_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "autorestart_random_delay"),
         JS_NewCFunction(ctx, animation_node_one_shot_class_get_autorestart_random_delay, "get_autorestart_random_delay", 0),
         JS_NewCFunction(ctx, animation_node_one_shot_class_set_autorestart_random_delay, "set_autorestart_random_delay", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_animation_node_one_shot_enum(JSContext *ctx, JSValue proto) {
 	JSValue OneShotRequest_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, OneShotRequest_obj, "ONE_SHOT_REQUEST_NONE", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, OneShotRequest_obj, "ONE_SHOT_REQUEST_FIRE", JS_NewInt64(ctx, 1));
@@ -245,7 +236,7 @@ static int js_animation_node_one_shot_class_init(JSContext *ctx, JSModuleDef *m)
 	JS_SetClassProto(ctx, AnimationNodeOneShot::__class_id, proto);
 
 	define_animation_node_one_shot_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_animation_node_one_shot_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animation_node_one_shot_class_proto_funcs, _countof(animation_node_one_shot_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, animation_node_one_shot_class_constructor, "AnimationNodeOneShot", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect.hpp>
-#include <godot_cpp/classes/audio_effect_record.hpp>
 #include <godot_cpp/classes/audio_stream_wav.hpp>
+#include <godot_cpp/classes/audio_effect_record.hpp>
+#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue audio_effect_record_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectRecord::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AudioEffectRecord *audio_effect_record_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		audio_effect_record_class = static_cast<AudioEffectRecord *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		audio_effect_record_class = static_cast<AudioEffectRecord *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		audio_effect_record_class = memnew(AudioEffectRecord);
-	}
 	if (!audio_effect_record_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue audio_effect_record_class_constructor(JSContext *ctx, JSValueCons
 }
 static JSValue audio_effect_record_class_set_recording_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectRecord::set_recording_active, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectRecord::set_recording_active, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_record_class_is_recording_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue audio_effect_record_class_is_recording_active(JSContext *ctx, JSV
 };
 static JSValue audio_effect_record_class_set_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectRecord::set_format, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectRecord::set_format, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_record_class_get_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -72,18 +69,19 @@ static const JSCFunctionListEntry audio_effect_record_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_recording", 0, &audio_effect_record_class_get_recording),
 };
 
-void define_audio_effect_record_property(JSContext *ctx, JSValue obj) {
+static void define_audio_effect_record_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "format"),
         JS_NewCFunction(ctx, audio_effect_record_class_get_format, "get_format", 0),
         JS_NewCFunction(ctx, audio_effect_record_class_set_format, "set_format", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_audio_effect_record_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_effect_record_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -99,7 +97,7 @@ static int js_audio_effect_record_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, AudioEffectRecord::__class_id, proto);
 
 	define_audio_effect_record_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_audio_effect_record_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, audio_effect_record_class_proto_funcs, _countof(audio_effect_record_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, audio_effect_record_class_constructor, "AudioEffectRecord", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

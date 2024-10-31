@@ -27,13 +27,12 @@ static JSValue placeholder_texture2d_array_class_constructor(JSContext *ctx, JSV
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PlaceholderTexture2DArray::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PlaceholderTexture2DArray *placeholder_texture2d_array_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		placeholder_texture2d_array_class = static_cast<PlaceholderTexture2DArray *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		placeholder_texture2d_array_class = static_cast<PlaceholderTexture2DArray *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		placeholder_texture2d_array_class = memnew(PlaceholderTexture2DArray);
-	}
 	if (!placeholder_texture2d_array_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue placeholder_texture2d_array_class_constructor(JSContext *ctx, JSV
 	return obj;
 }
 
-void define_placeholder_texture2d_array_property(JSContext *ctx, JSValue obj) {
+static void define_placeholder_texture2d_array_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_placeholder_texture2d_array_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_placeholder_texture2d_array_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_placeholder_texture2d_array_class_init(JSContext *ctx, JSModuleDef
 	JS_SetClassProto(ctx, PlaceholderTexture2DArray::__class_id, proto);
 
 	define_placeholder_texture2d_array_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_placeholder_texture2d_array_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, placeholder_texture2d_array_class_constructor, "PlaceholderTexture2DArray", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

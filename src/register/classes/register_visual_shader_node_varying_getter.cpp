@@ -27,13 +27,12 @@ static JSValue visual_shader_node_varying_getter_class_constructor(JSContext *ct
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeVaryingGetter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeVaryingGetter *visual_shader_node_varying_getter_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_varying_getter_class = static_cast<VisualShaderNodeVaryingGetter *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_varying_getter_class = static_cast<VisualShaderNodeVaryingGetter *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_varying_getter_class = memnew(VisualShaderNodeVaryingGetter);
-	}
 	if (!visual_shader_node_varying_getter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue visual_shader_node_varying_getter_class_constructor(JSContext *ct
 	return obj;
 }
 
-void define_visual_shader_node_varying_getter_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_varying_getter_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_varying_getter_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_varying_getter_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_visual_shader_node_varying_getter_class_init(JSContext *ctx, JSMod
 	JS_SetClassProto(ctx, VisualShaderNodeVaryingGetter::__class_id, proto);
 
 	define_visual_shader_node_varying_getter_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_varying_getter_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_varying_getter_class_constructor, "VisualShaderNodeVaryingGetter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

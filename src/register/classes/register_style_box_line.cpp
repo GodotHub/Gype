@@ -27,13 +27,12 @@ static JSValue style_box_line_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StyleBoxLine::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	StyleBoxLine *style_box_line_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		style_box_line_class = static_cast<StyleBoxLine *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		style_box_line_class = static_cast<StyleBoxLine *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		style_box_line_class = memnew(StyleBoxLine);
-	}
 	if (!style_box_line_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue style_box_line_class_constructor(JSContext *ctx, JSValueConst new
 }
 static JSValue style_box_line_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StyleBoxLine::set_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&StyleBoxLine::set_color, ctx, this_val, argc, argv);
 };
 static JSValue style_box_line_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue style_box_line_class_get_color(JSContext *ctx, JSValueConst this_
 };
 static JSValue style_box_line_class_set_thickness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StyleBoxLine::set_thickness, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&StyleBoxLine::set_thickness, ctx, this_val, argc, argv);
 };
 static JSValue style_box_line_class_get_thickness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue style_box_line_class_get_thickness(JSContext *ctx, JSValueConst t
 };
 static JSValue style_box_line_class_set_grow_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StyleBoxLine::set_grow_begin, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&StyleBoxLine::set_grow_begin, ctx, this_val, argc, argv);
 };
 static JSValue style_box_line_class_get_grow_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue style_box_line_class_get_grow_begin(JSContext *ctx, JSValueConst 
 };
 static JSValue style_box_line_class_set_grow_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StyleBoxLine::set_grow_end, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&StyleBoxLine::set_grow_end, ctx, this_val, argc, argv);
 };
 static JSValue style_box_line_class_get_grow_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue style_box_line_class_get_grow_end(JSContext *ctx, JSValueConst th
 };
 static JSValue style_box_line_class_set_vertical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StyleBoxLine::set_vertical, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&StyleBoxLine::set_vertical, ctx, this_val, argc, argv);
 };
 static JSValue style_box_line_class_is_vertical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -99,10 +93,10 @@ static const JSCFunctionListEntry style_box_line_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_vertical", 0, &style_box_line_class_is_vertical),
 };
 
-void define_style_box_line_property(JSContext *ctx, JSValue obj) {
+static void define_style_box_line_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "color"),
         JS_NewCFunction(ctx, style_box_line_class_get_color, "get_color", 0),
         JS_NewCFunction(ctx, style_box_line_class_set_color, "set_color", 1),
@@ -110,7 +104,7 @@ void define_style_box_line_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "grow_begin"),
         JS_NewCFunction(ctx, style_box_line_class_get_grow_begin, "get_grow_begin", 0),
         JS_NewCFunction(ctx, style_box_line_class_set_grow_begin, "set_grow_begin", 1),
@@ -118,7 +112,7 @@ void define_style_box_line_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "grow_end"),
         JS_NewCFunction(ctx, style_box_line_class_get_grow_end, "get_grow_end", 0),
         JS_NewCFunction(ctx, style_box_line_class_set_grow_end, "set_grow_end", 1),
@@ -126,7 +120,7 @@ void define_style_box_line_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "thickness"),
         JS_NewCFunction(ctx, style_box_line_class_get_thickness, "get_thickness", 0),
         JS_NewCFunction(ctx, style_box_line_class_set_thickness, "set_thickness", 1),
@@ -134,15 +128,16 @@ void define_style_box_line_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "vertical"),
         JS_NewCFunction(ctx, style_box_line_class_is_vertical, "is_vertical", 0),
         JS_NewCFunction(ctx, style_box_line_class_set_vertical, "set_vertical", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_style_box_line_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_style_box_line_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -158,7 +153,7 @@ static int js_style_box_line_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, StyleBoxLine::__class_id, proto);
 
 	define_style_box_line_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_style_box_line_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, style_box_line_class_proto_funcs, _countof(style_box_line_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, style_box_line_class_constructor, "StyleBoxLine", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

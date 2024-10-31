@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/audio_stream_ogg_vorbis.hpp>
-#include <godot_cpp/classes/ogg_packet_sequence.hpp>
 #include <godot_cpp/classes/audio_stream.hpp>
+#include <godot_cpp/classes/ogg_packet_sequence.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue audio_stream_ogg_vorbis_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamOggVorbis::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AudioStreamOggVorbis *audio_stream_ogg_vorbis_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		audio_stream_ogg_vorbis_class = static_cast<AudioStreamOggVorbis *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		audio_stream_ogg_vorbis_class = static_cast<AudioStreamOggVorbis *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		audio_stream_ogg_vorbis_class = memnew(AudioStreamOggVorbis);
-	}
 	if (!audio_stream_ogg_vorbis_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue audio_stream_ogg_vorbis_class_constructor(JSContext *ctx, JSValue
 }
 static JSValue audio_stream_ogg_vorbis_class_set_packet_sequence(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamOggVorbis::set_packet_sequence, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamOggVorbis::set_packet_sequence, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_ogg_vorbis_class_get_packet_sequence(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue audio_stream_ogg_vorbis_class_get_packet_sequence(JSContext *ctx,
 };
 static JSValue audio_stream_ogg_vorbis_class_set_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamOggVorbis::set_loop, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamOggVorbis::set_loop, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_ogg_vorbis_class_has_loop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue audio_stream_ogg_vorbis_class_has_loop(JSContext *ctx, JSValueCon
 };
 static JSValue audio_stream_ogg_vorbis_class_set_loop_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamOggVorbis::set_loop_offset, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamOggVorbis::set_loop_offset, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_ogg_vorbis_class_get_loop_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -71,8 +67,7 @@ static JSValue audio_stream_ogg_vorbis_class_get_loop_offset(JSContext *ctx, JSV
 };
 static JSValue audio_stream_ogg_vorbis_class_set_bpm(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamOggVorbis::set_bpm, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamOggVorbis::set_bpm, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_ogg_vorbis_class_get_bpm(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -80,8 +75,7 @@ static JSValue audio_stream_ogg_vorbis_class_get_bpm(JSContext *ctx, JSValueCons
 };
 static JSValue audio_stream_ogg_vorbis_class_set_beat_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamOggVorbis::set_beat_count, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamOggVorbis::set_beat_count, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_ogg_vorbis_class_get_beat_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -89,8 +83,7 @@ static JSValue audio_stream_ogg_vorbis_class_get_beat_count(JSContext *ctx, JSVa
 };
 static JSValue audio_stream_ogg_vorbis_class_set_bar_beats(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamOggVorbis::set_bar_beats, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamOggVorbis::set_bar_beats, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_ogg_vorbis_class_get_bar_beats(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -121,10 +114,10 @@ static const JSCFunctionListEntry audio_stream_ogg_vorbis_class_static_funcs[] =
 	JS_CFUNC_DEF("load_from_file", 1, &audio_stream_ogg_vorbis_class_load_from_file),
 };
 
-void define_audio_stream_ogg_vorbis_property(JSContext *ctx, JSValue obj) {
+static void define_audio_stream_ogg_vorbis_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "packet_sequence"),
         JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_get_packet_sequence, "get_packet_sequence", 0),
         JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_set_packet_sequence, "set_packet_sequence", 1),
@@ -132,7 +125,7 @@ void define_audio_stream_ogg_vorbis_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "bpm"),
         JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_get_bpm, "get_bpm", 0),
         JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_set_bpm, "set_bpm", 1),
@@ -140,7 +133,7 @@ void define_audio_stream_ogg_vorbis_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "beat_count"),
         JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_get_beat_count, "get_beat_count", 0),
         JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_set_beat_count, "set_beat_count", 1),
@@ -148,7 +141,7 @@ void define_audio_stream_ogg_vorbis_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "bar_beats"),
         JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_get_bar_beats, "get_bar_beats", 0),
         JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_set_bar_beats, "set_bar_beats", 1),
@@ -156,7 +149,7 @@ void define_audio_stream_ogg_vorbis_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "loop"),
         JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_has_loop, "has_loop", 0),
         JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_set_loop, "set_loop", 1),
@@ -164,15 +157,16 @@ void define_audio_stream_ogg_vorbis_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "loop_offset"),
         JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_get_loop_offset, "get_loop_offset", 0),
         JS_NewCFunction(ctx, audio_stream_ogg_vorbis_class_set_loop_offset, "set_loop_offset", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_audio_stream_ogg_vorbis_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_stream_ogg_vorbis_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -188,7 +182,7 @@ static int js_audio_stream_ogg_vorbis_class_init(JSContext *ctx, JSModuleDef *m)
 	JS_SetClassProto(ctx, AudioStreamOggVorbis::__class_id, proto);
 
 	define_audio_stream_ogg_vorbis_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_audio_stream_ogg_vorbis_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, audio_stream_ogg_vorbis_class_proto_funcs, _countof(audio_stream_ogg_vorbis_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, audio_stream_ogg_vorbis_class_constructor, "AudioStreamOggVorbis", 0, JS_CFUNC_constructor, 0);
 	JS_SetPropertyFunctionList(ctx, ctor, audio_stream_ogg_vorbis_class_static_funcs, _countof(audio_stream_ogg_vorbis_class_static_funcs));

@@ -27,13 +27,12 @@ static JSValue animation_node_time_seek_class_constructor(JSContext *ctx, JSValu
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeTimeSeek::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AnimationNodeTimeSeek *animation_node_time_seek_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		animation_node_time_seek_class = static_cast<AnimationNodeTimeSeek *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		animation_node_time_seek_class = static_cast<AnimationNodeTimeSeek *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		animation_node_time_seek_class = memnew(AnimationNodeTimeSeek);
-	}
 	if (!animation_node_time_seek_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue animation_node_time_seek_class_constructor(JSContext *ctx, JSValu
 	return obj;
 }
 
-void define_animation_node_time_seek_property(JSContext *ctx, JSValue obj) {
+static void define_animation_node_time_seek_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_animation_node_time_seek_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_animation_node_time_seek_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_animation_node_time_seek_class_init(JSContext *ctx, JSModuleDef *m
 	JS_SetClassProto(ctx, AnimationNodeTimeSeek::__class_id, proto);
 
 	define_animation_node_time_seek_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_animation_node_time_seek_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, animation_node_time_seek_class_constructor, "AnimationNodeTimeSeek", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -27,13 +27,12 @@ static JSValue visual_shader_node_vector_len_class_constructor(JSContext *ctx, J
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeVectorLen::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeVectorLen *visual_shader_node_vector_len_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_vector_len_class = static_cast<VisualShaderNodeVectorLen *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_vector_len_class = static_cast<VisualShaderNodeVectorLen *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_vector_len_class = memnew(VisualShaderNodeVectorLen);
-	}
 	if (!visual_shader_node_vector_len_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue visual_shader_node_vector_len_class_constructor(JSContext *ctx, J
 	return obj;
 }
 
-void define_visual_shader_node_vector_len_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_vector_len_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_vector_len_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_vector_len_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_visual_shader_node_vector_len_class_init(JSContext *ctx, JSModuleD
 	JS_SetClassProto(ctx, VisualShaderNodeVectorLen::__class_id, proto);
 
 	define_visual_shader_node_vector_len_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_vector_len_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_vector_len_class_constructor, "VisualShaderNodeVectorLen", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

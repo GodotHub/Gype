@@ -27,13 +27,12 @@ static JSValue hinge_joint3d_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HingeJoint3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	HingeJoint3D *hinge_joint3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		hinge_joint3d_class = static_cast<HingeJoint3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		hinge_joint3d_class = static_cast<HingeJoint3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		hinge_joint3d_class = memnew(HingeJoint3D);
-	}
 	if (!hinge_joint3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue hinge_joint3d_class_constructor(JSContext *ctx, JSValueConst new_
 }
 static JSValue hinge_joint3d_class_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HingeJoint3D::set_param, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HingeJoint3D::set_param, ctx, this_val, argc, argv);
 };
 static JSValue hinge_joint3d_class_get_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue hinge_joint3d_class_get_param(JSContext *ctx, JSValueConst this_v
 };
 static JSValue hinge_joint3d_class_set_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HingeJoint3D::set_flag, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HingeJoint3D::set_flag, ctx, this_val, argc, argv);
 };
 static JSValue hinge_joint3d_class_get_flag(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,10 +63,11 @@ static const JSCFunctionListEntry hinge_joint3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_flag", 1, &hinge_joint3d_class_get_flag),
 };
 
-void define_hinge_joint3d_property(JSContext *ctx, JSValue obj) {
+static void define_hinge_joint3d_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_hinge_joint3d_enum(JSContext *ctx, JSValue proto) {
 	JSValue Param_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Param_obj, "PARAM_BIAS", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Param_obj, "PARAM_LIMIT_UPPER", JS_NewInt64(ctx, 1));
@@ -101,7 +99,7 @@ static int js_hinge_joint3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, HingeJoint3D::__class_id, proto);
 
 	define_hinge_joint3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_hinge_joint3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, hinge_joint3d_class_proto_funcs, _countof(hinge_joint3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, hinge_joint3d_class_constructor, "HingeJoint3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

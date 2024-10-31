@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/hmac_context.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue hmac_context_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HMACContext::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	HMACContext *hmac_context_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		hmac_context_class = static_cast<HMACContext *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		hmac_context_class = static_cast<HMACContext *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		hmac_context_class = memnew(HMACContext);
-	}
 	if (!hmac_context_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -59,10 +58,11 @@ static const JSCFunctionListEntry hmac_context_class_proto_funcs[] = {
 	JS_CFUNC_DEF("finish", 0, &hmac_context_class_finish),
 };
 
-void define_hmac_context_property(JSContext *ctx, JSValue obj) {
+static void define_hmac_context_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_hmac_context_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_hmac_context_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -78,7 +78,7 @@ static int js_hmac_context_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, HMACContext::__class_id, proto);
 
 	define_hmac_context_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_hmac_context_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, hmac_context_class_proto_funcs, _countof(hmac_context_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, hmac_context_class_constructor, "HMACContext", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -27,13 +27,12 @@ static JSValue editor_export_platform_web_class_constructor(JSContext *ctx, JSVa
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorExportPlatformWeb::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	EditorExportPlatformWeb *editor_export_platform_web_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		editor_export_platform_web_class = static_cast<EditorExportPlatformWeb *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		editor_export_platform_web_class = static_cast<EditorExportPlatformWeb *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		editor_export_platform_web_class = memnew(EditorExportPlatformWeb);
-	}
 	if (!editor_export_platform_web_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue editor_export_platform_web_class_constructor(JSContext *ctx, JSVa
 	return obj;
 }
 
-void define_editor_export_platform_web_property(JSContext *ctx, JSValue obj) {
+static void define_editor_export_platform_web_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_editor_export_platform_web_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_export_platform_web_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_editor_export_platform_web_class_init(JSContext *ctx, JSModuleDef 
 	JS_SetClassProto(ctx, EditorExportPlatformWeb::__class_id, proto);
 
 	define_editor_export_platform_web_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_editor_export_platform_web_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, editor_export_platform_web_class_constructor, "EditorExportPlatformWeb", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

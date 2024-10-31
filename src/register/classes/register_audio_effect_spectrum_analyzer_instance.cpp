@@ -27,13 +27,12 @@ static JSValue audio_effect_spectrum_analyzer_instance_class_constructor(JSConte
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectSpectrumAnalyzerInstance::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AudioEffectSpectrumAnalyzerInstance *audio_effect_spectrum_analyzer_instance_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		audio_effect_spectrum_analyzer_instance_class = static_cast<AudioEffectSpectrumAnalyzerInstance *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		audio_effect_spectrum_analyzer_instance_class = static_cast<AudioEffectSpectrumAnalyzerInstance *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		audio_effect_spectrum_analyzer_instance_class = memnew(AudioEffectSpectrumAnalyzerInstance);
-	}
 	if (!audio_effect_spectrum_analyzer_instance_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -49,10 +48,11 @@ static const JSCFunctionListEntry audio_effect_spectrum_analyzer_instance_class_
 	JS_CFUNC_DEF("get_magnitude_for_frequency_range", 3, &audio_effect_spectrum_analyzer_instance_class_get_magnitude_for_frequency_range),
 };
 
-void define_audio_effect_spectrum_analyzer_instance_property(JSContext *ctx, JSValue obj) {
+static void define_audio_effect_spectrum_analyzer_instance_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_audio_effect_spectrum_analyzer_instance_enum(JSContext *ctx, JSValue proto) {
 	JSValue MagnitudeMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, MagnitudeMode_obj, "MAGNITUDE_AVERAGE", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, MagnitudeMode_obj, "MAGNITUDE_MAX", JS_NewInt64(ctx, 1));
@@ -72,7 +72,7 @@ static int js_audio_effect_spectrum_analyzer_instance_class_init(JSContext *ctx,
 	JS_SetClassProto(ctx, AudioEffectSpectrumAnalyzerInstance::__class_id, proto);
 
 	define_audio_effect_spectrum_analyzer_instance_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_audio_effect_spectrum_analyzer_instance_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, audio_effect_spectrum_analyzer_instance_class_proto_funcs, _countof(audio_effect_spectrum_analyzer_instance_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, audio_effect_spectrum_analyzer_instance_class_constructor, "AudioEffectSpectrumAnalyzerInstance", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

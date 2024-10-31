@@ -27,13 +27,12 @@ static JSValue audio_effect_high_shelf_filter_class_constructor(JSContext *ctx, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectHighShelfFilter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AudioEffectHighShelfFilter *audio_effect_high_shelf_filter_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		audio_effect_high_shelf_filter_class = static_cast<AudioEffectHighShelfFilter *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		audio_effect_high_shelf_filter_class = static_cast<AudioEffectHighShelfFilter *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		audio_effect_high_shelf_filter_class = memnew(AudioEffectHighShelfFilter);
-	}
 	if (!audio_effect_high_shelf_filter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue audio_effect_high_shelf_filter_class_constructor(JSContext *ctx, 
 	return obj;
 }
 
-void define_audio_effect_high_shelf_filter_property(JSContext *ctx, JSValue obj) {
+static void define_audio_effect_high_shelf_filter_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_audio_effect_high_shelf_filter_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_effect_high_shelf_filter_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_audio_effect_high_shelf_filter_class_init(JSContext *ctx, JSModule
 	JS_SetClassProto(ctx, AudioEffectHighShelfFilter::__class_id, proto);
 
 	define_audio_effect_high_shelf_filter_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_audio_effect_high_shelf_filter_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, audio_effect_high_shelf_filter_class_constructor, "AudioEffectHighShelfFilter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

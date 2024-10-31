@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/gradient.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue gradient_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Gradient::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Gradient *gradient_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		gradient_class = static_cast<Gradient *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		gradient_class = static_cast<Gradient *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		gradient_class = memnew(Gradient);
-	}
 	if (!gradient_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,18 +42,15 @@ static JSValue gradient_class_constructor(JSContext *ctx, JSValueConst new_targe
 }
 static JSValue gradient_class_add_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Gradient::add_point, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Gradient::add_point, ctx, this_val, argc, argv);
 };
 static JSValue gradient_class_remove_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Gradient::remove_point, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Gradient::remove_point, ctx, this_val, argc, argv);
 };
 static JSValue gradient_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Gradient::set_offset, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Gradient::set_offset, ctx, this_val, argc, argv);
 };
 static JSValue gradient_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,13 +58,11 @@ static JSValue gradient_class_get_offset(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue gradient_class_reverse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Gradient::reverse, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Gradient::reverse, ctx, this_val, argc, argv);
 };
 static JSValue gradient_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Gradient::set_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Gradient::set_color, ctx, this_val, argc, argv);
 };
 static JSValue gradient_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -84,8 +78,7 @@ static JSValue gradient_class_get_point_count(JSContext *ctx, JSValueConst this_
 };
 static JSValue gradient_class_set_offsets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Gradient::set_offsets, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Gradient::set_offsets, ctx, this_val, argc, argv);
 };
 static JSValue gradient_class_get_offsets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -93,8 +86,7 @@ static JSValue gradient_class_get_offsets(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue gradient_class_set_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Gradient::set_colors, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Gradient::set_colors, ctx, this_val, argc, argv);
 };
 static JSValue gradient_class_get_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -102,8 +94,7 @@ static JSValue gradient_class_get_colors(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue gradient_class_set_interpolation_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Gradient::set_interpolation_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Gradient::set_interpolation_mode, ctx, this_val, argc, argv);
 };
 static JSValue gradient_class_get_interpolation_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -111,8 +102,7 @@ static JSValue gradient_class_get_interpolation_mode(JSContext *ctx, JSValueCons
 };
 static JSValue gradient_class_set_interpolation_color_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Gradient::set_interpolation_color_space, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Gradient::set_interpolation_color_space, ctx, this_val, argc, argv);
 };
 static JSValue gradient_class_get_interpolation_color_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -138,10 +128,10 @@ static const JSCFunctionListEntry gradient_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_interpolation_color_space", 0, &gradient_class_get_interpolation_color_space),
 };
 
-void define_gradient_property(JSContext *ctx, JSValue obj) {
+static void define_gradient_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "interpolation_mode"),
         JS_NewCFunction(ctx, gradient_class_get_interpolation_mode, "get_interpolation_mode", 0),
         JS_NewCFunction(ctx, gradient_class_set_interpolation_mode, "set_interpolation_mode", 1),
@@ -149,7 +139,7 @@ void define_gradient_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "interpolation_color_space"),
         JS_NewCFunction(ctx, gradient_class_get_interpolation_color_space, "get_interpolation_color_space", 0),
         JS_NewCFunction(ctx, gradient_class_set_interpolation_color_space, "set_interpolation_color_space", 1),
@@ -157,7 +147,7 @@ void define_gradient_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "offsets"),
         JS_NewCFunction(ctx, gradient_class_get_offsets, "get_offsets", 0),
         JS_NewCFunction(ctx, gradient_class_set_offsets, "set_offsets", 1),
@@ -165,15 +155,16 @@ void define_gradient_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "colors"),
         JS_NewCFunction(ctx, gradient_class_get_colors, "get_colors", 0),
         JS_NewCFunction(ctx, gradient_class_set_colors, "set_colors", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_gradient_enum(JSContext *ctx, JSValue proto) {
 	JSValue InterpolationMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, InterpolationMode_obj, "GRADIENT_INTERPOLATE_LINEAR", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, InterpolationMode_obj, "GRADIENT_INTERPOLATE_CONSTANT", JS_NewInt64(ctx, 1));
@@ -199,7 +190,7 @@ static int js_gradient_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Gradient::__class_id, proto);
 
 	define_gradient_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_gradient_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gradient_class_proto_funcs, _countof(gradient_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, gradient_class_constructor, "Gradient", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

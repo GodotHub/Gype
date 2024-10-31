@@ -27,13 +27,12 @@ static JSValue sphere_occluder3d_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SphereOccluder3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	SphereOccluder3D *sphere_occluder3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		sphere_occluder3d_class = static_cast<SphereOccluder3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		sphere_occluder3d_class = static_cast<SphereOccluder3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		sphere_occluder3d_class = memnew(SphereOccluder3D);
-	}
 	if (!sphere_occluder3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue sphere_occluder3d_class_constructor(JSContext *ctx, JSValueConst 
 }
 static JSValue sphere_occluder3d_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SphereOccluder3D::set_radius, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SphereOccluder3D::set_radius, ctx, this_val, argc, argv);
 };
 static JSValue sphere_occluder3d_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry sphere_occluder3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_radius", 0, &sphere_occluder3d_class_get_radius),
 };
 
-void define_sphere_occluder3d_property(JSContext *ctx, JSValue obj) {
+static void define_sphere_occluder3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "radius"),
         JS_NewCFunction(ctx, sphere_occluder3d_class_get_radius, "get_radius", 0),
         JS_NewCFunction(ctx, sphere_occluder3d_class_set_radius, "set_radius", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_sphere_occluder3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_sphere_occluder3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -82,7 +81,7 @@ static int js_sphere_occluder3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, SphereOccluder3D::__class_id, proto);
 
 	define_sphere_occluder3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_sphere_occluder3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, sphere_occluder3d_class_proto_funcs, _countof(sphere_occluder3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, sphere_occluder3d_class_constructor, "SphereOccluder3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

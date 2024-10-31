@@ -45,5 +45,5 @@ PackedStringArray TypeScriptSaver::_get_recognized_extensions(const Ref<Resource
 }
 
 bool TypeScriptSaver::_recognize_path(const Ref<Resource> &p_resource, const String &p_path) const {
-	return p_path.get_extension() == "js" || p_path.get_extension() == "ts";
+	return p_path.ends_with(".js") || p_path.ends_with(".ts");
 }

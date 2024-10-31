@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/navigation_obstacle3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue navigation_obstacle3d_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, NavigationObstacle3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	NavigationObstacle3D *navigation_obstacle3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		navigation_obstacle3d_class = static_cast<NavigationObstacle3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		navigation_obstacle3d_class = static_cast<NavigationObstacle3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		navigation_obstacle3d_class = memnew(NavigationObstacle3D);
-	}
 	if (!navigation_obstacle3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -47,8 +46,7 @@ static JSValue navigation_obstacle3d_class_get_rid(JSContext *ctx, JSValueConst 
 };
 static JSValue navigation_obstacle3d_class_set_avoidance_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationObstacle3D::set_avoidance_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationObstacle3D::set_avoidance_enabled, ctx, this_val, argc, argv);
 };
 static JSValue navigation_obstacle3d_class_get_avoidance_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,8 +54,7 @@ static JSValue navigation_obstacle3d_class_get_avoidance_enabled(JSContext *ctx,
 };
 static JSValue navigation_obstacle3d_class_set_navigation_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationObstacle3D::set_navigation_map, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationObstacle3D::set_navigation_map, ctx, this_val, argc, argv);
 };
 static JSValue navigation_obstacle3d_class_get_navigation_map(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -65,8 +62,7 @@ static JSValue navigation_obstacle3d_class_get_navigation_map(JSContext *ctx, JS
 };
 static JSValue navigation_obstacle3d_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationObstacle3D::set_radius, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationObstacle3D::set_radius, ctx, this_val, argc, argv);
 };
 static JSValue navigation_obstacle3d_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -74,8 +70,7 @@ static JSValue navigation_obstacle3d_class_get_radius(JSContext *ctx, JSValueCon
 };
 static JSValue navigation_obstacle3d_class_set_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationObstacle3D::set_height, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationObstacle3D::set_height, ctx, this_val, argc, argv);
 };
 static JSValue navigation_obstacle3d_class_get_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -83,8 +78,7 @@ static JSValue navigation_obstacle3d_class_get_height(JSContext *ctx, JSValueCon
 };
 static JSValue navigation_obstacle3d_class_set_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationObstacle3D::set_velocity, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationObstacle3D::set_velocity, ctx, this_val, argc, argv);
 };
 static JSValue navigation_obstacle3d_class_get_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -92,8 +86,7 @@ static JSValue navigation_obstacle3d_class_get_velocity(JSContext *ctx, JSValueC
 };
 static JSValue navigation_obstacle3d_class_set_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationObstacle3D::set_vertices, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationObstacle3D::set_vertices, ctx, this_val, argc, argv);
 };
 static JSValue navigation_obstacle3d_class_get_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -101,8 +94,7 @@ static JSValue navigation_obstacle3d_class_get_vertices(JSContext *ctx, JSValueC
 };
 static JSValue navigation_obstacle3d_class_set_avoidance_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationObstacle3D::set_avoidance_layers, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationObstacle3D::set_avoidance_layers, ctx, this_val, argc, argv);
 };
 static JSValue navigation_obstacle3d_class_get_avoidance_layers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -110,8 +102,7 @@ static JSValue navigation_obstacle3d_class_get_avoidance_layers(JSContext *ctx, 
 };
 static JSValue navigation_obstacle3d_class_set_avoidance_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationObstacle3D::set_avoidance_layer_value, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationObstacle3D::set_avoidance_layer_value, ctx, this_val, argc, argv);
 };
 static JSValue navigation_obstacle3d_class_get_avoidance_layer_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -119,8 +110,7 @@ static JSValue navigation_obstacle3d_class_get_avoidance_layer_value(JSContext *
 };
 static JSValue navigation_obstacle3d_class_set_use_3d_avoidance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationObstacle3D::set_use_3d_avoidance, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationObstacle3D::set_use_3d_avoidance, ctx, this_val, argc, argv);
 };
 static JSValue navigation_obstacle3d_class_get_use_3d_avoidance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -128,8 +118,7 @@ static JSValue navigation_obstacle3d_class_get_use_3d_avoidance(JSContext *ctx, 
 };
 static JSValue navigation_obstacle3d_class_set_affect_navigation_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationObstacle3D::set_affect_navigation_mesh, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationObstacle3D::set_affect_navigation_mesh, ctx, this_val, argc, argv);
 };
 static JSValue navigation_obstacle3d_class_get_affect_navigation_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -137,8 +126,7 @@ static JSValue navigation_obstacle3d_class_get_affect_navigation_mesh(JSContext 
 };
 static JSValue navigation_obstacle3d_class_set_carve_navigation_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationObstacle3D::set_carve_navigation_mesh, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationObstacle3D::set_carve_navigation_mesh, ctx, this_val, argc, argv);
 };
 static JSValue navigation_obstacle3d_class_get_carve_navigation_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -170,10 +158,10 @@ static const JSCFunctionListEntry navigation_obstacle3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_carve_navigation_mesh", 0, &navigation_obstacle3d_class_get_carve_navigation_mesh),
 };
 
-void define_navigation_obstacle3d_property(JSContext *ctx, JSValue obj) {
+static void define_navigation_obstacle3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "radius"),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_get_radius, "get_radius", 0),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_set_radius, "set_radius", 1),
@@ -181,7 +169,7 @@ void define_navigation_obstacle3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "height"),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_get_height, "get_height", 0),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_set_height, "set_height", 1),
@@ -189,7 +177,7 @@ void define_navigation_obstacle3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "vertices"),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_get_vertices, "get_vertices", 0),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_set_vertices, "set_vertices", 1),
@@ -197,7 +185,7 @@ void define_navigation_obstacle3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "affect_navigation_mesh"),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_get_affect_navigation_mesh, "get_affect_navigation_mesh", 0),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_set_affect_navigation_mesh, "set_affect_navigation_mesh", 1),
@@ -205,7 +193,7 @@ void define_navigation_obstacle3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "carve_navigation_mesh"),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_get_carve_navigation_mesh, "get_carve_navigation_mesh", 0),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_set_carve_navigation_mesh, "set_carve_navigation_mesh", 1),
@@ -213,7 +201,7 @@ void define_navigation_obstacle3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "avoidance_enabled"),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_get_avoidance_enabled, "get_avoidance_enabled", 0),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_set_avoidance_enabled, "set_avoidance_enabled", 1),
@@ -221,7 +209,7 @@ void define_navigation_obstacle3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "velocity"),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_get_velocity, "get_velocity", 0),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_set_velocity, "set_velocity", 1),
@@ -229,7 +217,7 @@ void define_navigation_obstacle3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "avoidance_layers"),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_get_avoidance_layers, "get_avoidance_layers", 0),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_set_avoidance_layers, "set_avoidance_layers", 1),
@@ -237,15 +225,16 @@ void define_navigation_obstacle3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "use_3d_avoidance"),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_get_use_3d_avoidance, "get_use_3d_avoidance", 0),
         JS_NewCFunction(ctx, navigation_obstacle3d_class_set_use_3d_avoidance, "set_use_3d_avoidance", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_navigation_obstacle3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_navigation_obstacle3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -261,7 +250,7 @@ static int js_navigation_obstacle3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, NavigationObstacle3D::__class_id, proto);
 
 	define_navigation_obstacle3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_navigation_obstacle3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, navigation_obstacle3d_class_proto_funcs, _countof(navigation_obstacle3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, navigation_obstacle3d_class_constructor, "NavigationObstacle3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

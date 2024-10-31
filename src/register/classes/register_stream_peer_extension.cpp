@@ -27,13 +27,12 @@ static JSValue stream_peer_extension_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StreamPeerExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	StreamPeerExtension *stream_peer_extension_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		stream_peer_extension_class = static_cast<StreamPeerExtension *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		stream_peer_extension_class = static_cast<StreamPeerExtension *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		stream_peer_extension_class = memnew(StreamPeerExtension);
-	}
 	if (!stream_peer_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue stream_peer_extension_class_constructor(JSContext *ctx, JSValueCo
 	return obj;
 }
 
-void define_stream_peer_extension_property(JSContext *ctx, JSValue obj) {
+static void define_stream_peer_extension_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_stream_peer_extension_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_stream_peer_extension_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_stream_peer_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, StreamPeerExtension::__class_id, proto);
 
 	define_stream_peer_extension_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_stream_peer_extension_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, stream_peer_extension_class_constructor, "StreamPeerExtension", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

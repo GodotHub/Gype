@@ -28,13 +28,12 @@ static JSValue xr_node3d_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRNode3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	XRNode3D *xr_node3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		xr_node3d_class = static_cast<XRNode3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		xr_node3d_class = static_cast<XRNode3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		xr_node3d_class = memnew(XRNode3D);
-	}
 	if (!xr_node3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue xr_node3d_class_constructor(JSContext *ctx, JSValueConst new_targ
 }
 static JSValue xr_node3d_class_set_tracker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRNode3D::set_tracker, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRNode3D::set_tracker, ctx, this_val, argc, argv);
 };
 static JSValue xr_node3d_class_get_tracker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue xr_node3d_class_get_tracker(JSContext *ctx, JSValueConst this_val
 };
 static JSValue xr_node3d_class_set_pose_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRNode3D::set_pose_name, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRNode3D::set_pose_name, ctx, this_val, argc, argv);
 };
 static JSValue xr_node3d_class_get_pose_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue xr_node3d_class_get_pose_name(JSContext *ctx, JSValueConst this_v
 };
 static JSValue xr_node3d_class_set_show_when_tracked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRNode3D::set_show_when_tracked, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRNode3D::set_show_when_tracked, ctx, this_val, argc, argv);
 };
 static JSValue xr_node3d_class_get_show_when_tracked(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -83,8 +79,7 @@ static JSValue xr_node3d_class_get_pose(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue xr_node3d_class_trigger_haptic_pulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRNode3D::trigger_haptic_pulse, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRNode3D::trigger_haptic_pulse, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry xr_node3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_tracker", 1, &xr_node3d_class_set_tracker),
@@ -98,11 +93,21 @@ static const JSCFunctionListEntry xr_node3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_pose", 0, &xr_node3d_class_get_pose),
 	JS_CFUNC_DEF("trigger_haptic_pulse", 5, &xr_node3d_class_trigger_haptic_pulse),
 };
+static JSValue xr_node3d_class_get_tracking_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	XRNode3D *opaque = reinterpret_cast<XRNode3D *>(JS_GetOpaque(this_val, XRNode3D::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "tracking_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "tracking_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "tracking_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_xr_node3d_property(JSContext *ctx, JSValue obj) {
+static void define_xr_node3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "tracker"),
         JS_NewCFunction(ctx, xr_node3d_class_get_tracker, "get_tracker", 0),
         JS_NewCFunction(ctx, xr_node3d_class_set_tracker, "set_tracker", 1),
@@ -110,7 +115,7 @@ void define_xr_node3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "pose"),
         JS_NewCFunction(ctx, xr_node3d_class_get_pose_name, "get_pose_name", 0),
         JS_NewCFunction(ctx, xr_node3d_class_set_pose_name, "set_pose_name", 1),
@@ -118,15 +123,24 @@ void define_xr_node3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "show_when_tracked"),
         JS_NewCFunction(ctx, xr_node3d_class_get_show_when_tracked, "get_show_when_tracked", 0),
         JS_NewCFunction(ctx, xr_node3d_class_set_show_when_tracked, "set_show_when_tracked", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "tracking_changed"),
+		JS_NewCFunction(ctx, xr_node3d_class_get_tracking_changed_signal, "get_tracking_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_xr_node3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_xr_node3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -142,7 +156,7 @@ static int js_xr_node3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, XRNode3D::__class_id, proto);
 
 	define_xr_node3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_xr_node3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_node3d_class_proto_funcs, _countof(xr_node3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, xr_node3d_class_constructor, "XRNode3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

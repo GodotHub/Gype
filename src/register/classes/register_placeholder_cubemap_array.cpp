@@ -27,13 +27,12 @@ static JSValue placeholder_cubemap_array_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PlaceholderCubemapArray::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PlaceholderCubemapArray *placeholder_cubemap_array_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		placeholder_cubemap_array_class = static_cast<PlaceholderCubemapArray *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		placeholder_cubemap_array_class = static_cast<PlaceholderCubemapArray *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		placeholder_cubemap_array_class = memnew(PlaceholderCubemapArray);
-	}
 	if (!placeholder_cubemap_array_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue placeholder_cubemap_array_class_constructor(JSContext *ctx, JSVal
 	return obj;
 }
 
-void define_placeholder_cubemap_array_property(JSContext *ctx, JSValue obj) {
+static void define_placeholder_cubemap_array_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_placeholder_cubemap_array_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_placeholder_cubemap_array_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_placeholder_cubemap_array_class_init(JSContext *ctx, JSModuleDef *
 	JS_SetClassProto(ctx, PlaceholderCubemapArray::__class_id, proto);
 
 	define_placeholder_cubemap_array_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_placeholder_cubemap_array_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, placeholder_cubemap_array_class_constructor, "PlaceholderCubemapArray", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

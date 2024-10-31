@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/open_xrapi_extension.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/open_xrapi_extension.hpp>
 #include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,13 +28,12 @@ static JSValue open_xr_extension_wrapper_extension_class_constructor(JSContext *
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRExtensionWrapperExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	OpenXRExtensionWrapperExtension *open_xr_extension_wrapper_extension_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		open_xr_extension_wrapper_extension_class = static_cast<OpenXRExtensionWrapperExtension *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		open_xr_extension_wrapper_extension_class = static_cast<OpenXRExtensionWrapperExtension *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		open_xr_extension_wrapper_extension_class = memnew(OpenXRExtensionWrapperExtension);
-	}
 	if (!open_xr_extension_wrapper_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -48,18 +47,18 @@ static JSValue open_xr_extension_wrapper_extension_class_get_openxr_api(JSContex
 };
 static JSValue open_xr_extension_wrapper_extension_class_register_extension_wrapper(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRExtensionWrapperExtension::register_extension_wrapper, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRExtensionWrapperExtension::register_extension_wrapper, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry open_xr_extension_wrapper_extension_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_openxr_api", 0, &open_xr_extension_wrapper_extension_class_get_openxr_api),
 	JS_CFUNC_DEF("register_extension_wrapper", 0, &open_xr_extension_wrapper_extension_class_register_extension_wrapper),
 };
 
-void define_open_xr_extension_wrapper_extension_property(JSContext *ctx, JSValue obj) {
+static void define_open_xr_extension_wrapper_extension_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_open_xr_extension_wrapper_extension_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_open_xr_extension_wrapper_extension_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -75,7 +74,7 @@ static int js_open_xr_extension_wrapper_extension_class_init(JSContext *ctx, JSM
 	JS_SetClassProto(ctx, OpenXRExtensionWrapperExtension::__class_id, proto);
 
 	define_open_xr_extension_wrapper_extension_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_open_xr_extension_wrapper_extension_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, open_xr_extension_wrapper_extension_class_proto_funcs, _countof(open_xr_extension_wrapper_extension_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, open_xr_extension_wrapper_extension_class_constructor, "OpenXRExtensionWrapperExtension", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

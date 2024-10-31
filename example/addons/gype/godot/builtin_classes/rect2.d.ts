@@ -10,21 +10,21 @@ export declare class Rect2 {
   public position: Vector2;
   public size: Vector2;
   public end: Vector2;
-  public get_center(): void;
-  public get_area(): void;
-  public has_area(): void;
-  public has_point(_point: Vector2): void;
-  public is_equal_approx(_rect: Rect2): void;
-  public is_finite(): void;
-  public intersects(_b: Rect2, _include_borders: boolean): void;
-  public encloses(_b: Rect2): void;
-  public intersection(_b: Rect2): void;
-  public merge(_b: Rect2): void;
-  public expand(_to: Vector2): void;
-  public grow(_amount: number): void;
-  public grow_side(_side: number, _amount: number): void;
-  public grow_individual(_left: number, _top: number, _right: number, _bottom: number): void;
-  public abs(): void;
+  public get_center(): Vector2;
+  public get_area(): number;
+  public has_area(): boolean;
+  public has_point(_point: Vector2): boolean;
+  public is_equal_approx(_rect: Rect2): boolean;
+  public is_finite(): boolean;
+  public intersects(_b: Rect2, _include_borders: boolean): boolean;
+  public encloses(_b: Rect2): boolean;
+  public intersection(_b: Rect2): Rect2;
+  public merge(_b: Rect2): Rect2;
+  public expand(_to: Vector2): Rect2;
+  public grow(_amount: number): Rect2;
+  public grow_side(_side: number, _amount: number): Rect2;
+  public grow_individual(_left: number, _top: number, _right: number, _bottom: number): Rect2;
+  public abs(): Rect2;
 }
 }
 

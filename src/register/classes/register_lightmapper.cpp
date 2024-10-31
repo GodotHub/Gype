@@ -27,13 +27,12 @@ static JSValue lightmapper_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Lightmapper::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Lightmapper *lightmapper_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		lightmapper_class = static_cast<Lightmapper *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		lightmapper_class = static_cast<Lightmapper *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		lightmapper_class = memnew(Lightmapper);
-	}
 	if (!lightmapper_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue lightmapper_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 
-void define_lightmapper_property(JSContext *ctx, JSValue obj) {
+static void define_lightmapper_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_lightmapper_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_lightmapper_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_lightmapper_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Lightmapper::__class_id, proto);
 
 	define_lightmapper_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_lightmapper_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, lightmapper_class_constructor, "Lightmapper", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/h_scroll_bar.hpp>
 #include <godot_cpp/classes/scroll_bar.hpp>
+#include <godot_cpp/classes/h_scroll_bar.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue h_scroll_bar_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HScrollBar::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	HScrollBar *h_scroll_bar_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		h_scroll_bar_class = static_cast<HScrollBar *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		h_scroll_bar_class = static_cast<HScrollBar *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		h_scroll_bar_class = memnew(HScrollBar);
-	}
 	if (!h_scroll_bar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue h_scroll_bar_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 
-void define_h_scroll_bar_property(JSContext *ctx, JSValue obj) {
+static void define_h_scroll_bar_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_h_scroll_bar_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_h_scroll_bar_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_h_scroll_bar_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, HScrollBar::__class_id, proto);
 
 	define_h_scroll_bar_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_h_scroll_bar_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, h_scroll_bar_class_constructor, "HScrollBar", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

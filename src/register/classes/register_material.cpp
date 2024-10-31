@@ -27,13 +27,12 @@ static JSValue material_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Material::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Material *material_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		material_class = static_cast<Material *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		material_class = static_cast<Material *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		material_class = memnew(Material);
-	}
 	if (!material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue material_class_constructor(JSContext *ctx, JSValueConst new_targe
 }
 static JSValue material_class_set_next_pass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Material::set_next_pass, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Material::set_next_pass, ctx, this_val, argc, argv);
 };
 static JSValue material_class_get_next_pass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue material_class_get_next_pass(JSContext *ctx, JSValueConst this_va
 };
 static JSValue material_class_set_render_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Material::set_render_priority, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Material::set_render_priority, ctx, this_val, argc, argv);
 };
 static JSValue material_class_get_render_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue material_class_get_render_priority(JSContext *ctx, JSValueConst t
 };
 static JSValue material_class_inspect_native_shader_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Material::inspect_native_shader_code, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Material::inspect_native_shader_code, ctx, this_val, argc, argv);
 };
 static JSValue material_class_create_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -77,10 +73,10 @@ static const JSCFunctionListEntry material_class_proto_funcs[] = {
 	JS_CFUNC_DEF("create_placeholder", 0, &material_class_create_placeholder),
 };
 
-void define_material_property(JSContext *ctx, JSValue obj) {
+static void define_material_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "render_priority"),
         JS_NewCFunction(ctx, material_class_get_render_priority, "get_render_priority", 0),
         JS_NewCFunction(ctx, material_class_set_render_priority, "set_render_priority", 1),
@@ -88,15 +84,16 @@ void define_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "next_pass"),
         JS_NewCFunction(ctx, material_class_get_next_pass, "get_next_pass", 0),
         JS_NewCFunction(ctx, material_class_set_next_pass, "set_next_pass", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_material_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_material_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -112,7 +109,7 @@ static int js_material_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Material::__class_id, proto);
 
 	define_material_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_material_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, material_class_proto_funcs, _countof(material_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, material_class_constructor, "Material", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

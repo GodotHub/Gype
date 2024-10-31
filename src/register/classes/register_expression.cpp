@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/expression.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/expression.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,13 +28,12 @@ static JSValue expression_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Expression::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Expression *expression_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		expression_class = static_cast<Expression *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		expression_class = static_cast<Expression *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		expression_class = memnew(Expression);
-	}
 	if (!expression_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -65,10 +64,11 @@ static const JSCFunctionListEntry expression_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_error_text", 0, &expression_class_get_error_text),
 };
 
-void define_expression_property(JSContext *ctx, JSValue obj) {
+static void define_expression_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_expression_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_expression_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -84,7 +84,7 @@ static int js_expression_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Expression::__class_id, proto);
 
 	define_expression_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_expression_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, expression_class_proto_funcs, _countof(expression_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, expression_class_constructor, "Expression", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -27,13 +27,12 @@ static JSValue damped_spring_joint2d_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, DampedSpringJoint2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	DampedSpringJoint2D *damped_spring_joint2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		damped_spring_joint2d_class = static_cast<DampedSpringJoint2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		damped_spring_joint2d_class = static_cast<DampedSpringJoint2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		damped_spring_joint2d_class = memnew(DampedSpringJoint2D);
-	}
 	if (!damped_spring_joint2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue damped_spring_joint2d_class_constructor(JSContext *ctx, JSValueCo
 }
 static JSValue damped_spring_joint2d_class_set_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&DampedSpringJoint2D::set_length, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&DampedSpringJoint2D::set_length, ctx, this_val, argc, argv);
 };
 static JSValue damped_spring_joint2d_class_get_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue damped_spring_joint2d_class_get_length(JSContext *ctx, JSValueCon
 };
 static JSValue damped_spring_joint2d_class_set_rest_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&DampedSpringJoint2D::set_rest_length, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&DampedSpringJoint2D::set_rest_length, ctx, this_val, argc, argv);
 };
 static JSValue damped_spring_joint2d_class_get_rest_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue damped_spring_joint2d_class_get_rest_length(JSContext *ctx, JSVal
 };
 static JSValue damped_spring_joint2d_class_set_stiffness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&DampedSpringJoint2D::set_stiffness, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&DampedSpringJoint2D::set_stiffness, ctx, this_val, argc, argv);
 };
 static JSValue damped_spring_joint2d_class_get_stiffness(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue damped_spring_joint2d_class_get_stiffness(JSContext *ctx, JSValue
 };
 static JSValue damped_spring_joint2d_class_set_damping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&DampedSpringJoint2D::set_damping, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&DampedSpringJoint2D::set_damping, ctx, this_val, argc, argv);
 };
 static JSValue damped_spring_joint2d_class_get_damping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,10 +83,10 @@ static const JSCFunctionListEntry damped_spring_joint2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_damping", 0, &damped_spring_joint2d_class_get_damping),
 };
 
-void define_damped_spring_joint2d_property(JSContext *ctx, JSValue obj) {
+static void define_damped_spring_joint2d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "length"),
         JS_NewCFunction(ctx, damped_spring_joint2d_class_get_length, "get_length", 0),
         JS_NewCFunction(ctx, damped_spring_joint2d_class_set_length, "set_length", 1),
@@ -99,7 +94,7 @@ void define_damped_spring_joint2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "rest_length"),
         JS_NewCFunction(ctx, damped_spring_joint2d_class_get_rest_length, "get_rest_length", 0),
         JS_NewCFunction(ctx, damped_spring_joint2d_class_set_rest_length, "set_rest_length", 1),
@@ -107,7 +102,7 @@ void define_damped_spring_joint2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "stiffness"),
         JS_NewCFunction(ctx, damped_spring_joint2d_class_get_stiffness, "get_stiffness", 0),
         JS_NewCFunction(ctx, damped_spring_joint2d_class_set_stiffness, "set_stiffness", 1),
@@ -115,15 +110,16 @@ void define_damped_spring_joint2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "damping"),
         JS_NewCFunction(ctx, damped_spring_joint2d_class_get_damping, "get_damping", 0),
         JS_NewCFunction(ctx, damped_spring_joint2d_class_set_damping, "set_damping", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_damped_spring_joint2d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_damped_spring_joint2d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -139,7 +135,7 @@ static int js_damped_spring_joint2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, DampedSpringJoint2D::__class_id, proto);
 
 	define_damped_spring_joint2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_damped_spring_joint2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, damped_spring_joint2d_class_proto_funcs, _countof(damped_spring_joint2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, damped_spring_joint2d_class_constructor, "DampedSpringJoint2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/gltf_document.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/gltf_document_extension.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/gltf_state.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -30,13 +30,12 @@ static JSValue gltf_document_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFDocument::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	GLTFDocument *gltf_document_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		gltf_document_class = static_cast<GLTFDocument *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		gltf_document_class = static_cast<GLTFDocument *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		gltf_document_class = memnew(GLTFDocument);
-	}
 	if (!gltf_document_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -46,8 +45,7 @@ static JSValue gltf_document_class_constructor(JSContext *ctx, JSValueConst new_
 }
 static JSValue gltf_document_class_set_image_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFDocument::set_image_format, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFDocument::set_image_format, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_get_image_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,8 +53,7 @@ static JSValue gltf_document_class_get_image_format(JSContext *ctx, JSValueConst
 };
 static JSValue gltf_document_class_set_lossy_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFDocument::set_lossy_quality, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFDocument::set_lossy_quality, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_get_lossy_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -64,8 +61,7 @@ static JSValue gltf_document_class_get_lossy_quality(JSContext *ctx, JSValueCons
 };
 static JSValue gltf_document_class_set_root_node_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFDocument::set_root_node_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFDocument::set_root_node_mode, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_get_root_node_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -96,12 +92,10 @@ static JSValue gltf_document_class_write_to_filesystem(JSContext *ctx, JSValueCo
 	return call_builtin_method_ret(&GLTFDocument::write_to_filesystem, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_register_gltf_document_extension(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_static_method_no_ret(&GLTFDocument::register_gltf_document_extension, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_static_method_no_ret(&GLTFDocument::register_gltf_document_extension, ctx, this_val, argc, argv);
 };
 static JSValue gltf_document_class_unregister_gltf_document_extension(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_static_method_no_ret(&GLTFDocument::unregister_gltf_document_extension, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_static_method_no_ret(&GLTFDocument::unregister_gltf_document_extension, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry gltf_document_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_image_format", 1, &gltf_document_class_set_image_format),
@@ -122,10 +116,10 @@ static const JSCFunctionListEntry gltf_document_class_static_funcs[] = {
 	JS_CFUNC_DEF("unregister_gltf_document_extension", 1, &gltf_document_class_unregister_gltf_document_extension),
 };
 
-void define_gltf_document_property(JSContext *ctx, JSValue obj) {
+static void define_gltf_document_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "image_format"),
         JS_NewCFunction(ctx, gltf_document_class_get_image_format, "get_image_format", 0),
         JS_NewCFunction(ctx, gltf_document_class_set_image_format, "set_image_format", 1),
@@ -133,7 +127,7 @@ void define_gltf_document_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "lossy_quality"),
         JS_NewCFunction(ctx, gltf_document_class_get_lossy_quality, "get_lossy_quality", 0),
         JS_NewCFunction(ctx, gltf_document_class_set_lossy_quality, "set_lossy_quality", 1),
@@ -141,15 +135,16 @@ void define_gltf_document_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "root_node_mode"),
         JS_NewCFunction(ctx, gltf_document_class_get_root_node_mode, "get_root_node_mode", 0),
         JS_NewCFunction(ctx, gltf_document_class_set_root_node_mode, "set_root_node_mode", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_gltf_document_enum(JSContext *ctx, JSValue proto) {
 	JSValue RootNodeMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, RootNodeMode_obj, "ROOT_NODE_MODE_SINGLE_ROOT", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, RootNodeMode_obj, "ROOT_NODE_MODE_KEEP_ROOT", JS_NewInt64(ctx, 1));
@@ -170,7 +165,7 @@ static int js_gltf_document_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, GLTFDocument::__class_id, proto);
 
 	define_gltf_document_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_gltf_document_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gltf_document_class_proto_funcs, _countof(gltf_document_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, gltf_document_class_constructor, "GLTFDocument", 0, JS_CFUNC_constructor, 0);
 	JS_SetPropertyFunctionList(ctx, ctor, gltf_document_class_static_funcs, _countof(gltf_document_class_static_funcs));

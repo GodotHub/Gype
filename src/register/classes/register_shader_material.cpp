@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/shader.hpp>
 #include <godot_cpp/classes/shader_material.hpp>
+#include <godot_cpp/classes/shader.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue shader_material_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ShaderMaterial::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ShaderMaterial *shader_material_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		shader_material_class = static_cast<ShaderMaterial *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		shader_material_class = static_cast<ShaderMaterial *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		shader_material_class = memnew(ShaderMaterial);
-	}
 	if (!shader_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue shader_material_class_constructor(JSContext *ctx, JSValueConst ne
 }
 static JSValue shader_material_class_set_shader(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShaderMaterial::set_shader, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShaderMaterial::set_shader, ctx, this_val, argc, argv);
 };
 static JSValue shader_material_class_get_shader(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue shader_material_class_get_shader(JSContext *ctx, JSValueConst thi
 };
 static JSValue shader_material_class_set_shader_parameter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ShaderMaterial::set_shader_parameter, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ShaderMaterial::set_shader_parameter, ctx, this_val, argc, argv);
 };
 static JSValue shader_material_class_get_shader_parameter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -67,18 +64,19 @@ static const JSCFunctionListEntry shader_material_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_shader_parameter", 1, &shader_material_class_get_shader_parameter),
 };
 
-void define_shader_material_property(JSContext *ctx, JSValue obj) {
+static void define_shader_material_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "shader"),
         JS_NewCFunction(ctx, shader_material_class_get_shader, "get_shader", 0),
         JS_NewCFunction(ctx, shader_material_class_set_shader, "set_shader", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_shader_material_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_shader_material_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -94,7 +92,7 @@ static int js_shader_material_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ShaderMaterial::__class_id, proto);
 
 	define_shader_material_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_shader_material_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, shader_material_class_proto_funcs, _countof(shader_material_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, shader_material_class_constructor, "ShaderMaterial", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

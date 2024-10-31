@@ -27,13 +27,12 @@ static JSValue text_server_advanced_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TextServerAdvanced::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	TextServerAdvanced *text_server_advanced_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		text_server_advanced_class = static_cast<TextServerAdvanced *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		text_server_advanced_class = static_cast<TextServerAdvanced *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		text_server_advanced_class = memnew(TextServerAdvanced);
-	}
 	if (!text_server_advanced_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue text_server_advanced_class_constructor(JSContext *ctx, JSValueCon
 	return obj;
 }
 
-void define_text_server_advanced_property(JSContext *ctx, JSValue obj) {
+static void define_text_server_advanced_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_text_server_advanced_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_text_server_advanced_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_text_server_advanced_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, TextServerAdvanced::__class_id, proto);
 
 	define_text_server_advanced_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_text_server_advanced_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, text_server_advanced_class_constructor, "TextServerAdvanced", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

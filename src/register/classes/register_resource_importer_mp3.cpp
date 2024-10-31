@@ -27,13 +27,12 @@ static JSValue resource_importer_mp3_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterMP3::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ResourceImporterMP3 *resource_importer_mp3_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		resource_importer_mp3_class = static_cast<ResourceImporterMP3 *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		resource_importer_mp3_class = static_cast<ResourceImporterMP3 *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		resource_importer_mp3_class = memnew(ResourceImporterMP3);
-	}
 	if (!resource_importer_mp3_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue resource_importer_mp3_class_constructor(JSContext *ctx, JSValueCo
 	return obj;
 }
 
-void define_resource_importer_mp3_property(JSContext *ctx, JSValue obj) {
+static void define_resource_importer_mp3_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_resource_importer_mp3_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_resource_importer_mp3_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_resource_importer_mp3_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ResourceImporterMP3::__class_id, proto);
 
 	define_resource_importer_mp3_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_resource_importer_mp3_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, resource_importer_mp3_class_constructor, "ResourceImporterMP3", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

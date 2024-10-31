@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/scroll_container.hpp>
-#include <godot_cpp/classes/v_scroll_bar.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/h_scroll_bar.hpp>
 #include <godot_cpp/classes/container.hpp>
+#include <godot_cpp/classes/v_scroll_bar.hpp>
+#include <godot_cpp/classes/h_scroll_bar.hpp>
+#include <godot_cpp/classes/scroll_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,13 +30,12 @@ static JSValue scroll_container_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ScrollContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ScrollContainer *scroll_container_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		scroll_container_class = static_cast<ScrollContainer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		scroll_container_class = static_cast<ScrollContainer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		scroll_container_class = memnew(ScrollContainer);
-	}
 	if (!scroll_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -46,8 +45,7 @@ static JSValue scroll_container_class_constructor(JSContext *ctx, JSValueConst n
 }
 static JSValue scroll_container_class_set_h_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ScrollContainer::set_h_scroll, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ScrollContainer::set_h_scroll, ctx, this_val, argc, argv);
 };
 static JSValue scroll_container_class_get_h_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,8 +53,7 @@ static JSValue scroll_container_class_get_h_scroll(JSContext *ctx, JSValueConst 
 };
 static JSValue scroll_container_class_set_v_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ScrollContainer::set_v_scroll, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ScrollContainer::set_v_scroll, ctx, this_val, argc, argv);
 };
 static JSValue scroll_container_class_get_v_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -64,8 +61,7 @@ static JSValue scroll_container_class_get_v_scroll(JSContext *ctx, JSValueConst 
 };
 static JSValue scroll_container_class_set_horizontal_custom_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ScrollContainer::set_horizontal_custom_step, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ScrollContainer::set_horizontal_custom_step, ctx, this_val, argc, argv);
 };
 static JSValue scroll_container_class_get_horizontal_custom_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -73,8 +69,7 @@ static JSValue scroll_container_class_get_horizontal_custom_step(JSContext *ctx,
 };
 static JSValue scroll_container_class_set_vertical_custom_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ScrollContainer::set_vertical_custom_step, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ScrollContainer::set_vertical_custom_step, ctx, this_val, argc, argv);
 };
 static JSValue scroll_container_class_get_vertical_custom_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -82,8 +77,7 @@ static JSValue scroll_container_class_get_vertical_custom_step(JSContext *ctx, J
 };
 static JSValue scroll_container_class_set_horizontal_scroll_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ScrollContainer::set_horizontal_scroll_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ScrollContainer::set_horizontal_scroll_mode, ctx, this_val, argc, argv);
 };
 static JSValue scroll_container_class_get_horizontal_scroll_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -91,8 +85,7 @@ static JSValue scroll_container_class_get_horizontal_scroll_mode(JSContext *ctx,
 };
 static JSValue scroll_container_class_set_vertical_scroll_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ScrollContainer::set_vertical_scroll_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ScrollContainer::set_vertical_scroll_mode, ctx, this_val, argc, argv);
 };
 static JSValue scroll_container_class_get_vertical_scroll_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -100,8 +93,7 @@ static JSValue scroll_container_class_get_vertical_scroll_mode(JSContext *ctx, J
 };
 static JSValue scroll_container_class_set_deadzone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ScrollContainer::set_deadzone, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ScrollContainer::set_deadzone, ctx, this_val, argc, argv);
 };
 static JSValue scroll_container_class_get_deadzone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -109,8 +101,7 @@ static JSValue scroll_container_class_get_deadzone(JSContext *ctx, JSValueConst 
 };
 static JSValue scroll_container_class_set_follow_focus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ScrollContainer::set_follow_focus, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ScrollContainer::set_follow_focus, ctx, this_val, argc, argv);
 };
 static JSValue scroll_container_class_is_following_focus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -126,8 +117,7 @@ static JSValue scroll_container_class_get_v_scroll_bar(JSContext *ctx, JSValueCo
 };
 static JSValue scroll_container_class_ensure_control_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ScrollContainer::ensure_control_visible, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ScrollContainer::ensure_control_visible, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry scroll_container_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_h_scroll", 1, &scroll_container_class_set_h_scroll),
@@ -150,11 +140,31 @@ static const JSCFunctionListEntry scroll_container_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_v_scroll_bar", 0, &scroll_container_class_get_v_scroll_bar),
 	JS_CFUNC_DEF("ensure_control_visible", 1, &scroll_container_class_ensure_control_visible),
 };
+static JSValue scroll_container_class_get_scroll_started_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	ScrollContainer *opaque = reinterpret_cast<ScrollContainer *>(JS_GetOpaque(this_val, ScrollContainer::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "scroll_started_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "scroll_started").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "scroll_started_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue scroll_container_class_get_scroll_ended_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	ScrollContainer *opaque = reinterpret_cast<ScrollContainer *>(JS_GetOpaque(this_val, ScrollContainer::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "scroll_ended_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "scroll_ended").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "scroll_ended_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_scroll_container_property(JSContext *ctx, JSValue obj) {
+static void define_scroll_container_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "follow_focus"),
         JS_NewCFunction(ctx, scroll_container_class_is_following_focus, "is_following_focus", 0),
         JS_NewCFunction(ctx, scroll_container_class_set_follow_focus, "set_follow_focus", 1),
@@ -162,7 +172,7 @@ void define_scroll_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "scroll_horizontal"),
         JS_NewCFunction(ctx, scroll_container_class_get_h_scroll, "get_h_scroll", 0),
         JS_NewCFunction(ctx, scroll_container_class_set_h_scroll, "set_h_scroll", 1),
@@ -170,7 +180,7 @@ void define_scroll_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "scroll_vertical"),
         JS_NewCFunction(ctx, scroll_container_class_get_v_scroll, "get_v_scroll", 0),
         JS_NewCFunction(ctx, scroll_container_class_set_v_scroll, "set_v_scroll", 1),
@@ -178,7 +188,7 @@ void define_scroll_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "scroll_horizontal_custom_step"),
         JS_NewCFunction(ctx, scroll_container_class_get_horizontal_custom_step, "get_horizontal_custom_step", 0),
         JS_NewCFunction(ctx, scroll_container_class_set_horizontal_custom_step, "set_horizontal_custom_step", 1),
@@ -186,7 +196,7 @@ void define_scroll_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "scroll_vertical_custom_step"),
         JS_NewCFunction(ctx, scroll_container_class_get_vertical_custom_step, "get_vertical_custom_step", 0),
         JS_NewCFunction(ctx, scroll_container_class_set_vertical_custom_step, "set_vertical_custom_step", 1),
@@ -194,7 +204,7 @@ void define_scroll_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "horizontal_scroll_mode"),
         JS_NewCFunction(ctx, scroll_container_class_get_horizontal_scroll_mode, "get_horizontal_scroll_mode", 0),
         JS_NewCFunction(ctx, scroll_container_class_set_horizontal_scroll_mode, "set_horizontal_scroll_mode", 1),
@@ -202,7 +212,7 @@ void define_scroll_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "vertical_scroll_mode"),
         JS_NewCFunction(ctx, scroll_container_class_get_vertical_scroll_mode, "get_vertical_scroll_mode", 0),
         JS_NewCFunction(ctx, scroll_container_class_set_vertical_scroll_mode, "set_vertical_scroll_mode", 1),
@@ -210,15 +220,32 @@ void define_scroll_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "scroll_deadzone"),
         JS_NewCFunction(ctx, scroll_container_class_get_deadzone, "get_deadzone", 0),
         JS_NewCFunction(ctx, scroll_container_class_set_deadzone, "set_deadzone", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "scroll_started"),
+		JS_NewCFunction(ctx, scroll_container_class_get_scroll_started_signal, "get_scroll_started_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "scroll_ended"),
+		JS_NewCFunction(ctx, scroll_container_class_get_scroll_ended_signal, "get_scroll_ended_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_scroll_container_enum(JSContext *ctx, JSValue proto) {
 	JSValue ScrollMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, ScrollMode_obj, "SCROLL_MODE_DISABLED", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, ScrollMode_obj, "SCROLL_MODE_AUTO", JS_NewInt64(ctx, 1));
@@ -240,7 +267,7 @@ static int js_scroll_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ScrollContainer::__class_id, proto);
 
 	define_scroll_container_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_scroll_container_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, scroll_container_class_proto_funcs, _countof(scroll_container_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, scroll_container_class_constructor, "ScrollContainer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

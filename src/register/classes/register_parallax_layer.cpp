@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/parallax_layer.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue parallax_layer_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ParallaxLayer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ParallaxLayer *parallax_layer_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		parallax_layer_class = static_cast<ParallaxLayer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		parallax_layer_class = static_cast<ParallaxLayer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		parallax_layer_class = memnew(ParallaxLayer);
-	}
 	if (!parallax_layer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue parallax_layer_class_constructor(JSContext *ctx, JSValueConst new
 }
 static JSValue parallax_layer_class_set_motion_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ParallaxLayer::set_motion_scale, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ParallaxLayer::set_motion_scale, ctx, this_val, argc, argv);
 };
 static JSValue parallax_layer_class_get_motion_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue parallax_layer_class_get_motion_scale(JSContext *ctx, JSValueCons
 };
 static JSValue parallax_layer_class_set_motion_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ParallaxLayer::set_motion_offset, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ParallaxLayer::set_motion_offset, ctx, this_val, argc, argv);
 };
 static JSValue parallax_layer_class_get_motion_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue parallax_layer_class_get_motion_offset(JSContext *ctx, JSValueCon
 };
 static JSValue parallax_layer_class_set_mirroring(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ParallaxLayer::set_mirroring, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ParallaxLayer::set_mirroring, ctx, this_val, argc, argv);
 };
 static JSValue parallax_layer_class_get_mirroring(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -77,10 +73,10 @@ static const JSCFunctionListEntry parallax_layer_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_mirroring", 0, &parallax_layer_class_get_mirroring),
 };
 
-void define_parallax_layer_property(JSContext *ctx, JSValue obj) {
+static void define_parallax_layer_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "motion_scale"),
         JS_NewCFunction(ctx, parallax_layer_class_get_motion_scale, "get_motion_scale", 0),
         JS_NewCFunction(ctx, parallax_layer_class_set_motion_scale, "set_motion_scale", 1),
@@ -88,7 +84,7 @@ void define_parallax_layer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "motion_offset"),
         JS_NewCFunction(ctx, parallax_layer_class_get_motion_offset, "get_motion_offset", 0),
         JS_NewCFunction(ctx, parallax_layer_class_set_motion_offset, "set_motion_offset", 1),
@@ -96,15 +92,16 @@ void define_parallax_layer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "motion_mirroring"),
         JS_NewCFunction(ctx, parallax_layer_class_get_mirroring, "get_mirroring", 0),
         JS_NewCFunction(ctx, parallax_layer_class_set_mirroring, "set_mirroring", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_parallax_layer_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_parallax_layer_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -120,7 +117,7 @@ static int js_parallax_layer_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ParallaxLayer::__class_id, proto);
 
 	define_parallax_layer_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_parallax_layer_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, parallax_layer_class_proto_funcs, _countof(parallax_layer_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, parallax_layer_class_constructor, "ParallaxLayer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

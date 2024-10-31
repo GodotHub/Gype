@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/editor_paths.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue editor_paths_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorPaths::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	EditorPaths *editor_paths_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		editor_paths_class = static_cast<EditorPaths *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		editor_paths_class = static_cast<EditorPaths *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		editor_paths_class = memnew(EditorPaths);
-	}
 	if (!editor_paths_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -74,10 +73,11 @@ static const JSCFunctionListEntry editor_paths_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_project_settings_dir", 0, &editor_paths_class_get_project_settings_dir),
 };
 
-void define_editor_paths_property(JSContext *ctx, JSValue obj) {
+static void define_editor_paths_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_editor_paths_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_paths_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -93,7 +93,7 @@ static int js_editor_paths_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, EditorPaths::__class_id, proto);
 
 	define_editor_paths_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_editor_paths_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_paths_class_proto_funcs, _countof(editor_paths_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, editor_paths_class_constructor, "EditorPaths", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

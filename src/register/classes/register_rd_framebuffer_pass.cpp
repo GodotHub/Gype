@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_framebuffer_pass.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/rd_framebuffer_pass.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue rd_framebuffer_pass_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDFramebufferPass::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	RDFramebufferPass *rd_framebuffer_pass_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		rd_framebuffer_pass_class = static_cast<RDFramebufferPass *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		rd_framebuffer_pass_class = static_cast<RDFramebufferPass *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		rd_framebuffer_pass_class = memnew(RDFramebufferPass);
-	}
 	if (!rd_framebuffer_pass_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue rd_framebuffer_pass_class_constructor(JSContext *ctx, JSValueCons
 }
 static JSValue rd_framebuffer_pass_class_set_color_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDFramebufferPass::set_color_attachments, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDFramebufferPass::set_color_attachments, ctx, this_val, argc, argv);
 };
 static JSValue rd_framebuffer_pass_class_get_color_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue rd_framebuffer_pass_class_get_color_attachments(JSContext *ctx, J
 };
 static JSValue rd_framebuffer_pass_class_set_input_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDFramebufferPass::set_input_attachments, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDFramebufferPass::set_input_attachments, ctx, this_val, argc, argv);
 };
 static JSValue rd_framebuffer_pass_class_get_input_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue rd_framebuffer_pass_class_get_input_attachments(JSContext *ctx, J
 };
 static JSValue rd_framebuffer_pass_class_set_resolve_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDFramebufferPass::set_resolve_attachments, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDFramebufferPass::set_resolve_attachments, ctx, this_val, argc, argv);
 };
 static JSValue rd_framebuffer_pass_class_get_resolve_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue rd_framebuffer_pass_class_get_resolve_attachments(JSContext *ctx,
 };
 static JSValue rd_framebuffer_pass_class_set_preserve_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDFramebufferPass::set_preserve_attachments, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDFramebufferPass::set_preserve_attachments, ctx, this_val, argc, argv);
 };
 static JSValue rd_framebuffer_pass_class_get_preserve_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue rd_framebuffer_pass_class_get_preserve_attachments(JSContext *ctx
 };
 static JSValue rd_framebuffer_pass_class_set_depth_attachment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDFramebufferPass::set_depth_attachment, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDFramebufferPass::set_depth_attachment, ctx, this_val, argc, argv);
 };
 static JSValue rd_framebuffer_pass_class_get_depth_attachment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -99,10 +93,10 @@ static const JSCFunctionListEntry rd_framebuffer_pass_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_depth_attachment", 0, &rd_framebuffer_pass_class_get_depth_attachment),
 };
 
-void define_rd_framebuffer_pass_property(JSContext *ctx, JSValue obj) {
+static void define_rd_framebuffer_pass_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "color_attachments"),
         JS_NewCFunction(ctx, rd_framebuffer_pass_class_get_color_attachments, "get_color_attachments", 0),
         JS_NewCFunction(ctx, rd_framebuffer_pass_class_set_color_attachments, "set_color_attachments", 1),
@@ -110,7 +104,7 @@ void define_rd_framebuffer_pass_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "input_attachments"),
         JS_NewCFunction(ctx, rd_framebuffer_pass_class_get_input_attachments, "get_input_attachments", 0),
         JS_NewCFunction(ctx, rd_framebuffer_pass_class_set_input_attachments, "set_input_attachments", 1),
@@ -118,7 +112,7 @@ void define_rd_framebuffer_pass_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "resolve_attachments"),
         JS_NewCFunction(ctx, rd_framebuffer_pass_class_get_resolve_attachments, "get_resolve_attachments", 0),
         JS_NewCFunction(ctx, rd_framebuffer_pass_class_set_resolve_attachments, "set_resolve_attachments", 1),
@@ -126,7 +120,7 @@ void define_rd_framebuffer_pass_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "preserve_attachments"),
         JS_NewCFunction(ctx, rd_framebuffer_pass_class_get_preserve_attachments, "get_preserve_attachments", 0),
         JS_NewCFunction(ctx, rd_framebuffer_pass_class_set_preserve_attachments, "set_preserve_attachments", 1),
@@ -134,15 +128,16 @@ void define_rd_framebuffer_pass_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "depth_attachment"),
         JS_NewCFunction(ctx, rd_framebuffer_pass_class_get_depth_attachment, "get_depth_attachment", 0),
         JS_NewCFunction(ctx, rd_framebuffer_pass_class_set_depth_attachment, "set_depth_attachment", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_rd_framebuffer_pass_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_rd_framebuffer_pass_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -158,7 +153,7 @@ static int js_rd_framebuffer_pass_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, RDFramebufferPass::__class_id, proto);
 
 	define_rd_framebuffer_pass_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_rd_framebuffer_pass_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, rd_framebuffer_pass_class_proto_funcs, _countof(rd_framebuffer_pass_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, rd_framebuffer_pass_class_constructor, "RDFramebufferPass", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

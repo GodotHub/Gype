@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_scene_format_importer_fbx2_gltf.hpp>
 #include <godot_cpp/classes/editor_scene_format_importer.hpp>
+#include <godot_cpp/classes/editor_scene_format_importer_fbx2_gltf.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue editor_scene_format_importer_fbx2_gltf_class_constructor(JSContex
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorSceneFormatImporterFBX2GLTF::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	EditorSceneFormatImporterFBX2GLTF *editor_scene_format_importer_fbx2_gltf_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		editor_scene_format_importer_fbx2_gltf_class = static_cast<EditorSceneFormatImporterFBX2GLTF *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		editor_scene_format_importer_fbx2_gltf_class = static_cast<EditorSceneFormatImporterFBX2GLTF *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		editor_scene_format_importer_fbx2_gltf_class = memnew(EditorSceneFormatImporterFBX2GLTF);
-	}
 	if (!editor_scene_format_importer_fbx2_gltf_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue editor_scene_format_importer_fbx2_gltf_class_constructor(JSContex
 	return obj;
 }
 
-void define_editor_scene_format_importer_fbx2_gltf_property(JSContext *ctx, JSValue obj) {
+static void define_editor_scene_format_importer_fbx2_gltf_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_editor_scene_format_importer_fbx2_gltf_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_scene_format_importer_fbx2_gltf_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_editor_scene_format_importer_fbx2_gltf_class_init(JSContext *ctx, 
 	JS_SetClassProto(ctx, EditorSceneFormatImporterFBX2GLTF::__class_id, proto);
 
 	define_editor_scene_format_importer_fbx2_gltf_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_editor_scene_format_importer_fbx2_gltf_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, editor_scene_format_importer_fbx2_gltf_class_constructor, "EditorSceneFormatImporterFBX2GLTF", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

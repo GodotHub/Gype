@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/nine_patch_rect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,13 +28,12 @@ static JSValue nine_patch_rect_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, NinePatchRect::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	NinePatchRect *nine_patch_rect_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		nine_patch_rect_class = static_cast<NinePatchRect *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		nine_patch_rect_class = static_cast<NinePatchRect *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		nine_patch_rect_class = memnew(NinePatchRect);
-	}
 	if (!nine_patch_rect_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue nine_patch_rect_class_constructor(JSContext *ctx, JSValueConst ne
 }
 static JSValue nine_patch_rect_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NinePatchRect::set_texture, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NinePatchRect::set_texture, ctx, this_val, argc, argv);
 };
 static JSValue nine_patch_rect_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue nine_patch_rect_class_get_texture(JSContext *ctx, JSValueConst th
 };
 static JSValue nine_patch_rect_class_set_patch_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NinePatchRect::set_patch_margin, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NinePatchRect::set_patch_margin, ctx, this_val, argc, argv);
 };
 static JSValue nine_patch_rect_class_get_patch_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue nine_patch_rect_class_get_patch_margin(JSContext *ctx, JSValueCon
 };
 static JSValue nine_patch_rect_class_set_region_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NinePatchRect::set_region_rect, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NinePatchRect::set_region_rect, ctx, this_val, argc, argv);
 };
 static JSValue nine_patch_rect_class_get_region_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -71,8 +67,7 @@ static JSValue nine_patch_rect_class_get_region_rect(JSContext *ctx, JSValueCons
 };
 static JSValue nine_patch_rect_class_set_draw_center(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NinePatchRect::set_draw_center, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NinePatchRect::set_draw_center, ctx, this_val, argc, argv);
 };
 static JSValue nine_patch_rect_class_is_draw_center_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -80,8 +75,7 @@ static JSValue nine_patch_rect_class_is_draw_center_enabled(JSContext *ctx, JSVa
 };
 static JSValue nine_patch_rect_class_set_h_axis_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NinePatchRect::set_h_axis_stretch_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NinePatchRect::set_h_axis_stretch_mode, ctx, this_val, argc, argv);
 };
 static JSValue nine_patch_rect_class_get_h_axis_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -89,8 +83,7 @@ static JSValue nine_patch_rect_class_get_h_axis_stretch_mode(JSContext *ctx, JSV
 };
 static JSValue nine_patch_rect_class_set_v_axis_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NinePatchRect::set_v_axis_stretch_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NinePatchRect::set_v_axis_stretch_mode, ctx, this_val, argc, argv);
 };
 static JSValue nine_patch_rect_class_get_v_axis_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -110,11 +103,21 @@ static const JSCFunctionListEntry nine_patch_rect_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_v_axis_stretch_mode", 1, &nine_patch_rect_class_set_v_axis_stretch_mode),
 	JS_CFUNC_DEF("get_v_axis_stretch_mode", 0, &nine_patch_rect_class_get_v_axis_stretch_mode),
 };
+static JSValue nine_patch_rect_class_get_texture_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	NinePatchRect *opaque = reinterpret_cast<NinePatchRect *>(JS_GetOpaque(this_val, NinePatchRect::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "texture_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "texture_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "texture_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_nine_patch_rect_property(JSContext *ctx, JSValue obj) {
+static void define_nine_patch_rect_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, nine_patch_rect_class_get_texture, "get_texture", 0),
         JS_NewCFunction(ctx, nine_patch_rect_class_set_texture, "set_texture", 1),
@@ -122,7 +125,7 @@ void define_nine_patch_rect_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "draw_center"),
         JS_NewCFunction(ctx, nine_patch_rect_class_is_draw_center_enabled, "is_draw_center_enabled", 0),
         JS_NewCFunction(ctx, nine_patch_rect_class_set_draw_center, "set_draw_center", 1),
@@ -130,7 +133,7 @@ void define_nine_patch_rect_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "region_rect"),
         JS_NewCFunction(ctx, nine_patch_rect_class_get_region_rect, "get_region_rect", 0),
         JS_NewCFunction(ctx, nine_patch_rect_class_set_region_rect, "set_region_rect", 1),
@@ -138,7 +141,7 @@ void define_nine_patch_rect_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "patch_margin_left"),
         JS_NewCFunction(ctx, nine_patch_rect_class_get_patch_margin, "get_patch_margin", 0),
         JS_NewCFunction(ctx, nine_patch_rect_class_set_patch_margin, "set_patch_margin", 1),
@@ -146,7 +149,7 @@ void define_nine_patch_rect_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "patch_margin_top"),
         JS_NewCFunction(ctx, nine_patch_rect_class_get_patch_margin, "get_patch_margin", 0),
         JS_NewCFunction(ctx, nine_patch_rect_class_set_patch_margin, "set_patch_margin", 1),
@@ -154,7 +157,7 @@ void define_nine_patch_rect_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "patch_margin_right"),
         JS_NewCFunction(ctx, nine_patch_rect_class_get_patch_margin, "get_patch_margin", 0),
         JS_NewCFunction(ctx, nine_patch_rect_class_set_patch_margin, "set_patch_margin", 1),
@@ -162,7 +165,7 @@ void define_nine_patch_rect_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "patch_margin_bottom"),
         JS_NewCFunction(ctx, nine_patch_rect_class_get_patch_margin, "get_patch_margin", 0),
         JS_NewCFunction(ctx, nine_patch_rect_class_set_patch_margin, "set_patch_margin", 1),
@@ -170,7 +173,7 @@ void define_nine_patch_rect_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "axis_stretch_horizontal"),
         JS_NewCFunction(ctx, nine_patch_rect_class_get_h_axis_stretch_mode, "get_h_axis_stretch_mode", 0),
         JS_NewCFunction(ctx, nine_patch_rect_class_set_h_axis_stretch_mode, "set_h_axis_stretch_mode", 1),
@@ -178,15 +181,24 @@ void define_nine_patch_rect_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "axis_stretch_vertical"),
         JS_NewCFunction(ctx, nine_patch_rect_class_get_v_axis_stretch_mode, "get_v_axis_stretch_mode", 0),
         JS_NewCFunction(ctx, nine_patch_rect_class_set_v_axis_stretch_mode, "set_v_axis_stretch_mode", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "texture_changed"),
+		JS_NewCFunction(ctx, nine_patch_rect_class_get_texture_changed_signal, "get_texture_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_nine_patch_rect_enum(JSContext *ctx, JSValue proto) {
 	JSValue AxisStretchMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, AxisStretchMode_obj, "AXIS_STRETCH_MODE_STRETCH", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, AxisStretchMode_obj, "AXIS_STRETCH_MODE_TILE", JS_NewInt64(ctx, 1));
@@ -207,7 +219,7 @@ static int js_nine_patch_rect_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, NinePatchRect::__class_id, proto);
 
 	define_nine_patch_rect_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_nine_patch_rect_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, nine_patch_rect_class_proto_funcs, _countof(nine_patch_rect_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, nine_patch_rect_class_constructor, "NinePatchRect", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

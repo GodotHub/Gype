@@ -10,19 +10,19 @@ export declare class Rect2i {
   public position: Vector2i;
   public size: Vector2i;
   public end: Vector2i;
-  public get_center(): void;
-  public get_area(): void;
-  public has_area(): void;
-  public has_point(_point: Vector2i): void;
-  public intersects(_b: Rect2i): void;
-  public encloses(_b: Rect2i): void;
-  public intersection(_b: Rect2i): void;
-  public merge(_b: Rect2i): void;
-  public expand(_to: Vector2i): void;
-  public grow(_amount: number): void;
-  public grow_side(_side: number, _amount: number): void;
-  public grow_individual(_left: number, _top: number, _right: number, _bottom: number): void;
-  public abs(): void;
+  public get_center(): Vector2i;
+  public get_area(): number;
+  public has_area(): boolean;
+  public has_point(_point: Vector2i): boolean;
+  public intersects(_b: Rect2i): boolean;
+  public encloses(_b: Rect2i): boolean;
+  public intersection(_b: Rect2i): Rect2i;
+  public merge(_b: Rect2i): Rect2i;
+  public expand(_to: Vector2i): Rect2i;
+  public grow(_amount: number): Rect2i;
+  public grow_side(_side: number, _amount: number): Rect2i;
+  public grow_individual(_left: number, _top: number, _right: number, _bottom: number): Rect2i;
+  public abs(): Rect2i;
 }
 }
 

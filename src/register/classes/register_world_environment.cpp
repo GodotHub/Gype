@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera_attributes.hpp>
-#include <godot_cpp/classes/world_environment.hpp>
-#include <godot_cpp/classes/compositor.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/environment.hpp>
+#include <godot_cpp/classes/world_environment.hpp>
+#include <godot_cpp/classes/camera_attributes.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/compositor.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,13 +30,12 @@ static JSValue world_environment_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WorldEnvironment::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	WorldEnvironment *world_environment_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		world_environment_class = static_cast<WorldEnvironment *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		world_environment_class = static_cast<WorldEnvironment *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		world_environment_class = memnew(WorldEnvironment);
-	}
 	if (!world_environment_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -46,8 +45,7 @@ static JSValue world_environment_class_constructor(JSContext *ctx, JSValueConst 
 }
 static JSValue world_environment_class_set_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WorldEnvironment::set_environment, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WorldEnvironment::set_environment, ctx, this_val, argc, argv);
 };
 static JSValue world_environment_class_get_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,8 +53,7 @@ static JSValue world_environment_class_get_environment(JSContext *ctx, JSValueCo
 };
 static JSValue world_environment_class_set_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WorldEnvironment::set_camera_attributes, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WorldEnvironment::set_camera_attributes, ctx, this_val, argc, argv);
 };
 static JSValue world_environment_class_get_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -64,8 +61,7 @@ static JSValue world_environment_class_get_camera_attributes(JSContext *ctx, JSV
 };
 static JSValue world_environment_class_set_compositor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WorldEnvironment::set_compositor, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WorldEnvironment::set_compositor, ctx, this_val, argc, argv);
 };
 static JSValue world_environment_class_get_compositor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -80,10 +76,10 @@ static const JSCFunctionListEntry world_environment_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_compositor", 0, &world_environment_class_get_compositor),
 };
 
-void define_world_environment_property(JSContext *ctx, JSValue obj) {
+static void define_world_environment_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "environment"),
         JS_NewCFunction(ctx, world_environment_class_get_environment, "get_environment", 0),
         JS_NewCFunction(ctx, world_environment_class_set_environment, "set_environment", 1),
@@ -91,7 +87,7 @@ void define_world_environment_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "camera_attributes"),
         JS_NewCFunction(ctx, world_environment_class_get_camera_attributes, "get_camera_attributes", 0),
         JS_NewCFunction(ctx, world_environment_class_set_camera_attributes, "set_camera_attributes", 1),
@@ -99,15 +95,16 @@ void define_world_environment_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "compositor"),
         JS_NewCFunction(ctx, world_environment_class_get_compositor, "get_compositor", 0),
         JS_NewCFunction(ctx, world_environment_class_set_compositor, "set_compositor", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_world_environment_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_world_environment_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -123,7 +120,7 @@ static int js_world_environment_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, WorldEnvironment::__class_id, proto);
 
 	define_world_environment_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_world_environment_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, world_environment_class_proto_funcs, _countof(world_environment_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, world_environment_class_constructor, "WorldEnvironment", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -28,13 +28,12 @@ static JSValue video_stream_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VideoStream::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VideoStream *video_stream_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		video_stream_class = static_cast<VideoStream *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		video_stream_class = static_cast<VideoStream *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		video_stream_class = memnew(VideoStream);
-	}
 	if (!video_stream_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue video_stream_class_constructor(JSContext *ctx, JSValueConst new_t
 }
 static JSValue video_stream_class_set_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VideoStream::set_file, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VideoStream::set_file, ctx, this_val, argc, argv);
 };
 static JSValue video_stream_class_get_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,18 +54,19 @@ static const JSCFunctionListEntry video_stream_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_file", 0, &video_stream_class_get_file),
 };
 
-void define_video_stream_property(JSContext *ctx, JSValue obj) {
+static void define_video_stream_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "file"),
         JS_NewCFunction(ctx, video_stream_class_get_file, "get_file", 0),
         JS_NewCFunction(ctx, video_stream_class_set_file, "set_file", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_video_stream_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_video_stream_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -83,7 +82,7 @@ static int js_video_stream_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, VideoStream::__class_id, proto);
 
 	define_video_stream_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_video_stream_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, video_stream_class_proto_funcs, _countof(video_stream_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, video_stream_class_constructor, "VideoStream", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

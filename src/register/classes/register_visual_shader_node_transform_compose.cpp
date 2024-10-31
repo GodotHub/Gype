@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_transform_compose.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue visual_shader_node_transform_compose_class_constructor(JSContext 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeTransformCompose::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeTransformCompose *visual_shader_node_transform_compose_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_transform_compose_class = static_cast<VisualShaderNodeTransformCompose *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_transform_compose_class = static_cast<VisualShaderNodeTransformCompose *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_transform_compose_class = memnew(VisualShaderNodeTransformCompose);
-	}
 	if (!visual_shader_node_transform_compose_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue visual_shader_node_transform_compose_class_constructor(JSContext 
 	return obj;
 }
 
-void define_visual_shader_node_transform_compose_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_transform_compose_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_transform_compose_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_transform_compose_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_visual_shader_node_transform_compose_class_init(JSContext *ctx, JS
 	JS_SetClassProto(ctx, VisualShaderNodeTransformCompose::__class_id, proto);
 
 	define_visual_shader_node_transform_compose_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_transform_compose_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_transform_compose_class_constructor, "VisualShaderNodeTransformCompose", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

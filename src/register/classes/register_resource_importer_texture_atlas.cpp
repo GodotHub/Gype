@@ -27,13 +27,12 @@ static JSValue resource_importer_texture_atlas_class_constructor(JSContext *ctx,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ResourceImporterTextureAtlas::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ResourceImporterTextureAtlas *resource_importer_texture_atlas_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		resource_importer_texture_atlas_class = static_cast<ResourceImporterTextureAtlas *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		resource_importer_texture_atlas_class = static_cast<ResourceImporterTextureAtlas *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		resource_importer_texture_atlas_class = memnew(ResourceImporterTextureAtlas);
-	}
 	if (!resource_importer_texture_atlas_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue resource_importer_texture_atlas_class_constructor(JSContext *ctx,
 	return obj;
 }
 
-void define_resource_importer_texture_atlas_property(JSContext *ctx, JSValue obj) {
+static void define_resource_importer_texture_atlas_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_resource_importer_texture_atlas_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_resource_importer_texture_atlas_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_resource_importer_texture_atlas_class_init(JSContext *ctx, JSModul
 	JS_SetClassProto(ctx, ResourceImporterTextureAtlas::__class_id, proto);
 
 	define_resource_importer_texture_atlas_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_resource_importer_texture_atlas_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, resource_importer_texture_atlas_class_constructor, "ResourceImporterTextureAtlas", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

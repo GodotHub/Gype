@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/multi_mesh.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/multi_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue multi_mesh_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MultiMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	MultiMesh *multi_mesh_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		multi_mesh_class = static_cast<MultiMesh *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		multi_mesh_class = static_cast<MultiMesh *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		multi_mesh_class = memnew(MultiMesh);
-	}
 	if (!multi_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue multi_mesh_class_constructor(JSContext *ctx, JSValueConst new_tar
 }
 static JSValue multi_mesh_class_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiMesh::set_mesh, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&MultiMesh::set_mesh, ctx, this_val, argc, argv);
 };
 static JSValue multi_mesh_class_get_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue multi_mesh_class_get_mesh(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue multi_mesh_class_set_use_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiMesh::set_use_colors, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&MultiMesh::set_use_colors, ctx, this_val, argc, argv);
 };
 static JSValue multi_mesh_class_is_using_colors(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue multi_mesh_class_is_using_colors(JSContext *ctx, JSValueConst thi
 };
 static JSValue multi_mesh_class_set_use_custom_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiMesh::set_use_custom_data, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&MultiMesh::set_use_custom_data, ctx, this_val, argc, argv);
 };
 static JSValue multi_mesh_class_is_using_custom_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -71,8 +67,7 @@ static JSValue multi_mesh_class_is_using_custom_data(JSContext *ctx, JSValueCons
 };
 static JSValue multi_mesh_class_set_transform_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiMesh::set_transform_format, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&MultiMesh::set_transform_format, ctx, this_val, argc, argv);
 };
 static JSValue multi_mesh_class_get_transform_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -80,8 +75,7 @@ static JSValue multi_mesh_class_get_transform_format(JSContext *ctx, JSValueCons
 };
 static JSValue multi_mesh_class_set_instance_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiMesh::set_instance_count, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&MultiMesh::set_instance_count, ctx, this_val, argc, argv);
 };
 static JSValue multi_mesh_class_get_instance_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -89,8 +83,7 @@ static JSValue multi_mesh_class_get_instance_count(JSContext *ctx, JSValueConst 
 };
 static JSValue multi_mesh_class_set_visible_instance_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiMesh::set_visible_instance_count, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&MultiMesh::set_visible_instance_count, ctx, this_val, argc, argv);
 };
 static JSValue multi_mesh_class_get_visible_instance_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -98,13 +91,11 @@ static JSValue multi_mesh_class_get_visible_instance_count(JSContext *ctx, JSVal
 };
 static JSValue multi_mesh_class_set_instance_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiMesh::set_instance_transform, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&MultiMesh::set_instance_transform, ctx, this_val, argc, argv);
 };
 static JSValue multi_mesh_class_set_instance_transform_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiMesh::set_instance_transform_2d, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&MultiMesh::set_instance_transform_2d, ctx, this_val, argc, argv);
 };
 static JSValue multi_mesh_class_get_instance_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -116,8 +107,7 @@ static JSValue multi_mesh_class_get_instance_transform_2d(JSContext *ctx, JSValu
 };
 static JSValue multi_mesh_class_set_instance_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiMesh::set_instance_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&MultiMesh::set_instance_color, ctx, this_val, argc, argv);
 };
 static JSValue multi_mesh_class_get_instance_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -125,8 +115,7 @@ static JSValue multi_mesh_class_get_instance_color(JSContext *ctx, JSValueConst 
 };
 static JSValue multi_mesh_class_set_instance_custom_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiMesh::set_instance_custom_data, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&MultiMesh::set_instance_custom_data, ctx, this_val, argc, argv);
 };
 static JSValue multi_mesh_class_get_instance_custom_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -134,8 +123,7 @@ static JSValue multi_mesh_class_get_instance_custom_data(JSContext *ctx, JSValue
 };
 static JSValue multi_mesh_class_set_custom_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiMesh::set_custom_aabb, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&MultiMesh::set_custom_aabb, ctx, this_val, argc, argv);
 };
 static JSValue multi_mesh_class_get_custom_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -151,8 +139,7 @@ static JSValue multi_mesh_class_get_buffer(JSContext *ctx, JSValueConst this_val
 };
 static JSValue multi_mesh_class_set_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&MultiMesh::set_buffer, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&MultiMesh::set_buffer, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry multi_mesh_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_mesh", 1, &multi_mesh_class_set_mesh),
@@ -182,10 +169,10 @@ static const JSCFunctionListEntry multi_mesh_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_buffer", 1, &multi_mesh_class_set_buffer),
 };
 
-void define_multi_mesh_property(JSContext *ctx, JSValue obj) {
+static void define_multi_mesh_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "transform_format"),
         JS_NewCFunction(ctx, multi_mesh_class_get_transform_format, "get_transform_format", 0),
         JS_NewCFunction(ctx, multi_mesh_class_set_transform_format, "set_transform_format", 1),
@@ -193,7 +180,7 @@ void define_multi_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "use_colors"),
         JS_NewCFunction(ctx, multi_mesh_class_is_using_colors, "is_using_colors", 0),
         JS_NewCFunction(ctx, multi_mesh_class_set_use_colors, "set_use_colors", 1),
@@ -201,7 +188,7 @@ void define_multi_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "use_custom_data"),
         JS_NewCFunction(ctx, multi_mesh_class_is_using_custom_data, "is_using_custom_data", 0),
         JS_NewCFunction(ctx, multi_mesh_class_set_use_custom_data, "set_use_custom_data", 1),
@@ -209,7 +196,7 @@ void define_multi_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "custom_aabb"),
         JS_NewCFunction(ctx, multi_mesh_class_get_custom_aabb, "get_custom_aabb", 0),
         JS_NewCFunction(ctx, multi_mesh_class_set_custom_aabb, "set_custom_aabb", 1),
@@ -217,7 +204,7 @@ void define_multi_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "instance_count"),
         JS_NewCFunction(ctx, multi_mesh_class_get_instance_count, "get_instance_count", 0),
         JS_NewCFunction(ctx, multi_mesh_class_set_instance_count, "set_instance_count", 1),
@@ -225,7 +212,7 @@ void define_multi_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "visible_instance_count"),
         JS_NewCFunction(ctx, multi_mesh_class_get_visible_instance_count, "get_visible_instance_count", 0),
         JS_NewCFunction(ctx, multi_mesh_class_set_visible_instance_count, "set_visible_instance_count", 1),
@@ -233,7 +220,7 @@ void define_multi_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "mesh"),
         JS_NewCFunction(ctx, multi_mesh_class_get_mesh, "get_mesh", 0),
         JS_NewCFunction(ctx, multi_mesh_class_set_mesh, "set_mesh", 1),
@@ -241,15 +228,16 @@ void define_multi_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "buffer"),
         JS_NewCFunction(ctx, multi_mesh_class_get_buffer, "get_buffer", 0),
         JS_NewCFunction(ctx, multi_mesh_class_set_buffer, "set_buffer", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_multi_mesh_enum(JSContext *ctx, JSValue proto) {
 	JSValue TransformFormat_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, TransformFormat_obj, "TRANSFORM_2D", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, TransformFormat_obj, "TRANSFORM_3D", JS_NewInt64(ctx, 1));
@@ -269,7 +257,7 @@ static int js_multi_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, MultiMesh::__class_id, proto);
 
 	define_multi_mesh_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_multi_mesh_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, multi_mesh_class_proto_funcs, _countof(multi_mesh_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, multi_mesh_class_constructor, "MultiMesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

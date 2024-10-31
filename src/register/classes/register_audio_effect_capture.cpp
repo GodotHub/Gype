@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_capture.hpp>
+#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue audio_effect_capture_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectCapture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AudioEffectCapture *audio_effect_capture_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		audio_effect_capture_class = static_cast<AudioEffectCapture *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		audio_effect_capture_class = static_cast<AudioEffectCapture *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		audio_effect_capture_class = memnew(AudioEffectCapture);
-	}
 	if (!audio_effect_capture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -51,13 +50,11 @@ static JSValue audio_effect_capture_class_get_buffer(JSContext *ctx, JSValueCons
 };
 static JSValue audio_effect_capture_class_clear_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectCapture::clear_buffer, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectCapture::clear_buffer, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_capture_class_set_buffer_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectCapture::set_buffer_length, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectCapture::set_buffer_length, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_capture_class_get_buffer_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -91,18 +88,19 @@ static const JSCFunctionListEntry audio_effect_capture_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_pushed_frames", 0, &audio_effect_capture_class_get_pushed_frames),
 };
 
-void define_audio_effect_capture_property(JSContext *ctx, JSValue obj) {
+static void define_audio_effect_capture_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "buffer_length"),
         JS_NewCFunction(ctx, audio_effect_capture_class_get_buffer_length, "get_buffer_length", 0),
         JS_NewCFunction(ctx, audio_effect_capture_class_set_buffer_length, "set_buffer_length", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_audio_effect_capture_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_effect_capture_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -118,7 +116,7 @@ static int js_audio_effect_capture_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, AudioEffectCapture::__class_id, proto);
 
 	define_audio_effect_capture_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_audio_effect_capture_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, audio_effect_capture_class_proto_funcs, _countof(audio_effect_capture_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, audio_effect_capture_class_constructor, "AudioEffectCapture", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

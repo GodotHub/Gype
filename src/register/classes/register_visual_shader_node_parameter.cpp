@@ -27,13 +27,12 @@ static JSValue visual_shader_node_parameter_class_constructor(JSContext *ctx, JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeParameter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeParameter *visual_shader_node_parameter_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_parameter_class = static_cast<VisualShaderNodeParameter *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_parameter_class = static_cast<VisualShaderNodeParameter *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_parameter_class = memnew(VisualShaderNodeParameter);
-	}
 	if (!visual_shader_node_parameter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue visual_shader_node_parameter_class_constructor(JSContext *ctx, JS
 }
 static JSValue visual_shader_node_parameter_class_set_parameter_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeParameter::set_parameter_name, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeParameter::set_parameter_name, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_parameter_class_get_parameter_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue visual_shader_node_parameter_class_get_parameter_name(JSContext *
 };
 static JSValue visual_shader_node_parameter_class_set_qualifier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeParameter::set_qualifier, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeParameter::set_qualifier, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_parameter_class_get_qualifier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,10 +63,10 @@ static const JSCFunctionListEntry visual_shader_node_parameter_class_proto_funcs
 	JS_CFUNC_DEF("get_qualifier", 0, &visual_shader_node_parameter_class_get_qualifier),
 };
 
-void define_visual_shader_node_parameter_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_parameter_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "parameter_name"),
         JS_NewCFunction(ctx, visual_shader_node_parameter_class_get_parameter_name, "get_parameter_name", 0),
         JS_NewCFunction(ctx, visual_shader_node_parameter_class_set_parameter_name, "set_parameter_name", 1),
@@ -77,15 +74,16 @@ void define_visual_shader_node_parameter_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "qualifier"),
         JS_NewCFunction(ctx, visual_shader_node_parameter_class_get_qualifier, "get_qualifier", 0),
         JS_NewCFunction(ctx, visual_shader_node_parameter_class_set_qualifier, "set_qualifier", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_parameter_enum(JSContext *ctx, JSValue proto) {
 	JSValue Qualifier_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Qualifier_obj, "QUAL_NONE", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Qualifier_obj, "QUAL_GLOBAL", JS_NewInt64(ctx, 1));
@@ -107,7 +105,7 @@ static int js_visual_shader_node_parameter_class_init(JSContext *ctx, JSModuleDe
 	JS_SetClassProto(ctx, VisualShaderNodeParameter::__class_id, proto);
 
 	define_visual_shader_node_parameter_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_parameter_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_parameter_class_proto_funcs, _countof(visual_shader_node_parameter_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_parameter_class_constructor, "VisualShaderNodeParameter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

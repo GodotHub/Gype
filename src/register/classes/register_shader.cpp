@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/shader.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue shader_class_constructor(JSContext *ctx, JSValueConst new_target,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Shader::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Shader *shader_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		shader_class = static_cast<Shader *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		shader_class = static_cast<Shader *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		shader_class = memnew(Shader);
-	}
 	if (!shader_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -48,8 +47,7 @@ static JSValue shader_class_get_mode(JSContext *ctx, JSValueConst this_val, int 
 };
 static JSValue shader_class_set_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Shader::set_code, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Shader::set_code, ctx, this_val, argc, argv);
 };
 static JSValue shader_class_get_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -57,8 +55,7 @@ static JSValue shader_class_get_code(JSContext *ctx, JSValueConst this_val, int 
 };
 static JSValue shader_class_set_default_texture_parameter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Shader::set_default_texture_parameter, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Shader::set_default_texture_parameter, ctx, this_val, argc, argv);
 };
 static JSValue shader_class_get_default_texture_parameter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -77,18 +74,19 @@ static const JSCFunctionListEntry shader_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_shader_uniform_list", 1, &shader_class_get_shader_uniform_list),
 };
 
-void define_shader_property(JSContext *ctx, JSValue obj) {
+static void define_shader_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "code"),
         JS_NewCFunction(ctx, shader_class_get_code, "get_code", 0),
         JS_NewCFunction(ctx, shader_class_set_code, "set_code", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_shader_enum(JSContext *ctx, JSValue proto) {
 	JSValue Mode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Mode_obj, "MODE_SPATIAL", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Mode_obj, "MODE_CANVAS_ITEM", JS_NewInt64(ctx, 1));
@@ -111,7 +109,7 @@ static int js_shader_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Shader::__class_id, proto);
 
 	define_shader_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_shader_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, shader_class_proto_funcs, _countof(shader_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, shader_class_constructor, "Shader", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -27,13 +27,12 @@ static JSValue input_event_midi_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventMIDI::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	InputEventMIDI *input_event_midi_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		input_event_midi_class = static_cast<InputEventMIDI *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		input_event_midi_class = static_cast<InputEventMIDI *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		input_event_midi_class = memnew(InputEventMIDI);
-	}
 	if (!input_event_midi_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue input_event_midi_class_constructor(JSContext *ctx, JSValueConst n
 }
 static JSValue input_event_midi_class_set_channel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventMIDI::set_channel, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventMIDI::set_channel, ctx, this_val, argc, argv);
 };
 static JSValue input_event_midi_class_get_channel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue input_event_midi_class_get_channel(JSContext *ctx, JSValueConst t
 };
 static JSValue input_event_midi_class_set_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventMIDI::set_message, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventMIDI::set_message, ctx, this_val, argc, argv);
 };
 static JSValue input_event_midi_class_get_message(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue input_event_midi_class_get_message(JSContext *ctx, JSValueConst t
 };
 static JSValue input_event_midi_class_set_pitch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventMIDI::set_pitch, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventMIDI::set_pitch, ctx, this_val, argc, argv);
 };
 static JSValue input_event_midi_class_get_pitch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue input_event_midi_class_get_pitch(JSContext *ctx, JSValueConst thi
 };
 static JSValue input_event_midi_class_set_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventMIDI::set_velocity, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventMIDI::set_velocity, ctx, this_val, argc, argv);
 };
 static JSValue input_event_midi_class_get_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue input_event_midi_class_get_velocity(JSContext *ctx, JSValueConst 
 };
 static JSValue input_event_midi_class_set_instrument(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventMIDI::set_instrument, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventMIDI::set_instrument, ctx, this_val, argc, argv);
 };
 static JSValue input_event_midi_class_get_instrument(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,8 +82,7 @@ static JSValue input_event_midi_class_get_instrument(JSContext *ctx, JSValueCons
 };
 static JSValue input_event_midi_class_set_pressure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventMIDI::set_pressure, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventMIDI::set_pressure, ctx, this_val, argc, argv);
 };
 static JSValue input_event_midi_class_get_pressure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -97,8 +90,7 @@ static JSValue input_event_midi_class_get_pressure(JSContext *ctx, JSValueConst 
 };
 static JSValue input_event_midi_class_set_controller_number(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventMIDI::set_controller_number, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventMIDI::set_controller_number, ctx, this_val, argc, argv);
 };
 static JSValue input_event_midi_class_get_controller_number(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -106,8 +98,7 @@ static JSValue input_event_midi_class_get_controller_number(JSContext *ctx, JSVa
 };
 static JSValue input_event_midi_class_set_controller_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventMIDI::set_controller_value, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventMIDI::set_controller_value, ctx, this_val, argc, argv);
 };
 static JSValue input_event_midi_class_get_controller_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -132,10 +123,10 @@ static const JSCFunctionListEntry input_event_midi_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_controller_value", 0, &input_event_midi_class_get_controller_value),
 };
 
-void define_input_event_midi_property(JSContext *ctx, JSValue obj) {
+static void define_input_event_midi_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "channel"),
         JS_NewCFunction(ctx, input_event_midi_class_get_channel, "get_channel", 0),
         JS_NewCFunction(ctx, input_event_midi_class_set_channel, "set_channel", 1),
@@ -143,7 +134,7 @@ void define_input_event_midi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "message"),
         JS_NewCFunction(ctx, input_event_midi_class_get_message, "get_message", 0),
         JS_NewCFunction(ctx, input_event_midi_class_set_message, "set_message", 1),
@@ -151,7 +142,7 @@ void define_input_event_midi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "pitch"),
         JS_NewCFunction(ctx, input_event_midi_class_get_pitch, "get_pitch", 0),
         JS_NewCFunction(ctx, input_event_midi_class_set_pitch, "set_pitch", 1),
@@ -159,7 +150,7 @@ void define_input_event_midi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "velocity"),
         JS_NewCFunction(ctx, input_event_midi_class_get_velocity, "get_velocity", 0),
         JS_NewCFunction(ctx, input_event_midi_class_set_velocity, "set_velocity", 1),
@@ -167,7 +158,7 @@ void define_input_event_midi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "instrument"),
         JS_NewCFunction(ctx, input_event_midi_class_get_instrument, "get_instrument", 0),
         JS_NewCFunction(ctx, input_event_midi_class_set_instrument, "set_instrument", 1),
@@ -175,7 +166,7 @@ void define_input_event_midi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "pressure"),
         JS_NewCFunction(ctx, input_event_midi_class_get_pressure, "get_pressure", 0),
         JS_NewCFunction(ctx, input_event_midi_class_set_pressure, "set_pressure", 1),
@@ -183,7 +174,7 @@ void define_input_event_midi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "controller_number"),
         JS_NewCFunction(ctx, input_event_midi_class_get_controller_number, "get_controller_number", 0),
         JS_NewCFunction(ctx, input_event_midi_class_set_controller_number, "set_controller_number", 1),
@@ -191,15 +182,16 @@ void define_input_event_midi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "controller_value"),
         JS_NewCFunction(ctx, input_event_midi_class_get_controller_value, "get_controller_value", 0),
         JS_NewCFunction(ctx, input_event_midi_class_set_controller_value, "set_controller_value", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_input_event_midi_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_input_event_midi_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -215,7 +207,7 @@ static int js_input_event_midi_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, InputEventMIDI::__class_id, proto);
 
 	define_input_event_midi_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_input_event_midi_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, input_event_midi_class_proto_funcs, _countof(input_event_midi_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, input_event_midi_class_constructor, "InputEventMIDI", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

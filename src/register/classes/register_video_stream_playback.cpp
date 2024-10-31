@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/video_stream_playback.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/video_stream_playback.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue video_stream_playback_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VideoStreamPlayback::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VideoStreamPlayback *video_stream_playback_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		video_stream_playback_class = static_cast<VideoStreamPlayback *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		video_stream_playback_class = static_cast<VideoStreamPlayback *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		video_stream_playback_class = memnew(VideoStreamPlayback);
-	}
 	if (!video_stream_playback_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -50,10 +49,11 @@ static const JSCFunctionListEntry video_stream_playback_class_proto_funcs[] = {
 	JS_CFUNC_DEF("mix_audio", 3, &video_stream_playback_class_mix_audio),
 };
 
-void define_video_stream_playback_property(JSContext *ctx, JSValue obj) {
+static void define_video_stream_playback_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_video_stream_playback_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_video_stream_playback_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -69,7 +69,7 @@ static int js_video_stream_playback_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, VideoStreamPlayback::__class_id, proto);
 
 	define_video_stream_playback_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_video_stream_playback_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, video_stream_playback_class_proto_funcs, _countof(video_stream_playback_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, video_stream_playback_class_constructor, "VideoStreamPlayback", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation.hpp>
 #include <godot_cpp/classes/animation_library.hpp>
+#include <godot_cpp/classes/animation.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,13 +28,12 @@ static JSValue animation_library_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationLibrary::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AnimationLibrary *animation_library_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		animation_library_class = static_cast<AnimationLibrary *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		animation_library_class = static_cast<AnimationLibrary *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		animation_library_class = memnew(AnimationLibrary);
-	}
 	if (!animation_library_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -48,13 +47,11 @@ static JSValue animation_library_class_add_animation(JSContext *ctx, JSValueCons
 };
 static JSValue animation_library_class_remove_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationLibrary::remove_animation, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationLibrary::remove_animation, ctx, this_val, argc, argv);
 };
 static JSValue animation_library_class_rename_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationLibrary::rename_animation, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationLibrary::rename_animation, ctx, this_val, argc, argv);
 };
 static JSValue animation_library_class_has_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -76,11 +73,84 @@ static const JSCFunctionListEntry animation_library_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_animation", 1, &animation_library_class_get_animation),
 	JS_CFUNC_DEF("get_animation_list", 0, &animation_library_class_get_animation_list),
 };
-
-void define_animation_library_property(JSContext *ctx, JSValue obj) {
+static JSValue animation_library_class_get_animation_added_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	AnimationLibrary *opaque = reinterpret_cast<AnimationLibrary *>(JS_GetOpaque(this_val, AnimationLibrary::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "animation_added_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "animation_added").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "animation_added_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue animation_library_class_get_animation_removed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	AnimationLibrary *opaque = reinterpret_cast<AnimationLibrary *>(JS_GetOpaque(this_val, AnimationLibrary::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "animation_removed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "animation_removed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "animation_removed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue animation_library_class_get_animation_renamed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	AnimationLibrary *opaque = reinterpret_cast<AnimationLibrary *>(JS_GetOpaque(this_val, AnimationLibrary::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "animation_renamed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "animation_renamed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "animation_renamed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue animation_library_class_get_animation_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	AnimationLibrary *opaque = reinterpret_cast<AnimationLibrary *>(JS_GetOpaque(this_val, AnimationLibrary::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "animation_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "animation_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "animation_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_animation_library_property(JSContext *ctx, JSValue proto) {
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "animation_added"),
+		JS_NewCFunction(ctx, animation_library_class_get_animation_added_signal, "get_animation_added_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "animation_removed"),
+		JS_NewCFunction(ctx, animation_library_class_get_animation_removed_signal, "get_animation_removed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "animation_renamed"),
+		JS_NewCFunction(ctx, animation_library_class_get_animation_renamed_signal, "get_animation_renamed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "animation_changed"),
+		JS_NewCFunction(ctx, animation_library_class_get_animation_changed_signal, "get_animation_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+}
+
+static void define_animation_library_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_animation_library_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -96,7 +166,7 @@ static int js_animation_library_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, AnimationLibrary::__class_id, proto);
 
 	define_animation_library_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_animation_library_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animation_library_class_proto_funcs, _countof(animation_library_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, animation_library_class_constructor, "AnimationLibrary", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

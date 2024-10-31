@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/render_data.hpp>
+#include <godot_cpp/classes/render_scene_buffers.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/render_scene_data.hpp>
-#include <godot_cpp/classes/render_scene_buffers.hpp>
+#include <godot_cpp/classes/render_data.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue render_data_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RenderData::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	RenderData *render_data_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		render_data_class = static_cast<RenderData *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		render_data_class = static_cast<RenderData *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		render_data_class = memnew(RenderData);
-	}
 	if (!render_data_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -66,10 +65,11 @@ static const JSCFunctionListEntry render_data_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_camera_attributes", 0, &render_data_class_get_camera_attributes),
 };
 
-void define_render_data_property(JSContext *ctx, JSValue obj) {
+static void define_render_data_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_render_data_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_render_data_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -85,7 +85,7 @@ static int js_render_data_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, RenderData::__class_id, proto);
 
 	define_render_data_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_render_data_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, render_data_class_proto_funcs, _countof(render_data_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, render_data_class_constructor, "RenderData", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -20,7 +20,7 @@ export declare class {{class['name']}} {{extends(class)}}{
   public {{member['name']}}: {{member['type']}};
   {%- endfor %}
   {%- for method in class['methods'] %}
-  public {{method['name']}}({{connect_args(method['arguments'])}}){{set_return(method['return_value']['type'] if method['return_value'] else None)}};
+  public {{method['name']}}({{connect_args(method['arguments'])}}){{set_return(method['return_type'] if method['return_type'] else None)}};
   {%- endfor %}
   
   {%- for enum in class['enums'] %}

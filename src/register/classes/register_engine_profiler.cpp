@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/engine_profiler.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue engine_profiler_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EngineProfiler::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	EngineProfiler *engine_profiler_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		engine_profiler_class = static_cast<EngineProfiler *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		engine_profiler_class = static_cast<EngineProfiler *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		engine_profiler_class = memnew(EngineProfiler);
-	}
 	if (!engine_profiler_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue engine_profiler_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 
-void define_engine_profiler_property(JSContext *ctx, JSValue obj) {
+static void define_engine_profiler_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_engine_profiler_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_engine_profiler_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_engine_profiler_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, EngineProfiler::__class_id, proto);
 
 	define_engine_profiler_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_engine_profiler_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, engine_profiler_class_constructor, "EngineProfiler", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

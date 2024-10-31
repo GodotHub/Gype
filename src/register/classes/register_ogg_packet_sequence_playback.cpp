@@ -27,13 +27,12 @@ static JSValue ogg_packet_sequence_playback_class_constructor(JSContext *ctx, JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OggPacketSequencePlayback::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	OggPacketSequencePlayback *ogg_packet_sequence_playback_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		ogg_packet_sequence_playback_class = static_cast<OggPacketSequencePlayback *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		ogg_packet_sequence_playback_class = static_cast<OggPacketSequencePlayback *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		ogg_packet_sequence_playback_class = memnew(OggPacketSequencePlayback);
-	}
 	if (!ogg_packet_sequence_playback_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue ogg_packet_sequence_playback_class_constructor(JSContext *ctx, JS
 	return obj;
 }
 
-void define_ogg_packet_sequence_playback_property(JSContext *ctx, JSValue obj) {
+static void define_ogg_packet_sequence_playback_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_ogg_packet_sequence_playback_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_ogg_packet_sequence_playback_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_ogg_packet_sequence_playback_class_init(JSContext *ctx, JSModuleDe
 	JS_SetClassProto(ctx, OggPacketSequencePlayback::__class_id, proto);
 
 	define_ogg_packet_sequence_playback_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_ogg_packet_sequence_playback_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, ogg_packet_sequence_playback_class_constructor, "OggPacketSequencePlayback", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

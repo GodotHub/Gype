@@ -5,14 +5,14 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/method_tweener.hpp>
-#include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/interval_tweener.hpp>
-#include <godot_cpp/classes/property_tweener.hpp>
+#include <godot_cpp/classes/tween.hpp>
+#include <godot_cpp/classes/method_tweener.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/property_tweener.hpp>
 #include <godot_cpp/classes/callback_tweener.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -33,13 +33,12 @@ static JSValue tween_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Tween::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Tween *tween_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		tween_class = static_cast<Tween *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		tween_class = static_cast<Tween *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		tween_class = memnew(Tween);
-	}
 	if (!tween_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -69,23 +68,19 @@ static JSValue tween_class_custom_step(JSContext *ctx, JSValueConst this_val, in
 };
 static JSValue tween_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Tween::stop, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Tween::stop, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_pause(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Tween::pause, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Tween::pause, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_play(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Tween::play, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Tween::play, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_kill(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Tween::kill, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Tween::kill, ctx, this_val, argc, argv);
 };
 static JSValue tween_class_get_total_elapsed_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -174,11 +169,66 @@ static const JSCFunctionListEntry tween_class_proto_funcs[] = {
 static const JSCFunctionListEntry tween_class_static_funcs[] = {
 	JS_CFUNC_DEF("interpolate_value", 6, &tween_class_interpolate_value),
 };
-
-void define_tween_property(JSContext *ctx, JSValue obj) {
+static JSValue tween_class_get_step_finished_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	Tween *opaque = reinterpret_cast<Tween *>(JS_GetOpaque(this_val, Tween::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "step_finished_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "step_finished").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "step_finished_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue tween_class_get_loop_finished_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	Tween *opaque = reinterpret_cast<Tween *>(JS_GetOpaque(this_val, Tween::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "loop_finished_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "loop_finished").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "loop_finished_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue tween_class_get_finished_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	Tween *opaque = reinterpret_cast<Tween *>(JS_GetOpaque(this_val, Tween::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "finished_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "finished").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "finished_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_tween_property(JSContext *ctx, JSValue proto) {
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "step_finished"),
+		JS_NewCFunction(ctx, tween_class_get_step_finished_signal, "get_step_finished_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "loop_finished"),
+		JS_NewCFunction(ctx, tween_class_get_loop_finished_signal, "get_loop_finished_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "finished"),
+		JS_NewCFunction(ctx, tween_class_get_finished_signal, "get_finished_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+}
+
+static void define_tween_enum(JSContext *ctx, JSValue proto) {
 	JSValue TweenProcessMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, TweenProcessMode_obj, "TWEEN_PROCESS_PHYSICS", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, TweenProcessMode_obj, "TWEEN_PROCESS_IDLE", JS_NewInt64(ctx, 1));
@@ -223,7 +273,7 @@ static int js_tween_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Tween::__class_id, proto);
 
 	define_tween_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_tween_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, tween_class_proto_funcs, _countof(tween_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, tween_class_constructor, "Tween", 0, JS_CFUNC_constructor, 0);
 	JS_SetPropertyFunctionList(ctx, ctor, tween_class_static_funcs, _countof(tween_class_static_funcs));

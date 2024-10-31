@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/xr_interface.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue xr_interface_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRInterface::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	XRInterface *xr_interface_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		xr_interface_class = static_cast<XRInterface *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		xr_interface_class = static_cast<XRInterface *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		xr_interface_class = memnew(XRInterface);
-	}
 	if (!xr_interface_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -55,8 +54,7 @@ static JSValue xr_interface_class_is_primary(JSContext *ctx, JSValueConst this_v
 };
 static JSValue xr_interface_class_set_primary(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRInterface::set_primary, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRInterface::set_primary, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_is_initialized(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -68,8 +66,7 @@ static JSValue xr_interface_class_initialize(JSContext *ctx, JSValueConst this_v
 };
 static JSValue xr_interface_class_uninitialize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRInterface::uninitialize, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRInterface::uninitialize, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_get_system_info(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -89,8 +86,7 @@ static JSValue xr_interface_class_get_view_count(JSContext *ctx, JSValueConst th
 };
 static JSValue xr_interface_class_trigger_haptic_pulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRInterface::trigger_haptic_pulse, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRInterface::trigger_haptic_pulse, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_supports_play_area_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -114,8 +110,7 @@ static JSValue xr_interface_class_get_anchor_detection_is_enabled(JSContext *ctx
 };
 static JSValue xr_interface_class_set_anchor_detection_is_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRInterface::set_anchor_detection_is_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRInterface::set_anchor_detection_is_enabled, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_get_camera_feed_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -135,8 +130,7 @@ static JSValue xr_interface_class_start_passthrough(JSContext *ctx, JSValueConst
 };
 static JSValue xr_interface_class_stop_passthrough(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRInterface::stop_passthrough, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRInterface::stop_passthrough, ctx, this_val, argc, argv);
 };
 static JSValue xr_interface_class_get_transform_for_view(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -188,11 +182,21 @@ static const JSCFunctionListEntry xr_interface_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_environment_blend_mode", 1, &xr_interface_class_set_environment_blend_mode),
 	JS_CFUNC_DEF("get_environment_blend_mode", 0, &xr_interface_class_get_environment_blend_mode),
 };
+static JSValue xr_interface_class_get_play_area_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	XRInterface *opaque = reinterpret_cast<XRInterface *>(JS_GetOpaque(this_val, XRInterface::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "play_area_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "play_area_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "play_area_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_xr_interface_property(JSContext *ctx, JSValue obj) {
+static void define_xr_interface_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "interface_is_primary"),
         JS_NewCFunction(ctx, xr_interface_class_is_primary, "is_primary", 0),
         JS_NewCFunction(ctx, xr_interface_class_set_primary, "set_primary", 1),
@@ -200,7 +204,7 @@ void define_xr_interface_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "xr_play_area_mode"),
         JS_NewCFunction(ctx, xr_interface_class_get_play_area_mode, "get_play_area_mode", 0),
         JS_NewCFunction(ctx, xr_interface_class_set_play_area_mode, "set_play_area_mode", 1),
@@ -208,7 +212,7 @@ void define_xr_interface_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "environment_blend_mode"),
         JS_NewCFunction(ctx, xr_interface_class_get_environment_blend_mode, "get_environment_blend_mode", 0),
         JS_NewCFunction(ctx, xr_interface_class_set_environment_blend_mode, "set_environment_blend_mode", 1),
@@ -216,15 +220,24 @@ void define_xr_interface_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "ar_is_anchor_detection_enabled"),
         JS_NewCFunction(ctx, xr_interface_class_get_anchor_detection_is_enabled, "get_anchor_detection_is_enabled", 0),
         JS_NewCFunction(ctx, xr_interface_class_set_anchor_detection_is_enabled, "set_anchor_detection_is_enabled", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "play_area_changed"),
+		JS_NewCFunction(ctx, xr_interface_class_get_play_area_changed_signal, "get_play_area_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_xr_interface_enum(JSContext *ctx, JSValue proto) {
 	JSValue Capabilities_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Capabilities_obj, "XR_NONE", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Capabilities_obj, "XR_MONO", JS_NewInt64(ctx, 1));
@@ -268,7 +281,7 @@ static int js_xr_interface_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, XRInterface::__class_id, proto);
 
 	define_xr_interface_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_xr_interface_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_interface_class_proto_funcs, _countof(xr_interface_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, xr_interface_class_constructor, "XRInterface", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

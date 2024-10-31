@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/immediate_mesh.hpp>
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue immediate_mesh_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ImmediateMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ImmediateMesh *immediate_mesh_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		immediate_mesh_class = static_cast<ImmediateMesh *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		immediate_mesh_class = static_cast<ImmediateMesh *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		immediate_mesh_class = memnew(ImmediateMesh);
-	}
 	if (!immediate_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,53 +43,43 @@ static JSValue immediate_mesh_class_constructor(JSContext *ctx, JSValueConst new
 }
 static JSValue immediate_mesh_class_surface_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImmediateMesh::surface_begin, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ImmediateMesh::surface_begin, ctx, this_val, argc, argv);
 };
 static JSValue immediate_mesh_class_surface_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImmediateMesh::surface_set_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ImmediateMesh::surface_set_color, ctx, this_val, argc, argv);
 };
 static JSValue immediate_mesh_class_surface_set_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImmediateMesh::surface_set_normal, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ImmediateMesh::surface_set_normal, ctx, this_val, argc, argv);
 };
 static JSValue immediate_mesh_class_surface_set_tangent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImmediateMesh::surface_set_tangent, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ImmediateMesh::surface_set_tangent, ctx, this_val, argc, argv);
 };
 static JSValue immediate_mesh_class_surface_set_uv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImmediateMesh::surface_set_uv, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ImmediateMesh::surface_set_uv, ctx, this_val, argc, argv);
 };
 static JSValue immediate_mesh_class_surface_set_uv2(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImmediateMesh::surface_set_uv2, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ImmediateMesh::surface_set_uv2, ctx, this_val, argc, argv);
 };
 static JSValue immediate_mesh_class_surface_add_vertex(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImmediateMesh::surface_add_vertex, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ImmediateMesh::surface_add_vertex, ctx, this_val, argc, argv);
 };
 static JSValue immediate_mesh_class_surface_add_vertex_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImmediateMesh::surface_add_vertex_2d, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ImmediateMesh::surface_add_vertex_2d, ctx, this_val, argc, argv);
 };
 static JSValue immediate_mesh_class_surface_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImmediateMesh::surface_end, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ImmediateMesh::surface_end, ctx, this_val, argc, argv);
 };
 static JSValue immediate_mesh_class_clear_surfaces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImmediateMesh::clear_surfaces, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ImmediateMesh::clear_surfaces, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry immediate_mesh_class_proto_funcs[] = {
 	JS_CFUNC_DEF("surface_begin", 2, &immediate_mesh_class_surface_begin),
@@ -105,10 +94,11 @@ static const JSCFunctionListEntry immediate_mesh_class_proto_funcs[] = {
 	JS_CFUNC_DEF("clear_surfaces", 0, &immediate_mesh_class_clear_surfaces),
 };
 
-void define_immediate_mesh_property(JSContext *ctx, JSValue obj) {
+static void define_immediate_mesh_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_immediate_mesh_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_immediate_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -124,7 +114,7 @@ static int js_immediate_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ImmediateMesh::__class_id, proto);
 
 	define_immediate_mesh_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_immediate_mesh_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, immediate_mesh_class_proto_funcs, _countof(immediate_mesh_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, immediate_mesh_class_constructor, "ImmediateMesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

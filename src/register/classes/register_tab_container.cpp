@@ -5,13 +5,13 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tab_bar.hpp>
+#include <godot_cpp/classes/popup.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/tab_container.hpp>
-#include <godot_cpp/classes/popup.hpp>
+#include <godot_cpp/classes/tab_bar.hpp>
 #include <godot_cpp/classes/container.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,13 +32,12 @@ static JSValue tab_container_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TabContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	TabContainer *tab_container_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		tab_container_class = static_cast<TabContainer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		tab_container_class = static_cast<TabContainer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		tab_container_class = memnew(TabContainer);
-	}
 	if (!tab_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -52,8 +51,7 @@ static JSValue tab_container_class_get_tab_count(JSContext *ctx, JSValueConst th
 };
 static JSValue tab_container_class_set_current_tab(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_current_tab, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_current_tab, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_get_current_tab(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -85,8 +83,7 @@ static JSValue tab_container_class_get_tab_control(JSContext *ctx, JSValueConst 
 };
 static JSValue tab_container_class_set_tab_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_tab_alignment, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_tab_alignment, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_get_tab_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -94,8 +91,7 @@ static JSValue tab_container_class_get_tab_alignment(JSContext *ctx, JSValueCons
 };
 static JSValue tab_container_class_set_tabs_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_tabs_position, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_tabs_position, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_get_tabs_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -103,8 +99,7 @@ static JSValue tab_container_class_get_tabs_position(JSContext *ctx, JSValueCons
 };
 static JSValue tab_container_class_set_clip_tabs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_clip_tabs, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_clip_tabs, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_get_clip_tabs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -112,8 +107,7 @@ static JSValue tab_container_class_get_clip_tabs(JSContext *ctx, JSValueConst th
 };
 static JSValue tab_container_class_set_tabs_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_tabs_visible, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_tabs_visible, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_are_tabs_visible(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -121,8 +115,7 @@ static JSValue tab_container_class_are_tabs_visible(JSContext *ctx, JSValueConst
 };
 static JSValue tab_container_class_set_all_tabs_in_front(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_all_tabs_in_front, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_all_tabs_in_front, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_is_all_tabs_in_front(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -130,8 +123,7 @@ static JSValue tab_container_class_is_all_tabs_in_front(JSContext *ctx, JSValueC
 };
 static JSValue tab_container_class_set_tab_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_tab_title, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_tab_title, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_get_tab_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -139,8 +131,7 @@ static JSValue tab_container_class_get_tab_title(JSContext *ctx, JSValueConst th
 };
 static JSValue tab_container_class_set_tab_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_tab_tooltip, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_tab_tooltip, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_get_tab_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -148,8 +139,7 @@ static JSValue tab_container_class_get_tab_tooltip(JSContext *ctx, JSValueConst 
 };
 static JSValue tab_container_class_set_tab_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_tab_icon, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_tab_icon, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_get_tab_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -157,8 +147,7 @@ static JSValue tab_container_class_get_tab_icon(JSContext *ctx, JSValueConst thi
 };
 static JSValue tab_container_class_set_tab_icon_max_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_tab_icon_max_width, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_tab_icon_max_width, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_get_tab_icon_max_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -166,8 +155,7 @@ static JSValue tab_container_class_get_tab_icon_max_width(JSContext *ctx, JSValu
 };
 static JSValue tab_container_class_set_tab_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_tab_disabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_tab_disabled, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_is_tab_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -175,8 +163,7 @@ static JSValue tab_container_class_is_tab_disabled(JSContext *ctx, JSValueConst 
 };
 static JSValue tab_container_class_set_tab_hidden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_tab_hidden, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_tab_hidden, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_is_tab_hidden(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -184,8 +171,7 @@ static JSValue tab_container_class_is_tab_hidden(JSContext *ctx, JSValueConst th
 };
 static JSValue tab_container_class_set_tab_metadata(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_tab_metadata, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_tab_metadata, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_get_tab_metadata(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -193,8 +179,7 @@ static JSValue tab_container_class_get_tab_metadata(JSContext *ctx, JSValueConst
 };
 static JSValue tab_container_class_set_tab_button_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_tab_button_icon, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_tab_button_icon, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_get_tab_button_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -210,8 +195,7 @@ static JSValue tab_container_class_get_tab_idx_from_control(JSContext *ctx, JSVa
 };
 static JSValue tab_container_class_set_popup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_popup, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_popup, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_get_popup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -219,8 +203,7 @@ static JSValue tab_container_class_get_popup(JSContext *ctx, JSValueConst this_v
 };
 static JSValue tab_container_class_set_drag_to_rearrange_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_drag_to_rearrange_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_drag_to_rearrange_enabled, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_get_drag_to_rearrange_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -228,8 +211,7 @@ static JSValue tab_container_class_get_drag_to_rearrange_enabled(JSContext *ctx,
 };
 static JSValue tab_container_class_set_tabs_rearrange_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_tabs_rearrange_group, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_tabs_rearrange_group, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_get_tabs_rearrange_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -237,8 +219,7 @@ static JSValue tab_container_class_get_tabs_rearrange_group(JSContext *ctx, JSVa
 };
 static JSValue tab_container_class_set_use_hidden_tabs_for_min_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_use_hidden_tabs_for_min_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_use_hidden_tabs_for_min_size, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_get_use_hidden_tabs_for_min_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -246,8 +227,7 @@ static JSValue tab_container_class_get_use_hidden_tabs_for_min_size(JSContext *c
 };
 static JSValue tab_container_class_set_tab_focus_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_tab_focus_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_tab_focus_mode, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_get_tab_focus_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -255,8 +235,7 @@ static JSValue tab_container_class_get_tab_focus_mode(JSContext *ctx, JSValueCon
 };
 static JSValue tab_container_class_set_deselect_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TabContainer::set_deselect_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TabContainer::set_deselect_enabled, ctx, this_val, argc, argv);
 };
 static JSValue tab_container_class_get_deselect_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -313,11 +292,81 @@ static const JSCFunctionListEntry tab_container_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_deselect_enabled", 1, &tab_container_class_set_deselect_enabled),
 	JS_CFUNC_DEF("get_deselect_enabled", 0, &tab_container_class_get_deselect_enabled),
 };
+static JSValue tab_container_class_get_active_tab_rearranged_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, TabContainer::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "active_tab_rearranged_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "active_tab_rearranged").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "active_tab_rearranged_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue tab_container_class_get_tab_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, TabContainer::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "tab_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "tab_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "tab_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue tab_container_class_get_tab_clicked_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, TabContainer::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "tab_clicked_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "tab_clicked").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "tab_clicked_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue tab_container_class_get_tab_hovered_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, TabContainer::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "tab_hovered_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "tab_hovered").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "tab_hovered_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue tab_container_class_get_tab_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, TabContainer::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "tab_selected_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "tab_selected").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "tab_selected_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue tab_container_class_get_tab_button_pressed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, TabContainer::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "tab_button_pressed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "tab_button_pressed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "tab_button_pressed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue tab_container_class_get_pre_popup_pressed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	TabContainer *opaque = reinterpret_cast<TabContainer *>(JS_GetOpaque(this_val, TabContainer::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "pre_popup_pressed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "pre_popup_pressed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "pre_popup_pressed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_tab_container_property(JSContext *ctx, JSValue obj) {
+static void define_tab_container_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "tab_alignment"),
         JS_NewCFunction(ctx, tab_container_class_get_tab_alignment, "get_tab_alignment", 0),
         JS_NewCFunction(ctx, tab_container_class_set_tab_alignment, "set_tab_alignment", 1),
@@ -325,7 +374,7 @@ void define_tab_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "current_tab"),
         JS_NewCFunction(ctx, tab_container_class_get_current_tab, "get_current_tab", 0),
         JS_NewCFunction(ctx, tab_container_class_set_current_tab, "set_current_tab", 1),
@@ -333,7 +382,7 @@ void define_tab_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "tabs_position"),
         JS_NewCFunction(ctx, tab_container_class_get_tabs_position, "get_tabs_position", 0),
         JS_NewCFunction(ctx, tab_container_class_set_tabs_position, "set_tabs_position", 1),
@@ -341,7 +390,7 @@ void define_tab_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "clip_tabs"),
         JS_NewCFunction(ctx, tab_container_class_get_clip_tabs, "get_clip_tabs", 0),
         JS_NewCFunction(ctx, tab_container_class_set_clip_tabs, "set_clip_tabs", 1),
@@ -349,7 +398,7 @@ void define_tab_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "tabs_visible"),
         JS_NewCFunction(ctx, tab_container_class_are_tabs_visible, "are_tabs_visible", 0),
         JS_NewCFunction(ctx, tab_container_class_set_tabs_visible, "set_tabs_visible", 1),
@@ -357,7 +406,7 @@ void define_tab_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "all_tabs_in_front"),
         JS_NewCFunction(ctx, tab_container_class_is_all_tabs_in_front, "is_all_tabs_in_front", 0),
         JS_NewCFunction(ctx, tab_container_class_set_all_tabs_in_front, "set_all_tabs_in_front", 1),
@@ -365,7 +414,7 @@ void define_tab_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "drag_to_rearrange_enabled"),
         JS_NewCFunction(ctx, tab_container_class_get_drag_to_rearrange_enabled, "get_drag_to_rearrange_enabled", 0),
         JS_NewCFunction(ctx, tab_container_class_set_drag_to_rearrange_enabled, "set_drag_to_rearrange_enabled", 1),
@@ -373,7 +422,7 @@ void define_tab_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "tabs_rearrange_group"),
         JS_NewCFunction(ctx, tab_container_class_get_tabs_rearrange_group, "get_tabs_rearrange_group", 0),
         JS_NewCFunction(ctx, tab_container_class_set_tabs_rearrange_group, "set_tabs_rearrange_group", 1),
@@ -381,7 +430,7 @@ void define_tab_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "use_hidden_tabs_for_min_size"),
         JS_NewCFunction(ctx, tab_container_class_get_use_hidden_tabs_for_min_size, "get_use_hidden_tabs_for_min_size", 0),
         JS_NewCFunction(ctx, tab_container_class_set_use_hidden_tabs_for_min_size, "set_use_hidden_tabs_for_min_size", 1),
@@ -389,7 +438,7 @@ void define_tab_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "tab_focus_mode"),
         JS_NewCFunction(ctx, tab_container_class_get_tab_focus_mode, "get_tab_focus_mode", 0),
         JS_NewCFunction(ctx, tab_container_class_set_tab_focus_mode, "set_tab_focus_mode", 1),
@@ -397,15 +446,72 @@ void define_tab_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "deselect_enabled"),
         JS_NewCFunction(ctx, tab_container_class_get_deselect_enabled, "get_deselect_enabled", 0),
         JS_NewCFunction(ctx, tab_container_class_set_deselect_enabled, "set_deselect_enabled", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "active_tab_rearranged"),
+		JS_NewCFunction(ctx, tab_container_class_get_active_tab_rearranged_signal, "get_active_tab_rearranged_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "tab_changed"),
+		JS_NewCFunction(ctx, tab_container_class_get_tab_changed_signal, "get_tab_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "tab_clicked"),
+		JS_NewCFunction(ctx, tab_container_class_get_tab_clicked_signal, "get_tab_clicked_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "tab_hovered"),
+		JS_NewCFunction(ctx, tab_container_class_get_tab_hovered_signal, "get_tab_hovered_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "tab_selected"),
+		JS_NewCFunction(ctx, tab_container_class_get_tab_selected_signal, "get_tab_selected_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "tab_button_pressed"),
+		JS_NewCFunction(ctx, tab_container_class_get_tab_button_pressed_signal, "get_tab_button_pressed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "pre_popup_pressed"),
+		JS_NewCFunction(ctx, tab_container_class_get_pre_popup_pressed_signal, "get_pre_popup_pressed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_tab_container_enum(JSContext *ctx, JSValue proto) {
 	JSValue TabPosition_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, TabPosition_obj, "POSITION_TOP", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, TabPosition_obj, "POSITION_BOTTOM", JS_NewInt64(ctx, 1));
@@ -426,7 +532,7 @@ static int js_tab_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, TabContainer::__class_id, proto);
 
 	define_tab_container_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_tab_container_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, tab_container_class_proto_funcs, _countof(tab_container_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, tab_container_class_constructor, "TabContainer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

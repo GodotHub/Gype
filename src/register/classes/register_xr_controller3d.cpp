@@ -27,13 +27,12 @@ static JSValue xr_controller3d_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRController3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	XRController3D *xr_controller3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		xr_controller3d_class = static_cast<XRController3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		xr_controller3d_class = static_cast<XRController3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		xr_controller3d_class = memnew(XRController3D);
-	}
 	if (!xr_controller3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -68,11 +67,102 @@ static const JSCFunctionListEntry xr_controller3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_vector2", 1, &xr_controller3d_class_get_vector2),
 	JS_CFUNC_DEF("get_tracker_hand", 0, &xr_controller3d_class_get_tracker_hand),
 };
-
-void define_xr_controller3d_property(JSContext *ctx, JSValue obj) {
+static JSValue xr_controller3d_class_get_button_pressed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	XRController3D *opaque = reinterpret_cast<XRController3D *>(JS_GetOpaque(this_val, XRController3D::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "button_pressed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "button_pressed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "button_pressed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue xr_controller3d_class_get_button_released_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	XRController3D *opaque = reinterpret_cast<XRController3D *>(JS_GetOpaque(this_val, XRController3D::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "button_released_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "button_released").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "button_released_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue xr_controller3d_class_get_input_float_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	XRController3D *opaque = reinterpret_cast<XRController3D *>(JS_GetOpaque(this_val, XRController3D::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "input_float_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "input_float_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "input_float_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue xr_controller3d_class_get_input_vector2_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	XRController3D *opaque = reinterpret_cast<XRController3D *>(JS_GetOpaque(this_val, XRController3D::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "input_vector2_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "input_vector2_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "input_vector2_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue xr_controller3d_class_get_profile_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	XRController3D *opaque = reinterpret_cast<XRController3D *>(JS_GetOpaque(this_val, XRController3D::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "profile_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "profile_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "profile_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_xr_controller3d_property(JSContext *ctx, JSValue proto) {
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "button_pressed"),
+		JS_NewCFunction(ctx, xr_controller3d_class_get_button_pressed_signal, "get_button_pressed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "button_released"),
+		JS_NewCFunction(ctx, xr_controller3d_class_get_button_released_signal, "get_button_released_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "input_float_changed"),
+		JS_NewCFunction(ctx, xr_controller3d_class_get_input_float_changed_signal, "get_input_float_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "input_vector2_changed"),
+		JS_NewCFunction(ctx, xr_controller3d_class_get_input_vector2_changed_signal, "get_input_vector2_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "profile_changed"),
+		JS_NewCFunction(ctx, xr_controller3d_class_get_profile_changed_signal, "get_profile_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+}
+
+static void define_xr_controller3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_xr_controller3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -88,7 +178,7 @@ static int js_xr_controller3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, XRController3D::__class_id, proto);
 
 	define_xr_controller3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_xr_controller3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_controller3d_class_proto_funcs, _countof(xr_controller3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, xr_controller3d_class_constructor, "XRController3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

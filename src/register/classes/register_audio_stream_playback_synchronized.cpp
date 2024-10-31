@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_stream_playback.hpp>
 #include <godot_cpp/classes/audio_stream_playback_synchronized.hpp>
+#include <godot_cpp/classes/audio_stream_playback.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue audio_stream_playback_synchronized_class_constructor(JSContext *c
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamPlaybackSynchronized::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AudioStreamPlaybackSynchronized *audio_stream_playback_synchronized_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		audio_stream_playback_synchronized_class = static_cast<AudioStreamPlaybackSynchronized *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		audio_stream_playback_synchronized_class = static_cast<AudioStreamPlaybackSynchronized *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		audio_stream_playback_synchronized_class = memnew(AudioStreamPlaybackSynchronized);
-	}
 	if (!audio_stream_playback_synchronized_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue audio_stream_playback_synchronized_class_constructor(JSContext *c
 	return obj;
 }
 
-void define_audio_stream_playback_synchronized_property(JSContext *ctx, JSValue obj) {
+static void define_audio_stream_playback_synchronized_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_audio_stream_playback_synchronized_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_stream_playback_synchronized_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_audio_stream_playback_synchronized_class_init(JSContext *ctx, JSMo
 	JS_SetClassProto(ctx, AudioStreamPlaybackSynchronized::__class_id, proto);
 
 	define_audio_stream_playback_synchronized_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_audio_stream_playback_synchronized_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, audio_stream_playback_synchronized_class_constructor, "AudioStreamPlaybackSynchronized", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

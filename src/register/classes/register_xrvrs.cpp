@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/xrvrs.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue xrvrs_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRVRS::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	XRVRS *xrvrs_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		xrvrs_class = static_cast<XRVRS *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		xrvrs_class = static_cast<XRVRS *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		xrvrs_class = memnew(XRVRS);
-	}
 	if (!xrvrs_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -47,8 +46,7 @@ static JSValue xrvrs_class_get_vrs_min_radius(JSContext *ctx, JSValueConst this_
 };
 static JSValue xrvrs_class_set_vrs_min_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRVRS::set_vrs_min_radius, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRVRS::set_vrs_min_radius, ctx, this_val, argc, argv);
 };
 static JSValue xrvrs_class_get_vrs_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,8 +54,7 @@ static JSValue xrvrs_class_get_vrs_strength(JSContext *ctx, JSValueConst this_va
 };
 static JSValue xrvrs_class_set_vrs_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRVRS::set_vrs_strength, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRVRS::set_vrs_strength, ctx, this_val, argc, argv);
 };
 static JSValue xrvrs_class_make_vrs_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -71,10 +68,10 @@ static const JSCFunctionListEntry xrvrs_class_proto_funcs[] = {
 	JS_CFUNC_DEF("make_vrs_texture", 2, &xrvrs_class_make_vrs_texture),
 };
 
-void define_xrvrs_property(JSContext *ctx, JSValue obj) {
+static void define_xrvrs_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "vrs_min_radius"),
         JS_NewCFunction(ctx, xrvrs_class_get_vrs_min_radius, "get_vrs_min_radius", 0),
         JS_NewCFunction(ctx, xrvrs_class_set_vrs_min_radius, "set_vrs_min_radius", 1),
@@ -82,15 +79,16 @@ void define_xrvrs_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "vrs_strength"),
         JS_NewCFunction(ctx, xrvrs_class_get_vrs_strength, "get_vrs_strength", 0),
         JS_NewCFunction(ctx, xrvrs_class_set_vrs_strength, "set_vrs_strength", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_xrvrs_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_xrvrs_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -106,7 +104,7 @@ static int js_xrvrs_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, XRVRS::__class_id, proto);
 
 	define_xrvrs_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_xrvrs_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xrvrs_class_proto_funcs, _countof(xrvrs_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, xrvrs_class_constructor, "XRVRS", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

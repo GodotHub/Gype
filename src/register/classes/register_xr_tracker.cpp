@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/xr_tracker.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue xr_tracker_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRTracker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	XRTracker *xr_tracker_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		xr_tracker_class = static_cast<XRTracker *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		xr_tracker_class = static_cast<XRTracker *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		xr_tracker_class = memnew(XRTracker);
-	}
 	if (!xr_tracker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -47,8 +46,7 @@ static JSValue xr_tracker_class_get_tracker_type(JSContext *ctx, JSValueConst th
 };
 static JSValue xr_tracker_class_set_tracker_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRTracker::set_tracker_type, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRTracker::set_tracker_type, ctx, this_val, argc, argv);
 };
 static JSValue xr_tracker_class_get_tracker_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,8 +54,7 @@ static JSValue xr_tracker_class_get_tracker_name(JSContext *ctx, JSValueConst th
 };
 static JSValue xr_tracker_class_set_tracker_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRTracker::set_tracker_name, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRTracker::set_tracker_name, ctx, this_val, argc, argv);
 };
 static JSValue xr_tracker_class_get_tracker_desc(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -65,8 +62,7 @@ static JSValue xr_tracker_class_get_tracker_desc(JSContext *ctx, JSValueConst th
 };
 static JSValue xr_tracker_class_set_tracker_desc(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRTracker::set_tracker_desc, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRTracker::set_tracker_desc, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry xr_tracker_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_tracker_type", 0, &xr_tracker_class_get_tracker_type),
@@ -77,10 +73,10 @@ static const JSCFunctionListEntry xr_tracker_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_tracker_desc", 1, &xr_tracker_class_set_tracker_desc),
 };
 
-void define_xr_tracker_property(JSContext *ctx, JSValue obj) {
+static void define_xr_tracker_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "type"),
         JS_NewCFunction(ctx, xr_tracker_class_get_tracker_type, "get_tracker_type", 0),
         JS_NewCFunction(ctx, xr_tracker_class_set_tracker_type, "set_tracker_type", 1),
@@ -88,7 +84,7 @@ void define_xr_tracker_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "name"),
         JS_NewCFunction(ctx, xr_tracker_class_get_tracker_name, "get_tracker_name", 0),
         JS_NewCFunction(ctx, xr_tracker_class_set_tracker_name, "set_tracker_name", 1),
@@ -96,15 +92,16 @@ void define_xr_tracker_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "description"),
         JS_NewCFunction(ctx, xr_tracker_class_get_tracker_desc, "get_tracker_desc", 0),
         JS_NewCFunction(ctx, xr_tracker_class_set_tracker_desc, "set_tracker_desc", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_xr_tracker_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_xr_tracker_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -120,7 +117,7 @@ static int js_xr_tracker_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, XRTracker::__class_id, proto);
 
 	define_xr_tracker_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_xr_tracker_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_tracker_class_proto_funcs, _countof(xr_tracker_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, xr_tracker_class_constructor, "XRTracker", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

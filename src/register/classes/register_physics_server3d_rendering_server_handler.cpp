@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_server3d_rendering_server_handler.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/physics_server3d_rendering_server_handler.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue physics_server3d_rendering_server_handler_class_constructor(JSCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsServer3DRenderingServerHandler::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PhysicsServer3DRenderingServerHandler *physics_server3d_rendering_server_handler_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		physics_server3d_rendering_server_handler_class = static_cast<PhysicsServer3DRenderingServerHandler *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		physics_server3d_rendering_server_handler_class = static_cast<PhysicsServer3DRenderingServerHandler *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		physics_server3d_rendering_server_handler_class = memnew(PhysicsServer3DRenderingServerHandler);
-	}
 	if (!physics_server3d_rendering_server_handler_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,18 +42,15 @@ static JSValue physics_server3d_rendering_server_handler_class_constructor(JSCon
 }
 static JSValue physics_server3d_rendering_server_handler_class_set_vertex(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsServer3DRenderingServerHandler::set_vertex, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsServer3DRenderingServerHandler::set_vertex, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_rendering_server_handler_class_set_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsServer3DRenderingServerHandler::set_normal, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsServer3DRenderingServerHandler::set_normal, ctx, this_val, argc, argv);
 };
 static JSValue physics_server3d_rendering_server_handler_class_set_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsServer3DRenderingServerHandler::set_aabb, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsServer3DRenderingServerHandler::set_aabb, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry physics_server3d_rendering_server_handler_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_vertex", 2, &physics_server3d_rendering_server_handler_class_set_vertex),
@@ -62,10 +58,11 @@ static const JSCFunctionListEntry physics_server3d_rendering_server_handler_clas
 	JS_CFUNC_DEF("set_aabb", 1, &physics_server3d_rendering_server_handler_class_set_aabb),
 };
 
-void define_physics_server3d_rendering_server_handler_property(JSContext *ctx, JSValue obj) {
+static void define_physics_server3d_rendering_server_handler_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_physics_server3d_rendering_server_handler_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_physics_server3d_rendering_server_handler_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -81,7 +78,7 @@ static int js_physics_server3d_rendering_server_handler_class_init(JSContext *ct
 	JS_SetClassProto(ctx, PhysicsServer3DRenderingServerHandler::__class_id, proto);
 
 	define_physics_server3d_rendering_server_handler_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_physics_server3d_rendering_server_handler_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, physics_server3d_rendering_server_handler_class_proto_funcs, _countof(physics_server3d_rendering_server_handler_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, physics_server3d_rendering_server_handler_class_constructor, "PhysicsServer3DRenderingServerHandler", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

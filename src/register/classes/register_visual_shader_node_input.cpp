@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_input.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue visual_shader_node_input_class_constructor(JSContext *ctx, JSValu
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeInput::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeInput *visual_shader_node_input_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_input_class = static_cast<VisualShaderNodeInput *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_input_class = static_cast<VisualShaderNodeInput *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_input_class = memnew(VisualShaderNodeInput);
-	}
 	if (!visual_shader_node_input_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue visual_shader_node_input_class_constructor(JSContext *ctx, JSValu
 }
 static JSValue visual_shader_node_input_class_set_input_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeInput::set_input_name, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeInput::set_input_name, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_input_class_get_input_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -59,19 +57,38 @@ static const JSCFunctionListEntry visual_shader_node_input_class_proto_funcs[] =
 	JS_CFUNC_DEF("get_input_name", 0, &visual_shader_node_input_class_get_input_name),
 	JS_CFUNC_DEF("get_input_real_name", 0, &visual_shader_node_input_class_get_input_real_name),
 };
+static JSValue visual_shader_node_input_class_get_input_type_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	VisualShaderNodeInput *opaque = reinterpret_cast<VisualShaderNodeInput *>(JS_GetOpaque(this_val, VisualShaderNodeInput::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "input_type_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "input_type_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "input_type_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_visual_shader_node_input_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_input_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "input_name"),
         JS_NewCFunction(ctx, visual_shader_node_input_class_get_input_name, "get_input_name", 0),
         JS_NewCFunction(ctx, visual_shader_node_input_class_set_input_name, "set_input_name", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "input_type_changed"),
+		JS_NewCFunction(ctx, visual_shader_node_input_class_get_input_type_changed_signal, "get_input_type_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_input_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_input_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -87,7 +104,7 @@ static int js_visual_shader_node_input_class_init(JSContext *ctx, JSModuleDef *m
 	JS_SetClassProto(ctx, VisualShaderNodeInput::__class_id, proto);
 
 	define_visual_shader_node_input_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_input_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_input_class_proto_funcs, _countof(visual_shader_node_input_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_input_class_constructor, "VisualShaderNodeInput", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -5,22 +5,22 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_pipeline_depth_stencil_state.hpp>
-#include <godot_cpp/classes/rd_shader_spirv.hpp>
-#include <godot_cpp/classes/rd_framebuffer_pass.hpp>
-#include <godot_cpp/classes/rendering_device.hpp>
-#include <godot_cpp/classes/rd_vertex_attribute.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/rd_pipeline_multisample_state.hpp>
-#include <godot_cpp/classes/rd_pipeline_specialization_constant.hpp>
 #include <godot_cpp/classes/rd_texture_format.hpp>
+#include <godot_cpp/classes/rd_framebuffer_pass.hpp>
+#include <godot_cpp/classes/rd_shader_spirv.hpp>
+#include <godot_cpp/classes/rd_texture_view.hpp>
+#include <godot_cpp/classes/rd_pipeline_color_blend_state.hpp>
+#include <godot_cpp/classes/rd_vertex_attribute.hpp>
 #include <godot_cpp/classes/rd_shader_source.hpp>
 #include <godot_cpp/classes/rd_pipeline_rasterization_state.hpp>
-#include <godot_cpp/classes/rd_texture_view.hpp>
+#include <godot_cpp/classes/rd_pipeline_depth_stencil_state.hpp>
 #include <godot_cpp/classes/rd_uniform.hpp>
-#include <godot_cpp/classes/rd_attachment_format.hpp>
+#include <godot_cpp/classes/rd_pipeline_multisample_state.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/rendering_device.hpp>
 #include <godot_cpp/classes/rd_sampler_state.hpp>
-#include <godot_cpp/classes/rd_pipeline_color_blend_state.hpp>
+#include <godot_cpp/classes/rd_pipeline_specialization_constant.hpp>
+#include <godot_cpp/classes/rd_attachment_format.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -41,13 +41,12 @@ static JSValue rendering_device_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RenderingDevice::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	RenderingDevice *rendering_device_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		rendering_device_class = static_cast<RenderingDevice *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		rendering_device_class = static_cast<RenderingDevice *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		rendering_device_class = memnew(RenderingDevice);
-	}
 	if (!rendering_device_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -277,48 +276,39 @@ static JSValue rendering_device_class_draw_list_begin_split(JSContext *ctx, JSVa
 };
 static JSValue rendering_device_class_draw_list_set_blend_constants(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::draw_list_set_blend_constants, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::draw_list_set_blend_constants, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_draw_list_bind_render_pipeline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::draw_list_bind_render_pipeline, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::draw_list_bind_render_pipeline, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_draw_list_bind_uniform_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::draw_list_bind_uniform_set, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::draw_list_bind_uniform_set, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_draw_list_bind_vertex_array(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::draw_list_bind_vertex_array, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::draw_list_bind_vertex_array, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_draw_list_bind_index_array(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::draw_list_bind_index_array, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::draw_list_bind_index_array, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_draw_list_set_push_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::draw_list_set_push_constant, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::draw_list_set_push_constant, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_draw_list_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::draw_list_draw, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::draw_list_draw, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_draw_list_enable_scissor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::draw_list_enable_scissor, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::draw_list_enable_scissor, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_draw_list_disable_scissor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::draw_list_disable_scissor, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::draw_list_disable_scissor, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_draw_list_switch_to_next_pass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -330,8 +320,7 @@ static JSValue rendering_device_class_draw_list_switch_to_next_pass_split(JSCont
 };
 static JSValue rendering_device_class_draw_list_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::draw_list_end, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::draw_list_end, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_compute_list_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -339,48 +328,39 @@ static JSValue rendering_device_class_compute_list_begin(JSContext *ctx, JSValue
 };
 static JSValue rendering_device_class_compute_list_bind_compute_pipeline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::compute_list_bind_compute_pipeline, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::compute_list_bind_compute_pipeline, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_compute_list_set_push_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::compute_list_set_push_constant, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::compute_list_set_push_constant, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_compute_list_bind_uniform_set(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::compute_list_bind_uniform_set, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::compute_list_bind_uniform_set, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_compute_list_dispatch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::compute_list_dispatch, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::compute_list_dispatch, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_compute_list_dispatch_indirect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::compute_list_dispatch_indirect, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::compute_list_dispatch_indirect, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_compute_list_add_barrier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::compute_list_add_barrier, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::compute_list_add_barrier, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_compute_list_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::compute_list_end, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::compute_list_end, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_free_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::free_rid, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::free_rid, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_capture_timestamp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::capture_timestamp, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::capture_timestamp, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_get_captured_timestamps_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -412,23 +392,19 @@ static JSValue rendering_device_class_get_frame_delay(JSContext *ctx, JSValueCon
 };
 static JSValue rendering_device_class_submit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::submit, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::submit, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_sync(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::sync, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::sync, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_barrier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::barrier, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::barrier, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_full_barrier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::full_barrier, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::full_barrier, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_create_local_device(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -436,23 +412,19 @@ static JSValue rendering_device_class_create_local_device(JSContext *ctx, JSValu
 };
 static JSValue rendering_device_class_set_resource_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::set_resource_name, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::set_resource_name, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_draw_command_begin_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::draw_command_begin_label, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::draw_command_begin_label, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_draw_command_insert_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::draw_command_insert_label, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::draw_command_insert_label, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_draw_command_end_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RenderingDevice::draw_command_end_label, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RenderingDevice::draw_command_end_label, ctx, this_val, argc, argv);
 };
 static JSValue rendering_device_class_get_device_vendor_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -575,10 +547,11 @@ static const JSCFunctionListEntry rendering_device_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_driver_resource", 3, &rendering_device_class_get_driver_resource),
 };
 
-void define_rendering_device_property(JSContext *ctx, JSValue obj) {
+static void define_rendering_device_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_rendering_device_enum(JSContext *ctx, JSValue proto) {
 	JSValue DeviceType_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, DeviceType_obj, "DEVICE_TYPE_OTHER", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, DeviceType_obj, "DEVICE_TYPE_INTEGRATED_GPU", JS_NewInt64(ctx, 1));
@@ -1139,7 +1112,7 @@ static int js_rendering_device_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, RenderingDevice::__class_id, proto);
 
 	define_rendering_device_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_rendering_device_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, rendering_device_class_proto_funcs, _countof(rendering_device_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, rendering_device_class_constructor, "RenderingDevice", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

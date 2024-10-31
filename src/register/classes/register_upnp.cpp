@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/upnp_device.hpp>
 #include <godot_cpp/classes/upnp.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue upnp_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, UPNP::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	UPNP *upnp_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		upnp_class = static_cast<UPNP *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		upnp_class = static_cast<UPNP *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		upnp_class = memnew(UPNP);
-	}
 	if (!upnp_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -52,23 +51,19 @@ static JSValue upnp_class_get_device(JSContext *ctx, JSValueConst this_val, int 
 };
 static JSValue upnp_class_add_device(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&UPNP::add_device, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&UPNP::add_device, ctx, this_val, argc, argv);
 };
 static JSValue upnp_class_set_device(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&UPNP::set_device, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&UPNP::set_device, ctx, this_val, argc, argv);
 };
 static JSValue upnp_class_remove_device(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&UPNP::remove_device, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&UPNP::remove_device, ctx, this_val, argc, argv);
 };
 static JSValue upnp_class_clear_devices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&UPNP::clear_devices, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&UPNP::clear_devices, ctx, this_val, argc, argv);
 };
 static JSValue upnp_class_get_gateway(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -92,8 +87,7 @@ static JSValue upnp_class_delete_port_mapping(JSContext *ctx, JSValueConst this_
 };
 static JSValue upnp_class_set_discover_multicast_if(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&UPNP::set_discover_multicast_if, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&UPNP::set_discover_multicast_if, ctx, this_val, argc, argv);
 };
 static JSValue upnp_class_get_discover_multicast_if(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -101,8 +95,7 @@ static JSValue upnp_class_get_discover_multicast_if(JSContext *ctx, JSValueConst
 };
 static JSValue upnp_class_set_discover_local_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&UPNP::set_discover_local_port, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&UPNP::set_discover_local_port, ctx, this_val, argc, argv);
 };
 static JSValue upnp_class_get_discover_local_port(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -110,8 +103,7 @@ static JSValue upnp_class_get_discover_local_port(JSContext *ctx, JSValueConst t
 };
 static JSValue upnp_class_set_discover_ipv6(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&UPNP::set_discover_ipv6, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&UPNP::set_discover_ipv6, ctx, this_val, argc, argv);
 };
 static JSValue upnp_class_is_discover_ipv6(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -137,10 +129,10 @@ static const JSCFunctionListEntry upnp_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_discover_ipv6", 0, &upnp_class_is_discover_ipv6),
 };
 
-void define_upnp_property(JSContext *ctx, JSValue obj) {
+static void define_upnp_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "discover_multicast_if"),
         JS_NewCFunction(ctx, upnp_class_get_discover_multicast_if, "get_discover_multicast_if", 0),
         JS_NewCFunction(ctx, upnp_class_set_discover_multicast_if, "set_discover_multicast_if", 1),
@@ -148,7 +140,7 @@ void define_upnp_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "discover_local_port"),
         JS_NewCFunction(ctx, upnp_class_get_discover_local_port, "get_discover_local_port", 0),
         JS_NewCFunction(ctx, upnp_class_set_discover_local_port, "set_discover_local_port", 1),
@@ -156,15 +148,16 @@ void define_upnp_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "discover_ipv6"),
         JS_NewCFunction(ctx, upnp_class_is_discover_ipv6, "is_discover_ipv6", 0),
         JS_NewCFunction(ctx, upnp_class_set_discover_ipv6, "set_discover_ipv6", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_upnp_enum(JSContext *ctx, JSValue proto) {
 	JSValue UPNPResult_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, UPNPResult_obj, "UPNP_RESULT_SUCCESS", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, UPNPResult_obj, "UPNP_RESULT_NOT_AUTHORIZED", JS_NewInt64(ctx, 1));
@@ -211,7 +204,7 @@ static int js_upnp_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, UPNP::__class_id, proto);
 
 	define_upnp_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_upnp_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, upnp_class_proto_funcs, _countof(upnp_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, upnp_class_constructor, "UPNP", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

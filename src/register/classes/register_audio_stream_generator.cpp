@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_stream_generator.hpp>
 #include <godot_cpp/classes/audio_stream.hpp>
+#include <godot_cpp/classes/audio_stream_generator.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue audio_stream_generator_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamGenerator::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AudioStreamGenerator *audio_stream_generator_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		audio_stream_generator_class = static_cast<AudioStreamGenerator *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		audio_stream_generator_class = static_cast<AudioStreamGenerator *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		audio_stream_generator_class = memnew(AudioStreamGenerator);
-	}
 	if (!audio_stream_generator_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue audio_stream_generator_class_constructor(JSContext *ctx, JSValueC
 }
 static JSValue audio_stream_generator_class_set_mix_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamGenerator::set_mix_rate, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamGenerator::set_mix_rate, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_generator_class_get_mix_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue audio_stream_generator_class_get_mix_rate(JSContext *ctx, JSValue
 };
 static JSValue audio_stream_generator_class_set_buffer_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamGenerator::set_buffer_length, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamGenerator::set_buffer_length, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_generator_class_get_buffer_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,10 +63,10 @@ static const JSCFunctionListEntry audio_stream_generator_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_buffer_length", 0, &audio_stream_generator_class_get_buffer_length),
 };
 
-void define_audio_stream_generator_property(JSContext *ctx, JSValue obj) {
+static void define_audio_stream_generator_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "mix_rate"),
         JS_NewCFunction(ctx, audio_stream_generator_class_get_mix_rate, "get_mix_rate", 0),
         JS_NewCFunction(ctx, audio_stream_generator_class_set_mix_rate, "set_mix_rate", 1),
@@ -77,15 +74,16 @@ void define_audio_stream_generator_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "buffer_length"),
         JS_NewCFunction(ctx, audio_stream_generator_class_get_buffer_length, "get_buffer_length", 0),
         JS_NewCFunction(ctx, audio_stream_generator_class_set_buffer_length, "set_buffer_length", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_audio_stream_generator_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_stream_generator_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -101,7 +99,7 @@ static int js_audio_stream_generator_class_init(JSContext *ctx, JSModuleDef *m) 
 	JS_SetClassProto(ctx, AudioStreamGenerator::__class_id, proto);
 
 	define_audio_stream_generator_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_audio_stream_generator_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, audio_stream_generator_class_proto_funcs, _countof(audio_stream_generator_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, audio_stream_generator_class_constructor, "AudioStreamGenerator", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

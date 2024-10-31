@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/multiplayer_peer.hpp>
-#include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/classes/web_socket_multiplayer_peer.hpp>
+#include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/classes/web_socket_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -29,13 +29,12 @@ static JSValue web_socket_multiplayer_peer_class_constructor(JSContext *ctx, JSV
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WebSocketMultiplayerPeer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	WebSocketMultiplayerPeer *web_socket_multiplayer_peer_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		web_socket_multiplayer_peer_class = static_cast<WebSocketMultiplayerPeer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		web_socket_multiplayer_peer_class = static_cast<WebSocketMultiplayerPeer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		web_socket_multiplayer_peer_class = memnew(WebSocketMultiplayerPeer);
-	}
 	if (!web_socket_multiplayer_peer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -69,8 +68,7 @@ static JSValue web_socket_multiplayer_peer_class_get_supported_protocols(JSConte
 };
 static JSValue web_socket_multiplayer_peer_class_set_supported_protocols(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebSocketMultiplayerPeer::set_supported_protocols, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebSocketMultiplayerPeer::set_supported_protocols, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_multiplayer_peer_class_get_handshake_headers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -78,8 +76,7 @@ static JSValue web_socket_multiplayer_peer_class_get_handshake_headers(JSContext
 };
 static JSValue web_socket_multiplayer_peer_class_set_handshake_headers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebSocketMultiplayerPeer::set_handshake_headers, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebSocketMultiplayerPeer::set_handshake_headers, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_multiplayer_peer_class_get_inbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -87,8 +84,7 @@ static JSValue web_socket_multiplayer_peer_class_get_inbound_buffer_size(JSConte
 };
 static JSValue web_socket_multiplayer_peer_class_set_inbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebSocketMultiplayerPeer::set_inbound_buffer_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebSocketMultiplayerPeer::set_inbound_buffer_size, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_multiplayer_peer_class_get_outbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -96,8 +92,7 @@ static JSValue web_socket_multiplayer_peer_class_get_outbound_buffer_size(JSCont
 };
 static JSValue web_socket_multiplayer_peer_class_set_outbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebSocketMultiplayerPeer::set_outbound_buffer_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebSocketMultiplayerPeer::set_outbound_buffer_size, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_multiplayer_peer_class_get_handshake_timeout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -105,13 +100,11 @@ static JSValue web_socket_multiplayer_peer_class_get_handshake_timeout(JSContext
 };
 static JSValue web_socket_multiplayer_peer_class_set_handshake_timeout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebSocketMultiplayerPeer::set_handshake_timeout, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebSocketMultiplayerPeer::set_handshake_timeout, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_multiplayer_peer_class_set_max_queued_packets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebSocketMultiplayerPeer::set_max_queued_packets, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebSocketMultiplayerPeer::set_max_queued_packets, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_multiplayer_peer_class_get_max_queued_packets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -137,10 +130,10 @@ static const JSCFunctionListEntry web_socket_multiplayer_peer_class_proto_funcs[
 	JS_CFUNC_DEF("get_max_queued_packets", 0, &web_socket_multiplayer_peer_class_get_max_queued_packets),
 };
 
-void define_web_socket_multiplayer_peer_property(JSContext *ctx, JSValue obj) {
+static void define_web_socket_multiplayer_peer_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "supported_protocols"),
         JS_NewCFunction(ctx, web_socket_multiplayer_peer_class_get_supported_protocols, "get_supported_protocols", 0),
         JS_NewCFunction(ctx, web_socket_multiplayer_peer_class_set_supported_protocols, "set_supported_protocols", 1),
@@ -148,7 +141,7 @@ void define_web_socket_multiplayer_peer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "handshake_headers"),
         JS_NewCFunction(ctx, web_socket_multiplayer_peer_class_get_handshake_headers, "get_handshake_headers", 0),
         JS_NewCFunction(ctx, web_socket_multiplayer_peer_class_set_handshake_headers, "set_handshake_headers", 1),
@@ -156,7 +149,7 @@ void define_web_socket_multiplayer_peer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "inbound_buffer_size"),
         JS_NewCFunction(ctx, web_socket_multiplayer_peer_class_get_inbound_buffer_size, "get_inbound_buffer_size", 0),
         JS_NewCFunction(ctx, web_socket_multiplayer_peer_class_set_inbound_buffer_size, "set_inbound_buffer_size", 1),
@@ -164,7 +157,7 @@ void define_web_socket_multiplayer_peer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "outbound_buffer_size"),
         JS_NewCFunction(ctx, web_socket_multiplayer_peer_class_get_outbound_buffer_size, "get_outbound_buffer_size", 0),
         JS_NewCFunction(ctx, web_socket_multiplayer_peer_class_set_outbound_buffer_size, "set_outbound_buffer_size", 1),
@@ -172,7 +165,7 @@ void define_web_socket_multiplayer_peer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "handshake_timeout"),
         JS_NewCFunction(ctx, web_socket_multiplayer_peer_class_get_handshake_timeout, "get_handshake_timeout", 0),
         JS_NewCFunction(ctx, web_socket_multiplayer_peer_class_set_handshake_timeout, "set_handshake_timeout", 1),
@@ -180,15 +173,16 @@ void define_web_socket_multiplayer_peer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "max_queued_packets"),
         JS_NewCFunction(ctx, web_socket_multiplayer_peer_class_get_max_queued_packets, "get_max_queued_packets", 0),
         JS_NewCFunction(ctx, web_socket_multiplayer_peer_class_set_max_queued_packets, "set_max_queued_packets", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_web_socket_multiplayer_peer_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_web_socket_multiplayer_peer_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -204,7 +198,7 @@ static int js_web_socket_multiplayer_peer_class_init(JSContext *ctx, JSModuleDef
 	JS_SetClassProto(ctx, WebSocketMultiplayerPeer::__class_id, proto);
 
 	define_web_socket_multiplayer_peer_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_web_socket_multiplayer_peer_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, web_socket_multiplayer_peer_class_proto_funcs, _countof(web_socket_multiplayer_peer_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, web_socket_multiplayer_peer_class_constructor, "WebSocketMultiplayerPeer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

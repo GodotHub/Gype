@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_vertex_attribute.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue rd_vertex_attribute_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDVertexAttribute::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	RDVertexAttribute *rd_vertex_attribute_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		rd_vertex_attribute_class = static_cast<RDVertexAttribute *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		rd_vertex_attribute_class = static_cast<RDVertexAttribute *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		rd_vertex_attribute_class = memnew(RDVertexAttribute);
-	}
 	if (!rd_vertex_attribute_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue rd_vertex_attribute_class_constructor(JSContext *ctx, JSValueCons
 }
 static JSValue rd_vertex_attribute_class_set_location(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDVertexAttribute::set_location, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDVertexAttribute::set_location, ctx, this_val, argc, argv);
 };
 static JSValue rd_vertex_attribute_class_get_location(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue rd_vertex_attribute_class_get_location(JSContext *ctx, JSValueCon
 };
 static JSValue rd_vertex_attribute_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDVertexAttribute::set_offset, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDVertexAttribute::set_offset, ctx, this_val, argc, argv);
 };
 static JSValue rd_vertex_attribute_class_get_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue rd_vertex_attribute_class_get_offset(JSContext *ctx, JSValueConst
 };
 static JSValue rd_vertex_attribute_class_set_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDVertexAttribute::set_format, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDVertexAttribute::set_format, ctx, this_val, argc, argv);
 };
 static JSValue rd_vertex_attribute_class_get_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue rd_vertex_attribute_class_get_format(JSContext *ctx, JSValueConst
 };
 static JSValue rd_vertex_attribute_class_set_stride(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDVertexAttribute::set_stride, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDVertexAttribute::set_stride, ctx, this_val, argc, argv);
 };
 static JSValue rd_vertex_attribute_class_get_stride(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue rd_vertex_attribute_class_get_stride(JSContext *ctx, JSValueConst
 };
 static JSValue rd_vertex_attribute_class_set_frequency(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDVertexAttribute::set_frequency, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDVertexAttribute::set_frequency, ctx, this_val, argc, argv);
 };
 static JSValue rd_vertex_attribute_class_get_frequency(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -99,10 +93,10 @@ static const JSCFunctionListEntry rd_vertex_attribute_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_frequency", 0, &rd_vertex_attribute_class_get_frequency),
 };
 
-void define_rd_vertex_attribute_property(JSContext *ctx, JSValue obj) {
+static void define_rd_vertex_attribute_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "location"),
         JS_NewCFunction(ctx, rd_vertex_attribute_class_get_location, "get_location", 0),
         JS_NewCFunction(ctx, rd_vertex_attribute_class_set_location, "set_location", 1),
@@ -110,7 +104,7 @@ void define_rd_vertex_attribute_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "offset"),
         JS_NewCFunction(ctx, rd_vertex_attribute_class_get_offset, "get_offset", 0),
         JS_NewCFunction(ctx, rd_vertex_attribute_class_set_offset, "set_offset", 1),
@@ -118,7 +112,7 @@ void define_rd_vertex_attribute_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "format"),
         JS_NewCFunction(ctx, rd_vertex_attribute_class_get_format, "get_format", 0),
         JS_NewCFunction(ctx, rd_vertex_attribute_class_set_format, "set_format", 1),
@@ -126,7 +120,7 @@ void define_rd_vertex_attribute_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "stride"),
         JS_NewCFunction(ctx, rd_vertex_attribute_class_get_stride, "get_stride", 0),
         JS_NewCFunction(ctx, rd_vertex_attribute_class_set_stride, "set_stride", 1),
@@ -134,15 +128,16 @@ void define_rd_vertex_attribute_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "frequency"),
         JS_NewCFunction(ctx, rd_vertex_attribute_class_get_frequency, "get_frequency", 0),
         JS_NewCFunction(ctx, rd_vertex_attribute_class_set_frequency, "set_frequency", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_rd_vertex_attribute_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_rd_vertex_attribute_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -158,7 +153,7 @@ static int js_rd_vertex_attribute_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, RDVertexAttribute::__class_id, proto);
 
 	define_rd_vertex_attribute_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_rd_vertex_attribute_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, rd_vertex_attribute_class_proto_funcs, _countof(rd_vertex_attribute_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, rd_vertex_attribute_class_constructor, "RDVertexAttribute", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

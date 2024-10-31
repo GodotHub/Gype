@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/jni_singleton.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue jni_singleton_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, JNISingleton::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	JNISingleton *jni_singleton_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		jni_singleton_class = static_cast<JNISingleton *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		jni_singleton_class = static_cast<JNISingleton *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		jni_singleton_class = memnew(JNISingleton);
-	}
 	if (!jni_singleton_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue jni_singleton_class_constructor(JSContext *ctx, JSValueConst new_
 	return obj;
 }
 
-void define_jni_singleton_property(JSContext *ctx, JSValue obj) {
+static void define_jni_singleton_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_jni_singleton_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_jni_singleton_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_jni_singleton_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, JNISingleton::__class_id, proto);
 
 	define_jni_singleton_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_jni_singleton_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, jni_singleton_class_constructor, "JNISingleton", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

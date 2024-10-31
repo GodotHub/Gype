@@ -27,13 +27,12 @@ static JSValue xr_origin3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XROrigin3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	XROrigin3D *xr_origin3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		xr_origin3d_class = static_cast<XROrigin3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		xr_origin3d_class = static_cast<XROrigin3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		xr_origin3d_class = memnew(XROrigin3D);
-	}
 	if (!xr_origin3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue xr_origin3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 }
 static JSValue xr_origin3d_class_set_world_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XROrigin3D::set_world_scale, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XROrigin3D::set_world_scale, ctx, this_val, argc, argv);
 };
 static JSValue xr_origin3d_class_get_world_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue xr_origin3d_class_get_world_scale(JSContext *ctx, JSValueConst th
 };
 static JSValue xr_origin3d_class_set_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XROrigin3D::set_current, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XROrigin3D::set_current, ctx, this_val, argc, argv);
 };
 static JSValue xr_origin3d_class_is_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,10 +63,10 @@ static const JSCFunctionListEntry xr_origin3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_current", 0, &xr_origin3d_class_is_current),
 };
 
-void define_xr_origin3d_property(JSContext *ctx, JSValue obj) {
+static void define_xr_origin3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "world_scale"),
         JS_NewCFunction(ctx, xr_origin3d_class_get_world_scale, "get_world_scale", 0),
         JS_NewCFunction(ctx, xr_origin3d_class_set_world_scale, "set_world_scale", 1),
@@ -77,15 +74,16 @@ void define_xr_origin3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "current"),
         JS_NewCFunction(ctx, xr_origin3d_class_is_current, "is_current", 0),
         JS_NewCFunction(ctx, xr_origin3d_class_set_current, "set_current", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_xr_origin3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_xr_origin3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -101,7 +99,7 @@ static int js_xr_origin3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, XROrigin3D::__class_id, proto);
 
 	define_xr_origin3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_xr_origin3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_origin3d_class_proto_funcs, _countof(xr_origin3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, xr_origin3d_class_constructor, "XROrigin3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

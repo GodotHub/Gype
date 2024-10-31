@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/navigation_mesh_source_geometry_data3d.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/navigation_mesh_source_geometry_data3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue navigation_mesh_source_geometry_data3d_class_constructor(JSContex
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, NavigationMeshSourceGeometryData3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	NavigationMeshSourceGeometryData3D *navigation_mesh_source_geometry_data3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		navigation_mesh_source_geometry_data3d_class = static_cast<NavigationMeshSourceGeometryData3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		navigation_mesh_source_geometry_data3d_class = static_cast<NavigationMeshSourceGeometryData3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		navigation_mesh_source_geometry_data3d_class = memnew(NavigationMeshSourceGeometryData3D);
-	}
 	if (!navigation_mesh_source_geometry_data3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue navigation_mesh_source_geometry_data3d_class_constructor(JSContex
 }
 static JSValue navigation_mesh_source_geometry_data3d_class_set_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::set_vertices, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::set_vertices, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_source_geometry_data3d_class_get_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue navigation_mesh_source_geometry_data3d_class_get_vertices(JSConte
 };
 static JSValue navigation_mesh_source_geometry_data3d_class_set_indices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::set_indices, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::set_indices, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_source_geometry_data3d_class_get_indices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,13 +59,11 @@ static JSValue navigation_mesh_source_geometry_data3d_class_get_indices(JSContex
 };
 static JSValue navigation_mesh_source_geometry_data3d_class_append_arrays(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::append_arrays, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::append_arrays, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_source_geometry_data3d_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::clear, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::clear, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_source_geometry_data3d_class_has_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -76,38 +71,31 @@ static JSValue navigation_mesh_source_geometry_data3d_class_has_data(JSContext *
 };
 static JSValue navigation_mesh_source_geometry_data3d_class_add_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::add_mesh, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::add_mesh, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_source_geometry_data3d_class_add_mesh_array(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::add_mesh_array, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::add_mesh_array, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_source_geometry_data3d_class_add_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::add_faces, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::add_faces, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_source_geometry_data3d_class_merge(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::merge, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::merge, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_source_geometry_data3d_class_add_projected_obstruction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::add_projected_obstruction, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::add_projected_obstruction, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_source_geometry_data3d_class_clear_projected_obstructions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::clear_projected_obstructions, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::clear_projected_obstructions, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_source_geometry_data3d_class_set_projected_obstructions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::set_projected_obstructions, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&NavigationMeshSourceGeometryData3D::set_projected_obstructions, ctx, this_val, argc, argv);
 };
 static JSValue navigation_mesh_source_geometry_data3d_class_get_projected_obstructions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -131,10 +119,10 @@ static const JSCFunctionListEntry navigation_mesh_source_geometry_data3d_class_p
 	JS_CFUNC_DEF("get_projected_obstructions", 0, &navigation_mesh_source_geometry_data3d_class_get_projected_obstructions),
 };
 
-void define_navigation_mesh_source_geometry_data3d_property(JSContext *ctx, JSValue obj) {
+static void define_navigation_mesh_source_geometry_data3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "vertices"),
         JS_NewCFunction(ctx, navigation_mesh_source_geometry_data3d_class_get_vertices, "get_vertices", 0),
         JS_NewCFunction(ctx, navigation_mesh_source_geometry_data3d_class_set_vertices, "set_vertices", 1),
@@ -142,7 +130,7 @@ void define_navigation_mesh_source_geometry_data3d_property(JSContext *ctx, JSVa
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "indices"),
         JS_NewCFunction(ctx, navigation_mesh_source_geometry_data3d_class_get_indices, "get_indices", 0),
         JS_NewCFunction(ctx, navigation_mesh_source_geometry_data3d_class_set_indices, "set_indices", 1),
@@ -150,15 +138,16 @@ void define_navigation_mesh_source_geometry_data3d_property(JSContext *ctx, JSVa
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "projected_obstructions"),
         JS_NewCFunction(ctx, navigation_mesh_source_geometry_data3d_class_get_projected_obstructions, "get_projected_obstructions", 0),
         JS_NewCFunction(ctx, navigation_mesh_source_geometry_data3d_class_set_projected_obstructions, "set_projected_obstructions", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_navigation_mesh_source_geometry_data3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_navigation_mesh_source_geometry_data3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -174,7 +163,7 @@ static int js_navigation_mesh_source_geometry_data3d_class_init(JSContext *ctx, 
 	JS_SetClassProto(ctx, NavigationMeshSourceGeometryData3D::__class_id, proto);
 
 	define_navigation_mesh_source_geometry_data3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_navigation_mesh_source_geometry_data3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, navigation_mesh_source_geometry_data3d_class_proto_funcs, _countof(navigation_mesh_source_geometry_data3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, navigation_mesh_source_geometry_data3d_class_constructor, "NavigationMeshSourceGeometryData3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -27,13 +27,12 @@ static JSValue v_split_container_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VSplitContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VSplitContainer *v_split_container_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		v_split_container_class = static_cast<VSplitContainer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		v_split_container_class = static_cast<VSplitContainer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		v_split_container_class = memnew(VSplitContainer);
-	}
 	if (!v_split_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue v_split_container_class_constructor(JSContext *ctx, JSValueConst 
 	return obj;
 }
 
-void define_v_split_container_property(JSContext *ctx, JSValue obj) {
+static void define_v_split_container_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_v_split_container_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_v_split_container_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_v_split_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, VSplitContainer::__class_id, proto);
 
 	define_v_split_container_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_v_split_container_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, v_split_container_class_constructor, "VSplitContainer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

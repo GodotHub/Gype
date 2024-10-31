@@ -27,13 +27,12 @@ static JSValue directional_light2d_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, DirectionalLight2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	DirectionalLight2D *directional_light2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		directional_light2d_class = static_cast<DirectionalLight2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		directional_light2d_class = static_cast<DirectionalLight2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		directional_light2d_class = memnew(DirectionalLight2D);
-	}
 	if (!directional_light2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue directional_light2d_class_constructor(JSContext *ctx, JSValueCons
 }
 static JSValue directional_light2d_class_set_max_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&DirectionalLight2D::set_max_distance, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&DirectionalLight2D::set_max_distance, ctx, this_val, argc, argv);
 };
 static JSValue directional_light2d_class_get_max_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry directional_light2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_max_distance", 0, &directional_light2d_class_get_max_distance),
 };
 
-void define_directional_light2d_property(JSContext *ctx, JSValue obj) {
+static void define_directional_light2d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "max_distance"),
         JS_NewCFunction(ctx, directional_light2d_class_get_max_distance, "get_max_distance", 0),
         JS_NewCFunction(ctx, directional_light2d_class_set_max_distance, "set_max_distance", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_directional_light2d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_directional_light2d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -82,7 +81,7 @@ static int js_directional_light2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, DirectionalLight2D::__class_id, proto);
 
 	define_directional_light2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_directional_light2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, directional_light2d_class_proto_funcs, _countof(directional_light2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, directional_light2d_class_constructor, "DirectionalLight2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

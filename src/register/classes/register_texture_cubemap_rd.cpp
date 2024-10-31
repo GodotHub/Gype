@@ -27,13 +27,12 @@ static JSValue texture_cubemap_rd_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TextureCubemapRD::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	TextureCubemapRD *texture_cubemap_rd_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		texture_cubemap_rd_class = static_cast<TextureCubemapRD *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		texture_cubemap_rd_class = static_cast<TextureCubemapRD *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		texture_cubemap_rd_class = memnew(TextureCubemapRD);
-	}
 	if (!texture_cubemap_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue texture_cubemap_rd_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 
-void define_texture_cubemap_rd_property(JSContext *ctx, JSValue obj) {
+static void define_texture_cubemap_rd_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_texture_cubemap_rd_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_texture_cubemap_rd_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_texture_cubemap_rd_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, TextureCubemapRD::__class_id, proto);
 
 	define_texture_cubemap_rd_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_texture_cubemap_rd_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, texture_cubemap_rd_class_constructor, "TextureCubemapRD", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

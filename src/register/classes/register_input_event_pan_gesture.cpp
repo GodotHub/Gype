@@ -27,13 +27,12 @@ static JSValue input_event_pan_gesture_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventPanGesture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	InputEventPanGesture *input_event_pan_gesture_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		input_event_pan_gesture_class = static_cast<InputEventPanGesture *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		input_event_pan_gesture_class = static_cast<InputEventPanGesture *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		input_event_pan_gesture_class = memnew(InputEventPanGesture);
-	}
 	if (!input_event_pan_gesture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue input_event_pan_gesture_class_constructor(JSContext *ctx, JSValue
 }
 static JSValue input_event_pan_gesture_class_set_delta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventPanGesture::set_delta, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventPanGesture::set_delta, ctx, this_val, argc, argv);
 };
 static JSValue input_event_pan_gesture_class_get_delta(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry input_event_pan_gesture_class_proto_funcs[] = 
 	JS_CFUNC_DEF("get_delta", 0, &input_event_pan_gesture_class_get_delta),
 };
 
-void define_input_event_pan_gesture_property(JSContext *ctx, JSValue obj) {
+static void define_input_event_pan_gesture_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "delta"),
         JS_NewCFunction(ctx, input_event_pan_gesture_class_get_delta, "get_delta", 0),
         JS_NewCFunction(ctx, input_event_pan_gesture_class_set_delta, "set_delta", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_input_event_pan_gesture_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_input_event_pan_gesture_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -82,7 +81,7 @@ static int js_input_event_pan_gesture_class_init(JSContext *ctx, JSModuleDef *m)
 	JS_SetClassProto(ctx, InputEventPanGesture::__class_id, proto);
 
 	define_input_event_pan_gesture_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_input_event_pan_gesture_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, input_event_pan_gesture_class_proto_funcs, _countof(input_event_pan_gesture_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, input_event_pan_gesture_class_constructor, "InputEventPanGesture", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

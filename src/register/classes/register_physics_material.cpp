@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_material.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/physics_material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue physics_material_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsMaterial::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PhysicsMaterial *physics_material_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		physics_material_class = static_cast<PhysicsMaterial *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		physics_material_class = static_cast<PhysicsMaterial *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		physics_material_class = memnew(PhysicsMaterial);
-	}
 	if (!physics_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue physics_material_class_constructor(JSContext *ctx, JSValueConst n
 }
 static JSValue physics_material_class_set_friction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsMaterial::set_friction, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsMaterial::set_friction, ctx, this_val, argc, argv);
 };
 static JSValue physics_material_class_get_friction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue physics_material_class_get_friction(JSContext *ctx, JSValueConst 
 };
 static JSValue physics_material_class_set_rough(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsMaterial::set_rough, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsMaterial::set_rough, ctx, this_val, argc, argv);
 };
 static JSValue physics_material_class_is_rough(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue physics_material_class_is_rough(JSContext *ctx, JSValueConst this
 };
 static JSValue physics_material_class_set_bounce(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsMaterial::set_bounce, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsMaterial::set_bounce, ctx, this_val, argc, argv);
 };
 static JSValue physics_material_class_get_bounce(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue physics_material_class_get_bounce(JSContext *ctx, JSValueConst th
 };
 static JSValue physics_material_class_set_absorbent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsMaterial::set_absorbent, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsMaterial::set_absorbent, ctx, this_val, argc, argv);
 };
 static JSValue physics_material_class_is_absorbent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,10 +83,10 @@ static const JSCFunctionListEntry physics_material_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_absorbent", 0, &physics_material_class_is_absorbent),
 };
 
-void define_physics_material_property(JSContext *ctx, JSValue obj) {
+static void define_physics_material_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "friction"),
         JS_NewCFunction(ctx, physics_material_class_get_friction, "get_friction", 0),
         JS_NewCFunction(ctx, physics_material_class_set_friction, "set_friction", 1),
@@ -99,7 +94,7 @@ void define_physics_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "rough"),
         JS_NewCFunction(ctx, physics_material_class_is_rough, "is_rough", 0),
         JS_NewCFunction(ctx, physics_material_class_set_rough, "set_rough", 1),
@@ -107,7 +102,7 @@ void define_physics_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "bounce"),
         JS_NewCFunction(ctx, physics_material_class_get_bounce, "get_bounce", 0),
         JS_NewCFunction(ctx, physics_material_class_set_bounce, "set_bounce", 1),
@@ -115,15 +110,16 @@ void define_physics_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "absorbent"),
         JS_NewCFunction(ctx, physics_material_class_is_absorbent, "is_absorbent", 0),
         JS_NewCFunction(ctx, physics_material_class_set_absorbent, "set_absorbent", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_physics_material_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_physics_material_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -139,7 +135,7 @@ static int js_physics_material_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, PhysicsMaterial::__class_id, proto);
 
 	define_physics_material_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_physics_material_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, physics_material_class_proto_funcs, _countof(physics_material_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, physics_material_class_constructor, "PhysicsMaterial", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

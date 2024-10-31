@@ -28,13 +28,12 @@ static JSValue rd_shader_file_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDShaderFile::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	RDShaderFile *rd_shader_file_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		rd_shader_file_class = static_cast<RDShaderFile *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		rd_shader_file_class = static_cast<RDShaderFile *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		rd_shader_file_class = memnew(RDShaderFile);
-	}
 	if (!rd_shader_file_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue rd_shader_file_class_constructor(JSContext *ctx, JSValueConst new
 }
 static JSValue rd_shader_file_class_set_bytecode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDShaderFile::set_bytecode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDShaderFile::set_bytecode, ctx, this_val, argc, argv);
 };
 static JSValue rd_shader_file_class_get_spirv(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -57,8 +55,7 @@ static JSValue rd_shader_file_class_get_version_list(JSContext *ctx, JSValueCons
 };
 static JSValue rd_shader_file_class_set_base_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDShaderFile::set_base_error, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDShaderFile::set_base_error, ctx, this_val, argc, argv);
 };
 static JSValue rd_shader_file_class_get_base_error(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -72,18 +69,19 @@ static const JSCFunctionListEntry rd_shader_file_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_base_error", 0, &rd_shader_file_class_get_base_error),
 };
 
-void define_rd_shader_file_property(JSContext *ctx, JSValue obj) {
+static void define_rd_shader_file_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "base_error"),
         JS_NewCFunction(ctx, rd_shader_file_class_get_base_error, "get_base_error", 0),
         JS_NewCFunction(ctx, rd_shader_file_class_set_base_error, "set_base_error", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_rd_shader_file_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_rd_shader_file_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -99,7 +97,7 @@ static int js_rd_shader_file_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, RDShaderFile::__class_id, proto);
 
 	define_rd_shader_file_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_rd_shader_file_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, rd_shader_file_class_proto_funcs, _countof(rd_shader_file_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, rd_shader_file_class_constructor, "RDShaderFile", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/lightmap_gi_data.hpp>
-#include <godot_cpp/classes/lightmap_gi.hpp>
 #include <godot_cpp/classes/camera_attributes.hpp>
+#include <godot_cpp/classes/lightmap_gi.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/classes/sky.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -30,13 +30,12 @@ static JSValue lightmap_gi_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, LightmapGI::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	LightmapGI *lightmap_gi_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		lightmap_gi_class = static_cast<LightmapGI *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		lightmap_gi_class = static_cast<LightmapGI *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		lightmap_gi_class = memnew(LightmapGI);
-	}
 	if (!lightmap_gi_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -46,8 +45,7 @@ static JSValue lightmap_gi_class_constructor(JSContext *ctx, JSValueConst new_ta
 }
 static JSValue lightmap_gi_class_set_light_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_light_data, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_light_data, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_get_light_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,8 +53,7 @@ static JSValue lightmap_gi_class_get_light_data(JSContext *ctx, JSValueConst thi
 };
 static JSValue lightmap_gi_class_set_bake_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_bake_quality, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_bake_quality, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_get_bake_quality(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -64,8 +61,7 @@ static JSValue lightmap_gi_class_get_bake_quality(JSContext *ctx, JSValueConst t
 };
 static JSValue lightmap_gi_class_set_bounces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_bounces, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_bounces, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_get_bounces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -73,8 +69,7 @@ static JSValue lightmap_gi_class_get_bounces(JSContext *ctx, JSValueConst this_v
 };
 static JSValue lightmap_gi_class_set_bounce_indirect_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_bounce_indirect_energy, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_bounce_indirect_energy, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_get_bounce_indirect_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -82,8 +77,7 @@ static JSValue lightmap_gi_class_get_bounce_indirect_energy(JSContext *ctx, JSVa
 };
 static JSValue lightmap_gi_class_set_generate_probes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_generate_probes, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_generate_probes, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_get_generate_probes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -91,8 +85,7 @@ static JSValue lightmap_gi_class_get_generate_probes(JSContext *ctx, JSValueCons
 };
 static JSValue lightmap_gi_class_set_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_bias, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_bias, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_get_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -100,8 +93,7 @@ static JSValue lightmap_gi_class_get_bias(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue lightmap_gi_class_set_environment_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_environment_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_environment_mode, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_get_environment_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -109,8 +101,7 @@ static JSValue lightmap_gi_class_get_environment_mode(JSContext *ctx, JSValueCon
 };
 static JSValue lightmap_gi_class_set_environment_custom_sky(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_environment_custom_sky, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_environment_custom_sky, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_get_environment_custom_sky(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -118,8 +109,7 @@ static JSValue lightmap_gi_class_get_environment_custom_sky(JSContext *ctx, JSVa
 };
 static JSValue lightmap_gi_class_set_environment_custom_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_environment_custom_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_environment_custom_color, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_get_environment_custom_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -127,8 +117,7 @@ static JSValue lightmap_gi_class_get_environment_custom_color(JSContext *ctx, JS
 };
 static JSValue lightmap_gi_class_set_environment_custom_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_environment_custom_energy, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_environment_custom_energy, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_get_environment_custom_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -136,8 +125,7 @@ static JSValue lightmap_gi_class_get_environment_custom_energy(JSContext *ctx, J
 };
 static JSValue lightmap_gi_class_set_texel_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_texel_scale, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_texel_scale, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_get_texel_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -145,8 +133,7 @@ static JSValue lightmap_gi_class_get_texel_scale(JSContext *ctx, JSValueConst th
 };
 static JSValue lightmap_gi_class_set_max_texture_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_max_texture_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_max_texture_size, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_get_max_texture_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -154,8 +141,7 @@ static JSValue lightmap_gi_class_get_max_texture_size(JSContext *ctx, JSValueCon
 };
 static JSValue lightmap_gi_class_set_use_denoiser(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_use_denoiser, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_use_denoiser, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_is_using_denoiser(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -163,8 +149,7 @@ static JSValue lightmap_gi_class_is_using_denoiser(JSContext *ctx, JSValueConst 
 };
 static JSValue lightmap_gi_class_set_denoiser_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_denoiser_strength, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_denoiser_strength, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_get_denoiser_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -172,8 +157,7 @@ static JSValue lightmap_gi_class_get_denoiser_strength(JSContext *ctx, JSValueCo
 };
 static JSValue lightmap_gi_class_set_denoiser_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_denoiser_range, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_denoiser_range, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_get_denoiser_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -181,8 +165,7 @@ static JSValue lightmap_gi_class_get_denoiser_range(JSContext *ctx, JSValueConst
 };
 static JSValue lightmap_gi_class_set_interior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_interior, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_interior, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_is_interior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -190,8 +173,7 @@ static JSValue lightmap_gi_class_is_interior(JSContext *ctx, JSValueConst this_v
 };
 static JSValue lightmap_gi_class_set_directional(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_directional, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_directional, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_is_directional(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -199,8 +181,7 @@ static JSValue lightmap_gi_class_is_directional(JSContext *ctx, JSValueConst thi
 };
 static JSValue lightmap_gi_class_set_use_texture_for_bounces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_use_texture_for_bounces, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_use_texture_for_bounces, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_is_using_texture_for_bounces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -208,8 +189,7 @@ static JSValue lightmap_gi_class_is_using_texture_for_bounces(JSContext *ctx, JS
 };
 static JSValue lightmap_gi_class_set_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGI::set_camera_attributes, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGI::set_camera_attributes, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_class_get_camera_attributes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -256,10 +236,10 @@ static const JSCFunctionListEntry lightmap_gi_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_camera_attributes", 0, &lightmap_gi_class_get_camera_attributes),
 };
 
-void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
+static void define_lightmap_gi_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "quality"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_bake_quality, "get_bake_quality", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_bake_quality, "set_bake_quality", 1),
@@ -267,7 +247,7 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "bounces"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_bounces, "get_bounces", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_bounces, "set_bounces", 1),
@@ -275,7 +255,7 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "bounce_indirect_energy"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_bounce_indirect_energy, "get_bounce_indirect_energy", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_bounce_indirect_energy, "set_bounce_indirect_energy", 1),
@@ -283,7 +263,7 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "directional"),
         JS_NewCFunction(ctx, lightmap_gi_class_is_directional, "is_directional", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_directional, "set_directional", 1),
@@ -291,7 +271,7 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "use_texture_for_bounces"),
         JS_NewCFunction(ctx, lightmap_gi_class_is_using_texture_for_bounces, "is_using_texture_for_bounces", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_use_texture_for_bounces, "set_use_texture_for_bounces", 1),
@@ -299,7 +279,7 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "interior"),
         JS_NewCFunction(ctx, lightmap_gi_class_is_interior, "is_interior", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_interior, "set_interior", 1),
@@ -307,7 +287,7 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "use_denoiser"),
         JS_NewCFunction(ctx, lightmap_gi_class_is_using_denoiser, "is_using_denoiser", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_use_denoiser, "set_use_denoiser", 1),
@@ -315,7 +295,7 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "denoiser_strength"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_denoiser_strength, "get_denoiser_strength", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_denoiser_strength, "set_denoiser_strength", 1),
@@ -323,7 +303,7 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "denoiser_range"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_denoiser_range, "get_denoiser_range", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_denoiser_range, "set_denoiser_range", 1),
@@ -331,7 +311,7 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "bias"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_bias, "get_bias", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_bias, "set_bias", 1),
@@ -339,7 +319,7 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texel_scale"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_texel_scale, "get_texel_scale", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_texel_scale, "set_texel_scale", 1),
@@ -347,7 +327,7 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "max_texture_size"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_max_texture_size, "get_max_texture_size", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_max_texture_size, "set_max_texture_size", 1),
@@ -355,7 +335,7 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "environment_mode"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_environment_mode, "get_environment_mode", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_environment_mode, "set_environment_mode", 1),
@@ -363,7 +343,7 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "environment_custom_sky"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_environment_custom_sky, "get_environment_custom_sky", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_environment_custom_sky, "set_environment_custom_sky", 1),
@@ -371,7 +351,7 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "environment_custom_color"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_environment_custom_color, "get_environment_custom_color", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_environment_custom_color, "set_environment_custom_color", 1),
@@ -379,7 +359,7 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "environment_custom_energy"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_environment_custom_energy, "get_environment_custom_energy", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_environment_custom_energy, "set_environment_custom_energy", 1),
@@ -387,7 +367,7 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "camera_attributes"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_camera_attributes, "get_camera_attributes", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_camera_attributes, "set_camera_attributes", 1),
@@ -395,7 +375,7 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "generate_probes_subdiv"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_generate_probes, "get_generate_probes", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_generate_probes, "set_generate_probes", 1),
@@ -403,15 +383,16 @@ void define_lightmap_gi_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "light_data"),
         JS_NewCFunction(ctx, lightmap_gi_class_get_light_data, "get_light_data", 0),
         JS_NewCFunction(ctx, lightmap_gi_class_set_light_data, "set_light_data", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_lightmap_gi_enum(JSContext *ctx, JSValue proto) {
 	JSValue BakeQuality_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, BakeQuality_obj, "BAKE_QUALITY_LOW", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, BakeQuality_obj, "BAKE_QUALITY_MEDIUM", JS_NewInt64(ctx, 1));
@@ -460,7 +441,7 @@ static int js_lightmap_gi_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, LightmapGI::__class_id, proto);
 
 	define_lightmap_gi_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_lightmap_gi_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, lightmap_gi_class_proto_funcs, _countof(lightmap_gi_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, lightmap_gi_class_constructor, "LightmapGI", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -28,13 +28,12 @@ static JSValue sky_class_constructor(JSContext *ctx, JSValueConst new_target, in
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Sky::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Sky *sky_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		sky_class = static_cast<Sky *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		sky_class = static_cast<Sky *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		sky_class = memnew(Sky);
-	}
 	if (!sky_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue sky_class_constructor(JSContext *ctx, JSValueConst new_target, in
 }
 static JSValue sky_class_set_radiance_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Sky::set_radiance_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Sky::set_radiance_size, ctx, this_val, argc, argv);
 };
 static JSValue sky_class_get_radiance_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue sky_class_get_radiance_size(JSContext *ctx, JSValueConst this_val
 };
 static JSValue sky_class_set_process_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Sky::set_process_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Sky::set_process_mode, ctx, this_val, argc, argv);
 };
 static JSValue sky_class_get_process_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue sky_class_get_process_mode(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue sky_class_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Sky::set_material, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Sky::set_material, ctx, this_val, argc, argv);
 };
 static JSValue sky_class_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -78,10 +74,10 @@ static const JSCFunctionListEntry sky_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_material", 0, &sky_class_get_material),
 };
 
-void define_sky_property(JSContext *ctx, JSValue obj) {
+static void define_sky_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sky_material"),
         JS_NewCFunction(ctx, sky_class_get_material, "get_material", 0),
         JS_NewCFunction(ctx, sky_class_set_material, "set_material", 1),
@@ -89,7 +85,7 @@ void define_sky_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "process_mode"),
         JS_NewCFunction(ctx, sky_class_get_process_mode, "get_process_mode", 0),
         JS_NewCFunction(ctx, sky_class_set_process_mode, "set_process_mode", 1),
@@ -97,15 +93,16 @@ void define_sky_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "radiance_size"),
         JS_NewCFunction(ctx, sky_class_get_radiance_size, "get_radiance_size", 0),
         JS_NewCFunction(ctx, sky_class_set_radiance_size, "set_radiance_size", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_sky_enum(JSContext *ctx, JSValue proto) {
 	JSValue RadianceSize_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, RadianceSize_obj, "RADIANCE_SIZE_32", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, RadianceSize_obj, "RADIANCE_SIZE_64", JS_NewInt64(ctx, 1));
@@ -137,7 +134,7 @@ static int js_sky_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Sky::__class_id, proto);
 
 	define_sky_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_sky_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, sky_class_proto_funcs, _countof(sky_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, sky_class_constructor, "Sky", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

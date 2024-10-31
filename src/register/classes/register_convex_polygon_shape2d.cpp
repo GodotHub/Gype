@@ -27,13 +27,12 @@ static JSValue convex_polygon_shape2d_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ConvexPolygonShape2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ConvexPolygonShape2D *convex_polygon_shape2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		convex_polygon_shape2d_class = static_cast<ConvexPolygonShape2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		convex_polygon_shape2d_class = static_cast<ConvexPolygonShape2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		convex_polygon_shape2d_class = memnew(ConvexPolygonShape2D);
-	}
 	if (!convex_polygon_shape2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,13 +42,11 @@ static JSValue convex_polygon_shape2d_class_constructor(JSContext *ctx, JSValueC
 }
 static JSValue convex_polygon_shape2d_class_set_point_cloud(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ConvexPolygonShape2D::set_point_cloud, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ConvexPolygonShape2D::set_point_cloud, ctx, this_val, argc, argv);
 };
 static JSValue convex_polygon_shape2d_class_set_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ConvexPolygonShape2D::set_points, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ConvexPolygonShape2D::set_points, ctx, this_val, argc, argv);
 };
 static JSValue convex_polygon_shape2d_class_get_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,18 +58,19 @@ static const JSCFunctionListEntry convex_polygon_shape2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_points", 0, &convex_polygon_shape2d_class_get_points),
 };
 
-void define_convex_polygon_shape2d_property(JSContext *ctx, JSValue obj) {
+static void define_convex_polygon_shape2d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "points"),
         JS_NewCFunction(ctx, convex_polygon_shape2d_class_get_points, "get_points", 0),
         JS_NewCFunction(ctx, convex_polygon_shape2d_class_set_points, "set_points", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_convex_polygon_shape2d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_convex_polygon_shape2d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -88,7 +86,7 @@ static int js_convex_polygon_shape2d_class_init(JSContext *ctx, JSModuleDef *m) 
 	JS_SetClassProto(ctx, ConvexPolygonShape2D::__class_id, proto);
 
 	define_convex_polygon_shape2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_convex_polygon_shape2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, convex_polygon_shape2d_class_proto_funcs, _countof(convex_polygon_shape2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, convex_polygon_shape2d_class_constructor, "ConvexPolygonShape2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

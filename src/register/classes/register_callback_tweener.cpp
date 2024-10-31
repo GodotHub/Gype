@@ -27,13 +27,12 @@ static JSValue callback_tweener_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CallbackTweener::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	CallbackTweener *callback_tweener_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		callback_tweener_class = static_cast<CallbackTweener *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		callback_tweener_class = static_cast<CallbackTweener *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		callback_tweener_class = memnew(CallbackTweener);
-	}
 	if (!callback_tweener_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -49,10 +48,11 @@ static const JSCFunctionListEntry callback_tweener_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_delay", 1, &callback_tweener_class_set_delay),
 };
 
-void define_callback_tweener_property(JSContext *ctx, JSValue obj) {
+static void define_callback_tweener_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_callback_tweener_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_callback_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -68,7 +68,7 @@ static int js_callback_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, CallbackTweener::__class_id, proto);
 
 	define_callback_tweener_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_callback_tweener_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, callback_tweener_class_proto_funcs, _countof(callback_tweener_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, callback_tweener_class_constructor, "CallbackTweener", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

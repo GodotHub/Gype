@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/csg_shape3d.hpp>
 #include <godot_cpp/classes/csg_combiner3d.hpp>
+#include <godot_cpp/classes/csg_shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue csg_combiner3d_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CSGCombiner3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	CSGCombiner3D *csg_combiner3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		csg_combiner3d_class = static_cast<CSGCombiner3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		csg_combiner3d_class = static_cast<CSGCombiner3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		csg_combiner3d_class = memnew(CSGCombiner3D);
-	}
 	if (!csg_combiner3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue csg_combiner3d_class_constructor(JSContext *ctx, JSValueConst new
 	return obj;
 }
 
-void define_csg_combiner3d_property(JSContext *ctx, JSValue obj) {
+static void define_csg_combiner3d_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_csg_combiner3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_csg_combiner3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_csg_combiner3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, CSGCombiner3D::__class_id, proto);
 
 	define_csg_combiner3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_csg_combiner3d_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, csg_combiner3d_class_constructor, "CSGCombiner3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

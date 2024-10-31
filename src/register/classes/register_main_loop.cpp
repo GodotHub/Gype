@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/main_loop.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue main_loop_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MainLoop::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	MainLoop *main_loop_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		main_loop_class = static_cast<MainLoop *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		main_loop_class = static_cast<MainLoop *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		main_loop_class = memnew(MainLoop);
-	}
 	if (!main_loop_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -41,11 +40,30 @@ static JSValue main_loop_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JS_SetOpaque(obj, main_loop_class);	
 	return obj;
 }
-
-void define_main_loop_property(JSContext *ctx, JSValue obj) {
+static JSValue main_loop_class_get_on_request_permissions_result_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	MainLoop *opaque = reinterpret_cast<MainLoop *>(JS_GetOpaque(this_val, MainLoop::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "on_request_permissions_result_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "on_request_permissions_result").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "on_request_permissions_result_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_main_loop_property(JSContext *ctx, JSValue proto) {
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "on_request_permissions_result"),
+		JS_NewCFunction(ctx, main_loop_class_get_on_request_permissions_result_signal, "get_on_request_permissions_result_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+}
+
+static void define_main_loop_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_main_loop_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +79,7 @@ static int js_main_loop_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, MainLoop::__class_id, proto);
 
 	define_main_loop_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_main_loop_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, main_loop_class_constructor, "MainLoop", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

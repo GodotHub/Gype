@@ -29,13 +29,12 @@ static JSValue e_net_multiplayer_peer_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ENetMultiplayerPeer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ENetMultiplayerPeer *e_net_multiplayer_peer_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		e_net_multiplayer_peer_class = static_cast<ENetMultiplayerPeer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		e_net_multiplayer_peer_class = static_cast<ENetMultiplayerPeer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		e_net_multiplayer_peer_class = memnew(ENetMultiplayerPeer);
-	}
 	if (!e_net_multiplayer_peer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -61,8 +60,7 @@ static JSValue e_net_multiplayer_peer_class_add_mesh_peer(JSContext *ctx, JSValu
 };
 static JSValue e_net_multiplayer_peer_class_set_bind_ip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ENetMultiplayerPeer::set_bind_ip, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ENetMultiplayerPeer::set_bind_ip, ctx, this_val, argc, argv);
 };
 static JSValue e_net_multiplayer_peer_class_get_host(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -82,18 +80,19 @@ static const JSCFunctionListEntry e_net_multiplayer_peer_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_peer", 1, &e_net_multiplayer_peer_class_get_peer),
 };
 
-void define_e_net_multiplayer_peer_property(JSContext *ctx, JSValue obj) {
+static void define_e_net_multiplayer_peer_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "host"),
         JS_NewCFunction(ctx, e_net_multiplayer_peer_class_get_host, "get_host", 0),
         JS_UNDEFINED,
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_e_net_multiplayer_peer_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_e_net_multiplayer_peer_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -109,7 +108,7 @@ static int js_e_net_multiplayer_peer_class_init(JSContext *ctx, JSModuleDef *m) 
 	JS_SetClassProto(ctx, ENetMultiplayerPeer::__class_id, proto);
 
 	define_e_net_multiplayer_peer_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_e_net_multiplayer_peer_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, e_net_multiplayer_peer_class_proto_funcs, _countof(e_net_multiplayer_peer_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, e_net_multiplayer_peer_class_constructor, "ENetMultiplayerPeer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

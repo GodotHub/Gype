@@ -27,13 +27,12 @@ static JSValue world_boundary_shape3d_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WorldBoundaryShape3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	WorldBoundaryShape3D *world_boundary_shape3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		world_boundary_shape3d_class = static_cast<WorldBoundaryShape3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		world_boundary_shape3d_class = static_cast<WorldBoundaryShape3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		world_boundary_shape3d_class = memnew(WorldBoundaryShape3D);
-	}
 	if (!world_boundary_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue world_boundary_shape3d_class_constructor(JSContext *ctx, JSValueC
 }
 static JSValue world_boundary_shape3d_class_set_plane(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WorldBoundaryShape3D::set_plane, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WorldBoundaryShape3D::set_plane, ctx, this_val, argc, argv);
 };
 static JSValue world_boundary_shape3d_class_get_plane(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry world_boundary_shape3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_plane", 0, &world_boundary_shape3d_class_get_plane),
 };
 
-void define_world_boundary_shape3d_property(JSContext *ctx, JSValue obj) {
+static void define_world_boundary_shape3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "plane"),
         JS_NewCFunction(ctx, world_boundary_shape3d_class_get_plane, "get_plane", 0),
         JS_NewCFunction(ctx, world_boundary_shape3d_class_set_plane, "set_plane", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_world_boundary_shape3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_world_boundary_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -82,7 +81,7 @@ static int js_world_boundary_shape3d_class_init(JSContext *ctx, JSModuleDef *m) 
 	JS_SetClassProto(ctx, WorldBoundaryShape3D::__class_id, proto);
 
 	define_world_boundary_shape3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_world_boundary_shape3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, world_boundary_shape3d_class_proto_funcs, _countof(world_boundary_shape3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, world_boundary_shape3d_class_constructor, "WorldBoundaryShape3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

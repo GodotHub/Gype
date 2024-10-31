@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_sdf_to_screen_uv.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue visual_shader_node_sdf_to_screen_uv_class_constructor(JSContext *
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeSDFToScreenUV::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeSDFToScreenUV *visual_shader_node_sdf_to_screen_uv_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_sdf_to_screen_uv_class = static_cast<VisualShaderNodeSDFToScreenUV *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_sdf_to_screen_uv_class = static_cast<VisualShaderNodeSDFToScreenUV *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_sdf_to_screen_uv_class = memnew(VisualShaderNodeSDFToScreenUV);
-	}
 	if (!visual_shader_node_sdf_to_screen_uv_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue visual_shader_node_sdf_to_screen_uv_class_constructor(JSContext *
 	return obj;
 }
 
-void define_visual_shader_node_sdf_to_screen_uv_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_sdf_to_screen_uv_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_sdf_to_screen_uv_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_sdf_to_screen_uv_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_visual_shader_node_sdf_to_screen_uv_class_init(JSContext *ctx, JSM
 	JS_SetClassProto(ctx, VisualShaderNodeSDFToScreenUV::__class_id, proto);
 
 	define_visual_shader_node_sdf_to_screen_uv_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_sdf_to_screen_uv_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_sdf_to_screen_uv_class_constructor, "VisualShaderNodeSDFToScreenUV", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

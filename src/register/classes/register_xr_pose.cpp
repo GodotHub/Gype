@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_pose.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/xr_pose.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue xr_pose_class_constructor(JSContext *ctx, JSValueConst new_target
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRPose::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	XRPose *xr_pose_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		xr_pose_class = static_cast<XRPose *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		xr_pose_class = static_cast<XRPose *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		xr_pose_class = memnew(XRPose);
-	}
 	if (!xr_pose_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue xr_pose_class_constructor(JSContext *ctx, JSValueConst new_target
 }
 static JSValue xr_pose_class_set_has_tracking_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRPose::set_has_tracking_data, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRPose::set_has_tracking_data, ctx, this_val, argc, argv);
 };
 static JSValue xr_pose_class_get_has_tracking_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue xr_pose_class_get_has_tracking_data(JSContext *ctx, JSValueConst 
 };
 static JSValue xr_pose_class_set_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRPose::set_name, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRPose::set_name, ctx, this_val, argc, argv);
 };
 static JSValue xr_pose_class_get_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue xr_pose_class_get_name(JSContext *ctx, JSValueConst this_val, int
 };
 static JSValue xr_pose_class_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRPose::set_transform, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRPose::set_transform, ctx, this_val, argc, argv);
 };
 static JSValue xr_pose_class_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -74,8 +70,7 @@ static JSValue xr_pose_class_get_adjusted_transform(JSContext *ctx, JSValueConst
 };
 static JSValue xr_pose_class_set_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRPose::set_linear_velocity, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRPose::set_linear_velocity, ctx, this_val, argc, argv);
 };
 static JSValue xr_pose_class_get_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -83,8 +78,7 @@ static JSValue xr_pose_class_get_linear_velocity(JSContext *ctx, JSValueConst th
 };
 static JSValue xr_pose_class_set_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRPose::set_angular_velocity, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRPose::set_angular_velocity, ctx, this_val, argc, argv);
 };
 static JSValue xr_pose_class_get_angular_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -92,8 +86,7 @@ static JSValue xr_pose_class_get_angular_velocity(JSContext *ctx, JSValueConst t
 };
 static JSValue xr_pose_class_set_tracking_confidence(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRPose::set_tracking_confidence, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRPose::set_tracking_confidence, ctx, this_val, argc, argv);
 };
 static JSValue xr_pose_class_get_tracking_confidence(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -115,10 +108,10 @@ static const JSCFunctionListEntry xr_pose_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_tracking_confidence", 0, &xr_pose_class_get_tracking_confidence),
 };
 
-void define_xr_pose_property(JSContext *ctx, JSValue obj) {
+static void define_xr_pose_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "has_tracking_data"),
         JS_NewCFunction(ctx, xr_pose_class_get_has_tracking_data, "get_has_tracking_data", 0),
         JS_NewCFunction(ctx, xr_pose_class_set_has_tracking_data, "set_has_tracking_data", 1),
@@ -126,7 +119,7 @@ void define_xr_pose_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "name"),
         JS_NewCFunction(ctx, xr_pose_class_get_name, "get_name", 0),
         JS_NewCFunction(ctx, xr_pose_class_set_name, "set_name", 1),
@@ -134,7 +127,7 @@ void define_xr_pose_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "transform"),
         JS_NewCFunction(ctx, xr_pose_class_get_transform, "get_transform", 0),
         JS_NewCFunction(ctx, xr_pose_class_set_transform, "set_transform", 1),
@@ -142,7 +135,7 @@ void define_xr_pose_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "linear_velocity"),
         JS_NewCFunction(ctx, xr_pose_class_get_linear_velocity, "get_linear_velocity", 0),
         JS_NewCFunction(ctx, xr_pose_class_set_linear_velocity, "set_linear_velocity", 1),
@@ -150,7 +143,7 @@ void define_xr_pose_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "angular_velocity"),
         JS_NewCFunction(ctx, xr_pose_class_get_angular_velocity, "get_angular_velocity", 0),
         JS_NewCFunction(ctx, xr_pose_class_set_angular_velocity, "set_angular_velocity", 1),
@@ -158,15 +151,16 @@ void define_xr_pose_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "tracking_confidence"),
         JS_NewCFunction(ctx, xr_pose_class_get_tracking_confidence, "get_tracking_confidence", 0),
         JS_NewCFunction(ctx, xr_pose_class_set_tracking_confidence, "set_tracking_confidence", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_xr_pose_enum(JSContext *ctx, JSValue proto) {
 	JSValue TrackingConfidence_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, TrackingConfidence_obj, "XR_TRACKING_CONFIDENCE_NONE", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, TrackingConfidence_obj, "XR_TRACKING_CONFIDENCE_LOW", JS_NewInt64(ctx, 1));
@@ -187,7 +181,7 @@ static int js_xr_pose_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, XRPose::__class_id, proto);
 
 	define_xr_pose_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_xr_pose_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_pose_class_proto_funcs, _countof(xr_pose_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, xr_pose_class_constructor, "XRPose", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

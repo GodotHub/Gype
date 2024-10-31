@@ -27,13 +27,12 @@ static JSValue standard_material3d_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StandardMaterial3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	StandardMaterial3D *standard_material3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		standard_material3d_class = static_cast<StandardMaterial3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		standard_material3d_class = static_cast<StandardMaterial3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		standard_material3d_class = memnew(StandardMaterial3D);
-	}
 	if (!standard_material3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue standard_material3d_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 
-void define_standard_material3d_property(JSContext *ctx, JSValue obj) {
+static void define_standard_material3d_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_standard_material3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_standard_material3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_standard_material3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, StandardMaterial3D::__class_id, proto);
 
 	define_standard_material3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_standard_material3d_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, standard_material3d_class_constructor, "StandardMaterial3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

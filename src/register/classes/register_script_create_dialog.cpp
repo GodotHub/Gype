@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/script_create_dialog.hpp>
 #include <godot_cpp/classes/confirmation_dialog.hpp>
+#include <godot_cpp/classes/script_create_dialog.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue script_create_dialog_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ScriptCreateDialog::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ScriptCreateDialog *script_create_dialog_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		script_create_dialog_class = static_cast<ScriptCreateDialog *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		script_create_dialog_class = static_cast<ScriptCreateDialog *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		script_create_dialog_class = memnew(ScriptCreateDialog);
-	}
 	if (!script_create_dialog_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,17 +42,35 @@ static JSValue script_create_dialog_class_constructor(JSContext *ctx, JSValueCon
 }
 static JSValue script_create_dialog_class_config(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ScriptCreateDialog::config, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ScriptCreateDialog::config, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry script_create_dialog_class_proto_funcs[] = {
 	JS_CFUNC_DEF("config", 4, &script_create_dialog_class_config),
 };
-
-void define_script_create_dialog_property(JSContext *ctx, JSValue obj) {
+static JSValue script_create_dialog_class_get_script_created_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	ScriptCreateDialog *opaque = reinterpret_cast<ScriptCreateDialog *>(JS_GetOpaque(this_val, ScriptCreateDialog::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "script_created_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "script_created").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "script_created_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_script_create_dialog_property(JSContext *ctx, JSValue proto) {
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "script_created"),
+		JS_NewCFunction(ctx, script_create_dialog_class_get_script_created_signal, "get_script_created_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+}
+
+static void define_script_create_dialog_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_script_create_dialog_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -69,7 +86,7 @@ static int js_script_create_dialog_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ScriptCreateDialog::__class_id, proto);
 
 	define_script_create_dialog_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_script_create_dialog_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, script_create_dialog_class_proto_funcs, _countof(script_create_dialog_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, script_create_dialog_class_constructor, "ScriptCreateDialog", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

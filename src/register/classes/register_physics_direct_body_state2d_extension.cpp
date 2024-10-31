@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/physics_direct_body_state2d_extension.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/physics_direct_body_state2d.hpp>
 #include <godot_cpp/classes/physics_direct_space_state2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -29,13 +29,12 @@ static JSValue physics_direct_body_state2d_extension_class_constructor(JSContext
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsDirectBodyState2DExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PhysicsDirectBodyState2DExtension *physics_direct_body_state2d_extension_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		physics_direct_body_state2d_extension_class = static_cast<PhysicsDirectBodyState2DExtension *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		physics_direct_body_state2d_extension_class = static_cast<PhysicsDirectBodyState2DExtension *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		physics_direct_body_state2d_extension_class = memnew(PhysicsDirectBodyState2DExtension);
-	}
 	if (!physics_direct_body_state2d_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,10 +43,11 @@ static JSValue physics_direct_body_state2d_extension_class_constructor(JSContext
 	return obj;
 }
 
-void define_physics_direct_body_state2d_extension_property(JSContext *ctx, JSValue obj) {
+static void define_physics_direct_body_state2d_extension_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_physics_direct_body_state2d_extension_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_physics_direct_body_state2d_extension_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -63,7 +63,7 @@ static int js_physics_direct_body_state2d_extension_class_init(JSContext *ctx, J
 	JS_SetClassProto(ctx, PhysicsDirectBodyState2DExtension::__class_id, proto);
 
 	define_physics_direct_body_state2d_extension_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_physics_direct_body_state2d_extension_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, physics_direct_body_state2d_extension_class_constructor, "PhysicsDirectBodyState2DExtension", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

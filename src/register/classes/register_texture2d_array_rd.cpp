@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d_array_rd.hpp>
 #include <godot_cpp/classes/texture_layered_rd.hpp>
+#include <godot_cpp/classes/texture2d_array_rd.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue texture2d_array_rd_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Texture2DArrayRD::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Texture2DArrayRD *texture2d_array_rd_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		texture2d_array_rd_class = static_cast<Texture2DArrayRD *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		texture2d_array_rd_class = static_cast<Texture2DArrayRD *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		texture2d_array_rd_class = memnew(Texture2DArrayRD);
-	}
 	if (!texture2d_array_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue texture2d_array_rd_class_constructor(JSContext *ctx, JSValueConst
 	return obj;
 }
 
-void define_texture2d_array_rd_property(JSContext *ctx, JSValue obj) {
+static void define_texture2d_array_rd_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_texture2d_array_rd_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_texture2d_array_rd_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_texture2d_array_rd_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Texture2DArrayRD::__class_id, proto);
 
 	define_texture2d_array_rd_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_texture2d_array_rd_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, texture2d_array_rd_class_constructor, "Texture2DArrayRD", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

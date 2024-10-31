@@ -5,12 +5,12 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_instance.hpp>
-#include <godot_cpp/classes/audio_server.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/audio_bus_layout.hpp>
 #include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/classes/audio_effect.hpp>
-#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/audio_effect_instance.hpp>
+#include <godot_cpp/classes/audio_server.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;

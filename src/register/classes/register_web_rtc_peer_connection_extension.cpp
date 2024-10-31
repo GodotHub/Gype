@@ -28,13 +28,12 @@ static JSValue web_rtc_peer_connection_extension_class_constructor(JSContext *ct
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WebRTCPeerConnectionExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	WebRTCPeerConnectionExtension *web_rtc_peer_connection_extension_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		web_rtc_peer_connection_extension_class = static_cast<WebRTCPeerConnectionExtension *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		web_rtc_peer_connection_extension_class = static_cast<WebRTCPeerConnectionExtension *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		web_rtc_peer_connection_extension_class = memnew(WebRTCPeerConnectionExtension);
-	}
 	if (!web_rtc_peer_connection_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,10 +42,11 @@ static JSValue web_rtc_peer_connection_extension_class_constructor(JSContext *ct
 	return obj;
 }
 
-void define_web_rtc_peer_connection_extension_property(JSContext *ctx, JSValue obj) {
+static void define_web_rtc_peer_connection_extension_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_web_rtc_peer_connection_extension_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_web_rtc_peer_connection_extension_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -62,7 +62,7 @@ static int js_web_rtc_peer_connection_extension_class_init(JSContext *ctx, JSMod
 	JS_SetClassProto(ctx, WebRTCPeerConnectionExtension::__class_id, proto);
 
 	define_web_rtc_peer_connection_extension_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_web_rtc_peer_connection_extension_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, web_rtc_peer_connection_extension_class_constructor, "WebRTCPeerConnectionExtension", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

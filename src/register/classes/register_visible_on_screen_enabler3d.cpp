@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visible_on_screen_notifier3d.hpp>
 #include <godot_cpp/classes/visible_on_screen_enabler3d.hpp>
+#include <godot_cpp/classes/visible_on_screen_notifier3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue visible_on_screen_enabler3d_class_constructor(JSContext *ctx, JSV
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisibleOnScreenEnabler3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisibleOnScreenEnabler3D *visible_on_screen_enabler3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visible_on_screen_enabler3d_class = static_cast<VisibleOnScreenEnabler3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visible_on_screen_enabler3d_class = static_cast<VisibleOnScreenEnabler3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visible_on_screen_enabler3d_class = memnew(VisibleOnScreenEnabler3D);
-	}
 	if (!visible_on_screen_enabler3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue visible_on_screen_enabler3d_class_constructor(JSContext *ctx, JSV
 }
 static JSValue visible_on_screen_enabler3d_class_set_enable_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisibleOnScreenEnabler3D::set_enable_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisibleOnScreenEnabler3D::set_enable_mode, ctx, this_val, argc, argv);
 };
 static JSValue visible_on_screen_enabler3d_class_get_enable_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue visible_on_screen_enabler3d_class_get_enable_mode(JSContext *ctx,
 };
 static JSValue visible_on_screen_enabler3d_class_set_enable_node_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisibleOnScreenEnabler3D::set_enable_node_path, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisibleOnScreenEnabler3D::set_enable_node_path, ctx, this_val, argc, argv);
 };
 static JSValue visible_on_screen_enabler3d_class_get_enable_node_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,10 +63,10 @@ static const JSCFunctionListEntry visible_on_screen_enabler3d_class_proto_funcs[
 	JS_CFUNC_DEF("get_enable_node_path", 0, &visible_on_screen_enabler3d_class_get_enable_node_path),
 };
 
-void define_visible_on_screen_enabler3d_property(JSContext *ctx, JSValue obj) {
+static void define_visible_on_screen_enabler3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "enable_mode"),
         JS_NewCFunction(ctx, visible_on_screen_enabler3d_class_get_enable_mode, "get_enable_mode", 0),
         JS_NewCFunction(ctx, visible_on_screen_enabler3d_class_set_enable_mode, "set_enable_mode", 1),
@@ -77,15 +74,16 @@ void define_visible_on_screen_enabler3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "enable_node_path"),
         JS_NewCFunction(ctx, visible_on_screen_enabler3d_class_get_enable_node_path, "get_enable_node_path", 0),
         JS_NewCFunction(ctx, visible_on_screen_enabler3d_class_set_enable_node_path, "set_enable_node_path", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visible_on_screen_enabler3d_enum(JSContext *ctx, JSValue proto) {
 	JSValue EnableMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, EnableMode_obj, "ENABLE_MODE_INHERIT", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, EnableMode_obj, "ENABLE_MODE_ALWAYS", JS_NewInt64(ctx, 1));
@@ -106,7 +104,7 @@ static int js_visible_on_screen_enabler3d_class_init(JSContext *ctx, JSModuleDef
 	JS_SetClassProto(ctx, VisibleOnScreenEnabler3D::__class_id, proto);
 
 	define_visible_on_screen_enabler3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visible_on_screen_enabler3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visible_on_screen_enabler3d_class_proto_funcs, _countof(visible_on_screen_enabler3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visible_on_screen_enabler3d_class_constructor, "VisibleOnScreenEnabler3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

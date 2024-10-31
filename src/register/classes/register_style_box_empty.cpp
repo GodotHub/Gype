@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/style_box_empty.hpp>
 #include <godot_cpp/classes/style_box.hpp>
+#include <godot_cpp/classes/style_box_empty.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue style_box_empty_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StyleBoxEmpty::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	StyleBoxEmpty *style_box_empty_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		style_box_empty_class = static_cast<StyleBoxEmpty *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		style_box_empty_class = static_cast<StyleBoxEmpty *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		style_box_empty_class = memnew(StyleBoxEmpty);
-	}
 	if (!style_box_empty_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue style_box_empty_class_constructor(JSContext *ctx, JSValueConst ne
 	return obj;
 }
 
-void define_style_box_empty_property(JSContext *ctx, JSValue obj) {
+static void define_style_box_empty_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_style_box_empty_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_style_box_empty_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_style_box_empty_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, StyleBoxEmpty::__class_id, proto);
 
 	define_style_box_empty_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_style_box_empty_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, style_box_empty_class_constructor, "StyleBoxEmpty", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -28,13 +28,12 @@ static JSValue fog_material_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, FogMaterial::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	FogMaterial *fog_material_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		fog_material_class = static_cast<FogMaterial *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		fog_material_class = static_cast<FogMaterial *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		fog_material_class = memnew(FogMaterial);
-	}
 	if (!fog_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue fog_material_class_constructor(JSContext *ctx, JSValueConst new_t
 }
 static JSValue fog_material_class_set_density(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FogMaterial::set_density, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&FogMaterial::set_density, ctx, this_val, argc, argv);
 };
 static JSValue fog_material_class_get_density(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue fog_material_class_get_density(JSContext *ctx, JSValueConst this_
 };
 static JSValue fog_material_class_set_albedo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FogMaterial::set_albedo, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&FogMaterial::set_albedo, ctx, this_val, argc, argv);
 };
 static JSValue fog_material_class_get_albedo(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue fog_material_class_get_albedo(JSContext *ctx, JSValueConst this_v
 };
 static JSValue fog_material_class_set_emission(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FogMaterial::set_emission, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&FogMaterial::set_emission, ctx, this_val, argc, argv);
 };
 static JSValue fog_material_class_get_emission(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -71,8 +67,7 @@ static JSValue fog_material_class_get_emission(JSContext *ctx, JSValueConst this
 };
 static JSValue fog_material_class_set_height_falloff(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FogMaterial::set_height_falloff, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&FogMaterial::set_height_falloff, ctx, this_val, argc, argv);
 };
 static JSValue fog_material_class_get_height_falloff(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -80,8 +75,7 @@ static JSValue fog_material_class_get_height_falloff(JSContext *ctx, JSValueCons
 };
 static JSValue fog_material_class_set_edge_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FogMaterial::set_edge_fade, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&FogMaterial::set_edge_fade, ctx, this_val, argc, argv);
 };
 static JSValue fog_material_class_get_edge_fade(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -89,8 +83,7 @@ static JSValue fog_material_class_get_edge_fade(JSContext *ctx, JSValueConst thi
 };
 static JSValue fog_material_class_set_density_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&FogMaterial::set_density_texture, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&FogMaterial::set_density_texture, ctx, this_val, argc, argv);
 };
 static JSValue fog_material_class_get_density_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -111,10 +104,10 @@ static const JSCFunctionListEntry fog_material_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_density_texture", 0, &fog_material_class_get_density_texture),
 };
 
-void define_fog_material_property(JSContext *ctx, JSValue obj) {
+static void define_fog_material_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "density"),
         JS_NewCFunction(ctx, fog_material_class_get_density, "get_density", 0),
         JS_NewCFunction(ctx, fog_material_class_set_density, "set_density", 1),
@@ -122,7 +115,7 @@ void define_fog_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "albedo"),
         JS_NewCFunction(ctx, fog_material_class_get_albedo, "get_albedo", 0),
         JS_NewCFunction(ctx, fog_material_class_set_albedo, "set_albedo", 1),
@@ -130,7 +123,7 @@ void define_fog_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "emission"),
         JS_NewCFunction(ctx, fog_material_class_get_emission, "get_emission", 0),
         JS_NewCFunction(ctx, fog_material_class_set_emission, "set_emission", 1),
@@ -138,7 +131,7 @@ void define_fog_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "height_falloff"),
         JS_NewCFunction(ctx, fog_material_class_get_height_falloff, "get_height_falloff", 0),
         JS_NewCFunction(ctx, fog_material_class_set_height_falloff, "set_height_falloff", 1),
@@ -146,7 +139,7 @@ void define_fog_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "edge_fade"),
         JS_NewCFunction(ctx, fog_material_class_get_edge_fade, "get_edge_fade", 0),
         JS_NewCFunction(ctx, fog_material_class_set_edge_fade, "set_edge_fade", 1),
@@ -154,15 +147,16 @@ void define_fog_material_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "density_texture"),
         JS_NewCFunction(ctx, fog_material_class_get_density_texture, "get_density_texture", 0),
         JS_NewCFunction(ctx, fog_material_class_set_density_texture, "set_density_texture", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_fog_material_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_fog_material_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -178,7 +172,7 @@ static int js_fog_material_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, FogMaterial::__class_id, proto);
 
 	define_fog_material_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_fog_material_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, fog_material_class_proto_funcs, _countof(fog_material_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, fog_material_class_constructor, "FogMaterial", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

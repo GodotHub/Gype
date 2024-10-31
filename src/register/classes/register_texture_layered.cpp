@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture.hpp>
-#include <godot_cpp/classes/texture_layered.hpp>
 #include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/texture_layered.hpp>
+#include <godot_cpp/classes/texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue texture_layered_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TextureLayered::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	TextureLayered *texture_layered_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		texture_layered_class = static_cast<TextureLayered *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		texture_layered_class = static_cast<TextureLayered *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		texture_layered_class = memnew(TextureLayered);
-	}
 	if (!texture_layered_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -80,10 +79,11 @@ static const JSCFunctionListEntry texture_layered_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_layer_data", 1, &texture_layered_class_get_layer_data),
 };
 
-void define_texture_layered_property(JSContext *ctx, JSValue obj) {
+static void define_texture_layered_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_texture_layered_enum(JSContext *ctx, JSValue proto) {
 	JSValue LayeredType_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, LayeredType_obj, "LAYERED_TYPE_2D_ARRAY", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, LayeredType_obj, "LAYERED_TYPE_CUBEMAP", JS_NewInt64(ctx, 1));
@@ -104,7 +104,7 @@ static int js_texture_layered_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, TextureLayered::__class_id, proto);
 
 	define_texture_layered_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_texture_layered_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, texture_layered_class_proto_funcs, _countof(texture_layered_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, texture_layered_class_constructor, "TextureLayered", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

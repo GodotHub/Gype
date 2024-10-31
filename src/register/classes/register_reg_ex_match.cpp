@@ -27,13 +27,12 @@ static JSValue reg_ex_match_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RegExMatch::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	RegExMatch *reg_ex_match_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		reg_ex_match_class = static_cast<RegExMatch *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		reg_ex_match_class = static_cast<RegExMatch *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		reg_ex_match_class = memnew(RegExMatch);
-	}
 	if (!reg_ex_match_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -79,10 +78,10 @@ static const JSCFunctionListEntry reg_ex_match_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_end", 1, &reg_ex_match_class_get_end),
 };
 
-void define_reg_ex_match_property(JSContext *ctx, JSValue obj) {
+static void define_reg_ex_match_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "subject"),
         JS_NewCFunction(ctx, reg_ex_match_class_get_subject, "get_subject", 0),
         JS_UNDEFINED,
@@ -90,7 +89,7 @@ void define_reg_ex_match_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "names"),
         JS_NewCFunction(ctx, reg_ex_match_class_get_names, "get_names", 0),
         JS_UNDEFINED,
@@ -98,15 +97,16 @@ void define_reg_ex_match_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "strings"),
         JS_NewCFunction(ctx, reg_ex_match_class_get_strings, "get_strings", 0),
         JS_UNDEFINED,
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_reg_ex_match_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_reg_ex_match_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -122,7 +122,7 @@ static int js_reg_ex_match_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, RegExMatch::__class_id, proto);
 
 	define_reg_ex_match_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_reg_ex_match_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, reg_ex_match_class_proto_funcs, _countof(reg_ex_match_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, reg_ex_match_class_constructor, "RegExMatch", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

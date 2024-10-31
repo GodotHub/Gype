@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/xr_face_modifier3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue xr_face_modifier3d_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRFaceModifier3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	XRFaceModifier3D *xr_face_modifier3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		xr_face_modifier3d_class = static_cast<XRFaceModifier3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		xr_face_modifier3d_class = static_cast<XRFaceModifier3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		xr_face_modifier3d_class = memnew(XRFaceModifier3D);
-	}
 	if (!xr_face_modifier3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue xr_face_modifier3d_class_constructor(JSContext *ctx, JSValueConst
 }
 static JSValue xr_face_modifier3d_class_set_face_tracker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRFaceModifier3D::set_face_tracker, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRFaceModifier3D::set_face_tracker, ctx, this_val, argc, argv);
 };
 static JSValue xr_face_modifier3d_class_get_face_tracker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue xr_face_modifier3d_class_get_face_tracker(JSContext *ctx, JSValue
 };
 static JSValue xr_face_modifier3d_class_set_target(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRFaceModifier3D::set_target, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRFaceModifier3D::set_target, ctx, this_val, argc, argv);
 };
 static JSValue xr_face_modifier3d_class_get_target(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,10 +63,10 @@ static const JSCFunctionListEntry xr_face_modifier3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_target", 0, &xr_face_modifier3d_class_get_target),
 };
 
-void define_xr_face_modifier3d_property(JSContext *ctx, JSValue obj) {
+static void define_xr_face_modifier3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "face_tracker"),
         JS_NewCFunction(ctx, xr_face_modifier3d_class_get_face_tracker, "get_face_tracker", 0),
         JS_NewCFunction(ctx, xr_face_modifier3d_class_set_face_tracker, "set_face_tracker", 1),
@@ -77,15 +74,16 @@ void define_xr_face_modifier3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "target"),
         JS_NewCFunction(ctx, xr_face_modifier3d_class_get_target, "get_target", 0),
         JS_NewCFunction(ctx, xr_face_modifier3d_class_set_target, "set_target", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_xr_face_modifier3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_xr_face_modifier3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -101,7 +99,7 @@ static int js_xr_face_modifier3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, XRFaceModifier3D::__class_id, proto);
 
 	define_xr_face_modifier3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_xr_face_modifier3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_face_modifier3d_class_proto_funcs, _countof(xr_face_modifier3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, xr_face_modifier3d_class_constructor, "XRFaceModifier3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/box_container.hpp>
 #include <godot_cpp/classes/container.hpp>
+#include <godot_cpp/classes/box_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue box_container_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, BoxContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	BoxContainer *box_container_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		box_container_class = static_cast<BoxContainer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		box_container_class = static_cast<BoxContainer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		box_container_class = memnew(BoxContainer);
-	}
 	if (!box_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -48,8 +47,7 @@ static JSValue box_container_class_add_spacer(JSContext *ctx, JSValueConst this_
 };
 static JSValue box_container_class_set_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&BoxContainer::set_alignment, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&BoxContainer::set_alignment, ctx, this_val, argc, argv);
 };
 static JSValue box_container_class_get_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -57,8 +55,7 @@ static JSValue box_container_class_get_alignment(JSContext *ctx, JSValueConst th
 };
 static JSValue box_container_class_set_vertical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&BoxContainer::set_vertical, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&BoxContainer::set_vertical, ctx, this_val, argc, argv);
 };
 static JSValue box_container_class_is_vertical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -72,10 +69,10 @@ static const JSCFunctionListEntry box_container_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_vertical", 0, &box_container_class_is_vertical),
 };
 
-void define_box_container_property(JSContext *ctx, JSValue obj) {
+static void define_box_container_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "alignment"),
         JS_NewCFunction(ctx, box_container_class_get_alignment, "get_alignment", 0),
         JS_NewCFunction(ctx, box_container_class_set_alignment, "set_alignment", 1),
@@ -83,15 +80,16 @@ void define_box_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "vertical"),
         JS_NewCFunction(ctx, box_container_class_is_vertical, "is_vertical", 0),
         JS_NewCFunction(ctx, box_container_class_set_vertical, "set_vertical", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_box_container_enum(JSContext *ctx, JSValue proto) {
 	JSValue AlignmentMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, AlignmentMode_obj, "ALIGNMENT_BEGIN", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, AlignmentMode_obj, "ALIGNMENT_CENTER", JS_NewInt64(ctx, 1));
@@ -112,7 +110,7 @@ static int js_box_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, BoxContainer::__class_id, proto);
 
 	define_box_container_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_box_container_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, box_container_class_proto_funcs, _countof(box_container_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, box_container_class_constructor, "BoxContainer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

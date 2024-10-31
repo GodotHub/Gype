@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_clamp.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue visual_shader_node_clamp_class_constructor(JSContext *ctx, JSValu
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeClamp::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeClamp *visual_shader_node_clamp_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_clamp_class = static_cast<VisualShaderNodeClamp *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_clamp_class = static_cast<VisualShaderNodeClamp *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_clamp_class = memnew(VisualShaderNodeClamp);
-	}
 	if (!visual_shader_node_clamp_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue visual_shader_node_clamp_class_constructor(JSContext *ctx, JSValu
 }
 static JSValue visual_shader_node_clamp_class_set_op_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeClamp::set_op_type, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeClamp::set_op_type, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_clamp_class_get_op_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry visual_shader_node_clamp_class_proto_funcs[] =
 	JS_CFUNC_DEF("get_op_type", 0, &visual_shader_node_clamp_class_get_op_type),
 };
 
-void define_visual_shader_node_clamp_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_clamp_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "op_type"),
         JS_NewCFunction(ctx, visual_shader_node_clamp_class_get_op_type, "get_op_type", 0),
         JS_NewCFunction(ctx, visual_shader_node_clamp_class_set_op_type, "set_op_type", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_clamp_enum(JSContext *ctx, JSValue proto) {
 	JSValue OpType_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, OpType_obj, "OP_TYPE_FLOAT", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, OpType_obj, "OP_TYPE_INT", JS_NewInt64(ctx, 1));
@@ -91,7 +90,7 @@ static int js_visual_shader_node_clamp_class_init(JSContext *ctx, JSModuleDef *m
 	JS_SetClassProto(ctx, VisualShaderNodeClamp::__class_id, proto);
 
 	define_visual_shader_node_clamp_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_clamp_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_clamp_class_proto_funcs, _countof(visual_shader_node_clamp_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_clamp_class_constructor, "VisualShaderNodeClamp", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

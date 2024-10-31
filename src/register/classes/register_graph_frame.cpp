@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/classes/graph_frame.hpp>
 #include <godot_cpp/classes/graph_element.hpp>
-#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue graph_frame_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GraphFrame::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	GraphFrame *graph_frame_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		graph_frame_class = static_cast<GraphFrame *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		graph_frame_class = static_cast<GraphFrame *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		graph_frame_class = memnew(GraphFrame);
-	}
 	if (!graph_frame_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue graph_frame_class_constructor(JSContext *ctx, JSValueConst new_ta
 }
 static JSValue graph_frame_class_set_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GraphFrame::set_title, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GraphFrame::set_title, ctx, this_val, argc, argv);
 };
 static JSValue graph_frame_class_get_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -57,8 +55,7 @@ static JSValue graph_frame_class_get_titlebar_hbox(JSContext *ctx, JSValueConst 
 };
 static JSValue graph_frame_class_set_autoshrink_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GraphFrame::set_autoshrink_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GraphFrame::set_autoshrink_enabled, ctx, this_val, argc, argv);
 };
 static JSValue graph_frame_class_is_autoshrink_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,8 +63,7 @@ static JSValue graph_frame_class_is_autoshrink_enabled(JSContext *ctx, JSValueCo
 };
 static JSValue graph_frame_class_set_autoshrink_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GraphFrame::set_autoshrink_margin, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GraphFrame::set_autoshrink_margin, ctx, this_val, argc, argv);
 };
 static JSValue graph_frame_class_get_autoshrink_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -75,8 +71,7 @@ static JSValue graph_frame_class_get_autoshrink_margin(JSContext *ctx, JSValueCo
 };
 static JSValue graph_frame_class_set_drag_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GraphFrame::set_drag_margin, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GraphFrame::set_drag_margin, ctx, this_val, argc, argv);
 };
 static JSValue graph_frame_class_get_drag_margin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -84,8 +79,7 @@ static JSValue graph_frame_class_get_drag_margin(JSContext *ctx, JSValueConst th
 };
 static JSValue graph_frame_class_set_tint_color_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GraphFrame::set_tint_color_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GraphFrame::set_tint_color_enabled, ctx, this_val, argc, argv);
 };
 static JSValue graph_frame_class_is_tint_color_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -93,8 +87,7 @@ static JSValue graph_frame_class_is_tint_color_enabled(JSContext *ctx, JSValueCo
 };
 static JSValue graph_frame_class_set_tint_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GraphFrame::set_tint_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GraphFrame::set_tint_color, ctx, this_val, argc, argv);
 };
 static JSValue graph_frame_class_get_tint_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -115,11 +108,21 @@ static const JSCFunctionListEntry graph_frame_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_tint_color", 1, &graph_frame_class_set_tint_color),
 	JS_CFUNC_DEF("get_tint_color", 0, &graph_frame_class_get_tint_color),
 };
+static JSValue graph_frame_class_get_autoshrink_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	GraphFrame *opaque = reinterpret_cast<GraphFrame *>(JS_GetOpaque(this_val, GraphFrame::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "autoshrink_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "autoshrink_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "autoshrink_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_graph_frame_property(JSContext *ctx, JSValue obj) {
+static void define_graph_frame_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "title"),
         JS_NewCFunction(ctx, graph_frame_class_get_title, "get_title", 0),
         JS_NewCFunction(ctx, graph_frame_class_set_title, "set_title", 1),
@@ -127,7 +130,7 @@ void define_graph_frame_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "autoshrink_enabled"),
         JS_NewCFunction(ctx, graph_frame_class_is_autoshrink_enabled, "is_autoshrink_enabled", 0),
         JS_NewCFunction(ctx, graph_frame_class_set_autoshrink_enabled, "set_autoshrink_enabled", 1),
@@ -135,7 +138,7 @@ void define_graph_frame_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "autoshrink_margin"),
         JS_NewCFunction(ctx, graph_frame_class_get_autoshrink_margin, "get_autoshrink_margin", 0),
         JS_NewCFunction(ctx, graph_frame_class_set_autoshrink_margin, "set_autoshrink_margin", 1),
@@ -143,7 +146,7 @@ void define_graph_frame_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "drag_margin"),
         JS_NewCFunction(ctx, graph_frame_class_get_drag_margin, "get_drag_margin", 0),
         JS_NewCFunction(ctx, graph_frame_class_set_drag_margin, "set_drag_margin", 1),
@@ -151,7 +154,7 @@ void define_graph_frame_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "tint_color_enabled"),
         JS_NewCFunction(ctx, graph_frame_class_is_tint_color_enabled, "is_tint_color_enabled", 0),
         JS_NewCFunction(ctx, graph_frame_class_set_tint_color_enabled, "set_tint_color_enabled", 1),
@@ -159,15 +162,24 @@ void define_graph_frame_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "tint_color"),
         JS_NewCFunction(ctx, graph_frame_class_get_tint_color, "get_tint_color", 0),
         JS_NewCFunction(ctx, graph_frame_class_set_tint_color, "set_tint_color", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "autoshrink_changed"),
+		JS_NewCFunction(ctx, graph_frame_class_get_autoshrink_changed_signal, "get_autoshrink_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_graph_frame_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_graph_frame_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -183,7 +195,7 @@ static int js_graph_frame_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, GraphFrame::__class_id, proto);
 
 	define_graph_frame_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_graph_frame_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, graph_frame_class_proto_funcs, _countof(graph_frame_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, graph_frame_class_constructor, "GraphFrame", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

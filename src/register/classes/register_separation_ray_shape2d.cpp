@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/separation_ray_shape2d.hpp>
 #include <godot_cpp/classes/shape2d.hpp>
+#include <godot_cpp/classes/separation_ray_shape2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue separation_ray_shape2d_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SeparationRayShape2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	SeparationRayShape2D *separation_ray_shape2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		separation_ray_shape2d_class = static_cast<SeparationRayShape2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		separation_ray_shape2d_class = static_cast<SeparationRayShape2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		separation_ray_shape2d_class = memnew(SeparationRayShape2D);
-	}
 	if (!separation_ray_shape2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue separation_ray_shape2d_class_constructor(JSContext *ctx, JSValueC
 }
 static JSValue separation_ray_shape2d_class_set_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SeparationRayShape2D::set_length, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SeparationRayShape2D::set_length, ctx, this_val, argc, argv);
 };
 static JSValue separation_ray_shape2d_class_get_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue separation_ray_shape2d_class_get_length(JSContext *ctx, JSValueCo
 };
 static JSValue separation_ray_shape2d_class_set_slide_on_slope(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SeparationRayShape2D::set_slide_on_slope, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SeparationRayShape2D::set_slide_on_slope, ctx, this_val, argc, argv);
 };
 static JSValue separation_ray_shape2d_class_get_slide_on_slope(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,10 +63,10 @@ static const JSCFunctionListEntry separation_ray_shape2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_slide_on_slope", 0, &separation_ray_shape2d_class_get_slide_on_slope),
 };
 
-void define_separation_ray_shape2d_property(JSContext *ctx, JSValue obj) {
+static void define_separation_ray_shape2d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "length"),
         JS_NewCFunction(ctx, separation_ray_shape2d_class_get_length, "get_length", 0),
         JS_NewCFunction(ctx, separation_ray_shape2d_class_set_length, "set_length", 1),
@@ -77,15 +74,16 @@ void define_separation_ray_shape2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "slide_on_slope"),
         JS_NewCFunction(ctx, separation_ray_shape2d_class_get_slide_on_slope, "get_slide_on_slope", 0),
         JS_NewCFunction(ctx, separation_ray_shape2d_class_set_slide_on_slope, "set_slide_on_slope", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_separation_ray_shape2d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_separation_ray_shape2d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -101,7 +99,7 @@ static int js_separation_ray_shape2d_class_init(JSContext *ctx, JSModuleDef *m) 
 	JS_SetClassProto(ctx, SeparationRayShape2D::__class_id, proto);
 
 	define_separation_ray_shape2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_separation_ray_shape2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, separation_ray_shape2d_class_proto_funcs, _countof(separation_ray_shape2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, separation_ray_shape2d_class_constructor, "SeparationRayShape2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

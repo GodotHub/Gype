@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/gpu_particles_attractor_vector_field3d.hpp>
-#include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/classes/gpu_particles_attractor3d.hpp>
+#include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue gpu_particles_attractor_vector_field3d_class_constructor(JSContex
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GPUParticlesAttractorVectorField3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	GPUParticlesAttractorVectorField3D *gpu_particles_attractor_vector_field3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		gpu_particles_attractor_vector_field3d_class = static_cast<GPUParticlesAttractorVectorField3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		gpu_particles_attractor_vector_field3d_class = static_cast<GPUParticlesAttractorVectorField3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		gpu_particles_attractor_vector_field3d_class = memnew(GPUParticlesAttractorVectorField3D);
-	}
 	if (!gpu_particles_attractor_vector_field3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue gpu_particles_attractor_vector_field3d_class_constructor(JSContex
 }
 static JSValue gpu_particles_attractor_vector_field3d_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GPUParticlesAttractorVectorField3D::set_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GPUParticlesAttractorVectorField3D::set_size, ctx, this_val, argc, argv);
 };
 static JSValue gpu_particles_attractor_vector_field3d_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue gpu_particles_attractor_vector_field3d_class_get_size(JSContext *
 };
 static JSValue gpu_particles_attractor_vector_field3d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GPUParticlesAttractorVectorField3D::set_texture, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GPUParticlesAttractorVectorField3D::set_texture, ctx, this_val, argc, argv);
 };
 static JSValue gpu_particles_attractor_vector_field3d_class_get_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -67,10 +64,10 @@ static const JSCFunctionListEntry gpu_particles_attractor_vector_field3d_class_p
 	JS_CFUNC_DEF("get_texture", 0, &gpu_particles_attractor_vector_field3d_class_get_texture),
 };
 
-void define_gpu_particles_attractor_vector_field3d_property(JSContext *ctx, JSValue obj) {
+static void define_gpu_particles_attractor_vector_field3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, gpu_particles_attractor_vector_field3d_class_get_size, "get_size", 0),
         JS_NewCFunction(ctx, gpu_particles_attractor_vector_field3d_class_set_size, "set_size", 1),
@@ -78,15 +75,16 @@ void define_gpu_particles_attractor_vector_field3d_property(JSContext *ctx, JSVa
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "texture"),
         JS_NewCFunction(ctx, gpu_particles_attractor_vector_field3d_class_get_texture, "get_texture", 0),
         JS_NewCFunction(ctx, gpu_particles_attractor_vector_field3d_class_set_texture, "set_texture", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_gpu_particles_attractor_vector_field3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_gpu_particles_attractor_vector_field3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -102,7 +100,7 @@ static int js_gpu_particles_attractor_vector_field3d_class_init(JSContext *ctx, 
 	JS_SetClassProto(ctx, GPUParticlesAttractorVectorField3D::__class_id, proto);
 
 	define_gpu_particles_attractor_vector_field3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_gpu_particles_attractor_vector_field3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gpu_particles_attractor_vector_field3d_class_proto_funcs, _countof(gpu_particles_attractor_vector_field3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, gpu_particles_attractor_vector_field3d_class_constructor, "GPUParticlesAttractorVectorField3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

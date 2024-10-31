@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/curve3d.hpp>
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/path3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue path3d_class_constructor(JSContext *ctx, JSValueConst new_target,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Path3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Path3D *path3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		path3d_class = static_cast<Path3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		path3d_class = static_cast<Path3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		path3d_class = memnew(Path3D);
-	}
 	if (!path3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue path3d_class_constructor(JSContext *ctx, JSValueConst new_target,
 }
 static JSValue path3d_class_set_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Path3D::set_curve, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Path3D::set_curve, ctx, this_val, argc, argv);
 };
 static JSValue path3d_class_get_curve(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,19 +53,38 @@ static const JSCFunctionListEntry path3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_curve", 1, &path3d_class_set_curve),
 	JS_CFUNC_DEF("get_curve", 0, &path3d_class_get_curve),
 };
+static JSValue path3d_class_get_curve_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	Path3D *opaque = reinterpret_cast<Path3D *>(JS_GetOpaque(this_val, Path3D::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "curve_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "curve_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "curve_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_path3d_property(JSContext *ctx, JSValue obj) {
+static void define_path3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "curve"),
         JS_NewCFunction(ctx, path3d_class_get_curve, "get_curve", 0),
         JS_NewCFunction(ctx, path3d_class_set_curve, "set_curve", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "curve_changed"),
+		JS_NewCFunction(ctx, path3d_class_get_curve_changed_signal, "get_curve_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_path3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_path3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -83,7 +100,7 @@ static int js_path3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Path3D::__class_id, proto);
 
 	define_path3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_path3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, path3d_class_proto_funcs, _countof(path3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, path3d_class_constructor, "Path3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

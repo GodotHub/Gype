@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_pipeline_depth_stencil_state.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/rd_pipeline_depth_stencil_state.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue rd_pipeline_depth_stencil_state_class_constructor(JSContext *ctx,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDPipelineDepthStencilState::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	RDPipelineDepthStencilState *rd_pipeline_depth_stencil_state_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		rd_pipeline_depth_stencil_state_class = static_cast<RDPipelineDepthStencilState *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		rd_pipeline_depth_stencil_state_class = static_cast<RDPipelineDepthStencilState *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		rd_pipeline_depth_stencil_state_class = memnew(RDPipelineDepthStencilState);
-	}
 	if (!rd_pipeline_depth_stencil_state_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_constructor(JSContext *ctx,
 }
 static JSValue rd_pipeline_depth_stencil_state_class_set_enable_depth_test(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_enable_depth_test, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_enable_depth_test, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_enable_depth_test(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_enable_depth_test(JSCon
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_enable_depth_write(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_enable_depth_write, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_enable_depth_write, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_enable_depth_write(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_enable_depth_write(JSCo
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_depth_compare_operator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_depth_compare_operator, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_depth_compare_operator, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_depth_compare_operator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_depth_compare_operator(
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_enable_depth_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_enable_depth_range, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_enable_depth_range, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_enable_depth_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_enable_depth_range(JSCo
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_depth_range_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_depth_range_min, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_depth_range_min, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_depth_range_min(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,8 +82,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_depth_range_min(JSConte
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_depth_range_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_depth_range_max, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_depth_range_max, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_depth_range_max(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -97,8 +90,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_depth_range_max(JSConte
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_enable_stencil(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_enable_stencil, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_enable_stencil, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_enable_stencil(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -106,8 +98,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_enable_stencil(JSContex
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_front_op_fail(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_front_op_fail, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_front_op_fail, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_front_op_fail(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -115,8 +106,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_front_op_fail(JSContext
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_front_op_pass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_front_op_pass, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_front_op_pass, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_front_op_pass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -124,8 +114,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_front_op_pass(JSContext
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_front_op_depth_fail(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_front_op_depth_fail, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_front_op_depth_fail, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_front_op_depth_fail(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -133,8 +122,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_front_op_depth_fail(JSC
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_front_op_compare(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_front_op_compare, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_front_op_compare, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_front_op_compare(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -142,8 +130,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_front_op_compare(JSCont
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_front_op_compare_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_front_op_compare_mask, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_front_op_compare_mask, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_front_op_compare_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -151,8 +138,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_front_op_compare_mask(J
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_front_op_write_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_front_op_write_mask, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_front_op_write_mask, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_front_op_write_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -160,8 +146,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_front_op_write_mask(JSC
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_front_op_reference(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_front_op_reference, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_front_op_reference, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_front_op_reference(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -169,8 +154,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_front_op_reference(JSCo
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_back_op_fail(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_back_op_fail, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_back_op_fail, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_back_op_fail(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -178,8 +162,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_back_op_fail(JSContext 
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_back_op_pass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_back_op_pass, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_back_op_pass, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_back_op_pass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -187,8 +170,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_back_op_pass(JSContext 
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_back_op_depth_fail(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_back_op_depth_fail, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_back_op_depth_fail, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_back_op_depth_fail(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -196,8 +178,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_back_op_depth_fail(JSCo
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_back_op_compare(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_back_op_compare, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_back_op_compare, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_back_op_compare(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -205,8 +186,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_back_op_compare(JSConte
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_back_op_compare_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_back_op_compare_mask, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_back_op_compare_mask, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_back_op_compare_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -214,8 +194,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_back_op_compare_mask(JS
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_back_op_write_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_back_op_write_mask, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_back_op_write_mask, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_back_op_write_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -223,8 +202,7 @@ static JSValue rd_pipeline_depth_stencil_state_class_get_back_op_write_mask(JSCo
 };
 static JSValue rd_pipeline_depth_stencil_state_class_set_back_op_reference(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_back_op_reference, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDPipelineDepthStencilState::set_back_op_reference, ctx, this_val, argc, argv);
 };
 static JSValue rd_pipeline_depth_stencil_state_class_get_back_op_reference(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -275,10 +253,10 @@ static const JSCFunctionListEntry rd_pipeline_depth_stencil_state_class_proto_fu
 	JS_CFUNC_DEF("get_back_op_reference", 0, &rd_pipeline_depth_stencil_state_class_get_back_op_reference),
 };
 
-void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj) {
+static void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "enable_depth_test"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_enable_depth_test, "get_enable_depth_test", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_enable_depth_test, "set_enable_depth_test", 1),
@@ -286,7 +264,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "enable_depth_write"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_enable_depth_write, "get_enable_depth_write", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_enable_depth_write, "set_enable_depth_write", 1),
@@ -294,7 +272,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "depth_compare_operator"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_depth_compare_operator, "get_depth_compare_operator", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_depth_compare_operator, "set_depth_compare_operator", 1),
@@ -302,7 +280,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "enable_depth_range"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_enable_depth_range, "get_enable_depth_range", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_enable_depth_range, "set_enable_depth_range", 1),
@@ -310,7 +288,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "depth_range_min"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_depth_range_min, "get_depth_range_min", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_depth_range_min, "set_depth_range_min", 1),
@@ -318,7 +296,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "depth_range_max"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_depth_range_max, "get_depth_range_max", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_depth_range_max, "set_depth_range_max", 1),
@@ -326,7 +304,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "enable_stencil"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_enable_stencil, "get_enable_stencil", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_enable_stencil, "set_enable_stencil", 1),
@@ -334,7 +312,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "front_op_fail"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_front_op_fail, "get_front_op_fail", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_fail, "set_front_op_fail", 1),
@@ -342,7 +320,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "front_op_pass"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_front_op_pass, "get_front_op_pass", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_pass, "set_front_op_pass", 1),
@@ -350,7 +328,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "front_op_depth_fail"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_front_op_depth_fail, "get_front_op_depth_fail", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_depth_fail, "set_front_op_depth_fail", 1),
@@ -358,7 +336,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "front_op_compare"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_front_op_compare, "get_front_op_compare", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_compare, "set_front_op_compare", 1),
@@ -366,7 +344,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "front_op_compare_mask"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_front_op_compare_mask, "get_front_op_compare_mask", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_compare_mask, "set_front_op_compare_mask", 1),
@@ -374,7 +352,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "front_op_write_mask"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_front_op_write_mask, "get_front_op_write_mask", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_write_mask, "set_front_op_write_mask", 1),
@@ -382,7 +360,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "front_op_reference"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_front_op_reference, "get_front_op_reference", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_front_op_reference, "set_front_op_reference", 1),
@@ -390,7 +368,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "back_op_fail"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_back_op_fail, "get_back_op_fail", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_fail, "set_back_op_fail", 1),
@@ -398,7 +376,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "back_op_pass"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_back_op_pass, "get_back_op_pass", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_pass, "set_back_op_pass", 1),
@@ -406,7 +384,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "back_op_depth_fail"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_back_op_depth_fail, "get_back_op_depth_fail", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_depth_fail, "set_back_op_depth_fail", 1),
@@ -414,7 +392,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "back_op_compare"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_back_op_compare, "get_back_op_compare", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_compare, "set_back_op_compare", 1),
@@ -422,7 +400,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "back_op_compare_mask"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_back_op_compare_mask, "get_back_op_compare_mask", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_compare_mask, "set_back_op_compare_mask", 1),
@@ -430,7 +408,7 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "back_op_write_mask"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_back_op_write_mask, "get_back_op_write_mask", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_write_mask, "set_back_op_write_mask", 1),
@@ -438,15 +416,16 @@ void define_rd_pipeline_depth_stencil_state_property(JSContext *ctx, JSValue obj
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "back_op_reference"),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_get_back_op_reference, "get_back_op_reference", 0),
         JS_NewCFunction(ctx, rd_pipeline_depth_stencil_state_class_set_back_op_reference, "set_back_op_reference", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_rd_pipeline_depth_stencil_state_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_rd_pipeline_depth_stencil_state_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -462,7 +441,7 @@ static int js_rd_pipeline_depth_stencil_state_class_init(JSContext *ctx, JSModul
 	JS_SetClassProto(ctx, RDPipelineDepthStencilState::__class_id, proto);
 
 	define_rd_pipeline_depth_stencil_state_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_rd_pipeline_depth_stencil_state_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, rd_pipeline_depth_stencil_state_class_proto_funcs, _countof(rd_pipeline_depth_stencil_state_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, rd_pipeline_depth_stencil_state_class_constructor, "RDPipelineDepthStencilState", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

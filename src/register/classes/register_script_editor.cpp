@@ -6,12 +6,12 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/script.hpp>
-#include <godot_cpp/classes/panel_container.hpp>
 #include <godot_cpp/classes/script_editor_base.hpp>
-#include <godot_cpp/classes/script_editor.hpp>
 #include <godot_cpp/classes/script.hpp>
+#include <godot_cpp/classes/panel_container.hpp>
 #include <godot_cpp/classes/editor_syntax_highlighter.hpp>
 #include <godot_cpp/classes/script_editor_base.hpp>
+#include <godot_cpp/classes/script_editor.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,13 +32,12 @@ static JSValue script_editor_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ScriptEditor::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ScriptEditor *script_editor_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		script_editor_class = static_cast<ScriptEditor *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		script_editor_class = static_cast<ScriptEditor *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		script_editor_class = memnew(ScriptEditor);
-	}
 	if (!script_editor_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -56,18 +55,15 @@ static JSValue script_editor_class_get_open_script_editors(JSContext *ctx, JSVal
 };
 static JSValue script_editor_class_register_syntax_highlighter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ScriptEditor::register_syntax_highlighter, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ScriptEditor::register_syntax_highlighter, ctx, this_val, argc, argv);
 };
 static JSValue script_editor_class_unregister_syntax_highlighter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ScriptEditor::unregister_syntax_highlighter, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ScriptEditor::unregister_syntax_highlighter, ctx, this_val, argc, argv);
 };
 static JSValue script_editor_class_goto_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ScriptEditor::goto_line, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ScriptEditor::goto_line, ctx, this_val, argc, argv);
 };
 static JSValue script_editor_class_get_current_script(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,13 +75,11 @@ static JSValue script_editor_class_get_open_scripts(JSContext *ctx, JSValueConst
 };
 static JSValue script_editor_class_open_script_create_dialog(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ScriptEditor::open_script_create_dialog, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ScriptEditor::open_script_create_dialog, ctx, this_val, argc, argv);
 };
 static JSValue script_editor_class_goto_help(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ScriptEditor::goto_help, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ScriptEditor::goto_help, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry script_editor_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_current_editor", 0, &script_editor_class_get_current_editor),
@@ -98,11 +92,48 @@ static const JSCFunctionListEntry script_editor_class_proto_funcs[] = {
 	JS_CFUNC_DEF("open_script_create_dialog", 2, &script_editor_class_open_script_create_dialog),
 	JS_CFUNC_DEF("goto_help", 1, &script_editor_class_goto_help),
 };
-
-void define_script_editor_property(JSContext *ctx, JSValue obj) {
+static JSValue script_editor_class_get_editor_script_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	ScriptEditor *opaque = reinterpret_cast<ScriptEditor *>(JS_GetOpaque(this_val, ScriptEditor::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "editor_script_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "editor_script_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "editor_script_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue script_editor_class_get_script_close_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	ScriptEditor *opaque = reinterpret_cast<ScriptEditor *>(JS_GetOpaque(this_val, ScriptEditor::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "script_close_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "script_close").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "script_close_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_script_editor_property(JSContext *ctx, JSValue proto) {
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "editor_script_changed"),
+		JS_NewCFunction(ctx, script_editor_class_get_editor_script_changed_signal, "get_editor_script_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "script_close"),
+		JS_NewCFunction(ctx, script_editor_class_get_script_close_signal, "get_script_close_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+}
+
+static void define_script_editor_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_script_editor_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -118,7 +149,7 @@ static int js_script_editor_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ScriptEditor::__class_id, proto);
 
 	define_script_editor_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_script_editor_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, script_editor_class_proto_funcs, _countof(script_editor_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, script_editor_class_constructor, "ScriptEditor", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

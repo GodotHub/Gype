@@ -27,13 +27,12 @@ static JSValue color_rect_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ColorRect::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ColorRect *color_rect_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		color_rect_class = static_cast<ColorRect *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		color_rect_class = static_cast<ColorRect *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		color_rect_class = memnew(ColorRect);
-	}
 	if (!color_rect_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue color_rect_class_constructor(JSContext *ctx, JSValueConst new_tar
 }
 static JSValue color_rect_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ColorRect::set_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ColorRect::set_color, ctx, this_val, argc, argv);
 };
 static JSValue color_rect_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry color_rect_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_color", 0, &color_rect_class_get_color),
 };
 
-void define_color_rect_property(JSContext *ctx, JSValue obj) {
+static void define_color_rect_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "color"),
         JS_NewCFunction(ctx, color_rect_class_get_color, "get_color", 0),
         JS_NewCFunction(ctx, color_rect_class_set_color, "set_color", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_color_rect_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_color_rect_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -82,7 +81,7 @@ static int js_color_rect_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ColorRect::__class_id, proto);
 
 	define_color_rect_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_color_rect_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, color_rect_class_proto_funcs, _countof(color_rect_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, color_rect_class_constructor, "ColorRect", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

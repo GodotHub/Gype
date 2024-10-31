@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_reroute.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue visual_shader_node_reroute_class_constructor(JSContext *ctx, JSVa
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeReroute::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeReroute *visual_shader_node_reroute_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_reroute_class = static_cast<VisualShaderNodeReroute *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_reroute_class = static_cast<VisualShaderNodeReroute *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_reroute_class = memnew(VisualShaderNodeReroute);
-	}
 	if (!visual_shader_node_reroute_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -49,18 +48,19 @@ static const JSCFunctionListEntry visual_shader_node_reroute_class_proto_funcs[]
 	JS_CFUNC_DEF("get_port_type", 0, &visual_shader_node_reroute_class_get_port_type),
 };
 
-void define_visual_shader_node_reroute_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_reroute_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "port_type"),
         JS_NewCFunction(ctx, visual_shader_node_reroute_class_get_port_type, "get_port_type", 0),
         JS_UNDEFINED,
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_reroute_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_reroute_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -76,7 +76,7 @@ static int js_visual_shader_node_reroute_class_init(JSContext *ctx, JSModuleDef 
 	JS_SetClassProto(ctx, VisualShaderNodeReroute::__class_id, proto);
 
 	define_visual_shader_node_reroute_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_reroute_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_reroute_class_proto_funcs, _countof(visual_shader_node_reroute_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_reroute_class_constructor, "VisualShaderNodeReroute", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

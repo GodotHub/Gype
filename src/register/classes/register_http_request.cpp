@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/classes/http_request.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue http_request_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HTTPRequest::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	HTTPRequest *http_request_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		http_request_class = static_cast<HTTPRequest *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		http_request_class = static_cast<HTTPRequest *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		http_request_class = memnew(HTTPRequest);
-	}
 	if (!http_request_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -52,13 +51,11 @@ static JSValue http_request_class_request_raw(JSContext *ctx, JSValueConst this_
 };
 static JSValue http_request_class_cancel_request(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HTTPRequest::cancel_request, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HTTPRequest::cancel_request, ctx, this_val, argc, argv);
 };
 static JSValue http_request_class_set_tls_options(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HTTPRequest::set_tls_options, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HTTPRequest::set_tls_options, ctx, this_val, argc, argv);
 };
 static JSValue http_request_class_get_http_client_status(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,8 +63,7 @@ static JSValue http_request_class_get_http_client_status(JSContext *ctx, JSValue
 };
 static JSValue http_request_class_set_use_threads(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HTTPRequest::set_use_threads, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HTTPRequest::set_use_threads, ctx, this_val, argc, argv);
 };
 static JSValue http_request_class_is_using_threads(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -75,8 +71,7 @@ static JSValue http_request_class_is_using_threads(JSContext *ctx, JSValueConst 
 };
 static JSValue http_request_class_set_accept_gzip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HTTPRequest::set_accept_gzip, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HTTPRequest::set_accept_gzip, ctx, this_val, argc, argv);
 };
 static JSValue http_request_class_is_accepting_gzip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -84,8 +79,7 @@ static JSValue http_request_class_is_accepting_gzip(JSContext *ctx, JSValueConst
 };
 static JSValue http_request_class_set_body_size_limit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HTTPRequest::set_body_size_limit, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HTTPRequest::set_body_size_limit, ctx, this_val, argc, argv);
 };
 static JSValue http_request_class_get_body_size_limit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -93,8 +87,7 @@ static JSValue http_request_class_get_body_size_limit(JSContext *ctx, JSValueCon
 };
 static JSValue http_request_class_set_max_redirects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HTTPRequest::set_max_redirects, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HTTPRequest::set_max_redirects, ctx, this_val, argc, argv);
 };
 static JSValue http_request_class_get_max_redirects(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -102,8 +95,7 @@ static JSValue http_request_class_get_max_redirects(JSContext *ctx, JSValueConst
 };
 static JSValue http_request_class_set_download_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HTTPRequest::set_download_file, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HTTPRequest::set_download_file, ctx, this_val, argc, argv);
 };
 static JSValue http_request_class_get_download_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -119,8 +111,7 @@ static JSValue http_request_class_get_body_size(JSContext *ctx, JSValueConst thi
 };
 static JSValue http_request_class_set_timeout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HTTPRequest::set_timeout, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HTTPRequest::set_timeout, ctx, this_val, argc, argv);
 };
 static JSValue http_request_class_get_timeout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -128,8 +119,7 @@ static JSValue http_request_class_get_timeout(JSContext *ctx, JSValueConst this_
 };
 static JSValue http_request_class_set_download_chunk_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HTTPRequest::set_download_chunk_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HTTPRequest::set_download_chunk_size, ctx, this_val, argc, argv);
 };
 static JSValue http_request_class_get_download_chunk_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -137,13 +127,11 @@ static JSValue http_request_class_get_download_chunk_size(JSContext *ctx, JSValu
 };
 static JSValue http_request_class_set_http_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HTTPRequest::set_http_proxy, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HTTPRequest::set_http_proxy, ctx, this_val, argc, argv);
 };
 static JSValue http_request_class_set_https_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HTTPRequest::set_https_proxy, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HTTPRequest::set_https_proxy, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry http_request_class_proto_funcs[] = {
 	JS_CFUNC_DEF("request", 4, &http_request_class_request),
@@ -170,11 +158,21 @@ static const JSCFunctionListEntry http_request_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_http_proxy", 2, &http_request_class_set_http_proxy),
 	JS_CFUNC_DEF("set_https_proxy", 2, &http_request_class_set_https_proxy),
 };
+static JSValue http_request_class_get_request_completed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	HTTPRequest *opaque = reinterpret_cast<HTTPRequest *>(JS_GetOpaque(this_val, HTTPRequest::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "request_completed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "request_completed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "request_completed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_http_request_property(JSContext *ctx, JSValue obj) {
+static void define_http_request_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "download_file"),
         JS_NewCFunction(ctx, http_request_class_get_download_file, "get_download_file", 0),
         JS_NewCFunction(ctx, http_request_class_set_download_file, "set_download_file", 1),
@@ -182,7 +180,7 @@ void define_http_request_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "download_chunk_size"),
         JS_NewCFunction(ctx, http_request_class_get_download_chunk_size, "get_download_chunk_size", 0),
         JS_NewCFunction(ctx, http_request_class_set_download_chunk_size, "set_download_chunk_size", 1),
@@ -190,7 +188,7 @@ void define_http_request_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "use_threads"),
         JS_NewCFunction(ctx, http_request_class_is_using_threads, "is_using_threads", 0),
         JS_NewCFunction(ctx, http_request_class_set_use_threads, "set_use_threads", 1),
@@ -198,7 +196,7 @@ void define_http_request_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "accept_gzip"),
         JS_NewCFunction(ctx, http_request_class_is_accepting_gzip, "is_accepting_gzip", 0),
         JS_NewCFunction(ctx, http_request_class_set_accept_gzip, "set_accept_gzip", 1),
@@ -206,7 +204,7 @@ void define_http_request_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "body_size_limit"),
         JS_NewCFunction(ctx, http_request_class_get_body_size_limit, "get_body_size_limit", 0),
         JS_NewCFunction(ctx, http_request_class_set_body_size_limit, "set_body_size_limit", 1),
@@ -214,7 +212,7 @@ void define_http_request_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "max_redirects"),
         JS_NewCFunction(ctx, http_request_class_get_max_redirects, "get_max_redirects", 0),
         JS_NewCFunction(ctx, http_request_class_set_max_redirects, "set_max_redirects", 1),
@@ -222,15 +220,24 @@ void define_http_request_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "timeout"),
         JS_NewCFunction(ctx, http_request_class_get_timeout, "get_timeout", 0),
         JS_NewCFunction(ctx, http_request_class_set_timeout, "set_timeout", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "request_completed"),
+		JS_NewCFunction(ctx, http_request_class_get_request_completed_signal, "get_request_completed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_http_request_enum(JSContext *ctx, JSValue proto) {
 	JSValue Result_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Result_obj, "RESULT_SUCCESS", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Result_obj, "RESULT_CHUNKED_BODY_SIZE_MISMATCH", JS_NewInt64(ctx, 1));
@@ -262,7 +269,7 @@ static int js_http_request_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, HTTPRequest::__class_id, proto);
 
 	define_http_request_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_http_request_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, http_request_class_proto_funcs, _countof(http_request_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, http_request_class_constructor, "HTTPRequest", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

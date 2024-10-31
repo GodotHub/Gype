@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/compressed_texture2d.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue compressed_texture2d_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CompressedTexture2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	CompressedTexture2D *compressed_texture2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		compressed_texture2d_class = static_cast<CompressedTexture2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		compressed_texture2d_class = static_cast<CompressedTexture2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		compressed_texture2d_class = memnew(CompressedTexture2D);
-	}
 	if (!compressed_texture2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -54,18 +53,19 @@ static const JSCFunctionListEntry compressed_texture2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_load_path", 0, &compressed_texture2d_class_get_load_path),
 };
 
-void define_compressed_texture2d_property(JSContext *ctx, JSValue obj) {
+static void define_compressed_texture2d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "load_path"),
         JS_NewCFunction(ctx, compressed_texture2d_class_get_load_path, "get_load_path", 0),
         JS_NewCFunction(ctx, compressed_texture2d_class_load, "load", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_compressed_texture2d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_compressed_texture2d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -81,7 +81,7 @@ static int js_compressed_texture2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, CompressedTexture2D::__class_id, proto);
 
 	define_compressed_texture2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_compressed_texture2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, compressed_texture2d_class_proto_funcs, _countof(compressed_texture2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, compressed_texture2d_class_constructor, "CompressedTexture2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

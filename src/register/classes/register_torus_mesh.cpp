@@ -27,13 +27,12 @@ static JSValue torus_mesh_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TorusMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	TorusMesh *torus_mesh_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		torus_mesh_class = static_cast<TorusMesh *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		torus_mesh_class = static_cast<TorusMesh *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		torus_mesh_class = memnew(TorusMesh);
-	}
 	if (!torus_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue torus_mesh_class_constructor(JSContext *ctx, JSValueConst new_tar
 }
 static JSValue torus_mesh_class_set_inner_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TorusMesh::set_inner_radius, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TorusMesh::set_inner_radius, ctx, this_val, argc, argv);
 };
 static JSValue torus_mesh_class_get_inner_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue torus_mesh_class_get_inner_radius(JSContext *ctx, JSValueConst th
 };
 static JSValue torus_mesh_class_set_outer_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TorusMesh::set_outer_radius, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TorusMesh::set_outer_radius, ctx, this_val, argc, argv);
 };
 static JSValue torus_mesh_class_get_outer_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue torus_mesh_class_get_outer_radius(JSContext *ctx, JSValueConst th
 };
 static JSValue torus_mesh_class_set_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TorusMesh::set_rings, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TorusMesh::set_rings, ctx, this_val, argc, argv);
 };
 static JSValue torus_mesh_class_get_rings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue torus_mesh_class_get_rings(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue torus_mesh_class_set_ring_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TorusMesh::set_ring_segments, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TorusMesh::set_ring_segments, ctx, this_val, argc, argv);
 };
 static JSValue torus_mesh_class_get_ring_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,10 +83,10 @@ static const JSCFunctionListEntry torus_mesh_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_ring_segments", 0, &torus_mesh_class_get_ring_segments),
 };
 
-void define_torus_mesh_property(JSContext *ctx, JSValue obj) {
+static void define_torus_mesh_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "inner_radius"),
         JS_NewCFunction(ctx, torus_mesh_class_get_inner_radius, "get_inner_radius", 0),
         JS_NewCFunction(ctx, torus_mesh_class_set_inner_radius, "set_inner_radius", 1),
@@ -99,7 +94,7 @@ void define_torus_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "outer_radius"),
         JS_NewCFunction(ctx, torus_mesh_class_get_outer_radius, "get_outer_radius", 0),
         JS_NewCFunction(ctx, torus_mesh_class_set_outer_radius, "set_outer_radius", 1),
@@ -107,7 +102,7 @@ void define_torus_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "rings"),
         JS_NewCFunction(ctx, torus_mesh_class_get_rings, "get_rings", 0),
         JS_NewCFunction(ctx, torus_mesh_class_set_rings, "set_rings", 1),
@@ -115,15 +110,16 @@ void define_torus_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "ring_segments"),
         JS_NewCFunction(ctx, torus_mesh_class_get_ring_segments, "get_ring_segments", 0),
         JS_NewCFunction(ctx, torus_mesh_class_set_ring_segments, "set_ring_segments", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_torus_mesh_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_torus_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -139,7 +135,7 @@ static int js_torus_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, TorusMesh::__class_id, proto);
 
 	define_torus_mesh_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_torus_mesh_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, torus_mesh_class_proto_funcs, _countof(torus_mesh_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, torus_mesh_class_constructor, "TorusMesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

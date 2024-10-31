@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/udp_server.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/packet_peer_udp.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/udp_server.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue udp_server_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, UDPServer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	UDPServer *udp_server_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		udp_server_class = static_cast<UDPServer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		udp_server_class = static_cast<UDPServer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		udp_server_class = memnew(UDPServer);
-	}
 	if (!udp_server_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -68,13 +67,11 @@ static JSValue udp_server_class_take_connection(JSContext *ctx, JSValueConst thi
 };
 static JSValue udp_server_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&UDPServer::stop, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&UDPServer::stop, ctx, this_val, argc, argv);
 };
 static JSValue udp_server_class_set_max_pending_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&UDPServer::set_max_pending_connections, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&UDPServer::set_max_pending_connections, ctx, this_val, argc, argv);
 };
 static JSValue udp_server_class_get_max_pending_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -92,18 +89,19 @@ static const JSCFunctionListEntry udp_server_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_max_pending_connections", 0, &udp_server_class_get_max_pending_connections),
 };
 
-void define_udp_server_property(JSContext *ctx, JSValue obj) {
+static void define_udp_server_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "max_pending_connections"),
         JS_NewCFunction(ctx, udp_server_class_get_max_pending_connections, "get_max_pending_connections", 0),
         JS_NewCFunction(ctx, udp_server_class_set_max_pending_connections, "set_max_pending_connections", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_udp_server_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_udp_server_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -119,7 +117,7 @@ static int js_udp_server_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, UDPServer::__class_id, proto);
 
 	define_udp_server_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_udp_server_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, udp_server_class_proto_funcs, _countof(udp_server_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, udp_server_class_constructor, "UDPServer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/open_xr_action.hpp>
 #include <godot_cpp/classes/open_xr_action_set.hpp>
+#include <godot_cpp/classes/open_xr_action.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,13 +28,12 @@ static JSValue open_xr_action_set_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRActionSet::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	OpenXRActionSet *open_xr_action_set_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		open_xr_action_set_class = static_cast<OpenXRActionSet *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		open_xr_action_set_class = static_cast<OpenXRActionSet *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		open_xr_action_set_class = memnew(OpenXRActionSet);
-	}
 	if (!open_xr_action_set_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue open_xr_action_set_class_constructor(JSContext *ctx, JSValueConst
 }
 static JSValue open_xr_action_set_class_set_localized_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRActionSet::set_localized_name, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRActionSet::set_localized_name, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_set_class_get_localized_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue open_xr_action_set_class_get_localized_name(JSContext *ctx, JSVal
 };
 static JSValue open_xr_action_set_class_set_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRActionSet::set_priority, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRActionSet::set_priority, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_set_class_get_priority(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,8 +63,7 @@ static JSValue open_xr_action_set_class_get_action_count(JSContext *ctx, JSValue
 };
 static JSValue open_xr_action_set_class_set_actions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRActionSet::set_actions, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRActionSet::set_actions, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_set_class_get_actions(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -75,13 +71,11 @@ static JSValue open_xr_action_set_class_get_actions(JSContext *ctx, JSValueConst
 };
 static JSValue open_xr_action_set_class_add_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRActionSet::add_action, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRActionSet::add_action, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_action_set_class_remove_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRActionSet::remove_action, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRActionSet::remove_action, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry open_xr_action_set_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_localized_name", 1, &open_xr_action_set_class_set_localized_name),
@@ -95,10 +89,10 @@ static const JSCFunctionListEntry open_xr_action_set_class_proto_funcs[] = {
 	JS_CFUNC_DEF("remove_action", 1, &open_xr_action_set_class_remove_action),
 };
 
-void define_open_xr_action_set_property(JSContext *ctx, JSValue obj) {
+static void define_open_xr_action_set_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "localized_name"),
         JS_NewCFunction(ctx, open_xr_action_set_class_get_localized_name, "get_localized_name", 0),
         JS_NewCFunction(ctx, open_xr_action_set_class_set_localized_name, "set_localized_name", 1),
@@ -106,7 +100,7 @@ void define_open_xr_action_set_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "priority"),
         JS_NewCFunction(ctx, open_xr_action_set_class_get_priority, "get_priority", 0),
         JS_NewCFunction(ctx, open_xr_action_set_class_set_priority, "set_priority", 1),
@@ -114,15 +108,16 @@ void define_open_xr_action_set_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "actions"),
         JS_NewCFunction(ctx, open_xr_action_set_class_get_actions, "get_actions", 0),
         JS_NewCFunction(ctx, open_xr_action_set_class_set_actions, "set_actions", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_open_xr_action_set_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_open_xr_action_set_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -138,7 +133,7 @@ static int js_open_xr_action_set_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, OpenXRActionSet::__class_id, proto);
 
 	define_open_xr_action_set_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_open_xr_action_set_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, open_xr_action_set_class_proto_funcs, _countof(open_xr_action_set_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, open_xr_action_set_class_constructor, "OpenXRActionSet", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

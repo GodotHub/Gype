@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue visual_instance3d_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualInstance3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualInstance3D *visual_instance3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_instance3d_class = static_cast<VisualInstance3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_instance3d_class = static_cast<VisualInstance3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_instance3d_class = memnew(VisualInstance3D);
-	}
 	if (!visual_instance3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue visual_instance3d_class_constructor(JSContext *ctx, JSValueConst 
 }
 static JSValue visual_instance3d_class_set_base(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualInstance3D::set_base, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualInstance3D::set_base, ctx, this_val, argc, argv);
 };
 static JSValue visual_instance3d_class_get_base(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,8 +54,7 @@ static JSValue visual_instance3d_class_get_instance(JSContext *ctx, JSValueConst
 };
 static JSValue visual_instance3d_class_set_layer_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualInstance3D::set_layer_mask, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualInstance3D::set_layer_mask, ctx, this_val, argc, argv);
 };
 static JSValue visual_instance3d_class_get_layer_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -65,8 +62,7 @@ static JSValue visual_instance3d_class_get_layer_mask(JSContext *ctx, JSValueCon
 };
 static JSValue visual_instance3d_class_set_layer_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualInstance3D::set_layer_mask_value, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualInstance3D::set_layer_mask_value, ctx, this_val, argc, argv);
 };
 static JSValue visual_instance3d_class_get_layer_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -74,8 +70,7 @@ static JSValue visual_instance3d_class_get_layer_mask_value(JSContext *ctx, JSVa
 };
 static JSValue visual_instance3d_class_set_sorting_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualInstance3D::set_sorting_offset, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualInstance3D::set_sorting_offset, ctx, this_val, argc, argv);
 };
 static JSValue visual_instance3d_class_get_sorting_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -83,8 +78,7 @@ static JSValue visual_instance3d_class_get_sorting_offset(JSContext *ctx, JSValu
 };
 static JSValue visual_instance3d_class_set_sorting_use_aabb_center(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualInstance3D::set_sorting_use_aabb_center, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualInstance3D::set_sorting_use_aabb_center, ctx, this_val, argc, argv);
 };
 static JSValue visual_instance3d_class_is_sorting_use_aabb_center(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -109,10 +103,10 @@ static const JSCFunctionListEntry visual_instance3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_aabb", 0, &visual_instance3d_class_get_aabb),
 };
 
-void define_visual_instance3d_property(JSContext *ctx, JSValue obj) {
+static void define_visual_instance3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "layers"),
         JS_NewCFunction(ctx, visual_instance3d_class_get_layer_mask, "get_layer_mask", 0),
         JS_NewCFunction(ctx, visual_instance3d_class_set_layer_mask, "set_layer_mask", 1),
@@ -120,7 +114,7 @@ void define_visual_instance3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sorting_offset"),
         JS_NewCFunction(ctx, visual_instance3d_class_get_sorting_offset, "get_sorting_offset", 0),
         JS_NewCFunction(ctx, visual_instance3d_class_set_sorting_offset, "set_sorting_offset", 1),
@@ -128,15 +122,16 @@ void define_visual_instance3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sorting_use_aabb_center"),
         JS_NewCFunction(ctx, visual_instance3d_class_is_sorting_use_aabb_center, "is_sorting_use_aabb_center", 0),
         JS_NewCFunction(ctx, visual_instance3d_class_set_sorting_use_aabb_center, "set_sorting_use_aabb_center", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_instance3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_instance3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -152,7 +147,7 @@ static int js_visual_instance3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, VisualInstance3D::__class_id, proto);
 
 	define_visual_instance3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_instance3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_instance3d_class_proto_funcs, _countof(visual_instance3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_instance3d_class_constructor, "VisualInstance3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

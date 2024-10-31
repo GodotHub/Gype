@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_chorus.hpp>
+#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue audio_effect_chorus_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectChorus::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AudioEffectChorus *audio_effect_chorus_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		audio_effect_chorus_class = static_cast<AudioEffectChorus *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		audio_effect_chorus_class = static_cast<AudioEffectChorus *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		audio_effect_chorus_class = memnew(AudioEffectChorus);
-	}
 	if (!audio_effect_chorus_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue audio_effect_chorus_class_constructor(JSContext *ctx, JSValueCons
 }
 static JSValue audio_effect_chorus_class_set_voice_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectChorus::set_voice_count, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectChorus::set_voice_count, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_chorus_class_get_voice_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue audio_effect_chorus_class_get_voice_count(JSContext *ctx, JSValue
 };
 static JSValue audio_effect_chorus_class_set_voice_delay_ms(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectChorus::set_voice_delay_ms, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectChorus::set_voice_delay_ms, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_chorus_class_get_voice_delay_ms(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue audio_effect_chorus_class_get_voice_delay_ms(JSContext *ctx, JSVa
 };
 static JSValue audio_effect_chorus_class_set_voice_rate_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectChorus::set_voice_rate_hz, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectChorus::set_voice_rate_hz, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_chorus_class_get_voice_rate_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue audio_effect_chorus_class_get_voice_rate_hz(JSContext *ctx, JSVal
 };
 static JSValue audio_effect_chorus_class_set_voice_depth_ms(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectChorus::set_voice_depth_ms, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectChorus::set_voice_depth_ms, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_chorus_class_get_voice_depth_ms(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue audio_effect_chorus_class_get_voice_depth_ms(JSContext *ctx, JSVa
 };
 static JSValue audio_effect_chorus_class_set_voice_level_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectChorus::set_voice_level_db, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectChorus::set_voice_level_db, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_chorus_class_get_voice_level_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,8 +82,7 @@ static JSValue audio_effect_chorus_class_get_voice_level_db(JSContext *ctx, JSVa
 };
 static JSValue audio_effect_chorus_class_set_voice_cutoff_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectChorus::set_voice_cutoff_hz, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectChorus::set_voice_cutoff_hz, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_chorus_class_get_voice_cutoff_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -97,8 +90,7 @@ static JSValue audio_effect_chorus_class_get_voice_cutoff_hz(JSContext *ctx, JSV
 };
 static JSValue audio_effect_chorus_class_set_voice_pan(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectChorus::set_voice_pan, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectChorus::set_voice_pan, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_chorus_class_get_voice_pan(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -106,8 +98,7 @@ static JSValue audio_effect_chorus_class_get_voice_pan(JSContext *ctx, JSValueCo
 };
 static JSValue audio_effect_chorus_class_set_wet(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectChorus::set_wet, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectChorus::set_wet, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_chorus_class_get_wet(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -115,8 +106,7 @@ static JSValue audio_effect_chorus_class_get_wet(JSContext *ctx, JSValueConst th
 };
 static JSValue audio_effect_chorus_class_set_dry(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectChorus::set_dry, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectChorus::set_dry, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_chorus_class_get_dry(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -143,10 +133,10 @@ static const JSCFunctionListEntry audio_effect_chorus_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_dry", 0, &audio_effect_chorus_class_get_dry),
 };
 
-void define_audio_effect_chorus_property(JSContext *ctx, JSValue obj) {
+static void define_audio_effect_chorus_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "voice_count"),
         JS_NewCFunction(ctx, audio_effect_chorus_class_get_voice_count, "get_voice_count", 0),
         JS_NewCFunction(ctx, audio_effect_chorus_class_set_voice_count, "set_voice_count", 1),
@@ -154,7 +144,7 @@ void define_audio_effect_chorus_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "dry"),
         JS_NewCFunction(ctx, audio_effect_chorus_class_get_dry, "get_dry", 0),
         JS_NewCFunction(ctx, audio_effect_chorus_class_set_dry, "set_dry", 1),
@@ -162,15 +152,16 @@ void define_audio_effect_chorus_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "wet"),
         JS_NewCFunction(ctx, audio_effect_chorus_class_get_wet, "get_wet", 0),
         JS_NewCFunction(ctx, audio_effect_chorus_class_set_wet, "set_wet", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_audio_effect_chorus_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_effect_chorus_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -186,7 +177,7 @@ static int js_audio_effect_chorus_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, AudioEffectChorus::__class_id, proto);
 
 	define_audio_effect_chorus_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_audio_effect_chorus_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, audio_effect_chorus_class_proto_funcs, _countof(audio_effect_chorus_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, audio_effect_chorus_class_constructor, "AudioEffectChorus", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

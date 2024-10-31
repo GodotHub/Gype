@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/csg_primitive3d.hpp>
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/csg_box3d.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue csg_box3d_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CSGBox3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	CSGBox3D *csg_box3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		csg_box3d_class = static_cast<CSGBox3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		csg_box3d_class = static_cast<CSGBox3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		csg_box3d_class = memnew(CSGBox3D);
-	}
 	if (!csg_box3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue csg_box3d_class_constructor(JSContext *ctx, JSValueConst new_targ
 }
 static JSValue csg_box3d_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CSGBox3D::set_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CSGBox3D::set_size, ctx, this_val, argc, argv);
 };
 static JSValue csg_box3d_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue csg_box3d_class_get_size(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue csg_box3d_class_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CSGBox3D::set_material, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CSGBox3D::set_material, ctx, this_val, argc, argv);
 };
 static JSValue csg_box3d_class_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -67,10 +64,10 @@ static const JSCFunctionListEntry csg_box3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_material", 0, &csg_box3d_class_get_material),
 };
 
-void define_csg_box3d_property(JSContext *ctx, JSValue obj) {
+static void define_csg_box3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, csg_box3d_class_get_size, "get_size", 0),
         JS_NewCFunction(ctx, csg_box3d_class_set_size, "set_size", 1),
@@ -78,15 +75,16 @@ void define_csg_box3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "material"),
         JS_NewCFunction(ctx, csg_box3d_class_get_material, "get_material", 0),
         JS_NewCFunction(ctx, csg_box3d_class_set_material, "set_material", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_csg_box3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_csg_box3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -102,7 +100,7 @@ static int js_csg_box3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, CSGBox3D::__class_id, proto);
 
 	define_csg_box3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_csg_box3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, csg_box3d_class_proto_funcs, _countof(csg_box3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, csg_box3d_class_constructor, "CSGBox3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

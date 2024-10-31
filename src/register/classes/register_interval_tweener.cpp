@@ -27,13 +27,12 @@ static JSValue interval_tweener_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, IntervalTweener::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	IntervalTweener *interval_tweener_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		interval_tweener_class = static_cast<IntervalTweener *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		interval_tweener_class = static_cast<IntervalTweener *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		interval_tweener_class = memnew(IntervalTweener);
-	}
 	if (!interval_tweener_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue interval_tweener_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 
-void define_interval_tweener_property(JSContext *ctx, JSValue obj) {
+static void define_interval_tweener_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_interval_tweener_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_interval_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_interval_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, IntervalTweener::__class_id, proto);
 
 	define_interval_tweener_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_interval_tweener_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, interval_tweener_class_constructor, "IntervalTweener", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

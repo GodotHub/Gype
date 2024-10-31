@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/timer.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/timer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue timer_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Timer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Timer *timer_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		timer_class = static_cast<Timer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		timer_class = static_cast<Timer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		timer_class = memnew(Timer);
-	}
 	if (!timer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue timer_class_constructor(JSContext *ctx, JSValueConst new_target, 
 }
 static JSValue timer_class_set_wait_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Timer::set_wait_time, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Timer::set_wait_time, ctx, this_val, argc, argv);
 };
 static JSValue timer_class_get_wait_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue timer_class_get_wait_time(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue timer_class_set_one_shot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Timer::set_one_shot, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Timer::set_one_shot, ctx, this_val, argc, argv);
 };
 static JSValue timer_class_is_one_shot(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue timer_class_is_one_shot(JSContext *ctx, JSValueConst this_val, in
 };
 static JSValue timer_class_set_autostart(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Timer::set_autostart, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Timer::set_autostart, ctx, this_val, argc, argv);
 };
 static JSValue timer_class_has_autostart(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,18 +66,15 @@ static JSValue timer_class_has_autostart(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue timer_class_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Timer::start, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Timer::start, ctx, this_val, argc, argv);
 };
 static JSValue timer_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Timer::stop, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Timer::stop, ctx, this_val, argc, argv);
 };
 static JSValue timer_class_set_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Timer::set_paused, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Timer::set_paused, ctx, this_val, argc, argv);
 };
 static JSValue timer_class_is_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -97,8 +90,7 @@ static JSValue timer_class_get_time_left(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue timer_class_set_timer_process_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Timer::set_timer_process_callback, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Timer::set_timer_process_callback, ctx, this_val, argc, argv);
 };
 static JSValue timer_class_get_timer_process_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -120,11 +112,21 @@ static const JSCFunctionListEntry timer_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_timer_process_callback", 1, &timer_class_set_timer_process_callback),
 	JS_CFUNC_DEF("get_timer_process_callback", 0, &timer_class_get_timer_process_callback),
 };
+static JSValue timer_class_get_timeout_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	Timer *opaque = reinterpret_cast<Timer *>(JS_GetOpaque(this_val, Timer::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "timeout_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "timeout").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "timeout_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_timer_property(JSContext *ctx, JSValue obj) {
+static void define_timer_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "process_callback"),
         JS_NewCFunction(ctx, timer_class_get_timer_process_callback, "get_timer_process_callback", 0),
         JS_NewCFunction(ctx, timer_class_set_timer_process_callback, "set_timer_process_callback", 1),
@@ -132,7 +134,7 @@ void define_timer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "wait_time"),
         JS_NewCFunction(ctx, timer_class_get_wait_time, "get_wait_time", 0),
         JS_NewCFunction(ctx, timer_class_set_wait_time, "set_wait_time", 1),
@@ -140,7 +142,7 @@ void define_timer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "one_shot"),
         JS_NewCFunction(ctx, timer_class_is_one_shot, "is_one_shot", 0),
         JS_NewCFunction(ctx, timer_class_set_one_shot, "set_one_shot", 1),
@@ -148,7 +150,7 @@ void define_timer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "autostart"),
         JS_NewCFunction(ctx, timer_class_has_autostart, "has_autostart", 0),
         JS_NewCFunction(ctx, timer_class_set_autostart, "set_autostart", 1),
@@ -156,7 +158,7 @@ void define_timer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "paused"),
         JS_NewCFunction(ctx, timer_class_is_paused, "is_paused", 0),
         JS_NewCFunction(ctx, timer_class_set_paused, "set_paused", 1),
@@ -164,15 +166,24 @@ void define_timer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "time_left"),
         JS_NewCFunction(ctx, timer_class_get_time_left, "get_time_left", 0),
         JS_UNDEFINED,
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "timeout"),
+		JS_NewCFunction(ctx, timer_class_get_timeout_signal, "get_timeout_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_timer_enum(JSContext *ctx, JSValue proto) {
 	JSValue TimerProcessCallback_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, TimerProcessCallback_obj, "TIMER_PROCESS_PHYSICS", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, TimerProcessCallback_obj, "TIMER_PROCESS_IDLE", JS_NewInt64(ctx, 1));
@@ -192,7 +203,7 @@ static int js_timer_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Timer::__class_id, proto);
 
 	define_timer_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_timer_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, timer_class_proto_funcs, _countof(timer_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, timer_class_constructor, "Timer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -29,13 +29,12 @@ static JSValue lightmap_gi_data_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, LightmapGIData::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	LightmapGIData *lightmap_gi_data_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		lightmap_gi_data_class = static_cast<LightmapGIData *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		lightmap_gi_data_class = static_cast<LightmapGIData *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		lightmap_gi_data_class = memnew(LightmapGIData);
-	}
 	if (!lightmap_gi_data_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -45,8 +44,7 @@ static JSValue lightmap_gi_data_class_constructor(JSContext *ctx, JSValueConst n
 }
 static JSValue lightmap_gi_data_class_set_lightmap_textures(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGIData::set_lightmap_textures, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGIData::set_lightmap_textures, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_data_class_get_lightmap_textures(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -54,8 +52,7 @@ static JSValue lightmap_gi_data_class_get_lightmap_textures(JSContext *ctx, JSVa
 };
 static JSValue lightmap_gi_data_class_set_uses_spherical_harmonics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGIData::set_uses_spherical_harmonics, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGIData::set_uses_spherical_harmonics, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_data_class_is_using_spherical_harmonics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -63,8 +60,7 @@ static JSValue lightmap_gi_data_class_is_using_spherical_harmonics(JSContext *ct
 };
 static JSValue lightmap_gi_data_class_add_user(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGIData::add_user, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGIData::add_user, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_data_class_get_user_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -76,13 +72,11 @@ static JSValue lightmap_gi_data_class_get_user_path(JSContext *ctx, JSValueConst
 };
 static JSValue lightmap_gi_data_class_clear_users(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGIData::clear_users, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGIData::clear_users, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_data_class_set_light_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&LightmapGIData::set_light_texture, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&LightmapGIData::set_light_texture, ctx, this_val, argc, argv);
 };
 static JSValue lightmap_gi_data_class_get_light_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -101,10 +95,10 @@ static const JSCFunctionListEntry lightmap_gi_data_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_light_texture", 0, &lightmap_gi_data_class_get_light_texture),
 };
 
-void define_lightmap_gi_data_property(JSContext *ctx, JSValue obj) {
+static void define_lightmap_gi_data_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "lightmap_textures"),
         JS_NewCFunction(ctx, lightmap_gi_data_class_get_lightmap_textures, "get_lightmap_textures", 0),
         JS_NewCFunction(ctx, lightmap_gi_data_class_set_lightmap_textures, "set_lightmap_textures", 1),
@@ -112,7 +106,7 @@ void define_lightmap_gi_data_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "uses_spherical_harmonics"),
         JS_NewCFunction(ctx, lightmap_gi_data_class_is_using_spherical_harmonics, "is_using_spherical_harmonics", 0),
         JS_NewCFunction(ctx, lightmap_gi_data_class_set_uses_spherical_harmonics, "set_uses_spherical_harmonics", 1),
@@ -120,15 +114,16 @@ void define_lightmap_gi_data_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "light_texture"),
         JS_NewCFunction(ctx, lightmap_gi_data_class_get_light_texture, "get_light_texture", 0),
         JS_NewCFunction(ctx, lightmap_gi_data_class_set_light_texture, "set_light_texture", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_lightmap_gi_data_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_lightmap_gi_data_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -144,7 +139,7 @@ static int js_lightmap_gi_data_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, LightmapGIData::__class_id, proto);
 
 	define_lightmap_gi_data_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_lightmap_gi_data_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, lightmap_gi_data_class_proto_funcs, _countof(lightmap_gi_data_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, lightmap_gi_data_class_constructor, "LightmapGIData", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

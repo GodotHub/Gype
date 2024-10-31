@@ -908,7 +908,9 @@ def generate_builtin_class_header(builtin_api, size, used_classes, fully_used_cl
                 else:
                     result.append(
                         f'\t{correct_type(operator["return_type"])} operator{operator["name"].replace("unary", "")}() const;'
-                    )
+                    )            
+        if class_name == 'Signal':
+            result.append('\toperator JSValue();')
 
     # Copy assignment.
     if copy_constructor_index >= 0:
@@ -1360,6 +1362,14 @@ def generate_builtin_class_source(builtin_api, size, used_classes, fully_used_cl
                     )
                     result.append("}")
                 result.append("")
+        if class_name == 'Signal':
+            result.append(
+                'Signal::operator JSValue() {\n'
+                '   JSValue js_signal = JS_NewObjectClass(ctx, Signal::__class_id);\n'
+                '   Signal *signal = memnew(Signal(*this));\n'
+                '   JS_SetOpaque(js_signal, signal);\n'
+                '   return js_signal;\n'
+                '}\n')
 
     # Copy assignment.
     if copy_constructor_index >= 0:

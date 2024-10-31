@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/kinematic_collision2d.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue kinematic_collision2d_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, KinematicCollision2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	KinematicCollision2D *kinematic_collision2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		kinematic_collision2d_class = static_cast<KinematicCollision2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		kinematic_collision2d_class = static_cast<KinematicCollision2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		kinematic_collision2d_class = memnew(KinematicCollision2D);
-	}
 	if (!kinematic_collision2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -110,10 +109,11 @@ static const JSCFunctionListEntry kinematic_collision2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_collider_velocity", 0, &kinematic_collision2d_class_get_collider_velocity),
 };
 
-void define_kinematic_collision2d_property(JSContext *ctx, JSValue obj) {
+static void define_kinematic_collision2d_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_kinematic_collision2d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_kinematic_collision2d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -129,7 +129,7 @@ static int js_kinematic_collision2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, KinematicCollision2D::__class_id, proto);
 
 	define_kinematic_collision2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_kinematic_collision2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, kinematic_collision2d_class_proto_funcs, _countof(kinematic_collision2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, kinematic_collision2d_class_constructor, "KinematicCollision2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

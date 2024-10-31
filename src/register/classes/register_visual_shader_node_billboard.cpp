@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_billboard.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue visual_shader_node_billboard_class_constructor(JSContext *ctx, JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeBillboard::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeBillboard *visual_shader_node_billboard_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_billboard_class = static_cast<VisualShaderNodeBillboard *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_billboard_class = static_cast<VisualShaderNodeBillboard *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_billboard_class = memnew(VisualShaderNodeBillboard);
-	}
 	if (!visual_shader_node_billboard_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue visual_shader_node_billboard_class_constructor(JSContext *ctx, JS
 }
 static JSValue visual_shader_node_billboard_class_set_billboard_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeBillboard::set_billboard_type, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeBillboard::set_billboard_type, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_billboard_class_get_billboard_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue visual_shader_node_billboard_class_get_billboard_type(JSContext *
 };
 static JSValue visual_shader_node_billboard_class_set_keep_scale_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeBillboard::set_keep_scale_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeBillboard::set_keep_scale_enabled, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_billboard_class_is_keep_scale_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,10 +63,10 @@ static const JSCFunctionListEntry visual_shader_node_billboard_class_proto_funcs
 	JS_CFUNC_DEF("is_keep_scale_enabled", 0, &visual_shader_node_billboard_class_is_keep_scale_enabled),
 };
 
-void define_visual_shader_node_billboard_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_billboard_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "billboard_type"),
         JS_NewCFunction(ctx, visual_shader_node_billboard_class_get_billboard_type, "get_billboard_type", 0),
         JS_NewCFunction(ctx, visual_shader_node_billboard_class_set_billboard_type, "set_billboard_type", 1),
@@ -77,15 +74,16 @@ void define_visual_shader_node_billboard_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "keep_scale"),
         JS_NewCFunction(ctx, visual_shader_node_billboard_class_is_keep_scale_enabled, "is_keep_scale_enabled", 0),
         JS_NewCFunction(ctx, visual_shader_node_billboard_class_set_keep_scale_enabled, "set_keep_scale_enabled", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_billboard_enum(JSContext *ctx, JSValue proto) {
 	JSValue BillboardType_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, BillboardType_obj, "BILLBOARD_TYPE_DISABLED", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, BillboardType_obj, "BILLBOARD_TYPE_ENABLED", JS_NewInt64(ctx, 1));
@@ -108,7 +106,7 @@ static int js_visual_shader_node_billboard_class_init(JSContext *ctx, JSModuleDe
 	JS_SetClassProto(ctx, VisualShaderNodeBillboard::__class_id, proto);
 
 	define_visual_shader_node_billboard_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_billboard_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_billboard_class_proto_funcs, _countof(visual_shader_node_billboard_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_billboard_class_constructor, "VisualShaderNodeBillboard", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

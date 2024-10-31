@@ -27,13 +27,12 @@ static JSValue shape2d_class_constructor(JSContext *ctx, JSValueConst new_target
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Shape2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Shape2D *shape2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		shape2d_class = static_cast<Shape2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		shape2d_class = static_cast<Shape2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		shape2d_class = memnew(Shape2D);
-	}
 	if (!shape2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue shape2d_class_constructor(JSContext *ctx, JSValueConst new_target
 }
 static JSValue shape2d_class_set_custom_solver_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Shape2D::set_custom_solver_bias, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Shape2D::set_custom_solver_bias, ctx, this_val, argc, argv);
 };
 static JSValue shape2d_class_get_custom_solver_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -68,8 +66,7 @@ static JSValue shape2d_class_collide_with_motion_and_get_contacts(JSContext *ctx
 };
 static JSValue shape2d_class_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Shape2D::draw, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Shape2D::draw, ctx, this_val, argc, argv);
 };
 static JSValue shape2d_class_get_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -86,18 +83,19 @@ static const JSCFunctionListEntry shape2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_rect", 0, &shape2d_class_get_rect),
 };
 
-void define_shape2d_property(JSContext *ctx, JSValue obj) {
+static void define_shape2d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "custom_solver_bias"),
         JS_NewCFunction(ctx, shape2d_class_get_custom_solver_bias, "get_custom_solver_bias", 0),
         JS_NewCFunction(ctx, shape2d_class_set_custom_solver_bias, "set_custom_solver_bias", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_shape2d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_shape2d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -113,7 +111,7 @@ static int js_shape2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Shape2D::__class_id, proto);
 
 	define_shape2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_shape2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, shape2d_class_proto_funcs, _countof(shape2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, shape2d_class_constructor, "Shape2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

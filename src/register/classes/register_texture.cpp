@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/texture.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue texture_class_constructor(JSContext *ctx, JSValueConst new_target
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Texture::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Texture *texture_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		texture_class = static_cast<Texture *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		texture_class = static_cast<Texture *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		texture_class = memnew(Texture);
-	}
 	if (!texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue texture_class_constructor(JSContext *ctx, JSValueConst new_target
 	return obj;
 }
 
-void define_texture_property(JSContext *ctx, JSValue obj) {
+static void define_texture_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_texture_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_texture_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Texture::__class_id, proto);
 
 	define_texture_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_texture_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, texture_class_constructor, "Texture", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -27,13 +27,12 @@ static JSValue visual_shader_node_frame_class_constructor(JSContext *ctx, JSValu
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeFrame::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeFrame *visual_shader_node_frame_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_frame_class = static_cast<VisualShaderNodeFrame *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_frame_class = static_cast<VisualShaderNodeFrame *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_frame_class = memnew(VisualShaderNodeFrame);
-	}
 	if (!visual_shader_node_frame_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue visual_shader_node_frame_class_constructor(JSContext *ctx, JSValu
 }
 static JSValue visual_shader_node_frame_class_set_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeFrame::set_title, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeFrame::set_title, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_frame_class_get_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue visual_shader_node_frame_class_get_title(JSContext *ctx, JSValueC
 };
 static JSValue visual_shader_node_frame_class_set_tint_color_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeFrame::set_tint_color_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeFrame::set_tint_color_enabled, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_frame_class_is_tint_color_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue visual_shader_node_frame_class_is_tint_color_enabled(JSContext *c
 };
 static JSValue visual_shader_node_frame_class_set_tint_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeFrame::set_tint_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeFrame::set_tint_color, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_frame_class_get_tint_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue visual_shader_node_frame_class_get_tint_color(JSContext *ctx, JSV
 };
 static JSValue visual_shader_node_frame_class_set_autoshrink_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeFrame::set_autoshrink_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeFrame::set_autoshrink_enabled, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_frame_class_is_autoshrink_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,18 +74,15 @@ static JSValue visual_shader_node_frame_class_is_autoshrink_enabled(JSContext *c
 };
 static JSValue visual_shader_node_frame_class_add_attached_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeFrame::add_attached_node, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeFrame::add_attached_node, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_frame_class_remove_attached_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeFrame::remove_attached_node, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeFrame::remove_attached_node, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_frame_class_set_attached_nodes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeFrame::set_attached_nodes, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeFrame::set_attached_nodes, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_frame_class_get_attached_nodes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -111,10 +103,10 @@ static const JSCFunctionListEntry visual_shader_node_frame_class_proto_funcs[] =
 	JS_CFUNC_DEF("get_attached_nodes", 0, &visual_shader_node_frame_class_get_attached_nodes),
 };
 
-void define_visual_shader_node_frame_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_frame_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "title"),
         JS_NewCFunction(ctx, visual_shader_node_frame_class_get_title, "get_title", 0),
         JS_NewCFunction(ctx, visual_shader_node_frame_class_set_title, "set_title", 1),
@@ -122,7 +114,7 @@ void define_visual_shader_node_frame_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "tint_color_enabled"),
         JS_NewCFunction(ctx, visual_shader_node_frame_class_is_tint_color_enabled, "is_tint_color_enabled", 0),
         JS_NewCFunction(ctx, visual_shader_node_frame_class_set_tint_color_enabled, "set_tint_color_enabled", 1),
@@ -130,7 +122,7 @@ void define_visual_shader_node_frame_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "tint_color"),
         JS_NewCFunction(ctx, visual_shader_node_frame_class_get_tint_color, "get_tint_color", 0),
         JS_NewCFunction(ctx, visual_shader_node_frame_class_set_tint_color, "set_tint_color", 1),
@@ -138,7 +130,7 @@ void define_visual_shader_node_frame_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "autoshrink"),
         JS_NewCFunction(ctx, visual_shader_node_frame_class_is_autoshrink_enabled, "is_autoshrink_enabled", 0),
         JS_NewCFunction(ctx, visual_shader_node_frame_class_set_autoshrink_enabled, "set_autoshrink_enabled", 1),
@@ -146,15 +138,16 @@ void define_visual_shader_node_frame_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "attached_nodes"),
         JS_NewCFunction(ctx, visual_shader_node_frame_class_get_attached_nodes, "get_attached_nodes", 0),
         JS_NewCFunction(ctx, visual_shader_node_frame_class_set_attached_nodes, "set_attached_nodes", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_frame_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_frame_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -170,7 +163,7 @@ static int js_visual_shader_node_frame_class_init(JSContext *ctx, JSModuleDef *m
 	JS_SetClassProto(ctx, VisualShaderNodeFrame::__class_id, proto);
 
 	define_visual_shader_node_frame_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_frame_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_frame_class_proto_funcs, _countof(visual_shader_node_frame_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_frame_class_constructor, "VisualShaderNodeFrame", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

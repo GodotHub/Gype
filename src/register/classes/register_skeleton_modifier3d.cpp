@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/classes/skeleton_modifier3d.hpp>
+#include <godot_cpp/classes/skeleton3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue skeleton_modifier3d_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkeletonModifier3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	SkeletonModifier3D *skeleton_modifier3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		skeleton_modifier3d_class = static_cast<SkeletonModifier3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		skeleton_modifier3d_class = static_cast<SkeletonModifier3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		skeleton_modifier3d_class = memnew(SkeletonModifier3D);
-	}
 	if (!skeleton_modifier3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -48,8 +47,7 @@ static JSValue skeleton_modifier3d_class_get_skeleton(JSContext *ctx, JSValueCon
 };
 static JSValue skeleton_modifier3d_class_set_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModifier3D::set_active, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonModifier3D::set_active, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_modifier3d_class_is_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -57,8 +55,7 @@ static JSValue skeleton_modifier3d_class_is_active(JSContext *ctx, JSValueConst 
 };
 static JSValue skeleton_modifier3d_class_set_influence(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModifier3D::set_influence, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonModifier3D::set_influence, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_modifier3d_class_get_influence(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -71,11 +68,21 @@ static const JSCFunctionListEntry skeleton_modifier3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_influence", 1, &skeleton_modifier3d_class_set_influence),
 	JS_CFUNC_DEF("get_influence", 0, &skeleton_modifier3d_class_get_influence),
 };
+static JSValue skeleton_modifier3d_class_get_modification_processed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	SkeletonModifier3D *opaque = reinterpret_cast<SkeletonModifier3D *>(JS_GetOpaque(this_val, SkeletonModifier3D::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "modification_processed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "modification_processed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "modification_processed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_skeleton_modifier3d_property(JSContext *ctx, JSValue obj) {
+static void define_skeleton_modifier3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "active"),
         JS_NewCFunction(ctx, skeleton_modifier3d_class_is_active, "is_active", 0),
         JS_NewCFunction(ctx, skeleton_modifier3d_class_set_active, "set_active", 1),
@@ -83,15 +90,24 @@ void define_skeleton_modifier3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "influence"),
         JS_NewCFunction(ctx, skeleton_modifier3d_class_get_influence, "get_influence", 0),
         JS_NewCFunction(ctx, skeleton_modifier3d_class_set_influence, "set_influence", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "modification_processed"),
+		JS_NewCFunction(ctx, skeleton_modifier3d_class_get_modification_processed_signal, "get_modification_processed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_skeleton_modifier3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_skeleton_modifier3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -107,7 +123,7 @@ static int js_skeleton_modifier3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, SkeletonModifier3D::__class_id, proto);
 
 	define_skeleton_modifier3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_skeleton_modifier3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, skeleton_modifier3d_class_proto_funcs, _countof(skeleton_modifier3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, skeleton_modifier3d_class_constructor, "SkeletonModifier3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

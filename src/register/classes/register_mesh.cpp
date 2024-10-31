@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/concave_polygon_shape3d.hpp>
-#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/triangle_mesh.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/concave_polygon_shape3d.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/convex_polygon_shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,13 +31,12 @@ static JSValue mesh_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Mesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Mesh *mesh_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		mesh_class = static_cast<Mesh *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		mesh_class = static_cast<Mesh *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		mesh_class = memnew(Mesh);
-	}
 	if (!mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -47,8 +46,7 @@ static JSValue mesh_class_constructor(JSContext *ctx, JSValueConst new_target, i
 }
 static JSValue mesh_class_set_lightmap_size_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Mesh::set_lightmap_size_hint, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Mesh::set_lightmap_size_hint, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_get_lightmap_size_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -76,8 +74,7 @@ static JSValue mesh_class_surface_get_blend_shape_arrays(JSContext *ctx, JSValue
 };
 static JSValue mesh_class_surface_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Mesh::surface_set_material, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Mesh::surface_set_material, ctx, this_val, argc, argv);
 };
 static JSValue mesh_class_surface_get_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -120,18 +117,19 @@ static const JSCFunctionListEntry mesh_class_proto_funcs[] = {
 	JS_CFUNC_DEF("generate_triangle_mesh", 0, &mesh_class_generate_triangle_mesh),
 };
 
-void define_mesh_property(JSContext *ctx, JSValue obj) {
+static void define_mesh_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "lightmap_size_hint"),
         JS_NewCFunction(ctx, mesh_class_get_lightmap_size_hint, "get_lightmap_size_hint", 0),
         JS_NewCFunction(ctx, mesh_class_set_lightmap_size_hint, "set_lightmap_size_hint", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_mesh_enum(JSContext *ctx, JSValue proto) {
 	JSValue PrimitiveType_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, PrimitiveType_obj, "PRIMITIVE_POINTS", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, PrimitiveType_obj, "PRIMITIVE_LINES", JS_NewInt64(ctx, 1));
@@ -214,7 +212,7 @@ static int js_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Mesh::__class_id, proto);
 
 	define_mesh_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_mesh_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, mesh_class_proto_funcs, _countof(mesh_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, mesh_class_constructor, "Mesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

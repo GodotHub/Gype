@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_export_platform_pc.hpp>
 #include <godot_cpp/classes/editor_export_platform_windows.hpp>
+#include <godot_cpp/classes/editor_export_platform_pc.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue editor_export_platform_windows_class_constructor(JSContext *ctx, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorExportPlatformWindows::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	EditorExportPlatformWindows *editor_export_platform_windows_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		editor_export_platform_windows_class = static_cast<EditorExportPlatformWindows *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		editor_export_platform_windows_class = static_cast<EditorExportPlatformWindows *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		editor_export_platform_windows_class = memnew(EditorExportPlatformWindows);
-	}
 	if (!editor_export_platform_windows_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue editor_export_platform_windows_class_constructor(JSContext *ctx, 
 	return obj;
 }
 
-void define_editor_export_platform_windows_property(JSContext *ctx, JSValue obj) {
+static void define_editor_export_platform_windows_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_editor_export_platform_windows_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_export_platform_windows_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_editor_export_platform_windows_class_init(JSContext *ctx, JSModule
 	JS_SetClassProto(ctx, EditorExportPlatformWindows::__class_id, proto);
 
 	define_editor_export_platform_windows_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_editor_export_platform_windows_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, editor_export_platform_windows_class_constructor, "EditorExportPlatformWindows", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

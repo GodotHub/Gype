@@ -28,13 +28,12 @@ static JSValue syntax_highlighter_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SyntaxHighlighter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	SyntaxHighlighter *syntax_highlighter_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		syntax_highlighter_class = static_cast<SyntaxHighlighter *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		syntax_highlighter_class = static_cast<SyntaxHighlighter *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		syntax_highlighter_class = memnew(SyntaxHighlighter);
-	}
 	if (!syntax_highlighter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -48,13 +47,11 @@ static JSValue syntax_highlighter_class_get_line_syntax_highlighting(JSContext *
 };
 static JSValue syntax_highlighter_class_update_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SyntaxHighlighter::update_cache, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SyntaxHighlighter::update_cache, ctx, this_val, argc, argv);
 };
 static JSValue syntax_highlighter_class_clear_highlighting_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SyntaxHighlighter::clear_highlighting_cache, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SyntaxHighlighter::clear_highlighting_cache, ctx, this_val, argc, argv);
 };
 static JSValue syntax_highlighter_class_get_text_edit(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -67,10 +64,11 @@ static const JSCFunctionListEntry syntax_highlighter_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_text_edit", 0, &syntax_highlighter_class_get_text_edit),
 };
 
-void define_syntax_highlighter_property(JSContext *ctx, JSValue obj) {
+static void define_syntax_highlighter_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_syntax_highlighter_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_syntax_highlighter_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -86,7 +84,7 @@ static int js_syntax_highlighter_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, SyntaxHighlighter::__class_id, proto);
 
 	define_syntax_highlighter_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_syntax_highlighter_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, syntax_highlighter_class_proto_funcs, _countof(syntax_highlighter_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, syntax_highlighter_class_constructor, "SyntaxHighlighter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

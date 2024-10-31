@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/packed_data_container.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue packed_data_container_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PackedDataContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PackedDataContainer *packed_data_container_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		packed_data_container_class = static_cast<PackedDataContainer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		packed_data_container_class = static_cast<PackedDataContainer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		packed_data_container_class = memnew(PackedDataContainer);
-	}
 	if (!packed_data_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -54,10 +53,11 @@ static const JSCFunctionListEntry packed_data_container_class_proto_funcs[] = {
 	JS_CFUNC_DEF("size", 0, &packed_data_container_class_size),
 };
 
-void define_packed_data_container_property(JSContext *ctx, JSValue obj) {
+static void define_packed_data_container_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_packed_data_container_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_packed_data_container_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -73,7 +73,7 @@ static int js_packed_data_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, PackedDataContainer::__class_id, proto);
 
 	define_packed_data_container_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_packed_data_container_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, packed_data_container_class_proto_funcs, _countof(packed_data_container_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, packed_data_container_class_constructor, "PackedDataContainer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -27,13 +27,12 @@ static JSValue optimized_translation_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OptimizedTranslation::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	OptimizedTranslation *optimized_translation_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		optimized_translation_class = static_cast<OptimizedTranslation *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		optimized_translation_class = static_cast<OptimizedTranslation *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		optimized_translation_class = memnew(OptimizedTranslation);
-	}
 	if (!optimized_translation_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,17 +42,17 @@ static JSValue optimized_translation_class_constructor(JSContext *ctx, JSValueCo
 }
 static JSValue optimized_translation_class_generate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OptimizedTranslation::generate, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OptimizedTranslation::generate, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry optimized_translation_class_proto_funcs[] = {
 	JS_CFUNC_DEF("generate", 1, &optimized_translation_class_generate),
 };
 
-void define_optimized_translation_property(JSContext *ctx, JSValue obj) {
+static void define_optimized_translation_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_optimized_translation_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_optimized_translation_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -69,7 +68,7 @@ static int js_optimized_translation_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, OptimizedTranslation::__class_id, proto);
 
 	define_optimized_translation_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_optimized_translation_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, optimized_translation_class_proto_funcs, _countof(optimized_translation_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, optimized_translation_class_constructor, "OptimizedTranslation", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

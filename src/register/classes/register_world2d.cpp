@@ -28,13 +28,12 @@ static JSValue world2d_class_constructor(JSContext *ctx, JSValueConst new_target
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, World2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	World2D *world2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		world2d_class = static_cast<World2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		world2d_class = static_cast<World2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		world2d_class = memnew(World2D);
-	}
 	if (!world2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -65,10 +64,10 @@ static const JSCFunctionListEntry world2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_direct_space_state", 0, &world2d_class_get_direct_space_state),
 };
 
-void define_world2d_property(JSContext *ctx, JSValue obj) {
+static void define_world2d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "canvas"),
         JS_NewCFunction(ctx, world2d_class_get_canvas, "get_canvas", 0),
         JS_UNDEFINED,
@@ -76,7 +75,7 @@ void define_world2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "space"),
         JS_NewCFunction(ctx, world2d_class_get_space, "get_space", 0),
         JS_UNDEFINED,
@@ -84,7 +83,7 @@ void define_world2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "navigation_map"),
         JS_NewCFunction(ctx, world2d_class_get_navigation_map, "get_navigation_map", 0),
         JS_UNDEFINED,
@@ -92,15 +91,16 @@ void define_world2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "direct_space_state"),
         JS_NewCFunction(ctx, world2d_class_get_direct_space_state, "get_direct_space_state", 0),
         JS_UNDEFINED,
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_world2d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_world2d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -116,7 +116,7 @@ static int js_world2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, World2D::__class_id, proto);
 
 	define_world2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_world2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, world2d_class_proto_funcs, _countof(world2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, world2d_class_constructor, "World2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

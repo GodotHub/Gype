@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
-#include <godot_cpp/classes/collision_shape3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/collision_shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue collision_shape3d_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CollisionShape3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	CollisionShape3D *collision_shape3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		collision_shape3d_class = static_cast<CollisionShape3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		collision_shape3d_class = static_cast<CollisionShape3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		collision_shape3d_class = memnew(CollisionShape3D);
-	}
 	if (!collision_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -45,13 +44,11 @@ static JSValue collision_shape3d_class_constructor(JSContext *ctx, JSValueConst 
 }
 static JSValue collision_shape3d_class_resource_changed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionShape3D::resource_changed, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionShape3D::resource_changed, ctx, this_val, argc, argv);
 };
 static JSValue collision_shape3d_class_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionShape3D::set_shape, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionShape3D::set_shape, ctx, this_val, argc, argv);
 };
 static JSValue collision_shape3d_class_get_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -59,8 +56,7 @@ static JSValue collision_shape3d_class_get_shape(JSContext *ctx, JSValueConst th
 };
 static JSValue collision_shape3d_class_set_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionShape3D::set_disabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionShape3D::set_disabled, ctx, this_val, argc, argv);
 };
 static JSValue collision_shape3d_class_is_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -68,8 +64,7 @@ static JSValue collision_shape3d_class_is_disabled(JSContext *ctx, JSValueConst 
 };
 static JSValue collision_shape3d_class_make_convex_from_siblings(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CollisionShape3D::make_convex_from_siblings, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CollisionShape3D::make_convex_from_siblings, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry collision_shape3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("resource_changed", 1, &collision_shape3d_class_resource_changed),
@@ -80,10 +75,10 @@ static const JSCFunctionListEntry collision_shape3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("make_convex_from_siblings", 0, &collision_shape3d_class_make_convex_from_siblings),
 };
 
-void define_collision_shape3d_property(JSContext *ctx, JSValue obj) {
+static void define_collision_shape3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "shape"),
         JS_NewCFunction(ctx, collision_shape3d_class_get_shape, "get_shape", 0),
         JS_NewCFunction(ctx, collision_shape3d_class_set_shape, "set_shape", 1),
@@ -91,15 +86,16 @@ void define_collision_shape3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "disabled"),
         JS_NewCFunction(ctx, collision_shape3d_class_is_disabled, "is_disabled", 0),
         JS_NewCFunction(ctx, collision_shape3d_class_set_disabled, "set_disabled", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_collision_shape3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_collision_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -115,7 +111,7 @@ static int js_collision_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, CollisionShape3D::__class_id, proto);
 
 	define_collision_shape3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_collision_shape3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, collision_shape3d_class_proto_funcs, _countof(collision_shape3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, collision_shape3d_class_constructor, "CollisionShape3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

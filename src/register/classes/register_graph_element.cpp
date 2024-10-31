@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/graph_element.hpp>
 #include <godot_cpp/classes/container.hpp>
+#include <godot_cpp/classes/graph_element.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue graph_element_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GraphElement::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	GraphElement *graph_element_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		graph_element_class = static_cast<GraphElement *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		graph_element_class = static_cast<GraphElement *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		graph_element_class = memnew(GraphElement);
-	}
 	if (!graph_element_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue graph_element_class_constructor(JSContext *ctx, JSValueConst new_
 }
 static JSValue graph_element_class_set_resizable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GraphElement::set_resizable, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GraphElement::set_resizable, ctx, this_val, argc, argv);
 };
 static JSValue graph_element_class_is_resizable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue graph_element_class_is_resizable(JSContext *ctx, JSValueConst thi
 };
 static JSValue graph_element_class_set_draggable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GraphElement::set_draggable, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GraphElement::set_draggable, ctx, this_val, argc, argv);
 };
 static JSValue graph_element_class_is_draggable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue graph_element_class_is_draggable(JSContext *ctx, JSValueConst thi
 };
 static JSValue graph_element_class_set_selectable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GraphElement::set_selectable, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GraphElement::set_selectable, ctx, this_val, argc, argv);
 };
 static JSValue graph_element_class_is_selectable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue graph_element_class_is_selectable(JSContext *ctx, JSValueConst th
 };
 static JSValue graph_element_class_set_selected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GraphElement::set_selected, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GraphElement::set_selected, ctx, this_val, argc, argv);
 };
 static JSValue graph_element_class_is_selected(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue graph_element_class_is_selected(JSContext *ctx, JSValueConst this
 };
 static JSValue graph_element_class_set_position_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GraphElement::set_position_offset, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GraphElement::set_position_offset, ctx, this_val, argc, argv);
 };
 static JSValue graph_element_class_get_position_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -98,11 +92,91 @@ static const JSCFunctionListEntry graph_element_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_position_offset", 1, &graph_element_class_set_position_offset),
 	JS_CFUNC_DEF("get_position_offset", 0, &graph_element_class_get_position_offset),
 };
+static JSValue graph_element_class_get_node_selected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, GraphElement::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "node_selected_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "node_selected").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "node_selected_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue graph_element_class_get_node_deselected_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, GraphElement::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "node_deselected_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "node_deselected").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "node_deselected_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue graph_element_class_get_raise_request_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, GraphElement::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "raise_request_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "raise_request").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "raise_request_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue graph_element_class_get_delete_request_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, GraphElement::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "delete_request_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "delete_request").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "delete_request_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue graph_element_class_get_resize_request_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, GraphElement::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "resize_request_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "resize_request").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "resize_request_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue graph_element_class_get_resize_end_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, GraphElement::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "resize_end_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "resize_end").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "resize_end_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue graph_element_class_get_dragged_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, GraphElement::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "dragged_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "dragged").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "dragged_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue graph_element_class_get_position_offset_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	GraphElement *opaque = reinterpret_cast<GraphElement *>(JS_GetOpaque(this_val, GraphElement::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "position_offset_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "position_offset_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "position_offset_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_graph_element_property(JSContext *ctx, JSValue obj) {
+static void define_graph_element_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "position_offset"),
         JS_NewCFunction(ctx, graph_element_class_get_position_offset, "get_position_offset", 0),
         JS_NewCFunction(ctx, graph_element_class_set_position_offset, "set_position_offset", 1),
@@ -110,7 +184,7 @@ void define_graph_element_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "resizable"),
         JS_NewCFunction(ctx, graph_element_class_is_resizable, "is_resizable", 0),
         JS_NewCFunction(ctx, graph_element_class_set_resizable, "set_resizable", 1),
@@ -118,7 +192,7 @@ void define_graph_element_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "draggable"),
         JS_NewCFunction(ctx, graph_element_class_is_draggable, "is_draggable", 0),
         JS_NewCFunction(ctx, graph_element_class_set_draggable, "set_draggable", 1),
@@ -126,7 +200,7 @@ void define_graph_element_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "selectable"),
         JS_NewCFunction(ctx, graph_element_class_is_selectable, "is_selectable", 0),
         JS_NewCFunction(ctx, graph_element_class_set_selectable, "set_selectable", 1),
@@ -134,15 +208,80 @@ void define_graph_element_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "selected"),
         JS_NewCFunction(ctx, graph_element_class_is_selected, "is_selected", 0),
         JS_NewCFunction(ctx, graph_element_class_set_selected, "set_selected", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "node_selected"),
+		JS_NewCFunction(ctx, graph_element_class_get_node_selected_signal, "get_node_selected_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "node_deselected"),
+		JS_NewCFunction(ctx, graph_element_class_get_node_deselected_signal, "get_node_deselected_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "raise_request"),
+		JS_NewCFunction(ctx, graph_element_class_get_raise_request_signal, "get_raise_request_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "delete_request"),
+		JS_NewCFunction(ctx, graph_element_class_get_delete_request_signal, "get_delete_request_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "resize_request"),
+		JS_NewCFunction(ctx, graph_element_class_get_resize_request_signal, "get_resize_request_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "resize_end"),
+		JS_NewCFunction(ctx, graph_element_class_get_resize_end_signal, "get_resize_end_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "dragged"),
+		JS_NewCFunction(ctx, graph_element_class_get_dragged_signal, "get_dragged_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "position_offset_changed"),
+		JS_NewCFunction(ctx, graph_element_class_get_position_offset_changed_signal, "get_position_offset_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_graph_element_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_graph_element_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -158,7 +297,7 @@ static int js_graph_element_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, GraphElement::__class_id, proto);
 
 	define_graph_element_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_graph_element_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, graph_element_class_proto_funcs, _countof(graph_element_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, graph_element_class_constructor, "GraphElement", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

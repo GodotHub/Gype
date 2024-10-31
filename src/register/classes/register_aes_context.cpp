@@ -27,13 +27,12 @@ static JSValue aes_context_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AESContext::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AESContext *aes_context_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		aes_context_class = static_cast<AESContext *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		aes_context_class = static_cast<AESContext *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		aes_context_class = memnew(AESContext);
-	}
 	if (!aes_context_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -55,8 +54,7 @@ static JSValue aes_context_class_get_iv_state(JSContext *ctx, JSValueConst this_
 };
 static JSValue aes_context_class_finish(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AESContext::finish, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AESContext::finish, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry aes_context_class_proto_funcs[] = {
 	JS_CFUNC_DEF("start", 3, &aes_context_class_start),
@@ -65,10 +63,11 @@ static const JSCFunctionListEntry aes_context_class_proto_funcs[] = {
 	JS_CFUNC_DEF("finish", 0, &aes_context_class_finish),
 };
 
-void define_aes_context_property(JSContext *ctx, JSValue obj) {
+static void define_aes_context_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_aes_context_enum(JSContext *ctx, JSValue proto) {
 	JSValue Mode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Mode_obj, "MODE_ECB_ENCRYPT", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Mode_obj, "MODE_ECB_DECRYPT", JS_NewInt64(ctx, 1));
@@ -91,7 +90,7 @@ static int js_aes_context_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, AESContext::__class_id, proto);
 
 	define_aes_context_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_aes_context_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, aes_context_class_proto_funcs, _countof(aes_context_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, aes_context_class_constructor, "AESContext", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

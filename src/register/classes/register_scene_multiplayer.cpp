@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/scene_multiplayer.hpp>
 #include <godot_cpp/classes/multiplayer_api.hpp>
+#include <godot_cpp/classes/scene_multiplayer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue scene_multiplayer_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SceneMultiplayer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	SceneMultiplayer *scene_multiplayer_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		scene_multiplayer_class = static_cast<SceneMultiplayer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		scene_multiplayer_class = static_cast<SceneMultiplayer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		scene_multiplayer_class = memnew(SceneMultiplayer);
-	}
 	if (!scene_multiplayer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue scene_multiplayer_class_constructor(JSContext *ctx, JSValueConst 
 }
 static JSValue scene_multiplayer_class_set_root_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneMultiplayer::set_root_path, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SceneMultiplayer::set_root_path, ctx, this_val, argc, argv);
 };
 static JSValue scene_multiplayer_class_get_root_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,13 +50,11 @@ static JSValue scene_multiplayer_class_get_root_path(JSContext *ctx, JSValueCons
 };
 static JSValue scene_multiplayer_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneMultiplayer::clear, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SceneMultiplayer::clear, ctx, this_val, argc, argv);
 };
 static JSValue scene_multiplayer_class_disconnect_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneMultiplayer::disconnect_peer, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SceneMultiplayer::disconnect_peer, ctx, this_val, argc, argv);
 };
 static JSValue scene_multiplayer_class_get_authenticating_peers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -74,8 +70,7 @@ static JSValue scene_multiplayer_class_complete_auth(JSContext *ctx, JSValueCons
 };
 static JSValue scene_multiplayer_class_set_auth_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneMultiplayer::set_auth_callback, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SceneMultiplayer::set_auth_callback, ctx, this_val, argc, argv);
 };
 static JSValue scene_multiplayer_class_get_auth_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -83,8 +78,7 @@ static JSValue scene_multiplayer_class_get_auth_callback(JSContext *ctx, JSValue
 };
 static JSValue scene_multiplayer_class_set_auth_timeout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneMultiplayer::set_auth_timeout, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SceneMultiplayer::set_auth_timeout, ctx, this_val, argc, argv);
 };
 static JSValue scene_multiplayer_class_get_auth_timeout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -92,8 +86,7 @@ static JSValue scene_multiplayer_class_get_auth_timeout(JSContext *ctx, JSValueC
 };
 static JSValue scene_multiplayer_class_set_refuse_new_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneMultiplayer::set_refuse_new_connections, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SceneMultiplayer::set_refuse_new_connections, ctx, this_val, argc, argv);
 };
 static JSValue scene_multiplayer_class_is_refusing_new_connections(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -101,8 +94,7 @@ static JSValue scene_multiplayer_class_is_refusing_new_connections(JSContext *ct
 };
 static JSValue scene_multiplayer_class_set_allow_object_decoding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneMultiplayer::set_allow_object_decoding, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SceneMultiplayer::set_allow_object_decoding, ctx, this_val, argc, argv);
 };
 static JSValue scene_multiplayer_class_is_object_decoding_allowed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -110,8 +102,7 @@ static JSValue scene_multiplayer_class_is_object_decoding_allowed(JSContext *ctx
 };
 static JSValue scene_multiplayer_class_set_server_relay_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneMultiplayer::set_server_relay_enabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SceneMultiplayer::set_server_relay_enabled, ctx, this_val, argc, argv);
 };
 static JSValue scene_multiplayer_class_is_server_relay_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -127,8 +118,7 @@ static JSValue scene_multiplayer_class_get_max_sync_packet_size(JSContext *ctx, 
 };
 static JSValue scene_multiplayer_class_set_max_sync_packet_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneMultiplayer::set_max_sync_packet_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SceneMultiplayer::set_max_sync_packet_size, ctx, this_val, argc, argv);
 };
 static JSValue scene_multiplayer_class_get_max_delta_packet_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -136,8 +126,7 @@ static JSValue scene_multiplayer_class_get_max_delta_packet_size(JSContext *ctx,
 };
 static JSValue scene_multiplayer_class_set_max_delta_packet_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SceneMultiplayer::set_max_delta_packet_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SceneMultiplayer::set_max_delta_packet_size, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry scene_multiplayer_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_root_path", 1, &scene_multiplayer_class_set_root_path),
@@ -163,11 +152,41 @@ static const JSCFunctionListEntry scene_multiplayer_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_max_delta_packet_size", 0, &scene_multiplayer_class_get_max_delta_packet_size),
 	JS_CFUNC_DEF("set_max_delta_packet_size", 1, &scene_multiplayer_class_set_max_delta_packet_size),
 };
+static JSValue scene_multiplayer_class_get_peer_authenticating_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	SceneMultiplayer *opaque = reinterpret_cast<SceneMultiplayer *>(JS_GetOpaque(this_val, SceneMultiplayer::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "peer_authenticating_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "peer_authenticating").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "peer_authenticating_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue scene_multiplayer_class_get_peer_authentication_failed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	SceneMultiplayer *opaque = reinterpret_cast<SceneMultiplayer *>(JS_GetOpaque(this_val, SceneMultiplayer::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "peer_authentication_failed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "peer_authentication_failed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "peer_authentication_failed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue scene_multiplayer_class_get_peer_packet_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	SceneMultiplayer *opaque = reinterpret_cast<SceneMultiplayer *>(JS_GetOpaque(this_val, SceneMultiplayer::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "peer_packet_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "peer_packet").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "peer_packet_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_scene_multiplayer_property(JSContext *ctx, JSValue obj) {
+static void define_scene_multiplayer_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "root_path"),
         JS_NewCFunction(ctx, scene_multiplayer_class_get_root_path, "get_root_path", 0),
         JS_NewCFunction(ctx, scene_multiplayer_class_set_root_path, "set_root_path", 1),
@@ -175,7 +194,7 @@ void define_scene_multiplayer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "auth_callback"),
         JS_NewCFunction(ctx, scene_multiplayer_class_get_auth_callback, "get_auth_callback", 0),
         JS_NewCFunction(ctx, scene_multiplayer_class_set_auth_callback, "set_auth_callback", 1),
@@ -183,7 +202,7 @@ void define_scene_multiplayer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "auth_timeout"),
         JS_NewCFunction(ctx, scene_multiplayer_class_get_auth_timeout, "get_auth_timeout", 0),
         JS_NewCFunction(ctx, scene_multiplayer_class_set_auth_timeout, "set_auth_timeout", 1),
@@ -191,7 +210,7 @@ void define_scene_multiplayer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "allow_object_decoding"),
         JS_NewCFunction(ctx, scene_multiplayer_class_is_object_decoding_allowed, "is_object_decoding_allowed", 0),
         JS_NewCFunction(ctx, scene_multiplayer_class_set_allow_object_decoding, "set_allow_object_decoding", 1),
@@ -199,7 +218,7 @@ void define_scene_multiplayer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "refuse_new_connections"),
         JS_NewCFunction(ctx, scene_multiplayer_class_is_refusing_new_connections, "is_refusing_new_connections", 0),
         JS_NewCFunction(ctx, scene_multiplayer_class_set_refuse_new_connections, "set_refuse_new_connections", 1),
@@ -207,7 +226,7 @@ void define_scene_multiplayer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "server_relay"),
         JS_NewCFunction(ctx, scene_multiplayer_class_is_server_relay_enabled, "is_server_relay_enabled", 0),
         JS_NewCFunction(ctx, scene_multiplayer_class_set_server_relay_enabled, "set_server_relay_enabled", 1),
@@ -215,7 +234,7 @@ void define_scene_multiplayer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "max_sync_packet_size"),
         JS_NewCFunction(ctx, scene_multiplayer_class_get_max_sync_packet_size, "get_max_sync_packet_size", 0),
         JS_NewCFunction(ctx, scene_multiplayer_class_set_max_sync_packet_size, "set_max_sync_packet_size", 1),
@@ -223,15 +242,40 @@ void define_scene_multiplayer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "max_delta_packet_size"),
         JS_NewCFunction(ctx, scene_multiplayer_class_get_max_delta_packet_size, "get_max_delta_packet_size", 0),
         JS_NewCFunction(ctx, scene_multiplayer_class_set_max_delta_packet_size, "set_max_delta_packet_size", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "peer_authenticating"),
+		JS_NewCFunction(ctx, scene_multiplayer_class_get_peer_authenticating_signal, "get_peer_authenticating_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "peer_authentication_failed"),
+		JS_NewCFunction(ctx, scene_multiplayer_class_get_peer_authentication_failed_signal, "get_peer_authentication_failed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "peer_packet"),
+		JS_NewCFunction(ctx, scene_multiplayer_class_get_peer_packet_signal, "get_peer_packet_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_scene_multiplayer_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_scene_multiplayer_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -247,7 +291,7 @@ static int js_scene_multiplayer_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, SceneMultiplayer::__class_id, proto);
 
 	define_scene_multiplayer_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_scene_multiplayer_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, scene_multiplayer_class_proto_funcs, _countof(scene_multiplayer_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, scene_multiplayer_class_constructor, "SceneMultiplayer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

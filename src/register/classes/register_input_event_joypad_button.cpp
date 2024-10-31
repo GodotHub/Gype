@@ -27,13 +27,12 @@ static JSValue input_event_joypad_button_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventJoypadButton::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	InputEventJoypadButton *input_event_joypad_button_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		input_event_joypad_button_class = static_cast<InputEventJoypadButton *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		input_event_joypad_button_class = static_cast<InputEventJoypadButton *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		input_event_joypad_button_class = memnew(InputEventJoypadButton);
-	}
 	if (!input_event_joypad_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue input_event_joypad_button_class_constructor(JSContext *ctx, JSVal
 }
 static JSValue input_event_joypad_button_class_set_button_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventJoypadButton::set_button_index, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventJoypadButton::set_button_index, ctx, this_val, argc, argv);
 };
 static JSValue input_event_joypad_button_class_get_button_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue input_event_joypad_button_class_get_button_index(JSContext *ctx, 
 };
 static JSValue input_event_joypad_button_class_set_pressure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventJoypadButton::set_pressure, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventJoypadButton::set_pressure, ctx, this_val, argc, argv);
 };
 static JSValue input_event_joypad_button_class_get_pressure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue input_event_joypad_button_class_get_pressure(JSContext *ctx, JSVa
 };
 static JSValue input_event_joypad_button_class_set_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventJoypadButton::set_pressed, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventJoypadButton::set_pressed, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry input_event_joypad_button_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_button_index", 1, &input_event_joypad_button_class_set_button_index),
@@ -72,10 +68,10 @@ static const JSCFunctionListEntry input_event_joypad_button_class_proto_funcs[] 
 	JS_CFUNC_DEF("set_pressed", 1, &input_event_joypad_button_class_set_pressed),
 };
 
-void define_input_event_joypad_button_property(JSContext *ctx, JSValue obj) {
+static void define_input_event_joypad_button_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "button_index"),
         JS_NewCFunction(ctx, input_event_joypad_button_class_get_button_index, "get_button_index", 0),
         JS_NewCFunction(ctx, input_event_joypad_button_class_set_button_index, "set_button_index", 1),
@@ -83,7 +79,7 @@ void define_input_event_joypad_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "pressure"),
         JS_NewCFunction(ctx, input_event_joypad_button_class_get_pressure, "get_pressure", 0),
         JS_NewCFunction(ctx, input_event_joypad_button_class_set_pressure, "set_pressure", 1),
@@ -91,15 +87,16 @@ void define_input_event_joypad_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "pressed"),
         JS_UNDEFINED,
         JS_NewCFunction(ctx, input_event_joypad_button_class_set_pressed, "set_pressed", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_input_event_joypad_button_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_input_event_joypad_button_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -115,7 +112,7 @@ static int js_input_event_joypad_button_class_init(JSContext *ctx, JSModuleDef *
 	JS_SetClassProto(ctx, InputEventJoypadButton::__class_id, proto);
 
 	define_input_event_joypad_button_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_input_event_joypad_button_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, input_event_joypad_button_class_proto_funcs, _countof(input_event_joypad_button_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, input_event_joypad_button_class_constructor, "InputEventJoypadButton", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

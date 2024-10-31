@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/texture.hpp>
 #include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/texture.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue texture2d_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Texture2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Texture2D *texture2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		texture2d_class = static_cast<Texture2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		texture2d_class = static_cast<Texture2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		texture2d_class = memnew(Texture2D);
-	}
 	if (!texture2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -61,18 +60,15 @@ static JSValue texture2d_class_has_alpha(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue texture2d_class_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_const_method_no_ret(&Texture2D::draw, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_const_method_no_ret(&Texture2D::draw, ctx, this_val, argc, argv);
 };
 static JSValue texture2d_class_draw_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_const_method_no_ret(&Texture2D::draw_rect, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_const_method_no_ret(&Texture2D::draw_rect, ctx, this_val, argc, argv);
 };
 static JSValue texture2d_class_draw_rect_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_const_method_no_ret(&Texture2D::draw_rect_region, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_const_method_no_ret(&Texture2D::draw_rect_region, ctx, this_val, argc, argv);
 };
 static JSValue texture2d_class_get_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -94,10 +90,11 @@ static const JSCFunctionListEntry texture2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("create_placeholder", 0, &texture2d_class_create_placeholder),
 };
 
-void define_texture2d_property(JSContext *ctx, JSValue obj) {
+static void define_texture2d_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_texture2d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_texture2d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -113,7 +110,7 @@ static int js_texture2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Texture2D::__class_id, proto);
 
 	define_texture2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_texture2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, texture2d_class_proto_funcs, _countof(texture2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, texture2d_class_constructor, "Texture2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

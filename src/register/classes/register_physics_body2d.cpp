@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_body2d.hpp>
-#include <godot_cpp/classes/physics_body2d.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/kinematic_collision2d.hpp>
 #include <godot_cpp/classes/collision_object2d.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/physics_body2d.hpp>
+#include <godot_cpp/classes/physics_body2d.hpp>
+#include <godot_cpp/classes/kinematic_collision2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,13 +30,12 @@ static JSValue physics_body2d_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsBody2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PhysicsBody2D *physics_body2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		physics_body2d_class = static_cast<PhysicsBody2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		physics_body2d_class = static_cast<PhysicsBody2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		physics_body2d_class = memnew(PhysicsBody2D);
-	}
 	if (!physics_body2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -62,13 +61,11 @@ static JSValue physics_body2d_class_get_collision_exceptions(JSContext *ctx, JSV
 };
 static JSValue physics_body2d_class_add_collision_exception_with(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsBody2D::add_collision_exception_with, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsBody2D::add_collision_exception_with, ctx, this_val, argc, argv);
 };
 static JSValue physics_body2d_class_remove_collision_exception_with(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsBody2D::remove_collision_exception_with, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsBody2D::remove_collision_exception_with, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry physics_body2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("move_and_collide", 4, &physics_body2d_class_move_and_collide),
@@ -79,10 +76,11 @@ static const JSCFunctionListEntry physics_body2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("remove_collision_exception_with", 1, &physics_body2d_class_remove_collision_exception_with),
 };
 
-void define_physics_body2d_property(JSContext *ctx, JSValue obj) {
+static void define_physics_body2d_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_physics_body2d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_physics_body2d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -98,7 +96,7 @@ static int js_physics_body2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, PhysicsBody2D::__class_id, proto);
 
 	define_physics_body2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_physics_body2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, physics_body2d_class_proto_funcs, _countof(physics_body2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, physics_body2d_class_constructor, "PhysicsBody2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

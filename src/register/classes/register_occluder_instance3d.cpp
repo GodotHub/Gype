@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/classes/occluder3d.hpp>
 #include <godot_cpp/classes/occluder_instance3d.hpp>
+#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue occluder_instance3d_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OccluderInstance3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	OccluderInstance3D *occluder_instance3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		occluder_instance3d_class = static_cast<OccluderInstance3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		occluder_instance3d_class = static_cast<OccluderInstance3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		occluder_instance3d_class = memnew(OccluderInstance3D);
-	}
 	if (!occluder_instance3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue occluder_instance3d_class_constructor(JSContext *ctx, JSValueCons
 }
 static JSValue occluder_instance3d_class_set_bake_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OccluderInstance3D::set_bake_mask, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OccluderInstance3D::set_bake_mask, ctx, this_val, argc, argv);
 };
 static JSValue occluder_instance3d_class_get_bake_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue occluder_instance3d_class_get_bake_mask(JSContext *ctx, JSValueCo
 };
 static JSValue occluder_instance3d_class_set_bake_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OccluderInstance3D::set_bake_mask_value, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OccluderInstance3D::set_bake_mask_value, ctx, this_val, argc, argv);
 };
 static JSValue occluder_instance3d_class_get_bake_mask_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue occluder_instance3d_class_get_bake_mask_value(JSContext *ctx, JSV
 };
 static JSValue occluder_instance3d_class_set_bake_simplification_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OccluderInstance3D::set_bake_simplification_distance, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OccluderInstance3D::set_bake_simplification_distance, ctx, this_val, argc, argv);
 };
 static JSValue occluder_instance3d_class_get_bake_simplification_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -71,8 +67,7 @@ static JSValue occluder_instance3d_class_get_bake_simplification_distance(JSCont
 };
 static JSValue occluder_instance3d_class_set_occluder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OccluderInstance3D::set_occluder, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OccluderInstance3D::set_occluder, ctx, this_val, argc, argv);
 };
 static JSValue occluder_instance3d_class_get_occluder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -89,10 +84,10 @@ static const JSCFunctionListEntry occluder_instance3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_occluder", 0, &occluder_instance3d_class_get_occluder),
 };
 
-void define_occluder_instance3d_property(JSContext *ctx, JSValue obj) {
+static void define_occluder_instance3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "occluder"),
         JS_NewCFunction(ctx, occluder_instance3d_class_get_occluder, "get_occluder", 0),
         JS_NewCFunction(ctx, occluder_instance3d_class_set_occluder, "set_occluder", 1),
@@ -100,7 +95,7 @@ void define_occluder_instance3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "bake_mask"),
         JS_NewCFunction(ctx, occluder_instance3d_class_get_bake_mask, "get_bake_mask", 0),
         JS_NewCFunction(ctx, occluder_instance3d_class_set_bake_mask, "set_bake_mask", 1),
@@ -108,15 +103,16 @@ void define_occluder_instance3d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "bake_simplification_distance"),
         JS_NewCFunction(ctx, occluder_instance3d_class_get_bake_simplification_distance, "get_bake_simplification_distance", 0),
         JS_NewCFunction(ctx, occluder_instance3d_class_set_bake_simplification_distance, "set_bake_simplification_distance", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_occluder_instance3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_occluder_instance3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -132,7 +128,7 @@ static int js_occluder_instance3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, OccluderInstance3D::__class_id, proto);
 
 	define_occluder_instance3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_occluder_instance3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, occluder_instance3d_class_proto_funcs, _countof(occluder_instance3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, occluder_instance3d_class_constructor, "OccluderInstance3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

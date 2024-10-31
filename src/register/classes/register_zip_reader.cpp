@@ -27,13 +27,12 @@ static JSValue zip_reader_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ZIPReader::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ZIPReader *zip_reader_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		zip_reader_class = static_cast<ZIPReader *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		zip_reader_class = static_cast<ZIPReader *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		zip_reader_class = memnew(ZIPReader);
-	}
 	if (!zip_reader_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -69,10 +68,11 @@ static const JSCFunctionListEntry zip_reader_class_proto_funcs[] = {
 	JS_CFUNC_DEF("file_exists", 2, &zip_reader_class_file_exists),
 };
 
-void define_zip_reader_property(JSContext *ctx, JSValue obj) {
+static void define_zip_reader_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_zip_reader_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_zip_reader_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -88,7 +88,7 @@ static int js_zip_reader_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ZIPReader::__class_id, proto);
 
 	define_zip_reader_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_zip_reader_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, zip_reader_class_proto_funcs, _countof(zip_reader_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, zip_reader_class_constructor, "ZIPReader", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

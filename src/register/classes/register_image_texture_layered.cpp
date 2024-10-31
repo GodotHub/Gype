@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/texture_layered.hpp>
-#include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/image_texture_layered.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue image_texture_layered_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ImageTextureLayered::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ImageTextureLayered *image_texture_layered_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		image_texture_layered_class = static_cast<ImageTextureLayered *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		image_texture_layered_class = static_cast<ImageTextureLayered *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		image_texture_layered_class = memnew(ImageTextureLayered);
-	}
 	if (!image_texture_layered_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -49,18 +48,18 @@ static JSValue image_texture_layered_class_create_from_images(JSContext *ctx, JS
 };
 static JSValue image_texture_layered_class_update_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImageTextureLayered::update_layer, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ImageTextureLayered::update_layer, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry image_texture_layered_class_proto_funcs[] = {
 	JS_CFUNC_DEF("create_from_images", 1, &image_texture_layered_class_create_from_images),
 	JS_CFUNC_DEF("update_layer", 2, &image_texture_layered_class_update_layer),
 };
 
-void define_image_texture_layered_property(JSContext *ctx, JSValue obj) {
+static void define_image_texture_layered_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_image_texture_layered_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_image_texture_layered_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -76,7 +75,7 @@ static int js_image_texture_layered_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ImageTextureLayered::__class_id, proto);
 
 	define_image_texture_layered_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_image_texture_layered_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, image_texture_layered_class_proto_funcs, _countof(image_texture_layered_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, image_texture_layered_class_constructor, "ImageTextureLayered", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

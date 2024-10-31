@@ -27,13 +27,12 @@ static JSValue render_scene_data_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RenderSceneData::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	RenderSceneData *render_scene_data_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		render_scene_data_class = static_cast<RenderSceneData *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		render_scene_data_class = static_cast<RenderSceneData *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		render_scene_data_class = memnew(RenderSceneData);
-	}
 	if (!render_scene_data_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -74,10 +73,11 @@ static const JSCFunctionListEntry render_scene_data_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_uniform_buffer", 0, &render_scene_data_class_get_uniform_buffer),
 };
 
-void define_render_scene_data_property(JSContext *ctx, JSValue obj) {
+static void define_render_scene_data_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_render_scene_data_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_render_scene_data_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -93,7 +93,7 @@ static int js_render_scene_data_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, RenderSceneData::__class_id, proto);
 
 	define_render_scene_data_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_render_scene_data_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, render_scene_data_class_proto_funcs, _countof(render_scene_data_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, render_scene_data_class_constructor, "RenderSceneData", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

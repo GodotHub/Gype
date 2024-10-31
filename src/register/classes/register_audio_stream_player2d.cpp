@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/audio_stream_playback.hpp>
-#include <godot_cpp/classes/audio_stream_player2d.hpp>
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/audio_stream.hpp>
+#include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/audio_stream_player2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue audio_stream_player2d_class_constructor(JSContext *ctx, JSValueCo
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioStreamPlayer2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AudioStreamPlayer2D *audio_stream_player2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		audio_stream_player2d_class = static_cast<AudioStreamPlayer2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		audio_stream_player2d_class = static_cast<AudioStreamPlayer2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		audio_stream_player2d_class = memnew(AudioStreamPlayer2D);
-	}
 	if (!audio_stream_player2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -45,8 +44,7 @@ static JSValue audio_stream_player2d_class_constructor(JSContext *ctx, JSValueCo
 }
 static JSValue audio_stream_player2d_class_set_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamPlayer2D::set_stream, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamPlayer2D::set_stream, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_player2d_class_get_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -54,8 +52,7 @@ static JSValue audio_stream_player2d_class_get_stream(JSContext *ctx, JSValueCon
 };
 static JSValue audio_stream_player2d_class_set_volume_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamPlayer2D::set_volume_db, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamPlayer2D::set_volume_db, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_player2d_class_get_volume_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -63,8 +60,7 @@ static JSValue audio_stream_player2d_class_get_volume_db(JSContext *ctx, JSValue
 };
 static JSValue audio_stream_player2d_class_set_pitch_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamPlayer2D::set_pitch_scale, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamPlayer2D::set_pitch_scale, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_player2d_class_get_pitch_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -72,18 +68,15 @@ static JSValue audio_stream_player2d_class_get_pitch_scale(JSContext *ctx, JSVal
 };
 static JSValue audio_stream_player2d_class_play(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamPlayer2D::play, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamPlayer2D::play, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_player2d_class_seek(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamPlayer2D::seek, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamPlayer2D::seek, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_player2d_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamPlayer2D::stop, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamPlayer2D::stop, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_player2d_class_is_playing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -95,8 +88,7 @@ static JSValue audio_stream_player2d_class_get_playback_position(JSContext *ctx,
 };
 static JSValue audio_stream_player2d_class_set_bus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamPlayer2D::set_bus, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamPlayer2D::set_bus, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_player2d_class_get_bus(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -104,8 +96,7 @@ static JSValue audio_stream_player2d_class_get_bus(JSContext *ctx, JSValueConst 
 };
 static JSValue audio_stream_player2d_class_set_autoplay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamPlayer2D::set_autoplay, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamPlayer2D::set_autoplay, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_player2d_class_is_autoplay_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -113,8 +104,7 @@ static JSValue audio_stream_player2d_class_is_autoplay_enabled(JSContext *ctx, J
 };
 static JSValue audio_stream_player2d_class_set_max_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamPlayer2D::set_max_distance, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamPlayer2D::set_max_distance, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_player2d_class_get_max_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -122,8 +112,7 @@ static JSValue audio_stream_player2d_class_get_max_distance(JSContext *ctx, JSVa
 };
 static JSValue audio_stream_player2d_class_set_attenuation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamPlayer2D::set_attenuation, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamPlayer2D::set_attenuation, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_player2d_class_get_attenuation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -131,8 +120,7 @@ static JSValue audio_stream_player2d_class_get_attenuation(JSContext *ctx, JSVal
 };
 static JSValue audio_stream_player2d_class_set_area_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamPlayer2D::set_area_mask, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamPlayer2D::set_area_mask, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_player2d_class_get_area_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -140,8 +128,7 @@ static JSValue audio_stream_player2d_class_get_area_mask(JSContext *ctx, JSValue
 };
 static JSValue audio_stream_player2d_class_set_stream_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamPlayer2D::set_stream_paused, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamPlayer2D::set_stream_paused, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_player2d_class_get_stream_paused(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -149,8 +136,7 @@ static JSValue audio_stream_player2d_class_get_stream_paused(JSContext *ctx, JSV
 };
 static JSValue audio_stream_player2d_class_set_max_polyphony(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamPlayer2D::set_max_polyphony, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamPlayer2D::set_max_polyphony, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_player2d_class_get_max_polyphony(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -158,8 +144,7 @@ static JSValue audio_stream_player2d_class_get_max_polyphony(JSContext *ctx, JSV
 };
 static JSValue audio_stream_player2d_class_set_panning_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamPlayer2D::set_panning_strength, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamPlayer2D::set_panning_strength, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_player2d_class_get_panning_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -175,8 +160,7 @@ static JSValue audio_stream_player2d_class_get_stream_playback(JSContext *ctx, J
 };
 static JSValue audio_stream_player2d_class_set_playback_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioStreamPlayer2D::set_playback_type, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioStreamPlayer2D::set_playback_type, ctx, this_val, argc, argv);
 };
 static JSValue audio_stream_player2d_class_get_playback_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -215,11 +199,21 @@ static const JSCFunctionListEntry audio_stream_player2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_playback_type", 1, &audio_stream_player2d_class_set_playback_type),
 	JS_CFUNC_DEF("get_playback_type", 0, &audio_stream_player2d_class_get_playback_type),
 };
+static JSValue audio_stream_player2d_class_get_finished_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	AudioStreamPlayer2D *opaque = reinterpret_cast<AudioStreamPlayer2D *>(JS_GetOpaque(this_val, AudioStreamPlayer2D::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "finished_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "finished").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "finished_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_audio_stream_player2d_property(JSContext *ctx, JSValue obj) {
+static void define_audio_stream_player2d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "stream"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_stream, "get_stream", 0),
         JS_NewCFunction(ctx, audio_stream_player2d_class_set_stream, "set_stream", 1),
@@ -227,7 +221,7 @@ void define_audio_stream_player2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "volume_db"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_volume_db, "get_volume_db", 0),
         JS_NewCFunction(ctx, audio_stream_player2d_class_set_volume_db, "set_volume_db", 1),
@@ -235,7 +229,7 @@ void define_audio_stream_player2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "pitch_scale"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_pitch_scale, "get_pitch_scale", 0),
         JS_NewCFunction(ctx, audio_stream_player2d_class_set_pitch_scale, "set_pitch_scale", 1),
@@ -243,7 +237,7 @@ void define_audio_stream_player2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "playing"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_is_playing, "is_playing", 0),
         JS_UNDEFINED,
@@ -251,7 +245,7 @@ void define_audio_stream_player2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "autoplay"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_is_autoplay_enabled, "is_autoplay_enabled", 0),
         JS_NewCFunction(ctx, audio_stream_player2d_class_set_autoplay, "set_autoplay", 1),
@@ -259,7 +253,7 @@ void define_audio_stream_player2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "stream_paused"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_stream_paused, "get_stream_paused", 0),
         JS_NewCFunction(ctx, audio_stream_player2d_class_set_stream_paused, "set_stream_paused", 1),
@@ -267,7 +261,7 @@ void define_audio_stream_player2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "max_distance"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_max_distance, "get_max_distance", 0),
         JS_NewCFunction(ctx, audio_stream_player2d_class_set_max_distance, "set_max_distance", 1),
@@ -275,7 +269,7 @@ void define_audio_stream_player2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "attenuation"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_attenuation, "get_attenuation", 0),
         JS_NewCFunction(ctx, audio_stream_player2d_class_set_attenuation, "set_attenuation", 1),
@@ -283,7 +277,7 @@ void define_audio_stream_player2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "max_polyphony"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_max_polyphony, "get_max_polyphony", 0),
         JS_NewCFunction(ctx, audio_stream_player2d_class_set_max_polyphony, "set_max_polyphony", 1),
@@ -291,7 +285,7 @@ void define_audio_stream_player2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "panning_strength"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_panning_strength, "get_panning_strength", 0),
         JS_NewCFunction(ctx, audio_stream_player2d_class_set_panning_strength, "set_panning_strength", 1),
@@ -299,7 +293,7 @@ void define_audio_stream_player2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "bus"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_bus, "get_bus", 0),
         JS_NewCFunction(ctx, audio_stream_player2d_class_set_bus, "set_bus", 1),
@@ -307,7 +301,7 @@ void define_audio_stream_player2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "area_mask"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_area_mask, "get_area_mask", 0),
         JS_NewCFunction(ctx, audio_stream_player2d_class_set_area_mask, "set_area_mask", 1),
@@ -315,15 +309,24 @@ void define_audio_stream_player2d_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "playback_type"),
         JS_NewCFunction(ctx, audio_stream_player2d_class_get_playback_type, "get_playback_type", 0),
         JS_NewCFunction(ctx, audio_stream_player2d_class_set_playback_type, "set_playback_type", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "finished"),
+		JS_NewCFunction(ctx, audio_stream_player2d_class_get_finished_signal, "get_finished_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_audio_stream_player2d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_stream_player2d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -339,7 +342,7 @@ static int js_audio_stream_player2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, AudioStreamPlayer2D::__class_id, proto);
 
 	define_audio_stream_player2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_audio_stream_player2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, audio_stream_player2d_class_proto_funcs, _countof(audio_stream_player2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, audio_stream_player2d_class_constructor, "AudioStreamPlayer2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

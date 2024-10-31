@@ -29,13 +29,12 @@ static JSValue button_group_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ButtonGroup::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ButtonGroup *button_group_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		button_group_class = static_cast<ButtonGroup *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		button_group_class = static_cast<ButtonGroup *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		button_group_class = memnew(ButtonGroup);
-	}
 	if (!button_group_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -53,8 +52,7 @@ static JSValue button_group_class_get_buttons(JSContext *ctx, JSValueConst this_
 };
 static JSValue button_group_class_set_allow_unpress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ButtonGroup::set_allow_unpress, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ButtonGroup::set_allow_unpress, ctx, this_val, argc, argv);
 };
 static JSValue button_group_class_is_allow_unpress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,19 +64,38 @@ static const JSCFunctionListEntry button_group_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_allow_unpress", 1, &button_group_class_set_allow_unpress),
 	JS_CFUNC_DEF("is_allow_unpress", 0, &button_group_class_is_allow_unpress),
 };
+static JSValue button_group_class_get_pressed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	ButtonGroup *opaque = reinterpret_cast<ButtonGroup *>(JS_GetOpaque(this_val, ButtonGroup::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "pressed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "pressed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "pressed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_button_group_property(JSContext *ctx, JSValue obj) {
+static void define_button_group_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "allow_unpress"),
         JS_NewCFunction(ctx, button_group_class_is_allow_unpress, "is_allow_unpress", 0),
         JS_NewCFunction(ctx, button_group_class_set_allow_unpress, "set_allow_unpress", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "pressed"),
+		JS_NewCFunction(ctx, button_group_class_get_pressed_signal, "get_pressed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_button_group_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_button_group_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -94,7 +111,7 @@ static int js_button_group_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ButtonGroup::__class_id, proto);
 
 	define_button_group_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_button_group_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, button_group_class_proto_funcs, _countof(button_group_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, button_group_class_constructor, "ButtonGroup", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

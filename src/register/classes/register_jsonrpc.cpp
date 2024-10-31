@@ -27,13 +27,12 @@ static JSValue jsonrpc_class_constructor(JSContext *ctx, JSValueConst new_target
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, JSONRPC::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	JSONRPC *jsonrpc_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		jsonrpc_class = static_cast<JSONRPC *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		jsonrpc_class = static_cast<JSONRPC *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		jsonrpc_class = memnew(JSONRPC);
-	}
 	if (!jsonrpc_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue jsonrpc_class_constructor(JSContext *ctx, JSValueConst new_target
 }
 static JSValue jsonrpc_class_set_scope(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&JSONRPC::set_scope, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&JSONRPC::set_scope, ctx, this_val, argc, argv);
 };
 static JSValue jsonrpc_class_process_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -80,10 +78,11 @@ static const JSCFunctionListEntry jsonrpc_class_proto_funcs[] = {
 	JS_CFUNC_DEF("make_response_error", 3, &jsonrpc_class_make_response_error),
 };
 
-void define_jsonrpc_property(JSContext *ctx, JSValue obj) {
+static void define_jsonrpc_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_jsonrpc_enum(JSContext *ctx, JSValue proto) {
 	JSValue ErrorCode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, ErrorCode_obj, "PARSE_ERROR", JS_NewInt64(ctx, -32700));
 	JS_SetPropertyStr(ctx, ErrorCode_obj, "INVALID_REQUEST", JS_NewInt64(ctx, -32600));
@@ -106,7 +105,7 @@ static int js_jsonrpc_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, JSONRPC::__class_id, proto);
 
 	define_jsonrpc_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_jsonrpc_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, jsonrpc_class_proto_funcs, _countof(jsonrpc_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, jsonrpc_class_constructor, "JSONRPC", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -27,13 +27,12 @@ static JSValue gltf_node_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFNode::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	GLTFNode *gltf_node_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		gltf_node_class = static_cast<GLTFNode *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		gltf_node_class = static_cast<GLTFNode *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		gltf_node_class = memnew(GLTFNode);
-	}
 	if (!gltf_node_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -47,8 +46,7 @@ static JSValue gltf_node_class_get_original_name(JSContext *ctx, JSValueConst th
 };
 static JSValue gltf_node_class_set_original_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFNode::set_original_name, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFNode::set_original_name, ctx, this_val, argc, argv);
 };
 static JSValue gltf_node_class_get_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,8 +54,7 @@ static JSValue gltf_node_class_get_parent(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue gltf_node_class_set_parent(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFNode::set_parent, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFNode::set_parent, ctx, this_val, argc, argv);
 };
 static JSValue gltf_node_class_get_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -65,8 +62,7 @@ static JSValue gltf_node_class_get_height(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue gltf_node_class_set_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFNode::set_height, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFNode::set_height, ctx, this_val, argc, argv);
 };
 static JSValue gltf_node_class_get_xform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -74,8 +70,7 @@ static JSValue gltf_node_class_get_xform(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue gltf_node_class_set_xform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFNode::set_xform, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFNode::set_xform, ctx, this_val, argc, argv);
 };
 static JSValue gltf_node_class_get_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -83,8 +78,7 @@ static JSValue gltf_node_class_get_mesh(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue gltf_node_class_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFNode::set_mesh, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFNode::set_mesh, ctx, this_val, argc, argv);
 };
 static JSValue gltf_node_class_get_camera(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -92,8 +86,7 @@ static JSValue gltf_node_class_get_camera(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue gltf_node_class_set_camera(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFNode::set_camera, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFNode::set_camera, ctx, this_val, argc, argv);
 };
 static JSValue gltf_node_class_get_skin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -101,8 +94,7 @@ static JSValue gltf_node_class_get_skin(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue gltf_node_class_set_skin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFNode::set_skin, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFNode::set_skin, ctx, this_val, argc, argv);
 };
 static JSValue gltf_node_class_get_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -110,8 +102,7 @@ static JSValue gltf_node_class_get_skeleton(JSContext *ctx, JSValueConst this_va
 };
 static JSValue gltf_node_class_set_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFNode::set_skeleton, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFNode::set_skeleton, ctx, this_val, argc, argv);
 };
 static JSValue gltf_node_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -119,8 +110,7 @@ static JSValue gltf_node_class_get_position(JSContext *ctx, JSValueConst this_va
 };
 static JSValue gltf_node_class_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFNode::set_position, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFNode::set_position, ctx, this_val, argc, argv);
 };
 static JSValue gltf_node_class_get_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -128,8 +118,7 @@ static JSValue gltf_node_class_get_rotation(JSContext *ctx, JSValueConst this_va
 };
 static JSValue gltf_node_class_set_rotation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFNode::set_rotation, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFNode::set_rotation, ctx, this_val, argc, argv);
 };
 static JSValue gltf_node_class_get_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -137,8 +126,7 @@ static JSValue gltf_node_class_get_scale(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue gltf_node_class_set_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFNode::set_scale, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFNode::set_scale, ctx, this_val, argc, argv);
 };
 static JSValue gltf_node_class_get_children(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -146,8 +134,7 @@ static JSValue gltf_node_class_get_children(JSContext *ctx, JSValueConst this_va
 };
 static JSValue gltf_node_class_set_children(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFNode::set_children, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFNode::set_children, ctx, this_val, argc, argv);
 };
 static JSValue gltf_node_class_get_light(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -155,8 +142,7 @@ static JSValue gltf_node_class_get_light(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue gltf_node_class_set_light(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFNode::set_light, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFNode::set_light, ctx, this_val, argc, argv);
 };
 static JSValue gltf_node_class_get_additional_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -164,8 +150,7 @@ static JSValue gltf_node_class_get_additional_data(JSContext *ctx, JSValueConst 
 };
 static JSValue gltf_node_class_set_additional_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFNode::set_additional_data, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFNode::set_additional_data, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry gltf_node_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_original_name", 0, &gltf_node_class_get_original_name),
@@ -198,10 +183,10 @@ static const JSCFunctionListEntry gltf_node_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_additional_data", 2, &gltf_node_class_set_additional_data),
 };
 
-void define_gltf_node_property(JSContext *ctx, JSValue obj) {
+static void define_gltf_node_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "original_name"),
         JS_NewCFunction(ctx, gltf_node_class_get_original_name, "get_original_name", 0),
         JS_NewCFunction(ctx, gltf_node_class_set_original_name, "set_original_name", 1),
@@ -209,7 +194,7 @@ void define_gltf_node_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "parent"),
         JS_NewCFunction(ctx, gltf_node_class_get_parent, "get_parent", 0),
         JS_NewCFunction(ctx, gltf_node_class_set_parent, "set_parent", 1),
@@ -217,7 +202,7 @@ void define_gltf_node_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "height"),
         JS_NewCFunction(ctx, gltf_node_class_get_height, "get_height", 0),
         JS_NewCFunction(ctx, gltf_node_class_set_height, "set_height", 1),
@@ -225,7 +210,7 @@ void define_gltf_node_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "xform"),
         JS_NewCFunction(ctx, gltf_node_class_get_xform, "get_xform", 0),
         JS_NewCFunction(ctx, gltf_node_class_set_xform, "set_xform", 1),
@@ -233,7 +218,7 @@ void define_gltf_node_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "mesh"),
         JS_NewCFunction(ctx, gltf_node_class_get_mesh, "get_mesh", 0),
         JS_NewCFunction(ctx, gltf_node_class_set_mesh, "set_mesh", 1),
@@ -241,7 +226,7 @@ void define_gltf_node_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "camera"),
         JS_NewCFunction(ctx, gltf_node_class_get_camera, "get_camera", 0),
         JS_NewCFunction(ctx, gltf_node_class_set_camera, "set_camera", 1),
@@ -249,7 +234,7 @@ void define_gltf_node_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "skin"),
         JS_NewCFunction(ctx, gltf_node_class_get_skin, "get_skin", 0),
         JS_NewCFunction(ctx, gltf_node_class_set_skin, "set_skin", 1),
@@ -257,7 +242,7 @@ void define_gltf_node_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "skeleton"),
         JS_NewCFunction(ctx, gltf_node_class_get_skeleton, "get_skeleton", 0),
         JS_NewCFunction(ctx, gltf_node_class_set_skeleton, "set_skeleton", 1),
@@ -265,7 +250,7 @@ void define_gltf_node_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "position"),
         JS_NewCFunction(ctx, gltf_node_class_get_position, "get_position", 0),
         JS_NewCFunction(ctx, gltf_node_class_set_position, "set_position", 1),
@@ -273,7 +258,7 @@ void define_gltf_node_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "rotation"),
         JS_NewCFunction(ctx, gltf_node_class_get_rotation, "get_rotation", 0),
         JS_NewCFunction(ctx, gltf_node_class_set_rotation, "set_rotation", 1),
@@ -281,7 +266,7 @@ void define_gltf_node_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "scale"),
         JS_NewCFunction(ctx, gltf_node_class_get_scale, "get_scale", 0),
         JS_NewCFunction(ctx, gltf_node_class_set_scale, "set_scale", 1),
@@ -289,7 +274,7 @@ void define_gltf_node_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "children"),
         JS_NewCFunction(ctx, gltf_node_class_get_children, "get_children", 0),
         JS_NewCFunction(ctx, gltf_node_class_set_children, "set_children", 1),
@@ -297,15 +282,16 @@ void define_gltf_node_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "light"),
         JS_NewCFunction(ctx, gltf_node_class_get_light, "get_light", 0),
         JS_NewCFunction(ctx, gltf_node_class_set_light, "set_light", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_gltf_node_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_gltf_node_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -321,7 +307,7 @@ static int js_gltf_node_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, GLTFNode::__class_id, proto);
 
 	define_gltf_node_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_gltf_node_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gltf_node_class_proto_funcs, _countof(gltf_node_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, gltf_node_class_constructor, "GLTFNode", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

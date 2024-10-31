@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/web_rtc_peer_connection.hpp>
-#include <godot_cpp/classes/web_rtc_multiplayer_peer.hpp>
 #include <godot_cpp/classes/multiplayer_peer.hpp>
+#include <godot_cpp/classes/web_rtc_multiplayer_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue web_rtc_multiplayer_peer_class_constructor(JSContext *ctx, JSValu
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WebRTCMultiplayerPeer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	WebRTCMultiplayerPeer *web_rtc_multiplayer_peer_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		web_rtc_multiplayer_peer_class = static_cast<WebRTCMultiplayerPeer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		web_rtc_multiplayer_peer_class = static_cast<WebRTCMultiplayerPeer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		web_rtc_multiplayer_peer_class = memnew(WebRTCMultiplayerPeer);
-	}
 	if (!web_rtc_multiplayer_peer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -60,8 +59,7 @@ static JSValue web_rtc_multiplayer_peer_class_add_peer(JSContext *ctx, JSValueCo
 };
 static JSValue web_rtc_multiplayer_peer_class_remove_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebRTCMultiplayerPeer::remove_peer, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebRTCMultiplayerPeer::remove_peer, ctx, this_val, argc, argv);
 };
 static JSValue web_rtc_multiplayer_peer_class_has_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -86,10 +84,11 @@ static const JSCFunctionListEntry web_rtc_multiplayer_peer_class_proto_funcs[] =
 	JS_CFUNC_DEF("get_peers", 0, &web_rtc_multiplayer_peer_class_get_peers),
 };
 
-void define_web_rtc_multiplayer_peer_property(JSContext *ctx, JSValue obj) {
+static void define_web_rtc_multiplayer_peer_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_web_rtc_multiplayer_peer_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_web_rtc_multiplayer_peer_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -105,7 +104,7 @@ static int js_web_rtc_multiplayer_peer_class_init(JSContext *ctx, JSModuleDef *m
 	JS_SetClassProto(ctx, WebRTCMultiplayerPeer::__class_id, proto);
 
 	define_web_rtc_multiplayer_peer_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_web_rtc_multiplayer_peer_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, web_rtc_multiplayer_peer_class_proto_funcs, _countof(web_rtc_multiplayer_peer_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, web_rtc_multiplayer_peer_class_constructor, "WebRTCMultiplayerPeer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

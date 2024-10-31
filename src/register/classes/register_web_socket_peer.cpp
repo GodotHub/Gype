@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/stream_peer.hpp>
+#include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/classes/web_socket_peer.hpp>
-#include <godot_cpp/classes/packet_peer.hpp>
-#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue web_socket_peer_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WebSocketPeer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	WebSocketPeer *web_socket_peer_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		web_socket_peer_class = static_cast<WebSocketPeer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		web_socket_peer_class = static_cast<WebSocketPeer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		web_socket_peer_class = memnew(WebSocketPeer);
-	}
 	if (!web_socket_peer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -65,13 +64,11 @@ static JSValue web_socket_peer_class_was_string_packet(JSContext *ctx, JSValueCo
 };
 static JSValue web_socket_peer_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebSocketPeer::poll, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebSocketPeer::poll, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebSocketPeer::close, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebSocketPeer::close, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_get_connected_host(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -91,8 +88,7 @@ static JSValue web_socket_peer_class_get_requested_url(JSContext *ctx, JSValueCo
 };
 static JSValue web_socket_peer_class_set_no_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebSocketPeer::set_no_delay, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebSocketPeer::set_no_delay, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_get_current_outbound_buffered_amount(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -116,8 +112,7 @@ static JSValue web_socket_peer_class_get_supported_protocols(JSContext *ctx, JSV
 };
 static JSValue web_socket_peer_class_set_supported_protocols(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebSocketPeer::set_supported_protocols, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebSocketPeer::set_supported_protocols, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_get_handshake_headers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -125,8 +120,7 @@ static JSValue web_socket_peer_class_get_handshake_headers(JSContext *ctx, JSVal
 };
 static JSValue web_socket_peer_class_set_handshake_headers(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebSocketPeer::set_handshake_headers, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebSocketPeer::set_handshake_headers, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_get_inbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -134,8 +128,7 @@ static JSValue web_socket_peer_class_get_inbound_buffer_size(JSContext *ctx, JSV
 };
 static JSValue web_socket_peer_class_set_inbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebSocketPeer::set_inbound_buffer_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebSocketPeer::set_inbound_buffer_size, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_get_outbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -143,13 +136,11 @@ static JSValue web_socket_peer_class_get_outbound_buffer_size(JSContext *ctx, JS
 };
 static JSValue web_socket_peer_class_set_outbound_buffer_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebSocketPeer::set_outbound_buffer_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebSocketPeer::set_outbound_buffer_size, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_set_max_queued_packets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&WebSocketPeer::set_max_queued_packets, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&WebSocketPeer::set_max_queued_packets, ctx, this_val, argc, argv);
 };
 static JSValue web_socket_peer_class_get_max_queued_packets(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -184,10 +175,10 @@ static const JSCFunctionListEntry web_socket_peer_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_max_queued_packets", 0, &web_socket_peer_class_get_max_queued_packets),
 };
 
-void define_web_socket_peer_property(JSContext *ctx, JSValue obj) {
+static void define_web_socket_peer_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "supported_protocols"),
         JS_NewCFunction(ctx, web_socket_peer_class_get_supported_protocols, "get_supported_protocols", 0),
         JS_NewCFunction(ctx, web_socket_peer_class_set_supported_protocols, "set_supported_protocols", 1),
@@ -195,7 +186,7 @@ void define_web_socket_peer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "handshake_headers"),
         JS_NewCFunction(ctx, web_socket_peer_class_get_handshake_headers, "get_handshake_headers", 0),
         JS_NewCFunction(ctx, web_socket_peer_class_set_handshake_headers, "set_handshake_headers", 1),
@@ -203,7 +194,7 @@ void define_web_socket_peer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "inbound_buffer_size"),
         JS_NewCFunction(ctx, web_socket_peer_class_get_inbound_buffer_size, "get_inbound_buffer_size", 0),
         JS_NewCFunction(ctx, web_socket_peer_class_set_inbound_buffer_size, "set_inbound_buffer_size", 1),
@@ -211,7 +202,7 @@ void define_web_socket_peer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "outbound_buffer_size"),
         JS_NewCFunction(ctx, web_socket_peer_class_get_outbound_buffer_size, "get_outbound_buffer_size", 0),
         JS_NewCFunction(ctx, web_socket_peer_class_set_outbound_buffer_size, "set_outbound_buffer_size", 1),
@@ -219,15 +210,16 @@ void define_web_socket_peer_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "max_queued_packets"),
         JS_NewCFunction(ctx, web_socket_peer_class_get_max_queued_packets, "get_max_queued_packets", 0),
         JS_NewCFunction(ctx, web_socket_peer_class_set_max_queued_packets, "set_max_queued_packets", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_web_socket_peer_enum(JSContext *ctx, JSValue proto) {
 	JSValue WriteMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, WriteMode_obj, "WRITE_MODE_TEXT", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, WriteMode_obj, "WRITE_MODE_BINARY", JS_NewInt64(ctx, 1));
@@ -253,7 +245,7 @@ static int js_web_socket_peer_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, WebSocketPeer::__class_id, proto);
 
 	define_web_socket_peer_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_web_socket_peer_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, web_socket_peer_class_proto_funcs, _countof(web_socket_peer_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, web_socket_peer_class_constructor, "WebSocketPeer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

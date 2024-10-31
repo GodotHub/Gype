@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gltf_skeleton.hpp>
 #include <godot_cpp/classes/skeleton3d.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/bone_attachment3d.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/gltf_skeleton.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue gltf_skeleton_class_constructor(JSContext *ctx, JSValueConst new_
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFSkeleton::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	GLTFSkeleton *gltf_skeleton_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		gltf_skeleton_class = static_cast<GLTFSkeleton *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		gltf_skeleton_class = static_cast<GLTFSkeleton *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		gltf_skeleton_class = memnew(GLTFSkeleton);
-	}
 	if (!gltf_skeleton_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -49,8 +48,7 @@ static JSValue gltf_skeleton_class_get_joints(JSContext *ctx, JSValueConst this_
 };
 static JSValue gltf_skeleton_class_set_joints(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFSkeleton::set_joints, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFSkeleton::set_joints, ctx, this_val, argc, argv);
 };
 static JSValue gltf_skeleton_class_get_roots(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -58,8 +56,7 @@ static JSValue gltf_skeleton_class_get_roots(JSContext *ctx, JSValueConst this_v
 };
 static JSValue gltf_skeleton_class_set_roots(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFSkeleton::set_roots, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFSkeleton::set_roots, ctx, this_val, argc, argv);
 };
 static JSValue gltf_skeleton_class_get_godot_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -71,8 +68,7 @@ static JSValue gltf_skeleton_class_get_unique_names(JSContext *ctx, JSValueConst
 };
 static JSValue gltf_skeleton_class_set_unique_names(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFSkeleton::set_unique_names, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFSkeleton::set_unique_names, ctx, this_val, argc, argv);
 };
 static JSValue gltf_skeleton_class_get_godot_bone_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -80,8 +76,7 @@ static JSValue gltf_skeleton_class_get_godot_bone_node(JSContext *ctx, JSValueCo
 };
 static JSValue gltf_skeleton_class_set_godot_bone_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFSkeleton::set_godot_bone_node, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFSkeleton::set_godot_bone_node, ctx, this_val, argc, argv);
 };
 static JSValue gltf_skeleton_class_get_bone_attachment_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -105,10 +100,10 @@ static const JSCFunctionListEntry gltf_skeleton_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_bone_attachment", 1, &gltf_skeleton_class_get_bone_attachment),
 };
 
-void define_gltf_skeleton_property(JSContext *ctx, JSValue obj) {
+static void define_gltf_skeleton_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "joints"),
         JS_NewCFunction(ctx, gltf_skeleton_class_get_joints, "get_joints", 0),
         JS_NewCFunction(ctx, gltf_skeleton_class_set_joints, "set_joints", 1),
@@ -116,7 +111,7 @@ void define_gltf_skeleton_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "roots"),
         JS_NewCFunction(ctx, gltf_skeleton_class_get_roots, "get_roots", 0),
         JS_NewCFunction(ctx, gltf_skeleton_class_set_roots, "set_roots", 1),
@@ -124,7 +119,7 @@ void define_gltf_skeleton_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "unique_names"),
         JS_NewCFunction(ctx, gltf_skeleton_class_get_unique_names, "get_unique_names", 0),
         JS_NewCFunction(ctx, gltf_skeleton_class_set_unique_names, "set_unique_names", 1),
@@ -132,15 +127,16 @@ void define_gltf_skeleton_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "godot_bone_node"),
         JS_NewCFunction(ctx, gltf_skeleton_class_get_godot_bone_node, "get_godot_bone_node", 0),
         JS_NewCFunction(ctx, gltf_skeleton_class_set_godot_bone_node, "set_godot_bone_node", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_gltf_skeleton_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_gltf_skeleton_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -156,7 +152,7 @@ static int js_gltf_skeleton_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, GLTFSkeleton::__class_id, proto);
 
 	define_gltf_skeleton_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_gltf_skeleton_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gltf_skeleton_class_proto_funcs, _countof(gltf_skeleton_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, gltf_skeleton_class_constructor, "GLTFSkeleton", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

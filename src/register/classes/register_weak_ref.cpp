@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/weak_ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/weak_ref.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue weak_ref_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, WeakRef::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	WeakRef *weak_ref_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		weak_ref_class = static_cast<WeakRef *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		weak_ref_class = static_cast<WeakRef *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		weak_ref_class = memnew(WeakRef);
-	}
 	if (!weak_ref_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -49,10 +48,11 @@ static const JSCFunctionListEntry weak_ref_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_ref", 0, &weak_ref_class_get_ref),
 };
 
-void define_weak_ref_property(JSContext *ctx, JSValue obj) {
+static void define_weak_ref_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_weak_ref_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_weak_ref_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -68,7 +68,7 @@ static int js_weak_ref_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, WeakRef::__class_id, proto);
 
 	define_weak_ref_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_weak_ref_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, weak_ref_class_proto_funcs, _countof(weak_ref_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, weak_ref_class_constructor, "WeakRef", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

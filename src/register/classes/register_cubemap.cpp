@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/cubemap.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/image_texture_layered.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue cubemap_class_constructor(JSContext *ctx, JSValueConst new_target
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Cubemap::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Cubemap *cubemap_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		cubemap_class = static_cast<Cubemap *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		cubemap_class = static_cast<Cubemap *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		cubemap_class = memnew(Cubemap);
-	}
 	if (!cubemap_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -50,10 +49,11 @@ static const JSCFunctionListEntry cubemap_class_proto_funcs[] = {
 	JS_CFUNC_DEF("create_placeholder", 0, &cubemap_class_create_placeholder),
 };
 
-void define_cubemap_property(JSContext *ctx, JSValue obj) {
+static void define_cubemap_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_cubemap_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_cubemap_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -69,7 +69,7 @@ static int js_cubemap_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Cubemap::__class_id, proto);
 
 	define_cubemap_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_cubemap_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, cubemap_class_proto_funcs, _countof(cubemap_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, cubemap_class_constructor, "Cubemap", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

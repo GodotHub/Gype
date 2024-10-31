@@ -27,13 +27,12 @@ static JSValue compressed_texture_layered_class_constructor(JSContext *ctx, JSVa
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CompressedTextureLayered::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	CompressedTextureLayered *compressed_texture_layered_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		compressed_texture_layered_class = static_cast<CompressedTextureLayered *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		compressed_texture_layered_class = static_cast<CompressedTextureLayered *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		compressed_texture_layered_class = memnew(CompressedTextureLayered);
-	}
 	if (!compressed_texture_layered_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -54,18 +53,19 @@ static const JSCFunctionListEntry compressed_texture_layered_class_proto_funcs[]
 	JS_CFUNC_DEF("get_load_path", 0, &compressed_texture_layered_class_get_load_path),
 };
 
-void define_compressed_texture_layered_property(JSContext *ctx, JSValue obj) {
+static void define_compressed_texture_layered_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "load_path"),
         JS_NewCFunction(ctx, compressed_texture_layered_class_get_load_path, "get_load_path", 0),
         JS_NewCFunction(ctx, compressed_texture_layered_class_load, "load", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_compressed_texture_layered_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_compressed_texture_layered_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -81,7 +81,7 @@ static int js_compressed_texture_layered_class_init(JSContext *ctx, JSModuleDef 
 	JS_SetClassProto(ctx, CompressedTextureLayered::__class_id, proto);
 
 	define_compressed_texture_layered_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_compressed_texture_layered_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, compressed_texture_layered_class_proto_funcs, _countof(compressed_texture_layered_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, compressed_texture_layered_class_constructor, "CompressedTextureLayered", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

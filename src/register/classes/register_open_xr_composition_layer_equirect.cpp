@@ -27,13 +27,12 @@ static JSValue open_xr_composition_layer_equirect_class_constructor(JSContext *c
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRCompositionLayerEquirect::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	OpenXRCompositionLayerEquirect *open_xr_composition_layer_equirect_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		open_xr_composition_layer_equirect_class = static_cast<OpenXRCompositionLayerEquirect *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		open_xr_composition_layer_equirect_class = static_cast<OpenXRCompositionLayerEquirect *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		open_xr_composition_layer_equirect_class = memnew(OpenXRCompositionLayerEquirect);
-	}
 	if (!open_xr_composition_layer_equirect_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue open_xr_composition_layer_equirect_class_constructor(JSContext *c
 }
 static JSValue open_xr_composition_layer_equirect_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_radius, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_radius, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_composition_layer_equirect_class_get_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue open_xr_composition_layer_equirect_class_get_radius(JSContext *ct
 };
 static JSValue open_xr_composition_layer_equirect_class_set_central_horizontal_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_central_horizontal_angle, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_central_horizontal_angle, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_composition_layer_equirect_class_get_central_horizontal_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue open_xr_composition_layer_equirect_class_get_central_horizontal_a
 };
 static JSValue open_xr_composition_layer_equirect_class_set_upper_vertical_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_upper_vertical_angle, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_upper_vertical_angle, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_composition_layer_equirect_class_get_upper_vertical_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue open_xr_composition_layer_equirect_class_get_upper_vertical_angle
 };
 static JSValue open_xr_composition_layer_equirect_class_set_lower_vertical_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_lower_vertical_angle, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_lower_vertical_angle, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_composition_layer_equirect_class_get_lower_vertical_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue open_xr_composition_layer_equirect_class_get_lower_vertical_angle
 };
 static JSValue open_xr_composition_layer_equirect_class_set_fallback_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_fallback_segments, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRCompositionLayerEquirect::set_fallback_segments, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_composition_layer_equirect_class_get_fallback_segments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -99,10 +93,10 @@ static const JSCFunctionListEntry open_xr_composition_layer_equirect_class_proto
 	JS_CFUNC_DEF("get_fallback_segments", 0, &open_xr_composition_layer_equirect_class_get_fallback_segments),
 };
 
-void define_open_xr_composition_layer_equirect_property(JSContext *ctx, JSValue obj) {
+static void define_open_xr_composition_layer_equirect_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "radius"),
         JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_radius, "get_radius", 0),
         JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_radius, "set_radius", 1),
@@ -110,7 +104,7 @@ void define_open_xr_composition_layer_equirect_property(JSContext *ctx, JSValue 
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "central_horizontal_angle"),
         JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_central_horizontal_angle, "get_central_horizontal_angle", 0),
         JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_central_horizontal_angle, "set_central_horizontal_angle", 1),
@@ -118,7 +112,7 @@ void define_open_xr_composition_layer_equirect_property(JSContext *ctx, JSValue 
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "upper_vertical_angle"),
         JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_upper_vertical_angle, "get_upper_vertical_angle", 0),
         JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_upper_vertical_angle, "set_upper_vertical_angle", 1),
@@ -126,7 +120,7 @@ void define_open_xr_composition_layer_equirect_property(JSContext *ctx, JSValue 
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "lower_vertical_angle"),
         JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_lower_vertical_angle, "get_lower_vertical_angle", 0),
         JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_lower_vertical_angle, "set_lower_vertical_angle", 1),
@@ -134,15 +128,16 @@ void define_open_xr_composition_layer_equirect_property(JSContext *ctx, JSValue 
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "fallback_segments"),
         JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_get_fallback_segments, "get_fallback_segments", 0),
         JS_NewCFunction(ctx, open_xr_composition_layer_equirect_class_set_fallback_segments, "set_fallback_segments", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_open_xr_composition_layer_equirect_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_open_xr_composition_layer_equirect_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -158,7 +153,7 @@ static int js_open_xr_composition_layer_equirect_class_init(JSContext *ctx, JSMo
 	JS_SetClassProto(ctx, OpenXRCompositionLayerEquirect::__class_id, proto);
 
 	define_open_xr_composition_layer_equirect_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_open_xr_composition_layer_equirect_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, open_xr_composition_layer_equirect_class_proto_funcs, _countof(open_xr_composition_layer_equirect_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, open_xr_composition_layer_equirect_class_constructor, "OpenXRCompositionLayerEquirect", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

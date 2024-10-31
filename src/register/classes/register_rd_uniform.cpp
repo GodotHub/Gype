@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_uniform.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue rd_uniform_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, RDUniform::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	RDUniform *rd_uniform_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		rd_uniform_class = static_cast<RDUniform *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		rd_uniform_class = static_cast<RDUniform *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		rd_uniform_class = memnew(RDUniform);
-	}
 	if (!rd_uniform_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue rd_uniform_class_constructor(JSContext *ctx, JSValueConst new_tar
 }
 static JSValue rd_uniform_class_set_uniform_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDUniform::set_uniform_type, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDUniform::set_uniform_type, ctx, this_val, argc, argv);
 };
 static JSValue rd_uniform_class_get_uniform_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue rd_uniform_class_get_uniform_type(JSContext *ctx, JSValueConst th
 };
 static JSValue rd_uniform_class_set_binding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDUniform::set_binding, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDUniform::set_binding, ctx, this_val, argc, argv);
 };
 static JSValue rd_uniform_class_get_binding(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,13 +58,11 @@ static JSValue rd_uniform_class_get_binding(JSContext *ctx, JSValueConst this_va
 };
 static JSValue rd_uniform_class_add_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDUniform::add_id, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDUniform::add_id, ctx, this_val, argc, argv);
 };
 static JSValue rd_uniform_class_clear_ids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&RDUniform::clear_ids, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&RDUniform::clear_ids, ctx, this_val, argc, argv);
 };
 static JSValue rd_uniform_class_get_ids(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -83,10 +78,10 @@ static const JSCFunctionListEntry rd_uniform_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_ids", 0, &rd_uniform_class_get_ids),
 };
 
-void define_rd_uniform_property(JSContext *ctx, JSValue obj) {
+static void define_rd_uniform_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "uniform_type"),
         JS_NewCFunction(ctx, rd_uniform_class_get_uniform_type, "get_uniform_type", 0),
         JS_NewCFunction(ctx, rd_uniform_class_set_uniform_type, "set_uniform_type", 1),
@@ -94,15 +89,16 @@ void define_rd_uniform_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "binding"),
         JS_NewCFunction(ctx, rd_uniform_class_get_binding, "get_binding", 0),
         JS_NewCFunction(ctx, rd_uniform_class_set_binding, "set_binding", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_rd_uniform_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_rd_uniform_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -118,7 +114,7 @@ static int js_rd_uniform_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, RDUniform::__class_id, proto);
 
 	define_rd_uniform_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_rd_uniform_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, rd_uniform_class_proto_funcs, _countof(rd_uniform_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, rd_uniform_class_constructor, "RDUniform", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

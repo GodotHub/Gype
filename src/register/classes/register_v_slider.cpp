@@ -27,13 +27,12 @@ static JSValue v_slider_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VSlider::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VSlider *v_slider_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		v_slider_class = static_cast<VSlider *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		v_slider_class = static_cast<VSlider *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		v_slider_class = memnew(VSlider);
-	}
 	if (!v_slider_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue v_slider_class_constructor(JSContext *ctx, JSValueConst new_targe
 	return obj;
 }
 
-void define_v_slider_property(JSContext *ctx, JSValue obj) {
+static void define_v_slider_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_v_slider_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_v_slider_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_v_slider_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, VSlider::__class_id, proto);
 
 	define_v_slider_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_v_slider_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, v_slider_class_constructor, "VSlider", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

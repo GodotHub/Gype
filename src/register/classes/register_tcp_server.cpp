@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/stream_peer_tcp.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/tcp_server.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue tcp_server_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TCPServer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	TCPServer *tcp_server_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		tcp_server_class = static_cast<TCPServer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		tcp_server_class = static_cast<TCPServer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		tcp_server_class = memnew(TCPServer);
-	}
 	if (!tcp_server_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -64,8 +63,7 @@ static JSValue tcp_server_class_take_connection(JSContext *ctx, JSValueConst thi
 };
 static JSValue tcp_server_class_stop(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TCPServer::stop, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TCPServer::stop, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry tcp_server_class_proto_funcs[] = {
 	JS_CFUNC_DEF("listen", 2, &tcp_server_class_listen),
@@ -76,10 +74,11 @@ static const JSCFunctionListEntry tcp_server_class_proto_funcs[] = {
 	JS_CFUNC_DEF("stop", 0, &tcp_server_class_stop),
 };
 
-void define_tcp_server_property(JSContext *ctx, JSValue obj) {
+static void define_tcp_server_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_tcp_server_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_tcp_server_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -95,7 +94,7 @@ static int js_tcp_server_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, TCPServer::__class_id, proto);
 
 	define_tcp_server_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_tcp_server_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, tcp_server_class_proto_funcs, _countof(tcp_server_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, tcp_server_class_constructor, "TCPServer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

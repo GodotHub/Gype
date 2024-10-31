@@ -7,8 +7,8 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/editor_inspector_plugin.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue editor_inspector_plugin_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorInspectorPlugin::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	EditorInspectorPlugin *editor_inspector_plugin_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		editor_inspector_plugin_class = static_cast<EditorInspectorPlugin *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		editor_inspector_plugin_class = static_cast<EditorInspectorPlugin *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		editor_inspector_plugin_class = memnew(EditorInspectorPlugin);
-	}
 	if (!editor_inspector_plugin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -45,18 +44,15 @@ static JSValue editor_inspector_plugin_class_constructor(JSContext *ctx, JSValue
 }
 static JSValue editor_inspector_plugin_class_add_custom_control(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorInspectorPlugin::add_custom_control, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorInspectorPlugin::add_custom_control, ctx, this_val, argc, argv);
 };
 static JSValue editor_inspector_plugin_class_add_property_editor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorInspectorPlugin::add_property_editor, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorInspectorPlugin::add_property_editor, ctx, this_val, argc, argv);
 };
 static JSValue editor_inspector_plugin_class_add_property_editor_for_multiple_properties(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&EditorInspectorPlugin::add_property_editor_for_multiple_properties, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&EditorInspectorPlugin::add_property_editor_for_multiple_properties, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry editor_inspector_plugin_class_proto_funcs[] = {
 	JS_CFUNC_DEF("add_custom_control", 1, &editor_inspector_plugin_class_add_custom_control),
@@ -64,10 +60,11 @@ static const JSCFunctionListEntry editor_inspector_plugin_class_proto_funcs[] = 
 	JS_CFUNC_DEF("add_property_editor_for_multiple_properties", 3, &editor_inspector_plugin_class_add_property_editor_for_multiple_properties),
 };
 
-void define_editor_inspector_plugin_property(JSContext *ctx, JSValue obj) {
+static void define_editor_inspector_plugin_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_editor_inspector_plugin_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_inspector_plugin_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -83,7 +80,7 @@ static int js_editor_inspector_plugin_class_init(JSContext *ctx, JSModuleDef *m)
 	JS_SetClassProto(ctx, EditorInspectorPlugin::__class_id, proto);
 
 	define_editor_inspector_plugin_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_editor_inspector_plugin_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, editor_inspector_plugin_class_proto_funcs, _countof(editor_inspector_plugin_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, editor_inspector_plugin_class_constructor, "EditorInspectorPlugin", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

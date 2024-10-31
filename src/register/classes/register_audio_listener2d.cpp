@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/audio_listener2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue audio_listener2d_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioListener2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AudioListener2D *audio_listener2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		audio_listener2d_class = static_cast<AudioListener2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		audio_listener2d_class = static_cast<AudioListener2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		audio_listener2d_class = memnew(AudioListener2D);
-	}
 	if (!audio_listener2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,13 +42,11 @@ static JSValue audio_listener2d_class_constructor(JSContext *ctx, JSValueConst n
 }
 static JSValue audio_listener2d_class_make_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioListener2D::make_current, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioListener2D::make_current, ctx, this_val, argc, argv);
 };
 static JSValue audio_listener2d_class_clear_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioListener2D::clear_current, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioListener2D::clear_current, ctx, this_val, argc, argv);
 };
 static JSValue audio_listener2d_class_is_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,10 +58,11 @@ static const JSCFunctionListEntry audio_listener2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_current", 0, &audio_listener2d_class_is_current),
 };
 
-void define_audio_listener2d_property(JSContext *ctx, JSValue obj) {
+static void define_audio_listener2d_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_audio_listener2d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_listener2d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -80,7 +78,7 @@ static int js_audio_listener2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, AudioListener2D::__class_id, proto);
 
 	define_audio_listener2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_audio_listener2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, audio_listener2d_class_proto_funcs, _countof(audio_listener2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, audio_listener2d_class_constructor, "AudioListener2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

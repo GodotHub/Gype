@@ -27,13 +27,12 @@ static JSValue visual_shader_node_texture2d_parameter_class_constructor(JSContex
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeTexture2DParameter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeTexture2DParameter *visual_shader_node_texture2d_parameter_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_texture2d_parameter_class = static_cast<VisualShaderNodeTexture2DParameter *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_texture2d_parameter_class = static_cast<VisualShaderNodeTexture2DParameter *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_texture2d_parameter_class = memnew(VisualShaderNodeTexture2DParameter);
-	}
 	if (!visual_shader_node_texture2d_parameter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue visual_shader_node_texture2d_parameter_class_constructor(JSContex
 	return obj;
 }
 
-void define_visual_shader_node_texture2d_parameter_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_texture2d_parameter_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_texture2d_parameter_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_texture2d_parameter_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_visual_shader_node_texture2d_parameter_class_init(JSContext *ctx, 
 	JS_SetClassProto(ctx, VisualShaderNodeTexture2DParameter::__class_id, proto);
 
 	define_visual_shader_node_texture2d_parameter_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_texture2d_parameter_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_texture2d_parameter_class_constructor, "VisualShaderNodeTexture2DParameter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

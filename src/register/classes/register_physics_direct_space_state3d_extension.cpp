@@ -27,13 +27,12 @@ static JSValue physics_direct_space_state3d_extension_class_constructor(JSContex
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsDirectSpaceState3DExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PhysicsDirectSpaceState3DExtension *physics_direct_space_state3d_extension_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		physics_direct_space_state3d_extension_class = static_cast<PhysicsDirectSpaceState3DExtension *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		physics_direct_space_state3d_extension_class = static_cast<PhysicsDirectSpaceState3DExtension *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		physics_direct_space_state3d_extension_class = memnew(PhysicsDirectSpaceState3DExtension);
-	}
 	if (!physics_direct_space_state3d_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -49,10 +48,11 @@ static const JSCFunctionListEntry physics_direct_space_state3d_extension_class_p
 	JS_CFUNC_DEF("is_body_excluded_from_query", 1, &physics_direct_space_state3d_extension_class_is_body_excluded_from_query),
 };
 
-void define_physics_direct_space_state3d_extension_property(JSContext *ctx, JSValue obj) {
+static void define_physics_direct_space_state3d_extension_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_physics_direct_space_state3d_extension_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_physics_direct_space_state3d_extension_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -68,7 +68,7 @@ static int js_physics_direct_space_state3d_extension_class_init(JSContext *ctx, 
 	JS_SetClassProto(ctx, PhysicsDirectSpaceState3DExtension::__class_id, proto);
 
 	define_physics_direct_space_state3d_extension_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_physics_direct_space_state3d_extension_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, physics_direct_space_state3d_extension_class_proto_funcs, _countof(physics_direct_space_state3d_extension_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, physics_direct_space_state3d_extension_class_constructor, "PhysicsDirectSpaceState3DExtension", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animatable_body3d.hpp>
 #include <godot_cpp/classes/static_body3d.hpp>
+#include <godot_cpp/classes/animatable_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue animatable_body3d_class_constructor(JSContext *ctx, JSValueConst 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimatableBody3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AnimatableBody3D *animatable_body3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		animatable_body3d_class = static_cast<AnimatableBody3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		animatable_body3d_class = static_cast<AnimatableBody3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		animatable_body3d_class = memnew(AnimatableBody3D);
-	}
 	if (!animatable_body3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue animatable_body3d_class_constructor(JSContext *ctx, JSValueConst 
 }
 static JSValue animatable_body3d_class_set_sync_to_physics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimatableBody3D::set_sync_to_physics, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimatableBody3D::set_sync_to_physics, ctx, this_val, argc, argv);
 };
 static JSValue animatable_body3d_class_is_sync_to_physics_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry animatable_body3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_sync_to_physics_enabled", 0, &animatable_body3d_class_is_sync_to_physics_enabled),
 };
 
-void define_animatable_body3d_property(JSContext *ctx, JSValue obj) {
+static void define_animatable_body3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "sync_to_physics"),
         JS_NewCFunction(ctx, animatable_body3d_class_is_sync_to_physics_enabled, "is_sync_to_physics_enabled", 0),
         JS_NewCFunction(ctx, animatable_body3d_class_set_sync_to_physics, "set_sync_to_physics", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_animatable_body3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_animatable_body3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -82,7 +81,7 @@ static int js_animatable_body3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, AnimatableBody3D::__class_id, proto);
 
 	define_animatable_body3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_animatable_body3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animatable_body3d_class_proto_funcs, _countof(animatable_body3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, animatable_body3d_class_constructor, "AnimatableBody3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

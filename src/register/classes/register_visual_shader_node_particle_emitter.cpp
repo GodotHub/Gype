@@ -27,13 +27,12 @@ static JSValue visual_shader_node_particle_emitter_class_constructor(JSContext *
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeParticleEmitter::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeParticleEmitter *visual_shader_node_particle_emitter_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_particle_emitter_class = static_cast<VisualShaderNodeParticleEmitter *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_particle_emitter_class = static_cast<VisualShaderNodeParticleEmitter *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_particle_emitter_class = memnew(VisualShaderNodeParticleEmitter);
-	}
 	if (!visual_shader_node_particle_emitter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue visual_shader_node_particle_emitter_class_constructor(JSContext *
 }
 static JSValue visual_shader_node_particle_emitter_class_set_mode_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeParticleEmitter::set_mode_2d, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeParticleEmitter::set_mode_2d, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_particle_emitter_class_is_mode_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry visual_shader_node_particle_emitter_class_prot
 	JS_CFUNC_DEF("is_mode_2d", 0, &visual_shader_node_particle_emitter_class_is_mode_2d),
 };
 
-void define_visual_shader_node_particle_emitter_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_particle_emitter_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "mode_2d"),
         JS_NewCFunction(ctx, visual_shader_node_particle_emitter_class_is_mode_2d, "is_mode_2d", 0),
         JS_NewCFunction(ctx, visual_shader_node_particle_emitter_class_set_mode_2d, "set_mode_2d", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_particle_emitter_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_particle_emitter_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -82,7 +81,7 @@ static int js_visual_shader_node_particle_emitter_class_init(JSContext *ctx, JSM
 	JS_SetClassProto(ctx, VisualShaderNodeParticleEmitter::__class_id, proto);
 
 	define_visual_shader_node_particle_emitter_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_particle_emitter_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_particle_emitter_class_proto_funcs, _countof(visual_shader_node_particle_emitter_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_particle_emitter_class_constructor, "VisualShaderNodeParticleEmitter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

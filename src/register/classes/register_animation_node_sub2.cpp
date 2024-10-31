@@ -27,13 +27,12 @@ static JSValue animation_node_sub2_class_constructor(JSContext *ctx, JSValueCons
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationNodeSub2::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AnimationNodeSub2 *animation_node_sub2_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		animation_node_sub2_class = static_cast<AnimationNodeSub2 *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		animation_node_sub2_class = static_cast<AnimationNodeSub2 *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		animation_node_sub2_class = memnew(AnimationNodeSub2);
-	}
 	if (!animation_node_sub2_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue animation_node_sub2_class_constructor(JSContext *ctx, JSValueCons
 	return obj;
 }
 
-void define_animation_node_sub2_property(JSContext *ctx, JSValue obj) {
+static void define_animation_node_sub2_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_animation_node_sub2_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_animation_node_sub2_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_animation_node_sub2_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, AnimationNodeSub2::__class_id, proto);
 
 	define_animation_node_sub2_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_animation_node_sub2_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, animation_node_sub2_class_constructor, "AnimationNodeSub2", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

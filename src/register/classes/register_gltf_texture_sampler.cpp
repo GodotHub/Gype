@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/gltf_texture_sampler.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue gltf_texture_sampler_class_constructor(JSContext *ctx, JSValueCon
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GLTFTextureSampler::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	GLTFTextureSampler *gltf_texture_sampler_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		gltf_texture_sampler_class = static_cast<GLTFTextureSampler *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		gltf_texture_sampler_class = static_cast<GLTFTextureSampler *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		gltf_texture_sampler_class = memnew(GLTFTextureSampler);
-	}
 	if (!gltf_texture_sampler_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -47,8 +46,7 @@ static JSValue gltf_texture_sampler_class_get_mag_filter(JSContext *ctx, JSValue
 };
 static JSValue gltf_texture_sampler_class_set_mag_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFTextureSampler::set_mag_filter, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFTextureSampler::set_mag_filter, ctx, this_val, argc, argv);
 };
 static JSValue gltf_texture_sampler_class_get_min_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,8 +54,7 @@ static JSValue gltf_texture_sampler_class_get_min_filter(JSContext *ctx, JSValue
 };
 static JSValue gltf_texture_sampler_class_set_min_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFTextureSampler::set_min_filter, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFTextureSampler::set_min_filter, ctx, this_val, argc, argv);
 };
 static JSValue gltf_texture_sampler_class_get_wrap_s(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -65,8 +62,7 @@ static JSValue gltf_texture_sampler_class_get_wrap_s(JSContext *ctx, JSValueCons
 };
 static JSValue gltf_texture_sampler_class_set_wrap_s(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFTextureSampler::set_wrap_s, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFTextureSampler::set_wrap_s, ctx, this_val, argc, argv);
 };
 static JSValue gltf_texture_sampler_class_get_wrap_t(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -74,8 +70,7 @@ static JSValue gltf_texture_sampler_class_get_wrap_t(JSContext *ctx, JSValueCons
 };
 static JSValue gltf_texture_sampler_class_set_wrap_t(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&GLTFTextureSampler::set_wrap_t, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&GLTFTextureSampler::set_wrap_t, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry gltf_texture_sampler_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_mag_filter", 0, &gltf_texture_sampler_class_get_mag_filter),
@@ -88,10 +83,10 @@ static const JSCFunctionListEntry gltf_texture_sampler_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_wrap_t", 1, &gltf_texture_sampler_class_set_wrap_t),
 };
 
-void define_gltf_texture_sampler_property(JSContext *ctx, JSValue obj) {
+static void define_gltf_texture_sampler_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "mag_filter"),
         JS_NewCFunction(ctx, gltf_texture_sampler_class_get_mag_filter, "get_mag_filter", 0),
         JS_NewCFunction(ctx, gltf_texture_sampler_class_set_mag_filter, "set_mag_filter", 1),
@@ -99,7 +94,7 @@ void define_gltf_texture_sampler_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "min_filter"),
         JS_NewCFunction(ctx, gltf_texture_sampler_class_get_min_filter, "get_min_filter", 0),
         JS_NewCFunction(ctx, gltf_texture_sampler_class_set_min_filter, "set_min_filter", 1),
@@ -107,7 +102,7 @@ void define_gltf_texture_sampler_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "wrap_s"),
         JS_NewCFunction(ctx, gltf_texture_sampler_class_get_wrap_s, "get_wrap_s", 0),
         JS_NewCFunction(ctx, gltf_texture_sampler_class_set_wrap_s, "set_wrap_s", 1),
@@ -115,15 +110,16 @@ void define_gltf_texture_sampler_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "wrap_t"),
         JS_NewCFunction(ctx, gltf_texture_sampler_class_get_wrap_t, "get_wrap_t", 0),
         JS_NewCFunction(ctx, gltf_texture_sampler_class_set_wrap_t, "set_wrap_t", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_gltf_texture_sampler_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_gltf_texture_sampler_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -139,7 +135,7 @@ static int js_gltf_texture_sampler_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, GLTFTextureSampler::__class_id, proto);
 
 	define_gltf_texture_sampler_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_gltf_texture_sampler_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gltf_texture_sampler_class_proto_funcs, _countof(gltf_texture_sampler_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, gltf_texture_sampler_class_constructor, "GLTFTextureSampler", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

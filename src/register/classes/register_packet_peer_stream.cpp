@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/classes/packet_peer_stream.hpp>
-#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue packet_peer_stream_class_constructor(JSContext *ctx, JSValueConst
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PacketPeerStream::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PacketPeerStream *packet_peer_stream_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		packet_peer_stream_class = static_cast<PacketPeerStream *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		packet_peer_stream_class = static_cast<PacketPeerStream *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		packet_peer_stream_class = memnew(PacketPeerStream);
-	}
 	if (!packet_peer_stream_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue packet_peer_stream_class_constructor(JSContext *ctx, JSValueConst
 }
 static JSValue packet_peer_stream_class_set_stream_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PacketPeerStream::set_stream_peer, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PacketPeerStream::set_stream_peer, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_stream_class_get_stream_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,13 +51,11 @@ static JSValue packet_peer_stream_class_get_stream_peer(JSContext *ctx, JSValueC
 };
 static JSValue packet_peer_stream_class_set_input_buffer_max_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PacketPeerStream::set_input_buffer_max_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PacketPeerStream::set_input_buffer_max_size, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_stream_class_set_output_buffer_max_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PacketPeerStream::set_output_buffer_max_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PacketPeerStream::set_output_buffer_max_size, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_stream_class_get_input_buffer_max_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -78,10 +74,10 @@ static const JSCFunctionListEntry packet_peer_stream_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_output_buffer_max_size", 0, &packet_peer_stream_class_get_output_buffer_max_size),
 };
 
-void define_packet_peer_stream_property(JSContext *ctx, JSValue obj) {
+static void define_packet_peer_stream_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "input_buffer_max_size"),
         JS_NewCFunction(ctx, packet_peer_stream_class_get_input_buffer_max_size, "get_input_buffer_max_size", 0),
         JS_NewCFunction(ctx, packet_peer_stream_class_set_input_buffer_max_size, "set_input_buffer_max_size", 1),
@@ -89,7 +85,7 @@ void define_packet_peer_stream_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "output_buffer_max_size"),
         JS_NewCFunction(ctx, packet_peer_stream_class_get_output_buffer_max_size, "get_output_buffer_max_size", 0),
         JS_NewCFunction(ctx, packet_peer_stream_class_set_output_buffer_max_size, "set_output_buffer_max_size", 1),
@@ -97,15 +93,16 @@ void define_packet_peer_stream_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "stream_peer"),
         JS_NewCFunction(ctx, packet_peer_stream_class_get_stream_peer, "get_stream_peer", 0),
         JS_NewCFunction(ctx, packet_peer_stream_class_set_stream_peer, "set_stream_peer", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_packet_peer_stream_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_packet_peer_stream_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -121,7 +118,7 @@ static int js_packet_peer_stream_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, PacketPeerStream::__class_id, proto);
 
 	define_packet_peer_stream_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_packet_peer_stream_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, packet_peer_stream_class_proto_funcs, _countof(packet_peer_stream_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, packet_peer_stream_class_constructor, "PacketPeerStream", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/separator.hpp>
 #include <godot_cpp/classes/v_separator.hpp>
+#include <godot_cpp/classes/separator.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue v_separator_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VSeparator::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VSeparator *v_separator_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		v_separator_class = static_cast<VSeparator *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		v_separator_class = static_cast<VSeparator *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		v_separator_class = memnew(VSeparator);
-	}
 	if (!v_separator_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue v_separator_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 
-void define_v_separator_property(JSContext *ctx, JSValue obj) {
+static void define_v_separator_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_v_separator_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_v_separator_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_v_separator_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, VSeparator::__class_id, proto);
 
 	define_v_separator_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_v_separator_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, v_separator_class_constructor, "VSeparator", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

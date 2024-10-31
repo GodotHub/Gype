@@ -7,8 +7,8 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/base_button.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/button_group.hpp>
 #include <godot_cpp/classes/shortcut.hpp>
+#include <godot_cpp/classes/button_group.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue base_button_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, BaseButton::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	BaseButton *base_button_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		base_button_class = static_cast<BaseButton *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		base_button_class = static_cast<BaseButton *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		base_button_class = memnew(BaseButton);
-	}
 	if (!base_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -45,8 +44,7 @@ static JSValue base_button_class_constructor(JSContext *ctx, JSValueConst new_ta
 }
 static JSValue base_button_class_set_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&BaseButton::set_pressed, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&BaseButton::set_pressed, ctx, this_val, argc, argv);
 };
 static JSValue base_button_class_is_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -54,8 +52,7 @@ static JSValue base_button_class_is_pressed(JSContext *ctx, JSValueConst this_va
 };
 static JSValue base_button_class_set_pressed_no_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&BaseButton::set_pressed_no_signal, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&BaseButton::set_pressed_no_signal, ctx, this_val, argc, argv);
 };
 static JSValue base_button_class_is_hovered(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -63,8 +60,7 @@ static JSValue base_button_class_is_hovered(JSContext *ctx, JSValueConst this_va
 };
 static JSValue base_button_class_set_toggle_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&BaseButton::set_toggle_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&BaseButton::set_toggle_mode, ctx, this_val, argc, argv);
 };
 static JSValue base_button_class_is_toggle_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -72,8 +68,7 @@ static JSValue base_button_class_is_toggle_mode(JSContext *ctx, JSValueConst thi
 };
 static JSValue base_button_class_set_shortcut_in_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&BaseButton::set_shortcut_in_tooltip, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&BaseButton::set_shortcut_in_tooltip, ctx, this_val, argc, argv);
 };
 static JSValue base_button_class_is_shortcut_in_tooltip_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -81,8 +76,7 @@ static JSValue base_button_class_is_shortcut_in_tooltip_enabled(JSContext *ctx, 
 };
 static JSValue base_button_class_set_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&BaseButton::set_disabled, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&BaseButton::set_disabled, ctx, this_val, argc, argv);
 };
 static JSValue base_button_class_is_disabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -90,8 +84,7 @@ static JSValue base_button_class_is_disabled(JSContext *ctx, JSValueConst this_v
 };
 static JSValue base_button_class_set_action_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&BaseButton::set_action_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&BaseButton::set_action_mode, ctx, this_val, argc, argv);
 };
 static JSValue base_button_class_get_action_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -99,8 +92,7 @@ static JSValue base_button_class_get_action_mode(JSContext *ctx, JSValueConst th
 };
 static JSValue base_button_class_set_button_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&BaseButton::set_button_mask, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&BaseButton::set_button_mask, ctx, this_val, argc, argv);
 };
 static JSValue base_button_class_get_button_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -112,8 +104,7 @@ static JSValue base_button_class_get_draw_mode(JSContext *ctx, JSValueConst this
 };
 static JSValue base_button_class_set_keep_pressed_outside(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&BaseButton::set_keep_pressed_outside, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&BaseButton::set_keep_pressed_outside, ctx, this_val, argc, argv);
 };
 static JSValue base_button_class_is_keep_pressed_outside(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -121,8 +112,7 @@ static JSValue base_button_class_is_keep_pressed_outside(JSContext *ctx, JSValue
 };
 static JSValue base_button_class_set_shortcut_feedback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&BaseButton::set_shortcut_feedback, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&BaseButton::set_shortcut_feedback, ctx, this_val, argc, argv);
 };
 static JSValue base_button_class_is_shortcut_feedback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -130,8 +120,7 @@ static JSValue base_button_class_is_shortcut_feedback(JSContext *ctx, JSValueCon
 };
 static JSValue base_button_class_set_shortcut(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&BaseButton::set_shortcut, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&BaseButton::set_shortcut, ctx, this_val, argc, argv);
 };
 static JSValue base_button_class_get_shortcut(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -139,8 +128,7 @@ static JSValue base_button_class_get_shortcut(JSContext *ctx, JSValueConst this_
 };
 static JSValue base_button_class_set_button_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&BaseButton::set_button_group, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&BaseButton::set_button_group, ctx, this_val, argc, argv);
 };
 static JSValue base_button_class_get_button_group(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -171,11 +159,51 @@ static const JSCFunctionListEntry base_button_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_button_group", 1, &base_button_class_set_button_group),
 	JS_CFUNC_DEF("get_button_group", 0, &base_button_class_get_button_group),
 };
+static JSValue base_button_class_get_pressed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	BaseButton *opaque = reinterpret_cast<BaseButton *>(JS_GetOpaque(this_val, BaseButton::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "pressed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "pressed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "pressed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue base_button_class_get_button_up_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	BaseButton *opaque = reinterpret_cast<BaseButton *>(JS_GetOpaque(this_val, BaseButton::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "button_up_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "button_up").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "button_up_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue base_button_class_get_button_down_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	BaseButton *opaque = reinterpret_cast<BaseButton *>(JS_GetOpaque(this_val, BaseButton::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "button_down_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "button_down").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "button_down_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue base_button_class_get_toggled_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	BaseButton *opaque = reinterpret_cast<BaseButton *>(JS_GetOpaque(this_val, BaseButton::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "toggled_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "toggled").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "toggled_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_base_button_property(JSContext *ctx, JSValue obj) {
+static void define_base_button_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "disabled"),
         JS_NewCFunction(ctx, base_button_class_is_disabled, "is_disabled", 0),
         JS_NewCFunction(ctx, base_button_class_set_disabled, "set_disabled", 1),
@@ -183,7 +211,7 @@ void define_base_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "toggle_mode"),
         JS_NewCFunction(ctx, base_button_class_is_toggle_mode, "is_toggle_mode", 0),
         JS_NewCFunction(ctx, base_button_class_set_toggle_mode, "set_toggle_mode", 1),
@@ -191,7 +219,7 @@ void define_base_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "button_pressed"),
         JS_NewCFunction(ctx, base_button_class_is_pressed, "is_pressed", 0),
         JS_NewCFunction(ctx, base_button_class_set_pressed, "set_pressed", 1),
@@ -199,7 +227,7 @@ void define_base_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "action_mode"),
         JS_NewCFunction(ctx, base_button_class_get_action_mode, "get_action_mode", 0),
         JS_NewCFunction(ctx, base_button_class_set_action_mode, "set_action_mode", 1),
@@ -207,7 +235,7 @@ void define_base_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "button_mask"),
         JS_NewCFunction(ctx, base_button_class_get_button_mask, "get_button_mask", 0),
         JS_NewCFunction(ctx, base_button_class_set_button_mask, "set_button_mask", 1),
@@ -215,7 +243,7 @@ void define_base_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "keep_pressed_outside"),
         JS_NewCFunction(ctx, base_button_class_is_keep_pressed_outside, "is_keep_pressed_outside", 0),
         JS_NewCFunction(ctx, base_button_class_set_keep_pressed_outside, "set_keep_pressed_outside", 1),
@@ -223,7 +251,7 @@ void define_base_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "button_group"),
         JS_NewCFunction(ctx, base_button_class_get_button_group, "get_button_group", 0),
         JS_NewCFunction(ctx, base_button_class_set_button_group, "set_button_group", 1),
@@ -231,7 +259,7 @@ void define_base_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "shortcut"),
         JS_NewCFunction(ctx, base_button_class_get_shortcut, "get_shortcut", 0),
         JS_NewCFunction(ctx, base_button_class_set_shortcut, "set_shortcut", 1),
@@ -239,7 +267,7 @@ void define_base_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "shortcut_feedback"),
         JS_NewCFunction(ctx, base_button_class_is_shortcut_feedback, "is_shortcut_feedback", 0),
         JS_NewCFunction(ctx, base_button_class_set_shortcut_feedback, "set_shortcut_feedback", 1),
@@ -247,15 +275,48 @@ void define_base_button_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "shortcut_in_tooltip"),
         JS_NewCFunction(ctx, base_button_class_is_shortcut_in_tooltip_enabled, "is_shortcut_in_tooltip_enabled", 0),
         JS_NewCFunction(ctx, base_button_class_set_shortcut_in_tooltip, "set_shortcut_in_tooltip", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "pressed"),
+		JS_NewCFunction(ctx, base_button_class_get_pressed_signal, "get_pressed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "button_up"),
+		JS_NewCFunction(ctx, base_button_class_get_button_up_signal, "get_button_up_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "button_down"),
+		JS_NewCFunction(ctx, base_button_class_get_button_down_signal, "get_button_down_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "toggled"),
+		JS_NewCFunction(ctx, base_button_class_get_toggled_signal, "get_toggled_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_base_button_enum(JSContext *ctx, JSValue proto) {
 	JSValue DrawMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, DrawMode_obj, "DRAW_NORMAL", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, DrawMode_obj, "DRAW_PRESSED", JS_NewInt64(ctx, 1));
@@ -282,7 +343,7 @@ static int js_base_button_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, BaseButton::__class_id, proto);
 
 	define_base_button_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_base_button_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, base_button_class_proto_funcs, _countof(base_button_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, base_button_class_constructor, "BaseButton", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

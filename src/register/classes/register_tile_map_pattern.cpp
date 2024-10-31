@@ -27,13 +27,12 @@ static JSValue tile_map_pattern_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TileMapPattern::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	TileMapPattern *tile_map_pattern_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		tile_map_pattern_class = static_cast<TileMapPattern *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		tile_map_pattern_class = static_cast<TileMapPattern *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		tile_map_pattern_class = memnew(TileMapPattern);
-	}
 	if (!tile_map_pattern_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue tile_map_pattern_class_constructor(JSContext *ctx, JSValueConst n
 }
 static JSValue tile_map_pattern_class_set_cell(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileMapPattern::set_cell, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TileMapPattern::set_cell, ctx, this_val, argc, argv);
 };
 static JSValue tile_map_pattern_class_has_cell(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue tile_map_pattern_class_has_cell(JSContext *ctx, JSValueConst this
 };
 static JSValue tile_map_pattern_class_remove_cell(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileMapPattern::remove_cell, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TileMapPattern::remove_cell, ctx, this_val, argc, argv);
 };
 static JSValue tile_map_pattern_class_get_cell_source_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -77,8 +74,7 @@ static JSValue tile_map_pattern_class_get_size(JSContext *ctx, JSValueConst this
 };
 static JSValue tile_map_pattern_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TileMapPattern::set_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TileMapPattern::set_size, ctx, this_val, argc, argv);
 };
 static JSValue tile_map_pattern_class_is_empty(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -97,10 +93,11 @@ static const JSCFunctionListEntry tile_map_pattern_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_empty", 0, &tile_map_pattern_class_is_empty),
 };
 
-void define_tile_map_pattern_property(JSContext *ctx, JSValue obj) {
+static void define_tile_map_pattern_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_tile_map_pattern_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_tile_map_pattern_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -116,7 +113,7 @@ static int js_tile_map_pattern_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, TileMapPattern::__class_id, proto);
 
 	define_tile_map_pattern_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_tile_map_pattern_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, tile_map_pattern_class_proto_funcs, _countof(tile_map_pattern_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, tile_map_pattern_class_constructor, "TileMapPattern", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

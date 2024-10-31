@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node3d_gizmo.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/node3d_gizmo.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue node3d_gizmo_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Node3DGizmo::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Node3DGizmo *node3d_gizmo_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		node3d_gizmo_class = static_cast<Node3DGizmo *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		node3d_gizmo_class = static_cast<Node3DGizmo *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		node3d_gizmo_class = memnew(Node3DGizmo);
-	}
 	if (!node3d_gizmo_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue node3d_gizmo_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 
-void define_node3d_gizmo_property(JSContext *ctx, JSValue obj) {
+static void define_node3d_gizmo_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_node3d_gizmo_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_node3d_gizmo_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_node3d_gizmo_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Node3DGizmo::__class_id, proto);
 
 	define_node3d_gizmo_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_node3d_gizmo_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, node3d_gizmo_class_constructor, "Node3DGizmo", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

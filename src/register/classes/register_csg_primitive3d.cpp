@@ -27,13 +27,12 @@ static JSValue csg_primitive3d_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CSGPrimitive3D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	CSGPrimitive3D *csg_primitive3d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		csg_primitive3d_class = static_cast<CSGPrimitive3D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		csg_primitive3d_class = static_cast<CSGPrimitive3D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		csg_primitive3d_class = memnew(CSGPrimitive3D);
-	}
 	if (!csg_primitive3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue csg_primitive3d_class_constructor(JSContext *ctx, JSValueConst ne
 }
 static JSValue csg_primitive3d_class_set_flip_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&CSGPrimitive3D::set_flip_faces, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&CSGPrimitive3D::set_flip_faces, ctx, this_val, argc, argv);
 };
 static JSValue csg_primitive3d_class_get_flip_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry csg_primitive3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_flip_faces", 0, &csg_primitive3d_class_get_flip_faces),
 };
 
-void define_csg_primitive3d_property(JSContext *ctx, JSValue obj) {
+static void define_csg_primitive3d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "flip_faces"),
         JS_NewCFunction(ctx, csg_primitive3d_class_get_flip_faces, "get_flip_faces", 0),
         JS_NewCFunction(ctx, csg_primitive3d_class_set_flip_faces, "set_flip_faces", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_csg_primitive3d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_csg_primitive3d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -82,7 +81,7 @@ static int js_csg_primitive3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, CSGPrimitive3D::__class_id, proto);
 
 	define_csg_primitive3d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_csg_primitive3d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, csg_primitive3d_class_proto_funcs, _countof(csg_primitive3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, csg_primitive3d_class_constructor, "CSGPrimitive3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/text_line.hpp>
+#include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue text_line_class_constructor(JSContext *ctx, JSValueConst new_targ
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, TextLine::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	TextLine *text_line_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		text_line_class = static_cast<TextLine *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		text_line_class = static_cast<TextLine *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		text_line_class = memnew(TextLine);
-	}
 	if (!text_line_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,13 +43,11 @@ static JSValue text_line_class_constructor(JSContext *ctx, JSValueConst new_targ
 }
 static JSValue text_line_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextLine::clear, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextLine::clear, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_set_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextLine::set_direction, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextLine::set_direction, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_get_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -58,8 +55,7 @@ static JSValue text_line_class_get_direction(JSContext *ctx, JSValueConst this_v
 };
 static JSValue text_line_class_set_orientation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextLine::set_orientation, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextLine::set_orientation, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_get_orientation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -67,8 +63,7 @@ static JSValue text_line_class_get_orientation(JSContext *ctx, JSValueConst this
 };
 static JSValue text_line_class_set_preserve_invalid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextLine::set_preserve_invalid, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextLine::set_preserve_invalid, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_get_preserve_invalid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -76,8 +71,7 @@ static JSValue text_line_class_get_preserve_invalid(JSContext *ctx, JSValueConst
 };
 static JSValue text_line_class_set_preserve_control(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextLine::set_preserve_control, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextLine::set_preserve_control, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_get_preserve_control(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -85,8 +79,7 @@ static JSValue text_line_class_get_preserve_control(JSContext *ctx, JSValueConst
 };
 static JSValue text_line_class_set_bidi_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextLine::set_bidi_override, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextLine::set_bidi_override, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_add_string(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -102,8 +95,7 @@ static JSValue text_line_class_resize_object(JSContext *ctx, JSValueConst this_v
 };
 static JSValue text_line_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextLine::set_width, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextLine::set_width, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_get_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -111,8 +103,7 @@ static JSValue text_line_class_get_width(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue text_line_class_set_horizontal_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextLine::set_horizontal_alignment, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextLine::set_horizontal_alignment, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_get_horizontal_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -120,13 +111,11 @@ static JSValue text_line_class_get_horizontal_alignment(JSContext *ctx, JSValueC
 };
 static JSValue text_line_class_tab_align(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextLine::tab_align, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextLine::tab_align, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_set_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextLine::set_flags, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextLine::set_flags, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_get_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -134,8 +123,7 @@ static JSValue text_line_class_get_flags(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue text_line_class_set_text_overrun_behavior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextLine::set_text_overrun_behavior, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextLine::set_text_overrun_behavior, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_get_text_overrun_behavior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -143,8 +131,7 @@ static JSValue text_line_class_get_text_overrun_behavior(JSContext *ctx, JSValue
 };
 static JSValue text_line_class_set_ellipsis_char(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&TextLine::set_ellipsis_char, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&TextLine::set_ellipsis_char, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_get_ellipsis_char(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -188,13 +175,11 @@ static JSValue text_line_class_get_line_underline_thickness(JSContext *ctx, JSVa
 };
 static JSValue text_line_class_draw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_const_method_no_ret(&TextLine::draw, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_const_method_no_ret(&TextLine::draw, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_draw_outline(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_const_method_no_ret(&TextLine::draw_outline, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_const_method_no_ret(&TextLine::draw_outline, ctx, this_val, argc, argv);
 };
 static JSValue text_line_class_hit_test(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -239,10 +224,10 @@ static const JSCFunctionListEntry text_line_class_proto_funcs[] = {
 	JS_CFUNC_DEF("hit_test", 1, &text_line_class_hit_test),
 };
 
-void define_text_line_property(JSContext *ctx, JSValue obj) {
+static void define_text_line_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "direction"),
         JS_NewCFunction(ctx, text_line_class_get_direction, "get_direction", 0),
         JS_NewCFunction(ctx, text_line_class_set_direction, "set_direction", 1),
@@ -250,7 +235,7 @@ void define_text_line_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "orientation"),
         JS_NewCFunction(ctx, text_line_class_get_orientation, "get_orientation", 0),
         JS_NewCFunction(ctx, text_line_class_set_orientation, "set_orientation", 1),
@@ -258,7 +243,7 @@ void define_text_line_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "preserve_invalid"),
         JS_NewCFunction(ctx, text_line_class_get_preserve_invalid, "get_preserve_invalid", 0),
         JS_NewCFunction(ctx, text_line_class_set_preserve_invalid, "set_preserve_invalid", 1),
@@ -266,7 +251,7 @@ void define_text_line_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "preserve_control"),
         JS_NewCFunction(ctx, text_line_class_get_preserve_control, "get_preserve_control", 0),
         JS_NewCFunction(ctx, text_line_class_set_preserve_control, "set_preserve_control", 1),
@@ -274,7 +259,7 @@ void define_text_line_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "width"),
         JS_NewCFunction(ctx, text_line_class_get_width, "get_width", 0),
         JS_NewCFunction(ctx, text_line_class_set_width, "set_width", 1),
@@ -282,7 +267,7 @@ void define_text_line_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "alignment"),
         JS_NewCFunction(ctx, text_line_class_get_horizontal_alignment, "get_horizontal_alignment", 0),
         JS_NewCFunction(ctx, text_line_class_set_horizontal_alignment, "set_horizontal_alignment", 1),
@@ -290,7 +275,7 @@ void define_text_line_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "flags"),
         JS_NewCFunction(ctx, text_line_class_get_flags, "get_flags", 0),
         JS_NewCFunction(ctx, text_line_class_set_flags, "set_flags", 1),
@@ -298,7 +283,7 @@ void define_text_line_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "text_overrun_behavior"),
         JS_NewCFunction(ctx, text_line_class_get_text_overrun_behavior, "get_text_overrun_behavior", 0),
         JS_NewCFunction(ctx, text_line_class_set_text_overrun_behavior, "set_text_overrun_behavior", 1),
@@ -306,15 +291,16 @@ void define_text_line_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "ellipsis_char"),
         JS_NewCFunction(ctx, text_line_class_get_ellipsis_char, "get_ellipsis_char", 0),
         JS_NewCFunction(ctx, text_line_class_set_ellipsis_char, "set_ellipsis_char", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_text_line_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_text_line_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -330,7 +316,7 @@ static int js_text_line_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, TextLine::__class_id, proto);
 
 	define_text_line_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_text_line_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, text_line_class_proto_funcs, _countof(text_line_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, text_line_class_constructor, "TextLine", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

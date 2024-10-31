@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/sub_viewport.hpp>
 #include <godot_cpp/classes/viewport.hpp>
+#include <godot_cpp/classes/sub_viewport.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue sub_viewport_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SubViewport::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	SubViewport *sub_viewport_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		sub_viewport_class = static_cast<SubViewport *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		sub_viewport_class = static_cast<SubViewport *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		sub_viewport_class = memnew(SubViewport);
-	}
 	if (!sub_viewport_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue sub_viewport_class_constructor(JSContext *ctx, JSValueConst new_t
 }
 static JSValue sub_viewport_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SubViewport::set_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SubViewport::set_size, ctx, this_val, argc, argv);
 };
 static JSValue sub_viewport_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue sub_viewport_class_get_size(JSContext *ctx, JSValueConst this_val
 };
 static JSValue sub_viewport_class_set_size_2d_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SubViewport::set_size_2d_override, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SubViewport::set_size_2d_override, ctx, this_val, argc, argv);
 };
 static JSValue sub_viewport_class_get_size_2d_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue sub_viewport_class_get_size_2d_override(JSContext *ctx, JSValueCo
 };
 static JSValue sub_viewport_class_set_size_2d_override_stretch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SubViewport::set_size_2d_override_stretch, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SubViewport::set_size_2d_override_stretch, ctx, this_val, argc, argv);
 };
 static JSValue sub_viewport_class_is_size_2d_override_stretch_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue sub_viewport_class_is_size_2d_override_stretch_enabled(JSContext 
 };
 static JSValue sub_viewport_class_set_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SubViewport::set_update_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SubViewport::set_update_mode, ctx, this_val, argc, argv);
 };
 static JSValue sub_viewport_class_get_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue sub_viewport_class_get_update_mode(JSContext *ctx, JSValueConst t
 };
 static JSValue sub_viewport_class_set_clear_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SubViewport::set_clear_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SubViewport::set_clear_mode, ctx, this_val, argc, argv);
 };
 static JSValue sub_viewport_class_get_clear_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -99,10 +93,10 @@ static const JSCFunctionListEntry sub_viewport_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_clear_mode", 0, &sub_viewport_class_get_clear_mode),
 };
 
-void define_sub_viewport_property(JSContext *ctx, JSValue obj) {
+static void define_sub_viewport_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, sub_viewport_class_get_size, "get_size", 0),
         JS_NewCFunction(ctx, sub_viewport_class_set_size, "set_size", 1),
@@ -110,7 +104,7 @@ void define_sub_viewport_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "size_2d_override"),
         JS_NewCFunction(ctx, sub_viewport_class_get_size_2d_override, "get_size_2d_override", 0),
         JS_NewCFunction(ctx, sub_viewport_class_set_size_2d_override, "set_size_2d_override", 1),
@@ -118,7 +112,7 @@ void define_sub_viewport_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "size_2d_override_stretch"),
         JS_NewCFunction(ctx, sub_viewport_class_is_size_2d_override_stretch_enabled, "is_size_2d_override_stretch_enabled", 0),
         JS_NewCFunction(ctx, sub_viewport_class_set_size_2d_override_stretch, "set_size_2d_override_stretch", 1),
@@ -126,7 +120,7 @@ void define_sub_viewport_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "render_target_clear_mode"),
         JS_NewCFunction(ctx, sub_viewport_class_get_clear_mode, "get_clear_mode", 0),
         JS_NewCFunction(ctx, sub_viewport_class_set_clear_mode, "set_clear_mode", 1),
@@ -134,15 +128,16 @@ void define_sub_viewport_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "render_target_update_mode"),
         JS_NewCFunction(ctx, sub_viewport_class_get_update_mode, "get_update_mode", 0),
         JS_NewCFunction(ctx, sub_viewport_class_set_update_mode, "set_update_mode", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_sub_viewport_enum(JSContext *ctx, JSValue proto) {
 	JSValue ClearMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, ClearMode_obj, "CLEAR_MODE_ALWAYS", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, ClearMode_obj, "CLEAR_MODE_NEVER", JS_NewInt64(ctx, 1));
@@ -170,7 +165,7 @@ static int js_sub_viewport_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, SubViewport::__class_id, proto);
 
 	define_sub_viewport_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_sub_viewport_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, sub_viewport_class_proto_funcs, _countof(sub_viewport_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, sub_viewport_class_constructor, "SubViewport", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

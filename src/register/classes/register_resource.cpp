@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue resource_class_constructor(JSContext *ctx, JSValueConst new_targe
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Resource::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Resource *resource_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		resource_class = static_cast<Resource *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		resource_class = static_cast<Resource *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		resource_class = memnew(Resource);
-	}
 	if (!resource_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,13 +43,11 @@ static JSValue resource_class_constructor(JSContext *ctx, JSValueConst new_targe
 }
 static JSValue resource_class_set_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Resource::set_path, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Resource::set_path, ctx, this_val, argc, argv);
 };
 static JSValue resource_class_take_over_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Resource::take_over_path, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Resource::take_over_path, ctx, this_val, argc, argv);
 };
 static JSValue resource_class_get_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -58,8 +55,7 @@ static JSValue resource_class_get_path(JSContext *ctx, JSValueConst this_val, in
 };
 static JSValue resource_class_set_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Resource::set_name, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Resource::set_name, ctx, this_val, argc, argv);
 };
 static JSValue resource_class_get_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -71,8 +67,7 @@ static JSValue resource_class_get_rid(JSContext *ctx, JSValueConst this_val, int
 };
 static JSValue resource_class_set_local_to_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Resource::set_local_to_scene, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Resource::set_local_to_scene, ctx, this_val, argc, argv);
 };
 static JSValue resource_class_is_local_to_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -84,13 +79,11 @@ static JSValue resource_class_get_local_scene(JSContext *ctx, JSValueConst this_
 };
 static JSValue resource_class_setup_local_to_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Resource::setup_local_to_scene, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Resource::setup_local_to_scene, ctx, this_val, argc, argv);
 };
 static JSValue resource_class_set_scene_unique_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Resource::set_scene_unique_id, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Resource::set_scene_unique_id, ctx, this_val, argc, argv);
 };
 static JSValue resource_class_get_scene_unique_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -98,8 +91,7 @@ static JSValue resource_class_get_scene_unique_id(JSContext *ctx, JSValueConst t
 };
 static JSValue resource_class_emit_changed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Resource::emit_changed, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Resource::emit_changed, ctx, this_val, argc, argv);
 };
 static JSValue resource_class_duplicate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -127,11 +119,31 @@ static const JSCFunctionListEntry resource_class_proto_funcs[] = {
 static const JSCFunctionListEntry resource_class_static_funcs[] = {
 	JS_CFUNC_DEF("generate_scene_unique_id", 0, &resource_class_generate_scene_unique_id),
 };
+static JSValue resource_class_get_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	Resource *opaque = reinterpret_cast<Resource *>(JS_GetOpaque(this_val, Resource::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
+static JSValue resource_class_get_setup_local_to_scene_requested_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	Resource *opaque = reinterpret_cast<Resource *>(JS_GetOpaque(this_val, Resource::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "setup_local_to_scene_requested_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "setup_local_to_scene_requested").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "setup_local_to_scene_requested_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_resource_property(JSContext *ctx, JSValue obj) {
+static void define_resource_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "resource_local_to_scene"),
         JS_NewCFunction(ctx, resource_class_is_local_to_scene, "is_local_to_scene", 0),
         JS_NewCFunction(ctx, resource_class_set_local_to_scene, "set_local_to_scene", 1),
@@ -139,7 +151,7 @@ void define_resource_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "resource_path"),
         JS_NewCFunction(ctx, resource_class_get_path, "get_path", 0),
         JS_NewCFunction(ctx, resource_class_set_path, "set_path", 1),
@@ -147,7 +159,7 @@ void define_resource_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "resource_name"),
         JS_NewCFunction(ctx, resource_class_get_name, "get_name", 0),
         JS_NewCFunction(ctx, resource_class_set_name, "set_name", 1),
@@ -155,15 +167,32 @@ void define_resource_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "resource_scene_unique_id"),
         JS_NewCFunction(ctx, resource_class_get_scene_unique_id, "get_scene_unique_id", 0),
         JS_NewCFunction(ctx, resource_class_set_scene_unique_id, "set_scene_unique_id", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "changed"),
+		JS_NewCFunction(ctx, resource_class_get_changed_signal, "get_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "setup_local_to_scene_requested"),
+		JS_NewCFunction(ctx, resource_class_get_setup_local_to_scene_requested_signal, "get_setup_local_to_scene_requested_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_resource_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_resource_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -179,7 +208,7 @@ static int js_resource_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Resource::__class_id, proto);
 
 	define_resource_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_resource_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, resource_class_proto_funcs, _countof(resource_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, resource_class_constructor, "Resource", 0, JS_CFUNC_constructor, 0);
 	JS_SetPropertyFunctionList(ctx, ctor, resource_class_static_funcs, _countof(resource_class_static_funcs));

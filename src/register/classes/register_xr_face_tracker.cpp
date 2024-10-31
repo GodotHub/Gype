@@ -27,13 +27,12 @@ static JSValue xr_face_tracker_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, XRFaceTracker::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	XRFaceTracker *xr_face_tracker_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		xr_face_tracker_class = static_cast<XRFaceTracker *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		xr_face_tracker_class = static_cast<XRFaceTracker *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		xr_face_tracker_class = memnew(XRFaceTracker);
-	}
 	if (!xr_face_tracker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -47,8 +46,7 @@ static JSValue xr_face_tracker_class_get_blend_shape(JSContext *ctx, JSValueCons
 };
 static JSValue xr_face_tracker_class_set_blend_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRFaceTracker::set_blend_shape, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRFaceTracker::set_blend_shape, ctx, this_val, argc, argv);
 };
 static JSValue xr_face_tracker_class_get_blend_shapes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,8 +54,7 @@ static JSValue xr_face_tracker_class_get_blend_shapes(JSContext *ctx, JSValueCon
 };
 static JSValue xr_face_tracker_class_set_blend_shapes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&XRFaceTracker::set_blend_shapes, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&XRFaceTracker::set_blend_shapes, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry xr_face_tracker_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_blend_shape", 1, &xr_face_tracker_class_get_blend_shape),
@@ -66,18 +63,19 @@ static const JSCFunctionListEntry xr_face_tracker_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_blend_shapes", 1, &xr_face_tracker_class_set_blend_shapes),
 };
 
-void define_xr_face_tracker_property(JSContext *ctx, JSValue obj) {
+static void define_xr_face_tracker_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "blend_shapes"),
         JS_NewCFunction(ctx, xr_face_tracker_class_get_blend_shapes, "get_blend_shapes", 0),
         JS_NewCFunction(ctx, xr_face_tracker_class_set_blend_shapes, "set_blend_shapes", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_xr_face_tracker_enum(JSContext *ctx, JSValue proto) {
 	JSValue BlendShapeEntry_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, BlendShapeEntry_obj, "FT_EYE_LOOK_OUT_RIGHT", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, BlendShapeEntry_obj, "FT_EYE_LOOK_IN_RIGHT", JS_NewInt64(ctx, 1));
@@ -239,7 +237,7 @@ static int js_xr_face_tracker_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, XRFaceTracker::__class_id, proto);
 
 	define_xr_face_tracker_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_xr_face_tracker_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, xr_face_tracker_class_proto_funcs, _countof(xr_face_tracker_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, xr_face_tracker_class_constructor, "XRFaceTracker", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

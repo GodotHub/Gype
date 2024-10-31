@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/stream_peer_tls.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
-#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue stream_peer_tls_class_constructor(JSContext *ctx, JSValueConst ne
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, StreamPeerTLS::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	StreamPeerTLS *stream_peer_tls_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		stream_peer_tls_class = static_cast<StreamPeerTLS *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		stream_peer_tls_class = static_cast<StreamPeerTLS *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		stream_peer_tls_class = memnew(StreamPeerTLS);
-	}
 	if (!stream_peer_tls_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue stream_peer_tls_class_constructor(JSContext *ctx, JSValueConst ne
 }
 static JSValue stream_peer_tls_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StreamPeerTLS::poll, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&StreamPeerTLS::poll, ctx, this_val, argc, argv);
 };
 static JSValue stream_peer_tls_class_accept_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -65,8 +63,7 @@ static JSValue stream_peer_tls_class_get_stream(JSContext *ctx, JSValueConst thi
 };
 static JSValue stream_peer_tls_class_disconnect_from_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&StreamPeerTLS::disconnect_from_stream, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&StreamPeerTLS::disconnect_from_stream, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry stream_peer_tls_class_proto_funcs[] = {
 	JS_CFUNC_DEF("poll", 0, &stream_peer_tls_class_poll),
@@ -77,10 +74,11 @@ static const JSCFunctionListEntry stream_peer_tls_class_proto_funcs[] = {
 	JS_CFUNC_DEF("disconnect_from_stream", 0, &stream_peer_tls_class_disconnect_from_stream),
 };
 
-void define_stream_peer_tls_property(JSContext *ctx, JSValue obj) {
+static void define_stream_peer_tls_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_stream_peer_tls_enum(JSContext *ctx, JSValue proto) {
 	JSValue Status_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Status_obj, "STATUS_DISCONNECTED", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Status_obj, "STATUS_HANDSHAKING", JS_NewInt64(ctx, 1));
@@ -103,7 +101,7 @@ static int js_stream_peer_tls_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, StreamPeerTLS::__class_id, proto);
 
 	define_stream_peer_tls_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_stream_peer_tls_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, stream_peer_tls_class_proto_funcs, _countof(stream_peer_tls_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, stream_peer_tls_class_constructor, "StreamPeerTLS", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

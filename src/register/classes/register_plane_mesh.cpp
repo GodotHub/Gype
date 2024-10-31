@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/classes/plane_mesh.hpp>
+#include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue plane_mesh_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PlaneMesh::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PlaneMesh *plane_mesh_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		plane_mesh_class = static_cast<PlaneMesh *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		plane_mesh_class = static_cast<PlaneMesh *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		plane_mesh_class = memnew(PlaneMesh);
-	}
 	if (!plane_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue plane_mesh_class_constructor(JSContext *ctx, JSValueConst new_tar
 }
 static JSValue plane_mesh_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PlaneMesh::set_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PlaneMesh::set_size, ctx, this_val, argc, argv);
 };
 static JSValue plane_mesh_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue plane_mesh_class_get_size(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue plane_mesh_class_set_subdivide_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PlaneMesh::set_subdivide_width, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PlaneMesh::set_subdivide_width, ctx, this_val, argc, argv);
 };
 static JSValue plane_mesh_class_get_subdivide_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue plane_mesh_class_get_subdivide_width(JSContext *ctx, JSValueConst
 };
 static JSValue plane_mesh_class_set_subdivide_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PlaneMesh::set_subdivide_depth, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PlaneMesh::set_subdivide_depth, ctx, this_val, argc, argv);
 };
 static JSValue plane_mesh_class_get_subdivide_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue plane_mesh_class_get_subdivide_depth(JSContext *ctx, JSValueConst
 };
 static JSValue plane_mesh_class_set_center_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PlaneMesh::set_center_offset, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PlaneMesh::set_center_offset, ctx, this_val, argc, argv);
 };
 static JSValue plane_mesh_class_get_center_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue plane_mesh_class_get_center_offset(JSContext *ctx, JSValueConst t
 };
 static JSValue plane_mesh_class_set_orientation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PlaneMesh::set_orientation, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PlaneMesh::set_orientation, ctx, this_val, argc, argv);
 };
 static JSValue plane_mesh_class_get_orientation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -99,10 +93,10 @@ static const JSCFunctionListEntry plane_mesh_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_orientation", 0, &plane_mesh_class_get_orientation),
 };
 
-void define_plane_mesh_property(JSContext *ctx, JSValue obj) {
+static void define_plane_mesh_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, plane_mesh_class_get_size, "get_size", 0),
         JS_NewCFunction(ctx, plane_mesh_class_set_size, "set_size", 1),
@@ -110,7 +104,7 @@ void define_plane_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "subdivide_width"),
         JS_NewCFunction(ctx, plane_mesh_class_get_subdivide_width, "get_subdivide_width", 0),
         JS_NewCFunction(ctx, plane_mesh_class_set_subdivide_width, "set_subdivide_width", 1),
@@ -118,7 +112,7 @@ void define_plane_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "subdivide_depth"),
         JS_NewCFunction(ctx, plane_mesh_class_get_subdivide_depth, "get_subdivide_depth", 0),
         JS_NewCFunction(ctx, plane_mesh_class_set_subdivide_depth, "set_subdivide_depth", 1),
@@ -126,7 +120,7 @@ void define_plane_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "center_offset"),
         JS_NewCFunction(ctx, plane_mesh_class_get_center_offset, "get_center_offset", 0),
         JS_NewCFunction(ctx, plane_mesh_class_set_center_offset, "set_center_offset", 1),
@@ -134,15 +128,16 @@ void define_plane_mesh_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "orientation"),
         JS_NewCFunction(ctx, plane_mesh_class_get_orientation, "get_orientation", 0),
         JS_NewCFunction(ctx, plane_mesh_class_set_orientation, "set_orientation", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_plane_mesh_enum(JSContext *ctx, JSValue proto) {
 	JSValue Orientation_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Orientation_obj, "FACE_X", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Orientation_obj, "FACE_Y", JS_NewInt64(ctx, 1));
@@ -163,7 +158,7 @@ static int js_plane_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, PlaneMesh::__class_id, proto);
 
 	define_plane_mesh_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_plane_mesh_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, plane_mesh_class_proto_funcs, _countof(plane_mesh_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, plane_mesh_class_constructor, "PlaneMesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -27,13 +27,12 @@ static JSValue aspect_ratio_container_class_constructor(JSContext *ctx, JSValueC
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AspectRatioContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AspectRatioContainer *aspect_ratio_container_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		aspect_ratio_container_class = static_cast<AspectRatioContainer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		aspect_ratio_container_class = static_cast<AspectRatioContainer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		aspect_ratio_container_class = memnew(AspectRatioContainer);
-	}
 	if (!aspect_ratio_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue aspect_ratio_container_class_constructor(JSContext *ctx, JSValueC
 }
 static JSValue aspect_ratio_container_class_set_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AspectRatioContainer::set_ratio, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AspectRatioContainer::set_ratio, ctx, this_val, argc, argv);
 };
 static JSValue aspect_ratio_container_class_get_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue aspect_ratio_container_class_get_ratio(JSContext *ctx, JSValueCon
 };
 static JSValue aspect_ratio_container_class_set_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AspectRatioContainer::set_stretch_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AspectRatioContainer::set_stretch_mode, ctx, this_val, argc, argv);
 };
 static JSValue aspect_ratio_container_class_get_stretch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue aspect_ratio_container_class_get_stretch_mode(JSContext *ctx, JSV
 };
 static JSValue aspect_ratio_container_class_set_alignment_horizontal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AspectRatioContainer::set_alignment_horizontal, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AspectRatioContainer::set_alignment_horizontal, ctx, this_val, argc, argv);
 };
 static JSValue aspect_ratio_container_class_get_alignment_horizontal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue aspect_ratio_container_class_get_alignment_horizontal(JSContext *
 };
 static JSValue aspect_ratio_container_class_set_alignment_vertical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AspectRatioContainer::set_alignment_vertical, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AspectRatioContainer::set_alignment_vertical, ctx, this_val, argc, argv);
 };
 static JSValue aspect_ratio_container_class_get_alignment_vertical(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,10 +83,10 @@ static const JSCFunctionListEntry aspect_ratio_container_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_alignment_vertical", 0, &aspect_ratio_container_class_get_alignment_vertical),
 };
 
-void define_aspect_ratio_container_property(JSContext *ctx, JSValue obj) {
+static void define_aspect_ratio_container_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "ratio"),
         JS_NewCFunction(ctx, aspect_ratio_container_class_get_ratio, "get_ratio", 0),
         JS_NewCFunction(ctx, aspect_ratio_container_class_set_ratio, "set_ratio", 1),
@@ -99,7 +94,7 @@ void define_aspect_ratio_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "stretch_mode"),
         JS_NewCFunction(ctx, aspect_ratio_container_class_get_stretch_mode, "get_stretch_mode", 0),
         JS_NewCFunction(ctx, aspect_ratio_container_class_set_stretch_mode, "set_stretch_mode", 1),
@@ -107,7 +102,7 @@ void define_aspect_ratio_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "alignment_horizontal"),
         JS_NewCFunction(ctx, aspect_ratio_container_class_get_alignment_horizontal, "get_alignment_horizontal", 0),
         JS_NewCFunction(ctx, aspect_ratio_container_class_set_alignment_horizontal, "set_alignment_horizontal", 1),
@@ -115,15 +110,16 @@ void define_aspect_ratio_container_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "alignment_vertical"),
         JS_NewCFunction(ctx, aspect_ratio_container_class_get_alignment_vertical, "get_alignment_vertical", 0),
         JS_NewCFunction(ctx, aspect_ratio_container_class_set_alignment_vertical, "set_alignment_vertical", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_aspect_ratio_container_enum(JSContext *ctx, JSValue proto) {
 	JSValue StretchMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, StretchMode_obj, "STRETCH_WIDTH_CONTROLS_HEIGHT", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, StretchMode_obj, "STRETCH_HEIGHT_CONTROLS_WIDTH", JS_NewInt64(ctx, 1));
@@ -150,7 +146,7 @@ static int js_aspect_ratio_container_class_init(JSContext *ctx, JSModuleDef *m) 
 	JS_SetClassProto(ctx, AspectRatioContainer::__class_id, proto);
 
 	define_aspect_ratio_container_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_aspect_ratio_container_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, aspect_ratio_container_class_proto_funcs, _countof(aspect_ratio_container_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, aspect_ratio_container_class_constructor, "AspectRatioContainer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

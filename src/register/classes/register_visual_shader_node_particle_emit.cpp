@@ -27,13 +27,12 @@ static JSValue visual_shader_node_particle_emit_class_constructor(JSContext *ctx
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeParticleEmit::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeParticleEmit *visual_shader_node_particle_emit_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_particle_emit_class = static_cast<VisualShaderNodeParticleEmit *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_particle_emit_class = static_cast<VisualShaderNodeParticleEmit *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_particle_emit_class = memnew(VisualShaderNodeParticleEmit);
-	}
 	if (!visual_shader_node_particle_emit_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue visual_shader_node_particle_emit_class_constructor(JSContext *ctx
 }
 static JSValue visual_shader_node_particle_emit_class_set_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeParticleEmit::set_flags, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeParticleEmit::set_flags, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_particle_emit_class_get_flags(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry visual_shader_node_particle_emit_class_proto_f
 	JS_CFUNC_DEF("get_flags", 0, &visual_shader_node_particle_emit_class_get_flags),
 };
 
-void define_visual_shader_node_particle_emit_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_particle_emit_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "flags"),
         JS_NewCFunction(ctx, visual_shader_node_particle_emit_class_get_flags, "get_flags", 0),
         JS_NewCFunction(ctx, visual_shader_node_particle_emit_class_set_flags, "set_flags", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_particle_emit_enum(JSContext *ctx, JSValue proto) {
 	JSValue EmitFlags_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, EmitFlags_obj, "EMIT_FLAG_POSITION", JS_NewInt64(ctx, 1));
 	JS_SetPropertyStr(ctx, EmitFlags_obj, "EMIT_FLAG_ROT_SCALE", JS_NewInt64(ctx, 2));
@@ -89,7 +88,7 @@ static int js_visual_shader_node_particle_emit_class_init(JSContext *ctx, JSModu
 	JS_SetClassProto(ctx, VisualShaderNodeParticleEmit::__class_id, proto);
 
 	define_visual_shader_node_particle_emit_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_particle_emit_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_particle_emit_class_proto_funcs, _countof(visual_shader_node_particle_emit_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_particle_emit_class_constructor, "VisualShaderNodeParticleEmit", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

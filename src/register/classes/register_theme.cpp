@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/theme.hpp>
-#include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/style_box.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,13 +30,12 @@ static JSValue theme_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Theme::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Theme *theme_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		theme_class = static_cast<Theme *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		theme_class = static_cast<Theme *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		theme_class = memnew(Theme);
-	}
 	if (!theme_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -46,8 +45,7 @@ static JSValue theme_class_constructor(JSContext *ctx, JSValueConst new_target, 
 }
 static JSValue theme_class_set_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::set_icon, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::set_icon, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -59,13 +57,11 @@ static JSValue theme_class_has_icon(JSContext *ctx, JSValueConst this_val, int a
 };
 static JSValue theme_class_rename_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::rename_icon, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::rename_icon, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_clear_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::clear_icon, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::clear_icon, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_icon_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -77,8 +73,7 @@ static JSValue theme_class_get_icon_type_list(JSContext *ctx, JSValueConst this_
 };
 static JSValue theme_class_set_stylebox(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::set_stylebox, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::set_stylebox, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_stylebox(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -90,13 +85,11 @@ static JSValue theme_class_has_stylebox(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue theme_class_rename_stylebox(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::rename_stylebox, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::rename_stylebox, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_clear_stylebox(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::clear_stylebox, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::clear_stylebox, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_stylebox_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -108,8 +101,7 @@ static JSValue theme_class_get_stylebox_type_list(JSContext *ctx, JSValueConst t
 };
 static JSValue theme_class_set_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::set_font, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::set_font, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -121,13 +113,11 @@ static JSValue theme_class_has_font(JSContext *ctx, JSValueConst this_val, int a
 };
 static JSValue theme_class_rename_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::rename_font, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::rename_font, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_clear_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::clear_font, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::clear_font, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_font_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -139,8 +129,7 @@ static JSValue theme_class_get_font_type_list(JSContext *ctx, JSValueConst this_
 };
 static JSValue theme_class_set_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::set_font_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::set_font_size, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -152,13 +141,11 @@ static JSValue theme_class_has_font_size(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue theme_class_rename_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::rename_font_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::rename_font_size, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_clear_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::clear_font_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::clear_font_size, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_font_size_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -170,8 +157,7 @@ static JSValue theme_class_get_font_size_type_list(JSContext *ctx, JSValueConst 
 };
 static JSValue theme_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::set_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::set_color, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -183,13 +169,11 @@ static JSValue theme_class_has_color(JSContext *ctx, JSValueConst this_val, int 
 };
 static JSValue theme_class_rename_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::rename_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::rename_color, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_clear_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::clear_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::clear_color, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_color_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -201,8 +185,7 @@ static JSValue theme_class_get_color_type_list(JSContext *ctx, JSValueConst this
 };
 static JSValue theme_class_set_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::set_constant, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::set_constant, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -214,13 +197,11 @@ static JSValue theme_class_has_constant(JSContext *ctx, JSValueConst this_val, i
 };
 static JSValue theme_class_rename_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::rename_constant, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::rename_constant, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_clear_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::clear_constant, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::clear_constant, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_constant_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -232,8 +213,7 @@ static JSValue theme_class_get_constant_type_list(JSContext *ctx, JSValueConst t
 };
 static JSValue theme_class_set_default_base_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::set_default_base_scale, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::set_default_base_scale, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_default_base_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -245,8 +225,7 @@ static JSValue theme_class_has_default_base_scale(JSContext *ctx, JSValueConst t
 };
 static JSValue theme_class_set_default_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::set_default_font, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::set_default_font, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_default_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -258,8 +237,7 @@ static JSValue theme_class_has_default_font(JSContext *ctx, JSValueConst this_va
 };
 static JSValue theme_class_set_default_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::set_default_font_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::set_default_font_size, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_default_font_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -271,8 +249,7 @@ static JSValue theme_class_has_default_font_size(JSContext *ctx, JSValueConst th
 };
 static JSValue theme_class_set_theme_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::set_theme_item, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::set_theme_item, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_theme_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -284,13 +261,11 @@ static JSValue theme_class_has_theme_item(JSContext *ctx, JSValueConst this_val,
 };
 static JSValue theme_class_rename_theme_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::rename_theme_item, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::rename_theme_item, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_clear_theme_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::clear_theme_item, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::clear_theme_item, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_theme_item_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -302,8 +277,7 @@ static JSValue theme_class_get_theme_item_type_list(JSContext *ctx, JSValueConst
 };
 static JSValue theme_class_set_type_variation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::set_type_variation, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::set_type_variation, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_is_type_variation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -311,8 +285,7 @@ static JSValue theme_class_is_type_variation(JSContext *ctx, JSValueConst this_v
 };
 static JSValue theme_class_clear_type_variation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::clear_type_variation, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::clear_type_variation, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_type_variation_base(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -324,13 +297,11 @@ static JSValue theme_class_get_type_variation_list(JSContext *ctx, JSValueConst 
 };
 static JSValue theme_class_add_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::add_type, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::add_type, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_remove_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::remove_type, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::remove_type, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_get_type_list(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -338,13 +309,11 @@ static JSValue theme_class_get_type_list(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue theme_class_merge_with(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::merge_with, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::merge_with, ctx, this_val, argc, argv);
 };
 static JSValue theme_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Theme::clear, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Theme::clear, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry theme_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_icon", 3, &theme_class_set_icon),
@@ -417,10 +386,10 @@ static const JSCFunctionListEntry theme_class_proto_funcs[] = {
 	JS_CFUNC_DEF("clear", 0, &theme_class_clear),
 };
 
-void define_theme_property(JSContext *ctx, JSValue obj) {
+static void define_theme_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "default_base_scale"),
         JS_NewCFunction(ctx, theme_class_get_default_base_scale, "get_default_base_scale", 0),
         JS_NewCFunction(ctx, theme_class_set_default_base_scale, "set_default_base_scale", 1),
@@ -428,7 +397,7 @@ void define_theme_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "default_font"),
         JS_NewCFunction(ctx, theme_class_get_default_font, "get_default_font", 0),
         JS_NewCFunction(ctx, theme_class_set_default_font, "set_default_font", 1),
@@ -436,15 +405,16 @@ void define_theme_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "default_font_size"),
         JS_NewCFunction(ctx, theme_class_get_default_font_size, "get_default_font_size", 0),
         JS_NewCFunction(ctx, theme_class_set_default_font_size, "set_default_font_size", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_theme_enum(JSContext *ctx, JSValue proto) {
 	JSValue DataType_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, DataType_obj, "DATA_TYPE_COLOR", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, DataType_obj, "DATA_TYPE_CONSTANT", JS_NewInt64(ctx, 1));
@@ -469,7 +439,7 @@ static int js_theme_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Theme::__class_id, proto);
 
 	define_theme_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_theme_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, theme_class_proto_funcs, _countof(theme_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, theme_class_constructor, "Theme", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

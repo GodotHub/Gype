@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/editor_resource_conversion_plugin.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -28,13 +28,12 @@ static JSValue editor_resource_conversion_plugin_class_constructor(JSContext *ct
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, EditorResourceConversionPlugin::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	EditorResourceConversionPlugin *editor_resource_conversion_plugin_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		editor_resource_conversion_plugin_class = static_cast<EditorResourceConversionPlugin *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		editor_resource_conversion_plugin_class = static_cast<EditorResourceConversionPlugin *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		editor_resource_conversion_plugin_class = memnew(EditorResourceConversionPlugin);
-	}
 	if (!editor_resource_conversion_plugin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,10 +42,11 @@ static JSValue editor_resource_conversion_plugin_class_constructor(JSContext *ct
 	return obj;
 }
 
-void define_editor_resource_conversion_plugin_property(JSContext *ctx, JSValue obj) {
+static void define_editor_resource_conversion_plugin_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_editor_resource_conversion_plugin_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_editor_resource_conversion_plugin_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -62,7 +62,7 @@ static int js_editor_resource_conversion_plugin_class_init(JSContext *ctx, JSMod
 	JS_SetClassProto(ctx, EditorResourceConversionPlugin::__class_id, proto);
 
 	define_editor_resource_conversion_plugin_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_editor_resource_conversion_plugin_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, editor_resource_conversion_plugin_class_constructor, "EditorResourceConversionPlugin", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

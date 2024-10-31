@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/crypto_key.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue crypto_key_class_constructor(JSContext *ctx, JSValueConst new_tar
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, CryptoKey::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	CryptoKey *crypto_key_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		crypto_key_class = static_cast<CryptoKey *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		crypto_key_class = static_cast<CryptoKey *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		crypto_key_class = memnew(CryptoKey);
-	}
 	if (!crypto_key_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -69,10 +68,11 @@ static const JSCFunctionListEntry crypto_key_class_proto_funcs[] = {
 	JS_CFUNC_DEF("load_from_string", 2, &crypto_key_class_load_from_string),
 };
 
-void define_crypto_key_property(JSContext *ctx, JSValue obj) {
+static void define_crypto_key_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_crypto_key_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_crypto_key_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -88,7 +88,7 @@ static int js_crypto_key_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, CryptoKey::__class_id, proto);
 
 	define_crypto_key_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_crypto_key_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, crypto_key_class_proto_funcs, _countof(crypto_key_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, crypto_key_class_constructor, "CryptoKey", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

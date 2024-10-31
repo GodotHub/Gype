@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/open_xr_interaction_profile_metadata.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue open_xr_interaction_profile_metadata_class_constructor(JSContext 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, OpenXRInteractionProfileMetadata::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	OpenXRInteractionProfileMetadata *open_xr_interaction_profile_metadata_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		open_xr_interaction_profile_metadata_class = static_cast<OpenXRInteractionProfileMetadata *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		open_xr_interaction_profile_metadata_class = static_cast<OpenXRInteractionProfileMetadata *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		open_xr_interaction_profile_metadata_class = memnew(OpenXRInteractionProfileMetadata);
-	}
 	if (!open_xr_interaction_profile_metadata_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,23 +42,19 @@ static JSValue open_xr_interaction_profile_metadata_class_constructor(JSContext 
 }
 static JSValue open_xr_interaction_profile_metadata_class_register_profile_rename(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_profile_rename, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_profile_rename, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_interaction_profile_metadata_class_register_top_level_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_top_level_path, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_top_level_path, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_interaction_profile_metadata_class_register_interaction_profile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_interaction_profile, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_interaction_profile, ctx, this_val, argc, argv);
 };
 static JSValue open_xr_interaction_profile_metadata_class_register_io_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_io_path, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&OpenXRInteractionProfileMetadata::register_io_path, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry open_xr_interaction_profile_metadata_class_proto_funcs[] = {
 	JS_CFUNC_DEF("register_profile_rename", 2, &open_xr_interaction_profile_metadata_class_register_profile_rename),
@@ -68,10 +63,11 @@ static const JSCFunctionListEntry open_xr_interaction_profile_metadata_class_pro
 	JS_CFUNC_DEF("register_io_path", 6, &open_xr_interaction_profile_metadata_class_register_io_path),
 };
 
-void define_open_xr_interaction_profile_metadata_property(JSContext *ctx, JSValue obj) {
+static void define_open_xr_interaction_profile_metadata_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_open_xr_interaction_profile_metadata_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_open_xr_interaction_profile_metadata_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -87,7 +83,7 @@ static int js_open_xr_interaction_profile_metadata_class_init(JSContext *ctx, JS
 	JS_SetClassProto(ctx, OpenXRInteractionProfileMetadata::__class_id, proto);
 
 	define_open_xr_interaction_profile_metadata_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_open_xr_interaction_profile_metadata_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, open_xr_interaction_profile_metadata_class_proto_funcs, _countof(open_xr_interaction_profile_metadata_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, open_xr_interaction_profile_metadata_class_constructor, "OpenXRInteractionProfileMetadata", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/classes/audio_effect_distortion.hpp>
+#include <godot_cpp/classes/audio_effect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue audio_effect_distortion_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioEffectDistortion::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AudioEffectDistortion *audio_effect_distortion_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		audio_effect_distortion_class = static_cast<AudioEffectDistortion *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		audio_effect_distortion_class = static_cast<AudioEffectDistortion *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		audio_effect_distortion_class = memnew(AudioEffectDistortion);
-	}
 	if (!audio_effect_distortion_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue audio_effect_distortion_class_constructor(JSContext *ctx, JSValue
 }
 static JSValue audio_effect_distortion_class_set_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectDistortion::set_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectDistortion::set_mode, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_distortion_class_get_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue audio_effect_distortion_class_get_mode(JSContext *ctx, JSValueCon
 };
 static JSValue audio_effect_distortion_class_set_pre_gain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectDistortion::set_pre_gain, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectDistortion::set_pre_gain, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_distortion_class_get_pre_gain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue audio_effect_distortion_class_get_pre_gain(JSContext *ctx, JSValu
 };
 static JSValue audio_effect_distortion_class_set_keep_hf_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectDistortion::set_keep_hf_hz, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectDistortion::set_keep_hf_hz, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_distortion_class_get_keep_hf_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue audio_effect_distortion_class_get_keep_hf_hz(JSContext *ctx, JSVa
 };
 static JSValue audio_effect_distortion_class_set_drive(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectDistortion::set_drive, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectDistortion::set_drive, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_distortion_class_get_drive(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue audio_effect_distortion_class_get_drive(JSContext *ctx, JSValueCo
 };
 static JSValue audio_effect_distortion_class_set_post_gain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AudioEffectDistortion::set_post_gain, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AudioEffectDistortion::set_post_gain, ctx, this_val, argc, argv);
 };
 static JSValue audio_effect_distortion_class_get_post_gain(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -99,10 +93,10 @@ static const JSCFunctionListEntry audio_effect_distortion_class_proto_funcs[] = 
 	JS_CFUNC_DEF("get_post_gain", 0, &audio_effect_distortion_class_get_post_gain),
 };
 
-void define_audio_effect_distortion_property(JSContext *ctx, JSValue obj) {
+static void define_audio_effect_distortion_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "mode"),
         JS_NewCFunction(ctx, audio_effect_distortion_class_get_mode, "get_mode", 0),
         JS_NewCFunction(ctx, audio_effect_distortion_class_set_mode, "set_mode", 1),
@@ -110,7 +104,7 @@ void define_audio_effect_distortion_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "pre_gain"),
         JS_NewCFunction(ctx, audio_effect_distortion_class_get_pre_gain, "get_pre_gain", 0),
         JS_NewCFunction(ctx, audio_effect_distortion_class_set_pre_gain, "set_pre_gain", 1),
@@ -118,7 +112,7 @@ void define_audio_effect_distortion_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "keep_hf_hz"),
         JS_NewCFunction(ctx, audio_effect_distortion_class_get_keep_hf_hz, "get_keep_hf_hz", 0),
         JS_NewCFunction(ctx, audio_effect_distortion_class_set_keep_hf_hz, "set_keep_hf_hz", 1),
@@ -126,7 +120,7 @@ void define_audio_effect_distortion_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "drive"),
         JS_NewCFunction(ctx, audio_effect_distortion_class_get_drive, "get_drive", 0),
         JS_NewCFunction(ctx, audio_effect_distortion_class_set_drive, "set_drive", 1),
@@ -134,15 +128,16 @@ void define_audio_effect_distortion_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "post_gain"),
         JS_NewCFunction(ctx, audio_effect_distortion_class_get_post_gain, "get_post_gain", 0),
         JS_NewCFunction(ctx, audio_effect_distortion_class_set_post_gain, "set_post_gain", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_audio_effect_distortion_enum(JSContext *ctx, JSValue proto) {
 	JSValue Mode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Mode_obj, "MODE_CLIP", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Mode_obj, "MODE_ATAN", JS_NewInt64(ctx, 1));
@@ -165,7 +160,7 @@ static int js_audio_effect_distortion_class_init(JSContext *ctx, JSModuleDef *m)
 	JS_SetClassProto(ctx, AudioEffectDistortion::__class_id, proto);
 
 	define_audio_effect_distortion_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_audio_effect_distortion_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, audio_effect_distortion_class_proto_funcs, _countof(audio_effect_distortion_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, audio_effect_distortion_class_constructor, "AudioEffectDistortion", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

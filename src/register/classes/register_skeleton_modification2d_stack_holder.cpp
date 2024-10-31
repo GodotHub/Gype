@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
-#include <godot_cpp/classes/skeleton_modification2d_stack_holder.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include <godot_cpp/classes/skeleton_modification2d_stack_holder.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -28,13 +28,12 @@ static JSValue skeleton_modification2d_stack_holder_class_constructor(JSContext 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkeletonModification2DStackHolder::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	SkeletonModification2DStackHolder *skeleton_modification2d_stack_holder_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		skeleton_modification2d_stack_holder_class = static_cast<SkeletonModification2DStackHolder *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		skeleton_modification2d_stack_holder_class = static_cast<SkeletonModification2DStackHolder *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		skeleton_modification2d_stack_holder_class = memnew(SkeletonModification2DStackHolder);
-	}
 	if (!skeleton_modification2d_stack_holder_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue skeleton_modification2d_stack_holder_class_constructor(JSContext 
 }
 static JSValue skeleton_modification2d_stack_holder_class_set_held_modification_stack(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModification2DStackHolder::set_held_modification_stack, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonModification2DStackHolder::set_held_modification_stack, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_modification2d_stack_holder_class_get_held_modification_stack(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -56,10 +54,11 @@ static const JSCFunctionListEntry skeleton_modification2d_stack_holder_class_pro
 	JS_CFUNC_DEF("get_held_modification_stack", 0, &skeleton_modification2d_stack_holder_class_get_held_modification_stack),
 };
 
-void define_skeleton_modification2d_stack_holder_property(JSContext *ctx, JSValue obj) {
+static void define_skeleton_modification2d_stack_holder_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_skeleton_modification2d_stack_holder_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_skeleton_modification2d_stack_holder_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -75,7 +74,7 @@ static int js_skeleton_modification2d_stack_holder_class_init(JSContext *ctx, JS
 	JS_SetClassProto(ctx, SkeletonModification2DStackHolder::__class_id, proto);
 
 	define_skeleton_modification2d_stack_holder_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_skeleton_modification2d_stack_holder_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, skeleton_modification2d_stack_holder_class_proto_funcs, _countof(skeleton_modification2d_stack_holder_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, skeleton_modification2d_stack_holder_class_constructor, "SkeletonModification2DStackHolder", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

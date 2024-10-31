@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/script.hpp>
-#include <godot_cpp/classes/script_language_extension.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/script_language.hpp>
+#include <godot_cpp/classes/script_language_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue script_language_extension_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ScriptLanguageExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ScriptLanguageExtension *script_language_extension_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		script_language_extension_class = static_cast<ScriptLanguageExtension *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		script_language_extension_class = static_cast<ScriptLanguageExtension *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		script_language_extension_class = memnew(ScriptLanguageExtension);
-	}
 	if (!script_language_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,10 +43,11 @@ static JSValue script_language_extension_class_constructor(JSContext *ctx, JSVal
 	return obj;
 }
 
-void define_script_language_extension_property(JSContext *ctx, JSValue obj) {
+static void define_script_language_extension_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_script_language_extension_enum(JSContext *ctx, JSValue proto) {
 	JSValue LookupResultType_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, LookupResultType_obj, "LOOKUP_RESULT_SCRIPT_LOCATION", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, LookupResultType_obj, "LOOKUP_RESULT_CLASS", JS_NewInt64(ctx, 1));
@@ -94,7 +94,7 @@ static int js_script_language_extension_class_init(JSContext *ctx, JSModuleDef *
 	JS_SetClassProto(ctx, ScriptLanguageExtension::__class_id, proto);
 
 	define_script_language_extension_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_script_language_extension_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, script_language_extension_class_constructor, "ScriptLanguageExtension", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

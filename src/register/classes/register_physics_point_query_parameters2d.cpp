@@ -27,13 +27,12 @@ static JSValue physics_point_query_parameters2d_class_constructor(JSContext *ctx
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PhysicsPointQueryParameters2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PhysicsPointQueryParameters2D *physics_point_query_parameters2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		physics_point_query_parameters2d_class = static_cast<PhysicsPointQueryParameters2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		physics_point_query_parameters2d_class = static_cast<PhysicsPointQueryParameters2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		physics_point_query_parameters2d_class = memnew(PhysicsPointQueryParameters2D);
-	}
 	if (!physics_point_query_parameters2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue physics_point_query_parameters2d_class_constructor(JSContext *ctx
 }
 static JSValue physics_point_query_parameters2d_class_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsPointQueryParameters2D::set_position, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsPointQueryParameters2D::set_position, ctx, this_val, argc, argv);
 };
 static JSValue physics_point_query_parameters2d_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue physics_point_query_parameters2d_class_get_position(JSContext *ct
 };
 static JSValue physics_point_query_parameters2d_class_set_canvas_instance_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsPointQueryParameters2D::set_canvas_instance_id, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsPointQueryParameters2D::set_canvas_instance_id, ctx, this_val, argc, argv);
 };
 static JSValue physics_point_query_parameters2d_class_get_canvas_instance_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue physics_point_query_parameters2d_class_get_canvas_instance_id(JSC
 };
 static JSValue physics_point_query_parameters2d_class_set_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsPointQueryParameters2D::set_collision_mask, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsPointQueryParameters2D::set_collision_mask, ctx, this_val, argc, argv);
 };
 static JSValue physics_point_query_parameters2d_class_get_collision_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue physics_point_query_parameters2d_class_get_collision_mask(JSConte
 };
 static JSValue physics_point_query_parameters2d_class_set_exclude(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsPointQueryParameters2D::set_exclude, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsPointQueryParameters2D::set_exclude, ctx, this_val, argc, argv);
 };
 static JSValue physics_point_query_parameters2d_class_get_exclude(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue physics_point_query_parameters2d_class_get_exclude(JSContext *ctx
 };
 static JSValue physics_point_query_parameters2d_class_set_collide_with_bodies(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsPointQueryParameters2D::set_collide_with_bodies, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsPointQueryParameters2D::set_collide_with_bodies, ctx, this_val, argc, argv);
 };
 static JSValue physics_point_query_parameters2d_class_is_collide_with_bodies_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,8 +82,7 @@ static JSValue physics_point_query_parameters2d_class_is_collide_with_bodies_ena
 };
 static JSValue physics_point_query_parameters2d_class_set_collide_with_areas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PhysicsPointQueryParameters2D::set_collide_with_areas, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PhysicsPointQueryParameters2D::set_collide_with_areas, ctx, this_val, argc, argv);
 };
 static JSValue physics_point_query_parameters2d_class_is_collide_with_areas_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -110,10 +103,10 @@ static const JSCFunctionListEntry physics_point_query_parameters2d_class_proto_f
 	JS_CFUNC_DEF("is_collide_with_areas_enabled", 0, &physics_point_query_parameters2d_class_is_collide_with_areas_enabled),
 };
 
-void define_physics_point_query_parameters2d_property(JSContext *ctx, JSValue obj) {
+static void define_physics_point_query_parameters2d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "position"),
         JS_NewCFunction(ctx, physics_point_query_parameters2d_class_get_position, "get_position", 0),
         JS_NewCFunction(ctx, physics_point_query_parameters2d_class_set_position, "set_position", 1),
@@ -121,7 +114,7 @@ void define_physics_point_query_parameters2d_property(JSContext *ctx, JSValue ob
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "canvas_instance_id"),
         JS_NewCFunction(ctx, physics_point_query_parameters2d_class_get_canvas_instance_id, "get_canvas_instance_id", 0),
         JS_NewCFunction(ctx, physics_point_query_parameters2d_class_set_canvas_instance_id, "set_canvas_instance_id", 1),
@@ -129,7 +122,7 @@ void define_physics_point_query_parameters2d_property(JSContext *ctx, JSValue ob
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "collision_mask"),
         JS_NewCFunction(ctx, physics_point_query_parameters2d_class_get_collision_mask, "get_collision_mask", 0),
         JS_NewCFunction(ctx, physics_point_query_parameters2d_class_set_collision_mask, "set_collision_mask", 1),
@@ -137,7 +130,7 @@ void define_physics_point_query_parameters2d_property(JSContext *ctx, JSValue ob
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "exclude"),
         JS_NewCFunction(ctx, physics_point_query_parameters2d_class_get_exclude, "get_exclude", 0),
         JS_NewCFunction(ctx, physics_point_query_parameters2d_class_set_exclude, "set_exclude", 1),
@@ -145,7 +138,7 @@ void define_physics_point_query_parameters2d_property(JSContext *ctx, JSValue ob
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "collide_with_bodies"),
         JS_NewCFunction(ctx, physics_point_query_parameters2d_class_is_collide_with_bodies_enabled, "is_collide_with_bodies_enabled", 0),
         JS_NewCFunction(ctx, physics_point_query_parameters2d_class_set_collide_with_bodies, "set_collide_with_bodies", 1),
@@ -153,15 +146,16 @@ void define_physics_point_query_parameters2d_property(JSContext *ctx, JSValue ob
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "collide_with_areas"),
         JS_NewCFunction(ctx, physics_point_query_parameters2d_class_is_collide_with_areas_enabled, "is_collide_with_areas_enabled", 0),
         JS_NewCFunction(ctx, physics_point_query_parameters2d_class_set_collide_with_areas, "set_collide_with_areas", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_physics_point_query_parameters2d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_physics_point_query_parameters2d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -177,7 +171,7 @@ static int js_physics_point_query_parameters2d_class_init(JSContext *ctx, JSModu
 	JS_SetClassProto(ctx, PhysicsPointQueryParameters2D::__class_id, proto);
 
 	define_physics_point_query_parameters2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_physics_point_query_parameters2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, physics_point_query_parameters2d_class_proto_funcs, _countof(physics_point_query_parameters2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, physics_point_query_parameters2d_class_constructor, "PhysicsPointQueryParameters2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

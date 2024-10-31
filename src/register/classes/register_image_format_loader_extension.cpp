@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/image_format_loader.hpp>
-#include <godot_cpp/classes/file_access.hpp>
 #include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/image_format_loader_extension.hpp>
+#include <godot_cpp/classes/file_access.hpp>
+#include <godot_cpp/classes/image_format_loader.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue image_format_loader_extension_class_constructor(JSContext *ctx, J
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ImageFormatLoaderExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ImageFormatLoaderExtension *image_format_loader_extension_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		image_format_loader_extension_class = static_cast<ImageFormatLoaderExtension *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		image_format_loader_extension_class = static_cast<ImageFormatLoaderExtension *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		image_format_loader_extension_class = memnew(ImageFormatLoaderExtension);
-	}
 	if (!image_format_loader_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -45,23 +44,22 @@ static JSValue image_format_loader_extension_class_constructor(JSContext *ctx, J
 }
 static JSValue image_format_loader_extension_class_add_format_loader(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImageFormatLoaderExtension::add_format_loader, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ImageFormatLoaderExtension::add_format_loader, ctx, this_val, argc, argv);
 };
 static JSValue image_format_loader_extension_class_remove_format_loader(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ImageFormatLoaderExtension::remove_format_loader, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ImageFormatLoaderExtension::remove_format_loader, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry image_format_loader_extension_class_proto_funcs[] = {
 	JS_CFUNC_DEF("add_format_loader", 0, &image_format_loader_extension_class_add_format_loader),
 	JS_CFUNC_DEF("remove_format_loader", 0, &image_format_loader_extension_class_remove_format_loader),
 };
 
-void define_image_format_loader_extension_property(JSContext *ctx, JSValue obj) {
+static void define_image_format_loader_extension_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_image_format_loader_extension_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_image_format_loader_extension_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -77,7 +75,7 @@ static int js_image_format_loader_extension_class_init(JSContext *ctx, JSModuleD
 	JS_SetClassProto(ctx, ImageFormatLoaderExtension::__class_id, proto);
 
 	define_image_format_loader_extension_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_image_format_loader_extension_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, image_format_loader_extension_class_proto_funcs, _countof(image_format_loader_extension_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, image_format_loader_extension_class_constructor, "ImageFormatLoaderExtension", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

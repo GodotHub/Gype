@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/gd_extension.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue gd_extension_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, GDExtension::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	GDExtension *gd_extension_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		gd_extension_class = static_cast<GDExtension *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		gd_extension_class = static_cast<GDExtension *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		gd_extension_class = memnew(GDExtension);
-	}
 	if (!gd_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -54,10 +53,11 @@ static const JSCFunctionListEntry gd_extension_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_minimum_library_initialization_level", 0, &gd_extension_class_get_minimum_library_initialization_level),
 };
 
-void define_gd_extension_property(JSContext *ctx, JSValue obj) {
+static void define_gd_extension_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_gd_extension_enum(JSContext *ctx, JSValue proto) {
 	JSValue InitializationLevel_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, InitializationLevel_obj, "INITIALIZATION_LEVEL_CORE", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, InitializationLevel_obj, "INITIALIZATION_LEVEL_SERVERS", JS_NewInt64(ctx, 1));
@@ -79,7 +79,7 @@ static int js_gd_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, GDExtension::__class_id, proto);
 
 	define_gd_extension_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_gd_extension_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, gd_extension_class_proto_funcs, _countof(gd_extension_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, gd_extension_class_constructor, "GDExtension", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

@@ -27,13 +27,12 @@ static JSValue margin_container_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, MarginContainer::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	MarginContainer *margin_container_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		margin_container_class = static_cast<MarginContainer *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		margin_container_class = static_cast<MarginContainer *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		margin_container_class = memnew(MarginContainer);
-	}
 	if (!margin_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue margin_container_class_constructor(JSContext *ctx, JSValueConst n
 	return obj;
 }
 
-void define_margin_container_property(JSContext *ctx, JSValue obj) {
+static void define_margin_container_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_margin_container_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_margin_container_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_margin_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, MarginContainer::__class_id, proto);
 
 	define_margin_container_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_margin_container_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, margin_container_class_constructor, "MarginContainer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

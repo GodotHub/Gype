@@ -28,13 +28,12 @@ static JSValue script_class_constructor(JSContext *ctx, JSValueConst new_target,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Script::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Script *script_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		script_class = static_cast<Script *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		script_class = static_cast<Script *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		script_class = memnew(Script);
-	}
 	if (!script_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -60,8 +59,7 @@ static JSValue script_class_get_source_code(JSContext *ctx, JSValueConst this_va
 };
 static JSValue script_class_set_source_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Script::set_source_code, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Script::set_source_code, ctx, this_val, argc, argv);
 };
 static JSValue script_class_reload(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -131,18 +129,19 @@ static const JSCFunctionListEntry script_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_abstract", 0, &script_class_is_abstract),
 };
 
-void define_script_property(JSContext *ctx, JSValue obj) {
+static void define_script_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "source_code"),
         JS_NewCFunction(ctx, script_class_get_source_code, "get_source_code", 0),
         JS_NewCFunction(ctx, script_class_set_source_code, "set_source_code", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_script_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_script_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -158,7 +157,7 @@ static int js_script_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Script::__class_id, proto);
 
 	define_script_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_script_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, script_class_proto_funcs, _countof(script_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, script_class_constructor, "Script", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

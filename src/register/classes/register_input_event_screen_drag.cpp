@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_from_window.hpp>
 #include <godot_cpp/classes/input_event_screen_drag.hpp>
+#include <godot_cpp/classes/input_event_from_window.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue input_event_screen_drag_class_constructor(JSContext *ctx, JSValue
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, InputEventScreenDrag::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	InputEventScreenDrag *input_event_screen_drag_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		input_event_screen_drag_class = static_cast<InputEventScreenDrag *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		input_event_screen_drag_class = static_cast<InputEventScreenDrag *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		input_event_screen_drag_class = memnew(InputEventScreenDrag);
-	}
 	if (!input_event_screen_drag_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue input_event_screen_drag_class_constructor(JSContext *ctx, JSValue
 }
 static JSValue input_event_screen_drag_class_set_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventScreenDrag::set_index, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventScreenDrag::set_index, ctx, this_val, argc, argv);
 };
 static JSValue input_event_screen_drag_class_get_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue input_event_screen_drag_class_get_index(JSContext *ctx, JSValueCo
 };
 static JSValue input_event_screen_drag_class_set_tilt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventScreenDrag::set_tilt, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventScreenDrag::set_tilt, ctx, this_val, argc, argv);
 };
 static JSValue input_event_screen_drag_class_get_tilt(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue input_event_screen_drag_class_get_tilt(JSContext *ctx, JSValueCon
 };
 static JSValue input_event_screen_drag_class_set_pressure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventScreenDrag::set_pressure, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventScreenDrag::set_pressure, ctx, this_val, argc, argv);
 };
 static JSValue input_event_screen_drag_class_get_pressure(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue input_event_screen_drag_class_get_pressure(JSContext *ctx, JSValu
 };
 static JSValue input_event_screen_drag_class_set_pen_inverted(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventScreenDrag::set_pen_inverted, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventScreenDrag::set_pen_inverted, ctx, this_val, argc, argv);
 };
 static JSValue input_event_screen_drag_class_get_pen_inverted(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue input_event_screen_drag_class_get_pen_inverted(JSContext *ctx, JS
 };
 static JSValue input_event_screen_drag_class_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventScreenDrag::set_position, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventScreenDrag::set_position, ctx, this_val, argc, argv);
 };
 static JSValue input_event_screen_drag_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,8 +82,7 @@ static JSValue input_event_screen_drag_class_get_position(JSContext *ctx, JSValu
 };
 static JSValue input_event_screen_drag_class_set_relative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventScreenDrag::set_relative, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventScreenDrag::set_relative, ctx, this_val, argc, argv);
 };
 static JSValue input_event_screen_drag_class_get_relative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -97,8 +90,7 @@ static JSValue input_event_screen_drag_class_get_relative(JSContext *ctx, JSValu
 };
 static JSValue input_event_screen_drag_class_set_screen_relative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventScreenDrag::set_screen_relative, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventScreenDrag::set_screen_relative, ctx, this_val, argc, argv);
 };
 static JSValue input_event_screen_drag_class_get_screen_relative(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -106,8 +98,7 @@ static JSValue input_event_screen_drag_class_get_screen_relative(JSContext *ctx,
 };
 static JSValue input_event_screen_drag_class_set_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventScreenDrag::set_velocity, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventScreenDrag::set_velocity, ctx, this_val, argc, argv);
 };
 static JSValue input_event_screen_drag_class_get_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -115,8 +106,7 @@ static JSValue input_event_screen_drag_class_get_velocity(JSContext *ctx, JSValu
 };
 static JSValue input_event_screen_drag_class_set_screen_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&InputEventScreenDrag::set_screen_velocity, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&InputEventScreenDrag::set_screen_velocity, ctx, this_val, argc, argv);
 };
 static JSValue input_event_screen_drag_class_get_screen_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -143,10 +133,10 @@ static const JSCFunctionListEntry input_event_screen_drag_class_proto_funcs[] = 
 	JS_CFUNC_DEF("get_screen_velocity", 0, &input_event_screen_drag_class_get_screen_velocity),
 };
 
-void define_input_event_screen_drag_property(JSContext *ctx, JSValue obj) {
+static void define_input_event_screen_drag_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "index"),
         JS_NewCFunction(ctx, input_event_screen_drag_class_get_index, "get_index", 0),
         JS_NewCFunction(ctx, input_event_screen_drag_class_set_index, "set_index", 1),
@@ -154,7 +144,7 @@ void define_input_event_screen_drag_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "tilt"),
         JS_NewCFunction(ctx, input_event_screen_drag_class_get_tilt, "get_tilt", 0),
         JS_NewCFunction(ctx, input_event_screen_drag_class_set_tilt, "set_tilt", 1),
@@ -162,7 +152,7 @@ void define_input_event_screen_drag_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "pressure"),
         JS_NewCFunction(ctx, input_event_screen_drag_class_get_pressure, "get_pressure", 0),
         JS_NewCFunction(ctx, input_event_screen_drag_class_set_pressure, "set_pressure", 1),
@@ -170,7 +160,7 @@ void define_input_event_screen_drag_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "pen_inverted"),
         JS_NewCFunction(ctx, input_event_screen_drag_class_get_pen_inverted, "get_pen_inverted", 0),
         JS_NewCFunction(ctx, input_event_screen_drag_class_set_pen_inverted, "set_pen_inverted", 1),
@@ -178,7 +168,7 @@ void define_input_event_screen_drag_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "position"),
         JS_NewCFunction(ctx, input_event_screen_drag_class_get_position, "get_position", 0),
         JS_NewCFunction(ctx, input_event_screen_drag_class_set_position, "set_position", 1),
@@ -186,7 +176,7 @@ void define_input_event_screen_drag_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "relative"),
         JS_NewCFunction(ctx, input_event_screen_drag_class_get_relative, "get_relative", 0),
         JS_NewCFunction(ctx, input_event_screen_drag_class_set_relative, "set_relative", 1),
@@ -194,7 +184,7 @@ void define_input_event_screen_drag_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "screen_relative"),
         JS_NewCFunction(ctx, input_event_screen_drag_class_get_screen_relative, "get_screen_relative", 0),
         JS_NewCFunction(ctx, input_event_screen_drag_class_set_screen_relative, "set_screen_relative", 1),
@@ -202,7 +192,7 @@ void define_input_event_screen_drag_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "velocity"),
         JS_NewCFunction(ctx, input_event_screen_drag_class_get_velocity, "get_velocity", 0),
         JS_NewCFunction(ctx, input_event_screen_drag_class_set_velocity, "set_velocity", 1),
@@ -210,15 +200,16 @@ void define_input_event_screen_drag_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "screen_velocity"),
         JS_NewCFunction(ctx, input_event_screen_drag_class_get_screen_velocity, "get_screen_velocity", 0),
         JS_NewCFunction(ctx, input_event_screen_drag_class_set_screen_velocity, "set_screen_velocity", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_input_event_screen_drag_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_input_event_screen_drag_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -234,7 +225,7 @@ static int js_input_event_screen_drag_class_init(JSContext *ctx, JSModuleDef *m)
 	JS_SetClassProto(ctx, InputEventScreenDrag::__class_id, proto);
 
 	define_input_event_screen_drag_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_input_event_screen_drag_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, input_event_screen_drag_class_proto_funcs, _countof(input_event_screen_drag_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, input_event_screen_drag_class_constructor, "InputEventScreenDrag", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

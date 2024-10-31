@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_sample.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/audio_sample.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue audio_sample_class_constructor(JSContext *ctx, JSValueConst new_t
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AudioSample::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AudioSample *audio_sample_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		audio_sample_class = static_cast<AudioSample *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		audio_sample_class = static_cast<AudioSample *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		audio_sample_class = memnew(AudioSample);
-	}
 	if (!audio_sample_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue audio_sample_class_constructor(JSContext *ctx, JSValueConst new_t
 	return obj;
 }
 
-void define_audio_sample_property(JSContext *ctx, JSValue obj) {
+static void define_audio_sample_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_audio_sample_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_audio_sample_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_audio_sample_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, AudioSample::__class_id, proto);
 
 	define_audio_sample_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_audio_sample_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, audio_sample_class_constructor, "AudioSample", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_modification2d_two_bone_ik.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include <godot_cpp/classes/skeleton_modification2d_two_bone_ik.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue skeleton_modification2d_two_bone_ik_class_constructor(JSContext *
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, SkeletonModification2DTwoBoneIK::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	SkeletonModification2DTwoBoneIK *skeleton_modification2d_two_bone_ik_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		skeleton_modification2d_two_bone_ik_class = static_cast<SkeletonModification2DTwoBoneIK *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		skeleton_modification2d_two_bone_ik_class = static_cast<SkeletonModification2DTwoBoneIK *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		skeleton_modification2d_two_bone_ik_class = memnew(SkeletonModification2DTwoBoneIK);
-	}
 	if (!skeleton_modification2d_two_bone_ik_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue skeleton_modification2d_two_bone_ik_class_constructor(JSContext *
 }
 static JSValue skeleton_modification2d_two_bone_ik_class_set_target_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModification2DTwoBoneIK::set_target_node, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonModification2DTwoBoneIK::set_target_node, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_modification2d_two_bone_ik_class_get_target_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue skeleton_modification2d_two_bone_ik_class_get_target_node(JSConte
 };
 static JSValue skeleton_modification2d_two_bone_ik_class_set_target_minimum_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModification2DTwoBoneIK::set_target_minimum_distance, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonModification2DTwoBoneIK::set_target_minimum_distance, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_modification2d_two_bone_ik_class_get_target_minimum_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue skeleton_modification2d_two_bone_ik_class_get_target_minimum_dist
 };
 static JSValue skeleton_modification2d_two_bone_ik_class_set_target_maximum_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModification2DTwoBoneIK::set_target_maximum_distance, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonModification2DTwoBoneIK::set_target_maximum_distance, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_modification2d_two_bone_ik_class_get_target_maximum_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue skeleton_modification2d_two_bone_ik_class_get_target_maximum_dist
 };
 static JSValue skeleton_modification2d_two_bone_ik_class_set_flip_bend_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModification2DTwoBoneIK::set_flip_bend_direction, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonModification2DTwoBoneIK::set_flip_bend_direction, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_modification2d_two_bone_ik_class_get_flip_bend_direction(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue skeleton_modification2d_two_bone_ik_class_get_flip_bend_direction
 };
 static JSValue skeleton_modification2d_two_bone_ik_class_set_joint_one_bone2d_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModification2DTwoBoneIK::set_joint_one_bone2d_node, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonModification2DTwoBoneIK::set_joint_one_bone2d_node, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_modification2d_two_bone_ik_class_get_joint_one_bone2d_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,8 +82,7 @@ static JSValue skeleton_modification2d_two_bone_ik_class_get_joint_one_bone2d_no
 };
 static JSValue skeleton_modification2d_two_bone_ik_class_set_joint_one_bone_idx(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModification2DTwoBoneIK::set_joint_one_bone_idx, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonModification2DTwoBoneIK::set_joint_one_bone_idx, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_modification2d_two_bone_ik_class_get_joint_one_bone_idx(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -97,8 +90,7 @@ static JSValue skeleton_modification2d_two_bone_ik_class_get_joint_one_bone_idx(
 };
 static JSValue skeleton_modification2d_two_bone_ik_class_set_joint_two_bone2d_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModification2DTwoBoneIK::set_joint_two_bone2d_node, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonModification2DTwoBoneIK::set_joint_two_bone2d_node, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_modification2d_two_bone_ik_class_get_joint_two_bone2d_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -106,8 +98,7 @@ static JSValue skeleton_modification2d_two_bone_ik_class_get_joint_two_bone2d_no
 };
 static JSValue skeleton_modification2d_two_bone_ik_class_set_joint_two_bone_idx(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&SkeletonModification2DTwoBoneIK::set_joint_two_bone_idx, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&SkeletonModification2DTwoBoneIK::set_joint_two_bone_idx, ctx, this_val, argc, argv);
 };
 static JSValue skeleton_modification2d_two_bone_ik_class_get_joint_two_bone_idx(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -132,10 +123,10 @@ static const JSCFunctionListEntry skeleton_modification2d_two_bone_ik_class_prot
 	JS_CFUNC_DEF("get_joint_two_bone_idx", 0, &skeleton_modification2d_two_bone_ik_class_get_joint_two_bone_idx),
 };
 
-void define_skeleton_modification2d_two_bone_ik_property(JSContext *ctx, JSValue obj) {
+static void define_skeleton_modification2d_two_bone_ik_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "target_nodepath"),
         JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_get_target_node, "get_target_node", 0),
         JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_set_target_node, "set_target_node", 1),
@@ -143,7 +134,7 @@ void define_skeleton_modification2d_two_bone_ik_property(JSContext *ctx, JSValue
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "target_minimum_distance"),
         JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_get_target_minimum_distance, "get_target_minimum_distance", 0),
         JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_set_target_minimum_distance, "set_target_minimum_distance", 1),
@@ -151,7 +142,7 @@ void define_skeleton_modification2d_two_bone_ik_property(JSContext *ctx, JSValue
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "target_maximum_distance"),
         JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_get_target_maximum_distance, "get_target_maximum_distance", 0),
         JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_set_target_maximum_distance, "set_target_maximum_distance", 1),
@@ -159,15 +150,16 @@ void define_skeleton_modification2d_two_bone_ik_property(JSContext *ctx, JSValue
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "flip_bend_direction"),
         JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_get_flip_bend_direction, "get_flip_bend_direction", 0),
         JS_NewCFunction(ctx, skeleton_modification2d_two_bone_ik_class_set_flip_bend_direction, "set_flip_bend_direction", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_skeleton_modification2d_two_bone_ik_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_skeleton_modification2d_two_bone_ik_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -183,7 +175,7 @@ static int js_skeleton_modification2d_two_bone_ik_class_init(JSContext *ctx, JSM
 	JS_SetClassProto(ctx, SkeletonModification2DTwoBoneIK::__class_id, proto);
 
 	define_skeleton_modification2d_two_bone_ik_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_skeleton_modification2d_two_bone_ik_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, skeleton_modification2d_two_bone_ik_class_proto_funcs, _countof(skeleton_modification2d_two_bone_ik_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, skeleton_modification2d_two_bone_ik_class_constructor, "SkeletonModification2DTwoBoneIK", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

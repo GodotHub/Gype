@@ -27,13 +27,12 @@ static JSValue visual_shader_node_smooth_step_class_constructor(JSContext *ctx, 
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeSmoothStep::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeSmoothStep *visual_shader_node_smooth_step_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_smooth_step_class = static_cast<VisualShaderNodeSmoothStep *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_smooth_step_class = static_cast<VisualShaderNodeSmoothStep *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_smooth_step_class = memnew(VisualShaderNodeSmoothStep);
-	}
 	if (!visual_shader_node_smooth_step_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue visual_shader_node_smooth_step_class_constructor(JSContext *ctx, 
 }
 static JSValue visual_shader_node_smooth_step_class_set_op_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&VisualShaderNodeSmoothStep::set_op_type, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&VisualShaderNodeSmoothStep::set_op_type, ctx, this_val, argc, argv);
 };
 static JSValue visual_shader_node_smooth_step_class_get_op_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -55,18 +53,19 @@ static const JSCFunctionListEntry visual_shader_node_smooth_step_class_proto_fun
 	JS_CFUNC_DEF("get_op_type", 0, &visual_shader_node_smooth_step_class_get_op_type),
 };
 
-void define_visual_shader_node_smooth_step_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_smooth_step_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "op_type"),
         JS_NewCFunction(ctx, visual_shader_node_smooth_step_class_get_op_type, "get_op_type", 0),
         JS_NewCFunction(ctx, visual_shader_node_smooth_step_class_set_op_type, "set_op_type", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_smooth_step_enum(JSContext *ctx, JSValue proto) {
 	JSValue OpType_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, OpType_obj, "OP_TYPE_SCALAR", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, OpType_obj, "OP_TYPE_VECTOR_2D", JS_NewInt64(ctx, 1));
@@ -92,7 +91,7 @@ static int js_visual_shader_node_smooth_step_class_init(JSContext *ctx, JSModule
 	JS_SetClassProto(ctx, VisualShaderNodeSmoothStep::__class_id, proto);
 
 	define_visual_shader_node_smooth_step_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_smooth_step_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_smooth_step_class_proto_funcs, _countof(visual_shader_node_smooth_step_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_smooth_step_class_constructor, "VisualShaderNodeSmoothStep", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

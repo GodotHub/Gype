@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_custom.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue visual_shader_node_custom_class_constructor(JSContext *ctx, JSVal
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeCustom::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeCustom *visual_shader_node_custom_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_custom_class = static_cast<VisualShaderNodeCustom *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_custom_class = static_cast<VisualShaderNodeCustom *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_custom_class = memnew(VisualShaderNodeCustom);
-	}
 	if (!visual_shader_node_custom_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -49,10 +48,11 @@ static const JSCFunctionListEntry visual_shader_node_custom_class_proto_funcs[] 
 	JS_CFUNC_DEF("get_option_index", 1, &visual_shader_node_custom_class_get_option_index),
 };
 
-void define_visual_shader_node_custom_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_custom_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_custom_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_custom_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -68,7 +68,7 @@ static int js_visual_shader_node_custom_class_init(JSContext *ctx, JSModuleDef *
 	JS_SetClassProto(ctx, VisualShaderNodeCustom::__class_id, proto);
 
 	define_visual_shader_node_custom_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_custom_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_custom_class_proto_funcs, _countof(visual_shader_node_custom_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_custom_class_constructor, "VisualShaderNodeCustom", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

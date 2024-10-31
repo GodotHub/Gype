@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/classes/packet_peer_dtls.hpp>
-#include <godot_cpp/classes/packet_peer_udp.hpp>
 #include <godot_cpp/classes/packet_peer.hpp>
+#include <godot_cpp/classes/tls_options.hpp>
+#include <godot_cpp/classes/packet_peer_udp.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue packet_peer_dtls_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, PacketPeerDTLS::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	PacketPeerDTLS *packet_peer_dtls_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		packet_peer_dtls_class = static_cast<PacketPeerDTLS *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		packet_peer_dtls_class = static_cast<PacketPeerDTLS *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		packet_peer_dtls_class = memnew(PacketPeerDTLS);
-	}
 	if (!packet_peer_dtls_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -45,8 +44,7 @@ static JSValue packet_peer_dtls_class_constructor(JSContext *ctx, JSValueConst n
 }
 static JSValue packet_peer_dtls_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PacketPeerDTLS::poll, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PacketPeerDTLS::poll, ctx, this_val, argc, argv);
 };
 static JSValue packet_peer_dtls_class_connect_to_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -58,8 +56,7 @@ static JSValue packet_peer_dtls_class_get_status(JSContext *ctx, JSValueConst th
 };
 static JSValue packet_peer_dtls_class_disconnect_from_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&PacketPeerDTLS::disconnect_from_peer, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&PacketPeerDTLS::disconnect_from_peer, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry packet_peer_dtls_class_proto_funcs[] = {
 	JS_CFUNC_DEF("poll", 0, &packet_peer_dtls_class_poll),
@@ -68,10 +65,11 @@ static const JSCFunctionListEntry packet_peer_dtls_class_proto_funcs[] = {
 	JS_CFUNC_DEF("disconnect_from_peer", 0, &packet_peer_dtls_class_disconnect_from_peer),
 };
 
-void define_packet_peer_dtls_property(JSContext *ctx, JSValue obj) {
+static void define_packet_peer_dtls_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_packet_peer_dtls_enum(JSContext *ctx, JSValue proto) {
 	JSValue Status_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Status_obj, "STATUS_DISCONNECTED", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Status_obj, "STATUS_HANDSHAKING", JS_NewInt64(ctx, 1));
@@ -94,7 +92,7 @@ static int js_packet_peer_dtls_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, PacketPeerDTLS::__class_id, proto);
 
 	define_packet_peer_dtls_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_packet_peer_dtls_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, packet_peer_dtls_class_proto_funcs, _countof(packet_peer_dtls_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, packet_peer_dtls_class_constructor, "PacketPeerDTLS", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

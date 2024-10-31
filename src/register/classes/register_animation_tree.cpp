@@ -28,13 +28,12 @@ static JSValue animation_tree_class_constructor(JSContext *ctx, JSValueConst new
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, AnimationTree::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	AnimationTree *animation_tree_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		animation_tree_class = static_cast<AnimationTree *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		animation_tree_class = static_cast<AnimationTree *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		animation_tree_class = memnew(AnimationTree);
-	}
 	if (!animation_tree_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -44,8 +43,7 @@ static JSValue animation_tree_class_constructor(JSContext *ctx, JSValueConst new
 }
 static JSValue animation_tree_class_set_tree_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationTree::set_tree_root, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationTree::set_tree_root, ctx, this_val, argc, argv);
 };
 static JSValue animation_tree_class_get_tree_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -53,8 +51,7 @@ static JSValue animation_tree_class_get_tree_root(JSContext *ctx, JSValueConst t
 };
 static JSValue animation_tree_class_set_advance_expression_base_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationTree::set_advance_expression_base_node, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationTree::set_advance_expression_base_node, ctx, this_val, argc, argv);
 };
 static JSValue animation_tree_class_get_advance_expression_base_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -62,8 +59,7 @@ static JSValue animation_tree_class_get_advance_expression_base_node(JSContext *
 };
 static JSValue animation_tree_class_set_animation_player(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationTree::set_animation_player, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationTree::set_animation_player, ctx, this_val, argc, argv);
 };
 static JSValue animation_tree_class_get_animation_player(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -71,8 +67,7 @@ static JSValue animation_tree_class_get_animation_player(JSContext *ctx, JSValue
 };
 static JSValue animation_tree_class_set_process_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&AnimationTree::set_process_callback, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&AnimationTree::set_process_callback, ctx, this_val, argc, argv);
 };
 static JSValue animation_tree_class_get_process_callback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,11 +83,21 @@ static const JSCFunctionListEntry animation_tree_class_proto_funcs[] = {
 	JS_CFUNC_DEF("set_process_callback", 1, &animation_tree_class_set_process_callback),
 	JS_CFUNC_DEF("get_process_callback", 0, &animation_tree_class_get_process_callback),
 };
+static JSValue animation_tree_class_get_animation_player_changed_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
+	CHECK_INSTANCE_VALID_V(this_val);
+	AnimationTree *opaque = reinterpret_cast<AnimationTree *>(JS_GetOpaque(this_val, AnimationTree::__class_id));
+	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "animation_player_changed_signal");
+	if (JS_IsUndefined(js_signal)) {
+		js_signal = Signal(opaque, "animation_player_changed").operator JSValue();
+		JS_DefinePropertyValueStr(ctx, this_val, "animation_player_changed_signal", js_signal, JS_PROP_HAS_VALUE);
+	}
+	return js_signal;
+}
 
-void define_animation_tree_property(JSContext *ctx, JSValue obj) {
+static void define_animation_tree_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "tree_root"),
         JS_NewCFunction(ctx, animation_tree_class_get_tree_root, "get_tree_root", 0),
         JS_NewCFunction(ctx, animation_tree_class_set_tree_root, "set_tree_root", 1),
@@ -100,7 +105,7 @@ void define_animation_tree_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "advance_expression_base_node"),
         JS_NewCFunction(ctx, animation_tree_class_get_advance_expression_base_node, "get_advance_expression_base_node", 0),
         JS_NewCFunction(ctx, animation_tree_class_set_advance_expression_base_node, "set_advance_expression_base_node", 1),
@@ -108,15 +113,24 @@ void define_animation_tree_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "anim_player"),
         JS_NewCFunction(ctx, animation_tree_class_get_animation_player, "get_animation_player", 0),
         JS_NewCFunction(ctx, animation_tree_class_set_animation_player, "set_animation_player", 1),
         JS_PROP_GETSET
     );
+	
+	JS_DefinePropertyGetSet(
+		ctx,
+		proto,
+		JS_NewAtom(ctx, "animation_player_changed"),
+		JS_NewCFunction(ctx, animation_tree_class_get_animation_player_changed_signal, "get_animation_player_changed_signal", 0),
+		JS_UNDEFINED,
+		JS_PROP_GETSET);
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_animation_tree_enum(JSContext *ctx, JSValue proto) {
 	JSValue AnimationProcessCallback_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, AnimationProcessCallback_obj, "ANIMATION_PROCESS_PHYSICS", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, AnimationProcessCallback_obj, "ANIMATION_PROCESS_IDLE", JS_NewInt64(ctx, 1));
@@ -137,7 +151,7 @@ static int js_animation_tree_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, AnimationTree::__class_id, proto);
 
 	define_animation_tree_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_animation_tree_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, animation_tree_class_proto_funcs, _countof(animation_tree_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, animation_tree_class_constructor, "AnimationTree", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

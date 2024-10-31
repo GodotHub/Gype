@@ -27,13 +27,12 @@ static JSValue bone2d_class_constructor(JSContext *ctx, JSValueConst new_target,
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, Bone2D::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	Bone2D *bone2d_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		bone2d_class = static_cast<Bone2D *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		bone2d_class = static_cast<Bone2D *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		bone2d_class = memnew(Bone2D);
-	}
 	if (!bone2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue bone2d_class_constructor(JSContext *ctx, JSValueConst new_target,
 }
 static JSValue bone2d_class_set_rest(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Bone2D::set_rest, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Bone2D::set_rest, ctx, this_val, argc, argv);
 };
 static JSValue bone2d_class_get_rest(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue bone2d_class_get_rest(JSContext *ctx, JSValueConst this_val, int 
 };
 static JSValue bone2d_class_apply_rest(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Bone2D::apply_rest, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Bone2D::apply_rest, ctx, this_val, argc, argv);
 };
 static JSValue bone2d_class_get_skeleton_rest(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -65,8 +62,7 @@ static JSValue bone2d_class_get_index_in_skeleton(JSContext *ctx, JSValueConst t
 };
 static JSValue bone2d_class_set_autocalculate_length_and_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Bone2D::set_autocalculate_length_and_angle, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Bone2D::set_autocalculate_length_and_angle, ctx, this_val, argc, argv);
 };
 static JSValue bone2d_class_get_autocalculate_length_and_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -74,8 +70,7 @@ static JSValue bone2d_class_get_autocalculate_length_and_angle(JSContext *ctx, J
 };
 static JSValue bone2d_class_set_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Bone2D::set_length, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Bone2D::set_length, ctx, this_val, argc, argv);
 };
 static JSValue bone2d_class_get_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -83,8 +78,7 @@ static JSValue bone2d_class_get_length(JSContext *ctx, JSValueConst this_val, in
 };
 static JSValue bone2d_class_set_bone_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&Bone2D::set_bone_angle, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&Bone2D::set_bone_angle, ctx, this_val, argc, argv);
 };
 static JSValue bone2d_class_get_bone_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -104,18 +98,19 @@ static const JSCFunctionListEntry bone2d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_bone_angle", 0, &bone2d_class_get_bone_angle),
 };
 
-void define_bone2d_property(JSContext *ctx, JSValue obj) {
+static void define_bone2d_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "rest"),
         JS_NewCFunction(ctx, bone2d_class_get_rest, "get_rest", 0),
         JS_NewCFunction(ctx, bone2d_class_set_rest, "set_rest", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_bone2d_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_bone2d_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -131,7 +126,7 @@ static int js_bone2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, Bone2D::__class_id, proto);
 
 	define_bone2d_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_bone2d_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, bone2d_class_proto_funcs, _countof(bone2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, bone2d_class_constructor, "Bone2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

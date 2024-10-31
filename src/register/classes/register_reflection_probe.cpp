@@ -27,13 +27,12 @@ static JSValue reflection_probe_class_constructor(JSContext *ctx, JSValueConst n
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, ReflectionProbe::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	ReflectionProbe *reflection_probe_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		reflection_probe_class = static_cast<ReflectionProbe *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		reflection_probe_class = static_cast<ReflectionProbe *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		reflection_probe_class = memnew(ReflectionProbe);
-	}
 	if (!reflection_probe_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -43,8 +42,7 @@ static JSValue reflection_probe_class_constructor(JSContext *ctx, JSValueConst n
 }
 static JSValue reflection_probe_class_set_intensity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ReflectionProbe::set_intensity, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ReflectionProbe::set_intensity, ctx, this_val, argc, argv);
 };
 static JSValue reflection_probe_class_get_intensity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -52,8 +50,7 @@ static JSValue reflection_probe_class_get_intensity(JSContext *ctx, JSValueConst
 };
 static JSValue reflection_probe_class_set_ambient_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ReflectionProbe::set_ambient_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ReflectionProbe::set_ambient_mode, ctx, this_val, argc, argv);
 };
 static JSValue reflection_probe_class_get_ambient_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -61,8 +58,7 @@ static JSValue reflection_probe_class_get_ambient_mode(JSContext *ctx, JSValueCo
 };
 static JSValue reflection_probe_class_set_ambient_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ReflectionProbe::set_ambient_color, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ReflectionProbe::set_ambient_color, ctx, this_val, argc, argv);
 };
 static JSValue reflection_probe_class_get_ambient_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -70,8 +66,7 @@ static JSValue reflection_probe_class_get_ambient_color(JSContext *ctx, JSValueC
 };
 static JSValue reflection_probe_class_set_ambient_color_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ReflectionProbe::set_ambient_color_energy, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ReflectionProbe::set_ambient_color_energy, ctx, this_val, argc, argv);
 };
 static JSValue reflection_probe_class_get_ambient_color_energy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -79,8 +74,7 @@ static JSValue reflection_probe_class_get_ambient_color_energy(JSContext *ctx, J
 };
 static JSValue reflection_probe_class_set_max_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ReflectionProbe::set_max_distance, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ReflectionProbe::set_max_distance, ctx, this_val, argc, argv);
 };
 static JSValue reflection_probe_class_get_max_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -88,8 +82,7 @@ static JSValue reflection_probe_class_get_max_distance(JSContext *ctx, JSValueCo
 };
 static JSValue reflection_probe_class_set_mesh_lod_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ReflectionProbe::set_mesh_lod_threshold, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ReflectionProbe::set_mesh_lod_threshold, ctx, this_val, argc, argv);
 };
 static JSValue reflection_probe_class_get_mesh_lod_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -97,8 +90,7 @@ static JSValue reflection_probe_class_get_mesh_lod_threshold(JSContext *ctx, JSV
 };
 static JSValue reflection_probe_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ReflectionProbe::set_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ReflectionProbe::set_size, ctx, this_val, argc, argv);
 };
 static JSValue reflection_probe_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -106,8 +98,7 @@ static JSValue reflection_probe_class_get_size(JSContext *ctx, JSValueConst this
 };
 static JSValue reflection_probe_class_set_origin_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ReflectionProbe::set_origin_offset, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ReflectionProbe::set_origin_offset, ctx, this_val, argc, argv);
 };
 static JSValue reflection_probe_class_get_origin_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -115,8 +106,7 @@ static JSValue reflection_probe_class_get_origin_offset(JSContext *ctx, JSValueC
 };
 static JSValue reflection_probe_class_set_as_interior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ReflectionProbe::set_as_interior, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ReflectionProbe::set_as_interior, ctx, this_val, argc, argv);
 };
 static JSValue reflection_probe_class_is_set_as_interior(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -124,8 +114,7 @@ static JSValue reflection_probe_class_is_set_as_interior(JSContext *ctx, JSValue
 };
 static JSValue reflection_probe_class_set_enable_box_projection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ReflectionProbe::set_enable_box_projection, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ReflectionProbe::set_enable_box_projection, ctx, this_val, argc, argv);
 };
 static JSValue reflection_probe_class_is_box_projection_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -133,8 +122,7 @@ static JSValue reflection_probe_class_is_box_projection_enabled(JSContext *ctx, 
 };
 static JSValue reflection_probe_class_set_enable_shadows(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ReflectionProbe::set_enable_shadows, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ReflectionProbe::set_enable_shadows, ctx, this_val, argc, argv);
 };
 static JSValue reflection_probe_class_are_shadows_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -142,8 +130,7 @@ static JSValue reflection_probe_class_are_shadows_enabled(JSContext *ctx, JSValu
 };
 static JSValue reflection_probe_class_set_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ReflectionProbe::set_cull_mask, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ReflectionProbe::set_cull_mask, ctx, this_val, argc, argv);
 };
 static JSValue reflection_probe_class_get_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -151,8 +138,7 @@ static JSValue reflection_probe_class_get_cull_mask(JSContext *ctx, JSValueConst
 };
 static JSValue reflection_probe_class_set_reflection_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ReflectionProbe::set_reflection_mask, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ReflectionProbe::set_reflection_mask, ctx, this_val, argc, argv);
 };
 static JSValue reflection_probe_class_get_reflection_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -160,8 +146,7 @@ static JSValue reflection_probe_class_get_reflection_mask(JSContext *ctx, JSValu
 };
 static JSValue reflection_probe_class_set_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&ReflectionProbe::set_update_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&ReflectionProbe::set_update_mode, ctx, this_val, argc, argv);
 };
 static JSValue reflection_probe_class_get_update_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -198,10 +183,10 @@ static const JSCFunctionListEntry reflection_probe_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_update_mode", 0, &reflection_probe_class_get_update_mode),
 };
 
-void define_reflection_probe_property(JSContext *ctx, JSValue obj) {
+static void define_reflection_probe_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "update_mode"),
         JS_NewCFunction(ctx, reflection_probe_class_get_update_mode, "get_update_mode", 0),
         JS_NewCFunction(ctx, reflection_probe_class_set_update_mode, "set_update_mode", 1),
@@ -209,7 +194,7 @@ void define_reflection_probe_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "intensity"),
         JS_NewCFunction(ctx, reflection_probe_class_get_intensity, "get_intensity", 0),
         JS_NewCFunction(ctx, reflection_probe_class_set_intensity, "set_intensity", 1),
@@ -217,7 +202,7 @@ void define_reflection_probe_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "max_distance"),
         JS_NewCFunction(ctx, reflection_probe_class_get_max_distance, "get_max_distance", 0),
         JS_NewCFunction(ctx, reflection_probe_class_set_max_distance, "set_max_distance", 1),
@@ -225,7 +210,7 @@ void define_reflection_probe_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "size"),
         JS_NewCFunction(ctx, reflection_probe_class_get_size, "get_size", 0),
         JS_NewCFunction(ctx, reflection_probe_class_set_size, "set_size", 1),
@@ -233,7 +218,7 @@ void define_reflection_probe_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "origin_offset"),
         JS_NewCFunction(ctx, reflection_probe_class_get_origin_offset, "get_origin_offset", 0),
         JS_NewCFunction(ctx, reflection_probe_class_set_origin_offset, "set_origin_offset", 1),
@@ -241,7 +226,7 @@ void define_reflection_probe_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "box_projection"),
         JS_NewCFunction(ctx, reflection_probe_class_is_box_projection_enabled, "is_box_projection_enabled", 0),
         JS_NewCFunction(ctx, reflection_probe_class_set_enable_box_projection, "set_enable_box_projection", 1),
@@ -249,7 +234,7 @@ void define_reflection_probe_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "interior"),
         JS_NewCFunction(ctx, reflection_probe_class_is_set_as_interior, "is_set_as_interior", 0),
         JS_NewCFunction(ctx, reflection_probe_class_set_as_interior, "set_as_interior", 1),
@@ -257,7 +242,7 @@ void define_reflection_probe_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "enable_shadows"),
         JS_NewCFunction(ctx, reflection_probe_class_are_shadows_enabled, "are_shadows_enabled", 0),
         JS_NewCFunction(ctx, reflection_probe_class_set_enable_shadows, "set_enable_shadows", 1),
@@ -265,7 +250,7 @@ void define_reflection_probe_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "cull_mask"),
         JS_NewCFunction(ctx, reflection_probe_class_get_cull_mask, "get_cull_mask", 0),
         JS_NewCFunction(ctx, reflection_probe_class_set_cull_mask, "set_cull_mask", 1),
@@ -273,7 +258,7 @@ void define_reflection_probe_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "reflection_mask"),
         JS_NewCFunction(ctx, reflection_probe_class_get_reflection_mask, "get_reflection_mask", 0),
         JS_NewCFunction(ctx, reflection_probe_class_set_reflection_mask, "set_reflection_mask", 1),
@@ -281,7 +266,7 @@ void define_reflection_probe_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "mesh_lod_threshold"),
         JS_NewCFunction(ctx, reflection_probe_class_get_mesh_lod_threshold, "get_mesh_lod_threshold", 0),
         JS_NewCFunction(ctx, reflection_probe_class_set_mesh_lod_threshold, "set_mesh_lod_threshold", 1),
@@ -289,7 +274,7 @@ void define_reflection_probe_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "ambient_mode"),
         JS_NewCFunction(ctx, reflection_probe_class_get_ambient_mode, "get_ambient_mode", 0),
         JS_NewCFunction(ctx, reflection_probe_class_set_ambient_mode, "set_ambient_mode", 1),
@@ -297,7 +282,7 @@ void define_reflection_probe_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "ambient_color"),
         JS_NewCFunction(ctx, reflection_probe_class_get_ambient_color, "get_ambient_color", 0),
         JS_NewCFunction(ctx, reflection_probe_class_set_ambient_color, "set_ambient_color", 1),
@@ -305,15 +290,16 @@ void define_reflection_probe_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "ambient_color_energy"),
         JS_NewCFunction(ctx, reflection_probe_class_get_ambient_color_energy, "get_ambient_color_energy", 0),
         JS_NewCFunction(ctx, reflection_probe_class_set_ambient_color_energy, "set_ambient_color_energy", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_reflection_probe_enum(JSContext *ctx, JSValue proto) {
 	JSValue UpdateMode_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, UpdateMode_obj, "UPDATE_ONCE", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, UpdateMode_obj, "UPDATE_ALWAYS", JS_NewInt64(ctx, 1));
@@ -338,7 +324,7 @@ static int js_reflection_probe_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, ReflectionProbe::__class_id, proto);
 
 	define_reflection_probe_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_reflection_probe_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, reflection_probe_class_proto_funcs, _countof(reflection_probe_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, reflection_probe_class_constructor, "ReflectionProbe", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);

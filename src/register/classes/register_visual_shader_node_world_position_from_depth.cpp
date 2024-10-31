@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_world_position_from_depth.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -27,13 +27,12 @@ static JSValue visual_shader_node_world_position_from_depth_class_constructor(JS
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, VisualShaderNodeWorldPositionFromDepth::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	VisualShaderNodeWorldPositionFromDepth *visual_shader_node_world_position_from_depth_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		visual_shader_node_world_position_from_depth_class = static_cast<VisualShaderNodeWorldPositionFromDepth *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		visual_shader_node_world_position_from_depth_class = static_cast<VisualShaderNodeWorldPositionFromDepth *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		visual_shader_node_world_position_from_depth_class = memnew(VisualShaderNodeWorldPositionFromDepth);
-	}
 	if (!visual_shader_node_world_position_from_depth_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,10 +41,11 @@ static JSValue visual_shader_node_world_position_from_depth_class_constructor(JS
 	return obj;
 }
 
-void define_visual_shader_node_world_position_from_depth_property(JSContext *ctx, JSValue obj) {
+static void define_visual_shader_node_world_position_from_depth_property(JSContext *ctx, JSValue proto) {
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_visual_shader_node_world_position_from_depth_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_visual_shader_node_world_position_from_depth_class_init(JSContext *ctx, JSModuleDef *m) {
@@ -61,7 +61,7 @@ static int js_visual_shader_node_world_position_from_depth_class_init(JSContext 
 	JS_SetClassProto(ctx, VisualShaderNodeWorldPositionFromDepth::__class_id, proto);
 
 	define_visual_shader_node_world_position_from_depth_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_visual_shader_node_world_position_from_depth_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_world_position_from_depth_class_constructor, "VisualShaderNodeWorldPositionFromDepth", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 

@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/classes/http_client.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -29,13 +29,12 @@ static JSValue http_client_class_constructor(JSContext *ctx, JSValueConst new_ta
 	JSValue obj = JS_NewObjectProtoClass(ctx, proto, HTTPClient::__class_id);
 	if (JS_IsException(obj))
 		return obj;
+
 	HTTPClient *http_client_class;
-	if (argc == 1) {
-		Variant vobj = *argv;
-		http_client_class = static_cast<HTTPClient *>(static_cast<Object *>(vobj));
-	} else {
+	if (argc == 1) 
+		http_client_class = static_cast<HTTPClient *>(static_cast<Object *>(Variant(*argv)));
+	else 
 		http_client_class = memnew(HTTPClient);
-	}
 	if (!http_client_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -49,8 +48,7 @@ static JSValue http_client_class_connect_to_host(JSContext *ctx, JSValueConst th
 };
 static JSValue http_client_class_set_connection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HTTPClient::set_connection, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HTTPClient::set_connection, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_get_connection(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -66,8 +64,7 @@ static JSValue http_client_class_request(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue http_client_class_close(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HTTPClient::close, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HTTPClient::close, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_has_response(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -99,8 +96,7 @@ static JSValue http_client_class_read_response_body_chunk(JSContext *ctx, JSValu
 };
 static JSValue http_client_class_set_read_chunk_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HTTPClient::set_read_chunk_size, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HTTPClient::set_read_chunk_size, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_get_read_chunk_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -108,8 +104,7 @@ static JSValue http_client_class_get_read_chunk_size(JSContext *ctx, JSValueCons
 };
 static JSValue http_client_class_set_blocking_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HTTPClient::set_blocking_mode, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HTTPClient::set_blocking_mode, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_is_blocking_mode_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -125,13 +120,11 @@ static JSValue http_client_class_poll(JSContext *ctx, JSValueConst this_val, int
 };
 static JSValue http_client_class_set_http_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HTTPClient::set_http_proxy, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HTTPClient::set_http_proxy, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_set_https_proxy(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
-    call_builtin_method_no_ret(&HTTPClient::set_https_proxy, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_method_no_ret(&HTTPClient::set_https_proxy, ctx, this_val, argc, argv);
 };
 static JSValue http_client_class_query_string_from_dict(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
@@ -162,10 +155,10 @@ static const JSCFunctionListEntry http_client_class_proto_funcs[] = {
 	JS_CFUNC_DEF("query_string_from_dict", 1, &http_client_class_query_string_from_dict),
 };
 
-void define_http_client_property(JSContext *ctx, JSValue obj) {
+static void define_http_client_property(JSContext *ctx, JSValue proto) {
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "blocking_mode_enabled"),
         JS_NewCFunction(ctx, http_client_class_is_blocking_mode_enabled, "is_blocking_mode_enabled", 0),
         JS_NewCFunction(ctx, http_client_class_set_blocking_mode, "set_blocking_mode", 1),
@@ -173,7 +166,7 @@ void define_http_client_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "connection"),
         JS_NewCFunction(ctx, http_client_class_get_connection, "get_connection", 0),
         JS_NewCFunction(ctx, http_client_class_set_connection, "set_connection", 1),
@@ -181,15 +174,16 @@ void define_http_client_property(JSContext *ctx, JSValue obj) {
     );
     JS_DefinePropertyGetSet(
         ctx,
-        obj,
+        proto,
         JS_NewAtom(ctx, "read_chunk_size"),
         JS_NewCFunction(ctx, http_client_class_get_read_chunk_size, "get_read_chunk_size", 0),
         JS_NewCFunction(ctx, http_client_class_set_read_chunk_size, "set_read_chunk_size", 1),
         JS_PROP_GETSET
     );
+	
 }
 
-static void define_node_enum(JSContext *ctx, JSValue proto) {
+static void define_http_client_enum(JSContext *ctx, JSValue proto) {
 	JSValue Method_obj = JS_NewObject(ctx);
 	JS_SetPropertyStr(ctx, Method_obj, "METHOD_GET", JS_NewInt64(ctx, 0));
 	JS_SetPropertyStr(ctx, Method_obj, "METHOD_HEAD", JS_NewInt64(ctx, 1));
@@ -292,7 +286,7 @@ static int js_http_client_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetClassProto(ctx, HTTPClient::__class_id, proto);
 
 	define_http_client_property(ctx, proto);
-	define_node_enum(ctx, proto);
+	define_http_client_enum(ctx, proto);
 	JS_SetPropertyFunctionList(ctx, proto, http_client_class_proto_funcs, _countof(http_client_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, http_client_class_constructor, "HTTPClient", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
