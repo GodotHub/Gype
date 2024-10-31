@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_export_platform_windows.hpp>
 #include <godot_cpp/classes/editor_export_platform_pc.hpp>
+#include <godot_cpp/classes/editor_export_platform_windows.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue editor_export_platform_windows_class_constructor(JSContext *ctx, 
 
 	EditorExportPlatformWindows *editor_export_platform_windows_class;
 	if (argc == 1) 
-		editor_export_platform_windows_class = static_cast<EditorExportPlatformWindows *>(static_cast<Object *>(Variant(*argv)));
+		editor_export_platform_windows_class = static_cast<EditorExportPlatformWindows *>(Variant(*argv).operator Object *());
 	else 
 		editor_export_platform_windows_class = memnew(EditorExportPlatformWindows);
 	if (!editor_export_platform_windows_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_export_platform_windows_class);	
+	JS_SetOpaque(obj, editor_export_platform_windows_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_editor_export_platform_windows_enum(JSContext *ctx, JSValue p
 
 static int js_editor_export_platform_windows_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorExportPlatformWindows::__class_id);
 	classes["EditorExportPlatformWindows"] = EditorExportPlatformWindows::__class_id;
 	class_id_list.insert(EditorExportPlatformWindows::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorExportPlatformWindows::__class_id, &editor_export_platform_windows_class_def);

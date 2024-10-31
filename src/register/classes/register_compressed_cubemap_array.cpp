@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/compressed_cubemap_array.hpp>
 #include <godot_cpp/classes/compressed_texture_layered.hpp>
+#include <godot_cpp/classes/compressed_cubemap_array.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue compressed_cubemap_array_class_constructor(JSContext *ctx, JSValu
 
 	CompressedCubemapArray *compressed_cubemap_array_class;
 	if (argc == 1) 
-		compressed_cubemap_array_class = static_cast<CompressedCubemapArray *>(static_cast<Object *>(Variant(*argv)));
+		compressed_cubemap_array_class = static_cast<CompressedCubemapArray *>(Variant(*argv).operator Object *());
 	else 
 		compressed_cubemap_array_class = memnew(CompressedCubemapArray);
 	if (!compressed_cubemap_array_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, compressed_cubemap_array_class);	
+	JS_SetOpaque(obj, compressed_cubemap_array_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_compressed_cubemap_array_enum(JSContext *ctx, JSValue proto) 
 
 static int js_compressed_cubemap_array_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CompressedCubemapArray::__class_id);
 	classes["CompressedCubemapArray"] = CompressedCubemapArray::__class_id;
 	class_id_list.insert(CompressedCubemapArray::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CompressedCubemapArray::__class_id, &compressed_cubemap_array_class_def);

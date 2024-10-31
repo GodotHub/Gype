@@ -30,14 +30,14 @@ static JSValue scene_multiplayer_class_constructor(JSContext *ctx, JSValueConst 
 
 	SceneMultiplayer *scene_multiplayer_class;
 	if (argc == 1) 
-		scene_multiplayer_class = static_cast<SceneMultiplayer *>(static_cast<Object *>(Variant(*argv)));
+		scene_multiplayer_class = static_cast<SceneMultiplayer *>(Variant(*argv).operator Object *());
 	else 
 		scene_multiplayer_class = memnew(SceneMultiplayer);
 	if (!scene_multiplayer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, scene_multiplayer_class);	
+	JS_SetOpaque(obj, scene_multiplayer_class);
 	return obj;
 }
 static JSValue scene_multiplayer_class_set_root_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -280,7 +280,6 @@ static void define_scene_multiplayer_enum(JSContext *ctx, JSValue proto) {
 
 static int js_scene_multiplayer_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SceneMultiplayer::__class_id);
 	classes["SceneMultiplayer"] = SceneMultiplayer::__class_id;
 	class_id_list.insert(SceneMultiplayer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SceneMultiplayer::__class_id, &scene_multiplayer_class_def);

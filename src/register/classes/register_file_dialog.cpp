@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/confirmation_dialog.hpp>
+#include <godot_cpp/classes/v_box_container.hpp>
 #include <godot_cpp/classes/file_dialog.hpp>
 #include <godot_cpp/classes/line_edit.hpp>
-#include <godot_cpp/classes/v_box_container.hpp>
-#include <godot_cpp/classes/confirmation_dialog.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue file_dialog_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	FileDialog *file_dialog_class;
 	if (argc == 1) 
-		file_dialog_class = static_cast<FileDialog *>(static_cast<Object *>(Variant(*argv)));
+		file_dialog_class = static_cast<FileDialog *>(Variant(*argv).operator Object *());
 	else 
 		file_dialog_class = memnew(FileDialog);
 	if (!file_dialog_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, file_dialog_class);	
+	JS_SetOpaque(obj, file_dialog_class);
 	return obj;
 }
 static JSValue file_dialog_class_clear_filters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -388,7 +388,6 @@ static void define_file_dialog_enum(JSContext *ctx, JSValue proto) {
 
 static int js_file_dialog_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&FileDialog::__class_id);
 	classes["FileDialog"] = FileDialog::__class_id;
 	class_id_list.insert(FileDialog::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), FileDialog::__class_id, &file_dialog_class_def);

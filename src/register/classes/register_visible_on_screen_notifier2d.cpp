@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visible_on_screen_notifier2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/visible_on_screen_notifier2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue visible_on_screen_notifier2d_class_constructor(JSContext *ctx, JS
 
 	VisibleOnScreenNotifier2D *visible_on_screen_notifier2d_class;
 	if (argc == 1) 
-		visible_on_screen_notifier2d_class = static_cast<VisibleOnScreenNotifier2D *>(static_cast<Object *>(Variant(*argv)));
+		visible_on_screen_notifier2d_class = static_cast<VisibleOnScreenNotifier2D *>(Variant(*argv).operator Object *());
 	else 
 		visible_on_screen_notifier2d_class = memnew(VisibleOnScreenNotifier2D);
 	if (!visible_on_screen_notifier2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visible_on_screen_notifier2d_class);	
+	JS_SetOpaque(obj, visible_on_screen_notifier2d_class);
 	return obj;
 }
 static JSValue visible_on_screen_notifier2d_class_set_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -111,7 +111,6 @@ static void define_visible_on_screen_notifier2d_enum(JSContext *ctx, JSValue pro
 
 static int js_visible_on_screen_notifier2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisibleOnScreenNotifier2D::__class_id);
 	classes["VisibleOnScreenNotifier2D"] = VisibleOnScreenNotifier2D::__class_id;
 	class_id_list.insert(VisibleOnScreenNotifier2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisibleOnScreenNotifier2D::__class_id, &visible_on_screen_notifier2d_class_def);

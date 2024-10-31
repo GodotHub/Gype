@@ -30,14 +30,14 @@ static JSValue visual_shader_node_transform_decompose_class_constructor(JSContex
 
 	VisualShaderNodeTransformDecompose *visual_shader_node_transform_decompose_class;
 	if (argc == 1) 
-		visual_shader_node_transform_decompose_class = static_cast<VisualShaderNodeTransformDecompose *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_transform_decompose_class = static_cast<VisualShaderNodeTransformDecompose *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_transform_decompose_class = memnew(VisualShaderNodeTransformDecompose);
 	if (!visual_shader_node_transform_decompose_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_transform_decompose_class);	
+	JS_SetOpaque(obj, visual_shader_node_transform_decompose_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_visual_shader_node_transform_decompose_enum(JSContext *ctx, J
 
 static int js_visual_shader_node_transform_decompose_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeTransformDecompose::__class_id);
 	classes["VisualShaderNodeTransformDecompose"] = VisualShaderNodeTransformDecompose::__class_id;
 	class_id_list.insert(VisualShaderNodeTransformDecompose::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeTransformDecompose::__class_id, &visual_shader_node_transform_decompose_class_def);

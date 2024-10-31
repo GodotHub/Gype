@@ -30,14 +30,14 @@ static JSValue triangle_mesh_class_constructor(JSContext *ctx, JSValueConst new_
 
 	TriangleMesh *triangle_mesh_class;
 	if (argc == 1) 
-		triangle_mesh_class = static_cast<TriangleMesh *>(static_cast<Object *>(Variant(*argv)));
+		triangle_mesh_class = static_cast<TriangleMesh *>(Variant(*argv).operator Object *());
 	else 
 		triangle_mesh_class = memnew(TriangleMesh);
 	if (!triangle_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, triangle_mesh_class);	
+	JS_SetOpaque(obj, triangle_mesh_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_triangle_mesh_enum(JSContext *ctx, JSValue proto) {
 
 static int js_triangle_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&TriangleMesh::__class_id);
 	classes["TriangleMesh"] = TriangleMesh::__class_id;
 	class_id_list.insert(TriangleMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TriangleMesh::__class_id, &triangle_mesh_class_def);

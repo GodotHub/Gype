@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/classes/grid_container.hpp>
+#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue grid_container_class_constructor(JSContext *ctx, JSValueConst new
 
 	GridContainer *grid_container_class;
 	if (argc == 1) 
-		grid_container_class = static_cast<GridContainer *>(static_cast<Object *>(Variant(*argv)));
+		grid_container_class = static_cast<GridContainer *>(Variant(*argv).operator Object *());
 	else 
 		grid_container_class = memnew(GridContainer);
 	if (!grid_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, grid_container_class);	
+	JS_SetOpaque(obj, grid_container_class);
 	return obj;
 }
 static JSValue grid_container_class_set_columns(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_grid_container_enum(JSContext *ctx, JSValue proto) {
 
 static int js_grid_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GridContainer::__class_id);
 	classes["GridContainer"] = GridContainer::__class_id;
 	class_id_list.insert(GridContainer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GridContainer::__class_id, &grid_container_class_def);

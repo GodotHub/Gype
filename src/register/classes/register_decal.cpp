@@ -31,14 +31,14 @@ static JSValue decal_class_constructor(JSContext *ctx, JSValueConst new_target, 
 
 	Decal *decal_class;
 	if (argc == 1) 
-		decal_class = static_cast<Decal *>(static_cast<Object *>(Variant(*argv)));
+		decal_class = static_cast<Decal *>(Variant(*argv).operator Object *());
 	else 
 		decal_class = memnew(Decal);
 	if (!decal_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, decal_class);	
+	JS_SetOpaque(obj, decal_class);
 	return obj;
 }
 static JSValue decal_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -300,7 +300,6 @@ static void define_decal_enum(JSContext *ctx, JSValue proto) {
 
 static int js_decal_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Decal::__class_id);
 	classes["Decal"] = Decal::__class_id;
 	class_id_list.insert(Decal::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Decal::__class_id, &decal_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/shape2d.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue shape2d_class_constructor(JSContext *ctx, JSValueConst new_target
 
 	Shape2D *shape2d_class;
 	if (argc == 1) 
-		shape2d_class = static_cast<Shape2D *>(static_cast<Object *>(Variant(*argv)));
+		shape2d_class = static_cast<Shape2D *>(Variant(*argv).operator Object *());
 	else 
 		shape2d_class = memnew(Shape2D);
 	if (!shape2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, shape2d_class);	
+	JS_SetOpaque(obj, shape2d_class);
 	return obj;
 }
 static JSValue shape2d_class_set_custom_solver_bias(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -100,7 +100,6 @@ static void define_shape2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_shape2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Shape2D::__class_id);
 	classes["Shape2D"] = Shape2D::__class_id;
 	class_id_list.insert(Shape2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Shape2D::__class_id, &shape2d_class_def);

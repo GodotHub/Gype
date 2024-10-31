@@ -30,14 +30,14 @@ static JSValue compressed_texture_layered_class_constructor(JSContext *ctx, JSVa
 
 	CompressedTextureLayered *compressed_texture_layered_class;
 	if (argc == 1) 
-		compressed_texture_layered_class = static_cast<CompressedTextureLayered *>(static_cast<Object *>(Variant(*argv)));
+		compressed_texture_layered_class = static_cast<CompressedTextureLayered *>(Variant(*argv).operator Object *());
 	else 
 		compressed_texture_layered_class = memnew(CompressedTextureLayered);
 	if (!compressed_texture_layered_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, compressed_texture_layered_class);	
+	JS_SetOpaque(obj, compressed_texture_layered_class);
 	return obj;
 }
 static JSValue compressed_texture_layered_class_load(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_compressed_texture_layered_enum(JSContext *ctx, JSValue proto
 
 static int js_compressed_texture_layered_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CompressedTextureLayered::__class_id);
 	classes["CompressedTextureLayered"] = CompressedTextureLayered::__class_id;
 	class_id_list.insert(CompressedTextureLayered::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CompressedTextureLayered::__class_id, &compressed_texture_layered_class_def);

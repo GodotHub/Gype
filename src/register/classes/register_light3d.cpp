@@ -31,14 +31,14 @@ static JSValue light3d_class_constructor(JSContext *ctx, JSValueConst new_target
 
 	Light3D *light3d_class;
 	if (argc == 1) 
-		light3d_class = static_cast<Light3D *>(static_cast<Object *>(Variant(*argv)));
+		light3d_class = static_cast<Light3D *>(Variant(*argv).operator Object *());
 	else 
 		light3d_class = memnew(Light3D);
 	if (!light3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, light3d_class);	
+	JS_SetOpaque(obj, light3d_class);
 	return obj;
 }
 static JSValue light3d_class_set_editor_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -435,7 +435,6 @@ static void define_light3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_light3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Light3D::__class_id);
 	classes["Light3D"] = Light3D::__class_id;
 	class_id_list.insert(Light3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Light3D::__class_id, &light3d_class_def);

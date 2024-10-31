@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/audio_sample.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue audio_sample_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	AudioSample *audio_sample_class;
 	if (argc == 1) 
-		audio_sample_class = static_cast<AudioSample *>(static_cast<Object *>(Variant(*argv)));
+		audio_sample_class = static_cast<AudioSample *>(Variant(*argv).operator Object *());
 	else 
 		audio_sample_class = memnew(AudioSample);
 	if (!audio_sample_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_sample_class);	
+	JS_SetOpaque(obj, audio_sample_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_audio_sample_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_sample_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioSample::__class_id);
 	classes["AudioSample"] = AudioSample::__class_id;
 	class_id_list.insert(AudioSample::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioSample::__class_id, &audio_sample_class_def);

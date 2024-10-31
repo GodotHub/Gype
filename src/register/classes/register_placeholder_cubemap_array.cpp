@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/placeholder_cubemap_array.hpp>
 #include <godot_cpp/classes/placeholder_texture_layered.hpp>
+#include <godot_cpp/classes/placeholder_cubemap_array.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue placeholder_cubemap_array_class_constructor(JSContext *ctx, JSVal
 
 	PlaceholderCubemapArray *placeholder_cubemap_array_class;
 	if (argc == 1) 
-		placeholder_cubemap_array_class = static_cast<PlaceholderCubemapArray *>(static_cast<Object *>(Variant(*argv)));
+		placeholder_cubemap_array_class = static_cast<PlaceholderCubemapArray *>(Variant(*argv).operator Object *());
 	else 
 		placeholder_cubemap_array_class = memnew(PlaceholderCubemapArray);
 	if (!placeholder_cubemap_array_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, placeholder_cubemap_array_class);	
+	JS_SetOpaque(obj, placeholder_cubemap_array_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_placeholder_cubemap_array_enum(JSContext *ctx, JSValue proto)
 
 static int js_placeholder_cubemap_array_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PlaceholderCubemapArray::__class_id);
 	classes["PlaceholderCubemapArray"] = PlaceholderCubemapArray::__class_id;
 	class_id_list.insert(PlaceholderCubemapArray::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PlaceholderCubemapArray::__class_id, &placeholder_cubemap_array_class_def);

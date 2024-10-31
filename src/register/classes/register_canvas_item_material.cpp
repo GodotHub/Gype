@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/canvas_item_material.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/canvas_item_material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue canvas_item_material_class_constructor(JSContext *ctx, JSValueCon
 
 	CanvasItemMaterial *canvas_item_material_class;
 	if (argc == 1) 
-		canvas_item_material_class = static_cast<CanvasItemMaterial *>(static_cast<Object *>(Variant(*argv)));
+		canvas_item_material_class = static_cast<CanvasItemMaterial *>(Variant(*argv).operator Object *());
 	else 
 		canvas_item_material_class = memnew(CanvasItemMaterial);
 	if (!canvas_item_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, canvas_item_material_class);	
+	JS_SetOpaque(obj, canvas_item_material_class);
 	return obj;
 }
 static JSValue canvas_item_material_class_set_blend_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -172,7 +172,6 @@ static void define_canvas_item_material_enum(JSContext *ctx, JSValue proto) {
 
 static int js_canvas_item_material_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CanvasItemMaterial::__class_id);
 	classes["CanvasItemMaterial"] = CanvasItemMaterial::__class_id;
 	class_id_list.insert(CanvasItemMaterial::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CanvasItemMaterial::__class_id, &canvas_item_material_class_def);

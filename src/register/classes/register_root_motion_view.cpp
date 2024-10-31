@@ -30,14 +30,14 @@ static JSValue root_motion_view_class_constructor(JSContext *ctx, JSValueConst n
 
 	RootMotionView *root_motion_view_class;
 	if (argc == 1) 
-		root_motion_view_class = static_cast<RootMotionView *>(static_cast<Object *>(Variant(*argv)));
+		root_motion_view_class = static_cast<RootMotionView *>(Variant(*argv).operator Object *());
 	else 
 		root_motion_view_class = memnew(RootMotionView);
 	if (!root_motion_view_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, root_motion_view_class);	
+	JS_SetOpaque(obj, root_motion_view_class);
 	return obj;
 }
 static JSValue root_motion_view_class_set_animation_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -142,7 +142,6 @@ static void define_root_motion_view_enum(JSContext *ctx, JSValue proto) {
 
 static int js_root_motion_view_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RootMotionView::__class_id);
 	classes["RootMotionView"] = RootMotionView::__class_id;
 	class_id_list.insert(RootMotionView::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RootMotionView::__class_id, &root_motion_view_class_def);

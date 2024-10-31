@@ -30,14 +30,14 @@ static JSValue visual_shader_node_reroute_class_constructor(JSContext *ctx, JSVa
 
 	VisualShaderNodeReroute *visual_shader_node_reroute_class;
 	if (argc == 1) 
-		visual_shader_node_reroute_class = static_cast<VisualShaderNodeReroute *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_reroute_class = static_cast<VisualShaderNodeReroute *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_reroute_class = memnew(VisualShaderNodeReroute);
 	if (!visual_shader_node_reroute_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_reroute_class);	
+	JS_SetOpaque(obj, visual_shader_node_reroute_class);
 	return obj;
 }
 static JSValue visual_shader_node_reroute_class_get_port_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,7 +65,6 @@ static void define_visual_shader_node_reroute_enum(JSContext *ctx, JSValue proto
 
 static int js_visual_shader_node_reroute_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeReroute::__class_id);
 	classes["VisualShaderNodeReroute"] = VisualShaderNodeReroute::__class_id;
 	class_id_list.insert(VisualShaderNodeReroute::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeReroute::__class_id, &visual_shader_node_reroute_class_def);

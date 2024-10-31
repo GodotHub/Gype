@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/zip_reader.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue zip_reader_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	ZIPReader *zip_reader_class;
 	if (argc == 1) 
-		zip_reader_class = static_cast<ZIPReader *>(static_cast<Object *>(Variant(*argv)));
+		zip_reader_class = static_cast<ZIPReader *>(Variant(*argv).operator Object *());
 	else 
 		zip_reader_class = memnew(ZIPReader);
 	if (!zip_reader_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, zip_reader_class);	
+	JS_SetOpaque(obj, zip_reader_class);
 	return obj;
 }
 static JSValue zip_reader_class_open(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -77,7 +77,6 @@ static void define_zip_reader_enum(JSContext *ctx, JSValue proto) {
 
 static int js_zip_reader_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ZIPReader::__class_id);
 	classes["ZIPReader"] = ZIPReader::__class_id;
 	class_id_list.insert(ZIPReader::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ZIPReader::__class_id, &zip_reader_class_def);

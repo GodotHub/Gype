@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/navigation_mesh.hpp>
 #include <godot_cpp/classes/navigation_region3d.hpp>
+#include <godot_cpp/classes/navigation_mesh.hpp>
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue navigation_region3d_class_constructor(JSContext *ctx, JSValueCons
 
 	NavigationRegion3D *navigation_region3d_class;
 	if (argc == 1) 
-		navigation_region3d_class = static_cast<NavigationRegion3D *>(static_cast<Object *>(Variant(*argv)));
+		navigation_region3d_class = static_cast<NavigationRegion3D *>(Variant(*argv).operator Object *());
 	else 
 		navigation_region3d_class = memnew(NavigationRegion3D);
 	if (!navigation_region3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, navigation_region3d_class);	
+	JS_SetOpaque(obj, navigation_region3d_class);
 	return obj;
 }
 static JSValue navigation_region3d_class_get_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -237,7 +237,6 @@ static void define_navigation_region3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_navigation_region3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&NavigationRegion3D::__class_id);
 	classes["NavigationRegion3D"] = NavigationRegion3D::__class_id;
 	class_id_list.insert(NavigationRegion3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NavigationRegion3D::__class_id, &navigation_region3d_class_def);

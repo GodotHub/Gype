@@ -30,14 +30,14 @@ static JSValue panel_container_class_constructor(JSContext *ctx, JSValueConst ne
 
 	PanelContainer *panel_container_class;
 	if (argc == 1) 
-		panel_container_class = static_cast<PanelContainer *>(static_cast<Object *>(Variant(*argv)));
+		panel_container_class = static_cast<PanelContainer *>(Variant(*argv).operator Object *());
 	else 
 		panel_container_class = memnew(PanelContainer);
 	if (!panel_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, panel_container_class);	
+	JS_SetOpaque(obj, panel_container_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_panel_container_enum(JSContext *ctx, JSValue proto) {
 
 static int js_panel_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PanelContainer::__class_id);
 	classes["PanelContainer"] = PanelContainer::__class_id;
 	class_id_list.insert(PanelContainer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PanelContainer::__class_id, &panel_container_class_def);

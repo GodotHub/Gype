@@ -30,14 +30,14 @@ static JSValue color_picker_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	ColorPicker *color_picker_class;
 	if (argc == 1) 
-		color_picker_class = static_cast<ColorPicker *>(static_cast<Object *>(Variant(*argv)));
+		color_picker_class = static_cast<ColorPicker *>(Variant(*argv).operator Object *());
 	else 
 		color_picker_class = memnew(ColorPicker);
 	if (!color_picker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, color_picker_class);	
+	JS_SetOpaque(obj, color_picker_class);
 	return obj;
 }
 static JSValue color_picker_class_set_pick_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -347,7 +347,6 @@ static void define_color_picker_enum(JSContext *ctx, JSValue proto) {
 
 static int js_color_picker_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ColorPicker::__class_id);
 	classes["ColorPicker"] = ColorPicker::__class_id;
 	class_id_list.insert(ColorPicker::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ColorPicker::__class_id, &color_picker_class_def);

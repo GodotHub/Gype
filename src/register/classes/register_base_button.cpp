@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/base_button.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/shortcut.hpp>
 #include <godot_cpp/classes/button_group.hpp>
+#include <godot_cpp/classes/shortcut.hpp>
+#include <godot_cpp/classes/base_button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue base_button_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	BaseButton *base_button_class;
 	if (argc == 1) 
-		base_button_class = static_cast<BaseButton *>(static_cast<Object *>(Variant(*argv)));
+		base_button_class = static_cast<BaseButton *>(Variant(*argv).operator Object *());
 	else 
 		base_button_class = memnew(BaseButton);
 	if (!base_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, base_button_class);	
+	JS_SetOpaque(obj, base_button_class);
 	return obj;
 }
 static JSValue base_button_class_set_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -332,7 +332,6 @@ static void define_base_button_enum(JSContext *ctx, JSValue proto) {
 
 static int js_base_button_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&BaseButton::__class_id);
 	classes["BaseButton"] = BaseButton::__class_id;
 	class_id_list.insert(BaseButton::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), BaseButton::__class_id, &base_button_class_def);

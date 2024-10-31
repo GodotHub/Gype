@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/world_boundary_shape3d.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
+#include <godot_cpp/classes/world_boundary_shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue world_boundary_shape3d_class_constructor(JSContext *ctx, JSValueC
 
 	WorldBoundaryShape3D *world_boundary_shape3d_class;
 	if (argc == 1) 
-		world_boundary_shape3d_class = static_cast<WorldBoundaryShape3D *>(static_cast<Object *>(Variant(*argv)));
+		world_boundary_shape3d_class = static_cast<WorldBoundaryShape3D *>(Variant(*argv).operator Object *());
 	else 
 		world_boundary_shape3d_class = memnew(WorldBoundaryShape3D);
 	if (!world_boundary_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, world_boundary_shape3d_class);	
+	JS_SetOpaque(obj, world_boundary_shape3d_class);
 	return obj;
 }
 static JSValue world_boundary_shape3d_class_set_plane(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_world_boundary_shape3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_world_boundary_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&WorldBoundaryShape3D::__class_id);
 	classes["WorldBoundaryShape3D"] = WorldBoundaryShape3D::__class_id;
 	class_id_list.insert(WorldBoundaryShape3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), WorldBoundaryShape3D::__class_id, &world_boundary_shape3d_class_def);

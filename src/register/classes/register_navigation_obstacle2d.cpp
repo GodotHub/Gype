@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/navigation_obstacle2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue navigation_obstacle2d_class_constructor(JSContext *ctx, JSValueCo
 
 	NavigationObstacle2D *navigation_obstacle2d_class;
 	if (argc == 1) 
-		navigation_obstacle2d_class = static_cast<NavigationObstacle2D *>(static_cast<Object *>(Variant(*argv)));
+		navigation_obstacle2d_class = static_cast<NavigationObstacle2D *>(Variant(*argv).operator Object *());
 	else 
 		navigation_obstacle2d_class = memnew(NavigationObstacle2D);
 	if (!navigation_obstacle2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, navigation_obstacle2d_class);	
+	JS_SetOpaque(obj, navigation_obstacle2d_class);
 	return obj;
 }
 static JSValue navigation_obstacle2d_class_get_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -203,7 +203,6 @@ static void define_navigation_obstacle2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_navigation_obstacle2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&NavigationObstacle2D::__class_id);
 	classes["NavigationObstacle2D"] = NavigationObstacle2D::__class_id;
 	class_id_list.insert(NavigationObstacle2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NavigationObstacle2D::__class_id, &navigation_obstacle2d_class_def);

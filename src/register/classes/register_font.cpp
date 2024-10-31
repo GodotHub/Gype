@@ -31,14 +31,14 @@ static JSValue font_class_constructor(JSContext *ctx, JSValueConst new_target, i
 
 	Font *font_class;
 	if (argc == 1) 
-		font_class = static_cast<Font *>(static_cast<Object *>(Variant(*argv)));
+		font_class = static_cast<Font *>(Variant(*argv).operator Object *());
 	else 
 		font_class = memnew(Font);
 	if (!font_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, font_class);	
+	JS_SetOpaque(obj, font_class);
 	return obj;
 }
 static JSValue font_class_set_fallbacks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -231,7 +231,6 @@ static void define_font_enum(JSContext *ctx, JSValue proto) {
 
 static int js_font_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Font::__class_id);
 	classes["Font"] = Font::__class_id;
 	class_id_list.insert(Font::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Font::__class_id, &font_class_def);

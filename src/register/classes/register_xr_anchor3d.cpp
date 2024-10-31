@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_node3d.hpp>
 #include <godot_cpp/classes/xr_anchor3d.hpp>
+#include <godot_cpp/classes/xr_node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue xr_anchor3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	XRAnchor3D *xr_anchor3d_class;
 	if (argc == 1) 
-		xr_anchor3d_class = static_cast<XRAnchor3D *>(static_cast<Object *>(Variant(*argv)));
+		xr_anchor3d_class = static_cast<XRAnchor3D *>(Variant(*argv).operator Object *());
 	else 
 		xr_anchor3d_class = memnew(XRAnchor3D);
 	if (!xr_anchor3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, xr_anchor3d_class);	
+	JS_SetOpaque(obj, xr_anchor3d_class);
 	return obj;
 }
 static JSValue xr_anchor3d_class_get_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +62,6 @@ static void define_xr_anchor3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_xr_anchor3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&XRAnchor3D::__class_id);
 	classes["XRAnchor3D"] = XRAnchor3D::__class_id;
 	class_id_list.insert(XRAnchor3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRAnchor3D::__class_id, &xr_anchor3d_class_def);

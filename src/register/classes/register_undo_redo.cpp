@@ -30,14 +30,14 @@ static JSValue undo_redo_class_constructor(JSContext *ctx, JSValueConst new_targ
 
 	UndoRedo *undo_redo_class;
 	if (argc == 1) 
-		undo_redo_class = static_cast<UndoRedo *>(static_cast<Object *>(Variant(*argv)));
+		undo_redo_class = static_cast<UndoRedo *>(Variant(*argv).operator Object *());
 	else 
 		undo_redo_class = memnew(UndoRedo);
 	if (!undo_redo_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, undo_redo_class);	
+	JS_SetOpaque(obj, undo_redo_class);
 	return obj;
 }
 static JSValue undo_redo_class_create_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -198,7 +198,6 @@ static void define_undo_redo_enum(JSContext *ctx, JSValue proto) {
 
 static int js_undo_redo_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&UndoRedo::__class_id);
 	classes["UndoRedo"] = UndoRedo::__class_id;
 	class_id_list.insert(UndoRedo::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), UndoRedo::__class_id, &undo_redo_class_def);

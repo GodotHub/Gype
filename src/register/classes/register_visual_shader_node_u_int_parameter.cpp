@@ -30,14 +30,14 @@ static JSValue visual_shader_node_u_int_parameter_class_constructor(JSContext *c
 
 	VisualShaderNodeUIntParameter *visual_shader_node_u_int_parameter_class;
 	if (argc == 1) 
-		visual_shader_node_u_int_parameter_class = static_cast<VisualShaderNodeUIntParameter *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_u_int_parameter_class = static_cast<VisualShaderNodeUIntParameter *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_u_int_parameter_class = memnew(VisualShaderNodeUIntParameter);
 	if (!visual_shader_node_u_int_parameter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_u_int_parameter_class);	
+	JS_SetOpaque(obj, visual_shader_node_u_int_parameter_class);
 	return obj;
 }
 static JSValue visual_shader_node_u_int_parameter_class_set_default_value_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,7 +88,6 @@ static void define_visual_shader_node_u_int_parameter_enum(JSContext *ctx, JSVal
 
 static int js_visual_shader_node_u_int_parameter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeUIntParameter::__class_id);
 	classes["VisualShaderNodeUIntParameter"] = VisualShaderNodeUIntParameter::__class_id;
 	class_id_list.insert(VisualShaderNodeUIntParameter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeUIntParameter::__class_id, &visual_shader_node_u_int_parameter_class_def);

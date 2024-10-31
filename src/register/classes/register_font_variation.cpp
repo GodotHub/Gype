@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/font_variation.hpp>
 #include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/font_variation.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue font_variation_class_constructor(JSContext *ctx, JSValueConst new
 
 	FontVariation *font_variation_class;
 	if (argc == 1) 
-		font_variation_class = static_cast<FontVariation *>(static_cast<Object *>(Variant(*argv)));
+		font_variation_class = static_cast<FontVariation *>(Variant(*argv).operator Object *());
 	else 
 		font_variation_class = memnew(FontVariation);
 	if (!font_variation_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, font_variation_class);	
+	JS_SetOpaque(obj, font_variation_class);
 	return obj;
 }
 static JSValue font_variation_class_set_base_font(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -210,7 +210,6 @@ static void define_font_variation_enum(JSContext *ctx, JSValue proto) {
 
 static int js_font_variation_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&FontVariation::__class_id);
 	classes["FontVariation"] = FontVariation::__class_id;
 	class_id_list.insert(FontVariation::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), FontVariation::__class_id, &font_variation_class_def);

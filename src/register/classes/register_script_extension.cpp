@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/classes/script_extension.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/script_language.hpp>
+#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue script_extension_class_constructor(JSContext *ctx, JSValueConst n
 
 	ScriptExtension *script_extension_class;
 	if (argc == 1) 
-		script_extension_class = static_cast<ScriptExtension *>(static_cast<Object *>(Variant(*argv)));
+		script_extension_class = static_cast<ScriptExtension *>(Variant(*argv).operator Object *());
 	else 
 		script_extension_class = memnew(ScriptExtension);
 	if (!script_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, script_extension_class);	
+	JS_SetOpaque(obj, script_extension_class);
 	return obj;
 }
 
@@ -52,7 +52,6 @@ static void define_script_extension_enum(JSContext *ctx, JSValue proto) {
 
 static int js_script_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ScriptExtension::__class_id);
 	classes["ScriptExtension"] = ScriptExtension::__class_id;
 	class_id_list.insert(ScriptExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ScriptExtension::__class_id, &script_extension_class_def);

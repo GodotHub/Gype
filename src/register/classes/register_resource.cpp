@@ -31,14 +31,14 @@ static JSValue resource_class_constructor(JSContext *ctx, JSValueConst new_targe
 
 	Resource *resource_class;
 	if (argc == 1) 
-		resource_class = static_cast<Resource *>(static_cast<Object *>(Variant(*argv)));
+		resource_class = static_cast<Resource *>(Variant(*argv).operator Object *());
 	else 
 		resource_class = memnew(Resource);
 	if (!resource_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, resource_class);	
+	JS_SetOpaque(obj, resource_class);
 	return obj;
 }
 static JSValue resource_class_set_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -197,7 +197,6 @@ static void define_resource_enum(JSContext *ctx, JSValue proto) {
 
 static int js_resource_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Resource::__class_id);
 	classes["Resource"] = Resource::__class_id;
 	class_id_list.insert(Resource::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Resource::__class_id, &resource_class_def);

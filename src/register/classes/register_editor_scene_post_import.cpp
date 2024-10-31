@@ -32,14 +32,14 @@ static JSValue editor_scene_post_import_class_constructor(JSContext *ctx, JSValu
 
 	EditorScenePostImport *editor_scene_post_import_class;
 	if (argc == 1) 
-		editor_scene_post_import_class = static_cast<EditorScenePostImport *>(static_cast<Object *>(Variant(*argv)));
+		editor_scene_post_import_class = static_cast<EditorScenePostImport *>(Variant(*argv).operator Object *());
 	else 
 		editor_scene_post_import_class = memnew(EditorScenePostImport);
 	if (!editor_scene_post_import_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_scene_post_import_class);	
+	JS_SetOpaque(obj, editor_scene_post_import_class);
 	return obj;
 }
 static JSValue editor_scene_post_import_class_get_source_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -59,7 +59,6 @@ static void define_editor_scene_post_import_enum(JSContext *ctx, JSValue proto) 
 
 static int js_editor_scene_post_import_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorScenePostImport::__class_id);
 	classes["EditorScenePostImport"] = EditorScenePostImport::__class_id;
 	class_id_list.insert(EditorScenePostImport::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorScenePostImport::__class_id, &editor_scene_post_import_class_def);

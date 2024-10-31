@@ -7,10 +7,10 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/gradient.hpp>
 #include <godot_cpp/classes/cpu_particles2d.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/gradient.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -34,14 +34,14 @@ static JSValue cpu_particles2d_class_constructor(JSContext *ctx, JSValueConst ne
 
 	CPUParticles2D *cpu_particles2d_class;
 	if (argc == 1) 
-		cpu_particles2d_class = static_cast<CPUParticles2D *>(static_cast<Object *>(Variant(*argv)));
+		cpu_particles2d_class = static_cast<CPUParticles2D *>(Variant(*argv).operator Object *());
 	else 
 		cpu_particles2d_class = memnew(CPUParticles2D);
 	if (!cpu_particles2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, cpu_particles2d_class);	
+	JS_SetOpaque(obj, cpu_particles2d_class);
 	return obj;
 }
 static JSValue cpu_particles2d_class_set_emitting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -968,7 +968,6 @@ static void define_cpu_particles2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_cpu_particles2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CPUParticles2D::__class_id);
 	classes["CPUParticles2D"] = CPUParticles2D::__class_id;
 	class_id_list.insert(CPUParticles2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CPUParticles2D::__class_id, &cpu_particles2d_class_def);

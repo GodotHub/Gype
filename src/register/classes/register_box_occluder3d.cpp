@@ -30,14 +30,14 @@ static JSValue box_occluder3d_class_constructor(JSContext *ctx, JSValueConst new
 
 	BoxOccluder3D *box_occluder3d_class;
 	if (argc == 1) 
-		box_occluder3d_class = static_cast<BoxOccluder3D *>(static_cast<Object *>(Variant(*argv)));
+		box_occluder3d_class = static_cast<BoxOccluder3D *>(Variant(*argv).operator Object *());
 	else 
 		box_occluder3d_class = memnew(BoxOccluder3D);
 	if (!box_occluder3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, box_occluder3d_class);	
+	JS_SetOpaque(obj, box_occluder3d_class);
 	return obj;
 }
 static JSValue box_occluder3d_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_box_occluder3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_box_occluder3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&BoxOccluder3D::__class_id);
 	classes["BoxOccluder3D"] = BoxOccluder3D::__class_id;
 	class_id_list.insert(BoxOccluder3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), BoxOccluder3D::__class_id, &box_occluder3d_class_def);

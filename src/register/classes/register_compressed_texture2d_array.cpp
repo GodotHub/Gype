@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/compressed_texture2d_array.hpp>
 #include <godot_cpp/classes/compressed_texture_layered.hpp>
+#include <godot_cpp/classes/compressed_texture2d_array.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue compressed_texture2d_array_class_constructor(JSContext *ctx, JSVa
 
 	CompressedTexture2DArray *compressed_texture2d_array_class;
 	if (argc == 1) 
-		compressed_texture2d_array_class = static_cast<CompressedTexture2DArray *>(static_cast<Object *>(Variant(*argv)));
+		compressed_texture2d_array_class = static_cast<CompressedTexture2DArray *>(Variant(*argv).operator Object *());
 	else 
 		compressed_texture2d_array_class = memnew(CompressedTexture2DArray);
 	if (!compressed_texture2d_array_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, compressed_texture2d_array_class);	
+	JS_SetOpaque(obj, compressed_texture2d_array_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_compressed_texture2d_array_enum(JSContext *ctx, JSValue proto
 
 static int js_compressed_texture2d_array_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CompressedTexture2DArray::__class_id);
 	classes["CompressedTexture2DArray"] = CompressedTexture2DArray::__class_id;
 	class_id_list.insert(CompressedTexture2DArray::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CompressedTexture2DArray::__class_id, &compressed_texture2d_array_class_def);

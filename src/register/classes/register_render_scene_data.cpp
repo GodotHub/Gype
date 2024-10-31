@@ -30,14 +30,14 @@ static JSValue render_scene_data_class_constructor(JSContext *ctx, JSValueConst 
 
 	RenderSceneData *render_scene_data_class;
 	if (argc == 1) 
-		render_scene_data_class = static_cast<RenderSceneData *>(static_cast<Object *>(Variant(*argv)));
+		render_scene_data_class = static_cast<RenderSceneData *>(Variant(*argv).operator Object *());
 	else 
 		render_scene_data_class = memnew(RenderSceneData);
 	if (!render_scene_data_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, render_scene_data_class);	
+	JS_SetOpaque(obj, render_scene_data_class);
 	return obj;
 }
 static JSValue render_scene_data_class_get_cam_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,7 +82,6 @@ static void define_render_scene_data_enum(JSContext *ctx, JSValue proto) {
 
 static int js_render_scene_data_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RenderSceneData::__class_id);
 	classes["RenderSceneData"] = RenderSceneData::__class_id;
 	class_id_list.insert(RenderSceneData::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RenderSceneData::__class_id, &render_scene_data_class_def);

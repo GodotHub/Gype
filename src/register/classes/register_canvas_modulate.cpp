@@ -30,14 +30,14 @@ static JSValue canvas_modulate_class_constructor(JSContext *ctx, JSValueConst ne
 
 	CanvasModulate *canvas_modulate_class;
 	if (argc == 1) 
-		canvas_modulate_class = static_cast<CanvasModulate *>(static_cast<Object *>(Variant(*argv)));
+		canvas_modulate_class = static_cast<CanvasModulate *>(Variant(*argv).operator Object *());
 	else 
 		canvas_modulate_class = memnew(CanvasModulate);
 	if (!canvas_modulate_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, canvas_modulate_class);	
+	JS_SetOpaque(obj, canvas_modulate_class);
 	return obj;
 }
 static JSValue canvas_modulate_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_canvas_modulate_enum(JSContext *ctx, JSValue proto) {
 
 static int js_canvas_modulate_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CanvasModulate::__class_id);
 	classes["CanvasModulate"] = CanvasModulate::__class_id;
 	class_id_list.insert(CanvasModulate::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CanvasModulate::__class_id, &canvas_modulate_class_def);

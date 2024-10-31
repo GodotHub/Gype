@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gltf_spec_gloss.hpp>
 #include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/gltf_spec_gloss.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue gltf_spec_gloss_class_constructor(JSContext *ctx, JSValueConst ne
 
 	GLTFSpecGloss *gltf_spec_gloss_class;
 	if (argc == 1) 
-		gltf_spec_gloss_class = static_cast<GLTFSpecGloss *>(static_cast<Object *>(Variant(*argv)));
+		gltf_spec_gloss_class = static_cast<GLTFSpecGloss *>(Variant(*argv).operator Object *());
 	else 
 		gltf_spec_gloss_class = memnew(GLTFSpecGloss);
 	if (!gltf_spec_gloss_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_spec_gloss_class);	
+	JS_SetOpaque(obj, gltf_spec_gloss_class);
 	return obj;
 }
 static JSValue gltf_spec_gloss_class_get_diffuse_img(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -143,7 +143,6 @@ static void define_gltf_spec_gloss_enum(JSContext *ctx, JSValue proto) {
 
 static int js_gltf_spec_gloss_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GLTFSpecGloss::__class_id);
 	classes["GLTFSpecGloss"] = GLTFSpecGloss::__class_id;
 	class_id_list.insert(GLTFSpecGloss::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFSpecGloss::__class_id, &gltf_spec_gloss_class_def);

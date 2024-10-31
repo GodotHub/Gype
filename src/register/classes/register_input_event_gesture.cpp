@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_with_modifiers.hpp>
 #include <godot_cpp/classes/input_event_gesture.hpp>
+#include <godot_cpp/classes/input_event_with_modifiers.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue input_event_gesture_class_constructor(JSContext *ctx, JSValueCons
 
 	InputEventGesture *input_event_gesture_class;
 	if (argc == 1) 
-		input_event_gesture_class = static_cast<InputEventGesture *>(static_cast<Object *>(Variant(*argv)));
+		input_event_gesture_class = static_cast<InputEventGesture *>(Variant(*argv).operator Object *());
 	else 
 		input_event_gesture_class = memnew(InputEventGesture);
 	if (!input_event_gesture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, input_event_gesture_class);	
+	JS_SetOpaque(obj, input_event_gesture_class);
 	return obj;
 }
 static JSValue input_event_gesture_class_set_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_input_event_gesture_enum(JSContext *ctx, JSValue proto) {
 
 static int js_input_event_gesture_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&InputEventGesture::__class_id);
 	classes["InputEventGesture"] = InputEventGesture::__class_id;
 	class_id_list.insert(InputEventGesture::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), InputEventGesture::__class_id, &input_event_gesture_class_def);

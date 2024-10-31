@@ -32,14 +32,14 @@ static JSValue reg_ex_class_constructor(JSContext *ctx, JSValueConst new_target,
 
 	RegEx *reg_ex_class;
 	if (argc == 1) 
-		reg_ex_class = static_cast<RegEx *>(static_cast<Object *>(Variant(*argv)));
+		reg_ex_class = static_cast<RegEx *>(Variant(*argv).operator Object *());
 	else 
 		reg_ex_class = memnew(RegEx);
 	if (!reg_ex_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, reg_ex_class);	
+	JS_SetOpaque(obj, reg_ex_class);
 	return obj;
 }
 static JSValue reg_ex_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -105,7 +105,6 @@ static void define_reg_ex_enum(JSContext *ctx, JSValue proto) {
 
 static int js_reg_ex_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RegEx::__class_id);
 	classes["RegEx"] = RegEx::__class_id;
 	class_id_list.insert(RegEx::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RegEx::__class_id, &reg_ex_class_def);

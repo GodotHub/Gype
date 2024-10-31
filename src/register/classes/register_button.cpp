@@ -31,14 +31,14 @@ static JSValue button_class_constructor(JSContext *ctx, JSValueConst new_target,
 
 	Button *button_class;
 	if (argc == 1) 
-		button_class = static_cast<Button *>(static_cast<Object *>(Variant(*argv)));
+		button_class = static_cast<Button *>(Variant(*argv).operator Object *());
 	else 
 		button_class = memnew(Button);
 	if (!button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, button_class);	
+	JS_SetOpaque(obj, button_class);
 	return obj;
 }
 static JSValue button_class_set_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -269,7 +269,6 @@ static void define_button_enum(JSContext *ctx, JSValue proto) {
 
 static int js_button_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Button::__class_id);
 	classes["Button"] = Button::__class_id;
 	class_id_list.insert(Button::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Button::__class_id, &button_class_def);

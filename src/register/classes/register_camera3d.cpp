@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/environment.hpp>
-#include <godot_cpp/classes/camera_attributes.hpp>
-#include <godot_cpp/classes/compositor.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/compositor.hpp>
+#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -33,14 +33,14 @@ static JSValue camera3d_class_constructor(JSContext *ctx, JSValueConst new_targe
 
 	Camera3D *camera3d_class;
 	if (argc == 1) 
-		camera3d_class = static_cast<Camera3D *>(static_cast<Object *>(Variant(*argv)));
+		camera3d_class = static_cast<Camera3D *>(Variant(*argv).operator Object *());
 	else 
 		camera3d_class = memnew(Camera3D);
 	if (!camera3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, camera3d_class);	
+	JS_SetOpaque(obj, camera3d_class);
 	return obj;
 }
 static JSValue camera3d_class_project_ray_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -434,7 +434,6 @@ static void define_camera3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_camera3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Camera3D::__class_id);
 	classes["Camera3D"] = Camera3D::__class_id;
 	class_id_list.insert(Camera3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Camera3D::__class_id, &camera3d_class_def);

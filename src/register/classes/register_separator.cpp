@@ -30,14 +30,14 @@ static JSValue separator_class_constructor(JSContext *ctx, JSValueConst new_targ
 
 	Separator *separator_class;
 	if (argc == 1) 
-		separator_class = static_cast<Separator *>(static_cast<Object *>(Variant(*argv)));
+		separator_class = static_cast<Separator *>(Variant(*argv).operator Object *());
 	else 
 		separator_class = memnew(Separator);
 	if (!separator_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, separator_class);	
+	JS_SetOpaque(obj, separator_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_separator_enum(JSContext *ctx, JSValue proto) {
 
 static int js_separator_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Separator::__class_id);
 	classes["Separator"] = Separator::__class_id;
 	class_id_list.insert(Separator::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Separator::__class_id, &separator_class_def);

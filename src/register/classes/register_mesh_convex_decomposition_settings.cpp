@@ -30,14 +30,14 @@ static JSValue mesh_convex_decomposition_settings_class_constructor(JSContext *c
 
 	MeshConvexDecompositionSettings *mesh_convex_decomposition_settings_class;
 	if (argc == 1) 
-		mesh_convex_decomposition_settings_class = static_cast<MeshConvexDecompositionSettings *>(static_cast<Object *>(Variant(*argv)));
+		mesh_convex_decomposition_settings_class = static_cast<MeshConvexDecompositionSettings *>(Variant(*argv).operator Object *());
 	else 
 		mesh_convex_decomposition_settings_class = memnew(MeshConvexDecompositionSettings);
 	if (!mesh_convex_decomposition_settings_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, mesh_convex_decomposition_settings_class);	
+	JS_SetOpaque(obj, mesh_convex_decomposition_settings_class);
 	return obj;
 }
 static JSValue mesh_convex_decomposition_settings_class_set_max_concavity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -290,7 +290,6 @@ static void define_mesh_convex_decomposition_settings_enum(JSContext *ctx, JSVal
 
 static int js_mesh_convex_decomposition_settings_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&MeshConvexDecompositionSettings::__class_id);
 	classes["MeshConvexDecompositionSettings"] = MeshConvexDecompositionSettings::__class_id;
 	class_id_list.insert(MeshConvexDecompositionSettings::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MeshConvexDecompositionSettings::__class_id, &mesh_convex_decomposition_settings_class_def);

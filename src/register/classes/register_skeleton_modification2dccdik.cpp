@@ -30,14 +30,14 @@ static JSValue skeleton_modification2dccdik_class_constructor(JSContext *ctx, JS
 
 	SkeletonModification2DCCDIK *skeleton_modification2dccdik_class;
 	if (argc == 1) 
-		skeleton_modification2dccdik_class = static_cast<SkeletonModification2DCCDIK *>(static_cast<Object *>(Variant(*argv)));
+		skeleton_modification2dccdik_class = static_cast<SkeletonModification2DCCDIK *>(Variant(*argv).operator Object *());
 	else 
 		skeleton_modification2dccdik_class = memnew(SkeletonModification2DCCDIK);
 	if (!skeleton_modification2dccdik_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, skeleton_modification2dccdik_class);	
+	JS_SetOpaque(obj, skeleton_modification2dccdik_class);
 	return obj;
 }
 static JSValue skeleton_modification2dccdik_class_set_target_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -176,7 +176,6 @@ static void define_skeleton_modification2dccdik_enum(JSContext *ctx, JSValue pro
 
 static int js_skeleton_modification2dccdik_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SkeletonModification2DCCDIK::__class_id);
 	classes["SkeletonModification2DCCDIK"] = SkeletonModification2DCCDIK::__class_id;
 	class_id_list.insert(SkeletonModification2DCCDIK::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SkeletonModification2DCCDIK::__class_id, &skeleton_modification2dccdik_class_def);

@@ -30,14 +30,14 @@ static JSValue animation_class_constructor(JSContext *ctx, JSValueConst new_targ
 
 	Animation *animation_class;
 	if (argc == 1) 
-		animation_class = static_cast<Animation *>(static_cast<Object *>(Variant(*argv)));
+		animation_class = static_cast<Animation *>(Variant(*argv).operator Object *());
 	else 
 		animation_class = memnew(Animation);
 	if (!animation_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animation_class);	
+	JS_SetOpaque(obj, animation_class);
 	return obj;
 }
 static JSValue animation_class_add_track(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -492,7 +492,6 @@ static void define_animation_enum(JSContext *ctx, JSValue proto) {
 
 static int js_animation_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Animation::__class_id);
 	classes["Animation"] = Animation::__class_id;
 	class_id_list.insert(Animation::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Animation::__class_id, &animation_class_def);

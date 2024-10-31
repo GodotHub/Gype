@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue xr_interface_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	XRInterface *xr_interface_class;
 	if (argc == 1) 
-		xr_interface_class = static_cast<XRInterface *>(static_cast<Object *>(Variant(*argv)));
+		xr_interface_class = static_cast<XRInterface *>(Variant(*argv).operator Object *());
 	else 
 		xr_interface_class = memnew(XRInterface);
 	if (!xr_interface_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, xr_interface_class);	
+	JS_SetOpaque(obj, xr_interface_class);
 	return obj;
 }
 static JSValue xr_interface_class_get_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -270,7 +270,6 @@ static void define_xr_interface_enum(JSContext *ctx, JSValue proto) {
 
 static int js_xr_interface_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&XRInterface::__class_id);
 	classes["XRInterface"] = XRInterface::__class_id;
 	class_id_list.insert(XRInterface::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRInterface::__class_id, &xr_interface_class_def);

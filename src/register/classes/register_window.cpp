@@ -5,13 +5,13 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/style_box.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/viewport.hpp>
 #include <godot_cpp/classes/theme.hpp>
 #include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/classes/viewport.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -35,14 +35,14 @@ static JSValue window_class_constructor(JSContext *ctx, JSValueConst new_target,
 
 	Window *window_class;
 	if (argc == 1) 
-		window_class = static_cast<Window *>(static_cast<Object *>(Variant(*argv)));
+		window_class = static_cast<Window *>(Variant(*argv).operator Object *());
 	else 
 		window_class = memnew(Window);
 	if (!window_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, window_class);	
+	JS_SetOpaque(obj, window_class);
 	return obj;
 }
 static JSValue window_class_set_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -1190,7 +1190,6 @@ static void define_window_enum(JSContext *ctx, JSValue proto) {
 
 static int js_window_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Window::__class_id);
 	classes["Window"] = Window::__class_id;
 	class_id_list.insert(Window::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Window::__class_id, &window_class_def);

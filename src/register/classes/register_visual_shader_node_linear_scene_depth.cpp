@@ -30,14 +30,14 @@ static JSValue visual_shader_node_linear_scene_depth_class_constructor(JSContext
 
 	VisualShaderNodeLinearSceneDepth *visual_shader_node_linear_scene_depth_class;
 	if (argc == 1) 
-		visual_shader_node_linear_scene_depth_class = static_cast<VisualShaderNodeLinearSceneDepth *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_linear_scene_depth_class = static_cast<VisualShaderNodeLinearSceneDepth *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_linear_scene_depth_class = memnew(VisualShaderNodeLinearSceneDepth);
 	if (!visual_shader_node_linear_scene_depth_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_linear_scene_depth_class);	
+	JS_SetOpaque(obj, visual_shader_node_linear_scene_depth_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_visual_shader_node_linear_scene_depth_enum(JSContext *ctx, JS
 
 static int js_visual_shader_node_linear_scene_depth_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeLinearSceneDepth::__class_id);
 	classes["VisualShaderNodeLinearSceneDepth"] = VisualShaderNodeLinearSceneDepth::__class_id;
 	class_id_list.insert(VisualShaderNodeLinearSceneDepth::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeLinearSceneDepth::__class_id, &visual_shader_node_linear_scene_depth_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/stream_peer_buffer.hpp>
+#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue stream_peer_buffer_class_constructor(JSContext *ctx, JSValueConst
 
 	StreamPeerBuffer *stream_peer_buffer_class;
 	if (argc == 1) 
-		stream_peer_buffer_class = static_cast<StreamPeerBuffer *>(static_cast<Object *>(Variant(*argv)));
+		stream_peer_buffer_class = static_cast<StreamPeerBuffer *>(Variant(*argv).operator Object *());
 	else 
 		stream_peer_buffer_class = memnew(StreamPeerBuffer);
 	if (!stream_peer_buffer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, stream_peer_buffer_class);	
+	JS_SetOpaque(obj, stream_peer_buffer_class);
 	return obj;
 }
 static JSValue stream_peer_buffer_class_seek(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -100,7 +100,6 @@ static void define_stream_peer_buffer_enum(JSContext *ctx, JSValue proto) {
 
 static int js_stream_peer_buffer_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&StreamPeerBuffer::__class_id);
 	classes["StreamPeerBuffer"] = StreamPeerBuffer::__class_id;
 	class_id_list.insert(StreamPeerBuffer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StreamPeerBuffer::__class_id, &stream_peer_buffer_class_def);

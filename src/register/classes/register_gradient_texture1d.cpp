@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/gradient_texture1d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/gradient.hpp>
-#include <godot_cpp/classes/gradient_texture1d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue gradient_texture1d_class_constructor(JSContext *ctx, JSValueConst
 
 	GradientTexture1D *gradient_texture1d_class;
 	if (argc == 1) 
-		gradient_texture1d_class = static_cast<GradientTexture1D *>(static_cast<Object *>(Variant(*argv)));
+		gradient_texture1d_class = static_cast<GradientTexture1D *>(Variant(*argv).operator Object *());
 	else 
 		gradient_texture1d_class = memnew(GradientTexture1D);
 	if (!gradient_texture1d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gradient_texture1d_class);	
+	JS_SetOpaque(obj, gradient_texture1d_class);
 	return obj;
 }
 static JSValue gradient_texture1d_class_set_gradient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -102,7 +102,6 @@ static void define_gradient_texture1d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_gradient_texture1d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GradientTexture1D::__class_id);
 	classes["GradientTexture1D"] = GradientTexture1D::__class_id;
 	class_id_list.insert(GradientTexture1D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GradientTexture1D::__class_id, &gradient_texture1d_class_def);

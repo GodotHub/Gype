@@ -31,14 +31,14 @@ static JSValue style_box_class_constructor(JSContext *ctx, JSValueConst new_targ
 
 	StyleBox *style_box_class;
 	if (argc == 1) 
-		style_box_class = static_cast<StyleBox *>(static_cast<Object *>(Variant(*argv)));
+		style_box_class = static_cast<StyleBox *>(Variant(*argv).operator Object *());
 	else 
 		style_box_class = memnew(StyleBox);
 	if (!style_box_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, style_box_class);	
+	JS_SetOpaque(obj, style_box_class);
 	return obj;
 }
 static JSValue style_box_class_get_minimum_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -130,7 +130,6 @@ static void define_style_box_enum(JSContext *ctx, JSValue proto) {
 
 static int js_style_box_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&StyleBox::__class_id);
 	classes["StyleBox"] = StyleBox::__class_id;
 	class_id_list.insert(StyleBox::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StyleBox::__class_id, &style_box_class_def);

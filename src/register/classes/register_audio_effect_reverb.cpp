@@ -30,14 +30,14 @@ static JSValue audio_effect_reverb_class_constructor(JSContext *ctx, JSValueCons
 
 	AudioEffectReverb *audio_effect_reverb_class;
 	if (argc == 1) 
-		audio_effect_reverb_class = static_cast<AudioEffectReverb *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_reverb_class = static_cast<AudioEffectReverb *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_reverb_class = memnew(AudioEffectReverb);
 	if (!audio_effect_reverb_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_reverb_class);	
+	JS_SetOpaque(obj, audio_effect_reverb_class);
 	return obj;
 }
 static JSValue audio_effect_reverb_class_set_predelay_msec(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -196,7 +196,6 @@ static void define_audio_effect_reverb_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_effect_reverb_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectReverb::__class_id);
 	classes["AudioEffectReverb"] = AudioEffectReverb::__class_id;
 	class_id_list.insert(AudioEffectReverb::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectReverb::__class_id, &audio_effect_reverb_class_def);

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/open_xrip_binding.hpp>
 #include <godot_cpp/classes/open_xr_action.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue open_xrip_binding_class_constructor(JSContext *ctx, JSValueConst 
 
 	OpenXRIPBinding *open_xrip_binding_class;
 	if (argc == 1) 
-		open_xrip_binding_class = static_cast<OpenXRIPBinding *>(static_cast<Object *>(Variant(*argv)));
+		open_xrip_binding_class = static_cast<OpenXRIPBinding *>(Variant(*argv).operator Object *());
 	else 
 		open_xrip_binding_class = memnew(OpenXRIPBinding);
 	if (!open_xrip_binding_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, open_xrip_binding_class);	
+	JS_SetOpaque(obj, open_xrip_binding_class);
 	return obj;
 }
 static JSValue open_xrip_binding_class_set_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -109,7 +109,6 @@ static void define_open_xrip_binding_enum(JSContext *ctx, JSValue proto) {
 
 static int js_open_xrip_binding_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&OpenXRIPBinding::__class_id);
 	classes["OpenXRIPBinding"] = OpenXRIPBinding::__class_id;
 	class_id_list.insert(OpenXRIPBinding::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), OpenXRIPBinding::__class_id, &open_xrip_binding_class_def);

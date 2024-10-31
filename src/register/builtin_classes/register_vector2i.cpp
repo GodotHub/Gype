@@ -164,7 +164,6 @@ void define_vector2i_property(JSContext *ctx, JSValue obj) {
 }
 
 static int js_vector2i_class_init(JSContext *ctx) {
-	JS_NewClassID(&Vector2i::__class_id);
 	classes["Vector2i"] = Vector2i::__class_id;
 	class_id_list.insert(Vector2i::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Vector2i::__class_id, &vector2i_class_def);

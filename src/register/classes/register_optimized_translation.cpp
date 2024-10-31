@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/optimized_translation.hpp>
 #include <godot_cpp/classes/translation.hpp>
+#include <godot_cpp/classes/optimized_translation.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue optimized_translation_class_constructor(JSContext *ctx, JSValueCo
 
 	OptimizedTranslation *optimized_translation_class;
 	if (argc == 1) 
-		optimized_translation_class = static_cast<OptimizedTranslation *>(static_cast<Object *>(Variant(*argv)));
+		optimized_translation_class = static_cast<OptimizedTranslation *>(Variant(*argv).operator Object *());
 	else 
 		optimized_translation_class = memnew(OptimizedTranslation);
 	if (!optimized_translation_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, optimized_translation_class);	
+	JS_SetOpaque(obj, optimized_translation_class);
 	return obj;
 }
 static JSValue optimized_translation_class_generate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,7 +57,6 @@ static void define_optimized_translation_enum(JSContext *ctx, JSValue proto) {
 
 static int js_optimized_translation_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&OptimizedTranslation::__class_id);
 	classes["OptimizedTranslation"] = OptimizedTranslation::__class_id;
 	class_id_list.insert(OptimizedTranslation::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), OptimizedTranslation::__class_id, &optimized_translation_class_def);

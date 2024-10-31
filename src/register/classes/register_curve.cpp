@@ -30,14 +30,14 @@ static JSValue curve_class_constructor(JSContext *ctx, JSValueConst new_target, 
 
 	Curve *curve_class;
 	if (argc == 1) 
-		curve_class = static_cast<Curve *>(static_cast<Object *>(Variant(*argv)));
+		curve_class = static_cast<Curve *>(Variant(*argv).operator Object *());
 	else 
 		curve_class = memnew(Curve);
 	if (!curve_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, curve_class);	
+	JS_SetOpaque(obj, curve_class);
 	return obj;
 }
 static JSValue curve_class_get_point_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -237,7 +237,6 @@ static void define_curve_enum(JSContext *ctx, JSValue proto) {
 
 static int js_curve_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Curve::__class_id);
 	classes["Curve"] = Curve::__class_id;
 	class_id_list.insert(Curve::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Curve::__class_id, &curve_class_def);

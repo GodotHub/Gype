@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/h_box_container.hpp>
-#include <godot_cpp/classes/graph_node.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/graph_element.hpp>
+#include <godot_cpp/classes/h_box_container.hpp>
+#include <godot_cpp/classes/graph_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue graph_node_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	GraphNode *graph_node_class;
 	if (argc == 1) 
-		graph_node_class = static_cast<GraphNode *>(static_cast<Object *>(Variant(*argv)));
+		graph_node_class = static_cast<GraphNode *>(Variant(*argv).operator Object *());
 	else 
 		graph_node_class = memnew(GraphNode);
 	if (!graph_node_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, graph_node_class);	
+	JS_SetOpaque(obj, graph_node_class);
 	return obj;
 }
 static JSValue graph_node_class_set_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -268,7 +268,6 @@ static void define_graph_node_enum(JSContext *ctx, JSValue proto) {
 
 static int js_graph_node_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GraphNode::__class_id);
 	classes["GraphNode"] = GraphNode::__class_id;
 	class_id_list.insert(GraphNode::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GraphNode::__class_id, &graph_node_class_def);

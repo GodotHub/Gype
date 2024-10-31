@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/line_edit.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue line_edit_class_constructor(JSContext *ctx, JSValueConst new_targ
 
 	LineEdit *line_edit_class;
 	if (argc == 1) 
-		line_edit_class = static_cast<LineEdit *>(static_cast<Object *>(Variant(*argv)));
+		line_edit_class = static_cast<LineEdit *>(Variant(*argv).operator Object *());
 	else 
 		line_edit_class = memnew(LineEdit);
 	if (!line_edit_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, line_edit_class);	
+	JS_SetOpaque(obj, line_edit_class);
 	return obj;
 }
 static JSValue line_edit_class_set_horizontal_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -766,7 +766,6 @@ static void define_line_edit_enum(JSContext *ctx, JSValue proto) {
 
 static int js_line_edit_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&LineEdit::__class_id);
 	classes["LineEdit"] = LineEdit::__class_id;
 	class_id_list.insert(LineEdit::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), LineEdit::__class_id, &line_edit_class_def);

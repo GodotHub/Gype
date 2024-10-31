@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/stream_peer_tls.hpp>
-#include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue stream_peer_tls_class_constructor(JSContext *ctx, JSValueConst ne
 
 	StreamPeerTLS *stream_peer_tls_class;
 	if (argc == 1) 
-		stream_peer_tls_class = static_cast<StreamPeerTLS *>(static_cast<Object *>(Variant(*argv)));
+		stream_peer_tls_class = static_cast<StreamPeerTLS *>(Variant(*argv).operator Object *());
 	else 
 		stream_peer_tls_class = memnew(StreamPeerTLS);
 	if (!stream_peer_tls_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, stream_peer_tls_class);	
+	JS_SetOpaque(obj, stream_peer_tls_class);
 	return obj;
 }
 static JSValue stream_peer_tls_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -90,7 +90,6 @@ static void define_stream_peer_tls_enum(JSContext *ctx, JSValue proto) {
 
 static int js_stream_peer_tls_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&StreamPeerTLS::__class_id);
 	classes["StreamPeerTLS"] = StreamPeerTLS::__class_id;
 	class_id_list.insert(StreamPeerTLS::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StreamPeerTLS::__class_id, &stream_peer_tls_class_def);

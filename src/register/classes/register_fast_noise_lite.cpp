@@ -30,14 +30,14 @@ static JSValue fast_noise_lite_class_constructor(JSContext *ctx, JSValueConst ne
 
 	FastNoiseLite *fast_noise_lite_class;
 	if (argc == 1) 
-		fast_noise_lite_class = static_cast<FastNoiseLite *>(static_cast<Object *>(Variant(*argv)));
+		fast_noise_lite_class = static_cast<FastNoiseLite *>(Variant(*argv).operator Object *());
 	else 
 		fast_noise_lite_class = memnew(FastNoiseLite);
 	if (!fast_noise_lite_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, fast_noise_lite_class);	
+	JS_SetOpaque(obj, fast_noise_lite_class);
 	return obj;
 }
 static JSValue fast_noise_lite_class_set_noise_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -469,7 +469,6 @@ static void define_fast_noise_lite_enum(JSContext *ctx, JSValue proto) {
 
 static int js_fast_noise_lite_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&FastNoiseLite::__class_id);
 	classes["FastNoiseLite"] = FastNoiseLite::__class_id;
 	class_id_list.insert(FastNoiseLite::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), FastNoiseLite::__class_id, &fast_noise_lite_class_def);

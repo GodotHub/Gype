@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_int_parameter.hpp>
 #include <godot_cpp/classes/visual_shader_node_parameter.hpp>
+#include <godot_cpp/classes/visual_shader_node_int_parameter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue visual_shader_node_int_parameter_class_constructor(JSContext *ctx
 
 	VisualShaderNodeIntParameter *visual_shader_node_int_parameter_class;
 	if (argc == 1) 
-		visual_shader_node_int_parameter_class = static_cast<VisualShaderNodeIntParameter *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_int_parameter_class = static_cast<VisualShaderNodeIntParameter *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_int_parameter_class = memnew(VisualShaderNodeIntParameter);
 	if (!visual_shader_node_int_parameter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_int_parameter_class);	
+	JS_SetOpaque(obj, visual_shader_node_int_parameter_class);
 	return obj;
 }
 static JSValue visual_shader_node_int_parameter_class_set_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -166,7 +166,6 @@ static void define_visual_shader_node_int_parameter_enum(JSContext *ctx, JSValue
 
 static int js_visual_shader_node_int_parameter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeIntParameter::__class_id);
 	classes["VisualShaderNodeIntParameter"] = VisualShaderNodeIntParameter::__class_id;
 	class_id_list.insert(VisualShaderNodeIntParameter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeIntParameter::__class_id, &visual_shader_node_int_parameter_class_def);

@@ -30,14 +30,14 @@ static JSValue visual_shader_node_particle_ring_emitter_class_constructor(JSCont
 
 	VisualShaderNodeParticleRingEmitter *visual_shader_node_particle_ring_emitter_class;
 	if (argc == 1) 
-		visual_shader_node_particle_ring_emitter_class = static_cast<VisualShaderNodeParticleRingEmitter *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_particle_ring_emitter_class = static_cast<VisualShaderNodeParticleRingEmitter *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_particle_ring_emitter_class = memnew(VisualShaderNodeParticleRingEmitter);
 	if (!visual_shader_node_particle_ring_emitter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_particle_ring_emitter_class);	
+	JS_SetOpaque(obj, visual_shader_node_particle_ring_emitter_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_visual_shader_node_particle_ring_emitter_enum(JSContext *ctx,
 
 static int js_visual_shader_node_particle_ring_emitter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeParticleRingEmitter::__class_id);
 	classes["VisualShaderNodeParticleRingEmitter"] = VisualShaderNodeParticleRingEmitter::__class_id;
 	class_id_list.insert(VisualShaderNodeParticleRingEmitter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeParticleRingEmitter::__class_id, &visual_shader_node_particle_ring_emitter_class_def);

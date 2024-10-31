@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/web_rtc_peer_connection.hpp>
 #include <godot_cpp/classes/web_rtc_peer_connection_extension.hpp>
+#include <godot_cpp/classes/web_rtc_peer_connection.hpp>
 #include <godot_cpp/classes/web_rtc_data_channel.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue web_rtc_peer_connection_extension_class_constructor(JSContext *ct
 
 	WebRTCPeerConnectionExtension *web_rtc_peer_connection_extension_class;
 	if (argc == 1) 
-		web_rtc_peer_connection_extension_class = static_cast<WebRTCPeerConnectionExtension *>(static_cast<Object *>(Variant(*argv)));
+		web_rtc_peer_connection_extension_class = static_cast<WebRTCPeerConnectionExtension *>(Variant(*argv).operator Object *());
 	else 
 		web_rtc_peer_connection_extension_class = memnew(WebRTCPeerConnectionExtension);
 	if (!web_rtc_peer_connection_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, web_rtc_peer_connection_extension_class);	
+	JS_SetOpaque(obj, web_rtc_peer_connection_extension_class);
 	return obj;
 }
 
@@ -51,7 +51,6 @@ static void define_web_rtc_peer_connection_extension_enum(JSContext *ctx, JSValu
 
 static int js_web_rtc_peer_connection_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&WebRTCPeerConnectionExtension::__class_id);
 	classes["WebRTCPeerConnectionExtension"] = WebRTCPeerConnectionExtension::__class_id;
 	class_id_list.insert(WebRTCPeerConnectionExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), WebRTCPeerConnectionExtension::__class_id, &web_rtc_peer_connection_extension_class_def);

@@ -30,14 +30,14 @@ static JSValue visual_shader_node_outer_product_class_constructor(JSContext *ctx
 
 	VisualShaderNodeOuterProduct *visual_shader_node_outer_product_class;
 	if (argc == 1) 
-		visual_shader_node_outer_product_class = static_cast<VisualShaderNodeOuterProduct *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_outer_product_class = static_cast<VisualShaderNodeOuterProduct *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_outer_product_class = memnew(VisualShaderNodeOuterProduct);
 	if (!visual_shader_node_outer_product_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_outer_product_class);	
+	JS_SetOpaque(obj, visual_shader_node_outer_product_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_visual_shader_node_outer_product_enum(JSContext *ctx, JSValue
 
 static int js_visual_shader_node_outer_product_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeOuterProduct::__class_id);
 	classes["VisualShaderNodeOuterProduct"] = VisualShaderNodeOuterProduct::__class_id;
 	class_id_list.insert(VisualShaderNodeOuterProduct::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeOuterProduct::__class_id, &visual_shader_node_outer_product_class_def);

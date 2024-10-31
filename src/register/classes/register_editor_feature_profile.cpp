@@ -30,14 +30,14 @@ static JSValue editor_feature_profile_class_constructor(JSContext *ctx, JSValueC
 
 	EditorFeatureProfile *editor_feature_profile_class;
 	if (argc == 1) 
-		editor_feature_profile_class = static_cast<EditorFeatureProfile *>(static_cast<Object *>(Variant(*argv)));
+		editor_feature_profile_class = static_cast<EditorFeatureProfile *>(Variant(*argv).operator Object *());
 	else 
 		editor_feature_profile_class = memnew(EditorFeatureProfile);
 	if (!editor_feature_profile_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_feature_profile_class);	
+	JS_SetOpaque(obj, editor_feature_profile_class);
 	return obj;
 }
 static JSValue editor_feature_profile_class_set_disable_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -118,7 +118,6 @@ static void define_editor_feature_profile_enum(JSContext *ctx, JSValue proto) {
 
 static int js_editor_feature_profile_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorFeatureProfile::__class_id);
 	classes["EditorFeatureProfile"] = EditorFeatureProfile::__class_id;
 	class_id_list.insert(EditorFeatureProfile::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorFeatureProfile::__class_id, &editor_feature_profile_class_def);

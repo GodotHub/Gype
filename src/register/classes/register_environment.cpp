@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/environment.hpp>
-#include <godot_cpp/classes/texture.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/sky.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue environment_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	Environment *environment_class;
 	if (argc == 1) 
-		environment_class = static_cast<Environment *>(static_cast<Object *>(Variant(*argv)));
+		environment_class = static_cast<Environment *>(Variant(*argv).operator Object *());
 	else 
 		environment_class = memnew(Environment);
 	if (!environment_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, environment_class);	
+	JS_SetOpaque(obj, environment_class);
 	return obj;
 }
 static JSValue environment_class_set_background(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -1744,7 +1744,6 @@ static void define_environment_enum(JSContext *ctx, JSValue proto) {
 
 static int js_environment_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Environment::__class_id);
 	classes["Environment"] = Environment::__class_id;
 	class_id_list.insert(Environment::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Environment::__class_id, &environment_class_def);

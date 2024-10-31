@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_stream_playback_ogg_vorbis.hpp>
 #include <godot_cpp/classes/audio_stream_playback_resampled.hpp>
+#include <godot_cpp/classes/audio_stream_playback_ogg_vorbis.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue audio_stream_playback_ogg_vorbis_class_constructor(JSContext *ctx
 
 	AudioStreamPlaybackOggVorbis *audio_stream_playback_ogg_vorbis_class;
 	if (argc == 1) 
-		audio_stream_playback_ogg_vorbis_class = static_cast<AudioStreamPlaybackOggVorbis *>(static_cast<Object *>(Variant(*argv)));
+		audio_stream_playback_ogg_vorbis_class = static_cast<AudioStreamPlaybackOggVorbis *>(Variant(*argv).operator Object *());
 	else 
 		audio_stream_playback_ogg_vorbis_class = memnew(AudioStreamPlaybackOggVorbis);
 	if (!audio_stream_playback_ogg_vorbis_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_stream_playback_ogg_vorbis_class);	
+	JS_SetOpaque(obj, audio_stream_playback_ogg_vorbis_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_audio_stream_playback_ogg_vorbis_enum(JSContext *ctx, JSValue
 
 static int js_audio_stream_playback_ogg_vorbis_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioStreamPlaybackOggVorbis::__class_id);
 	classes["AudioStreamPlaybackOggVorbis"] = AudioStreamPlaybackOggVorbis::__class_id;
 	class_id_list.insert(AudioStreamPlaybackOggVorbis::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStreamPlaybackOggVorbis::__class_id, &audio_stream_playback_ogg_vorbis_class_def);

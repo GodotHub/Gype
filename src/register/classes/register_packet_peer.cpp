@@ -30,14 +30,14 @@ static JSValue packet_peer_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	PacketPeer *packet_peer_class;
 	if (argc == 1) 
-		packet_peer_class = static_cast<PacketPeer *>(static_cast<Object *>(Variant(*argv)));
+		packet_peer_class = static_cast<PacketPeer *>(Variant(*argv).operator Object *());
 	else 
 		packet_peer_class = memnew(PacketPeer);
 	if (!packet_peer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, packet_peer_class);	
+	JS_SetOpaque(obj, packet_peer_class);
 	return obj;
 }
 static JSValue packet_peer_class_get_var(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -100,7 +100,6 @@ static void define_packet_peer_enum(JSContext *ctx, JSValue proto) {
 
 static int js_packet_peer_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PacketPeer::__class_id);
 	classes["PacketPeer"] = PacketPeer::__class_id;
 	class_id_list.insert(PacketPeer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PacketPeer::__class_id, &packet_peer_class_def);

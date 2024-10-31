@@ -30,14 +30,14 @@ static JSValue visual_shader_node_vector_len_class_constructor(JSContext *ctx, J
 
 	VisualShaderNodeVectorLen *visual_shader_node_vector_len_class;
 	if (argc == 1) 
-		visual_shader_node_vector_len_class = static_cast<VisualShaderNodeVectorLen *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_vector_len_class = static_cast<VisualShaderNodeVectorLen *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_vector_len_class = memnew(VisualShaderNodeVectorLen);
 	if (!visual_shader_node_vector_len_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_vector_len_class);	
+	JS_SetOpaque(obj, visual_shader_node_vector_len_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_visual_shader_node_vector_len_enum(JSContext *ctx, JSValue pr
 
 static int js_visual_shader_node_vector_len_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeVectorLen::__class_id);
 	classes["VisualShaderNodeVectorLen"] = VisualShaderNodeVectorLen::__class_id;
 	class_id_list.insert(VisualShaderNodeVectorLen::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeVectorLen::__class_id, &visual_shader_node_vector_len_class_def);

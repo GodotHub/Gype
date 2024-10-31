@@ -30,14 +30,14 @@ static JSValue sphere_shape3d_class_constructor(JSContext *ctx, JSValueConst new
 
 	SphereShape3D *sphere_shape3d_class;
 	if (argc == 1) 
-		sphere_shape3d_class = static_cast<SphereShape3D *>(static_cast<Object *>(Variant(*argv)));
+		sphere_shape3d_class = static_cast<SphereShape3D *>(Variant(*argv).operator Object *());
 	else 
 		sphere_shape3d_class = memnew(SphereShape3D);
 	if (!sphere_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, sphere_shape3d_class);	
+	JS_SetOpaque(obj, sphere_shape3d_class);
 	return obj;
 }
 static JSValue sphere_shape3d_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_sphere_shape3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_sphere_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SphereShape3D::__class_id);
 	classes["SphereShape3D"] = SphereShape3D::__class_id;
 	class_id_list.insert(SphereShape3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SphereShape3D::__class_id, &sphere_shape3d_class_def);

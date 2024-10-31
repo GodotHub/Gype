@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/shader_globals_override.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/shader_globals_override.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue shader_globals_override_class_constructor(JSContext *ctx, JSValue
 
 	ShaderGlobalsOverride *shader_globals_override_class;
 	if (argc == 1) 
-		shader_globals_override_class = static_cast<ShaderGlobalsOverride *>(static_cast<Object *>(Variant(*argv)));
+		shader_globals_override_class = static_cast<ShaderGlobalsOverride *>(Variant(*argv).operator Object *());
 	else 
 		shader_globals_override_class = memnew(ShaderGlobalsOverride);
 	if (!shader_globals_override_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, shader_globals_override_class);	
+	JS_SetOpaque(obj, shader_globals_override_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_shader_globals_override_enum(JSContext *ctx, JSValue proto) {
 
 static int js_shader_globals_override_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ShaderGlobalsOverride::__class_id);
 	classes["ShaderGlobalsOverride"] = ShaderGlobalsOverride::__class_id;
 	class_id_list.insert(ShaderGlobalsOverride::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ShaderGlobalsOverride::__class_id, &shader_globals_override_class_def);

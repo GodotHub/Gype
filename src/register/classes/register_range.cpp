@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue range_class_constructor(JSContext *ctx, JSValueConst new_target, 
 
 	Range *range_class;
 	if (argc == 1) 
-		range_class = static_cast<Range *>(static_cast<Object *>(Variant(*argv)));
+		range_class = static_cast<Range *>(Variant(*argv).operator Object *());
 	else 
 		range_class = memnew(Range);
 	if (!range_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, range_class);	
+	JS_SetOpaque(obj, range_class);
 	return obj;
 }
 static JSValue range_class_get_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -284,7 +284,6 @@ static void define_range_enum(JSContext *ctx, JSValue proto) {
 
 static int js_range_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Range::__class_id);
 	classes["Range"] = Range::__class_id;
 	class_id_list.insert(Range::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Range::__class_id, &range_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_scene_format_importer.hpp>
 #include <godot_cpp/classes/editor_scene_format_importer_blend.hpp>
+#include <godot_cpp/classes/editor_scene_format_importer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue editor_scene_format_importer_blend_class_constructor(JSContext *c
 
 	EditorSceneFormatImporterBlend *editor_scene_format_importer_blend_class;
 	if (argc == 1) 
-		editor_scene_format_importer_blend_class = static_cast<EditorSceneFormatImporterBlend *>(static_cast<Object *>(Variant(*argv)));
+		editor_scene_format_importer_blend_class = static_cast<EditorSceneFormatImporterBlend *>(Variant(*argv).operator Object *());
 	else 
 		editor_scene_format_importer_blend_class = memnew(EditorSceneFormatImporterBlend);
 	if (!editor_scene_format_importer_blend_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_scene_format_importer_blend_class);	
+	JS_SetOpaque(obj, editor_scene_format_importer_blend_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_editor_scene_format_importer_blend_enum(JSContext *ctx, JSVal
 
 static int js_editor_scene_format_importer_blend_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorSceneFormatImporterBlend::__class_id);
 	classes["EditorSceneFormatImporterBlend"] = EditorSceneFormatImporterBlend::__class_id;
 	class_id_list.insert(EditorSceneFormatImporterBlend::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorSceneFormatImporterBlend::__class_id, &editor_scene_format_importer_blend_class_def);

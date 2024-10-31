@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/occluder3d.hpp>
 #include <godot_cpp/classes/occluder_instance3d.hpp>
+#include <godot_cpp/classes/occluder3d.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue occluder_instance3d_class_constructor(JSContext *ctx, JSValueCons
 
 	OccluderInstance3D *occluder_instance3d_class;
 	if (argc == 1) 
-		occluder_instance3d_class = static_cast<OccluderInstance3D *>(static_cast<Object *>(Variant(*argv)));
+		occluder_instance3d_class = static_cast<OccluderInstance3D *>(Variant(*argv).operator Object *());
 	else 
 		occluder_instance3d_class = memnew(OccluderInstance3D);
 	if (!occluder_instance3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, occluder_instance3d_class);	
+	JS_SetOpaque(obj, occluder_instance3d_class);
 	return obj;
 }
 static JSValue occluder_instance3d_class_set_bake_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -117,7 +117,6 @@ static void define_occluder_instance3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_occluder_instance3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&OccluderInstance3D::__class_id);
 	classes["OccluderInstance3D"] = OccluderInstance3D::__class_id;
 	class_id_list.insert(OccluderInstance3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), OccluderInstance3D::__class_id, &occluder_instance3d_class_def);

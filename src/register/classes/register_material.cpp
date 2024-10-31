@@ -30,14 +30,14 @@ static JSValue material_class_constructor(JSContext *ctx, JSValueConst new_targe
 
 	Material *material_class;
 	if (argc == 1) 
-		material_class = static_cast<Material *>(static_cast<Object *>(Variant(*argv)));
+		material_class = static_cast<Material *>(Variant(*argv).operator Object *());
 	else 
 		material_class = memnew(Material);
 	if (!material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, material_class);	
+	JS_SetOpaque(obj, material_class);
 	return obj;
 }
 static JSValue material_class_set_next_pass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -98,7 +98,6 @@ static void define_material_enum(JSContext *ctx, JSValue proto) {
 
 static int js_material_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Material::__class_id);
 	classes["Material"] = Material::__class_id;
 	class_id_list.insert(Material::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Material::__class_id, &material_class_def);

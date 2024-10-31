@@ -30,14 +30,14 @@ static JSValue editor_vcs_interface_class_constructor(JSContext *ctx, JSValueCon
 
 	EditorVCSInterface *editor_vcs_interface_class;
 	if (argc == 1) 
-		editor_vcs_interface_class = static_cast<EditorVCSInterface *>(static_cast<Object *>(Variant(*argv)));
+		editor_vcs_interface_class = static_cast<EditorVCSInterface *>(Variant(*argv).operator Object *());
 	else 
 		editor_vcs_interface_class = memnew(EditorVCSInterface);
 	if (!editor_vcs_interface_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_vcs_interface_class);	
+	JS_SetOpaque(obj, editor_vcs_interface_class);
 	return obj;
 }
 static JSValue editor_vcs_interface_class_create_diff_line(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -105,7 +105,6 @@ static void define_editor_vcs_interface_enum(JSContext *ctx, JSValue proto) {
 
 static int js_editor_vcs_interface_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorVCSInterface::__class_id);
 	classes["EditorVCSInterface"] = EditorVCSInterface::__class_id;
 	class_id_list.insert(EditorVCSInterface::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorVCSInterface::__class_id, &editor_vcs_interface_class_def);

@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/popup_menu.hpp>
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/popup.hpp>
+#include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/shortcut.hpp>
+#include <godot_cpp/classes/popup.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -33,14 +33,14 @@ static JSValue popup_menu_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	PopupMenu *popup_menu_class;
 	if (argc == 1) 
-		popup_menu_class = static_cast<PopupMenu *>(static_cast<Object *>(Variant(*argv)));
+		popup_menu_class = static_cast<PopupMenu *>(Variant(*argv).operator Object *());
 	else 
 		popup_menu_class = memnew(PopupMenu);
 	if (!popup_menu_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, popup_menu_class);	
+	JS_SetOpaque(obj, popup_menu_class);
 	return obj;
 }
 static JSValue popup_menu_class_activate_item_by_event(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -626,7 +626,6 @@ static void define_popup_menu_enum(JSContext *ctx, JSValue proto) {
 
 static int js_popup_menu_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PopupMenu::__class_id);
 	classes["PopupMenu"] = PopupMenu::__class_id;
 	class_id_list.insert(PopupMenu::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PopupMenu::__class_id, &popup_menu_class_def);

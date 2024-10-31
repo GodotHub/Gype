@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/packet_peer_udp.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/udp_server.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue udp_server_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	UDPServer *udp_server_class;
 	if (argc == 1) 
-		udp_server_class = static_cast<UDPServer *>(static_cast<Object *>(Variant(*argv)));
+		udp_server_class = static_cast<UDPServer *>(Variant(*argv).operator Object *());
 	else 
 		udp_server_class = memnew(UDPServer);
 	if (!udp_server_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, udp_server_class);	
+	JS_SetOpaque(obj, udp_server_class);
 	return obj;
 }
 static JSValue udp_server_class_listen(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -106,7 +106,6 @@ static void define_udp_server_enum(JSContext *ctx, JSValue proto) {
 
 static int js_udp_server_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&UDPServer::__class_id);
 	classes["UDPServer"] = UDPServer::__class_id;
 	class_id_list.insert(UDPServer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), UDPServer::__class_id, &udp_server_class_def);

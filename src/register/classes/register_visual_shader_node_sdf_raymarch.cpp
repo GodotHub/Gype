@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_sdf_raymarch.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/classes/visual_shader_node_sdf_raymarch.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue visual_shader_node_sdf_raymarch_class_constructor(JSContext *ctx,
 
 	VisualShaderNodeSDFRaymarch *visual_shader_node_sdf_raymarch_class;
 	if (argc == 1) 
-		visual_shader_node_sdf_raymarch_class = static_cast<VisualShaderNodeSDFRaymarch *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_sdf_raymarch_class = static_cast<VisualShaderNodeSDFRaymarch *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_sdf_raymarch_class = memnew(VisualShaderNodeSDFRaymarch);
 	if (!visual_shader_node_sdf_raymarch_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_sdf_raymarch_class);	
+	JS_SetOpaque(obj, visual_shader_node_sdf_raymarch_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_visual_shader_node_sdf_raymarch_enum(JSContext *ctx, JSValue 
 
 static int js_visual_shader_node_sdf_raymarch_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeSDFRaymarch::__class_id);
 	classes["VisualShaderNodeSDFRaymarch"] = VisualShaderNodeSDFRaymarch::__class_id;
 	class_id_list.insert(VisualShaderNodeSDFRaymarch::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeSDFRaymarch::__class_id, &visual_shader_node_sdf_raymarch_class_def);

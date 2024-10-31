@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/classes/collision_shape2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/shape2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue collision_shape2d_class_constructor(JSContext *ctx, JSValueConst 
 
 	CollisionShape2D *collision_shape2d_class;
 	if (argc == 1) 
-		collision_shape2d_class = static_cast<CollisionShape2D *>(static_cast<Object *>(Variant(*argv)));
+		collision_shape2d_class = static_cast<CollisionShape2D *>(Variant(*argv).operator Object *());
 	else 
 		collision_shape2d_class = memnew(CollisionShape2D);
 	if (!collision_shape2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, collision_shape2d_class);	
+	JS_SetOpaque(obj, collision_shape2d_class);
 	return obj;
 }
 static JSValue collision_shape2d_class_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -143,7 +143,6 @@ static void define_collision_shape2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_collision_shape2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CollisionShape2D::__class_id);
 	classes["CollisionShape2D"] = CollisionShape2D::__class_id;
 	class_id_list.insert(CollisionShape2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CollisionShape2D::__class_id, &collision_shape2d_class_def);

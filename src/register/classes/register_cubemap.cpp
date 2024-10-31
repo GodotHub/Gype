@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/cubemap.hpp>
-#include <godot_cpp/classes/image_texture_layered.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/image_texture_layered.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue cubemap_class_constructor(JSContext *ctx, JSValueConst new_target
 
 	Cubemap *cubemap_class;
 	if (argc == 1) 
-		cubemap_class = static_cast<Cubemap *>(static_cast<Object *>(Variant(*argv)));
+		cubemap_class = static_cast<Cubemap *>(Variant(*argv).operator Object *());
 	else 
 		cubemap_class = memnew(Cubemap);
 	if (!cubemap_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, cubemap_class);	
+	JS_SetOpaque(obj, cubemap_class);
 	return obj;
 }
 static JSValue cubemap_class_create_placeholder(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -58,7 +58,6 @@ static void define_cubemap_enum(JSContext *ctx, JSValue proto) {
 
 static int js_cubemap_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Cubemap::__class_id);
 	classes["Cubemap"] = Cubemap::__class_id;
 	class_id_list.insert(Cubemap::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Cubemap::__class_id, &cubemap_class_def);

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skin.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/skin_reference.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue skin_reference_class_constructor(JSContext *ctx, JSValueConst new
 
 	SkinReference *skin_reference_class;
 	if (argc == 1) 
-		skin_reference_class = static_cast<SkinReference *>(static_cast<Object *>(Variant(*argv)));
+		skin_reference_class = static_cast<SkinReference *>(Variant(*argv).operator Object *());
 	else 
 		skin_reference_class = memnew(SkinReference);
 	if (!skin_reference_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, skin_reference_class);	
+	JS_SetOpaque(obj, skin_reference_class);
 	return obj;
 }
 static JSValue skin_reference_class_get_skeleton(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -63,7 +63,6 @@ static void define_skin_reference_enum(JSContext *ctx, JSValue proto) {
 
 static int js_skin_reference_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SkinReference::__class_id);
 	classes["SkinReference"] = SkinReference::__class_id;
 	class_id_list.insert(SkinReference::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SkinReference::__class_id, &skin_reference_class_def);

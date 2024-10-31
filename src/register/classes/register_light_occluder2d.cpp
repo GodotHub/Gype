@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/light_occluder2d.hpp>
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/occluder_polygon2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/light_occluder2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue light_occluder2d_class_constructor(JSContext *ctx, JSValueConst n
 
 	LightOccluder2D *light_occluder2d_class;
 	if (argc == 1) 
-		light_occluder2d_class = static_cast<LightOccluder2D *>(static_cast<Object *>(Variant(*argv)));
+		light_occluder2d_class = static_cast<LightOccluder2D *>(Variant(*argv).operator Object *());
 	else 
 		light_occluder2d_class = memnew(LightOccluder2D);
 	if (!light_occluder2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, light_occluder2d_class);	
+	JS_SetOpaque(obj, light_occluder2d_class);
 	return obj;
 }
 static JSValue light_occluder2d_class_set_occluder_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -107,7 +107,6 @@ static void define_light_occluder2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_light_occluder2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&LightOccluder2D::__class_id);
 	classes["LightOccluder2D"] = LightOccluder2D::__class_id;
 	class_id_list.insert(LightOccluder2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), LightOccluder2D::__class_id, &light_occluder2d_class_def);

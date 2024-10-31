@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_vector_refract.hpp>
 #include <godot_cpp/classes/visual_shader_node_vector_base.hpp>
+#include <godot_cpp/classes/visual_shader_node_vector_refract.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue visual_shader_node_vector_refract_class_constructor(JSContext *ct
 
 	VisualShaderNodeVectorRefract *visual_shader_node_vector_refract_class;
 	if (argc == 1) 
-		visual_shader_node_vector_refract_class = static_cast<VisualShaderNodeVectorRefract *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_vector_refract_class = static_cast<VisualShaderNodeVectorRefract *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_vector_refract_class = memnew(VisualShaderNodeVectorRefract);
 	if (!visual_shader_node_vector_refract_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_vector_refract_class);	
+	JS_SetOpaque(obj, visual_shader_node_vector_refract_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_visual_shader_node_vector_refract_enum(JSContext *ctx, JSValu
 
 static int js_visual_shader_node_vector_refract_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeVectorRefract::__class_id);
 	classes["VisualShaderNodeVectorRefract"] = VisualShaderNodeVectorRefract::__class_id;
 	class_id_list.insert(VisualShaderNodeVectorRefract::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeVectorRefract::__class_id, &visual_shader_node_vector_refract_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/encoded_object_as_id.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue encoded_object_as_id_class_constructor(JSContext *ctx, JSValueCon
 
 	EncodedObjectAsID *encoded_object_as_id_class;
 	if (argc == 1) 
-		encoded_object_as_id_class = static_cast<EncodedObjectAsID *>(static_cast<Object *>(Variant(*argv)));
+		encoded_object_as_id_class = static_cast<EncodedObjectAsID *>(Variant(*argv).operator Object *());
 	else 
 		encoded_object_as_id_class = memnew(EncodedObjectAsID);
 	if (!encoded_object_as_id_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, encoded_object_as_id_class);	
+	JS_SetOpaque(obj, encoded_object_as_id_class);
 	return obj;
 }
 static JSValue encoded_object_as_id_class_set_object_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_encoded_object_as_id_enum(JSContext *ctx, JSValue proto) {
 
 static int js_encoded_object_as_id_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EncodedObjectAsID::__class_id);
 	classes["EncodedObjectAsID"] = EncodedObjectAsID::__class_id;
 	class_id_list.insert(EncodedObjectAsID::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EncodedObjectAsID::__class_id, &encoded_object_as_id_class_def);

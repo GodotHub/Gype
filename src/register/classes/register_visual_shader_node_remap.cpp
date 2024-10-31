@@ -30,14 +30,14 @@ static JSValue visual_shader_node_remap_class_constructor(JSContext *ctx, JSValu
 
 	VisualShaderNodeRemap *visual_shader_node_remap_class;
 	if (argc == 1) 
-		visual_shader_node_remap_class = static_cast<VisualShaderNodeRemap *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_remap_class = static_cast<VisualShaderNodeRemap *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_remap_class = memnew(VisualShaderNodeRemap);
 	if (!visual_shader_node_remap_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_remap_class);	
+	JS_SetOpaque(obj, visual_shader_node_remap_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_visual_shader_node_remap_enum(JSContext *ctx, JSValue proto) 
 
 static int js_visual_shader_node_remap_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeRemap::__class_id);
 	classes["VisualShaderNodeRemap"] = VisualShaderNodeRemap::__class_id;
 	class_id_list.insert(VisualShaderNodeRemap::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeRemap::__class_id, &visual_shader_node_remap_class_def);

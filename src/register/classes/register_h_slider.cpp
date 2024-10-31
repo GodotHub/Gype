@@ -30,14 +30,14 @@ static JSValue h_slider_class_constructor(JSContext *ctx, JSValueConst new_targe
 
 	HSlider *h_slider_class;
 	if (argc == 1) 
-		h_slider_class = static_cast<HSlider *>(static_cast<Object *>(Variant(*argv)));
+		h_slider_class = static_cast<HSlider *>(Variant(*argv).operator Object *());
 	else 
 		h_slider_class = memnew(HSlider);
 	if (!h_slider_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, h_slider_class);	
+	JS_SetOpaque(obj, h_slider_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_h_slider_enum(JSContext *ctx, JSValue proto) {
 
 static int js_h_slider_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&HSlider::__class_id);
 	classes["HSlider"] = HSlider::__class_id;
 	class_id_list.insert(HSlider::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), HSlider::__class_id, &h_slider_class_def);

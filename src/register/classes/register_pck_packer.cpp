@@ -30,14 +30,14 @@ static JSValue pck_packer_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	PCKPacker *pck_packer_class;
 	if (argc == 1) 
-		pck_packer_class = static_cast<PCKPacker *>(static_cast<Object *>(Variant(*argv)));
+		pck_packer_class = static_cast<PCKPacker *>(Variant(*argv).operator Object *());
 	else 
 		pck_packer_class = memnew(PCKPacker);
 	if (!pck_packer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, pck_packer_class);	
+	JS_SetOpaque(obj, pck_packer_class);
 	return obj;
 }
 static JSValue pck_packer_class_pck_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,7 +67,6 @@ static void define_pck_packer_enum(JSContext *ctx, JSValue proto) {
 
 static int js_pck_packer_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PCKPacker::__class_id);
 	classes["PCKPacker"] = PCKPacker::__class_id;
 	class_id_list.insert(PCKPacker::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PCKPacker::__class_id, &pck_packer_class_def);

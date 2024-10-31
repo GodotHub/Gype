@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/sprite_base3d.hpp>
-#include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/triangle_mesh.hpp>
+#include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue sprite_base3d_class_constructor(JSContext *ctx, JSValueConst new_
 
 	SpriteBase3D *sprite_base3d_class;
 	if (argc == 1) 
-		sprite_base3d_class = static_cast<SpriteBase3D *>(static_cast<Object *>(Variant(*argv)));
+		sprite_base3d_class = static_cast<SpriteBase3D *>(Variant(*argv).operator Object *());
 	else 
 		sprite_base3d_class = memnew(SpriteBase3D);
 	if (!sprite_base3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, sprite_base3d_class);	
+	JS_SetOpaque(obj, sprite_base3d_class);
 	return obj;
 }
 static JSValue sprite_base3d_class_set_centered(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -397,7 +397,6 @@ static void define_sprite_base3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_sprite_base3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SpriteBase3D::__class_id);
 	classes["SpriteBase3D"] = SpriteBase3D::__class_id;
 	class_id_list.insert(SpriteBase3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SpriteBase3D::__class_id, &sprite_base3d_class_def);

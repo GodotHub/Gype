@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/classes/graph_element.hpp>
+#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue graph_element_class_constructor(JSContext *ctx, JSValueConst new_
 
 	GraphElement *graph_element_class;
 	if (argc == 1) 
-		graph_element_class = static_cast<GraphElement *>(static_cast<Object *>(Variant(*argv)));
+		graph_element_class = static_cast<GraphElement *>(Variant(*argv).operator Object *());
 	else 
 		graph_element_class = memnew(GraphElement);
 	if (!graph_element_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, graph_element_class);	
+	JS_SetOpaque(obj, graph_element_class);
 	return obj;
 }
 static JSValue graph_element_class_set_resizable(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -286,7 +286,6 @@ static void define_graph_element_enum(JSContext *ctx, JSValue proto) {
 
 static int js_graph_element_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GraphElement::__class_id);
 	classes["GraphElement"] = GraphElement::__class_id;
 	class_id_list.insert(GraphElement::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GraphElement::__class_id, &graph_element_class_def);

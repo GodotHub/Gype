@@ -30,14 +30,14 @@ static JSValue audio_stream_interactive_class_constructor(JSContext *ctx, JSValu
 
 	AudioStreamInteractive *audio_stream_interactive_class;
 	if (argc == 1) 
-		audio_stream_interactive_class = static_cast<AudioStreamInteractive *>(static_cast<Object *>(Variant(*argv)));
+		audio_stream_interactive_class = static_cast<AudioStreamInteractive *>(Variant(*argv).operator Object *());
 	else 
 		audio_stream_interactive_class = memnew(AudioStreamInteractive);
 	if (!audio_stream_interactive_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_stream_interactive_class);	
+	JS_SetOpaque(obj, audio_stream_interactive_class);
 	return obj;
 }
 static JSValue audio_stream_interactive_class_set_clip_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -205,7 +205,6 @@ static void define_audio_stream_interactive_enum(JSContext *ctx, JSValue proto) 
 
 static int js_audio_stream_interactive_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioStreamInteractive::__class_id);
 	classes["AudioStreamInteractive"] = AudioStreamInteractive::__class_id;
 	class_id_list.insert(AudioStreamInteractive::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStreamInteractive::__class_id, &audio_stream_interactive_class_def);

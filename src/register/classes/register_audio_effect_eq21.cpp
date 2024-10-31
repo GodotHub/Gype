@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_eq.hpp>
 #include <godot_cpp/classes/audio_effect_eq21.hpp>
+#include <godot_cpp/classes/audio_effect_eq.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue audio_effect_eq21_class_constructor(JSContext *ctx, JSValueConst 
 
 	AudioEffectEQ21 *audio_effect_eq21_class;
 	if (argc == 1) 
-		audio_effect_eq21_class = static_cast<AudioEffectEQ21 *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_eq21_class = static_cast<AudioEffectEQ21 *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_eq21_class = memnew(AudioEffectEQ21);
 	if (!audio_effect_eq21_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_eq21_class);	
+	JS_SetOpaque(obj, audio_effect_eq21_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_audio_effect_eq21_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_effect_eq21_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectEQ21::__class_id);
 	classes["AudioEffectEQ21"] = AudioEffectEQ21::__class_id;
 	class_id_list.insert(AudioEffectEQ21::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectEQ21::__class_id, &audio_effect_eq21_class_def);

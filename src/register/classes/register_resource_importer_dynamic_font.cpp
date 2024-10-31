@@ -30,14 +30,14 @@ static JSValue resource_importer_dynamic_font_class_constructor(JSContext *ctx, 
 
 	ResourceImporterDynamicFont *resource_importer_dynamic_font_class;
 	if (argc == 1) 
-		resource_importer_dynamic_font_class = static_cast<ResourceImporterDynamicFont *>(static_cast<Object *>(Variant(*argv)));
+		resource_importer_dynamic_font_class = static_cast<ResourceImporterDynamicFont *>(Variant(*argv).operator Object *());
 	else 
 		resource_importer_dynamic_font_class = memnew(ResourceImporterDynamicFont);
 	if (!resource_importer_dynamic_font_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, resource_importer_dynamic_font_class);	
+	JS_SetOpaque(obj, resource_importer_dynamic_font_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_resource_importer_dynamic_font_enum(JSContext *ctx, JSValue p
 
 static int js_resource_importer_dynamic_font_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ResourceImporterDynamicFont::__class_id);
 	classes["ResourceImporterDynamicFont"] = ResourceImporterDynamicFont::__class_id;
 	class_id_list.insert(ResourceImporterDynamicFont::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceImporterDynamicFont::__class_id, &resource_importer_dynamic_font_class_def);

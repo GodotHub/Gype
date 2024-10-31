@@ -31,14 +31,14 @@ static JSValue geometry_instance3d_class_constructor(JSContext *ctx, JSValueCons
 
 	GeometryInstance3D *geometry_instance3d_class;
 	if (argc == 1) 
-		geometry_instance3d_class = static_cast<GeometryInstance3D *>(static_cast<Object *>(Variant(*argv)));
+		geometry_instance3d_class = static_cast<GeometryInstance3D *>(Variant(*argv).operator Object *());
 	else 
 		geometry_instance3d_class = memnew(GeometryInstance3D);
 	if (!geometry_instance3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, geometry_instance3d_class);	
+	JS_SetOpaque(obj, geometry_instance3d_class);
 	return obj;
 }
 static JSValue geometry_instance3d_class_set_material_override(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -356,7 +356,6 @@ static void define_geometry_instance3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_geometry_instance3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GeometryInstance3D::__class_id);
 	classes["GeometryInstance3D"] = GeometryInstance3D::__class_id;
 	class_id_list.insert(GeometryInstance3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GeometryInstance3D::__class_id, &geometry_instance3d_class_def);

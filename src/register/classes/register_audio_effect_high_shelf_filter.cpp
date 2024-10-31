@@ -30,14 +30,14 @@ static JSValue audio_effect_high_shelf_filter_class_constructor(JSContext *ctx, 
 
 	AudioEffectHighShelfFilter *audio_effect_high_shelf_filter_class;
 	if (argc == 1) 
-		audio_effect_high_shelf_filter_class = static_cast<AudioEffectHighShelfFilter *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_high_shelf_filter_class = static_cast<AudioEffectHighShelfFilter *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_high_shelf_filter_class = memnew(AudioEffectHighShelfFilter);
 	if (!audio_effect_high_shelf_filter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_high_shelf_filter_class);	
+	JS_SetOpaque(obj, audio_effect_high_shelf_filter_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_audio_effect_high_shelf_filter_enum(JSContext *ctx, JSValue p
 
 static int js_audio_effect_high_shelf_filter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectHighShelfFilter::__class_id);
 	classes["AudioEffectHighShelfFilter"] = AudioEffectHighShelfFilter::__class_id;
 	class_id_list.insert(AudioEffectHighShelfFilter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectHighShelfFilter::__class_id, &audio_effect_high_shelf_filter_class_def);

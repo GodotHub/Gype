@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/plane_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/plane_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue plane_mesh_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	PlaneMesh *plane_mesh_class;
 	if (argc == 1) 
-		plane_mesh_class = static_cast<PlaneMesh *>(static_cast<Object *>(Variant(*argv)));
+		plane_mesh_class = static_cast<PlaneMesh *>(Variant(*argv).operator Object *());
 	else 
 		plane_mesh_class = memnew(PlaneMesh);
 	if (!plane_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, plane_mesh_class);	
+	JS_SetOpaque(obj, plane_mesh_class);
 	return obj;
 }
 static JSValue plane_mesh_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -147,7 +147,6 @@ static void define_plane_mesh_enum(JSContext *ctx, JSValue proto) {
 
 static int js_plane_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PlaneMesh::__class_id);
 	classes["PlaneMesh"] = PlaneMesh::__class_id;
 	class_id_list.insert(PlaneMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PlaneMesh::__class_id, &plane_mesh_class_def);

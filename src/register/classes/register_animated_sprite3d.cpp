@@ -31,14 +31,14 @@ static JSValue animated_sprite3d_class_constructor(JSContext *ctx, JSValueConst 
 
 	AnimatedSprite3D *animated_sprite3d_class;
 	if (argc == 1) 
-		animated_sprite3d_class = static_cast<AnimatedSprite3D *>(static_cast<Object *>(Variant(*argv)));
+		animated_sprite3d_class = static_cast<AnimatedSprite3D *>(Variant(*argv).operator Object *());
 	else 
 		animated_sprite3d_class = memnew(AnimatedSprite3D);
 	if (!animated_sprite3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animated_sprite3d_class);	
+	JS_SetOpaque(obj, animated_sprite3d_class);
 	return obj;
 }
 static JSValue animated_sprite3d_class_set_sprite_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -286,7 +286,6 @@ static void define_animated_sprite3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_animated_sprite3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AnimatedSprite3D::__class_id);
 	classes["AnimatedSprite3D"] = AnimatedSprite3D::__class_id;
 	class_id_list.insert(AnimatedSprite3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimatedSprite3D::__class_id, &animated_sprite3d_class_def);

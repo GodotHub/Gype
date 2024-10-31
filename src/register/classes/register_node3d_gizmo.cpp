@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/node3d_gizmo.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue node3d_gizmo_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	Node3DGizmo *node3d_gizmo_class;
 	if (argc == 1) 
-		node3d_gizmo_class = static_cast<Node3DGizmo *>(static_cast<Object *>(Variant(*argv)));
+		node3d_gizmo_class = static_cast<Node3DGizmo *>(Variant(*argv).operator Object *());
 	else 
 		node3d_gizmo_class = memnew(Node3DGizmo);
 	if (!node3d_gizmo_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, node3d_gizmo_class);	
+	JS_SetOpaque(obj, node3d_gizmo_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_node3d_gizmo_enum(JSContext *ctx, JSValue proto) {
 
 static int js_node3d_gizmo_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Node3DGizmo::__class_id);
 	classes["Node3DGizmo"] = Node3DGizmo::__class_id;
 	class_id_list.insert(Node3DGizmo::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Node3DGizmo::__class_id, &node3d_gizmo_class_def);

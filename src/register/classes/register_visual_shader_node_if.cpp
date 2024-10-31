@@ -30,14 +30,14 @@ static JSValue visual_shader_node_if_class_constructor(JSContext *ctx, JSValueCo
 
 	VisualShaderNodeIf *visual_shader_node_if_class;
 	if (argc == 1) 
-		visual_shader_node_if_class = static_cast<VisualShaderNodeIf *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_if_class = static_cast<VisualShaderNodeIf *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_if_class = memnew(VisualShaderNodeIf);
 	if (!visual_shader_node_if_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_if_class);	
+	JS_SetOpaque(obj, visual_shader_node_if_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_visual_shader_node_if_enum(JSContext *ctx, JSValue proto) {
 
 static int js_visual_shader_node_if_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeIf::__class_id);
 	classes["VisualShaderNodeIf"] = VisualShaderNodeIf::__class_id;
 	class_id_list.insert(VisualShaderNodeIf::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeIf::__class_id, &visual_shader_node_if_class_def);

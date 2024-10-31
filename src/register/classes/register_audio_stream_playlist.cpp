@@ -30,14 +30,14 @@ static JSValue audio_stream_playlist_class_constructor(JSContext *ctx, JSValueCo
 
 	AudioStreamPlaylist *audio_stream_playlist_class;
 	if (argc == 1) 
-		audio_stream_playlist_class = static_cast<AudioStreamPlaylist *>(static_cast<Object *>(Variant(*argv)));
+		audio_stream_playlist_class = static_cast<AudioStreamPlaylist *>(Variant(*argv).operator Object *());
 	else 
 		audio_stream_playlist_class = memnew(AudioStreamPlaylist);
 	if (!audio_stream_playlist_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_stream_playlist_class);	
+	JS_SetOpaque(obj, audio_stream_playlist_class);
 	return obj;
 }
 static JSValue audio_stream_playlist_class_set_stream_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -651,7 +651,6 @@ static void define_audio_stream_playlist_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_stream_playlist_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioStreamPlaylist::__class_id);
 	classes["AudioStreamPlaylist"] = AudioStreamPlaylist::__class_id;
 	class_id_list.insert(AudioStreamPlaylist::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStreamPlaylist::__class_id, &audio_stream_playlist_class_def);

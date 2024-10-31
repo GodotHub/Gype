@@ -30,14 +30,14 @@ static JSValue rd_texture_format_class_constructor(JSContext *ctx, JSValueConst 
 
 	RDTextureFormat *rd_texture_format_class;
 	if (argc == 1) 
-		rd_texture_format_class = static_cast<RDTextureFormat *>(static_cast<Object *>(Variant(*argv)));
+		rd_texture_format_class = static_cast<RDTextureFormat *>(Variant(*argv).operator Object *());
 	else 
 		rd_texture_format_class = memnew(RDTextureFormat);
 	if (!rd_texture_format_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rd_texture_format_class);	
+	JS_SetOpaque(obj, rd_texture_format_class);
 	return obj;
 }
 static JSValue rd_texture_format_class_set_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -224,7 +224,6 @@ static void define_rd_texture_format_enum(JSContext *ctx, JSValue proto) {
 
 static int js_rd_texture_format_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RDTextureFormat::__class_id);
 	classes["RDTextureFormat"] = RDTextureFormat::__class_id;
 	class_id_list.insert(RDTextureFormat::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RDTextureFormat::__class_id, &rd_texture_format_class_def);

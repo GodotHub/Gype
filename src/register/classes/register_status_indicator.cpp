@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/status_indicator.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue status_indicator_class_constructor(JSContext *ctx, JSValueConst n
 
 	StatusIndicator *status_indicator_class;
 	if (argc == 1) 
-		status_indicator_class = static_cast<StatusIndicator *>(static_cast<Object *>(Variant(*argv)));
+		status_indicator_class = static_cast<StatusIndicator *>(Variant(*argv).operator Object *());
 	else 
 		status_indicator_class = memnew(StatusIndicator);
 	if (!status_indicator_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, status_indicator_class);	
+	JS_SetOpaque(obj, status_indicator_class);
 	return obj;
 }
 static JSValue status_indicator_class_set_tooltip(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -148,7 +148,6 @@ static void define_status_indicator_enum(JSContext *ctx, JSValue proto) {
 
 static int js_status_indicator_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&StatusIndicator::__class_id);
 	classes["StatusIndicator"] = StatusIndicator::__class_id;
 	class_id_list.insert(StatusIndicator::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StatusIndicator::__class_id, &status_indicator_class_def);

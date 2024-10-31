@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/path_follow2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/path_follow2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue path_follow2d_class_constructor(JSContext *ctx, JSValueConst new_
 
 	PathFollow2D *path_follow2d_class;
 	if (argc == 1) 
-		path_follow2d_class = static_cast<PathFollow2D *>(static_cast<Object *>(Variant(*argv)));
+		path_follow2d_class = static_cast<PathFollow2D *>(Variant(*argv).operator Object *());
 	else 
 		path_follow2d_class = memnew(PathFollow2D);
 	if (!path_follow2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, path_follow2d_class);	
+	JS_SetOpaque(obj, path_follow2d_class);
 	return obj;
 }
 static JSValue path_follow2d_class_set_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -178,7 +178,6 @@ static void define_path_follow2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_path_follow2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PathFollow2D::__class_id);
 	classes["PathFollow2D"] = PathFollow2D::__class_id;
 	class_id_list.insert(PathFollow2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PathFollow2D::__class_id, &path_follow2d_class_def);

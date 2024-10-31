@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/image_format_loader.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue image_format_loader_class_constructor(JSContext *ctx, JSValueCons
 
 	ImageFormatLoader *image_format_loader_class;
 	if (argc == 1) 
-		image_format_loader_class = static_cast<ImageFormatLoader *>(static_cast<Object *>(Variant(*argv)));
+		image_format_loader_class = static_cast<ImageFormatLoader *>(Variant(*argv).operator Object *());
 	else 
 		image_format_loader_class = memnew(ImageFormatLoader);
 	if (!image_format_loader_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, image_format_loader_class);	
+	JS_SetOpaque(obj, image_format_loader_class);
 	return obj;
 }
 
@@ -55,7 +55,6 @@ static void define_image_format_loader_enum(JSContext *ctx, JSValue proto) {
 
 static int js_image_format_loader_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ImageFormatLoader::__class_id);
 	classes["ImageFormatLoader"] = ImageFormatLoader::__class_id;
 	class_id_list.insert(ImageFormatLoader::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ImageFormatLoader::__class_id, &image_format_loader_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/weak_ref.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue weak_ref_class_constructor(JSContext *ctx, JSValueConst new_targe
 
 	WeakRef *weak_ref_class;
 	if (argc == 1) 
-		weak_ref_class = static_cast<WeakRef *>(static_cast<Object *>(Variant(*argv)));
+		weak_ref_class = static_cast<WeakRef *>(Variant(*argv).operator Object *());
 	else 
 		weak_ref_class = memnew(WeakRef);
 	if (!weak_ref_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, weak_ref_class);	
+	JS_SetOpaque(obj, weak_ref_class);
 	return obj;
 }
 static JSValue weak_ref_class_get_ref(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,7 +57,6 @@ static void define_weak_ref_enum(JSContext *ctx, JSValue proto) {
 
 static int js_weak_ref_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&WeakRef::__class_id);
 	classes["WeakRef"] = WeakRef::__class_id;
 	class_id_list.insert(WeakRef::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), WeakRef::__class_id, &weak_ref_class_def);

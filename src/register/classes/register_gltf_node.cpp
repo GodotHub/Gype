@@ -30,14 +30,14 @@ static JSValue gltf_node_class_constructor(JSContext *ctx, JSValueConst new_targ
 
 	GLTFNode *gltf_node_class;
 	if (argc == 1) 
-		gltf_node_class = static_cast<GLTFNode *>(static_cast<Object *>(Variant(*argv)));
+		gltf_node_class = static_cast<GLTFNode *>(Variant(*argv).operator Object *());
 	else 
 		gltf_node_class = memnew(GLTFNode);
 	if (!gltf_node_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_node_class);	
+	JS_SetOpaque(obj, gltf_node_class);
 	return obj;
 }
 static JSValue gltf_node_class_get_original_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -296,7 +296,6 @@ static void define_gltf_node_enum(JSContext *ctx, JSValue proto) {
 
 static int js_gltf_node_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GLTFNode::__class_id);
 	classes["GLTFNode"] = GLTFNode::__class_id;
 	class_id_list.insert(GLTFNode::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFNode::__class_id, &gltf_node_class_def);

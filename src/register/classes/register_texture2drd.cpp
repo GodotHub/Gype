@@ -30,14 +30,14 @@ static JSValue texture2drd_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	Texture2DRD *texture2drd_class;
 	if (argc == 1) 
-		texture2drd_class = static_cast<Texture2DRD *>(static_cast<Object *>(Variant(*argv)));
+		texture2drd_class = static_cast<Texture2DRD *>(Variant(*argv).operator Object *());
 	else 
 		texture2drd_class = memnew(Texture2DRD);
 	if (!texture2drd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, texture2drd_class);	
+	JS_SetOpaque(obj, texture2drd_class);
 	return obj;
 }
 static JSValue texture2drd_class_set_texture_rd_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_texture2drd_enum(JSContext *ctx, JSValue proto) {
 
 static int js_texture2drd_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Texture2DRD::__class_id);
 	classes["Texture2DRD"] = Texture2DRD::__class_id;
 	class_id_list.insert(Texture2DRD::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Texture2DRD::__class_id, &texture2drd_class_def);

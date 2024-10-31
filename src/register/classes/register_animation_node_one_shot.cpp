@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_node_sync.hpp>
 #include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/animation_node_one_shot.hpp>
+#include <godot_cpp/classes/animation_node_sync.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue animation_node_one_shot_class_constructor(JSContext *ctx, JSValue
 
 	AnimationNodeOneShot *animation_node_one_shot_class;
 	if (argc == 1) 
-		animation_node_one_shot_class = static_cast<AnimationNodeOneShot *>(static_cast<Object *>(Variant(*argv)));
+		animation_node_one_shot_class = static_cast<AnimationNodeOneShot *>(Variant(*argv).operator Object *());
 	else 
 		animation_node_one_shot_class = memnew(AnimationNodeOneShot);
 	if (!animation_node_one_shot_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animation_node_one_shot_class);	
+	JS_SetOpaque(obj, animation_node_one_shot_class);
 	return obj;
 }
 static JSValue animation_node_one_shot_class_set_fadein_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -225,7 +225,6 @@ static void define_animation_node_one_shot_enum(JSContext *ctx, JSValue proto) {
 
 static int js_animation_node_one_shot_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AnimationNodeOneShot::__class_id);
 	classes["AnimationNodeOneShot"] = AnimationNodeOneShot::__class_id;
 	class_id_list.insert(AnimationNodeOneShot::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationNodeOneShot::__class_id, &animation_node_one_shot_class_def);

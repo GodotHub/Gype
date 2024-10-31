@@ -30,14 +30,14 @@ static JSValue jsonrpc_class_constructor(JSContext *ctx, JSValueConst new_target
 
 	JSONRPC *jsonrpc_class;
 	if (argc == 1) 
-		jsonrpc_class = static_cast<JSONRPC *>(static_cast<Object *>(Variant(*argv)));
+		jsonrpc_class = static_cast<JSONRPC *>(Variant(*argv).operator Object *());
 	else 
 		jsonrpc_class = memnew(JSONRPC);
 	if (!jsonrpc_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, jsonrpc_class);	
+	JS_SetOpaque(obj, jsonrpc_class);
 	return obj;
 }
 static JSValue jsonrpc_class_set_scope(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -94,7 +94,6 @@ static void define_jsonrpc_enum(JSContext *ctx, JSValue proto) {
 
 static int js_jsonrpc_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&JSONRPC::__class_id);
 	classes["JSONRPC"] = JSONRPC::__class_id;
 	class_id_list.insert(JSONRPC::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), JSONRPC::__class_id, &jsonrpc_class_def);

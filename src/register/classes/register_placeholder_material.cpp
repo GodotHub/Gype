@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/placeholder_material.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/placeholder_material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue placeholder_material_class_constructor(JSContext *ctx, JSValueCon
 
 	PlaceholderMaterial *placeholder_material_class;
 	if (argc == 1) 
-		placeholder_material_class = static_cast<PlaceholderMaterial *>(static_cast<Object *>(Variant(*argv)));
+		placeholder_material_class = static_cast<PlaceholderMaterial *>(Variant(*argv).operator Object *());
 	else 
 		placeholder_material_class = memnew(PlaceholderMaterial);
 	if (!placeholder_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, placeholder_material_class);	
+	JS_SetOpaque(obj, placeholder_material_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_placeholder_material_enum(JSContext *ctx, JSValue proto) {
 
 static int js_placeholder_material_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PlaceholderMaterial::__class_id);
 	classes["PlaceholderMaterial"] = PlaceholderMaterial::__class_id;
 	class_id_list.insert(PlaceholderMaterial::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PlaceholderMaterial::__class_id, &placeholder_material_class_def);

@@ -5,15 +5,15 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tween.hpp>
-#include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/multiplayer_api.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/classes/scene_tree.hpp>
-#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/tween.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/viewport.hpp>
+#include <godot_cpp/classes/scene_tree.hpp>
+#include <godot_cpp/classes/multiplayer_api.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,14 +37,14 @@ static JSValue node_class_constructor(JSContext *ctx, JSValueConst new_target, i
 
 	Node *node_class;
 	if (argc == 1) 
-		node_class = static_cast<Node *>(static_cast<Object *>(Variant(*argv)));
+		node_class = static_cast<Node *>(Variant(*argv).operator Object *());
 	else 
 		node_class = memnew(Node);
 	if (!node_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, node_class);	
+	JS_SetOpaque(obj, node_class);
 	return obj;
 }
 static JSValue node_class_add_sibling(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -965,7 +965,6 @@ static void define_node_enum(JSContext *ctx, JSValue proto) {
 
 static int js_node_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Node::__class_id);
 	classes["Node"] = Node::__class_id;
 	class_id_list.insert(Node::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Node::__class_id, &node_class_def);

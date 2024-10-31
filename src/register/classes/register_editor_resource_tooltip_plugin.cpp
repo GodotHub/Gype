@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture_rect.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/editor_resource_tooltip_plugin.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/texture_rect.hpp>
+#include <godot_cpp/classes/editor_resource_tooltip_plugin.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue editor_resource_tooltip_plugin_class_constructor(JSContext *ctx, 
 
 	EditorResourceTooltipPlugin *editor_resource_tooltip_plugin_class;
 	if (argc == 1) 
-		editor_resource_tooltip_plugin_class = static_cast<EditorResourceTooltipPlugin *>(static_cast<Object *>(Variant(*argv)));
+		editor_resource_tooltip_plugin_class = static_cast<EditorResourceTooltipPlugin *>(Variant(*argv).operator Object *());
 	else 
 		editor_resource_tooltip_plugin_class = memnew(EditorResourceTooltipPlugin);
 	if (!editor_resource_tooltip_plugin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_resource_tooltip_plugin_class);	
+	JS_SetOpaque(obj, editor_resource_tooltip_plugin_class);
 	return obj;
 }
 static JSValue editor_resource_tooltip_plugin_class_request_thumbnail(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -59,7 +59,6 @@ static void define_editor_resource_tooltip_plugin_enum(JSContext *ctx, JSValue p
 
 static int js_editor_resource_tooltip_plugin_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorResourceTooltipPlugin::__class_id);
 	classes["EditorResourceTooltipPlugin"] = EditorResourceTooltipPlugin::__class_id;
 	class_id_list.insert(EditorResourceTooltipPlugin::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorResourceTooltipPlugin::__class_id, &editor_resource_tooltip_plugin_class_def);

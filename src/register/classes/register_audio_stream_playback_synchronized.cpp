@@ -30,14 +30,14 @@ static JSValue audio_stream_playback_synchronized_class_constructor(JSContext *c
 
 	AudioStreamPlaybackSynchronized *audio_stream_playback_synchronized_class;
 	if (argc == 1) 
-		audio_stream_playback_synchronized_class = static_cast<AudioStreamPlaybackSynchronized *>(static_cast<Object *>(Variant(*argv)));
+		audio_stream_playback_synchronized_class = static_cast<AudioStreamPlaybackSynchronized *>(Variant(*argv).operator Object *());
 	else 
 		audio_stream_playback_synchronized_class = memnew(AudioStreamPlaybackSynchronized);
 	if (!audio_stream_playback_synchronized_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_stream_playback_synchronized_class);	
+	JS_SetOpaque(obj, audio_stream_playback_synchronized_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_audio_stream_playback_synchronized_enum(JSContext *ctx, JSVal
 
 static int js_audio_stream_playback_synchronized_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioStreamPlaybackSynchronized::__class_id);
 	classes["AudioStreamPlaybackSynchronized"] = AudioStreamPlaybackSynchronized::__class_id;
 	class_id_list.insert(AudioStreamPlaybackSynchronized::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStreamPlaybackSynchronized::__class_id, &audio_stream_playback_synchronized_class_def);

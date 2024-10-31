@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/text_server_extension.hpp>
 #include <godot_cpp/classes/text_server.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue text_server_extension_class_constructor(JSContext *ctx, JSValueCo
 
 	TextServerExtension *text_server_extension_class;
 	if (argc == 1) 
-		text_server_extension_class = static_cast<TextServerExtension *>(static_cast<Object *>(Variant(*argv)));
+		text_server_extension_class = static_cast<TextServerExtension *>(Variant(*argv).operator Object *());
 	else 
 		text_server_extension_class = memnew(TextServerExtension);
 	if (!text_server_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, text_server_extension_class);	
+	JS_SetOpaque(obj, text_server_extension_class);
 	return obj;
 }
 
@@ -51,7 +51,6 @@ static void define_text_server_extension_enum(JSContext *ctx, JSValue proto) {
 
 static int js_text_server_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&TextServerExtension::__class_id);
 	classes["TextServerExtension"] = TextServerExtension::__class_id;
 	class_id_list.insert(TextServerExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TextServerExtension::__class_id, &text_server_extension_class_def);

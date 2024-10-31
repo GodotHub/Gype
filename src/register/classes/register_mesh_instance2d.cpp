@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh_instance2d.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/mesh_instance2d.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue mesh_instance2d_class_constructor(JSContext *ctx, JSValueConst ne
 
 	MeshInstance2D *mesh_instance2d_class;
 	if (argc == 1) 
-		mesh_instance2d_class = static_cast<MeshInstance2D *>(static_cast<Object *>(Variant(*argv)));
+		mesh_instance2d_class = static_cast<MeshInstance2D *>(Variant(*argv).operator Object *());
 	else 
 		mesh_instance2d_class = memnew(MeshInstance2D);
 	if (!mesh_instance2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, mesh_instance2d_class);	
+	JS_SetOpaque(obj, mesh_instance2d_class);
 	return obj;
 }
 static JSValue mesh_instance2d_class_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -108,7 +108,6 @@ static void define_mesh_instance2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_mesh_instance2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&MeshInstance2D::__class_id);
 	classes["MeshInstance2D"] = MeshInstance2D::__class_id;
 	class_id_list.insert(MeshInstance2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MeshInstance2D::__class_id, &mesh_instance2d_class_def);

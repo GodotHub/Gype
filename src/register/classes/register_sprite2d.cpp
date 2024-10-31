@@ -31,14 +31,14 @@ static JSValue sprite2d_class_constructor(JSContext *ctx, JSValueConst new_targe
 
 	Sprite2D *sprite2d_class;
 	if (argc == 1) 
-		sprite2d_class = static_cast<Sprite2D *>(static_cast<Object *>(Variant(*argv)));
+		sprite2d_class = static_cast<Sprite2D *>(Variant(*argv).operator Object *());
 	else 
 		sprite2d_class = memnew(Sprite2D);
 	if (!sprite2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, sprite2d_class);	
+	JS_SetOpaque(obj, sprite2d_class);
 	return obj;
 }
 static JSValue sprite2d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -315,7 +315,6 @@ static void define_sprite2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_sprite2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Sprite2D::__class_id);
 	classes["Sprite2D"] = Sprite2D::__class_id;
 	class_id_list.insert(Sprite2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Sprite2D::__class_id, &sprite2d_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/scroll_bar.hpp>
 #include <godot_cpp/classes/v_scroll_bar.hpp>
+#include <godot_cpp/classes/scroll_bar.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue v_scroll_bar_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	VScrollBar *v_scroll_bar_class;
 	if (argc == 1) 
-		v_scroll_bar_class = static_cast<VScrollBar *>(static_cast<Object *>(Variant(*argv)));
+		v_scroll_bar_class = static_cast<VScrollBar *>(Variant(*argv).operator Object *());
 	else 
 		v_scroll_bar_class = memnew(VScrollBar);
 	if (!v_scroll_bar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, v_scroll_bar_class);	
+	JS_SetOpaque(obj, v_scroll_bar_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_v_scroll_bar_enum(JSContext *ctx, JSValue proto) {
 
 static int js_v_scroll_bar_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VScrollBar::__class_id);
 	classes["VScrollBar"] = VScrollBar::__class_id;
 	class_id_list.insert(VScrollBar::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VScrollBar::__class_id, &v_scroll_bar_class_def);

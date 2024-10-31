@@ -151,7 +151,6 @@ static const JSCFunctionListEntry callable_class_static_funcs[] = {
 };
 
 static int js_callable_class_init(JSContext *ctx) {
-	JS_NewClassID(&Callable::__class_id);
 	classes["Callable"] = Callable::__class_id;
 	class_id_list.insert(Callable::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Callable::__class_id, &callable_class_def);

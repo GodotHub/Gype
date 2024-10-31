@@ -30,14 +30,14 @@ static JSValue method_tweener_class_constructor(JSContext *ctx, JSValueConst new
 
 	MethodTweener *method_tweener_class;
 	if (argc == 1) 
-		method_tweener_class = static_cast<MethodTweener *>(static_cast<Object *>(Variant(*argv)));
+		method_tweener_class = static_cast<MethodTweener *>(Variant(*argv).operator Object *());
 	else 
 		method_tweener_class = memnew(MethodTweener);
 	if (!method_tweener_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, method_tweener_class);	
+	JS_SetOpaque(obj, method_tweener_class);
 	return obj;
 }
 static JSValue method_tweener_class_set_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,7 +67,6 @@ static void define_method_tweener_enum(JSContext *ctx, JSValue proto) {
 
 static int js_method_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&MethodTweener::__class_id);
 	classes["MethodTweener"] = MethodTweener::__class_id;
 	class_id_list.insert(MethodTweener::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MethodTweener::__class_id, &method_tweener_class_def);

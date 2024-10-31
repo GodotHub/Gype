@@ -9,6 +9,7 @@
 
 HashSet<int> class_id_list;
 HashMap<StringName, int> classes;
+HashMap<int, HashSet<JSObject *>> object_pool;
 
 using namespace godot;
 
@@ -76,6 +77,22 @@ enum {
 
 	JS_CLASS_INIT_COUNT, /* last entry for predefined classes */
 };
+
+// void object_pool_add(JSValue obj, Object) {
+// 	HashSet<JSObject *> hash_set = object_pool[];
+// 	hash_set.insert(object);
+// }
+
+// uint64_t object_pool_when_contains(Object *obj) {
+// 	auto it = object_pool.begin();
+// 	while (it)
+// 	{
+// 		if (it->value.has(obj))
+// 			return it->key;
+// 		++it;
+// 	}
+// 	return -1;
+// }
 
 #define CREATE_OBJECT_FUNC(type)                           \
 	static JSValue create_##type##_obj(Variant val) {      \

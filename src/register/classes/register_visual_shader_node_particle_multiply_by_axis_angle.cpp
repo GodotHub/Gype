@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_particle_multiply_by_axis_angle.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/classes/visual_shader_node_particle_multiply_by_axis_angle.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue visual_shader_node_particle_multiply_by_axis_angle_class_construc
 
 	VisualShaderNodeParticleMultiplyByAxisAngle *visual_shader_node_particle_multiply_by_axis_angle_class;
 	if (argc == 1) 
-		visual_shader_node_particle_multiply_by_axis_angle_class = static_cast<VisualShaderNodeParticleMultiplyByAxisAngle *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_particle_multiply_by_axis_angle_class = static_cast<VisualShaderNodeParticleMultiplyByAxisAngle *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_particle_multiply_by_axis_angle_class = memnew(VisualShaderNodeParticleMultiplyByAxisAngle);
 	if (!visual_shader_node_particle_multiply_by_axis_angle_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_particle_multiply_by_axis_angle_class);	
+	JS_SetOpaque(obj, visual_shader_node_particle_multiply_by_axis_angle_class);
 	return obj;
 }
 static JSValue visual_shader_node_particle_multiply_by_axis_angle_class_set_degrees_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_visual_shader_node_particle_multiply_by_axis_angle_enum(JSCon
 
 static int js_visual_shader_node_particle_multiply_by_axis_angle_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeParticleMultiplyByAxisAngle::__class_id);
 	classes["VisualShaderNodeParticleMultiplyByAxisAngle"] = VisualShaderNodeParticleMultiplyByAxisAngle::__class_id;
 	class_id_list.insert(VisualShaderNodeParticleMultiplyByAxisAngle::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeParticleMultiplyByAxisAngle::__class_id, &visual_shader_node_particle_multiply_by_axis_angle_class_def);

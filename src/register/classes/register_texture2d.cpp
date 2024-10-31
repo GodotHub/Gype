@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/texture.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue texture2d_class_constructor(JSContext *ctx, JSValueConst new_targ
 
 	Texture2D *texture2d_class;
 	if (argc == 1) 
-		texture2d_class = static_cast<Texture2D *>(static_cast<Object *>(Variant(*argv)));
+		texture2d_class = static_cast<Texture2D *>(Variant(*argv).operator Object *());
 	else 
 		texture2d_class = memnew(Texture2D);
 	if (!texture2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, texture2d_class);	
+	JS_SetOpaque(obj, texture2d_class);
 	return obj;
 }
 static JSValue texture2d_class_get_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -99,7 +99,6 @@ static void define_texture2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_texture2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Texture2D::__class_id);
 	classes["Texture2D"] = Texture2D::__class_id;
 	class_id_list.insert(Texture2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Texture2D::__class_id, &texture2d_class_def);

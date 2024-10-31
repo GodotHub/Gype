@@ -30,14 +30,14 @@ static JSValue audio_effect_panner_class_constructor(JSContext *ctx, JSValueCons
 
 	AudioEffectPanner *audio_effect_panner_class;
 	if (argc == 1) 
-		audio_effect_panner_class = static_cast<AudioEffectPanner *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_panner_class = static_cast<AudioEffectPanner *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_panner_class = memnew(AudioEffectPanner);
 	if (!audio_effect_panner_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_panner_class);	
+	JS_SetOpaque(obj, audio_effect_panner_class);
 	return obj;
 }
 static JSValue audio_effect_panner_class_set_pan(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_audio_effect_panner_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_effect_panner_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectPanner::__class_id);
 	classes["AudioEffectPanner"] = AudioEffectPanner::__class_id;
 	class_id_list.insert(AudioEffectPanner::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectPanner::__class_id, &audio_effect_panner_class_def);

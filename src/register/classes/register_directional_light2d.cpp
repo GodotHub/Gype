@@ -30,14 +30,14 @@ static JSValue directional_light2d_class_constructor(JSContext *ctx, JSValueCons
 
 	DirectionalLight2D *directional_light2d_class;
 	if (argc == 1) 
-		directional_light2d_class = static_cast<DirectionalLight2D *>(static_cast<Object *>(Variant(*argv)));
+		directional_light2d_class = static_cast<DirectionalLight2D *>(Variant(*argv).operator Object *());
 	else 
 		directional_light2d_class = memnew(DirectionalLight2D);
 	if (!directional_light2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, directional_light2d_class);	
+	JS_SetOpaque(obj, directional_light2d_class);
 	return obj;
 }
 static JSValue directional_light2d_class_set_max_distance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_directional_light2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_directional_light2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&DirectionalLight2D::__class_id);
 	classes["DirectionalLight2D"] = DirectionalLight2D::__class_id;
 	class_id_list.insert(DirectionalLight2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), DirectionalLight2D::__class_id, &directional_light2d_class_def);

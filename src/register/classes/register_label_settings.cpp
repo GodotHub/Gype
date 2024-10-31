@@ -31,14 +31,14 @@ static JSValue label_settings_class_constructor(JSContext *ctx, JSValueConst new
 
 	LabelSettings *label_settings_class;
 	if (argc == 1) 
-		label_settings_class = static_cast<LabelSettings *>(static_cast<Object *>(Variant(*argv)));
+		label_settings_class = static_cast<LabelSettings *>(Variant(*argv).operator Object *());
 	else 
 		label_settings_class = memnew(LabelSettings);
 	if (!label_settings_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, label_settings_class);	
+	JS_SetOpaque(obj, label_settings_class);
 	return obj;
 }
 static JSValue label_settings_class_set_line_spacing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -215,7 +215,6 @@ static void define_label_settings_enum(JSContext *ctx, JSValue proto) {
 
 static int js_label_settings_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&LabelSettings::__class_id);
 	classes["LabelSettings"] = LabelSettings::__class_id;
 	class_id_list.insert(LabelSettings::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), LabelSettings::__class_id, &label_settings_class_def);

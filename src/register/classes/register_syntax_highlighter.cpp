@@ -31,14 +31,14 @@ static JSValue syntax_highlighter_class_constructor(JSContext *ctx, JSValueConst
 
 	SyntaxHighlighter *syntax_highlighter_class;
 	if (argc == 1) 
-		syntax_highlighter_class = static_cast<SyntaxHighlighter *>(static_cast<Object *>(Variant(*argv)));
+		syntax_highlighter_class = static_cast<SyntaxHighlighter *>(Variant(*argv).operator Object *());
 	else 
 		syntax_highlighter_class = memnew(SyntaxHighlighter);
 	if (!syntax_highlighter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, syntax_highlighter_class);	
+	JS_SetOpaque(obj, syntax_highlighter_class);
 	return obj;
 }
 static JSValue syntax_highlighter_class_get_line_syntax_highlighting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -73,7 +73,6 @@ static void define_syntax_highlighter_enum(JSContext *ctx, JSValue proto) {
 
 static int js_syntax_highlighter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SyntaxHighlighter::__class_id);
 	classes["SyntaxHighlighter"] = SyntaxHighlighter::__class_id;
 	class_id_list.insert(SyntaxHighlighter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SyntaxHighlighter::__class_id, &syntax_highlighter_class_def);

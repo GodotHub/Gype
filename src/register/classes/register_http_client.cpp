@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
+#include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/http_client.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -32,14 +32,14 @@ static JSValue http_client_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	HTTPClient *http_client_class;
 	if (argc == 1) 
-		http_client_class = static_cast<HTTPClient *>(static_cast<Object *>(Variant(*argv)));
+		http_client_class = static_cast<HTTPClient *>(Variant(*argv).operator Object *());
 	else 
 		http_client_class = memnew(HTTPClient);
 	if (!http_client_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, http_client_class);	
+	JS_SetOpaque(obj, http_client_class);
 	return obj;
 }
 static JSValue http_client_class_connect_to_host(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -275,7 +275,6 @@ static void define_http_client_enum(JSContext *ctx, JSValue proto) {
 
 static int js_http_client_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&HTTPClient::__class_id);
 	classes["HTTPClient"] = HTTPClient::__class_id;
 	class_id_list.insert(HTTPClient::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), HTTPClient::__class_id, &http_client_class_def);

@@ -30,14 +30,14 @@ static JSValue scene_replication_config_class_constructor(JSContext *ctx, JSValu
 
 	SceneReplicationConfig *scene_replication_config_class;
 	if (argc == 1) 
-		scene_replication_config_class = static_cast<SceneReplicationConfig *>(static_cast<Object *>(Variant(*argv)));
+		scene_replication_config_class = static_cast<SceneReplicationConfig *>(Variant(*argv).operator Object *());
 	else 
 		scene_replication_config_class = memnew(SceneReplicationConfig);
 	if (!scene_replication_config_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, scene_replication_config_class);	
+	JS_SetOpaque(obj, scene_replication_config_class);
 	return obj;
 }
 static JSValue scene_replication_config_class_get_properties(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -122,7 +122,6 @@ static void define_scene_replication_config_enum(JSContext *ctx, JSValue proto) 
 
 static int js_scene_replication_config_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SceneReplicationConfig::__class_id);
 	classes["SceneReplicationConfig"] = SceneReplicationConfig::__class_id;
 	class_id_list.insert(SceneReplicationConfig::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SceneReplicationConfig::__class_id, &scene_replication_config_class_def);

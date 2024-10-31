@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/line_edit.hpp>
-#include <godot_cpp/classes/v_box_container.hpp>
+#include <godot_cpp/classes/editor_file_dialog.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/confirmation_dialog.hpp>
-#include <godot_cpp/classes/editor_file_dialog.hpp>
+#include <godot_cpp/classes/v_box_container.hpp>
+#include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -33,14 +33,14 @@ static JSValue editor_file_dialog_class_constructor(JSContext *ctx, JSValueConst
 
 	EditorFileDialog *editor_file_dialog_class;
 	if (argc == 1) 
-		editor_file_dialog_class = static_cast<EditorFileDialog *>(static_cast<Object *>(Variant(*argv)));
+		editor_file_dialog_class = static_cast<EditorFileDialog *>(Variant(*argv).operator Object *());
 	else 
 		editor_file_dialog_class = memnew(EditorFileDialog);
 	if (!editor_file_dialog_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_file_dialog_class);	
+	JS_SetOpaque(obj, editor_file_dialog_class);
 	return obj;
 }
 static JSValue editor_file_dialog_class_clear_filters(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -380,7 +380,6 @@ static void define_editor_file_dialog_enum(JSContext *ctx, JSValue proto) {
 
 static int js_editor_file_dialog_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorFileDialog::__class_id);
 	classes["EditorFileDialog"] = EditorFileDialog::__class_id;
 	class_id_list.insert(EditorFileDialog::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorFileDialog::__class_id, &editor_file_dialog_class_def);

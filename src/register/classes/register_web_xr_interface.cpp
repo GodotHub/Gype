@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/xr_controller_tracker.hpp>
-#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/classes/web_xr_interface.hpp>
+#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue web_xr_interface_class_constructor(JSContext *ctx, JSValueConst n
 
 	WebXRInterface *web_xr_interface_class;
 	if (argc == 1) 
-		web_xr_interface_class = static_cast<WebXRInterface *>(static_cast<Object *>(Variant(*argv)));
+		web_xr_interface_class = static_cast<WebXRInterface *>(Variant(*argv).operator Object *());
 	else 
 		web_xr_interface_class = memnew(WebXRInterface);
 	if (!web_xr_interface_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, web_xr_interface_class);	
+	JS_SetOpaque(obj, web_xr_interface_class);
 	return obj;
 }
 static JSValue web_xr_interface_class_is_session_supported(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -439,7 +439,6 @@ static void define_web_xr_interface_enum(JSContext *ctx, JSValue proto) {
 
 static int js_web_xr_interface_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&WebXRInterface::__class_id);
 	classes["WebXRInterface"] = WebXRInterface::__class_id;
 	class_id_list.insert(WebXRInterface::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), WebXRInterface::__class_id, &web_xr_interface_class_def);

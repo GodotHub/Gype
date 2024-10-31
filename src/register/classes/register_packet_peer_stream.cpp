@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/packet_peer_stream.hpp>
 #include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/packet_peer.hpp>
-#include <godot_cpp/classes/packet_peer_stream.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue packet_peer_stream_class_constructor(JSContext *ctx, JSValueConst
 
 	PacketPeerStream *packet_peer_stream_class;
 	if (argc == 1) 
-		packet_peer_stream_class = static_cast<PacketPeerStream *>(static_cast<Object *>(Variant(*argv)));
+		packet_peer_stream_class = static_cast<PacketPeerStream *>(Variant(*argv).operator Object *());
 	else 
 		packet_peer_stream_class = memnew(PacketPeerStream);
 	if (!packet_peer_stream_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, packet_peer_stream_class);	
+	JS_SetOpaque(obj, packet_peer_stream_class);
 	return obj;
 }
 static JSValue packet_peer_stream_class_set_stream_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -107,7 +107,6 @@ static void define_packet_peer_stream_enum(JSContext *ctx, JSValue proto) {
 
 static int js_packet_peer_stream_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PacketPeerStream::__class_id);
 	classes["PacketPeerStream"] = PacketPeerStream::__class_id;
 	class_id_list.insert(PacketPeerStream::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PacketPeerStream::__class_id, &packet_peer_stream_class_def);

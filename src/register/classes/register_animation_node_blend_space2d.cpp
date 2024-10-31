@@ -30,14 +30,14 @@ static JSValue animation_node_blend_space2d_class_constructor(JSContext *ctx, JS
 
 	AnimationNodeBlendSpace2D *animation_node_blend_space2d_class;
 	if (argc == 1) 
-		animation_node_blend_space2d_class = static_cast<AnimationNodeBlendSpace2D *>(static_cast<Object *>(Variant(*argv)));
+		animation_node_blend_space2d_class = static_cast<AnimationNodeBlendSpace2D *>(Variant(*argv).operator Object *());
 	else 
 		animation_node_blend_space2d_class = memnew(AnimationNodeBlendSpace2D);
 	if (!animation_node_blend_space2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animation_node_blend_space2d_class);	
+	JS_SetOpaque(obj, animation_node_blend_space2d_class);
 	return obj;
 }
 static JSValue animation_node_blend_space2d_class_add_blend_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -274,7 +274,6 @@ static void define_animation_node_blend_space2d_enum(JSContext *ctx, JSValue pro
 
 static int js_animation_node_blend_space2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AnimationNodeBlendSpace2D::__class_id);
 	classes["AnimationNodeBlendSpace2D"] = AnimationNodeBlendSpace2D::__class_id;
 	class_id_list.insert(AnimationNodeBlendSpace2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationNodeBlendSpace2D::__class_id, &animation_node_blend_space2d_class_def);

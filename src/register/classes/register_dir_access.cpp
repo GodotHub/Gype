@@ -30,14 +30,14 @@ static JSValue dir_access_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	DirAccess *dir_access_class;
 	if (argc == 1) 
-		dir_access_class = static_cast<DirAccess *>(static_cast<Object *>(Variant(*argv)));
+		dir_access_class = static_cast<DirAccess *>(Variant(*argv).operator Object *());
 	else 
 		dir_access_class = memnew(DirAccess);
 	if (!dir_access_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, dir_access_class);	
+	JS_SetOpaque(obj, dir_access_class);
 	return obj;
 }
 static JSValue dir_access_class_list_dir_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -243,7 +243,6 @@ static void define_dir_access_enum(JSContext *ctx, JSValue proto) {
 
 static int js_dir_access_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&DirAccess::__class_id);
 	classes["DirAccess"] = DirAccess::__class_id;
 	class_id_list.insert(DirAccess::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), DirAccess::__class_id, &dir_access_class_def);

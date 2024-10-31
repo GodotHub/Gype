@@ -31,14 +31,14 @@ static JSValue label_class_constructor(JSContext *ctx, JSValueConst new_target, 
 
 	Label *label_class;
 	if (argc == 1) 
-		label_class = static_cast<Label *>(static_cast<Object *>(Variant(*argv)));
+		label_class = static_cast<Label *>(Variant(*argv).operator Object *());
 	else 
 		label_class = memnew(Label);
 	if (!label_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, label_class);	
+	JS_SetOpaque(obj, label_class);
 	return obj;
 }
 static JSValue label_class_set_horizontal_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -438,7 +438,6 @@ static void define_label_enum(JSContext *ctx, JSValue proto) {
 
 static int js_label_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Label::__class_id);
 	classes["Label"] = Label::__class_id;
 	class_id_list.insert(Label::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Label::__class_id, &label_class_def);

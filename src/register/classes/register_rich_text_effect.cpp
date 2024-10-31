@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/char_fx_transform.hpp>
 #include <godot_cpp/classes/rich_text_effect.hpp>
+#include <godot_cpp/classes/char_fx_transform.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue rich_text_effect_class_constructor(JSContext *ctx, JSValueConst n
 
 	RichTextEffect *rich_text_effect_class;
 	if (argc == 1) 
-		rich_text_effect_class = static_cast<RichTextEffect *>(static_cast<Object *>(Variant(*argv)));
+		rich_text_effect_class = static_cast<RichTextEffect *>(Variant(*argv).operator Object *());
 	else 
 		rich_text_effect_class = memnew(RichTextEffect);
 	if (!rich_text_effect_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rich_text_effect_class);	
+	JS_SetOpaque(obj, rich_text_effect_class);
 	return obj;
 }
 
@@ -51,7 +51,6 @@ static void define_rich_text_effect_enum(JSContext *ctx, JSValue proto) {
 
 static int js_rich_text_effect_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RichTextEffect::__class_id);
 	classes["RichTextEffect"] = RichTextEffect::__class_id;
 	class_id_list.insert(RichTextEffect::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RichTextEffect::__class_id, &rich_text_effect_class_def);

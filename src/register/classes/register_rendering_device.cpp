@@ -5,22 +5,22 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_texture_format.hpp>
-#include <godot_cpp/classes/rd_framebuffer_pass.hpp>
-#include <godot_cpp/classes/rd_shader_spirv.hpp>
 #include <godot_cpp/classes/rd_texture_view.hpp>
-#include <godot_cpp/classes/rd_pipeline_color_blend_state.hpp>
-#include <godot_cpp/classes/rd_vertex_attribute.hpp>
-#include <godot_cpp/classes/rd_shader_source.hpp>
-#include <godot_cpp/classes/rd_pipeline_rasterization_state.hpp>
-#include <godot_cpp/classes/rd_pipeline_depth_stencil_state.hpp>
-#include <godot_cpp/classes/rd_uniform.hpp>
-#include <godot_cpp/classes/rd_pipeline_multisample_state.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/rendering_device.hpp>
-#include <godot_cpp/classes/rd_sampler_state.hpp>
-#include <godot_cpp/classes/rd_pipeline_specialization_constant.hpp>
 #include <godot_cpp/classes/rd_attachment_format.hpp>
+#include <godot_cpp/classes/rd_framebuffer_pass.hpp>
+#include <godot_cpp/classes/rd_vertex_attribute.hpp>
+#include <godot_cpp/classes/rd_pipeline_rasterization_state.hpp>
+#include <godot_cpp/classes/rd_uniform.hpp>
+#include <godot_cpp/classes/rd_shader_spirv.hpp>
+#include <godot_cpp/classes/rd_sampler_state.hpp>
+#include <godot_cpp/classes/rd_texture_format.hpp>
+#include <godot_cpp/classes/rendering_device.hpp>
+#include <godot_cpp/classes/rd_pipeline_multisample_state.hpp>
+#include <godot_cpp/classes/rd_pipeline_color_blend_state.hpp>
+#include <godot_cpp/classes/rd_pipeline_specialization_constant.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/rd_shader_source.hpp>
+#include <godot_cpp/classes/rd_pipeline_depth_stencil_state.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -44,14 +44,14 @@ static JSValue rendering_device_class_constructor(JSContext *ctx, JSValueConst n
 
 	RenderingDevice *rendering_device_class;
 	if (argc == 1) 
-		rendering_device_class = static_cast<RenderingDevice *>(static_cast<Object *>(Variant(*argv)));
+		rendering_device_class = static_cast<RenderingDevice *>(Variant(*argv).operator Object *());
 	else 
 		rendering_device_class = memnew(RenderingDevice);
 	if (!rendering_device_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rendering_device_class);	
+	JS_SetOpaque(obj, rendering_device_class);
 	return obj;
 }
 static JSValue rendering_device_class_texture_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -1101,7 +1101,6 @@ static void define_rendering_device_enum(JSContext *ctx, JSValue proto) {
 
 static int js_rendering_device_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RenderingDevice::__class_id);
 	classes["RenderingDevice"] = RenderingDevice::__class_id;
 	class_id_list.insert(RenderingDevice::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RenderingDevice::__class_id, &rendering_device_class_def);

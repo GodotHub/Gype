@@ -31,14 +31,14 @@ static JSValue box_container_class_constructor(JSContext *ctx, JSValueConst new_
 
 	BoxContainer *box_container_class;
 	if (argc == 1) 
-		box_container_class = static_cast<BoxContainer *>(static_cast<Object *>(Variant(*argv)));
+		box_container_class = static_cast<BoxContainer *>(Variant(*argv).operator Object *());
 	else 
 		box_container_class = memnew(BoxContainer);
 	if (!box_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, box_container_class);	
+	JS_SetOpaque(obj, box_container_class);
 	return obj;
 }
 static JSValue box_container_class_add_spacer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -99,7 +99,6 @@ static void define_box_container_enum(JSContext *ctx, JSValue proto) {
 
 static int js_box_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&BoxContainer::__class_id);
 	classes["BoxContainer"] = BoxContainer::__class_id;
 	class_id_list.insert(BoxContainer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), BoxContainer::__class_id, &box_container_class_def);

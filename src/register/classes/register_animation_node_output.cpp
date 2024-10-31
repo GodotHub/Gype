@@ -30,14 +30,14 @@ static JSValue animation_node_output_class_constructor(JSContext *ctx, JSValueCo
 
 	AnimationNodeOutput *animation_node_output_class;
 	if (argc == 1) 
-		animation_node_output_class = static_cast<AnimationNodeOutput *>(static_cast<Object *>(Variant(*argv)));
+		animation_node_output_class = static_cast<AnimationNodeOutput *>(Variant(*argv).operator Object *());
 	else 
 		animation_node_output_class = memnew(AnimationNodeOutput);
 	if (!animation_node_output_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animation_node_output_class);	
+	JS_SetOpaque(obj, animation_node_output_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_animation_node_output_enum(JSContext *ctx, JSValue proto) {
 
 static int js_animation_node_output_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AnimationNodeOutput::__class_id);
 	classes["AnimationNodeOutput"] = AnimationNodeOutput::__class_id;
 	class_id_list.insert(AnimationNodeOutput::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationNodeOutput::__class_id, &animation_node_output_class_def);

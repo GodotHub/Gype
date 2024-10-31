@@ -170,7 +170,6 @@ void define_rect2i_property(JSContext *ctx, JSValue obj) {
 }
 
 static int js_rect2i_class_init(JSContext *ctx) {
-	JS_NewClassID(&Rect2i::__class_id);
 	classes["Rect2i"] = Rect2i::__class_id;
 	class_id_list.insert(Rect2i::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Rect2i::__class_id, &rect2i_class_def);

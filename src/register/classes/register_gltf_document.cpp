@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/gltf_state.hpp>
 #include <godot_cpp/classes/gltf_document.hpp>
-#include <godot_cpp/classes/gltf_document_extension.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/gltf_state.hpp>
+#include <godot_cpp/classes/gltf_document_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -33,14 +33,14 @@ static JSValue gltf_document_class_constructor(JSContext *ctx, JSValueConst new_
 
 	GLTFDocument *gltf_document_class;
 	if (argc == 1) 
-		gltf_document_class = static_cast<GLTFDocument *>(static_cast<Object *>(Variant(*argv)));
+		gltf_document_class = static_cast<GLTFDocument *>(Variant(*argv).operator Object *());
 	else 
 		gltf_document_class = memnew(GLTFDocument);
 	if (!gltf_document_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_document_class);	
+	JS_SetOpaque(obj, gltf_document_class);
 	return obj;
 }
 static JSValue gltf_document_class_set_image_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -154,7 +154,6 @@ static void define_gltf_document_enum(JSContext *ctx, JSValue proto) {
 
 static int js_gltf_document_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GLTFDocument::__class_id);
 	classes["GLTFDocument"] = GLTFDocument::__class_id;
 	class_id_list.insert(GLTFDocument::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFDocument::__class_id, &gltf_document_class_def);

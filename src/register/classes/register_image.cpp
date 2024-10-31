@@ -30,14 +30,14 @@ static JSValue image_class_constructor(JSContext *ctx, JSValueConst new_target, 
 
 	Image *image_class;
 	if (argc == 1) 
-		image_class = static_cast<Image *>(static_cast<Object *>(Variant(*argv)));
+		image_class = static_cast<Image *>(Variant(*argv).operator Object *());
 	else 
 		image_class = memnew(Image);
 	if (!image_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, image_class);	
+	JS_SetOpaque(obj, image_class);
 	return obj;
 }
 static JSValue image_class_get_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -484,7 +484,6 @@ static void define_image_enum(JSContext *ctx, JSValue proto) {
 
 static int js_image_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Image::__class_id);
 	classes["Image"] = Image::__class_id;
 	class_id_list.insert(Image::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Image::__class_id, &image_class_def);

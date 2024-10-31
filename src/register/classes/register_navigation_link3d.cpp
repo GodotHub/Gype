@@ -30,14 +30,14 @@ static JSValue navigation_link3d_class_constructor(JSContext *ctx, JSValueConst 
 
 	NavigationLink3D *navigation_link3d_class;
 	if (argc == 1) 
-		navigation_link3d_class = static_cast<NavigationLink3D *>(static_cast<Object *>(Variant(*argv)));
+		navigation_link3d_class = static_cast<NavigationLink3D *>(Variant(*argv).operator Object *());
 	else 
 		navigation_link3d_class = memnew(NavigationLink3D);
 	if (!navigation_link3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, navigation_link3d_class);	
+	JS_SetOpaque(obj, navigation_link3d_class);
 	return obj;
 }
 static JSValue navigation_link3d_class_get_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -213,7 +213,6 @@ static void define_navigation_link3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_navigation_link3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&NavigationLink3D::__class_id);
 	classes["NavigationLink3D"] = NavigationLink3D::__class_id;
 	class_id_list.insert(NavigationLink3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NavigationLink3D::__class_id, &navigation_link3d_class_def);

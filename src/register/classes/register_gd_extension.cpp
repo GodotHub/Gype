@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gd_extension.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/gd_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue gd_extension_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	GDExtension *gd_extension_class;
 	if (argc == 1) 
-		gd_extension_class = static_cast<GDExtension *>(static_cast<Object *>(Variant(*argv)));
+		gd_extension_class = static_cast<GDExtension *>(Variant(*argv).operator Object *());
 	else 
 		gd_extension_class = memnew(GDExtension);
 	if (!gd_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gd_extension_class);	
+	JS_SetOpaque(obj, gd_extension_class);
 	return obj;
 }
 static JSValue gd_extension_class_is_library_open(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -68,7 +68,6 @@ static void define_gd_extension_enum(JSContext *ctx, JSValue proto) {
 
 static int js_gd_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GDExtension::__class_id);
 	classes["GDExtension"] = GDExtension::__class_id;
 	class_id_list.insert(GDExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GDExtension::__class_id, &gd_extension_class_def);

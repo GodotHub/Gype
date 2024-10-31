@@ -30,14 +30,14 @@ static JSValue visual_shader_node_varying_setter_class_constructor(JSContext *ct
 
 	VisualShaderNodeVaryingSetter *visual_shader_node_varying_setter_class;
 	if (argc == 1) 
-		visual_shader_node_varying_setter_class = static_cast<VisualShaderNodeVaryingSetter *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_varying_setter_class = static_cast<VisualShaderNodeVaryingSetter *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_varying_setter_class = memnew(VisualShaderNodeVaryingSetter);
 	if (!visual_shader_node_varying_setter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_varying_setter_class);	
+	JS_SetOpaque(obj, visual_shader_node_varying_setter_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_visual_shader_node_varying_setter_enum(JSContext *ctx, JSValu
 
 static int js_visual_shader_node_varying_setter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeVaryingSetter::__class_id);
 	classes["VisualShaderNodeVaryingSetter"] = VisualShaderNodeVaryingSetter::__class_id;
 	class_id_list.insert(VisualShaderNodeVaryingSetter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeVaryingSetter::__class_id, &visual_shader_node_varying_setter_class_def);

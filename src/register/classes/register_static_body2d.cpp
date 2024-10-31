@@ -31,14 +31,14 @@ static JSValue static_body2d_class_constructor(JSContext *ctx, JSValueConst new_
 
 	StaticBody2D *static_body2d_class;
 	if (argc == 1) 
-		static_body2d_class = static_cast<StaticBody2D *>(static_cast<Object *>(Variant(*argv)));
+		static_body2d_class = static_cast<StaticBody2D *>(Variant(*argv).operator Object *());
 	else 
 		static_body2d_class = memnew(StaticBody2D);
 	if (!static_body2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, static_body2d_class);	
+	JS_SetOpaque(obj, static_body2d_class);
 	return obj;
 }
 static JSValue static_body2d_class_set_constant_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -107,7 +107,6 @@ static void define_static_body2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_static_body2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&StaticBody2D::__class_id);
 	classes["StaticBody2D"] = StaticBody2D::__class_id;
 	class_id_list.insert(StaticBody2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StaticBody2D::__class_id, &static_body2d_class_def);

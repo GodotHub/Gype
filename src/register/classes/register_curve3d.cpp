@@ -30,14 +30,14 @@ static JSValue curve3d_class_constructor(JSContext *ctx, JSValueConst new_target
 
 	Curve3D *curve3d_class;
 	if (argc == 1) 
-		curve3d_class = static_cast<Curve3D *>(static_cast<Object *>(Variant(*argv)));
+		curve3d_class = static_cast<Curve3D *>(Variant(*argv).operator Object *());
 	else 
 		curve3d_class = memnew(Curve3D);
 	if (!curve3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, curve3d_class);	
+	JS_SetOpaque(obj, curve3d_class);
 	return obj;
 }
 static JSValue curve3d_class_get_point_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -226,7 +226,6 @@ static void define_curve3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_curve3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Curve3D::__class_id);
 	classes["Curve3D"] = Curve3D::__class_id;
 	class_id_list.insert(Curve3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Curve3D::__class_id, &curve3d_class_def);

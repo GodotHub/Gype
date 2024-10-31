@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/static_body3d.hpp>
 #include <godot_cpp/classes/animatable_body3d.hpp>
+#include <godot_cpp/classes/static_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue animatable_body3d_class_constructor(JSContext *ctx, JSValueConst 
 
 	AnimatableBody3D *animatable_body3d_class;
 	if (argc == 1) 
-		animatable_body3d_class = static_cast<AnimatableBody3D *>(static_cast<Object *>(Variant(*argv)));
+		animatable_body3d_class = static_cast<AnimatableBody3D *>(Variant(*argv).operator Object *());
 	else 
 		animatable_body3d_class = memnew(AnimatableBody3D);
 	if (!animatable_body3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animatable_body3d_class);	
+	JS_SetOpaque(obj, animatable_body3d_class);
 	return obj;
 }
 static JSValue animatable_body3d_class_set_sync_to_physics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_animatable_body3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_animatable_body3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AnimatableBody3D::__class_id);
 	classes["AnimatableBody3D"] = AnimatableBody3D::__class_id;
 	class_id_list.insert(AnimatableBody3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimatableBody3D::__class_id, &animatable_body3d_class_def);

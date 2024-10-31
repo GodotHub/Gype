@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/box_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/box_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue box_mesh_class_constructor(JSContext *ctx, JSValueConst new_targe
 
 	BoxMesh *box_mesh_class;
 	if (argc == 1) 
-		box_mesh_class = static_cast<BoxMesh *>(static_cast<Object *>(Variant(*argv)));
+		box_mesh_class = static_cast<BoxMesh *>(Variant(*argv).operator Object *());
 	else 
 		box_mesh_class = memnew(BoxMesh);
 	if (!box_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, box_mesh_class);	
+	JS_SetOpaque(obj, box_mesh_class);
 	return obj;
 }
 static JSValue box_mesh_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -124,7 +124,6 @@ static void define_box_mesh_enum(JSContext *ctx, JSValue proto) {
 
 static int js_box_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&BoxMesh::__class_id);
 	classes["BoxMesh"] = BoxMesh::__class_id;
 	class_id_list.insert(BoxMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), BoxMesh::__class_id, &box_mesh_class_def);

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/immediate_mesh.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue immediate_mesh_class_constructor(JSContext *ctx, JSValueConst new
 
 	ImmediateMesh *immediate_mesh_class;
 	if (argc == 1) 
-		immediate_mesh_class = static_cast<ImmediateMesh *>(static_cast<Object *>(Variant(*argv)));
+		immediate_mesh_class = static_cast<ImmediateMesh *>(Variant(*argv).operator Object *());
 	else 
 		immediate_mesh_class = memnew(ImmediateMesh);
 	if (!immediate_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, immediate_mesh_class);	
+	JS_SetOpaque(obj, immediate_mesh_class);
 	return obj;
 }
 static JSValue immediate_mesh_class_surface_begin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -103,7 +103,6 @@ static void define_immediate_mesh_enum(JSContext *ctx, JSValue proto) {
 
 static int js_immediate_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ImmediateMesh::__class_id);
 	classes["ImmediateMesh"] = ImmediateMesh::__class_id;
 	class_id_list.insert(ImmediateMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ImmediateMesh::__class_id, &immediate_mesh_class_def);

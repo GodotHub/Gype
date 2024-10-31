@@ -30,14 +30,14 @@ static JSValue xrvrs_class_constructor(JSContext *ctx, JSValueConst new_target, 
 
 	XRVRS *xrvrs_class;
 	if (argc == 1) 
-		xrvrs_class = static_cast<XRVRS *>(static_cast<Object *>(Variant(*argv)));
+		xrvrs_class = static_cast<XRVRS *>(Variant(*argv).operator Object *());
 	else 
 		xrvrs_class = memnew(XRVRS);
 	if (!xrvrs_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, xrvrs_class);	
+	JS_SetOpaque(obj, xrvrs_class);
 	return obj;
 }
 static JSValue xrvrs_class_get_vrs_min_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -93,7 +93,6 @@ static void define_xrvrs_enum(JSContext *ctx, JSValue proto) {
 
 static int js_xrvrs_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&XRVRS::__class_id);
 	classes["XRVRS"] = XRVRS::__class_id;
 	class_id_list.insert(XRVRS::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRVRS::__class_id, &xrvrs_class_def);

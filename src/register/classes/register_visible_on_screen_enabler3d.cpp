@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visible_on_screen_enabler3d.hpp>
 #include <godot_cpp/classes/visible_on_screen_notifier3d.hpp>
+#include <godot_cpp/classes/visible_on_screen_enabler3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue visible_on_screen_enabler3d_class_constructor(JSContext *ctx, JSV
 
 	VisibleOnScreenEnabler3D *visible_on_screen_enabler3d_class;
 	if (argc == 1) 
-		visible_on_screen_enabler3d_class = static_cast<VisibleOnScreenEnabler3D *>(static_cast<Object *>(Variant(*argv)));
+		visible_on_screen_enabler3d_class = static_cast<VisibleOnScreenEnabler3D *>(Variant(*argv).operator Object *());
 	else 
 		visible_on_screen_enabler3d_class = memnew(VisibleOnScreenEnabler3D);
 	if (!visible_on_screen_enabler3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visible_on_screen_enabler3d_class);	
+	JS_SetOpaque(obj, visible_on_screen_enabler3d_class);
 	return obj;
 }
 static JSValue visible_on_screen_enabler3d_class_set_enable_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -93,7 +93,6 @@ static void define_visible_on_screen_enabler3d_enum(JSContext *ctx, JSValue prot
 
 static int js_visible_on_screen_enabler3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisibleOnScreenEnabler3D::__class_id);
 	classes["VisibleOnScreenEnabler3D"] = VisibleOnScreenEnabler3D::__class_id;
 	class_id_list.insert(VisibleOnScreenEnabler3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisibleOnScreenEnabler3D::__class_id, &visible_on_screen_enabler3d_class_def);

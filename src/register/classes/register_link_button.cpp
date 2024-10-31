@@ -30,14 +30,14 @@ static JSValue link_button_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	LinkButton *link_button_class;
 	if (argc == 1) 
-		link_button_class = static_cast<LinkButton *>(static_cast<Object *>(Variant(*argv)));
+		link_button_class = static_cast<LinkButton *>(Variant(*argv).operator Object *());
 	else 
 		link_button_class = memnew(LinkButton);
 	if (!link_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, link_button_class);	
+	JS_SetOpaque(obj, link_button_class);
 	return obj;
 }
 static JSValue link_button_class_set_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -183,7 +183,6 @@ static void define_link_button_enum(JSContext *ctx, JSValue proto) {
 
 static int js_link_button_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&LinkButton::__class_id);
 	classes["LinkButton"] = LinkButton::__class_id;
 	class_id_list.insert(LinkButton::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), LinkButton::__class_id, &link_button_class_def);

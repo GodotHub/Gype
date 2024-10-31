@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/resource_importer.hpp>
 #include <godot_cpp/classes/audio_stream_ogg_vorbis.hpp>
 #include <godot_cpp/classes/resource_importer_ogg_vorbis.hpp>
-#include <godot_cpp/classes/resource_importer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue resource_importer_ogg_vorbis_class_constructor(JSContext *ctx, JS
 
 	ResourceImporterOggVorbis *resource_importer_ogg_vorbis_class;
 	if (argc == 1) 
-		resource_importer_ogg_vorbis_class = static_cast<ResourceImporterOggVorbis *>(static_cast<Object *>(Variant(*argv)));
+		resource_importer_ogg_vorbis_class = static_cast<ResourceImporterOggVorbis *>(Variant(*argv).operator Object *());
 	else 
 		resource_importer_ogg_vorbis_class = memnew(ResourceImporterOggVorbis);
 	if (!resource_importer_ogg_vorbis_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, resource_importer_ogg_vorbis_class);	
+	JS_SetOpaque(obj, resource_importer_ogg_vorbis_class);
 	return obj;
 }
 static JSValue resource_importer_ogg_vorbis_class_load_from_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -61,7 +61,6 @@ static void define_resource_importer_ogg_vorbis_enum(JSContext *ctx, JSValue pro
 
 static int js_resource_importer_ogg_vorbis_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ResourceImporterOggVorbis::__class_id);
 	classes["ResourceImporterOggVorbis"] = ResourceImporterOggVorbis::__class_id;
 	class_id_list.insert(ResourceImporterOggVorbis::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceImporterOggVorbis::__class_id, &resource_importer_ogg_vorbis_class_def);

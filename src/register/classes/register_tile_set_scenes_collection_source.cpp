@@ -31,14 +31,14 @@ static JSValue tile_set_scenes_collection_source_class_constructor(JSContext *ct
 
 	TileSetScenesCollectionSource *tile_set_scenes_collection_source_class;
 	if (argc == 1) 
-		tile_set_scenes_collection_source_class = static_cast<TileSetScenesCollectionSource *>(static_cast<Object *>(Variant(*argv)));
+		tile_set_scenes_collection_source_class = static_cast<TileSetScenesCollectionSource *>(Variant(*argv).operator Object *());
 	else 
 		tile_set_scenes_collection_source_class = memnew(TileSetScenesCollectionSource);
 	if (!tile_set_scenes_collection_source_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, tile_set_scenes_collection_source_class);	
+	JS_SetOpaque(obj, tile_set_scenes_collection_source_class);
 	return obj;
 }
 static JSValue tile_set_scenes_collection_source_class_get_scene_tiles_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -108,7 +108,6 @@ static void define_tile_set_scenes_collection_source_enum(JSContext *ctx, JSValu
 
 static int js_tile_set_scenes_collection_source_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&TileSetScenesCollectionSource::__class_id);
 	classes["TileSetScenesCollectionSource"] = TileSetScenesCollectionSource::__class_id;
 	class_id_list.insert(TileSetScenesCollectionSource::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TileSetScenesCollectionSource::__class_id, &tile_set_scenes_collection_source_class_def);

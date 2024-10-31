@@ -30,14 +30,14 @@ static JSValue directional_light3d_class_constructor(JSContext *ctx, JSValueCons
 
 	DirectionalLight3D *directional_light3d_class;
 	if (argc == 1) 
-		directional_light3d_class = static_cast<DirectionalLight3D *>(static_cast<Object *>(Variant(*argv)));
+		directional_light3d_class = static_cast<DirectionalLight3D *>(Variant(*argv).operator Object *());
 	else 
 		directional_light3d_class = memnew(DirectionalLight3D);
 	if (!directional_light3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, directional_light3d_class);	
+	JS_SetOpaque(obj, directional_light3d_class);
 	return obj;
 }
 static JSValue directional_light3d_class_set_shadow_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -116,7 +116,6 @@ static void define_directional_light3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_directional_light3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&DirectionalLight3D::__class_id);
 	classes["DirectionalLight3D"] = DirectionalLight3D::__class_id;
 	class_id_list.insert(DirectionalLight3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), DirectionalLight3D::__class_id, &directional_light3d_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_stream_microphone.hpp>
 #include <godot_cpp/classes/audio_stream.hpp>
+#include <godot_cpp/classes/audio_stream_microphone.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue audio_stream_microphone_class_constructor(JSContext *ctx, JSValue
 
 	AudioStreamMicrophone *audio_stream_microphone_class;
 	if (argc == 1) 
-		audio_stream_microphone_class = static_cast<AudioStreamMicrophone *>(static_cast<Object *>(Variant(*argv)));
+		audio_stream_microphone_class = static_cast<AudioStreamMicrophone *>(Variant(*argv).operator Object *());
 	else 
 		audio_stream_microphone_class = memnew(AudioStreamMicrophone);
 	if (!audio_stream_microphone_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_stream_microphone_class);	
+	JS_SetOpaque(obj, audio_stream_microphone_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_audio_stream_microphone_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_stream_microphone_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioStreamMicrophone::__class_id);
 	classes["AudioStreamMicrophone"] = AudioStreamMicrophone::__class_id;
 	class_id_list.insert(AudioStreamMicrophone::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStreamMicrophone::__class_id, &audio_stream_microphone_class_def);

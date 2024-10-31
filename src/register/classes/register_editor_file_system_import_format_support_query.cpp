@@ -30,14 +30,14 @@ static JSValue editor_file_system_import_format_support_query_class_constructor(
 
 	EditorFileSystemImportFormatSupportQuery *editor_file_system_import_format_support_query_class;
 	if (argc == 1) 
-		editor_file_system_import_format_support_query_class = static_cast<EditorFileSystemImportFormatSupportQuery *>(static_cast<Object *>(Variant(*argv)));
+		editor_file_system_import_format_support_query_class = static_cast<EditorFileSystemImportFormatSupportQuery *>(Variant(*argv).operator Object *());
 	else 
 		editor_file_system_import_format_support_query_class = memnew(EditorFileSystemImportFormatSupportQuery);
 	if (!editor_file_system_import_format_support_query_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_file_system_import_format_support_query_class);	
+	JS_SetOpaque(obj, editor_file_system_import_format_support_query_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_editor_file_system_import_format_support_query_enum(JSContext
 
 static int js_editor_file_system_import_format_support_query_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorFileSystemImportFormatSupportQuery::__class_id);
 	classes["EditorFileSystemImportFormatSupportQuery"] = EditorFileSystemImportFormatSupportQuery::__class_id;
 	class_id_list.insert(EditorFileSystemImportFormatSupportQuery::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorFileSystemImportFormatSupportQuery::__class_id, &editor_file_system_import_format_support_query_class_def);

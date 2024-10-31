@@ -5,15 +5,15 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/canvas_item.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/theme.hpp>
 #include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -37,14 +37,14 @@ static JSValue control_class_constructor(JSContext *ctx, JSValueConst new_target
 
 	Control *control_class;
 	if (argc == 1) 
-		control_class = static_cast<Control *>(static_cast<Object *>(Variant(*argv)));
+		control_class = static_cast<Control *>(Variant(*argv).operator Object *());
 	else 
 		control_class = memnew(Control);
 	if (!control_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, control_class);	
+	JS_SetOpaque(obj, control_class);
 	return obj;
 }
 static JSValue control_class_accept_event(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -1255,7 +1255,6 @@ static void define_control_enum(JSContext *ctx, JSValue proto) {
 
 static int js_control_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Control::__class_id);
 	classes["Control"] = Control::__class_id;
 	class_id_list.insert(Control::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Control::__class_id, &control_class_def);

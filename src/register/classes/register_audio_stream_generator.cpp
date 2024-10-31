@@ -30,14 +30,14 @@ static JSValue audio_stream_generator_class_constructor(JSContext *ctx, JSValueC
 
 	AudioStreamGenerator *audio_stream_generator_class;
 	if (argc == 1) 
-		audio_stream_generator_class = static_cast<AudioStreamGenerator *>(static_cast<Object *>(Variant(*argv)));
+		audio_stream_generator_class = static_cast<AudioStreamGenerator *>(Variant(*argv).operator Object *());
 	else 
 		audio_stream_generator_class = memnew(AudioStreamGenerator);
 	if (!audio_stream_generator_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_stream_generator_class);	
+	JS_SetOpaque(obj, audio_stream_generator_class);
 	return obj;
 }
 static JSValue audio_stream_generator_class_set_mix_rate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,7 +88,6 @@ static void define_audio_stream_generator_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_stream_generator_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioStreamGenerator::__class_id);
 	classes["AudioStreamGenerator"] = AudioStreamGenerator::__class_id;
 	class_id_list.insert(AudioStreamGenerator::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStreamGenerator::__class_id, &audio_stream_generator_class_def);

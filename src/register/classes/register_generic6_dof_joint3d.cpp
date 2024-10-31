@@ -30,14 +30,14 @@ static JSValue generic6_dof_joint3d_class_constructor(JSContext *ctx, JSValueCon
 
 	Generic6DOFJoint3D *generic6_dof_joint3d_class;
 	if (argc == 1) 
-		generic6_dof_joint3d_class = static_cast<Generic6DOFJoint3D *>(static_cast<Object *>(Variant(*argv)));
+		generic6_dof_joint3d_class = static_cast<Generic6DOFJoint3D *>(Variant(*argv).operator Object *());
 	else 
 		generic6_dof_joint3d_class = memnew(Generic6DOFJoint3D);
 	if (!generic6_dof_joint3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, generic6_dof_joint3d_class);	
+	JS_SetOpaque(obj, generic6_dof_joint3d_class);
 	return obj;
 }
 static JSValue generic6_dof_joint3d_class_set_param_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -146,7 +146,6 @@ static void define_generic6_dof_joint3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_generic6_dof_joint3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Generic6DOFJoint3D::__class_id);
 	classes["Generic6DOFJoint3D"] = Generic6DOFJoint3D::__class_id;
 	class_id_list.insert(Generic6DOFJoint3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Generic6DOFJoint3D::__class_id, &generic6_dof_joint3d_class_def);

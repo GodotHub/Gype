@@ -30,14 +30,14 @@ static JSValue scene_tree_timer_class_constructor(JSContext *ctx, JSValueConst n
 
 	SceneTreeTimer *scene_tree_timer_class;
 	if (argc == 1) 
-		scene_tree_timer_class = static_cast<SceneTreeTimer *>(static_cast<Object *>(Variant(*argv)));
+		scene_tree_timer_class = static_cast<SceneTreeTimer *>(Variant(*argv).operator Object *());
 	else 
 		scene_tree_timer_class = memnew(SceneTreeTimer);
 	if (!scene_tree_timer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, scene_tree_timer_class);	
+	JS_SetOpaque(obj, scene_tree_timer_class);
 	return obj;
 }
 static JSValue scene_tree_timer_class_set_time_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,7 +88,6 @@ static void define_scene_tree_timer_enum(JSContext *ctx, JSValue proto) {
 
 static int js_scene_tree_timer_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SceneTreeTimer::__class_id);
 	classes["SceneTreeTimer"] = SceneTreeTimer::__class_id;
 	class_id_list.insert(SceneTreeTimer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SceneTreeTimer::__class_id, &scene_tree_timer_class_def);

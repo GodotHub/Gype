@@ -31,14 +31,14 @@ static JSValue open_xr_extension_wrapper_extension_class_constructor(JSContext *
 
 	OpenXRExtensionWrapperExtension *open_xr_extension_wrapper_extension_class;
 	if (argc == 1) 
-		open_xr_extension_wrapper_extension_class = static_cast<OpenXRExtensionWrapperExtension *>(static_cast<Object *>(Variant(*argv)));
+		open_xr_extension_wrapper_extension_class = static_cast<OpenXRExtensionWrapperExtension *>(Variant(*argv).operator Object *());
 	else 
 		open_xr_extension_wrapper_extension_class = memnew(OpenXRExtensionWrapperExtension);
 	if (!open_xr_extension_wrapper_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, open_xr_extension_wrapper_extension_class);	
+	JS_SetOpaque(obj, open_xr_extension_wrapper_extension_class);
 	return obj;
 }
 static JSValue open_xr_extension_wrapper_extension_class_get_openxr_api(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -63,7 +63,6 @@ static void define_open_xr_extension_wrapper_extension_enum(JSContext *ctx, JSVa
 
 static int js_open_xr_extension_wrapper_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&OpenXRExtensionWrapperExtension::__class_id);
 	classes["OpenXRExtensionWrapperExtension"] = OpenXRExtensionWrapperExtension::__class_id;
 	class_id_list.insert(OpenXRExtensionWrapperExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), OpenXRExtensionWrapperExtension::__class_id, &open_xr_extension_wrapper_extension_class_def);

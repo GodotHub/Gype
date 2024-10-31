@@ -30,14 +30,14 @@ static JSValue script_language_class_constructor(JSContext *ctx, JSValueConst ne
 
 	ScriptLanguage *script_language_class;
 	if (argc == 1) 
-		script_language_class = static_cast<ScriptLanguage *>(static_cast<Object *>(Variant(*argv)));
+		script_language_class = static_cast<ScriptLanguage *>(Variant(*argv).operator Object *());
 	else 
 		script_language_class = memnew(ScriptLanguage);
 	if (!script_language_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, script_language_class);	
+	JS_SetOpaque(obj, script_language_class);
 	return obj;
 }
 
@@ -56,7 +56,6 @@ static void define_script_language_enum(JSContext *ctx, JSValue proto) {
 
 static int js_script_language_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ScriptLanguage::__class_id);
 	classes["ScriptLanguage"] = ScriptLanguage::__class_id;
 	class_id_list.insert(ScriptLanguage::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ScriptLanguage::__class_id, &script_language_class_def);

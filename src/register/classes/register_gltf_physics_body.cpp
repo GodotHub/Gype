@@ -31,14 +31,14 @@ static JSValue gltf_physics_body_class_constructor(JSContext *ctx, JSValueConst 
 
 	GLTFPhysicsBody *gltf_physics_body_class;
 	if (argc == 1) 
-		gltf_physics_body_class = static_cast<GLTFPhysicsBody *>(static_cast<Object *>(Variant(*argv)));
+		gltf_physics_body_class = static_cast<GLTFPhysicsBody *>(Variant(*argv).operator Object *());
 	else 
 		gltf_physics_body_class = memnew(GLTFPhysicsBody);
 	if (!gltf_physics_body_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_physics_body_class);	
+	JS_SetOpaque(obj, gltf_physics_body_class);
 	return obj;
 }
 static JSValue gltf_physics_body_class_to_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -217,7 +217,6 @@ static void define_gltf_physics_body_enum(JSContext *ctx, JSValue proto) {
 
 static int js_gltf_physics_body_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GLTFPhysicsBody::__class_id);
 	classes["GLTFPhysicsBody"] = GLTFPhysicsBody::__class_id;
 	class_id_list.insert(GLTFPhysicsBody::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFPhysicsBody::__class_id, &gltf_physics_body_class_def);

@@ -30,14 +30,14 @@ static JSValue gradient_class_constructor(JSContext *ctx, JSValueConst new_targe
 
 	Gradient *gradient_class;
 	if (argc == 1) 
-		gradient_class = static_cast<Gradient *>(static_cast<Object *>(Variant(*argv)));
+		gradient_class = static_cast<Gradient *>(Variant(*argv).operator Object *());
 	else 
 		gradient_class = memnew(Gradient);
 	if (!gradient_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gradient_class);	
+	JS_SetOpaque(obj, gradient_class);
 	return obj;
 }
 static JSValue gradient_class_add_point(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -179,7 +179,6 @@ static void define_gradient_enum(JSContext *ctx, JSValue proto) {
 
 static int js_gradient_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Gradient::__class_id);
 	classes["Gradient"] = Gradient::__class_id;
 	class_id_list.insert(Gradient::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Gradient::__class_id, &gradient_class_def);

@@ -30,14 +30,14 @@ static JSValue stream_peer_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	StreamPeer *stream_peer_class;
 	if (argc == 1) 
-		stream_peer_class = static_cast<StreamPeer *>(static_cast<Object *>(Variant(*argv)));
+		stream_peer_class = static_cast<StreamPeer *>(Variant(*argv).operator Object *());
 	else 
 		stream_peer_class = memnew(StreamPeer);
 	if (!stream_peer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, stream_peer_class);	
+	JS_SetOpaque(obj, stream_peer_class);
 	return obj;
 }
 static JSValue stream_peer_class_put_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -225,7 +225,6 @@ static void define_stream_peer_enum(JSContext *ctx, JSValue proto) {
 
 static int js_stream_peer_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&StreamPeer::__class_id);
 	classes["StreamPeer"] = StreamPeer::__class_id;
 	class_id_list.insert(StreamPeer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StreamPeer::__class_id, &stream_peer_class_def);

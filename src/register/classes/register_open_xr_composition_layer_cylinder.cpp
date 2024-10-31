@@ -30,14 +30,14 @@ static JSValue open_xr_composition_layer_cylinder_class_constructor(JSContext *c
 
 	OpenXRCompositionLayerCylinder *open_xr_composition_layer_cylinder_class;
 	if (argc == 1) 
-		open_xr_composition_layer_cylinder_class = static_cast<OpenXRCompositionLayerCylinder *>(static_cast<Object *>(Variant(*argv)));
+		open_xr_composition_layer_cylinder_class = static_cast<OpenXRCompositionLayerCylinder *>(Variant(*argv).operator Object *());
 	else 
 		open_xr_composition_layer_cylinder_class = memnew(OpenXRCompositionLayerCylinder);
 	if (!open_xr_composition_layer_cylinder_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, open_xr_composition_layer_cylinder_class);	
+	JS_SetOpaque(obj, open_xr_composition_layer_cylinder_class);
 	return obj;
 }
 static JSValue open_xr_composition_layer_cylinder_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -124,7 +124,6 @@ static void define_open_xr_composition_layer_cylinder_enum(JSContext *ctx, JSVal
 
 static int js_open_xr_composition_layer_cylinder_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&OpenXRCompositionLayerCylinder::__class_id);
 	classes["OpenXRCompositionLayerCylinder"] = OpenXRCompositionLayerCylinder::__class_id;
 	class_id_list.insert(OpenXRCompositionLayerCylinder::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), OpenXRCompositionLayerCylinder::__class_id, &open_xr_composition_layer_cylinder_class_def);

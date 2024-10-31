@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/array_mesh.hpp>
-#include <godot_cpp/classes/mesh_data_tool.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/mesh_data_tool.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue mesh_data_tool_class_constructor(JSContext *ctx, JSValueConst new
 
 	MeshDataTool *mesh_data_tool_class;
 	if (argc == 1) 
-		mesh_data_tool_class = static_cast<MeshDataTool *>(static_cast<Object *>(Variant(*argv)));
+		mesh_data_tool_class = static_cast<MeshDataTool *>(Variant(*argv).operator Object *());
 	else 
 		mesh_data_tool_class = memnew(MeshDataTool);
 	if (!mesh_data_tool_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, mesh_data_tool_class);	
+	JS_SetOpaque(obj, mesh_data_tool_class);
 	return obj;
 }
 static JSValue mesh_data_tool_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -244,7 +244,6 @@ static void define_mesh_data_tool_enum(JSContext *ctx, JSValue proto) {
 
 static int js_mesh_data_tool_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&MeshDataTool::__class_id);
 	classes["MeshDataTool"] = MeshDataTool::__class_id;
 	class_id_list.insert(MeshDataTool::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MeshDataTool::__class_id, &mesh_data_tool_class_def);

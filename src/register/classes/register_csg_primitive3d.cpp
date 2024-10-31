@@ -30,14 +30,14 @@ static JSValue csg_primitive3d_class_constructor(JSContext *ctx, JSValueConst ne
 
 	CSGPrimitive3D *csg_primitive3d_class;
 	if (argc == 1) 
-		csg_primitive3d_class = static_cast<CSGPrimitive3D *>(static_cast<Object *>(Variant(*argv)));
+		csg_primitive3d_class = static_cast<CSGPrimitive3D *>(Variant(*argv).operator Object *());
 	else 
 		csg_primitive3d_class = memnew(CSGPrimitive3D);
 	if (!csg_primitive3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, csg_primitive3d_class);	
+	JS_SetOpaque(obj, csg_primitive3d_class);
 	return obj;
 }
 static JSValue csg_primitive3d_class_set_flip_faces(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_csg_primitive3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_csg_primitive3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CSGPrimitive3D::__class_id);
 	classes["CSGPrimitive3D"] = CSGPrimitive3D::__class_id;
 	class_id_list.insert(CSGPrimitive3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CSGPrimitive3D::__class_id, &csg_primitive3d_class_def);

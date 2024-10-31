@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/occluder_polygon2d.hpp>
 #include <godot_cpp/classes/navigation_polygon.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/occluder_polygon2d.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/tile_data.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -33,14 +33,14 @@ static JSValue tile_data_class_constructor(JSContext *ctx, JSValueConst new_targ
 
 	TileData *tile_data_class;
 	if (argc == 1) 
-		tile_data_class = static_cast<TileData *>(static_cast<Object *>(Variant(*argv)));
+		tile_data_class = static_cast<TileData *>(Variant(*argv).operator Object *());
 	else 
 		tile_data_class = memnew(TileData);
 	if (!tile_data_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, tile_data_class);	
+	JS_SetOpaque(obj, tile_data_class);
 	return obj;
 }
 static JSValue tile_data_class_set_flip_h(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -396,7 +396,6 @@ static void define_tile_data_enum(JSContext *ctx, JSValue proto) {
 
 static int js_tile_data_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&TileData::__class_id);
 	classes["TileData"] = TileData::__class_id;
 	class_id_list.insert(TileData::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TileData::__class_id, &tile_data_class_def);

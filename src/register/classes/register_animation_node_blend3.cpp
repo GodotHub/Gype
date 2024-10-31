@@ -30,14 +30,14 @@ static JSValue animation_node_blend3_class_constructor(JSContext *ctx, JSValueCo
 
 	AnimationNodeBlend3 *animation_node_blend3_class;
 	if (argc == 1) 
-		animation_node_blend3_class = static_cast<AnimationNodeBlend3 *>(static_cast<Object *>(Variant(*argv)));
+		animation_node_blend3_class = static_cast<AnimationNodeBlend3 *>(Variant(*argv).operator Object *());
 	else 
 		animation_node_blend3_class = memnew(AnimationNodeBlend3);
 	if (!animation_node_blend3_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animation_node_blend3_class);	
+	JS_SetOpaque(obj, animation_node_blend3_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_animation_node_blend3_enum(JSContext *ctx, JSValue proto) {
 
 static int js_animation_node_blend3_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AnimationNodeBlend3::__class_id);
 	classes["AnimationNodeBlend3"] = AnimationNodeBlend3::__class_id;
 	class_id_list.insert(AnimationNodeBlend3::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationNodeBlend3::__class_id, &animation_node_blend3_class_def);

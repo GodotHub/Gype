@@ -30,14 +30,14 @@ static JSValue audio_effect_amplify_class_constructor(JSContext *ctx, JSValueCon
 
 	AudioEffectAmplify *audio_effect_amplify_class;
 	if (argc == 1) 
-		audio_effect_amplify_class = static_cast<AudioEffectAmplify *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_amplify_class = static_cast<AudioEffectAmplify *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_amplify_class = memnew(AudioEffectAmplify);
 	if (!audio_effect_amplify_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_amplify_class);	
+	JS_SetOpaque(obj, audio_effect_amplify_class);
 	return obj;
 }
 static JSValue audio_effect_amplify_class_set_volume_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_audio_effect_amplify_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_effect_amplify_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectAmplify::__class_id);
 	classes["AudioEffectAmplify"] = AudioEffectAmplify::__class_id;
 	class_id_list.insert(AudioEffectAmplify::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectAmplify::__class_id, &audio_effect_amplify_class_def);

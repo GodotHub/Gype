@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/lightmap_gi_data.hpp>
-#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/classes/lightmap_gi.hpp>
-#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/classes/sky.hpp>
+#include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -33,14 +33,14 @@ static JSValue lightmap_gi_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	LightmapGI *lightmap_gi_class;
 	if (argc == 1) 
-		lightmap_gi_class = static_cast<LightmapGI *>(static_cast<Object *>(Variant(*argv)));
+		lightmap_gi_class = static_cast<LightmapGI *>(Variant(*argv).operator Object *());
 	else 
 		lightmap_gi_class = memnew(LightmapGI);
 	if (!lightmap_gi_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, lightmap_gi_class);	
+	JS_SetOpaque(obj, lightmap_gi_class);
 	return obj;
 }
 static JSValue lightmap_gi_class_set_light_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -430,7 +430,6 @@ static void define_lightmap_gi_enum(JSContext *ctx, JSValue proto) {
 
 static int js_lightmap_gi_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&LightmapGI::__class_id);
 	classes["LightmapGI"] = LightmapGI::__class_id;
 	class_id_list.insert(LightmapGI::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), LightmapGI::__class_id, &lightmap_gi_class_def);

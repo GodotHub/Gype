@@ -208,7 +208,6 @@ void define_plane_property(JSContext *ctx, JSValue obj) {
 }
 
 static int js_plane_class_init(JSContext *ctx) {
-	JS_NewClassID(&Plane::__class_id);
 	classes["Plane"] = Plane::__class_id;
 	class_id_list.insert(Plane::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Plane::__class_id, &plane_class_def);

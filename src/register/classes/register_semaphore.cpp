@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/semaphore.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue semaphore_class_constructor(JSContext *ctx, JSValueConst new_targ
 
 	Semaphore *semaphore_class;
 	if (argc == 1) 
-		semaphore_class = static_cast<Semaphore *>(static_cast<Object *>(Variant(*argv)));
+		semaphore_class = static_cast<Semaphore *>(Variant(*argv).operator Object *());
 	else 
 		semaphore_class = memnew(Semaphore);
 	if (!semaphore_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, semaphore_class);	
+	JS_SetOpaque(obj, semaphore_class);
 	return obj;
 }
 static JSValue semaphore_class_wait(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,7 +67,6 @@ static void define_semaphore_enum(JSContext *ctx, JSValue proto) {
 
 static int js_semaphore_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Semaphore::__class_id);
 	classes["Semaphore"] = Semaphore::__class_id;
 	class_id_list.insert(Semaphore::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Semaphore::__class_id, &semaphore_class_def);

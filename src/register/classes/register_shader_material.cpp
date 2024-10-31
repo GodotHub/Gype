@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/shader_material.hpp>
 #include <godot_cpp/classes/shader.hpp>
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue shader_material_class_constructor(JSContext *ctx, JSValueConst ne
 
 	ShaderMaterial *shader_material_class;
 	if (argc == 1) 
-		shader_material_class = static_cast<ShaderMaterial *>(static_cast<Object *>(Variant(*argv)));
+		shader_material_class = static_cast<ShaderMaterial *>(Variant(*argv).operator Object *());
 	else 
 		shader_material_class = memnew(ShaderMaterial);
 	if (!shader_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, shader_material_class);	
+	JS_SetOpaque(obj, shader_material_class);
 	return obj;
 }
 static JSValue shader_material_class_set_shader(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -81,7 +81,6 @@ static void define_shader_material_enum(JSContext *ctx, JSValue proto) {
 
 static int js_shader_material_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ShaderMaterial::__class_id);
 	classes["ShaderMaterial"] = ShaderMaterial::__class_id;
 	class_id_list.insert(ShaderMaterial::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ShaderMaterial::__class_id, &shader_material_class_def);

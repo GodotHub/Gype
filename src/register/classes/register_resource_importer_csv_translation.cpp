@@ -30,14 +30,14 @@ static JSValue resource_importer_csv_translation_class_constructor(JSContext *ct
 
 	ResourceImporterCSVTranslation *resource_importer_csv_translation_class;
 	if (argc == 1) 
-		resource_importer_csv_translation_class = static_cast<ResourceImporterCSVTranslation *>(static_cast<Object *>(Variant(*argv)));
+		resource_importer_csv_translation_class = static_cast<ResourceImporterCSVTranslation *>(Variant(*argv).operator Object *());
 	else 
 		resource_importer_csv_translation_class = memnew(ResourceImporterCSVTranslation);
 	if (!resource_importer_csv_translation_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, resource_importer_csv_translation_class);	
+	JS_SetOpaque(obj, resource_importer_csv_translation_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_resource_importer_csv_translation_enum(JSContext *ctx, JSValu
 
 static int js_resource_importer_csv_translation_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ResourceImporterCSVTranslation::__class_id);
 	classes["ResourceImporterCSVTranslation"] = ResourceImporterCSVTranslation::__class_id;
 	class_id_list.insert(ResourceImporterCSVTranslation::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceImporterCSVTranslation::__class_id, &resource_importer_csv_translation_class_def);

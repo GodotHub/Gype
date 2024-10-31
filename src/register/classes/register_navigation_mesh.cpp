@@ -31,14 +31,14 @@ static JSValue navigation_mesh_class_constructor(JSContext *ctx, JSValueConst ne
 
 	NavigationMesh *navigation_mesh_class;
 	if (argc == 1) 
-		navigation_mesh_class = static_cast<NavigationMesh *>(static_cast<Object *>(Variant(*argv)));
+		navigation_mesh_class = static_cast<NavigationMesh *>(Variant(*argv).operator Object *());
 	else 
 		navigation_mesh_class = memnew(NavigationMesh);
 	if (!navigation_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, navigation_mesh_class);	
+	JS_SetOpaque(obj, navigation_mesh_class);
 	return obj;
 }
 static JSValue navigation_mesh_class_set_sample_partition_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -561,7 +561,6 @@ static void define_navigation_mesh_enum(JSContext *ctx, JSValue proto) {
 
 static int js_navigation_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&NavigationMesh::__class_id);
 	classes["NavigationMesh"] = NavigationMesh::__class_id;
 	class_id_list.insert(NavigationMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NavigationMesh::__class_id, &navigation_mesh_class_def);

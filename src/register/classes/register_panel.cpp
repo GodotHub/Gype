@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/panel.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue panel_class_constructor(JSContext *ctx, JSValueConst new_target, 
 
 	Panel *panel_class;
 	if (argc == 1) 
-		panel_class = static_cast<Panel *>(static_cast<Object *>(Variant(*argv)));
+		panel_class = static_cast<Panel *>(Variant(*argv).operator Object *());
 	else 
 		panel_class = memnew(Panel);
 	if (!panel_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, panel_class);	
+	JS_SetOpaque(obj, panel_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_panel_enum(JSContext *ctx, JSValue proto) {
 
 static int js_panel_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Panel::__class_id);
 	classes["Panel"] = Panel::__class_id;
 	class_id_list.insert(Panel::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Panel::__class_id, &panel_class_def);

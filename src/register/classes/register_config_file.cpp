@@ -30,14 +30,14 @@ static JSValue config_file_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	ConfigFile *config_file_class;
 	if (argc == 1) 
-		config_file_class = static_cast<ConfigFile *>(static_cast<Object *>(Variant(*argv)));
+		config_file_class = static_cast<ConfigFile *>(Variant(*argv).operator Object *());
 	else 
 		config_file_class = memnew(ConfigFile);
 	if (!config_file_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, config_file_class);	
+	JS_SetOpaque(obj, config_file_class);
 	return obj;
 }
 static JSValue config_file_class_set_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -137,7 +137,6 @@ static void define_config_file_enum(JSContext *ctx, JSValue proto) {
 
 static int js_config_file_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ConfigFile::__class_id);
 	classes["ConfigFile"] = ConfigFile::__class_id;
 	class_id_list.insert(ConfigFile::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ConfigFile::__class_id, &config_file_class_def);

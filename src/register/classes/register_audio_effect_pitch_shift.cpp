@@ -30,14 +30,14 @@ static JSValue audio_effect_pitch_shift_class_constructor(JSContext *ctx, JSValu
 
 	AudioEffectPitchShift *audio_effect_pitch_shift_class;
 	if (argc == 1) 
-		audio_effect_pitch_shift_class = static_cast<AudioEffectPitchShift *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_pitch_shift_class = static_cast<AudioEffectPitchShift *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_pitch_shift_class = memnew(AudioEffectPitchShift);
 	if (!audio_effect_pitch_shift_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_pitch_shift_class);	
+	JS_SetOpaque(obj, audio_effect_pitch_shift_class);
 	return obj;
 }
 static JSValue audio_effect_pitch_shift_class_set_pitch_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -114,7 +114,6 @@ static void define_audio_effect_pitch_shift_enum(JSContext *ctx, JSValue proto) 
 
 static int js_audio_effect_pitch_shift_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectPitchShift::__class_id);
 	classes["AudioEffectPitchShift"] = AudioEffectPitchShift::__class_id;
 	class_id_list.insert(AudioEffectPitchShift::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectPitchShift::__class_id, &audio_effect_pitch_shift_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/polygon_path_finder.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue polygon_path_finder_class_constructor(JSContext *ctx, JSValueCons
 
 	PolygonPathFinder *polygon_path_finder_class;
 	if (argc == 1) 
-		polygon_path_finder_class = static_cast<PolygonPathFinder *>(static_cast<Object *>(Variant(*argv)));
+		polygon_path_finder_class = static_cast<PolygonPathFinder *>(Variant(*argv).operator Object *());
 	else 
 		polygon_path_finder_class = memnew(PolygonPathFinder);
 	if (!polygon_path_finder_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, polygon_path_finder_class);	
+	JS_SetOpaque(obj, polygon_path_finder_class);
 	return obj;
 }
 static JSValue polygon_path_finder_class_setup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -92,7 +92,6 @@ static void define_polygon_path_finder_enum(JSContext *ctx, JSValue proto) {
 
 static int js_polygon_path_finder_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PolygonPathFinder::__class_id);
 	classes["PolygonPathFinder"] = PolygonPathFinder::__class_id;
 	class_id_list.insert(PolygonPathFinder::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PolygonPathFinder::__class_id, &polygon_path_finder_class_def);

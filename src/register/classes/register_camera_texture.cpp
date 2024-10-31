@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera_texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/camera_texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue camera_texture_class_constructor(JSContext *ctx, JSValueConst new
 
 	CameraTexture *camera_texture_class;
 	if (argc == 1) 
-		camera_texture_class = static_cast<CameraTexture *>(static_cast<Object *>(Variant(*argv)));
+		camera_texture_class = static_cast<CameraTexture *>(Variant(*argv).operator Object *());
 	else 
 		camera_texture_class = memnew(CameraTexture);
 	if (!camera_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, camera_texture_class);	
+	JS_SetOpaque(obj, camera_texture_class);
 	return obj;
 }
 static JSValue camera_texture_class_set_camera_feed_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -106,7 +106,6 @@ static void define_camera_texture_enum(JSContext *ctx, JSValue proto) {
 
 static int js_camera_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CameraTexture::__class_id);
 	classes["CameraTexture"] = CameraTexture::__class_id;
 	class_id_list.insert(CameraTexture::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CameraTexture::__class_id, &camera_texture_class_def);

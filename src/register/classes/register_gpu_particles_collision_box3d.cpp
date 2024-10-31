@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gpu_particles_collision_box3d.hpp>
 #include <godot_cpp/classes/gpu_particles_collision3d.hpp>
+#include <godot_cpp/classes/gpu_particles_collision_box3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue gpu_particles_collision_box3d_class_constructor(JSContext *ctx, J
 
 	GPUParticlesCollisionBox3D *gpu_particles_collision_box3d_class;
 	if (argc == 1) 
-		gpu_particles_collision_box3d_class = static_cast<GPUParticlesCollisionBox3D *>(static_cast<Object *>(Variant(*argv)));
+		gpu_particles_collision_box3d_class = static_cast<GPUParticlesCollisionBox3D *>(Variant(*argv).operator Object *());
 	else 
 		gpu_particles_collision_box3d_class = memnew(GPUParticlesCollisionBox3D);
 	if (!gpu_particles_collision_box3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gpu_particles_collision_box3d_class);	
+	JS_SetOpaque(obj, gpu_particles_collision_box3d_class);
 	return obj;
 }
 static JSValue gpu_particles_collision_box3d_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_gpu_particles_collision_box3d_enum(JSContext *ctx, JSValue pr
 
 static int js_gpu_particles_collision_box3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GPUParticlesCollisionBox3D::__class_id);
 	classes["GPUParticlesCollisionBox3D"] = GPUParticlesCollisionBox3D::__class_id;
 	class_id_list.insert(GPUParticlesCollisionBox3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GPUParticlesCollisionBox3D::__class_id, &gpu_particles_collision_box3d_class_def);

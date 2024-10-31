@@ -30,14 +30,14 @@ static JSValue input_event_joypad_motion_class_constructor(JSContext *ctx, JSVal
 
 	InputEventJoypadMotion *input_event_joypad_motion_class;
 	if (argc == 1) 
-		input_event_joypad_motion_class = static_cast<InputEventJoypadMotion *>(static_cast<Object *>(Variant(*argv)));
+		input_event_joypad_motion_class = static_cast<InputEventJoypadMotion *>(Variant(*argv).operator Object *());
 	else 
 		input_event_joypad_motion_class = memnew(InputEventJoypadMotion);
 	if (!input_event_joypad_motion_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, input_event_joypad_motion_class);	
+	JS_SetOpaque(obj, input_event_joypad_motion_class);
 	return obj;
 }
 static JSValue input_event_joypad_motion_class_set_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,7 +88,6 @@ static void define_input_event_joypad_motion_enum(JSContext *ctx, JSValue proto)
 
 static int js_input_event_joypad_motion_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&InputEventJoypadMotion::__class_id);
 	classes["InputEventJoypadMotion"] = InputEventJoypadMotion::__class_id;
 	class_id_list.insert(InputEventJoypadMotion::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), InputEventJoypadMotion::__class_id, &input_event_joypad_motion_class_def);

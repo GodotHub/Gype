@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/torus_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/torus_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue torus_mesh_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	TorusMesh *torus_mesh_class;
 	if (argc == 1) 
-		torus_mesh_class = static_cast<TorusMesh *>(static_cast<Object *>(Variant(*argv)));
+		torus_mesh_class = static_cast<TorusMesh *>(Variant(*argv).operator Object *());
 	else 
 		torus_mesh_class = memnew(TorusMesh);
 	if (!torus_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, torus_mesh_class);	
+	JS_SetOpaque(obj, torus_mesh_class);
 	return obj;
 }
 static JSValue torus_mesh_class_set_inner_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -124,7 +124,6 @@ static void define_torus_mesh_enum(JSContext *ctx, JSValue proto) {
 
 static int js_torus_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&TorusMesh::__class_id);
 	classes["TorusMesh"] = TorusMesh::__class_id;
 	class_id_list.insert(TorusMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TorusMesh::__class_id, &torus_mesh_class_def);

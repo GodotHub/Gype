@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/option_button.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -32,14 +32,14 @@ static JSValue option_button_class_constructor(JSContext *ctx, JSValueConst new_
 
 	OptionButton *option_button_class;
 	if (argc == 1) 
-		option_button_class = static_cast<OptionButton *>(static_cast<Object *>(Variant(*argv)));
+		option_button_class = static_cast<OptionButton *>(Variant(*argv).operator Object *());
 	else 
 		option_button_class = memnew(OptionButton);
 	if (!option_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, option_button_class);	
+	JS_SetOpaque(obj, option_button_class);
 	return obj;
 }
 static JSValue option_button_class_add_item(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -292,7 +292,6 @@ static void define_option_button_enum(JSContext *ctx, JSValue proto) {
 
 static int js_option_button_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&OptionButton::__class_id);
 	classes["OptionButton"] = OptionButton::__class_id;
 	class_id_list.insert(OptionButton::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), OptionButton::__class_id, &option_button_class_def);

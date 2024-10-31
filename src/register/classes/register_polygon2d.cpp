@@ -31,14 +31,14 @@ static JSValue polygon2d_class_constructor(JSContext *ctx, JSValueConst new_targ
 
 	Polygon2D *polygon2d_class;
 	if (argc == 1) 
-		polygon2d_class = static_cast<Polygon2D *>(static_cast<Object *>(Variant(*argv)));
+		polygon2d_class = static_cast<Polygon2D *>(Variant(*argv).operator Object *());
 	else 
 		polygon2d_class = memnew(Polygon2D);
 	if (!polygon2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, polygon2d_class);	
+	JS_SetOpaque(obj, polygon2d_class);
 	return obj;
 }
 static JSValue polygon2d_class_set_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -363,7 +363,6 @@ static void define_polygon2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_polygon2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Polygon2D::__class_id);
 	classes["Polygon2D"] = Polygon2D::__class_id;
 	class_id_list.insert(Polygon2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Polygon2D::__class_id, &polygon2d_class_def);

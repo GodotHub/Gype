@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/style_box_empty.hpp>
+#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue style_box_empty_class_constructor(JSContext *ctx, JSValueConst ne
 
 	StyleBoxEmpty *style_box_empty_class;
 	if (argc == 1) 
-		style_box_empty_class = static_cast<StyleBoxEmpty *>(static_cast<Object *>(Variant(*argv)));
+		style_box_empty_class = static_cast<StyleBoxEmpty *>(Variant(*argv).operator Object *());
 	else 
 		style_box_empty_class = memnew(StyleBoxEmpty);
 	if (!style_box_empty_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, style_box_empty_class);	
+	JS_SetOpaque(obj, style_box_empty_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_style_box_empty_enum(JSContext *ctx, JSValue proto) {
 
 static int js_style_box_empty_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&StyleBoxEmpty::__class_id);
 	classes["StyleBoxEmpty"] = StyleBoxEmpty::__class_id;
 	class_id_list.insert(StyleBoxEmpty::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StyleBoxEmpty::__class_id, &style_box_empty_class_def);

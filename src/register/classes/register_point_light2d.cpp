@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/point_light2d.hpp>
 #include <godot_cpp/classes/light2d.hpp>
+#include <godot_cpp/classes/point_light2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue point_light2d_class_constructor(JSContext *ctx, JSValueConst new_
 
 	PointLight2D *point_light2d_class;
 	if (argc == 1) 
-		point_light2d_class = static_cast<PointLight2D *>(static_cast<Object *>(Variant(*argv)));
+		point_light2d_class = static_cast<PointLight2D *>(Variant(*argv).operator Object *());
 	else 
 		point_light2d_class = memnew(PointLight2D);
 	if (!point_light2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, point_light2d_class);	
+	JS_SetOpaque(obj, point_light2d_class);
 	return obj;
 }
 static JSValue point_light2d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -107,7 +107,6 @@ static void define_point_light2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_point_light2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PointLight2D::__class_id);
 	classes["PointLight2D"] = PointLight2D::__class_id;
 	class_id_list.insert(PointLight2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PointLight2D::__class_id, &point_light2d_class_def);

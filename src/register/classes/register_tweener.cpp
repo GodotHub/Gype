@@ -30,14 +30,14 @@ static JSValue tweener_class_constructor(JSContext *ctx, JSValueConst new_target
 
 	Tweener *tweener_class;
 	if (argc == 1) 
-		tweener_class = static_cast<Tweener *>(static_cast<Object *>(Variant(*argv)));
+		tweener_class = static_cast<Tweener *>(Variant(*argv).operator Object *());
 	else 
 		tweener_class = memnew(Tweener);
 	if (!tweener_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, tweener_class);	
+	JS_SetOpaque(obj, tweener_class);
 	return obj;
 }
 static JSValue tweener_class_get_finished_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -68,7 +68,6 @@ static void define_tweener_enum(JSContext *ctx, JSValue proto) {
 
 static int js_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Tweener::__class_id);
 	classes["Tweener"] = Tweener::__class_id;
 	class_id_list.insert(Tweener::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Tweener::__class_id, &tweener_class_def);

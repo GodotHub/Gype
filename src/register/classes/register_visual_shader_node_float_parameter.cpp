@@ -30,14 +30,14 @@ static JSValue visual_shader_node_float_parameter_class_constructor(JSContext *c
 
 	VisualShaderNodeFloatParameter *visual_shader_node_float_parameter_class;
 	if (argc == 1) 
-		visual_shader_node_float_parameter_class = static_cast<VisualShaderNodeFloatParameter *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_float_parameter_class = static_cast<VisualShaderNodeFloatParameter *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_float_parameter_class = memnew(VisualShaderNodeFloatParameter);
 	if (!visual_shader_node_float_parameter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_float_parameter_class);	
+	JS_SetOpaque(obj, visual_shader_node_float_parameter_class);
 	return obj;
 }
 static JSValue visual_shader_node_float_parameter_class_set_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -166,7 +166,6 @@ static void define_visual_shader_node_float_parameter_enum(JSContext *ctx, JSVal
 
 static int js_visual_shader_node_float_parameter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeFloatParameter::__class_id);
 	classes["VisualShaderNodeFloatParameter"] = VisualShaderNodeFloatParameter::__class_id;
 	class_id_list.insert(VisualShaderNodeFloatParameter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeFloatParameter::__class_id, &visual_shader_node_float_parameter_class_def);

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/editor_file_system_directory.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/editor_file_system.hpp>
-#include <godot_cpp/classes/editor_file_system_directory.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue editor_file_system_class_constructor(JSContext *ctx, JSValueConst
 
 	EditorFileSystem *editor_file_system_class;
 	if (argc == 1) 
-		editor_file_system_class = static_cast<EditorFileSystem *>(static_cast<Object *>(Variant(*argv)));
+		editor_file_system_class = static_cast<EditorFileSystem *>(Variant(*argv).operator Object *());
 	else 
 		editor_file_system_class = memnew(EditorFileSystem);
 	if (!editor_file_system_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_file_system_class);	
+	JS_SetOpaque(obj, editor_file_system_class);
 	return obj;
 }
 static JSValue editor_file_system_class_get_filesystem(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -206,7 +206,6 @@ static void define_editor_file_system_enum(JSContext *ctx, JSValue proto) {
 
 static int js_editor_file_system_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorFileSystem::__class_id);
 	classes["EditorFileSystem"] = EditorFileSystem::__class_id;
 	class_id_list.insert(EditorFileSystem::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorFileSystem::__class_id, &editor_file_system_class_def);

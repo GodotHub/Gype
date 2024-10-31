@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/bit_map.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/bit_map.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue bit_map_class_constructor(JSContext *ctx, JSValueConst new_target
 
 	BitMap *bit_map_class;
 	if (argc == 1) 
-		bit_map_class = static_cast<BitMap *>(static_cast<Object *>(Variant(*argv)));
+		bit_map_class = static_cast<BitMap *>(Variant(*argv).operator Object *());
 	else 
 		bit_map_class = memnew(BitMap);
 	if (!bit_map_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, bit_map_class);	
+	JS_SetOpaque(obj, bit_map_class);
 	return obj;
 }
 static JSValue bit_map_class_create(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -118,7 +118,6 @@ static void define_bit_map_enum(JSContext *ctx, JSValue proto) {
 
 static int js_bit_map_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&BitMap::__class_id);
 	classes["BitMap"] = BitMap::__class_id;
 	class_id_list.insert(BitMap::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), BitMap::__class_id, &bit_map_class_def);

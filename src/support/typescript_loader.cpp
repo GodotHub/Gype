@@ -14,6 +14,9 @@ TypeScriptLoader *TypeScriptLoader::get_singleton() {
 		return singleton;
 	}
 	singleton = memnew(TypeScriptLoader);
+	if (likely(singleton)) {
+		ClassDB::_register_engine_singleton(TypeScriptLoader::get_class_static(), singleton);
+	}
 	return singleton;
 }
 
@@ -29,12 +32,12 @@ bool TypeScriptLoader::_recognize_path(const String &p_path, const StringName &p
 }
 
 bool TypeScriptLoader::_handles_type(const StringName &p_type) const {
-	return p_type == StringName("TypeScript");
+	return p_type == StringName("Script");
 }
 
 String TypeScriptLoader::_get_resource_type(const String &p_path) const {
 	if (p_path.ends_with(".js") || p_path.ends_with(".ts")) {
-		return "TypeScript";
+		return "Script";
 	} else {
 		return "";
 	}
@@ -70,4 +73,11 @@ Variant TypeScriptLoader::_load(const String &p_path, const String &p_original_p
 	script->source_code = source_code;
 	TypeScriptLanguage::get_singleton()->scripts.insert(script);
 	return script;
+}
+
+TypeScriptLoader::~TypeScriptLoader() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(TypeScriptLoader::get_class_static());
+		singleton = nullptr;
+	}
 }

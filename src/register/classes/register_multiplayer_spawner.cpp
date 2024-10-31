@@ -30,14 +30,14 @@ static JSValue multiplayer_spawner_class_constructor(JSContext *ctx, JSValueCons
 
 	MultiplayerSpawner *multiplayer_spawner_class;
 	if (argc == 1) 
-		multiplayer_spawner_class = static_cast<MultiplayerSpawner *>(static_cast<Object *>(Variant(*argv)));
+		multiplayer_spawner_class = static_cast<MultiplayerSpawner *>(Variant(*argv).operator Object *());
 	else 
 		multiplayer_spawner_class = memnew(MultiplayerSpawner);
 	if (!multiplayer_spawner_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, multiplayer_spawner_class);	
+	JS_SetOpaque(obj, multiplayer_spawner_class);
 	return obj;
 }
 static JSValue multiplayer_spawner_class_add_spawnable_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -167,7 +167,6 @@ static void define_multiplayer_spawner_enum(JSContext *ctx, JSValue proto) {
 
 static int js_multiplayer_spawner_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&MultiplayerSpawner::__class_id);
 	classes["MultiplayerSpawner"] = MultiplayerSpawner::__class_id;
 	class_id_list.insert(MultiplayerSpawner::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MultiplayerSpawner::__class_id, &multiplayer_spawner_class_def);

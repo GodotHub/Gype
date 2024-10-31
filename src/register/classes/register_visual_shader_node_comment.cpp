@@ -30,14 +30,14 @@ static JSValue visual_shader_node_comment_class_constructor(JSContext *ctx, JSVa
 
 	VisualShaderNodeComment *visual_shader_node_comment_class;
 	if (argc == 1) 
-		visual_shader_node_comment_class = static_cast<VisualShaderNodeComment *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_comment_class = static_cast<VisualShaderNodeComment *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_comment_class = memnew(VisualShaderNodeComment);
 	if (!visual_shader_node_comment_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_comment_class);	
+	JS_SetOpaque(obj, visual_shader_node_comment_class);
 	return obj;
 }
 static JSValue visual_shader_node_comment_class_set_description(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_visual_shader_node_comment_enum(JSContext *ctx, JSValue proto
 
 static int js_visual_shader_node_comment_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeComment::__class_id);
 	classes["VisualShaderNodeComment"] = VisualShaderNodeComment::__class_id;
 	class_id_list.insert(VisualShaderNodeComment::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeComment::__class_id, &visual_shader_node_comment_class_def);

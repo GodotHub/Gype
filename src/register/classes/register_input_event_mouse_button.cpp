@@ -30,14 +30,14 @@ static JSValue input_event_mouse_button_class_constructor(JSContext *ctx, JSValu
 
 	InputEventMouseButton *input_event_mouse_button_class;
 	if (argc == 1) 
-		input_event_mouse_button_class = static_cast<InputEventMouseButton *>(static_cast<Object *>(Variant(*argv)));
+		input_event_mouse_button_class = static_cast<InputEventMouseButton *>(Variant(*argv).operator Object *());
 	else 
 		input_event_mouse_button_class = memnew(InputEventMouseButton);
 	if (!input_event_mouse_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, input_event_mouse_button_class);	
+	JS_SetOpaque(obj, input_event_mouse_button_class);
 	return obj;
 }
 static JSValue input_event_mouse_button_class_set_factor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -132,7 +132,6 @@ static void define_input_event_mouse_button_enum(JSContext *ctx, JSValue proto) 
 
 static int js_input_event_mouse_button_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&InputEventMouseButton::__class_id);
 	classes["InputEventMouseButton"] = InputEventMouseButton::__class_id;
 	class_id_list.insert(InputEventMouseButton::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), InputEventMouseButton::__class_id, &input_event_mouse_button_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/standard_material3d.hpp>
 #include <godot_cpp/classes/base_material3d.hpp>
+#include <godot_cpp/classes/standard_material3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue standard_material3d_class_constructor(JSContext *ctx, JSValueCons
 
 	StandardMaterial3D *standard_material3d_class;
 	if (argc == 1) 
-		standard_material3d_class = static_cast<StandardMaterial3D *>(static_cast<Object *>(Variant(*argv)));
+		standard_material3d_class = static_cast<StandardMaterial3D *>(Variant(*argv).operator Object *());
 	else 
 		standard_material3d_class = memnew(StandardMaterial3D);
 	if (!standard_material3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, standard_material3d_class);	
+	JS_SetOpaque(obj, standard_material3d_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_standard_material3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_standard_material3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&StandardMaterial3D::__class_id);
 	classes["StandardMaterial3D"] = StandardMaterial3D::__class_id;
 	class_id_list.insert(StandardMaterial3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StandardMaterial3D::__class_id, &standard_material3d_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/vehicle_wheel3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/vehicle_wheel3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue vehicle_wheel3d_class_constructor(JSContext *ctx, JSValueConst ne
 
 	VehicleWheel3D *vehicle_wheel3d_class;
 	if (argc == 1) 
-		vehicle_wheel3d_class = static_cast<VehicleWheel3D *>(static_cast<Object *>(Variant(*argv)));
+		vehicle_wheel3d_class = static_cast<VehicleWheel3D *>(Variant(*argv).operator Object *());
 	else 
 		vehicle_wheel3d_class = memnew(VehicleWheel3D);
 	if (!vehicle_wheel3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, vehicle_wheel3d_class);	
+	JS_SetOpaque(obj, vehicle_wheel3d_class);
 	return obj;
 }
 static JSValue vehicle_wheel3d_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -324,7 +324,6 @@ static void define_vehicle_wheel3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_vehicle_wheel3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VehicleWheel3D::__class_id);
 	classes["VehicleWheel3D"] = VehicleWheel3D::__class_id;
 	class_id_list.insert(VehicleWheel3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VehicleWheel3D::__class_id, &vehicle_wheel3d_class_def);

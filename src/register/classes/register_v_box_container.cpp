@@ -30,14 +30,14 @@ static JSValue v_box_container_class_constructor(JSContext *ctx, JSValueConst ne
 
 	VBoxContainer *v_box_container_class;
 	if (argc == 1) 
-		v_box_container_class = static_cast<VBoxContainer *>(static_cast<Object *>(Variant(*argv)));
+		v_box_container_class = static_cast<VBoxContainer *>(Variant(*argv).operator Object *());
 	else 
 		v_box_container_class = memnew(VBoxContainer);
 	if (!v_box_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, v_box_container_class);	
+	JS_SetOpaque(obj, v_box_container_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_v_box_container_enum(JSContext *ctx, JSValue proto) {
 
 static int js_v_box_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VBoxContainer::__class_id);
 	classes["VBoxContainer"] = VBoxContainer::__class_id;
 	class_id_list.insert(VBoxContainer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VBoxContainer::__class_id, &v_box_container_class_def);

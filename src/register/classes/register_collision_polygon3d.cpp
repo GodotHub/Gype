@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/collision_polygon3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue collision_polygon3d_class_constructor(JSContext *ctx, JSValueCons
 
 	CollisionPolygon3D *collision_polygon3d_class;
 	if (argc == 1) 
-		collision_polygon3d_class = static_cast<CollisionPolygon3D *>(static_cast<Object *>(Variant(*argv)));
+		collision_polygon3d_class = static_cast<CollisionPolygon3D *>(Variant(*argv).operator Object *());
 	else 
 		collision_polygon3d_class = memnew(CollisionPolygon3D);
 	if (!collision_polygon3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, collision_polygon3d_class);	
+	JS_SetOpaque(obj, collision_polygon3d_class);
 	return obj;
 }
 static JSValue collision_polygon3d_class_set_depth(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -124,7 +124,6 @@ static void define_collision_polygon3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_collision_polygon3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CollisionPolygon3D::__class_id);
 	classes["CollisionPolygon3D"] = CollisionPolygon3D::__class_id;
 	class_id_list.insert(CollisionPolygon3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CollisionPolygon3D::__class_id, &collision_polygon3d_class_def);

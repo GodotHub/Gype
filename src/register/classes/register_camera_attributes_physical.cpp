@@ -30,14 +30,14 @@ static JSValue camera_attributes_physical_class_constructor(JSContext *ctx, JSVa
 
 	CameraAttributesPhysical *camera_attributes_physical_class;
 	if (argc == 1) 
-		camera_attributes_physical_class = static_cast<CameraAttributesPhysical *>(static_cast<Object *>(Variant(*argv)));
+		camera_attributes_physical_class = static_cast<CameraAttributesPhysical *>(Variant(*argv).operator Object *());
 	else 
 		camera_attributes_physical_class = memnew(CameraAttributesPhysical);
 	if (!camera_attributes_physical_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, camera_attributes_physical_class);	
+	JS_SetOpaque(obj, camera_attributes_physical_class);
 	return obj;
 }
 static JSValue camera_attributes_physical_class_set_aperture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -201,7 +201,6 @@ static void define_camera_attributes_physical_enum(JSContext *ctx, JSValue proto
 
 static int js_camera_attributes_physical_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CameraAttributesPhysical::__class_id);
 	classes["CameraAttributesPhysical"] = CameraAttributesPhysical::__class_id;
 	class_id_list.insert(CameraAttributesPhysical::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CameraAttributesPhysical::__class_id, &camera_attributes_physical_class_def);

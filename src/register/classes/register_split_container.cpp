@@ -30,14 +30,14 @@ static JSValue split_container_class_constructor(JSContext *ctx, JSValueConst ne
 
 	SplitContainer *split_container_class;
 	if (argc == 1) 
-		split_container_class = static_cast<SplitContainer *>(static_cast<Object *>(Variant(*argv)));
+		split_container_class = static_cast<SplitContainer *>(Variant(*argv).operator Object *());
 	else 
 		split_container_class = memnew(SplitContainer);
 	if (!split_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, split_container_class);	
+	JS_SetOpaque(obj, split_container_class);
 	return obj;
 }
 static JSValue split_container_class_set_split_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -152,7 +152,6 @@ static void define_split_container_enum(JSContext *ctx, JSValue proto) {
 
 static int js_split_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SplitContainer::__class_id);
 	classes["SplitContainer"] = SplitContainer::__class_id;
 	class_id_list.insert(SplitContainer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SplitContainer::__class_id, &split_container_class_def);

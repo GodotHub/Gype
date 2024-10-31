@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_vertex_attribute.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/rd_vertex_attribute.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue rd_vertex_attribute_class_constructor(JSContext *ctx, JSValueCons
 
 	RDVertexAttribute *rd_vertex_attribute_class;
 	if (argc == 1) 
-		rd_vertex_attribute_class = static_cast<RDVertexAttribute *>(static_cast<Object *>(Variant(*argv)));
+		rd_vertex_attribute_class = static_cast<RDVertexAttribute *>(Variant(*argv).operator Object *());
 	else 
 		rd_vertex_attribute_class = memnew(RDVertexAttribute);
 	if (!rd_vertex_attribute_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rd_vertex_attribute_class);	
+	JS_SetOpaque(obj, rd_vertex_attribute_class);
 	return obj;
 }
 static JSValue rd_vertex_attribute_class_set_location(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -142,7 +142,6 @@ static void define_rd_vertex_attribute_enum(JSContext *ctx, JSValue proto) {
 
 static int js_rd_vertex_attribute_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RDVertexAttribute::__class_id);
 	classes["RDVertexAttribute"] = RDVertexAttribute::__class_id;
 	class_id_list.insert(RDVertexAttribute::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RDVertexAttribute::__class_id, &rd_vertex_attribute_class_def);

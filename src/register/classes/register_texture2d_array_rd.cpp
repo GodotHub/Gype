@@ -30,14 +30,14 @@ static JSValue texture2d_array_rd_class_constructor(JSContext *ctx, JSValueConst
 
 	Texture2DArrayRD *texture2d_array_rd_class;
 	if (argc == 1) 
-		texture2d_array_rd_class = static_cast<Texture2DArrayRD *>(static_cast<Object *>(Variant(*argv)));
+		texture2d_array_rd_class = static_cast<Texture2DArrayRD *>(Variant(*argv).operator Object *());
 	else 
 		texture2d_array_rd_class = memnew(Texture2DArrayRD);
 	if (!texture2d_array_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, texture2d_array_rd_class);	
+	JS_SetOpaque(obj, texture2d_array_rd_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_texture2d_array_rd_enum(JSContext *ctx, JSValue proto) {
 
 static int js_texture2d_array_rd_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Texture2DArrayRD::__class_id);
 	classes["Texture2DArrayRD"] = Texture2DArrayRD::__class_id;
 	class_id_list.insert(Texture2DArrayRD::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Texture2DArrayRD::__class_id, &texture2d_array_rd_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_particle_emitter.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/classes/visual_shader_node_particle_emitter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue visual_shader_node_particle_emitter_class_constructor(JSContext *
 
 	VisualShaderNodeParticleEmitter *visual_shader_node_particle_emitter_class;
 	if (argc == 1) 
-		visual_shader_node_particle_emitter_class = static_cast<VisualShaderNodeParticleEmitter *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_particle_emitter_class = static_cast<VisualShaderNodeParticleEmitter *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_particle_emitter_class = memnew(VisualShaderNodeParticleEmitter);
 	if (!visual_shader_node_particle_emitter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_particle_emitter_class);	
+	JS_SetOpaque(obj, visual_shader_node_particle_emitter_class);
 	return obj;
 }
 static JSValue visual_shader_node_particle_emitter_class_set_mode_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_visual_shader_node_particle_emitter_enum(JSContext *ctx, JSVa
 
 static int js_visual_shader_node_particle_emitter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeParticleEmitter::__class_id);
 	classes["VisualShaderNodeParticleEmitter"] = VisualShaderNodeParticleEmitter::__class_id;
 	class_id_list.insert(VisualShaderNodeParticleEmitter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeParticleEmitter::__class_id, &visual_shader_node_particle_emitter_class_def);

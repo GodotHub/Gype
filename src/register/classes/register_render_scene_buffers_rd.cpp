@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_texture_format.hpp>
-#include <godot_cpp/classes/render_scene_buffers.hpp>
 #include <godot_cpp/classes/rd_texture_view.hpp>
+#include <godot_cpp/classes/rd_texture_format.hpp>
 #include <godot_cpp/classes/render_scene_buffers_rd.hpp>
+#include <godot_cpp/classes/render_scene_buffers.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue render_scene_buffers_rd_class_constructor(JSContext *ctx, JSValue
 
 	RenderSceneBuffersRD *render_scene_buffers_rd_class;
 	if (argc == 1) 
-		render_scene_buffers_rd_class = static_cast<RenderSceneBuffersRD *>(static_cast<Object *>(Variant(*argv)));
+		render_scene_buffers_rd_class = static_cast<RenderSceneBuffersRD *>(Variant(*argv).operator Object *());
 	else 
 		render_scene_buffers_rd_class = memnew(RenderSceneBuffersRD);
 	if (!render_scene_buffers_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, render_scene_buffers_rd_class);	
+	JS_SetOpaque(obj, render_scene_buffers_rd_class);
 	return obj;
 }
 static JSValue render_scene_buffers_rd_class_has_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -189,7 +189,6 @@ static void define_render_scene_buffers_rd_enum(JSContext *ctx, JSValue proto) {
 
 static int js_render_scene_buffers_rd_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RenderSceneBuffersRD::__class_id);
 	classes["RenderSceneBuffersRD"] = RenderSceneBuffersRD::__class_id;
 	class_id_list.insert(RenderSceneBuffersRD::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RenderSceneBuffersRD::__class_id, &render_scene_buffers_rd_class_def);

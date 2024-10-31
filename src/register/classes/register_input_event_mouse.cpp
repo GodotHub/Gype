@@ -30,14 +30,14 @@ static JSValue input_event_mouse_class_constructor(JSContext *ctx, JSValueConst 
 
 	InputEventMouse *input_event_mouse_class;
 	if (argc == 1) 
-		input_event_mouse_class = static_cast<InputEventMouse *>(static_cast<Object *>(Variant(*argv)));
+		input_event_mouse_class = static_cast<InputEventMouse *>(Variant(*argv).operator Object *());
 	else 
 		input_event_mouse_class = memnew(InputEventMouse);
 	if (!input_event_mouse_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, input_event_mouse_class);	
+	JS_SetOpaque(obj, input_event_mouse_class);
 	return obj;
 }
 static JSValue input_event_mouse_class_set_button_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -106,7 +106,6 @@ static void define_input_event_mouse_enum(JSContext *ctx, JSValue proto) {
 
 static int js_input_event_mouse_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&InputEventMouse::__class_id);
 	classes["InputEventMouse"] = InputEventMouse::__class_id;
 	class_id_list.insert(InputEventMouse::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), InputEventMouse::__class_id, &input_event_mouse_class_def);

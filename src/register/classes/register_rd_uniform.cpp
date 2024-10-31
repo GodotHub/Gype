@@ -30,14 +30,14 @@ static JSValue rd_uniform_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	RDUniform *rd_uniform_class;
 	if (argc == 1) 
-		rd_uniform_class = static_cast<RDUniform *>(static_cast<Object *>(Variant(*argv)));
+		rd_uniform_class = static_cast<RDUniform *>(Variant(*argv).operator Object *());
 	else 
 		rd_uniform_class = memnew(RDUniform);
 	if (!rd_uniform_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rd_uniform_class);	
+	JS_SetOpaque(obj, rd_uniform_class);
 	return obj;
 }
 static JSValue rd_uniform_class_set_uniform_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -103,7 +103,6 @@ static void define_rd_uniform_enum(JSContext *ctx, JSValue proto) {
 
 static int js_rd_uniform_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RDUniform::__class_id);
 	classes["RDUniform"] = RDUniform::__class_id;
 	class_id_list.insert(RDUniform::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RDUniform::__class_id, &rd_uniform_class_def);

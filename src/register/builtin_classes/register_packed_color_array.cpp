@@ -144,7 +144,6 @@ static const JSCFunctionListEntry packed_color_array_class_proto_funcs[] = {
 };
 
 static int js_packed_color_array_class_init(JSContext *ctx) {
-	JS_NewClassID(&PackedColorArray::__class_id);
 	classes["PackedColorArray"] = PackedColorArray::__class_id;
 	class_id_list.insert(PackedColorArray::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PackedColorArray::__class_id, &packed_color_array_class_def);

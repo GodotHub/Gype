@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/navigation_mesh_source_geometry_data3d.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue navigation_mesh_source_geometry_data3d_class_constructor(JSContex
 
 	NavigationMeshSourceGeometryData3D *navigation_mesh_source_geometry_data3d_class;
 	if (argc == 1) 
-		navigation_mesh_source_geometry_data3d_class = static_cast<NavigationMeshSourceGeometryData3D *>(static_cast<Object *>(Variant(*argv)));
+		navigation_mesh_source_geometry_data3d_class = static_cast<NavigationMeshSourceGeometryData3D *>(Variant(*argv).operator Object *());
 	else 
 		navigation_mesh_source_geometry_data3d_class = memnew(NavigationMeshSourceGeometryData3D);
 	if (!navigation_mesh_source_geometry_data3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, navigation_mesh_source_geometry_data3d_class);	
+	JS_SetOpaque(obj, navigation_mesh_source_geometry_data3d_class);
 	return obj;
 }
 static JSValue navigation_mesh_source_geometry_data3d_class_set_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -152,7 +152,6 @@ static void define_navigation_mesh_source_geometry_data3d_enum(JSContext *ctx, J
 
 static int js_navigation_mesh_source_geometry_data3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&NavigationMeshSourceGeometryData3D::__class_id);
 	classes["NavigationMeshSourceGeometryData3D"] = NavigationMeshSourceGeometryData3D::__class_id;
 	class_id_list.insert(NavigationMeshSourceGeometryData3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NavigationMeshSourceGeometryData3D::__class_id, &navigation_mesh_source_geometry_data3d_class_def);

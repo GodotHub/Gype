@@ -32,14 +32,14 @@ static JSValue ray_cast3d_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	RayCast3D *ray_cast3d_class;
 	if (argc == 1) 
-		ray_cast3d_class = static_cast<RayCast3D *>(static_cast<Object *>(Variant(*argv)));
+		ray_cast3d_class = static_cast<RayCast3D *>(Variant(*argv).operator Object *());
 	else 
 		ray_cast3d_class = memnew(RayCast3D);
 	if (!ray_cast3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, ray_cast3d_class);	
+	JS_SetOpaque(obj, ray_cast3d_class);
 	return obj;
 }
 static JSValue ray_cast3d_class_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -309,7 +309,6 @@ static void define_ray_cast3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_ray_cast3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RayCast3D::__class_id);
 	classes["RayCast3D"] = RayCast3D::__class_id;
 	class_id_list.insert(RayCast3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RayCast3D::__class_id, &ray_cast3d_class_def);

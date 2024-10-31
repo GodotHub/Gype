@@ -30,14 +30,14 @@ static JSValue visual_shader_node_color_parameter_class_constructor(JSContext *c
 
 	VisualShaderNodeColorParameter *visual_shader_node_color_parameter_class;
 	if (argc == 1) 
-		visual_shader_node_color_parameter_class = static_cast<VisualShaderNodeColorParameter *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_color_parameter_class = static_cast<VisualShaderNodeColorParameter *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_color_parameter_class = memnew(VisualShaderNodeColorParameter);
 	if (!visual_shader_node_color_parameter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_color_parameter_class);	
+	JS_SetOpaque(obj, visual_shader_node_color_parameter_class);
 	return obj;
 }
 static JSValue visual_shader_node_color_parameter_class_set_default_value_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,7 +88,6 @@ static void define_visual_shader_node_color_parameter_enum(JSContext *ctx, JSVal
 
 static int js_visual_shader_node_color_parameter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeColorParameter::__class_id);
 	classes["VisualShaderNodeColorParameter"] = VisualShaderNodeColorParameter::__class_id;
 	class_id_list.insert(VisualShaderNodeColorParameter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeColorParameter::__class_id, &visual_shader_node_color_parameter_class_def);

@@ -31,14 +31,14 @@ static JSValue csg_torus3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	CSGTorus3D *csg_torus3d_class;
 	if (argc == 1) 
-		csg_torus3d_class = static_cast<CSGTorus3D *>(static_cast<Object *>(Variant(*argv)));
+		csg_torus3d_class = static_cast<CSGTorus3D *>(Variant(*argv).operator Object *());
 	else 
 		csg_torus3d_class = memnew(CSGTorus3D);
 	if (!csg_torus3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, csg_torus3d_class);	
+	JS_SetOpaque(obj, csg_torus3d_class);
 	return obj;
 }
 static JSValue csg_torus3d_class_set_inner_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -161,7 +161,6 @@ static void define_csg_torus3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_csg_torus3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CSGTorus3D::__class_id);
 	classes["CSGTorus3D"] = CSGTorus3D::__class_id;
 	class_id_list.insert(CSGTorus3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CSGTorus3D::__class_id, &csg_torus3d_class_def);

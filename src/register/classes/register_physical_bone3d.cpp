@@ -31,14 +31,14 @@ static JSValue physical_bone3d_class_constructor(JSContext *ctx, JSValueConst ne
 
 	PhysicalBone3D *physical_bone3d_class;
 	if (argc == 1) 
-		physical_bone3d_class = static_cast<PhysicalBone3D *>(static_cast<Object *>(Variant(*argv)));
+		physical_bone3d_class = static_cast<PhysicalBone3D *>(Variant(*argv).operator Object *());
 	else 
 		physical_bone3d_class = memnew(PhysicalBone3D);
 	if (!physical_bone3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, physical_bone3d_class);	
+	JS_SetOpaque(obj, physical_bone3d_class);
 	return obj;
 }
 static JSValue physical_bone3d_class_apply_central_impulse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -378,7 +378,6 @@ static void define_physical_bone3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_physical_bone3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PhysicalBone3D::__class_id);
 	classes["PhysicalBone3D"] = PhysicalBone3D::__class_id;
 	class_id_list.insert(PhysicalBone3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PhysicalBone3D::__class_id, &physical_bone3d_class_def);

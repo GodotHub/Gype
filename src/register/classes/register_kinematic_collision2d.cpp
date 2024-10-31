@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/kinematic_collision2d.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue kinematic_collision2d_class_constructor(JSContext *ctx, JSValueCo
 
 	KinematicCollision2D *kinematic_collision2d_class;
 	if (argc == 1) 
-		kinematic_collision2d_class = static_cast<KinematicCollision2D *>(static_cast<Object *>(Variant(*argv)));
+		kinematic_collision2d_class = static_cast<KinematicCollision2D *>(Variant(*argv).operator Object *());
 	else 
 		kinematic_collision2d_class = memnew(KinematicCollision2D);
 	if (!kinematic_collision2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, kinematic_collision2d_class);	
+	JS_SetOpaque(obj, kinematic_collision2d_class);
 	return obj;
 }
 static JSValue kinematic_collision2d_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -118,7 +118,6 @@ static void define_kinematic_collision2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_kinematic_collision2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&KinematicCollision2D::__class_id);
 	classes["KinematicCollision2D"] = KinematicCollision2D::__class_id;
 	class_id_list.insert(KinematicCollision2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), KinematicCollision2D::__class_id, &kinematic_collision2d_class_def);

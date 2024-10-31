@@ -30,14 +30,14 @@ static JSValue margin_container_class_constructor(JSContext *ctx, JSValueConst n
 
 	MarginContainer *margin_container_class;
 	if (argc == 1) 
-		margin_container_class = static_cast<MarginContainer *>(static_cast<Object *>(Variant(*argv)));
+		margin_container_class = static_cast<MarginContainer *>(Variant(*argv).operator Object *());
 	else 
 		margin_container_class = memnew(MarginContainer);
 	if (!margin_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, margin_container_class);	
+	JS_SetOpaque(obj, margin_container_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_margin_container_enum(JSContext *ctx, JSValue proto) {
 
 static int js_margin_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&MarginContainer::__class_id);
 	classes["MarginContainer"] = MarginContainer::__class_id;
 	class_id_list.insert(MarginContainer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MarginContainer::__class_id, &margin_container_class_def);

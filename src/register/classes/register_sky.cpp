@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/sky.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue sky_class_constructor(JSContext *ctx, JSValueConst new_target, in
 
 	Sky *sky_class;
 	if (argc == 1) 
-		sky_class = static_cast<Sky *>(static_cast<Object *>(Variant(*argv)));
+		sky_class = static_cast<Sky *>(Variant(*argv).operator Object *());
 	else 
 		sky_class = memnew(Sky);
 	if (!sky_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, sky_class);	
+	JS_SetOpaque(obj, sky_class);
 	return obj;
 }
 static JSValue sky_class_set_radiance_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -123,7 +123,6 @@ static void define_sky_enum(JSContext *ctx, JSValue proto) {
 
 static int js_sky_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Sky::__class_id);
 	classes["Sky"] = Sky::__class_id;
 	class_id_list.insert(Sky::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Sky::__class_id, &sky_class_def);

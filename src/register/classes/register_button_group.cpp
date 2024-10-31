@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/base_button.hpp>
-#include <godot_cpp/classes/base_button.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/button_group.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/base_button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue button_group_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	ButtonGroup *button_group_class;
 	if (argc == 1) 
-		button_group_class = static_cast<ButtonGroup *>(static_cast<Object *>(Variant(*argv)));
+		button_group_class = static_cast<ButtonGroup *>(Variant(*argv).operator Object *());
 	else 
 		button_group_class = memnew(ButtonGroup);
 	if (!button_group_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, button_group_class);	
+	JS_SetOpaque(obj, button_group_class);
 	return obj;
 }
 static JSValue button_group_class_get_pressed_button(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -100,7 +100,6 @@ static void define_button_group_enum(JSContext *ctx, JSValue proto) {
 
 static int js_button_group_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ButtonGroup::__class_id);
 	classes["ButtonGroup"] = ButtonGroup::__class_id;
 	class_id_list.insert(ButtonGroup::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ButtonGroup::__class_id, &button_group_class_def);

@@ -30,14 +30,14 @@ static JSValue h_separator_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	HSeparator *h_separator_class;
 	if (argc == 1) 
-		h_separator_class = static_cast<HSeparator *>(static_cast<Object *>(Variant(*argv)));
+		h_separator_class = static_cast<HSeparator *>(Variant(*argv).operator Object *());
 	else 
 		h_separator_class = memnew(HSeparator);
 	if (!h_separator_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, h_separator_class);	
+	JS_SetOpaque(obj, h_separator_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_h_separator_enum(JSContext *ctx, JSValue proto) {
 
 static int js_h_separator_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&HSeparator::__class_id);
 	classes["HSeparator"] = HSeparator::__class_id;
 	class_id_list.insert(HSeparator::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), HSeparator::__class_id, &h_separator_class_def);

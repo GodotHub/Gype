@@ -30,14 +30,14 @@ static JSValue scroll_bar_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	ScrollBar *scroll_bar_class;
 	if (argc == 1) 
-		scroll_bar_class = static_cast<ScrollBar *>(static_cast<Object *>(Variant(*argv)));
+		scroll_bar_class = static_cast<ScrollBar *>(Variant(*argv).operator Object *());
 	else 
 		scroll_bar_class = memnew(ScrollBar);
 	if (!scroll_bar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, scroll_bar_class);	
+	JS_SetOpaque(obj, scroll_bar_class);
 	return obj;
 }
 static JSValue scroll_bar_class_set_custom_step(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,7 +88,6 @@ static void define_scroll_bar_enum(JSContext *ctx, JSValue proto) {
 
 static int js_scroll_bar_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ScrollBar::__class_id);
 	classes["ScrollBar"] = ScrollBar::__class_id;
 	class_id_list.insert(ScrollBar::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ScrollBar::__class_id, &scroll_bar_class_def);

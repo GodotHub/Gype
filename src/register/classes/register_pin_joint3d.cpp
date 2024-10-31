@@ -30,14 +30,14 @@ static JSValue pin_joint3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	PinJoint3D *pin_joint3d_class;
 	if (argc == 1) 
-		pin_joint3d_class = static_cast<PinJoint3D *>(static_cast<Object *>(Variant(*argv)));
+		pin_joint3d_class = static_cast<PinJoint3D *>(Variant(*argv).operator Object *());
 	else 
 		pin_joint3d_class = memnew(PinJoint3D);
 	if (!pin_joint3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, pin_joint3d_class);	
+	JS_SetOpaque(obj, pin_joint3d_class);
 	return obj;
 }
 static JSValue pin_joint3d_class_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,7 +67,6 @@ static void define_pin_joint3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_pin_joint3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PinJoint3D::__class_id);
 	classes["PinJoint3D"] = PinJoint3D::__class_id;
 	class_id_list.insert(PinJoint3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PinJoint3D::__class_id, &pin_joint3d_class_def);

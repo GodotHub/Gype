@@ -30,14 +30,14 @@ static JSValue code_highlighter_class_constructor(JSContext *ctx, JSValueConst n
 
 	CodeHighlighter *code_highlighter_class;
 	if (argc == 1) 
-		code_highlighter_class = static_cast<CodeHighlighter *>(static_cast<Object *>(Variant(*argv)));
+		code_highlighter_class = static_cast<CodeHighlighter *>(Variant(*argv).operator Object *());
 	else 
 		code_highlighter_class = memnew(CodeHighlighter);
 	if (!code_highlighter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, code_highlighter_class);	
+	JS_SetOpaque(obj, code_highlighter_class);
 	return obj;
 }
 static JSValue code_highlighter_class_add_keyword_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -248,7 +248,6 @@ static void define_code_highlighter_enum(JSContext *ctx, JSValue proto) {
 
 static int js_code_highlighter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CodeHighlighter::__class_id);
 	classes["CodeHighlighter"] = CodeHighlighter::__class_id;
 	class_id_list.insert(CodeHighlighter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CodeHighlighter::__class_id, &code_highlighter_class_def);

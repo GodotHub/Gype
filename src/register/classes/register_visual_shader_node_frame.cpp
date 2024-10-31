@@ -30,14 +30,14 @@ static JSValue visual_shader_node_frame_class_constructor(JSContext *ctx, JSValu
 
 	VisualShaderNodeFrame *visual_shader_node_frame_class;
 	if (argc == 1) 
-		visual_shader_node_frame_class = static_cast<VisualShaderNodeFrame *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_frame_class = static_cast<VisualShaderNodeFrame *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_frame_class = memnew(VisualShaderNodeFrame);
 	if (!visual_shader_node_frame_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_frame_class);	
+	JS_SetOpaque(obj, visual_shader_node_frame_class);
 	return obj;
 }
 static JSValue visual_shader_node_frame_class_set_title(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -152,7 +152,6 @@ static void define_visual_shader_node_frame_enum(JSContext *ctx, JSValue proto) 
 
 static int js_visual_shader_node_frame_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeFrame::__class_id);
 	classes["VisualShaderNodeFrame"] = VisualShaderNodeFrame::__class_id;
 	class_id_list.insert(VisualShaderNodeFrame::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeFrame::__class_id, &visual_shader_node_frame_class_def);

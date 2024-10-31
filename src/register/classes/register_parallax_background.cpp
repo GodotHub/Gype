@@ -30,14 +30,14 @@ static JSValue parallax_background_class_constructor(JSContext *ctx, JSValueCons
 
 	ParallaxBackground *parallax_background_class;
 	if (argc == 1) 
-		parallax_background_class = static_cast<ParallaxBackground *>(static_cast<Object *>(Variant(*argv)));
+		parallax_background_class = static_cast<ParallaxBackground *>(Variant(*argv).operator Object *());
 	else 
 		parallax_background_class = memnew(ParallaxBackground);
 	if (!parallax_background_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, parallax_background_class);	
+	JS_SetOpaque(obj, parallax_background_class);
 	return obj;
 }
 static JSValue parallax_background_class_set_scroll_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -160,7 +160,6 @@ static void define_parallax_background_enum(JSContext *ctx, JSValue proto) {
 
 static int js_parallax_background_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ParallaxBackground::__class_id);
 	classes["ParallaxBackground"] = ParallaxBackground::__class_id;
 	class_id_list.insert(ParallaxBackground::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ParallaxBackground::__class_id, &parallax_background_class_def);

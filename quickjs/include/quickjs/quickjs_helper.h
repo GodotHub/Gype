@@ -11,6 +11,7 @@ using namespace godot;
 
 extern HashSet<int> class_id_list;
 extern HashMap<StringName, int> classes;
+extern HashMap<int, HashSet<JSObject *>> object_pool;
 
 uint8_t *get_typed_array_buf(JSContext *ctx, JSValue v);
 bool is_typed_array(JSContext *ctx, JSValue value);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physical_bone2d.hpp>
 #include <godot_cpp/classes/rigid_body2d.hpp>
+#include <godot_cpp/classes/physical_bone2d.hpp>
 #include <godot_cpp/classes/joint2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue physical_bone2d_class_constructor(JSContext *ctx, JSValueConst ne
 
 	PhysicalBone2D *physical_bone2d_class;
 	if (argc == 1) 
-		physical_bone2d_class = static_cast<PhysicalBone2D *>(static_cast<Object *>(Variant(*argv)));
+		physical_bone2d_class = static_cast<PhysicalBone2D *>(Variant(*argv).operator Object *());
 	else 
 		physical_bone2d_class = memnew(PhysicalBone2D);
 	if (!physical_bone2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, physical_bone2d_class);	
+	JS_SetOpaque(obj, physical_bone2d_class);
 	return obj;
 }
 static JSValue physical_bone2d_class_get_joint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -153,7 +153,6 @@ static void define_physical_bone2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_physical_bone2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PhysicalBone2D::__class_id);
 	classes["PhysicalBone2D"] = PhysicalBone2D::__class_id;
 	class_id_list.insert(PhysicalBone2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PhysicalBone2D::__class_id, &physical_bone2d_class_def);

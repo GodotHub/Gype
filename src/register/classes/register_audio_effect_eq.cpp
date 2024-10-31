@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_eq.hpp>
 #include <godot_cpp/classes/audio_effect.hpp>
+#include <godot_cpp/classes/audio_effect_eq.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue audio_effect_eq_class_constructor(JSContext *ctx, JSValueConst ne
 
 	AudioEffectEQ *audio_effect_eq_class;
 	if (argc == 1) 
-		audio_effect_eq_class = static_cast<AudioEffectEQ *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_eq_class = static_cast<AudioEffectEQ *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_eq_class = memnew(AudioEffectEQ);
 	if (!audio_effect_eq_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_eq_class);	
+	JS_SetOpaque(obj, audio_effect_eq_class);
 	return obj;
 }
 static JSValue audio_effect_eq_class_set_band_gain_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,7 +67,6 @@ static void define_audio_effect_eq_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_effect_eq_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectEQ::__class_id);
 	classes["AudioEffectEQ"] = AudioEffectEQ::__class_id;
 	class_id_list.insert(AudioEffectEQ::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectEQ::__class_id, &audio_effect_eq_class_def);

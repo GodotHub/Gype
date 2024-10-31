@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/rd_framebuffer_pass.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/framebuffer_cache_rd.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue framebuffer_cache_rd_class_constructor(JSContext *ctx, JSValueCon
 
 	FramebufferCacheRD *framebuffer_cache_rd_class;
 	if (argc == 1) 
-		framebuffer_cache_rd_class = static_cast<FramebufferCacheRD *>(static_cast<Object *>(Variant(*argv)));
+		framebuffer_cache_rd_class = static_cast<FramebufferCacheRD *>(Variant(*argv).operator Object *());
 	else 
 		framebuffer_cache_rd_class = memnew(FramebufferCacheRD);
 	if (!framebuffer_cache_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, framebuffer_cache_rd_class);	
+	JS_SetOpaque(obj, framebuffer_cache_rd_class);
 	return obj;
 }
 static JSValue framebuffer_cache_rd_class_get_cache_multipass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,7 +57,6 @@ static void define_framebuffer_cache_rd_enum(JSContext *ctx, JSValue proto) {
 
 static int js_framebuffer_cache_rd_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&FramebufferCacheRD::__class_id);
 	classes["FramebufferCacheRD"] = FramebufferCacheRD::__class_id;
 	class_id_list.insert(FramebufferCacheRD::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), FramebufferCacheRD::__class_id, &framebuffer_cache_rd_class_def);

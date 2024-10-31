@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/editor_selection.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue editor_selection_class_constructor(JSContext *ctx, JSValueConst n
 
 	EditorSelection *editor_selection_class;
 	if (argc == 1) 
-		editor_selection_class = static_cast<EditorSelection *>(static_cast<Object *>(Variant(*argv)));
+		editor_selection_class = static_cast<EditorSelection *>(Variant(*argv).operator Object *());
 	else 
 		editor_selection_class = memnew(EditorSelection);
 	if (!editor_selection_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_selection_class);	
+	JS_SetOpaque(obj, editor_selection_class);
 	return obj;
 }
 static JSValue editor_selection_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -97,7 +97,6 @@ static void define_editor_selection_enum(JSContext *ctx, JSValue proto) {
 
 static int js_editor_selection_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorSelection::__class_id);
 	classes["EditorSelection"] = EditorSelection::__class_id;
 	class_id_list.insert(EditorSelection::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorSelection::__class_id, &editor_selection_class_def);

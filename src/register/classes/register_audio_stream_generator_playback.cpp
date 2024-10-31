@@ -30,14 +30,14 @@ static JSValue audio_stream_generator_playback_class_constructor(JSContext *ctx,
 
 	AudioStreamGeneratorPlayback *audio_stream_generator_playback_class;
 	if (argc == 1) 
-		audio_stream_generator_playback_class = static_cast<AudioStreamGeneratorPlayback *>(static_cast<Object *>(Variant(*argv)));
+		audio_stream_generator_playback_class = static_cast<AudioStreamGeneratorPlayback *>(Variant(*argv).operator Object *());
 	else 
 		audio_stream_generator_playback_class = memnew(AudioStreamGeneratorPlayback);
 	if (!audio_stream_generator_playback_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_stream_generator_playback_class);	
+	JS_SetOpaque(obj, audio_stream_generator_playback_class);
 	return obj;
 }
 static JSValue audio_stream_generator_playback_class_push_frame(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,7 +82,6 @@ static void define_audio_stream_generator_playback_enum(JSContext *ctx, JSValue 
 
 static int js_audio_stream_generator_playback_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioStreamGeneratorPlayback::__class_id);
 	classes["AudioStreamGeneratorPlayback"] = AudioStreamGeneratorPlayback::__class_id;
 	class_id_list.insert(AudioStreamGeneratorPlayback::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStreamGeneratorPlayback::__class_id, &audio_stream_generator_playback_class_def);

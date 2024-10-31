@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq3c7i6s6fb5e"]
+[gd_scene load_steps=2 format=3 uid="uid://ekoht14f8vp1"]
 
-[sub_resource type="TypeScript" id="TypeScript_xhnxr"]
+[ext_resource type="Script" path="res://node.ts" id="1_q67kg"]
 
 [node name="Node" type="Node"]
-script = SubResource("TypeScript_xhnxr")
+script = ExtResource("1_q67kg")

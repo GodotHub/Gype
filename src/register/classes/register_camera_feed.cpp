@@ -30,14 +30,14 @@ static JSValue camera_feed_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	CameraFeed *camera_feed_class;
 	if (argc == 1) 
-		camera_feed_class = static_cast<CameraFeed *>(static_cast<Object *>(Variant(*argv)));
+		camera_feed_class = static_cast<CameraFeed *>(Variant(*argv).operator Object *());
 	else 
 		camera_feed_class = memnew(CameraFeed);
 	if (!camera_feed_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, camera_feed_class);	
+	JS_SetOpaque(obj, camera_feed_class);
 	return obj;
 }
 static JSValue camera_feed_class_get_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -119,7 +119,6 @@ static void define_camera_feed_enum(JSContext *ctx, JSValue proto) {
 
 static int js_camera_feed_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CameraFeed::__class_id);
 	classes["CameraFeed"] = CameraFeed::__class_id;
 	class_id_list.insert(CameraFeed::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CameraFeed::__class_id, &camera_feed_class_def);

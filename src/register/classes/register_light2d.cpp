@@ -30,14 +30,14 @@ static JSValue light2d_class_constructor(JSContext *ctx, JSValueConst new_target
 
 	Light2D *light2d_class;
 	if (argc == 1) 
-		light2d_class = static_cast<Light2D *>(static_cast<Object *>(Variant(*argv)));
+		light2d_class = static_cast<Light2D *>(Variant(*argv).operator Object *());
 	else 
 		light2d_class = memnew(Light2D);
 	if (!light2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, light2d_class);	
+	JS_SetOpaque(obj, light2d_class);
 	return obj;
 }
 static JSValue light2d_class_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -342,7 +342,6 @@ static void define_light2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_light2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Light2D::__class_id);
 	classes["Light2D"] = Light2D::__class_id;
 	class_id_list.insert(Light2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Light2D::__class_id, &light2d_class_def);

@@ -30,14 +30,14 @@ static JSValue render_scene_data_extension_class_constructor(JSContext *ctx, JSV
 
 	RenderSceneDataExtension *render_scene_data_extension_class;
 	if (argc == 1) 
-		render_scene_data_extension_class = static_cast<RenderSceneDataExtension *>(static_cast<Object *>(Variant(*argv)));
+		render_scene_data_extension_class = static_cast<RenderSceneDataExtension *>(Variant(*argv).operator Object *());
 	else 
 		render_scene_data_extension_class = memnew(RenderSceneDataExtension);
 	if (!render_scene_data_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, render_scene_data_extension_class);	
+	JS_SetOpaque(obj, render_scene_data_extension_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_render_scene_data_extension_enum(JSContext *ctx, JSValue prot
 
 static int js_render_scene_data_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RenderSceneDataExtension::__class_id);
 	classes["RenderSceneDataExtension"] = RenderSceneDataExtension::__class_id;
 	class_id_list.insert(RenderSceneDataExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RenderSceneDataExtension::__class_id, &render_scene_data_extension_class_def);

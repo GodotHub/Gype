@@ -30,14 +30,14 @@ static JSValue ogg_packet_sequence_class_constructor(JSContext *ctx, JSValueCons
 
 	OggPacketSequence *ogg_packet_sequence_class;
 	if (argc == 1) 
-		ogg_packet_sequence_class = static_cast<OggPacketSequence *>(static_cast<Object *>(Variant(*argv)));
+		ogg_packet_sequence_class = static_cast<OggPacketSequence *>(Variant(*argv).operator Object *());
 	else 
 		ogg_packet_sequence_class = memnew(OggPacketSequence);
 	if (!ogg_packet_sequence_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, ogg_packet_sequence_class);	
+	JS_SetOpaque(obj, ogg_packet_sequence_class);
 	return obj;
 }
 static JSValue ogg_packet_sequence_class_set_packet_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -111,7 +111,6 @@ static void define_ogg_packet_sequence_enum(JSContext *ctx, JSValue proto) {
 
 static int js_ogg_packet_sequence_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&OggPacketSequence::__class_id);
 	classes["OggPacketSequence"] = OggPacketSequence::__class_id;
 	class_id_list.insert(OggPacketSequence::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), OggPacketSequence::__class_id, &ogg_packet_sequence_class_def);

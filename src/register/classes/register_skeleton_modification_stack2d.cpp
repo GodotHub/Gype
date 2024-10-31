@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton2d.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
-#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/skeleton2d.hpp>
 #include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue skeleton_modification_stack2d_class_constructor(JSContext *ctx, J
 
 	SkeletonModificationStack2D *skeleton_modification_stack2d_class;
 	if (argc == 1) 
-		skeleton_modification_stack2d_class = static_cast<SkeletonModificationStack2D *>(static_cast<Object *>(Variant(*argv)));
+		skeleton_modification_stack2d_class = static_cast<SkeletonModificationStack2D *>(Variant(*argv).operator Object *());
 	else 
 		skeleton_modification_stack2d_class = memnew(SkeletonModificationStack2D);
 	if (!skeleton_modification_stack2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, skeleton_modification_stack2d_class);	
+	JS_SetOpaque(obj, skeleton_modification_stack2d_class);
 	return obj;
 }
 static JSValue skeleton_modification_stack2d_class_setup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -153,7 +153,6 @@ static void define_skeleton_modification_stack2d_enum(JSContext *ctx, JSValue pr
 
 static int js_skeleton_modification_stack2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SkeletonModificationStack2D::__class_id);
 	classes["SkeletonModificationStack2D"] = SkeletonModificationStack2D::__class_id;
 	class_id_list.insert(SkeletonModificationStack2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SkeletonModificationStack2D::__class_id, &skeleton_modification_stack2d_class_def);

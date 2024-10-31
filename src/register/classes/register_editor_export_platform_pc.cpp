@@ -30,14 +30,14 @@ static JSValue editor_export_platform_pc_class_constructor(JSContext *ctx, JSVal
 
 	EditorExportPlatformPC *editor_export_platform_pc_class;
 	if (argc == 1) 
-		editor_export_platform_pc_class = static_cast<EditorExportPlatformPC *>(static_cast<Object *>(Variant(*argv)));
+		editor_export_platform_pc_class = static_cast<EditorExportPlatformPC *>(Variant(*argv).operator Object *());
 	else 
 		editor_export_platform_pc_class = memnew(EditorExportPlatformPC);
 	if (!editor_export_platform_pc_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_export_platform_pc_class);	
+	JS_SetOpaque(obj, editor_export_platform_pc_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_editor_export_platform_pc_enum(JSContext *ctx, JSValue proto)
 
 static int js_editor_export_platform_pc_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorExportPlatformPC::__class_id);
 	classes["EditorExportPlatformPC"] = EditorExportPlatformPC::__class_id;
 	class_id_list.insert(EditorExportPlatformPC::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorExportPlatformPC::__class_id, &editor_export_platform_pc_class_def);

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/editor_script_picker.hpp>
 #include <godot_cpp/classes/editor_resource_picker.hpp>
+#include <godot_cpp/classes/editor_script_picker.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue editor_script_picker_class_constructor(JSContext *ctx, JSValueCon
 
 	EditorScriptPicker *editor_script_picker_class;
 	if (argc == 1) 
-		editor_script_picker_class = static_cast<EditorScriptPicker *>(static_cast<Object *>(Variant(*argv)));
+		editor_script_picker_class = static_cast<EditorScriptPicker *>(Variant(*argv).operator Object *());
 	else 
 		editor_script_picker_class = memnew(EditorScriptPicker);
 	if (!editor_script_picker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_script_picker_class);	
+	JS_SetOpaque(obj, editor_script_picker_class);
 	return obj;
 }
 static JSValue editor_script_picker_class_set_script_owner(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,7 +71,6 @@ static void define_editor_script_picker_enum(JSContext *ctx, JSValue proto) {
 
 static int js_editor_script_picker_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorScriptPicker::__class_id);
 	classes["EditorScriptPicker"] = EditorScriptPicker::__class_id;
 	class_id_list.insert(EditorScriptPicker::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorScriptPicker::__class_id, &editor_script_picker_class_def);

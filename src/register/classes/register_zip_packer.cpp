@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/zip_packer.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/zip_packer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue zip_packer_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	ZIPPacker *zip_packer_class;
 	if (argc == 1) 
-		zip_packer_class = static_cast<ZIPPacker *>(static_cast<Object *>(Variant(*argv)));
+		zip_packer_class = static_cast<ZIPPacker *>(Variant(*argv).operator Object *());
 	else 
 		zip_packer_class = memnew(ZIPPacker);
 	if (!zip_packer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, zip_packer_class);	
+	JS_SetOpaque(obj, zip_packer_class);
 	return obj;
 }
 static JSValue zip_packer_class_open(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,7 +82,6 @@ static void define_zip_packer_enum(JSContext *ctx, JSValue proto) {
 
 static int js_zip_packer_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ZIPPacker::__class_id);
 	classes["ZIPPacker"] = ZIPPacker::__class_id;
 	class_id_list.insert(ZIPPacker::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ZIPPacker::__class_id, &zip_packer_class_def);

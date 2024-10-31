@@ -30,14 +30,14 @@ static JSValue canvas_layer_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	CanvasLayer *canvas_layer_class;
 	if (argc == 1) 
-		canvas_layer_class = static_cast<CanvasLayer *>(static_cast<Object *>(Variant(*argv)));
+		canvas_layer_class = static_cast<CanvasLayer *>(Variant(*argv).operator Object *());
 	else 
 		canvas_layer_class = memnew(CanvasLayer);
 	if (!canvas_layer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, canvas_layer_class);	
+	JS_SetOpaque(obj, canvas_layer_class);
 	return obj;
 }
 static JSValue canvas_layer_class_set_layer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -252,7 +252,6 @@ static void define_canvas_layer_enum(JSContext *ctx, JSValue proto) {
 
 static int js_canvas_layer_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CanvasLayer::__class_id);
 	classes["CanvasLayer"] = CanvasLayer::__class_id;
 	class_id_list.insert(CanvasLayer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CanvasLayer::__class_id, &canvas_layer_class_def);

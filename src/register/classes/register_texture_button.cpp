@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/texture_button.hpp>
-#include <godot_cpp/classes/bit_map.hpp>
 #include <godot_cpp/classes/base_button.hpp>
+#include <godot_cpp/classes/bit_map.hpp>
+#include <godot_cpp/classes/texture_button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue texture_button_class_constructor(JSContext *ctx, JSValueConst new
 
 	TextureButton *texture_button_class;
 	if (argc == 1) 
-		texture_button_class = static_cast<TextureButton *>(static_cast<Object *>(Variant(*argv)));
+		texture_button_class = static_cast<TextureButton *>(Variant(*argv).operator Object *());
 	else 
 		texture_button_class = memnew(TextureButton);
 	if (!texture_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, texture_button_class);	
+	JS_SetOpaque(obj, texture_button_class);
 	return obj;
 }
 static JSValue texture_button_class_set_texture_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -243,7 +243,6 @@ static void define_texture_button_enum(JSContext *ctx, JSValue proto) {
 
 static int js_texture_button_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&TextureButton::__class_id);
 	classes["TextureButton"] = TextureButton::__class_id;
 	class_id_list.insert(TextureButton::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TextureButton::__class_id, &texture_button_class_def);

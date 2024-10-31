@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_listener2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/audio_listener2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue audio_listener2d_class_constructor(JSContext *ctx, JSValueConst n
 
 	AudioListener2D *audio_listener2d_class;
 	if (argc == 1) 
-		audio_listener2d_class = static_cast<AudioListener2D *>(static_cast<Object *>(Variant(*argv)));
+		audio_listener2d_class = static_cast<AudioListener2D *>(Variant(*argv).operator Object *());
 	else 
 		audio_listener2d_class = memnew(AudioListener2D);
 	if (!audio_listener2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_listener2d_class);	
+	JS_SetOpaque(obj, audio_listener2d_class);
 	return obj;
 }
 static JSValue audio_listener2d_class_make_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,7 +67,6 @@ static void define_audio_listener2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_listener2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioListener2D::__class_id);
 	classes["AudioListener2D"] = AudioListener2D::__class_id;
 	class_id_list.insert(AudioListener2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioListener2D::__class_id, &audio_listener2d_class_def);

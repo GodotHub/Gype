@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/aes_context.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/aes_context.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue aes_context_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	AESContext *aes_context_class;
 	if (argc == 1) 
-		aes_context_class = static_cast<AESContext *>(static_cast<Object *>(Variant(*argv)));
+		aes_context_class = static_cast<AESContext *>(Variant(*argv).operator Object *());
 	else 
 		aes_context_class = memnew(AESContext);
 	if (!aes_context_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, aes_context_class);	
+	JS_SetOpaque(obj, aes_context_class);
 	return obj;
 }
 static JSValue aes_context_class_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -79,7 +79,6 @@ static void define_aes_context_enum(JSContext *ctx, JSValue proto) {
 
 static int js_aes_context_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AESContext::__class_id);
 	classes["AESContext"] = AESContext::__class_id;
 	class_id_list.insert(AESContext::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AESContext::__class_id, &aes_context_class_def);

@@ -30,14 +30,14 @@ static JSValue visual_shader_node_vec2_constant_class_constructor(JSContext *ctx
 
 	VisualShaderNodeVec2Constant *visual_shader_node_vec2_constant_class;
 	if (argc == 1) 
-		visual_shader_node_vec2_constant_class = static_cast<VisualShaderNodeVec2Constant *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_vec2_constant_class = static_cast<VisualShaderNodeVec2Constant *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_vec2_constant_class = memnew(VisualShaderNodeVec2Constant);
 	if (!visual_shader_node_vec2_constant_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_vec2_constant_class);	
+	JS_SetOpaque(obj, visual_shader_node_vec2_constant_class);
 	return obj;
 }
 static JSValue visual_shader_node_vec2_constant_class_set_constant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_visual_shader_node_vec2_constant_enum(JSContext *ctx, JSValue
 
 static int js_visual_shader_node_vec2_constant_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeVec2Constant::__class_id);
 	classes["VisualShaderNodeVec2Constant"] = VisualShaderNodeVec2Constant::__class_id;
 	class_id_list.insert(VisualShaderNodeVec2Constant::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeVec2Constant::__class_id, &visual_shader_node_vec2_constant_class_def);

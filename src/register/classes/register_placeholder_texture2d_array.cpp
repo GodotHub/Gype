@@ -30,14 +30,14 @@ static JSValue placeholder_texture2d_array_class_constructor(JSContext *ctx, JSV
 
 	PlaceholderTexture2DArray *placeholder_texture2d_array_class;
 	if (argc == 1) 
-		placeholder_texture2d_array_class = static_cast<PlaceholderTexture2DArray *>(static_cast<Object *>(Variant(*argv)));
+		placeholder_texture2d_array_class = static_cast<PlaceholderTexture2DArray *>(Variant(*argv).operator Object *());
 	else 
 		placeholder_texture2d_array_class = memnew(PlaceholderTexture2DArray);
 	if (!placeholder_texture2d_array_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, placeholder_texture2d_array_class);	
+	JS_SetOpaque(obj, placeholder_texture2d_array_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_placeholder_texture2d_array_enum(JSContext *ctx, JSValue prot
 
 static int js_placeholder_texture2d_array_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PlaceholderTexture2DArray::__class_id);
 	classes["PlaceholderTexture2DArray"] = PlaceholderTexture2DArray::__class_id;
 	class_id_list.insert(PlaceholderTexture2DArray::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PlaceholderTexture2DArray::__class_id, &placeholder_texture2d_array_class_def);

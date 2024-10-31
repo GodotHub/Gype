@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/e_net_packet_peer.hpp>
 #include <godot_cpp/classes/packet_peer.hpp>
+#include <godot_cpp/classes/e_net_packet_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue e_net_packet_peer_class_constructor(JSContext *ctx, JSValueConst 
 
 	ENetPacketPeer *e_net_packet_peer_class;
 	if (argc == 1) 
-		e_net_packet_peer_class = static_cast<ENetPacketPeer *>(static_cast<Object *>(Variant(*argv)));
+		e_net_packet_peer_class = static_cast<ENetPacketPeer *>(Variant(*argv).operator Object *());
 	else 
 		e_net_packet_peer_class = memnew(ENetPacketPeer);
 	if (!e_net_packet_peer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, e_net_packet_peer_class);	
+	JS_SetOpaque(obj, e_net_packet_peer_class);
 	return obj;
 }
 static JSValue e_net_packet_peer_class_peer_disconnect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -155,7 +155,6 @@ static void define_e_net_packet_peer_enum(JSContext *ctx, JSValue proto) {
 
 static int js_e_net_packet_peer_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ENetPacketPeer::__class_id);
 	classes["ENetPacketPeer"] = ENetPacketPeer::__class_id;
 	class_id_list.insert(ENetPacketPeer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ENetPacketPeer::__class_id, &e_net_packet_peer_class_def);

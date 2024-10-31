@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_shader_spirv.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/rd_shader_spirv.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue rd_shader_spirv_class_constructor(JSContext *ctx, JSValueConst ne
 
 	RDShaderSPIRV *rd_shader_spirv_class;
 	if (argc == 1) 
-		rd_shader_spirv_class = static_cast<RDShaderSPIRV *>(static_cast<Object *>(Variant(*argv)));
+		rd_shader_spirv_class = static_cast<RDShaderSPIRV *>(Variant(*argv).operator Object *());
 	else 
 		rd_shader_spirv_class = memnew(RDShaderSPIRV);
 	if (!rd_shader_spirv_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rd_shader_spirv_class);	
+	JS_SetOpaque(obj, rd_shader_spirv_class);
 	return obj;
 }
 static JSValue rd_shader_spirv_class_set_stage_bytecode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -152,7 +152,6 @@ static void define_rd_shader_spirv_enum(JSContext *ctx, JSValue proto) {
 
 static int js_rd_shader_spirv_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RDShaderSPIRV::__class_id);
 	classes["RDShaderSPIRV"] = RDShaderSPIRV::__class_id;
 	class_id_list.insert(RDShaderSPIRV::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RDShaderSPIRV::__class_id, &rd_shader_spirv_class_def);

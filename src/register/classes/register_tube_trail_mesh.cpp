@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/curve.hpp>
-#include <godot_cpp/classes/tube_trail_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/tube_trail_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue tube_trail_mesh_class_constructor(JSContext *ctx, JSValueConst ne
 
 	TubeTrailMesh *tube_trail_mesh_class;
 	if (argc == 1) 
-		tube_trail_mesh_class = static_cast<TubeTrailMesh *>(static_cast<Object *>(Variant(*argv)));
+		tube_trail_mesh_class = static_cast<TubeTrailMesh *>(Variant(*argv).operator Object *());
 	else 
 		tube_trail_mesh_class = memnew(TubeTrailMesh);
 	if (!tube_trail_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, tube_trail_mesh_class);	
+	JS_SetOpaque(obj, tube_trail_mesh_class);
 	return obj;
 }
 static JSValue tube_trail_mesh_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -197,7 +197,6 @@ static void define_tube_trail_mesh_enum(JSContext *ctx, JSValue proto) {
 
 static int js_tube_trail_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&TubeTrailMesh::__class_id);
 	classes["TubeTrailMesh"] = TubeTrailMesh::__class_id;
 	class_id_list.insert(TubeTrailMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TubeTrailMesh::__class_id, &tube_trail_mesh_class_def);

@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/animation_node_state_machine.hpp>
 #include <godot_cpp/classes/animation_node_state_machine_transition.hpp>
 #include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/classes/animation_node.hpp>
-#include <godot_cpp/classes/animation_node_state_machine.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue animation_node_state_machine_class_constructor(JSContext *ctx, JS
 
 	AnimationNodeStateMachine *animation_node_state_machine_class;
 	if (argc == 1) 
-		animation_node_state_machine_class = static_cast<AnimationNodeStateMachine *>(static_cast<Object *>(Variant(*argv)));
+		animation_node_state_machine_class = static_cast<AnimationNodeStateMachine *>(Variant(*argv).operator Object *());
 	else 
 		animation_node_state_machine_class = memnew(AnimationNodeStateMachine);
 	if (!animation_node_state_machine_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animation_node_state_machine_class);	
+	JS_SetOpaque(obj, animation_node_state_machine_class);
 	return obj;
 }
 static JSValue animation_node_state_machine_class_add_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -208,7 +208,6 @@ static void define_animation_node_state_machine_enum(JSContext *ctx, JSValue pro
 
 static int js_animation_node_state_machine_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AnimationNodeStateMachine::__class_id);
 	classes["AnimationNodeStateMachine"] = AnimationNodeStateMachine::__class_id;
 	class_id_list.insert(AnimationNodeStateMachine::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationNodeStateMachine::__class_id, &animation_node_state_machine_class_def);

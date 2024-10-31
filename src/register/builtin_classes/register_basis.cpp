@@ -192,7 +192,6 @@ void define_basis_property(JSContext *ctx, JSValue obj) {
 }
 
 static int js_basis_class_init(JSContext *ctx) {
-	JS_NewClassID(&Basis::__class_id);
 	classes["Basis"] = Basis::__class_id;
 	class_id_list.insert(Basis::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Basis::__class_id, &basis_class_def);

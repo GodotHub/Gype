@@ -29,14 +29,14 @@ static JSValue object_class_constructor(JSContext *ctx, JSValueConst new_target,
 
 	Object *object_class;
 	if (argc == 1) 
-		object_class = static_cast<Object *>(static_cast<Object *>(Variant(*argv)));
+		object_class = static_cast<Object *>(Variant(*argv).operator Object *());
 	else 
 		object_class = memnew(Object);
 	if (!object_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, object_class);	
+	JS_SetOpaque(obj, object_class);
 	return obj;
 }
 static JSValue object_class_get_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -323,7 +323,6 @@ static void define_object_enum(JSContext *ctx, JSValue proto) {
 
 static int js_object_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Object::__class_id);
 	classes["Object"] = Object::__class_id;
 	class_id_list.insert(Object::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Object::__class_id, &object_class_def);

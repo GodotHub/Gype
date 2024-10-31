@@ -30,14 +30,14 @@ static JSValue physics_ray_query_parameters3d_class_constructor(JSContext *ctx, 
 
 	PhysicsRayQueryParameters3D *physics_ray_query_parameters3d_class;
 	if (argc == 1) 
-		physics_ray_query_parameters3d_class = static_cast<PhysicsRayQueryParameters3D *>(static_cast<Object *>(Variant(*argv)));
+		physics_ray_query_parameters3d_class = static_cast<PhysicsRayQueryParameters3D *>(Variant(*argv).operator Object *());
 	else 
 		physics_ray_query_parameters3d_class = memnew(PhysicsRayQueryParameters3D);
 	if (!physics_ray_query_parameters3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, physics_ray_query_parameters3d_class);	
+	JS_SetOpaque(obj, physics_ray_query_parameters3d_class);
 	return obj;
 }
 static JSValue physics_ray_query_parameters3d_class_set_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -202,7 +202,6 @@ static void define_physics_ray_query_parameters3d_enum(JSContext *ctx, JSValue p
 
 static int js_physics_ray_query_parameters3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PhysicsRayQueryParameters3D::__class_id);
 	classes["PhysicsRayQueryParameters3D"] = PhysicsRayQueryParameters3D::__class_id;
 	class_id_list.insert(PhysicsRayQueryParameters3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PhysicsRayQueryParameters3D::__class_id, &physics_ray_query_parameters3d_class_def);

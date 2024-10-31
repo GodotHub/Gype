@@ -30,14 +30,14 @@ static JSValue packet_peer_extension_class_constructor(JSContext *ctx, JSValueCo
 
 	PacketPeerExtension *packet_peer_extension_class;
 	if (argc == 1) 
-		packet_peer_extension_class = static_cast<PacketPeerExtension *>(static_cast<Object *>(Variant(*argv)));
+		packet_peer_extension_class = static_cast<PacketPeerExtension *>(Variant(*argv).operator Object *());
 	else 
 		packet_peer_extension_class = memnew(PacketPeerExtension);
 	if (!packet_peer_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, packet_peer_extension_class);	
+	JS_SetOpaque(obj, packet_peer_extension_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_packet_peer_extension_enum(JSContext *ctx, JSValue proto) {
 
 static int js_packet_peer_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PacketPeerExtension::__class_id);
 	classes["PacketPeerExtension"] = PacketPeerExtension::__class_id;
 	class_id_list.insert(PacketPeerExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PacketPeerExtension::__class_id, &packet_peer_extension_class_def);

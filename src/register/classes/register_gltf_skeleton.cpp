@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/skeleton3d.hpp>
+#include <godot_cpp/classes/gltf_skeleton.hpp>
 #include <godot_cpp/classes/bone_attachment3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/gltf_skeleton.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue gltf_skeleton_class_constructor(JSContext *ctx, JSValueConst new_
 
 	GLTFSkeleton *gltf_skeleton_class;
 	if (argc == 1) 
-		gltf_skeleton_class = static_cast<GLTFSkeleton *>(static_cast<Object *>(Variant(*argv)));
+		gltf_skeleton_class = static_cast<GLTFSkeleton *>(Variant(*argv).operator Object *());
 	else 
 		gltf_skeleton_class = memnew(GLTFSkeleton);
 	if (!gltf_skeleton_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_skeleton_class);	
+	JS_SetOpaque(obj, gltf_skeleton_class);
 	return obj;
 }
 static JSValue gltf_skeleton_class_get_joints(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -141,7 +141,6 @@ static void define_gltf_skeleton_enum(JSContext *ctx, JSValue proto) {
 
 static int js_gltf_skeleton_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GLTFSkeleton::__class_id);
 	classes["GLTFSkeleton"] = GLTFSkeleton::__class_id;
 	class_id_list.insert(GLTFSkeleton::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFSkeleton::__class_id, &gltf_skeleton_class_def);

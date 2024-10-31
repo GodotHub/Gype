@@ -30,14 +30,14 @@ static JSValue java_script_object_class_constructor(JSContext *ctx, JSValueConst
 
 	JavaScriptObject *java_script_object_class;
 	if (argc == 1) 
-		java_script_object_class = static_cast<JavaScriptObject *>(static_cast<Object *>(Variant(*argv)));
+		java_script_object_class = static_cast<JavaScriptObject *>(Variant(*argv).operator Object *());
 	else 
 		java_script_object_class = memnew(JavaScriptObject);
 	if (!java_script_object_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, java_script_object_class);	
+	JS_SetOpaque(obj, java_script_object_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_java_script_object_enum(JSContext *ctx, JSValue proto) {
 
 static int js_java_script_object_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&JavaScriptObject::__class_id);
 	classes["JavaScriptObject"] = JavaScriptObject::__class_id;
 	class_id_list.insert(JavaScriptObject::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), JavaScriptObject::__class_id, &java_script_object_class_def);

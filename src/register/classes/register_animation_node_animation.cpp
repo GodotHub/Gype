@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/classes/animation_node_animation.hpp>
+#include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue animation_node_animation_class_constructor(JSContext *ctx, JSValu
 
 	AnimationNodeAnimation *animation_node_animation_class;
 	if (argc == 1) 
-		animation_node_animation_class = static_cast<AnimationNodeAnimation *>(static_cast<Object *>(Variant(*argv)));
+		animation_node_animation_class = static_cast<AnimationNodeAnimation *>(Variant(*argv).operator Object *());
 	else 
 		animation_node_animation_class = memnew(AnimationNodeAnimation);
 	if (!animation_node_animation_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animation_node_animation_class);	
+	JS_SetOpaque(obj, animation_node_animation_class);
 	return obj;
 }
 static JSValue animation_node_animation_class_set_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -182,7 +182,6 @@ static void define_animation_node_animation_enum(JSContext *ctx, JSValue proto) 
 
 static int js_animation_node_animation_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AnimationNodeAnimation::__class_id);
 	classes["AnimationNodeAnimation"] = AnimationNodeAnimation::__class_id;
 	class_id_list.insert(AnimationNodeAnimation::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationNodeAnimation::__class_id, &animation_node_animation_class_def);

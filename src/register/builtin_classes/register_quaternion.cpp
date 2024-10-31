@@ -216,7 +216,6 @@ void define_quaternion_property(JSContext *ctx, JSValue obj) {
 }
 
 static int js_quaternion_class_init(JSContext *ctx) {
-	JS_NewClassID(&Quaternion::__class_id);
 	classes["Quaternion"] = Quaternion::__class_id;
 	class_id_list.insert(Quaternion::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Quaternion::__class_id, &quaternion_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_vector_compose.hpp>
 #include <godot_cpp/classes/visual_shader_node_vector_base.hpp>
+#include <godot_cpp/classes/visual_shader_node_vector_compose.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue visual_shader_node_vector_compose_class_constructor(JSContext *ct
 
 	VisualShaderNodeVectorCompose *visual_shader_node_vector_compose_class;
 	if (argc == 1) 
-		visual_shader_node_vector_compose_class = static_cast<VisualShaderNodeVectorCompose *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_vector_compose_class = static_cast<VisualShaderNodeVectorCompose *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_vector_compose_class = memnew(VisualShaderNodeVectorCompose);
 	if (!visual_shader_node_vector_compose_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_vector_compose_class);	
+	JS_SetOpaque(obj, visual_shader_node_vector_compose_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_visual_shader_node_vector_compose_enum(JSContext *ctx, JSValu
 
 static int js_visual_shader_node_vector_compose_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeVectorCompose::__class_id);
 	classes["VisualShaderNodeVectorCompose"] = VisualShaderNodeVectorCompose::__class_id;
 	class_id_list.insert(VisualShaderNodeVectorCompose::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeVectorCompose::__class_id, &visual_shader_node_vector_compose_class_def);

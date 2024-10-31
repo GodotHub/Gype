@@ -30,14 +30,14 @@ static JSValue h_split_container_class_constructor(JSContext *ctx, JSValueConst 
 
 	HSplitContainer *h_split_container_class;
 	if (argc == 1) 
-		h_split_container_class = static_cast<HSplitContainer *>(static_cast<Object *>(Variant(*argv)));
+		h_split_container_class = static_cast<HSplitContainer *>(Variant(*argv).operator Object *());
 	else 
 		h_split_container_class = memnew(HSplitContainer);
 	if (!h_split_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, h_split_container_class);	
+	JS_SetOpaque(obj, h_split_container_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_h_split_container_enum(JSContext *ctx, JSValue proto) {
 
 static int js_h_split_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&HSplitContainer::__class_id);
 	classes["HSplitContainer"] = HSplitContainer::__class_id;
 	class_id_list.insert(HSplitContainer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), HSplitContainer::__class_id, &h_split_container_class_def);

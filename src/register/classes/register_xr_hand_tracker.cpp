@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_hand_tracker.hpp>
 #include <godot_cpp/classes/xr_positional_tracker.hpp>
+#include <godot_cpp/classes/xr_hand_tracker.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue xr_hand_tracker_class_constructor(JSContext *ctx, JSValueConst ne
 
 	XRHandTracker *xr_hand_tracker_class;
 	if (argc == 1) 
-		xr_hand_tracker_class = static_cast<XRHandTracker *>(static_cast<Object *>(Variant(*argv)));
+		xr_hand_tracker_class = static_cast<XRHandTracker *>(Variant(*argv).operator Object *());
 	else 
 		xr_hand_tracker_class = memnew(XRHandTracker);
 	if (!xr_hand_tracker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, xr_hand_tracker_class);	
+	JS_SetOpaque(obj, xr_hand_tracker_class);
 	return obj;
 }
 static JSValue xr_hand_tracker_class_set_has_tracking_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -181,7 +181,6 @@ static void define_xr_hand_tracker_enum(JSContext *ctx, JSValue proto) {
 
 static int js_xr_hand_tracker_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&XRHandTracker::__class_id);
 	classes["XRHandTracker"] = XRHandTracker::__class_id;
 	class_id_list.insert(XRHandTracker::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRHandTracker::__class_id, &xr_hand_tracker_class_def);

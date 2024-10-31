@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource_importer_bit_map.hpp>
 #include <godot_cpp/classes/resource_importer.hpp>
+#include <godot_cpp/classes/resource_importer_bit_map.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue resource_importer_bit_map_class_constructor(JSContext *ctx, JSVal
 
 	ResourceImporterBitMap *resource_importer_bit_map_class;
 	if (argc == 1) 
-		resource_importer_bit_map_class = static_cast<ResourceImporterBitMap *>(static_cast<Object *>(Variant(*argv)));
+		resource_importer_bit_map_class = static_cast<ResourceImporterBitMap *>(Variant(*argv).operator Object *());
 	else 
 		resource_importer_bit_map_class = memnew(ResourceImporterBitMap);
 	if (!resource_importer_bit_map_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, resource_importer_bit_map_class);	
+	JS_SetOpaque(obj, resource_importer_bit_map_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_resource_importer_bit_map_enum(JSContext *ctx, JSValue proto)
 
 static int js_resource_importer_bit_map_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ResourceImporterBitMap::__class_id);
 	classes["ResourceImporterBitMap"] = ResourceImporterBitMap::__class_id;
 	class_id_list.insert(ResourceImporterBitMap::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceImporterBitMap::__class_id, &resource_importer_bit_map_class_def);

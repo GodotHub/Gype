@@ -30,14 +30,14 @@ static JSValue visual_shader_node_texture2d_parameter_class_constructor(JSContex
 
 	VisualShaderNodeTexture2DParameter *visual_shader_node_texture2d_parameter_class;
 	if (argc == 1) 
-		visual_shader_node_texture2d_parameter_class = static_cast<VisualShaderNodeTexture2DParameter *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_texture2d_parameter_class = static_cast<VisualShaderNodeTexture2DParameter *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_texture2d_parameter_class = memnew(VisualShaderNodeTexture2DParameter);
 	if (!visual_shader_node_texture2d_parameter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_texture2d_parameter_class);	
+	JS_SetOpaque(obj, visual_shader_node_texture2d_parameter_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_visual_shader_node_texture2d_parameter_enum(JSContext *ctx, J
 
 static int js_visual_shader_node_texture2d_parameter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeTexture2DParameter::__class_id);
 	classes["VisualShaderNodeTexture2DParameter"] = VisualShaderNodeTexture2DParameter::__class_id;
 	class_id_list.insert(VisualShaderNodeTexture2DParameter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeTexture2DParameter::__class_id, &visual_shader_node_texture2d_parameter_class_def);

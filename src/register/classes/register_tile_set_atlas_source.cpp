@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tile_set_source.hpp>
-#include <godot_cpp/classes/tile_set_atlas_source.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/tile_set_atlas_source.hpp>
+#include <godot_cpp/classes/tile_set_source.hpp>
 #include <godot_cpp/classes/tile_data.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -32,14 +32,14 @@ static JSValue tile_set_atlas_source_class_constructor(JSContext *ctx, JSValueCo
 
 	TileSetAtlasSource *tile_set_atlas_source_class;
 	if (argc == 1) 
-		tile_set_atlas_source_class = static_cast<TileSetAtlasSource *>(static_cast<Object *>(Variant(*argv)));
+		tile_set_atlas_source_class = static_cast<TileSetAtlasSource *>(Variant(*argv).operator Object *());
 	else 
 		tile_set_atlas_source_class = memnew(TileSetAtlasSource);
 	if (!tile_set_atlas_source_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, tile_set_atlas_source_class);	
+	JS_SetOpaque(obj, tile_set_atlas_source_class);
 	return obj;
 }
 static JSValue tile_set_atlas_source_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -304,7 +304,6 @@ static void define_tile_set_atlas_source_enum(JSContext *ctx, JSValue proto) {
 
 static int js_tile_set_atlas_source_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&TileSetAtlasSource::__class_id);
 	classes["TileSetAtlasSource"] = TileSetAtlasSource::__class_id;
 	class_id_list.insert(TileSetAtlasSource::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TileSetAtlasSource::__class_id, &tile_set_atlas_source_class_def);

@@ -30,14 +30,14 @@ static JSValue audio_effect_low_shelf_filter_class_constructor(JSContext *ctx, J
 
 	AudioEffectLowShelfFilter *audio_effect_low_shelf_filter_class;
 	if (argc == 1) 
-		audio_effect_low_shelf_filter_class = static_cast<AudioEffectLowShelfFilter *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_low_shelf_filter_class = static_cast<AudioEffectLowShelfFilter *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_low_shelf_filter_class = memnew(AudioEffectLowShelfFilter);
 	if (!audio_effect_low_shelf_filter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_low_shelf_filter_class);	
+	JS_SetOpaque(obj, audio_effect_low_shelf_filter_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_audio_effect_low_shelf_filter_enum(JSContext *ctx, JSValue pr
 
 static int js_audio_effect_low_shelf_filter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectLowShelfFilter::__class_id);
 	classes["AudioEffectLowShelfFilter"] = AudioEffectLowShelfFilter::__class_id;
 	class_id_list.insert(AudioEffectLowShelfFilter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectLowShelfFilter::__class_id, &audio_effect_low_shelf_filter_class_def);

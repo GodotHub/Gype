@@ -30,14 +30,14 @@ static JSValue resource_importer_texture_atlas_class_constructor(JSContext *ctx,
 
 	ResourceImporterTextureAtlas *resource_importer_texture_atlas_class;
 	if (argc == 1) 
-		resource_importer_texture_atlas_class = static_cast<ResourceImporterTextureAtlas *>(static_cast<Object *>(Variant(*argv)));
+		resource_importer_texture_atlas_class = static_cast<ResourceImporterTextureAtlas *>(Variant(*argv).operator Object *());
 	else 
 		resource_importer_texture_atlas_class = memnew(ResourceImporterTextureAtlas);
 	if (!resource_importer_texture_atlas_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, resource_importer_texture_atlas_class);	
+	JS_SetOpaque(obj, resource_importer_texture_atlas_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_resource_importer_texture_atlas_enum(JSContext *ctx, JSValue 
 
 static int js_resource_importer_texture_atlas_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ResourceImporterTextureAtlas::__class_id);
 	classes["ResourceImporterTextureAtlas"] = ResourceImporterTextureAtlas::__class_id;
 	class_id_list.insert(ResourceImporterTextureAtlas::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceImporterTextureAtlas::__class_id, &resource_importer_texture_atlas_class_def);

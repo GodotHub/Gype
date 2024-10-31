@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_filter.hpp>
 #include <godot_cpp/classes/audio_effect_band_pass_filter.hpp>
+#include <godot_cpp/classes/audio_effect_filter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue audio_effect_band_pass_filter_class_constructor(JSContext *ctx, J
 
 	AudioEffectBandPassFilter *audio_effect_band_pass_filter_class;
 	if (argc == 1) 
-		audio_effect_band_pass_filter_class = static_cast<AudioEffectBandPassFilter *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_band_pass_filter_class = static_cast<AudioEffectBandPassFilter *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_band_pass_filter_class = memnew(AudioEffectBandPassFilter);
 	if (!audio_effect_band_pass_filter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_band_pass_filter_class);	
+	JS_SetOpaque(obj, audio_effect_band_pass_filter_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_audio_effect_band_pass_filter_enum(JSContext *ctx, JSValue pr
 
 static int js_audio_effect_band_pass_filter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectBandPassFilter::__class_id);
 	classes["AudioEffectBandPassFilter"] = AudioEffectBandPassFilter::__class_id;
 	class_id_list.insert(AudioEffectBandPassFilter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectBandPassFilter::__class_id, &audio_effect_band_pass_filter_class_def);

@@ -30,14 +30,14 @@ static JSValue shader_include_class_constructor(JSContext *ctx, JSValueConst new
 
 	ShaderInclude *shader_include_class;
 	if (argc == 1) 
-		shader_include_class = static_cast<ShaderInclude *>(static_cast<Object *>(Variant(*argv)));
+		shader_include_class = static_cast<ShaderInclude *>(Variant(*argv).operator Object *());
 	else 
 		shader_include_class = memnew(ShaderInclude);
 	if (!shader_include_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, shader_include_class);	
+	JS_SetOpaque(obj, shader_include_class);
 	return obj;
 }
 static JSValue shader_include_class_set_code(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_shader_include_enum(JSContext *ctx, JSValue proto) {
 
 static int js_shader_include_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ShaderInclude::__class_id);
 	classes["ShaderInclude"] = ShaderInclude::__class_id;
 	class_id_list.insert(ShaderInclude::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ShaderInclude::__class_id, &shader_include_class_def);

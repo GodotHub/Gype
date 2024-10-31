@@ -31,14 +31,14 @@ static JSValue skeleton_profile_class_constructor(JSContext *ctx, JSValueConst n
 
 	SkeletonProfile *skeleton_profile_class;
 	if (argc == 1) 
-		skeleton_profile_class = static_cast<SkeletonProfile *>(static_cast<Object *>(Variant(*argv)));
+		skeleton_profile_class = static_cast<SkeletonProfile *>(Variant(*argv).operator Object *());
 	else 
 		skeleton_profile_class = memnew(SkeletonProfile);
 	if (!skeleton_profile_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, skeleton_profile_class);	
+	JS_SetOpaque(obj, skeleton_profile_class);
 	return obj;
 }
 static JSValue skeleton_profile_class_set_root_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -253,7 +253,6 @@ static void define_skeleton_profile_enum(JSContext *ctx, JSValue proto) {
 
 static int js_skeleton_profile_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SkeletonProfile::__class_id);
 	classes["SkeletonProfile"] = SkeletonProfile::__class_id;
 	class_id_list.insert(SkeletonProfile::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SkeletonProfile::__class_id, &skeleton_profile_class_def);

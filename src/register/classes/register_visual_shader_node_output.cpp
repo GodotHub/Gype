@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_output.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/classes/visual_shader_node_output.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue visual_shader_node_output_class_constructor(JSContext *ctx, JSVal
 
 	VisualShaderNodeOutput *visual_shader_node_output_class;
 	if (argc == 1) 
-		visual_shader_node_output_class = static_cast<VisualShaderNodeOutput *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_output_class = static_cast<VisualShaderNodeOutput *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_output_class = memnew(VisualShaderNodeOutput);
 	if (!visual_shader_node_output_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_output_class);	
+	JS_SetOpaque(obj, visual_shader_node_output_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_visual_shader_node_output_enum(JSContext *ctx, JSValue proto)
 
 static int js_visual_shader_node_output_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeOutput::__class_id);
 	classes["VisualShaderNodeOutput"] = VisualShaderNodeOutput::__class_id;
 	class_id_list.insert(VisualShaderNodeOutput::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeOutput::__class_id, &visual_shader_node_output_class_def);

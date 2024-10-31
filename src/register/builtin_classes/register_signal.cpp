@@ -92,7 +92,6 @@ static const JSCFunctionListEntry signal_class_proto_funcs[] = {
 };
 
 static int js_signal_class_init(JSContext *ctx) {
-	JS_NewClassID(&Signal::__class_id);
 	classes["Signal"] = Signal::__class_id;
 	class_id_list.insert(Signal::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Signal::__class_id, &signal_class_def);

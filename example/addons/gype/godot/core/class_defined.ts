@@ -14,28 +14,60 @@ export function Tool(target: any) {
   return target;
 }
 
-export function ToPromise(signal: Signal) {
+// flag = 4 确保在await后释放连接
+export function ToSignal(instance: GodotObject, signal: string): Promise<any> {
+  return new Promise((resolve, reject) => {
+    if (!GD.is_instance_id_valid(instance.get_instance_id()))
+      reject("instance invalid");
+    const resolveWrapper = new Resolver(instance, signal, resolve);
+    const callback: Callable = resolveWrapper.callback;
+    instance.connect(signal, callback, 4);
+  });
+}
+
+class Resolver extends Node {
+  #resolve: Function;
+  #instance: GodotObject;
+  #callback: Callable;
+  #signal = "";
+  constructor(instance: GodotObject, signal: string, resolve: Function) {
+    super();
+    this.#resolve = resolve;
+    this.#instance = instance;
+    this.#callback = new Callable(this, this.resolve);
+    this.#signal = signal;
+  }
+
+  get callback() {
+    return this.#callback;
+  }
+
+  public resolve(): void {
+    this.#resolve();
+    this.queue_free();
+  }
+}
+
+/*
+
+export function toPromise(signal: Signal) {
   return new Promise((resolve, reject) => {
     const instance = signal.get_object();
     if (!GD.is_instance_id_valid(instance.get_instance_id()))
       reject("instance invalid");
-    const resolver = new Resolver(instance, signal, resolve);
-    const callback: Callable = resolver.callback;
-    instance.connect(signal, callback, 4);
+    const resolver: Resolver = new Resolver(resolve);
+    signal.connect(resolver.callback, 0);
   });
 }
 
 class Resolver extends RefCounted {
   #resolve: Function;
-  #instance: GodotObject;
   #callback: Callable;
-  #signal: Signal;
-  constructor(instance: GodotObject, signal: Signal, resolve: Function) {
+
+  constructor(resolve: Function) {
     super();
     this.#resolve = resolve;
-    this.#instance = instance;
     this.#callback = new Callable(this, this.#resolve);
-    this.#signal = signal;
   }
 
   get callback() {
@@ -47,3 +79,5 @@ class Resolver extends RefCounted {
     this.unreference();
   }
 }
+
+*/

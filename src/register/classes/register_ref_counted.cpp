@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue ref_counted_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	RefCounted *ref_counted_class;
 	if (argc == 1) 
-		ref_counted_class = static_cast<RefCounted *>(static_cast<Object *>(Variant(*argv)));
+		ref_counted_class = static_cast<RefCounted *>(Variant(*argv).operator Object *());
 	else 
 		ref_counted_class = memnew(RefCounted);
 	if (!ref_counted_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, ref_counted_class);	
+	JS_SetOpaque(obj, ref_counted_class);
 	return obj;
 }
 static JSValue ref_counted_class_init_ref(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,7 +72,6 @@ static void define_ref_counted_enum(JSContext *ctx, JSValue proto) {
 
 static int js_ref_counted_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RefCounted::__class_id);
 	classes["RefCounted"] = RefCounted::__class_id;
 	class_id_list.insert(RefCounted::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RefCounted::__class_id, &ref_counted_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/classes/multiplayer_peer_extension.hpp>
+#include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue multiplayer_peer_extension_class_constructor(JSContext *ctx, JSVa
 
 	MultiplayerPeerExtension *multiplayer_peer_extension_class;
 	if (argc == 1) 
-		multiplayer_peer_extension_class = static_cast<MultiplayerPeerExtension *>(static_cast<Object *>(Variant(*argv)));
+		multiplayer_peer_extension_class = static_cast<MultiplayerPeerExtension *>(Variant(*argv).operator Object *());
 	else 
 		multiplayer_peer_extension_class = memnew(MultiplayerPeerExtension);
 	if (!multiplayer_peer_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, multiplayer_peer_extension_class);	
+	JS_SetOpaque(obj, multiplayer_peer_extension_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_multiplayer_peer_extension_enum(JSContext *ctx, JSValue proto
 
 static int js_multiplayer_peer_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&MultiplayerPeerExtension::__class_id);
 	classes["MultiplayerPeerExtension"] = MultiplayerPeerExtension::__class_id;
 	class_id_list.insert(MultiplayerPeerExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MultiplayerPeerExtension::__class_id, &multiplayer_peer_extension_class_def);

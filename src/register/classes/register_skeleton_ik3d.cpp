@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_ik3d.hpp>
 #include <godot_cpp/classes/skeleton3d.hpp>
 #include <godot_cpp/classes/skeleton_modifier3d.hpp>
+#include <godot_cpp/classes/skeleton_ik3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue skeleton_ik3d_class_constructor(JSContext *ctx, JSValueConst new_
 
 	SkeletonIK3D *skeleton_ik3d_class;
 	if (argc == 1) 
-		skeleton_ik3d_class = static_cast<SkeletonIK3D *>(static_cast<Object *>(Variant(*argv)));
+		skeleton_ik3d_class = static_cast<SkeletonIK3D *>(Variant(*argv).operator Object *());
 	else 
 		skeleton_ik3d_class = memnew(SkeletonIK3D);
 	if (!skeleton_ik3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, skeleton_ik3d_class);	
+	JS_SetOpaque(obj, skeleton_ik3d_class);
 	return obj;
 }
 static JSValue skeleton_ik3d_class_set_root_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -253,7 +253,6 @@ static void define_skeleton_ik3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_skeleton_ik3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SkeletonIK3D::__class_id);
 	classes["SkeletonIK3D"] = SkeletonIK3D::__class_id;
 	class_id_list.insert(SkeletonIK3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SkeletonIK3D::__class_id, &skeleton_ik3d_class_def);

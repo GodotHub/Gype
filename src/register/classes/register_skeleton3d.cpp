@@ -32,14 +32,14 @@ static JSValue skeleton3d_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	Skeleton3D *skeleton3d_class;
 	if (argc == 1) 
-		skeleton3d_class = static_cast<Skeleton3D *>(static_cast<Object *>(Variant(*argv)));
+		skeleton3d_class = static_cast<Skeleton3D *>(Variant(*argv).operator Object *());
 	else 
 		skeleton3d_class = memnew(Skeleton3D);
 	if (!skeleton3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, skeleton3d_class);	
+	JS_SetOpaque(obj, skeleton3d_class);
 	return obj;
 }
 static JSValue skeleton3d_class_add_bone(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -435,7 +435,6 @@ static void define_skeleton3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_skeleton3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Skeleton3D::__class_id);
 	classes["Skeleton3D"] = Skeleton3D::__class_id;
 	class_id_list.insert(Skeleton3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Skeleton3D::__class_id, &skeleton3d_class_def);

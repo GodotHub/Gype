@@ -30,14 +30,14 @@ static JSValue audio_effect_filter_class_constructor(JSContext *ctx, JSValueCons
 
 	AudioEffectFilter *audio_effect_filter_class;
 	if (argc == 1) 
-		audio_effect_filter_class = static_cast<AudioEffectFilter *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_filter_class = static_cast<AudioEffectFilter *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_filter_class = memnew(AudioEffectFilter);
 	if (!audio_effect_filter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_filter_class);	
+	JS_SetOpaque(obj, audio_effect_filter_class);
 	return obj;
 }
 static JSValue audio_effect_filter_class_set_cutoff(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -130,7 +130,6 @@ static void define_audio_effect_filter_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_effect_filter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectFilter::__class_id);
 	classes["AudioEffectFilter"] = AudioEffectFilter::__class_id;
 	class_id_list.insert(AudioEffectFilter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectFilter::__class_id, &audio_effect_filter_class_def);

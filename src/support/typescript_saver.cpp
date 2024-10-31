@@ -6,6 +6,7 @@
 #include <godot_cpp/classes/resource_saver.hpp>
 #include <godot_cpp/classes/resource_uid.hpp>
 
+
 using namespace godot;
 
 TypeScriptSaver *TypeScriptSaver::singleton;
@@ -15,6 +16,9 @@ TypeScriptSaver *TypeScriptSaver::get_singleton() {
 		return singleton;
 	}
 	singleton = memnew(TypeScriptSaver);
+	if (likely(singleton)) {
+		ClassDB::_register_engine_singleton(TypeScriptSaver::get_class_static(), singleton);
+	}
 	return singleton;
 }
 
@@ -25,6 +29,8 @@ Error TypeScriptSaver::_save(const Ref<Resource> &p_resource, const String &p_pa
 	if (source_code != "") {
 		file->store_string(source_code);
 	}
+	file->close();
+	script->complie(false);
 	return Error::OK;
 }
 
@@ -46,4 +52,11 @@ PackedStringArray TypeScriptSaver::_get_recognized_extensions(const Ref<Resource
 
 bool TypeScriptSaver::_recognize_path(const Ref<Resource> &p_resource, const String &p_path) const {
 	return p_path.ends_with(".js") || p_path.ends_with(".ts");
+}
+
+godot::TypeScriptSaver::~TypeScriptSaver() {
+	if (singleton == this) {
+		ClassDB::_unregister_engine_singleton(TypeScriptSaver::get_class_static());
+		singleton = nullptr;
+	}
 }

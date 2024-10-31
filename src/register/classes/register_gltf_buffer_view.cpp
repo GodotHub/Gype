@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gltf_buffer_view.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/gltf_state.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/gltf_buffer_view.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue gltf_buffer_view_class_constructor(JSContext *ctx, JSValueConst n
 
 	GLTFBufferView *gltf_buffer_view_class;
 	if (argc == 1) 
-		gltf_buffer_view_class = static_cast<GLTFBufferView *>(static_cast<Object *>(Variant(*argv)));
+		gltf_buffer_view_class = static_cast<GLTFBufferView *>(Variant(*argv).operator Object *());
 	else 
 		gltf_buffer_view_class = memnew(GLTFBufferView);
 	if (!gltf_buffer_view_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_buffer_view_class);	
+	JS_SetOpaque(obj, gltf_buffer_view_class);
 	return obj;
 }
 static JSValue gltf_buffer_view_class_load_buffer_view_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -166,7 +166,6 @@ static void define_gltf_buffer_view_enum(JSContext *ctx, JSValue proto) {
 
 static int js_gltf_buffer_view_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GLTFBufferView::__class_id);
 	classes["GLTFBufferView"] = GLTFBufferView::__class_id;
 	class_id_list.insert(GLTFBufferView::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFBufferView::__class_id, &gltf_buffer_view_class_def);

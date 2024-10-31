@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/portable_compressed_texture2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue portable_compressed_texture2d_class_constructor(JSContext *ctx, J
 
 	PortableCompressedTexture2D *portable_compressed_texture2d_class;
 	if (argc == 1) 
-		portable_compressed_texture2d_class = static_cast<PortableCompressedTexture2D *>(static_cast<Object *>(Variant(*argv)));
+		portable_compressed_texture2d_class = static_cast<PortableCompressedTexture2D *>(Variant(*argv).operator Object *());
 	else 
 		portable_compressed_texture2d_class = memnew(PortableCompressedTexture2D);
 	if (!portable_compressed_texture2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, portable_compressed_texture2d_class);	
+	JS_SetOpaque(obj, portable_compressed_texture2d_class);
 	return obj;
 }
 static JSValue portable_compressed_texture2d_class_create_from_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -122,7 +122,6 @@ static void define_portable_compressed_texture2d_enum(JSContext *ctx, JSValue pr
 
 static int js_portable_compressed_texture2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PortableCompressedTexture2D::__class_id);
 	classes["PortableCompressedTexture2D"] = PortableCompressedTexture2D::__class_id;
 	class_id_list.insert(PortableCompressedTexture2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PortableCompressedTexture2D::__class_id, &portable_compressed_texture2d_class_def);

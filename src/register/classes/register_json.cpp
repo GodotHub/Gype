@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/json.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue json_class_constructor(JSContext *ctx, JSValueConst new_target, i
 
 	JSON *json_class;
 	if (argc == 1) 
-		json_class = static_cast<JSON *>(static_cast<Object *>(Variant(*argv)));
+		json_class = static_cast<JSON *>(Variant(*argv).operator Object *());
 	else 
 		json_class = memnew(JSON);
 	if (!json_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, json_class);	
+	JS_SetOpaque(obj, json_class);
 	return obj;
 }
 static JSValue json_class_parse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -100,7 +100,6 @@ static void define_json_enum(JSContext *ctx, JSValue proto) {
 
 static int js_json_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&JSON::__class_id);
 	classes["JSON"] = JSON::__class_id;
 	class_id_list.insert(JSON::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), JSON::__class_id, &json_class_def);

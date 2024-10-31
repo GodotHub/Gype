@@ -30,14 +30,14 @@ static JSValue a_star_grid2d_class_constructor(JSContext *ctx, JSValueConst new_
 
 	AStarGrid2D *a_star_grid2d_class;
 	if (argc == 1) 
-		a_star_grid2d_class = static_cast<AStarGrid2D *>(static_cast<Object *>(Variant(*argv)));
+		a_star_grid2d_class = static_cast<AStarGrid2D *>(Variant(*argv).operator Object *());
 	else 
 		a_star_grid2d_class = memnew(AStarGrid2D);
 	if (!a_star_grid2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, a_star_grid2d_class);	
+	JS_SetOpaque(obj, a_star_grid2d_class);
 	return obj;
 }
 static JSValue a_star_grid2d_class_set_region(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -304,7 +304,6 @@ static void define_a_star_grid2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_a_star_grid2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AStarGrid2D::__class_id);
 	classes["AStarGrid2D"] = AStarGrid2D::__class_id;
 	class_id_list.insert(AStarGrid2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AStarGrid2D::__class_id, &a_star_grid2d_class_def);

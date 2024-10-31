@@ -30,14 +30,14 @@ static JSValue placeholder_mesh_class_constructor(JSContext *ctx, JSValueConst n
 
 	PlaceholderMesh *placeholder_mesh_class;
 	if (argc == 1) 
-		placeholder_mesh_class = static_cast<PlaceholderMesh *>(static_cast<Object *>(Variant(*argv)));
+		placeholder_mesh_class = static_cast<PlaceholderMesh *>(Variant(*argv).operator Object *());
 	else 
 		placeholder_mesh_class = memnew(PlaceholderMesh);
 	if (!placeholder_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, placeholder_mesh_class);	
+	JS_SetOpaque(obj, placeholder_mesh_class);
 	return obj;
 }
 static JSValue placeholder_mesh_class_set_aabb(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,7 +65,6 @@ static void define_placeholder_mesh_enum(JSContext *ctx, JSValue proto) {
 
 static int js_placeholder_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PlaceholderMesh::__class_id);
 	classes["PlaceholderMesh"] = PlaceholderMesh::__class_id;
 	class_id_list.insert(PlaceholderMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PlaceholderMesh::__class_id, &placeholder_mesh_class_def);

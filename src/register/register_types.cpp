@@ -34,9 +34,9 @@ void uninitialize_tgds_types(godot::ModuleInitializationLevel p_level) {
 	if (p_level != godot::ModuleInitializationLevel::MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
-	Engine::get_singleton()->unregister_script_language(TypeScriptLanguage::get_singleton());
-	ResourceSaver::get_singleton()->remove_resource_format_saver(TypeScriptSaver::get_singleton());
-	ResourceLoader::get_singleton()->remove_resource_format_loader(TypeScriptLoader::get_singleton());
+	// Engine::get_singleton()->unregister_script_language(TypeScriptLanguage::get_singleton());
+	// ResourceSaver::get_singleton()->remove_resource_format_saver(TypeScriptSaver::get_singleton());
+	// ResourceLoader::get_singleton()->remove_resource_format_loader(TypeScriptLoader::get_singleton());
 	// memdelete(JavaScriptLanguage::get_singleton());
 	// memdelete(JavaScriptSaver::get_singleton());
 	// memdelete(JavaScriptLoader::get_singleton());

@@ -31,14 +31,14 @@ static JSValue resource_preloader_class_constructor(JSContext *ctx, JSValueConst
 
 	ResourcePreloader *resource_preloader_class;
 	if (argc == 1) 
-		resource_preloader_class = static_cast<ResourcePreloader *>(static_cast<Object *>(Variant(*argv)));
+		resource_preloader_class = static_cast<ResourcePreloader *>(Variant(*argv).operator Object *());
 	else 
 		resource_preloader_class = memnew(ResourcePreloader);
 	if (!resource_preloader_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, resource_preloader_class);	
+	JS_SetOpaque(obj, resource_preloader_class);
 	return obj;
 }
 static JSValue resource_preloader_class_add_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -83,7 +83,6 @@ static void define_resource_preloader_enum(JSContext *ctx, JSValue proto) {
 
 static int js_resource_preloader_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ResourcePreloader::__class_id);
 	classes["ResourcePreloader"] = ResourcePreloader::__class_id;
 	class_id_list.insert(ResourcePreloader::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourcePreloader::__class_id, &resource_preloader_class_def);

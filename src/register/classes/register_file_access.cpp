@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/file_access.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/file_access.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue file_access_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	FileAccess *file_access_class;
 	if (argc == 1) 
-		file_access_class = static_cast<FileAccess *>(static_cast<Object *>(Variant(*argv)));
+		file_access_class = static_cast<FileAccess *>(Variant(*argv).operator Object *());
 	else 
 		file_access_class = memnew(FileAccess);
 	if (!file_access_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, file_access_class);	
+	JS_SetOpaque(obj, file_access_class);
 	return obj;
 }
 static JSValue file_access_class_resize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -358,7 +358,6 @@ static void define_file_access_enum(JSContext *ctx, JSValue proto) {
 
 static int js_file_access_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&FileAccess::__class_id);
 	classes["FileAccess"] = FileAccess::__class_id;
 	class_id_list.insert(FileAccess::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), FileAccess::__class_id, &file_access_class_def);

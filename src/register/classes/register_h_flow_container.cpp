@@ -30,14 +30,14 @@ static JSValue h_flow_container_class_constructor(JSContext *ctx, JSValueConst n
 
 	HFlowContainer *h_flow_container_class;
 	if (argc == 1) 
-		h_flow_container_class = static_cast<HFlowContainer *>(static_cast<Object *>(Variant(*argv)));
+		h_flow_container_class = static_cast<HFlowContainer *>(Variant(*argv).operator Object *());
 	else 
 		h_flow_container_class = memnew(HFlowContainer);
 	if (!h_flow_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, h_flow_container_class);	
+	JS_SetOpaque(obj, h_flow_container_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_h_flow_container_enum(JSContext *ctx, JSValue proto) {
 
 static int js_h_flow_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&HFlowContainer::__class_id);
 	classes["HFlowContainer"] = HFlowContainer::__class_id;
 	class_id_list.insert(HFlowContainer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), HFlowContainer::__class_id, &h_flow_container_class_def);

@@ -30,14 +30,14 @@ static JSValue editor_command_palette_class_constructor(JSContext *ctx, JSValueC
 
 	EditorCommandPalette *editor_command_palette_class;
 	if (argc == 1) 
-		editor_command_palette_class = static_cast<EditorCommandPalette *>(static_cast<Object *>(Variant(*argv)));
+		editor_command_palette_class = static_cast<EditorCommandPalette *>(Variant(*argv).operator Object *());
 	else 
 		editor_command_palette_class = memnew(EditorCommandPalette);
 	if (!editor_command_palette_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_command_palette_class);	
+	JS_SetOpaque(obj, editor_command_palette_class);
 	return obj;
 }
 static JSValue editor_command_palette_class_add_command(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +62,6 @@ static void define_editor_command_palette_enum(JSContext *ctx, JSValue proto) {
 
 static int js_editor_command_palette_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorCommandPalette::__class_id);
 	classes["EditorCommandPalette"] = EditorCommandPalette::__class_id;
 	class_id_list.insert(EditorCommandPalette::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorCommandPalette::__class_id, &editor_command_palette_class_def);

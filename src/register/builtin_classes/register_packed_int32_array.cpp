@@ -144,7 +144,6 @@ static const JSCFunctionListEntry packed_int32_array_class_proto_funcs[] = {
 };
 
 static int js_packed_int32_array_class_init(JSContext *ctx) {
-	JS_NewClassID(&PackedInt32Array::__class_id);
 	classes["PackedInt32Array"] = PackedInt32Array::__class_id;
 	class_id_list.insert(PackedInt32Array::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PackedInt32Array::__class_id, &packed_int32_array_class_def);

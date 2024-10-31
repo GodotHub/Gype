@@ -30,14 +30,14 @@ static JSValue texture_layered_rd_class_constructor(JSContext *ctx, JSValueConst
 
 	TextureLayeredRD *texture_layered_rd_class;
 	if (argc == 1) 
-		texture_layered_rd_class = static_cast<TextureLayeredRD *>(static_cast<Object *>(Variant(*argv)));
+		texture_layered_rd_class = static_cast<TextureLayeredRD *>(Variant(*argv).operator Object *());
 	else 
 		texture_layered_rd_class = memnew(TextureLayeredRD);
 	if (!texture_layered_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, texture_layered_rd_class);	
+	JS_SetOpaque(obj, texture_layered_rd_class);
 	return obj;
 }
 static JSValue texture_layered_rd_class_set_texture_rd_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_texture_layered_rd_enum(JSContext *ctx, JSValue proto) {
 
 static int js_texture_layered_rd_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&TextureLayeredRD::__class_id);
 	classes["TextureLayeredRD"] = TextureLayeredRD::__class_id;
 	class_id_list.insert(TextureLayeredRD::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TextureLayeredRD::__class_id, &texture_layered_rd_class_def);

@@ -30,14 +30,14 @@ static JSValue texture3drd_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	Texture3DRD *texture3drd_class;
 	if (argc == 1) 
-		texture3drd_class = static_cast<Texture3DRD *>(static_cast<Object *>(Variant(*argv)));
+		texture3drd_class = static_cast<Texture3DRD *>(Variant(*argv).operator Object *());
 	else 
 		texture3drd_class = memnew(Texture3DRD);
 	if (!texture3drd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, texture3drd_class);	
+	JS_SetOpaque(obj, texture3drd_class);
 	return obj;
 }
 static JSValue texture3drd_class_set_texture_rd_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_texture3drd_enum(JSContext *ctx, JSValue proto) {
 
 static int js_texture3drd_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Texture3DRD::__class_id);
 	classes["Texture3DRD"] = Texture3DRD::__class_id;
 	class_id_list.insert(Texture3DRD::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Texture3DRD::__class_id, &texture3drd_class_def);

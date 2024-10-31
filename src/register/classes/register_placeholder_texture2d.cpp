@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/placeholder_texture2d.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue placeholder_texture2d_class_constructor(JSContext *ctx, JSValueCo
 
 	PlaceholderTexture2D *placeholder_texture2d_class;
 	if (argc == 1) 
-		placeholder_texture2d_class = static_cast<PlaceholderTexture2D *>(static_cast<Object *>(Variant(*argv)));
+		placeholder_texture2d_class = static_cast<PlaceholderTexture2D *>(Variant(*argv).operator Object *());
 	else 
 		placeholder_texture2d_class = memnew(PlaceholderTexture2D);
 	if (!placeholder_texture2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, placeholder_texture2d_class);	
+	JS_SetOpaque(obj, placeholder_texture2d_class);
 	return obj;
 }
 static JSValue placeholder_texture2d_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,7 +65,6 @@ static void define_placeholder_texture2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_placeholder_texture2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PlaceholderTexture2D::__class_id);
 	classes["PlaceholderTexture2D"] = PlaceholderTexture2D::__class_id;
 	class_id_list.insert(PlaceholderTexture2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PlaceholderTexture2D::__class_id, &placeholder_texture2d_class_def);

@@ -30,14 +30,14 @@ static JSValue collision_polygon2d_class_constructor(JSContext *ctx, JSValueCons
 
 	CollisionPolygon2D *collision_polygon2d_class;
 	if (argc == 1) 
-		collision_polygon2d_class = static_cast<CollisionPolygon2D *>(static_cast<Object *>(Variant(*argv)));
+		collision_polygon2d_class = static_cast<CollisionPolygon2D *>(Variant(*argv).operator Object *());
 	else 
 		collision_polygon2d_class = memnew(CollisionPolygon2D);
 	if (!collision_polygon2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, collision_polygon2d_class);	
+	JS_SetOpaque(obj, collision_polygon2d_class);
 	return obj;
 }
 static JSValue collision_polygon2d_class_set_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -146,7 +146,6 @@ static void define_collision_polygon2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_collision_polygon2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CollisionPolygon2D::__class_id);
 	classes["CollisionPolygon2D"] = CollisionPolygon2D::__class_id;
 	class_id_list.insert(CollisionPolygon2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CollisionPolygon2D::__class_id, &collision_polygon2d_class_def);

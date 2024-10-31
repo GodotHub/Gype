@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_low_pass_filter.hpp>
 #include <godot_cpp/classes/audio_effect_filter.hpp>
+#include <godot_cpp/classes/audio_effect_low_pass_filter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue audio_effect_low_pass_filter_class_constructor(JSContext *ctx, JS
 
 	AudioEffectLowPassFilter *audio_effect_low_pass_filter_class;
 	if (argc == 1) 
-		audio_effect_low_pass_filter_class = static_cast<AudioEffectLowPassFilter *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_low_pass_filter_class = static_cast<AudioEffectLowPassFilter *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_low_pass_filter_class = memnew(AudioEffectLowPassFilter);
 	if (!audio_effect_low_pass_filter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_low_pass_filter_class);	
+	JS_SetOpaque(obj, audio_effect_low_pass_filter_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_audio_effect_low_pass_filter_enum(JSContext *ctx, JSValue pro
 
 static int js_audio_effect_low_pass_filter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectLowPassFilter::__class_id);
 	classes["AudioEffectLowPassFilter"] = AudioEffectLowPassFilter::__class_id;
 	class_id_list.insert(AudioEffectLowPassFilter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectLowPassFilter::__class_id, &audio_effect_low_pass_filter_class_def);

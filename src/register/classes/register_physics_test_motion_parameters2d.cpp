@@ -30,14 +30,14 @@ static JSValue physics_test_motion_parameters2d_class_constructor(JSContext *ctx
 
 	PhysicsTestMotionParameters2D *physics_test_motion_parameters2d_class;
 	if (argc == 1) 
-		physics_test_motion_parameters2d_class = static_cast<PhysicsTestMotionParameters2D *>(static_cast<Object *>(Variant(*argv)));
+		physics_test_motion_parameters2d_class = static_cast<PhysicsTestMotionParameters2D *>(Variant(*argv).operator Object *());
 	else 
 		physics_test_motion_parameters2d_class = memnew(PhysicsTestMotionParameters2D);
 	if (!physics_test_motion_parameters2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, physics_test_motion_parameters2d_class);	
+	JS_SetOpaque(obj, physics_test_motion_parameters2d_class);
 	return obj;
 }
 static JSValue physics_test_motion_parameters2d_class_get_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -178,7 +178,6 @@ static void define_physics_test_motion_parameters2d_enum(JSContext *ctx, JSValue
 
 static int js_physics_test_motion_parameters2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PhysicsTestMotionParameters2D::__class_id);
 	classes["PhysicsTestMotionParameters2D"] = PhysicsTestMotionParameters2D::__class_id;
 	class_id_list.insert(PhysicsTestMotionParameters2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PhysicsTestMotionParameters2D::__class_id, &physics_test_motion_parameters2d_class_def);

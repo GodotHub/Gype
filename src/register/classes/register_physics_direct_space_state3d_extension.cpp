@@ -30,14 +30,14 @@ static JSValue physics_direct_space_state3d_extension_class_constructor(JSContex
 
 	PhysicsDirectSpaceState3DExtension *physics_direct_space_state3d_extension_class;
 	if (argc == 1) 
-		physics_direct_space_state3d_extension_class = static_cast<PhysicsDirectSpaceState3DExtension *>(static_cast<Object *>(Variant(*argv)));
+		physics_direct_space_state3d_extension_class = static_cast<PhysicsDirectSpaceState3DExtension *>(Variant(*argv).operator Object *());
 	else 
 		physics_direct_space_state3d_extension_class = memnew(PhysicsDirectSpaceState3DExtension);
 	if (!physics_direct_space_state3d_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, physics_direct_space_state3d_extension_class);	
+	JS_SetOpaque(obj, physics_direct_space_state3d_extension_class);
 	return obj;
 }
 static JSValue physics_direct_space_state3d_extension_class_is_body_excluded_from_query(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,7 +57,6 @@ static void define_physics_direct_space_state3d_extension_enum(JSContext *ctx, J
 
 static int js_physics_direct_space_state3d_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PhysicsDirectSpaceState3DExtension::__class_id);
 	classes["PhysicsDirectSpaceState3DExtension"] = PhysicsDirectSpaceState3DExtension::__class_id;
 	class_id_list.insert(PhysicsDirectSpaceState3DExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PhysicsDirectSpaceState3DExtension::__class_id, &physics_direct_space_state3d_extension_class_def);

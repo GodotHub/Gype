@@ -178,7 +178,6 @@ void define_vector3i_property(JSContext *ctx, JSValue obj) {
 }
 
 static int js_vector3i_class_init(JSContext *ctx) {
-	JS_NewClassID(&Vector3i::__class_id);
 	classes["Vector3i"] = Vector3i::__class_id;
 	class_id_list.insert(Vector3i::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Vector3i::__class_id, &vector3i_class_def);

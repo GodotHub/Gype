@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/v_split_container.hpp>
 #include <godot_cpp/classes/split_container.hpp>
+#include <godot_cpp/classes/v_split_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue v_split_container_class_constructor(JSContext *ctx, JSValueConst 
 
 	VSplitContainer *v_split_container_class;
 	if (argc == 1) 
-		v_split_container_class = static_cast<VSplitContainer *>(static_cast<Object *>(Variant(*argv)));
+		v_split_container_class = static_cast<VSplitContainer *>(Variant(*argv).operator Object *());
 	else 
 		v_split_container_class = memnew(VSplitContainer);
 	if (!v_split_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, v_split_container_class);	
+	JS_SetOpaque(obj, v_split_container_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_v_split_container_enum(JSContext *ctx, JSValue proto) {
 
 static int js_v_split_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VSplitContainer::__class_id);
 	classes["VSplitContainer"] = VSplitContainer::__class_id;
 	class_id_list.insert(VSplitContainer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VSplitContainer::__class_id, &v_split_container_class_def);

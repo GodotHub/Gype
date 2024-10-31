@@ -30,14 +30,14 @@ static JSValue canvas_texture_class_constructor(JSContext *ctx, JSValueConst new
 
 	CanvasTexture *canvas_texture_class;
 	if (argc == 1) 
-		canvas_texture_class = static_cast<CanvasTexture *>(static_cast<Object *>(Variant(*argv)));
+		canvas_texture_class = static_cast<CanvasTexture *>(Variant(*argv).operator Object *());
 	else 
 		canvas_texture_class = memnew(CanvasTexture);
 	if (!canvas_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, canvas_texture_class);	
+	JS_SetOpaque(obj, canvas_texture_class);
 	return obj;
 }
 static JSValue canvas_texture_class_set_diffuse_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -178,7 +178,6 @@ static void define_canvas_texture_enum(JSContext *ctx, JSValue proto) {
 
 static int js_canvas_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CanvasTexture::__class_id);
 	classes["CanvasTexture"] = CanvasTexture::__class_id;
 	class_id_list.insert(CanvasTexture::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CanvasTexture::__class_id, &canvas_texture_class_def);

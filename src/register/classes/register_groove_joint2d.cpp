@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/groove_joint2d.hpp>
 #include <godot_cpp/classes/joint2d.hpp>
+#include <godot_cpp/classes/groove_joint2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue groove_joint2d_class_constructor(JSContext *ctx, JSValueConst new
 
 	GrooveJoint2D *groove_joint2d_class;
 	if (argc == 1) 
-		groove_joint2d_class = static_cast<GrooveJoint2D *>(static_cast<Object *>(Variant(*argv)));
+		groove_joint2d_class = static_cast<GrooveJoint2D *>(Variant(*argv).operator Object *());
 	else 
 		groove_joint2d_class = memnew(GrooveJoint2D);
 	if (!groove_joint2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, groove_joint2d_class);	
+	JS_SetOpaque(obj, groove_joint2d_class);
 	return obj;
 }
 static JSValue groove_joint2d_class_set_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,7 +88,6 @@ static void define_groove_joint2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_groove_joint2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GrooveJoint2D::__class_id);
 	classes["GrooveJoint2D"] = GrooveJoint2D::__class_id;
 	class_id_list.insert(GrooveJoint2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GrooveJoint2D::__class_id, &groove_joint2d_class_def);

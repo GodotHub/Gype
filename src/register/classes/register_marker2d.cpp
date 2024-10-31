@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/marker2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue marker2d_class_constructor(JSContext *ctx, JSValueConst new_targe
 
 	Marker2D *marker2d_class;
 	if (argc == 1) 
-		marker2d_class = static_cast<Marker2D *>(static_cast<Object *>(Variant(*argv)));
+		marker2d_class = static_cast<Marker2D *>(Variant(*argv).operator Object *());
 	else 
 		marker2d_class = memnew(Marker2D);
 	if (!marker2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, marker2d_class);	
+	JS_SetOpaque(obj, marker2d_class);
 	return obj;
 }
 static JSValue marker2d_class_set_gizmo_extents(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_marker2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_marker2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Marker2D::__class_id);
 	classes["Marker2D"] = Marker2D::__class_id;
 	class_id_list.insert(Marker2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Marker2D::__class_id, &marker2d_class_def);

@@ -30,14 +30,14 @@ static JSValue video_stream_theora_class_constructor(JSContext *ctx, JSValueCons
 
 	VideoStreamTheora *video_stream_theora_class;
 	if (argc == 1) 
-		video_stream_theora_class = static_cast<VideoStreamTheora *>(static_cast<Object *>(Variant(*argv)));
+		video_stream_theora_class = static_cast<VideoStreamTheora *>(Variant(*argv).operator Object *());
 	else 
 		video_stream_theora_class = memnew(VideoStreamTheora);
 	if (!video_stream_theora_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, video_stream_theora_class);	
+	JS_SetOpaque(obj, video_stream_theora_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_video_stream_theora_enum(JSContext *ctx, JSValue proto) {
 
 static int js_video_stream_theora_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VideoStreamTheora::__class_id);
 	classes["VideoStreamTheora"] = VideoStreamTheora::__class_id;
 	class_id_list.insert(VideoStreamTheora::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VideoStreamTheora::__class_id, &video_stream_theora_class_def);

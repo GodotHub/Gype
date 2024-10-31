@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/graph_frame.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/classes/graph_edit.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -34,14 +34,14 @@ static JSValue graph_edit_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	GraphEdit *graph_edit_class;
 	if (argc == 1) 
-		graph_edit_class = static_cast<GraphEdit *>(static_cast<Object *>(Variant(*argv)));
+		graph_edit_class = static_cast<GraphEdit *>(Variant(*argv).operator Object *());
 	else 
 		graph_edit_class = memnew(GraphEdit);
 	if (!graph_edit_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, graph_edit_class);	
+	JS_SetOpaque(obj, graph_edit_class);
 	return obj;
 }
 static JSValue graph_edit_class_connect_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -922,7 +922,6 @@ static void define_graph_edit_enum(JSContext *ctx, JSValue proto) {
 
 static int js_graph_edit_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GraphEdit::__class_id);
 	classes["GraphEdit"] = GraphEdit::__class_id;
 	class_id_list.insert(GraphEdit::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GraphEdit::__class_id, &graph_edit_class_def);

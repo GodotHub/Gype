@@ -30,14 +30,14 @@ static JSValue gltf_texture_sampler_class_constructor(JSContext *ctx, JSValueCon
 
 	GLTFTextureSampler *gltf_texture_sampler_class;
 	if (argc == 1) 
-		gltf_texture_sampler_class = static_cast<GLTFTextureSampler *>(static_cast<Object *>(Variant(*argv)));
+		gltf_texture_sampler_class = static_cast<GLTFTextureSampler *>(Variant(*argv).operator Object *());
 	else 
 		gltf_texture_sampler_class = memnew(GLTFTextureSampler);
 	if (!gltf_texture_sampler_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_texture_sampler_class);	
+	JS_SetOpaque(obj, gltf_texture_sampler_class);
 	return obj;
 }
 static JSValue gltf_texture_sampler_class_get_mag_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -124,7 +124,6 @@ static void define_gltf_texture_sampler_enum(JSContext *ctx, JSValue proto) {
 
 static int js_gltf_texture_sampler_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GLTFTextureSampler::__class_id);
 	classes["GLTFTextureSampler"] = GLTFTextureSampler::__class_id;
 	class_id_list.insert(GLTFTextureSampler::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFTextureSampler::__class_id, &gltf_texture_sampler_class_def);

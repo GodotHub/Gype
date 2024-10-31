@@ -30,14 +30,14 @@ static JSValue editor_spin_slider_class_constructor(JSContext *ctx, JSValueConst
 
 	EditorSpinSlider *editor_spin_slider_class;
 	if (argc == 1) 
-		editor_spin_slider_class = static_cast<EditorSpinSlider *>(static_cast<Object *>(Variant(*argv)));
+		editor_spin_slider_class = static_cast<EditorSpinSlider *>(Variant(*argv).operator Object *());
 	else 
 		editor_spin_slider_class = memnew(EditorSpinSlider);
 	if (!editor_spin_slider_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_spin_slider_class);	
+	JS_SetOpaque(obj, editor_spin_slider_class);
 	return obj;
 }
 static JSValue editor_spin_slider_class_set_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -214,7 +214,6 @@ static void define_editor_spin_slider_enum(JSContext *ctx, JSValue proto) {
 
 static int js_editor_spin_slider_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorSpinSlider::__class_id);
 	classes["EditorSpinSlider"] = EditorSpinSlider::__class_id;
 	class_id_list.insert(EditorSpinSlider::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorSpinSlider::__class_id, &editor_spin_slider_class_def);

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/animation_node_transition.hpp>
 #include <godot_cpp/classes/animation_node_sync.hpp>
-#include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue animation_node_transition_class_constructor(JSContext *ctx, JSVal
 
 	AnimationNodeTransition *animation_node_transition_class;
 	if (argc == 1) 
-		animation_node_transition_class = static_cast<AnimationNodeTransition *>(static_cast<Object *>(Variant(*argv)));
+		animation_node_transition_class = static_cast<AnimationNodeTransition *>(Variant(*argv).operator Object *());
 	else 
 		animation_node_transition_class = memnew(AnimationNodeTransition);
 	if (!animation_node_transition_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animation_node_transition_class);	
+	JS_SetOpaque(obj, animation_node_transition_class);
 	return obj;
 }
 static JSValue animation_node_transition_class_set_input_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -150,7 +150,6 @@ static void define_animation_node_transition_enum(JSContext *ctx, JSValue proto)
 
 static int js_animation_node_transition_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AnimationNodeTransition::__class_id);
 	classes["AnimationNodeTransition"] = AnimationNodeTransition::__class_id;
 	class_id_list.insert(AnimationNodeTransition::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationNodeTransition::__class_id, &animation_node_transition_class_def);

@@ -30,14 +30,14 @@ static JSValue array_occluder3d_class_constructor(JSContext *ctx, JSValueConst n
 
 	ArrayOccluder3D *array_occluder3d_class;
 	if (argc == 1) 
-		array_occluder3d_class = static_cast<ArrayOccluder3D *>(static_cast<Object *>(Variant(*argv)));
+		array_occluder3d_class = static_cast<ArrayOccluder3D *>(Variant(*argv).operator Object *());
 	else 
 		array_occluder3d_class = memnew(ArrayOccluder3D);
 	if (!array_occluder3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, array_occluder3d_class);	
+	JS_SetOpaque(obj, array_occluder3d_class);
 	return obj;
 }
 static JSValue array_occluder3d_class_set_arrays(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -83,7 +83,6 @@ static void define_array_occluder3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_array_occluder3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ArrayOccluder3D::__class_id);
 	classes["ArrayOccluder3D"] = ArrayOccluder3D::__class_id;
 	class_id_list.insert(ArrayOccluder3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ArrayOccluder3D::__class_id, &array_occluder3d_class_def);

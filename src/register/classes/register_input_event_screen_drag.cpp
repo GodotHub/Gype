@@ -30,14 +30,14 @@ static JSValue input_event_screen_drag_class_constructor(JSContext *ctx, JSValue
 
 	InputEventScreenDrag *input_event_screen_drag_class;
 	if (argc == 1) 
-		input_event_screen_drag_class = static_cast<InputEventScreenDrag *>(static_cast<Object *>(Variant(*argv)));
+		input_event_screen_drag_class = static_cast<InputEventScreenDrag *>(Variant(*argv).operator Object *());
 	else 
 		input_event_screen_drag_class = memnew(InputEventScreenDrag);
 	if (!input_event_screen_drag_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, input_event_screen_drag_class);	
+	JS_SetOpaque(obj, input_event_screen_drag_class);
 	return obj;
 }
 static JSValue input_event_screen_drag_class_set_index(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -214,7 +214,6 @@ static void define_input_event_screen_drag_enum(JSContext *ctx, JSValue proto) {
 
 static int js_input_event_screen_drag_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&InputEventScreenDrag::__class_id);
 	classes["InputEventScreenDrag"] = InputEventScreenDrag::__class_id;
 	class_id_list.insert(InputEventScreenDrag::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), InputEventScreenDrag::__class_id, &input_event_screen_drag_class_def);

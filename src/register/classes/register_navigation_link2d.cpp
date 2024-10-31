@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/navigation_link2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/navigation_link2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue navigation_link2d_class_constructor(JSContext *ctx, JSValueConst 
 
 	NavigationLink2D *navigation_link2d_class;
 	if (argc == 1) 
-		navigation_link2d_class = static_cast<NavigationLink2D *>(static_cast<Object *>(Variant(*argv)));
+		navigation_link2d_class = static_cast<NavigationLink2D *>(Variant(*argv).operator Object *());
 	else 
 		navigation_link2d_class = memnew(NavigationLink2D);
 	if (!navigation_link2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, navigation_link2d_class);	
+	JS_SetOpaque(obj, navigation_link2d_class);
 	return obj;
 }
 static JSValue navigation_link2d_class_get_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -213,7 +213,6 @@ static void define_navigation_link2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_navigation_link2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&NavigationLink2D::__class_id);
 	classes["NavigationLink2D"] = NavigationLink2D::__class_id;
 	class_id_list.insert(NavigationLink2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NavigationLink2D::__class_id, &navigation_link2d_class_def);

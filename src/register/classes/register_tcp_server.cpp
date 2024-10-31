@@ -31,14 +31,14 @@ static JSValue tcp_server_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	TCPServer *tcp_server_class;
 	if (argc == 1) 
-		tcp_server_class = static_cast<TCPServer *>(static_cast<Object *>(Variant(*argv)));
+		tcp_server_class = static_cast<TCPServer *>(Variant(*argv).operator Object *());
 	else 
 		tcp_server_class = memnew(TCPServer);
 	if (!tcp_server_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, tcp_server_class);	
+	JS_SetOpaque(obj, tcp_server_class);
 	return obj;
 }
 static JSValue tcp_server_class_listen(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -83,7 +83,6 @@ static void define_tcp_server_enum(JSContext *ctx, JSValue proto) {
 
 static int js_tcp_server_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&TCPServer::__class_id);
 	classes["TCPServer"] = TCPServer::__class_id;
 	class_id_list.insert(TCPServer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TCPServer::__class_id, &tcp_server_class_def);

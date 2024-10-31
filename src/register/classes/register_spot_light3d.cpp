@@ -30,14 +30,14 @@ static JSValue spot_light3d_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	SpotLight3D *spot_light3d_class;
 	if (argc == 1) 
-		spot_light3d_class = static_cast<SpotLight3D *>(static_cast<Object *>(Variant(*argv)));
+		spot_light3d_class = static_cast<SpotLight3D *>(Variant(*argv).operator Object *());
 	else 
 		spot_light3d_class = memnew(SpotLight3D);
 	if (!spot_light3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, spot_light3d_class);	
+	JS_SetOpaque(obj, spot_light3d_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_spot_light3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_spot_light3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SpotLight3D::__class_id);
 	classes["SpotLight3D"] = SpotLight3D::__class_id;
 	class_id_list.insert(SpotLight3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SpotLight3D::__class_id, &spot_light3d_class_def);

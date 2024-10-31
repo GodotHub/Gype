@@ -30,14 +30,14 @@ static JSValue capsule_shape3d_class_constructor(JSContext *ctx, JSValueConst ne
 
 	CapsuleShape3D *capsule_shape3d_class;
 	if (argc == 1) 
-		capsule_shape3d_class = static_cast<CapsuleShape3D *>(static_cast<Object *>(Variant(*argv)));
+		capsule_shape3d_class = static_cast<CapsuleShape3D *>(Variant(*argv).operator Object *());
 	else 
 		capsule_shape3d_class = memnew(CapsuleShape3D);
 	if (!capsule_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, capsule_shape3d_class);	
+	JS_SetOpaque(obj, capsule_shape3d_class);
 	return obj;
 }
 static JSValue capsule_shape3d_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,7 +88,6 @@ static void define_capsule_shape3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_capsule_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CapsuleShape3D::__class_id);
 	classes["CapsuleShape3D"] = CapsuleShape3D::__class_id;
 	class_id_list.insert(CapsuleShape3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CapsuleShape3D::__class_id, &capsule_shape3d_class_def);

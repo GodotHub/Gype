@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/classes/instance_placeholder.hpp>
+#include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue instance_placeholder_class_constructor(JSContext *ctx, JSValueCon
 
 	InstancePlaceholder *instance_placeholder_class;
 	if (argc == 1) 
-		instance_placeholder_class = static_cast<InstancePlaceholder *>(static_cast<Object *>(Variant(*argv)));
+		instance_placeholder_class = static_cast<InstancePlaceholder *>(Variant(*argv).operator Object *());
 	else 
 		instance_placeholder_class = memnew(InstancePlaceholder);
 	if (!instance_placeholder_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, instance_placeholder_class);	
+	JS_SetOpaque(obj, instance_placeholder_class);
 	return obj;
 }
 static JSValue instance_placeholder_class_get_stored_values(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -68,7 +68,6 @@ static void define_instance_placeholder_enum(JSContext *ctx, JSValue proto) {
 
 static int js_instance_placeholder_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&InstancePlaceholder::__class_id);
 	classes["InstancePlaceholder"] = InstancePlaceholder::__class_id;
 	class_id_list.insert(InstancePlaceholder::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), InstancePlaceholder::__class_id, &instance_placeholder_class_def);

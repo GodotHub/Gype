@@ -5,12 +5,12 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/cpu_particles3d.hpp>
-#include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/gradient.hpp>
+#include <godot_cpp/classes/cpu_particles3d.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -34,14 +34,14 @@ static JSValue cpu_particles3d_class_constructor(JSContext *ctx, JSValueConst ne
 
 	CPUParticles3D *cpu_particles3d_class;
 	if (argc == 1) 
-		cpu_particles3d_class = static_cast<CPUParticles3D *>(static_cast<Object *>(Variant(*argv)));
+		cpu_particles3d_class = static_cast<CPUParticles3D *>(Variant(*argv).operator Object *());
 	else 
 		cpu_particles3d_class = memnew(CPUParticles3D);
 	if (!cpu_particles3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, cpu_particles3d_class);	
+	JS_SetOpaque(obj, cpu_particles3d_class);
 	return obj;
 }
 static JSValue cpu_particles3d_class_set_emitting(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -1112,7 +1112,6 @@ static void define_cpu_particles3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_cpu_particles3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CPUParticles3D::__class_id);
 	classes["CPUParticles3D"] = CPUParticles3D::__class_id;
 	class_id_list.insert(CPUParticles3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CPUParticles3D::__class_id, &cpu_particles3d_class_def);

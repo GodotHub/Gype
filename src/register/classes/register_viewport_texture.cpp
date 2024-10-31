@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/viewport_texture.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue viewport_texture_class_constructor(JSContext *ctx, JSValueConst n
 
 	ViewportTexture *viewport_texture_class;
 	if (argc == 1) 
-		viewport_texture_class = static_cast<ViewportTexture *>(static_cast<Object *>(Variant(*argv)));
+		viewport_texture_class = static_cast<ViewportTexture *>(Variant(*argv).operator Object *());
 	else 
 		viewport_texture_class = memnew(ViewportTexture);
 	if (!viewport_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, viewport_texture_class);	
+	JS_SetOpaque(obj, viewport_texture_class);
 	return obj;
 }
 static JSValue viewport_texture_class_set_viewport_path_in_scene(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_viewport_texture_enum(JSContext *ctx, JSValue proto) {
 
 static int js_viewport_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ViewportTexture::__class_id);
 	classes["ViewportTexture"] = ViewportTexture::__class_id;
 	class_id_list.insert(ViewportTexture::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ViewportTexture::__class_id, &viewport_texture_class_def);

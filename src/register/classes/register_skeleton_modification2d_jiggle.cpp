@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/classes/skeleton_modification2d_jiggle.hpp>
+#include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue skeleton_modification2d_jiggle_class_constructor(JSContext *ctx, 
 
 	SkeletonModification2DJiggle *skeleton_modification2d_jiggle_class;
 	if (argc == 1) 
-		skeleton_modification2d_jiggle_class = static_cast<SkeletonModification2DJiggle *>(static_cast<Object *>(Variant(*argv)));
+		skeleton_modification2d_jiggle_class = static_cast<SkeletonModification2DJiggle *>(Variant(*argv).operator Object *());
 	else 
 		skeleton_modification2d_jiggle_class = memnew(SkeletonModification2DJiggle);
 	if (!skeleton_modification2d_jiggle_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, skeleton_modification2d_jiggle_class);	
+	JS_SetOpaque(obj, skeleton_modification2d_jiggle_class);
 	return obj;
 }
 static JSValue skeleton_modification2d_jiggle_class_set_target_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -278,7 +278,6 @@ static void define_skeleton_modification2d_jiggle_enum(JSContext *ctx, JSValue p
 
 static int js_skeleton_modification2d_jiggle_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SkeletonModification2DJiggle::__class_id);
 	classes["SkeletonModification2DJiggle"] = SkeletonModification2DJiggle::__class_id;
 	class_id_list.insert(SkeletonModification2DJiggle::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SkeletonModification2DJiggle::__class_id, &skeleton_modification2d_jiggle_class_def);

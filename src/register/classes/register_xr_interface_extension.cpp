@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/classes/xr_interface_extension.hpp>
+#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue xr_interface_extension_class_constructor(JSContext *ctx, JSValueC
 
 	XRInterfaceExtension *xr_interface_extension_class;
 	if (argc == 1) 
-		xr_interface_extension_class = static_cast<XRInterfaceExtension *>(static_cast<Object *>(Variant(*argv)));
+		xr_interface_extension_class = static_cast<XRInterfaceExtension *>(Variant(*argv).operator Object *());
 	else 
 		xr_interface_extension_class = memnew(XRInterfaceExtension);
 	if (!xr_interface_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, xr_interface_extension_class);	
+	JS_SetOpaque(obj, xr_interface_extension_class);
 	return obj;
 }
 static JSValue xr_interface_extension_class_get_color_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -77,7 +77,6 @@ static void define_xr_interface_extension_enum(JSContext *ctx, JSValue proto) {
 
 static int js_xr_interface_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&XRInterfaceExtension::__class_id);
 	classes["XRInterfaceExtension"] = XRInterfaceExtension::__class_id;
 	class_id_list.insert(XRInterfaceExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRInterfaceExtension::__class_id, &xr_interface_extension_class_def);

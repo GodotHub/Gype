@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/classes/editor_property.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -32,14 +32,14 @@ static JSValue editor_property_class_constructor(JSContext *ctx, JSValueConst ne
 
 	EditorProperty *editor_property_class;
 	if (argc == 1) 
-		editor_property_class = static_cast<EditorProperty *>(static_cast<Object *>(Variant(*argv)));
+		editor_property_class = static_cast<EditorProperty *>(Variant(*argv).operator Object *());
 	else 
 		editor_property_class = memnew(EditorProperty);
 	if (!editor_property_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_property_class);	
+	JS_SetOpaque(obj, editor_property_class);
 	return obj;
 }
 static JSValue editor_property_class_set_label(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -408,7 +408,6 @@ static void define_editor_property_enum(JSContext *ctx, JSValue proto) {
 
 static int js_editor_property_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorProperty::__class_id);
 	classes["EditorProperty"] = EditorProperty::__class_id;
 	class_id_list.insert(EditorProperty::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorProperty::__class_id, &editor_property_class_def);

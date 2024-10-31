@@ -22,6 +22,7 @@ public:
 	bool _recognize(const Ref<Resource> &p_resource) const;
 	PackedStringArray _get_recognized_extensions(const Ref<Resource> &p_resource) const;
 	bool _recognize_path(const Ref<Resource> &p_resource, const String &p_path) const;
+	~TypeScriptSaver();
 
 protected:
 	static void _bind_methods() {}

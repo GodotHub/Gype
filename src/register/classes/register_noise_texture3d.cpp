@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gradient.hpp>
-#include <godot_cpp/classes/noise.hpp>
-#include <godot_cpp/classes/noise_texture3d.hpp>
 #include <godot_cpp/classes/texture3d.hpp>
+#include <godot_cpp/classes/noise.hpp>
+#include <godot_cpp/classes/gradient.hpp>
+#include <godot_cpp/classes/noise_texture3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue noise_texture3d_class_constructor(JSContext *ctx, JSValueConst ne
 
 	NoiseTexture3D *noise_texture3d_class;
 	if (argc == 1) 
-		noise_texture3d_class = static_cast<NoiseTexture3D *>(static_cast<Object *>(Variant(*argv)));
+		noise_texture3d_class = static_cast<NoiseTexture3D *>(Variant(*argv).operator Object *());
 	else 
 		noise_texture3d_class = memnew(NoiseTexture3D);
 	if (!noise_texture3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, noise_texture3d_class);	
+	JS_SetOpaque(obj, noise_texture3d_class);
 	return obj;
 }
 static JSValue noise_texture3d_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -201,7 +201,6 @@ static void define_noise_texture3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_noise_texture3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&NoiseTexture3D::__class_id);
 	classes["NoiseTexture3D"] = NoiseTexture3D::__class_id;
 	class_id_list.insert(NoiseTexture3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NoiseTexture3D::__class_id, &noise_texture3d_class_def);

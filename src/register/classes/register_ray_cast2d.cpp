@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/ray_cast2d.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/collision_object2d.hpp>
-#include <godot_cpp/classes/ray_cast2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -32,14 +32,14 @@ static JSValue ray_cast2d_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	RayCast2D *ray_cast2d_class;
 	if (argc == 1) 
-		ray_cast2d_class = static_cast<RayCast2D *>(static_cast<Object *>(Variant(*argv)));
+		ray_cast2d_class = static_cast<RayCast2D *>(Variant(*argv).operator Object *());
 	else 
 		ray_cast2d_class = memnew(RayCast2D);
 	if (!ray_cast2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, ray_cast2d_class);	
+	JS_SetOpaque(obj, ray_cast2d_class);
 	return obj;
 }
 static JSValue ray_cast2d_class_set_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -250,7 +250,6 @@ static void define_ray_cast2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_ray_cast2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RayCast2D::__class_id);
 	classes["RayCast2D"] = RayCast2D::__class_id;
 	class_id_list.insert(RayCast2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RayCast2D::__class_id, &ray_cast2d_class_def);

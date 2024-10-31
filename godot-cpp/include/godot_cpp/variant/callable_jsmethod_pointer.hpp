@@ -3,10 +3,12 @@
 
 #include "quickjs/env.h"
 #include "quickjs/quickjs.h"
+#include "quickjs/quickjs_helper.h"
 #include "utils/func_utils.h"
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/callable_method_pointer.hpp>
 #include <vector>
+#include <godot_cpp/classes/node.hpp>
 
 namespace godot {
 

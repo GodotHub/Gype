@@ -30,14 +30,14 @@ static JSValue jni_singleton_class_constructor(JSContext *ctx, JSValueConst new_
 
 	JNISingleton *jni_singleton_class;
 	if (argc == 1) 
-		jni_singleton_class = static_cast<JNISingleton *>(static_cast<Object *>(Variant(*argv)));
+		jni_singleton_class = static_cast<JNISingleton *>(Variant(*argv).operator Object *());
 	else 
 		jni_singleton_class = memnew(JNISingleton);
 	if (!jni_singleton_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, jni_singleton_class);	
+	JS_SetOpaque(obj, jni_singleton_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_jni_singleton_enum(JSContext *ctx, JSValue proto) {
 
 static int js_jni_singleton_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&JNISingleton::__class_id);
 	classes["JNISingleton"] = JNISingleton::__class_id;
 	class_id_list.insert(JNISingleton::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), JNISingleton::__class_id, &jni_singleton_class_def);

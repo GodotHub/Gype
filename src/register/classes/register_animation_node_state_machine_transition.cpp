@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_node_state_machine_transition.hpp>
 #include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/animation_node_state_machine_transition.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue animation_node_state_machine_transition_class_constructor(JSConte
 
 	AnimationNodeStateMachineTransition *animation_node_state_machine_transition_class;
 	if (argc == 1) 
-		animation_node_state_machine_transition_class = static_cast<AnimationNodeStateMachineTransition *>(static_cast<Object *>(Variant(*argv)));
+		animation_node_state_machine_transition_class = static_cast<AnimationNodeStateMachineTransition *>(Variant(*argv).operator Object *());
 	else 
 		animation_node_state_machine_transition_class = memnew(AnimationNodeStateMachineTransition);
 	if (!animation_node_state_machine_transition_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animation_node_state_machine_transition_class);	
+	JS_SetOpaque(obj, animation_node_state_machine_transition_class);
 	return obj;
 }
 static JSValue animation_node_state_machine_transition_class_set_switch_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -243,7 +243,6 @@ static void define_animation_node_state_machine_transition_enum(JSContext *ctx, 
 
 static int js_animation_node_state_machine_transition_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AnimationNodeStateMachineTransition::__class_id);
 	classes["AnimationNodeStateMachineTransition"] = AnimationNodeStateMachineTransition::__class_id;
 	class_id_list.insert(AnimationNodeStateMachineTransition::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationNodeStateMachineTransition::__class_id, &animation_node_state_machine_transition_class_def);

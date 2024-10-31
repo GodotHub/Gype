@@ -144,7 +144,6 @@ static const JSCFunctionListEntry packed_vector4_array_class_proto_funcs[] = {
 };
 
 static int js_packed_vector4_array_class_init(JSContext *ctx) {
-	JS_NewClassID(&PackedVector4Array::__class_id);
 	classes["PackedVector4Array"] = PackedVector4Array::__class_id;
 	class_id_list.insert(PackedVector4Array::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PackedVector4Array::__class_id, &packed_vector4_array_class_def);

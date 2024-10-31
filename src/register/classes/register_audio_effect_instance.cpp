@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_instance.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/audio_effect_instance.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue audio_effect_instance_class_constructor(JSContext *ctx, JSValueCo
 
 	AudioEffectInstance *audio_effect_instance_class;
 	if (argc == 1) 
-		audio_effect_instance_class = static_cast<AudioEffectInstance *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_instance_class = static_cast<AudioEffectInstance *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_instance_class = memnew(AudioEffectInstance);
 	if (!audio_effect_instance_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_instance_class);	
+	JS_SetOpaque(obj, audio_effect_instance_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_audio_effect_instance_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_effect_instance_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectInstance::__class_id);
 	classes["AudioEffectInstance"] = AudioEffectInstance::__class_id;
 	class_id_list.insert(AudioEffectInstance::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectInstance::__class_id, &audio_effect_instance_class_def);

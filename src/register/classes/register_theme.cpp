@@ -33,14 +33,14 @@ static JSValue theme_class_constructor(JSContext *ctx, JSValueConst new_target, 
 
 	Theme *theme_class;
 	if (argc == 1) 
-		theme_class = static_cast<Theme *>(static_cast<Object *>(Variant(*argv)));
+		theme_class = static_cast<Theme *>(Variant(*argv).operator Object *());
 	else 
 		theme_class = memnew(Theme);
 	if (!theme_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, theme_class);	
+	JS_SetOpaque(obj, theme_class);
 	return obj;
 }
 static JSValue theme_class_set_icon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -428,7 +428,6 @@ static void define_theme_enum(JSContext *ctx, JSValue proto) {
 
 static int js_theme_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Theme::__class_id);
 	classes["Theme"] = Theme::__class_id;
 	class_id_list.insert(Theme::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Theme::__class_id, &theme_class_def);

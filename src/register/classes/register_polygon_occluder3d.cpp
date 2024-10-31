@@ -30,14 +30,14 @@ static JSValue polygon_occluder3d_class_constructor(JSContext *ctx, JSValueConst
 
 	PolygonOccluder3D *polygon_occluder3d_class;
 	if (argc == 1) 
-		polygon_occluder3d_class = static_cast<PolygonOccluder3D *>(static_cast<Object *>(Variant(*argv)));
+		polygon_occluder3d_class = static_cast<PolygonOccluder3D *>(Variant(*argv).operator Object *());
 	else 
 		polygon_occluder3d_class = memnew(PolygonOccluder3D);
 	if (!polygon_occluder3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, polygon_occluder3d_class);	
+	JS_SetOpaque(obj, polygon_occluder3d_class);
 	return obj;
 }
 static JSValue polygon_occluder3d_class_set_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_polygon_occluder3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_polygon_occluder3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PolygonOccluder3D::__class_id);
 	classes["PolygonOccluder3D"] = PolygonOccluder3D::__class_id;
 	class_id_list.insert(PolygonOccluder3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PolygonOccluder3D::__class_id, &polygon_occluder3d_class_def);

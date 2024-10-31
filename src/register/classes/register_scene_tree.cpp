@@ -5,16 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tween.hpp>
-#include <godot_cpp/classes/tween.hpp>
-#include <godot_cpp/classes/packed_scene.hpp>
-#include <godot_cpp/classes/main_loop.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/multiplayer_api.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/classes/scene_tree.hpp>
+#include <godot_cpp/classes/packed_scene.hpp>
+#include <godot_cpp/classes/tween.hpp>
+#include <godot_cpp/classes/tween.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/scene_tree_timer.hpp>
+#include <godot_cpp/classes/main_loop.hpp>
+#include <godot_cpp/classes/scene_tree.hpp>
+#include <godot_cpp/classes/multiplayer_api.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -39,14 +39,14 @@ static JSValue scene_tree_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	SceneTree *scene_tree_class;
 	if (argc == 1) 
-		scene_tree_class = static_cast<SceneTree *>(static_cast<Object *>(Variant(*argv)));
+		scene_tree_class = static_cast<SceneTree *>(Variant(*argv).operator Object *());
 	else 
 		scene_tree_class = memnew(SceneTree);
 	if (!scene_tree_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, scene_tree_class);	
+	JS_SetOpaque(obj, scene_tree_class);
 	return obj;
 }
 static JSValue scene_tree_class_get_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -519,7 +519,6 @@ static void define_scene_tree_enum(JSContext *ctx, JSValue proto) {
 
 static int js_scene_tree_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SceneTree::__class_id);
 	classes["SceneTree"] = SceneTree::__class_id;
 	class_id_list.insert(SceneTree::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SceneTree::__class_id, &scene_tree_class_def);

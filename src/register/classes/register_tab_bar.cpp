@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/tab_bar.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue tab_bar_class_constructor(JSContext *ctx, JSValueConst new_target
 
 	TabBar *tab_bar_class;
 	if (argc == 1) 
-		tab_bar_class = static_cast<TabBar *>(static_cast<Object *>(Variant(*argv)));
+		tab_bar_class = static_cast<TabBar *>(Variant(*argv).operator Object *());
 	else 
 		tab_bar_class = memnew(TabBar);
 	if (!tab_bar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, tab_bar_class);	
+	JS_SetOpaque(obj, tab_bar_class);
 	return obj;
 }
 static JSValue tab_bar_class_set_tab_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -585,7 +585,6 @@ static void define_tab_bar_enum(JSContext *ctx, JSValue proto) {
 
 static int js_tab_bar_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&TabBar::__class_id);
 	classes["TabBar"] = TabBar::__class_id;
 	class_id_list.insert(TabBar::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TabBar::__class_id, &tab_bar_class_def);

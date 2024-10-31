@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/fbx_document.hpp>
 #include <godot_cpp/classes/gltf_document.hpp>
+#include <godot_cpp/classes/fbx_document.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue fbx_document_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	FBXDocument *fbx_document_class;
 	if (argc == 1) 
-		fbx_document_class = static_cast<FBXDocument *>(static_cast<Object *>(Variant(*argv)));
+		fbx_document_class = static_cast<FBXDocument *>(Variant(*argv).operator Object *());
 	else 
 		fbx_document_class = memnew(FBXDocument);
 	if (!fbx_document_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, fbx_document_class);	
+	JS_SetOpaque(obj, fbx_document_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_fbx_document_enum(JSContext *ctx, JSValue proto) {
 
 static int js_fbx_document_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&FBXDocument::__class_id);
 	classes["FBXDocument"] = FBXDocument::__class_id;
 	class_id_list.insert(FBXDocument::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), FBXDocument::__class_id, &fbx_document_class_def);

@@ -30,14 +30,14 @@ static JSValue editor_scene_format_importer_gltf_class_constructor(JSContext *ct
 
 	EditorSceneFormatImporterGLTF *editor_scene_format_importer_gltf_class;
 	if (argc == 1) 
-		editor_scene_format_importer_gltf_class = static_cast<EditorSceneFormatImporterGLTF *>(static_cast<Object *>(Variant(*argv)));
+		editor_scene_format_importer_gltf_class = static_cast<EditorSceneFormatImporterGLTF *>(Variant(*argv).operator Object *());
 	else 
 		editor_scene_format_importer_gltf_class = memnew(EditorSceneFormatImporterGLTF);
 	if (!editor_scene_format_importer_gltf_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_scene_format_importer_gltf_class);	
+	JS_SetOpaque(obj, editor_scene_format_importer_gltf_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_editor_scene_format_importer_gltf_enum(JSContext *ctx, JSValu
 
 static int js_editor_scene_format_importer_gltf_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorSceneFormatImporterGLTF::__class_id);
 	classes["EditorSceneFormatImporterGLTF"] = EditorSceneFormatImporterGLTF::__class_id;
 	class_id_list.insert(EditorSceneFormatImporterGLTF::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorSceneFormatImporterGLTF::__class_id, &editor_scene_format_importer_gltf_class_def);

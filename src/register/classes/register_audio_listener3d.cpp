@@ -30,14 +30,14 @@ static JSValue audio_listener3d_class_constructor(JSContext *ctx, JSValueConst n
 
 	AudioListener3D *audio_listener3d_class;
 	if (argc == 1) 
-		audio_listener3d_class = static_cast<AudioListener3D *>(static_cast<Object *>(Variant(*argv)));
+		audio_listener3d_class = static_cast<AudioListener3D *>(Variant(*argv).operator Object *());
 	else 
 		audio_listener3d_class = memnew(AudioListener3D);
 	if (!audio_listener3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_listener3d_class);	
+	JS_SetOpaque(obj, audio_listener3d_class);
 	return obj;
 }
 static JSValue audio_listener3d_class_make_current(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,7 +72,6 @@ static void define_audio_listener3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_listener3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioListener3D::__class_id);
 	classes["AudioListener3D"] = AudioListener3D::__class_id;
 	class_id_list.insert(AudioListener3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioListener3D::__class_id, &audio_listener3d_class_def);

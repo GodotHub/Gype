@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/physics_shape_query_parameters3d.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue physics_shape_query_parameters3d_class_constructor(JSContext *ctx
 
 	PhysicsShapeQueryParameters3D *physics_shape_query_parameters3d_class;
 	if (argc == 1) 
-		physics_shape_query_parameters3d_class = static_cast<PhysicsShapeQueryParameters3D *>(static_cast<Object *>(Variant(*argv)));
+		physics_shape_query_parameters3d_class = static_cast<PhysicsShapeQueryParameters3D *>(Variant(*argv).operator Object *());
 	else 
 		physics_shape_query_parameters3d_class = memnew(PhysicsShapeQueryParameters3D);
 	if (!physics_shape_query_parameters3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, physics_shape_query_parameters3d_class);	
+	JS_SetOpaque(obj, physics_shape_query_parameters3d_class);
 	return obj;
 }
 static JSValue physics_shape_query_parameters3d_class_set_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -215,7 +215,6 @@ static void define_physics_shape_query_parameters3d_enum(JSContext *ctx, JSValue
 
 static int js_physics_shape_query_parameters3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PhysicsShapeQueryParameters3D::__class_id);
 	classes["PhysicsShapeQueryParameters3D"] = PhysicsShapeQueryParameters3D::__class_id;
 	class_id_list.insert(PhysicsShapeQueryParameters3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PhysicsShapeQueryParameters3D::__class_id, &physics_shape_query_parameters3d_class_def);

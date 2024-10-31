@@ -30,14 +30,14 @@ static JSValue audio_stream_polyphonic_class_constructor(JSContext *ctx, JSValue
 
 	AudioStreamPolyphonic *audio_stream_polyphonic_class;
 	if (argc == 1) 
-		audio_stream_polyphonic_class = static_cast<AudioStreamPolyphonic *>(static_cast<Object *>(Variant(*argv)));
+		audio_stream_polyphonic_class = static_cast<AudioStreamPolyphonic *>(Variant(*argv).operator Object *());
 	else 
 		audio_stream_polyphonic_class = memnew(AudioStreamPolyphonic);
 	if (!audio_stream_polyphonic_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_stream_polyphonic_class);	
+	JS_SetOpaque(obj, audio_stream_polyphonic_class);
 	return obj;
 }
 static JSValue audio_stream_polyphonic_class_set_polyphony(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_audio_stream_polyphonic_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_stream_polyphonic_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioStreamPolyphonic::__class_id);
 	classes["AudioStreamPolyphonic"] = AudioStreamPolyphonic::__class_id;
 	class_id_list.insert(AudioStreamPolyphonic::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStreamPolyphonic::__class_id, &audio_stream_polyphonic_class_def);

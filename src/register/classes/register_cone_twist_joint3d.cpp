@@ -30,14 +30,14 @@ static JSValue cone_twist_joint3d_class_constructor(JSContext *ctx, JSValueConst
 
 	ConeTwistJoint3D *cone_twist_joint3d_class;
 	if (argc == 1) 
-		cone_twist_joint3d_class = static_cast<ConeTwistJoint3D *>(static_cast<Object *>(Variant(*argv)));
+		cone_twist_joint3d_class = static_cast<ConeTwistJoint3D *>(Variant(*argv).operator Object *());
 	else 
 		cone_twist_joint3d_class = memnew(ConeTwistJoint3D);
 	if (!cone_twist_joint3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, cone_twist_joint3d_class);	
+	JS_SetOpaque(obj, cone_twist_joint3d_class);
 	return obj;
 }
 static JSValue cone_twist_joint3d_class_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,7 +110,6 @@ static void define_cone_twist_joint3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_cone_twist_joint3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ConeTwistJoint3D::__class_id);
 	classes["ConeTwistJoint3D"] = ConeTwistJoint3D::__class_id;
 	class_id_list.insert(ConeTwistJoint3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ConeTwistJoint3D::__class_id, &cone_twist_joint3d_class_def);

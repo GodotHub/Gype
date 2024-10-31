@@ -30,14 +30,14 @@ static JSValue segment_shape2d_class_constructor(JSContext *ctx, JSValueConst ne
 
 	SegmentShape2D *segment_shape2d_class;
 	if (argc == 1) 
-		segment_shape2d_class = static_cast<SegmentShape2D *>(static_cast<Object *>(Variant(*argv)));
+		segment_shape2d_class = static_cast<SegmentShape2D *>(Variant(*argv).operator Object *());
 	else 
 		segment_shape2d_class = memnew(SegmentShape2D);
 	if (!segment_shape2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, segment_shape2d_class);	
+	JS_SetOpaque(obj, segment_shape2d_class);
 	return obj;
 }
 static JSValue segment_shape2d_class_set_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,7 +88,6 @@ static void define_segment_shape2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_segment_shape2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SegmentShape2D::__class_id);
 	classes["SegmentShape2D"] = SegmentShape2D::__class_id;
 	class_id_list.insert(SegmentShape2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SegmentShape2D::__class_id, &segment_shape2d_class_def);

@@ -248,7 +248,6 @@ void define_projection_property(JSContext *ctx, JSValue obj) {
 }
 
 static int js_projection_class_init(JSContext *ctx) {
-	JS_NewClassID(&Projection::__class_id);
 	classes["Projection"] = Projection::__class_id;
 	class_id_list.insert(Projection::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Projection::__class_id, &projection_class_def);

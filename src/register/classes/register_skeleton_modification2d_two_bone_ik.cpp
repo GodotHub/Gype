@@ -30,14 +30,14 @@ static JSValue skeleton_modification2d_two_bone_ik_class_constructor(JSContext *
 
 	SkeletonModification2DTwoBoneIK *skeleton_modification2d_two_bone_ik_class;
 	if (argc == 1) 
-		skeleton_modification2d_two_bone_ik_class = static_cast<SkeletonModification2DTwoBoneIK *>(static_cast<Object *>(Variant(*argv)));
+		skeleton_modification2d_two_bone_ik_class = static_cast<SkeletonModification2DTwoBoneIK *>(Variant(*argv).operator Object *());
 	else 
 		skeleton_modification2d_two_bone_ik_class = memnew(SkeletonModification2DTwoBoneIK);
 	if (!skeleton_modification2d_two_bone_ik_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, skeleton_modification2d_two_bone_ik_class);	
+	JS_SetOpaque(obj, skeleton_modification2d_two_bone_ik_class);
 	return obj;
 }
 static JSValue skeleton_modification2d_two_bone_ik_class_set_target_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -164,7 +164,6 @@ static void define_skeleton_modification2d_two_bone_ik_enum(JSContext *ctx, JSVa
 
 static int js_skeleton_modification2d_two_bone_ik_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SkeletonModification2DTwoBoneIK::__class_id);
 	classes["SkeletonModification2DTwoBoneIK"] = SkeletonModification2DTwoBoneIK::__class_id;
 	class_id_list.insert(SkeletonModification2DTwoBoneIK::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SkeletonModification2DTwoBoneIK::__class_id, &skeleton_modification2d_two_bone_ik_class_def);

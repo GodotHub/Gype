@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/undo_redo.hpp>
 #include <godot_cpp/classes/editor_undo_redo_manager.hpp>
+#include <godot_cpp/classes/undo_redo.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue editor_undo_redo_manager_class_constructor(JSContext *ctx, JSValu
 
 	EditorUndoRedoManager *editor_undo_redo_manager_class;
 	if (argc == 1) 
-		editor_undo_redo_manager_class = static_cast<EditorUndoRedoManager *>(static_cast<Object *>(Variant(*argv)));
+		editor_undo_redo_manager_class = static_cast<EditorUndoRedoManager *>(Variant(*argv).operator Object *());
 	else 
 		editor_undo_redo_manager_class = memnew(EditorUndoRedoManager);
 	if (!editor_undo_redo_manager_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_undo_redo_manager_class);	
+	JS_SetOpaque(obj, editor_undo_redo_manager_class);
 	return obj;
 }
 static JSValue editor_undo_redo_manager_class_create_action(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -154,7 +154,6 @@ static void define_editor_undo_redo_manager_enum(JSContext *ctx, JSValue proto) 
 
 static int js_editor_undo_redo_manager_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorUndoRedoManager::__class_id);
 	classes["EditorUndoRedoManager"] = EditorUndoRedoManager::__class_id;
 	class_id_list.insert(EditorUndoRedoManager::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorUndoRedoManager::__class_id, &editor_undo_redo_manager_class_def);

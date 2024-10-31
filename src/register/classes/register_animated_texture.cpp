@@ -30,14 +30,14 @@ static JSValue animated_texture_class_constructor(JSContext *ctx, JSValueConst n
 
 	AnimatedTexture *animated_texture_class;
 	if (argc == 1) 
-		animated_texture_class = static_cast<AnimatedTexture *>(static_cast<Object *>(Variant(*argv)));
+		animated_texture_class = static_cast<AnimatedTexture *>(Variant(*argv).operator Object *());
 	else 
 		animated_texture_class = memnew(AnimatedTexture);
 	if (!animated_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animated_texture_class);	
+	JS_SetOpaque(obj, animated_texture_class);
 	return obj;
 }
 static JSValue animated_texture_class_set_frames(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -162,7 +162,6 @@ static void define_animated_texture_enum(JSContext *ctx, JSValue proto) {
 
 static int js_animated_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AnimatedTexture::__class_id);
 	classes["AnimatedTexture"] = AnimatedTexture::__class_id;
 	class_id_list.insert(AnimatedTexture::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimatedTexture::__class_id, &animated_texture_class_def);

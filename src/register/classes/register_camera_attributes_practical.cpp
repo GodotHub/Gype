@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/classes/camera_attributes_practical.hpp>
+#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue camera_attributes_practical_class_constructor(JSContext *ctx, JSV
 
 	CameraAttributesPractical *camera_attributes_practical_class;
 	if (argc == 1) 
-		camera_attributes_practical_class = static_cast<CameraAttributesPractical *>(static_cast<Object *>(Variant(*argv)));
+		camera_attributes_practical_class = static_cast<CameraAttributesPractical *>(Variant(*argv).operator Object *());
 	else 
 		camera_attributes_practical_class = memnew(CameraAttributesPractical);
 	if (!camera_attributes_practical_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, camera_attributes_practical_class);	
+	JS_SetOpaque(obj, camera_attributes_practical_class);
 	return obj;
 }
 static JSValue camera_attributes_practical_class_set_dof_blur_far_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -214,7 +214,6 @@ static void define_camera_attributes_practical_enum(JSContext *ctx, JSValue prot
 
 static int js_camera_attributes_practical_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CameraAttributesPractical::__class_id);
 	classes["CameraAttributesPractical"] = CameraAttributesPractical::__class_id;
 	class_id_list.insert(CameraAttributesPractical::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CameraAttributesPractical::__class_id, &camera_attributes_practical_class_def);

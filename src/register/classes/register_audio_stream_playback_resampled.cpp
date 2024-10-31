@@ -30,14 +30,14 @@ static JSValue audio_stream_playback_resampled_class_constructor(JSContext *ctx,
 
 	AudioStreamPlaybackResampled *audio_stream_playback_resampled_class;
 	if (argc == 1) 
-		audio_stream_playback_resampled_class = static_cast<AudioStreamPlaybackResampled *>(static_cast<Object *>(Variant(*argv)));
+		audio_stream_playback_resampled_class = static_cast<AudioStreamPlaybackResampled *>(Variant(*argv).operator Object *());
 	else 
 		audio_stream_playback_resampled_class = memnew(AudioStreamPlaybackResampled);
 	if (!audio_stream_playback_resampled_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_stream_playback_resampled_class);	
+	JS_SetOpaque(obj, audio_stream_playback_resampled_class);
 	return obj;
 }
 static JSValue audio_stream_playback_resampled_class_begin_resample(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,7 +57,6 @@ static void define_audio_stream_playback_resampled_enum(JSContext *ctx, JSValue 
 
 static int js_audio_stream_playback_resampled_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioStreamPlaybackResampled::__class_id);
 	classes["AudioStreamPlaybackResampled"] = AudioStreamPlaybackResampled::__class_id;
 	class_id_list.insert(AudioStreamPlaybackResampled::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStreamPlaybackResampled::__class_id, &audio_stream_playback_resampled_class_def);

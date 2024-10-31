@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/char_fx_transform.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/char_fx_transform.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue char_fx_transform_class_constructor(JSContext *ctx, JSValueConst 
 
 	CharFXTransform *char_fx_transform_class;
 	if (argc == 1) 
-		char_fx_transform_class = static_cast<CharFXTransform *>(static_cast<Object *>(Variant(*argv)));
+		char_fx_transform_class = static_cast<CharFXTransform *>(Variant(*argv).operator Object *());
 	else 
 		char_fx_transform_class = memnew(CharFXTransform);
 	if (!char_fx_transform_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, char_fx_transform_class);	
+	JS_SetOpaque(obj, char_fx_transform_class);
 	return obj;
 }
 static JSValue char_fx_transform_class_get_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -286,7 +286,6 @@ static void define_char_fx_transform_enum(JSContext *ctx, JSValue proto) {
 
 static int js_char_fx_transform_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CharFXTransform::__class_id);
 	classes["CharFXTransform"] = CharFXTransform::__class_id;
 	class_id_list.insert(CharFXTransform::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CharFXTransform::__class_id, &char_fx_transform_class_def);

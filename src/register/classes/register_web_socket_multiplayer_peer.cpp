@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/multiplayer_peer.hpp>
-#include <godot_cpp/classes/web_socket_multiplayer_peer.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/classes/web_socket_peer.hpp>
+#include <godot_cpp/classes/web_socket_multiplayer_peer.hpp>
+#include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue web_socket_multiplayer_peer_class_constructor(JSContext *ctx, JSV
 
 	WebSocketMultiplayerPeer *web_socket_multiplayer_peer_class;
 	if (argc == 1) 
-		web_socket_multiplayer_peer_class = static_cast<WebSocketMultiplayerPeer *>(static_cast<Object *>(Variant(*argv)));
+		web_socket_multiplayer_peer_class = static_cast<WebSocketMultiplayerPeer *>(Variant(*argv).operator Object *());
 	else 
 		web_socket_multiplayer_peer_class = memnew(WebSocketMultiplayerPeer);
 	if (!web_socket_multiplayer_peer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, web_socket_multiplayer_peer_class);	
+	JS_SetOpaque(obj, web_socket_multiplayer_peer_class);
 	return obj;
 }
 static JSValue web_socket_multiplayer_peer_class_create_client(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -187,7 +187,6 @@ static void define_web_socket_multiplayer_peer_enum(JSContext *ctx, JSValue prot
 
 static int js_web_socket_multiplayer_peer_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&WebSocketMultiplayerPeer::__class_id);
 	classes["WebSocketMultiplayerPeer"] = WebSocketMultiplayerPeer::__class_id;
 	class_id_list.insert(WebSocketMultiplayerPeer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), WebSocketMultiplayerPeer::__class_id, &web_socket_multiplayer_peer_class_def);

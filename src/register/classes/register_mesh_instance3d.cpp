@@ -5,14 +5,14 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/geometry_instance3d.hpp>
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/array_mesh.hpp>
-#include <godot_cpp/classes/mesh_instance3d.hpp>
+#include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/mesh_convex_decomposition_settings.hpp>
-#include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/skin_reference.hpp>
+#include <godot_cpp/classes/skin.hpp>
+#include <godot_cpp/classes/mesh_instance3d.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,14 +36,14 @@ static JSValue mesh_instance3d_class_constructor(JSContext *ctx, JSValueConst ne
 
 	MeshInstance3D *mesh_instance3d_class;
 	if (argc == 1) 
-		mesh_instance3d_class = static_cast<MeshInstance3D *>(static_cast<Object *>(Variant(*argv)));
+		mesh_instance3d_class = static_cast<MeshInstance3D *>(Variant(*argv).operator Object *());
 	else 
 		mesh_instance3d_class = memnew(MeshInstance3D);
 	if (!mesh_instance3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, mesh_instance3d_class);	
+	JS_SetOpaque(obj, mesh_instance3d_class);
 	return obj;
 }
 static JSValue mesh_instance3d_class_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -182,7 +182,6 @@ static void define_mesh_instance3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_mesh_instance3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&MeshInstance3D::__class_id);
 	classes["MeshInstance3D"] = MeshInstance3D::__class_id;
 	class_id_list.insert(MeshInstance3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MeshInstance3D::__class_id, &mesh_instance3d_class_def);

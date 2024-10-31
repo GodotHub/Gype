@@ -30,14 +30,14 @@ static JSValue voxel_gi_data_class_constructor(JSContext *ctx, JSValueConst new_
 
 	VoxelGIData *voxel_gi_data_class;
 	if (argc == 1) 
-		voxel_gi_data_class = static_cast<VoxelGIData *>(static_cast<Object *>(Variant(*argv)));
+		voxel_gi_data_class = static_cast<VoxelGIData *>(Variant(*argv).operator Object *());
 	else 
 		voxel_gi_data_class = memnew(VoxelGIData);
 	if (!voxel_gi_data_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, voxel_gi_data_class);	
+	JS_SetOpaque(obj, voxel_gi_data_class);
 	return obj;
 }
 static JSValue voxel_gi_data_class_allocate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -213,7 +213,6 @@ static void define_voxel_gi_data_enum(JSContext *ctx, JSValue proto) {
 
 static int js_voxel_gi_data_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VoxelGIData::__class_id);
 	classes["VoxelGIData"] = VoxelGIData::__class_id;
 	class_id_list.insert(VoxelGIData::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VoxelGIData::__class_id, &voxel_gi_data_class_def);

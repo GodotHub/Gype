@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_test_motion_parameters3d.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/physics_test_motion_parameters3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue physics_test_motion_parameters3d_class_constructor(JSContext *ctx
 
 	PhysicsTestMotionParameters3D *physics_test_motion_parameters3d_class;
 	if (argc == 1) 
-		physics_test_motion_parameters3d_class = static_cast<PhysicsTestMotionParameters3D *>(static_cast<Object *>(Variant(*argv)));
+		physics_test_motion_parameters3d_class = static_cast<PhysicsTestMotionParameters3D *>(Variant(*argv).operator Object *());
 	else 
 		physics_test_motion_parameters3d_class = memnew(PhysicsTestMotionParameters3D);
 	if (!physics_test_motion_parameters3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, physics_test_motion_parameters3d_class);	
+	JS_SetOpaque(obj, physics_test_motion_parameters3d_class);
 	return obj;
 }
 static JSValue physics_test_motion_parameters3d_class_get_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -196,7 +196,6 @@ static void define_physics_test_motion_parameters3d_enum(JSContext *ctx, JSValue
 
 static int js_physics_test_motion_parameters3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PhysicsTestMotionParameters3D::__class_id);
 	classes["PhysicsTestMotionParameters3D"] = PhysicsTestMotionParameters3D::__class_id;
 	class_id_list.insert(PhysicsTestMotionParameters3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PhysicsTestMotionParameters3D::__class_id, &physics_test_motion_parameters3d_class_def);

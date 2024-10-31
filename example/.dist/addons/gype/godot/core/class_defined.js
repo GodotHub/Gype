@@ -1,4 +1,4 @@
-import { RefCounted } from "../classes/ref_counted";
+import { Node } from "@godot/classes/node";
 const _GodotClass = Symbol("_GodotClass");
 export function GodotClass(target) {
     target[_GodotClass] = true;
@@ -9,26 +9,26 @@ export function Tool(target) {
     target[_Tool] = true;
     return target;
 }
-export function ToPromise(signal) {
+// flag = 4 确保在await后释放连接
+export function ToSignal(instance, signal) {
     return new Promise((resolve, reject) => {
-        const instance = signal.get_object();
         if (!GD.is_instance_id_valid(instance.get_instance_id()))
             reject("instance invalid");
-        const resolver = new Resolver(instance, signal, resolve);
-        const callback = resolver.callback;
+        const resolveWrapper = new Resolver(instance, signal, resolve);
+        const callback = resolveWrapper.callback;
         instance.connect(signal, callback, 4);
     });
 }
-class Resolver extends RefCounted {
+class Resolver extends Node {
     #resolve;
     #instance;
     #callback;
-    #signal;
+    #signal = "";
     constructor(instance, signal, resolve) {
         super();
         this.#resolve = resolve;
         this.#instance = instance;
-        this.#callback = new Callable(this, this.#resolve);
+        this.#callback = new Callable(this, this.resolve);
         this.#signal = signal;
     }
     get callback() {
@@ -36,6 +36,39 @@ class Resolver extends RefCounted {
     }
     resolve() {
         this.#resolve();
-        this.unreference();
+        this.queue_free();
     }
 }
+/*
+
+export function toPromise(signal: Signal) {
+  return new Promise((resolve, reject) => {
+    const instance = signal.get_object();
+    if (!GD.is_instance_id_valid(instance.get_instance_id()))
+      reject("instance invalid");
+    const resolver: Resolver = new Resolver(resolve);
+    signal.connect(resolver.callback, 0);
+  });
+}
+
+class Resolver extends RefCounted {
+  #resolve: Function;
+  #callback: Callable;
+
+  constructor(resolve: Function) {
+    super();
+    this.#resolve = resolve;
+    this.#callback = new Callable(this, this.#resolve);
+  }
+
+  get callback() {
+    return this.#callback;
+  }
+
+  public resolve(): void {
+    this.#resolve();
+    this.unreference();
+  }
+}
+
+*/

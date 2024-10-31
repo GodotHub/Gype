@@ -30,14 +30,14 @@ static JSValue csg_shape3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	CSGShape3D *csg_shape3d_class;
 	if (argc == 1) 
-		csg_shape3d_class = static_cast<CSGShape3D *>(static_cast<Object *>(Variant(*argv)));
+		csg_shape3d_class = static_cast<CSGShape3D *>(Variant(*argv).operator Object *());
 	else 
 		csg_shape3d_class = memnew(CSGShape3D);
 	if (!csg_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, csg_shape3d_class);	
+	JS_SetOpaque(obj, csg_shape3d_class);
 	return obj;
 }
 static JSValue csg_shape3d_class_is_root_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -213,7 +213,6 @@ static void define_csg_shape3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_csg_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CSGShape3D::__class_id);
 	classes["CSGShape3D"] = CSGShape3D::__class_id;
 	class_id_list.insert(CSGShape3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CSGShape3D::__class_id, &csg_shape3d_class_def);

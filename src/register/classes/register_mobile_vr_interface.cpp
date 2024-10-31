@@ -30,14 +30,14 @@ static JSValue mobile_vr_interface_class_constructor(JSContext *ctx, JSValueCons
 
 	MobileVRInterface *mobile_vr_interface_class;
 	if (argc == 1) 
-		mobile_vr_interface_class = static_cast<MobileVRInterface *>(static_cast<Object *>(Variant(*argv)));
+		mobile_vr_interface_class = static_cast<MobileVRInterface *>(Variant(*argv).operator Object *());
 	else 
 		mobile_vr_interface_class = memnew(MobileVRInterface);
 	if (!mobile_vr_interface_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, mobile_vr_interface_class);	
+	JS_SetOpaque(obj, mobile_vr_interface_class);
 	return obj;
 }
 static JSValue mobile_vr_interface_class_set_eye_height(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -232,7 +232,6 @@ static void define_mobile_vr_interface_enum(JSContext *ctx, JSValue proto) {
 
 static int js_mobile_vr_interface_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&MobileVRInterface::__class_id);
 	classes["MobileVRInterface"] = MobileVRInterface::__class_id;
 	class_id_list.insert(MobileVRInterface::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MobileVRInterface::__class_id, &mobile_vr_interface_class_def);

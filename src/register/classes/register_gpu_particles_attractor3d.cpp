@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gpu_particles_attractor3d.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
+#include <godot_cpp/classes/gpu_particles_attractor3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue gpu_particles_attractor3d_class_constructor(JSContext *ctx, JSVal
 
 	GPUParticlesAttractor3D *gpu_particles_attractor3d_class;
 	if (argc == 1) 
-		gpu_particles_attractor3d_class = static_cast<GPUParticlesAttractor3D *>(static_cast<Object *>(Variant(*argv)));
+		gpu_particles_attractor3d_class = static_cast<GPUParticlesAttractor3D *>(Variant(*argv).operator Object *());
 	else 
 		gpu_particles_attractor3d_class = memnew(GPUParticlesAttractor3D);
 	if (!gpu_particles_attractor3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gpu_particles_attractor3d_class);	
+	JS_SetOpaque(obj, gpu_particles_attractor3d_class);
 	return obj;
 }
 static JSValue gpu_particles_attractor3d_class_set_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -124,7 +124,6 @@ static void define_gpu_particles_attractor3d_enum(JSContext *ctx, JSValue proto)
 
 static int js_gpu_particles_attractor3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GPUParticlesAttractor3D::__class_id);
 	classes["GPUParticlesAttractor3D"] = GPUParticlesAttractor3D::__class_id;
 	class_id_list.insert(GPUParticlesAttractor3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GPUParticlesAttractor3D::__class_id, &gpu_particles_attractor3d_class_def);

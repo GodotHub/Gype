@@ -30,14 +30,14 @@ static JSValue xr_face_tracker_class_constructor(JSContext *ctx, JSValueConst ne
 
 	XRFaceTracker *xr_face_tracker_class;
 	if (argc == 1) 
-		xr_face_tracker_class = static_cast<XRFaceTracker *>(static_cast<Object *>(Variant(*argv)));
+		xr_face_tracker_class = static_cast<XRFaceTracker *>(Variant(*argv).operator Object *());
 	else 
 		xr_face_tracker_class = memnew(XRFaceTracker);
 	if (!xr_face_tracker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, xr_face_tracker_class);	
+	JS_SetOpaque(obj, xr_face_tracker_class);
 	return obj;
 }
 static JSValue xr_face_tracker_class_get_blend_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -226,7 +226,6 @@ static void define_xr_face_tracker_enum(JSContext *ctx, JSValue proto) {
 
 static int js_xr_face_tracker_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&XRFaceTracker::__class_id);
 	classes["XRFaceTracker"] = XRFaceTracker::__class_id;
 	class_id_list.insert(XRFaceTracker::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRFaceTracker::__class_id, &xr_face_tracker_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/check_button.hpp>
+#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue check_button_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	CheckButton *check_button_class;
 	if (argc == 1) 
-		check_button_class = static_cast<CheckButton *>(static_cast<Object *>(Variant(*argv)));
+		check_button_class = static_cast<CheckButton *>(Variant(*argv).operator Object *());
 	else 
 		check_button_class = memnew(CheckButton);
 	if (!check_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, check_button_class);	
+	JS_SetOpaque(obj, check_button_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_check_button_enum(JSContext *ctx, JSValue proto) {
 
 static int js_check_button_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CheckButton::__class_id);
 	classes["CheckButton"] = CheckButton::__class_id;
 	class_id_list.insert(CheckButton::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CheckButton::__class_id, &check_button_class_def);

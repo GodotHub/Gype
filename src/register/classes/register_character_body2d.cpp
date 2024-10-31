@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_body2d.hpp>
 #include <godot_cpp/classes/kinematic_collision2d.hpp>
 #include <godot_cpp/classes/character_body2d.hpp>
+#include <godot_cpp/classes/physics_body2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue character_body2d_class_constructor(JSContext *ctx, JSValueConst n
 
 	CharacterBody2D *character_body2d_class;
 	if (argc == 1) 
-		character_body2d_class = static_cast<CharacterBody2D *>(static_cast<Object *>(Variant(*argv)));
+		character_body2d_class = static_cast<CharacterBody2D *>(Variant(*argv).operator Object *());
 	else 
 		character_body2d_class = memnew(CharacterBody2D);
 	if (!character_body2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, character_body2d_class);	
+	JS_SetOpaque(obj, character_body2d_class);
 	return obj;
 }
 static JSValue character_body2d_class_move_and_slide(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -422,7 +422,6 @@ static void define_character_body2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_character_body2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CharacterBody2D::__class_id);
 	classes["CharacterBody2D"] = CharacterBody2D::__class_id;
 	class_id_list.insert(CharacterBody2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CharacterBody2D::__class_id, &character_body2d_class_def);

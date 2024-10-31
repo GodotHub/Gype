@@ -30,14 +30,14 @@ static JSValue audio_bus_layout_class_constructor(JSContext *ctx, JSValueConst n
 
 	AudioBusLayout *audio_bus_layout_class;
 	if (argc == 1) 
-		audio_bus_layout_class = static_cast<AudioBusLayout *>(static_cast<Object *>(Variant(*argv)));
+		audio_bus_layout_class = static_cast<AudioBusLayout *>(Variant(*argv).operator Object *());
 	else 
 		audio_bus_layout_class = memnew(AudioBusLayout);
 	if (!audio_bus_layout_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_bus_layout_class);	
+	JS_SetOpaque(obj, audio_bus_layout_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_audio_bus_layout_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_bus_layout_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioBusLayout::__class_id);
 	classes["AudioBusLayout"] = AudioBusLayout::__class_id;
 	class_id_list.insert(AudioBusLayout::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioBusLayout::__class_id, &audio_bus_layout_class_def);

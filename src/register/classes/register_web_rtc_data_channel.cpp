@@ -30,14 +30,14 @@ static JSValue web_rtc_data_channel_class_constructor(JSContext *ctx, JSValueCon
 
 	WebRTCDataChannel *web_rtc_data_channel_class;
 	if (argc == 1) 
-		web_rtc_data_channel_class = static_cast<WebRTCDataChannel *>(static_cast<Object *>(Variant(*argv)));
+		web_rtc_data_channel_class = static_cast<WebRTCDataChannel *>(Variant(*argv).operator Object *());
 	else 
 		web_rtc_data_channel_class = memnew(WebRTCDataChannel);
 	if (!web_rtc_data_channel_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, web_rtc_data_channel_class);	
+	JS_SetOpaque(obj, web_rtc_data_channel_class);
 	return obj;
 }
 static JSValue web_rtc_data_channel_class_poll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -140,7 +140,6 @@ static void define_web_rtc_data_channel_enum(JSContext *ctx, JSValue proto) {
 
 static int js_web_rtc_data_channel_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&WebRTCDataChannel::__class_id);
 	classes["WebRTCDataChannel"] = WebRTCDataChannel::__class_id;
 	class_id_list.insert(WebRTCDataChannel::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), WebRTCDataChannel::__class_id, &web_rtc_data_channel_class_def);

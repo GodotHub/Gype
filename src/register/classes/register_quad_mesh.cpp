@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/quad_mesh.hpp>
 #include <godot_cpp/classes/plane_mesh.hpp>
+#include <godot_cpp/classes/quad_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue quad_mesh_class_constructor(JSContext *ctx, JSValueConst new_targ
 
 	QuadMesh *quad_mesh_class;
 	if (argc == 1) 
-		quad_mesh_class = static_cast<QuadMesh *>(static_cast<Object *>(Variant(*argv)));
+		quad_mesh_class = static_cast<QuadMesh *>(Variant(*argv).operator Object *());
 	else 
 		quad_mesh_class = memnew(QuadMesh);
 	if (!quad_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, quad_mesh_class);	
+	JS_SetOpaque(obj, quad_mesh_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_quad_mesh_enum(JSContext *ctx, JSValue proto) {
 
 static int js_quad_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&QuadMesh::__class_id);
 	classes["QuadMesh"] = QuadMesh::__class_id;
 	class_id_list.insert(QuadMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), QuadMesh::__class_id, &quad_mesh_class_def);

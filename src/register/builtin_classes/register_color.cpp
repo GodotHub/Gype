@@ -353,7 +353,6 @@ void define_color_property(JSContext *ctx, JSValue obj) {
 }
 
 static int js_color_class_init(JSContext *ctx) {
-	JS_NewClassID(&Color::__class_id);
 	classes["Color"] = Color::__class_id;
 	class_id_list.insert(Color::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Color::__class_id, &color_class_def);

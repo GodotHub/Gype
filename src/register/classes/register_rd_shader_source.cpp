@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_shader_source.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue rd_shader_source_class_constructor(JSContext *ctx, JSValueConst n
 
 	RDShaderSource *rd_shader_source_class;
 	if (argc == 1) 
-		rd_shader_source_class = static_cast<RDShaderSource *>(static_cast<Object *>(Variant(*argv)));
+		rd_shader_source_class = static_cast<RDShaderSource *>(Variant(*argv).operator Object *());
 	else 
 		rd_shader_source_class = memnew(RDShaderSource);
 	if (!rd_shader_source_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rd_shader_source_class);	
+	JS_SetOpaque(obj, rd_shader_source_class);
 	return obj;
 }
 static JSValue rd_shader_source_class_set_stage_source(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -120,7 +120,6 @@ static void define_rd_shader_source_enum(JSContext *ctx, JSValue proto) {
 
 static int js_rd_shader_source_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RDShaderSource::__class_id);
 	classes["RDShaderSource"] = RDShaderSource::__class_id;
 	class_id_list.insert(RDShaderSource::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RDShaderSource::__class_id, &rd_shader_source_class_def);

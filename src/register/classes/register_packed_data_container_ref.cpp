@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/packed_data_container_ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/packed_data_container_ref.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue packed_data_container_ref_class_constructor(JSContext *ctx, JSVal
 
 	PackedDataContainerRef *packed_data_container_ref_class;
 	if (argc == 1) 
-		packed_data_container_ref_class = static_cast<PackedDataContainerRef *>(static_cast<Object *>(Variant(*argv)));
+		packed_data_container_ref_class = static_cast<PackedDataContainerRef *>(Variant(*argv).operator Object *());
 	else 
 		packed_data_container_ref_class = memnew(PackedDataContainerRef);
 	if (!packed_data_container_ref_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, packed_data_container_ref_class);	
+	JS_SetOpaque(obj, packed_data_container_ref_class);
 	return obj;
 }
 static JSValue packed_data_container_ref_class_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,7 +57,6 @@ static void define_packed_data_container_ref_enum(JSContext *ctx, JSValue proto)
 
 static int js_packed_data_container_ref_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PackedDataContainerRef::__class_id);
 	classes["PackedDataContainerRef"] = PackedDataContainerRef::__class_id;
 	class_id_list.insert(PackedDataContainerRef::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PackedDataContainerRef::__class_id, &packed_data_container_ref_class_def);

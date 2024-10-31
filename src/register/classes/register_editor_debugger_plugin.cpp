@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/script.hpp>
-#include <godot_cpp/classes/editor_debugger_plugin.hpp>
 #include <godot_cpp/classes/editor_debugger_session.hpp>
+#include <godot_cpp/classes/editor_debugger_plugin.hpp>
+#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -32,14 +32,14 @@ static JSValue editor_debugger_plugin_class_constructor(JSContext *ctx, JSValueC
 
 	EditorDebuggerPlugin *editor_debugger_plugin_class;
 	if (argc == 1) 
-		editor_debugger_plugin_class = static_cast<EditorDebuggerPlugin *>(static_cast<Object *>(Variant(*argv)));
+		editor_debugger_plugin_class = static_cast<EditorDebuggerPlugin *>(Variant(*argv).operator Object *());
 	else 
 		editor_debugger_plugin_class = memnew(EditorDebuggerPlugin);
 	if (!editor_debugger_plugin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_debugger_plugin_class);	
+	JS_SetOpaque(obj, editor_debugger_plugin_class);
 	return obj;
 }
 static JSValue editor_debugger_plugin_class_get_session(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -64,7 +64,6 @@ static void define_editor_debugger_plugin_enum(JSContext *ctx, JSValue proto) {
 
 static int js_editor_debugger_plugin_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorDebuggerPlugin::__class_id);
 	classes["EditorDebuggerPlugin"] = EditorDebuggerPlugin::__class_id;
 	class_id_list.insert(EditorDebuggerPlugin::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorDebuggerPlugin::__class_id, &editor_debugger_plugin_class_def);

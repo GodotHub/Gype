@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_compressor.hpp>
 #include <godot_cpp/classes/audio_effect.hpp>
+#include <godot_cpp/classes/audio_effect_compressor.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue audio_effect_compressor_class_constructor(JSContext *ctx, JSValue
 
 	AudioEffectCompressor *audio_effect_compressor_class;
 	if (argc == 1) 
-		audio_effect_compressor_class = static_cast<AudioEffectCompressor *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_compressor_class = static_cast<AudioEffectCompressor *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_compressor_class = memnew(AudioEffectCompressor);
 	if (!audio_effect_compressor_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_compressor_class);	
+	JS_SetOpaque(obj, audio_effect_compressor_class);
 	return obj;
 }
 static JSValue audio_effect_compressor_class_set_threshold(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -178,7 +178,6 @@ static void define_audio_effect_compressor_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_effect_compressor_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectCompressor::__class_id);
 	classes["AudioEffectCompressor"] = AudioEffectCompressor::__class_id;
 	class_id_list.insert(AudioEffectCompressor::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectCompressor::__class_id, &audio_effect_compressor_class_def);

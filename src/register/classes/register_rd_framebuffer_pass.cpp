@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_framebuffer_pass.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue rd_framebuffer_pass_class_constructor(JSContext *ctx, JSValueCons
 
 	RDFramebufferPass *rd_framebuffer_pass_class;
 	if (argc == 1) 
-		rd_framebuffer_pass_class = static_cast<RDFramebufferPass *>(static_cast<Object *>(Variant(*argv)));
+		rd_framebuffer_pass_class = static_cast<RDFramebufferPass *>(Variant(*argv).operator Object *());
 	else 
 		rd_framebuffer_pass_class = memnew(RDFramebufferPass);
 	if (!rd_framebuffer_pass_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rd_framebuffer_pass_class);	
+	JS_SetOpaque(obj, rd_framebuffer_pass_class);
 	return obj;
 }
 static JSValue rd_framebuffer_pass_class_set_color_attachments(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -142,7 +142,6 @@ static void define_rd_framebuffer_pass_enum(JSContext *ctx, JSValue proto) {
 
 static int js_rd_framebuffer_pass_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RDFramebufferPass::__class_id);
 	classes["RDFramebufferPass"] = RDFramebufferPass::__class_id;
 	class_id_list.insert(RDFramebufferPass::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RDFramebufferPass::__class_id, &rd_framebuffer_pass_class_def);

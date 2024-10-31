@@ -30,14 +30,14 @@ static JSValue system_font_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	SystemFont *system_font_class;
 	if (argc == 1) 
-		system_font_class = static_cast<SystemFont *>(static_cast<Object *>(Variant(*argv)));
+		system_font_class = static_cast<SystemFont *>(Variant(*argv).operator Object *());
 	else 
 		system_font_class = memnew(SystemFont);
 	if (!system_font_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, system_font_class);	
+	JS_SetOpaque(obj, system_font_class);
 	return obj;
 }
 static JSValue system_font_class_set_antialiasing(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -312,7 +312,6 @@ static void define_system_font_enum(JSContext *ctx, JSValue proto) {
 
 static int js_system_font_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SystemFont::__class_id);
 	classes["SystemFont"] = SystemFont::__class_id;
 	class_id_list.insert(SystemFont::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SystemFont::__class_id, &system_font_class_def);

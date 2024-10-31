@@ -33,14 +33,14 @@ static JSValue node3d_class_constructor(JSContext *ctx, JSValueConst new_target,
 
 	Node3D *node3d_class;
 	if (argc == 1) 
-		node3d_class = static_cast<Node3D *>(static_cast<Object *>(Variant(*argv)));
+		node3d_class = static_cast<Node3D *>(Variant(*argv).operator Object *());
 	else 
 		node3d_class = memnew(Node3D);
 	if (!node3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, node3d_class);	
+	JS_SetOpaque(obj, node3d_class);
 	return obj;
 }
 static JSValue node3d_class_set_transform(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -564,7 +564,6 @@ static void define_node3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_node3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Node3D::__class_id);
 	classes["Node3D"] = Node3D::__class_id;
 	class_id_list.insert(Node3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Node3D::__class_id, &node3d_class_def);

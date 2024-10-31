@@ -30,14 +30,14 @@ static JSValue animation_node_state_machine_playback_class_constructor(JSContext
 
 	AnimationNodeStateMachinePlayback *animation_node_state_machine_playback_class;
 	if (argc == 1) 
-		animation_node_state_machine_playback_class = static_cast<AnimationNodeStateMachinePlayback *>(static_cast<Object *>(Variant(*argv)));
+		animation_node_state_machine_playback_class = static_cast<AnimationNodeStateMachinePlayback *>(Variant(*argv).operator Object *());
 	else 
 		animation_node_state_machine_playback_class = memnew(AnimationNodeStateMachinePlayback);
 	if (!animation_node_state_machine_playback_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animation_node_state_machine_playback_class);	
+	JS_SetOpaque(obj, animation_node_state_machine_playback_class);
 	return obj;
 }
 static JSValue animation_node_state_machine_playback_class_travel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -102,7 +102,6 @@ static void define_animation_node_state_machine_playback_enum(JSContext *ctx, JS
 
 static int js_animation_node_state_machine_playback_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AnimationNodeStateMachinePlayback::__class_id);
 	classes["AnimationNodeStateMachinePlayback"] = AnimationNodeStateMachinePlayback::__class_id;
 	class_id_list.insert(AnimationNodeStateMachinePlayback::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationNodeStateMachinePlayback::__class_id, &animation_node_state_machine_playback_class_def);

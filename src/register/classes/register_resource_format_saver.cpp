@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/resource_format_saver.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue resource_format_saver_class_constructor(JSContext *ctx, JSValueCo
 
 	ResourceFormatSaver *resource_format_saver_class;
 	if (argc == 1) 
-		resource_format_saver_class = static_cast<ResourceFormatSaver *>(static_cast<Object *>(Variant(*argv)));
+		resource_format_saver_class = static_cast<ResourceFormatSaver *>(Variant(*argv).operator Object *());
 	else 
 		resource_format_saver_class = memnew(ResourceFormatSaver);
 	if (!resource_format_saver_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, resource_format_saver_class);	
+	JS_SetOpaque(obj, resource_format_saver_class);
 	return obj;
 }
 
@@ -51,7 +51,6 @@ static void define_resource_format_saver_enum(JSContext *ctx, JSValue proto) {
 
 static int js_resource_format_saver_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ResourceFormatSaver::__class_id);
 	classes["ResourceFormatSaver"] = ResourceFormatSaver::__class_id;
 	class_id_list.insert(ResourceFormatSaver::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceFormatSaver::__class_id, &resource_format_saver_class_def);

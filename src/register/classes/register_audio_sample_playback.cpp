@@ -30,14 +30,14 @@ static JSValue audio_sample_playback_class_constructor(JSContext *ctx, JSValueCo
 
 	AudioSamplePlayback *audio_sample_playback_class;
 	if (argc == 1) 
-		audio_sample_playback_class = static_cast<AudioSamplePlayback *>(static_cast<Object *>(Variant(*argv)));
+		audio_sample_playback_class = static_cast<AudioSamplePlayback *>(Variant(*argv).operator Object *());
 	else 
 		audio_sample_playback_class = memnew(AudioSamplePlayback);
 	if (!audio_sample_playback_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_sample_playback_class);	
+	JS_SetOpaque(obj, audio_sample_playback_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_audio_sample_playback_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_sample_playback_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioSamplePlayback::__class_id);
 	classes["AudioSamplePlayback"] = AudioSamplePlayback::__class_id;
 	class_id_list.insert(AudioSamplePlayback::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioSamplePlayback::__class_id, &audio_sample_playback_class_def);

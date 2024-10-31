@@ -30,14 +30,14 @@ static JSValue a_star3d_class_constructor(JSContext *ctx, JSValueConst new_targe
 
 	AStar3D *a_star3d_class;
 	if (argc == 1) 
-		a_star3d_class = static_cast<AStar3D *>(static_cast<Object *>(Variant(*argv)));
+		a_star3d_class = static_cast<AStar3D *>(Variant(*argv).operator Object *());
 	else 
 		a_star3d_class = memnew(AStar3D);
 	if (!a_star3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, a_star3d_class);	
+	JS_SetOpaque(obj, a_star3d_class);
 	return obj;
 }
 static JSValue a_star3d_class_get_available_point_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -167,7 +167,6 @@ static void define_a_star3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_a_star3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AStar3D::__class_id);
 	classes["AStar3D"] = AStar3D::__class_id;
 	class_id_list.insert(AStar3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AStar3D::__class_id, &a_star3d_class_def);

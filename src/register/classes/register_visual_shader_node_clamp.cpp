@@ -30,14 +30,14 @@ static JSValue visual_shader_node_clamp_class_constructor(JSContext *ctx, JSValu
 
 	VisualShaderNodeClamp *visual_shader_node_clamp_class;
 	if (argc == 1) 
-		visual_shader_node_clamp_class = static_cast<VisualShaderNodeClamp *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_clamp_class = static_cast<VisualShaderNodeClamp *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_clamp_class = memnew(VisualShaderNodeClamp);
 	if (!visual_shader_node_clamp_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_clamp_class);	
+	JS_SetOpaque(obj, visual_shader_node_clamp_class);
 	return obj;
 }
 static JSValue visual_shader_node_clamp_class_set_op_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -79,7 +79,6 @@ static void define_visual_shader_node_clamp_enum(JSContext *ctx, JSValue proto) 
 
 static int js_visual_shader_node_clamp_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeClamp::__class_id);
 	classes["VisualShaderNodeClamp"] = VisualShaderNodeClamp::__class_id;
 	class_id_list.insert(VisualShaderNodeClamp::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeClamp::__class_id, &visual_shader_node_clamp_class_def);

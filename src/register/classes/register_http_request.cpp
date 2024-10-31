@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/classes/http_request.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue http_request_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	HTTPRequest *http_request_class;
 	if (argc == 1) 
-		http_request_class = static_cast<HTTPRequest *>(static_cast<Object *>(Variant(*argv)));
+		http_request_class = static_cast<HTTPRequest *>(Variant(*argv).operator Object *());
 	else 
 		http_request_class = memnew(HTTPRequest);
 	if (!http_request_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, http_request_class);	
+	JS_SetOpaque(obj, http_request_class);
 	return obj;
 }
 static JSValue http_request_class_request(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -258,7 +258,6 @@ static void define_http_request_enum(JSContext *ctx, JSValue proto) {
 
 static int js_http_request_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&HTTPRequest::__class_id);
 	classes["HTTPRequest"] = HTTPRequest::__class_id;
 	class_id_list.insert(HTTPRequest::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), HTTPRequest::__class_id, &http_request_class_def);

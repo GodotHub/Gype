@@ -30,14 +30,14 @@ static JSValue joint2d_class_constructor(JSContext *ctx, JSValueConst new_target
 
 	Joint2D *joint2d_class;
 	if (argc == 1) 
-		joint2d_class = static_cast<Joint2D *>(static_cast<Object *>(Variant(*argv)));
+		joint2d_class = static_cast<Joint2D *>(Variant(*argv).operator Object *());
 	else 
 		joint2d_class = memnew(Joint2D);
 	if (!joint2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, joint2d_class);	
+	JS_SetOpaque(obj, joint2d_class);
 	return obj;
 }
 static JSValue joint2d_class_set_node_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -129,7 +129,6 @@ static void define_joint2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_joint2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Joint2D::__class_id);
 	classes["Joint2D"] = Joint2D::__class_id;
 	class_id_list.insert(Joint2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Joint2D::__class_id, &joint2d_class_def);

@@ -30,14 +30,14 @@ static JSValue rd_pipeline_rasterization_state_class_constructor(JSContext *ctx,
 
 	RDPipelineRasterizationState *rd_pipeline_rasterization_state_class;
 	if (argc == 1) 
-		rd_pipeline_rasterization_state_class = static_cast<RDPipelineRasterizationState *>(static_cast<Object *>(Variant(*argv)));
+		rd_pipeline_rasterization_state_class = static_cast<RDPipelineRasterizationState *>(Variant(*argv).operator Object *());
 	else 
 		rd_pipeline_rasterization_state_class = memnew(RDPipelineRasterizationState);
 	if (!rd_pipeline_rasterization_state_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rd_pipeline_rasterization_state_class);	
+	JS_SetOpaque(obj, rd_pipeline_rasterization_state_class);
 	return obj;
 }
 static JSValue rd_pipeline_rasterization_state_class_set_enable_depth_clamp(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -250,7 +250,6 @@ static void define_rd_pipeline_rasterization_state_enum(JSContext *ctx, JSValue 
 
 static int js_rd_pipeline_rasterization_state_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RDPipelineRasterizationState::__class_id);
 	classes["RDPipelineRasterizationState"] = RDPipelineRasterizationState::__class_id;
 	class_id_list.insert(RDPipelineRasterizationState::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RDPipelineRasterizationState::__class_id, &rd_pipeline_rasterization_state_class_def);

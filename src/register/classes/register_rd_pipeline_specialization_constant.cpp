@@ -30,14 +30,14 @@ static JSValue rd_pipeline_specialization_constant_class_constructor(JSContext *
 
 	RDPipelineSpecializationConstant *rd_pipeline_specialization_constant_class;
 	if (argc == 1) 
-		rd_pipeline_specialization_constant_class = static_cast<RDPipelineSpecializationConstant *>(static_cast<Object *>(Variant(*argv)));
+		rd_pipeline_specialization_constant_class = static_cast<RDPipelineSpecializationConstant *>(Variant(*argv).operator Object *());
 	else 
 		rd_pipeline_specialization_constant_class = memnew(RDPipelineSpecializationConstant);
 	if (!rd_pipeline_specialization_constant_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rd_pipeline_specialization_constant_class);	
+	JS_SetOpaque(obj, rd_pipeline_specialization_constant_class);
 	return obj;
 }
 static JSValue rd_pipeline_specialization_constant_class_set_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,7 +88,6 @@ static void define_rd_pipeline_specialization_constant_enum(JSContext *ctx, JSVa
 
 static int js_rd_pipeline_specialization_constant_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RDPipelineSpecializationConstant::__class_id);
 	classes["RDPipelineSpecializationConstant"] = RDPipelineSpecializationConstant::__class_id;
 	class_id_list.insert(RDPipelineSpecializationConstant::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RDPipelineSpecializationConstant::__class_id, &rd_pipeline_specialization_constant_class_def);

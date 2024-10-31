@@ -30,14 +30,14 @@ static JSValue atlas_texture_class_constructor(JSContext *ctx, JSValueConst new_
 
 	AtlasTexture *atlas_texture_class;
 	if (argc == 1) 
-		atlas_texture_class = static_cast<AtlasTexture *>(static_cast<Object *>(Variant(*argv)));
+		atlas_texture_class = static_cast<AtlasTexture *>(Variant(*argv).operator Object *());
 	else 
 		atlas_texture_class = memnew(AtlasTexture);
 	if (!atlas_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, atlas_texture_class);	
+	JS_SetOpaque(obj, atlas_texture_class);
 	return obj;
 }
 static JSValue atlas_texture_class_set_atlas(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -124,7 +124,6 @@ static void define_atlas_texture_enum(JSContext *ctx, JSValue proto) {
 
 static int js_atlas_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AtlasTexture::__class_id);
 	classes["AtlasTexture"] = AtlasTexture::__class_id;
 	class_id_list.insert(AtlasTexture::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AtlasTexture::__class_id, &atlas_texture_class_def);

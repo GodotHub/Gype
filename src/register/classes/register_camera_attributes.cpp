@@ -30,14 +30,14 @@ static JSValue camera_attributes_class_constructor(JSContext *ctx, JSValueConst 
 
 	CameraAttributes *camera_attributes_class;
 	if (argc == 1) 
-		camera_attributes_class = static_cast<CameraAttributes *>(static_cast<Object *>(Variant(*argv)));
+		camera_attributes_class = static_cast<CameraAttributes *>(Variant(*argv).operator Object *());
 	else 
 		camera_attributes_class = memnew(CameraAttributes);
 	if (!camera_attributes_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, camera_attributes_class);	
+	JS_SetOpaque(obj, camera_attributes_class);
 	return obj;
 }
 static JSValue camera_attributes_class_set_exposure_multiplier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -142,7 +142,6 @@ static void define_camera_attributes_enum(JSContext *ctx, JSValue proto) {
 
 static int js_camera_attributes_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CameraAttributes::__class_id);
 	classes["CameraAttributes"] = CameraAttributes::__class_id;
 	class_id_list.insert(CameraAttributes::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CameraAttributes::__class_id, &camera_attributes_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/classes/animation_tree.hpp>
+#include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/classes/animation_mixer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue animation_tree_class_constructor(JSContext *ctx, JSValueConst new
 
 	AnimationTree *animation_tree_class;
 	if (argc == 1) 
-		animation_tree_class = static_cast<AnimationTree *>(static_cast<Object *>(Variant(*argv)));
+		animation_tree_class = static_cast<AnimationTree *>(Variant(*argv).operator Object *());
 	else 
 		animation_tree_class = memnew(AnimationTree);
 	if (!animation_tree_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animation_tree_class);	
+	JS_SetOpaque(obj, animation_tree_class);
 	return obj;
 }
 static JSValue animation_tree_class_set_tree_root(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -140,7 +140,6 @@ static void define_animation_tree_enum(JSContext *ctx, JSValue proto) {
 
 static int js_animation_tree_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AnimationTree::__class_id);
 	classes["AnimationTree"] = AnimationTree::__class_id;
 	class_id_list.insert(AnimationTree::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationTree::__class_id, &animation_tree_class_def);

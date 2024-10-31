@@ -30,14 +30,14 @@ static JSValue xr_tracker_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	XRTracker *xr_tracker_class;
 	if (argc == 1) 
-		xr_tracker_class = static_cast<XRTracker *>(static_cast<Object *>(Variant(*argv)));
+		xr_tracker_class = static_cast<XRTracker *>(Variant(*argv).operator Object *());
 	else 
 		xr_tracker_class = memnew(XRTracker);
 	if (!xr_tracker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, xr_tracker_class);	
+	JS_SetOpaque(obj, xr_tracker_class);
 	return obj;
 }
 static JSValue xr_tracker_class_get_tracker_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -106,7 +106,6 @@ static void define_xr_tracker_enum(JSContext *ctx, JSValue proto) {
 
 static int js_xr_tracker_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&XRTracker::__class_id);
 	classes["XRTracker"] = XRTracker::__class_id;
 	class_id_list.insert(XRTracker::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRTracker::__class_id, &xr_tracker_class_def);

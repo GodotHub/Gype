@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_sampler_state.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/rd_sampler_state.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue rd_sampler_state_class_constructor(JSContext *ctx, JSValueConst n
 
 	RDSamplerState *rd_sampler_state_class;
 	if (argc == 1) 
-		rd_sampler_state_class = static_cast<RDSamplerState *>(static_cast<Object *>(Variant(*argv)));
+		rd_sampler_state_class = static_cast<RDSamplerState *>(Variant(*argv).operator Object *());
 	else 
 		rd_sampler_state_class = memnew(RDSamplerState);
 	if (!rd_sampler_state_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rd_sampler_state_class);	
+	JS_SetOpaque(obj, rd_sampler_state_class);
 	return obj;
 }
 static JSValue rd_sampler_state_class_set_mag_filter(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -322,7 +322,6 @@ static void define_rd_sampler_state_enum(JSContext *ctx, JSValue proto) {
 
 static int js_rd_sampler_state_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RDSamplerState::__class_id);
 	classes["RDSamplerState"] = RDSamplerState::__class_id;
 	class_id_list.insert(RDSamplerState::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RDSamplerState::__class_id, &rd_sampler_state_class_def);

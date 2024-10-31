@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/resource_importer.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue resource_importer_class_constructor(JSContext *ctx, JSValueConst 
 
 	ResourceImporter *resource_importer_class;
 	if (argc == 1) 
-		resource_importer_class = static_cast<ResourceImporter *>(static_cast<Object *>(Variant(*argv)));
+		resource_importer_class = static_cast<ResourceImporter *>(Variant(*argv).operator Object *());
 	else 
 		resource_importer_class = memnew(ResourceImporter);
 	if (!resource_importer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, resource_importer_class);	
+	JS_SetOpaque(obj, resource_importer_class);
 	return obj;
 }
 
@@ -54,7 +54,6 @@ static void define_resource_importer_enum(JSContext *ctx, JSValue proto) {
 
 static int js_resource_importer_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ResourceImporter::__class_id);
 	classes["ResourceImporter"] = ResourceImporter::__class_id;
 	class_id_list.insert(ResourceImporter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceImporter::__class_id, &resource_importer_class_def);

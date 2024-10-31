@@ -30,14 +30,14 @@ static JSValue physics_server3d_rendering_server_handler_class_constructor(JSCon
 
 	PhysicsServer3DRenderingServerHandler *physics_server3d_rendering_server_handler_class;
 	if (argc == 1) 
-		physics_server3d_rendering_server_handler_class = static_cast<PhysicsServer3DRenderingServerHandler *>(static_cast<Object *>(Variant(*argv)));
+		physics_server3d_rendering_server_handler_class = static_cast<PhysicsServer3DRenderingServerHandler *>(Variant(*argv).operator Object *());
 	else 
 		physics_server3d_rendering_server_handler_class = memnew(PhysicsServer3DRenderingServerHandler);
 	if (!physics_server3d_rendering_server_handler_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, physics_server3d_rendering_server_handler_class);	
+	JS_SetOpaque(obj, physics_server3d_rendering_server_handler_class);
 	return obj;
 }
 static JSValue physics_server3d_rendering_server_handler_class_set_vertex(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,7 +67,6 @@ static void define_physics_server3d_rendering_server_handler_enum(JSContext *ctx
 
 static int js_physics_server3d_rendering_server_handler_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PhysicsServer3DRenderingServerHandler::__class_id);
 	classes["PhysicsServer3DRenderingServerHandler"] = PhysicsServer3DRenderingServerHandler::__class_id;
 	class_id_list.insert(PhysicsServer3DRenderingServerHandler::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PhysicsServer3DRenderingServerHandler::__class_id, &physics_server3d_rendering_server_handler_class_def);

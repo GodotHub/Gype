@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource_importer_wav.hpp>
 #include <godot_cpp/classes/resource_importer.hpp>
+#include <godot_cpp/classes/resource_importer_wav.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue resource_importer_wav_class_constructor(JSContext *ctx, JSValueCo
 
 	ResourceImporterWAV *resource_importer_wav_class;
 	if (argc == 1) 
-		resource_importer_wav_class = static_cast<ResourceImporterWAV *>(static_cast<Object *>(Variant(*argv)));
+		resource_importer_wav_class = static_cast<ResourceImporterWAV *>(Variant(*argv).operator Object *());
 	else 
 		resource_importer_wav_class = memnew(ResourceImporterWAV);
 	if (!resource_importer_wav_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, resource_importer_wav_class);	
+	JS_SetOpaque(obj, resource_importer_wav_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_resource_importer_wav_enum(JSContext *ctx, JSValue proto) {
 
 static int js_resource_importer_wav_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ResourceImporterWAV::__class_id);
 	classes["ResourceImporterWAV"] = ResourceImporterWAV::__class_id;
 	class_id_list.insert(ResourceImporterWAV::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceImporterWAV::__class_id, &resource_importer_wav_class_def);

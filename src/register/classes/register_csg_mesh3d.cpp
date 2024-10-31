@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/csg_primitive3d.hpp>
-#include <godot_cpp/classes/csg_mesh3d.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/csg_primitive3d.hpp>
+#include <godot_cpp/classes/csg_mesh3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue csg_mesh3d_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	CSGMesh3D *csg_mesh3d_class;
 	if (argc == 1) 
-		csg_mesh3d_class = static_cast<CSGMesh3D *>(static_cast<Object *>(Variant(*argv)));
+		csg_mesh3d_class = static_cast<CSGMesh3D *>(Variant(*argv).operator Object *());
 	else 
 		csg_mesh3d_class = memnew(CSGMesh3D);
 	if (!csg_mesh3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, csg_mesh3d_class);	
+	JS_SetOpaque(obj, csg_mesh3d_class);
 	return obj;
 }
 static JSValue csg_mesh3d_class_set_mesh(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -90,7 +90,6 @@ static void define_csg_mesh3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_csg_mesh3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CSGMesh3D::__class_id);
 	classes["CSGMesh3D"] = CSGMesh3D::__class_id;
 	class_id_list.insert(CSGMesh3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CSGMesh3D::__class_id, &csg_mesh3d_class_def);

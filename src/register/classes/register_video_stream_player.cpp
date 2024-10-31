@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/video_stream_player.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/video_stream.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -32,14 +32,14 @@ static JSValue video_stream_player_class_constructor(JSContext *ctx, JSValueCons
 
 	VideoStreamPlayer *video_stream_player_class;
 	if (argc == 1) 
-		video_stream_player_class = static_cast<VideoStreamPlayer *>(static_cast<Object *>(Variant(*argv)));
+		video_stream_player_class = static_cast<VideoStreamPlayer *>(Variant(*argv).operator Object *());
 	else 
 		video_stream_player_class = memnew(VideoStreamPlayer);
 	if (!video_stream_player_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, video_stream_player_class);	
+	JS_SetOpaque(obj, video_stream_player_class);
 	return obj;
 }
 static JSValue video_stream_player_class_set_stream(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -300,7 +300,6 @@ static void define_video_stream_player_enum(JSContext *ctx, JSValue proto) {
 
 static int js_video_stream_player_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VideoStreamPlayer::__class_id);
 	classes["VideoStreamPlayer"] = VideoStreamPlayer::__class_id;
 	class_id_list.insert(VideoStreamPlayer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VideoStreamPlayer::__class_id, &video_stream_player_class_def);

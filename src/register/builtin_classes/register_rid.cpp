@@ -56,7 +56,6 @@ static const JSCFunctionListEntry rid_class_proto_funcs[] = {
 };
 
 static int js_rid_class_init(JSContext *ctx) {
-	JS_NewClassID(&RID::__class_id);
 	classes["RID"] = RID::__class_id;
 	class_id_list.insert(RID::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RID::__class_id, &rid_class_def);

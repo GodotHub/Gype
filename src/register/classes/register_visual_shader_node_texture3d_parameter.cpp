@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_texture_parameter.hpp>
 #include <godot_cpp/classes/visual_shader_node_texture3d_parameter.hpp>
+#include <godot_cpp/classes/visual_shader_node_texture_parameter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue visual_shader_node_texture3d_parameter_class_constructor(JSContex
 
 	VisualShaderNodeTexture3DParameter *visual_shader_node_texture3d_parameter_class;
 	if (argc == 1) 
-		visual_shader_node_texture3d_parameter_class = static_cast<VisualShaderNodeTexture3DParameter *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_texture3d_parameter_class = static_cast<VisualShaderNodeTexture3DParameter *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_texture3d_parameter_class = memnew(VisualShaderNodeTexture3DParameter);
 	if (!visual_shader_node_texture3d_parameter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_texture3d_parameter_class);	
+	JS_SetOpaque(obj, visual_shader_node_texture3d_parameter_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_visual_shader_node_texture3d_parameter_enum(JSContext *ctx, J
 
 static int js_visual_shader_node_texture3d_parameter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeTexture3DParameter::__class_id);
 	classes["VisualShaderNodeTexture3DParameter"] = VisualShaderNodeTexture3DParameter::__class_id;
 	class_id_list.insert(VisualShaderNodeTexture3DParameter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeTexture3DParameter::__class_id, &visual_shader_node_texture3d_parameter_class_def);

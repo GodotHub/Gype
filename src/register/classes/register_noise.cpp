@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/noise.hpp>
 #include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/noise.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue noise_class_constructor(JSContext *ctx, JSValueConst new_target, 
 
 	Noise *noise_class;
 	if (argc == 1) 
-		noise_class = static_cast<Noise *>(static_cast<Object *>(Variant(*argv)));
+		noise_class = static_cast<Noise *>(Variant(*argv).operator Object *());
 	else 
 		noise_class = memnew(Noise);
 	if (!noise_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, noise_class);	
+	JS_SetOpaque(obj, noise_class);
 	return obj;
 }
 static JSValue noise_class_get_noise_1d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -99,7 +99,6 @@ static void define_noise_enum(JSContext *ctx, JSValue proto) {
 
 static int js_noise_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Noise::__class_id);
 	classes["Noise"] = Noise::__class_id;
 	class_id_list.insert(Noise::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Noise::__class_id, &noise_class_def);

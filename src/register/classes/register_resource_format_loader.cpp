@@ -30,14 +30,14 @@ static JSValue resource_format_loader_class_constructor(JSContext *ctx, JSValueC
 
 	ResourceFormatLoader *resource_format_loader_class;
 	if (argc == 1) 
-		resource_format_loader_class = static_cast<ResourceFormatLoader *>(static_cast<Object *>(Variant(*argv)));
+		resource_format_loader_class = static_cast<ResourceFormatLoader *>(Variant(*argv).operator Object *());
 	else 
 		resource_format_loader_class = memnew(ResourceFormatLoader);
 	if (!resource_format_loader_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, resource_format_loader_class);	
+	JS_SetOpaque(obj, resource_format_loader_class);
 	return obj;
 }
 
@@ -57,7 +57,6 @@ static void define_resource_format_loader_enum(JSContext *ctx, JSValue proto) {
 
 static int js_resource_format_loader_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ResourceFormatLoader::__class_id);
 	classes["ResourceFormatLoader"] = ResourceFormatLoader::__class_id;
 	class_id_list.insert(ResourceFormatLoader::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceFormatLoader::__class_id, &resource_format_loader_class_def);

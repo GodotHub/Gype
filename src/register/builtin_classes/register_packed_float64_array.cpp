@@ -144,7 +144,6 @@ static const JSCFunctionListEntry packed_float64_array_class_proto_funcs[] = {
 };
 
 static int js_packed_float64_array_class_init(JSContext *ctx) {
-	JS_NewClassID(&PackedFloat64Array::__class_id);
 	classes["PackedFloat64Array"] = PackedFloat64Array::__class_id;
 	class_id_list.insert(PackedFloat64Array::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PackedFloat64Array::__class_id, &packed_float64_array_class_def);

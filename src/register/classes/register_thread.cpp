@@ -30,14 +30,14 @@ static JSValue thread_class_constructor(JSContext *ctx, JSValueConst new_target,
 
 	Thread *thread_class;
 	if (argc == 1) 
-		thread_class = static_cast<Thread *>(static_cast<Object *>(Variant(*argv)));
+		thread_class = static_cast<Thread *>(Variant(*argv).operator Object *());
 	else 
 		thread_class = memnew(Thread);
 	if (!thread_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, thread_class);	
+	JS_SetOpaque(obj, thread_class);
 	return obj;
 }
 static JSValue thread_class_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,7 +88,6 @@ static void define_thread_enum(JSContext *ctx, JSValue proto) {
 
 static int js_thread_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Thread::__class_id);
 	classes["Thread"] = Thread::__class_id;
 	class_id_list.insert(Thread::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Thread::__class_id, &thread_class_def);

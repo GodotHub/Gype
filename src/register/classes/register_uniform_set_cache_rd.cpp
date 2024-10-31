@@ -31,14 +31,14 @@ static JSValue uniform_set_cache_rd_class_constructor(JSContext *ctx, JSValueCon
 
 	UniformSetCacheRD *uniform_set_cache_rd_class;
 	if (argc == 1) 
-		uniform_set_cache_rd_class = static_cast<UniformSetCacheRD *>(static_cast<Object *>(Variant(*argv)));
+		uniform_set_cache_rd_class = static_cast<UniformSetCacheRD *>(Variant(*argv).operator Object *());
 	else 
 		uniform_set_cache_rd_class = memnew(UniformSetCacheRD);
 	if (!uniform_set_cache_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, uniform_set_cache_rd_class);	
+	JS_SetOpaque(obj, uniform_set_cache_rd_class);
 	return obj;
 }
 static JSValue uniform_set_cache_rd_class_get_cache(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,7 +57,6 @@ static void define_uniform_set_cache_rd_enum(JSContext *ctx, JSValue proto) {
 
 static int js_uniform_set_cache_rd_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&UniformSetCacheRD::__class_id);
 	classes["UniformSetCacheRD"] = UniformSetCacheRD::__class_id;
 	class_id_list.insert(UniformSetCacheRD::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), UniformSetCacheRD::__class_id, &uniform_set_cache_rd_class_def);

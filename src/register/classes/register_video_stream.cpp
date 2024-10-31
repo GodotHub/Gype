@@ -31,14 +31,14 @@ static JSValue video_stream_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	VideoStream *video_stream_class;
 	if (argc == 1) 
-		video_stream_class = static_cast<VideoStream *>(static_cast<Object *>(Variant(*argv)));
+		video_stream_class = static_cast<VideoStream *>(Variant(*argv).operator Object *());
 	else 
 		video_stream_class = memnew(VideoStream);
 	if (!video_stream_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, video_stream_class);	
+	JS_SetOpaque(obj, video_stream_class);
 	return obj;
 }
 static JSValue video_stream_class_set_file(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,7 +71,6 @@ static void define_video_stream_enum(JSContext *ctx, JSValue proto) {
 
 static int js_video_stream_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VideoStream::__class_id);
 	classes["VideoStream"] = VideoStream::__class_id;
 	class_id_list.insert(VideoStream::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VideoStream::__class_id, &video_stream_class_def);

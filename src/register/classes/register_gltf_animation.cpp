@@ -30,14 +30,14 @@ static JSValue gltf_animation_class_constructor(JSContext *ctx, JSValueConst new
 
 	GLTFAnimation *gltf_animation_class;
 	if (argc == 1) 
-		gltf_animation_class = static_cast<GLTFAnimation *>(static_cast<Object *>(Variant(*argv)));
+		gltf_animation_class = static_cast<GLTFAnimation *>(Variant(*argv).operator Object *());
 	else 
 		gltf_animation_class = memnew(GLTFAnimation);
 	if (!gltf_animation_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_animation_class);	
+	JS_SetOpaque(obj, gltf_animation_class);
 	return obj;
 }
 static JSValue gltf_animation_class_get_original_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -98,7 +98,6 @@ static void define_gltf_animation_enum(JSContext *ctx, JSValue proto) {
 
 static int js_gltf_animation_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GLTFAnimation::__class_id);
 	classes["GLTFAnimation"] = GLTFAnimation::__class_id;
 	class_id_list.insert(GLTFAnimation::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFAnimation::__class_id, &gltf_animation_class_def);

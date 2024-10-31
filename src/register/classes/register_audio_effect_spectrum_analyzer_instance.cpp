@@ -30,14 +30,14 @@ static JSValue audio_effect_spectrum_analyzer_instance_class_constructor(JSConte
 
 	AudioEffectSpectrumAnalyzerInstance *audio_effect_spectrum_analyzer_instance_class;
 	if (argc == 1) 
-		audio_effect_spectrum_analyzer_instance_class = static_cast<AudioEffectSpectrumAnalyzerInstance *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_spectrum_analyzer_instance_class = static_cast<AudioEffectSpectrumAnalyzerInstance *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_spectrum_analyzer_instance_class = memnew(AudioEffectSpectrumAnalyzerInstance);
 	if (!audio_effect_spectrum_analyzer_instance_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_spectrum_analyzer_instance_class);	
+	JS_SetOpaque(obj, audio_effect_spectrum_analyzer_instance_class);
 	return obj;
 }
 static JSValue audio_effect_spectrum_analyzer_instance_class_get_magnitude_for_frequency_range(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -61,7 +61,6 @@ static void define_audio_effect_spectrum_analyzer_instance_enum(JSContext *ctx, 
 
 static int js_audio_effect_spectrum_analyzer_instance_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectSpectrumAnalyzerInstance::__class_id);
 	classes["AudioEffectSpectrumAnalyzerInstance"] = AudioEffectSpectrumAnalyzerInstance::__class_id;
 	class_id_list.insert(AudioEffectSpectrumAnalyzerInstance::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectSpectrumAnalyzerInstance::__class_id, &audio_effect_spectrum_analyzer_instance_class_def);

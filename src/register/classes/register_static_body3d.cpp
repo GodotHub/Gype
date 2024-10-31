@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/static_body3d.hpp>
 #include <godot_cpp/classes/physics_material.hpp>
+#include <godot_cpp/classes/static_body3d.hpp>
 #include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue static_body3d_class_constructor(JSContext *ctx, JSValueConst new_
 
 	StaticBody3D *static_body3d_class;
 	if (argc == 1) 
-		static_body3d_class = static_cast<StaticBody3D *>(static_cast<Object *>(Variant(*argv)));
+		static_body3d_class = static_cast<StaticBody3D *>(Variant(*argv).operator Object *());
 	else 
 		static_body3d_class = memnew(StaticBody3D);
 	if (!static_body3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, static_body3d_class);	
+	JS_SetOpaque(obj, static_body3d_class);
 	return obj;
 }
 static JSValue static_body3d_class_set_constant_linear_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -107,7 +107,6 @@ static void define_static_body3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_static_body3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&StaticBody3D::__class_id);
 	classes["StaticBody3D"] = StaticBody3D::__class_id;
 	class_id_list.insert(StaticBody3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StaticBody3D::__class_id, &static_body3d_class_def);

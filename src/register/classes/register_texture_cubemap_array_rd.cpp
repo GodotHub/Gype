@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture_layered_rd.hpp>
 #include <godot_cpp/classes/texture_cubemap_array_rd.hpp>
+#include <godot_cpp/classes/texture_layered_rd.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue texture_cubemap_array_rd_class_constructor(JSContext *ctx, JSValu
 
 	TextureCubemapArrayRD *texture_cubemap_array_rd_class;
 	if (argc == 1) 
-		texture_cubemap_array_rd_class = static_cast<TextureCubemapArrayRD *>(static_cast<Object *>(Variant(*argv)));
+		texture_cubemap_array_rd_class = static_cast<TextureCubemapArrayRD *>(Variant(*argv).operator Object *());
 	else 
 		texture_cubemap_array_rd_class = memnew(TextureCubemapArrayRD);
 	if (!texture_cubemap_array_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, texture_cubemap_array_rd_class);	
+	JS_SetOpaque(obj, texture_cubemap_array_rd_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_texture_cubemap_array_rd_enum(JSContext *ctx, JSValue proto) 
 
 static int js_texture_cubemap_array_rd_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&TextureCubemapArrayRD::__class_id);
 	classes["TextureCubemapArrayRD"] = TextureCubemapArrayRD::__class_id;
 	class_id_list.insert(TextureCubemapArrayRD::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TextureCubemapArrayRD::__class_id, &texture_cubemap_array_rd_class_def);

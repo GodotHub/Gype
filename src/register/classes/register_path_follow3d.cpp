@@ -30,14 +30,14 @@ static JSValue path_follow3d_class_constructor(JSContext *ctx, JSValueConst new_
 
 	PathFollow3D *path_follow3d_class;
 	if (argc == 1) 
-		path_follow3d_class = static_cast<PathFollow3D *>(static_cast<Object *>(Variant(*argv)));
+		path_follow3d_class = static_cast<PathFollow3D *>(Variant(*argv).operator Object *());
 	else 
 		path_follow3d_class = memnew(PathFollow3D);
 	if (!path_follow3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, path_follow3d_class);	
+	JS_SetOpaque(obj, path_follow3d_class);
 	return obj;
 }
 static JSValue path_follow3d_class_set_progress(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -227,7 +227,6 @@ static void define_path_follow3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_path_follow3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PathFollow3D::__class_id);
 	classes["PathFollow3D"] = PathFollow3D::__class_id;
 	class_id_list.insert(PathFollow3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PathFollow3D::__class_id, &path_follow3d_class_def);

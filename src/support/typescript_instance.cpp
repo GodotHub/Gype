@@ -21,7 +21,7 @@ const char *TypeScriptInstance::symbol_mask = "_GodotClass";
 TypeScriptInstance::TypeScriptInstance(Object *p_godot_object, TypeScript *script, bool is_placeholder) {
 	this->script = script;
 	String code = script->_get_source_code();
-	std::string code_str = std::string(code.ascii().get_data());
+	std::string code_str = std::string(code.utf8().get_data());
 	JSValue ret = JS_Eval(ctx, code_str.c_str(), code_str.size(), "<input>", JS_EVAL_TYPE_MODULE | JS_EVAL_FLAG_COMPILE_ONLY);
 	JSModuleDef *md = (JSModuleDef *)JS_VALUE_GET_PTR(ret);
 	ret = JS_EvalFunction(ctx, ret);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_uv_polar_coord.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/classes/visual_shader_node_uv_polar_coord.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue visual_shader_node_uv_polar_coord_class_constructor(JSContext *ct
 
 	VisualShaderNodeUVPolarCoord *visual_shader_node_uv_polar_coord_class;
 	if (argc == 1) 
-		visual_shader_node_uv_polar_coord_class = static_cast<VisualShaderNodeUVPolarCoord *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_uv_polar_coord_class = static_cast<VisualShaderNodeUVPolarCoord *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_uv_polar_coord_class = memnew(VisualShaderNodeUVPolarCoord);
 	if (!visual_shader_node_uv_polar_coord_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_uv_polar_coord_class);	
+	JS_SetOpaque(obj, visual_shader_node_uv_polar_coord_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_visual_shader_node_uv_polar_coord_enum(JSContext *ctx, JSValu
 
 static int js_visual_shader_node_uv_polar_coord_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeUVPolarCoord::__class_id);
 	classes["VisualShaderNodeUVPolarCoord"] = VisualShaderNodeUVPolarCoord::__class_id;
 	class_id_list.insert(VisualShaderNodeUVPolarCoord::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeUVPolarCoord::__class_id, &visual_shader_node_uv_polar_coord_class_def);

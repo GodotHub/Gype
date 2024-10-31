@@ -5,14 +5,14 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gltf_texture.hpp>
 #include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/gltf_document_extension.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/gltf_node.hpp>
 #include <godot_cpp/classes/gltf_state.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/gltf_node.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/gltf_document_extension.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/gltf_texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -36,14 +36,14 @@ static JSValue gltf_document_extension_class_constructor(JSContext *ctx, JSValue
 
 	GLTFDocumentExtension *gltf_document_extension_class;
 	if (argc == 1) 
-		gltf_document_extension_class = static_cast<GLTFDocumentExtension *>(static_cast<Object *>(Variant(*argv)));
+		gltf_document_extension_class = static_cast<GLTFDocumentExtension *>(Variant(*argv).operator Object *());
 	else 
 		gltf_document_extension_class = memnew(GLTFDocumentExtension);
 	if (!gltf_document_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_document_extension_class);	
+	JS_SetOpaque(obj, gltf_document_extension_class);
 	return obj;
 }
 
@@ -56,7 +56,6 @@ static void define_gltf_document_extension_enum(JSContext *ctx, JSValue proto) {
 
 static int js_gltf_document_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GLTFDocumentExtension::__class_id);
 	classes["GLTFDocumentExtension"] = GLTFDocumentExtension::__class_id;
 	class_id_list.insert(GLTFDocumentExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFDocumentExtension::__class_id, &gltf_document_extension_class_def);

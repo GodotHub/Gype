@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/navigation_mesh.hpp>
 #include <godot_cpp/classes/navigation_polygon.hpp>
+#include <godot_cpp/classes/navigation_mesh.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue navigation_polygon_class_constructor(JSContext *ctx, JSValueConst
 
 	NavigationPolygon *navigation_polygon_class;
 	if (argc == 1) 
-		navigation_polygon_class = static_cast<NavigationPolygon *>(static_cast<Object *>(Variant(*argv)));
+		navigation_polygon_class = static_cast<NavigationPolygon *>(Variant(*argv).operator Object *());
 	else 
 		navigation_polygon_class = memnew(NavigationPolygon);
 	if (!navigation_polygon_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, navigation_polygon_class);	
+	JS_SetOpaque(obj, navigation_polygon_class);
 	return obj;
 }
 static JSValue navigation_polygon_class_set_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -325,7 +325,6 @@ static void define_navigation_polygon_enum(JSContext *ctx, JSValue proto) {
 
 static int js_navigation_polygon_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&NavigationPolygon::__class_id);
 	classes["NavigationPolygon"] = NavigationPolygon::__class_id;
 	class_id_list.insert(NavigationPolygon::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NavigationPolygon::__class_id, &navigation_polygon_class_def);

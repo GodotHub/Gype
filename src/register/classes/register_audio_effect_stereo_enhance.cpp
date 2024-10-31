@@ -30,14 +30,14 @@ static JSValue audio_effect_stereo_enhance_class_constructor(JSContext *ctx, JSV
 
 	AudioEffectStereoEnhance *audio_effect_stereo_enhance_class;
 	if (argc == 1) 
-		audio_effect_stereo_enhance_class = static_cast<AudioEffectStereoEnhance *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_stereo_enhance_class = static_cast<AudioEffectStereoEnhance *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_stereo_enhance_class = memnew(AudioEffectStereoEnhance);
 	if (!audio_effect_stereo_enhance_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_stereo_enhance_class);	
+	JS_SetOpaque(obj, audio_effect_stereo_enhance_class);
 	return obj;
 }
 static JSValue audio_effect_stereo_enhance_class_set_pan_pullout(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -106,7 +106,6 @@ static void define_audio_effect_stereo_enhance_enum(JSContext *ctx, JSValue prot
 
 static int js_audio_effect_stereo_enhance_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectStereoEnhance::__class_id);
 	classes["AudioEffectStereoEnhance"] = AudioEffectStereoEnhance::__class_id;
 	class_id_list.insert(AudioEffectStereoEnhance::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectStereoEnhance::__class_id, &audio_effect_stereo_enhance_class_def);

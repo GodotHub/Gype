@@ -30,14 +30,14 @@ static JSValue texture_cubemap_rd_class_constructor(JSContext *ctx, JSValueConst
 
 	TextureCubemapRD *texture_cubemap_rd_class;
 	if (argc == 1) 
-		texture_cubemap_rd_class = static_cast<TextureCubemapRD *>(static_cast<Object *>(Variant(*argv)));
+		texture_cubemap_rd_class = static_cast<TextureCubemapRD *>(Variant(*argv).operator Object *());
 	else 
 		texture_cubemap_rd_class = memnew(TextureCubemapRD);
 	if (!texture_cubemap_rd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, texture_cubemap_rd_class);	
+	JS_SetOpaque(obj, texture_cubemap_rd_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_texture_cubemap_rd_enum(JSContext *ctx, JSValue proto) {
 
 static int js_texture_cubemap_rd_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&TextureCubemapRD::__class_id);
 	classes["TextureCubemapRD"] = TextureCubemapRD::__class_id;
 	class_id_list.insert(TextureCubemapRD::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TextureCubemapRD::__class_id, &texture_cubemap_rd_class_def);

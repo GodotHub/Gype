@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_node.hpp>
 #include <godot_cpp/classes/animation_node_time_seek.hpp>
+#include <godot_cpp/classes/animation_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue animation_node_time_seek_class_constructor(JSContext *ctx, JSValu
 
 	AnimationNodeTimeSeek *animation_node_time_seek_class;
 	if (argc == 1) 
-		animation_node_time_seek_class = static_cast<AnimationNodeTimeSeek *>(static_cast<Object *>(Variant(*argv)));
+		animation_node_time_seek_class = static_cast<AnimationNodeTimeSeek *>(Variant(*argv).operator Object *());
 	else 
 		animation_node_time_seek_class = memnew(AnimationNodeTimeSeek);
 	if (!animation_node_time_seek_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animation_node_time_seek_class);	
+	JS_SetOpaque(obj, animation_node_time_seek_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_animation_node_time_seek_enum(JSContext *ctx, JSValue proto) 
 
 static int js_animation_node_time_seek_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AnimationNodeTimeSeek::__class_id);
 	classes["AnimationNodeTimeSeek"] = AnimationNodeTimeSeek::__class_id;
 	class_id_list.insert(AnimationNodeTimeSeek::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationNodeTimeSeek::__class_id, &animation_node_time_seek_class_def);

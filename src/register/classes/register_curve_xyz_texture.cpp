@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/curve.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/curve_xyz_texture.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue curve_xyz_texture_class_constructor(JSContext *ctx, JSValueConst 
 
 	CurveXYZTexture *curve_xyz_texture_class;
 	if (argc == 1) 
-		curve_xyz_texture_class = static_cast<CurveXYZTexture *>(static_cast<Object *>(Variant(*argv)));
+		curve_xyz_texture_class = static_cast<CurveXYZTexture *>(Variant(*argv).operator Object *());
 	else 
 		curve_xyz_texture_class = memnew(CurveXYZTexture);
 	if (!curve_xyz_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, curve_xyz_texture_class);	
+	JS_SetOpaque(obj, curve_xyz_texture_class);
 	return obj;
 }
 static JSValue curve_xyz_texture_class_set_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -120,7 +120,6 @@ static void define_curve_xyz_texture_enum(JSContext *ctx, JSValue proto) {
 
 static int js_curve_xyz_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CurveXYZTexture::__class_id);
 	classes["CurveXYZTexture"] = CurveXYZTexture::__class_id;
 	class_id_list.insert(CurveXYZTexture::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CurveXYZTexture::__class_id, &curve_xyz_texture_class_def);

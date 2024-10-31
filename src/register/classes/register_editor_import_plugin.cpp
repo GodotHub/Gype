@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource_importer.hpp>
 #include <godot_cpp/classes/editor_import_plugin.hpp>
+#include <godot_cpp/classes/resource_importer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue editor_import_plugin_class_constructor(JSContext *ctx, JSValueCon
 
 	EditorImportPlugin *editor_import_plugin_class;
 	if (argc == 1) 
-		editor_import_plugin_class = static_cast<EditorImportPlugin *>(static_cast<Object *>(Variant(*argv)));
+		editor_import_plugin_class = static_cast<EditorImportPlugin *>(Variant(*argv).operator Object *());
 	else 
 		editor_import_plugin_class = memnew(EditorImportPlugin);
 	if (!editor_import_plugin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_import_plugin_class);	
+	JS_SetOpaque(obj, editor_import_plugin_class);
 	return obj;
 }
 static JSValue editor_import_plugin_class_append_import_external_resource(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,7 +57,6 @@ static void define_editor_import_plugin_enum(JSContext *ctx, JSValue proto) {
 
 static int js_editor_import_plugin_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorImportPlugin::__class_id);
 	classes["EditorImportPlugin"] = EditorImportPlugin::__class_id;
 	class_id_list.insert(EditorImportPlugin::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorImportPlugin::__class_id, &editor_import_plugin_class_def);

@@ -30,14 +30,14 @@ static JSValue cylinder_mesh_class_constructor(JSContext *ctx, JSValueConst new_
 
 	CylinderMesh *cylinder_mesh_class;
 	if (argc == 1) 
-		cylinder_mesh_class = static_cast<CylinderMesh *>(static_cast<Object *>(Variant(*argv)));
+		cylinder_mesh_class = static_cast<CylinderMesh *>(Variant(*argv).operator Object *());
 	else 
 		cylinder_mesh_class = memnew(CylinderMesh);
 	if (!cylinder_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, cylinder_mesh_class);	
+	JS_SetOpaque(obj, cylinder_mesh_class);
 	return obj;
 }
 static JSValue cylinder_mesh_class_set_top_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -178,7 +178,6 @@ static void define_cylinder_mesh_enum(JSContext *ctx, JSValue proto) {
 
 static int js_cylinder_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CylinderMesh::__class_id);
 	classes["CylinderMesh"] = CylinderMesh::__class_id;
 	class_id_list.insert(CylinderMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CylinderMesh::__class_id, &cylinder_mesh_class_def);

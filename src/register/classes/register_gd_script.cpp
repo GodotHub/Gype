@@ -30,14 +30,14 @@ static JSValue gd_script_class_constructor(JSContext *ctx, JSValueConst new_targ
 
 	GDScript *gd_script_class;
 	if (argc == 1) 
-		gd_script_class = static_cast<GDScript *>(static_cast<Object *>(Variant(*argv)));
+		gd_script_class = static_cast<GDScript *>(Variant(*argv).operator Object *());
 	else 
 		gd_script_class = memnew(GDScript);
 	if (!gd_script_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gd_script_class);	
+	JS_SetOpaque(obj, gd_script_class);
 	return obj;
 }
 static JSValue gd_script_class_new_(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,7 +57,6 @@ static void define_gd_script_enum(JSContext *ctx, JSValue proto) {
 
 static int js_gd_script_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GDScript::__class_id);
 	classes["GDScript"] = GDScript::__class_id;
 	class_id_list.insert(GDScript::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GDScript::__class_id, &gd_script_class_def);

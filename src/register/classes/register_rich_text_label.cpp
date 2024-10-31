@@ -5,13 +5,13 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/rich_text_effect.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/v_scroll_bar.hpp>
-#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/rich_text_label.hpp>
-#include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/v_scroll_bar.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -35,14 +35,14 @@ static JSValue rich_text_label_class_constructor(JSContext *ctx, JSValueConst ne
 
 	RichTextLabel *rich_text_label_class;
 	if (argc == 1) 
-		rich_text_label_class = static_cast<RichTextLabel *>(static_cast<Object *>(Variant(*argv)));
+		rich_text_label_class = static_cast<RichTextLabel *>(Variant(*argv).operator Object *());
 	else 
 		rich_text_label_class = memnew(RichTextLabel);
 	if (!rich_text_label_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rich_text_label_class);	
+	JS_SetOpaque(obj, rich_text_label_class);
 	return obj;
 }
 static JSValue rich_text_label_class_get_parsed_text(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -932,7 +932,6 @@ static void define_rich_text_label_enum(JSContext *ctx, JSValue proto) {
 
 static int js_rich_text_label_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RichTextLabel::__class_id);
 	classes["RichTextLabel"] = RichTextLabel::__class_id;
 	class_id_list.insert(RichTextLabel::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RichTextLabel::__class_id, &rich_text_label_class_def);

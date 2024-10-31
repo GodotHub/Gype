@@ -31,14 +31,14 @@ static JSValue animation_library_class_constructor(JSContext *ctx, JSValueConst 
 
 	AnimationLibrary *animation_library_class;
 	if (argc == 1) 
-		animation_library_class = static_cast<AnimationLibrary *>(static_cast<Object *>(Variant(*argv)));
+		animation_library_class = static_cast<AnimationLibrary *>(Variant(*argv).operator Object *());
 	else 
 		animation_library_class = memnew(AnimationLibrary);
 	if (!animation_library_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animation_library_class);	
+	JS_SetOpaque(obj, animation_library_class);
 	return obj;
 }
 static JSValue animation_library_class_add_animation(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -155,7 +155,6 @@ static void define_animation_library_enum(JSContext *ctx, JSValue proto) {
 
 static int js_animation_library_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AnimationLibrary::__class_id);
 	classes["AnimationLibrary"] = AnimationLibrary::__class_id;
 	class_id_list.insert(AnimationLibrary::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationLibrary::__class_id, &animation_library_class_def);

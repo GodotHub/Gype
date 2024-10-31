@@ -32,14 +32,14 @@ static JSValue script_editor_base_class_constructor(JSContext *ctx, JSValueConst
 
 	ScriptEditorBase *script_editor_base_class;
 	if (argc == 1) 
-		script_editor_base_class = static_cast<ScriptEditorBase *>(static_cast<Object *>(Variant(*argv)));
+		script_editor_base_class = static_cast<ScriptEditorBase *>(Variant(*argv).operator Object *());
 	else 
 		script_editor_base_class = memnew(ScriptEditorBase);
 	if (!script_editor_base_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, script_editor_base_class);	
+	JS_SetOpaque(obj, script_editor_base_class);
 	return obj;
 }
 static JSValue script_editor_base_class_get_base_editor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -244,7 +244,6 @@ static void define_script_editor_base_enum(JSContext *ctx, JSValue proto) {
 
 static int js_script_editor_base_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ScriptEditorBase::__class_id);
 	classes["ScriptEditorBase"] = ScriptEditorBase::__class_id;
 	class_id_list.insert(ScriptEditorBase::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ScriptEditorBase::__class_id, &script_editor_base_class_def);

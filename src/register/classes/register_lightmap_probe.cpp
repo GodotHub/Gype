@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/lightmap_probe.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/lightmap_probe.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue lightmap_probe_class_constructor(JSContext *ctx, JSValueConst new
 
 	LightmapProbe *lightmap_probe_class;
 	if (argc == 1) 
-		lightmap_probe_class = static_cast<LightmapProbe *>(static_cast<Object *>(Variant(*argv)));
+		lightmap_probe_class = static_cast<LightmapProbe *>(Variant(*argv).operator Object *());
 	else 
 		lightmap_probe_class = memnew(LightmapProbe);
 	if (!lightmap_probe_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, lightmap_probe_class);	
+	JS_SetOpaque(obj, lightmap_probe_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_lightmap_probe_enum(JSContext *ctx, JSValue proto) {
 
 static int js_lightmap_probe_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&LightmapProbe::__class_id);
 	classes["LightmapProbe"] = LightmapProbe::__class_id;
 	class_id_list.insert(LightmapProbe::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), LightmapProbe::__class_id, &lightmap_probe_class_def);

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/audio_stream_wav.hpp>
-#include <godot_cpp/classes/audio_effect_record.hpp>
 #include <godot_cpp/classes/audio_effect.hpp>
+#include <godot_cpp/classes/audio_effect_record.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue audio_effect_record_class_constructor(JSContext *ctx, JSValueCons
 
 	AudioEffectRecord *audio_effect_record_class;
 	if (argc == 1) 
-		audio_effect_record_class = static_cast<AudioEffectRecord *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_record_class = static_cast<AudioEffectRecord *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_record_class = memnew(AudioEffectRecord);
 	if (!audio_effect_record_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_record_class);	
+	JS_SetOpaque(obj, audio_effect_record_class);
 	return obj;
 }
 static JSValue audio_effect_record_class_set_recording_active(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -86,7 +86,6 @@ static void define_audio_effect_record_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_effect_record_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectRecord::__class_id);
 	classes["AudioEffectRecord"] = AudioEffectRecord::__class_id;
 	class_id_list.insert(AudioEffectRecord::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectRecord::__class_id, &audio_effect_record_class_def);

@@ -31,14 +31,14 @@ static JSValue sprite3d_class_constructor(JSContext *ctx, JSValueConst new_targe
 
 	Sprite3D *sprite3d_class;
 	if (argc == 1) 
-		sprite3d_class = static_cast<Sprite3D *>(static_cast<Object *>(Variant(*argv)));
+		sprite3d_class = static_cast<Sprite3D *>(Variant(*argv).operator Object *());
 	else 
 		sprite3d_class = memnew(Sprite3D);
 	if (!sprite3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, sprite3d_class);	
+	JS_SetOpaque(obj, sprite3d_class);
 	return obj;
 }
 static JSValue sprite3d_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -215,7 +215,6 @@ static void define_sprite3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_sprite3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Sprite3D::__class_id);
 	classes["Sprite3D"] = Sprite3D::__class_id;
 	class_id_list.insert(Sprite3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Sprite3D::__class_id, &sprite3d_class_def);

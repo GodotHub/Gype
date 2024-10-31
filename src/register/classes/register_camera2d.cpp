@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera2d.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/camera2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue camera2d_class_constructor(JSContext *ctx, JSValueConst new_targe
 
 	Camera2D *camera2d_class;
 	if (argc == 1) 
-		camera2d_class = static_cast<Camera2D *>(static_cast<Object *>(Variant(*argv)));
+		camera2d_class = static_cast<Camera2D *>(Variant(*argv).operator Object *());
 	else 
 		camera2d_class = memnew(Camera2D);
 	if (!camera2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, camera2d_class);	
+	JS_SetOpaque(obj, camera2d_class);
 	return obj;
 }
 static JSValue camera2d_class_set_offset(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -522,7 +522,6 @@ static void define_camera2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_camera2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Camera2D::__class_id);
 	classes["Camera2D"] = Camera2D::__class_id;
 	class_id_list.insert(Camera2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Camera2D::__class_id, &camera2d_class_def);

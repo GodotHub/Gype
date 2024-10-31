@@ -30,14 +30,14 @@ static JSValue translation_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	Translation *translation_class;
 	if (argc == 1) 
-		translation_class = static_cast<Translation *>(static_cast<Object *>(Variant(*argv)));
+		translation_class = static_cast<Translation *>(Variant(*argv).operator Object *());
 	else 
 		translation_class = memnew(Translation);
 	if (!translation_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, translation_class);	
+	JS_SetOpaque(obj, translation_class);
 	return obj;
 }
 static JSValue translation_class_set_locale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,7 +110,6 @@ static void define_translation_enum(JSContext *ctx, JSValue proto) {
 
 static int js_translation_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Translation::__class_id);
 	classes["Translation"] = Translation::__class_id;
 	class_id_list.insert(Translation::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Translation::__class_id, &translation_class_def);

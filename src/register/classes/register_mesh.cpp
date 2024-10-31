@@ -7,10 +7,10 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/triangle_mesh.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/concave_polygon_shape3d.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/convex_polygon_shape3d.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/concave_polygon_shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -34,14 +34,14 @@ static JSValue mesh_class_constructor(JSContext *ctx, JSValueConst new_target, i
 
 	Mesh *mesh_class;
 	if (argc == 1) 
-		mesh_class = static_cast<Mesh *>(static_cast<Object *>(Variant(*argv)));
+		mesh_class = static_cast<Mesh *>(Variant(*argv).operator Object *());
 	else 
 		mesh_class = memnew(Mesh);
 	if (!mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, mesh_class);	
+	JS_SetOpaque(obj, mesh_class);
 	return obj;
 }
 static JSValue mesh_class_set_lightmap_size_hint(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -201,7 +201,6 @@ static void define_mesh_enum(JSContext *ctx, JSValue proto) {
 
 static int js_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Mesh::__class_id);
 	classes["Mesh"] = Mesh::__class_id;
 	class_id_list.insert(Mesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Mesh::__class_id, &mesh_class_def);

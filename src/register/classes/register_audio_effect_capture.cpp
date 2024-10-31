@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_capture.hpp>
 #include <godot_cpp/classes/audio_effect.hpp>
+#include <godot_cpp/classes/audio_effect_capture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue audio_effect_capture_class_constructor(JSContext *ctx, JSValueCon
 
 	AudioEffectCapture *audio_effect_capture_class;
 	if (argc == 1) 
-		audio_effect_capture_class = static_cast<AudioEffectCapture *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_capture_class = static_cast<AudioEffectCapture *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_capture_class = memnew(AudioEffectCapture);
 	if (!audio_effect_capture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_capture_class);	
+	JS_SetOpaque(obj, audio_effect_capture_class);
 	return obj;
 }
 static JSValue audio_effect_capture_class_can_get_buffer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -105,7 +105,6 @@ static void define_audio_effect_capture_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_effect_capture_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectCapture::__class_id);
 	classes["AudioEffectCapture"] = AudioEffectCapture::__class_id;
 	class_id_list.insert(AudioEffectCapture::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectCapture::__class_id, &audio_effect_capture_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/accept_dialog.hpp>
 #include <godot_cpp/classes/confirmation_dialog.hpp>
+#include <godot_cpp/classes/accept_dialog.hpp>
 #include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue confirmation_dialog_class_constructor(JSContext *ctx, JSValueCons
 
 	ConfirmationDialog *confirmation_dialog_class;
 	if (argc == 1) 
-		confirmation_dialog_class = static_cast<ConfirmationDialog *>(static_cast<Object *>(Variant(*argv)));
+		confirmation_dialog_class = static_cast<ConfirmationDialog *>(Variant(*argv).operator Object *());
 	else 
 		confirmation_dialog_class = memnew(ConfirmationDialog);
 	if (!confirmation_dialog_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, confirmation_dialog_class);	
+	JS_SetOpaque(obj, confirmation_dialog_class);
 	return obj;
 }
 static JSValue confirmation_dialog_class_get_cancel_button(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -76,7 +76,6 @@ static void define_confirmation_dialog_enum(JSContext *ctx, JSValue proto) {
 
 static int js_confirmation_dialog_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ConfirmationDialog::__class_id);
 	classes["ConfirmationDialog"] = ConfirmationDialog::__class_id;
 	class_id_list.insert(ConfirmationDialog::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ConfirmationDialog::__class_id, &confirmation_dialog_class_def);

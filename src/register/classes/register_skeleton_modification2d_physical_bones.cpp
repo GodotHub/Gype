@@ -30,14 +30,14 @@ static JSValue skeleton_modification2d_physical_bones_class_constructor(JSContex
 
 	SkeletonModification2DPhysicalBones *skeleton_modification2d_physical_bones_class;
 	if (argc == 1) 
-		skeleton_modification2d_physical_bones_class = static_cast<SkeletonModification2DPhysicalBones *>(static_cast<Object *>(Variant(*argv)));
+		skeleton_modification2d_physical_bones_class = static_cast<SkeletonModification2DPhysicalBones *>(Variant(*argv).operator Object *());
 	else 
 		skeleton_modification2d_physical_bones_class = memnew(SkeletonModification2DPhysicalBones);
 	if (!skeleton_modification2d_physical_bones_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, skeleton_modification2d_physical_bones_class);	
+	JS_SetOpaque(obj, skeleton_modification2d_physical_bones_class);
 	return obj;
 }
 static JSValue skeleton_modification2d_physical_bones_class_set_physical_bone_chain_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -95,7 +95,6 @@ static void define_skeleton_modification2d_physical_bones_enum(JSContext *ctx, J
 
 static int js_skeleton_modification2d_physical_bones_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SkeletonModification2DPhysicalBones::__class_id);
 	classes["SkeletonModification2DPhysicalBones"] = SkeletonModification2DPhysicalBones::__class_id;
 	class_id_list.insert(SkeletonModification2DPhysicalBones::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SkeletonModification2DPhysicalBones::__class_id, &skeleton_modification2d_physical_bones_class_def);

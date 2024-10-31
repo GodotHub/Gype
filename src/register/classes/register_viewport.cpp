@@ -5,17 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/camera2d.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/world2d.hpp>
-#include <godot_cpp/classes/world3d.hpp>
-#include <godot_cpp/classes/viewport_texture.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/world2d.hpp>
+#include <godot_cpp/classes/viewport_texture.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/camera3d.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/viewport.hpp>
+#include <godot_cpp/classes/world3d.hpp>
+#include <godot_cpp/classes/camera2d.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -39,14 +39,14 @@ static JSValue viewport_class_constructor(JSContext *ctx, JSValueConst new_targe
 
 	Viewport *viewport_class;
 	if (argc == 1) 
-		viewport_class = static_cast<Viewport *>(static_cast<Object *>(Variant(*argv)));
+		viewport_class = static_cast<Viewport *>(Variant(*argv).operator Object *());
 	else 
 		viewport_class = memnew(Viewport);
 	if (!viewport_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, viewport_class);	
+	JS_SetOpaque(obj, viewport_class);
 	return obj;
 }
 static JSValue viewport_class_set_world_2d(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -1137,7 +1137,6 @@ static void define_viewport_enum(JSContext *ctx, JSValue proto) {
 
 static int js_viewport_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Viewport::__class_id);
 	classes["Viewport"] = Viewport::__class_id;
 	class_id_list.insert(Viewport::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Viewport::__class_id, &viewport_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/convex_polygon_shape3d.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
+#include <godot_cpp/classes/convex_polygon_shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue convex_polygon_shape3d_class_constructor(JSContext *ctx, JSValueC
 
 	ConvexPolygonShape3D *convex_polygon_shape3d_class;
 	if (argc == 1) 
-		convex_polygon_shape3d_class = static_cast<ConvexPolygonShape3D *>(static_cast<Object *>(Variant(*argv)));
+		convex_polygon_shape3d_class = static_cast<ConvexPolygonShape3D *>(Variant(*argv).operator Object *());
 	else 
 		convex_polygon_shape3d_class = memnew(ConvexPolygonShape3D);
 	if (!convex_polygon_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, convex_polygon_shape3d_class);	
+	JS_SetOpaque(obj, convex_polygon_shape3d_class);
 	return obj;
 }
 static JSValue convex_polygon_shape3d_class_set_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_convex_polygon_shape3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_convex_polygon_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ConvexPolygonShape3D::__class_id);
 	classes["ConvexPolygonShape3D"] = ConvexPolygonShape3D::__class_id;
 	class_id_list.insert(ConvexPolygonShape3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ConvexPolygonShape3D::__class_id, &convex_polygon_shape3d_class_def);

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/multiplayer_peer.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/multiplayer_api.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -32,14 +32,14 @@ static JSValue multiplayer_api_class_constructor(JSContext *ctx, JSValueConst ne
 
 	MultiplayerAPI *multiplayer_api_class;
 	if (argc == 1) 
-		multiplayer_api_class = static_cast<MultiplayerAPI *>(static_cast<Object *>(Variant(*argv)));
+		multiplayer_api_class = static_cast<MultiplayerAPI *>(Variant(*argv).operator Object *());
 	else 
 		multiplayer_api_class = memnew(MultiplayerAPI);
 	if (!multiplayer_api_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, multiplayer_api_class);	
+	JS_SetOpaque(obj, multiplayer_api_class);
 	return obj;
 }
 static JSValue multiplayer_api_class_has_multiplayer_peer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -226,7 +226,6 @@ static void define_multiplayer_api_enum(JSContext *ctx, JSValue proto) {
 
 static int js_multiplayer_api_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&MultiplayerAPI::__class_id);
 	classes["MultiplayerAPI"] = MultiplayerAPI::__class_id;
 	class_id_list.insert(MultiplayerAPI::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MultiplayerAPI::__class_id, &multiplayer_api_class_def);

@@ -30,14 +30,14 @@ static JSValue xr_origin3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	XROrigin3D *xr_origin3d_class;
 	if (argc == 1) 
-		xr_origin3d_class = static_cast<XROrigin3D *>(static_cast<Object *>(Variant(*argv)));
+		xr_origin3d_class = static_cast<XROrigin3D *>(Variant(*argv).operator Object *());
 	else 
 		xr_origin3d_class = memnew(XROrigin3D);
 	if (!xr_origin3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, xr_origin3d_class);	
+	JS_SetOpaque(obj, xr_origin3d_class);
 	return obj;
 }
 static JSValue xr_origin3d_class_set_world_scale(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,7 +88,6 @@ static void define_xr_origin3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_xr_origin3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&XROrigin3D::__class_id);
 	classes["XROrigin3D"] = XROrigin3D::__class_id;
 	class_id_list.insert(XROrigin3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XROrigin3D::__class_id, &xr_origin3d_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_transform_op.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/classes/visual_shader_node_transform_op.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue visual_shader_node_transform_op_class_constructor(JSContext *ctx,
 
 	VisualShaderNodeTransformOp *visual_shader_node_transform_op_class;
 	if (argc == 1) 
-		visual_shader_node_transform_op_class = static_cast<VisualShaderNodeTransformOp *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_transform_op_class = static_cast<VisualShaderNodeTransformOp *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_transform_op_class = memnew(VisualShaderNodeTransformOp);
 	if (!visual_shader_node_transform_op_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_transform_op_class);	
+	JS_SetOpaque(obj, visual_shader_node_transform_op_class);
 	return obj;
 }
 static JSValue visual_shader_node_transform_op_class_set_operator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,7 +82,6 @@ static void define_visual_shader_node_transform_op_enum(JSContext *ctx, JSValue 
 
 static int js_visual_shader_node_transform_op_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeTransformOp::__class_id);
 	classes["VisualShaderNodeTransformOp"] = VisualShaderNodeTransformOp::__class_id;
 	class_id_list.insert(VisualShaderNodeTransformOp::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeTransformOp::__class_id, &visual_shader_node_transform_op_class_def);

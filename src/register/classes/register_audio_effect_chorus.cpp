@@ -30,14 +30,14 @@ static JSValue audio_effect_chorus_class_constructor(JSContext *ctx, JSValueCons
 
 	AudioEffectChorus *audio_effect_chorus_class;
 	if (argc == 1) 
-		audio_effect_chorus_class = static_cast<AudioEffectChorus *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_chorus_class = static_cast<AudioEffectChorus *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_chorus_class = memnew(AudioEffectChorus);
 	if (!audio_effect_chorus_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_chorus_class);	
+	JS_SetOpaque(obj, audio_effect_chorus_class);
 	return obj;
 }
 static JSValue audio_effect_chorus_class_set_voice_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -166,7 +166,6 @@ static void define_audio_effect_chorus_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_effect_chorus_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectChorus::__class_id);
 	classes["AudioEffectChorus"] = AudioEffectChorus::__class_id;
 	class_id_list.insert(AudioEffectChorus::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectChorus::__class_id, &audio_effect_chorus_class_def);

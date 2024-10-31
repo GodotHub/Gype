@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/xr_pose.hpp>
 #include <godot_cpp/classes/xr_positional_tracker.hpp>
 #include <godot_cpp/classes/xr_tracker.hpp>
-#include <godot_cpp/classes/xr_pose.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue xr_positional_tracker_class_constructor(JSContext *ctx, JSValueCo
 
 	XRPositionalTracker *xr_positional_tracker_class;
 	if (argc == 1) 
-		xr_positional_tracker_class = static_cast<XRPositionalTracker *>(static_cast<Object *>(Variant(*argv)));
+		xr_positional_tracker_class = static_cast<XRPositionalTracker *>(Variant(*argv).operator Object *());
 	else 
 		xr_positional_tracker_class = memnew(XRPositionalTracker);
 	if (!xr_positional_tracker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, xr_positional_tracker_class);	
+	JS_SetOpaque(obj, xr_positional_tracker_class);
 	return obj;
 }
 static JSValue xr_positional_tracker_class_get_tracker_profile(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -251,7 +251,6 @@ static void define_xr_positional_tracker_enum(JSContext *ctx, JSValue proto) {
 
 static int js_xr_positional_tracker_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&XRPositionalTracker::__class_id);
 	classes["XRPositionalTracker"] = XRPositionalTracker::__class_id;
 	class_id_list.insert(XRPositionalTracker::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRPositionalTracker::__class_id, &xr_positional_tracker_class_def);

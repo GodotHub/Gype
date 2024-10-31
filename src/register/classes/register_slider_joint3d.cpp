@@ -30,14 +30,14 @@ static JSValue slider_joint3d_class_constructor(JSContext *ctx, JSValueConst new
 
 	SliderJoint3D *slider_joint3d_class;
 	if (argc == 1) 
-		slider_joint3d_class = static_cast<SliderJoint3D *>(static_cast<Object *>(Variant(*argv)));
+		slider_joint3d_class = static_cast<SliderJoint3D *>(Variant(*argv).operator Object *());
 	else 
 		slider_joint3d_class = memnew(SliderJoint3D);
 	if (!slider_joint3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, slider_joint3d_class);	
+	JS_SetOpaque(obj, slider_joint3d_class);
 	return obj;
 }
 static JSValue slider_joint3d_class_set_param(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -87,7 +87,6 @@ static void define_slider_joint3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_slider_joint3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SliderJoint3D::__class_id);
 	classes["SliderJoint3D"] = SliderJoint3D::__class_id;
 	class_id_list.insert(SliderJoint3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SliderJoint3D::__class_id, &slider_joint3d_class_def);

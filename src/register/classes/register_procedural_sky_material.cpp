@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/procedural_sky_material.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/procedural_sky_material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue procedural_sky_material_class_constructor(JSContext *ctx, JSValue
 
 	ProceduralSkyMaterial *procedural_sky_material_class;
 	if (argc == 1) 
-		procedural_sky_material_class = static_cast<ProceduralSkyMaterial *>(static_cast<Object *>(Variant(*argv)));
+		procedural_sky_material_class = static_cast<ProceduralSkyMaterial *>(Variant(*argv).operator Object *());
 	else 
 		procedural_sky_material_class = memnew(ProceduralSkyMaterial);
 	if (!procedural_sky_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, procedural_sky_material_class);	
+	JS_SetOpaque(obj, procedural_sky_material_class);
 	return obj;
 }
 static JSValue procedural_sky_material_class_set_sky_top_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -305,7 +305,6 @@ static void define_procedural_sky_material_enum(JSContext *ctx, JSValue proto) {
 
 static int js_procedural_sky_material_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ProceduralSkyMaterial::__class_id);
 	classes["ProceduralSkyMaterial"] = ProceduralSkyMaterial::__class_id;
 	class_id_list.insert(ProceduralSkyMaterial::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ProceduralSkyMaterial::__class_id, &procedural_sky_material_class_def);

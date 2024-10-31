@@ -30,14 +30,14 @@ static JSValue rd_pipeline_color_blend_state_attachment_class_constructor(JSCont
 
 	RDPipelineColorBlendStateAttachment *rd_pipeline_color_blend_state_attachment_class;
 	if (argc == 1) 
-		rd_pipeline_color_blend_state_attachment_class = static_cast<RDPipelineColorBlendStateAttachment *>(static_cast<Object *>(Variant(*argv)));
+		rd_pipeline_color_blend_state_attachment_class = static_cast<RDPipelineColorBlendStateAttachment *>(Variant(*argv).operator Object *());
 	else 
 		rd_pipeline_color_blend_state_attachment_class = memnew(RDPipelineColorBlendStateAttachment);
 	if (!rd_pipeline_color_blend_state_attachment_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rd_pipeline_color_blend_state_attachment_class);	
+	JS_SetOpaque(obj, rd_pipeline_color_blend_state_attachment_class);
 	return obj;
 }
 static JSValue rd_pipeline_color_blend_state_attachment_class_set_as_mix(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -255,7 +255,6 @@ static void define_rd_pipeline_color_blend_state_attachment_enum(JSContext *ctx,
 
 static int js_rd_pipeline_color_blend_state_attachment_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RDPipelineColorBlendStateAttachment::__class_id);
 	classes["RDPipelineColorBlendStateAttachment"] = RDPipelineColorBlendStateAttachment::__class_id;
 	class_id_list.insert(RDPipelineColorBlendStateAttachment::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RDPipelineColorBlendStateAttachment::__class_id, &rd_pipeline_color_blend_state_attachment_class_def);

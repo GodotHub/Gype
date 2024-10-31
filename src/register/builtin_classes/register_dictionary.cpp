@@ -123,7 +123,6 @@ static const JSCFunctionListEntry dictionary_class_proto_funcs[] = {
 };
 
 static int js_dictionary_class_init(JSContext *ctx) {
-	JS_NewClassID(&Dictionary::__class_id);
 	classes["Dictionary"] = Dictionary::__class_id;
 	class_id_list.insert(Dictionary::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Dictionary::__class_id, &dictionary_class_def);

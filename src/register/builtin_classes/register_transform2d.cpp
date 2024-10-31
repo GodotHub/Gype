@@ -193,7 +193,6 @@ void define_transform2d_property(JSContext *ctx, JSValue obj) {
 }
 
 static int js_transform2d_class_init(JSContext *ctx) {
-	JS_NewClassID(&Transform2D::__class_id);
 	classes["Transform2D"] = Transform2D::__class_id;
 	class_id_list.insert(Transform2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Transform2D::__class_id, &transform2d_class_def);

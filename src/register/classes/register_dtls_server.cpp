@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/packet_peer_dtls.hpp>
-#include <godot_cpp/classes/tls_options.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/packet_peer_udp.hpp>
+#include <godot_cpp/classes/tls_options.hpp>
+#include <godot_cpp/classes/packet_peer_dtls.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/dtls_server.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -33,14 +33,14 @@ static JSValue dtls_server_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	DTLSServer *dtls_server_class;
 	if (argc == 1) 
-		dtls_server_class = static_cast<DTLSServer *>(static_cast<Object *>(Variant(*argv)));
+		dtls_server_class = static_cast<DTLSServer *>(Variant(*argv).operator Object *());
 	else 
 		dtls_server_class = memnew(DTLSServer);
 	if (!dtls_server_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, dtls_server_class);	
+	JS_SetOpaque(obj, dtls_server_class);
 	return obj;
 }
 static JSValue dtls_server_class_setup(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -65,7 +65,6 @@ static void define_dtls_server_enum(JSContext *ctx, JSValue proto) {
 
 static int js_dtls_server_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&DTLSServer::__class_id);
 	classes["DTLSServer"] = DTLSServer::__class_id;
 	class_id_list.insert(DTLSServer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), DTLSServer::__class_id, &dtls_server_class_def);

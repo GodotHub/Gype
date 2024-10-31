@@ -30,14 +30,14 @@ static JSValue packed_data_container_class_constructor(JSContext *ctx, JSValueCo
 
 	PackedDataContainer *packed_data_container_class;
 	if (argc == 1) 
-		packed_data_container_class = static_cast<PackedDataContainer *>(static_cast<Object *>(Variant(*argv)));
+		packed_data_container_class = static_cast<PackedDataContainer *>(Variant(*argv).operator Object *());
 	else 
 		packed_data_container_class = memnew(PackedDataContainer);
 	if (!packed_data_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, packed_data_container_class);	
+	JS_SetOpaque(obj, packed_data_container_class);
 	return obj;
 }
 static JSValue packed_data_container_class_pack(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +62,6 @@ static void define_packed_data_container_enum(JSContext *ctx, JSValue proto) {
 
 static int js_packed_data_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PackedDataContainer::__class_id);
 	classes["PackedDataContainer"] = PackedDataContainer::__class_id;
 	class_id_list.insert(PackedDataContainer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PackedDataContainer::__class_id, &packed_data_container_class_def);

@@ -8,7 +8,6 @@ import { Node } from "@godot/classes/node";
 import { GodotClass } from "@godot/core/class_defined";
 let node = class node extends Node {
     _ready() {
-        GD.print(123);
     }
     _process(delta) {
     }

@@ -5,12 +5,12 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tree_item.hpp>
-#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/tree.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/tree_item.hpp>
+#include <godot_cpp/classes/tree_item.hpp>
+#include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -34,14 +34,14 @@ static JSValue tree_item_class_constructor(JSContext *ctx, JSValueConst new_targ
 
 	TreeItem *tree_item_class;
 	if (argc == 1) 
-		tree_item_class = static_cast<TreeItem *>(static_cast<Object *>(Variant(*argv)));
+		tree_item_class = static_cast<TreeItem *>(Variant(*argv).operator Object *());
 	else 
 		tree_item_class = memnew(TreeItem);
 	if (!tree_item_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, tree_item_class);	
+	JS_SetOpaque(obj, tree_item_class);
 	return obj;
 }
 static JSValue tree_item_class_set_cell_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -650,7 +650,6 @@ static void define_tree_item_enum(JSContext *ctx, JSValue proto) {
 
 static int js_tree_item_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&TreeItem::__class_id);
 	classes["TreeItem"] = TreeItem::__class_id;
 	class_id_list.insert(TreeItem::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TreeItem::__class_id, &tree_item_class_def);

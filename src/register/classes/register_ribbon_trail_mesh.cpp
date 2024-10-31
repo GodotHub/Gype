@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/curve.hpp>
-#include <godot_cpp/classes/ribbon_trail_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/ribbon_trail_mesh.hpp>
+#include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue ribbon_trail_mesh_class_constructor(JSContext *ctx, JSValueConst 
 
 	RibbonTrailMesh *ribbon_trail_mesh_class;
 	if (argc == 1) 
-		ribbon_trail_mesh_class = static_cast<RibbonTrailMesh *>(static_cast<Object *>(Variant(*argv)));
+		ribbon_trail_mesh_class = static_cast<RibbonTrailMesh *>(Variant(*argv).operator Object *());
 	else 
 		ribbon_trail_mesh_class = memnew(RibbonTrailMesh);
 	if (!ribbon_trail_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, ribbon_trail_mesh_class);	
+	JS_SetOpaque(obj, ribbon_trail_mesh_class);
 	return obj;
 }
 static JSValue ribbon_trail_mesh_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -165,7 +165,6 @@ static void define_ribbon_trail_mesh_enum(JSContext *ctx, JSValue proto) {
 
 static int js_ribbon_trail_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RibbonTrailMesh::__class_id);
 	classes["RibbonTrailMesh"] = RibbonTrailMesh::__class_id;
 	class_id_list.insert(RibbonTrailMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RibbonTrailMesh::__class_id, &ribbon_trail_mesh_class_def);

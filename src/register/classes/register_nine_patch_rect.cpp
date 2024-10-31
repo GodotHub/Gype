@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/nine_patch_rect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue nine_patch_rect_class_constructor(JSContext *ctx, JSValueConst ne
 
 	NinePatchRect *nine_patch_rect_class;
 	if (argc == 1) 
-		nine_patch_rect_class = static_cast<NinePatchRect *>(static_cast<Object *>(Variant(*argv)));
+		nine_patch_rect_class = static_cast<NinePatchRect *>(Variant(*argv).operator Object *());
 	else 
 		nine_patch_rect_class = memnew(NinePatchRect);
 	if (!nine_patch_rect_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, nine_patch_rect_class);	
+	JS_SetOpaque(obj, nine_patch_rect_class);
 	return obj;
 }
 static JSValue nine_patch_rect_class_set_texture(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -208,7 +208,6 @@ static void define_nine_patch_rect_enum(JSContext *ctx, JSValue proto) {
 
 static int js_nine_patch_rect_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&NinePatchRect::__class_id);
 	classes["NinePatchRect"] = NinePatchRect::__class_id;
 	class_id_list.insert(NinePatchRect::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NinePatchRect::__class_id, &nine_patch_rect_class_def);

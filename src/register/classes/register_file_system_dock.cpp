@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/v_box_container.hpp>
 #include <godot_cpp/classes/editor_resource_tooltip_plugin.hpp>
 #include <godot_cpp/classes/file_system_dock.hpp>
-#include <godot_cpp/classes/v_box_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue file_system_dock_class_constructor(JSContext *ctx, JSValueConst n
 
 	FileSystemDock *file_system_dock_class;
 	if (argc == 1) 
-		file_system_dock_class = static_cast<FileSystemDock *>(static_cast<Object *>(Variant(*argv)));
+		file_system_dock_class = static_cast<FileSystemDock *>(Variant(*argv).operator Object *());
 	else 
 		file_system_dock_class = memnew(FileSystemDock);
 	if (!file_system_dock_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, file_system_dock_class);	
+	JS_SetOpaque(obj, file_system_dock_class);
 	return obj;
 }
 static JSValue file_system_dock_class_navigate_to_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -230,7 +230,6 @@ static void define_file_system_dock_enum(JSContext *ctx, JSValue proto) {
 
 static int js_file_system_dock_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&FileSystemDock::__class_id);
 	classes["FileSystemDock"] = FileSystemDock::__class_id;
 	class_id_list.insert(FileSystemDock::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), FileSystemDock::__class_id, &file_system_dock_class_def);

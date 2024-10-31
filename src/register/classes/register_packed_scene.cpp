@@ -7,8 +7,8 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/scene_state.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue packed_scene_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	PackedScene *packed_scene_class;
 	if (argc == 1) 
-		packed_scene_class = static_cast<PackedScene *>(static_cast<Object *>(Variant(*argv)));
+		packed_scene_class = static_cast<PackedScene *>(Variant(*argv).operator Object *());
 	else 
 		packed_scene_class = memnew(PackedScene);
 	if (!packed_scene_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, packed_scene_class);	
+	JS_SetOpaque(obj, packed_scene_class);
 	return obj;
 }
 static JSValue packed_scene_class_pack(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -80,7 +80,6 @@ static void define_packed_scene_enum(JSContext *ctx, JSValue proto) {
 
 static int js_packed_scene_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PackedScene::__class_id);
 	classes["PackedScene"] = PackedScene::__class_id;
 	class_id_list.insert(PackedScene::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PackedScene::__class_id, &packed_scene_class_def);

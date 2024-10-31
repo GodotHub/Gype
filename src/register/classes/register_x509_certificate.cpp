@@ -30,14 +30,14 @@ static JSValue x509_certificate_class_constructor(JSContext *ctx, JSValueConst n
 
 	X509Certificate *x509_certificate_class;
 	if (argc == 1) 
-		x509_certificate_class = static_cast<X509Certificate *>(static_cast<Object *>(Variant(*argv)));
+		x509_certificate_class = static_cast<X509Certificate *>(Variant(*argv).operator Object *());
 	else 
 		x509_certificate_class = memnew(X509Certificate);
 	if (!x509_certificate_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, x509_certificate_class);	
+	JS_SetOpaque(obj, x509_certificate_class);
 	return obj;
 }
 static JSValue x509_certificate_class_save(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,7 +72,6 @@ static void define_x509_certificate_enum(JSContext *ctx, JSValue proto) {
 
 static int js_x509_certificate_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&X509Certificate::__class_id);
 	classes["X509Certificate"] = X509Certificate::__class_id;
 	class_id_list.insert(X509Certificate::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), X509Certificate::__class_id, &x509_certificate_class_def);

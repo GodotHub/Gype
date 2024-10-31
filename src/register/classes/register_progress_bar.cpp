@@ -30,14 +30,14 @@ static JSValue progress_bar_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	ProgressBar *progress_bar_class;
 	if (argc == 1) 
-		progress_bar_class = static_cast<ProgressBar *>(static_cast<Object *>(Variant(*argv)));
+		progress_bar_class = static_cast<ProgressBar *>(Variant(*argv).operator Object *());
 	else 
 		progress_bar_class = memnew(ProgressBar);
 	if (!progress_bar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, progress_bar_class);	
+	JS_SetOpaque(obj, progress_bar_class);
 	return obj;
 }
 static JSValue progress_bar_class_set_fill_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -130,7 +130,6 @@ static void define_progress_bar_enum(JSContext *ctx, JSValue proto) {
 
 static int js_progress_bar_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ProgressBar::__class_id);
 	classes["ProgressBar"] = ProgressBar::__class_id;
 	class_id_list.insert(ProgressBar::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ProgressBar::__class_id, &progress_bar_class_def);

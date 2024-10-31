@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
 #include <godot_cpp/classes/open_xrapi_extension.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/open_xr_extension_wrapper_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue open_xrapi_extension_class_constructor(JSContext *ctx, JSValueCon
 
 	OpenXRAPIExtension *open_xrapi_extension_class;
 	if (argc == 1) 
-		open_xrapi_extension_class = static_cast<OpenXRAPIExtension *>(static_cast<Object *>(Variant(*argv)));
+		open_xrapi_extension_class = static_cast<OpenXRAPIExtension *>(Variant(*argv).operator Object *());
 	else 
 		open_xrapi_extension_class = memnew(OpenXRAPIExtension);
 	if (!open_xrapi_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, open_xrapi_extension_class);	
+	JS_SetOpaque(obj, open_xrapi_extension_class);
 	return obj;
 }
 static JSValue open_xrapi_extension_class_get_instance(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -159,7 +159,6 @@ static void define_open_xrapi_extension_enum(JSContext *ctx, JSValue proto) {
 
 static int js_open_xrapi_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&OpenXRAPIExtension::__class_id);
 	classes["OpenXRAPIExtension"] = OpenXRAPIExtension::__class_id;
 	class_id_list.insert(OpenXRAPIExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), OpenXRAPIExtension::__class_id, &open_xrapi_extension_class_def);

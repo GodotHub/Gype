@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/color_rect.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue color_rect_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	ColorRect *color_rect_class;
 	if (argc == 1) 
-		color_rect_class = static_cast<ColorRect *>(static_cast<Object *>(Variant(*argv)));
+		color_rect_class = static_cast<ColorRect *>(Variant(*argv).operator Object *());
 	else 
 		color_rect_class = memnew(ColorRect);
 	if (!color_rect_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, color_rect_class);	
+	JS_SetOpaque(obj, color_rect_class);
 	return obj;
 }
 static JSValue color_rect_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_color_rect_enum(JSContext *ctx, JSValue proto) {
 
 static int js_color_rect_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ColorRect::__class_id);
 	classes["ColorRect"] = ColorRect::__class_id;
 	class_id_list.insert(ColorRect::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ColorRect::__class_id, &color_rect_class_def);

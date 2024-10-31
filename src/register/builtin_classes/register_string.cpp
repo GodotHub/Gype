@@ -493,7 +493,6 @@ static const JSCFunctionListEntry string_class_static_funcs[] = {
 };
 
 static int js_string_class_init(JSContext *ctx) {
-	JS_NewClassID(&String::__class_id);
 	classes["GDString"] = String::__class_id;
 	class_id_list.insert(String::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), String::__class_id, &string_class_def);

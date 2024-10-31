@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/fog_material.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue fog_material_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	FogMaterial *fog_material_class;
 	if (argc == 1) 
-		fog_material_class = static_cast<FogMaterial *>(static_cast<Object *>(Variant(*argv)));
+		fog_material_class = static_cast<FogMaterial *>(Variant(*argv).operator Object *());
 	else 
 		fog_material_class = memnew(FogMaterial);
 	if (!fog_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, fog_material_class);	
+	JS_SetOpaque(obj, fog_material_class);
 	return obj;
 }
 static JSValue fog_material_class_set_density(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -161,7 +161,6 @@ static void define_fog_material_enum(JSContext *ctx, JSValue proto) {
 
 static int js_fog_material_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&FogMaterial::__class_id);
 	classes["FogMaterial"] = FogMaterial::__class_id;
 	class_id_list.insert(FogMaterial::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), FogMaterial::__class_id, &fog_material_class_def);

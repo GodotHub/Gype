@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/triangle_mesh.hpp>
 #include <godot_cpp/classes/label3d.hpp>
 #include <godot_cpp/classes/geometry_instance3d.hpp>
-#include <godot_cpp/classes/triangle_mesh.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue label3d_class_constructor(JSContext *ctx, JSValueConst new_target
 
 	Label3D *label3d_class;
 	if (argc == 1) 
-		label3d_class = static_cast<Label3D *>(static_cast<Object *>(Variant(*argv)));
+		label3d_class = static_cast<Label3D *>(Variant(*argv).operator Object *());
 	else 
 		label3d_class = memnew(Label3D);
 	if (!label3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, label3d_class);	
+	JS_SetOpaque(obj, label3d_class);
 	return obj;
 }
 static JSValue label3d_class_set_horizontal_alignment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -618,7 +618,6 @@ static void define_label3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_label3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Label3D::__class_id);
 	classes["Label3D"] = Label3D::__class_id;
 	class_id_list.insert(Label3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Label3D::__class_id, &label3d_class_def);

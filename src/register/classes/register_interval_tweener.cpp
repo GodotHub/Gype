@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/interval_tweener.hpp>
 #include <godot_cpp/classes/tweener.hpp>
+#include <godot_cpp/classes/interval_tweener.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue interval_tweener_class_constructor(JSContext *ctx, JSValueConst n
 
 	IntervalTweener *interval_tweener_class;
 	if (argc == 1) 
-		interval_tweener_class = static_cast<IntervalTweener *>(static_cast<Object *>(Variant(*argv)));
+		interval_tweener_class = static_cast<IntervalTweener *>(Variant(*argv).operator Object *());
 	else 
 		interval_tweener_class = memnew(IntervalTweener);
 	if (!interval_tweener_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, interval_tweener_class);	
+	JS_SetOpaque(obj, interval_tweener_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_interval_tweener_enum(JSContext *ctx, JSValue proto) {
 
 static int js_interval_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&IntervalTweener::__class_id);
 	classes["IntervalTweener"] = IntervalTweener::__class_id;
 	class_id_list.insert(IntervalTweener::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), IntervalTweener::__class_id, &interval_tweener_class_def);

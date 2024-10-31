@@ -30,14 +30,14 @@ static JSValue navigation_obstacle3d_class_constructor(JSContext *ctx, JSValueCo
 
 	NavigationObstacle3D *navigation_obstacle3d_class;
 	if (argc == 1) 
-		navigation_obstacle3d_class = static_cast<NavigationObstacle3D *>(static_cast<Object *>(Variant(*argv)));
+		navigation_obstacle3d_class = static_cast<NavigationObstacle3D *>(Variant(*argv).operator Object *());
 	else 
 		navigation_obstacle3d_class = memnew(NavigationObstacle3D);
 	if (!navigation_obstacle3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, navigation_obstacle3d_class);	
+	JS_SetOpaque(obj, navigation_obstacle3d_class);
 	return obj;
 }
 static JSValue navigation_obstacle3d_class_get_rid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -239,7 +239,6 @@ static void define_navigation_obstacle3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_navigation_obstacle3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&NavigationObstacle3D::__class_id);
 	classes["NavigationObstacle3D"] = NavigationObstacle3D::__class_id;
 	class_id_list.insert(NavigationObstacle3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NavigationObstacle3D::__class_id, &navigation_obstacle3d_class_def);

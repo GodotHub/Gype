@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_sample3d.hpp>
 #include <godot_cpp/classes/texture2d_array.hpp>
+#include <godot_cpp/classes/visual_shader_node_sample3d.hpp>
 #include <godot_cpp/classes/visual_shader_node_texture2d_array.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue visual_shader_node_texture2d_array_class_constructor(JSContext *c
 
 	VisualShaderNodeTexture2DArray *visual_shader_node_texture2d_array_class;
 	if (argc == 1) 
-		visual_shader_node_texture2d_array_class = static_cast<VisualShaderNodeTexture2DArray *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_texture2d_array_class = static_cast<VisualShaderNodeTexture2DArray *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_texture2d_array_class = memnew(VisualShaderNodeTexture2DArray);
 	if (!visual_shader_node_texture2d_array_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_texture2d_array_class);	
+	JS_SetOpaque(obj, visual_shader_node_texture2d_array_class);
 	return obj;
 }
 static JSValue visual_shader_node_texture2d_array_class_set_texture_array(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -71,7 +71,6 @@ static void define_visual_shader_node_texture2d_array_enum(JSContext *ctx, JSVal
 
 static int js_visual_shader_node_texture2d_array_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeTexture2DArray::__class_id);
 	classes["VisualShaderNodeTexture2DArray"] = VisualShaderNodeTexture2DArray::__class_id;
 	class_id_list.insert(VisualShaderNodeTexture2DArray::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeTexture2DArray::__class_id, &visual_shader_node_texture2d_array_class_def);

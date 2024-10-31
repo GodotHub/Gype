@@ -30,14 +30,14 @@ static JSValue physical_bone_simulator3d_class_constructor(JSContext *ctx, JSVal
 
 	PhysicalBoneSimulator3D *physical_bone_simulator3d_class;
 	if (argc == 1) 
-		physical_bone_simulator3d_class = static_cast<PhysicalBoneSimulator3D *>(static_cast<Object *>(Variant(*argv)));
+		physical_bone_simulator3d_class = static_cast<PhysicalBoneSimulator3D *>(Variant(*argv).operator Object *());
 	else 
 		physical_bone_simulator3d_class = memnew(PhysicalBoneSimulator3D);
 	if (!physical_bone_simulator3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, physical_bone_simulator3d_class);	
+	JS_SetOpaque(obj, physical_bone_simulator3d_class);
 	return obj;
 }
 static JSValue physical_bone_simulator3d_class_is_simulating_physics(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -77,7 +77,6 @@ static void define_physical_bone_simulator3d_enum(JSContext *ctx, JSValue proto)
 
 static int js_physical_bone_simulator3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PhysicalBoneSimulator3D::__class_id);
 	classes["PhysicalBoneSimulator3D"] = PhysicalBoneSimulator3D::__class_id;
 	class_id_list.insert(PhysicalBoneSimulator3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PhysicalBoneSimulator3D::__class_id, &physical_bone_simulator3d_class_def);

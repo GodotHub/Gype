@@ -30,14 +30,14 @@ static JSValue container_class_constructor(JSContext *ctx, JSValueConst new_targ
 
 	Container *container_class;
 	if (argc == 1) 
-		container_class = static_cast<Container *>(static_cast<Object *>(Variant(*argv)));
+		container_class = static_cast<Container *>(Variant(*argv).operator Object *());
 	else 
 		container_class = memnew(Container);
 	if (!container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, container_class);	
+	JS_SetOpaque(obj, container_class);
 	return obj;
 }
 static JSValue container_class_queue_sort(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -98,7 +98,6 @@ static void define_container_enum(JSContext *ctx, JSValue proto) {
 
 static int js_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Container::__class_id);
 	classes["Container"] = Container::__class_id;
 	class_id_list.insert(Container::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Container::__class_id, &container_class_def);

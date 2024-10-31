@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/editor_resource_picker.hpp>
+#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/editor_resource_picker.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue editor_resource_picker_class_constructor(JSContext *ctx, JSValueC
 
 	EditorResourcePicker *editor_resource_picker_class;
 	if (argc == 1) 
-		editor_resource_picker_class = static_cast<EditorResourcePicker *>(static_cast<Object *>(Variant(*argv)));
+		editor_resource_picker_class = static_cast<EditorResourcePicker *>(Variant(*argv).operator Object *());
 	else 
 		editor_resource_picker_class = memnew(EditorResourcePicker);
 	if (!editor_resource_picker_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_resource_picker_class);	
+	JS_SetOpaque(obj, editor_resource_picker_class);
 	return obj;
 }
 static JSValue editor_resource_picker_class_set_base_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -172,7 +172,6 @@ static void define_editor_resource_picker_enum(JSContext *ctx, JSValue proto) {
 
 static int js_editor_resource_picker_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorResourcePicker::__class_id);
 	classes["EditorResourcePicker"] = EditorResourcePicker::__class_id;
 	class_id_list.insert(EditorResourcePicker::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorResourcePicker::__class_id, &editor_resource_picker_class_def);

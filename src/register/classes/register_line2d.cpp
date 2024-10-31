@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/curve.hpp>
-#include <godot_cpp/classes/line2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/gradient.hpp>
+#include <godot_cpp/classes/line2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/gradient.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -33,14 +33,14 @@ static JSValue line2d_class_constructor(JSContext *ctx, JSValueConst new_target,
 
 	Line2D *line2d_class;
 	if (argc == 1) 
-		line2d_class = static_cast<Line2D *>(static_cast<Object *>(Variant(*argv)));
+		line2d_class = static_cast<Line2D *>(Variant(*argv).operator Object *());
 	else 
 		line2d_class = memnew(Line2D);
 	if (!line2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, line2d_class);	
+	JS_SetOpaque(obj, line2d_class);
 	return obj;
 }
 static JSValue line2d_class_set_points(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -352,7 +352,6 @@ static void define_line2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_line2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Line2D::__class_id);
 	classes["Line2D"] = Line2D::__class_id;
 	class_id_list.insert(Line2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Line2D::__class_id, &line2d_class_def);

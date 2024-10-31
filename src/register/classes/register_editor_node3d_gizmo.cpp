@@ -5,16 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node3d_gizmo.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/editor_node3d_gizmo_plugin.hpp>
-#include <godot_cpp/classes/camera3d.hpp>
-#include <godot_cpp/classes/skin_reference.hpp>
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/triangle_mesh.hpp>
 #include <godot_cpp/classes/editor_node3d_gizmo.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/node3d_gizmo.hpp>
+#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/editor_node3d_gizmo_plugin.hpp>
+#include <godot_cpp/classes/skin_reference.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -38,14 +38,14 @@ static JSValue editor_node3d_gizmo_class_constructor(JSContext *ctx, JSValueCons
 
 	EditorNode3DGizmo *editor_node3d_gizmo_class;
 	if (argc == 1) 
-		editor_node3d_gizmo_class = static_cast<EditorNode3DGizmo *>(static_cast<Object *>(Variant(*argv)));
+		editor_node3d_gizmo_class = static_cast<EditorNode3DGizmo *>(Variant(*argv).operator Object *());
 	else 
 		editor_node3d_gizmo_class = memnew(EditorNode3DGizmo);
 	if (!editor_node3d_gizmo_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_node3d_gizmo_class);	
+	JS_SetOpaque(obj, editor_node3d_gizmo_class);
 	return obj;
 }
 static JSValue editor_node3d_gizmo_class_add_lines(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -125,7 +125,6 @@ static void define_editor_node3d_gizmo_enum(JSContext *ctx, JSValue proto) {
 
 static int js_editor_node3d_gizmo_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorNode3DGizmo::__class_id);
 	classes["EditorNode3DGizmo"] = EditorNode3DGizmo::__class_id;
 	class_id_list.insert(EditorNode3DGizmo::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorNode3DGizmo::__class_id, &editor_node3d_gizmo_class_def);

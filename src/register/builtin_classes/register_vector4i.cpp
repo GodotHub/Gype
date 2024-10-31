@@ -196,7 +196,6 @@ void define_vector4i_property(JSContext *ctx, JSValue obj) {
 }
 
 static int js_vector4i_class_init(JSContext *ctx) {
-	JS_NewClassID(&Vector4i::__class_id);
 	classes["Vector4i"] = Vector4i::__class_id;
 	class_id_list.insert(Vector4i::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Vector4i::__class_id, &vector4i_class_def);

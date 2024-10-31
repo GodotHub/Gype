@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/touch_screen_button.hpp>
-#include <godot_cpp/classes/bit_map.hpp>
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/shape2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/bit_map.hpp>
+#include <godot_cpp/classes/touch_screen_button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -33,14 +33,14 @@ static JSValue touch_screen_button_class_constructor(JSContext *ctx, JSValueCons
 
 	TouchScreenButton *touch_screen_button_class;
 	if (argc == 1) 
-		touch_screen_button_class = static_cast<TouchScreenButton *>(static_cast<Object *>(Variant(*argv)));
+		touch_screen_button_class = static_cast<TouchScreenButton *>(Variant(*argv).operator Object *());
 	else 
 		touch_screen_button_class = memnew(TouchScreenButton);
 	if (!touch_screen_button_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, touch_screen_button_class);	
+	JS_SetOpaque(obj, touch_screen_button_class);
 	return obj;
 }
 static JSValue touch_screen_button_class_set_texture_normal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -262,7 +262,6 @@ static void define_touch_screen_button_enum(JSContext *ctx, JSValue proto) {
 
 static int js_touch_screen_button_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&TouchScreenButton::__class_id);
 	classes["TouchScreenButton"] = TouchScreenButton::__class_id;
 	class_id_list.insert(TouchScreenButton::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TouchScreenButton::__class_id, &touch_screen_button_class_def);

@@ -30,14 +30,14 @@ static JSValue fbx_state_class_constructor(JSContext *ctx, JSValueConst new_targ
 
 	FBXState *fbx_state_class;
 	if (argc == 1) 
-		fbx_state_class = static_cast<FBXState *>(static_cast<Object *>(Variant(*argv)));
+		fbx_state_class = static_cast<FBXState *>(Variant(*argv).operator Object *());
 	else 
 		fbx_state_class = memnew(FBXState);
 	if (!fbx_state_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, fbx_state_class);	
+	JS_SetOpaque(obj, fbx_state_class);
 	return obj;
 }
 static JSValue fbx_state_class_get_allow_geometry_helper_nodes(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_fbx_state_enum(JSContext *ctx, JSValue proto) {
 
 static int js_fbx_state_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&FBXState::__class_id);
 	classes["FBXState"] = FBXState::__class_id;
 	class_id_list.insert(FBXState::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), FBXState::__class_id, &fbx_state_class_def);

@@ -30,14 +30,14 @@ static JSValue animation_player_class_constructor(JSContext *ctx, JSValueConst n
 
 	AnimationPlayer *animation_player_class;
 	if (argc == 1) 
-		animation_player_class = static_cast<AnimationPlayer *>(static_cast<Object *>(Variant(*argv)));
+		animation_player_class = static_cast<AnimationPlayer *>(Variant(*argv).operator Object *());
 	else 
 		animation_player_class = memnew(AnimationPlayer);
 	if (!animation_player_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animation_player_class);	
+	JS_SetOpaque(obj, animation_player_class);
 	return obj;
 }
 static JSValue animation_player_class_animation_set_next(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -408,7 +408,6 @@ static void define_animation_player_enum(JSContext *ctx, JSValue proto) {
 
 static int js_animation_player_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AnimationPlayer::__class_id);
 	classes["AnimationPlayer"] = AnimationPlayer::__class_id;
 	class_id_list.insert(AnimationPlayer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationPlayer::__class_id, &animation_player_class_def);

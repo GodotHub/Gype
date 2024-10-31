@@ -204,7 +204,6 @@ void define_aabb_property(JSContext *ctx, JSValue obj) {
 }
 
 static int js_aabb_class_init(JSContext *ctx) {
-	JS_NewClassID(&AABB::__class_id);
 	classes["AABB"] = AABB::__class_id;
 	class_id_list.insert(AABB::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AABB::__class_id, &aabb_class_def);

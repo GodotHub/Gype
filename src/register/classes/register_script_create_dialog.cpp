@@ -30,14 +30,14 @@ static JSValue script_create_dialog_class_constructor(JSContext *ctx, JSValueCon
 
 	ScriptCreateDialog *script_create_dialog_class;
 	if (argc == 1) 
-		script_create_dialog_class = static_cast<ScriptCreateDialog *>(static_cast<Object *>(Variant(*argv)));
+		script_create_dialog_class = static_cast<ScriptCreateDialog *>(Variant(*argv).operator Object *());
 	else 
 		script_create_dialog_class = memnew(ScriptCreateDialog);
 	if (!script_create_dialog_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, script_create_dialog_class);	
+	JS_SetOpaque(obj, script_create_dialog_class);
 	return obj;
 }
 static JSValue script_create_dialog_class_config(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -75,7 +75,6 @@ static void define_script_create_dialog_enum(JSContext *ctx, JSValue proto) {
 
 static int js_script_create_dialog_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ScriptCreateDialog::__class_id);
 	classes["ScriptCreateDialog"] = ScriptCreateDialog::__class_id;
 	class_id_list.insert(ScriptCreateDialog::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ScriptCreateDialog::__class_id, &script_create_dialog_class_def);

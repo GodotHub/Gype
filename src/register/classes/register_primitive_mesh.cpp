@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue primitive_mesh_class_constructor(JSContext *ctx, JSValueConst new
 
 	PrimitiveMesh *primitive_mesh_class;
 	if (argc == 1) 
-		primitive_mesh_class = static_cast<PrimitiveMesh *>(static_cast<Object *>(Variant(*argv)));
+		primitive_mesh_class = static_cast<PrimitiveMesh *>(Variant(*argv).operator Object *());
 	else 
 		primitive_mesh_class = memnew(PrimitiveMesh);
 	if (!primitive_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, primitive_mesh_class);	
+	JS_SetOpaque(obj, primitive_mesh_class);
 	return obj;
 }
 static JSValue primitive_mesh_class_set_material(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -153,7 +153,6 @@ static void define_primitive_mesh_enum(JSContext *ctx, JSValue proto) {
 
 static int js_primitive_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PrimitiveMesh::__class_id);
 	classes["PrimitiveMesh"] = PrimitiveMesh::__class_id;
 	class_id_list.insert(PrimitiveMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PrimitiveMesh::__class_id, &primitive_mesh_class_def);

@@ -30,14 +30,14 @@ static JSValue xr_camera3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	XRCamera3D *xr_camera3d_class;
 	if (argc == 1) 
-		xr_camera3d_class = static_cast<XRCamera3D *>(static_cast<Object *>(Variant(*argv)));
+		xr_camera3d_class = static_cast<XRCamera3D *>(Variant(*argv).operator Object *());
 	else 
 		xr_camera3d_class = memnew(XRCamera3D);
 	if (!xr_camera3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, xr_camera3d_class);	
+	JS_SetOpaque(obj, xr_camera3d_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_xr_camera3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_xr_camera3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&XRCamera3D::__class_id);
 	classes["XRCamera3D"] = XRCamera3D::__class_id;
 	class_id_list.insert(XRCamera3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRCamera3D::__class_id, &xr_camera3d_class_def);

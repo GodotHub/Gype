@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/csg_primitive3d.hpp>
 #include <godot_cpp/classes/csg_polygon3d.hpp>
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue csg_polygon3d_class_constructor(JSContext *ctx, JSValueConst new_
 
 	CSGPolygon3D *csg_polygon3d_class;
 	if (argc == 1) 
-		csg_polygon3d_class = static_cast<CSGPolygon3D *>(static_cast<Object *>(Variant(*argv)));
+		csg_polygon3d_class = static_cast<CSGPolygon3D *>(Variant(*argv).operator Object *());
 	else 
 		csg_polygon3d_class = memnew(CSGPolygon3D);
 	if (!csg_polygon3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, csg_polygon3d_class);	
+	JS_SetOpaque(obj, csg_polygon3d_class);
 	return obj;
 }
 static JSValue csg_polygon3d_class_set_polygon(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -355,7 +355,6 @@ static void define_csg_polygon3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_csg_polygon3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CSGPolygon3D::__class_id);
 	classes["CSGPolygon3D"] = CSGPolygon3D::__class_id;
 	class_id_list.insert(CSGPolygon3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CSGPolygon3D::__class_id, &csg_polygon3d_class_def);

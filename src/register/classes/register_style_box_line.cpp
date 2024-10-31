@@ -30,14 +30,14 @@ static JSValue style_box_line_class_constructor(JSContext *ctx, JSValueConst new
 
 	StyleBoxLine *style_box_line_class;
 	if (argc == 1) 
-		style_box_line_class = static_cast<StyleBoxLine *>(static_cast<Object *>(Variant(*argv)));
+		style_box_line_class = static_cast<StyleBoxLine *>(Variant(*argv).operator Object *());
 	else 
 		style_box_line_class = memnew(StyleBoxLine);
 	if (!style_box_line_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, style_box_line_class);	
+	JS_SetOpaque(obj, style_box_line_class);
 	return obj;
 }
 static JSValue style_box_line_class_set_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -142,7 +142,6 @@ static void define_style_box_line_enum(JSContext *ctx, JSValue proto) {
 
 static int js_style_box_line_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&StyleBoxLine::__class_id);
 	classes["StyleBoxLine"] = StyleBoxLine::__class_id;
 	class_id_list.insert(StyleBoxLine::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StyleBoxLine::__class_id, &style_box_line_class_def);

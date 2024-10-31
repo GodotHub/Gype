@@ -30,14 +30,14 @@ static JSValue editor_export_platform_ios_class_constructor(JSContext *ctx, JSVa
 
 	EditorExportPlatformIOS *editor_export_platform_ios_class;
 	if (argc == 1) 
-		editor_export_platform_ios_class = static_cast<EditorExportPlatformIOS *>(static_cast<Object *>(Variant(*argv)));
+		editor_export_platform_ios_class = static_cast<EditorExportPlatformIOS *>(Variant(*argv).operator Object *());
 	else 
 		editor_export_platform_ios_class = memnew(EditorExportPlatformIOS);
 	if (!editor_export_platform_ios_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_export_platform_ios_class);	
+	JS_SetOpaque(obj, editor_export_platform_ios_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_editor_export_platform_ios_enum(JSContext *ctx, JSValue proto
 
 static int js_editor_export_platform_ios_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorExportPlatformIOS::__class_id);
 	classes["EditorExportPlatformIOS"] = EditorExportPlatformIOS::__class_id;
 	class_id_list.insert(EditorExportPlatformIOS::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorExportPlatformIOS::__class_id, &editor_export_platform_ios_class_def);

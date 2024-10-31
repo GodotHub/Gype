@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/classes/offline_multiplayer_peer.hpp>
+#include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue offline_multiplayer_peer_class_constructor(JSContext *ctx, JSValu
 
 	OfflineMultiplayerPeer *offline_multiplayer_peer_class;
 	if (argc == 1) 
-		offline_multiplayer_peer_class = static_cast<OfflineMultiplayerPeer *>(static_cast<Object *>(Variant(*argv)));
+		offline_multiplayer_peer_class = static_cast<OfflineMultiplayerPeer *>(Variant(*argv).operator Object *());
 	else 
 		offline_multiplayer_peer_class = memnew(OfflineMultiplayerPeer);
 	if (!offline_multiplayer_peer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, offline_multiplayer_peer_class);	
+	JS_SetOpaque(obj, offline_multiplayer_peer_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_offline_multiplayer_peer_enum(JSContext *ctx, JSValue proto) 
 
 static int js_offline_multiplayer_peer_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&OfflineMultiplayerPeer::__class_id);
 	classes["OfflineMultiplayerPeer"] = OfflineMultiplayerPeer::__class_id;
 	class_id_list.insert(OfflineMultiplayerPeer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), OfflineMultiplayerPeer::__class_id, &offline_multiplayer_peer_class_def);

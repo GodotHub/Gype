@@ -30,14 +30,14 @@ static JSValue remote_transform2d_class_constructor(JSContext *ctx, JSValueConst
 
 	RemoteTransform2D *remote_transform2d_class;
 	if (argc == 1) 
-		remote_transform2d_class = static_cast<RemoteTransform2D *>(static_cast<Object *>(Variant(*argv)));
+		remote_transform2d_class = static_cast<RemoteTransform2D *>(Variant(*argv).operator Object *());
 	else 
 		remote_transform2d_class = memnew(RemoteTransform2D);
 	if (!remote_transform2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, remote_transform2d_class);	
+	JS_SetOpaque(obj, remote_transform2d_class);
 	return obj;
 }
 static JSValue remote_transform2d_class_set_remote_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -147,7 +147,6 @@ static void define_remote_transform2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_remote_transform2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RemoteTransform2D::__class_id);
 	classes["RemoteTransform2D"] = RemoteTransform2D::__class_id;
 	class_id_list.insert(RemoteTransform2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RemoteTransform2D::__class_id, &remote_transform2d_class_def);

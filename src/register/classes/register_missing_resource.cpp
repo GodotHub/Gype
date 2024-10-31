@@ -30,14 +30,14 @@ static JSValue missing_resource_class_constructor(JSContext *ctx, JSValueConst n
 
 	MissingResource *missing_resource_class;
 	if (argc == 1) 
-		missing_resource_class = static_cast<MissingResource *>(static_cast<Object *>(Variant(*argv)));
+		missing_resource_class = static_cast<MissingResource *>(Variant(*argv).operator Object *());
 	else 
 		missing_resource_class = memnew(MissingResource);
 	if (!missing_resource_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, missing_resource_class);	
+	JS_SetOpaque(obj, missing_resource_class);
 	return obj;
 }
 static JSValue missing_resource_class_set_original_class(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,7 +88,6 @@ static void define_missing_resource_enum(JSContext *ctx, JSValue proto) {
 
 static int js_missing_resource_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&MissingResource::__class_id);
 	classes["MissingResource"] = MissingResource::__class_id;
 	class_id_list.insert(MissingResource::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MissingResource::__class_id, &missing_resource_class_def);

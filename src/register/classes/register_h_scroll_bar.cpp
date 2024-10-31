@@ -30,14 +30,14 @@ static JSValue h_scroll_bar_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	HScrollBar *h_scroll_bar_class;
 	if (argc == 1) 
-		h_scroll_bar_class = static_cast<HScrollBar *>(static_cast<Object *>(Variant(*argv)));
+		h_scroll_bar_class = static_cast<HScrollBar *>(Variant(*argv).operator Object *());
 	else 
 		h_scroll_bar_class = memnew(HScrollBar);
 	if (!h_scroll_bar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, h_scroll_bar_class);	
+	JS_SetOpaque(obj, h_scroll_bar_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_h_scroll_bar_enum(JSContext *ctx, JSValue proto) {
 
 static int js_h_scroll_bar_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&HScrollBar::__class_id);
 	classes["HScrollBar"] = HScrollBar::__class_id;
 	class_id_list.insert(HScrollBar::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), HScrollBar::__class_id, &h_scroll_bar_class_def);

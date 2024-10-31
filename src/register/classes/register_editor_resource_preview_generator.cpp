@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_resource_preview_generator.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/editor_resource_preview_generator.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -32,14 +32,14 @@ static JSValue editor_resource_preview_generator_class_constructor(JSContext *ct
 
 	EditorResourcePreviewGenerator *editor_resource_preview_generator_class;
 	if (argc == 1) 
-		editor_resource_preview_generator_class = static_cast<EditorResourcePreviewGenerator *>(static_cast<Object *>(Variant(*argv)));
+		editor_resource_preview_generator_class = static_cast<EditorResourcePreviewGenerator *>(Variant(*argv).operator Object *());
 	else 
 		editor_resource_preview_generator_class = memnew(EditorResourcePreviewGenerator);
 	if (!editor_resource_preview_generator_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_resource_preview_generator_class);	
+	JS_SetOpaque(obj, editor_resource_preview_generator_class);
 	return obj;
 }
 
@@ -52,7 +52,6 @@ static void define_editor_resource_preview_generator_enum(JSContext *ctx, JSValu
 
 static int js_editor_resource_preview_generator_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorResourcePreviewGenerator::__class_id);
 	classes["EditorResourcePreviewGenerator"] = EditorResourcePreviewGenerator::__class_id;
 	class_id_list.insert(EditorResourcePreviewGenerator::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorResourcePreviewGenerator::__class_id, &editor_resource_preview_generator_class_def);

@@ -30,14 +30,14 @@ static JSValue audio_effect_hard_limiter_class_constructor(JSContext *ctx, JSVal
 
 	AudioEffectHardLimiter *audio_effect_hard_limiter_class;
 	if (argc == 1) 
-		audio_effect_hard_limiter_class = static_cast<AudioEffectHardLimiter *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_hard_limiter_class = static_cast<AudioEffectHardLimiter *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_hard_limiter_class = memnew(AudioEffectHardLimiter);
 	if (!audio_effect_hard_limiter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_hard_limiter_class);	
+	JS_SetOpaque(obj, audio_effect_hard_limiter_class);
 	return obj;
 }
 static JSValue audio_effect_hard_limiter_class_set_ceiling_db(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -106,7 +106,6 @@ static void define_audio_effect_hard_limiter_enum(JSContext *ctx, JSValue proto)
 
 static int js_audio_effect_hard_limiter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectHardLimiter::__class_id);
 	classes["AudioEffectHardLimiter"] = AudioEffectHardLimiter::__class_id;
 	class_id_list.insert(AudioEffectHardLimiter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectHardLimiter::__class_id, &audio_effect_hard_limiter_class_def);

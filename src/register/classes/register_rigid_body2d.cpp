@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_material.hpp>
-#include <godot_cpp/classes/physics_direct_body_state2d.hpp>
-#include <godot_cpp/classes/rigid_body2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/rigid_body2d.hpp>
+#include <godot_cpp/classes/physics_direct_body_state2d.hpp>
+#include <godot_cpp/classes/physics_material.hpp>
 #include <godot_cpp/classes/physics_body2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -33,14 +33,14 @@ static JSValue rigid_body2d_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	RigidBody2D *rigid_body2d_class;
 	if (argc == 1) 
-		rigid_body2d_class = static_cast<RigidBody2D *>(static_cast<Object *>(Variant(*argv)));
+		rigid_body2d_class = static_cast<RigidBody2D *>(Variant(*argv).operator Object *());
 	else 
 		rigid_body2d_class = memnew(RigidBody2D);
 	if (!rigid_body2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rigid_body2d_class);	
+	JS_SetOpaque(obj, rigid_body2d_class);
 	return obj;
 }
 static JSValue rigid_body2d_class_set_mass(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -636,7 +636,6 @@ static void define_rigid_body2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_rigid_body2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RigidBody2D::__class_id);
 	classes["RigidBody2D"] = RigidBody2D::__class_id;
 	class_id_list.insert(RigidBody2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RigidBody2D::__class_id, &rigid_body2d_class_def);

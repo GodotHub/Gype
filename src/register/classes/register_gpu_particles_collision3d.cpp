@@ -30,14 +30,14 @@ static JSValue gpu_particles_collision3d_class_constructor(JSContext *ctx, JSVal
 
 	GPUParticlesCollision3D *gpu_particles_collision3d_class;
 	if (argc == 1) 
-		gpu_particles_collision3d_class = static_cast<GPUParticlesCollision3D *>(static_cast<Object *>(Variant(*argv)));
+		gpu_particles_collision3d_class = static_cast<GPUParticlesCollision3D *>(Variant(*argv).operator Object *());
 	else 
 		gpu_particles_collision3d_class = memnew(GPUParticlesCollision3D);
 	if (!gpu_particles_collision3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gpu_particles_collision3d_class);	
+	JS_SetOpaque(obj, gpu_particles_collision3d_class);
 	return obj;
 }
 static JSValue gpu_particles_collision3d_class_set_cull_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_gpu_particles_collision3d_enum(JSContext *ctx, JSValue proto)
 
 static int js_gpu_particles_collision3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GPUParticlesCollision3D::__class_id);
 	classes["GPUParticlesCollision3D"] = GPUParticlesCollision3D::__class_id;
 	class_id_list.insert(GPUParticlesCollision3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GPUParticlesCollision3D::__class_id, &gpu_particles_collision3d_class_def);

@@ -30,14 +30,14 @@ static JSValue multiplayer_peer_class_constructor(JSContext *ctx, JSValueConst n
 
 	MultiplayerPeer *multiplayer_peer_class;
 	if (argc == 1) 
-		multiplayer_peer_class = static_cast<MultiplayerPeer *>(static_cast<Object *>(Variant(*argv)));
+		multiplayer_peer_class = static_cast<MultiplayerPeer *>(Variant(*argv).operator Object *());
 	else 
 		multiplayer_peer_class = memnew(MultiplayerPeer);
 	if (!multiplayer_peer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, multiplayer_peer_class);	
+	JS_SetOpaque(obj, multiplayer_peer_class);
 	return obj;
 }
 static JSValue multiplayer_peer_class_set_transfer_channel(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -207,7 +207,6 @@ static void define_multiplayer_peer_enum(JSContext *ctx, JSValue proto) {
 
 static int js_multiplayer_peer_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&MultiplayerPeer::__class_id);
 	classes["MultiplayerPeer"] = MultiplayerPeer::__class_id;
 	class_id_list.insert(MultiplayerPeer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MultiplayerPeer::__class_id, &multiplayer_peer_class_def);

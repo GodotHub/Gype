@@ -30,14 +30,14 @@ static JSValue audio_stream_wav_class_constructor(JSContext *ctx, JSValueConst n
 
 	AudioStreamWAV *audio_stream_wav_class;
 	if (argc == 1) 
-		audio_stream_wav_class = static_cast<AudioStreamWAV *>(static_cast<Object *>(Variant(*argv)));
+		audio_stream_wav_class = static_cast<AudioStreamWAV *>(Variant(*argv).operator Object *());
 	else 
 		audio_stream_wav_class = memnew(AudioStreamWAV);
 	if (!audio_stream_wav_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_stream_wav_class);	
+	JS_SetOpaque(obj, audio_stream_wav_class);
 	return obj;
 }
 static JSValue audio_stream_wav_class_set_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -195,7 +195,6 @@ static void define_audio_stream_wav_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_stream_wav_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioStreamWAV::__class_id);
 	classes["AudioStreamWAV"] = AudioStreamWAV::__class_id;
 	class_id_list.insert(AudioStreamWAV::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStreamWAV::__class_id, &audio_stream_wav_class_def);

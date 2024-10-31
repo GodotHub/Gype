@@ -30,14 +30,14 @@ static JSValue visual_shader_node_group_base_class_constructor(JSContext *ctx, J
 
 	VisualShaderNodeGroupBase *visual_shader_node_group_base_class;
 	if (argc == 1) 
-		visual_shader_node_group_base_class = static_cast<VisualShaderNodeGroupBase *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_group_base_class = static_cast<VisualShaderNodeGroupBase *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_group_base_class = memnew(VisualShaderNodeGroupBase);
 	if (!visual_shader_node_group_base_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_group_base_class);	
+	JS_SetOpaque(obj, visual_shader_node_group_base_class);
 	return obj;
 }
 static JSValue visual_shader_node_group_base_class_set_inputs(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -157,7 +157,6 @@ static void define_visual_shader_node_group_base_enum(JSContext *ctx, JSValue pr
 
 static int js_visual_shader_node_group_base_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeGroupBase::__class_id);
 	classes["VisualShaderNodeGroupBase"] = VisualShaderNodeGroupBase::__class_id;
 	class_id_list.insert(VisualShaderNodeGroupBase::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeGroupBase::__class_id, &visual_shader_node_group_base_class_def);

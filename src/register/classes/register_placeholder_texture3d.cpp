@@ -30,14 +30,14 @@ static JSValue placeholder_texture3d_class_constructor(JSContext *ctx, JSValueCo
 
 	PlaceholderTexture3D *placeholder_texture3d_class;
 	if (argc == 1) 
-		placeholder_texture3d_class = static_cast<PlaceholderTexture3D *>(static_cast<Object *>(Variant(*argv)));
+		placeholder_texture3d_class = static_cast<PlaceholderTexture3D *>(Variant(*argv).operator Object *());
 	else 
 		placeholder_texture3d_class = memnew(PlaceholderTexture3D);
 	if (!placeholder_texture3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, placeholder_texture3d_class);	
+	JS_SetOpaque(obj, placeholder_texture3d_class);
 	return obj;
 }
 static JSValue placeholder_texture3d_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_placeholder_texture3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_placeholder_texture3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PlaceholderTexture3D::__class_id);
 	classes["PlaceholderTexture3D"] = PlaceholderTexture3D::__class_id;
 	class_id_list.insert(PlaceholderTexture3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PlaceholderTexture3D::__class_id, &placeholder_texture3d_class_def);

@@ -30,14 +30,14 @@ static JSValue web_rtc_data_channel_extension_class_constructor(JSContext *ctx, 
 
 	WebRTCDataChannelExtension *web_rtc_data_channel_extension_class;
 	if (argc == 1) 
-		web_rtc_data_channel_extension_class = static_cast<WebRTCDataChannelExtension *>(static_cast<Object *>(Variant(*argv)));
+		web_rtc_data_channel_extension_class = static_cast<WebRTCDataChannelExtension *>(Variant(*argv).operator Object *());
 	else 
 		web_rtc_data_channel_extension_class = memnew(WebRTCDataChannelExtension);
 	if (!web_rtc_data_channel_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, web_rtc_data_channel_extension_class);	
+	JS_SetOpaque(obj, web_rtc_data_channel_extension_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_web_rtc_data_channel_extension_enum(JSContext *ctx, JSValue p
 
 static int js_web_rtc_data_channel_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&WebRTCDataChannelExtension::__class_id);
 	classes["WebRTCDataChannelExtension"] = WebRTCDataChannelExtension::__class_id;
 	class_id_list.insert(WebRTCDataChannelExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), WebRTCDataChannelExtension::__class_id, &web_rtc_data_channel_extension_class_def);

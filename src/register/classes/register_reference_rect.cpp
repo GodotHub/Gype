@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/reference_rect.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/reference_rect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue reference_rect_class_constructor(JSContext *ctx, JSValueConst new
 
 	ReferenceRect *reference_rect_class;
 	if (argc == 1) 
-		reference_rect_class = static_cast<ReferenceRect *>(static_cast<Object *>(Variant(*argv)));
+		reference_rect_class = static_cast<ReferenceRect *>(Variant(*argv).operator Object *());
 	else 
 		reference_rect_class = memnew(ReferenceRect);
 	if (!reference_rect_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, reference_rect_class);	
+	JS_SetOpaque(obj, reference_rect_class);
 	return obj;
 }
 static JSValue reference_rect_class_get_border_color(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -106,7 +106,6 @@ static void define_reference_rect_enum(JSContext *ctx, JSValue proto) {
 
 static int js_reference_rect_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ReferenceRect::__class_id);
 	classes["ReferenceRect"] = ReferenceRect::__class_id;
 	class_id_list.insert(ReferenceRect::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ReferenceRect::__class_id, &reference_rect_class_def);

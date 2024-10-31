@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/joint2d.hpp>
 #include <godot_cpp/classes/damped_spring_joint2d.hpp>
+#include <godot_cpp/classes/joint2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue damped_spring_joint2d_class_constructor(JSContext *ctx, JSValueCo
 
 	DampedSpringJoint2D *damped_spring_joint2d_class;
 	if (argc == 1) 
-		damped_spring_joint2d_class = static_cast<DampedSpringJoint2D *>(static_cast<Object *>(Variant(*argv)));
+		damped_spring_joint2d_class = static_cast<DampedSpringJoint2D *>(Variant(*argv).operator Object *());
 	else 
 		damped_spring_joint2d_class = memnew(DampedSpringJoint2D);
 	if (!damped_spring_joint2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, damped_spring_joint2d_class);	
+	JS_SetOpaque(obj, damped_spring_joint2d_class);
 	return obj;
 }
 static JSValue damped_spring_joint2d_class_set_length(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -124,7 +124,6 @@ static void define_damped_spring_joint2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_damped_spring_joint2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&DampedSpringJoint2D::__class_id);
 	classes["DampedSpringJoint2D"] = DampedSpringJoint2D::__class_id;
 	class_id_list.insert(DampedSpringJoint2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), DampedSpringJoint2D::__class_id, &damped_spring_joint2d_class_def);

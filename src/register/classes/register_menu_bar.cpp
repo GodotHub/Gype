@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/menu_bar.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue menu_bar_class_constructor(JSContext *ctx, JSValueConst new_targe
 
 	MenuBar *menu_bar_class;
 	if (argc == 1) 
-		menu_bar_class = static_cast<MenuBar *>(static_cast<Object *>(Variant(*argv)));
+		menu_bar_class = static_cast<MenuBar *>(Variant(*argv).operator Object *());
 	else 
 		menu_bar_class = memnew(MenuBar);
 	if (!menu_bar_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, menu_bar_class);	
+	JS_SetOpaque(obj, menu_bar_class);
 	return obj;
 }
 static JSValue menu_bar_class_set_switch_on_hover(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -221,7 +221,6 @@ static void define_menu_bar_enum(JSContext *ctx, JSValue proto) {
 
 static int js_menu_bar_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&MenuBar::__class_id);
 	classes["MenuBar"] = MenuBar::__class_id;
 	class_id_list.insert(MenuBar::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MenuBar::__class_id, &menu_bar_class_def);

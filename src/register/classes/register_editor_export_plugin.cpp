@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_export_platform.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/editor_export_plugin.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/editor_export_plugin.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/editor_export_platform.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -33,14 +33,14 @@ static JSValue editor_export_plugin_class_constructor(JSContext *ctx, JSValueCon
 
 	EditorExportPlugin *editor_export_plugin_class;
 	if (argc == 1) 
-		editor_export_plugin_class = static_cast<EditorExportPlugin *>(static_cast<Object *>(Variant(*argv)));
+		editor_export_plugin_class = static_cast<EditorExportPlugin *>(Variant(*argv).operator Object *());
 	else 
 		editor_export_plugin_class = memnew(EditorExportPlugin);
 	if (!editor_export_plugin_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_export_plugin_class);	
+	JS_SetOpaque(obj, editor_export_plugin_class);
 	return obj;
 }
 static JSValue editor_export_plugin_class_add_shared_object(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -115,7 +115,6 @@ static void define_editor_export_plugin_enum(JSContext *ctx, JSValue proto) {
 
 static int js_editor_export_plugin_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorExportPlugin::__class_id);
 	classes["EditorExportPlugin"] = EditorExportPlugin::__class_id;
 	class_id_list.insert(EditorExportPlugin::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorExportPlugin::__class_id, &editor_export_plugin_class_def);

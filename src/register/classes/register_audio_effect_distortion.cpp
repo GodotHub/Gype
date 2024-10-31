@@ -30,14 +30,14 @@ static JSValue audio_effect_distortion_class_constructor(JSContext *ctx, JSValue
 
 	AudioEffectDistortion *audio_effect_distortion_class;
 	if (argc == 1) 
-		audio_effect_distortion_class = static_cast<AudioEffectDistortion *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_distortion_class = static_cast<AudioEffectDistortion *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_distortion_class = memnew(AudioEffectDistortion);
 	if (!audio_effect_distortion_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_distortion_class);	
+	JS_SetOpaque(obj, audio_effect_distortion_class);
 	return obj;
 }
 static JSValue audio_effect_distortion_class_set_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -149,7 +149,6 @@ static void define_audio_effect_distortion_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_effect_distortion_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectDistortion::__class_id);
 	classes["AudioEffectDistortion"] = AudioEffectDistortion::__class_id;
 	class_id_list.insert(AudioEffectDistortion::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectDistortion::__class_id, &audio_effect_distortion_class_def);

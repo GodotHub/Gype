@@ -30,14 +30,14 @@ static JSValue remote_transform3d_class_constructor(JSContext *ctx, JSValueConst
 
 	RemoteTransform3D *remote_transform3d_class;
 	if (argc == 1) 
-		remote_transform3d_class = static_cast<RemoteTransform3D *>(static_cast<Object *>(Variant(*argv)));
+		remote_transform3d_class = static_cast<RemoteTransform3D *>(Variant(*argv).operator Object *());
 	else 
 		remote_transform3d_class = memnew(RemoteTransform3D);
 	if (!remote_transform3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, remote_transform3d_class);	
+	JS_SetOpaque(obj, remote_transform3d_class);
 	return obj;
 }
 static JSValue remote_transform3d_class_set_remote_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -147,7 +147,6 @@ static void define_remote_transform3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_remote_transform3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RemoteTransform3D::__class_id);
 	classes["RemoteTransform3D"] = RemoteTransform3D::__class_id;
 	class_id_list.insert(RemoteTransform3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RemoteTransform3D::__class_id, &remote_transform3d_class_def);

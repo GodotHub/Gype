@@ -30,14 +30,14 @@ static JSValue input_event_from_window_class_constructor(JSContext *ctx, JSValue
 
 	InputEventFromWindow *input_event_from_window_class;
 	if (argc == 1) 
-		input_event_from_window_class = static_cast<InputEventFromWindow *>(static_cast<Object *>(Variant(*argv)));
+		input_event_from_window_class = static_cast<InputEventFromWindow *>(Variant(*argv).operator Object *());
 	else 
 		input_event_from_window_class = memnew(InputEventFromWindow);
 	if (!input_event_from_window_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, input_event_from_window_class);	
+	JS_SetOpaque(obj, input_event_from_window_class);
 	return obj;
 }
 static JSValue input_event_from_window_class_set_window_id(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_input_event_from_window_enum(JSContext *ctx, JSValue proto) {
 
 static int js_input_event_from_window_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&InputEventFromWindow::__class_id);
 	classes["InputEventFromWindow"] = InputEventFromWindow::__class_id;
 	class_id_list.insert(InputEventFromWindow::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), InputEventFromWindow::__class_id, &input_event_from_window_class_def);

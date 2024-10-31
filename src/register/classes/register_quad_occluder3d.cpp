@@ -30,14 +30,14 @@ static JSValue quad_occluder3d_class_constructor(JSContext *ctx, JSValueConst ne
 
 	QuadOccluder3D *quad_occluder3d_class;
 	if (argc == 1) 
-		quad_occluder3d_class = static_cast<QuadOccluder3D *>(static_cast<Object *>(Variant(*argv)));
+		quad_occluder3d_class = static_cast<QuadOccluder3D *>(Variant(*argv).operator Object *());
 	else 
 		quad_occluder3d_class = memnew(QuadOccluder3D);
 	if (!quad_occluder3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, quad_occluder3d_class);	
+	JS_SetOpaque(obj, quad_occluder3d_class);
 	return obj;
 }
 static JSValue quad_occluder3d_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_quad_occluder3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_quad_occluder3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&QuadOccluder3D::__class_id);
 	classes["QuadOccluder3D"] = QuadOccluder3D::__class_id;
 	class_id_list.insert(QuadOccluder3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), QuadOccluder3D::__class_id, &quad_occluder3d_class_def);

@@ -30,14 +30,14 @@ static JSValue main_loop_class_constructor(JSContext *ctx, JSValueConst new_targ
 
 	MainLoop *main_loop_class;
 	if (argc == 1) 
-		main_loop_class = static_cast<MainLoop *>(static_cast<Object *>(Variant(*argv)));
+		main_loop_class = static_cast<MainLoop *>(Variant(*argv).operator Object *());
 	else 
 		main_loop_class = memnew(MainLoop);
 	if (!main_loop_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, main_loop_class);	
+	JS_SetOpaque(obj, main_loop_class);
 	return obj;
 }
 static JSValue main_loop_class_get_on_request_permissions_result_signal(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -68,7 +68,6 @@ static void define_main_loop_enum(JSContext *ctx, JSValue proto) {
 
 static int js_main_loop_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&MainLoop::__class_id);
 	classes["MainLoop"] = MainLoop::__class_id;
 	class_id_list.insert(MainLoop::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MainLoop::__class_id, &main_loop_class_def);

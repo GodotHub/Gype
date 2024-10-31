@@ -30,14 +30,14 @@ static JSValue aspect_ratio_container_class_constructor(JSContext *ctx, JSValueC
 
 	AspectRatioContainer *aspect_ratio_container_class;
 	if (argc == 1) 
-		aspect_ratio_container_class = static_cast<AspectRatioContainer *>(static_cast<Object *>(Variant(*argv)));
+		aspect_ratio_container_class = static_cast<AspectRatioContainer *>(Variant(*argv).operator Object *());
 	else 
 		aspect_ratio_container_class = memnew(AspectRatioContainer);
 	if (!aspect_ratio_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, aspect_ratio_container_class);	
+	JS_SetOpaque(obj, aspect_ratio_container_class);
 	return obj;
 }
 static JSValue aspect_ratio_container_class_set_ratio(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -135,7 +135,6 @@ static void define_aspect_ratio_container_enum(JSContext *ctx, JSValue proto) {
 
 static int js_aspect_ratio_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AspectRatioContainer::__class_id);
 	classes["AspectRatioContainer"] = AspectRatioContainer::__class_id;
 	class_id_list.insert(AspectRatioContainer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AspectRatioContainer::__class_id, &aspect_ratio_container_class_def);

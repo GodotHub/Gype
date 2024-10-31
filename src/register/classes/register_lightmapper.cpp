@@ -30,14 +30,14 @@ static JSValue lightmapper_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	Lightmapper *lightmapper_class;
 	if (argc == 1) 
-		lightmapper_class = static_cast<Lightmapper *>(static_cast<Object *>(Variant(*argv)));
+		lightmapper_class = static_cast<Lightmapper *>(Variant(*argv).operator Object *());
 	else 
 		lightmapper_class = memnew(Lightmapper);
 	if (!lightmapper_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, lightmapper_class);	
+	JS_SetOpaque(obj, lightmapper_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_lightmapper_enum(JSContext *ctx, JSValue proto) {
 
 static int js_lightmapper_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Lightmapper::__class_id);
 	classes["Lightmapper"] = Lightmapper::__class_id;
 	class_id_list.insert(Lightmapper::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Lightmapper::__class_id, &lightmapper_class_def);

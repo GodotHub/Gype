@@ -30,14 +30,14 @@ static JSValue xr_hand_modifier3d_class_constructor(JSContext *ctx, JSValueConst
 
 	XRHandModifier3D *xr_hand_modifier3d_class;
 	if (argc == 1) 
-		xr_hand_modifier3d_class = static_cast<XRHandModifier3D *>(static_cast<Object *>(Variant(*argv)));
+		xr_hand_modifier3d_class = static_cast<XRHandModifier3D *>(Variant(*argv).operator Object *());
 	else 
 		xr_hand_modifier3d_class = memnew(XRHandModifier3D);
 	if (!xr_hand_modifier3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, xr_hand_modifier3d_class);	
+	JS_SetOpaque(obj, xr_hand_modifier3d_class);
 	return obj;
 }
 static JSValue xr_hand_modifier3d_class_set_hand_tracker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -93,7 +93,6 @@ static void define_xr_hand_modifier3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_xr_hand_modifier3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&XRHandModifier3D::__class_id);
 	classes["XRHandModifier3D"] = XRHandModifier3D::__class_id;
 	class_id_list.insert(XRHandModifier3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRHandModifier3D::__class_id, &xr_hand_modifier3d_class_def);

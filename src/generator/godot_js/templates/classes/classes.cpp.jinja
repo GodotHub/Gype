@@ -56,7 +56,7 @@ static JSValue {{snake_name}}_class_constructor(JSContext *ctx, JSValueConst new
 
 	{{norm_name}} *{{snake_name}}_class;
 	if (argc == 1) 
-		{{snake_name}}_class = static_cast<{{norm_name}} *>(static_cast<Object *>(Variant(*argv)));
+		{{snake_name}}_class = static_cast<{{norm_name}} *>(Variant(*argv).operator Object *());
 	else 
 		{{snake_name}}_class = memnew({{clazz_name}});
 	
@@ -65,7 +65,7 @@ static JSValue {{snake_name}}_class_constructor(JSContext *ctx, JSValueConst new
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, {{snake_name}}_class);	
+	JS_SetOpaque(obj, {{snake_name}}_class);
 	return obj;
 }
 {%- macro get_const(method) %}
@@ -189,7 +189,6 @@ static void define_{{snake_name}}_enum(JSContext *ctx, JSValue proto) {
 
 static int js_{{snake_name}}_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&{{class_id}});
 	classes["{{clazz_name}}"] = {{class_id}};
 	class_id_list.insert({{class_id}});
 	JS_NewClass(JS_GetRuntime(ctx), {{class_id}}, &{{snake_name}}_class_def);

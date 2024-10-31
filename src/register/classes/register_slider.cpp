@@ -30,14 +30,14 @@ static JSValue slider_class_constructor(JSContext *ctx, JSValueConst new_target,
 
 	Slider *slider_class;
 	if (argc == 1) 
-		slider_class = static_cast<Slider *>(static_cast<Object *>(Variant(*argv)));
+		slider_class = static_cast<Slider *>(Variant(*argv).operator Object *());
 	else 
 		slider_class = memnew(Slider);
 	if (!slider_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, slider_class);	
+	JS_SetOpaque(obj, slider_class);
 	return obj;
 }
 static JSValue slider_class_set_ticks(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -160,7 +160,6 @@ static void define_slider_enum(JSContext *ctx, JSValue proto) {
 
 static int js_slider_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Slider::__class_id);
 	classes["Slider"] = Slider::__class_id;
 	class_id_list.insert(Slider::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Slider::__class_id, &slider_class_def);

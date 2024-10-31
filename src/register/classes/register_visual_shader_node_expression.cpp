@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_group_base.hpp>
 #include <godot_cpp/classes/visual_shader_node_expression.hpp>
+#include <godot_cpp/classes/visual_shader_node_group_base.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue visual_shader_node_expression_class_constructor(JSContext *ctx, J
 
 	VisualShaderNodeExpression *visual_shader_node_expression_class;
 	if (argc == 1) 
-		visual_shader_node_expression_class = static_cast<VisualShaderNodeExpression *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_expression_class = static_cast<VisualShaderNodeExpression *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_expression_class = memnew(VisualShaderNodeExpression);
 	if (!visual_shader_node_expression_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_expression_class);	
+	JS_SetOpaque(obj, visual_shader_node_expression_class);
 	return obj;
 }
 static JSValue visual_shader_node_expression_class_set_expression(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_visual_shader_node_expression_enum(JSContext *ctx, JSValue pr
 
 static int js_visual_shader_node_expression_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeExpression::__class_id);
 	classes["VisualShaderNodeExpression"] = VisualShaderNodeExpression::__class_id;
 	class_id_list.insert(VisualShaderNodeExpression::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeExpression::__class_id, &visual_shader_node_expression_class_def);

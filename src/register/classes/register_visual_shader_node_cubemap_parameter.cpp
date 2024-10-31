@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_texture_parameter.hpp>
 #include <godot_cpp/classes/visual_shader_node_cubemap_parameter.hpp>
+#include <godot_cpp/classes/visual_shader_node_texture_parameter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue visual_shader_node_cubemap_parameter_class_constructor(JSContext 
 
 	VisualShaderNodeCubemapParameter *visual_shader_node_cubemap_parameter_class;
 	if (argc == 1) 
-		visual_shader_node_cubemap_parameter_class = static_cast<VisualShaderNodeCubemapParameter *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_cubemap_parameter_class = static_cast<VisualShaderNodeCubemapParameter *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_cubemap_parameter_class = memnew(VisualShaderNodeCubemapParameter);
 	if (!visual_shader_node_cubemap_parameter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_cubemap_parameter_class);	
+	JS_SetOpaque(obj, visual_shader_node_cubemap_parameter_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_visual_shader_node_cubemap_parameter_enum(JSContext *ctx, JSV
 
 static int js_visual_shader_node_cubemap_parameter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeCubemapParameter::__class_id);
 	classes["VisualShaderNodeCubemapParameter"] = VisualShaderNodeCubemapParameter::__class_id;
 	class_id_list.insert(VisualShaderNodeCubemapParameter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeCubemapParameter::__class_id, &visual_shader_node_cubemap_parameter_class_def);

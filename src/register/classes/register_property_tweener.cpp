@@ -30,14 +30,14 @@ static JSValue property_tweener_class_constructor(JSContext *ctx, JSValueConst n
 
 	PropertyTweener *property_tweener_class;
 	if (argc == 1) 
-		property_tweener_class = static_cast<PropertyTweener *>(static_cast<Object *>(Variant(*argv)));
+		property_tweener_class = static_cast<PropertyTweener *>(Variant(*argv).operator Object *());
 	else 
 		property_tweener_class = memnew(PropertyTweener);
 	if (!property_tweener_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, property_tweener_class);	
+	JS_SetOpaque(obj, property_tweener_class);
 	return obj;
 }
 static JSValue property_tweener_class_from(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -87,7 +87,6 @@ static void define_property_tweener_enum(JSContext *ctx, JSValue proto) {
 
 static int js_property_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PropertyTweener::__class_id);
 	classes["PropertyTweener"] = PropertyTweener::__class_id;
 	class_id_list.insert(PropertyTweener::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PropertyTweener::__class_id, &property_tweener_class_def);

@@ -30,14 +30,14 @@ static JSValue center_container_class_constructor(JSContext *ctx, JSValueConst n
 
 	CenterContainer *center_container_class;
 	if (argc == 1) 
-		center_container_class = static_cast<CenterContainer *>(static_cast<Object *>(Variant(*argv)));
+		center_container_class = static_cast<CenterContainer *>(Variant(*argv).operator Object *());
 	else 
 		center_container_class = memnew(CenterContainer);
 	if (!center_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, center_container_class);	
+	JS_SetOpaque(obj, center_container_class);
 	return obj;
 }
 static JSValue center_container_class_set_use_top_left(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_center_container_enum(JSContext *ctx, JSValue proto) {
 
 static int js_center_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CenterContainer::__class_id);
 	classes["CenterContainer"] = CenterContainer::__class_id;
 	class_id_list.insert(CenterContainer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CenterContainer::__class_id, &center_container_class_def);

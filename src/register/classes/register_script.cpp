@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue script_class_constructor(JSContext *ctx, JSValueConst new_target,
 
 	Script *script_class;
 	if (argc == 1) 
-		script_class = static_cast<Script *>(static_cast<Object *>(Variant(*argv)));
+		script_class = static_cast<Script *>(Variant(*argv).operator Object *());
 	else 
 		script_class = memnew(Script);
 	if (!script_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, script_class);	
+	JS_SetOpaque(obj, script_class);
 	return obj;
 }
 static JSValue script_class_can_instantiate(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -146,7 +146,6 @@ static void define_script_enum(JSContext *ctx, JSValue proto) {
 
 static int js_script_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Script::__class_id);
 	classes["Script"] = Script::__class_id;
 	class_id_list.insert(Script::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Script::__class_id, &script_class_def);

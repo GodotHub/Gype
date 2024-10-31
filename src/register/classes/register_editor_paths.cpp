@@ -30,14 +30,14 @@ static JSValue editor_paths_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	EditorPaths *editor_paths_class;
 	if (argc == 1) 
-		editor_paths_class = static_cast<EditorPaths *>(static_cast<Object *>(Variant(*argv)));
+		editor_paths_class = static_cast<EditorPaths *>(Variant(*argv).operator Object *());
 	else 
 		editor_paths_class = memnew(EditorPaths);
 	if (!editor_paths_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_paths_class);	
+	JS_SetOpaque(obj, editor_paths_class);
 	return obj;
 }
 static JSValue editor_paths_class_get_data_dir(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -82,7 +82,6 @@ static void define_editor_paths_enum(JSContext *ctx, JSValue proto) {
 
 static int js_editor_paths_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorPaths::__class_id);
 	classes["EditorPaths"] = EditorPaths::__class_id;
 	class_id_list.insert(EditorPaths::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorPaths::__class_id, &editor_paths_class_def);

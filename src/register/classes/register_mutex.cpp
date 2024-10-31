@@ -30,14 +30,14 @@ static JSValue mutex_class_constructor(JSContext *ctx, JSValueConst new_target, 
 
 	Mutex *mutex_class;
 	if (argc == 1) 
-		mutex_class = static_cast<Mutex *>(static_cast<Object *>(Variant(*argv)));
+		mutex_class = static_cast<Mutex *>(Variant(*argv).operator Object *());
 	else 
 		mutex_class = memnew(Mutex);
 	if (!mutex_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, mutex_class);	
+	JS_SetOpaque(obj, mutex_class);
 	return obj;
 }
 static JSValue mutex_class_lock(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -67,7 +67,6 @@ static void define_mutex_enum(JSContext *ctx, JSValue proto) {
 
 static int js_mutex_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Mutex::__class_id);
 	classes["Mutex"] = Mutex::__class_id;
 	class_id_list.insert(Mutex::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Mutex::__class_id, &mutex_class_def);

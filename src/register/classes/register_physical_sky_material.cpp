@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physical_sky_material.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/physical_sky_material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue physical_sky_material_class_constructor(JSContext *ctx, JSValueCo
 
 	PhysicalSkyMaterial *physical_sky_material_class;
 	if (argc == 1) 
-		physical_sky_material_class = static_cast<PhysicalSkyMaterial *>(static_cast<Object *>(Variant(*argv)));
+		physical_sky_material_class = static_cast<PhysicalSkyMaterial *>(Variant(*argv).operator Object *());
 	else 
 		physical_sky_material_class = memnew(PhysicalSkyMaterial);
 	if (!physical_sky_material_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, physical_sky_material_class);	
+	JS_SetOpaque(obj, physical_sky_material_class);
 	return obj;
 }
 static JSValue physical_sky_material_class_set_rayleigh_coefficient(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -251,7 +251,6 @@ static void define_physical_sky_material_enum(JSContext *ctx, JSValue proto) {
 
 static int js_physical_sky_material_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PhysicalSkyMaterial::__class_id);
 	classes["PhysicalSkyMaterial"] = PhysicalSkyMaterial::__class_id;
 	class_id_list.insert(PhysicalSkyMaterial::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PhysicalSkyMaterial::__class_id, &physical_sky_material_class_def);

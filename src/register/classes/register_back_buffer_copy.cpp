@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/back_buffer_copy.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/back_buffer_copy.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue back_buffer_copy_class_constructor(JSContext *ctx, JSValueConst n
 
 	BackBufferCopy *back_buffer_copy_class;
 	if (argc == 1) 
-		back_buffer_copy_class = static_cast<BackBufferCopy *>(static_cast<Object *>(Variant(*argv)));
+		back_buffer_copy_class = static_cast<BackBufferCopy *>(Variant(*argv).operator Object *());
 	else 
 		back_buffer_copy_class = memnew(BackBufferCopy);
 	if (!back_buffer_copy_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, back_buffer_copy_class);	
+	JS_SetOpaque(obj, back_buffer_copy_class);
 	return obj;
 }
 static JSValue back_buffer_copy_class_set_rect(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -93,7 +93,6 @@ static void define_back_buffer_copy_enum(JSContext *ctx, JSValue proto) {
 
 static int js_back_buffer_copy_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&BackBufferCopy::__class_id);
 	classes["BackBufferCopy"] = BackBufferCopy::__class_id;
 	class_id_list.insert(BackBufferCopy::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), BackBufferCopy::__class_id, &back_buffer_copy_class_def);

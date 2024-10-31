@@ -30,14 +30,14 @@ static JSValue occluder3d_class_constructor(JSContext *ctx, JSValueConst new_tar
 
 	Occluder3D *occluder3d_class;
 	if (argc == 1) 
-		occluder3d_class = static_cast<Occluder3D *>(static_cast<Object *>(Variant(*argv)));
+		occluder3d_class = static_cast<Occluder3D *>(Variant(*argv).operator Object *());
 	else 
 		occluder3d_class = memnew(Occluder3D);
 	if (!occluder3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, occluder3d_class);	
+	JS_SetOpaque(obj, occluder3d_class);
 	return obj;
 }
 static JSValue occluder3d_class_get_vertices(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -62,7 +62,6 @@ static void define_occluder3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_occluder3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Occluder3D::__class_id);
 	classes["Occluder3D"] = Occluder3D::__class_id;
 	class_id_list.insert(Occluder3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Occluder3D::__class_id, &occluder3d_class_def);

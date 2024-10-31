@@ -30,14 +30,14 @@ static JSValue editor_syntax_highlighter_class_constructor(JSContext *ctx, JSVal
 
 	EditorSyntaxHighlighter *editor_syntax_highlighter_class;
 	if (argc == 1) 
-		editor_syntax_highlighter_class = static_cast<EditorSyntaxHighlighter *>(static_cast<Object *>(Variant(*argv)));
+		editor_syntax_highlighter_class = static_cast<EditorSyntaxHighlighter *>(Variant(*argv).operator Object *());
 	else 
 		editor_syntax_highlighter_class = memnew(EditorSyntaxHighlighter);
 	if (!editor_syntax_highlighter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_syntax_highlighter_class);	
+	JS_SetOpaque(obj, editor_syntax_highlighter_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_editor_syntax_highlighter_enum(JSContext *ctx, JSValue proto)
 
 static int js_editor_syntax_highlighter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorSyntaxHighlighter::__class_id);
 	classes["EditorSyntaxHighlighter"] = EditorSyntaxHighlighter::__class_id;
 	class_id_list.insert(EditorSyntaxHighlighter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorSyntaxHighlighter::__class_id, &editor_syntax_highlighter_class_def);

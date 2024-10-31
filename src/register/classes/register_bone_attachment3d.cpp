@@ -30,14 +30,14 @@ static JSValue bone_attachment3d_class_constructor(JSContext *ctx, JSValueConst 
 
 	BoneAttachment3D *bone_attachment3d_class;
 	if (argc == 1) 
-		bone_attachment3d_class = static_cast<BoneAttachment3D *>(static_cast<Object *>(Variant(*argv)));
+		bone_attachment3d_class = static_cast<BoneAttachment3D *>(Variant(*argv).operator Object *());
 	else 
 		bone_attachment3d_class = memnew(BoneAttachment3D);
 	if (!bone_attachment3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, bone_attachment3d_class);	
+	JS_SetOpaque(obj, bone_attachment3d_class);
 	return obj;
 }
 static JSValue bone_attachment3d_class_set_bone_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -131,7 +131,6 @@ static void define_bone_attachment3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_bone_attachment3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&BoneAttachment3D::__class_id);
 	classes["BoneAttachment3D"] = BoneAttachment3D::__class_id;
 	class_id_list.insert(BoneAttachment3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), BoneAttachment3D::__class_id, &bone_attachment3d_class_def);

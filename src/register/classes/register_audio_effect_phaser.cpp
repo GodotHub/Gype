@@ -30,14 +30,14 @@ static JSValue audio_effect_phaser_class_constructor(JSContext *ctx, JSValueCons
 
 	AudioEffectPhaser *audio_effect_phaser_class;
 	if (argc == 1) 
-		audio_effect_phaser_class = static_cast<AudioEffectPhaser *>(static_cast<Object *>(Variant(*argv)));
+		audio_effect_phaser_class = static_cast<AudioEffectPhaser *>(Variant(*argv).operator Object *());
 	else 
 		audio_effect_phaser_class = memnew(AudioEffectPhaser);
 	if (!audio_effect_phaser_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_effect_phaser_class);	
+	JS_SetOpaque(obj, audio_effect_phaser_class);
 	return obj;
 }
 static JSValue audio_effect_phaser_class_set_range_min_hz(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -142,7 +142,6 @@ static void define_audio_effect_phaser_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_effect_phaser_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioEffectPhaser::__class_id);
 	classes["AudioEffectPhaser"] = AudioEffectPhaser::__class_id;
 	class_id_list.insert(AudioEffectPhaser::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioEffectPhaser::__class_id, &audio_effect_phaser_class_def);

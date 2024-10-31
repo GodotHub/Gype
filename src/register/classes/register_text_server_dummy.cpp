@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/text_server_dummy.hpp>
 #include <godot_cpp/classes/text_server_extension.hpp>
+#include <godot_cpp/classes/text_server_dummy.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue text_server_dummy_class_constructor(JSContext *ctx, JSValueConst 
 
 	TextServerDummy *text_server_dummy_class;
 	if (argc == 1) 
-		text_server_dummy_class = static_cast<TextServerDummy *>(static_cast<Object *>(Variant(*argv)));
+		text_server_dummy_class = static_cast<TextServerDummy *>(Variant(*argv).operator Object *());
 	else 
 		text_server_dummy_class = memnew(TextServerDummy);
 	if (!text_server_dummy_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, text_server_dummy_class);	
+	JS_SetOpaque(obj, text_server_dummy_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_text_server_dummy_enum(JSContext *ctx, JSValue proto) {
 
 static int js_text_server_dummy_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&TextServerDummy::__class_id);
 	classes["TextServerDummy"] = TextServerDummy::__class_id;
 	class_id_list.insert(TextServerDummy::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TextServerDummy::__class_id, &text_server_dummy_class_def);

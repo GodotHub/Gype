@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/multiplayer_synchronizer.hpp>
 #include <godot_cpp/classes/scene_replication_config.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/multiplayer_synchronizer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue multiplayer_synchronizer_class_constructor(JSContext *ctx, JSValu
 
 	MultiplayerSynchronizer *multiplayer_synchronizer_class;
 	if (argc == 1) 
-		multiplayer_synchronizer_class = static_cast<MultiplayerSynchronizer *>(static_cast<Object *>(Variant(*argv)));
+		multiplayer_synchronizer_class = static_cast<MultiplayerSynchronizer *>(Variant(*argv).operator Object *());
 	else 
 		multiplayer_synchronizer_class = memnew(MultiplayerSynchronizer);
 	if (!multiplayer_synchronizer_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, multiplayer_synchronizer_class);	
+	JS_SetOpaque(obj, multiplayer_synchronizer_class);
 	return obj;
 }
 static JSValue multiplayer_synchronizer_class_set_root_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -245,7 +245,6 @@ static void define_multiplayer_synchronizer_enum(JSContext *ctx, JSValue proto) 
 
 static int js_multiplayer_synchronizer_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&MultiplayerSynchronizer::__class_id);
 	classes["MultiplayerSynchronizer"] = MultiplayerSynchronizer::__class_id;
 	class_id_list.insert(MultiplayerSynchronizer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), MultiplayerSynchronizer::__class_id, &multiplayer_synchronizer_class_def);

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/animation_root_node.hpp>
-#include <godot_cpp/classes/animation_node.hpp>
 #include <godot_cpp/classes/animation_node_blend_tree.hpp>
+#include <godot_cpp/classes/animation_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue animation_node_blend_tree_class_constructor(JSContext *ctx, JSVal
 
 	AnimationNodeBlendTree *animation_node_blend_tree_class;
 	if (argc == 1) 
-		animation_node_blend_tree_class = static_cast<AnimationNodeBlendTree *>(static_cast<Object *>(Variant(*argv)));
+		animation_node_blend_tree_class = static_cast<AnimationNodeBlendTree *>(Variant(*argv).operator Object *());
 	else 
 		animation_node_blend_tree_class = memnew(AnimationNodeBlendTree);
 	if (!animation_node_blend_tree_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, animation_node_blend_tree_class);	
+	JS_SetOpaque(obj, animation_node_blend_tree_class);
 	return obj;
 }
 static JSValue animation_node_blend_tree_class_add_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -134,7 +134,6 @@ static void define_animation_node_blend_tree_enum(JSContext *ctx, JSValue proto)
 
 static int js_animation_node_blend_tree_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AnimationNodeBlendTree::__class_id);
 	classes["AnimationNodeBlendTree"] = AnimationNodeBlendTree::__class_id;
 	class_id_list.insert(AnimationNodeBlendTree::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AnimationNodeBlendTree::__class_id, &animation_node_blend_tree_class_def);

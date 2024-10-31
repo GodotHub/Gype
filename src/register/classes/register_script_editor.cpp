@@ -5,13 +5,13 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/script.hpp>
-#include <godot_cpp/classes/script_editor_base.hpp>
-#include <godot_cpp/classes/script.hpp>
+#include <godot_cpp/classes/script_editor.hpp>
 #include <godot_cpp/classes/panel_container.hpp>
+#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/classes/editor_syntax_highlighter.hpp>
 #include <godot_cpp/classes/script_editor_base.hpp>
-#include <godot_cpp/classes/script_editor.hpp>
+#include <godot_cpp/classes/script_editor_base.hpp>
+#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -35,14 +35,14 @@ static JSValue script_editor_class_constructor(JSContext *ctx, JSValueConst new_
 
 	ScriptEditor *script_editor_class;
 	if (argc == 1) 
-		script_editor_class = static_cast<ScriptEditor *>(static_cast<Object *>(Variant(*argv)));
+		script_editor_class = static_cast<ScriptEditor *>(Variant(*argv).operator Object *());
 	else 
 		script_editor_class = memnew(ScriptEditor);
 	if (!script_editor_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, script_editor_class);	
+	JS_SetOpaque(obj, script_editor_class);
 	return obj;
 }
 static JSValue script_editor_class_get_current_editor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -138,7 +138,6 @@ static void define_script_editor_enum(JSContext *ctx, JSValue proto) {
 
 static int js_script_editor_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ScriptEditor::__class_id);
 	classes["ScriptEditor"] = ScriptEditor::__class_id;
 	class_id_list.insert(ScriptEditor::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ScriptEditor::__class_id, &script_editor_class_def);

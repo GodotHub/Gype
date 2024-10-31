@@ -30,14 +30,14 @@ static JSValue hashing_context_class_constructor(JSContext *ctx, JSValueConst ne
 
 	HashingContext *hashing_context_class;
 	if (argc == 1) 
-		hashing_context_class = static_cast<HashingContext *>(static_cast<Object *>(Variant(*argv)));
+		hashing_context_class = static_cast<HashingContext *>(Variant(*argv).operator Object *());
 	else 
 		hashing_context_class = memnew(HashingContext);
 	if (!hashing_context_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, hashing_context_class);	
+	JS_SetOpaque(obj, hashing_context_class);
 	return obj;
 }
 static JSValue hashing_context_class_start(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,7 +72,6 @@ static void define_hashing_context_enum(JSContext *ctx, JSValue proto) {
 
 static int js_hashing_context_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&HashingContext::__class_id);
 	classes["HashingContext"] = HashingContext::__class_id;
 	class_id_list.insert(HashingContext::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), HashingContext::__class_id, &hashing_context_class_def);

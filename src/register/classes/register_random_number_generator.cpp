@@ -30,14 +30,14 @@ static JSValue random_number_generator_class_constructor(JSContext *ctx, JSValue
 
 	RandomNumberGenerator *random_number_generator_class;
 	if (argc == 1) 
-		random_number_generator_class = static_cast<RandomNumberGenerator *>(static_cast<Object *>(Variant(*argv)));
+		random_number_generator_class = static_cast<RandomNumberGenerator *>(Variant(*argv).operator Object *());
 	else 
 		random_number_generator_class = memnew(RandomNumberGenerator);
 	if (!random_number_generator_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, random_number_generator_class);	
+	JS_SetOpaque(obj, random_number_generator_class);
 	return obj;
 }
 static JSValue random_number_generator_class_set_seed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -123,7 +123,6 @@ static void define_random_number_generator_enum(JSContext *ctx, JSValue proto) {
 
 static int js_random_number_generator_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RandomNumberGenerator::__class_id);
 	classes["RandomNumberGenerator"] = RandomNumberGenerator::__class_id;
 	class_id_list.insert(RandomNumberGenerator::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RandomNumberGenerator::__class_id, &random_number_generator_class_def);

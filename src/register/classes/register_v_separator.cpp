@@ -30,14 +30,14 @@ static JSValue v_separator_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	VSeparator *v_separator_class;
 	if (argc == 1) 
-		v_separator_class = static_cast<VSeparator *>(static_cast<Object *>(Variant(*argv)));
+		v_separator_class = static_cast<VSeparator *>(Variant(*argv).operator Object *());
 	else 
 		v_separator_class = memnew(VSeparator);
 	if (!v_separator_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, v_separator_class);	
+	JS_SetOpaque(obj, v_separator_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_v_separator_enum(JSContext *ctx, JSValue proto) {
 
 static int js_v_separator_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VSeparator::__class_id);
 	classes["VSeparator"] = VSeparator::__class_id;
 	class_id_list.insert(VSeparator::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VSeparator::__class_id, &v_separator_class_def);

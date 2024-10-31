@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_export_platform_pc.hpp>
 #include <godot_cpp/classes/editor_export_platform_linux_bsd.hpp>
+#include <godot_cpp/classes/editor_export_platform_pc.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue editor_export_platform_linux_bsd_class_constructor(JSContext *ctx
 
 	EditorExportPlatformLinuxBSD *editor_export_platform_linux_bsd_class;
 	if (argc == 1) 
-		editor_export_platform_linux_bsd_class = static_cast<EditorExportPlatformLinuxBSD *>(static_cast<Object *>(Variant(*argv)));
+		editor_export_platform_linux_bsd_class = static_cast<EditorExportPlatformLinuxBSD *>(Variant(*argv).operator Object *());
 	else 
 		editor_export_platform_linux_bsd_class = memnew(EditorExportPlatformLinuxBSD);
 	if (!editor_export_platform_linux_bsd_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_export_platform_linux_bsd_class);	
+	JS_SetOpaque(obj, editor_export_platform_linux_bsd_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_editor_export_platform_linux_bsd_enum(JSContext *ctx, JSValue
 
 static int js_editor_export_platform_linux_bsd_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorExportPlatformLinuxBSD::__class_id);
 	classes["EditorExportPlatformLinuxBSD"] = EditorExportPlatformLinuxBSD::__class_id;
 	class_id_list.insert(EditorExportPlatformLinuxBSD::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorExportPlatformLinuxBSD::__class_id, &editor_export_platform_linux_bsd_class_def);

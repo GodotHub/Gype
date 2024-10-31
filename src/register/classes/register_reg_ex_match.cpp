@@ -30,14 +30,14 @@ static JSValue reg_ex_match_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	RegExMatch *reg_ex_match_class;
 	if (argc == 1) 
-		reg_ex_match_class = static_cast<RegExMatch *>(static_cast<Object *>(Variant(*argv)));
+		reg_ex_match_class = static_cast<RegExMatch *>(Variant(*argv).operator Object *());
 	else 
 		reg_ex_match_class = memnew(RegExMatch);
 	if (!reg_ex_match_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, reg_ex_match_class);	
+	JS_SetOpaque(obj, reg_ex_match_class);
 	return obj;
 }
 static JSValue reg_ex_match_class_get_subject(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -111,7 +111,6 @@ static void define_reg_ex_match_enum(JSContext *ctx, JSValue proto) {
 
 static int js_reg_ex_match_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RegExMatch::__class_id);
 	classes["RegExMatch"] = RegExMatch::__class_id;
 	class_id_list.insert(RegExMatch::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RegExMatch::__class_id, &reg_ex_match_class_def);

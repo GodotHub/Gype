@@ -5,13 +5,13 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/interval_tweener.hpp>
-#include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/method_tweener.hpp>
+#include <godot_cpp/classes/callback_tweener.hpp>
+#include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/interval_tweener.hpp>
 #include <godot_cpp/classes/property_tweener.hpp>
-#include <godot_cpp/classes/callback_tweener.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -36,14 +36,14 @@ static JSValue tween_class_constructor(JSContext *ctx, JSValueConst new_target, 
 
 	Tween *tween_class;
 	if (argc == 1) 
-		tween_class = static_cast<Tween *>(static_cast<Object *>(Variant(*argv)));
+		tween_class = static_cast<Tween *>(Variant(*argv).operator Object *());
 	else 
 		tween_class = memnew(Tween);
 	if (!tween_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, tween_class);	
+	JS_SetOpaque(obj, tween_class);
 	return obj;
 }
 static JSValue tween_class_tween_property(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -262,7 +262,6 @@ static void define_tween_enum(JSContext *ctx, JSValue proto) {
 
 static int js_tween_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Tween::__class_id);
 	classes["Tween"] = Tween::__class_id;
 	class_id_list.insert(Tween::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Tween::__class_id, &tween_class_def);

@@ -30,14 +30,14 @@ static JSValue resource_importer_layered_texture_class_constructor(JSContext *ct
 
 	ResourceImporterLayeredTexture *resource_importer_layered_texture_class;
 	if (argc == 1) 
-		resource_importer_layered_texture_class = static_cast<ResourceImporterLayeredTexture *>(static_cast<Object *>(Variant(*argv)));
+		resource_importer_layered_texture_class = static_cast<ResourceImporterLayeredTexture *>(Variant(*argv).operator Object *());
 	else 
 		resource_importer_layered_texture_class = memnew(ResourceImporterLayeredTexture);
 	if (!resource_importer_layered_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, resource_importer_layered_texture_class);	
+	JS_SetOpaque(obj, resource_importer_layered_texture_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_resource_importer_layered_texture_enum(JSContext *ctx, JSValu
 
 static int js_resource_importer_layered_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ResourceImporterLayeredTexture::__class_id);
 	classes["ResourceImporterLayeredTexture"] = ResourceImporterLayeredTexture::__class_id;
 	class_id_list.insert(ResourceImporterLayeredTexture::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceImporterLayeredTexture::__class_id, &resource_importer_layered_texture_class_def);

@@ -156,7 +156,6 @@ void define_transform3d_property(JSContext *ctx, JSValue obj) {
 }
 
 static int js_transform3d_class_init(JSContext *ctx) {
-	JS_NewClassID(&Transform3D::__class_id);
 	classes["Transform3D"] = Transform3D::__class_id;
 	class_id_list.insert(Transform3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Transform3D::__class_id, &transform3d_class_def);

@@ -7,9 +7,9 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/environment.hpp>
 #include <godot_cpp/classes/physics_direct_space_state3d.hpp>
-#include <godot_cpp/classes/camera_attributes.hpp>
-#include <godot_cpp/classes/world3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/world3d.hpp>
+#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -33,14 +33,14 @@ static JSValue world3d_class_constructor(JSContext *ctx, JSValueConst new_target
 
 	World3D *world3d_class;
 	if (argc == 1) 
-		world3d_class = static_cast<World3D *>(static_cast<Object *>(Variant(*argv)));
+		world3d_class = static_cast<World3D *>(Variant(*argv).operator Object *());
 	else 
 		world3d_class = memnew(World3D);
 	if (!world3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, world3d_class);	
+	JS_SetOpaque(obj, world3d_class);
 	return obj;
 }
 static JSValue world3d_class_get_space(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -161,7 +161,6 @@ static void define_world3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_world3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&World3D::__class_id);
 	classes["World3D"] = World3D::__class_id;
 	class_id_list.insert(World3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), World3D::__class_id, &world3d_class_def);

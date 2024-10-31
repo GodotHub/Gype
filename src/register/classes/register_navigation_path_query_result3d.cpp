@@ -30,14 +30,14 @@ static JSValue navigation_path_query_result3d_class_constructor(JSContext *ctx, 
 
 	NavigationPathQueryResult3D *navigation_path_query_result3d_class;
 	if (argc == 1) 
-		navigation_path_query_result3d_class = static_cast<NavigationPathQueryResult3D *>(static_cast<Object *>(Variant(*argv)));
+		navigation_path_query_result3d_class = static_cast<NavigationPathQueryResult3D *>(Variant(*argv).operator Object *());
 	else 
 		navigation_path_query_result3d_class = memnew(NavigationPathQueryResult3D);
 	if (!navigation_path_query_result3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, navigation_path_query_result3d_class);	
+	JS_SetOpaque(obj, navigation_path_query_result3d_class);
 	return obj;
 }
 static JSValue navigation_path_query_result3d_class_set_path(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -133,7 +133,6 @@ static void define_navigation_path_query_result3d_enum(JSContext *ctx, JSValue p
 
 static int js_navigation_path_query_result3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&NavigationPathQueryResult3D::__class_id);
 	classes["NavigationPathQueryResult3D"] = NavigationPathQueryResult3D::__class_id;
 	class_id_list.insert(NavigationPathQueryResult3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NavigationPathQueryResult3D::__class_id, &navigation_path_query_result3d_class_def);

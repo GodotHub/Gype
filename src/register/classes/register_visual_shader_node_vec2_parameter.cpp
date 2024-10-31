@@ -30,14 +30,14 @@ static JSValue visual_shader_node_vec2_parameter_class_constructor(JSContext *ct
 
 	VisualShaderNodeVec2Parameter *visual_shader_node_vec2_parameter_class;
 	if (argc == 1) 
-		visual_shader_node_vec2_parameter_class = static_cast<VisualShaderNodeVec2Parameter *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_vec2_parameter_class = static_cast<VisualShaderNodeVec2Parameter *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_vec2_parameter_class = memnew(VisualShaderNodeVec2Parameter);
 	if (!visual_shader_node_vec2_parameter_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_vec2_parameter_class);	
+	JS_SetOpaque(obj, visual_shader_node_vec2_parameter_class);
 	return obj;
 }
 static JSValue visual_shader_node_vec2_parameter_class_set_default_value_enabled(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,7 +88,6 @@ static void define_visual_shader_node_vec2_parameter_enum(JSContext *ctx, JSValu
 
 static int js_visual_shader_node_vec2_parameter_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeVec2Parameter::__class_id);
 	classes["VisualShaderNodeVec2Parameter"] = VisualShaderNodeVec2Parameter::__class_id;
 	class_id_list.insert(VisualShaderNodeVec2Parameter::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeVec2Parameter::__class_id, &visual_shader_node_vec2_parameter_class_def);

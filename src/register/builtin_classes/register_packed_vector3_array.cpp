@@ -144,7 +144,6 @@ static const JSCFunctionListEntry packed_vector3_array_class_proto_funcs[] = {
 };
 
 static int js_packed_vector3_array_class_init(JSContext *ctx) {
-	JS_NewClassID(&PackedVector3Array::__class_id);
 	classes["PackedVector3Array"] = PackedVector3Array::__class_id;
 	class_id_list.insert(PackedVector3Array::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PackedVector3Array::__class_id, &packed_vector3_array_class_def);

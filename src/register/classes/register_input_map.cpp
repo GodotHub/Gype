@@ -7,8 +7,8 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/input_map.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;

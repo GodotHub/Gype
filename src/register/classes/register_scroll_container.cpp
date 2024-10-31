@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/classes/v_scroll_bar.hpp>
 #include <godot_cpp/classes/h_scroll_bar.hpp>
+#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/classes/scroll_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -33,14 +33,14 @@ static JSValue scroll_container_class_constructor(JSContext *ctx, JSValueConst n
 
 	ScrollContainer *scroll_container_class;
 	if (argc == 1) 
-		scroll_container_class = static_cast<ScrollContainer *>(static_cast<Object *>(Variant(*argv)));
+		scroll_container_class = static_cast<ScrollContainer *>(Variant(*argv).operator Object *());
 	else 
 		scroll_container_class = memnew(ScrollContainer);
 	if (!scroll_container_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, scroll_container_class);	
+	JS_SetOpaque(obj, scroll_container_class);
 	return obj;
 }
 static JSValue scroll_container_class_set_h_scroll(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -256,7 +256,6 @@ static void define_scroll_container_enum(JSContext *ctx, JSValue proto) {
 
 static int js_scroll_container_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ScrollContainer::__class_id);
 	classes["ScrollContainer"] = ScrollContainer::__class_id;
 	class_id_list.insert(ScrollContainer::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ScrollContainer::__class_id, &scroll_container_class_def);

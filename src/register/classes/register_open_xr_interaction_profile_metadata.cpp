@@ -30,14 +30,14 @@ static JSValue open_xr_interaction_profile_metadata_class_constructor(JSContext 
 
 	OpenXRInteractionProfileMetadata *open_xr_interaction_profile_metadata_class;
 	if (argc == 1) 
-		open_xr_interaction_profile_metadata_class = static_cast<OpenXRInteractionProfileMetadata *>(static_cast<Object *>(Variant(*argv)));
+		open_xr_interaction_profile_metadata_class = static_cast<OpenXRInteractionProfileMetadata *>(Variant(*argv).operator Object *());
 	else 
 		open_xr_interaction_profile_metadata_class = memnew(OpenXRInteractionProfileMetadata);
 	if (!open_xr_interaction_profile_metadata_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, open_xr_interaction_profile_metadata_class);	
+	JS_SetOpaque(obj, open_xr_interaction_profile_metadata_class);
 	return obj;
 }
 static JSValue open_xr_interaction_profile_metadata_class_register_profile_rename(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -72,7 +72,6 @@ static void define_open_xr_interaction_profile_metadata_enum(JSContext *ctx, JSV
 
 static int js_open_xr_interaction_profile_metadata_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&OpenXRInteractionProfileMetadata::__class_id);
 	classes["OpenXRInteractionProfileMetadata"] = OpenXRInteractionProfileMetadata::__class_id;
 	class_id_list.insert(OpenXRInteractionProfileMetadata::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), OpenXRInteractionProfileMetadata::__class_id, &open_xr_interaction_profile_metadata_class_def);

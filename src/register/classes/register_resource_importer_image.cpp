@@ -30,14 +30,14 @@ static JSValue resource_importer_image_class_constructor(JSContext *ctx, JSValue
 
 	ResourceImporterImage *resource_importer_image_class;
 	if (argc == 1) 
-		resource_importer_image_class = static_cast<ResourceImporterImage *>(static_cast<Object *>(Variant(*argv)));
+		resource_importer_image_class = static_cast<ResourceImporterImage *>(Variant(*argv).operator Object *());
 	else 
 		resource_importer_image_class = memnew(ResourceImporterImage);
 	if (!resource_importer_image_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, resource_importer_image_class);	
+	JS_SetOpaque(obj, resource_importer_image_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_resource_importer_image_enum(JSContext *ctx, JSValue proto) {
 
 static int js_resource_importer_image_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ResourceImporterImage::__class_id);
 	classes["ResourceImporterImage"] = ResourceImporterImage::__class_id;
 	class_id_list.insert(ResourceImporterImage::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ResourceImporterImage::__class_id, &resource_importer_image_class_def);

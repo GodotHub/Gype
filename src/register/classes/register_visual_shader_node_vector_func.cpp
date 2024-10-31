@@ -30,14 +30,14 @@ static JSValue visual_shader_node_vector_func_class_constructor(JSContext *ctx, 
 
 	VisualShaderNodeVectorFunc *visual_shader_node_vector_func_class;
 	if (argc == 1) 
-		visual_shader_node_vector_func_class = static_cast<VisualShaderNodeVectorFunc *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_vector_func_class = static_cast<VisualShaderNodeVectorFunc *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_vector_func_class = memnew(VisualShaderNodeVectorFunc);
 	if (!visual_shader_node_vector_func_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_vector_func_class);	
+	JS_SetOpaque(obj, visual_shader_node_vector_func_class);
 	return obj;
 }
 static JSValue visual_shader_node_vector_func_class_set_function(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -106,7 +106,6 @@ static void define_visual_shader_node_vector_func_enum(JSContext *ctx, JSValue p
 
 static int js_visual_shader_node_vector_func_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeVectorFunc::__class_id);
 	classes["VisualShaderNodeVectorFunc"] = VisualShaderNodeVectorFunc::__class_id;
 	class_id_list.insert(VisualShaderNodeVectorFunc::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeVectorFunc::__class_id, &visual_shader_node_vector_func_class_def);

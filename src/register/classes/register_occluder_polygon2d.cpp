@@ -30,14 +30,14 @@ static JSValue occluder_polygon2d_class_constructor(JSContext *ctx, JSValueConst
 
 	OccluderPolygon2D *occluder_polygon2d_class;
 	if (argc == 1) 
-		occluder_polygon2d_class = static_cast<OccluderPolygon2D *>(static_cast<Object *>(Variant(*argv)));
+		occluder_polygon2d_class = static_cast<OccluderPolygon2D *>(Variant(*argv).operator Object *());
 	else 
 		occluder_polygon2d_class = memnew(OccluderPolygon2D);
 	if (!occluder_polygon2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, occluder_polygon2d_class);	
+	JS_SetOpaque(obj, occluder_polygon2d_class);
 	return obj;
 }
 static JSValue occluder_polygon2d_class_set_closed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -111,7 +111,6 @@ static void define_occluder_polygon2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_occluder_polygon2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&OccluderPolygon2D::__class_id);
 	classes["OccluderPolygon2D"] = OccluderPolygon2D::__class_id;
 	class_id_list.insert(OccluderPolygon2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), OccluderPolygon2D::__class_id, &occluder_polygon2d_class_def);

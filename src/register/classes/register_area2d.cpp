@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/area2d.hpp>
 #include <godot_cpp/classes/collision_object2d.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/area2d.hpp>
 #include <godot_cpp/classes/area2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -33,14 +33,14 @@ static JSValue area2d_class_constructor(JSContext *ctx, JSValueConst new_target,
 
 	Area2D *area2d_class;
 	if (argc == 1) 
-		area2d_class = static_cast<Area2D *>(static_cast<Object *>(Variant(*argv)));
+		area2d_class = static_cast<Area2D *>(Variant(*argv).operator Object *());
 	else 
 		area2d_class = memnew(Area2D);
 	if (!area2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, area2d_class);	
+	JS_SetOpaque(obj, area2d_class);
 	return obj;
 }
 static JSValue area2d_class_set_gravity_space_override_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -506,7 +506,6 @@ static void define_area2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_area2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Area2D::__class_id);
 	classes["Area2D"] = Area2D::__class_id;
 	class_id_list.insert(Area2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Area2D::__class_id, &area2d_class_def);

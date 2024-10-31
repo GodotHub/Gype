@@ -30,14 +30,14 @@ static JSValue xr_face_modifier3d_class_constructor(JSContext *ctx, JSValueConst
 
 	XRFaceModifier3D *xr_face_modifier3d_class;
 	if (argc == 1) 
-		xr_face_modifier3d_class = static_cast<XRFaceModifier3D *>(static_cast<Object *>(Variant(*argv)));
+		xr_face_modifier3d_class = static_cast<XRFaceModifier3D *>(Variant(*argv).operator Object *());
 	else 
 		xr_face_modifier3d_class = memnew(XRFaceModifier3D);
 	if (!xr_face_modifier3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, xr_face_modifier3d_class);	
+	JS_SetOpaque(obj, xr_face_modifier3d_class);
 	return obj;
 }
 static JSValue xr_face_modifier3d_class_set_face_tracker(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,7 +88,6 @@ static void define_xr_face_modifier3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_xr_face_modifier3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&XRFaceModifier3D::__class_id);
 	classes["XRFaceModifier3D"] = XRFaceModifier3D::__class_id;
 	class_id_list.insert(XRFaceModifier3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRFaceModifier3D::__class_id, &xr_face_modifier3d_class_def);

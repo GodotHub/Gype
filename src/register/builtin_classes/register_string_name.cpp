@@ -457,7 +457,6 @@ static const JSCFunctionListEntry string_name_class_proto_funcs[] = {
 };
 
 static int js_string_name_class_init(JSContext *ctx) {
-	JS_NewClassID(&StringName::__class_id);
 	classes["StringName"] = StringName::__class_id;
 	class_id_list.insert(StringName::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StringName::__class_id, &string_name_class_def);

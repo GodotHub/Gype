@@ -30,14 +30,14 @@ static JSValue editor_scene_format_importer_fbx2_gltf_class_constructor(JSContex
 
 	EditorSceneFormatImporterFBX2GLTF *editor_scene_format_importer_fbx2_gltf_class;
 	if (argc == 1) 
-		editor_scene_format_importer_fbx2_gltf_class = static_cast<EditorSceneFormatImporterFBX2GLTF *>(static_cast<Object *>(Variant(*argv)));
+		editor_scene_format_importer_fbx2_gltf_class = static_cast<EditorSceneFormatImporterFBX2GLTF *>(Variant(*argv).operator Object *());
 	else 
 		editor_scene_format_importer_fbx2_gltf_class = memnew(EditorSceneFormatImporterFBX2GLTF);
 	if (!editor_scene_format_importer_fbx2_gltf_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_scene_format_importer_fbx2_gltf_class);	
+	JS_SetOpaque(obj, editor_scene_format_importer_fbx2_gltf_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_editor_scene_format_importer_fbx2_gltf_enum(JSContext *ctx, J
 
 static int js_editor_scene_format_importer_fbx2_gltf_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorSceneFormatImporterFBX2GLTF::__class_id);
 	classes["EditorSceneFormatImporterFBX2GLTF"] = EditorSceneFormatImporterFBX2GLTF::__class_id;
 	class_id_list.insert(EditorSceneFormatImporterFBX2GLTF::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorSceneFormatImporterFBX2GLTF::__class_id, &editor_scene_format_importer_fbx2_gltf_class_def);

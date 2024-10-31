@@ -30,14 +30,14 @@ static JSValue callback_tweener_class_constructor(JSContext *ctx, JSValueConst n
 
 	CallbackTweener *callback_tweener_class;
 	if (argc == 1) 
-		callback_tweener_class = static_cast<CallbackTweener *>(static_cast<Object *>(Variant(*argv)));
+		callback_tweener_class = static_cast<CallbackTweener *>(Variant(*argv).operator Object *());
 	else 
 		callback_tweener_class = memnew(CallbackTweener);
 	if (!callback_tweener_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, callback_tweener_class);	
+	JS_SetOpaque(obj, callback_tweener_class);
 	return obj;
 }
 static JSValue callback_tweener_class_set_delay(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -57,7 +57,6 @@ static void define_callback_tweener_enum(JSContext *ctx, JSValue proto) {
 
 static int js_callback_tweener_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CallbackTweener::__class_id);
 	classes["CallbackTweener"] = CallbackTweener::__class_id;
 	class_id_list.insert(CallbackTweener::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CallbackTweener::__class_id, &callback_tweener_class_def);

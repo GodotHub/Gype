@@ -30,14 +30,14 @@ static JSValue rectangle_shape2d_class_constructor(JSContext *ctx, JSValueConst 
 
 	RectangleShape2D *rectangle_shape2d_class;
 	if (argc == 1) 
-		rectangle_shape2d_class = static_cast<RectangleShape2D *>(static_cast<Object *>(Variant(*argv)));
+		rectangle_shape2d_class = static_cast<RectangleShape2D *>(Variant(*argv).operator Object *());
 	else 
 		rectangle_shape2d_class = memnew(RectangleShape2D);
 	if (!rectangle_shape2d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rectangle_shape2d_class);	
+	JS_SetOpaque(obj, rectangle_shape2d_class);
 	return obj;
 }
 static JSValue rectangle_shape2d_class_set_size(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -70,7 +70,6 @@ static void define_rectangle_shape2d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_rectangle_shape2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RectangleShape2D::__class_id);
 	classes["RectangleShape2D"] = RectangleShape2D::__class_id;
 	class_id_list.insert(RectangleShape2D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RectangleShape2D::__class_id, &rectangle_shape2d_class_def);

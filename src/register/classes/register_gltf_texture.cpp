@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gltf_texture.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/gltf_texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue gltf_texture_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	GLTFTexture *gltf_texture_class;
 	if (argc == 1) 
-		gltf_texture_class = static_cast<GLTFTexture *>(static_cast<Object *>(Variant(*argv)));
+		gltf_texture_class = static_cast<GLTFTexture *>(Variant(*argv).operator Object *());
 	else 
 		gltf_texture_class = memnew(GLTFTexture);
 	if (!gltf_texture_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_texture_class);	
+	JS_SetOpaque(obj, gltf_texture_class);
 	return obj;
 }
 static JSValue gltf_texture_class_get_src_image(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -88,7 +88,6 @@ static void define_gltf_texture_enum(JSContext *ctx, JSValue proto) {
 
 static int js_gltf_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GLTFTexture::__class_id);
 	classes["GLTFTexture"] = GLTFTexture::__class_id;
 	class_id_list.insert(GLTFTexture::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFTexture::__class_id, &gltf_texture_class_def);

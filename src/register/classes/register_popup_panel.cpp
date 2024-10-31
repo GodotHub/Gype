@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/popup.hpp>
 #include <godot_cpp/classes/popup_panel.hpp>
+#include <godot_cpp/classes/popup.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue popup_panel_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	PopupPanel *popup_panel_class;
 	if (argc == 1) 
-		popup_panel_class = static_cast<PopupPanel *>(static_cast<Object *>(Variant(*argv)));
+		popup_panel_class = static_cast<PopupPanel *>(Variant(*argv).operator Object *());
 	else 
 		popup_panel_class = memnew(PopupPanel);
 	if (!popup_panel_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, popup_panel_class);	
+	JS_SetOpaque(obj, popup_panel_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_popup_panel_enum(JSContext *ctx, JSValue proto) {
 
 static int js_popup_panel_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PopupPanel::__class_id);
 	classes["PopupPanel"] = PopupPanel::__class_id;
 	class_id_list.insert(PopupPanel::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PopupPanel::__class_id, &popup_panel_class_def);

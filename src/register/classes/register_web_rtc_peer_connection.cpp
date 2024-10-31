@@ -31,14 +31,14 @@ static JSValue web_rtc_peer_connection_class_constructor(JSContext *ctx, JSValue
 
 	WebRTCPeerConnection *web_rtc_peer_connection_class;
 	if (argc == 1) 
-		web_rtc_peer_connection_class = static_cast<WebRTCPeerConnection *>(static_cast<Object *>(Variant(*argv)));
+		web_rtc_peer_connection_class = static_cast<WebRTCPeerConnection *>(Variant(*argv).operator Object *());
 	else 
 		web_rtc_peer_connection_class = memnew(WebRTCPeerConnection);
 	if (!web_rtc_peer_connection_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, web_rtc_peer_connection_class);	
+	JS_SetOpaque(obj, web_rtc_peer_connection_class);
 	return obj;
 }
 static JSValue web_rtc_peer_connection_class_initialize(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -189,7 +189,6 @@ static void define_web_rtc_peer_connection_enum(JSContext *ctx, JSValue proto) {
 
 static int js_web_rtc_peer_connection_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&WebRTCPeerConnection::__class_id);
 	classes["WebRTCPeerConnection"] = WebRTCPeerConnection::__class_id;
 	class_id_list.insert(WebRTCPeerConnection::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), WebRTCPeerConnection::__class_id, &web_rtc_peer_connection_class_def);

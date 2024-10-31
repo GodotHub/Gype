@@ -30,14 +30,14 @@ static JSValue editor_export_platform_web_class_constructor(JSContext *ctx, JSVa
 
 	EditorExportPlatformWeb *editor_export_platform_web_class;
 	if (argc == 1) 
-		editor_export_platform_web_class = static_cast<EditorExportPlatformWeb *>(static_cast<Object *>(Variant(*argv)));
+		editor_export_platform_web_class = static_cast<EditorExportPlatformWeb *>(Variant(*argv).operator Object *());
 	else 
 		editor_export_platform_web_class = memnew(EditorExportPlatformWeb);
 	if (!editor_export_platform_web_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, editor_export_platform_web_class);	
+	JS_SetOpaque(obj, editor_export_platform_web_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_editor_export_platform_web_enum(JSContext *ctx, JSValue proto
 
 static int js_editor_export_platform_web_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&EditorExportPlatformWeb::__class_id);
 	classes["EditorExportPlatformWeb"] = EditorExportPlatformWeb::__class_id;
 	class_id_list.insert(EditorExportPlatformWeb::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), EditorExportPlatformWeb::__class_id, &editor_export_platform_web_class_def);

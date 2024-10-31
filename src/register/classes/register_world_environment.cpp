@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/environment.hpp>
-#include <godot_cpp/classes/world_environment.hpp>
-#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/world_environment.hpp>
 #include <godot_cpp/classes/compositor.hpp>
+#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -33,14 +33,14 @@ static JSValue world_environment_class_constructor(JSContext *ctx, JSValueConst 
 
 	WorldEnvironment *world_environment_class;
 	if (argc == 1) 
-		world_environment_class = static_cast<WorldEnvironment *>(static_cast<Object *>(Variant(*argv)));
+		world_environment_class = static_cast<WorldEnvironment *>(Variant(*argv).operator Object *());
 	else 
 		world_environment_class = memnew(WorldEnvironment);
 	if (!world_environment_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, world_environment_class);	
+	JS_SetOpaque(obj, world_environment_class);
 	return obj;
 }
 static JSValue world_environment_class_set_environment(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -109,7 +109,6 @@ static void define_world_environment_enum(JSContext *ctx, JSValue proto) {
 
 static int js_world_environment_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&WorldEnvironment::__class_id);
 	classes["WorldEnvironment"] = WorldEnvironment::__class_id;
 	class_id_list.insert(WorldEnvironment::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), WorldEnvironment::__class_id, &world_environment_class_def);

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_mix.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/classes/visual_shader_node_mix.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue visual_shader_node_mix_class_constructor(JSContext *ctx, JSValueC
 
 	VisualShaderNodeMix *visual_shader_node_mix_class;
 	if (argc == 1) 
-		visual_shader_node_mix_class = static_cast<VisualShaderNodeMix *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_mix_class = static_cast<VisualShaderNodeMix *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_mix_class = memnew(VisualShaderNodeMix);
 	if (!visual_shader_node_mix_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_mix_class);	
+	JS_SetOpaque(obj, visual_shader_node_mix_class);
 	return obj;
 }
 static JSValue visual_shader_node_mix_class_set_op_type(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -80,7 +80,6 @@ static void define_visual_shader_node_mix_enum(JSContext *ctx, JSValue proto) {
 
 static int js_visual_shader_node_mix_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeMix::__class_id);
 	classes["VisualShaderNodeMix"] = VisualShaderNodeMix::__class_id;
 	class_id_list.insert(VisualShaderNodeMix::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeMix::__class_id, &visual_shader_node_mix_class_def);

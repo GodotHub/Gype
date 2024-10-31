@@ -30,14 +30,14 @@ static JSValue capsule_mesh_class_constructor(JSContext *ctx, JSValueConst new_t
 
 	CapsuleMesh *capsule_mesh_class;
 	if (argc == 1) 
-		capsule_mesh_class = static_cast<CapsuleMesh *>(static_cast<Object *>(Variant(*argv)));
+		capsule_mesh_class = static_cast<CapsuleMesh *>(Variant(*argv).operator Object *());
 	else 
 		capsule_mesh_class = memnew(CapsuleMesh);
 	if (!capsule_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, capsule_mesh_class);	
+	JS_SetOpaque(obj, capsule_mesh_class);
 	return obj;
 }
 static JSValue capsule_mesh_class_set_radius(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -124,7 +124,6 @@ static void define_capsule_mesh_enum(JSContext *ctx, JSValue proto) {
 
 static int js_capsule_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&CapsuleMesh::__class_id);
 	classes["CapsuleMesh"] = CapsuleMesh::__class_id;
 	class_id_list.insert(CapsuleMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), CapsuleMesh::__class_id, &capsule_mesh_class_def);

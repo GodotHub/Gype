@@ -30,14 +30,14 @@ static JSValue visual_shader_node_transform_vec_mult_class_constructor(JSContext
 
 	VisualShaderNodeTransformVecMult *visual_shader_node_transform_vec_mult_class;
 	if (argc == 1) 
-		visual_shader_node_transform_vec_mult_class = static_cast<VisualShaderNodeTransformVecMult *>(static_cast<Object *>(Variant(*argv)));
+		visual_shader_node_transform_vec_mult_class = static_cast<VisualShaderNodeTransformVecMult *>(Variant(*argv).operator Object *());
 	else 
 		visual_shader_node_transform_vec_mult_class = memnew(VisualShaderNodeTransformVecMult);
 	if (!visual_shader_node_transform_vec_mult_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, visual_shader_node_transform_vec_mult_class);	
+	JS_SetOpaque(obj, visual_shader_node_transform_vec_mult_class);
 	return obj;
 }
 static JSValue visual_shader_node_transform_vec_mult_class_set_operator(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -77,7 +77,6 @@ static void define_visual_shader_node_transform_vec_mult_enum(JSContext *ctx, JS
 
 static int js_visual_shader_node_transform_vec_mult_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&VisualShaderNodeTransformVecMult::__class_id);
 	classes["VisualShaderNodeTransformVecMult"] = VisualShaderNodeTransformVecMult::__class_id;
 	class_id_list.insert(VisualShaderNodeTransformVecMult::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), VisualShaderNodeTransformVecMult::__class_id, &visual_shader_node_transform_vec_mult_class_def);

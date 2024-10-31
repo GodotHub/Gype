@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/xr_pose.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue xr_pose_class_constructor(JSContext *ctx, JSValueConst new_target
 
 	XRPose *xr_pose_class;
 	if (argc == 1) 
-		xr_pose_class = static_cast<XRPose *>(static_cast<Object *>(Variant(*argv)));
+		xr_pose_class = static_cast<XRPose *>(Variant(*argv).operator Object *());
 	else 
 		xr_pose_class = memnew(XRPose);
 	if (!xr_pose_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, xr_pose_class);	
+	JS_SetOpaque(obj, xr_pose_class);
 	return obj;
 }
 static JSValue xr_pose_class_set_has_tracking_data(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -170,7 +170,6 @@ static void define_xr_pose_enum(JSContext *ctx, JSValue proto) {
 
 static int js_xr_pose_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&XRPose::__class_id);
 	classes["XRPose"] = XRPose::__class_id;
 	class_id_list.insert(XRPose::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), XRPose::__class_id, &xr_pose_class_def);

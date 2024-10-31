@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/render_scene_buffers.hpp>
-#include <godot_cpp/classes/render_scene_buffers_extension.hpp>
 #include <godot_cpp/classes/render_scene_buffers_configuration.hpp>
+#include <godot_cpp/classes/render_scene_buffers_extension.hpp>
+#include <godot_cpp/classes/render_scene_buffers.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue render_scene_buffers_extension_class_constructor(JSContext *ctx, 
 
 	RenderSceneBuffersExtension *render_scene_buffers_extension_class;
 	if (argc == 1) 
-		render_scene_buffers_extension_class = static_cast<RenderSceneBuffersExtension *>(static_cast<Object *>(Variant(*argv)));
+		render_scene_buffers_extension_class = static_cast<RenderSceneBuffersExtension *>(Variant(*argv).operator Object *());
 	else 
 		render_scene_buffers_extension_class = memnew(RenderSceneBuffersExtension);
 	if (!render_scene_buffers_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, render_scene_buffers_extension_class);	
+	JS_SetOpaque(obj, render_scene_buffers_extension_class);
 	return obj;
 }
 
@@ -51,7 +51,6 @@ static void define_render_scene_buffers_extension_enum(JSContext *ctx, JSValue p
 
 static int js_render_scene_buffers_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RenderSceneBuffersExtension::__class_id);
 	classes["RenderSceneBuffersExtension"] = RenderSceneBuffersExtension::__class_id;
 	class_id_list.insert(RenderSceneBuffersExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RenderSceneBuffersExtension::__class_id, &render_scene_buffers_extension_class_def);

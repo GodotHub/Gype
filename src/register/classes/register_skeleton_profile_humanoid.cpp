@@ -30,14 +30,14 @@ static JSValue skeleton_profile_humanoid_class_constructor(JSContext *ctx, JSVal
 
 	SkeletonProfileHumanoid *skeleton_profile_humanoid_class;
 	if (argc == 1) 
-		skeleton_profile_humanoid_class = static_cast<SkeletonProfileHumanoid *>(static_cast<Object *>(Variant(*argv)));
+		skeleton_profile_humanoid_class = static_cast<SkeletonProfileHumanoid *>(Variant(*argv).operator Object *());
 	else 
 		skeleton_profile_humanoid_class = memnew(SkeletonProfileHumanoid);
 	if (!skeleton_profile_humanoid_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, skeleton_profile_humanoid_class);	
+	JS_SetOpaque(obj, skeleton_profile_humanoid_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_skeleton_profile_humanoid_enum(JSContext *ctx, JSValue proto)
 
 static int js_skeleton_profile_humanoid_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&SkeletonProfileHumanoid::__class_id);
 	classes["SkeletonProfileHumanoid"] = SkeletonProfileHumanoid::__class_id;
 	class_id_list.insert(SkeletonProfileHumanoid::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), SkeletonProfileHumanoid::__class_id, &skeleton_profile_humanoid_class_def);

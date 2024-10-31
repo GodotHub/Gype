@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/array_mesh.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/importer_mesh.hpp>
+#include <godot_cpp/classes/array_mesh.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,14 +32,14 @@ static JSValue importer_mesh_class_constructor(JSContext *ctx, JSValueConst new_
 
 	ImporterMesh *importer_mesh_class;
 	if (argc == 1) 
-		importer_mesh_class = static_cast<ImporterMesh *>(static_cast<Object *>(Variant(*argv)));
+		importer_mesh_class = static_cast<ImporterMesh *>(Variant(*argv).operator Object *());
 	else 
 		importer_mesh_class = memnew(ImporterMesh);
 	if (!importer_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, importer_mesh_class);	
+	JS_SetOpaque(obj, importer_mesh_class);
 	return obj;
 }
 static JSValue importer_mesh_class_add_blend_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -169,7 +169,6 @@ static void define_importer_mesh_enum(JSContext *ctx, JSValue proto) {
 
 static int js_importer_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&ImporterMesh::__class_id);
 	classes["ImporterMesh"] = ImporterMesh::__class_id;
 	class_id_list.insert(ImporterMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), ImporterMesh::__class_id, &importer_mesh_class_def);

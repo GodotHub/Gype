@@ -30,14 +30,14 @@ static JSValue rd_attachment_format_class_constructor(JSContext *ctx, JSValueCon
 
 	RDAttachmentFormat *rd_attachment_format_class;
 	if (argc == 1) 
-		rd_attachment_format_class = static_cast<RDAttachmentFormat *>(static_cast<Object *>(Variant(*argv)));
+		rd_attachment_format_class = static_cast<RDAttachmentFormat *>(Variant(*argv).operator Object *());
 	else 
 		rd_attachment_format_class = memnew(RDAttachmentFormat);
 	if (!rd_attachment_format_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, rd_attachment_format_class);	
+	JS_SetOpaque(obj, rd_attachment_format_class);
 	return obj;
 }
 static JSValue rd_attachment_format_class_set_format(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -106,7 +106,6 @@ static void define_rd_attachment_format_enum(JSContext *ctx, JSValue proto) {
 
 static int js_rd_attachment_format_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&RDAttachmentFormat::__class_id);
 	classes["RDAttachmentFormat"] = RDAttachmentFormat::__class_id;
 	class_id_list.insert(RDAttachmentFormat::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), RDAttachmentFormat::__class_id, &rd_attachment_format_class_def);

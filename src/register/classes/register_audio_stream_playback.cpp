@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_stream_playback.hpp>
 #include <godot_cpp/classes/audio_sample_playback.hpp>
+#include <godot_cpp/classes/audio_stream_playback.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -31,14 +31,14 @@ static JSValue audio_stream_playback_class_constructor(JSContext *ctx, JSValueCo
 
 	AudioStreamPlayback *audio_stream_playback_class;
 	if (argc == 1) 
-		audio_stream_playback_class = static_cast<AudioStreamPlayback *>(static_cast<Object *>(Variant(*argv)));
+		audio_stream_playback_class = static_cast<AudioStreamPlayback *>(Variant(*argv).operator Object *());
 	else 
 		audio_stream_playback_class = memnew(AudioStreamPlayback);
 	if (!audio_stream_playback_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, audio_stream_playback_class);	
+	JS_SetOpaque(obj, audio_stream_playback_class);
 	return obj;
 }
 static JSValue audio_stream_playback_class_set_sample_playback(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -63,7 +63,6 @@ static void define_audio_stream_playback_enum(JSContext *ctx, JSValue proto) {
 
 static int js_audio_stream_playback_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&AudioStreamPlayback::__class_id);
 	classes["AudioStreamPlayback"] = AudioStreamPlayback::__class_id;
 	class_id_list.insert(AudioStreamPlayback::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AudioStreamPlayback::__class_id, &audio_stream_playback_class_def);

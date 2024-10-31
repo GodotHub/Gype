@@ -30,14 +30,14 @@ static JSValue joint3d_class_constructor(JSContext *ctx, JSValueConst new_target
 
 	Joint3D *joint3d_class;
 	if (argc == 1) 
-		joint3d_class = static_cast<Joint3D *>(static_cast<Object *>(Variant(*argv)));
+		joint3d_class = static_cast<Joint3D *>(Variant(*argv).operator Object *());
 	else 
 		joint3d_class = memnew(Joint3D);
 	if (!joint3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, joint3d_class);	
+	JS_SetOpaque(obj, joint3d_class);
 	return obj;
 }
 static JSValue joint3d_class_set_node_a(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -129,7 +129,6 @@ static void define_joint3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_joint3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&Joint3D::__class_id);
 	classes["Joint3D"] = Joint3D::__class_id;
 	class_id_list.insert(Joint3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Joint3D::__class_id, &joint3d_class_def);

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/upnp_device.hpp>
-#include <godot_cpp/classes/upnp.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/upnp.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue upnp_class_constructor(JSContext *ctx, JSValueConst new_target, i
 
 	UPNP *upnp_class;
 	if (argc == 1) 
-		upnp_class = static_cast<UPNP *>(static_cast<Object *>(Variant(*argv)));
+		upnp_class = static_cast<UPNP *>(Variant(*argv).operator Object *());
 	else 
 		upnp_class = memnew(UPNP);
 	if (!upnp_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, upnp_class);	
+	JS_SetOpaque(obj, upnp_class);
 	return obj;
 }
 static JSValue upnp_class_get_device_count(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -193,7 +193,6 @@ static void define_upnp_enum(JSContext *ctx, JSValue proto) {
 
 static int js_upnp_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&UPNP::__class_id);
 	classes["UPNP"] = UPNP::__class_id;
 	class_id_list.insert(UPNP::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), UPNP::__class_id, &upnp_class_def);

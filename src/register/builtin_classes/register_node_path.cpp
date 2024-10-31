@@ -97,7 +97,6 @@ static const JSCFunctionListEntry node_path_class_proto_funcs[] = {
 };
 
 static int js_node_path_class_init(JSContext *ctx) {
-	JS_NewClassID(&NodePath::__class_id);
 	classes["NodePath"] = NodePath::__class_id;
 	class_id_list.insert(NodePath::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NodePath::__class_id, &node_path_class_def);

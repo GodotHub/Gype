@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/text_paragraph.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/text_paragraph.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue text_paragraph_class_constructor(JSContext *ctx, JSValueConst new
 
 	TextParagraph *text_paragraph_class;
 	if (argc == 1) 
-		text_paragraph_class = static_cast<TextParagraph *>(static_cast<Object *>(Variant(*argv)));
+		text_paragraph_class = static_cast<TextParagraph *>(Variant(*argv).operator Object *());
 	else 
 		text_paragraph_class = memnew(TextParagraph);
 	if (!text_paragraph_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, text_paragraph_class);	
+	JS_SetOpaque(obj, text_paragraph_class);
 	return obj;
 }
 static JSValue text_paragraph_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -429,7 +429,6 @@ static void define_text_paragraph_enum(JSContext *ctx, JSValue proto) {
 
 static int js_text_paragraph_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&TextParagraph::__class_id);
 	classes["TextParagraph"] = TextParagraph::__class_id;
 	class_id_list.insert(TextParagraph::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), TextParagraph::__class_id, &text_paragraph_class_def);

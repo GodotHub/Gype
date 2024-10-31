@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/stream_peer_extension.hpp>
 #include <godot_cpp/classes/stream_peer.hpp>
+#include <godot_cpp/classes/stream_peer_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -30,14 +30,14 @@ static JSValue stream_peer_extension_class_constructor(JSContext *ctx, JSValueCo
 
 	StreamPeerExtension *stream_peer_extension_class;
 	if (argc == 1) 
-		stream_peer_extension_class = static_cast<StreamPeerExtension *>(static_cast<Object *>(Variant(*argv)));
+		stream_peer_extension_class = static_cast<StreamPeerExtension *>(Variant(*argv).operator Object *());
 	else 
 		stream_peer_extension_class = memnew(StreamPeerExtension);
 	if (!stream_peer_extension_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, stream_peer_extension_class);	
+	JS_SetOpaque(obj, stream_peer_extension_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_stream_peer_extension_enum(JSContext *ctx, JSValue proto) {
 
 static int js_stream_peer_extension_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&StreamPeerExtension::__class_id);
 	classes["StreamPeerExtension"] = StreamPeerExtension::__class_id;
 	class_id_list.insert(StreamPeerExtension::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StreamPeerExtension::__class_id, &stream_peer_extension_class_def);

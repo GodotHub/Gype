@@ -30,14 +30,14 @@ static JSValue placeholder_cubemap_class_constructor(JSContext *ctx, JSValueCons
 
 	PlaceholderCubemap *placeholder_cubemap_class;
 	if (argc == 1) 
-		placeholder_cubemap_class = static_cast<PlaceholderCubemap *>(static_cast<Object *>(Variant(*argv)));
+		placeholder_cubemap_class = static_cast<PlaceholderCubemap *>(Variant(*argv).operator Object *());
 	else 
 		placeholder_cubemap_class = memnew(PlaceholderCubemap);
 	if (!placeholder_cubemap_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, placeholder_cubemap_class);	
+	JS_SetOpaque(obj, placeholder_cubemap_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_placeholder_cubemap_enum(JSContext *ctx, JSValue proto) {
 
 static int js_placeholder_cubemap_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&PlaceholderCubemap::__class_id);
 	classes["PlaceholderCubemap"] = PlaceholderCubemap::__class_id;
 	class_id_list.insert(PlaceholderCubemap::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), PlaceholderCubemap::__class_id, &placeholder_cubemap_class_def);

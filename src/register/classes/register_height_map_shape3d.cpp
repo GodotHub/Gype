@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/height_map_shape3d.hpp>
-#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue height_map_shape3d_class_constructor(JSContext *ctx, JSValueConst
 
 	HeightMapShape3D *height_map_shape3d_class;
 	if (argc == 1) 
-		height_map_shape3d_class = static_cast<HeightMapShape3D *>(static_cast<Object *>(Variant(*argv)));
+		height_map_shape3d_class = static_cast<HeightMapShape3D *>(Variant(*argv).operator Object *());
 	else 
 		height_map_shape3d_class = memnew(HeightMapShape3D);
 	if (!height_map_shape3d_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, height_map_shape3d_class);	
+	JS_SetOpaque(obj, height_map_shape3d_class);
 	return obj;
 }
 static JSValue height_map_shape3d_class_set_map_width(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -122,7 +122,6 @@ static void define_height_map_shape3d_enum(JSContext *ctx, JSValue proto) {
 
 static int js_height_map_shape3d_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&HeightMapShape3D::__class_id);
 	classes["HeightMapShape3D"] = HeightMapShape3D::__class_id;
 	class_id_list.insert(HeightMapShape3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), HeightMapShape3D::__class_id, &height_map_shape3d_class_def);

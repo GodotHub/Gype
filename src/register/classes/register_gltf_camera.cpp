@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/gltf_camera.hpp>
 #include <godot_cpp/classes/camera3d.hpp>
+#include <godot_cpp/classes/gltf_camera.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -31,14 +31,14 @@ static JSValue gltf_camera_class_constructor(JSContext *ctx, JSValueConst new_ta
 
 	GLTFCamera *gltf_camera_class;
 	if (argc == 1) 
-		gltf_camera_class = static_cast<GLTFCamera *>(static_cast<Object *>(Variant(*argv)));
+		gltf_camera_class = static_cast<GLTFCamera *>(Variant(*argv).operator Object *());
 	else 
 		gltf_camera_class = memnew(GLTFCamera);
 	if (!gltf_camera_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_camera_class);	
+	JS_SetOpaque(obj, gltf_camera_class);
 	return obj;
 }
 static JSValue gltf_camera_class_to_node(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -163,7 +163,6 @@ static void define_gltf_camera_enum(JSContext *ctx, JSValue proto) {
 
 static int js_gltf_camera_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GLTFCamera::__class_id);
 	classes["GLTFCamera"] = GLTFCamera::__class_id;
 	class_id_list.insert(GLTFCamera::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFCamera::__class_id, &gltf_camera_class_def);

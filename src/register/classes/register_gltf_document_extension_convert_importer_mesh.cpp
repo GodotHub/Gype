@@ -30,14 +30,14 @@ static JSValue gltf_document_extension_convert_importer_mesh_class_constructor(J
 
 	GLTFDocumentExtensionConvertImporterMesh *gltf_document_extension_convert_importer_mesh_class;
 	if (argc == 1) 
-		gltf_document_extension_convert_importer_mesh_class = static_cast<GLTFDocumentExtensionConvertImporterMesh *>(static_cast<Object *>(Variant(*argv)));
+		gltf_document_extension_convert_importer_mesh_class = static_cast<GLTFDocumentExtensionConvertImporterMesh *>(Variant(*argv).operator Object *());
 	else 
 		gltf_document_extension_convert_importer_mesh_class = memnew(GLTFDocumentExtensionConvertImporterMesh);
 	if (!gltf_document_extension_convert_importer_mesh_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
 	}
-	JS_SetOpaque(obj, gltf_document_extension_convert_importer_mesh_class);	
+	JS_SetOpaque(obj, gltf_document_extension_convert_importer_mesh_class);
 	return obj;
 }
 
@@ -50,7 +50,6 @@ static void define_gltf_document_extension_convert_importer_mesh_enum(JSContext 
 
 static int js_gltf_document_extension_convert_importer_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	
-	JS_NewClassID(&GLTFDocumentExtensionConvertImporterMesh::__class_id);
 	classes["GLTFDocumentExtensionConvertImporterMesh"] = GLTFDocumentExtensionConvertImporterMesh::__class_id;
 	class_id_list.insert(GLTFDocumentExtensionConvertImporterMesh::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), GLTFDocumentExtensionConvertImporterMesh::__class_id, &gltf_document_extension_convert_importer_mesh_class_def);
