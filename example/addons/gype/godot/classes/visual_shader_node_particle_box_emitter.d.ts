@@ -1,0 +1,5 @@
+
+import { VisualShaderNodeParticleEmitter } from "@godot/classes/visual_shader_node_particle_emitter";
+
+export declare class VisualShaderNodeParticleBoxEmitter extends VisualShaderNodeParticleEmitter{
+}

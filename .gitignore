@@ -1,0 +1,27 @@
+/.dist
+example/.dist/
+/node_modules
+/js-dist
+*.o
+.clang-format
+.vscode
+build
+*.dll
+*.so
+*.a
+godot-cpp/.sconsign.dblite
+godot-cpp/__pycache__
+.venv
+.cache
+__pycache__
+*.tmp
+*.TMP
+example/addons.zip
+godot-cpp/.github/
+
+# /src/register/classes
+# /src/register/utility_functions
+# /src/register/global_enum
+# /include/register/classes
+# /include/register/utility_functions
+# /include/register/global_enum
