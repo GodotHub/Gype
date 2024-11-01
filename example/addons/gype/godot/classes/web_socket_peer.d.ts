@@ -1,7 +1,7 @@
 
-import { TLSOptions } from "@godot/classes/tls_options";
 import { StreamPeer } from "@godot/classes/stream_peer";
 import { PacketPeer } from "@godot/classes/packet_peer";
+import { TLSOptions } from "@godot/classes/tls_options";
 
 export declare class WebSocketPeer extends PacketPeer{
   public connect_to_url(_url: String | StringName | string, _tls_client_options: TLSOptions): number;

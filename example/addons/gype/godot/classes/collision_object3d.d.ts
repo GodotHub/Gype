@@ -1,8 +1,8 @@
 
-import { Node3D } from "@godot/classes/node3d";
-import { Shape3D } from "@godot/classes/shape3d";
 import { InputEvent } from "@godot/classes/input_event";
+import { Node3D } from "@godot/classes/node3d";
 import { GodotObject } from "@godot/classes/godot_object";
+import { Shape3D } from "@godot/classes/shape3d";
 import { Camera3D } from "@godot/classes/camera3d";
 
 export declare class CollisionObject3D extends Node3D{

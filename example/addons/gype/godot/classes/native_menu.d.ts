@@ -1,6 +1,6 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { GodotObject } from "@godot/classes/godot_object";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class NativeMenu extends GodotObject{
   public has_feature(_feature: number): boolean;

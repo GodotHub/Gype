@@ -1,6 +1,6 @@
 
-import { TextServer } from "@godot/classes/text_server";
 import { GodotObject } from "@godot/classes/godot_object";
+import { TextServer } from "@godot/classes/text_server";
 
 export declare class TextServerManager extends GodotObject{
   public add_interface(_interface: TextServer): void;

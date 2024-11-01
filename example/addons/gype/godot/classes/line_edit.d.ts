@@ -1,7 +1,7 @@
 
 import { Control } from "@godot/classes/control";
-import { PopupMenu } from "@godot/classes/popup_menu";
 import { Texture2D } from "@godot/classes/texture2d";
+import { PopupMenu } from "@godot/classes/popup_menu";
 
 export declare class LineEdit extends Control{
   public set_horizontal_alignment(_alignment: number): void;

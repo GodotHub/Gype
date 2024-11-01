@@ -1,7 +1,7 @@
 
+import { EngineProfiler } from "@godot/classes/engine_profiler";
 import { GodotObject } from "@godot/classes/godot_object";
 import { ScriptLanguage } from "@godot/classes/script_language";
-import { EngineProfiler } from "@godot/classes/engine_profiler";
 
 export declare class EngineDebugger extends GodotObject{
   public is_active(): boolean;

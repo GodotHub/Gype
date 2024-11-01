@@ -1,8 +1,8 @@
 
-import { Gradient } from "@godot/classes/gradient";
-import { Texture2D } from "@godot/classes/texture2d";
-import { Curve } from "@godot/classes/curve";
 import { Node2D } from "@godot/classes/node2d";
+import { Curve } from "@godot/classes/curve";
+import { Texture2D } from "@godot/classes/texture2d";
+import { Gradient } from "@godot/classes/gradient";
 
 export declare class Line2D extends Node2D{
   public set_points(_points: PackedVector2Array): void;

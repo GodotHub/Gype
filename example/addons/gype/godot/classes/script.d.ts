@@ -1,6 +1,6 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
 import { Resource } from "@godot/classes/resource";
+import { GodotObject } from "@godot/classes/godot_object";
 
 export declare class Script extends Resource{
   public can_instantiate(): boolean;

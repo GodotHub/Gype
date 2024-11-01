@@ -1,8 +1,8 @@
 
-import { BitMap } from "@godot/classes/bit_map";
 import { Node2D } from "@godot/classes/node2d";
-import { Shape2D } from "@godot/classes/shape2d";
+import { BitMap } from "@godot/classes/bit_map";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Shape2D } from "@godot/classes/shape2d";
 
 export declare class TouchScreenButton extends Node2D{
   public set_texture_normal(_texture: Texture2D): void;

@@ -1,6 +1,6 @@
 
-import { AudioStream } from "@godot/classes/audio_stream";
 import { AudioStreamPlayback } from "@godot/classes/audio_stream_playback";
+import { AudioStream } from "@godot/classes/audio_stream";
 
 export declare class AudioStreamPlaybackPolyphonic extends AudioStreamPlayback{
   public play_stream(_stream: AudioStream, _from_offset: number, _volume_db: number, _pitch_scale: number, _playback_type: number, _bus: String | StringName | string): number;

@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/physics_body2d.hpp>
-#include <godot_cpp/classes/kinematic_collision2d.hpp>
-#include <godot_cpp/classes/collision_object2d.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/physics_body2d.hpp>
+#include <godot_cpp/classes/kinematic_collision2d.hpp>
+#include <godot_cpp/classes/collision_object2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

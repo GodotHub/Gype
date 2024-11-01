@@ -1,6 +1,6 @@
 
-import { BitMap } from "@godot/classes/bit_map";
 import { BaseButton } from "@godot/classes/base_button";
+import { BitMap } from "@godot/classes/bit_map";
 import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class TextureButton extends BaseButton{

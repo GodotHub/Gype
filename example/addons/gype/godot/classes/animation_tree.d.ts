@@ -1,6 +1,6 @@
 
-import { AnimationRootNode } from "@godot/classes/animation_root_node";
 import { AnimationMixer } from "@godot/classes/animation_mixer";
+import { AnimationRootNode } from "@godot/classes/animation_root_node";
 
 export declare class AnimationTree extends AnimationMixer{
   public set_tree_root(_animation_node: AnimationRootNode): void;

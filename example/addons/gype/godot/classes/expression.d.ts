@@ -1,6 +1,6 @@
 
-import { RefCounted } from "@godot/classes/ref_counted";
 import { GodotObject } from "@godot/classes/godot_object";
+import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class Expression extends RefCounted{
   public parse(_expression: String | StringName | string, _input_names: PackedStringArray): number;

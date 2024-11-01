@@ -1,6 +1,6 @@
 
-import { NavigationMesh } from "@godot/classes/navigation_mesh";
 import { Resource } from "@godot/classes/resource";
+import { NavigationMesh } from "@godot/classes/navigation_mesh";
 import { Mesh } from "@godot/classes/mesh";
 import { Texture2D } from "@godot/classes/texture2d";
 

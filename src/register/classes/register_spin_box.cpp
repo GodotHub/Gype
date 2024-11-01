@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/spin_box.hpp>
-#include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/classes/range.hpp>
+#include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

@@ -1,6 +1,6 @@
 
-import { Material } from "@godot/classes/material";
 import { Resource } from "@godot/classes/resource";
+import { Material } from "@godot/classes/material";
 import { ImporterMesh } from "@godot/classes/importer_mesh";
 
 export declare class GLTFMesh extends Resource{

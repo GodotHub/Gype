@@ -1,8 +1,8 @@
 
 import { Font } from "@godot/classes/font";
+import { Texture2D } from "@godot/classes/texture2d";
 import { GodotObject } from "@godot/classes/godot_object";
 import { Tree } from "@godot/classes/tree";
-import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class TreeItem extends GodotObject{
   public set_cell_mode(_column: number, _mode: number): void;

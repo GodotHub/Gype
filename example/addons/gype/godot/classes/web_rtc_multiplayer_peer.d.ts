@@ -1,6 +1,6 @@
 
-import { MultiplayerPeer } from "@godot/classes/multiplayer_peer";
 import { WebRTCPeerConnection } from "@godot/classes/web_rtc_peer_connection";
+import { MultiplayerPeer } from "@godot/classes/multiplayer_peer";
 
 export declare class WebRTCMultiplayerPeer extends MultiplayerPeer{
   public create_server(_channels_config: GDArray): number;

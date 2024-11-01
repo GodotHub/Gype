@@ -1,6 +1,6 @@
 
-import { RegExMatch } from "@godot/classes/reg_ex_match";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { RegExMatch } from "@godot/classes/reg_ex_match";
 import { RegExMatch } from "@godot/classes/reg_ex_match";
 
 export declare class RegEx extends RefCounted{

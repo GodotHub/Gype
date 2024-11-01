@@ -1,8 +1,8 @@
 
-import { Container } from "@godot/classes/container";
 import { Control } from "@godot/classes/control";
-import { HScrollBar } from "@godot/classes/h_scroll_bar";
 import { VScrollBar } from "@godot/classes/v_scroll_bar";
+import { Container } from "@godot/classes/container";
+import { HScrollBar } from "@godot/classes/h_scroll_bar";
 
 export declare class ScrollContainer extends Container{
   public set_h_scroll(_value: number): void;

@@ -1,7 +1,7 @@
 
-import { Material } from "@godot/classes/material";
 import { Resource } from "@godot/classes/resource";
 import { ArrayMesh } from "@godot/classes/array_mesh";
+import { Material } from "@godot/classes/material";
 
 export declare class ImporterMesh extends Resource{
   public add_blend_shape(_name: String | StringName | string): void;

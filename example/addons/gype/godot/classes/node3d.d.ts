@@ -1,8 +1,8 @@
 
 import { Node3DGizmo } from "@godot/classes/node3d_gizmo";
+import { World3D } from "@godot/classes/world3d";
 import { Node3DGizmo } from "@godot/classes/node3d_gizmo";
 import { Node } from "@godot/classes/node";
-import { World3D } from "@godot/classes/world3d";
 
 export declare class Node3D extends Node{
   public set_transform(_local: Transform3D): void;

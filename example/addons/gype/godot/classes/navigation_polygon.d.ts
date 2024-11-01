@@ -1,6 +1,6 @@
 
-import { NavigationMesh } from "@godot/classes/navigation_mesh";
 import { Resource } from "@godot/classes/resource";
+import { NavigationMesh } from "@godot/classes/navigation_mesh";
 
 export declare class NavigationPolygon extends Resource{
   public set_vertices(_vertices: PackedVector2Array): void;

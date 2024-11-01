@@ -1,7 +1,7 @@
 
+import { InputEvent } from "@godot/classes/input_event";
 import { Viewport } from "@godot/classes/viewport";
 import { Node2D } from "@godot/classes/node2d";
-import { InputEvent } from "@godot/classes/input_event";
 import { GodotObject } from "@godot/classes/godot_object";
 import { Shape2D } from "@godot/classes/shape2d";
 

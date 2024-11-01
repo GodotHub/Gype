@@ -1,6 +1,6 @@
 
-import { SkeletonProfile } from "@godot/classes/skeleton_profile";
 import { Resource } from "@godot/classes/resource";
+import { SkeletonProfile } from "@godot/classes/skeleton_profile";
 
 export declare class BoneMap extends Resource{
   public get_profile(): SkeletonProfile;

@@ -1,7 +1,7 @@
 
 import { CameraAttributes } from "@godot/classes/camera_attributes";
-import { VisualInstance3D } from "@godot/classes/visual_instance3d";
 import { Node } from "@godot/classes/node";
+import { VisualInstance3D } from "@godot/classes/visual_instance3d";
 import { VoxelGIData } from "@godot/classes/voxel_gi_data";
 
 export declare class VoxelGI extends VisualInstance3D{

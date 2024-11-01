@@ -1,6 +1,6 @@
 
-import { VisualShaderNodeParticleEmitter } from "@godot/classes/visual_shader_node_particle_emitter";
 import { Mesh } from "@godot/classes/mesh";
+import { VisualShaderNodeParticleEmitter } from "@godot/classes/visual_shader_node_particle_emitter";
 
 export declare class VisualShaderNodeParticleMeshEmitter extends VisualShaderNodeParticleEmitter{
   public set_mesh(_mesh: Mesh): void;

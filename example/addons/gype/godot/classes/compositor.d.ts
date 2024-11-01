@@ -1,6 +1,6 @@
 
-import { CompositorEffect } from "@godot/classes/compositor_effect";
 import { Resource } from "@godot/classes/resource";
+import { CompositorEffect } from "@godot/classes/compositor_effect";
 
 export declare class Compositor extends Resource{
   public set_compositor_effects(_compositor_effects: GDArray): void;

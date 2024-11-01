@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/audio_stream.hpp>
-#include <godot_cpp/classes/audio_stream_player3d.hpp>
 #include <godot_cpp/classes/audio_stream_playback.hpp>
+#include <godot_cpp/classes/audio_stream_player3d.hpp>
+#include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

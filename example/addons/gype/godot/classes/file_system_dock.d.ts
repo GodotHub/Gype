@@ -1,6 +1,6 @@
 
-import { VBoxContainer } from "@godot/classes/v_box_container";
 import { EditorResourceTooltipPlugin } from "@godot/classes/editor_resource_tooltip_plugin";
+import { VBoxContainer } from "@godot/classes/v_box_container";
 
 export declare class FileSystemDock extends VBoxContainer{
   public navigate_to_path(_path: String | StringName | string): void;

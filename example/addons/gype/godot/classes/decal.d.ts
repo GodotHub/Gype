@@ -1,6 +1,6 @@
 
-import { VisualInstance3D } from "@godot/classes/visual_instance3d";
 import { Texture2D } from "@godot/classes/texture2d";
+import { VisualInstance3D } from "@godot/classes/visual_instance3d";
 
 export declare class Decal extends VisualInstance3D{
   public set_size(_size: Vector3): void;

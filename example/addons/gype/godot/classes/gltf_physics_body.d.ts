@@ -1,6 +1,6 @@
 
-import { CollisionObject3D } from "@godot/classes/collision_object3d";
 import { Resource } from "@godot/classes/resource";
+import { CollisionObject3D } from "@godot/classes/collision_object3d";
 
 export declare class GLTFPhysicsBody extends Resource{
   public from_node(_body_node: CollisionObject3D): GLTFPhysicsBody;

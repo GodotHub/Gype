@@ -1,6 +1,6 @@
 
-import { InputEvent } from "@godot/classes/input_event";
 import { Resource } from "@godot/classes/resource";
+import { InputEvent } from "@godot/classes/input_event";
 
 export declare class EditorSettings extends Resource{
   public has_setting(_name: String | StringName | string): boolean;

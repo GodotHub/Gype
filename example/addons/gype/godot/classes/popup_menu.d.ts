@@ -1,8 +1,8 @@
 
-import { Shortcut } from "@godot/classes/shortcut";
-import { Popup } from "@godot/classes/popup";
 import { InputEvent } from "@godot/classes/input_event";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Shortcut } from "@godot/classes/shortcut";
+import { Popup } from "@godot/classes/popup";
 
 export declare class PopupMenu extends Popup{
   public activate_item_by_event(_event: InputEvent, _for_global_only: boolean): boolean;

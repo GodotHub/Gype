@@ -1,7 +1,7 @@
 
 import { Resource } from "@godot/classes/resource";
-import { GodotObject } from "@godot/classes/godot_object";
 import { ResourceFormatSaver } from "@godot/classes/resource_format_saver";
+import { GodotObject } from "@godot/classes/godot_object";
 
 export declare class ResourceSaver extends GodotObject{
   public save(_resource: Resource, _path: String | StringName | string, _flags: number): number;

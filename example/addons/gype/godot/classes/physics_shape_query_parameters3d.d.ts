@@ -1,6 +1,6 @@
 
-import { RefCounted } from "@godot/classes/ref_counted";
 import { Resource } from "@godot/classes/resource";
+import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class PhysicsShapeQueryParameters3D extends RefCounted{
   public set_shape(_shape: Resource): void;

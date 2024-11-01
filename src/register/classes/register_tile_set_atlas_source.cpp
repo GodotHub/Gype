@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/tile_set_source.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/tile_set_atlas_source.hpp>
 #include <godot_cpp/classes/tile_data.hpp>
+#include <godot_cpp/classes/tile_set_atlas_source.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

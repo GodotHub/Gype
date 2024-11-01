@@ -1,6 +1,6 @@
 
-import { Image } from "@godot/classes/image";
 import { Resource } from "@godot/classes/resource";
+import { Image } from "@godot/classes/image";
 import { Image } from "@godot/classes/image";
 
 export declare class Noise extends Resource{

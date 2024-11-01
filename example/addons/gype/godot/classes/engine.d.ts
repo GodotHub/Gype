@@ -1,6 +1,6 @@
 
-import { MainLoop } from "@godot/classes/main_loop";
 import { GodotObject } from "@godot/classes/godot_object";
+import { MainLoop } from "@godot/classes/main_loop";
 import { ScriptLanguage } from "@godot/classes/script_language";
 
 export declare class Engine extends GodotObject{

@@ -1,24 +1,24 @@
 
-import { EditorCommandPalette } from "@godot/classes/editor_command_palette";
-import { GodotObject } from "@godot/classes/godot_object";
-import { Node } from "@godot/classes/node";
-import { Theme } from "@godot/classes/theme";
-import { Texture2D } from "@godot/classes/texture2d";
+import { Window } from "@godot/classes/window";
+import { Mesh } from "@godot/classes/mesh";
 import { Script } from "@godot/classes/script";
 import { EditorInspector } from "@godot/classes/editor_inspector";
-import { EditorFileSystem } from "@godot/classes/editor_file_system";
-import { Control } from "@godot/classes/control";
-import { ScriptEditor } from "@godot/classes/script_editor";
-import { FileSystemDock } from "@godot/classes/file_system_dock";
-import { SubViewport } from "@godot/classes/sub_viewport";
-import { Resource } from "@godot/classes/resource";
-import { EditorResourcePreview } from "@godot/classes/editor_resource_preview";
-import { EditorSettings } from "@godot/classes/editor_settings";
-import { EditorSelection } from "@godot/classes/editor_selection";
 import { EditorPaths } from "@godot/classes/editor_paths";
-import { Mesh } from "@godot/classes/mesh";
+import { FileSystemDock } from "@godot/classes/file_system_dock";
+import { Control } from "@godot/classes/control";
+import { Resource } from "@godot/classes/resource";
+import { Theme } from "@godot/classes/theme";
+import { ScriptEditor } from "@godot/classes/script_editor";
+import { EditorResourcePreview } from "@godot/classes/editor_resource_preview";
+import { SubViewport } from "@godot/classes/sub_viewport";
+import { EditorSelection } from "@godot/classes/editor_selection";
+import { GodotObject } from "@godot/classes/godot_object";
+import { EditorCommandPalette } from "@godot/classes/editor_command_palette";
+import { EditorFileSystem } from "@godot/classes/editor_file_system";
+import { EditorSettings } from "@godot/classes/editor_settings";
 import { VBoxContainer } from "@godot/classes/v_box_container";
-import { Window } from "@godot/classes/window";
+import { Node } from "@godot/classes/node";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class EditorInterface extends GodotObject{
   public restart_editor(_save: boolean): void;

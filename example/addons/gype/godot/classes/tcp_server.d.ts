@@ -1,6 +1,6 @@
 
-import { RefCounted } from "@godot/classes/ref_counted";
 import { StreamPeerTCP } from "@godot/classes/stream_peer_tcp";
+import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class TCPServer extends RefCounted{
   public listen(_port: number, _bind_address: String | StringName | string): number;

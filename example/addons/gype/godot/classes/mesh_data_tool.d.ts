@@ -1,7 +1,7 @@
 
-import { Material } from "@godot/classes/material";
 import { RefCounted } from "@godot/classes/ref_counted";
 import { ArrayMesh } from "@godot/classes/array_mesh";
+import { Material } from "@godot/classes/material";
 
 export declare class MeshDataTool extends RefCounted{
   public clear(): void;

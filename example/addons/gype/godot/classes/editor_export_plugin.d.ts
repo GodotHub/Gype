@@ -1,8 +1,8 @@
 
-import { RefCounted } from "@godot/classes/ref_counted";
 import { Resource } from "@godot/classes/resource";
-import { Node } from "@godot/classes/node";
 import { EditorExportPlatform } from "@godot/classes/editor_export_platform";
+import { Node } from "@godot/classes/node";
+import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class EditorExportPlugin extends RefCounted{
   public _export_file(_path: String | StringName | string, _type: String | StringName | string, _features: PackedStringArray): void;

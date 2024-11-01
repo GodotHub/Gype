@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/label.hpp>
-#include <godot_cpp/classes/accept_dialog.hpp>
-#include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/classes/window.hpp>
 #include <godot_cpp/classes/button.hpp>
+#include <godot_cpp/classes/accept_dialog.hpp>
+#include <godot_cpp/classes/line_edit.hpp>
+#include <godot_cpp/classes/label.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

@@ -1,6 +1,6 @@
 
-import { Node } from "@godot/classes/node";
 import { GodotObject } from "@godot/classes/godot_object";
+import { Node } from "@godot/classes/node";
 import { Node } from "@godot/classes/node";
 
 export declare class EditorSelection extends GodotObject{

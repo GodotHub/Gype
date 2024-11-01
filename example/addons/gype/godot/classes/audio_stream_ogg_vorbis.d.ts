@@ -1,6 +1,6 @@
 
-import { AudioStream } from "@godot/classes/audio_stream";
 import { OggPacketSequence } from "@godot/classes/ogg_packet_sequence";
+import { AudioStream } from "@godot/classes/audio_stream";
 
 export declare class AudioStreamOggVorbis extends AudioStream{
   public load_from_buffer(_buffer: PackedByteArray): AudioStreamOggVorbis;

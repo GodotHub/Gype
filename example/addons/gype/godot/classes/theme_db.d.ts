@@ -1,7 +1,7 @@
 
 import { Theme } from "@godot/classes/theme";
-import { Font } from "@godot/classes/font";
 import { GodotObject } from "@godot/classes/godot_object";
+import { Font } from "@godot/classes/font";
 import { Texture2D } from "@godot/classes/texture2d";
 import { StyleBox } from "@godot/classes/style_box";
 

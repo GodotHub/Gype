@@ -1,6 +1,6 @@
 
-import { RefCounted } from "@godot/classes/ref_counted";
 import { GodotObject } from "@godot/classes/godot_object";
+import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class KinematicCollision2D extends RefCounted{
   public get_position(): Vector2;

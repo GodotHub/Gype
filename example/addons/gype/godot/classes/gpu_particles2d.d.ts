@@ -1,7 +1,7 @@
 
 import { Node2D } from "@godot/classes/node2d";
-import { Node } from "@godot/classes/node";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Node } from "@godot/classes/node";
 import { Material } from "@godot/classes/material";
 
 export declare class GPUParticles2D extends Node2D{

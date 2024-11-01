@@ -1,6 +1,6 @@
 
-import { TLSOptions } from "@godot/classes/tls_options";
 import { StreamPeer } from "@godot/classes/stream_peer";
+import { TLSOptions } from "@godot/classes/tls_options";
 
 export declare class StreamPeerTLS extends StreamPeer{
   public poll(): void;

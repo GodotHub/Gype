@@ -1,6 +1,6 @@
 
-import { RefCounted } from "@godot/classes/ref_counted";
 import { WebRTCDataChannel } from "@godot/classes/web_rtc_data_channel";
+import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class WebRTCPeerConnection extends RefCounted{
   public set_default_extension(_extension_class: String | StringName | string): void;

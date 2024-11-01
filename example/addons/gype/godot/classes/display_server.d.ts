@@ -1,8 +1,8 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
-import { Image } from "@godot/classes/image";
 import { Resource } from "@godot/classes/resource";
 import { Texture2D } from "@godot/classes/texture2d";
+import { GodotObject } from "@godot/classes/godot_object";
+import { Image } from "@godot/classes/image";
 
 export declare class DisplayServer extends GodotObject{
   public has_feature(_feature: number): boolean;

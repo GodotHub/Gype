@@ -1,6 +1,6 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
 import { JavaScriptObject } from "@godot/classes/java_script_object";
+import { GodotObject } from "@godot/classes/godot_object";
 
 export declare class JavaScriptBridge extends GodotObject{
   public eval(_code: String | StringName | string, _use_global_execution_context: boolean): any;

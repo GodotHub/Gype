@@ -7,9 +7,9 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/editor_resource_preview_generator.hpp>
 #include <godot_cpp/classes/editor_resource_preview.hpp>
+#include <godot_cpp/classes/editor_resource_preview_generator.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

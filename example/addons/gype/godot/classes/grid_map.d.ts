@@ -1,7 +1,7 @@
 
-import { Node3D } from "@godot/classes/node3d";
 import { Resource } from "@godot/classes/resource";
 import { PhysicsMaterial } from "@godot/classes/physics_material";
+import { Node3D } from "@godot/classes/node3d";
 import { MeshLibrary } from "@godot/classes/mesh_library";
 
 export declare class GridMap extends Node3D{

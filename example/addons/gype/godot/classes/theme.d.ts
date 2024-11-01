@@ -1,6 +1,6 @@
 
-import { Font } from "@godot/classes/font";
 import { Resource } from "@godot/classes/resource";
+import { Font } from "@godot/classes/font";
 import { Texture2D } from "@godot/classes/texture2d";
 import { StyleBox } from "@godot/classes/style_box";
 

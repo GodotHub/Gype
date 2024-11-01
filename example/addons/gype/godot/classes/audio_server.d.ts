@@ -1,9 +1,9 @@
 
-import { AudioEffect } from "@godot/classes/audio_effect";
-import { AudioEffectInstance } from "@godot/classes/audio_effect_instance";
-import { AudioStream } from "@godot/classes/audio_stream";
 import { GodotObject } from "@godot/classes/godot_object";
 import { AudioBusLayout } from "@godot/classes/audio_bus_layout";
+import { AudioStream } from "@godot/classes/audio_stream";
+import { AudioEffect } from "@godot/classes/audio_effect";
+import { AudioEffectInstance } from "@godot/classes/audio_effect_instance";
 
 export declare class AudioServer extends GodotObject{
   public set_bus_count(_amount: number): void;

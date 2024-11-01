@@ -1,8 +1,8 @@
 
-import { Label } from "@godot/classes/label";
-import { LineEdit } from "@godot/classes/line_edit";
 import { Window } from "@godot/classes/window";
 import { Button } from "@godot/classes/button";
+import { LineEdit } from "@godot/classes/line_edit";
+import { Label } from "@godot/classes/label";
 
 export declare class AcceptDialog extends Window{
   public get_ok_button(): Button;

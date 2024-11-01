@@ -1,6 +1,6 @@
 
-import { NavigationMesh } from "@godot/classes/navigation_mesh";
 import { NavigationMeshSourceGeometryData3D } from "@godot/classes/navigation_mesh_source_geometry_data3d";
+import { NavigationMesh } from "@godot/classes/navigation_mesh";
 import { GodotObject } from "@godot/classes/godot_object";
 import { Node } from "@godot/classes/node";
 

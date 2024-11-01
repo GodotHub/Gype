@@ -1,7 +1,7 @@
 
-import { VideoStream } from "@godot/classes/video_stream";
 import { Control } from "@godot/classes/control";
 import { Texture2D } from "@godot/classes/texture2d";
+import { VideoStream } from "@godot/classes/video_stream";
 
 export declare class VideoStreamPlayer extends Control{
   public set_stream(_stream: VideoStream): void;
