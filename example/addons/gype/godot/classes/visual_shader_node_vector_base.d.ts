@@ -1,0 +1,19 @@
+
+import { VisualShaderNode } from "@godot/classes/visual_shader_node";
+
+export declare class VisualShaderNodeVectorBase extends VisualShaderNode{
+  public set_op_type(_type: number): void;
+  public get_op_type(): number;
+  public get op_type(): number {
+    get_op_type();
+  }
+  public set op_type(value): void {
+    set_op_type(value);
+  }
+  static OpType = {
+    OP_TYPE_VECTOR_2D = 0,
+    OP_TYPE_VECTOR_3D = 1,
+    OP_TYPE_VECTOR_4D = 2,
+    OP_TYPE_MAX = 3,
+  }
+}
