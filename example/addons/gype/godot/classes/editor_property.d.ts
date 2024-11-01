@@ -1,7 +1,7 @@
 
+import { Control } from "@godot/classes/control";
 import { GodotObject } from "@godot/classes/godot_object";
 import { Container } from "@godot/classes/container";
-import { Control } from "@godot/classes/control";
 
 export declare class EditorProperty extends Container{
   public _update_property(): void;

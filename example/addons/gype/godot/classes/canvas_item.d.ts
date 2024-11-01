@@ -1,14 +1,14 @@
 
-import { InputEvent } from "@godot/classes/input_event";
-import { CanvasLayer } from "@godot/classes/canvas_layer";
-import { Texture2D } from "@godot/classes/texture2d";
-import { StyleBox } from "@godot/classes/style_box";
-import { Node } from "@godot/classes/node";
 import { Font } from "@godot/classes/font";
-import { Mesh } from "@godot/classes/mesh";
 import { MultiMesh } from "@godot/classes/multi_mesh";
+import { Node } from "@godot/classes/node";
+import { StyleBox } from "@godot/classes/style_box";
 import { Material } from "@godot/classes/material";
 import { World2D } from "@godot/classes/world2d";
+import { CanvasLayer } from "@godot/classes/canvas_layer";
+import { InputEvent } from "@godot/classes/input_event";
+import { Mesh } from "@godot/classes/mesh";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class CanvasItem extends Node{
   public _draw(): void;

@@ -5,17 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/scene_tree.hpp>
-#include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/classes/main_loop.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/multiplayer_api.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/tween.hpp>
-#include <godot_cpp/classes/scene_tree_timer.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/packed_scene.hpp>
+#include <godot_cpp/classes/tween.hpp>
+#include <godot_cpp/classes/main_loop.hpp>
+#include <godot_cpp/classes/scene_tree_timer.hpp>
+#include <godot_cpp/classes/scene_tree.hpp>
+#include <godot_cpp/classes/window.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

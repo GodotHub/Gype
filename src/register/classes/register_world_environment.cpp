@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/compositor.hpp>
+#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/classes/world_environment.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/environment.hpp>
-#include <godot_cpp/classes/camera_attributes.hpp>
+#include <godot_cpp/classes/compositor.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

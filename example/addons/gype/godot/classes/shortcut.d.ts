@@ -1,6 +1,6 @@
 
-import { InputEvent } from "@godot/classes/input_event";
 import { Resource } from "@godot/classes/resource";
+import { InputEvent } from "@godot/classes/input_event";
 
 export declare class Shortcut extends Resource{
   public set_events(_events: GDArray): void;

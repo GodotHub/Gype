@@ -1,6 +1,6 @@
 
-import { LabelSettings } from "@godot/classes/label_settings";
 import { Control } from "@godot/classes/control";
+import { LabelSettings } from "@godot/classes/label_settings";
 
 export declare class Label extends Control{
   public set_horizontal_alignment(_alignment: number): void;

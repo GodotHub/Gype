@@ -1,8 +1,8 @@
 
-import { StyleBox } from "@godot/classes/style_box";
 import { Font } from "@godot/classes/font";
 import { Resource } from "@godot/classes/resource";
 import { Texture2D } from "@godot/classes/texture2d";
+import { StyleBox } from "@godot/classes/style_box";
 
 export declare class Theme extends Resource{
   public set_icon(_name: String | StringName | string, _theme_type: String | StringName | string, _texture: Texture2D): void;

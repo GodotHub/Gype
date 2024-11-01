@@ -1,7 +1,7 @@
 
 import { TLSOptions } from "@godot/classes/tls_options";
-import { StreamPeer } from "@godot/classes/stream_peer";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { StreamPeer } from "@godot/classes/stream_peer";
 
 export declare class HTTPClient extends RefCounted{
   public connect_to_host(_host: String | StringName | string, _port: number, _tls_options: TLSOptions): number;

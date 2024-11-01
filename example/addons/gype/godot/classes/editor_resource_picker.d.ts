@@ -1,7 +1,7 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
-import { Resource } from "@godot/classes/resource";
 import { HBoxContainer } from "@godot/classes/h_box_container";
+import { Resource } from "@godot/classes/resource";
+import { GodotObject } from "@godot/classes/godot_object";
 
 export declare class EditorResourcePicker extends HBoxContainer{
   public _set_create_options(_menu_node: Object): void;

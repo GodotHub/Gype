@@ -1,7 +1,7 @@
 
+import { OccluderPolygon2D } from "@godot/classes/occluder_polygon2d";
 import { GodotObject } from "@godot/classes/godot_object";
 import { Material } from "@godot/classes/material";
-import { OccluderPolygon2D } from "@godot/classes/occluder_polygon2d";
 import { NavigationPolygon } from "@godot/classes/navigation_polygon";
 
 export declare class TileData extends GodotObject{

@@ -1,19 +1,19 @@
 
-import { RDVertexAttribute } from "@godot/classes/rd_vertex_attribute";
-import { RDPipelineColorBlendState } from "@godot/classes/rd_pipeline_color_blend_state";
-import { RDPipelineMultisampleState } from "@godot/classes/rd_pipeline_multisample_state";
-import { GodotObject } from "@godot/classes/godot_object";
-import { RDTextureFormat } from "@godot/classes/rd_texture_format";
-import { RDPipelineSpecializationConstant } from "@godot/classes/rd_pipeline_specialization_constant";
-import { RDFramebufferPass } from "@godot/classes/rd_framebuffer_pass";
-import { RDShaderSource } from "@godot/classes/rd_shader_source";
-import { RDAttachmentFormat } from "@godot/classes/rd_attachment_format";
-import { RDTextureView } from "@godot/classes/rd_texture_view";
-import { RDPipelineDepthStencilState } from "@godot/classes/rd_pipeline_depth_stencil_state";
 import { RDUniform } from "@godot/classes/rd_uniform";
-import { RDShaderSPIRV } from "@godot/classes/rd_shader_spirv";
-import { RDSamplerState } from "@godot/classes/rd_sampler_state";
+import { RDPipelineColorBlendState } from "@godot/classes/rd_pipeline_color_blend_state";
+import { RDPipelineDepthStencilState } from "@godot/classes/rd_pipeline_depth_stencil_state";
+import { GodotObject } from "@godot/classes/godot_object";
 import { RDPipelineRasterizationState } from "@godot/classes/rd_pipeline_rasterization_state";
+import { RDTextureView } from "@godot/classes/rd_texture_view";
+import { RDAttachmentFormat } from "@godot/classes/rd_attachment_format";
+import { RDShaderSPIRV } from "@godot/classes/rd_shader_spirv";
+import { RDTextureFormat } from "@godot/classes/rd_texture_format";
+import { RDSamplerState } from "@godot/classes/rd_sampler_state";
+import { RDShaderSource } from "@godot/classes/rd_shader_source";
+import { RDVertexAttribute } from "@godot/classes/rd_vertex_attribute";
+import { RDPipelineMultisampleState } from "@godot/classes/rd_pipeline_multisample_state";
+import { RDFramebufferPass } from "@godot/classes/rd_framebuffer_pass";
+import { RDPipelineSpecializationConstant } from "@godot/classes/rd_pipeline_specialization_constant";
 
 export declare class RenderingDevice extends GodotObject{
   public texture_create(_format: RDTextureFormat, _view: RDTextureView, _data: GDArray): RID;

@@ -1,8 +1,8 @@
 
-import { LightmapGIData } from "@godot/classes/lightmap_gi_data";
+import { CameraAttributes } from "@godot/classes/camera_attributes";
 import { VisualInstance3D } from "@godot/classes/visual_instance3d";
 import { Sky } from "@godot/classes/sky";
-import { CameraAttributes } from "@godot/classes/camera_attributes";
+import { LightmapGIData } from "@godot/classes/lightmap_gi_data";
 
 export declare class LightmapGI extends VisualInstance3D{
   public set_light_data(_data: LightmapGIData): void;

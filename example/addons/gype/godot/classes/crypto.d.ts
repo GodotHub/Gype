@@ -1,7 +1,7 @@
 
-import { CryptoKey } from "@godot/classes/crypto_key";
 import { RefCounted } from "@godot/classes/ref_counted";
 import { X509Certificate } from "@godot/classes/x509_certificate";
+import { CryptoKey } from "@godot/classes/crypto_key";
 
 export declare class Crypto extends RefCounted{
   public generate_random_bytes(_size: number): PackedByteArray;

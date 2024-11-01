@@ -1,8 +1,8 @@
 
-import { AudioStream } from "@godot/classes/audio_stream";
-import { GodotObject } from "@godot/classes/godot_object";
 import { AudioEffect } from "@godot/classes/audio_effect";
 import { AudioEffectInstance } from "@godot/classes/audio_effect_instance";
+import { AudioStream } from "@godot/classes/audio_stream";
+import { GodotObject } from "@godot/classes/godot_object";
 import { AudioBusLayout } from "@godot/classes/audio_bus_layout";
 
 export declare class AudioServer extends GodotObject{

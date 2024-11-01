@@ -1,8 +1,8 @@
 
-import { PhysicsDirectBodyState2D } from "@godot/classes/physics_direct_body_state2d";
 import { Node2D } from "@godot/classes/node2d";
-import { PhysicsBody2D } from "@godot/classes/physics_body2d";
+import { PhysicsDirectBodyState2D } from "@godot/classes/physics_direct_body_state2d";
 import { PhysicsMaterial } from "@godot/classes/physics_material";
+import { PhysicsBody2D } from "@godot/classes/physics_body2d";
 
 export declare class RigidBody2D extends PhysicsBody2D{
   public _integrate_forces(_state: PhysicsDirectBodyState2D): void;

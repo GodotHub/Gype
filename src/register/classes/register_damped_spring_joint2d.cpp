@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/damped_spring_joint2d.hpp>
 #include <godot_cpp/classes/joint2d.hpp>
+#include <godot_cpp/classes/damped_spring_joint2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

@@ -1,6 +1,6 @@
 
-import { PhysicsBody3D } from "@godot/classes/physics_body3d";
 import { PhysicsDirectBodyState3D } from "@godot/classes/physics_direct_body_state3d";
+import { PhysicsBody3D } from "@godot/classes/physics_body3d";
 
 export declare class PhysicalBone3D extends PhysicsBody3D{
   public _integrate_forces(_state: PhysicsDirectBodyState3D): void;

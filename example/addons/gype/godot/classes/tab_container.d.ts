@@ -1,10 +1,10 @@
 
-import { Popup } from "@godot/classes/popup";
 import { Container } from "@godot/classes/container";
-import { Node } from "@godot/classes/node";
 import { Control } from "@godot/classes/control";
-import { Texture2D } from "@godot/classes/texture2d";
+import { Popup } from "@godot/classes/popup";
 import { TabBar } from "@godot/classes/tab_bar";
+import { Node } from "@godot/classes/node";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class TabContainer extends Container{
   public get_tab_count(): number;

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_player.hpp>
 #include <godot_cpp/classes/animation_mixer.hpp>
+#include <godot_cpp/classes/animation_player.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

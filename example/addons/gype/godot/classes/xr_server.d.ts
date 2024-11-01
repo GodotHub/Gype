@@ -1,7 +1,7 @@
 
-import { XRInterface } from "@godot/classes/xr_interface";
-import { GodotObject } from "@godot/classes/godot_object";
 import { XRTracker } from "@godot/classes/xr_tracker";
+import { GodotObject } from "@godot/classes/godot_object";
+import { XRInterface } from "@godot/classes/xr_interface";
 
 export declare class XRServer extends GodotObject{
   public get_world_scale(): number;

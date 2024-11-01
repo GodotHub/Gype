@@ -1,7 +1,7 @@
 
 import { AudioStream } from "@godot/classes/audio_stream";
-import { AudioStreamPlayback } from "@godot/classes/audio_stream_playback";
 import { Node } from "@godot/classes/node";
+import { AudioStreamPlayback } from "@godot/classes/audio_stream_playback";
 
 export declare class AudioStreamPlayer extends Node{
   public set_stream(_stream: AudioStream): void;

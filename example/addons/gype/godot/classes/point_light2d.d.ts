@@ -1,6 +1,6 @@
 
-import { Light2D } from "@godot/classes/light2d";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Light2D } from "@godot/classes/light2d";
 
 export declare class PointLight2D extends Light2D{
   public set_texture(_texture: Texture2D): void;

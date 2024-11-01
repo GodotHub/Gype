@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/skeleton_modification2d_stack_holder.hpp>
-#include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/classes/skeleton_modification_stack2d.hpp>
+#include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

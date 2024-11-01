@@ -1,7 +1,7 @@
 
 import { Node2D } from "@godot/classes/node2d";
-import { Texture2D } from "@godot/classes/texture2d";
 import { MultiMesh } from "@godot/classes/multi_mesh";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class MultiMeshInstance2D extends Node2D{
   public set_multimesh(_multimesh: MultiMesh): void;

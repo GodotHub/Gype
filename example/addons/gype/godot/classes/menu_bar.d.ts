@@ -1,6 +1,6 @@
 
-import { PopupMenu } from "@godot/classes/popup_menu";
 import { Control } from "@godot/classes/control";
+import { PopupMenu } from "@godot/classes/popup_menu";
 
 export declare class MenuBar extends Control{
   public set_switch_on_hover(_enable: boolean): void;

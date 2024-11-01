@@ -1,6 +1,6 @@
 
-import { Material } from "@godot/classes/material";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Material } from "@godot/classes/material";
 
 export declare class PhysicalSkyMaterial extends Material{
   public set_rayleigh_coefficient(_rayleigh: number): void;

@@ -1,8 +1,8 @@
 
 import { NavigationMesh } from "@godot/classes/navigation_mesh";
+import { Resource } from "@godot/classes/resource";
 import { Mesh } from "@godot/classes/mesh";
 import { Texture2D } from "@godot/classes/texture2d";
-import { Resource } from "@godot/classes/resource";
 
 export declare class MeshLibrary extends Resource{
   public create_item(_id: number): void;

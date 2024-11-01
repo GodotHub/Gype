@@ -1,7 +1,7 @@
 
 import { Image } from "@godot/classes/image";
-import { Texture } from "@godot/classes/texture";
 import { Resource } from "@godot/classes/resource";
+import { Texture } from "@godot/classes/texture";
 
 export declare class Texture3D extends Texture{
   public _get_format(): number;

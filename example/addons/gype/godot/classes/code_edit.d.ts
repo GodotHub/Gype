@@ -1,6 +1,6 @@
 
-import { TextEdit } from "@godot/classes/text_edit";
 import { Resource } from "@godot/classes/resource";
+import { TextEdit } from "@godot/classes/text_edit";
 
 export declare class CodeEdit extends TextEdit{
   public _confirm_code_completion(_replace: boolean): void;

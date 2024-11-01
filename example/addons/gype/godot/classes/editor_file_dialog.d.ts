@@ -1,8 +1,8 @@
 
+import { Control } from "@godot/classes/control";
 import { LineEdit } from "@godot/classes/line_edit";
 import { VBoxContainer } from "@godot/classes/v_box_container";
 import { ConfirmationDialog } from "@godot/classes/confirmation_dialog";
-import { Control } from "@godot/classes/control";
 
 export declare class EditorFileDialog extends ConfirmationDialog{
   public clear_filters(): void;

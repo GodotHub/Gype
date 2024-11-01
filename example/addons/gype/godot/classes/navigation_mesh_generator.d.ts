@@ -1,7 +1,7 @@
 
 import { NavigationMesh } from "@godot/classes/navigation_mesh";
-import { GodotObject } from "@godot/classes/godot_object";
 import { NavigationMeshSourceGeometryData3D } from "@godot/classes/navigation_mesh_source_geometry_data3d";
+import { GodotObject } from "@godot/classes/godot_object";
 import { Node } from "@godot/classes/node";
 
 export declare class NavigationMeshGenerator extends GodotObject{

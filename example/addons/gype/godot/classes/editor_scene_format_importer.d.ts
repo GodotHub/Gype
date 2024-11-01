@@ -1,6 +1,6 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { GodotObject } from "@godot/classes/godot_object";
 
 export declare class EditorSceneFormatImporter extends RefCounted{
   public _get_import_flags(): number;

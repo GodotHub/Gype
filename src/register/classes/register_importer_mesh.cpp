@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/importer_mesh.hpp>
-#include <godot_cpp/classes/array_mesh.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/array_mesh.hpp>
+#include <godot_cpp/classes/importer_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

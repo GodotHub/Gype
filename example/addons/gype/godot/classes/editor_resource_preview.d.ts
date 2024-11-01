@@ -1,7 +1,7 @@
 
+import { Resource } from "@godot/classes/resource";
 import { GodotObject } from "@godot/classes/godot_object";
 import { Node } from "@godot/classes/node";
-import { Resource } from "@godot/classes/resource";
 import { EditorResourcePreviewGenerator } from "@godot/classes/editor_resource_preview_generator";
 
 export declare class EditorResourcePreview extends Node{

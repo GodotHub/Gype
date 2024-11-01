@@ -1,7 +1,7 @@
 
-import { MultiplayerPeer } from "@godot/classes/multiplayer_peer";
 import { ENetConnection } from "@godot/classes/e_net_connection";
 import { ENetPacketPeer } from "@godot/classes/e_net_packet_peer";
+import { MultiplayerPeer } from "@godot/classes/multiplayer_peer";
 
 export declare class ENetMultiplayerPeer extends MultiplayerPeer{
   public create_server(_port: number, _max_clients: number, _max_channels: number, _in_bandwidth: number, _out_bandwidth: number): number;

@@ -1,8 +1,8 @@
 
+import { CameraAttributes } from "@godot/classes/camera_attributes";
 import { PhysicsDirectSpaceState3D } from "@godot/classes/physics_direct_space_state3d";
 import { Resource } from "@godot/classes/resource";
 import { Environment } from "@godot/classes/environment";
-import { CameraAttributes } from "@godot/classes/camera_attributes";
 
 export declare class World3D extends Resource{
   public get_space(): RID;

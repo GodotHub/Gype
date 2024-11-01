@@ -1,6 +1,6 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { Resource } from "@godot/classes/resource";
+import { Texture2D } from "@godot/classes/texture2d";
 
 export declare class SpriteFrames extends Resource{
   public add_animation(_anim: String | StringName | string): void;

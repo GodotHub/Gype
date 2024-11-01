@@ -1,9 +1,9 @@
 
-import { Node } from "@godot/classes/node";
 import { Gradient } from "@godot/classes/gradient";
 import { GeometryInstance3D } from "@godot/classes/geometry_instance3d";
-import { Mesh } from "@godot/classes/mesh";
 import { Curve } from "@godot/classes/curve";
+import { Mesh } from "@godot/classes/mesh";
+import { Node } from "@godot/classes/node";
 
 export declare class CPUParticles3D extends GeometryInstance3D{
   public set_emitting(_emitting: boolean): void;

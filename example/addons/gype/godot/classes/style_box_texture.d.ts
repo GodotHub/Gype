@@ -1,6 +1,6 @@
 
-import { StyleBox } from "@godot/classes/style_box";
 import { Texture2D } from "@godot/classes/texture2d";
+import { StyleBox } from "@godot/classes/style_box";
 
 export declare class StyleBoxTexture extends StyleBox{
   public set_texture(_texture: Texture2D): void;

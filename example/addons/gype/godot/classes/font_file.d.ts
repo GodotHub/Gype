@@ -1,6 +1,6 @@
 
-import { Image } from "@godot/classes/image";
 import { Font } from "@godot/classes/font";
+import { Image } from "@godot/classes/image";
 
 export declare class FontFile extends Font{
   public load_bitmap_font(_path: String | StringName | string): number;

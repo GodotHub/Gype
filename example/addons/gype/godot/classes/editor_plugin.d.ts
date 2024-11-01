@@ -1,27 +1,27 @@
 
-import { EditorTranslationParserPlugin } from "@godot/classes/editor_translation_parser_plugin";
 import { EditorNode3DGizmoPlugin } from "@godot/classes/editor_node3d_gizmo_plugin";
+import { EditorTranslationParserPlugin } from "@godot/classes/editor_translation_parser_plugin";
 import { PopupMenu } from "@godot/classes/popup_menu";
 import { Shortcut } from "@godot/classes/shortcut";
-import { InputEvent } from "@godot/classes/input_event";
-import { Texture2D } from "@godot/classes/texture2d";
-import { EditorResourceConversionPlugin } from "@godot/classes/editor_resource_conversion_plugin";
 import { GodotObject } from "@godot/classes/godot_object";
-import { EditorExportPlugin } from "@godot/classes/editor_export_plugin";
-import { Button } from "@godot/classes/button";
 import { Node } from "@godot/classes/node";
 import { Script } from "@godot/classes/script";
-import { EditorUndoRedoManager } from "@godot/classes/editor_undo_redo_manager";
-import { ConfigFile } from "@godot/classes/config_file";
-import { EditorDebuggerPlugin } from "@godot/classes/editor_debugger_plugin";
-import { EditorImportPlugin } from "@godot/classes/editor_import_plugin";
-import { Camera3D } from "@godot/classes/camera3d";
-import { EditorSceneFormatImporter } from "@godot/classes/editor_scene_format_importer";
-import { EditorInspectorPlugin } from "@godot/classes/editor_inspector_plugin";
-import { EditorScenePostImportPlugin } from "@godot/classes/editor_scene_post_import_plugin";
 import { EditorInterface } from "@godot/classes/editor_interface";
 import { Control } from "@godot/classes/control";
+import { ConfigFile } from "@godot/classes/config_file";
+import { Button } from "@godot/classes/button";
+import { EditorImportPlugin } from "@godot/classes/editor_import_plugin";
+import { EditorScenePostImportPlugin } from "@godot/classes/editor_scene_post_import_plugin";
 import { ScriptCreateDialog } from "@godot/classes/script_create_dialog";
+import { EditorSceneFormatImporter } from "@godot/classes/editor_scene_format_importer";
+import { EditorDebuggerPlugin } from "@godot/classes/editor_debugger_plugin";
+import { EditorResourceConversionPlugin } from "@godot/classes/editor_resource_conversion_plugin";
+import { EditorExportPlugin } from "@godot/classes/editor_export_plugin";
+import { EditorUndoRedoManager } from "@godot/classes/editor_undo_redo_manager";
+import { InputEvent } from "@godot/classes/input_event";
+import { Texture2D } from "@godot/classes/texture2d";
+import { Camera3D } from "@godot/classes/camera3d";
+import { EditorInspectorPlugin } from "@godot/classes/editor_inspector_plugin";
 
 export declare class EditorPlugin extends Node{
   public _forward_canvas_gui_input(_event: InputEvent): boolean;

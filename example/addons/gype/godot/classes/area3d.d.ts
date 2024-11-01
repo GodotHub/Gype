@@ -1,7 +1,7 @@
 
 import { CollisionObject3D } from "@godot/classes/collision_object3d";
-import { Node3D } from "@godot/classes/node3d";
 import { Node } from "@godot/classes/node";
+import { Node3D } from "@godot/classes/node3d";
 
 export declare class Area3D extends CollisionObject3D{
   public set_gravity_space_override_mode(_space_override_mode: number): void;

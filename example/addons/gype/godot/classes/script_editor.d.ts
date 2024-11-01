@@ -1,8 +1,8 @@
 
-import { EditorSyntaxHighlighter } from "@godot/classes/editor_syntax_highlighter";
-import { ScriptEditorBase } from "@godot/classes/script_editor_base";
 import { ScriptEditorBase } from "@godot/classes/script_editor_base";
 import { PanelContainer } from "@godot/classes/panel_container";
+import { EditorSyntaxHighlighter } from "@godot/classes/editor_syntax_highlighter";
+import { ScriptEditorBase } from "@godot/classes/script_editor_base";
 import { Script } from "@godot/classes/script";
 import { Script } from "@godot/classes/script";
 

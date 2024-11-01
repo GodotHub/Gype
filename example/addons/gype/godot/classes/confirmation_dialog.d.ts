@@ -1,6 +1,6 @@
 
-import { Button } from "@godot/classes/button";
 import { AcceptDialog } from "@godot/classes/accept_dialog";
+import { Button } from "@godot/classes/button";
 
 export declare class ConfirmationDialog extends AcceptDialog{
   public get_cancel_button(): Button;

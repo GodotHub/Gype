@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/occluder_polygon2d.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/material.hpp>
-#include <godot_cpp/classes/tile_data.hpp>
-#include <godot_cpp/classes/occluder_polygon2d.hpp>
 #include <godot_cpp/classes/navigation_polygon.hpp>
+#include <godot_cpp/classes/tile_data.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

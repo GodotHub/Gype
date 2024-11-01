@@ -1,6 +1,6 @@
 
-import { PhysicsDirectSpaceState2D } from "@godot/classes/physics_direct_space_state2d";
 import { GodotObject } from "@godot/classes/godot_object";
+import { PhysicsDirectSpaceState2D } from "@godot/classes/physics_direct_space_state2d";
 
 export declare class PhysicsDirectBodyState2D extends GodotObject{
   public get_total_gravity(): Vector2;

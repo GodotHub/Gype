@@ -1,6 +1,6 @@
 
-import { Popup } from "@godot/classes/popup";
 import { Shortcut } from "@godot/classes/shortcut";
+import { Popup } from "@godot/classes/popup";
 import { InputEvent } from "@godot/classes/input_event";
 import { Texture2D } from "@godot/classes/texture2d";
 

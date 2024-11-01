@@ -1,8 +1,8 @@
 
-import { TileMapPattern } from "@godot/classes/tile_map_pattern";
-import { Resource } from "@godot/classes/resource";
 import { TileSetSource } from "@godot/classes/tile_set_source";
+import { Resource } from "@godot/classes/resource";
 import { PhysicsMaterial } from "@godot/classes/physics_material";
+import { TileMapPattern } from "@godot/classes/tile_map_pattern";
 
 export declare class TileSet extends Resource{
   public get_next_source_id(): number;

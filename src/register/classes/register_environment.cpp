@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/sky.hpp>
-#include <godot_cpp/classes/texture.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/environment.hpp>
+#include <godot_cpp/classes/sky.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

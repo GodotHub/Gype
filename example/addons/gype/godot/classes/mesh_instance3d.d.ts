@@ -1,11 +1,11 @@
 
-import { SkinReference } from "@godot/classes/skin_reference";
-import { Material } from "@godot/classes/material";
-import { Skin } from "@godot/classes/skin";
 import { GeometryInstance3D } from "@godot/classes/geometry_instance3d";
+import { SkinReference } from "@godot/classes/skin_reference";
+import { Skin } from "@godot/classes/skin";
 import { MeshConvexDecompositionSettings } from "@godot/classes/mesh_convex_decomposition_settings";
-import { ArrayMesh } from "@godot/classes/array_mesh";
 import { Mesh } from "@godot/classes/mesh";
+import { Material } from "@godot/classes/material";
+import { ArrayMesh } from "@godot/classes/array_mesh";
 
 export declare class MeshInstance3D extends GeometryInstance3D{
   public set_mesh(_mesh: Mesh): void;

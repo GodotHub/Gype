@@ -1,7 +1,7 @@
 
 import { TextureRect } from "@godot/classes/texture_rect";
-import { RefCounted } from "@godot/classes/ref_counted";
 import { Control } from "@godot/classes/control";
+import { RefCounted } from "@godot/classes/ref_counted";
 
 export declare class EditorResourceTooltipPlugin extends RefCounted{
   public _handles(_type: String | StringName | string): boolean;

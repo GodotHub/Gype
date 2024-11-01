@@ -1,6 +1,6 @@
 
-import { Image } from "@godot/classes/image";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Image } from "@godot/classes/image";
 
 export declare class ImageTexture extends Texture2D{
   public create_from_image(_image: Image): ImageTexture;
