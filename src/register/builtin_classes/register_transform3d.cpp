@@ -24,7 +24,7 @@ static JSValue transform3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 	if (JS_IsException(obj))
 		return obj;
 
-	Transform3D *transform3d_class;
+	Transform3D *transform3d_class = nullptr;
 
 	if (argc == 0) {
 		transform3d_class = memnew(Transform3D());

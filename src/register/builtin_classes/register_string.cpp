@@ -24,7 +24,7 @@ static JSValue string_class_constructor(JSContext *ctx, JSValueConst new_target,
 	if (JS_IsException(obj))
 		return obj;
 
-	String *string_class;
+	String *string_class = nullptr;
 
 	if (argc == 0) {
 		string_class = memnew(String());

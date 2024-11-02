@@ -24,7 +24,7 @@ static JSValue projection_class_constructor(JSContext *ctx, JSValueConst new_tar
 	if (JS_IsException(obj))
 		return obj;
 
-	Projection *projection_class;
+	Projection *projection_class = nullptr;
 
 	if (argc == 0) {
 		projection_class = memnew(Projection());

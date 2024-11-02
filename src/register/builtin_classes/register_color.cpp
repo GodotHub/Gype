@@ -24,7 +24,7 @@ static JSValue color_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	if (JS_IsException(obj))
 		return obj;
 
-	Color *color_class;
+	Color *color_class = nullptr;
 
 	if (argc == 0) {
 		color_class = memnew(Color());

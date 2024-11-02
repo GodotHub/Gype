@@ -24,7 +24,7 @@ static JSValue array_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	if (JS_IsException(obj))
 		return obj;
 
-	Array *array_class;
+	Array *array_class = nullptr;
 
 	if (argc == 0) {
 		array_class = memnew(Array());

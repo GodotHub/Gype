@@ -24,7 +24,7 @@ static JSValue plane_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	if (JS_IsException(obj))
 		return obj;
 
-	Plane *plane_class;
+	Plane *plane_class = nullptr;
 
 	if (argc == 0) {
 		plane_class = memnew(Plane());

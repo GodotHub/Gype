@@ -24,7 +24,7 @@ static JSValue basis_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	if (JS_IsException(obj))
 		return obj;
 
-	Basis *basis_class;
+	Basis *basis_class = nullptr;
 
 	if (argc == 0) {
 		basis_class = memnew(Basis());

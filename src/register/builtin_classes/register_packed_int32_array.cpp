@@ -24,7 +24,7 @@ static JSValue packed_int32_array_class_constructor(JSContext *ctx, JSValueConst
 	if (JS_IsException(obj))
 		return obj;
 
-	PackedInt32Array *packed_int32_array_class;
+	PackedInt32Array *packed_int32_array_class = nullptr;
 
 	if (argc == 0) {
 		packed_int32_array_class = memnew(PackedInt32Array());

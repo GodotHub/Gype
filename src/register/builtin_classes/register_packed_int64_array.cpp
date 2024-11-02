@@ -24,7 +24,7 @@ static JSValue packed_int64_array_class_constructor(JSContext *ctx, JSValueConst
 	if (JS_IsException(obj))
 		return obj;
 
-	PackedInt64Array *packed_int64_array_class;
+	PackedInt64Array *packed_int64_array_class = nullptr;
 
 	if (argc == 0) {
 		packed_int64_array_class = memnew(PackedInt64Array());

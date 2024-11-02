@@ -24,7 +24,7 @@ static JSValue rect2i_class_constructor(JSContext *ctx, JSValueConst new_target,
 	if (JS_IsException(obj))
 		return obj;
 
-	Rect2i *rect2i_class;
+	Rect2i *rect2i_class = nullptr;
 
 	if (argc == 0) {
 		rect2i_class = memnew(Rect2i());

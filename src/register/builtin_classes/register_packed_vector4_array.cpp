@@ -24,7 +24,7 @@ static JSValue packed_vector4_array_class_constructor(JSContext *ctx, JSValueCon
 	if (JS_IsException(obj))
 		return obj;
 
-	PackedVector4Array *packed_vector4_array_class;
+	PackedVector4Array *packed_vector4_array_class = nullptr;
 
 	if (argc == 0) {
 		packed_vector4_array_class = memnew(PackedVector4Array());

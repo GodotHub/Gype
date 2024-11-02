@@ -24,7 +24,7 @@ static JSValue node_path_class_constructor(JSContext *ctx, JSValueConst new_targ
 	if (JS_IsException(obj))
 		return obj;
 
-	NodePath *node_path_class;
+	NodePath *node_path_class = nullptr;
 
 	if (argc == 0) {
 		node_path_class = memnew(NodePath());

@@ -24,7 +24,7 @@ static JSValue quaternion_class_constructor(JSContext *ctx, JSValueConst new_tar
 	if (JS_IsException(obj))
 		return obj;
 
-	Quaternion *quaternion_class;
+	Quaternion *quaternion_class = nullptr;
 
 	if (argc == 0) {
 		quaternion_class = memnew(Quaternion());

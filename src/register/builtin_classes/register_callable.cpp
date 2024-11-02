@@ -25,7 +25,7 @@ static JSValue callable_class_constructor(JSContext *ctx, JSValueConst new_targe
 	if (JS_IsException(obj))
 		return obj;
 
-	Callable *callable_class;
+	Callable *callable_class = nullptr;
 
 	if (argc == 0) {
 		callable_class = memnew(Callable());

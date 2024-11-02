@@ -24,7 +24,7 @@ static JSValue transform2d_class_constructor(JSContext *ctx, JSValueConst new_ta
 	if (JS_IsException(obj))
 		return obj;
 
-	Transform2D *transform2d_class;
+	Transform2D *transform2d_class = nullptr;
 
 	if (argc == 0) {
 		transform2d_class = memnew(Transform2D());

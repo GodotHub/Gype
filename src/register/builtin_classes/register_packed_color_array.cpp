@@ -24,7 +24,7 @@ static JSValue packed_color_array_class_constructor(JSContext *ctx, JSValueConst
 	if (JS_IsException(obj))
 		return obj;
 
-	PackedColorArray *packed_color_array_class;
+	PackedColorArray *packed_color_array_class = nullptr;
 
 	if (argc == 0) {
 		packed_color_array_class = memnew(PackedColorArray());

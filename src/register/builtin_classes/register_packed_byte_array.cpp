@@ -24,7 +24,7 @@ static JSValue packed_byte_array_class_constructor(JSContext *ctx, JSValueConst 
 	if (JS_IsException(obj))
 		return obj;
 
-	PackedByteArray *packed_byte_array_class;
+	PackedByteArray *packed_byte_array_class = nullptr;
 
 	if (argc == 0) {
 		packed_byte_array_class = memnew(PackedByteArray());

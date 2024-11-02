@@ -24,7 +24,7 @@ static JSValue vector4i_class_constructor(JSContext *ctx, JSValueConst new_targe
 	if (JS_IsException(obj))
 		return obj;
 
-	Vector4i *vector4i_class;
+	Vector4i *vector4i_class = nullptr;
 
 	if (argc == 0) {
 		vector4i_class = memnew(Vector4i());

@@ -24,7 +24,7 @@ static JSValue rid_class_constructor(JSContext *ctx, JSValueConst new_target, in
 	if (JS_IsException(obj))
 		return obj;
 
-	RID *rid_class;
+	RID *rid_class = nullptr;
 
 	if (argc == 0) {
 		rid_class = memnew(RID());

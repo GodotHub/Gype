@@ -24,7 +24,7 @@ static JSValue dictionary_class_constructor(JSContext *ctx, JSValueConst new_tar
 	if (JS_IsException(obj))
 		return obj;
 
-	Dictionary *dictionary_class;
+	Dictionary *dictionary_class = nullptr;
 
 	if (argc == 0) {
 		dictionary_class = memnew(Dictionary());

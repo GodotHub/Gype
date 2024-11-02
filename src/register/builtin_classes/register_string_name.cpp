@@ -24,7 +24,7 @@ static JSValue string_name_class_constructor(JSContext *ctx, JSValueConst new_ta
 	if (JS_IsException(obj))
 		return obj;
 
-	StringName *string_name_class;
+	StringName *string_name_class = nullptr;
 
 	if (argc == 0) {
 		string_name_class = memnew(StringName());

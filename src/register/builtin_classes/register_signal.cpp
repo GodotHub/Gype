@@ -24,7 +24,7 @@ static JSValue signal_class_constructor(JSContext *ctx, JSValueConst new_target,
 	if (JS_IsException(obj))
 		return obj;
 
-	Signal *signal_class;
+	Signal *signal_class = nullptr;
 
 	if (argc == 0) {
 		signal_class = memnew(Signal());

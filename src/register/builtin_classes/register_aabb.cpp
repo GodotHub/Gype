@@ -24,7 +24,7 @@ static JSValue aabb_class_constructor(JSContext *ctx, JSValueConst new_target, i
 	if (JS_IsException(obj))
 		return obj;
 
-	AABB *aabb_class;
+	AABB *aabb_class = nullptr;
 
 	if (argc == 0) {
 		aabb_class = memnew(AABB());
