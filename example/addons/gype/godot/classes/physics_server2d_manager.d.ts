@@ -1,8 +1,0 @@
-
-import { GodotObject } from "@godot/classes/godot_object";
-
-
-export declare class PhysicsServer2DManager extends GodotObject{
-  public register_server(_name: GDString | StringName | string, _create_callback: Callable): void;
-  public set_default_server(_name: GDString | StringName | string, _priority: number): void;
-}

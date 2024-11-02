@@ -1,4 +1,8 @@
 /.dist
+<<<<<<< HEAD
+=======
+example/.dist/
+>>>>>>> 0c008da7b935a7329ba949abea3320f1b5334455
 /node_modules
 /js-dist
 *.o
@@ -13,12 +17,14 @@ godot-cpp/__pycache__
 .venv
 .cache
 __pycache__
-.TMP
+*.tmp
+*.TMP
 example/addons.zip
+godot-cpp/.github/
 
-# /src/register/classes
-# /src/register/utility_functions
-# /src/register/global_enum
-# /include/register/classes
-# /include/register/utility_functions
-# /include/register/global_enum
+/src/register/classes
+/src/register/utility_functions
+/src/register/global_enum
+/include/register/classes
+/include/register/utility_functions
+/include/register/global_enum

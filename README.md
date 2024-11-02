@@ -8,7 +8,11 @@ Godot with Great JavaScript/TypeScript
 
 Import the [plugin](https://github.com/GodotHub/Gype/releases/download/preview/addons.zip) in a Godot project and use it like GDS：  
 ```js
+<<<<<<< HEAD
 import { GodotClass, Tool } from "@js_godot/class_defined";
+=======
+import { GodotClass, Tool } from "@godot/class_defined";
+>>>>>>> 0c008da7b935a7329ba949abea3320f1b5334455
 import { Sprite2D } from "godot/classes/sprite2d";
 
 @GodotClass
@@ -53,11 +57,16 @@ Notes:
 
 On Linux, you can run it directly without manually configuring GCC.  
 
+<<<<<<< HEAD
 On Windows, download [mingw64 (posix version)](https://github.com/niXman/mingw-builds-binaries/releases/download/13.2.0-rt_v11-rev1/x86_64-13.2.0-release-posix-seh-msvcrt-rt_v11-rev1.7z) and set the PATH env variable.
+=======
+On Windows, download [mingw64 (posix version)](https://github.com/niXman/mingw-builds-binaries/releases/download/13.2.0-rt_v11-rev1/x86_64-13.2.0-release-posix-seh-msvcrt-rt_v11-rev1.7z) and set the PATH env variable.  
+>>>>>>> 0c008da7b935a7329ba949abea3320f1b5334455
 
 #### Build library
 
 Windows: `./build.ps1`  
+<<<<<<< HEAD
 
 ```ts
 增加await signal支持
@@ -80,3 +89,5 @@ export class node_2d extends Node2D {
 	}
 }
 ```
+=======
+>>>>>>> 0c008da7b935a7329ba949abea3320f1b5334455
