@@ -1,6 +1,7 @@
 
-import { SkeletonModificationStack2D } from "@godot/classes/skeleton_modification_stack2d";
 import { Resource } from "@godot/classes/resource";
+import { SkeletonModificationStack2D } from "@godot/classes/skeleton_modification_stack2d";
+
 
 export declare class SkeletonModification2D extends Resource{
   public _execute(_delta: number): void;
@@ -16,16 +17,8 @@ export declare class SkeletonModification2D extends Resource{
   public clamp_angle(_angle: number, _min: number, _max: number, _invert: boolean): number;
   public set_editor_draw_gizmo(_draw_gizmo: boolean): void;
   public get_editor_draw_gizmo(): boolean;
-  public get enabled(): boolean {
-    get_enabled();
-  }
-  public set enabled(value): void {
-    set_enabled(value);
-  }
-  public get execution_mode(): number {
-    get_execution_mode();
-  }
-  public set execution_mode(value): void {
-    set_execution_mode(value);
-  }
+  public get enabled(): boolean;
+  public set enabled(value): void;
+  public get execution_mode(): number;
+  public set execution_mode(value): void;
 }

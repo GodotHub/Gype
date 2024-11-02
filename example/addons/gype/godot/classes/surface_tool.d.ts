@@ -1,8 +1,9 @@
 
 import { Mesh } from "@godot/classes/mesh";
-import { RefCounted } from "@godot/classes/ref_counted";
-import { Material } from "@godot/classes/material";
 import { ArrayMesh } from "@godot/classes/array_mesh";
+import { Material } from "@godot/classes/material";
+import { RefCounted } from "@godot/classes/ref_counted";
+
 
 export declare class SurfaceTool extends RefCounted{
   public set_skin_weight_count(_count: number): void;
@@ -34,7 +35,7 @@ export declare class SurfaceTool extends RefCounted{
   public clear(): void;
   public create_from(_existing: Mesh, _surface: number): void;
   public create_from_arrays(_arrays: GDArray, _primitive_type: number): void;
-  public create_from_blend_shape(_existing: Mesh, _surface: number, _blend_shape: String | StringName | string): void;
+  public create_from_blend_shape(_existing: Mesh, _surface: number, _blend_shape: GDString | StringName | string): void;
   public append_from(_existing: Mesh, _surface: number, _transform: Transform3D): void;
   public commit(_existing: ArrayMesh, _flags: number): ArrayMesh;
   public commit_to_arrays(): GDArray;

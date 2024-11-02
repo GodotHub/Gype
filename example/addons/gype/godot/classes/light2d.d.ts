@@ -1,6 +1,7 @@
 
 import { Node2D } from "@godot/classes/node2d";
 
+
 export declare class Light2D extends Node2D{
   public set_enabled(_enabled: boolean): void;
   public is_enabled(): boolean;
@@ -34,96 +35,36 @@ export declare class Light2D extends Node2D{
   public get_blend_mode(): number;
   public set_height(_height: number): void;
   public get_height(): number;
-  public get enabled(): boolean {
-    is_enabled();
-  }
-  public set enabled(value): void {
-    set_enabled(value);
-  }
-  public get editor_only(): boolean {
-    is_editor_only();
-  }
-  public set editor_only(value): void {
-    set_editor_only(value);
-  }
-  public get color(): Color {
-    get_color();
-  }
-  public set color(value): void {
-    set_color(value);
-  }
-  public get energy(): number {
-    get_energy();
-  }
-  public set energy(value): void {
-    set_energy(value);
-  }
-  public get blend_mode(): number {
-    get_blend_mode();
-  }
-  public set blend_mode(value): void {
-    set_blend_mode(value);
-  }
-  public get range_z_min(): number {
-    get_z_range_min();
-  }
-  public set range_z_min(value): void {
-    set_z_range_min(value);
-  }
-  public get range_z_max(): number {
-    get_z_range_max();
-  }
-  public set range_z_max(value): void {
-    set_z_range_max(value);
-  }
-  public get range_layer_min(): number {
-    get_layer_range_min();
-  }
-  public set range_layer_min(value): void {
-    set_layer_range_min(value);
-  }
-  public get range_layer_max(): number {
-    get_layer_range_max();
-  }
-  public set range_layer_max(value): void {
-    set_layer_range_max(value);
-  }
-  public get range_item_cull_mask(): number {
-    get_item_cull_mask();
-  }
-  public set range_item_cull_mask(value): void {
-    set_item_cull_mask(value);
-  }
-  public get shadow_enabled(): boolean {
-    is_shadow_enabled();
-  }
-  public set shadow_enabled(value): void {
-    set_shadow_enabled(value);
-  }
-  public get shadow_color(): Color {
-    get_shadow_color();
-  }
-  public set shadow_color(value): void {
-    set_shadow_color(value);
-  }
-  public get shadow_filter(): number {
-    get_shadow_filter();
-  }
-  public set shadow_filter(value): void {
-    set_shadow_filter(value);
-  }
-  public get shadow_filter_smooth(): number {
-    get_shadow_smooth();
-  }
-  public set shadow_filter_smooth(value): void {
-    set_shadow_smooth(value);
-  }
-  public get shadow_item_cull_mask(): number {
-    get_item_shadow_cull_mask();
-  }
-  public set shadow_item_cull_mask(value): void {
-    set_item_shadow_cull_mask(value);
-  }
+  public get enabled(): boolean;
+  public set enabled(value): void;
+  public get editor_only(): boolean;
+  public set editor_only(value): void;
+  public get color(): Color;
+  public set color(value): void;
+  public get energy(): number;
+  public set energy(value): void;
+  public get blend_mode(): number;
+  public set blend_mode(value): void;
+  public get range_z_min(): number;
+  public set range_z_min(value): void;
+  public get range_z_max(): number;
+  public set range_z_max(value): void;
+  public get range_layer_min(): number;
+  public set range_layer_min(value): void;
+  public get range_layer_max(): number;
+  public set range_layer_max(value): void;
+  public get range_item_cull_mask(): number;
+  public set range_item_cull_mask(value): void;
+  public get shadow_enabled(): boolean;
+  public set shadow_enabled(value): void;
+  public get shadow_color(): Color;
+  public set shadow_color(value): void;
+  public get shadow_filter(): number;
+  public set shadow_filter(value): void;
+  public get shadow_filter_smooth(): number;
+  public set shadow_filter_smooth(value): void;
+  public get shadow_item_cull_mask(): number;
+  public set shadow_item_cull_mask(value): void;
   static ShadowFilter = {
     SHADOW_FILTER_NONE = 0,
     SHADOW_FILTER_PCF5 = 1,

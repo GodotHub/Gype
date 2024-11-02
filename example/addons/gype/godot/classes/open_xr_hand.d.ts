@@ -1,10 +1,11 @@
 
 import { Node3D } from "@godot/classes/node3d";
 
+
 export declare class OpenXRHand extends Node3D{
   public set_hand(_hand: number): void;
   public get_hand(): number;
-  public set_hand_skeleton(_hand_skeleton: NodePath): void;
+  public set_hand_skeleton(_hand_skeleton: GDString | NodePath | string): void;
   public get_hand_skeleton(): NodePath;
   public set_motion_range(_motion_range: number): void;
   public get_motion_range(): number;
@@ -12,36 +13,16 @@ export declare class OpenXRHand extends Node3D{
   public get_skeleton_rig(): number;
   public set_bone_update(_bone_update: number): void;
   public get_bone_update(): number;
-  public get hand(): number {
-    get_hand();
-  }
-  public set hand(value): void {
-    set_hand(value);
-  }
-  public get motion_range(): number {
-    get_motion_range();
-  }
-  public set motion_range(value): void {
-    set_motion_range(value);
-  }
-  public get hand_skeleton(): NodePath {
-    get_hand_skeleton();
-  }
-  public set hand_skeleton(value): void {
-    set_hand_skeleton(value);
-  }
-  public get skeleton_rig(): number {
-    get_skeleton_rig();
-  }
-  public set skeleton_rig(value): void {
-    set_skeleton_rig(value);
-  }
-  public get bone_update(): number {
-    get_bone_update();
-  }
-  public set bone_update(value): void {
-    set_bone_update(value);
-  }
+  public get hand(): number;
+  public set hand(value): void;
+  public get motion_range(): number;
+  public set motion_range(value): void;
+  public get hand_skeleton(): NodePath;
+  public set hand_skeleton(value): void;
+  public get skeleton_rig(): number;
+  public set skeleton_rig(value): void;
+  public get bone_update(): number;
+  public set bone_update(value): void;
   static Hands = {
     HAND_LEFT = 0,
     HAND_RIGHT = 1,

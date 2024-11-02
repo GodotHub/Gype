@@ -1,9 +1,10 @@
 
-import { TriangleMesh } from "@godot/classes/triangle_mesh";
-import { Resource } from "@godot/classes/resource";
-import { ConcavePolygonShape3D } from "@godot/classes/concave_polygon_shape3d";
 import { ConvexPolygonShape3D } from "@godot/classes/convex_polygon_shape3d";
+import { ConcavePolygonShape3D } from "@godot/classes/concave_polygon_shape3d";
+import { TriangleMesh } from "@godot/classes/triangle_mesh";
 import { Material } from "@godot/classes/material";
+import { Resource } from "@godot/classes/resource";
+
 
 export declare class Mesh extends Resource{
   public _get_surface_count(): number;
@@ -18,7 +19,7 @@ export declare class Mesh extends Resource{
   public _surface_get_material(_index: number): Material;
   public _get_blend_shape_count(): number;
   public _get_blend_shape_name(_index: number): StringName;
-  public _set_blend_shape_name(_index: number, _name: String | StringName | string): void;
+  public _set_blend_shape_name(_index: number, _name: GDString | StringName | string): void;
   public _get_aabb(): AABB;
   public set_lightmap_size_hint(_size: Vector2i): void;
   public get_lightmap_size_hint(): Vector2i;
@@ -34,12 +35,8 @@ export declare class Mesh extends Resource{
   public create_convex_shape(_clean: boolean, _simplify: boolean): ConvexPolygonShape3D;
   public create_outline(_margin: number): Mesh;
   public generate_triangle_mesh(): TriangleMesh;
-  public get lightmap_size_hint(): Vector2i {
-    get_lightmap_size_hint();
-  }
-  public set lightmap_size_hint(value): void {
-    set_lightmap_size_hint(value);
-  }
+  public get lightmap_size_hint(): Vector2i;
+  public set lightmap_size_hint(value): void;
   static PrimitiveType = {
     PRIMITIVE_POINTS = 0,
     PRIMITIVE_LINES = 1,

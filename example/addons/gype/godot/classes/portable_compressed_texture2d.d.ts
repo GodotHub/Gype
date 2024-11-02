@@ -1,6 +1,7 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { Image } from "@godot/classes/image";
+import { Texture2D } from "@godot/classes/texture2d";
+
 
 export declare class PortableCompressedTexture2D extends Texture2D{
   public create_from_image(_image: Image, _compression_mode: number, _normal_map: boolean, _lossy_quality: number): void;
@@ -12,18 +13,10 @@ export declare class PortableCompressedTexture2D extends Texture2D{
   public is_keeping_compressed_buffer(): boolean;
   public set_keep_all_compressed_buffers(_keep: boolean): void;
   public is_keeping_all_compressed_buffers(): boolean;
-  public get size_override(): Vector2 {
-    get_size_override();
-  }
-  public set size_override(value): void {
-    set_size_override(value);
-  }
-  public get keep_compressed_buffer(): boolean {
-    is_keeping_compressed_buffer();
-  }
-  public set keep_compressed_buffer(value): void {
-    set_keep_compressed_buffer(value);
-  }
+  public get size_override(): Vector2;
+  public set size_override(value): void;
+  public get keep_compressed_buffer(): boolean;
+  public set keep_compressed_buffer(value): void;
   static CompressionMode = {
     COMPRESSION_MODE_LOSSLESS = 0,
     COMPRESSION_MODE_LOSSY = 1,

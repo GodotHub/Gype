@@ -1,15 +1,12 @@
 
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
 
+
 export declare class VisualShaderNodeMultiplyAdd extends VisualShaderNode{
   public set_op_type(_type: number): void;
   public get_op_type(): number;
-  public get op_type(): number {
-    get_op_type();
-  }
-  public set op_type(value): void {
-    set_op_type(value);
-  }
+  public get op_type(): number;
+  public set op_type(value): void;
   static OpType = {
     OP_TYPE_SCALAR = 0,
     OP_TYPE_VECTOR_2D = 1,

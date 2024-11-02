@@ -1,6 +1,7 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
 
+
 export declare class NavigationPathQueryParameters3D extends RefCounted{
   public set_pathfinding_algorithm(_pathfinding_algorithm: number): void;
   public get_pathfinding_algorithm(): number;
@@ -20,60 +21,24 @@ export declare class NavigationPathQueryParameters3D extends RefCounted{
   public get_simplify_path(): boolean;
   public set_simplify_epsilon(_epsilon: number): void;
   public get_simplify_epsilon(): number;
-  public get map(): RID {
-    get_map();
-  }
-  public set map(value): void {
-    set_map(value);
-  }
-  public get start_position(): Vector3 {
-    get_start_position();
-  }
-  public set start_position(value): void {
-    set_start_position(value);
-  }
-  public get target_position(): Vector3 {
-    get_target_position();
-  }
-  public set target_position(value): void {
-    set_target_position(value);
-  }
-  public get navigation_layers(): number {
-    get_navigation_layers();
-  }
-  public set navigation_layers(value): void {
-    set_navigation_layers(value);
-  }
-  public get pathfinding_algorithm(): number {
-    get_pathfinding_algorithm();
-  }
-  public set pathfinding_algorithm(value): void {
-    set_pathfinding_algorithm(value);
-  }
-  public get path_postprocessing(): number {
-    get_path_postprocessing();
-  }
-  public set path_postprocessing(value): void {
-    set_path_postprocessing(value);
-  }
-  public get metadata_flags(): number {
-    get_metadata_flags();
-  }
-  public set metadata_flags(value): void {
-    set_metadata_flags(value);
-  }
-  public get simplify_path(): boolean {
-    get_simplify_path();
-  }
-  public set simplify_path(value): void {
-    set_simplify_path(value);
-  }
-  public get simplify_epsilon(): number {
-    get_simplify_epsilon();
-  }
-  public set simplify_epsilon(value): void {
-    set_simplify_epsilon(value);
-  }
+  public get map(): RID;
+  public set map(value): void;
+  public get start_position(): Vector3;
+  public set start_position(value): void;
+  public get target_position(): Vector3;
+  public set target_position(value): void;
+  public get navigation_layers(): number;
+  public set navigation_layers(value): void;
+  public get pathfinding_algorithm(): number;
+  public set pathfinding_algorithm(value): void;
+  public get path_postprocessing(): number;
+  public set path_postprocessing(value): void;
+  public get metadata_flags(): number;
+  public set metadata_flags(value): void;
+  public get simplify_path(): boolean;
+  public set simplify_path(value): void;
+  public get simplify_epsilon(): number;
+  public set simplify_epsilon(value): void;
   static PathfindingAlgorithm = {
     PATHFINDING_ALGORITHM_ASTAR = 0,
   }

@@ -1,12 +1,13 @@
 
 import { AudioStream } from "@godot/classes/audio_stream";
 
+
 export declare class AudioStreamInteractive extends AudioStream{
   public set_clip_count(_clip_count: number): void;
   public get_clip_count(): number;
   public set_initial_clip(_clip_index: number): void;
   public get_initial_clip(): number;
-  public set_clip_name(_clip_index: number, _name: String | StringName | string): void;
+  public set_clip_name(_clip_index: number, _name: GDString | StringName | string): void;
   public get_clip_name(_clip_index: number): StringName;
   public set_clip_stream(_clip_index: number, _stream: AudioStream): void;
   public get_clip_stream(_clip_index: number): AudioStream;
@@ -25,18 +26,10 @@ export declare class AudioStreamInteractive extends AudioStream{
   public is_transition_using_filler_clip(_from_clip: number, _to_clip: number): boolean;
   public get_transition_filler_clip(_from_clip: number, _to_clip: number): number;
   public is_transition_holding_previous(_from_clip: number, _to_clip: number): boolean;
-  public get initial_clip(): number {
-    get_initial_clip();
-  }
-  public set initial_clip(value): void {
-    set_initial_clip(value);
-  }
-  public get clip_count(): number {
-    get_clip_count();
-  }
-  public set clip_count(value): void {
-    set_clip_count(value);
-  }
+  public get initial_clip(): number;
+  public set initial_clip(value): void;
+  public get clip_count(): number;
+  public set clip_count(value): void;
   static TransitionFromTime = {
     TRANSITION_FROM_TIME_IMMEDIATE = 0,
     TRANSITION_FROM_TIME_NEXT_BEAT = 1,

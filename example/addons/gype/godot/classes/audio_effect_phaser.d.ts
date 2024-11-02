@@ -1,6 +1,7 @@
 
 import { AudioEffect } from "@godot/classes/audio_effect";
 
+
 export declare class AudioEffectPhaser extends AudioEffect{
   public set_range_min_hz(_hz: number): void;
   public get_range_min_hz(): number;
@@ -12,34 +13,14 @@ export declare class AudioEffectPhaser extends AudioEffect{
   public get_feedback(): number;
   public set_depth(_depth: number): void;
   public get_depth(): number;
-  public get range_min_hz(): number {
-    get_range_min_hz();
-  }
-  public set range_min_hz(value): void {
-    set_range_min_hz(value);
-  }
-  public get range_max_hz(): number {
-    get_range_max_hz();
-  }
-  public set range_max_hz(value): void {
-    set_range_max_hz(value);
-  }
-  public get rate_hz(): number {
-    get_rate_hz();
-  }
-  public set rate_hz(value): void {
-    set_rate_hz(value);
-  }
-  public get feedback(): number {
-    get_feedback();
-  }
-  public set feedback(value): void {
-    set_feedback(value);
-  }
-  public get depth(): number {
-    get_depth();
-  }
-  public set depth(value): void {
-    set_depth(value);
-  }
+  public get range_min_hz(): number;
+  public set range_min_hz(value): void;
+  public get range_max_hz(): number;
+  public set range_max_hz(value): void;
+  public get rate_hz(): number;
+  public set rate_hz(value): void;
+  public get feedback(): number;
+  public set feedback(value): void;
+  public get depth(): number;
+  public set depth(value): void;
 }

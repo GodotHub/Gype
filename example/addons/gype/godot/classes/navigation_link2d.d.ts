@@ -1,6 +1,7 @@
 
 import { Node2D } from "@godot/classes/node2d";
 
+
 export declare class NavigationLink2D extends Node2D{
   public get_rid(): RID;
   public set_enabled(_enabled: boolean): void;
@@ -23,46 +24,18 @@ export declare class NavigationLink2D extends Node2D{
   public get_enter_cost(): number;
   public set_travel_cost(_travel_cost: number): void;
   public get_travel_cost(): number;
-  public get enabled(): boolean {
-    is_enabled();
-  }
-  public set enabled(value): void {
-    set_enabled(value);
-  }
-  public get bidirectional(): boolean {
-    is_bidirectional();
-  }
-  public set bidirectional(value): void {
-    set_bidirectional(value);
-  }
-  public get navigation_layers(): number {
-    get_navigation_layers();
-  }
-  public set navigation_layers(value): void {
-    set_navigation_layers(value);
-  }
-  public get start_position(): Vector2 {
-    get_start_position();
-  }
-  public set start_position(value): void {
-    set_start_position(value);
-  }
-  public get end_position(): Vector2 {
-    get_end_position();
-  }
-  public set end_position(value): void {
-    set_end_position(value);
-  }
-  public get enter_cost(): number {
-    get_enter_cost();
-  }
-  public set enter_cost(value): void {
-    set_enter_cost(value);
-  }
-  public get travel_cost(): number {
-    get_travel_cost();
-  }
-  public set travel_cost(value): void {
-    set_travel_cost(value);
-  }
+  public get enabled(): boolean;
+  public set enabled(value): void;
+  public get bidirectional(): boolean;
+  public set bidirectional(value): void;
+  public get navigation_layers(): number;
+  public set navigation_layers(value): void;
+  public get start_position(): Vector2;
+  public set start_position(value): void;
+  public get end_position(): Vector2;
+  public set end_position(value): void;
+  public get enter_cost(): number;
+  public set enter_cost(value): void;
+  public get travel_cost(): number;
+  public set travel_cost(value): void;
 }

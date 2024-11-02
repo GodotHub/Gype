@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rigid_body2d.hpp>
-#include <godot_cpp/classes/physics_material.hpp>
 #include <godot_cpp/classes/physics_direct_body_state2d.hpp>
-#include <godot_cpp/classes/physics_body2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/physics_material.hpp>
+#include <godot_cpp/classes/rigid_body2d.hpp>
+#include <godot_cpp/classes/physics_body2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

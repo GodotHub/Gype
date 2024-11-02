@@ -1,7 +1,8 @@
 
-import { TileData } from "@godot/classes/tile_data";
-import { Texture2D } from "@godot/classes/texture2d";
 import { TileSetSource } from "@godot/classes/tile_set_source";
+import { Texture2D } from "@godot/classes/texture2d";
+import { TileData } from "@godot/classes/tile_data";
+
 
 export declare class TileSetAtlasSource extends TileSetSource{
   public set_texture(_texture: Texture2D): void;
@@ -45,36 +46,16 @@ export declare class TileSetAtlasSource extends TileSetSource{
   public get_tile_texture_region(_atlas_coords: Vector2i, _frame: number): Rect2i;
   public get_runtime_texture(): Texture2D;
   public get_runtime_tile_texture_region(_atlas_coords: Vector2i, _frame: number): Rect2i;
-  public get texture(): Texture2D {
-    get_texture();
-  }
-  public set texture(value): void {
-    set_texture(value);
-  }
-  public get margins(): Vector2i {
-    get_margins();
-  }
-  public set margins(value): void {
-    set_margins(value);
-  }
-  public get separation(): Vector2i {
-    get_separation();
-  }
-  public set separation(value): void {
-    set_separation(value);
-  }
-  public get texture_region_size(): Vector2i {
-    get_texture_region_size();
-  }
-  public set texture_region_size(value): void {
-    set_texture_region_size(value);
-  }
-  public get use_texture_padding(): boolean {
-    get_use_texture_padding();
-  }
-  public set use_texture_padding(value): void {
-    set_use_texture_padding(value);
-  }
+  public get texture(): Texture2D;
+  public set texture(value): void;
+  public get margins(): Vector2i;
+  public set margins(value): void;
+  public get separation(): Vector2i;
+  public set separation(value): void;
+  public get texture_region_size(): Vector2i;
+  public set texture_region_size(value): void;
+  public get use_texture_padding(): boolean;
+  public set use_texture_padding(value): void;
   static TileAnimationMode = {
     TILE_ANIMATION_MODE_DEFAULT = 0,
     TILE_ANIMATION_MODE_RANDOM_START_TIMES = 1,

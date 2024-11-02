@@ -1,12 +1,13 @@
 
-import { Container } from "@godot/classes/container";
 import { Control } from "@godot/classes/control";
+import { Container } from "@godot/classes/container";
 import { GodotObject } from "@godot/classes/godot_object";
+
 
 export declare class EditorProperty extends Container{
   public _update_property(): void;
   public _set_read_only(_read_only: boolean): void;
-  public set_label(_text: String | StringName | string): void;
+  public set_label(_text: GDString | StringName | string): void;
   public get_label(): String;
   public set_read_only(_read_only: boolean): void;
   public is_read_only(): boolean;
@@ -25,49 +26,21 @@ export declare class EditorProperty extends Container{
   public update_property(): void;
   public add_focusable(_control: Control): void;
   public set_bottom_editor(_editor: Control): void;
-  public emit_changed(_property: String | StringName | string, _value: any, _field: String | StringName | string, _changing: boolean): void;
-  public get label(): String {
-    get_label();
-  }
-  public set label(value): void {
-    set_label(value);
-  }
-  public get read_only(): boolean {
-    is_read_only();
-  }
-  public set read_only(value): void {
-    set_read_only(value);
-  }
-  public get checkable(): boolean {
-    is_checkable();
-  }
-  public set checkable(value): void {
-    set_checkable(value);
-  }
-  public get checked(): boolean {
-    is_checked();
-  }
-  public set checked(value): void {
-    set_checked(value);
-  }
-  public get draw_warning(): boolean {
-    is_draw_warning();
-  }
-  public set draw_warning(value): void {
-    set_draw_warning(value);
-  }
-  public get keying(): boolean {
-    is_keying();
-  }
-  public set keying(value): void {
-    set_keying(value);
-  }
-  public get deletable(): boolean {
-    is_deletable();
-  }
-  public set deletable(value): void {
-    set_deletable(value);
-  }
+  public emit_changed(_property: GDString | StringName | string, _value: any, _field: GDString | StringName | string, _changing: boolean): void;
+  public get label(): String;
+  public set label(value): void;
+  public get read_only(): boolean;
+  public set read_only(value): void;
+  public get checkable(): boolean;
+  public set checkable(value): void;
+  public get checked(): boolean;
+  public set checked(value): void;
+  public get draw_warning(): boolean;
+  public set draw_warning(value): void;
+  public get keying(): boolean;
+  public set keying(value): void;
+  public get deletable(): boolean;
+  public set deletable(value): void;
   public get property_changed(): Signal;
   public get multiple_properties_changed(): Signal;
   public get property_keyed(): Signal;

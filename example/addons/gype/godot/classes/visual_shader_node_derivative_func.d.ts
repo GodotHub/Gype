@@ -1,6 +1,7 @@
 
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
 
+
 export declare class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
   public set_op_type(_type: number): void;
   public get_op_type(): number;
@@ -8,24 +9,12 @@ export declare class VisualShaderNodeDerivativeFunc extends VisualShaderNode{
   public get_function(): number;
   public set_precision(_precision: number): void;
   public get_precision(): number;
-  public get op_type(): number {
-    get_op_type();
-  }
-  public set op_type(value): void {
-    set_op_type(value);
-  }
-  public get function(): number {
-    get_function();
-  }
-  public set function(value): void {
-    set_function(value);
-  }
-  public get precision(): number {
-    get_precision();
-  }
-  public set precision(value): void {
-    set_precision(value);
-  }
+  public get op_type(): number;
+  public set op_type(value): void;
+  public get function(): number;
+  public set function(value): void;
+  public get precision(): number;
+  public set precision(value): void;
   static OpType = {
     OP_TYPE_SCALAR = 0,
     OP_TYPE_VECTOR_2D = 1,

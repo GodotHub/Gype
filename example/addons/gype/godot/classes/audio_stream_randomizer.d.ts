@@ -1,6 +1,7 @@
 
 import { AudioStream } from "@godot/classes/audio_stream";
 
+
 export declare class AudioStreamRandomizer extends AudioStream{
   public add_stream(_index: number, _stream: AudioStream, _weight: number): void;
   public move_stream(_index_from: number, _index_to: number): void;
@@ -17,30 +18,14 @@ export declare class AudioStreamRandomizer extends AudioStream{
   public get_random_volume_offset_db(): number;
   public set_playback_mode(_mode: number): void;
   public get_playback_mode(): number;
-  public get playback_mode(): number {
-    get_playback_mode();
-  }
-  public set playback_mode(value): void {
-    set_playback_mode(value);
-  }
-  public get random_pitch(): number {
-    get_random_pitch();
-  }
-  public set random_pitch(value): void {
-    set_random_pitch(value);
-  }
-  public get random_volume_offset_db(): number {
-    get_random_volume_offset_db();
-  }
-  public set random_volume_offset_db(value): void {
-    set_random_volume_offset_db(value);
-  }
-  public get streams_count(): number {
-    get_streams_count();
-  }
-  public set streams_count(value): void {
-    set_streams_count(value);
-  }
+  public get playback_mode(): number;
+  public set playback_mode(value): void;
+  public get random_pitch(): number;
+  public set random_pitch(value): void;
+  public get random_volume_offset_db(): number;
+  public set random_volume_offset_db(value): void;
+  public get streams_count(): number;
+  public set streams_count(value): void;
   static PlaybackMode = {
     PLAYBACK_RANDOM_NO_REPEATS = 0,
     PLAYBACK_RANDOM = 1,

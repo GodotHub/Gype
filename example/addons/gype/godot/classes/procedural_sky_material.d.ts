@@ -2,6 +2,7 @@
 import { Texture2D } from "@godot/classes/texture2d";
 import { Material } from "@godot/classes/material";
 
+
 export declare class ProceduralSkyMaterial extends Material{
   public set_sky_top_color(_color: Color): void;
   public get_sky_top_color(): Color;
@@ -31,88 +32,32 @@ export declare class ProceduralSkyMaterial extends Material{
   public get_use_debanding(): boolean;
   public set_energy_multiplier(_multiplier: number): void;
   public get_energy_multiplier(): number;
-  public get sky_top_color(): Color {
-    get_sky_top_color();
-  }
-  public set sky_top_color(value): void {
-    set_sky_top_color(value);
-  }
-  public get sky_horizon_color(): Color {
-    get_sky_horizon_color();
-  }
-  public set sky_horizon_color(value): void {
-    set_sky_horizon_color(value);
-  }
-  public get sky_curve(): number {
-    get_sky_curve();
-  }
-  public set sky_curve(value): void {
-    set_sky_curve(value);
-  }
-  public get sky_energy_multiplier(): number {
-    get_sky_energy_multiplier();
-  }
-  public set sky_energy_multiplier(value): void {
-    set_sky_energy_multiplier(value);
-  }
-  public get sky_cover(): Texture2D {
-    get_sky_cover();
-  }
-  public set sky_cover(value): void {
-    set_sky_cover(value);
-  }
-  public get sky_cover_modulate(): Color {
-    get_sky_cover_modulate();
-  }
-  public set sky_cover_modulate(value): void {
-    set_sky_cover_modulate(value);
-  }
-  public get ground_bottom_color(): Color {
-    get_ground_bottom_color();
-  }
-  public set ground_bottom_color(value): void {
-    set_ground_bottom_color(value);
-  }
-  public get ground_horizon_color(): Color {
-    get_ground_horizon_color();
-  }
-  public set ground_horizon_color(value): void {
-    set_ground_horizon_color(value);
-  }
-  public get ground_curve(): number {
-    get_ground_curve();
-  }
-  public set ground_curve(value): void {
-    set_ground_curve(value);
-  }
-  public get ground_energy_multiplier(): number {
-    get_ground_energy_multiplier();
-  }
-  public set ground_energy_multiplier(value): void {
-    set_ground_energy_multiplier(value);
-  }
-  public get sun_angle_max(): number {
-    get_sun_angle_max();
-  }
-  public set sun_angle_max(value): void {
-    set_sun_angle_max(value);
-  }
-  public get sun_curve(): number {
-    get_sun_curve();
-  }
-  public set sun_curve(value): void {
-    set_sun_curve(value);
-  }
-  public get use_debanding(): boolean {
-    get_use_debanding();
-  }
-  public set use_debanding(value): void {
-    set_use_debanding(value);
-  }
-  public get energy_multiplier(): number {
-    get_energy_multiplier();
-  }
-  public set energy_multiplier(value): void {
-    set_energy_multiplier(value);
-  }
+  public get sky_top_color(): Color;
+  public set sky_top_color(value): void;
+  public get sky_horizon_color(): Color;
+  public set sky_horizon_color(value): void;
+  public get sky_curve(): number;
+  public set sky_curve(value): void;
+  public get sky_energy_multiplier(): number;
+  public set sky_energy_multiplier(value): void;
+  public get sky_cover(): Texture2D;
+  public set sky_cover(value): void;
+  public get sky_cover_modulate(): Color;
+  public set sky_cover_modulate(value): void;
+  public get ground_bottom_color(): Color;
+  public set ground_bottom_color(value): void;
+  public get ground_horizon_color(): Color;
+  public set ground_horizon_color(value): void;
+  public get ground_curve(): number;
+  public set ground_curve(value): void;
+  public get ground_energy_multiplier(): number;
+  public set ground_energy_multiplier(value): void;
+  public get sun_angle_max(): number;
+  public set sun_angle_max(value): void;
+  public get sun_curve(): number;
+  public set sun_curve(value): void;
+  public get use_debanding(): boolean;
+  public set use_debanding(value): void;
+  public get energy_multiplier(): number;
+  public set energy_multiplier(value): void;
 }

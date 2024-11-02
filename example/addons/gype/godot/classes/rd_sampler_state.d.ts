@@ -1,6 +1,7 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
 
+
 export declare class RDSamplerState extends RefCounted{
   public set_mag_filter(_p_member: number): void;
   public get_mag_filter(): number;
@@ -32,94 +33,34 @@ export declare class RDSamplerState extends RefCounted{
   public get_border_color(): number;
   public set_unnormalized_uvw(_p_member: boolean): void;
   public get_unnormalized_uvw(): boolean;
-  public get mag_filter(): number {
-    get_mag_filter();
-  }
-  public set mag_filter(value): void {
-    set_mag_filter(value);
-  }
-  public get min_filter(): number {
-    get_min_filter();
-  }
-  public set min_filter(value): void {
-    set_min_filter(value);
-  }
-  public get mip_filter(): number {
-    get_mip_filter();
-  }
-  public set mip_filter(value): void {
-    set_mip_filter(value);
-  }
-  public get repeat_u(): number {
-    get_repeat_u();
-  }
-  public set repeat_u(value): void {
-    set_repeat_u(value);
-  }
-  public get repeat_v(): number {
-    get_repeat_v();
-  }
-  public set repeat_v(value): void {
-    set_repeat_v(value);
-  }
-  public get repeat_w(): number {
-    get_repeat_w();
-  }
-  public set repeat_w(value): void {
-    set_repeat_w(value);
-  }
-  public get lod_bias(): number {
-    get_lod_bias();
-  }
-  public set lod_bias(value): void {
-    set_lod_bias(value);
-  }
-  public get use_anisotropy(): boolean {
-    get_use_anisotropy();
-  }
-  public set use_anisotropy(value): void {
-    set_use_anisotropy(value);
-  }
-  public get anisotropy_max(): number {
-    get_anisotropy_max();
-  }
-  public set anisotropy_max(value): void {
-    set_anisotropy_max(value);
-  }
-  public get enable_compare(): boolean {
-    get_enable_compare();
-  }
-  public set enable_compare(value): void {
-    set_enable_compare(value);
-  }
-  public get compare_op(): number {
-    get_compare_op();
-  }
-  public set compare_op(value): void {
-    set_compare_op(value);
-  }
-  public get min_lod(): number {
-    get_min_lod();
-  }
-  public set min_lod(value): void {
-    set_min_lod(value);
-  }
-  public get max_lod(): number {
-    get_max_lod();
-  }
-  public set max_lod(value): void {
-    set_max_lod(value);
-  }
-  public get border_color(): number {
-    get_border_color();
-  }
-  public set border_color(value): void {
-    set_border_color(value);
-  }
-  public get unnormalized_uvw(): boolean {
-    get_unnormalized_uvw();
-  }
-  public set unnormalized_uvw(value): void {
-    set_unnormalized_uvw(value);
-  }
+  public get mag_filter(): number;
+  public set mag_filter(value): void;
+  public get min_filter(): number;
+  public set min_filter(value): void;
+  public get mip_filter(): number;
+  public set mip_filter(value): void;
+  public get repeat_u(): number;
+  public set repeat_u(value): void;
+  public get repeat_v(): number;
+  public set repeat_v(value): void;
+  public get repeat_w(): number;
+  public set repeat_w(value): void;
+  public get lod_bias(): number;
+  public set lod_bias(value): void;
+  public get use_anisotropy(): boolean;
+  public set use_anisotropy(value): void;
+  public get anisotropy_max(): number;
+  public set anisotropy_max(value): void;
+  public get enable_compare(): boolean;
+  public set enable_compare(value): void;
+  public get compare_op(): number;
+  public set compare_op(value): void;
+  public get min_lod(): number;
+  public set min_lod(value): void;
+  public get max_lod(): number;
+  public set max_lod(value): void;
+  public get border_color(): number;
+  public set border_color(value): void;
+  public get unnormalized_uvw(): boolean;
+  public set unnormalized_uvw(value): void;
 }

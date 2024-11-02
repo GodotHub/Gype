@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gradient.hpp>
-#include <godot_cpp/classes/noise.hpp>
 #include <godot_cpp/classes/noise_texture3d.hpp>
+#include <godot_cpp/classes/gradient.hpp>
 #include <godot_cpp/classes/texture3d.hpp>
+#include <godot_cpp/classes/noise.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

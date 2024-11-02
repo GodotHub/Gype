@@ -1,6 +1,7 @@
 
 import { PacketPeer } from "@godot/classes/packet_peer";
 
+
 export declare class MultiplayerPeer extends PacketPeer{
   public set_transfer_channel(_channel: number): void;
   public get_transfer_channel(): number;
@@ -19,24 +20,12 @@ export declare class MultiplayerPeer extends PacketPeer{
   public set_refuse_new_connections(_enable: boolean): void;
   public is_refusing_new_connections(): boolean;
   public is_server_relay_supported(): boolean;
-  public get refuse_new_connections(): boolean {
-    is_refusing_new_connections();
-  }
-  public set refuse_new_connections(value): void {
-    set_refuse_new_connections(value);
-  }
-  public get transfer_mode(): number {
-    get_transfer_mode();
-  }
-  public set transfer_mode(value): void {
-    set_transfer_mode(value);
-  }
-  public get transfer_channel(): number {
-    get_transfer_channel();
-  }
-  public set transfer_channel(value): void {
-    set_transfer_channel(value);
-  }
+  public get refuse_new_connections(): boolean;
+  public set refuse_new_connections(value): void;
+  public get transfer_mode(): number;
+  public set transfer_mode(value): void;
+  public get transfer_channel(): number;
+  public set transfer_channel(value): void;
   static ConnectionStatus = {
     CONNECTION_DISCONNECTED = 0,
     CONNECTION_CONNECTING = 1,

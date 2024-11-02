@@ -1,14 +1,15 @@
 
 import { Resource } from "@godot/classes/resource";
 
+
 export declare class Animation extends Resource{
   public add_track(_type: number, _at_position: number): number;
   public remove_track(_track_idx: number): void;
   public get_track_count(): number;
   public track_get_type(_track_idx: number): number;
   public track_get_path(_track_idx: number): NodePath;
-  public track_set_path(_track_idx: number, _path: NodePath): void;
-  public find_track(_path: NodePath, _type: number): number;
+  public track_set_path(_track_idx: number, _path: GDString | NodePath | string): void;
+  public find_track(_path: GDString | NodePath | string, _type: number): number;
   public track_move_up(_track_idx: number): void;
   public track_move_down(_track_idx: number): void;
   public track_move_to(_track_idx: number, _to_idx: number): void;
@@ -63,8 +64,8 @@ export declare class Animation extends Resource{
   public audio_track_get_key_end_offset(_track_idx: number, _key_idx: number): number;
   public audio_track_set_use_blend(_track_idx: number, _enable: boolean): void;
   public audio_track_is_use_blend(_track_idx: number): boolean;
-  public animation_track_insert_key(_track_idx: number, _time: number, _animation: String | StringName | string): number;
-  public animation_track_set_key_animation(_track_idx: number, _key_idx: number, _animation: String | StringName | string): void;
+  public animation_track_insert_key(_track_idx: number, _time: number, _animation: GDString | StringName | string): number;
+  public animation_track_set_key_animation(_track_idx: number, _key_idx: number, _animation: GDString | StringName | string): void;
   public animation_track_get_key_animation(_track_idx: number, _key_idx: number): StringName;
   public set_length(_time_sec: number): void;
   public get_length(): number;
@@ -76,27 +77,13 @@ export declare class Animation extends Resource{
   public copy_track(_track_idx: number, _to_animation: Animation): void;
   public compress(_page_size: number, _fps: number, _split_tolerance: number): void;
   public is_capture_included(): boolean;
-  public get length(): number {
-    get_length();
-  }
-  public set length(value): void {
-    set_length(value);
-  }
-  public get loop_mode(): number {
-    get_loop_mode();
-  }
-  public set loop_mode(value): void {
-    set_loop_mode(value);
-  }
-  public get step(): number {
-    get_step();
-  }
-  public set step(value): void {
-    set_step(value);
-  }
-  public get capture_included(): boolean {
-    is_capture_included();
-  }
+  public get length(): number;
+  public set length(value): void;
+  public get loop_mode(): number;
+  public set loop_mode(value): void;
+  public get step(): number;
+  public set step(value): void;
+  public get capture_included(): boolean;
   static TrackType = {
     TYPE_VALUE = 0,
     TYPE_POSITION_3D = 1,

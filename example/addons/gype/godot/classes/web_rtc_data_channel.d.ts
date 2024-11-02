@@ -1,6 +1,7 @@
 
 import { PacketPeer } from "@godot/classes/packet_peer";
 
+
 export declare class WebRTCDataChannel extends PacketPeer{
   public poll(): number;
   public close(): void;
@@ -16,12 +17,8 @@ export declare class WebRTCDataChannel extends PacketPeer{
   public get_protocol(): String;
   public is_negotiated(): boolean;
   public get_buffered_amount(): number;
-  public get write_mode(): number {
-    get_write_mode();
-  }
-  public set write_mode(value): void {
-    set_write_mode(value);
-  }
+  public get write_mode(): number;
+  public set write_mode(value): void;
   static WriteMode = {
     WRITE_MODE_TEXT = 0,
     WRITE_MODE_BINARY = 1,

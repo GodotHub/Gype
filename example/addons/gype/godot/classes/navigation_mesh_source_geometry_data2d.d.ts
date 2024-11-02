@@ -1,6 +1,7 @@
 
 import { Resource } from "@godot/classes/resource";
 
+
 export declare class NavigationMeshSourceGeometryData2D extends Resource{
   public clear(): void;
   public has_data(): boolean;
@@ -17,22 +18,10 @@ export declare class NavigationMeshSourceGeometryData2D extends Resource{
   public clear_projected_obstructions(): void;
   public set_projected_obstructions(_projected_obstructions: GDArray): void;
   public get_projected_obstructions(): GDArray;
-  public get traversable_outlines(): GDArray {
-    get_traversable_outlines();
-  }
-  public set traversable_outlines(value): void {
-    set_traversable_outlines(value);
-  }
-  public get obstruction_outlines(): GDArray {
-    get_obstruction_outlines();
-  }
-  public set obstruction_outlines(value): void {
-    set_obstruction_outlines(value);
-  }
-  public get projected_obstructions(): GDArray {
-    get_projected_obstructions();
-  }
-  public set projected_obstructions(value): void {
-    set_projected_obstructions(value);
-  }
+  public get traversable_outlines(): GDArray;
+  public set traversable_outlines(value): void;
+  public get obstruction_outlines(): GDArray;
+  public set obstruction_outlines(value): void;
+  public get projected_obstructions(): GDArray;
+  public set projected_obstructions(value): void;
 }

@@ -1,6 +1,7 @@
 
 import { AudioEffect } from "@godot/classes/audio_effect";
 
+
 export declare class AudioEffectChorus extends AudioEffect{
   public set_voice_count(_voices: number): void;
   public get_voice_count(): number;
@@ -20,22 +21,10 @@ export declare class AudioEffectChorus extends AudioEffect{
   public get_wet(): number;
   public set_dry(_amount: number): void;
   public get_dry(): number;
-  public get voice_count(): number {
-    get_voice_count();
-  }
-  public set voice_count(value): void {
-    set_voice_count(value);
-  }
-  public get dry(): number {
-    get_dry();
-  }
-  public set dry(value): void {
-    set_dry(value);
-  }
-  public get wet(): number {
-    get_wet();
-  }
-  public set wet(value): void {
-    set_wet(value);
-  }
+  public get voice_count(): number;
+  public set voice_count(value): void;
+  public get dry(): number;
+  public set dry(value): void;
+  public get wet(): number;
+  public set wet(value): void;
 }

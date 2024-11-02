@@ -1,6 +1,7 @@
 
 import { Resource } from "@godot/classes/resource";
 
+
 export declare class Curve extends Resource{
   public get_point_count(): number;
   public set_point_count(_count: number): void;
@@ -28,30 +29,14 @@ export declare class Curve extends Resource{
   public bake(): void;
   public get_bake_resolution(): number;
   public set_bake_resolution(_resolution: number): void;
-  public get min_value(): number {
-    get_min_value();
-  }
-  public set min_value(value): void {
-    set_min_value(value);
-  }
-  public get max_value(): number {
-    get_max_value();
-  }
-  public set max_value(value): void {
-    set_max_value(value);
-  }
-  public get bake_resolution(): number {
-    get_bake_resolution();
-  }
-  public set bake_resolution(value): void {
-    set_bake_resolution(value);
-  }
-  public get point_count(): number {
-    get_point_count();
-  }
-  public set point_count(value): void {
-    set_point_count(value);
-  }
+  public get min_value(): number;
+  public set min_value(value): void;
+  public get max_value(): number;
+  public set max_value(value): void;
+  public get bake_resolution(): number;
+  public set bake_resolution(value): void;
+  public get point_count(): number;
+  public set point_count(value): void;
   static TangentMode = {
     TANGENT_FREE = 0,
     TANGENT_LINEAR = 1,

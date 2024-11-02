@@ -1,13 +1,14 @@
 
-import { SkinReference } from "@godot/classes/skin_reference";
 import { Skin } from "@godot/classes/skin";
+import { SkinReference } from "@godot/classes/skin_reference";
 import { Node3D } from "@godot/classes/node3d";
 
+
 export declare class Skeleton3D extends Node3D{
-  public add_bone(_name: String | StringName | string): number;
-  public find_bone(_name: String | StringName | string): number;
+  public add_bone(_name: GDString | StringName | string): number;
+  public find_bone(_name: GDString | StringName | string): number;
   public get_bone_name(_bone_idx: number): String;
-  public set_bone_name(_bone_idx: number, _name: String | StringName | string): void;
+  public set_bone_name(_bone_idx: number, _name: GDString | StringName | string): void;
   public get_concatenated_bone_names(): StringName;
   public get_bone_parent(_bone_idx: number): number;
   public set_bone_parent(_bone_idx: number, _parent_idx: number): void;
@@ -55,30 +56,14 @@ export declare class Skeleton3D extends Node3D{
   public physical_bones_start_simulation(_bones: GDArray): void;
   public physical_bones_add_collision_exception(_exception: RID): void;
   public physical_bones_remove_collision_exception(_exception: RID): void;
-  public get motion_scale(): number {
-    get_motion_scale();
-  }
-  public set motion_scale(value): void {
-    set_motion_scale(value);
-  }
-  public get show_rest_only(): boolean {
-    is_show_rest_only();
-  }
-  public set show_rest_only(value): void {
-    set_show_rest_only(value);
-  }
-  public get modifier_callback_mode_process(): number {
-    get_modifier_callback_mode_process();
-  }
-  public set modifier_callback_mode_process(value): void {
-    set_modifier_callback_mode_process(value);
-  }
-  public get animate_physical_bones(): boolean {
-    get_animate_physical_bones();
-  }
-  public set animate_physical_bones(value): void {
-    set_animate_physical_bones(value);
-  }
+  public get motion_scale(): number;
+  public set motion_scale(value): void;
+  public get show_rest_only(): boolean;
+  public set show_rest_only(value): void;
+  public get modifier_callback_mode_process(): number;
+  public set modifier_callback_mode_process(value): void;
+  public get animate_physical_bones(): boolean;
+  public set animate_physical_bones(value): void;
   static ModifierCallbackModeProcess = {
     MODIFIER_CALLBACK_MODE_PROCESS_PHYSICS = 0,
     MODIFIER_CALLBACK_MODE_PROCESS_IDLE = 1,

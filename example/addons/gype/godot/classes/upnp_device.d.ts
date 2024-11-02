@@ -1,59 +1,36 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
 
+
 export declare class UPNPDevice extends RefCounted{
   public is_valid_gateway(): boolean;
   public query_external_address(): String;
-  public add_port_mapping(_port: number, _port_internal: number, _desc: String | StringName | string, _proto: String | StringName | string, _duration: number): number;
-  public delete_port_mapping(_port: number, _proto: String | StringName | string): number;
-  public set_description_url(_url: String | StringName | string): void;
+  public add_port_mapping(_port: number, _port_internal: number, _desc: GDString | StringName | string, _proto: GDString | StringName | string, _duration: number): number;
+  public delete_port_mapping(_port: number, _proto: GDString | StringName | string): number;
+  public set_description_url(_url: GDString | StringName | string): void;
   public get_description_url(): String;
-  public set_service_type(_type: String | StringName | string): void;
+  public set_service_type(_type: GDString | StringName | string): void;
   public get_service_type(): String;
-  public set_igd_control_url(_url: String | StringName | string): void;
+  public set_igd_control_url(_url: GDString | StringName | string): void;
   public get_igd_control_url(): String;
-  public set_igd_service_type(_type: String | StringName | string): void;
+  public set_igd_service_type(_type: GDString | StringName | string): void;
   public get_igd_service_type(): String;
-  public set_igd_our_addr(_addr: String | StringName | string): void;
+  public set_igd_our_addr(_addr: GDString | StringName | string): void;
   public get_igd_our_addr(): String;
   public set_igd_status(_status: number): void;
   public get_igd_status(): number;
-  public get description_url(): String {
-    get_description_url();
-  }
-  public set description_url(value): void {
-    set_description_url(value);
-  }
-  public get service_type(): String {
-    get_service_type();
-  }
-  public set service_type(value): void {
-    set_service_type(value);
-  }
-  public get igd_control_url(): String {
-    get_igd_control_url();
-  }
-  public set igd_control_url(value): void {
-    set_igd_control_url(value);
-  }
-  public get igd_service_type(): String {
-    get_igd_service_type();
-  }
-  public set igd_service_type(value): void {
-    set_igd_service_type(value);
-  }
-  public get igd_our_addr(): String {
-    get_igd_our_addr();
-  }
-  public set igd_our_addr(value): void {
-    set_igd_our_addr(value);
-  }
-  public get igd_status(): number {
-    get_igd_status();
-  }
-  public set igd_status(value): void {
-    set_igd_status(value);
-  }
+  public get description_url(): String;
+  public set description_url(value): void;
+  public get service_type(): String;
+  public set service_type(value): void;
+  public get igd_control_url(): String;
+  public set igd_control_url(value): void;
+  public get igd_service_type(): String;
+  public set igd_service_type(value): void;
+  public get igd_our_addr(): String;
+  public set igd_our_addr(value): void;
+  public get igd_status(): number;
+  public set igd_status(value): void;
   static IGDStatus = {
     IGD_STATUS_OK = 0,
     IGD_STATUS_HTTP_ERROR = 1,

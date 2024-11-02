@@ -2,6 +2,7 @@
 import { PrimitiveMesh } from "@godot/classes/primitive_mesh";
 import { Curve } from "@godot/classes/curve";
 
+
 export declare class RibbonTrailMesh extends PrimitiveMesh{
   public set_size(_size: number): void;
   public get_size(): number;
@@ -15,42 +16,18 @@ export declare class RibbonTrailMesh extends PrimitiveMesh{
   public get_curve(): Curve;
   public set_shape(_shape: number): void;
   public get_shape(): number;
-  public get shape(): number {
-    get_shape();
-  }
-  public set shape(value): void {
-    set_shape(value);
-  }
-  public get size(): number {
-    get_size();
-  }
-  public set size(value): void {
-    set_size(value);
-  }
-  public get sections(): number {
-    get_sections();
-  }
-  public set sections(value): void {
-    set_sections(value);
-  }
-  public get section_length(): number {
-    get_section_length();
-  }
-  public set section_length(value): void {
-    set_section_length(value);
-  }
-  public get section_segments(): number {
-    get_section_segments();
-  }
-  public set section_segments(value): void {
-    set_section_segments(value);
-  }
-  public get curve(): Curve {
-    get_curve();
-  }
-  public set curve(value): void {
-    set_curve(value);
-  }
+  public get shape(): number;
+  public set shape(value): void;
+  public get size(): number;
+  public set size(value): void;
+  public get sections(): number;
+  public set sections(value): void;
+  public get section_length(): number;
+  public set section_length(value): void;
+  public get section_segments(): number;
+  public set section_segments(value): void;
+  public get curve(): Curve;
+  public set curve(value): void;
   static Shape = {
     SHAPE_FLAT = 0,
     SHAPE_CROSS = 1,

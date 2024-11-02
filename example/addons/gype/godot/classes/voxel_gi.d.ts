@@ -1,8 +1,9 @@
 
-import { VoxelGIData } from "@godot/classes/voxel_gi_data";
 import { CameraAttributes } from "@godot/classes/camera_attributes";
+import { VoxelGIData } from "@godot/classes/voxel_gi_data";
 import { VisualInstance3D } from "@godot/classes/visual_instance3d";
 import { Node } from "@godot/classes/node";
+
 
 export declare class VoxelGI extends VisualInstance3D{
   public set_probe_data(_data: VoxelGIData): void;
@@ -15,30 +16,14 @@ export declare class VoxelGI extends VisualInstance3D{
   public get_camera_attributes(): CameraAttributes;
   public bake(_from_node: Node, _create_visual_debug: boolean): void;
   public debug_bake(): void;
-  public get subdiv(): number {
-    get_subdiv();
-  }
-  public set subdiv(value): void {
-    set_subdiv(value);
-  }
-  public get size(): Vector3 {
-    get_size();
-  }
-  public set size(value): void {
-    set_size(value);
-  }
-  public get camera_attributes(): CameraAttributesPractical {
-    get_camera_attributes();
-  }
-  public set camera_attributes(value): void {
-    set_camera_attributes(value);
-  }
-  public get data(): VoxelGIData {
-    get_probe_data();
-  }
-  public set data(value): void {
-    set_probe_data(value);
-  }
+  public get subdiv(): number;
+  public set subdiv(value): void;
+  public get size(): Vector3;
+  public set size(value): void;
+  public get camera_attributes(): CameraAttributesPractical;
+  public set camera_attributes(value): void;
+  public get data(): VoxelGIData;
+  public set data(value): void;
   static Subdiv = {
     SUBDIV_64 = 0,
     SUBDIV_128 = 1,

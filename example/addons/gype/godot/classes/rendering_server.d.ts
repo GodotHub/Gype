@@ -1,8 +1,9 @@
 
-import { RenderingDevice } from "@godot/classes/rendering_device";
+import { Image } from "@godot/classes/image";
 import { Image } from "@godot/classes/image";
 import { GodotObject } from "@godot/classes/godot_object";
-import { Image } from "@godot/classes/image";
+import { RenderingDevice } from "@godot/classes/rendering_device";
+
 
 export declare class RenderingServer extends GodotObject{
   public texture_2d_create(_image: Image): RID;
@@ -20,7 +21,7 @@ export declare class RenderingServer extends GodotObject{
   public texture_3d_get(_texture: RID): GDArray;
   public texture_replace(_texture: RID, _by_texture: RID): void;
   public texture_set_size_override(_texture: RID, _width: number, _height: number): void;
-  public texture_set_path(_texture: RID, _path: String | StringName | string): void;
+  public texture_set_path(_texture: RID, _path: GDString | StringName | string): void;
   public texture_get_path(_texture: RID): String;
   public texture_get_format(_texture: RID): number;
   public texture_set_force_redraw_if_visible(_texture: RID, _enable: boolean): void;
@@ -28,17 +29,17 @@ export declare class RenderingServer extends GodotObject{
   public texture_get_rd_texture(_texture: RID, _srgb: boolean): RID;
   public texture_get_native_handle(_texture: RID, _srgb: boolean): number;
   public shader_create(): RID;
-  public shader_set_code(_shader: RID, _code: String | StringName | string): void;
-  public shader_set_path_hint(_shader: RID, _path: String | StringName | string): void;
+  public shader_set_code(_shader: RID, _code: GDString | StringName | string): void;
+  public shader_set_path_hint(_shader: RID, _path: GDString | StringName | string): void;
   public shader_get_code(_shader: RID): String;
   public get_shader_parameter_list(_shader: RID): GDArray;
-  public shader_get_parameter_default(_shader: RID, _name: String | StringName | string): any;
-  public shader_set_default_texture_parameter(_shader: RID, _name: String | StringName | string, _texture: RID, _index: number): void;
-  public shader_get_default_texture_parameter(_shader: RID, _name: String | StringName | string, _index: number): RID;
+  public shader_get_parameter_default(_shader: RID, _name: GDString | StringName | string): any;
+  public shader_set_default_texture_parameter(_shader: RID, _name: GDString | StringName | string, _texture: RID, _index: number): void;
+  public shader_get_default_texture_parameter(_shader: RID, _name: GDString | StringName | string, _index: number): RID;
   public material_create(): RID;
   public material_set_shader(_shader_material: RID, _shader: RID): void;
-  public material_set_param(_material: RID, _parameter: String | StringName | string, _value: any): void;
-  public material_get_param(_material: RID, _parameter: String | StringName | string): any;
+  public material_set_param(_material: RID, _parameter: GDString | StringName | string, _value: any): void;
+  public material_get_param(_material: RID, _parameter: GDString | StringName | string): any;
   public material_set_render_priority(_material: RID, _priority: number): void;
   public material_set_next_pass(_material: RID, _next_material: RID): void;
   public mesh_create_from_surfaces(_surfaces: GDArray, _blend_shape_count: number): RID;
@@ -363,9 +364,9 @@ export declare class RenderingServer extends GodotObject{
   public instance_geometry_set_visibility_range(_instance: RID, _min: number, _max: number, _min_margin: number, _max_margin: number, _fade_mode: number): void;
   public instance_geometry_set_lightmap(_instance: RID, _lightmap: RID, _lightmap_uv_scale: Rect2, _lightmap_slice: number): void;
   public instance_geometry_set_lod_bias(_instance: RID, _lod_bias: number): void;
-  public instance_geometry_set_shader_parameter(_instance: RID, _parameter: String | StringName | string, _value: any): void;
-  public instance_geometry_get_shader_parameter(_instance: RID, _parameter: String | StringName | string): any;
-  public instance_geometry_get_shader_parameter_default_value(_instance: RID, _parameter: String | StringName | string): any;
+  public instance_geometry_set_shader_parameter(_instance: RID, _parameter: GDString | StringName | string, _value: any): void;
+  public instance_geometry_get_shader_parameter(_instance: RID, _parameter: GDString | StringName | string): any;
+  public instance_geometry_get_shader_parameter_default_value(_instance: RID, _parameter: GDString | StringName | string): any;
   public instance_geometry_get_shader_parameter_list(_instance: RID): GDArray;
   public instances_cull_aabb(_aabb: AABB, _scenario: RID): PackedInt64Array;
   public instances_cull_ray(_from: Vector3, _to: Vector3, _scenario: RID): PackedInt64Array;
@@ -465,13 +466,13 @@ export declare class RenderingServer extends GodotObject{
   public canvas_occluder_polygon_set_shape(_occluder_polygon: RID, _shape: PackedVector2Array, _closed: boolean): void;
   public canvas_occluder_polygon_set_cull_mode(_occluder_polygon: RID, _mode: number): void;
   public canvas_set_shadow_texture_size(_size: number): void;
-  public global_shader_parameter_add(_name: String | StringName | string, _type: number, _default_value: any): void;
-  public global_shader_parameter_remove(_name: String | StringName | string): void;
+  public global_shader_parameter_add(_name: GDString | StringName | string, _type: number, _default_value: any): void;
+  public global_shader_parameter_remove(_name: GDString | StringName | string): void;
   public global_shader_parameter_get_list(): GDArray;
-  public global_shader_parameter_set(_name: String | StringName | string, _value: any): void;
-  public global_shader_parameter_set_override(_name: String | StringName | string, _value: any): void;
-  public global_shader_parameter_get(_name: String | StringName | string): any;
-  public global_shader_parameter_get_type(_name: String | StringName | string): number;
+  public global_shader_parameter_set(_name: GDString | StringName | string, _value: any): void;
+  public global_shader_parameter_set_override(_name: GDString | StringName | string, _value: any): void;
+  public global_shader_parameter_get(_name: GDString | StringName | string): any;
+  public global_shader_parameter_get_type(_name: GDString | StringName | string): number;
   public free_rid(_rid: RID): void;
   public request_frame_drawn_callback(_callable: Callable): void;
   public has_changed(): boolean;
@@ -487,7 +488,7 @@ export declare class RenderingServer extends GodotObject{
   public set_boot_image(_image: Image, _color: Color, _scale: boolean, _use_filter: boolean): void;
   public get_default_clear_color(): Color;
   public set_default_clear_color(_color: Color): void;
-  public has_os_feature(_feature: String | StringName | string): boolean;
+  public has_os_feature(_feature: GDString | StringName | string): boolean;
   public set_debug_generate_wireframes(_generate: boolean): void;
   public is_render_loop_enabled(): boolean;
   public set_render_loop_enabled(_enabled: boolean): void;
@@ -499,12 +500,8 @@ export declare class RenderingServer extends GodotObject{
   public is_on_render_thread(): boolean;
   public call_on_render_thread(_callable: Callable): void;
   public has_feature(_feature: number): boolean;
-  public get render_loop_enabled(): boolean {
-    is_render_loop_enabled();
-  }
-  public set render_loop_enabled(value): void {
-    set_render_loop_enabled(value);
-  }
+  public get render_loop_enabled(): boolean;
+  public set render_loop_enabled(value): void;
   static TextureLayeredType = {
     TEXTURE_LAYERED_2D_ARRAY = 0,
     TEXTURE_LAYERED_CUBEMAP = 1,

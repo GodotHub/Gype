@@ -1,6 +1,7 @@
 
 import { Resource } from "@godot/classes/resource";
 
+
 export declare class VisualShaderNode extends Resource{
   public get_default_input_port(_type: number): number;
   public set_output_port_for_preview(_port: number): void;
@@ -13,30 +14,14 @@ export declare class VisualShaderNode extends Resource{
   public get_default_input_values(): GDArray;
   public set_frame(_frame: number): void;
   public get_frame(): number;
-  public get output_port_for_preview(): number {
-    get_output_port_for_preview();
-  }
-  public set output_port_for_preview(value): void {
-    set_output_port_for_preview(value);
-  }
-  public get default_input_values(): GDArray {
-    get_default_input_values();
-  }
-  public set default_input_values(value): void {
-    set_default_input_values(value);
-  }
-  public get expanded_output_ports(): GDArray {
-    _get_output_ports_expanded();
-  }
-  public set expanded_output_ports(value): void {
-    _set_output_ports_expanded(value);
-  }
-  public get linked_parent_graph_frame(): number {
-    get_frame();
-  }
-  public set linked_parent_graph_frame(value): void {
-    set_frame(value);
-  }
+  public get output_port_for_preview(): number;
+  public set output_port_for_preview(value): void;
+  public get default_input_values(): GDArray;
+  public set default_input_values(value): void;
+  public get expanded_output_ports(): GDArray;
+  public set expanded_output_ports(value): void;
+  public get linked_parent_graph_frame(): number;
+  public set linked_parent_graph_frame(value): void;
   static PortType = {
     PORT_TYPE_SCALAR = 0,
     PORT_TYPE_SCALAR_INT = 1,

@@ -1,6 +1,7 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
 import { PhysicsDirectSpaceState2D } from "@godot/classes/physics_direct_space_state2d";
+import { GodotObject } from "@godot/classes/godot_object";
+
 
 export declare class PhysicsDirectBodyState2D extends GodotObject{
   public get_total_gravity(): Vector2;
@@ -47,52 +48,20 @@ export declare class PhysicsDirectBodyState2D extends GodotObject{
   public get_step(): number;
   public integrate_forces(): void;
   public get_space_state(): PhysicsDirectSpaceState2D;
-  public get step(): number {
-    get_step();
-  }
-  public get inverse_mass(): number {
-    get_inverse_mass();
-  }
-  public get inverse_inertia(): number {
-    get_inverse_inertia();
-  }
-  public get total_angular_damp(): number {
-    get_total_angular_damp();
-  }
-  public get total_linear_damp(): number {
-    get_total_linear_damp();
-  }
-  public get total_gravity(): Vector2 {
-    get_total_gravity();
-  }
-  public get center_of_mass(): Vector2 {
-    get_center_of_mass();
-  }
-  public get center_of_mass_local(): Vector2 {
-    get_center_of_mass_local();
-  }
-  public get angular_velocity(): number {
-    get_angular_velocity();
-  }
-  public set angular_velocity(value): void {
-    set_angular_velocity(value);
-  }
-  public get linear_velocity(): Vector2 {
-    get_linear_velocity();
-  }
-  public set linear_velocity(value): void {
-    set_linear_velocity(value);
-  }
-  public get sleeping(): boolean {
-    is_sleeping();
-  }
-  public set sleeping(value): void {
-    set_sleep_state(value);
-  }
-  public get transform(): Transform2D {
-    get_transform();
-  }
-  public set transform(value): void {
-    set_transform(value);
-  }
+  public get step(): number;
+  public get inverse_mass(): number;
+  public get inverse_inertia(): number;
+  public get total_angular_damp(): number;
+  public get total_linear_damp(): number;
+  public get total_gravity(): Vector2;
+  public get center_of_mass(): Vector2;
+  public get center_of_mass_local(): Vector2;
+  public get angular_velocity(): number;
+  public set angular_velocity(value): void;
+  public get linear_velocity(): Vector2;
+  public set linear_velocity(value): void;
+  public get sleeping(): boolean;
+  public set sleeping(value): void;
+  public get transform(): Transform2D;
+  public set transform(value): void;
 }

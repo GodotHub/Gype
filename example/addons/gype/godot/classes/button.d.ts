@@ -2,8 +2,9 @@
 import { BaseButton } from "@godot/classes/base_button";
 import { Texture2D } from "@godot/classes/texture2d";
 
+
 export declare class Button extends BaseButton{
-  public set_text(_text: String | StringName | string): void;
+  public set_text(_text: GDString | StringName | string): void;
   public get_text(): String;
   public set_text_overrun_behavior(_overrun_behavior: number): void;
   public get_text_overrun_behavior(): number;
@@ -11,7 +12,7 @@ export declare class Button extends BaseButton{
   public get_autowrap_mode(): number;
   public set_text_direction(_direction: number): void;
   public get_text_direction(): number;
-  public set_language(_language: String | StringName | string): void;
+  public set_language(_language: GDString | StringName | string): void;
   public get_language(): String;
   public set_button_icon(_texture: Texture2D): void;
   public get_button_icon(): Texture2D;
@@ -27,76 +28,28 @@ export declare class Button extends BaseButton{
   public get_vertical_icon_alignment(): number;
   public set_expand_icon(_enabled: boolean): void;
   public is_expand_icon(): boolean;
-  public get text(): String {
-    get_text();
-  }
-  public set text(value): void {
-    set_text(value);
-  }
-  public get icon(): Texture2D {
-    get_button_icon();
-  }
-  public set icon(value): void {
-    set_button_icon(value);
-  }
-  public get flat(): boolean {
-    is_flat();
-  }
-  public set flat(value): void {
-    set_flat(value);
-  }
-  public get alignment(): number {
-    get_text_alignment();
-  }
-  public set alignment(value): void {
-    set_text_alignment(value);
-  }
-  public get text_overrun_behavior(): number {
-    get_text_overrun_behavior();
-  }
-  public set text_overrun_behavior(value): void {
-    set_text_overrun_behavior(value);
-  }
-  public get autowrap_mode(): number {
-    get_autowrap_mode();
-  }
-  public set autowrap_mode(value): void {
-    set_autowrap_mode(value);
-  }
-  public get clip_text(): boolean {
-    get_clip_text();
-  }
-  public set clip_text(value): void {
-    set_clip_text(value);
-  }
-  public get icon_alignment(): number {
-    get_icon_alignment();
-  }
-  public set icon_alignment(value): void {
-    set_icon_alignment(value);
-  }
-  public get vertical_icon_alignment(): number {
-    get_vertical_icon_alignment();
-  }
-  public set vertical_icon_alignment(value): void {
-    set_vertical_icon_alignment(value);
-  }
-  public get expand_icon(): boolean {
-    is_expand_icon();
-  }
-  public set expand_icon(value): void {
-    set_expand_icon(value);
-  }
-  public get text_direction(): number {
-    get_text_direction();
-  }
-  public set text_direction(value): void {
-    set_text_direction(value);
-  }
-  public get language(): String {
-    get_language();
-  }
-  public set language(value): void {
-    set_language(value);
-  }
+  public get text(): String;
+  public set text(value): void;
+  public get icon(): Texture2D;
+  public set icon(value): void;
+  public get flat(): boolean;
+  public set flat(value): void;
+  public get alignment(): number;
+  public set alignment(value): void;
+  public get text_overrun_behavior(): number;
+  public set text_overrun_behavior(value): void;
+  public get autowrap_mode(): number;
+  public set autowrap_mode(value): void;
+  public get clip_text(): boolean;
+  public set clip_text(value): void;
+  public get icon_alignment(): number;
+  public set icon_alignment(value): void;
+  public get vertical_icon_alignment(): number;
+  public set vertical_icon_alignment(value): void;
+  public get expand_icon(): boolean;
+  public set expand_icon(value): void;
+  public get text_direction(): number;
+  public set text_direction(value): void;
+  public get language(): String;
+  public set language(value): void;
 }

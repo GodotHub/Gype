@@ -1,6 +1,7 @@
 
 import { StyleBox } from "@godot/classes/style_box";
 
+
 export declare class StyleBoxFlat extends StyleBox{
   public set_bg_color(_color: Color): void;
   public get_bg_color(): Color;
@@ -34,142 +35,50 @@ export declare class StyleBoxFlat extends StyleBox{
   public get_aa_size(): number;
   public set_corner_detail(_detail: number): void;
   public get_corner_detail(): number;
-  public get bg_color(): Color {
-    get_bg_color();
-  }
-  public set bg_color(value): void {
-    set_bg_color(value);
-  }
-  public get draw_center(): boolean {
-    is_draw_center_enabled();
-  }
-  public set draw_center(value): void {
-    set_draw_center(value);
-  }
-  public get skew(): Vector2 {
-    get_skew();
-  }
-  public set skew(value): void {
-    set_skew(value);
-  }
-  public get border_width_left(): number {
-    get_border_width();
-  }
-  public set border_width_left(value): void {
-    set_border_width(value);
-  }
-  public get border_width_top(): number {
-    get_border_width();
-  }
-  public set border_width_top(value): void {
-    set_border_width(value);
-  }
-  public get border_width_right(): number {
-    get_border_width();
-  }
-  public set border_width_right(value): void {
-    set_border_width(value);
-  }
-  public get border_width_bottom(): number {
-    get_border_width();
-  }
-  public set border_width_bottom(value): void {
-    set_border_width(value);
-  }
-  public get border_color(): Color {
-    get_border_color();
-  }
-  public set border_color(value): void {
-    set_border_color(value);
-  }
-  public get border_blend(): boolean {
-    get_border_blend();
-  }
-  public set border_blend(value): void {
-    set_border_blend(value);
-  }
-  public get corner_radius_top_left(): number {
-    get_corner_radius();
-  }
-  public set corner_radius_top_left(value): void {
-    set_corner_radius(value);
-  }
-  public get corner_radius_top_right(): number {
-    get_corner_radius();
-  }
-  public set corner_radius_top_right(value): void {
-    set_corner_radius(value);
-  }
-  public get corner_radius_bottom_right(): number {
-    get_corner_radius();
-  }
-  public set corner_radius_bottom_right(value): void {
-    set_corner_radius(value);
-  }
-  public get corner_radius_bottom_left(): number {
-    get_corner_radius();
-  }
-  public set corner_radius_bottom_left(value): void {
-    set_corner_radius(value);
-  }
-  public get corner_detail(): number {
-    get_corner_detail();
-  }
-  public set corner_detail(value): void {
-    set_corner_detail(value);
-  }
-  public get expand_margin_left(): number {
-    get_expand_margin();
-  }
-  public set expand_margin_left(value): void {
-    set_expand_margin(value);
-  }
-  public get expand_margin_top(): number {
-    get_expand_margin();
-  }
-  public set expand_margin_top(value): void {
-    set_expand_margin(value);
-  }
-  public get expand_margin_right(): number {
-    get_expand_margin();
-  }
-  public set expand_margin_right(value): void {
-    set_expand_margin(value);
-  }
-  public get expand_margin_bottom(): number {
-    get_expand_margin();
-  }
-  public set expand_margin_bottom(value): void {
-    set_expand_margin(value);
-  }
-  public get shadow_color(): Color {
-    get_shadow_color();
-  }
-  public set shadow_color(value): void {
-    set_shadow_color(value);
-  }
-  public get shadow_size(): number {
-    get_shadow_size();
-  }
-  public set shadow_size(value): void {
-    set_shadow_size(value);
-  }
-  public get shadow_offset(): Vector2 {
-    get_shadow_offset();
-  }
-  public set shadow_offset(value): void {
-    set_shadow_offset(value);
-  }
-  public get anti_aliasing(): boolean {
-    is_anti_aliased();
-  }
-  public set anti_aliasing(value): void {
-    set_anti_aliased(value);
-  }
-  public get anti_aliasing_size(): number {
-    get_aa_size();
-  }
-  public set anti_aliasing_size(value): void {
-    set_aa_size(value);
-  }
+  public get bg_color(): Color;
+  public set bg_color(value): void;
+  public get draw_center(): boolean;
+  public set draw_center(value): void;
+  public get skew(): Vector2;
+  public set skew(value): void;
+  public get border_width_left(): number;
+  public set border_width_left(value): void;
+  public get border_width_top(): number;
+  public set border_width_top(value): void;
+  public get border_width_right(): number;
+  public set border_width_right(value): void;
+  public get border_width_bottom(): number;
+  public set border_width_bottom(value): void;
+  public get border_color(): Color;
+  public set border_color(value): void;
+  public get border_blend(): boolean;
+  public set border_blend(value): void;
+  public get corner_radius_top_left(): number;
+  public set corner_radius_top_left(value): void;
+  public get corner_radius_top_right(): number;
+  public set corner_radius_top_right(value): void;
+  public get corner_radius_bottom_right(): number;
+  public set corner_radius_bottom_right(value): void;
+  public get corner_radius_bottom_left(): number;
+  public set corner_radius_bottom_left(value): void;
+  public get corner_detail(): number;
+  public set corner_detail(value): void;
+  public get expand_margin_left(): number;
+  public set expand_margin_left(value): void;
+  public get expand_margin_top(): number;
+  public set expand_margin_top(value): void;
+  public get expand_margin_right(): number;
+  public set expand_margin_right(value): void;
+  public get expand_margin_bottom(): number;
+  public set expand_margin_bottom(value): void;
+  public get shadow_color(): Color;
+  public set shadow_color(value): void;
+  public get shadow_size(): number;
+  public set shadow_size(value): void;
+  public get shadow_offset(): Vector2;
+  public set shadow_offset(value): void;
+  public get anti_aliasing(): boolean;
+  public set anti_aliasing(value): void;
+  public get anti_aliasing_size(): number;
+  public set anti_aliasing_size(value): void;
 }

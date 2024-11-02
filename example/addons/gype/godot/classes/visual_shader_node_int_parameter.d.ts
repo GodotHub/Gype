@@ -1,6 +1,7 @@
 
 import { VisualShaderNodeParameter } from "@godot/classes/visual_shader_node_parameter";
 
+
 export declare class VisualShaderNodeIntParameter extends VisualShaderNodeParameter{
   public set_hint(_hint: number): void;
   public get_hint(): number;
@@ -14,42 +15,18 @@ export declare class VisualShaderNodeIntParameter extends VisualShaderNodeParame
   public is_default_value_enabled(): boolean;
   public set_default_value(_value: number): void;
   public get_default_value(): number;
-  public get hint(): number {
-    get_hint();
-  }
-  public set hint(value): void {
-    set_hint(value);
-  }
-  public get min(): number {
-    get_min();
-  }
-  public set min(value): void {
-    set_min(value);
-  }
-  public get max(): number {
-    get_max();
-  }
-  public set max(value): void {
-    set_max(value);
-  }
-  public get step(): number {
-    get_step();
-  }
-  public set step(value): void {
-    set_step(value);
-  }
-  public get default_value_enabled(): boolean {
-    is_default_value_enabled();
-  }
-  public set default_value_enabled(value): void {
-    set_default_value_enabled(value);
-  }
-  public get default_value(): number {
-    get_default_value();
-  }
-  public set default_value(value): void {
-    set_default_value(value);
-  }
+  public get hint(): number;
+  public set hint(value): void;
+  public get min(): number;
+  public set min(value): void;
+  public get max(): number;
+  public set max(value): void;
+  public get step(): number;
+  public set step(value): void;
+  public get default_value_enabled(): boolean;
+  public set default_value_enabled(value): void;
+  public get default_value(): number;
+  public set default_value(value): void;
   static Hint = {
     HINT_NONE = 0,
     HINT_RANGE = 1,

@@ -1,10 +1,11 @@
 
-import { Container } from "@godot/classes/container";
-import { Control } from "@godot/classes/control";
-import { Texture2D } from "@godot/classes/texture2d";
-import { Node } from "@godot/classes/node";
 import { Popup } from "@godot/classes/popup";
+import { Texture2D } from "@godot/classes/texture2d";
+import { Control } from "@godot/classes/control";
 import { TabBar } from "@godot/classes/tab_bar";
+import { Container } from "@godot/classes/container";
+import { Node } from "@godot/classes/node";
+
 
 export declare class TabContainer extends Container{
   public get_tab_count(): number;
@@ -26,9 +27,9 @@ export declare class TabContainer extends Container{
   public are_tabs_visible(): boolean;
   public set_all_tabs_in_front(_is_front: boolean): void;
   public is_all_tabs_in_front(): boolean;
-  public set_tab_title(_tab_idx: number, _title: String | StringName | string): void;
+  public set_tab_title(_tab_idx: number, _title: GDString | StringName | string): void;
   public get_tab_title(_tab_idx: number): String;
-  public set_tab_tooltip(_tab_idx: number, _tooltip: String | StringName | string): void;
+  public set_tab_tooltip(_tab_idx: number, _tooltip: GDString | StringName | string): void;
   public get_tab_tooltip(_tab_idx: number): String;
   public set_tab_icon(_tab_idx: number, _icon: Texture2D): void;
   public get_tab_icon(_tab_idx: number): Texture2D;
@@ -56,72 +57,28 @@ export declare class TabContainer extends Container{
   public get_tab_focus_mode(): number;
   public set_deselect_enabled(_enabled: boolean): void;
   public get_deselect_enabled(): boolean;
-  public get tab_alignment(): number {
-    get_tab_alignment();
-  }
-  public set tab_alignment(value): void {
-    set_tab_alignment(value);
-  }
-  public get current_tab(): number {
-    get_current_tab();
-  }
-  public set current_tab(value): void {
-    set_current_tab(value);
-  }
-  public get tabs_position(): number {
-    get_tabs_position();
-  }
-  public set tabs_position(value): void {
-    set_tabs_position(value);
-  }
-  public get clip_tabs(): boolean {
-    get_clip_tabs();
-  }
-  public set clip_tabs(value): void {
-    set_clip_tabs(value);
-  }
-  public get tabs_visible(): boolean {
-    are_tabs_visible();
-  }
-  public set tabs_visible(value): void {
-    set_tabs_visible(value);
-  }
-  public get all_tabs_in_front(): boolean {
-    is_all_tabs_in_front();
-  }
-  public set all_tabs_in_front(value): void {
-    set_all_tabs_in_front(value);
-  }
-  public get drag_to_rearrange_enabled(): boolean {
-    get_drag_to_rearrange_enabled();
-  }
-  public set drag_to_rearrange_enabled(value): void {
-    set_drag_to_rearrange_enabled(value);
-  }
-  public get tabs_rearrange_group(): number {
-    get_tabs_rearrange_group();
-  }
-  public set tabs_rearrange_group(value): void {
-    set_tabs_rearrange_group(value);
-  }
-  public get use_hidden_tabs_for_min_size(): boolean {
-    get_use_hidden_tabs_for_min_size();
-  }
-  public set use_hidden_tabs_for_min_size(value): void {
-    set_use_hidden_tabs_for_min_size(value);
-  }
-  public get tab_focus_mode(): number {
-    get_tab_focus_mode();
-  }
-  public set tab_focus_mode(value): void {
-    set_tab_focus_mode(value);
-  }
-  public get deselect_enabled(): boolean {
-    get_deselect_enabled();
-  }
-  public set deselect_enabled(value): void {
-    set_deselect_enabled(value);
-  }
+  public get tab_alignment(): number;
+  public set tab_alignment(value): void;
+  public get current_tab(): number;
+  public set current_tab(value): void;
+  public get tabs_position(): number;
+  public set tabs_position(value): void;
+  public get clip_tabs(): boolean;
+  public set clip_tabs(value): void;
+  public get tabs_visible(): boolean;
+  public set tabs_visible(value): void;
+  public get all_tabs_in_front(): boolean;
+  public set all_tabs_in_front(value): void;
+  public get drag_to_rearrange_enabled(): boolean;
+  public set drag_to_rearrange_enabled(value): void;
+  public get tabs_rearrange_group(): number;
+  public set tabs_rearrange_group(value): void;
+  public get use_hidden_tabs_for_min_size(): boolean;
+  public set use_hidden_tabs_for_min_size(value): void;
+  public get tab_focus_mode(): number;
+  public set tab_focus_mode(value): void;
+  public get deselect_enabled(): boolean;
+  public set deselect_enabled(value): void;
   static TabPosition = {
     POSITION_TOP = 0,
     POSITION_BOTTOM = 1,

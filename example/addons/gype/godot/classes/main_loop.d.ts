@@ -1,6 +1,7 @@
 
 import { GodotObject } from "@godot/classes/godot_object";
 
+
 export declare class MainLoop extends GodotObject{
   public _initialize(): void;
   public _physics_process(_delta: number): boolean;

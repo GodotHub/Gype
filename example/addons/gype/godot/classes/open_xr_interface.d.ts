@@ -1,6 +1,7 @@
 
 import { XRInterface } from "@godot/classes/xr_interface";
 
+
 export declare class OpenXRInterface extends XRInterface{
   public get_display_refresh_rate(): number;
   public set_display_refresh_rate(_refresh_rate: number): void;
@@ -11,8 +12,8 @@ export declare class OpenXRInterface extends XRInterface{
   public set_foveation_level(_foveation_level: number): void;
   public get_foveation_dynamic(): boolean;
   public set_foveation_dynamic(_foveation_dynamic: boolean): void;
-  public is_action_set_active(_name: String | StringName | string): boolean;
-  public set_action_set_active(_name: String | StringName | string, _active: boolean): void;
+  public is_action_set_active(_name: GDString | StringName | string): boolean;
+  public set_action_set_active(_name: GDString | StringName | string, _active: boolean): void;
   public get_action_sets(): GDArray;
   public get_available_display_refresh_rates(): GDArray;
   public set_motion_range(_hand: number, _motion_range: number): void;
@@ -31,42 +32,18 @@ export declare class OpenXRInterface extends XRInterface{
   public set_vrs_min_radius(_radius: number): void;
   public get_vrs_strength(): number;
   public set_vrs_strength(_strength: number): void;
-  public get display_refresh_rate(): number {
-    get_display_refresh_rate();
-  }
-  public set display_refresh_rate(value): void {
-    set_display_refresh_rate(value);
-  }
-  public get render_target_size_multiplier(): number {
-    get_render_target_size_multiplier();
-  }
-  public set render_target_size_multiplier(value): void {
-    set_render_target_size_multiplier(value);
-  }
-  public get foveation_level(): number {
-    get_foveation_level();
-  }
-  public set foveation_level(value): void {
-    set_foveation_level(value);
-  }
-  public get foveation_dynamic(): boolean {
-    get_foveation_dynamic();
-  }
-  public set foveation_dynamic(value): void {
-    set_foveation_dynamic(value);
-  }
-  public get vrs_min_radius(): number {
-    get_vrs_min_radius();
-  }
-  public set vrs_min_radius(value): void {
-    set_vrs_min_radius(value);
-  }
-  public get vrs_strength(): number {
-    get_vrs_strength();
-  }
-  public set vrs_strength(value): void {
-    set_vrs_strength(value);
-  }
+  public get display_refresh_rate(): number;
+  public set display_refresh_rate(value): void;
+  public get render_target_size_multiplier(): number;
+  public set render_target_size_multiplier(value): void;
+  public get foveation_level(): number;
+  public set foveation_level(value): void;
+  public get foveation_dynamic(): boolean;
+  public set foveation_dynamic(value): void;
+  public get vrs_min_radius(): number;
+  public set vrs_min_radius(value): void;
+  public get vrs_strength(): number;
+  public set vrs_strength(value): void;
   static Hand = {
     HAND_LEFT = 0,
     HAND_RIGHT = 1,

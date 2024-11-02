@@ -1,6 +1,7 @@
 
 import { XRPositionalTracker } from "@godot/classes/xr_positional_tracker";
 
+
 export declare class XRHandTracker extends XRPositionalTracker{
   public set_has_tracking_data(_has_data: boolean): void;
   public get_has_tracking_data(): boolean;
@@ -16,18 +17,10 @@ export declare class XRHandTracker extends XRPositionalTracker{
   public get_hand_joint_linear_velocity(_joint: number): Vector3;
   public set_hand_joint_angular_velocity(_joint: number, _angular_velocity: Vector3): void;
   public get_hand_joint_angular_velocity(_joint: number): Vector3;
-  public get has_tracking_data(): boolean {
-    get_has_tracking_data();
-  }
-  public set has_tracking_data(value): void {
-    set_has_tracking_data(value);
-  }
-  public get hand_tracking_source(): number {
-    get_hand_tracking_source();
-  }
-  public set hand_tracking_source(value): void {
-    set_hand_tracking_source(value);
-  }
+  public get has_tracking_data(): boolean;
+  public set has_tracking_data(value): void;
+  public get hand_tracking_source(): number;
+  public set hand_tracking_source(value): void;
   static HandTrackingSource = {
     HAND_TRACKING_SOURCE_UNKNOWN = 0,
     HAND_TRACKING_SOURCE_UNOBSTRUCTED = 1,

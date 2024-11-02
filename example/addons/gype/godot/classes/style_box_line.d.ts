@@ -1,6 +1,7 @@
 
 import { StyleBox } from "@godot/classes/style_box";
 
+
 export declare class StyleBoxLine extends StyleBox{
   public set_color(_color: Color): void;
   public get_color(): Color;
@@ -12,34 +13,14 @@ export declare class StyleBoxLine extends StyleBox{
   public get_grow_end(): number;
   public set_vertical(_vertical: boolean): void;
   public is_vertical(): boolean;
-  public get color(): Color {
-    get_color();
-  }
-  public set color(value): void {
-    set_color(value);
-  }
-  public get grow_begin(): number {
-    get_grow_begin();
-  }
-  public set grow_begin(value): void {
-    set_grow_begin(value);
-  }
-  public get grow_end(): number {
-    get_grow_end();
-  }
-  public set grow_end(value): void {
-    set_grow_end(value);
-  }
-  public get thickness(): number {
-    get_thickness();
-  }
-  public set thickness(value): void {
-    set_thickness(value);
-  }
-  public get vertical(): boolean {
-    is_vertical();
-  }
-  public set vertical(value): void {
-    set_vertical(value);
-  }
+  public get color(): Color;
+  public set color(value): void;
+  public get grow_begin(): number;
+  public set grow_begin(value): void;
+  public get grow_end(): number;
+  public set grow_end(value): void;
+  public get thickness(): number;
+  public set thickness(value): void;
+  public get vertical(): boolean;
+  public set vertical(value): void;
 }

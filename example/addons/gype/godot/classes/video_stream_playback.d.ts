@@ -1,6 +1,7 @@
 
-import { Resource } from "@godot/classes/resource";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Resource } from "@godot/classes/resource";
+
 
 export declare class VideoStreamPlayback extends Resource{
   public _stop(): void;

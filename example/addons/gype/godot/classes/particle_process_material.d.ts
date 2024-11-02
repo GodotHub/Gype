@@ -2,6 +2,7 @@
 import { Texture2D } from "@godot/classes/texture2d";
 import { Material } from "@godot/classes/material";
 
+
 export declare class ParticleProcessMaterial extends Material{
   public set_direction(_degrees: Vector3): void;
   public get_direction(): Vector3;
@@ -95,672 +96,228 @@ export declare class ParticleProcessMaterial extends Material{
   public get_collision_friction(): number;
   public set_collision_bounce(_bounce: number): void;
   public get_collision_bounce(): number;
-  public get lifetime_randomness(): number {
-    get_lifetime_randomness();
-  }
-  public set lifetime_randomness(value): void {
-    set_lifetime_randomness(value);
-  }
-  public get particle_flag_align_y(): boolean {
-    get_particle_flag();
-  }
-  public set particle_flag_align_y(value): void {
-    set_particle_flag(value);
-  }
-  public get particle_flag_rotate_y(): boolean {
-    get_particle_flag();
-  }
-  public set particle_flag_rotate_y(value): void {
-    set_particle_flag(value);
-  }
-  public get particle_flag_disable_z(): boolean {
-    get_particle_flag();
-  }
-  public set particle_flag_disable_z(value): void {
-    set_particle_flag(value);
-  }
-  public get particle_flag_damping_as_friction(): boolean {
-    get_particle_flag();
-  }
-  public set particle_flag_damping_as_friction(value): void {
-    set_particle_flag(value);
-  }
-  public get emission_shape_offset(): Vector3 {
-    get_emission_shape_offset();
-  }
-  public set emission_shape_offset(value): void {
-    set_emission_shape_offset(value);
-  }
-  public get emission_shape_scale(): Vector3 {
-    get_emission_shape_scale();
-  }
-  public set emission_shape_scale(value): void {
-    set_emission_shape_scale(value);
-  }
-  public get emission_shape(): number {
-    get_emission_shape();
-  }
-  public set emission_shape(value): void {
-    set_emission_shape(value);
-  }
-  public get emission_sphere_radius(): number {
-    get_emission_sphere_radius();
-  }
-  public set emission_sphere_radius(value): void {
-    set_emission_sphere_radius(value);
-  }
-  public get emission_box_extents(): Vector3 {
-    get_emission_box_extents();
-  }
-  public set emission_box_extents(value): void {
-    set_emission_box_extents(value);
-  }
-  public get emission_point_texture(): Texture2D {
-    get_emission_point_texture();
-  }
-  public set emission_point_texture(value): void {
-    set_emission_point_texture(value);
-  }
-  public get emission_normal_texture(): Texture2D {
-    get_emission_normal_texture();
-  }
-  public set emission_normal_texture(value): void {
-    set_emission_normal_texture(value);
-  }
-  public get emission_color_texture(): Texture2D {
-    get_emission_color_texture();
-  }
-  public set emission_color_texture(value): void {
-    set_emission_color_texture(value);
-  }
-  public get emission_point_count(): number {
-    get_emission_point_count();
-  }
-  public set emission_point_count(value): void {
-    set_emission_point_count(value);
-  }
-  public get emission_ring_axis(): Vector3 {
-    get_emission_ring_axis();
-  }
-  public set emission_ring_axis(value): void {
-    set_emission_ring_axis(value);
-  }
-  public get emission_ring_height(): number {
-    get_emission_ring_height();
-  }
-  public set emission_ring_height(value): void {
-    set_emission_ring_height(value);
-  }
-  public get emission_ring_radius(): number {
-    get_emission_ring_radius();
-  }
-  public set emission_ring_radius(value): void {
-    set_emission_ring_radius(value);
-  }
-  public get emission_ring_inner_radius(): number {
-    get_emission_ring_inner_radius();
-  }
-  public set emission_ring_inner_radius(value): void {
-    set_emission_ring_inner_radius(value);
-  }
-  public get angle(): Vector2 {
-    get_param();
-  }
-  public set angle(value): void {
-    set_param(value);
-  }
-  public get angle_min(): number {
-    get_param_min();
-  }
-  public set angle_min(value): void {
-    set_param_min(value);
-  }
-  public get angle_max(): number {
-    get_param_max();
-  }
-  public set angle_max(value): void {
-    set_param_max(value);
-  }
-  public get angle_curve(): CurveTexture {
-    get_param_texture();
-  }
-  public set angle_curve(value): void {
-    set_param_texture(value);
-  }
-  public get inherit_velocity_ratio(): number {
-    get_inherit_velocity_ratio();
-  }
-  public set inherit_velocity_ratio(value): void {
-    set_inherit_velocity_ratio(value);
-  }
-  public get velocity_pivot(): Vector3 {
-    get_velocity_pivot();
-  }
-  public set velocity_pivot(value): void {
-    set_velocity_pivot(value);
-  }
-  public get direction(): Vector3 {
-    get_direction();
-  }
-  public set direction(value): void {
-    set_direction(value);
-  }
-  public get spread(): number {
-    get_spread();
-  }
-  public set spread(value): void {
-    set_spread(value);
-  }
-  public get flatness(): number {
-    get_flatness();
-  }
-  public set flatness(value): void {
-    set_flatness(value);
-  }
-  public get initial_velocity(): Vector2 {
-    get_param();
-  }
-  public set initial_velocity(value): void {
-    set_param(value);
-  }
-  public get initial_velocity_min(): number {
-    get_param_min();
-  }
-  public set initial_velocity_min(value): void {
-    set_param_min(value);
-  }
-  public get initial_velocity_max(): number {
-    get_param_max();
-  }
-  public set initial_velocity_max(value): void {
-    set_param_max(value);
-  }
-  public get angular_velocity(): Vector2 {
-    get_param();
-  }
-  public set angular_velocity(value): void {
-    set_param(value);
-  }
-  public get angular_velocity_min(): number {
-    get_param_min();
-  }
-  public set angular_velocity_min(value): void {
-    set_param_min(value);
-  }
-  public get angular_velocity_max(): number {
-    get_param_max();
-  }
-  public set angular_velocity_max(value): void {
-    set_param_max(value);
-  }
-  public get angular_velocity_curve(): CurveTexture {
-    get_param_texture();
-  }
-  public set angular_velocity_curve(value): void {
-    set_param_texture(value);
-  }
-  public get directional_velocity(): Vector2 {
-    get_param();
-  }
-  public set directional_velocity(value): void {
-    set_param(value);
-  }
-  public get directional_velocity_min(): number {
-    get_param_min();
-  }
-  public set directional_velocity_min(value): void {
-    set_param_min(value);
-  }
-  public get directional_velocity_max(): number {
-    get_param_max();
-  }
-  public set directional_velocity_max(value): void {
-    set_param_max(value);
-  }
-  public get directional_velocity_curve(): CurveXYZTexture {
-    get_param_texture();
-  }
-  public set directional_velocity_curve(value): void {
-    set_param_texture(value);
-  }
-  public get orbit_velocity(): Vector2 {
-    get_param();
-  }
-  public set orbit_velocity(value): void {
-    set_param(value);
-  }
-  public get orbit_velocity_min(): number {
-    get_param_min();
-  }
-  public set orbit_velocity_min(value): void {
-    set_param_min(value);
-  }
-  public get orbit_velocity_max(): number {
-    get_param_max();
-  }
-  public set orbit_velocity_max(value): void {
-    set_param_max(value);
-  }
-  public get orbit_velocity_curve(): CurveTexture {
-    get_param_texture();
-  }
-  public set orbit_velocity_curve(value): void {
-    set_param_texture(value);
-  }
-  public get radial_velocity(): Vector2 {
-    get_param();
-  }
-  public set radial_velocity(value): void {
-    set_param(value);
-  }
-  public get radial_velocity_min(): number {
-    get_param_min();
-  }
-  public set radial_velocity_min(value): void {
-    set_param_min(value);
-  }
-  public get radial_velocity_max(): number {
-    get_param_max();
-  }
-  public set radial_velocity_max(value): void {
-    set_param_max(value);
-  }
-  public get radial_velocity_curve(): CurveTexture {
-    get_param_texture();
-  }
-  public set radial_velocity_curve(value): void {
-    set_param_texture(value);
-  }
-  public get velocity_limit_curve(): CurveTexture {
-    get_velocity_limit_curve();
-  }
-  public set velocity_limit_curve(value): void {
-    set_velocity_limit_curve(value);
-  }
-  public get gravity(): Vector3 {
-    get_gravity();
-  }
-  public set gravity(value): void {
-    set_gravity(value);
-  }
-  public get linear_accel(): Vector2 {
-    get_param();
-  }
-  public set linear_accel(value): void {
-    set_param(value);
-  }
-  public get linear_accel_min(): number {
-    get_param_min();
-  }
-  public set linear_accel_min(value): void {
-    set_param_min(value);
-  }
-  public get linear_accel_max(): number {
-    get_param_max();
-  }
-  public set linear_accel_max(value): void {
-    set_param_max(value);
-  }
-  public get linear_accel_curve(): CurveTexture {
-    get_param_texture();
-  }
-  public set linear_accel_curve(value): void {
-    set_param_texture(value);
-  }
-  public get radial_accel(): Vector2 {
-    get_param();
-  }
-  public set radial_accel(value): void {
-    set_param(value);
-  }
-  public get radial_accel_min(): number {
-    get_param_min();
-  }
-  public set radial_accel_min(value): void {
-    set_param_min(value);
-  }
-  public get radial_accel_max(): number {
-    get_param_max();
-  }
-  public set radial_accel_max(value): void {
-    set_param_max(value);
-  }
-  public get radial_accel_curve(): CurveTexture {
-    get_param_texture();
-  }
-  public set radial_accel_curve(value): void {
-    set_param_texture(value);
-  }
-  public get tangential_accel(): Vector2 {
-    get_param();
-  }
-  public set tangential_accel(value): void {
-    set_param(value);
-  }
-  public get tangential_accel_min(): number {
-    get_param_min();
-  }
-  public set tangential_accel_min(value): void {
-    set_param_min(value);
-  }
-  public get tangential_accel_max(): number {
-    get_param_max();
-  }
-  public set tangential_accel_max(value): void {
-    set_param_max(value);
-  }
-  public get tangential_accel_curve(): CurveTexture {
-    get_param_texture();
-  }
-  public set tangential_accel_curve(value): void {
-    set_param_texture(value);
-  }
-  public get damping(): Vector2 {
-    get_param();
-  }
-  public set damping(value): void {
-    set_param(value);
-  }
-  public get damping_min(): number {
-    get_param_min();
-  }
-  public set damping_min(value): void {
-    set_param_min(value);
-  }
-  public get damping_max(): number {
-    get_param_max();
-  }
-  public set damping_max(value): void {
-    set_param_max(value);
-  }
-  public get damping_curve(): CurveTexture {
-    get_param_texture();
-  }
-  public set damping_curve(value): void {
-    set_param_texture(value);
-  }
-  public get attractor_interaction_enabled(): boolean {
-    is_attractor_interaction_enabled();
-  }
-  public set attractor_interaction_enabled(value): void {
-    set_attractor_interaction_enabled(value);
-  }
-  public get scale(): Vector2 {
-    get_param();
-  }
-  public set scale(value): void {
-    set_param(value);
-  }
-  public get scale_min(): number {
-    get_param_min();
-  }
-  public set scale_min(value): void {
-    set_param_min(value);
-  }
-  public get scale_max(): number {
-    get_param_max();
-  }
-  public set scale_max(value): void {
-    set_param_max(value);
-  }
-  public get scale_curve(): CurveTexture {
-    get_param_texture();
-  }
-  public set scale_curve(value): void {
-    set_param_texture(value);
-  }
-  public get scale_over_velocity(): Vector2 {
-    get_param();
-  }
-  public set scale_over_velocity(value): void {
-    set_param(value);
-  }
-  public get scale_over_velocity_min(): number {
-    get_param_min();
-  }
-  public set scale_over_velocity_min(value): void {
-    set_param_min(value);
-  }
-  public get scale_over_velocity_max(): number {
-    get_param_max();
-  }
-  public set scale_over_velocity_max(value): void {
-    set_param_max(value);
-  }
-  public get scale_over_velocity_curve(): CurveTexture {
-    get_param_texture();
-  }
-  public set scale_over_velocity_curve(value): void {
-    set_param_texture(value);
-  }
-  public get color(): Color {
-    get_color();
-  }
-  public set color(value): void {
-    set_color(value);
-  }
-  public get color_ramp(): GradientTexture1D {
-    get_color_ramp();
-  }
-  public set color_ramp(value): void {
-    set_color_ramp(value);
-  }
-  public get color_initial_ramp(): GradientTexture1D {
-    get_color_initial_ramp();
-  }
-  public set color_initial_ramp(value): void {
-    set_color_initial_ramp(value);
-  }
-  public get alpha_curve(): CurveTexture {
-    get_alpha_curve();
-  }
-  public set alpha_curve(value): void {
-    set_alpha_curve(value);
-  }
-  public get emission_curve(): CurveTexture {
-    get_emission_curve();
-  }
-  public set emission_curve(value): void {
-    set_emission_curve(value);
-  }
-  public get hue_variation(): Vector2 {
-    get_param();
-  }
-  public set hue_variation(value): void {
-    set_param(value);
-  }
-  public get hue_variation_min(): number {
-    get_param_min();
-  }
-  public set hue_variation_min(value): void {
-    set_param_min(value);
-  }
-  public get hue_variation_max(): number {
-    get_param_max();
-  }
-  public set hue_variation_max(value): void {
-    set_param_max(value);
-  }
-  public get hue_variation_curve(): CurveTexture {
-    get_param_texture();
-  }
-  public set hue_variation_curve(value): void {
-    set_param_texture(value);
-  }
-  public get anim_speed(): Vector2 {
-    get_param();
-  }
-  public set anim_speed(value): void {
-    set_param(value);
-  }
-  public get anim_speed_min(): number {
-    get_param_min();
-  }
-  public set anim_speed_min(value): void {
-    set_param_min(value);
-  }
-  public get anim_speed_max(): number {
-    get_param_max();
-  }
-  public set anim_speed_max(value): void {
-    set_param_max(value);
-  }
-  public get anim_speed_curve(): CurveTexture {
-    get_param_texture();
-  }
-  public set anim_speed_curve(value): void {
-    set_param_texture(value);
-  }
-  public get anim_offset(): Vector2 {
-    get_param();
-  }
-  public set anim_offset(value): void {
-    set_param(value);
-  }
-  public get anim_offset_min(): number {
-    get_param_min();
-  }
-  public set anim_offset_min(value): void {
-    set_param_min(value);
-  }
-  public get anim_offset_max(): number {
-    get_param_max();
-  }
-  public set anim_offset_max(value): void {
-    set_param_max(value);
-  }
-  public get anim_offset_curve(): CurveTexture {
-    get_param_texture();
-  }
-  public set anim_offset_curve(value): void {
-    set_param_texture(value);
-  }
-  public get turbulence_enabled(): boolean {
-    get_turbulence_enabled();
-  }
-  public set turbulence_enabled(value): void {
-    set_turbulence_enabled(value);
-  }
-  public get turbulence_noise_strength(): number {
-    get_turbulence_noise_strength();
-  }
-  public set turbulence_noise_strength(value): void {
-    set_turbulence_noise_strength(value);
-  }
-  public get turbulence_noise_scale(): number {
-    get_turbulence_noise_scale();
-  }
-  public set turbulence_noise_scale(value): void {
-    set_turbulence_noise_scale(value);
-  }
-  public get turbulence_noise_speed(): Vector3 {
-    get_turbulence_noise_speed();
-  }
-  public set turbulence_noise_speed(value): void {
-    set_turbulence_noise_speed(value);
-  }
-  public get turbulence_noise_speed_random(): number {
-    get_turbulence_noise_speed_random();
-  }
-  public set turbulence_noise_speed_random(value): void {
-    set_turbulence_noise_speed_random(value);
-  }
-  public get turbulence_influence(): Vector2 {
-    get_param();
-  }
-  public set turbulence_influence(value): void {
-    set_param(value);
-  }
-  public get turbulence_influence_min(): number {
-    get_param_min();
-  }
-  public set turbulence_influence_min(value): void {
-    set_param_min(value);
-  }
-  public get turbulence_influence_max(): number {
-    get_param_max();
-  }
-  public set turbulence_influence_max(value): void {
-    set_param_max(value);
-  }
-  public get turbulence_initial_displacement(): Vector2 {
-    get_param();
-  }
-  public set turbulence_initial_displacement(value): void {
-    set_param(value);
-  }
-  public get turbulence_initial_displacement_min(): number {
-    get_param_min();
-  }
-  public set turbulence_initial_displacement_min(value): void {
-    set_param_min(value);
-  }
-  public get turbulence_initial_displacement_max(): number {
-    get_param_max();
-  }
-  public set turbulence_initial_displacement_max(value): void {
-    set_param_max(value);
-  }
-  public get turbulence_influence_over_life(): CurveTexture {
-    get_param_texture();
-  }
-  public set turbulence_influence_over_life(value): void {
-    set_param_texture(value);
-  }
-  public get collision_mode(): number {
-    get_collision_mode();
-  }
-  public set collision_mode(value): void {
-    set_collision_mode(value);
-  }
-  public get collision_friction(): number {
-    get_collision_friction();
-  }
-  public set collision_friction(value): void {
-    set_collision_friction(value);
-  }
-  public get collision_bounce(): number {
-    get_collision_bounce();
-  }
-  public set collision_bounce(value): void {
-    set_collision_bounce(value);
-  }
-  public get collision_use_scale(): boolean {
-    is_collision_using_scale();
-  }
-  public set collision_use_scale(value): void {
-    set_collision_use_scale(value);
-  }
-  public get sub_emitter_mode(): number {
-    get_sub_emitter_mode();
-  }
-  public set sub_emitter_mode(value): void {
-    set_sub_emitter_mode(value);
-  }
-  public get sub_emitter_frequency(): number {
-    get_sub_emitter_frequency();
-  }
-  public set sub_emitter_frequency(value): void {
-    set_sub_emitter_frequency(value);
-  }
-  public get sub_emitter_amount_at_end(): number {
-    get_sub_emitter_amount_at_end();
-  }
-  public set sub_emitter_amount_at_end(value): void {
-    set_sub_emitter_amount_at_end(value);
-  }
-  public get sub_emitter_amount_at_collision(): number {
-    get_sub_emitter_amount_at_collision();
-  }
-  public set sub_emitter_amount_at_collision(value): void {
-    set_sub_emitter_amount_at_collision(value);
-  }
-  public get sub_emitter_keep_velocity(): boolean {
-    get_sub_emitter_keep_velocity();
-  }
-  public set sub_emitter_keep_velocity(value): void {
-    set_sub_emitter_keep_velocity(value);
-  }
+  public get lifetime_randomness(): number;
+  public set lifetime_randomness(value): void;
+  public get particle_flag_align_y(): boolean;
+  public set particle_flag_align_y(value): void;
+  public get particle_flag_rotate_y(): boolean;
+  public set particle_flag_rotate_y(value): void;
+  public get particle_flag_disable_z(): boolean;
+  public set particle_flag_disable_z(value): void;
+  public get particle_flag_damping_as_friction(): boolean;
+  public set particle_flag_damping_as_friction(value): void;
+  public get emission_shape_offset(): Vector3;
+  public set emission_shape_offset(value): void;
+  public get emission_shape_scale(): Vector3;
+  public set emission_shape_scale(value): void;
+  public get emission_shape(): number;
+  public set emission_shape(value): void;
+  public get emission_sphere_radius(): number;
+  public set emission_sphere_radius(value): void;
+  public get emission_box_extents(): Vector3;
+  public set emission_box_extents(value): void;
+  public get emission_point_texture(): Texture2D;
+  public set emission_point_texture(value): void;
+  public get emission_normal_texture(): Texture2D;
+  public set emission_normal_texture(value): void;
+  public get emission_color_texture(): Texture2D;
+  public set emission_color_texture(value): void;
+  public get emission_point_count(): number;
+  public set emission_point_count(value): void;
+  public get emission_ring_axis(): Vector3;
+  public set emission_ring_axis(value): void;
+  public get emission_ring_height(): number;
+  public set emission_ring_height(value): void;
+  public get emission_ring_radius(): number;
+  public set emission_ring_radius(value): void;
+  public get emission_ring_inner_radius(): number;
+  public set emission_ring_inner_radius(value): void;
+  public get angle(): Vector2;
+  public set angle(value): void;
+  public get angle_min(): number;
+  public set angle_min(value): void;
+  public get angle_max(): number;
+  public set angle_max(value): void;
+  public get angle_curve(): CurveTexture;
+  public set angle_curve(value): void;
+  public get inherit_velocity_ratio(): number;
+  public set inherit_velocity_ratio(value): void;
+  public get velocity_pivot(): Vector3;
+  public set velocity_pivot(value): void;
+  public get direction(): Vector3;
+  public set direction(value): void;
+  public get spread(): number;
+  public set spread(value): void;
+  public get flatness(): number;
+  public set flatness(value): void;
+  public get initial_velocity(): Vector2;
+  public set initial_velocity(value): void;
+  public get initial_velocity_min(): number;
+  public set initial_velocity_min(value): void;
+  public get initial_velocity_max(): number;
+  public set initial_velocity_max(value): void;
+  public get angular_velocity(): Vector2;
+  public set angular_velocity(value): void;
+  public get angular_velocity_min(): number;
+  public set angular_velocity_min(value): void;
+  public get angular_velocity_max(): number;
+  public set angular_velocity_max(value): void;
+  public get angular_velocity_curve(): CurveTexture;
+  public set angular_velocity_curve(value): void;
+  public get directional_velocity(): Vector2;
+  public set directional_velocity(value): void;
+  public get directional_velocity_min(): number;
+  public set directional_velocity_min(value): void;
+  public get directional_velocity_max(): number;
+  public set directional_velocity_max(value): void;
+  public get directional_velocity_curve(): CurveXYZTexture;
+  public set directional_velocity_curve(value): void;
+  public get orbit_velocity(): Vector2;
+  public set orbit_velocity(value): void;
+  public get orbit_velocity_min(): number;
+  public set orbit_velocity_min(value): void;
+  public get orbit_velocity_max(): number;
+  public set orbit_velocity_max(value): void;
+  public get orbit_velocity_curve(): CurveTexture;
+  public set orbit_velocity_curve(value): void;
+  public get radial_velocity(): Vector2;
+  public set radial_velocity(value): void;
+  public get radial_velocity_min(): number;
+  public set radial_velocity_min(value): void;
+  public get radial_velocity_max(): number;
+  public set radial_velocity_max(value): void;
+  public get radial_velocity_curve(): CurveTexture;
+  public set radial_velocity_curve(value): void;
+  public get velocity_limit_curve(): CurveTexture;
+  public set velocity_limit_curve(value): void;
+  public get gravity(): Vector3;
+  public set gravity(value): void;
+  public get linear_accel(): Vector2;
+  public set linear_accel(value): void;
+  public get linear_accel_min(): number;
+  public set linear_accel_min(value): void;
+  public get linear_accel_max(): number;
+  public set linear_accel_max(value): void;
+  public get linear_accel_curve(): CurveTexture;
+  public set linear_accel_curve(value): void;
+  public get radial_accel(): Vector2;
+  public set radial_accel(value): void;
+  public get radial_accel_min(): number;
+  public set radial_accel_min(value): void;
+  public get radial_accel_max(): number;
+  public set radial_accel_max(value): void;
+  public get radial_accel_curve(): CurveTexture;
+  public set radial_accel_curve(value): void;
+  public get tangential_accel(): Vector2;
+  public set tangential_accel(value): void;
+  public get tangential_accel_min(): number;
+  public set tangential_accel_min(value): void;
+  public get tangential_accel_max(): number;
+  public set tangential_accel_max(value): void;
+  public get tangential_accel_curve(): CurveTexture;
+  public set tangential_accel_curve(value): void;
+  public get damping(): Vector2;
+  public set damping(value): void;
+  public get damping_min(): number;
+  public set damping_min(value): void;
+  public get damping_max(): number;
+  public set damping_max(value): void;
+  public get damping_curve(): CurveTexture;
+  public set damping_curve(value): void;
+  public get attractor_interaction_enabled(): boolean;
+  public set attractor_interaction_enabled(value): void;
+  public get scale(): Vector2;
+  public set scale(value): void;
+  public get scale_min(): number;
+  public set scale_min(value): void;
+  public get scale_max(): number;
+  public set scale_max(value): void;
+  public get scale_curve(): CurveTexture;
+  public set scale_curve(value): void;
+  public get scale_over_velocity(): Vector2;
+  public set scale_over_velocity(value): void;
+  public get scale_over_velocity_min(): number;
+  public set scale_over_velocity_min(value): void;
+  public get scale_over_velocity_max(): number;
+  public set scale_over_velocity_max(value): void;
+  public get scale_over_velocity_curve(): CurveTexture;
+  public set scale_over_velocity_curve(value): void;
+  public get color(): Color;
+  public set color(value): void;
+  public get color_ramp(): GradientTexture1D;
+  public set color_ramp(value): void;
+  public get color_initial_ramp(): GradientTexture1D;
+  public set color_initial_ramp(value): void;
+  public get alpha_curve(): CurveTexture;
+  public set alpha_curve(value): void;
+  public get emission_curve(): CurveTexture;
+  public set emission_curve(value): void;
+  public get hue_variation(): Vector2;
+  public set hue_variation(value): void;
+  public get hue_variation_min(): number;
+  public set hue_variation_min(value): void;
+  public get hue_variation_max(): number;
+  public set hue_variation_max(value): void;
+  public get hue_variation_curve(): CurveTexture;
+  public set hue_variation_curve(value): void;
+  public get anim_speed(): Vector2;
+  public set anim_speed(value): void;
+  public get anim_speed_min(): number;
+  public set anim_speed_min(value): void;
+  public get anim_speed_max(): number;
+  public set anim_speed_max(value): void;
+  public get anim_speed_curve(): CurveTexture;
+  public set anim_speed_curve(value): void;
+  public get anim_offset(): Vector2;
+  public set anim_offset(value): void;
+  public get anim_offset_min(): number;
+  public set anim_offset_min(value): void;
+  public get anim_offset_max(): number;
+  public set anim_offset_max(value): void;
+  public get anim_offset_curve(): CurveTexture;
+  public set anim_offset_curve(value): void;
+  public get turbulence_enabled(): boolean;
+  public set turbulence_enabled(value): void;
+  public get turbulence_noise_strength(): number;
+  public set turbulence_noise_strength(value): void;
+  public get turbulence_noise_scale(): number;
+  public set turbulence_noise_scale(value): void;
+  public get turbulence_noise_speed(): Vector3;
+  public set turbulence_noise_speed(value): void;
+  public get turbulence_noise_speed_random(): number;
+  public set turbulence_noise_speed_random(value): void;
+  public get turbulence_influence(): Vector2;
+  public set turbulence_influence(value): void;
+  public get turbulence_influence_min(): number;
+  public set turbulence_influence_min(value): void;
+  public get turbulence_influence_max(): number;
+  public set turbulence_influence_max(value): void;
+  public get turbulence_initial_displacement(): Vector2;
+  public set turbulence_initial_displacement(value): void;
+  public get turbulence_initial_displacement_min(): number;
+  public set turbulence_initial_displacement_min(value): void;
+  public get turbulence_initial_displacement_max(): number;
+  public set turbulence_initial_displacement_max(value): void;
+  public get turbulence_influence_over_life(): CurveTexture;
+  public set turbulence_influence_over_life(value): void;
+  public get collision_mode(): number;
+  public set collision_mode(value): void;
+  public get collision_friction(): number;
+  public set collision_friction(value): void;
+  public get collision_bounce(): number;
+  public set collision_bounce(value): void;
+  public get collision_use_scale(): boolean;
+  public set collision_use_scale(value): void;
+  public get sub_emitter_mode(): number;
+  public set sub_emitter_mode(value): void;
+  public get sub_emitter_frequency(): number;
+  public set sub_emitter_frequency(value): void;
+  public get sub_emitter_amount_at_end(): number;
+  public set sub_emitter_amount_at_end(value): void;
+  public get sub_emitter_amount_at_collision(): number;
+  public set sub_emitter_amount_at_collision(value): void;
+  public get sub_emitter_keep_velocity(): boolean;
+  public set sub_emitter_keep_velocity(value): void;
   static Parameter = {
     PARAM_INITIAL_LINEAR_VELOCITY = 0,
     PARAM_ANGULAR_VELOCITY = 1,

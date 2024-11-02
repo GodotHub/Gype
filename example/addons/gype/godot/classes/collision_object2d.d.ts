@@ -1,9 +1,10 @@
 
-import { Node2D } from "@godot/classes/node2d";
 import { Shape2D } from "@godot/classes/shape2d";
+import { Node2D } from "@godot/classes/node2d";
 import { InputEvent } from "@godot/classes/input_event";
-import { Viewport } from "@godot/classes/viewport";
 import { GodotObject } from "@godot/classes/godot_object";
+import { Viewport } from "@godot/classes/viewport";
+
 
 export declare class CollisionObject2D extends Node2D{
   public _input_event(_viewport: Viewport, _event: InputEvent, _shape_idx: number): void;
@@ -26,7 +27,7 @@ export declare class CollisionObject2D extends Node2D{
   public get_disable_mode(): number;
   public set_pickable(_enabled: boolean): void;
   public is_pickable(): boolean;
-  public create_shape_owner(_owner: Object): number;
+  public create_shape_owner(_owner: GodotObject): number;
   public remove_shape_owner(_owner_id: number): void;
   public get_shape_owners(): PackedInt32Array;
   public shape_owner_set_transform(_owner_id: number, _transform: Transform2D): void;
@@ -45,36 +46,16 @@ export declare class CollisionObject2D extends Node2D{
   public shape_owner_remove_shape(_owner_id: number, _shape_id: number): void;
   public shape_owner_clear_shapes(_owner_id: number): void;
   public shape_find_owner(_shape_index: number): number;
-  public get disable_mode(): number {
-    get_disable_mode();
-  }
-  public set disable_mode(value): void {
-    set_disable_mode(value);
-  }
-  public get collision_layer(): number {
-    get_collision_layer();
-  }
-  public set collision_layer(value): void {
-    set_collision_layer(value);
-  }
-  public get collision_mask(): number {
-    get_collision_mask();
-  }
-  public set collision_mask(value): void {
-    set_collision_mask(value);
-  }
-  public get collision_priority(): number {
-    get_collision_priority();
-  }
-  public set collision_priority(value): void {
-    set_collision_priority(value);
-  }
-  public get input_pickable(): boolean {
-    is_pickable();
-  }
-  public set input_pickable(value): void {
-    set_pickable(value);
-  }
+  public get disable_mode(): number;
+  public set disable_mode(value): void;
+  public get collision_layer(): number;
+  public set collision_layer(value): void;
+  public get collision_mask(): number;
+  public set collision_mask(value): void;
+  public get collision_priority(): number;
+  public set collision_priority(value): void;
+  public get input_pickable(): boolean;
+  public set input_pickable(value): void;
   static DisableMode = {
     DISABLE_MODE_REMOVE = 0,
     DISABLE_MODE_MAKE_STATIC = 1,

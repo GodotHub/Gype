@@ -1,10 +1,11 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
-import { NavigationPathQueryResult3D } from "@godot/classes/navigation_path_query_result3d";
 import { NavigationPathQueryParameters3D } from "@godot/classes/navigation_path_query_parameters3d";
+import { NavigationPathQueryResult3D } from "@godot/classes/navigation_path_query_result3d";
 import { NavigationMeshSourceGeometryData3D } from "@godot/classes/navigation_mesh_source_geometry_data3d";
-import { Node } from "@godot/classes/node";
 import { NavigationMesh } from "@godot/classes/navigation_mesh";
+import { GodotObject } from "@godot/classes/godot_object";
+import { Node } from "@godot/classes/node";
+
 
 export declare class NavigationServer3D extends GodotObject{
   public get_maps(): GDArray;

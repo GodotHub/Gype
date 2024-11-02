@@ -1,8 +1,9 @@
 
 import { Node2D } from "@godot/classes/node2d";
-import { TileSet } from "@godot/classes/tile_set";
 import { TileData } from "@godot/classes/tile_data";
+import { TileSet } from "@godot/classes/tile_set";
 import { TileMapPattern } from "@godot/classes/tile_map_pattern";
+
 
 export declare class TileMap extends Node2D{
   public _use_tile_data_runtime_update(_layer: number, _coords: Vector2i): boolean;
@@ -18,7 +19,7 @@ export declare class TileMap extends Node2D{
   public add_layer(_to_position: number): void;
   public move_layer(_layer: number, _to_position: number): void;
   public remove_layer(_layer: number): void;
-  public set_layer_name(_layer: number, _name: String | StringName | string): void;
+  public set_layer_name(_layer: number, _name: GDString | StringName | string): void;
   public get_layer_name(_layer: number): String;
   public set_layer_enabled(_layer: number, _enabled: boolean): void;
   public is_layer_enabled(_layer: number): boolean;
@@ -65,36 +66,16 @@ export declare class TileMap extends Node2D{
   public map_to_local(_map_position: Vector2i): Vector2;
   public local_to_map(_local_position: Vector2): Vector2i;
   public get_neighbor_cell(_coords: Vector2i, _neighbor: number): Vector2i;
-  public get tile_set(): TileSet {
-    get_tileset();
-  }
-  public set tile_set(value): void {
-    set_tileset(value);
-  }
-  public get rendering_quadrant_size(): number {
-    get_rendering_quadrant_size();
-  }
-  public set rendering_quadrant_size(value): void {
-    set_rendering_quadrant_size(value);
-  }
-  public get collision_animatable(): boolean {
-    is_collision_animatable();
-  }
-  public set collision_animatable(value): void {
-    set_collision_animatable(value);
-  }
-  public get collision_visibility_mode(): number {
-    get_collision_visibility_mode();
-  }
-  public set collision_visibility_mode(value): void {
-    set_collision_visibility_mode(value);
-  }
-  public get navigation_visibility_mode(): number {
-    get_navigation_visibility_mode();
-  }
-  public set navigation_visibility_mode(value): void {
-    set_navigation_visibility_mode(value);
-  }
+  public get tile_set(): TileSet;
+  public set tile_set(value): void;
+  public get rendering_quadrant_size(): number;
+  public set rendering_quadrant_size(value): void;
+  public get collision_animatable(): boolean;
+  public set collision_animatable(value): void;
+  public get collision_visibility_mode(): number;
+  public set collision_visibility_mode(value): void;
+  public get navigation_visibility_mode(): number;
+  public set navigation_visibility_mode(value): void;
   static VisibilityMode = {
     VISIBILITY_MODE_DEFAULT = 0,
     VISIBILITY_MODE_FORCE_HIDE = 2,

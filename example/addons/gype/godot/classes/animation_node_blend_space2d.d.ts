@@ -1,6 +1,7 @@
 
 import { AnimationRootNode } from "@godot/classes/animation_root_node";
 
+
 export declare class AnimationNodeBlendSpace2D extends AnimationRootNode{
   public add_blend_point(_node: AnimationRootNode, _pos: Vector2, _at_index: number): void;
   public set_blend_point_position(_point: number, _pos: Vector2): void;
@@ -19,9 +20,9 @@ export declare class AnimationNodeBlendSpace2D extends AnimationRootNode{
   public get_max_space(): Vector2;
   public set_snap(_snap: Vector2): void;
   public get_snap(): Vector2;
-  public set_x_label(_text: String | StringName | string): void;
+  public set_x_label(_text: GDString | StringName | string): void;
   public get_x_label(): String;
-  public set_y_label(_text: String | StringName | string): void;
+  public set_y_label(_text: GDString | StringName | string): void;
   public get_y_label(): String;
   public set_auto_triangles(_enable: boolean): void;
   public get_auto_triangles(): boolean;
@@ -29,60 +30,24 @@ export declare class AnimationNodeBlendSpace2D extends AnimationRootNode{
   public get_blend_mode(): number;
   public set_use_sync(_enable: boolean): void;
   public is_using_sync(): boolean;
-  public get auto_triangles(): boolean {
-    get_auto_triangles();
-  }
-  public set auto_triangles(value): void {
-    set_auto_triangles(value);
-  }
-  public get triangles(): PackedInt32Array {
-    _get_triangles();
-  }
-  public set triangles(value): void {
-    _set_triangles(value);
-  }
-  public get min_space(): Vector2 {
-    get_min_space();
-  }
-  public set min_space(value): void {
-    set_min_space(value);
-  }
-  public get max_space(): Vector2 {
-    get_max_space();
-  }
-  public set max_space(value): void {
-    set_max_space(value);
-  }
-  public get snap(): Vector2 {
-    get_snap();
-  }
-  public set snap(value): void {
-    set_snap(value);
-  }
-  public get x_label(): String {
-    get_x_label();
-  }
-  public set x_label(value): void {
-    set_x_label(value);
-  }
-  public get y_label(): String {
-    get_y_label();
-  }
-  public set y_label(value): void {
-    set_y_label(value);
-  }
-  public get blend_mode(): number {
-    get_blend_mode();
-  }
-  public set blend_mode(value): void {
-    set_blend_mode(value);
-  }
-  public get sync(): boolean {
-    is_using_sync();
-  }
-  public set sync(value): void {
-    set_use_sync(value);
-  }
+  public get auto_triangles(): boolean;
+  public set auto_triangles(value): void;
+  public get triangles(): PackedInt32Array;
+  public set triangles(value): void;
+  public get min_space(): Vector2;
+  public set min_space(value): void;
+  public get max_space(): Vector2;
+  public set max_space(value): void;
+  public get snap(): Vector2;
+  public set snap(value): void;
+  public get x_label(): String;
+  public set x_label(value): void;
+  public get y_label(): String;
+  public set y_label(value): void;
+  public get blend_mode(): number;
+  public set blend_mode(value): void;
+  public get sync(): boolean;
+  public set sync(value): void;
   static BlendMode = {
     BLEND_MODE_INTERPOLATED = 0,
     BLEND_MODE_DISCRETE = 1,

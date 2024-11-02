@@ -1,8 +1,9 @@
 
 import { Tree } from "@godot/classes/tree";
-import { Texture2D } from "@godot/classes/texture2d";
 import { GodotObject } from "@godot/classes/godot_object";
+import { Texture2D } from "@godot/classes/texture2d";
 import { Font } from "@godot/classes/font";
+
 
 export declare class TreeItem extends GodotObject{
   public set_cell_mode(_column: number, _mode: number): void;
@@ -14,7 +15,7 @@ export declare class TreeItem extends GodotObject{
   public is_checked(_column: number): boolean;
   public is_indeterminate(_column: number): boolean;
   public propagate_check(_column: number, _emit_signal: boolean): void;
-  public set_text(_column: number, _text: String | StringName | string): void;
+  public set_text(_column: number, _text: GDString | StringName | string): void;
   public get_text(_column: number): String;
   public set_text_direction(_column: number, _direction: number): void;
   public get_text_direction(_column: number): number;
@@ -26,9 +27,9 @@ export declare class TreeItem extends GodotObject{
   public get_structured_text_bidi_override(_column: number): number;
   public set_structured_text_bidi_override_options(_column: number, _args: GDArray): void;
   public get_structured_text_bidi_override_options(_column: number): GDArray;
-  public set_language(_column: number, _language: String | StringName | string): void;
+  public set_language(_column: number, _language: GDString | StringName | string): void;
   public get_language(_column: number): String;
-  public set_suffix(_column: number, _text: String | StringName | string): void;
+  public set_suffix(_column: number, _text: GDString | StringName | string): void;
   public get_suffix(_column: number): String;
   public set_icon(_column: number, _texture: Texture2D): void;
   public get_icon(_column: number): Texture2D;
@@ -44,7 +45,7 @@ export declare class TreeItem extends GodotObject{
   public get_range_config(_column: number): Dictionary;
   public set_metadata(_column: number, _meta: any): void;
   public get_metadata(_column: number): any;
-  public set_custom_draw(_column: number, _object: Object, _callback: String | StringName | string): void;
+  public set_custom_draw(_column: number, _object: GodotObject, _callback: GDString | StringName | string): void;
   public set_custom_draw_callback(_column: number, _callback: Callable): void;
   public get_custom_draw_callback(_column: number): Callable;
   public set_collapsed(_enable: boolean): void;
@@ -76,20 +77,20 @@ export declare class TreeItem extends GodotObject{
   public get_custom_bg_color(_column: number): Color;
   public set_custom_as_button(_column: number, _enable: boolean): void;
   public is_custom_set_as_button(_column: number): boolean;
-  public add_button(_column: number, _button: Texture2D, _id: number, _disabled: boolean, _tooltip_text: String | StringName | string): void;
+  public add_button(_column: number, _button: Texture2D, _id: number, _disabled: boolean, _tooltip_text: GDString | StringName | string): void;
   public get_button_count(_column: number): number;
   public get_button_tooltip_text(_column: number, _button_index: number): String;
   public get_button_id(_column: number, _button_index: number): number;
   public get_button_by_id(_column: number, _id: number): number;
   public get_button_color(_column: number, _id: number): Color;
   public get_button(_column: number, _button_index: number): Texture2D;
-  public set_button_tooltip_text(_column: number, _button_index: number, _tooltip: String | StringName | string): void;
+  public set_button_tooltip_text(_column: number, _button_index: number, _tooltip: GDString | StringName | string): void;
   public set_button(_column: number, _button_index: number, _button: Texture2D): void;
   public erase_button(_column: number, _button_index: number): void;
   public set_button_disabled(_column: number, _button_index: number, _disabled: boolean): void;
   public set_button_color(_column: number, _button_index: number, _color: Color): void;
   public is_button_disabled(_column: number, _button_index: number): boolean;
-  public set_tooltip_text(_column: number, _tooltip: String | StringName | string): void;
+  public set_tooltip_text(_column: number, _tooltip: GDString | StringName | string): void;
   public get_tooltip_text(_column: number): String;
   public set_text_alignment(_column: number, _text_alignment: number): void;
   public get_text_alignment(_column: number): number;
@@ -115,31 +116,15 @@ export declare class TreeItem extends GodotObject{
   public get_index(): number;
   public move_before(_item: TreeItem): void;
   public move_after(_item: TreeItem): void;
-  public call_recursive(_method: String | StringName | string, ...arg: StringName): void;
-  public get collapsed(): boolean {
-    is_collapsed();
-  }
-  public set collapsed(value): void {
-    set_collapsed(value);
-  }
-  public get visible(): boolean {
-    is_visible();
-  }
-  public set visible(value): void {
-    set_visible(value);
-  }
-  public get disable_folding(): boolean {
-    is_folding_disabled();
-  }
-  public set disable_folding(value): void {
-    set_disable_folding(value);
-  }
-  public get custom_minimum_height(): number {
-    get_custom_minimum_height();
-  }
-  public set custom_minimum_height(value): void {
-    set_custom_minimum_height(value);
-  }
+  public call_recursive(_method: GDString | StringName | string, ...arg: StringName): void;
+  public get collapsed(): boolean;
+  public set collapsed(value): void;
+  public get visible(): boolean;
+  public set visible(value): void;
+  public get disable_folding(): boolean;
+  public set disable_folding(value): void;
+  public get custom_minimum_height(): number;
+  public set custom_minimum_height(value): void;
   static TreeCellMode = {
     CELL_MODE_STRING = 0,
     CELL_MODE_CHECK = 1,

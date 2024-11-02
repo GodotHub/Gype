@@ -1,6 +1,7 @@
 
 import { Node2D } from "@godot/classes/node2d";
 
+
 export declare class Bone2D extends Node2D{
   public set_rest(_rest: Transform2D): void;
   public get_rest(): Transform2D;
@@ -13,10 +14,6 @@ export declare class Bone2D extends Node2D{
   public get_length(): number;
   public set_bone_angle(_angle: number): void;
   public get_bone_angle(): number;
-  public get rest(): Transform2D {
-    get_rest();
-  }
-  public set rest(value): void {
-    set_rest(value);
-  }
+  public get rest(): Transform2D;
+  public set rest(value): void;
 }

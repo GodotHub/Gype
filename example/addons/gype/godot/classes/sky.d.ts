@@ -1,6 +1,7 @@
 
-import { Resource } from "@godot/classes/resource";
 import { Material } from "@godot/classes/material";
+import { Resource } from "@godot/classes/resource";
+
 
 export declare class Sky extends Resource{
   public set_radiance_size(_size: number): void;
@@ -9,24 +10,12 @@ export declare class Sky extends Resource{
   public get_process_mode(): number;
   public set_material(_material: Material): void;
   public get_material(): Material;
-  public get sky_material(): PanoramaSkyMaterial {
-    get_material();
-  }
-  public set sky_material(value): void {
-    set_material(value);
-  }
-  public get process_mode(): number {
-    get_process_mode();
-  }
-  public set process_mode(value): void {
-    set_process_mode(value);
-  }
-  public get radiance_size(): number {
-    get_radiance_size();
-  }
-  public set radiance_size(value): void {
-    set_radiance_size(value);
-  }
+  public get sky_material(): PanoramaSkyMaterial;
+  public set sky_material(value): void;
+  public get process_mode(): number;
+  public set process_mode(value): void;
+  public get radiance_size(): number;
+  public set radiance_size(value): void;
   static RadianceSize = {
     RADIANCE_SIZE_32 = 0,
     RADIANCE_SIZE_64 = 1,

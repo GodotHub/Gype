@@ -2,8 +2,9 @@
 import { OpenXRAction } from "@godot/classes/open_xr_action";
 import { Resource } from "@godot/classes/resource";
 
+
 export declare class OpenXRActionSet extends Resource{
-  public set_localized_name(_localized_name: String | StringName | string): void;
+  public set_localized_name(_localized_name: GDString | StringName | string): void;
   public get_localized_name(): String;
   public set_priority(_priority: number): void;
   public get_priority(): number;
@@ -12,22 +13,10 @@ export declare class OpenXRActionSet extends Resource{
   public get_actions(): GDArray;
   public add_action(_action: OpenXRAction): void;
   public remove_action(_action: OpenXRAction): void;
-  public get localized_name(): String {
-    get_localized_name();
-  }
-  public set localized_name(value): void {
-    set_localized_name(value);
-  }
-  public get priority(): number {
-    get_priority();
-  }
-  public set priority(value): void {
-    set_priority(value);
-  }
-  public get actions(): OpenXRAction {
-    get_actions();
-  }
-  public set actions(value): void {
-    set_actions(value);
-  }
+  public get localized_name(): String;
+  public set localized_name(value): void;
+  public get priority(): number;
+  public set priority(value): void;
+  public get actions(): OpenXRAction;
+  public set actions(value): void;
 }

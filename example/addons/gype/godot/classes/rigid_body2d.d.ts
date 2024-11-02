@@ -1,8 +1,9 @@
 
 import { PhysicsDirectBodyState2D } from "@godot/classes/physics_direct_body_state2d";
+import { Node2D } from "@godot/classes/node2d";
 import { PhysicsMaterial } from "@godot/classes/physics_material";
 import { PhysicsBody2D } from "@godot/classes/physics_body2d";
-import { Node2D } from "@godot/classes/node2d";
+
 
 export declare class RigidBody2D extends PhysicsBody2D{
   public _integrate_forces(_state: PhysicsDirectBodyState2D): void;
@@ -64,144 +65,52 @@ export declare class RigidBody2D extends PhysicsBody2D{
   public set_freeze_mode(_freeze_mode: number): void;
   public get_freeze_mode(): number;
   public get_colliding_bodies(): GDArray;
-  public get mass(): number {
-    get_mass();
-  }
-  public set mass(value): void {
-    set_mass(value);
-  }
-  public get physics_material_override(): PhysicsMaterial {
-    get_physics_material_override();
-  }
-  public set physics_material_override(value): void {
-    set_physics_material_override(value);
-  }
-  public get gravity_scale(): number {
-    get_gravity_scale();
-  }
-  public set gravity_scale(value): void {
-    set_gravity_scale(value);
-  }
-  public get center_of_mass_mode(): number {
-    get_center_of_mass_mode();
-  }
-  public set center_of_mass_mode(value): void {
-    set_center_of_mass_mode(value);
-  }
-  public get center_of_mass(): Vector2 {
-    get_center_of_mass();
-  }
-  public set center_of_mass(value): void {
-    set_center_of_mass(value);
-  }
-  public get inertia(): number {
-    get_inertia();
-  }
-  public set inertia(value): void {
-    set_inertia(value);
-  }
-  public get sleeping(): boolean {
-    is_sleeping();
-  }
-  public set sleeping(value): void {
-    set_sleeping(value);
-  }
-  public get can_sleep(): boolean {
-    is_able_to_sleep();
-  }
-  public set can_sleep(value): void {
-    set_can_sleep(value);
-  }
-  public get lock_rotation(): boolean {
-    is_lock_rotation_enabled();
-  }
-  public set lock_rotation(value): void {
-    set_lock_rotation_enabled(value);
-  }
-  public get freeze(): boolean {
-    is_freeze_enabled();
-  }
-  public set freeze(value): void {
-    set_freeze_enabled(value);
-  }
-  public get freeze_mode(): number {
-    get_freeze_mode();
-  }
-  public set freeze_mode(value): void {
-    set_freeze_mode(value);
-  }
-  public get custom_integrator(): boolean {
-    is_using_custom_integrator();
-  }
-  public set custom_integrator(value): void {
-    set_use_custom_integrator(value);
-  }
-  public get continuous_cd(): number {
-    get_continuous_collision_detection_mode();
-  }
-  public set continuous_cd(value): void {
-    set_continuous_collision_detection_mode(value);
-  }
-  public get contact_monitor(): boolean {
-    is_contact_monitor_enabled();
-  }
-  public set contact_monitor(value): void {
-    set_contact_monitor(value);
-  }
-  public get max_contacts_reported(): number {
-    get_max_contacts_reported();
-  }
-  public set max_contacts_reported(value): void {
-    set_max_contacts_reported(value);
-  }
-  public get linear_velocity(): Vector2 {
-    get_linear_velocity();
-  }
-  public set linear_velocity(value): void {
-    set_linear_velocity(value);
-  }
-  public get linear_damp_mode(): number {
-    get_linear_damp_mode();
-  }
-  public set linear_damp_mode(value): void {
-    set_linear_damp_mode(value);
-  }
-  public get linear_damp(): number {
-    get_linear_damp();
-  }
-  public set linear_damp(value): void {
-    set_linear_damp(value);
-  }
-  public get angular_velocity(): number {
-    get_angular_velocity();
-  }
-  public set angular_velocity(value): void {
-    set_angular_velocity(value);
-  }
-  public get angular_damp_mode(): number {
-    get_angular_damp_mode();
-  }
-  public set angular_damp_mode(value): void {
-    set_angular_damp_mode(value);
-  }
-  public get angular_damp(): number {
-    get_angular_damp();
-  }
-  public set angular_damp(value): void {
-    set_angular_damp(value);
-  }
-  public get constant_force(): Vector2 {
-    get_constant_force();
-  }
-  public set constant_force(value): void {
-    set_constant_force(value);
-  }
-  public get constant_torque(): number {
-    get_constant_torque();
-  }
-  public set constant_torque(value): void {
-    set_constant_torque(value);
-  }
+  public get mass(): number;
+  public set mass(value): void;
+  public get physics_material_override(): PhysicsMaterial;
+  public set physics_material_override(value): void;
+  public get gravity_scale(): number;
+  public set gravity_scale(value): void;
+  public get center_of_mass_mode(): number;
+  public set center_of_mass_mode(value): void;
+  public get center_of_mass(): Vector2;
+  public set center_of_mass(value): void;
+  public get inertia(): number;
+  public set inertia(value): void;
+  public get sleeping(): boolean;
+  public set sleeping(value): void;
+  public get can_sleep(): boolean;
+  public set can_sleep(value): void;
+  public get lock_rotation(): boolean;
+  public set lock_rotation(value): void;
+  public get freeze(): boolean;
+  public set freeze(value): void;
+  public get freeze_mode(): number;
+  public set freeze_mode(value): void;
+  public get custom_integrator(): boolean;
+  public set custom_integrator(value): void;
+  public get continuous_cd(): number;
+  public set continuous_cd(value): void;
+  public get contact_monitor(): boolean;
+  public set contact_monitor(value): void;
+  public get max_contacts_reported(): number;
+  public set max_contacts_reported(value): void;
+  public get linear_velocity(): Vector2;
+  public set linear_velocity(value): void;
+  public get linear_damp_mode(): number;
+  public set linear_damp_mode(value): void;
+  public get linear_damp(): number;
+  public set linear_damp(value): void;
+  public get angular_velocity(): number;
+  public set angular_velocity(value): void;
+  public get angular_damp_mode(): number;
+  public set angular_damp_mode(value): void;
+  public get angular_damp(): number;
+  public set angular_damp(value): void;
+  public get constant_force(): Vector2;
+  public set constant_force(value): void;
+  public get constant_torque(): number;
+  public set constant_torque(value): void;
   static FreezeMode = {
     FREEZE_MODE_STATIC = 0,
     FREEZE_MODE_KINEMATIC = 1,

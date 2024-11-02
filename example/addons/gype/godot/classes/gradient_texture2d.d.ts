@@ -2,6 +2,7 @@
 import { Texture2D } from "@godot/classes/texture2d";
 import { Gradient } from "@godot/classes/gradient";
 
+
 export declare class GradientTexture2D extends Texture2D{
   public set_gradient(_gradient: Gradient): void;
   public get_gradient(): Gradient;
@@ -17,54 +18,22 @@ export declare class GradientTexture2D extends Texture2D{
   public get_fill_to(): Vector2;
   public set_repeat(_repeat: number): void;
   public get_repeat(): number;
-  public get gradient(): Gradient {
-    get_gradient();
-  }
-  public set gradient(value): void {
-    set_gradient(value);
-  }
-  public get width(): number {
-    get_width();
-  }
-  public set width(value): void {
-    set_width(value);
-  }
-  public get height(): number {
-    get_height();
-  }
-  public set height(value): void {
-    set_height(value);
-  }
-  public get use_hdr(): boolean {
-    is_using_hdr();
-  }
-  public set use_hdr(value): void {
-    set_use_hdr(value);
-  }
-  public get fill(): number {
-    get_fill();
-  }
-  public set fill(value): void {
-    set_fill(value);
-  }
-  public get fill_from(): Vector2 {
-    get_fill_from();
-  }
-  public set fill_from(value): void {
-    set_fill_from(value);
-  }
-  public get fill_to(): Vector2 {
-    get_fill_to();
-  }
-  public set fill_to(value): void {
-    set_fill_to(value);
-  }
-  public get repeat(): number {
-    get_repeat();
-  }
-  public set repeat(value): void {
-    set_repeat(value);
-  }
+  public get gradient(): Gradient;
+  public set gradient(value): void;
+  public get width(): number;
+  public set width(value): void;
+  public get height(): number;
+  public set height(value): void;
+  public get use_hdr(): boolean;
+  public set use_hdr(value): void;
+  public get fill(): number;
+  public set fill(value): void;
+  public get fill_from(): Vector2;
+  public set fill_from(value): void;
+  public get fill_to(): Vector2;
+  public set fill_to(value): void;
+  public get repeat(): number;
+  public set repeat(value): void;
   static Fill = {
     FILL_LINEAR = 0,
     FILL_RADIAL = 1,

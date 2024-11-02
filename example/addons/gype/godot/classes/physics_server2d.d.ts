@@ -1,9 +1,10 @@
 
-import { PhysicsTestMotionParameters2D } from "@godot/classes/physics_test_motion_parameters2d";
-import { PhysicsDirectSpaceState2D } from "@godot/classes/physics_direct_space_state2d";
 import { PhysicsTestMotionResult2D } from "@godot/classes/physics_test_motion_result2d";
-import { PhysicsDirectBodyState2D } from "@godot/classes/physics_direct_body_state2d";
 import { GodotObject } from "@godot/classes/godot_object";
+import { PhysicsTestMotionParameters2D } from "@godot/classes/physics_test_motion_parameters2d";
+import { PhysicsDirectBodyState2D } from "@godot/classes/physics_direct_body_state2d";
+import { PhysicsDirectSpaceState2D } from "@godot/classes/physics_direct_space_state2d";
+
 
 export declare class PhysicsServer2D extends GodotObject{
   public world_boundary_shape_create(): RID;

@@ -1,6 +1,7 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
 
+
 export declare class RDTextureFormat extends RefCounted{
   public set_format(_p_member: number): void;
   public get_format(): number;
@@ -22,58 +23,22 @@ export declare class RDTextureFormat extends RefCounted{
   public get_usage_bits(): number;
   public add_shareable_format(_format: number): void;
   public remove_shareable_format(_format: number): void;
-  public get format(): number {
-    get_format();
-  }
-  public set format(value): void {
-    set_format(value);
-  }
-  public get width(): number {
-    get_width();
-  }
-  public set width(value): void {
-    set_width(value);
-  }
-  public get height(): number {
-    get_height();
-  }
-  public set height(value): void {
-    set_height(value);
-  }
-  public get depth(): number {
-    get_depth();
-  }
-  public set depth(value): void {
-    set_depth(value);
-  }
-  public get array_layers(): number {
-    get_array_layers();
-  }
-  public set array_layers(value): void {
-    set_array_layers(value);
-  }
-  public get mipmaps(): number {
-    get_mipmaps();
-  }
-  public set mipmaps(value): void {
-    set_mipmaps(value);
-  }
-  public get texture_type(): number {
-    get_texture_type();
-  }
-  public set texture_type(value): void {
-    set_texture_type(value);
-  }
-  public get samples(): number {
-    get_samples();
-  }
-  public set samples(value): void {
-    set_samples(value);
-  }
-  public get usage_bits(): number {
-    get_usage_bits();
-  }
-  public set usage_bits(value): void {
-    set_usage_bits(value);
-  }
+  public get format(): number;
+  public set format(value): void;
+  public get width(): number;
+  public set width(value): void;
+  public get height(): number;
+  public set height(value): void;
+  public get depth(): number;
+  public set depth(value): void;
+  public get array_layers(): number;
+  public set array_layers(value): void;
+  public get mipmaps(): number;
+  public set mipmaps(value): void;
+  public get texture_type(): number;
+  public set texture_type(value): void;
+  public get samples(): number;
+  public set samples(value): void;
+  public get usage_bits(): number;
+  public set usage_bits(value): void;
 }

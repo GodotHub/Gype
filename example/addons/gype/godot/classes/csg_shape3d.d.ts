@@ -1,6 +1,7 @@
 
 import { GeometryInstance3D } from "@godot/classes/geometry_instance3d";
 
+
 export declare class CSGShape3D extends GeometryInstance3D{
   public is_root_shape(): boolean;
   public set_operation(_operation: number): void;
@@ -22,48 +23,20 @@ export declare class CSGShape3D extends GeometryInstance3D{
   public set_calculate_tangents(_enabled: boolean): void;
   public is_calculating_tangents(): boolean;
   public get_meshes(): GDArray;
-  public get operation(): number {
-    get_operation();
-  }
-  public set operation(value): void {
-    set_operation(value);
-  }
-  public get snap(): number {
-    get_snap();
-  }
-  public set snap(value): void {
-    set_snap(value);
-  }
-  public get calculate_tangents(): boolean {
-    is_calculating_tangents();
-  }
-  public set calculate_tangents(value): void {
-    set_calculate_tangents(value);
-  }
-  public get use_collision(): boolean {
-    is_using_collision();
-  }
-  public set use_collision(value): void {
-    set_use_collision(value);
-  }
-  public get collision_layer(): number {
-    get_collision_layer();
-  }
-  public set collision_layer(value): void {
-    set_collision_layer(value);
-  }
-  public get collision_mask(): number {
-    get_collision_mask();
-  }
-  public set collision_mask(value): void {
-    set_collision_mask(value);
-  }
-  public get collision_priority(): number {
-    get_collision_priority();
-  }
-  public set collision_priority(value): void {
-    set_collision_priority(value);
-  }
+  public get operation(): number;
+  public set operation(value): void;
+  public get snap(): number;
+  public set snap(value): void;
+  public get calculate_tangents(): boolean;
+  public set calculate_tangents(value): void;
+  public get use_collision(): boolean;
+  public set use_collision(value): void;
+  public get collision_layer(): number;
+  public set collision_layer(value): void;
+  public get collision_mask(): number;
+  public set collision_mask(value): void;
+  public get collision_priority(): number;
+  public set collision_priority(value): void;
   static Operation = {
     OPERATION_UNION = 0,
     OPERATION_INTERSECTION = 1,

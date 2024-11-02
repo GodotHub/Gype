@@ -1,6 +1,7 @@
 
 import { AudioEffect } from "@godot/classes/audio_effect";
 
+
 export declare class AudioEffectPitchShift extends AudioEffect{
   public set_pitch_scale(_rate: number): void;
   public get_pitch_scale(): number;
@@ -8,24 +9,12 @@ export declare class AudioEffectPitchShift extends AudioEffect{
   public get_oversampling(): number;
   public set_fft_size(_size: number): void;
   public get_fft_size(): number;
-  public get pitch_scale(): number {
-    get_pitch_scale();
-  }
-  public set pitch_scale(value): void {
-    set_pitch_scale(value);
-  }
-  public get oversampling(): number {
-    get_oversampling();
-  }
-  public set oversampling(value): void {
-    set_oversampling(value);
-  }
-  public get fft_size(): number {
-    get_fft_size();
-  }
-  public set fft_size(value): void {
-    set_fft_size(value);
-  }
+  public get pitch_scale(): number;
+  public set pitch_scale(value): void;
+  public get oversampling(): number;
+  public set oversampling(value): void;
+  public get fft_size(): number;
+  public set fft_size(value): void;
   static FFTSize = {
     FFT_SIZE_256 = 0,
     FFT_SIZE_512 = 1,

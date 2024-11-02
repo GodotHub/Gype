@@ -1,6 +1,7 @@
 
 import { Resource } from "@godot/classes/resource";
 
+
 export declare class Material extends Resource{
   public _get_shader_rid(): RID;
   public _get_shader_mode(): number;
@@ -12,16 +13,8 @@ export declare class Material extends Resource{
   public get_render_priority(): number;
   public inspect_native_shader_code(): void;
   public create_placeholder(): Resource;
-  public get render_priority(): number {
-    get_render_priority();
-  }
-  public set render_priority(value): void {
-    set_render_priority(value);
-  }
-  public get next_pass(): Material {
-    get_next_pass();
-  }
-  public set next_pass(value): void {
-    set_next_pass(value);
-  }
+  public get render_priority(): number;
+  public set render_priority(value): void;
+  public get next_pass(): Material;
+  public set next_pass(value): void;
 }

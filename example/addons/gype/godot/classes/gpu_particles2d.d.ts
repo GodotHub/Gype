@@ -1,8 +1,9 @@
 
 import { Node2D } from "@godot/classes/node2d";
 import { Texture2D } from "@godot/classes/texture2d";
-import { Node } from "@godot/classes/node";
 import { Material } from "@godot/classes/material";
+import { Node } from "@godot/classes/node";
+
 
 export declare class GPUParticles2D extends Node2D{
   public set_emitting(_emitting: boolean): void;
@@ -43,7 +44,7 @@ export declare class GPUParticles2D extends Node2D{
   public get_texture(): Texture2D;
   public capture_rect(): Rect2;
   public restart(): void;
-  public set_sub_emitter(_path: NodePath): void;
+  public set_sub_emitter(_path: GDString | NodePath | string): void;
   public get_sub_emitter(): NodePath;
   public emit_particle(_xform: Transform2D, _velocity: Vector2, _color: Color, _custom: Color, _flags: number): void;
   public set_trail_enabled(_enabled: boolean): void;
@@ -57,150 +58,54 @@ export declare class GPUParticles2D extends Node2D{
   public convert_from_particles(_particles: Node): void;
   public set_amount_ratio(_ratio: number): void;
   public get_amount_ratio(): number;
-  public get emitting(): boolean {
-    is_emitting();
-  }
-  public set emitting(value): void {
-    set_emitting(value);
-  }
-  public get amount(): number {
-    get_amount();
-  }
-  public set amount(value): void {
-    set_amount(value);
-  }
-  public get amount_ratio(): number {
-    get_amount_ratio();
-  }
-  public set amount_ratio(value): void {
-    set_amount_ratio(value);
-  }
-  public get sub_emitter(): NodePath {
-    get_sub_emitter();
-  }
-  public set sub_emitter(value): void {
-    set_sub_emitter(value);
-  }
-  public get process_material(): ParticleProcessMaterial {
-    get_process_material();
-  }
-  public set process_material(value): void {
-    set_process_material(value);
-  }
-  public get texture(): Texture2D {
-    get_texture();
-  }
-  public set texture(value): void {
-    set_texture(value);
-  }
-  public get lifetime(): number {
-    get_lifetime();
-  }
-  public set lifetime(value): void {
-    set_lifetime(value);
-  }
-  public get one_shot(): boolean {
-    get_one_shot();
-  }
-  public set one_shot(value): void {
-    set_one_shot(value);
-  }
-  public get preprocess(): number {
-    get_pre_process_time();
-  }
-  public set preprocess(value): void {
-    set_pre_process_time(value);
-  }
-  public get speed_scale(): number {
-    get_speed_scale();
-  }
-  public set speed_scale(value): void {
-    set_speed_scale(value);
-  }
-  public get explosiveness(): number {
-    get_explosiveness_ratio();
-  }
-  public set explosiveness(value): void {
-    set_explosiveness_ratio(value);
-  }
-  public get randomness(): number {
-    get_randomness_ratio();
-  }
-  public set randomness(value): void {
-    set_randomness_ratio(value);
-  }
-  public get fixed_fps(): number {
-    get_fixed_fps();
-  }
-  public set fixed_fps(value): void {
-    set_fixed_fps(value);
-  }
-  public get interpolate(): boolean {
-    get_interpolate();
-  }
-  public set interpolate(value): void {
-    set_interpolate(value);
-  }
-  public get fract_delta(): boolean {
-    get_fractional_delta();
-  }
-  public set fract_delta(value): void {
-    set_fractional_delta(value);
-  }
-  public get interp_to_end(): number {
-    get_interp_to_end();
-  }
-  public set interp_to_end(value): void {
-    set_interp_to_end(value);
-  }
-  public get collision_base_size(): number {
-    get_collision_base_size();
-  }
-  public set collision_base_size(value): void {
-    set_collision_base_size(value);
-  }
-  public get visibility_rect(): Rect2 {
-    get_visibility_rect();
-  }
-  public set visibility_rect(value): void {
-    set_visibility_rect(value);
-  }
-  public get local_coords(): boolean {
-    get_use_local_coordinates();
-  }
-  public set local_coords(value): void {
-    set_use_local_coordinates(value);
-  }
-  public get draw_order(): number {
-    get_draw_order();
-  }
-  public set draw_order(value): void {
-    set_draw_order(value);
-  }
-  public get trail_enabled(): boolean {
-    is_trail_enabled();
-  }
-  public set trail_enabled(value): void {
-    set_trail_enabled(value);
-  }
-  public get trail_lifetime(): number {
-    get_trail_lifetime();
-  }
-  public set trail_lifetime(value): void {
-    set_trail_lifetime(value);
-  }
-  public get trail_sections(): number {
-    get_trail_sections();
-  }
-  public set trail_sections(value): void {
-    set_trail_sections(value);
-  }
-  public get trail_section_subdivisions(): number {
-    get_trail_section_subdivisions();
-  }
-  public set trail_section_subdivisions(value): void {
-    set_trail_section_subdivisions(value);
-  }
+  public get emitting(): boolean;
+  public set emitting(value): void;
+  public get amount(): number;
+  public set amount(value): void;
+  public get amount_ratio(): number;
+  public set amount_ratio(value): void;
+  public get sub_emitter(): NodePath;
+  public set sub_emitter(value): void;
+  public get process_material(): ParticleProcessMaterial;
+  public set process_material(value): void;
+  public get texture(): Texture2D;
+  public set texture(value): void;
+  public get lifetime(): number;
+  public set lifetime(value): void;
+  public get one_shot(): boolean;
+  public set one_shot(value): void;
+  public get preprocess(): number;
+  public set preprocess(value): void;
+  public get speed_scale(): number;
+  public set speed_scale(value): void;
+  public get explosiveness(): number;
+  public set explosiveness(value): void;
+  public get randomness(): number;
+  public set randomness(value): void;
+  public get fixed_fps(): number;
+  public set fixed_fps(value): void;
+  public get interpolate(): boolean;
+  public set interpolate(value): void;
+  public get fract_delta(): boolean;
+  public set fract_delta(value): void;
+  public get interp_to_end(): number;
+  public set interp_to_end(value): void;
+  public get collision_base_size(): number;
+  public set collision_base_size(value): void;
+  public get visibility_rect(): Rect2;
+  public set visibility_rect(value): void;
+  public get local_coords(): boolean;
+  public set local_coords(value): void;
+  public get draw_order(): number;
+  public set draw_order(value): void;
+  public get trail_enabled(): boolean;
+  public set trail_enabled(value): void;
+  public get trail_lifetime(): number;
+  public set trail_lifetime(value): void;
+  public get trail_sections(): number;
+  public set trail_sections(value): void;
+  public get trail_section_subdivisions(): number;
+  public set trail_section_subdivisions(value): void;
   static DrawOrder = {
     DRAW_ORDER_INDEX = 0,
     DRAW_ORDER_LIFETIME = 1,

@@ -1,6 +1,7 @@
 
 import { GodotObject } from "@godot/classes/godot_object";
 
+
 export declare class RenderSceneData extends GodotObject{
   public get_cam_transform(): Transform3D;
   public get_cam_projection(): Projection;

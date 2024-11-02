@@ -2,6 +2,7 @@
 import { Texture2D } from "@godot/classes/texture2d";
 import { Material } from "@godot/classes/material";
 
+
 export declare class BaseMaterial3D extends Material{
   public set_albedo(_albedo: Color): void;
   public get_albedo(): Color;
@@ -139,708 +140,240 @@ export declare class BaseMaterial3D extends Material{
   public get_distance_fade_max_distance(): number;
   public set_distance_fade_min_distance(_distance: number): void;
   public get_distance_fade_min_distance(): number;
-  public get transparency(): number {
-    get_transparency();
-  }
-  public set transparency(value): void {
-    set_transparency(value);
-  }
-  public get alpha_scissor_threshold(): number {
-    get_alpha_scissor_threshold();
-  }
-  public set alpha_scissor_threshold(value): void {
-    set_alpha_scissor_threshold(value);
-  }
-  public get alpha_hash_scale(): number {
-    get_alpha_hash_scale();
-  }
-  public set alpha_hash_scale(value): void {
-    set_alpha_hash_scale(value);
-  }
-  public get alpha_antialiasing_mode(): number {
-    get_alpha_antialiasing();
-  }
-  public set alpha_antialiasing_mode(value): void {
-    set_alpha_antialiasing(value);
-  }
-  public get alpha_antialiasing_edge(): number {
-    get_alpha_antialiasing_edge();
-  }
-  public set alpha_antialiasing_edge(value): void {
-    set_alpha_antialiasing_edge(value);
-  }
-  public get blend_mode(): number {
-    get_blend_mode();
-  }
-  public set blend_mode(value): void {
-    set_blend_mode(value);
-  }
-  public get cull_mode(): number {
-    get_cull_mode();
-  }
-  public set cull_mode(value): void {
-    set_cull_mode(value);
-  }
-  public get depth_draw_mode(): number {
-    get_depth_draw_mode();
-  }
-  public set depth_draw_mode(value): void {
-    set_depth_draw_mode(value);
-  }
-  public get no_depth_test(): boolean {
-    get_flag();
-  }
-  public set no_depth_test(value): void {
-    set_flag(value);
-  }
-  public get shading_mode(): number {
-    get_shading_mode();
-  }
-  public set shading_mode(value): void {
-    set_shading_mode(value);
-  }
-  public get diffuse_mode(): number {
-    get_diffuse_mode();
-  }
-  public set diffuse_mode(value): void {
-    set_diffuse_mode(value);
-  }
-  public get specular_mode(): number {
-    get_specular_mode();
-  }
-  public set specular_mode(value): void {
-    set_specular_mode(value);
-  }
-  public get disable_ambient_light(): boolean {
-    get_flag();
-  }
-  public set disable_ambient_light(value): void {
-    set_flag(value);
-  }
-  public get disable_fog(): boolean {
-    get_flag();
-  }
-  public set disable_fog(value): void {
-    set_flag(value);
-  }
-  public get vertex_color_use_as_albedo(): boolean {
-    get_flag();
-  }
-  public set vertex_color_use_as_albedo(value): void {
-    set_flag(value);
-  }
-  public get vertex_color_is_srgb(): boolean {
-    get_flag();
-  }
-  public set vertex_color_is_srgb(value): void {
-    set_flag(value);
-  }
-  public get albedo_color(): Color {
-    get_albedo();
-  }
-  public set albedo_color(value): void {
-    set_albedo(value);
-  }
-  public get albedo_texture(): Texture2D {
-    get_texture();
-  }
-  public set albedo_texture(value): void {
-    set_texture(value);
-  }
-  public get albedo_texture_force_srgb(): boolean {
-    get_flag();
-  }
-  public set albedo_texture_force_srgb(value): void {
-    set_flag(value);
-  }
-  public get albedo_texture_msdf(): boolean {
-    get_flag();
-  }
-  public set albedo_texture_msdf(value): void {
-    set_flag(value);
-  }
-  public get orm_texture(): Texture2D {
-    get_texture();
-  }
-  public set orm_texture(value): void {
-    set_texture(value);
-  }
-  public get metallic(): number {
-    get_metallic();
-  }
-  public set metallic(value): void {
-    set_metallic(value);
-  }
-  public get metallic_specular(): number {
-    get_specular();
-  }
-  public set metallic_specular(value): void {
-    set_specular(value);
-  }
-  public get metallic_texture(): Texture2D {
-    get_texture();
-  }
-  public set metallic_texture(value): void {
-    set_texture(value);
-  }
-  public get metallic_texture_channel(): number {
-    get_metallic_texture_channel();
-  }
-  public set metallic_texture_channel(value): void {
-    set_metallic_texture_channel(value);
-  }
-  public get roughness(): number {
-    get_roughness();
-  }
-  public set roughness(value): void {
-    set_roughness(value);
-  }
-  public get roughness_texture(): Texture2D {
-    get_texture();
-  }
-  public set roughness_texture(value): void {
-    set_texture(value);
-  }
-  public get roughness_texture_channel(): number {
-    get_roughness_texture_channel();
-  }
-  public set roughness_texture_channel(value): void {
-    set_roughness_texture_channel(value);
-  }
-  public get emission_enabled(): boolean {
-    get_feature();
-  }
-  public set emission_enabled(value): void {
-    set_feature(value);
-  }
-  public get emission(): Color {
-    get_emission();
-  }
-  public set emission(value): void {
-    set_emission(value);
-  }
-  public get emission_energy_multiplier(): number {
-    get_emission_energy_multiplier();
-  }
-  public set emission_energy_multiplier(value): void {
-    set_emission_energy_multiplier(value);
-  }
-  public get emission_intensity(): number {
-    get_emission_intensity();
-  }
-  public set emission_intensity(value): void {
-    set_emission_intensity(value);
-  }
-  public get emission_operator(): number {
-    get_emission_operator();
-  }
-  public set emission_operator(value): void {
-    set_emission_operator(value);
-  }
-  public get emission_on_uv2(): boolean {
-    get_flag();
-  }
-  public set emission_on_uv2(value): void {
-    set_flag(value);
-  }
-  public get emission_texture(): Texture2D {
-    get_texture();
-  }
-  public set emission_texture(value): void {
-    set_texture(value);
-  }
-  public get normal_enabled(): boolean {
-    get_feature();
-  }
-  public set normal_enabled(value): void {
-    set_feature(value);
-  }
-  public get normal_scale(): number {
-    get_normal_scale();
-  }
-  public set normal_scale(value): void {
-    set_normal_scale(value);
-  }
-  public get normal_texture(): Texture2D {
-    get_texture();
-  }
-  public set normal_texture(value): void {
-    set_texture(value);
-  }
-  public get rim_enabled(): boolean {
-    get_feature();
-  }
-  public set rim_enabled(value): void {
-    set_feature(value);
-  }
-  public get rim(): number {
-    get_rim();
-  }
-  public set rim(value): void {
-    set_rim(value);
-  }
-  public get rim_tint(): number {
-    get_rim_tint();
-  }
-  public set rim_tint(value): void {
-    set_rim_tint(value);
-  }
-  public get rim_texture(): Texture2D {
-    get_texture();
-  }
-  public set rim_texture(value): void {
-    set_texture(value);
-  }
-  public get clearcoat_enabled(): boolean {
-    get_feature();
-  }
-  public set clearcoat_enabled(value): void {
-    set_feature(value);
-  }
-  public get clearcoat(): number {
-    get_clearcoat();
-  }
-  public set clearcoat(value): void {
-    set_clearcoat(value);
-  }
-  public get clearcoat_roughness(): number {
-    get_clearcoat_roughness();
-  }
-  public set clearcoat_roughness(value): void {
-    set_clearcoat_roughness(value);
-  }
-  public get clearcoat_texture(): Texture2D {
-    get_texture();
-  }
-  public set clearcoat_texture(value): void {
-    set_texture(value);
-  }
-  public get anisotropy_enabled(): boolean {
-    get_feature();
-  }
-  public set anisotropy_enabled(value): void {
-    set_feature(value);
-  }
-  public get anisotropy(): number {
-    get_anisotropy();
-  }
-  public set anisotropy(value): void {
-    set_anisotropy(value);
-  }
-  public get anisotropy_flowmap(): Texture2D {
-    get_texture();
-  }
-  public set anisotropy_flowmap(value): void {
-    set_texture(value);
-  }
-  public get ao_enabled(): boolean {
-    get_feature();
-  }
-  public set ao_enabled(value): void {
-    set_feature(value);
-  }
-  public get ao_light_affect(): number {
-    get_ao_light_affect();
-  }
-  public set ao_light_affect(value): void {
-    set_ao_light_affect(value);
-  }
-  public get ao_texture(): Texture2D {
-    get_texture();
-  }
-  public set ao_texture(value): void {
-    set_texture(value);
-  }
-  public get ao_on_uv2(): boolean {
-    get_flag();
-  }
-  public set ao_on_uv2(value): void {
-    set_flag(value);
-  }
-  public get ao_texture_channel(): number {
-    get_ao_texture_channel();
-  }
-  public set ao_texture_channel(value): void {
-    set_ao_texture_channel(value);
-  }
-  public get heightmap_enabled(): boolean {
-    get_feature();
-  }
-  public set heightmap_enabled(value): void {
-    set_feature(value);
-  }
-  public get heightmap_scale(): number {
-    get_heightmap_scale();
-  }
-  public set heightmap_scale(value): void {
-    set_heightmap_scale(value);
-  }
-  public get heightmap_deep_parallax(): boolean {
-    is_heightmap_deep_parallax_enabled();
-  }
-  public set heightmap_deep_parallax(value): void {
-    set_heightmap_deep_parallax(value);
-  }
-  public get heightmap_min_layers(): number {
-    get_heightmap_deep_parallax_min_layers();
-  }
-  public set heightmap_min_layers(value): void {
-    set_heightmap_deep_parallax_min_layers(value);
-  }
-  public get heightmap_max_layers(): number {
-    get_heightmap_deep_parallax_max_layers();
-  }
-  public set heightmap_max_layers(value): void {
-    set_heightmap_deep_parallax_max_layers(value);
-  }
-  public get heightmap_flip_tangent(): boolean {
-    get_heightmap_deep_parallax_flip_tangent();
-  }
-  public set heightmap_flip_tangent(value): void {
-    set_heightmap_deep_parallax_flip_tangent(value);
-  }
-  public get heightmap_flip_binormal(): boolean {
-    get_heightmap_deep_parallax_flip_binormal();
-  }
-  public set heightmap_flip_binormal(value): void {
-    set_heightmap_deep_parallax_flip_binormal(value);
-  }
-  public get heightmap_texture(): Texture2D {
-    get_texture();
-  }
-  public set heightmap_texture(value): void {
-    set_texture(value);
-  }
-  public get heightmap_flip_texture(): boolean {
-    get_flag();
-  }
-  public set heightmap_flip_texture(value): void {
-    set_flag(value);
-  }
-  public get subsurf_scatter_enabled(): boolean {
-    get_feature();
-  }
-  public set subsurf_scatter_enabled(value): void {
-    set_feature(value);
-  }
-  public get subsurf_scatter_strength(): number {
-    get_subsurface_scattering_strength();
-  }
-  public set subsurf_scatter_strength(value): void {
-    set_subsurface_scattering_strength(value);
-  }
-  public get subsurf_scatter_skin_mode(): boolean {
-    get_flag();
-  }
-  public set subsurf_scatter_skin_mode(value): void {
-    set_flag(value);
-  }
-  public get subsurf_scatter_texture(): Texture2D {
-    get_texture();
-  }
-  public set subsurf_scatter_texture(value): void {
-    set_texture(value);
-  }
-  public get subsurf_scatter_transmittance_enabled(): boolean {
-    get_feature();
-  }
-  public set subsurf_scatter_transmittance_enabled(value): void {
-    set_feature(value);
-  }
-  public get subsurf_scatter_transmittance_color(): Color {
-    get_transmittance_color();
-  }
-  public set subsurf_scatter_transmittance_color(value): void {
-    set_transmittance_color(value);
-  }
-  public get subsurf_scatter_transmittance_texture(): Texture2D {
-    get_texture();
-  }
-  public set subsurf_scatter_transmittance_texture(value): void {
-    set_texture(value);
-  }
-  public get subsurf_scatter_transmittance_depth(): number {
-    get_transmittance_depth();
-  }
-  public set subsurf_scatter_transmittance_depth(value): void {
-    set_transmittance_depth(value);
-  }
-  public get subsurf_scatter_transmittance_boost(): number {
-    get_transmittance_boost();
-  }
-  public set subsurf_scatter_transmittance_boost(value): void {
-    set_transmittance_boost(value);
-  }
-  public get backlight_enabled(): boolean {
-    get_feature();
-  }
-  public set backlight_enabled(value): void {
-    set_feature(value);
-  }
-  public get backlight(): Color {
-    get_backlight();
-  }
-  public set backlight(value): void {
-    set_backlight(value);
-  }
-  public get backlight_texture(): Texture2D {
-    get_texture();
-  }
-  public set backlight_texture(value): void {
-    set_texture(value);
-  }
-  public get refraction_enabled(): boolean {
-    get_feature();
-  }
-  public set refraction_enabled(value): void {
-    set_feature(value);
-  }
-  public get refraction_scale(): number {
-    get_refraction();
-  }
-  public set refraction_scale(value): void {
-    set_refraction(value);
-  }
-  public get refraction_texture(): Texture2D {
-    get_texture();
-  }
-  public set refraction_texture(value): void {
-    set_texture(value);
-  }
-  public get refraction_texture_channel(): number {
-    get_refraction_texture_channel();
-  }
-  public set refraction_texture_channel(value): void {
-    set_refraction_texture_channel(value);
-  }
-  public get detail_enabled(): boolean {
-    get_feature();
-  }
-  public set detail_enabled(value): void {
-    set_feature(value);
-  }
-  public get detail_mask(): Texture2D {
-    get_texture();
-  }
-  public set detail_mask(value): void {
-    set_texture(value);
-  }
-  public get detail_blend_mode(): number {
-    get_detail_blend_mode();
-  }
-  public set detail_blend_mode(value): void {
-    set_detail_blend_mode(value);
-  }
-  public get detail_uv_layer(): number {
-    get_detail_uv();
-  }
-  public set detail_uv_layer(value): void {
-    set_detail_uv(value);
-  }
-  public get detail_albedo(): Texture2D {
-    get_texture();
-  }
-  public set detail_albedo(value): void {
-    set_texture(value);
-  }
-  public get detail_normal(): Texture2D {
-    get_texture();
-  }
-  public set detail_normal(value): void {
-    set_texture(value);
-  }
-  public get uv1_scale(): Vector3 {
-    get_uv1_scale();
-  }
-  public set uv1_scale(value): void {
-    set_uv1_scale(value);
-  }
-  public get uv1_offset(): Vector3 {
-    get_uv1_offset();
-  }
-  public set uv1_offset(value): void {
-    set_uv1_offset(value);
-  }
-  public get uv1_triplanar(): boolean {
-    get_flag();
-  }
-  public set uv1_triplanar(value): void {
-    set_flag(value);
-  }
-  public get uv1_triplanar_sharpness(): number {
-    get_uv1_triplanar_blend_sharpness();
-  }
-  public set uv1_triplanar_sharpness(value): void {
-    set_uv1_triplanar_blend_sharpness(value);
-  }
-  public get uv1_world_triplanar(): boolean {
-    get_flag();
-  }
-  public set uv1_world_triplanar(value): void {
-    set_flag(value);
-  }
-  public get uv2_scale(): Vector3 {
-    get_uv2_scale();
-  }
-  public set uv2_scale(value): void {
-    set_uv2_scale(value);
-  }
-  public get uv2_offset(): Vector3 {
-    get_uv2_offset();
-  }
-  public set uv2_offset(value): void {
-    set_uv2_offset(value);
-  }
-  public get uv2_triplanar(): boolean {
-    get_flag();
-  }
-  public set uv2_triplanar(value): void {
-    set_flag(value);
-  }
-  public get uv2_triplanar_sharpness(): number {
-    get_uv2_triplanar_blend_sharpness();
-  }
-  public set uv2_triplanar_sharpness(value): void {
-    set_uv2_triplanar_blend_sharpness(value);
-  }
-  public get uv2_world_triplanar(): boolean {
-    get_flag();
-  }
-  public set uv2_world_triplanar(value): void {
-    set_flag(value);
-  }
-  public get texture_filter(): number {
-    get_texture_filter();
-  }
-  public set texture_filter(value): void {
-    set_texture_filter(value);
-  }
-  public get texture_repeat(): boolean {
-    get_flag();
-  }
-  public set texture_repeat(value): void {
-    set_flag(value);
-  }
-  public get disable_receive_shadows(): boolean {
-    get_flag();
-  }
-  public set disable_receive_shadows(value): void {
-    set_flag(value);
-  }
-  public get shadow_to_opacity(): boolean {
-    get_flag();
-  }
-  public set shadow_to_opacity(value): void {
-    set_flag(value);
-  }
-  public get billboard_mode(): number {
-    get_billboard_mode();
-  }
-  public set billboard_mode(value): void {
-    set_billboard_mode(value);
-  }
-  public get billboard_keep_scale(): boolean {
-    get_flag();
-  }
-  public set billboard_keep_scale(value): void {
-    set_flag(value);
-  }
-  public get particles_anim_h_frames(): number {
-    get_particles_anim_h_frames();
-  }
-  public set particles_anim_h_frames(value): void {
-    set_particles_anim_h_frames(value);
-  }
-  public get particles_anim_v_frames(): number {
-    get_particles_anim_v_frames();
-  }
-  public set particles_anim_v_frames(value): void {
-    set_particles_anim_v_frames(value);
-  }
-  public get particles_anim_loop(): boolean {
-    get_particles_anim_loop();
-  }
-  public set particles_anim_loop(value): void {
-    set_particles_anim_loop(value);
-  }
-  public get grow(): boolean {
-    is_grow_enabled();
-  }
-  public set grow(value): void {
-    set_grow_enabled(value);
-  }
-  public get grow_amount(): number {
-    get_grow();
-  }
-  public set grow_amount(value): void {
-    set_grow(value);
-  }
-  public get fixed_size(): boolean {
-    get_flag();
-  }
-  public set fixed_size(value): void {
-    set_flag(value);
-  }
-  public get use_point_size(): boolean {
-    get_flag();
-  }
-  public set use_point_size(value): void {
-    set_flag(value);
-  }
-  public get point_size(): number {
-    get_point_size();
-  }
-  public set point_size(value): void {
-    set_point_size(value);
-  }
-  public get use_particle_trails(): boolean {
-    get_flag();
-  }
-  public set use_particle_trails(value): void {
-    set_flag(value);
-  }
-  public get proximity_fade_enabled(): boolean {
-    is_proximity_fade_enabled();
-  }
-  public set proximity_fade_enabled(value): void {
-    set_proximity_fade_enabled(value);
-  }
-  public get proximity_fade_distance(): number {
-    get_proximity_fade_distance();
-  }
-  public set proximity_fade_distance(value): void {
-    set_proximity_fade_distance(value);
-  }
-  public get msdf_pixel_range(): number {
-    get_msdf_pixel_range();
-  }
-  public set msdf_pixel_range(value): void {
-    set_msdf_pixel_range(value);
-  }
-  public get msdf_outline_size(): number {
-    get_msdf_outline_size();
-  }
-  public set msdf_outline_size(value): void {
-    set_msdf_outline_size(value);
-  }
-  public get distance_fade_mode(): number {
-    get_distance_fade();
-  }
-  public set distance_fade_mode(value): void {
-    set_distance_fade(value);
-  }
-  public get distance_fade_min_distance(): number {
-    get_distance_fade_min_distance();
-  }
-  public set distance_fade_min_distance(value): void {
-    set_distance_fade_min_distance(value);
-  }
-  public get distance_fade_max_distance(): number {
-    get_distance_fade_max_distance();
-  }
-  public set distance_fade_max_distance(value): void {
-    set_distance_fade_max_distance(value);
-  }
+  public get transparency(): number;
+  public set transparency(value): void;
+  public get alpha_scissor_threshold(): number;
+  public set alpha_scissor_threshold(value): void;
+  public get alpha_hash_scale(): number;
+  public set alpha_hash_scale(value): void;
+  public get alpha_antialiasing_mode(): number;
+  public set alpha_antialiasing_mode(value): void;
+  public get alpha_antialiasing_edge(): number;
+  public set alpha_antialiasing_edge(value): void;
+  public get blend_mode(): number;
+  public set blend_mode(value): void;
+  public get cull_mode(): number;
+  public set cull_mode(value): void;
+  public get depth_draw_mode(): number;
+  public set depth_draw_mode(value): void;
+  public get no_depth_test(): boolean;
+  public set no_depth_test(value): void;
+  public get shading_mode(): number;
+  public set shading_mode(value): void;
+  public get diffuse_mode(): number;
+  public set diffuse_mode(value): void;
+  public get specular_mode(): number;
+  public set specular_mode(value): void;
+  public get disable_ambient_light(): boolean;
+  public set disable_ambient_light(value): void;
+  public get disable_fog(): boolean;
+  public set disable_fog(value): void;
+  public get vertex_color_use_as_albedo(): boolean;
+  public set vertex_color_use_as_albedo(value): void;
+  public get vertex_color_is_srgb(): boolean;
+  public set vertex_color_is_srgb(value): void;
+  public get albedo_color(): Color;
+  public set albedo_color(value): void;
+  public get albedo_texture(): Texture2D;
+  public set albedo_texture(value): void;
+  public get albedo_texture_force_srgb(): boolean;
+  public set albedo_texture_force_srgb(value): void;
+  public get albedo_texture_msdf(): boolean;
+  public set albedo_texture_msdf(value): void;
+  public get orm_texture(): Texture2D;
+  public set orm_texture(value): void;
+  public get metallic(): number;
+  public set metallic(value): void;
+  public get metallic_specular(): number;
+  public set metallic_specular(value): void;
+  public get metallic_texture(): Texture2D;
+  public set metallic_texture(value): void;
+  public get metallic_texture_channel(): number;
+  public set metallic_texture_channel(value): void;
+  public get roughness(): number;
+  public set roughness(value): void;
+  public get roughness_texture(): Texture2D;
+  public set roughness_texture(value): void;
+  public get roughness_texture_channel(): number;
+  public set roughness_texture_channel(value): void;
+  public get emission_enabled(): boolean;
+  public set emission_enabled(value): void;
+  public get emission(): Color;
+  public set emission(value): void;
+  public get emission_energy_multiplier(): number;
+  public set emission_energy_multiplier(value): void;
+  public get emission_intensity(): number;
+  public set emission_intensity(value): void;
+  public get emission_operator(): number;
+  public set emission_operator(value): void;
+  public get emission_on_uv2(): boolean;
+  public set emission_on_uv2(value): void;
+  public get emission_texture(): Texture2D;
+  public set emission_texture(value): void;
+  public get normal_enabled(): boolean;
+  public set normal_enabled(value): void;
+  public get normal_scale(): number;
+  public set normal_scale(value): void;
+  public get normal_texture(): Texture2D;
+  public set normal_texture(value): void;
+  public get rim_enabled(): boolean;
+  public set rim_enabled(value): void;
+  public get rim(): number;
+  public set rim(value): void;
+  public get rim_tint(): number;
+  public set rim_tint(value): void;
+  public get rim_texture(): Texture2D;
+  public set rim_texture(value): void;
+  public get clearcoat_enabled(): boolean;
+  public set clearcoat_enabled(value): void;
+  public get clearcoat(): number;
+  public set clearcoat(value): void;
+  public get clearcoat_roughness(): number;
+  public set clearcoat_roughness(value): void;
+  public get clearcoat_texture(): Texture2D;
+  public set clearcoat_texture(value): void;
+  public get anisotropy_enabled(): boolean;
+  public set anisotropy_enabled(value): void;
+  public get anisotropy(): number;
+  public set anisotropy(value): void;
+  public get anisotropy_flowmap(): Texture2D;
+  public set anisotropy_flowmap(value): void;
+  public get ao_enabled(): boolean;
+  public set ao_enabled(value): void;
+  public get ao_light_affect(): number;
+  public set ao_light_affect(value): void;
+  public get ao_texture(): Texture2D;
+  public set ao_texture(value): void;
+  public get ao_on_uv2(): boolean;
+  public set ao_on_uv2(value): void;
+  public get ao_texture_channel(): number;
+  public set ao_texture_channel(value): void;
+  public get heightmap_enabled(): boolean;
+  public set heightmap_enabled(value): void;
+  public get heightmap_scale(): number;
+  public set heightmap_scale(value): void;
+  public get heightmap_deep_parallax(): boolean;
+  public set heightmap_deep_parallax(value): void;
+  public get heightmap_min_layers(): number;
+  public set heightmap_min_layers(value): void;
+  public get heightmap_max_layers(): number;
+  public set heightmap_max_layers(value): void;
+  public get heightmap_flip_tangent(): boolean;
+  public set heightmap_flip_tangent(value): void;
+  public get heightmap_flip_binormal(): boolean;
+  public set heightmap_flip_binormal(value): void;
+  public get heightmap_texture(): Texture2D;
+  public set heightmap_texture(value): void;
+  public get heightmap_flip_texture(): boolean;
+  public set heightmap_flip_texture(value): void;
+  public get subsurf_scatter_enabled(): boolean;
+  public set subsurf_scatter_enabled(value): void;
+  public get subsurf_scatter_strength(): number;
+  public set subsurf_scatter_strength(value): void;
+  public get subsurf_scatter_skin_mode(): boolean;
+  public set subsurf_scatter_skin_mode(value): void;
+  public get subsurf_scatter_texture(): Texture2D;
+  public set subsurf_scatter_texture(value): void;
+  public get subsurf_scatter_transmittance_enabled(): boolean;
+  public set subsurf_scatter_transmittance_enabled(value): void;
+  public get subsurf_scatter_transmittance_color(): Color;
+  public set subsurf_scatter_transmittance_color(value): void;
+  public get subsurf_scatter_transmittance_texture(): Texture2D;
+  public set subsurf_scatter_transmittance_texture(value): void;
+  public get subsurf_scatter_transmittance_depth(): number;
+  public set subsurf_scatter_transmittance_depth(value): void;
+  public get subsurf_scatter_transmittance_boost(): number;
+  public set subsurf_scatter_transmittance_boost(value): void;
+  public get backlight_enabled(): boolean;
+  public set backlight_enabled(value): void;
+  public get backlight(): Color;
+  public set backlight(value): void;
+  public get backlight_texture(): Texture2D;
+  public set backlight_texture(value): void;
+  public get refraction_enabled(): boolean;
+  public set refraction_enabled(value): void;
+  public get refraction_scale(): number;
+  public set refraction_scale(value): void;
+  public get refraction_texture(): Texture2D;
+  public set refraction_texture(value): void;
+  public get refraction_texture_channel(): number;
+  public set refraction_texture_channel(value): void;
+  public get detail_enabled(): boolean;
+  public set detail_enabled(value): void;
+  public get detail_mask(): Texture2D;
+  public set detail_mask(value): void;
+  public get detail_blend_mode(): number;
+  public set detail_blend_mode(value): void;
+  public get detail_uv_layer(): number;
+  public set detail_uv_layer(value): void;
+  public get detail_albedo(): Texture2D;
+  public set detail_albedo(value): void;
+  public get detail_normal(): Texture2D;
+  public set detail_normal(value): void;
+  public get uv1_scale(): Vector3;
+  public set uv1_scale(value): void;
+  public get uv1_offset(): Vector3;
+  public set uv1_offset(value): void;
+  public get uv1_triplanar(): boolean;
+  public set uv1_triplanar(value): void;
+  public get uv1_triplanar_sharpness(): number;
+  public set uv1_triplanar_sharpness(value): void;
+  public get uv1_world_triplanar(): boolean;
+  public set uv1_world_triplanar(value): void;
+  public get uv2_scale(): Vector3;
+  public set uv2_scale(value): void;
+  public get uv2_offset(): Vector3;
+  public set uv2_offset(value): void;
+  public get uv2_triplanar(): boolean;
+  public set uv2_triplanar(value): void;
+  public get uv2_triplanar_sharpness(): number;
+  public set uv2_triplanar_sharpness(value): void;
+  public get uv2_world_triplanar(): boolean;
+  public set uv2_world_triplanar(value): void;
+  public get texture_filter(): number;
+  public set texture_filter(value): void;
+  public get texture_repeat(): boolean;
+  public set texture_repeat(value): void;
+  public get disable_receive_shadows(): boolean;
+  public set disable_receive_shadows(value): void;
+  public get shadow_to_opacity(): boolean;
+  public set shadow_to_opacity(value): void;
+  public get billboard_mode(): number;
+  public set billboard_mode(value): void;
+  public get billboard_keep_scale(): boolean;
+  public set billboard_keep_scale(value): void;
+  public get particles_anim_h_frames(): number;
+  public set particles_anim_h_frames(value): void;
+  public get particles_anim_v_frames(): number;
+  public set particles_anim_v_frames(value): void;
+  public get particles_anim_loop(): boolean;
+  public set particles_anim_loop(value): void;
+  public get grow(): boolean;
+  public set grow(value): void;
+  public get grow_amount(): number;
+  public set grow_amount(value): void;
+  public get fixed_size(): boolean;
+  public set fixed_size(value): void;
+  public get use_point_size(): boolean;
+  public set use_point_size(value): void;
+  public get point_size(): number;
+  public set point_size(value): void;
+  public get use_particle_trails(): boolean;
+  public set use_particle_trails(value): void;
+  public get proximity_fade_enabled(): boolean;
+  public set proximity_fade_enabled(value): void;
+  public get proximity_fade_distance(): number;
+  public set proximity_fade_distance(value): void;
+  public get msdf_pixel_range(): number;
+  public set msdf_pixel_range(value): void;
+  public get msdf_outline_size(): number;
+  public set msdf_outline_size(value): void;
+  public get distance_fade_mode(): number;
+  public set distance_fade_mode(value): void;
+  public get distance_fade_min_distance(): number;
+  public set distance_fade_min_distance(value): void;
+  public get distance_fade_max_distance(): number;
+  public set distance_fade_max_distance(value): void;
   static TextureParam = {
     TEXTURE_ALBEDO = 0,
     TEXTURE_METALLIC = 1,

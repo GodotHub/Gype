@@ -1,6 +1,7 @@
 
 import { Resource } from "@godot/classes/resource";
 
+
 export declare class TileSetSource extends Resource{
   public get_tiles_count(): number;
   public get_tile_id(_index: number): Vector2i;

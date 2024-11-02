@@ -1,6 +1,7 @@
 
-import { UPNPDevice } from "@godot/classes/upnp_device";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { UPNPDevice } from "@godot/classes/upnp_device";
+
 
 export declare class UPNP extends RefCounted{
   public get_device_count(): number;
@@ -10,34 +11,22 @@ export declare class UPNP extends RefCounted{
   public remove_device(_index: number): void;
   public clear_devices(): void;
   public get_gateway(): UPNPDevice;
-  public discover(_timeout: number, _ttl: number, _device_filter: String | StringName | string): number;
+  public discover(_timeout: number, _ttl: number, _device_filter: GDString | StringName | string): number;
   public query_external_address(): String;
-  public add_port_mapping(_port: number, _port_internal: number, _desc: String | StringName | string, _proto: String | StringName | string, _duration: number): number;
-  public delete_port_mapping(_port: number, _proto: String | StringName | string): number;
-  public set_discover_multicast_if(_m_if: String | StringName | string): void;
+  public add_port_mapping(_port: number, _port_internal: number, _desc: GDString | StringName | string, _proto: GDString | StringName | string, _duration: number): number;
+  public delete_port_mapping(_port: number, _proto: GDString | StringName | string): number;
+  public set_discover_multicast_if(_m_if: GDString | StringName | string): void;
   public get_discover_multicast_if(): String;
   public set_discover_local_port(_port: number): void;
   public get_discover_local_port(): number;
   public set_discover_ipv6(_ipv6: boolean): void;
   public is_discover_ipv6(): boolean;
-  public get discover_multicast_if(): String {
-    get_discover_multicast_if();
-  }
-  public set discover_multicast_if(value): void {
-    set_discover_multicast_if(value);
-  }
-  public get discover_local_port(): number {
-    get_discover_local_port();
-  }
-  public set discover_local_port(value): void {
-    set_discover_local_port(value);
-  }
-  public get discover_ipv6(): boolean {
-    is_discover_ipv6();
-  }
-  public set discover_ipv6(value): void {
-    set_discover_ipv6(value);
-  }
+  public get discover_multicast_if(): String;
+  public set discover_multicast_if(value): void;
+  public get discover_local_port(): number;
+  public set discover_local_port(value): void;
+  public get discover_ipv6(): boolean;
+  public set discover_ipv6(value): void;
   static UPNPResult = {
     UPNP_RESULT_SUCCESS = 0,
     UPNP_RESULT_NOT_AUTHORIZED = 1,

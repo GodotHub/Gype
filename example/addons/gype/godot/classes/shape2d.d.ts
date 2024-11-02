@@ -1,6 +1,7 @@
 
 import { Resource } from "@godot/classes/resource";
 
+
 export declare class Shape2D extends Resource{
   public set_custom_solver_bias(_bias: number): void;
   public get_custom_solver_bias(): number;
@@ -10,10 +11,6 @@ export declare class Shape2D extends Resource{
   public collide_with_motion_and_get_contacts(_local_xform: Transform2D, _local_motion: Vector2, _with_shape: Shape2D, _shape_xform: Transform2D, _shape_motion: Vector2): PackedVector2Array;
   public draw(_canvas_item: RID, _color: Color): void;
   public get_rect(): Rect2;
-  public get custom_solver_bias(): number {
-    get_custom_solver_bias();
-  }
-  public set custom_solver_bias(value): void {
-    set_custom_solver_bias(value);
-  }
+  public get custom_solver_bias(): number;
+  public set custom_solver_bias(value): void;
 }

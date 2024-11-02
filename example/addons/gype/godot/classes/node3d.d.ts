@@ -1,8 +1,9 @@
 
 import { Node3DGizmo } from "@godot/classes/node3d_gizmo";
-import { Node3DGizmo } from "@godot/classes/node3d_gizmo";
 import { World3D } from "@godot/classes/world3d";
+import { Node3DGizmo } from "@godot/classes/node3d_gizmo";
 import { Node } from "@godot/classes/node";
+
 
 export declare class Node3D extends Node{
   public set_transform(_local: Transform3D): void;
@@ -41,7 +42,7 @@ export declare class Node3D extends Node{
   public is_scale_disabled(): boolean;
   public get_world_3d(): World3D;
   public force_update_transform(): void;
-  public set_visibility_parent(_path: NodePath): void;
+  public set_visibility_parent(_path: GDString | NodePath | string): void;
   public get_visibility_parent(): NodePath;
   public update_gizmos(): void;
   public add_gizmo(_gizmo: Node3DGizmo): void;
@@ -75,108 +76,40 @@ export declare class Node3D extends Node{
   public look_at_from_position(_position: Vector3, _target: Vector3, _up: Vector3, _use_model_front: boolean): void;
   public to_local(_global_point: Vector3): Vector3;
   public to_global(_local_point: Vector3): Vector3;
-  public get transform(): Transform3D {
-    get_transform();
-  }
-  public set transform(value): void {
-    set_transform(value);
-  }
-  public get global_transform(): Transform3D {
-    get_global_transform();
-  }
-  public set global_transform(value): void {
-    set_global_transform(value);
-  }
-  public get position(): Vector3 {
-    get_position();
-  }
-  public set position(value): void {
-    set_position(value);
-  }
-  public get rotation(): Vector3 {
-    get_rotation();
-  }
-  public set rotation(value): void {
-    set_rotation(value);
-  }
-  public get rotation_degrees(): Vector3 {
-    get_rotation_degrees();
-  }
-  public set rotation_degrees(value): void {
-    set_rotation_degrees(value);
-  }
-  public get quaternion(): Quaternion {
-    get_quaternion();
-  }
-  public set quaternion(value): void {
-    set_quaternion(value);
-  }
-  public get basis(): Basis {
-    get_basis();
-  }
-  public set basis(value): void {
-    set_basis(value);
-  }
-  public get scale(): Vector3 {
-    get_scale();
-  }
-  public set scale(value): void {
-    set_scale(value);
-  }
-  public get rotation_edit_mode(): number {
-    get_rotation_edit_mode();
-  }
-  public set rotation_edit_mode(value): void {
-    set_rotation_edit_mode(value);
-  }
-  public get rotation_order(): number {
-    get_rotation_order();
-  }
-  public set rotation_order(value): void {
-    set_rotation_order(value);
-  }
-  public get top_level(): boolean {
-    is_set_as_top_level();
-  }
-  public set top_level(value): void {
-    set_as_top_level(value);
-  }
-  public get global_position(): Vector3 {
-    get_global_position();
-  }
-  public set global_position(value): void {
-    set_global_position(value);
-  }
-  public get global_basis(): Basis {
-    get_global_basis();
-  }
-  public set global_basis(value): void {
-    set_global_basis(value);
-  }
-  public get global_rotation(): Vector3 {
-    get_global_rotation();
-  }
-  public set global_rotation(value): void {
-    set_global_rotation(value);
-  }
-  public get global_rotation_degrees(): Vector3 {
-    get_global_rotation_degrees();
-  }
-  public set global_rotation_degrees(value): void {
-    set_global_rotation_degrees(value);
-  }
-  public get visible(): boolean {
-    is_visible();
-  }
-  public set visible(value): void {
-    set_visible(value);
-  }
-  public get visibility_parent(): NodePath {
-    get_visibility_parent();
-  }
-  public set visibility_parent(value): void {
-    set_visibility_parent(value);
-  }
+  public get transform(): Transform3D;
+  public set transform(value): void;
+  public get global_transform(): Transform3D;
+  public set global_transform(value): void;
+  public get position(): Vector3;
+  public set position(value): void;
+  public get rotation(): Vector3;
+  public set rotation(value): void;
+  public get rotation_degrees(): Vector3;
+  public set rotation_degrees(value): void;
+  public get quaternion(): Quaternion;
+  public set quaternion(value): void;
+  public get basis(): Basis;
+  public set basis(value): void;
+  public get scale(): Vector3;
+  public set scale(value): void;
+  public get rotation_edit_mode(): number;
+  public set rotation_edit_mode(value): void;
+  public get rotation_order(): number;
+  public set rotation_order(value): void;
+  public get top_level(): boolean;
+  public set top_level(value): void;
+  public get global_position(): Vector3;
+  public set global_position(value): void;
+  public get global_basis(): Basis;
+  public set global_basis(value): void;
+  public get global_rotation(): Vector3;
+  public set global_rotation(value): void;
+  public get global_rotation_degrees(): Vector3;
+  public set global_rotation_degrees(value): void;
+  public get visible(): boolean;
+  public set visible(value): void;
+  public get visibility_parent(): NodePath;
+  public set visibility_parent(value): void;
   static RotationEditMode = {
     ROTATION_EDIT_MODE_EULER = 0,
     ROTATION_EDIT_MODE_QUATERNION = 1,

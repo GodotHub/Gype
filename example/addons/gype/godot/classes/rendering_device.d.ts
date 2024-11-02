@@ -1,19 +1,20 @@
 
-import { RDShaderSource } from "@godot/classes/rd_shader_source";
-import { RDPipelineDepthStencilState } from "@godot/classes/rd_pipeline_depth_stencil_state";
-import { RDPipelineRasterizationState } from "@godot/classes/rd_pipeline_rasterization_state";
-import { RDTextureView } from "@godot/classes/rd_texture_view";
 import { RDFramebufferPass } from "@godot/classes/rd_framebuffer_pass";
-import { RDSamplerState } from "@godot/classes/rd_sampler_state";
-import { RDShaderSPIRV } from "@godot/classes/rd_shader_spirv";
-import { RDPipelineSpecializationConstant } from "@godot/classes/rd_pipeline_specialization_constant";
-import { RDVertexAttribute } from "@godot/classes/rd_vertex_attribute";
 import { GodotObject } from "@godot/classes/godot_object";
-import { RDPipelineMultisampleState } from "@godot/classes/rd_pipeline_multisample_state";
-import { RDPipelineColorBlendState } from "@godot/classes/rd_pipeline_color_blend_state";
-import { RDAttachmentFormat } from "@godot/classes/rd_attachment_format";
-import { RDTextureFormat } from "@godot/classes/rd_texture_format";
+import { RDSamplerState } from "@godot/classes/rd_sampler_state";
 import { RDUniform } from "@godot/classes/rd_uniform";
+import { RDPipelineDepthStencilState } from "@godot/classes/rd_pipeline_depth_stencil_state";
+import { RDPipelineMultisampleState } from "@godot/classes/rd_pipeline_multisample_state";
+import { RDPipelineRasterizationState } from "@godot/classes/rd_pipeline_rasterization_state";
+import { RDAttachmentFormat } from "@godot/classes/rd_attachment_format";
+import { RDTextureView } from "@godot/classes/rd_texture_view";
+import { RDPipelineSpecializationConstant } from "@godot/classes/rd_pipeline_specialization_constant";
+import { RDTextureFormat } from "@godot/classes/rd_texture_format";
+import { RDPipelineColorBlendState } from "@godot/classes/rd_pipeline_color_blend_state";
+import { RDVertexAttribute } from "@godot/classes/rd_vertex_attribute";
+import { RDShaderSPIRV } from "@godot/classes/rd_shader_spirv";
+import { RDShaderSource } from "@godot/classes/rd_shader_source";
+
 
 export declare class RenderingDevice extends GodotObject{
   public texture_create(_format: RDTextureFormat, _view: RDTextureView, _data: GDArray): RID;
@@ -47,8 +48,8 @@ export declare class RenderingDevice extends GodotObject{
   public index_buffer_create(_size_indices: number, _format: number, _data: PackedByteArray, _use_restart_indices: boolean): RID;
   public index_array_create(_index_buffer: RID, _index_offset: number, _index_count: number): RID;
   public shader_compile_spirv_from_source(_shader_source: RDShaderSource, _allow_cache: boolean): RDShaderSPIRV;
-  public shader_compile_binary_from_spirv(_spirv_data: RDShaderSPIRV, _name: String | StringName | string): PackedByteArray;
-  public shader_create_from_spirv(_spirv_data: RDShaderSPIRV, _name: String | StringName | string): RID;
+  public shader_compile_binary_from_spirv(_spirv_data: RDShaderSPIRV, _name: GDString | StringName | string): PackedByteArray;
+  public shader_create_from_spirv(_spirv_data: RDShaderSPIRV, _name: GDString | StringName | string): RID;
   public shader_create_from_bytecode(_binary_data: PackedByteArray, _placeholder_rid: RID): RID;
   public shader_create_placeholder(): RID;
   public shader_get_vertex_input_attribute_mask(_shader: RID): number;
@@ -92,7 +93,7 @@ export declare class RenderingDevice extends GodotObject{
   public compute_list_add_barrier(_compute_list: number): void;
   public compute_list_end(): void;
   public free_rid(_rid: RID): void;
-  public capture_timestamp(_name: String | StringName | string): void;
+  public capture_timestamp(_name: GDString | StringName | string): void;
   public get_captured_timestamps_count(): number;
   public get_captured_timestamps_frame(): number;
   public get_captured_timestamp_gpu_time(_index: number): number;
@@ -105,9 +106,9 @@ export declare class RenderingDevice extends GodotObject{
   public barrier(_from: number, _to: number): void;
   public full_barrier(): void;
   public create_local_device(): RenderingDevice;
-  public set_resource_name(_id: RID, _name: String | StringName | string): void;
-  public draw_command_begin_label(_name: String | StringName | string, _color: Color): void;
-  public draw_command_insert_label(_name: String | StringName | string, _color: Color): void;
+  public set_resource_name(_id: RID, _name: GDString | StringName | string): void;
+  public draw_command_begin_label(_name: GDString | StringName | string, _color: Color): void;
+  public draw_command_insert_label(_name: GDString | StringName | string, _color: Color): void;
   public draw_command_end_label(): void;
   public get_device_vendor_name(): String;
   public get_device_name(): String;

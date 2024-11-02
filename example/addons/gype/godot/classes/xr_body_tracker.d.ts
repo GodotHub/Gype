@@ -1,6 +1,7 @@
 
 import { XRPositionalTracker } from "@godot/classes/xr_positional_tracker";
 
+
 export declare class XRBodyTracker extends XRPositionalTracker{
   public set_has_tracking_data(_has_data: boolean): void;
   public get_has_tracking_data(): boolean;
@@ -10,18 +11,10 @@ export declare class XRBodyTracker extends XRPositionalTracker{
   public get_joint_flags(_joint: number): number;
   public set_joint_transform(_joint: number, _transform: Transform3D): void;
   public get_joint_transform(_joint: number): Transform3D;
-  public get has_tracking_data(): boolean {
-    get_has_tracking_data();
-  }
-  public set has_tracking_data(value): void {
-    set_has_tracking_data(value);
-  }
-  public get body_flags(): number {
-    get_body_flags();
-  }
-  public set body_flags(value): void {
-    set_body_flags(value);
-  }
+  public get has_tracking_data(): boolean;
+  public set has_tracking_data(value): void;
+  public get body_flags(): number;
+  public set body_flags(value): void;
   static BodyFlags = {
     BODY_FLAG_UPPER_BODY_SUPPORTED = 1,
     BODY_FLAG_LOWER_BODY_SUPPORTED = 2,

@@ -2,6 +2,7 @@
 import { Node2D } from "@godot/classes/node2d";
 import { Texture2D } from "@godot/classes/texture2d";
 
+
 export declare class Polygon2D extends Node2D{
   public set_polygon(_polygon: PackedVector2Array): void;
   public get_polygon(): PackedVector2Array;
@@ -29,112 +30,48 @@ export declare class Polygon2D extends Node2D{
   public get_invert_border(): number;
   public set_offset(_offset: Vector2): void;
   public get_offset(): Vector2;
-  public add_bone(_path: NodePath, _weights: PackedFloat32Array): void;
+  public add_bone(_path: GDString | NodePath | string, _weights: PackedFloat32Array): void;
   public get_bone_count(): number;
   public get_bone_path(_index: number): NodePath;
   public get_bone_weights(_index: number): PackedFloat32Array;
   public erase_bone(_index: number): void;
   public clear_bones(): void;
-  public set_bone_path(_index: number, _path: NodePath): void;
+  public set_bone_path(_index: number, _path: GDString | NodePath | string): void;
   public set_bone_weights(_index: number, _weights: PackedFloat32Array): void;
-  public set_skeleton(_skeleton: NodePath): void;
+  public set_skeleton(_skeleton: GDString | NodePath | string): void;
   public get_skeleton(): NodePath;
   public set_internal_vertex_count(_internal_vertex_count: number): void;
   public get_internal_vertex_count(): number;
-  public get color(): Color {
-    get_color();
-  }
-  public set color(value): void {
-    set_color(value);
-  }
-  public get offset(): Vector2 {
-    get_offset();
-  }
-  public set offset(value): void {
-    set_offset(value);
-  }
-  public get antialiased(): boolean {
-    get_antialiased();
-  }
-  public set antialiased(value): void {
-    set_antialiased(value);
-  }
-  public get texture(): Texture2D {
-    get_texture();
-  }
-  public set texture(value): void {
-    set_texture(value);
-  }
-  public get texture_offset(): Vector2 {
-    get_texture_offset();
-  }
-  public set texture_offset(value): void {
-    set_texture_offset(value);
-  }
-  public get texture_scale(): Vector2 {
-    get_texture_scale();
-  }
-  public set texture_scale(value): void {
-    set_texture_scale(value);
-  }
-  public get texture_rotation(): number {
-    get_texture_rotation();
-  }
-  public set texture_rotation(value): void {
-    set_texture_rotation(value);
-  }
-  public get skeleton(): NodePath {
-    get_skeleton();
-  }
-  public set skeleton(value): void {
-    set_skeleton(value);
-  }
-  public get invert_enabled(): boolean {
-    get_invert_enabled();
-  }
-  public set invert_enabled(value): void {
-    set_invert_enabled(value);
-  }
-  public get invert_border(): number {
-    get_invert_border();
-  }
-  public set invert_border(value): void {
-    set_invert_border(value);
-  }
-  public get polygon(): PackedVector2Array {
-    get_polygon();
-  }
-  public set polygon(value): void {
-    set_polygon(value);
-  }
-  public get uv(): PackedVector2Array {
-    get_uv();
-  }
-  public set uv(value): void {
-    set_uv(value);
-  }
-  public get vertex_colors(): PackedColorArray {
-    get_vertex_colors();
-  }
-  public set vertex_colors(value): void {
-    set_vertex_colors(value);
-  }
-  public get polygons(): GDArray {
-    get_polygons();
-  }
-  public set polygons(value): void {
-    set_polygons(value);
-  }
-  public get bones(): GDArray {
-    _get_bones();
-  }
-  public set bones(value): void {
-    _set_bones(value);
-  }
-  public get internal_vertex_count(): number {
-    get_internal_vertex_count();
-  }
-  public set internal_vertex_count(value): void {
-    set_internal_vertex_count(value);
-  }
+  public get color(): Color;
+  public set color(value): void;
+  public get offset(): Vector2;
+  public set offset(value): void;
+  public get antialiased(): boolean;
+  public set antialiased(value): void;
+  public get texture(): Texture2D;
+  public set texture(value): void;
+  public get texture_offset(): Vector2;
+  public set texture_offset(value): void;
+  public get texture_scale(): Vector2;
+  public set texture_scale(value): void;
+  public get texture_rotation(): number;
+  public set texture_rotation(value): void;
+  public get skeleton(): NodePath;
+  public set skeleton(value): void;
+  public get invert_enabled(): boolean;
+  public set invert_enabled(value): void;
+  public get invert_border(): number;
+  public set invert_border(value): void;
+  public get polygon(): PackedVector2Array;
+  public set polygon(value): void;
+  public get uv(): PackedVector2Array;
+  public set uv(value): void;
+  public get vertex_colors(): PackedColorArray;
+  public set vertex_colors(value): void;
+  public get polygons(): GDArray;
+  public set polygons(value): void;
+  public get bones(): GDArray;
+  public set bones(value): void;
+  public get internal_vertex_count(): number;
+  public set internal_vertex_count(value): void;
 }

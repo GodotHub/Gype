@@ -1,19 +1,20 @@
 
 import { HBoxContainer } from "@godot/classes/h_box_container";
-import { Node } from "@godot/classes/node";
-import { GraphFrame } from "@godot/classes/graph_frame";
 import { Control } from "@godot/classes/control";
 import { GodotObject } from "@godot/classes/godot_object";
+import { Node } from "@godot/classes/node";
+import { GraphFrame } from "@godot/classes/graph_frame";
+
 
 export declare class GraphEdit extends Control{
-  public _is_in_input_hotzone(_in_node: Object, _in_port: number, _mouse_position: Vector2): boolean;
-  public _is_in_output_hotzone(_in_node: Object, _in_port: number, _mouse_position: Vector2): boolean;
+  public _is_in_input_hotzone(_in_node: GodotObject, _in_port: number, _mouse_position: Vector2): boolean;
+  public _is_in_output_hotzone(_in_node: GodotObject, _in_port: number, _mouse_position: Vector2): boolean;
   public _get_connection_line(_from_position: Vector2, _to_position: Vector2): PackedVector2Array;
-  public _is_node_hover_valid(_from_node: String | StringName | string, _from_port: number, _to_node: String | StringName | string, _to_port: number): boolean;
-  public connect_node(_from_node: String | StringName | string, _from_port: number, _to_node: String | StringName | string, _to_port: number): number;
-  public is_node_connected(_from_node: String | StringName | string, _from_port: number, _to_node: String | StringName | string, _to_port: number): boolean;
-  public disconnect_node(_from_node: String | StringName | string, _from_port: number, _to_node: String | StringName | string, _to_port: number): void;
-  public set_connection_activity(_from_node: String | StringName | string, _from_port: number, _to_node: String | StringName | string, _to_port: number, _amount: number): void;
+  public _is_node_hover_valid(_from_node: GDString | StringName | string, _from_port: number, _to_node: GDString | StringName | string, _to_port: number): boolean;
+  public connect_node(_from_node: GDString | StringName | string, _from_port: number, _to_node: GDString | StringName | string, _to_port: number): number;
+  public is_node_connected(_from_node: GDString | StringName | string, _from_port: number, _to_node: GDString | StringName | string, _to_port: number): boolean;
+  public disconnect_node(_from_node: GDString | StringName | string, _from_port: number, _to_node: GDString | StringName | string, _to_port: number): void;
+  public set_connection_activity(_from_node: GDString | StringName | string, _from_port: number, _to_node: GDString | StringName | string, _to_port: number, _amount: number): void;
   public get_connection_list(): GDArray;
   public get_closest_connection_at_point(_point: Vector2, _max_distance: number): Dictionary;
   public get_connections_intersecting_with_rect(_rect: Rect2): GDArray;
@@ -29,10 +30,10 @@ export declare class GraphEdit extends Control{
   public remove_valid_connection_type(_from_type: number, _to_type: number): void;
   public is_valid_connection_type(_from_type: number, _to_type: number): boolean;
   public get_connection_line(_from_node: Vector2, _to_node: Vector2): PackedVector2Array;
-  public attach_graph_element_to_frame(_element: String | StringName | string, _frame: String | StringName | string): void;
-  public detach_graph_element_from_frame(_element: String | StringName | string): void;
-  public get_element_frame(_element: String | StringName | string): GraphFrame;
-  public get_attached_nodes_of_frame(_frame: String | StringName | string): GDArray;
+  public attach_graph_element_to_frame(_element: GDString | StringName | string, _frame: GDString | StringName | string): void;
+  public detach_graph_element_from_frame(_element: GDString | StringName | string): void;
+  public get_element_frame(_element: GDString | StringName | string): GraphFrame;
+  public get_attached_nodes_of_frame(_frame: GDString | StringName | string): GDArray;
   public set_panning_scheme(_scheme: number): void;
   public get_panning_scheme(): number;
   public set_zoom(_zoom: number): void;
@@ -80,144 +81,52 @@ export declare class GraphEdit extends Control{
   public get_menu_hbox(): HBoxContainer;
   public arrange_nodes(): void;
   public set_selected(_node: Node): void;
-  public get scroll_offset(): Vector2 {
-    get_scroll_offset();
-  }
-  public set scroll_offset(value): void {
-    set_scroll_offset(value);
-  }
-  public get show_grid(): boolean {
-    is_showing_grid();
-  }
-  public set show_grid(value): void {
-    set_show_grid(value);
-  }
-  public get grid_pattern(): number {
-    get_grid_pattern();
-  }
-  public set grid_pattern(value): void {
-    set_grid_pattern(value);
-  }
-  public get snapping_enabled(): boolean {
-    is_snapping_enabled();
-  }
-  public set snapping_enabled(value): void {
-    set_snapping_enabled(value);
-  }
-  public get snapping_distance(): number {
-    get_snapping_distance();
-  }
-  public set snapping_distance(value): void {
-    set_snapping_distance(value);
-  }
-  public get panning_scheme(): number {
-    get_panning_scheme();
-  }
-  public set panning_scheme(value): void {
-    set_panning_scheme(value);
-  }
-  public get right_disconnects(): boolean {
-    is_right_disconnects_enabled();
-  }
-  public set right_disconnects(value): void {
-    set_right_disconnects(value);
-  }
-  public get connection_lines_curvature(): number {
-    get_connection_lines_curvature();
-  }
-  public set connection_lines_curvature(value): void {
-    set_connection_lines_curvature(value);
-  }
-  public get connection_lines_thickness(): number {
-    get_connection_lines_thickness();
-  }
-  public set connection_lines_thickness(value): void {
-    set_connection_lines_thickness(value);
-  }
-  public get connection_lines_antialiased(): boolean {
-    is_connection_lines_antialiased();
-  }
-  public set connection_lines_antialiased(value): void {
-    set_connection_lines_antialiased(value);
-  }
-  public get zoom(): number {
-    get_zoom();
-  }
-  public set zoom(value): void {
-    set_zoom(value);
-  }
-  public get zoom_min(): number {
-    get_zoom_min();
-  }
-  public set zoom_min(value): void {
-    set_zoom_min(value);
-  }
-  public get zoom_max(): number {
-    get_zoom_max();
-  }
-  public set zoom_max(value): void {
-    set_zoom_max(value);
-  }
-  public get zoom_step(): number {
-    get_zoom_step();
-  }
-  public set zoom_step(value): void {
-    set_zoom_step(value);
-  }
-  public get minimap_enabled(): boolean {
-    is_minimap_enabled();
-  }
-  public set minimap_enabled(value): void {
-    set_minimap_enabled(value);
-  }
-  public get minimap_size(): Vector2 {
-    get_minimap_size();
-  }
-  public set minimap_size(value): void {
-    set_minimap_size(value);
-  }
-  public get minimap_opacity(): number {
-    get_minimap_opacity();
-  }
-  public set minimap_opacity(value): void {
-    set_minimap_opacity(value);
-  }
-  public get show_menu(): boolean {
-    is_showing_menu();
-  }
-  public set show_menu(value): void {
-    set_show_menu(value);
-  }
-  public get show_zoom_label(): boolean {
-    is_showing_zoom_label();
-  }
-  public set show_zoom_label(value): void {
-    set_show_zoom_label(value);
-  }
-  public get show_zoom_buttons(): boolean {
-    is_showing_zoom_buttons();
-  }
-  public set show_zoom_buttons(value): void {
-    set_show_zoom_buttons(value);
-  }
-  public get show_grid_buttons(): boolean {
-    is_showing_grid_buttons();
-  }
-  public set show_grid_buttons(value): void {
-    set_show_grid_buttons(value);
-  }
-  public get show_minimap_button(): boolean {
-    is_showing_minimap_button();
-  }
-  public set show_minimap_button(value): void {
-    set_show_minimap_button(value);
-  }
-  public get show_arrange_button(): boolean {
-    is_showing_arrange_button();
-  }
-  public set show_arrange_button(value): void {
-    set_show_arrange_button(value);
-  }
+  public get scroll_offset(): Vector2;
+  public set scroll_offset(value): void;
+  public get show_grid(): boolean;
+  public set show_grid(value): void;
+  public get grid_pattern(): number;
+  public set grid_pattern(value): void;
+  public get snapping_enabled(): boolean;
+  public set snapping_enabled(value): void;
+  public get snapping_distance(): number;
+  public set snapping_distance(value): void;
+  public get panning_scheme(): number;
+  public set panning_scheme(value): void;
+  public get right_disconnects(): boolean;
+  public set right_disconnects(value): void;
+  public get connection_lines_curvature(): number;
+  public set connection_lines_curvature(value): void;
+  public get connection_lines_thickness(): number;
+  public set connection_lines_thickness(value): void;
+  public get connection_lines_antialiased(): boolean;
+  public set connection_lines_antialiased(value): void;
+  public get zoom(): number;
+  public set zoom(value): void;
+  public get zoom_min(): number;
+  public set zoom_min(value): void;
+  public get zoom_max(): number;
+  public set zoom_max(value): void;
+  public get zoom_step(): number;
+  public set zoom_step(value): void;
+  public get minimap_enabled(): boolean;
+  public set minimap_enabled(value): void;
+  public get minimap_size(): Vector2;
+  public set minimap_size(value): void;
+  public get minimap_opacity(): number;
+  public set minimap_opacity(value): void;
+  public get show_menu(): boolean;
+  public set show_menu(value): void;
+  public get show_zoom_label(): boolean;
+  public set show_zoom_label(value): void;
+  public get show_zoom_buttons(): boolean;
+  public set show_zoom_buttons(value): void;
+  public get show_grid_buttons(): boolean;
+  public set show_grid_buttons(value): void;
+  public get show_minimap_button(): boolean;
+  public set show_minimap_button(value): void;
+  public get show_arrange_button(): boolean;
+  public set show_arrange_button(value): void;
   static PanningScheme = {
     SCROLL_ZOOMS = 0,
     SCROLL_PANS = 1,

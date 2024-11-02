@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/triangle_mesh.hpp>
-#include <godot_cpp/classes/sprite_base3d.hpp>
 #include <godot_cpp/classes/geometry_instance3d.hpp>
+#include <godot_cpp/classes/sprite_base3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

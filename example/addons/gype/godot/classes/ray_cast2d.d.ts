@@ -3,6 +3,7 @@ import { Node2D } from "@godot/classes/node2d";
 import { CollisionObject2D } from "@godot/classes/collision_object2d";
 import { GodotObject } from "@godot/classes/godot_object";
 
+
 export declare class RayCast2D extends Node2D{
   public set_enabled(_enabled: boolean): void;
   public is_enabled(): boolean;
@@ -32,46 +33,18 @@ export declare class RayCast2D extends Node2D{
   public is_collide_with_bodies_enabled(): boolean;
   public set_hit_from_inside(_enable: boolean): void;
   public is_hit_from_inside_enabled(): boolean;
-  public get enabled(): boolean {
-    is_enabled();
-  }
-  public set enabled(value): void {
-    set_enabled(value);
-  }
-  public get exclude_parent(): boolean {
-    get_exclude_parent_body();
-  }
-  public set exclude_parent(value): void {
-    set_exclude_parent_body(value);
-  }
-  public get target_position(): Vector2 {
-    get_target_position();
-  }
-  public set target_position(value): void {
-    set_target_position(value);
-  }
-  public get collision_mask(): number {
-    get_collision_mask();
-  }
-  public set collision_mask(value): void {
-    set_collision_mask(value);
-  }
-  public get hit_from_inside(): boolean {
-    is_hit_from_inside_enabled();
-  }
-  public set hit_from_inside(value): void {
-    set_hit_from_inside(value);
-  }
-  public get collide_with_areas(): boolean {
-    is_collide_with_areas_enabled();
-  }
-  public set collide_with_areas(value): void {
-    set_collide_with_areas(value);
-  }
-  public get collide_with_bodies(): boolean {
-    is_collide_with_bodies_enabled();
-  }
-  public set collide_with_bodies(value): void {
-    set_collide_with_bodies(value);
-  }
+  public get enabled(): boolean;
+  public set enabled(value): void;
+  public get exclude_parent(): boolean;
+  public set exclude_parent(value): void;
+  public get target_position(): Vector2;
+  public set target_position(value): void;
+  public get collision_mask(): number;
+  public set collision_mask(value): void;
+  public get hit_from_inside(): boolean;
+  public set hit_from_inside(value): void;
+  public get collide_with_areas(): boolean;
+  public set collide_with_areas(value): void;
+  public get collide_with_bodies(): boolean;
+  public set collide_with_bodies(value): void;
 }

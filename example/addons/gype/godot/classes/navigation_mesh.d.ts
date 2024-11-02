@@ -2,6 +2,7 @@
 import { Resource } from "@godot/classes/resource";
 import { Mesh } from "@godot/classes/mesh";
 
+
 export declare class NavigationMesh extends Resource{
   public set_sample_partition_type(_sample_partition_type: number): void;
   public get_sample_partition_type(): number;
@@ -13,7 +14,7 @@ export declare class NavigationMesh extends Resource{
   public get_collision_mask_value(_layer_number: number): boolean;
   public set_source_geometry_mode(_mask: number): void;
   public get_source_geometry_mode(): number;
-  public set_source_group_name(_mask: String | StringName | string): void;
+  public set_source_group_name(_mask: GDString | StringName | string): void;
   public get_source_group_name(): StringName;
   public set_cell_size(_cell_size: number): void;
   public get_cell_size(): number;
@@ -61,162 +62,58 @@ export declare class NavigationMesh extends Resource{
   public clear_polygons(): void;
   public create_from_mesh(_mesh: Mesh): void;
   public clear(): void;
-  public get vertices(): PackedVector3Array {
-    get_vertices();
-  }
-  public set vertices(value): void {
-    set_vertices(value);
-  }
-  public get polygons(): GDArray {
-    _get_polygons();
-  }
-  public set polygons(value): void {
-    _set_polygons(value);
-  }
-  public get sample_partition_type(): number {
-    get_sample_partition_type();
-  }
-  public set sample_partition_type(value): void {
-    set_sample_partition_type(value);
-  }
-  public get geometry_parsed_geometry_type(): number {
-    get_parsed_geometry_type();
-  }
-  public set geometry_parsed_geometry_type(value): void {
-    set_parsed_geometry_type(value);
-  }
-  public get geometry_collision_mask(): number {
-    get_collision_mask();
-  }
-  public set geometry_collision_mask(value): void {
-    set_collision_mask(value);
-  }
-  public get geometry_source_geometry_mode(): number {
-    get_source_geometry_mode();
-  }
-  public set geometry_source_geometry_mode(value): void {
-    set_source_geometry_mode(value);
-  }
-  public get geometry_source_group_name(): String {
-    get_source_group_name();
-  }
-  public set geometry_source_group_name(value): void {
-    set_source_group_name(value);
-  }
-  public get cell_size(): number {
-    get_cell_size();
-  }
-  public set cell_size(value): void {
-    set_cell_size(value);
-  }
-  public get cell_height(): number {
-    get_cell_height();
-  }
-  public set cell_height(value): void {
-    set_cell_height(value);
-  }
-  public get border_size(): number {
-    get_border_size();
-  }
-  public set border_size(value): void {
-    set_border_size(value);
-  }
-  public get agent_height(): number {
-    get_agent_height();
-  }
-  public set agent_height(value): void {
-    set_agent_height(value);
-  }
-  public get agent_radius(): number {
-    get_agent_radius();
-  }
-  public set agent_radius(value): void {
-    set_agent_radius(value);
-  }
-  public get agent_max_climb(): number {
-    get_agent_max_climb();
-  }
-  public set agent_max_climb(value): void {
-    set_agent_max_climb(value);
-  }
-  public get agent_max_slope(): number {
-    get_agent_max_slope();
-  }
-  public set agent_max_slope(value): void {
-    set_agent_max_slope(value);
-  }
-  public get region_min_size(): number {
-    get_region_min_size();
-  }
-  public set region_min_size(value): void {
-    set_region_min_size(value);
-  }
-  public get region_merge_size(): number {
-    get_region_merge_size();
-  }
-  public set region_merge_size(value): void {
-    set_region_merge_size(value);
-  }
-  public get edge_max_length(): number {
-    get_edge_max_length();
-  }
-  public set edge_max_length(value): void {
-    set_edge_max_length(value);
-  }
-  public get edge_max_error(): number {
-    get_edge_max_error();
-  }
-  public set edge_max_error(value): void {
-    set_edge_max_error(value);
-  }
-  public get vertices_per_polygon(): number {
-    get_vertices_per_polygon();
-  }
-  public set vertices_per_polygon(value): void {
-    set_vertices_per_polygon(value);
-  }
-  public get detail_sample_distance(): number {
-    get_detail_sample_distance();
-  }
-  public set detail_sample_distance(value): void {
-    set_detail_sample_distance(value);
-  }
-  public get detail_sample_max_error(): number {
-    get_detail_sample_max_error();
-  }
-  public set detail_sample_max_error(value): void {
-    set_detail_sample_max_error(value);
-  }
-  public get filter_low_hanging_obstacles(): boolean {
-    get_filter_low_hanging_obstacles();
-  }
-  public set filter_low_hanging_obstacles(value): void {
-    set_filter_low_hanging_obstacles(value);
-  }
-  public get filter_ledge_spans(): boolean {
-    get_filter_ledge_spans();
-  }
-  public set filter_ledge_spans(value): void {
-    set_filter_ledge_spans(value);
-  }
-  public get filter_walkable_low_height_spans(): boolean {
-    get_filter_walkable_low_height_spans();
-  }
-  public set filter_walkable_low_height_spans(value): void {
-    set_filter_walkable_low_height_spans(value);
-  }
-  public get filter_baking_aabb(): AABB {
-    get_filter_baking_aabb();
-  }
-  public set filter_baking_aabb(value): void {
-    set_filter_baking_aabb(value);
-  }
-  public get filter_baking_aabb_offset(): Vector3 {
-    get_filter_baking_aabb_offset();
-  }
-  public set filter_baking_aabb_offset(value): void {
-    set_filter_baking_aabb_offset(value);
-  }
+  public get vertices(): PackedVector3Array;
+  public set vertices(value): void;
+  public get polygons(): GDArray;
+  public set polygons(value): void;
+  public get sample_partition_type(): number;
+  public set sample_partition_type(value): void;
+  public get geometry_parsed_geometry_type(): number;
+  public set geometry_parsed_geometry_type(value): void;
+  public get geometry_collision_mask(): number;
+  public set geometry_collision_mask(value): void;
+  public get geometry_source_geometry_mode(): number;
+  public set geometry_source_geometry_mode(value): void;
+  public get geometry_source_group_name(): String;
+  public set geometry_source_group_name(value): void;
+  public get cell_size(): number;
+  public set cell_size(value): void;
+  public get cell_height(): number;
+  public set cell_height(value): void;
+  public get border_size(): number;
+  public set border_size(value): void;
+  public get agent_height(): number;
+  public set agent_height(value): void;
+  public get agent_radius(): number;
+  public set agent_radius(value): void;
+  public get agent_max_climb(): number;
+  public set agent_max_climb(value): void;
+  public get agent_max_slope(): number;
+  public set agent_max_slope(value): void;
+  public get region_min_size(): number;
+  public set region_min_size(value): void;
+  public get region_merge_size(): number;
+  public set region_merge_size(value): void;
+  public get edge_max_length(): number;
+  public set edge_max_length(value): void;
+  public get edge_max_error(): number;
+  public set edge_max_error(value): void;
+  public get vertices_per_polygon(): number;
+  public set vertices_per_polygon(value): void;
+  public get detail_sample_distance(): number;
+  public set detail_sample_distance(value): void;
+  public get detail_sample_max_error(): number;
+  public set detail_sample_max_error(value): void;
+  public get filter_low_hanging_obstacles(): boolean;
+  public set filter_low_hanging_obstacles(value): void;
+  public get filter_ledge_spans(): boolean;
+  public set filter_ledge_spans(value): void;
+  public get filter_walkable_low_height_spans(): boolean;
+  public set filter_walkable_low_height_spans(value): void;
+  public get filter_baking_aabb(): AABB;
+  public set filter_baking_aabb(value): void;
+  public get filter_baking_aabb_offset(): Vector3;
+  public set filter_baking_aabb_offset(value): void;
   static SamplePartitionType = {
     SAMPLE_PARTITION_WATERSHED = 0,
     SAMPLE_PARTITION_MONOTONE = 1,

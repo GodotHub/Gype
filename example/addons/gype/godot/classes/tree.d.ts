@@ -1,6 +1,7 @@
 
-import { Control } from "@godot/classes/control";
 import { TreeItem } from "@godot/classes/tree_item";
+import { Control } from "@godot/classes/control";
+
 
 export declare class Tree extends Control{
   public clear(): void;
@@ -38,13 +39,13 @@ export declare class Tree extends Control{
   public ensure_cursor_is_visible(): void;
   public set_column_titles_visible(_visible: boolean): void;
   public are_column_titles_visible(): boolean;
-  public set_column_title(_column: number, _title: String | StringName | string): void;
+  public set_column_title(_column: number, _title: GDString | StringName | string): void;
   public get_column_title(_column: number): String;
   public set_column_title_alignment(_column: number, _title_alignment: number): void;
   public get_column_title_alignment(_column: number): number;
   public set_column_title_direction(_column: number, _direction: number): void;
   public get_column_title_direction(_column: number): number;
-  public set_column_title_language(_column: number, _language: String | StringName | string): void;
+  public set_column_title_language(_column: number, _language: GDString | StringName | string): void;
   public get_column_title_language(_column: number): String;
   public get_scroll(): Vector2;
   public scroll_to_item(_item: TreeItem, _center_on_item: boolean): void;
@@ -64,78 +65,30 @@ export declare class Tree extends Control{
   public get_allow_reselect(): boolean;
   public set_allow_search(_allow: boolean): void;
   public get_allow_search(): boolean;
-  public get columns(): number {
-    get_columns();
-  }
-  public set columns(value): void {
-    set_columns(value);
-  }
-  public get column_titles_visible(): boolean {
-    are_column_titles_visible();
-  }
-  public set column_titles_visible(value): void {
-    set_column_titles_visible(value);
-  }
-  public get allow_reselect(): boolean {
-    get_allow_reselect();
-  }
-  public set allow_reselect(value): void {
-    set_allow_reselect(value);
-  }
-  public get allow_rmb_select(): boolean {
-    get_allow_rmb_select();
-  }
-  public set allow_rmb_select(value): void {
-    set_allow_rmb_select(value);
-  }
-  public get allow_search(): boolean {
-    get_allow_search();
-  }
-  public set allow_search(value): void {
-    set_allow_search(value);
-  }
-  public get hide_folding(): boolean {
-    is_folding_hidden();
-  }
-  public set hide_folding(value): void {
-    set_hide_folding(value);
-  }
-  public get enable_recursive_folding(): boolean {
-    is_recursive_folding_enabled();
-  }
-  public set enable_recursive_folding(value): void {
-    set_enable_recursive_folding(value);
-  }
-  public get hide_root(): boolean {
-    is_root_hidden();
-  }
-  public set hide_root(value): void {
-    set_hide_root(value);
-  }
-  public get drop_mode_flags(): number {
-    get_drop_mode_flags();
-  }
-  public set drop_mode_flags(value): void {
-    set_drop_mode_flags(value);
-  }
-  public get select_mode(): number {
-    get_select_mode();
-  }
-  public set select_mode(value): void {
-    set_select_mode(value);
-  }
-  public get scroll_horizontal_enabled(): boolean {
-    is_h_scroll_enabled();
-  }
-  public set scroll_horizontal_enabled(value): void {
-    set_h_scroll_enabled(value);
-  }
-  public get scroll_vertical_enabled(): boolean {
-    is_v_scroll_enabled();
-  }
-  public set scroll_vertical_enabled(value): void {
-    set_v_scroll_enabled(value);
-  }
+  public get columns(): number;
+  public set columns(value): void;
+  public get column_titles_visible(): boolean;
+  public set column_titles_visible(value): void;
+  public get allow_reselect(): boolean;
+  public set allow_reselect(value): void;
+  public get allow_rmb_select(): boolean;
+  public set allow_rmb_select(value): void;
+  public get allow_search(): boolean;
+  public set allow_search(value): void;
+  public get hide_folding(): boolean;
+  public set hide_folding(value): void;
+  public get enable_recursive_folding(): boolean;
+  public set enable_recursive_folding(value): void;
+  public get hide_root(): boolean;
+  public set hide_root(value): void;
+  public get drop_mode_flags(): number;
+  public set drop_mode_flags(value): void;
+  public get select_mode(): number;
+  public set select_mode(value): void;
+  public get scroll_horizontal_enabled(): boolean;
+  public set scroll_horizontal_enabled(value): void;
+  public get scroll_vertical_enabled(): boolean;
+  public set scroll_vertical_enabled(value): void;
   static SelectMode = {
     SELECT_SINGLE = 0,
     SELECT_ROW = 1,

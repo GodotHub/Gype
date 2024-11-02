@@ -2,6 +2,7 @@
 import { Texture2D } from "@godot/classes/texture2d";
 import { Material } from "@godot/classes/material";
 
+
 export declare class PhysicalSkyMaterial extends Material{
   public set_rayleigh_coefficient(_rayleigh: number): void;
   public get_rayleigh_coefficient(): number;
@@ -25,70 +26,26 @@ export declare class PhysicalSkyMaterial extends Material{
   public get_use_debanding(): boolean;
   public set_night_sky(_night_sky: Texture2D): void;
   public get_night_sky(): Texture2D;
-  public get rayleigh_coefficient(): number {
-    get_rayleigh_coefficient();
-  }
-  public set rayleigh_coefficient(value): void {
-    set_rayleigh_coefficient(value);
-  }
-  public get rayleigh_color(): Color {
-    get_rayleigh_color();
-  }
-  public set rayleigh_color(value): void {
-    set_rayleigh_color(value);
-  }
-  public get mie_coefficient(): number {
-    get_mie_coefficient();
-  }
-  public set mie_coefficient(value): void {
-    set_mie_coefficient(value);
-  }
-  public get mie_eccentricity(): number {
-    get_mie_eccentricity();
-  }
-  public set mie_eccentricity(value): void {
-    set_mie_eccentricity(value);
-  }
-  public get mie_color(): Color {
-    get_mie_color();
-  }
-  public set mie_color(value): void {
-    set_mie_color(value);
-  }
-  public get turbidity(): number {
-    get_turbidity();
-  }
-  public set turbidity(value): void {
-    set_turbidity(value);
-  }
-  public get sun_disk_scale(): number {
-    get_sun_disk_scale();
-  }
-  public set sun_disk_scale(value): void {
-    set_sun_disk_scale(value);
-  }
-  public get ground_color(): Color {
-    get_ground_color();
-  }
-  public set ground_color(value): void {
-    set_ground_color(value);
-  }
-  public get energy_multiplier(): number {
-    get_energy_multiplier();
-  }
-  public set energy_multiplier(value): void {
-    set_energy_multiplier(value);
-  }
-  public get use_debanding(): boolean {
-    get_use_debanding();
-  }
-  public set use_debanding(value): void {
-    set_use_debanding(value);
-  }
-  public get night_sky(): Texture2D {
-    get_night_sky();
-  }
-  public set night_sky(value): void {
-    set_night_sky(value);
-  }
+  public get rayleigh_coefficient(): number;
+  public set rayleigh_coefficient(value): void;
+  public get rayleigh_color(): Color;
+  public set rayleigh_color(value): void;
+  public get mie_coefficient(): number;
+  public set mie_coefficient(value): void;
+  public get mie_eccentricity(): number;
+  public set mie_eccentricity(value): void;
+  public get mie_color(): Color;
+  public set mie_color(value): void;
+  public get turbidity(): number;
+  public set turbidity(value): void;
+  public get sun_disk_scale(): number;
+  public set sun_disk_scale(value): void;
+  public get ground_color(): Color;
+  public set ground_color(value): void;
+  public get energy_multiplier(): number;
+  public set energy_multiplier(value): void;
+  public get use_debanding(): boolean;
+  public set use_debanding(value): void;
+  public get night_sky(): Texture2D;
+  public set night_sky(value): void;
 }

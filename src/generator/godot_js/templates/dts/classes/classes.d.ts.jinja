@@ -37,22 +37,27 @@ import { {{den}} } from "@godot/classes/{{camel_to_snake(den)}}";
   {%- endif -%}
 {%- endmacro %}
 
+
 export declare class {{class_name}} {{extends(class)}}{
   {%- for method in class['methods'] %}
     {%- if not method['invalid'] %}
+      {%- if class_name == 'Node' %}
+        {%- if method['name'] == 'get_node' or method['name'] == 'get_parent' %}
+  public {{method['name']}}<T extends Node>({{connect_args(method['arguments']) + process_vararg(method['is_vararg'], method['arguments']|last)}}): T;
+        {%- else %}
   public {{method['name']}}({{connect_args(method['arguments']) + process_vararg(method['is_vararg'], method['arguments']|last)}}){{set_return(method['return_value']['type'] if method['return_value'] else None)}};
+        {%- endif %}
+      {%- else %}
+  public {{method['name']}}({{connect_args(method['arguments']) + process_vararg(method['is_vararg'], method['arguments']|last)}}){{set_return(method['return_value']['type'] if method['return_value'] else None)}};
+      {%- endif %}
     {%- endif %}
   {%- endfor %}
   {%- for prop in class['properties'] %}
   {%- if prop['getter'] %}
-  public get {{prop['name']}}(){{set_return(prop['type'])}} {
-    {{prop['getter']}}();
-  }
+  public get {{prop['name']}}(){{set_return(prop['type'])}};
   {%- endif %}
   {%- if prop['setter'] %}
-  public set {{prop['name']}}(value): void {
-    {{prop['setter']}}(value);
-  }
+  public set {{prop['name']}}(value): void;
   {%- endif %}
   {%- endfor %}
   {%- for enum in class['enums'] %}

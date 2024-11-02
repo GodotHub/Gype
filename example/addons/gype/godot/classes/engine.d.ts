@@ -3,6 +3,7 @@ import { ScriptLanguage } from "@godot/classes/script_language";
 import { GodotObject } from "@godot/classes/godot_object";
 import { MainLoop } from "@godot/classes/main_loop";
 
+
 export declare class Engine extends GodotObject{
   public set_physics_ticks_per_second(_physics_ticks_per_second: number): void;
   public get_physics_ticks_per_second(): number;
@@ -28,10 +29,10 @@ export declare class Engine extends GodotObject{
   public get_license_text(): String;
   public get_architecture_name(): String;
   public is_in_physics_frame(): boolean;
-  public has_singleton(_name: String | StringName | string): boolean;
-  public get_singleton(_name: String | StringName | string): GodotObject;
-  public register_singleton(_name: String | StringName | string, _instance: Object): void;
-  public unregister_singleton(_name: String | StringName | string): void;
+  public has_singleton(_name: GDString | StringName | string): boolean;
+  public get_singleton(_name: GDString | StringName | string): GodotObject;
+  public register_singleton(_name: GDString | StringName | string, _instance: GodotObject): void;
+  public unregister_singleton(_name: GDString | StringName | string): void;
   public get_singleton_list(): PackedStringArray;
   public register_script_language(_language: ScriptLanguage): number;
   public unregister_script_language(_language: ScriptLanguage): number;
@@ -41,40 +42,16 @@ export declare class Engine extends GodotObject{
   public get_write_movie_path(): String;
   public set_print_error_messages(_enabled: boolean): void;
   public is_printing_error_messages(): boolean;
-  public get print_error_messages(): boolean {
-    is_printing_error_messages();
-  }
-  public set print_error_messages(value): void {
-    set_print_error_messages(value);
-  }
-  public get physics_ticks_per_second(): number {
-    get_physics_ticks_per_second();
-  }
-  public set physics_ticks_per_second(value): void {
-    set_physics_ticks_per_second(value);
-  }
-  public get max_physics_steps_per_frame(): number {
-    get_max_physics_steps_per_frame();
-  }
-  public set max_physics_steps_per_frame(value): void {
-    set_max_physics_steps_per_frame(value);
-  }
-  public get max_fps(): number {
-    get_max_fps();
-  }
-  public set max_fps(value): void {
-    set_max_fps(value);
-  }
-  public get time_scale(): number {
-    get_time_scale();
-  }
-  public set time_scale(value): void {
-    set_time_scale(value);
-  }
-  public get physics_jitter_fix(): number {
-    get_physics_jitter_fix();
-  }
-  public set physics_jitter_fix(value): void {
-    set_physics_jitter_fix(value);
-  }
+  public get print_error_messages(): boolean;
+  public set print_error_messages(value): void;
+  public get physics_ticks_per_second(): number;
+  public set physics_ticks_per_second(value): void;
+  public get max_physics_steps_per_frame(): number;
+  public set max_physics_steps_per_frame(value): void;
+  public get max_fps(): number;
+  public set max_fps(value): void;
+  public get time_scale(): number;
+  public set time_scale(value): void;
+  public get physics_jitter_fix(): number;
+  public set physics_jitter_fix(value): void;
 }

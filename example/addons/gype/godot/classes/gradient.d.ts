@@ -1,6 +1,7 @@
 
 import { Resource } from "@godot/classes/resource";
 
+
 export declare class Gradient extends Resource{
   public add_point(_offset: number, _color: Color): void;
   public remove_point(_point: number): void;
@@ -19,30 +20,14 @@ export declare class Gradient extends Resource{
   public get_interpolation_mode(): number;
   public set_interpolation_color_space(_interpolation_color_space: number): void;
   public get_interpolation_color_space(): number;
-  public get interpolation_mode(): number {
-    get_interpolation_mode();
-  }
-  public set interpolation_mode(value): void {
-    set_interpolation_mode(value);
-  }
-  public get interpolation_color_space(): number {
-    get_interpolation_color_space();
-  }
-  public set interpolation_color_space(value): void {
-    set_interpolation_color_space(value);
-  }
-  public get offsets(): PackedFloat32Array {
-    get_offsets();
-  }
-  public set offsets(value): void {
-    set_offsets(value);
-  }
-  public get colors(): PackedColorArray {
-    get_colors();
-  }
-  public set colors(value): void {
-    set_colors(value);
-  }
+  public get interpolation_mode(): number;
+  public set interpolation_mode(value): void;
+  public get interpolation_color_space(): number;
+  public set interpolation_color_space(value): void;
+  public get offsets(): PackedFloat32Array;
+  public set offsets(value): void;
+  public get colors(): PackedColorArray;
+  public set colors(value): void;
   static InterpolationMode = {
     GRADIENT_INTERPOLATE_LINEAR = 0,
     GRADIENT_INTERPOLATE_CONSTANT = 1,

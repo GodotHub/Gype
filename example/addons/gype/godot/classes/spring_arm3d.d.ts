@@ -2,6 +2,7 @@
 import { Shape3D } from "@godot/classes/shape3d";
 import { Node3D } from "@godot/classes/node3d";
 
+
 export declare class SpringArm3D extends Node3D{
   public get_hit_length(): number;
   public set_length(_length: number): void;
@@ -15,28 +16,12 @@ export declare class SpringArm3D extends Node3D{
   public get_collision_mask(): number;
   public set_margin(_margin: number): void;
   public get_margin(): number;
-  public get collision_mask(): number {
-    get_collision_mask();
-  }
-  public set collision_mask(value): void {
-    set_collision_mask(value);
-  }
-  public get shape(): Shape3D {
-    get_shape();
-  }
-  public set shape(value): void {
-    set_shape(value);
-  }
-  public get spring_length(): number {
-    get_length();
-  }
-  public set spring_length(value): void {
-    set_length(value);
-  }
-  public get margin(): number {
-    get_margin();
-  }
-  public set margin(value): void {
-    set_margin(value);
-  }
+  public get collision_mask(): number;
+  public set collision_mask(value): void;
+  public get shape(): Shape3D;
+  public set shape(value): void;
+  public get spring_length(): number;
+  public set spring_length(value): void;
+  public get margin(): number;
+  public set margin(value): void;
 }

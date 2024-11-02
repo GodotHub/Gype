@@ -1,6 +1,7 @@
 
 import { Resource } from "@godot/classes/resource";
 
+
 export declare class Image extends Resource{
   public get_width(): number;
   public get_height(): number;
@@ -25,15 +26,15 @@ export declare class Image extends Resource{
   public create_from_data(_width: number, _height: number, _use_mipmaps: boolean, _format: number, _data: PackedByteArray): Image;
   public set_data(_width: number, _height: number, _use_mipmaps: boolean, _format: number, _data: PackedByteArray): void;
   public is_empty(): boolean;
-  public load(_path: String | StringName | string): number;
-  public load_from_file(_path: String | StringName | string): Image;
-  public save_png(_path: String | StringName | string): number;
+  public load(_path: GDString | StringName | string): number;
+  public load_from_file(_path: GDString | StringName | string): Image;
+  public save_png(_path: GDString | StringName | string): number;
   public save_png_to_buffer(): PackedByteArray;
-  public save_jpg(_path: String | StringName | string, _quality: number): number;
+  public save_jpg(_path: GDString | StringName | string, _quality: number): number;
   public save_jpg_to_buffer(_quality: number): PackedByteArray;
-  public save_exr(_path: String | StringName | string, _grayscale: boolean): number;
+  public save_exr(_path: GDString | StringName | string, _grayscale: boolean): number;
   public save_exr_to_buffer(_grayscale: boolean): PackedByteArray;
-  public save_webp(_path: String | StringName | string, _lossy: boolean, _quality: number): number;
+  public save_webp(_path: GDString | StringName | string, _lossy: boolean, _quality: number): number;
   public save_webp_to_buffer(_lossy: boolean, _quality: number): PackedByteArray;
   public detect_alpha(): number;
   public is_invisible(): boolean;
@@ -72,13 +73,9 @@ export declare class Image extends Resource{
   public load_bmp_from_buffer(_buffer: PackedByteArray): number;
   public load_ktx_from_buffer(_buffer: PackedByteArray): number;
   public load_svg_from_buffer(_buffer: PackedByteArray, _scale: number): number;
-  public load_svg_from_string(_svg_str: String | StringName | string, _scale: number): number;
-  public get data(): Dictionary {
-    _get_data();
-  }
-  public set data(value): void {
-    _set_data(value);
-  }
+  public load_svg_from_string(_svg_str: GDString | StringName | string, _scale: number): number;
+  public get data(): Dictionary;
+  public set data(value): void;
   static Format = {
     FORMAT_L8 = 0,
     FORMAT_LA8 = 1,

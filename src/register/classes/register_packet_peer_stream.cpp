@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/packet_peer_stream.hpp>
 #include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/classes/stream_peer.hpp>
+#include <godot_cpp/classes/packet_peer_stream.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

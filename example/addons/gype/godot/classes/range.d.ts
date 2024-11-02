@@ -2,6 +2,7 @@
 import { Control } from "@godot/classes/control";
 import { Node } from "@godot/classes/node";
 
+
 export declare class Range extends Control{
   public _value_changed(_new_value: number): void;
   public get_value(): number;
@@ -27,66 +28,26 @@ export declare class Range extends Control{
   public is_lesser_allowed(): boolean;
   public share(_with: Node): void;
   public unshare(): void;
-  public get min_value(): number {
-    get_min();
-  }
-  public set min_value(value): void {
-    set_min(value);
-  }
-  public get max_value(): number {
-    get_max();
-  }
-  public set max_value(value): void {
-    set_max(value);
-  }
-  public get step(): number {
-    get_step();
-  }
-  public set step(value): void {
-    set_step(value);
-  }
-  public get page(): number {
-    get_page();
-  }
-  public set page(value): void {
-    set_page(value);
-  }
-  public get value(): number {
-    get_value();
-  }
-  public set value(value): void {
-    set_value(value);
-  }
-  public get ratio(): number {
-    get_as_ratio();
-  }
-  public set ratio(value): void {
-    set_as_ratio(value);
-  }
-  public get exp_edit(): boolean {
-    is_ratio_exp();
-  }
-  public set exp_edit(value): void {
-    set_exp_ratio(value);
-  }
-  public get rounded(): boolean {
-    is_using_rounded_values();
-  }
-  public set rounded(value): void {
-    set_use_rounded_values(value);
-  }
-  public get allow_greater(): boolean {
-    is_greater_allowed();
-  }
-  public set allow_greater(value): void {
-    set_allow_greater(value);
-  }
-  public get allow_lesser(): boolean {
-    is_lesser_allowed();
-  }
-  public set allow_lesser(value): void {
-    set_allow_lesser(value);
-  }
+  public get min_value(): number;
+  public set min_value(value): void;
+  public get max_value(): number;
+  public set max_value(value): void;
+  public get step(): number;
+  public set step(value): void;
+  public get page(): number;
+  public set page(value): void;
+  public get value(): number;
+  public set value(value): void;
+  public get ratio(): number;
+  public set ratio(value): void;
+  public get exp_edit(): boolean;
+  public set exp_edit(value): void;
+  public get rounded(): boolean;
+  public set rounded(value): void;
+  public get allow_greater(): boolean;
+  public set allow_greater(value): void;
+  public get allow_lesser(): boolean;
+  public set allow_lesser(value): void;
   public get value_changed(): Signal;
   public get changed(): Signal;
 }

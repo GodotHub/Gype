@@ -1,6 +1,7 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
 
+
 export declare class Thread extends RefCounted{
   public start(_callable: Callable, _priority: number): number;
   public get_id(): String;

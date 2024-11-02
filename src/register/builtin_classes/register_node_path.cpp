@@ -40,6 +40,11 @@ static JSValue node_path_class_constructor(JSContext *ctx, JSValueConst new_targ
 		node_path_class = memnew(NodePath(v0));
 	}
 
+	if (argc == 1 && JS_IsString(argv[0])) {
+		String v0 = Variant(argv[0]);
+		node_path_class = memnew(NodePath(v0));
+	}
+
 	if (!node_path_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;

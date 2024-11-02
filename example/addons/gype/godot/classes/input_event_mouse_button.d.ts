@@ -1,6 +1,7 @@
 
 import { InputEventMouse } from "@godot/classes/input_event_mouse";
 
+
 export declare class InputEventMouseButton extends InputEventMouse{
   public set_factor(_factor: number): void;
   public get_factor(): number;
@@ -10,34 +11,14 @@ export declare class InputEventMouseButton extends InputEventMouse{
   public set_canceled(_canceled: boolean): void;
   public set_double_click(_double_click: boolean): void;
   public is_double_click(): boolean;
-  public get factor(): number {
-    get_factor();
-  }
-  public set factor(value): void {
-    set_factor(value);
-  }
-  public get button_index(): number {
-    get_button_index();
-  }
-  public set button_index(value): void {
-    set_button_index(value);
-  }
-  public get canceled(): boolean {
-    is_canceled();
-  }
-  public set canceled(value): void {
-    set_canceled(value);
-  }
-  public get pressed(): boolean {
-    is_pressed();
-  }
-  public set pressed(value): void {
-    set_pressed(value);
-  }
-  public get double_click(): boolean {
-    is_double_click();
-  }
-  public set double_click(value): void {
-    set_double_click(value);
-  }
+  public get factor(): number;
+  public set factor(value): void;
+  public get button_index(): number;
+  public set button_index(value): void;
+  public get canceled(): boolean;
+  public set canceled(value): void;
+  public get pressed(): boolean;
+  public set pressed(value): void;
+  public get double_click(): boolean;
+  public set double_click(value): void;
 }

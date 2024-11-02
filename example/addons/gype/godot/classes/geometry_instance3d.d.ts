@@ -2,6 +2,7 @@
 import { VisualInstance3D } from "@godot/classes/visual_instance3d";
 import { Material } from "@godot/classes/material";
 
+
 export declare class GeometryInstance3D extends VisualInstance3D{
   public set_material_override(_material: Material): void;
   public get_material_override(): Material;
@@ -23,8 +24,8 @@ export declare class GeometryInstance3D extends VisualInstance3D{
   public get_visibility_range_begin(): number;
   public set_visibility_range_fade_mode(_mode: number): void;
   public get_visibility_range_fade_mode(): number;
-  public set_instance_shader_parameter(_name: String | StringName | string, _value: any): void;
-  public get_instance_shader_parameter(_name: String | StringName | string): any;
+  public set_instance_shader_parameter(_name: GDString | StringName | string, _value: any): void;
+  public get_instance_shader_parameter(_name: GDString | StringName | string): any;
   public set_extra_cull_margin(_margin: number): void;
   public get_extra_cull_margin(): number;
   public set_lightmap_scale(_scale: number): void;
@@ -35,96 +36,36 @@ export declare class GeometryInstance3D extends VisualInstance3D{
   public is_ignoring_occlusion_culling(): boolean;
   public set_custom_aabb(_aabb: AABB): void;
   public get_custom_aabb(): AABB;
-  public get material_override(): BaseMaterial3D {
-    get_material_override();
-  }
-  public set material_override(value): void {
-    set_material_override(value);
-  }
-  public get material_overlay(): BaseMaterial3D {
-    get_material_overlay();
-  }
-  public set material_overlay(value): void {
-    set_material_overlay(value);
-  }
-  public get transparency(): number {
-    get_transparency();
-  }
-  public set transparency(value): void {
-    set_transparency(value);
-  }
-  public get cast_shadow(): number {
-    get_cast_shadows_setting();
-  }
-  public set cast_shadow(value): void {
-    set_cast_shadows_setting(value);
-  }
-  public get extra_cull_margin(): number {
-    get_extra_cull_margin();
-  }
-  public set extra_cull_margin(value): void {
-    set_extra_cull_margin(value);
-  }
-  public get custom_aabb(): AABB {
-    get_custom_aabb();
-  }
-  public set custom_aabb(value): void {
-    set_custom_aabb(value);
-  }
-  public get lod_bias(): number {
-    get_lod_bias();
-  }
-  public set lod_bias(value): void {
-    set_lod_bias(value);
-  }
-  public get ignore_occlusion_culling(): boolean {
-    is_ignoring_occlusion_culling();
-  }
-  public set ignore_occlusion_culling(value): void {
-    set_ignore_occlusion_culling(value);
-  }
-  public get gi_mode(): number {
-    get_gi_mode();
-  }
-  public set gi_mode(value): void {
-    set_gi_mode(value);
-  }
-  public get gi_lightmap_scale(): number {
-    get_lightmap_scale();
-  }
-  public set gi_lightmap_scale(value): void {
-    set_lightmap_scale(value);
-  }
-  public get visibility_range_begin(): number {
-    get_visibility_range_begin();
-  }
-  public set visibility_range_begin(value): void {
-    set_visibility_range_begin(value);
-  }
-  public get visibility_range_begin_margin(): number {
-    get_visibility_range_begin_margin();
-  }
-  public set visibility_range_begin_margin(value): void {
-    set_visibility_range_begin_margin(value);
-  }
-  public get visibility_range_end(): number {
-    get_visibility_range_end();
-  }
-  public set visibility_range_end(value): void {
-    set_visibility_range_end(value);
-  }
-  public get visibility_range_end_margin(): number {
-    get_visibility_range_end_margin();
-  }
-  public set visibility_range_end_margin(value): void {
-    set_visibility_range_end_margin(value);
-  }
-  public get visibility_range_fade_mode(): number {
-    get_visibility_range_fade_mode();
-  }
-  public set visibility_range_fade_mode(value): void {
-    set_visibility_range_fade_mode(value);
-  }
+  public get material_override(): BaseMaterial3D;
+  public set material_override(value): void;
+  public get material_overlay(): BaseMaterial3D;
+  public set material_overlay(value): void;
+  public get transparency(): number;
+  public set transparency(value): void;
+  public get cast_shadow(): number;
+  public set cast_shadow(value): void;
+  public get extra_cull_margin(): number;
+  public set extra_cull_margin(value): void;
+  public get custom_aabb(): AABB;
+  public set custom_aabb(value): void;
+  public get lod_bias(): number;
+  public set lod_bias(value): void;
+  public get ignore_occlusion_culling(): boolean;
+  public set ignore_occlusion_culling(value): void;
+  public get gi_mode(): number;
+  public set gi_mode(value): void;
+  public get gi_lightmap_scale(): number;
+  public set gi_lightmap_scale(value): void;
+  public get visibility_range_begin(): number;
+  public set visibility_range_begin(value): void;
+  public get visibility_range_begin_margin(): number;
+  public set visibility_range_begin_margin(value): void;
+  public get visibility_range_end(): number;
+  public set visibility_range_end(value): void;
+  public get visibility_range_end_margin(): number;
+  public set visibility_range_end_margin(value): void;
+  public get visibility_range_fade_mode(): number;
+  public set visibility_range_fade_mode(value): void;
   static ShadowCastingSetting = {
     SHADOW_CASTING_SETTING_OFF = 0,
     SHADOW_CASTING_SETTING_ON = 1,

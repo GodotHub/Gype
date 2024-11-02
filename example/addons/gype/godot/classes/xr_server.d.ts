@@ -1,7 +1,8 @@
 
+import { XRTracker } from "@godot/classes/xr_tracker";
 import { XRInterface } from "@godot/classes/xr_interface";
 import { GodotObject } from "@godot/classes/godot_object";
-import { XRTracker } from "@godot/classes/xr_tracker";
+
 
 export declare class XRServer extends GodotObject{
   public get_world_scale(): number;
@@ -17,31 +18,19 @@ export declare class XRServer extends GodotObject{
   public remove_interface(_interface: XRInterface): void;
   public get_interface(_idx: number): XRInterface;
   public get_interfaces(): GDArray;
-  public find_interface(_name: String | StringName | string): XRInterface;
+  public find_interface(_name: GDString | StringName | string): XRInterface;
   public add_tracker(_tracker: XRTracker): void;
   public remove_tracker(_tracker: XRTracker): void;
   public get_trackers(_tracker_types: number): Dictionary;
-  public get_tracker(_tracker_name: String | StringName | string): XRTracker;
+  public get_tracker(_tracker_name: GDString | StringName | string): XRTracker;
   public get_primary_interface(): XRInterface;
   public set_primary_interface(_interface: XRInterface): void;
-  public get world_scale(): number {
-    get_world_scale();
-  }
-  public set world_scale(value): void {
-    set_world_scale(value);
-  }
-  public get world_origin(): Vector3 {
-    get_world_origin();
-  }
-  public set world_origin(value): void {
-    set_world_origin(value);
-  }
-  public get primary_interface(): GodotObject {
-    get_primary_interface();
-  }
-  public set primary_interface(value): void {
-    set_primary_interface(value);
-  }
+  public get world_scale(): number;
+  public set world_scale(value): void;
+  public get world_origin(): Vector3;
+  public set world_origin(value): void;
+  public get primary_interface(): GodotObject;
+  public set primary_interface(value): void;
   static TrackerType = {
     TRACKER_HEAD = 1,
     TRACKER_CONTROLLER = 2,

@@ -1,6 +1,7 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { Mesh } from "@godot/classes/mesh";
+import { Texture2D } from "@godot/classes/texture2d";
+
 
 export declare class MeshTexture extends Texture2D{
   public set_mesh(_mesh: Mesh): void;
@@ -9,22 +10,10 @@ export declare class MeshTexture extends Texture2D{
   public get_image_size(): Vector2;
   public set_base_texture(_texture: Texture2D): void;
   public get_base_texture(): Texture2D;
-  public get mesh(): Mesh {
-    get_mesh();
-  }
-  public set mesh(value): void {
-    set_mesh(value);
-  }
-  public get base_texture(): Texture2D {
-    get_base_texture();
-  }
-  public set base_texture(value): void {
-    set_base_texture(value);
-  }
-  public get image_size(): Vector2 {
-    get_image_size();
-  }
-  public set image_size(value): void {
-    set_image_size(value);
-  }
+  public get mesh(): Mesh;
+  public set mesh(value): void;
+  public get base_texture(): Texture2D;
+  public set base_texture(value): void;
+  public get image_size(): Vector2;
+  public set image_size(value): void;
 }

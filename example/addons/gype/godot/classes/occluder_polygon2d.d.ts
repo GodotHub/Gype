@@ -1,6 +1,7 @@
 
 import { Resource } from "@godot/classes/resource";
 
+
 export declare class OccluderPolygon2D extends Resource{
   public set_closed(_closed: boolean): void;
   public is_closed(): boolean;
@@ -8,24 +9,12 @@ export declare class OccluderPolygon2D extends Resource{
   public get_cull_mode(): number;
   public set_polygon(_polygon: PackedVector2Array): void;
   public get_polygon(): PackedVector2Array;
-  public get closed(): boolean {
-    is_closed();
-  }
-  public set closed(value): void {
-    set_closed(value);
-  }
-  public get cull_mode(): number {
-    get_cull_mode();
-  }
-  public set cull_mode(value): void {
-    set_cull_mode(value);
-  }
-  public get polygon(): PackedVector2Array {
-    get_polygon();
-  }
-  public set polygon(value): void {
-    set_polygon(value);
-  }
+  public get closed(): boolean;
+  public set closed(value): void;
+  public get cull_mode(): number;
+  public set cull_mode(value): void;
+  public get polygon(): PackedVector2Array;
+  public set polygon(value): void;
   static CullMode = {
     CULL_DISABLED = 0,
     CULL_CLOCKWISE = 1,

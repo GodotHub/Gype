@@ -1,7 +1,8 @@
 
 import { CameraFeed } from "@godot/classes/camera_feed";
-import { GodotObject } from "@godot/classes/godot_object";
 import { CameraFeed } from "@godot/classes/camera_feed";
+import { GodotObject } from "@godot/classes/godot_object";
+
 
 export declare class CameraServer extends GodotObject{
   public get_feed(_index: number): CameraFeed;

@@ -1,6 +1,7 @@
 
 import { PacketPeer } from "@godot/classes/packet_peer";
 
+
 export declare class ENetPacketPeer extends PacketPeer{
   public peer_disconnect(_data: number): void;
   public peer_disconnect_later(_data: number): void;

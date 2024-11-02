@@ -1,16 +1,17 @@
 
 import { GodotObject } from "@godot/classes/godot_object";
 
+
 export declare class UndoRedo extends GodotObject{
-  public create_action(_name: String | StringName | string, _merge_mode: number, _backward_undo_ops: boolean): void;
+  public create_action(_name: GDString | StringName | string, _merge_mode: number, _backward_undo_ops: boolean): void;
   public commit_action(_execute: boolean): void;
   public is_committing_action(): boolean;
   public add_do_method(_callable: Callable): void;
   public add_undo_method(_callable: Callable): void;
-  public add_do_property(_object: Object, _property: String | StringName | string, _value: any): void;
-  public add_undo_property(_object: Object, _property: String | StringName | string, _value: any): void;
-  public add_do_reference(_object: Object): void;
-  public add_undo_reference(_object: Object): void;
+  public add_do_property(_object: GodotObject, _property: GDString | StringName | string, _value: any): void;
+  public add_undo_property(_object: GodotObject, _property: GDString | StringName | string, _value: any): void;
+  public add_do_reference(_object: GodotObject): void;
+  public add_undo_reference(_object: GodotObject): void;
   public start_force_keep_in_merge_ends(): void;
   public end_force_keep_in_merge_ends(): void;
   public get_history_count(): number;
@@ -25,12 +26,8 @@ export declare class UndoRedo extends GodotObject{
   public get_max_steps(): number;
   public redo(): boolean;
   public undo(): boolean;
-  public get max_steps(): number {
-    get_max_steps();
-  }
-  public set max_steps(value): void {
-    set_max_steps(value);
-  }
+  public get max_steps(): number;
+  public set max_steps(value): void;
   static MergeMode = {
     MERGE_DISABLE = 0,
     MERGE_ENDS = 1,

@@ -2,6 +2,7 @@
 import { Node } from "@godot/classes/node";
 import { CanvasItem } from "@godot/classes/canvas_item";
 
+
 export declare class Node2D extends CanvasItem{
   public set_position(_position: Vector2): void;
   public set_rotation(_radians: number): void;
@@ -36,76 +37,28 @@ export declare class Node2D extends CanvasItem{
   public to_local(_global_point: Vector2): Vector2;
   public to_global(_local_point: Vector2): Vector2;
   public get_relative_transform_to_parent(_parent: Node): Transform2D;
-  public get position(): Vector2 {
-    get_position();
-  }
-  public set position(value): void {
-    set_position(value);
-  }
-  public get rotation(): number {
-    get_rotation();
-  }
-  public set rotation(value): void {
-    set_rotation(value);
-  }
-  public get rotation_degrees(): number {
-    get_rotation_degrees();
-  }
-  public set rotation_degrees(value): void {
-    set_rotation_degrees(value);
-  }
-  public get scale(): Vector2 {
-    get_scale();
-  }
-  public set scale(value): void {
-    set_scale(value);
-  }
-  public get skew(): number {
-    get_skew();
-  }
-  public set skew(value): void {
-    set_skew(value);
-  }
-  public get transform(): Transform2D {
-    get_transform();
-  }
-  public set transform(value): void {
-    set_transform(value);
-  }
-  public get global_position(): Vector2 {
-    get_global_position();
-  }
-  public set global_position(value): void {
-    set_global_position(value);
-  }
-  public get global_rotation(): number {
-    get_global_rotation();
-  }
-  public set global_rotation(value): void {
-    set_global_rotation(value);
-  }
-  public get global_rotation_degrees(): number {
-    get_global_rotation_degrees();
-  }
-  public set global_rotation_degrees(value): void {
-    set_global_rotation_degrees(value);
-  }
-  public get global_scale(): Vector2 {
-    get_global_scale();
-  }
-  public set global_scale(value): void {
-    set_global_scale(value);
-  }
-  public get global_skew(): number {
-    get_global_skew();
-  }
-  public set global_skew(value): void {
-    set_global_skew(value);
-  }
-  public get global_transform(): Transform2D {
-    get_global_transform();
-  }
-  public set global_transform(value): void {
-    set_global_transform(value);
-  }
+  public get position(): Vector2;
+  public set position(value): void;
+  public get rotation(): number;
+  public set rotation(value): void;
+  public get rotation_degrees(): number;
+  public set rotation_degrees(value): void;
+  public get scale(): Vector2;
+  public set scale(value): void;
+  public get skew(): number;
+  public set skew(value): void;
+  public get transform(): Transform2D;
+  public set transform(value): void;
+  public get global_position(): Vector2;
+  public set global_position(value): void;
+  public get global_rotation(): number;
+  public set global_rotation(value): void;
+  public get global_rotation_degrees(): number;
+  public set global_rotation_degrees(value): void;
+  public get global_scale(): Vector2;
+  public set global_scale(value): void;
+  public get global_skew(): number;
+  public set global_skew(value): void;
+  public get global_transform(): Transform2D;
+  public set global_transform(value): void;
 }

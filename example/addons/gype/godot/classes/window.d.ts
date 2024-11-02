@@ -1,14 +1,15 @@
 
 import { StyleBox } from "@godot/classes/style_box";
-import { Node } from "@godot/classes/node";
-import { Theme } from "@godot/classes/theme";
 import { Texture2D } from "@godot/classes/texture2d";
-import { Viewport } from "@godot/classes/viewport";
 import { Font } from "@godot/classes/font";
+import { Node } from "@godot/classes/node";
+import { Viewport } from "@godot/classes/viewport";
+import { Theme } from "@godot/classes/theme";
+
 
 export declare class Window extends Viewport{
   public _get_contents_minimum_size(): Vector2;
-  public set_title(_title: String | StringName | string): void;
+  public set_title(_title: GDString | StringName | string): void;
   public get_title(): String;
   public get_window_id(): number;
   public set_initial_position(_initial_position: number): void;
@@ -75,40 +76,40 @@ export declare class Window extends Viewport{
   public child_controls_changed(): void;
   public set_theme(_theme: Theme): void;
   public get_theme(): Theme;
-  public set_theme_type_variation(_theme_type: String | StringName | string): void;
+  public set_theme_type_variation(_theme_type: GDString | StringName | string): void;
   public get_theme_type_variation(): StringName;
   public begin_bulk_theme_override(): void;
   public end_bulk_theme_override(): void;
-  public add_theme_icon_override(_name: String | StringName | string, _texture: Texture2D): void;
-  public add_theme_stylebox_override(_name: String | StringName | string, _stylebox: StyleBox): void;
-  public add_theme_font_override(_name: String | StringName | string, _font: Font): void;
-  public add_theme_font_size_override(_name: String | StringName | string, _font_size: number): void;
-  public add_theme_color_override(_name: String | StringName | string, _color: Color): void;
-  public add_theme_constant_override(_name: String | StringName | string, _constant: number): void;
-  public remove_theme_icon_override(_name: String | StringName | string): void;
-  public remove_theme_stylebox_override(_name: String | StringName | string): void;
-  public remove_theme_font_override(_name: String | StringName | string): void;
-  public remove_theme_font_size_override(_name: String | StringName | string): void;
-  public remove_theme_color_override(_name: String | StringName | string): void;
-  public remove_theme_constant_override(_name: String | StringName | string): void;
-  public get_theme_icon(_name: String | StringName | string, _theme_type: String | StringName | string): Texture2D;
-  public get_theme_stylebox(_name: String | StringName | string, _theme_type: String | StringName | string): StyleBox;
-  public get_theme_font(_name: String | StringName | string, _theme_type: String | StringName | string): Font;
-  public get_theme_font_size(_name: String | StringName | string, _theme_type: String | StringName | string): number;
-  public get_theme_color(_name: String | StringName | string, _theme_type: String | StringName | string): Color;
-  public get_theme_constant(_name: String | StringName | string, _theme_type: String | StringName | string): number;
-  public has_theme_icon_override(_name: String | StringName | string): boolean;
-  public has_theme_stylebox_override(_name: String | StringName | string): boolean;
-  public has_theme_font_override(_name: String | StringName | string): boolean;
-  public has_theme_font_size_override(_name: String | StringName | string): boolean;
-  public has_theme_color_override(_name: String | StringName | string): boolean;
-  public has_theme_constant_override(_name: String | StringName | string): boolean;
-  public has_theme_icon(_name: String | StringName | string, _theme_type: String | StringName | string): boolean;
-  public has_theme_stylebox(_name: String | StringName | string, _theme_type: String | StringName | string): boolean;
-  public has_theme_font(_name: String | StringName | string, _theme_type: String | StringName | string): boolean;
-  public has_theme_font_size(_name: String | StringName | string, _theme_type: String | StringName | string): boolean;
-  public has_theme_color(_name: String | StringName | string, _theme_type: String | StringName | string): boolean;
-  public has_theme_constant(_name: String | StringName | string, _theme_type: String | StringName | string): boolean;
+  public add_theme_icon_override(_name: GDString | StringName | string, _texture: Texture2D): void;
+  public add_theme_stylebox_override(_name: GDString | StringName | string, _stylebox: StyleBox): void;
+  public add_theme_font_override(_name: GDString | StringName | string, _font: Font): void;
+  public add_theme_font_size_override(_name: GDString | StringName | string, _font_size: number): void;
+  public add_theme_color_override(_name: GDString | StringName | string, _color: Color): void;
+  public add_theme_constant_override(_name: GDString | StringName | string, _constant: number): void;
+  public remove_theme_icon_override(_name: GDString | StringName | string): void;
+  public remove_theme_stylebox_override(_name: GDString | StringName | string): void;
+  public remove_theme_font_override(_name: GDString | StringName | string): void;
+  public remove_theme_font_size_override(_name: GDString | StringName | string): void;
+  public remove_theme_color_override(_name: GDString | StringName | string): void;
+  public remove_theme_constant_override(_name: GDString | StringName | string): void;
+  public get_theme_icon(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): Texture2D;
+  public get_theme_stylebox(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): StyleBox;
+  public get_theme_font(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): Font;
+  public get_theme_font_size(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): number;
+  public get_theme_color(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): Color;
+  public get_theme_constant(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): number;
+  public has_theme_icon_override(_name: GDString | StringName | string): boolean;
+  public has_theme_stylebox_override(_name: GDString | StringName | string): boolean;
+  public has_theme_font_override(_name: GDString | StringName | string): boolean;
+  public has_theme_font_size_override(_name: GDString | StringName | string): boolean;
+  public has_theme_color_override(_name: GDString | StringName | string): boolean;
+  public has_theme_constant_override(_name: GDString | StringName | string): boolean;
+  public has_theme_icon(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): boolean;
+  public has_theme_stylebox(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): boolean;
+  public has_theme_font(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): boolean;
+  public has_theme_font_size(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): boolean;
+  public has_theme_color(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): boolean;
+  public has_theme_constant(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): boolean;
   public get_theme_default_base_scale(): number;
   public get_theme_default_font(): Font;
   public get_theme_default_font_size(): number;
@@ -127,198 +128,70 @@ export declare class Window extends Viewport{
   public popup_exclusive_centered(_from_node: Node, _minsize: Vector2i): void;
   public popup_exclusive_centered_ratio(_from_node: Node, _ratio: number): void;
   public popup_exclusive_centered_clamped(_from_node: Node, _minsize: Vector2i, _fallback_ratio: number): void;
-  public get mode(): number {
-    get_mode();
-  }
-  public set mode(value): void {
-    set_mode(value);
-  }
-  public get title(): String {
-    get_title();
-  }
-  public set title(value): void {
-    set_title(value);
-  }
-  public get initial_position(): number {
-    get_initial_position();
-  }
-  public set initial_position(value): void {
-    set_initial_position(value);
-  }
-  public get position(): Vector2i {
-    get_position();
-  }
-  public set position(value): void {
-    set_position(value);
-  }
-  public get size(): Vector2i {
-    get_size();
-  }
-  public set size(value): void {
-    set_size(value);
-  }
-  public get current_screen(): number {
-    get_current_screen();
-  }
-  public set current_screen(value): void {
-    set_current_screen(value);
-  }
-  public get mouse_passthrough_polygon(): PackedVector2Array {
-    get_mouse_passthrough_polygon();
-  }
-  public set mouse_passthrough_polygon(value): void {
-    set_mouse_passthrough_polygon(value);
-  }
-  public get visible(): boolean {
-    is_visible();
-  }
-  public set visible(value): void {
-    set_visible(value);
-  }
-  public get wrap_controls(): boolean {
-    is_wrapping_controls();
-  }
-  public set wrap_controls(value): void {
-    set_wrap_controls(value);
-  }
-  public get transient(): boolean {
-    is_transient();
-  }
-  public set transient(value): void {
-    set_transient(value);
-  }
-  public get transient_to_focused(): boolean {
-    is_transient_to_focused();
-  }
-  public set transient_to_focused(value): void {
-    set_transient_to_focused(value);
-  }
-  public get exclusive(): boolean {
-    is_exclusive();
-  }
-  public set exclusive(value): void {
-    set_exclusive(value);
-  }
-  public get unresizable(): boolean {
-    get_flag();
-  }
-  public set unresizable(value): void {
-    set_flag(value);
-  }
-  public get borderless(): boolean {
-    get_flag();
-  }
-  public set borderless(value): void {
-    set_flag(value);
-  }
-  public get always_on_top(): boolean {
-    get_flag();
-  }
-  public set always_on_top(value): void {
-    set_flag(value);
-  }
-  public get transparent(): boolean {
-    get_flag();
-  }
-  public set transparent(value): void {
-    set_flag(value);
-  }
-  public get unfocusable(): boolean {
-    get_flag();
-  }
-  public set unfocusable(value): void {
-    set_flag(value);
-  }
-  public get popup_window(): boolean {
-    get_flag();
-  }
-  public set popup_window(value): void {
-    set_flag(value);
-  }
-  public get extend_to_title(): boolean {
-    get_flag();
-  }
-  public set extend_to_title(value): void {
-    set_flag(value);
-  }
-  public get mouse_passthrough(): boolean {
-    get_flag();
-  }
-  public set mouse_passthrough(value): void {
-    set_flag(value);
-  }
-  public get force_native(): boolean {
-    get_force_native();
-  }
-  public set force_native(value): void {
-    set_force_native(value);
-  }
-  public get min_size(): Vector2i {
-    get_min_size();
-  }
-  public set min_size(value): void {
-    set_min_size(value);
-  }
-  public get max_size(): Vector2i {
-    get_max_size();
-  }
-  public set max_size(value): void {
-    set_max_size(value);
-  }
-  public get keep_title_visible(): boolean {
-    get_keep_title_visible();
-  }
-  public set keep_title_visible(value): void {
-    set_keep_title_visible(value);
-  }
-  public get content_scale_size(): Vector2i {
-    get_content_scale_size();
-  }
-  public set content_scale_size(value): void {
-    set_content_scale_size(value);
-  }
-  public get content_scale_mode(): number {
-    get_content_scale_mode();
-  }
-  public set content_scale_mode(value): void {
-    set_content_scale_mode(value);
-  }
-  public get content_scale_aspect(): number {
-    get_content_scale_aspect();
-  }
-  public set content_scale_aspect(value): void {
-    set_content_scale_aspect(value);
-  }
-  public get content_scale_stretch(): number {
-    get_content_scale_stretch();
-  }
-  public set content_scale_stretch(value): void {
-    set_content_scale_stretch(value);
-  }
-  public get content_scale_factor(): number {
-    get_content_scale_factor();
-  }
-  public set content_scale_factor(value): void {
-    set_content_scale_factor(value);
-  }
-  public get auto_translate(): boolean {
-    is_auto_translating();
-  }
-  public set auto_translate(value): void {
-    set_auto_translate(value);
-  }
-  public get theme(): Theme {
-    get_theme();
-  }
-  public set theme(value): void {
-    set_theme(value);
-  }
-  public get theme_type_variation(): String {
-    get_theme_type_variation();
-  }
-  public set theme_type_variation(value): void {
-    set_theme_type_variation(value);
-  }
+  public get mode(): number;
+  public set mode(value): void;
+  public get title(): String;
+  public set title(value): void;
+  public get initial_position(): number;
+  public set initial_position(value): void;
+  public get position(): Vector2i;
+  public set position(value): void;
+  public get size(): Vector2i;
+  public set size(value): void;
+  public get current_screen(): number;
+  public set current_screen(value): void;
+  public get mouse_passthrough_polygon(): PackedVector2Array;
+  public set mouse_passthrough_polygon(value): void;
+  public get visible(): boolean;
+  public set visible(value): void;
+  public get wrap_controls(): boolean;
+  public set wrap_controls(value): void;
+  public get transient(): boolean;
+  public set transient(value): void;
+  public get transient_to_focused(): boolean;
+  public set transient_to_focused(value): void;
+  public get exclusive(): boolean;
+  public set exclusive(value): void;
+  public get unresizable(): boolean;
+  public set unresizable(value): void;
+  public get borderless(): boolean;
+  public set borderless(value): void;
+  public get always_on_top(): boolean;
+  public set always_on_top(value): void;
+  public get transparent(): boolean;
+  public set transparent(value): void;
+  public get unfocusable(): boolean;
+  public set unfocusable(value): void;
+  public get popup_window(): boolean;
+  public set popup_window(value): void;
+  public get extend_to_title(): boolean;
+  public set extend_to_title(value): void;
+  public get mouse_passthrough(): boolean;
+  public set mouse_passthrough(value): void;
+  public get force_native(): boolean;
+  public set force_native(value): void;
+  public get min_size(): Vector2i;
+  public set min_size(value): void;
+  public get max_size(): Vector2i;
+  public set max_size(value): void;
+  public get keep_title_visible(): boolean;
+  public set keep_title_visible(value): void;
+  public get content_scale_size(): Vector2i;
+  public set content_scale_size(value): void;
+  public get content_scale_mode(): number;
+  public set content_scale_mode(value): void;
+  public get content_scale_aspect(): number;
+  public set content_scale_aspect(value): void;
+  public get content_scale_stretch(): number;
+  public set content_scale_stretch(value): void;
+  public get content_scale_factor(): number;
+  public set content_scale_factor(value): void;
+  public get auto_translate(): boolean;
+  public set auto_translate(value): void;
+  public get theme(): Theme;
+  public set theme(value): void;
+  public get theme_type_variation(): String;
+  public set theme_type_variation(value): void;
   static Mode = {
     MODE_WINDOWED = 0,
     MODE_MINIMIZED = 1,

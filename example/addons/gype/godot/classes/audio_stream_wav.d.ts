@@ -1,6 +1,7 @@
 
 import { AudioStream } from "@godot/classes/audio_stream";
 
+
 export declare class AudioStreamWAV extends AudioStream{
   public set_data(_data: PackedByteArray): void;
   public get_data(): PackedByteArray;
@@ -16,49 +17,21 @@ export declare class AudioStreamWAV extends AudioStream{
   public get_mix_rate(): number;
   public set_stereo(_stereo: boolean): void;
   public is_stereo(): boolean;
-  public save_to_wav(_path: String | StringName | string): number;
-  public get data(): PackedByteArray {
-    get_data();
-  }
-  public set data(value): void {
-    set_data(value);
-  }
-  public get format(): number {
-    get_format();
-  }
-  public set format(value): void {
-    set_format(value);
-  }
-  public get loop_mode(): number {
-    get_loop_mode();
-  }
-  public set loop_mode(value): void {
-    set_loop_mode(value);
-  }
-  public get loop_begin(): number {
-    get_loop_begin();
-  }
-  public set loop_begin(value): void {
-    set_loop_begin(value);
-  }
-  public get loop_end(): number {
-    get_loop_end();
-  }
-  public set loop_end(value): void {
-    set_loop_end(value);
-  }
-  public get mix_rate(): number {
-    get_mix_rate();
-  }
-  public set mix_rate(value): void {
-    set_mix_rate(value);
-  }
-  public get stereo(): boolean {
-    is_stereo();
-  }
-  public set stereo(value): void {
-    set_stereo(value);
-  }
+  public save_to_wav(_path: GDString | StringName | string): number;
+  public get data(): PackedByteArray;
+  public set data(value): void;
+  public get format(): number;
+  public set format(value): void;
+  public get loop_mode(): number;
+  public set loop_mode(value): void;
+  public get loop_begin(): number;
+  public set loop_begin(value): void;
+  public get loop_end(): number;
+  public set loop_end(value): void;
+  public get mix_rate(): number;
+  public set mix_rate(value): void;
+  public get stereo(): boolean;
+  public set stereo(value): void;
   static Format = {
     FORMAT_8_BITS = 0,
     FORMAT_16_BITS = 1,

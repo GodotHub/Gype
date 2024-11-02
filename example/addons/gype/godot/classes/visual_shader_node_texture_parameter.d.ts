@@ -1,6 +1,7 @@
 
 import { VisualShaderNodeParameter } from "@godot/classes/visual_shader_node_parameter";
 
+
 export declare class VisualShaderNodeTextureParameter extends VisualShaderNodeParameter{
   public set_texture_type(_type: number): void;
   public get_texture_type(): number;
@@ -12,36 +13,16 @@ export declare class VisualShaderNodeTextureParameter extends VisualShaderNodePa
   public get_texture_repeat(): number;
   public set_texture_source(_source: number): void;
   public get_texture_source(): number;
-  public get texture_type(): number {
-    get_texture_type();
-  }
-  public set texture_type(value): void {
-    set_texture_type(value);
-  }
-  public get color_default(): number {
-    get_color_default();
-  }
-  public set color_default(value): void {
-    set_color_default(value);
-  }
-  public get texture_filter(): number {
-    get_texture_filter();
-  }
-  public set texture_filter(value): void {
-    set_texture_filter(value);
-  }
-  public get texture_repeat(): number {
-    get_texture_repeat();
-  }
-  public set texture_repeat(value): void {
-    set_texture_repeat(value);
-  }
-  public get texture_source(): number {
-    get_texture_source();
-  }
-  public set texture_source(value): void {
-    set_texture_source(value);
-  }
+  public get texture_type(): number;
+  public set texture_type(value): void;
+  public get color_default(): number;
+  public set color_default(value): void;
+  public get texture_filter(): number;
+  public set texture_filter(value): void;
+  public get texture_repeat(): number;
+  public set texture_repeat(value): void;
+  public get texture_source(): number;
+  public set texture_source(value): void;
   static TextureType = {
     TYPE_DATA = 0,
     TYPE_COLOR = 1,

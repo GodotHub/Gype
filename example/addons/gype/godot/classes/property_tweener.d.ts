@@ -1,6 +1,7 @@
 
 import { Tweener } from "@godot/classes/tweener";
 
+
 export declare class PropertyTweener extends Tweener{
   public from(_value: any): PropertyTweener;
   public from_current(): PropertyTweener;

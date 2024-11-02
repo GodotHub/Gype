@@ -1,6 +1,7 @@
 
 import { Resource } from "@godot/classes/resource";
 
+
 export declare class VoxelGIData extends Resource{
   public allocate(_to_cell_xform: Transform3D, _aabb: AABB, _octree_size: Vector3, _octree_cells: PackedByteArray, _data_cells: PackedByteArray, _distance_field: PackedByteArray, _level_counts: PackedInt32Array): void;
   public get_bounds(): AABB;
@@ -23,46 +24,18 @@ export declare class VoxelGIData extends Resource{
   public is_interior(): boolean;
   public set_use_two_bounces(_enable: boolean): void;
   public is_using_two_bounces(): boolean;
-  public get dynamic_range(): number {
-    get_dynamic_range();
-  }
-  public set dynamic_range(value): void {
-    set_dynamic_range(value);
-  }
-  public get energy(): number {
-    get_energy();
-  }
-  public set energy(value): void {
-    set_energy(value);
-  }
-  public get bias(): number {
-    get_bias();
-  }
-  public set bias(value): void {
-    set_bias(value);
-  }
-  public get normal_bias(): number {
-    get_normal_bias();
-  }
-  public set normal_bias(value): void {
-    set_normal_bias(value);
-  }
-  public get propagation(): number {
-    get_propagation();
-  }
-  public set propagation(value): void {
-    set_propagation(value);
-  }
-  public get use_two_bounces(): boolean {
-    is_using_two_bounces();
-  }
-  public set use_two_bounces(value): void {
-    set_use_two_bounces(value);
-  }
-  public get interior(): boolean {
-    is_interior();
-  }
-  public set interior(value): void {
-    set_interior(value);
-  }
+  public get dynamic_range(): number;
+  public set dynamic_range(value): void;
+  public get energy(): number;
+  public set energy(value): void;
+  public get bias(): number;
+  public set bias(value): void;
+  public get normal_bias(): number;
+  public set normal_bias(value): void;
+  public get propagation(): number;
+  public set propagation(value): void;
+  public get use_two_bounces(): boolean;
+  public set use_two_bounces(value): void;
+  public get interior(): boolean;
+  public set interior(value): void;
 }

@@ -1,24 +1,25 @@
 
 import { EditorExportPlatform } from "@godot/classes/editor_export_platform";
-import { Resource } from "@godot/classes/resource";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { Resource } from "@godot/classes/resource";
 import { Node } from "@godot/classes/node";
 
+
 export declare class EditorExportPlugin extends RefCounted{
-  public _export_file(_path: String | StringName | string, _type: String | StringName | string, _features: PackedStringArray): void;
-  public _export_begin(_features: PackedStringArray, _is_debug: boolean, _path: String | StringName | string, _flags: number): void;
+  public _export_file(_path: GDString | StringName | string, _type: GDString | StringName | string, _features: PackedStringArray): void;
+  public _export_begin(_features: PackedStringArray, _is_debug: boolean, _path: GDString | StringName | string, _flags: number): void;
   public _export_end(): void;
   public _begin_customize_resources(_platform: EditorExportPlatform, _features: PackedStringArray): boolean;
-  public _customize_resource(_resource: Resource, _path: String | StringName | string): Resource;
+  public _customize_resource(_resource: Resource, _path: GDString | StringName | string): Resource;
   public _begin_customize_scenes(_platform: EditorExportPlatform, _features: PackedStringArray): boolean;
-  public _customize_scene(_scene: Node, _path: String | StringName | string): Node;
+  public _customize_scene(_scene: Node, _path: GDString | StringName | string): Node;
   public _get_customization_configuration_hash(): number;
   public _end_customize_scenes(): void;
   public _end_customize_resources(): void;
   public _get_export_options(_platform: EditorExportPlatform): GDArray;
   public _get_export_options_overrides(_platform: EditorExportPlatform): Dictionary;
   public _should_update_export_options(_platform: EditorExportPlatform): boolean;
-  public _get_export_option_warning(_platform: EditorExportPlatform, _option: String | StringName | string): String;
+  public _get_export_option_warning(_platform: EditorExportPlatform, _option: GDString | StringName | string): String;
   public _get_export_features(_platform: EditorExportPlatform, _debug: boolean): PackedStringArray;
   public _get_name(): String;
   public _supports_platform(_platform: EditorExportPlatform): boolean;
@@ -28,16 +29,16 @@ export declare class EditorExportPlugin extends RefCounted{
   public _get_android_manifest_activity_element_contents(_platform: EditorExportPlatform, _debug: boolean): String;
   public _get_android_manifest_application_element_contents(_platform: EditorExportPlatform, _debug: boolean): String;
   public _get_android_manifest_element_contents(_platform: EditorExportPlatform, _debug: boolean): String;
-  public add_shared_object(_path: String | StringName | string, _tags: PackedStringArray, _target: String | StringName | string): void;
-  public add_ios_project_static_lib(_path: String | StringName | string): void;
-  public add_file(_path: String | StringName | string, _file: PackedByteArray, _remap: boolean): void;
-  public add_ios_framework(_path: String | StringName | string): void;
-  public add_ios_embedded_framework(_path: String | StringName | string): void;
-  public add_ios_plist_content(_plist_content: String | StringName | string): void;
-  public add_ios_linker_flags(_flags: String | StringName | string): void;
-  public add_ios_bundle_file(_path: String | StringName | string): void;
-  public add_ios_cpp_code(_code: String | StringName | string): void;
-  public add_macos_plugin_file(_path: String | StringName | string): void;
+  public add_shared_object(_path: GDString | StringName | string, _tags: PackedStringArray, _target: GDString | StringName | string): void;
+  public add_ios_project_static_lib(_path: GDString | StringName | string): void;
+  public add_file(_path: GDString | StringName | string, _file: PackedByteArray, _remap: boolean): void;
+  public add_ios_framework(_path: GDString | StringName | string): void;
+  public add_ios_embedded_framework(_path: GDString | StringName | string): void;
+  public add_ios_plist_content(_plist_content: GDString | StringName | string): void;
+  public add_ios_linker_flags(_flags: GDString | StringName | string): void;
+  public add_ios_bundle_file(_path: GDString | StringName | string): void;
+  public add_ios_cpp_code(_code: GDString | StringName | string): void;
+  public add_macos_plugin_file(_path: GDString | StringName | string): void;
   public skip(): void;
-  public get_option(_name: String | StringName | string): any;
+  public get_option(_name: GDString | StringName | string): any;
 }

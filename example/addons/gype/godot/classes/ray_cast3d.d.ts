@@ -1,7 +1,8 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
 import { CollisionObject3D } from "@godot/classes/collision_object3d";
 import { Node3D } from "@godot/classes/node3d";
+import { GodotObject } from "@godot/classes/godot_object";
+
 
 export declare class RayCast3D extends Node3D{
   public set_enabled(_enabled: boolean): void;
@@ -39,64 +40,24 @@ export declare class RayCast3D extends Node3D{
   public get_debug_shape_custom_color(): Color;
   public set_debug_shape_thickness(_debug_shape_thickness: number): void;
   public get_debug_shape_thickness(): number;
-  public get enabled(): boolean {
-    is_enabled();
-  }
-  public set enabled(value): void {
-    set_enabled(value);
-  }
-  public get exclude_parent(): boolean {
-    get_exclude_parent_body();
-  }
-  public set exclude_parent(value): void {
-    set_exclude_parent_body(value);
-  }
-  public get target_position(): Vector3 {
-    get_target_position();
-  }
-  public set target_position(value): void {
-    set_target_position(value);
-  }
-  public get collision_mask(): number {
-    get_collision_mask();
-  }
-  public set collision_mask(value): void {
-    set_collision_mask(value);
-  }
-  public get hit_from_inside(): boolean {
-    is_hit_from_inside_enabled();
-  }
-  public set hit_from_inside(value): void {
-    set_hit_from_inside(value);
-  }
-  public get hit_back_faces(): boolean {
-    is_hit_back_faces_enabled();
-  }
-  public set hit_back_faces(value): void {
-    set_hit_back_faces(value);
-  }
-  public get collide_with_areas(): boolean {
-    is_collide_with_areas_enabled();
-  }
-  public set collide_with_areas(value): void {
-    set_collide_with_areas(value);
-  }
-  public get collide_with_bodies(): boolean {
-    is_collide_with_bodies_enabled();
-  }
-  public set collide_with_bodies(value): void {
-    set_collide_with_bodies(value);
-  }
-  public get debug_shape_custom_color(): Color {
-    get_debug_shape_custom_color();
-  }
-  public set debug_shape_custom_color(value): void {
-    set_debug_shape_custom_color(value);
-  }
-  public get debug_shape_thickness(): number {
-    get_debug_shape_thickness();
-  }
-  public set debug_shape_thickness(value): void {
-    set_debug_shape_thickness(value);
-  }
+  public get enabled(): boolean;
+  public set enabled(value): void;
+  public get exclude_parent(): boolean;
+  public set exclude_parent(value): void;
+  public get target_position(): Vector3;
+  public set target_position(value): void;
+  public get collision_mask(): number;
+  public set collision_mask(value): void;
+  public get hit_from_inside(): boolean;
+  public set hit_from_inside(value): void;
+  public get hit_back_faces(): boolean;
+  public set hit_back_faces(value): void;
+  public get collide_with_areas(): boolean;
+  public set collide_with_areas(value): void;
+  public get collide_with_bodies(): boolean;
+  public set collide_with_bodies(value): void;
+  public get debug_shape_custom_color(): Color;
+  public set debug_shape_custom_color(value): void;
+  public get debug_shape_thickness(): number;
+  public set debug_shape_thickness(value): void;
 }

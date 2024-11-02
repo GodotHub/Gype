@@ -2,14 +2,15 @@
 import { SkeletonModifier3D } from "@godot/classes/skeleton_modifier3d";
 import { Skeleton3D } from "@godot/classes/skeleton3d";
 
+
 export declare class SkeletonIK3D extends SkeletonModifier3D{
-  public set_root_bone(_root_bone: String | StringName | string): void;
+  public set_root_bone(_root_bone: GDString | StringName | string): void;
   public get_root_bone(): StringName;
-  public set_tip_bone(_tip_bone: String | StringName | string): void;
+  public set_tip_bone(_tip_bone: GDString | StringName | string): void;
   public get_tip_bone(): StringName;
   public set_target_transform(_target: Transform3D): void;
   public get_target_transform(): Transform3D;
-  public set_target_node(_node: NodePath): void;
+  public set_target_node(_node: GDString | NodePath | string): void;
   public get_target_node(): NodePath;
   public set_override_tip_basis(_override: boolean): void;
   public is_override_tip_basis(): boolean;
@@ -27,64 +28,24 @@ export declare class SkeletonIK3D extends SkeletonModifier3D{
   public stop(): void;
   public set_interpolation(_interpolation: number): void;
   public get_interpolation(): number;
-  public get root_bone(): StringName {
-    get_root_bone();
-  }
-  public set root_bone(value): void {
-    set_root_bone(value);
-  }
-  public get tip_bone(): StringName {
-    get_tip_bone();
-  }
-  public set tip_bone(value): void {
-    set_tip_bone(value);
-  }
-  public get target(): Transform3D {
-    get_target_transform();
-  }
-  public set target(value): void {
-    set_target_transform(value);
-  }
-  public get override_tip_basis(): boolean {
-    is_override_tip_basis();
-  }
-  public set override_tip_basis(value): void {
-    set_override_tip_basis(value);
-  }
-  public get use_magnet(): boolean {
-    is_using_magnet();
-  }
-  public set use_magnet(value): void {
-    set_use_magnet(value);
-  }
-  public get magnet(): Vector3 {
-    get_magnet_position();
-  }
-  public set magnet(value): void {
-    set_magnet_position(value);
-  }
-  public get target_node(): NodePath {
-    get_target_node();
-  }
-  public set target_node(value): void {
-    set_target_node(value);
-  }
-  public get min_distance(): number {
-    get_min_distance();
-  }
-  public set min_distance(value): void {
-    set_min_distance(value);
-  }
-  public get max_iterations(): number {
-    get_max_iterations();
-  }
-  public set max_iterations(value): void {
-    set_max_iterations(value);
-  }
-  public get interpolation(): number {
-    get_interpolation();
-  }
-  public set interpolation(value): void {
-    set_interpolation(value);
-  }
+  public get root_bone(): StringName;
+  public set root_bone(value): void;
+  public get tip_bone(): StringName;
+  public set tip_bone(value): void;
+  public get target(): Transform3D;
+  public set target(value): void;
+  public get override_tip_basis(): boolean;
+  public set override_tip_basis(value): void;
+  public get use_magnet(): boolean;
+  public set use_magnet(value): void;
+  public get magnet(): Vector3;
+  public set magnet(value): void;
+  public get target_node(): NodePath;
+  public set target_node(value): void;
+  public get min_distance(): number;
+  public set min_distance(value): void;
+  public get max_iterations(): number;
+  public set max_iterations(value): void;
+  public get interpolation(): number;
+  public set interpolation(value): void;
 }

@@ -1,17 +1,14 @@
 
 import { XRTracker } from "@godot/classes/xr_tracker";
 
+
 export declare class XRFaceTracker extends XRTracker{
   public get_blend_shape(_blend_shape: number): number;
   public set_blend_shape(_blend_shape: number, _weight: number): void;
   public get_blend_shapes(): PackedFloat32Array;
   public set_blend_shapes(_weights: PackedFloat32Array): void;
-  public get blend_shapes(): PackedFloat32Array {
-    get_blend_shapes();
-  }
-  public set blend_shapes(value): void {
-    set_blend_shapes(value);
-  }
+  public get blend_shapes(): PackedFloat32Array;
+  public set blend_shapes(value): void;
   static BlendShapeEntry = {
     FT_EYE_LOOK_OUT_RIGHT = 0,
     FT_EYE_LOOK_IN_RIGHT = 1,

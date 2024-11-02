@@ -1,18 +1,19 @@
 
 import { VScrollBar } from "@godot/classes/v_scroll_bar";
-import { Control } from "@godot/classes/control";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Control } from "@godot/classes/control";
+
 
 export declare class ItemList extends Control{
-  public add_item(_text: String | StringName | string, _icon: Texture2D, _selectable: boolean): number;
+  public add_item(_text: GDString | StringName | string, _icon: Texture2D, _selectable: boolean): number;
   public add_icon_item(_icon: Texture2D, _selectable: boolean): number;
-  public set_item_text(_idx: number, _text: String | StringName | string): void;
+  public set_item_text(_idx: number, _text: GDString | StringName | string): void;
   public get_item_text(_idx: number): String;
   public set_item_icon(_idx: number, _icon: Texture2D): void;
   public get_item_icon(_idx: number): Texture2D;
   public set_item_text_direction(_idx: number, _direction: number): void;
   public get_item_text_direction(_idx: number): number;
-  public set_item_language(_idx: number, _language: String | StringName | string): void;
+  public set_item_language(_idx: number, _language: GDString | StringName | string): void;
   public get_item_language(_idx: number): String;
   public set_item_icon_transposed(_idx: number, _transposed: boolean): void;
   public is_item_icon_transposed(_idx: number): boolean;
@@ -33,7 +34,7 @@ export declare class ItemList extends Control{
   public get_item_rect(_idx: number, _expand: boolean): Rect2;
   public set_item_tooltip_enabled(_idx: number, _enable: boolean): void;
   public is_item_tooltip_enabled(_idx: number): boolean;
-  public set_item_tooltip(_idx: number, _tooltip: String | StringName | string): void;
+  public set_item_tooltip(_idx: number, _tooltip: GDString | StringName | string): void;
   public get_item_tooltip(_idx: number): String;
   public select(_idx: number, _single: boolean): void;
   public deselect(_idx: number): void;
@@ -77,90 +78,34 @@ export declare class ItemList extends Control{
   public set_text_overrun_behavior(_overrun_behavior: number): void;
   public get_text_overrun_behavior(): number;
   public force_update_list_size(): void;
-  public get select_mode(): number {
-    get_select_mode();
-  }
-  public set select_mode(value): void {
-    set_select_mode(value);
-  }
-  public get allow_reselect(): boolean {
-    get_allow_reselect();
-  }
-  public set allow_reselect(value): void {
-    set_allow_reselect(value);
-  }
-  public get allow_rmb_select(): boolean {
-    get_allow_rmb_select();
-  }
-  public set allow_rmb_select(value): void {
-    set_allow_rmb_select(value);
-  }
-  public get allow_search(): boolean {
-    get_allow_search();
-  }
-  public set allow_search(value): void {
-    set_allow_search(value);
-  }
-  public get max_text_lines(): number {
-    get_max_text_lines();
-  }
-  public set max_text_lines(value): void {
-    set_max_text_lines(value);
-  }
-  public get auto_height(): boolean {
-    has_auto_height();
-  }
-  public set auto_height(value): void {
-    set_auto_height(value);
-  }
-  public get text_overrun_behavior(): number {
-    get_text_overrun_behavior();
-  }
-  public set text_overrun_behavior(value): void {
-    set_text_overrun_behavior(value);
-  }
-  public get item_count(): number {
-    get_item_count();
-  }
-  public set item_count(value): void {
-    set_item_count(value);
-  }
-  public get max_columns(): number {
-    get_max_columns();
-  }
-  public set max_columns(value): void {
-    set_max_columns(value);
-  }
-  public get same_column_width(): boolean {
-    is_same_column_width();
-  }
-  public set same_column_width(value): void {
-    set_same_column_width(value);
-  }
-  public get fixed_column_width(): number {
-    get_fixed_column_width();
-  }
-  public set fixed_column_width(value): void {
-    set_fixed_column_width(value);
-  }
-  public get icon_mode(): number {
-    get_icon_mode();
-  }
-  public set icon_mode(value): void {
-    set_icon_mode(value);
-  }
-  public get icon_scale(): number {
-    get_icon_scale();
-  }
-  public set icon_scale(value): void {
-    set_icon_scale(value);
-  }
-  public get fixed_icon_size(): Vector2i {
-    get_fixed_icon_size();
-  }
-  public set fixed_icon_size(value): void {
-    set_fixed_icon_size(value);
-  }
+  public get select_mode(): number;
+  public set select_mode(value): void;
+  public get allow_reselect(): boolean;
+  public set allow_reselect(value): void;
+  public get allow_rmb_select(): boolean;
+  public set allow_rmb_select(value): void;
+  public get allow_search(): boolean;
+  public set allow_search(value): void;
+  public get max_text_lines(): number;
+  public set max_text_lines(value): void;
+  public get auto_height(): boolean;
+  public set auto_height(value): void;
+  public get text_overrun_behavior(): number;
+  public set text_overrun_behavior(value): void;
+  public get item_count(): number;
+  public set item_count(value): void;
+  public get max_columns(): number;
+  public set max_columns(value): void;
+  public get same_column_width(): boolean;
+  public set same_column_width(value): void;
+  public get fixed_column_width(): number;
+  public set fixed_column_width(value): void;
+  public get icon_mode(): number;
+  public set icon_mode(value): void;
+  public get icon_scale(): number;
+  public set icon_scale(value): void;
+  public get fixed_icon_size(): Vector2i;
+  public set fixed_icon_size(value): void;
   static IconMode = {
     ICON_MODE_TOP = 0,
     ICON_MODE_LEFT = 1,

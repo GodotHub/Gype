@@ -1,6 +1,7 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
 
+
 export declare class AStarGrid2D extends RefCounted{
   public _estimate_cost(_from_id: Vector2i, _to_id: Vector2i): number;
   public _compute_cost(_from_id: Vector2i, _to_id: Vector2i): number;
@@ -36,60 +37,24 @@ export declare class AStarGrid2D extends RefCounted{
   public get_point_position(_id: Vector2i): Vector2;
   public get_point_path(_from_id: Vector2i, _to_id: Vector2i, _allow_partial_path: boolean): PackedVector2Array;
   public get_id_path(_from_id: Vector2i, _to_id: Vector2i, _allow_partial_path: boolean): GDArray;
-  public get region(): Rect2i {
-    get_region();
-  }
-  public set region(value): void {
-    set_region(value);
-  }
-  public get size(): Vector2i {
-    get_size();
-  }
-  public set size(value): void {
-    set_size(value);
-  }
-  public get offset(): Vector2 {
-    get_offset();
-  }
-  public set offset(value): void {
-    set_offset(value);
-  }
-  public get cell_size(): Vector2 {
-    get_cell_size();
-  }
-  public set cell_size(value): void {
-    set_cell_size(value);
-  }
-  public get cell_shape(): number {
-    get_cell_shape();
-  }
-  public set cell_shape(value): void {
-    set_cell_shape(value);
-  }
-  public get jumping_enabled(): boolean {
-    is_jumping_enabled();
-  }
-  public set jumping_enabled(value): void {
-    set_jumping_enabled(value);
-  }
-  public get default_compute_heuristic(): number {
-    get_default_compute_heuristic();
-  }
-  public set default_compute_heuristic(value): void {
-    set_default_compute_heuristic(value);
-  }
-  public get default_estimate_heuristic(): number {
-    get_default_estimate_heuristic();
-  }
-  public set default_estimate_heuristic(value): void {
-    set_default_estimate_heuristic(value);
-  }
-  public get diagonal_mode(): number {
-    get_diagonal_mode();
-  }
-  public set diagonal_mode(value): void {
-    set_diagonal_mode(value);
-  }
+  public get region(): Rect2i;
+  public set region(value): void;
+  public get size(): Vector2i;
+  public set size(value): void;
+  public get offset(): Vector2;
+  public set offset(value): void;
+  public get cell_size(): Vector2;
+  public set cell_size(value): void;
+  public get cell_shape(): number;
+  public set cell_shape(value): void;
+  public get jumping_enabled(): boolean;
+  public set jumping_enabled(value): void;
+  public get default_compute_heuristic(): number;
+  public set default_compute_heuristic(value): void;
+  public get default_estimate_heuristic(): number;
+  public set default_estimate_heuristic(value): void;
+  public get diagonal_mode(): number;
+  public set diagonal_mode(value): void;
   static Heuristic = {
     HEURISTIC_EUCLIDEAN = 0,
     HEURISTIC_MANHATTAN = 1,

@@ -1,6 +1,7 @@
 
 import { AudioEffect } from "@godot/classes/audio_effect";
 
+
 export declare class AudioEffectReverb extends AudioEffect{
   public set_predelay_msec(_msec: number): void;
   public get_predelay_msec(): number;
@@ -18,52 +19,20 @@ export declare class AudioEffectReverb extends AudioEffect{
   public get_wet(): number;
   public set_hpf(_amount: number): void;
   public get_hpf(): number;
-  public get predelay_msec(): number {
-    get_predelay_msec();
-  }
-  public set predelay_msec(value): void {
-    set_predelay_msec(value);
-  }
-  public get predelay_feedback(): number {
-    get_predelay_feedback();
-  }
-  public set predelay_feedback(value): void {
-    set_predelay_feedback(value);
-  }
-  public get room_size(): number {
-    get_room_size();
-  }
-  public set room_size(value): void {
-    set_room_size(value);
-  }
-  public get damping(): number {
-    get_damping();
-  }
-  public set damping(value): void {
-    set_damping(value);
-  }
-  public get spread(): number {
-    get_spread();
-  }
-  public set spread(value): void {
-    set_spread(value);
-  }
-  public get hipass(): number {
-    get_hpf();
-  }
-  public set hipass(value): void {
-    set_hpf(value);
-  }
-  public get dry(): number {
-    get_dry();
-  }
-  public set dry(value): void {
-    set_dry(value);
-  }
-  public get wet(): number {
-    get_wet();
-  }
-  public set wet(value): void {
-    set_wet(value);
-  }
+  public get predelay_msec(): number;
+  public set predelay_msec(value): void;
+  public get predelay_feedback(): number;
+  public set predelay_feedback(value): void;
+  public get room_size(): number;
+  public set room_size(value): void;
+  public get damping(): number;
+  public set damping(value): void;
+  public get spread(): number;
+  public set spread(value): void;
+  public get hipass(): number;
+  public set hipass(value): void;
+  public get dry(): number;
+  public set dry(value): void;
+  public get wet(): number;
+  public set wet(value): void;
 }

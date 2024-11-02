@@ -1,6 +1,7 @@
 
 import { Resource } from "@godot/classes/resource";
 
+
 export declare class PolygonPathFinder extends Resource{
   public setup(_points: PackedVector2Array, _connections: PackedInt32Array): void;
   public find_path(_from: Vector2, _to: Vector2): PackedVector2Array;
@@ -10,10 +11,6 @@ export declare class PolygonPathFinder extends Resource{
   public set_point_penalty(_idx: number, _penalty: number): void;
   public get_point_penalty(_idx: number): number;
   public get_bounds(): Rect2;
-  public get data(): Dictionary {
-    _get_data();
-  }
-  public set data(value): void {
-    _set_data(value);
-  }
+  public get data(): Dictionary;
+  public set data(value): void;
 }

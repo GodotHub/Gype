@@ -1,6 +1,7 @@
 
-import { Resource } from "@godot/classes/resource";
 import { Image } from "@godot/classes/image";
+import { Resource } from "@godot/classes/resource";
+
 
 export declare class BitMap extends Resource{
   public create(_size: Vector2i): void;
@@ -16,10 +17,6 @@ export declare class BitMap extends Resource{
   public grow_mask(_pixels: number, _rect: Rect2i): void;
   public convert_to_image(): Image;
   public opaque_to_polygons(_rect: Rect2i, _epsilon: number): GDArray;
-  public get data(): Dictionary {
-    _get_data();
-  }
-  public set data(value): void {
-    _set_data(value);
-  }
+  public get data(): Dictionary;
+  public set data(value): void;
 }

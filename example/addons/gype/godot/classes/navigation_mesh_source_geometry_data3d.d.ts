@@ -1,6 +1,7 @@
 
-import { Resource } from "@godot/classes/resource";
 import { Mesh } from "@godot/classes/mesh";
+import { Resource } from "@godot/classes/resource";
+
 
 export declare class NavigationMeshSourceGeometryData3D extends Resource{
   public set_vertices(_vertices: PackedFloat32Array): void;
@@ -18,22 +19,10 @@ export declare class NavigationMeshSourceGeometryData3D extends Resource{
   public clear_projected_obstructions(): void;
   public set_projected_obstructions(_projected_obstructions: GDArray): void;
   public get_projected_obstructions(): GDArray;
-  public get vertices(): PackedVector3Array {
-    get_vertices();
-  }
-  public set vertices(value): void {
-    set_vertices(value);
-  }
-  public get indices(): PackedInt32Array {
-    get_indices();
-  }
-  public set indices(value): void {
-    set_indices(value);
-  }
-  public get projected_obstructions(): GDArray {
-    get_projected_obstructions();
-  }
-  public set projected_obstructions(value): void {
-    set_projected_obstructions(value);
-  }
+  public get vertices(): PackedVector3Array;
+  public set vertices(value): void;
+  public get indices(): PackedInt32Array;
+  public set indices(value): void;
+  public get projected_obstructions(): GDArray;
+  public set projected_obstructions(value): void;
 }

@@ -1,6 +1,7 @@
 
 import { Resource } from "@godot/classes/resource";
 
+
 export declare class TileMapPattern extends Resource{
   public set_cell(_coords: Vector2i, _source_id: number, _atlas_coords: Vector2i, _alternative_tile: number): void;
   public has_cell(_coords: Vector2i): boolean;

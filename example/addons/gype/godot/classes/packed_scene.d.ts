@@ -1,7 +1,8 @@
 
 import { Resource } from "@godot/classes/resource";
-import { SceneState } from "@godot/classes/scene_state";
 import { Node } from "@godot/classes/node";
+import { SceneState } from "@godot/classes/scene_state";
+
 
 export declare class PackedScene extends Resource{
   public pack(_path: Node): number;

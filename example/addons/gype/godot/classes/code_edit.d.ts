@@ -2,6 +2,7 @@
 import { Resource } from "@godot/classes/resource";
 import { TextEdit } from "@godot/classes/text_edit";
 
+
 export declare class CodeEdit extends TextEdit{
   public _confirm_code_completion(_replace: boolean): void;
   public _request_code_completion(_force: boolean): void;
@@ -22,12 +23,12 @@ export declare class CodeEdit extends TextEdit{
   public is_auto_brace_completion_enabled(): boolean;
   public set_highlight_matching_braces_enabled(_enable: boolean): void;
   public is_highlight_matching_braces_enabled(): boolean;
-  public add_auto_brace_completion_pair(_start_key: String | StringName | string, _end_key: String | StringName | string): void;
+  public add_auto_brace_completion_pair(_start_key: GDString | StringName | string, _end_key: GDString | StringName | string): void;
   public set_auto_brace_completion_pairs(_pairs: Dictionary): void;
   public get_auto_brace_completion_pairs(): Dictionary;
-  public has_auto_brace_completion_open_key(_open_key: String | StringName | string): boolean;
-  public has_auto_brace_completion_close_key(_close_key: String | StringName | string): boolean;
-  public get_auto_brace_completion_close_key(_open_key: String | StringName | string): String;
+  public has_auto_brace_completion_open_key(_open_key: GDString | StringName | string): boolean;
+  public has_auto_brace_completion_close_key(_close_key: GDString | StringName | string): boolean;
+  public get_auto_brace_completion_close_key(_open_key: GDString | StringName | string): String;
   public set_draw_breakpoints_gutter(_enable: boolean): void;
   public is_drawing_breakpoints_gutter(): boolean;
   public set_draw_bookmarks_gutter(_enable: boolean): void;
@@ -66,19 +67,19 @@ export declare class CodeEdit extends TextEdit{
   public create_code_region(): void;
   public get_code_region_start_tag(): String;
   public get_code_region_end_tag(): String;
-  public set_code_region_tags(_start: String | StringName | string, _end: String | StringName | string): void;
+  public set_code_region_tags(_start: GDString | StringName | string, _end: GDString | StringName | string): void;
   public is_line_code_region_start(_line: number): boolean;
   public is_line_code_region_end(_line: number): boolean;
-  public add_string_delimiter(_start_key: String | StringName | string, _end_key: String | StringName | string, _line_only: boolean): void;
-  public remove_string_delimiter(_start_key: String | StringName | string): void;
-  public has_string_delimiter(_start_key: String | StringName | string): boolean;
+  public add_string_delimiter(_start_key: GDString | StringName | string, _end_key: GDString | StringName | string, _line_only: boolean): void;
+  public remove_string_delimiter(_start_key: GDString | StringName | string): void;
+  public has_string_delimiter(_start_key: GDString | StringName | string): boolean;
   public set_string_delimiters(_string_delimiters: GDArray): void;
   public clear_string_delimiters(): void;
   public get_string_delimiters(): GDArray;
   public is_in_string(_line: number, _column: number): number;
-  public add_comment_delimiter(_start_key: String | StringName | string, _end_key: String | StringName | string, _line_only: boolean): void;
-  public remove_comment_delimiter(_start_key: String | StringName | string): void;
-  public has_comment_delimiter(_start_key: String | StringName | string): boolean;
+  public add_comment_delimiter(_start_key: GDString | StringName | string, _end_key: GDString | StringName | string, _line_only: boolean): void;
+  public remove_comment_delimiter(_start_key: GDString | StringName | string): void;
+  public has_comment_delimiter(_start_key: GDString | StringName | string): boolean;
   public set_comment_delimiters(_comment_delimiters: GDArray): void;
   public clear_comment_delimiters(): void;
   public get_comment_delimiters(): GDArray;
@@ -87,11 +88,11 @@ export declare class CodeEdit extends TextEdit{
   public get_delimiter_end_key(_delimiter_index: number): String;
   public get_delimiter_start_position(_line: number, _column: number): Vector2;
   public get_delimiter_end_position(_line: number, _column: number): Vector2;
-  public set_code_hint(_code_hint: String | StringName | string): void;
+  public set_code_hint(_code_hint: GDString | StringName | string): void;
   public set_code_hint_draw_below(_draw_below: boolean): void;
   public get_text_for_code_completion(): String;
   public request_code_completion(_force: boolean): void;
-  public add_code_completion_option(_type: number, _display_text: String | StringName | string, _insert_text: String | StringName | string, _text_color: Color, _icon: Resource, _value: any, _location: number): void;
+  public add_code_completion_option(_type: number, _display_text: GDString | StringName | string, _insert_text: GDString | StringName | string, _text_color: Color, _icon: Resource, _value: any, _location: number): void;
   public update_code_completion_options(_force: boolean): void;
   public get_code_completion_options(): GDArray;
   public get_code_completion_option(_index: number): Dictionary;
@@ -115,126 +116,46 @@ export declare class CodeEdit extends TextEdit{
   public delete_lines(): void;
   public duplicate_selection(): void;
   public duplicate_lines(): void;
-  public get symbol_lookup_on_click(): boolean {
-    is_symbol_lookup_on_click_enabled();
-  }
-  public set symbol_lookup_on_click(value): void {
-    set_symbol_lookup_on_click_enabled(value);
-  }
-  public get line_folding(): boolean {
-    is_line_folding_enabled();
-  }
-  public set line_folding(value): void {
-    set_line_folding_enabled(value);
-  }
-  public get line_length_guidelines(): PackedInt32Array {
-    get_line_length_guidelines();
-  }
-  public set line_length_guidelines(value): void {
-    set_line_length_guidelines(value);
-  }
-  public get gutters_draw_breakpoints_gutter(): boolean {
-    is_drawing_breakpoints_gutter();
-  }
-  public set gutters_draw_breakpoints_gutter(value): void {
-    set_draw_breakpoints_gutter(value);
-  }
-  public get gutters_draw_bookmarks(): boolean {
-    is_drawing_bookmarks_gutter();
-  }
-  public set gutters_draw_bookmarks(value): void {
-    set_draw_bookmarks_gutter(value);
-  }
-  public get gutters_draw_executing_lines(): boolean {
-    is_drawing_executing_lines_gutter();
-  }
-  public set gutters_draw_executing_lines(value): void {
-    set_draw_executing_lines_gutter(value);
-  }
-  public get gutters_draw_line_numbers(): boolean {
-    is_draw_line_numbers_enabled();
-  }
-  public set gutters_draw_line_numbers(value): void {
-    set_draw_line_numbers(value);
-  }
-  public get gutters_zero_pad_line_numbers(): boolean {
-    is_line_numbers_zero_padded();
-  }
-  public set gutters_zero_pad_line_numbers(value): void {
-    set_line_numbers_zero_padded(value);
-  }
-  public get gutters_draw_fold_gutter(): boolean {
-    is_drawing_fold_gutter();
-  }
-  public set gutters_draw_fold_gutter(value): void {
-    set_draw_fold_gutter(value);
-  }
-  public get delimiter_strings(): PackedStringArray {
-    get_string_delimiters();
-  }
-  public set delimiter_strings(value): void {
-    set_string_delimiters(value);
-  }
-  public get delimiter_comments(): PackedStringArray {
-    get_comment_delimiters();
-  }
-  public set delimiter_comments(value): void {
-    set_comment_delimiters(value);
-  }
-  public get code_completion_enabled(): boolean {
-    is_code_completion_enabled();
-  }
-  public set code_completion_enabled(value): void {
-    set_code_completion_enabled(value);
-  }
-  public get code_completion_prefixes(): PackedStringArray {
-    get_code_completion_prefixes();
-  }
-  public set code_completion_prefixes(value): void {
-    set_code_completion_prefixes(value);
-  }
-  public get indent_size(): number {
-    get_indent_size();
-  }
-  public set indent_size(value): void {
-    set_indent_size(value);
-  }
-  public get indent_use_spaces(): boolean {
-    is_indent_using_spaces();
-  }
-  public set indent_use_spaces(value): void {
-    set_indent_using_spaces(value);
-  }
-  public get indent_automatic(): boolean {
-    is_auto_indent_enabled();
-  }
-  public set indent_automatic(value): void {
-    set_auto_indent_enabled(value);
-  }
-  public get indent_automatic_prefixes(): PackedStringArray {
-    get_auto_indent_prefixes();
-  }
-  public set indent_automatic_prefixes(value): void {
-    set_auto_indent_prefixes(value);
-  }
-  public get auto_brace_completion_enabled(): boolean {
-    is_auto_brace_completion_enabled();
-  }
-  public set auto_brace_completion_enabled(value): void {
-    set_auto_brace_completion_enabled(value);
-  }
-  public get auto_brace_completion_highlight_matching(): boolean {
-    is_highlight_matching_braces_enabled();
-  }
-  public set auto_brace_completion_highlight_matching(value): void {
-    set_highlight_matching_braces_enabled(value);
-  }
-  public get auto_brace_completion_pairs(): Dictionary {
-    get_auto_brace_completion_pairs();
-  }
-  public set auto_brace_completion_pairs(value): void {
-    set_auto_brace_completion_pairs(value);
-  }
+  public get symbol_lookup_on_click(): boolean;
+  public set symbol_lookup_on_click(value): void;
+  public get line_folding(): boolean;
+  public set line_folding(value): void;
+  public get line_length_guidelines(): PackedInt32Array;
+  public set line_length_guidelines(value): void;
+  public get gutters_draw_breakpoints_gutter(): boolean;
+  public set gutters_draw_breakpoints_gutter(value): void;
+  public get gutters_draw_bookmarks(): boolean;
+  public set gutters_draw_bookmarks(value): void;
+  public get gutters_draw_executing_lines(): boolean;
+  public set gutters_draw_executing_lines(value): void;
+  public get gutters_draw_line_numbers(): boolean;
+  public set gutters_draw_line_numbers(value): void;
+  public get gutters_zero_pad_line_numbers(): boolean;
+  public set gutters_zero_pad_line_numbers(value): void;
+  public get gutters_draw_fold_gutter(): boolean;
+  public set gutters_draw_fold_gutter(value): void;
+  public get delimiter_strings(): PackedStringArray;
+  public set delimiter_strings(value): void;
+  public get delimiter_comments(): PackedStringArray;
+  public set delimiter_comments(value): void;
+  public get code_completion_enabled(): boolean;
+  public set code_completion_enabled(value): void;
+  public get code_completion_prefixes(): PackedStringArray;
+  public set code_completion_prefixes(value): void;
+  public get indent_size(): number;
+  public set indent_size(value): void;
+  public get indent_use_spaces(): boolean;
+  public set indent_use_spaces(value): void;
+  public get indent_automatic(): boolean;
+  public set indent_automatic(value): void;
+  public get indent_automatic_prefixes(): PackedStringArray;
+  public set indent_automatic_prefixes(value): void;
+  public get auto_brace_completion_enabled(): boolean;
+  public set auto_brace_completion_enabled(value): void;
+  public get auto_brace_completion_highlight_matching(): boolean;
+  public set auto_brace_completion_highlight_matching(value): void;
+  public get auto_brace_completion_pairs(): Dictionary;
+  public set auto_brace_completion_pairs(value): void;
   static CodeCompletionKind = {
     KIND_CLASS = 0,
     KIND_FUNCTION = 1,

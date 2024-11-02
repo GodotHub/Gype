@@ -1,6 +1,7 @@
 
 import { Control } from "@godot/classes/control";
 
+
 export declare class Container extends Control{
   public _get_allowed_size_flags_horizontal(): PackedInt32Array;
   public _get_allowed_size_flags_vertical(): PackedInt32Array;

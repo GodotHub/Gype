@@ -4,19 +4,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { TextEdit } from "@godot/classes/text_edit";
+import { Control } from "@godot/classes/control";
 import { GodotClass } from "@godot/core/class_defined";
-let text_edit = class text_edit extends TextEdit {
-    edit(p0, p1) {
-        GD.print(p0, p1);
-    }
+let RootNode = class RootNode extends Control {
     _ready() {
-        this.lines_edited_from.connect(new Callable(this, this.edit), 0);
+        let child = this.get_node("./Child");
+        GD.print(child.size);
     }
-    _process(delta) {
-    }
+    _process(delta) { }
 };
-text_edit = __decorate([
+RootNode = __decorate([
     GodotClass
-], text_edit);
-export { text_edit };
+], RootNode);
+export { RootNode };

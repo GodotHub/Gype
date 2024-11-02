@@ -1,6 +1,7 @@
 
 import { Resource } from "@godot/classes/resource";
 
+
 export declare class Curve3D extends Resource{
   public get_point_count(): number;
   public set_point_count(_count: number): void;
@@ -32,22 +33,10 @@ export declare class Curve3D extends Resource{
   public get_closest_offset(_to_point: Vector3): number;
   public tessellate(_max_stages: number, _tolerance_degrees: number): PackedVector3Array;
   public tessellate_even_length(_max_stages: number, _tolerance_length: number): PackedVector3Array;
-  public get bake_interval(): number {
-    get_bake_interval();
-  }
-  public set bake_interval(value): void {
-    set_bake_interval(value);
-  }
-  public get point_count(): number {
-    get_point_count();
-  }
-  public set point_count(value): void {
-    set_point_count(value);
-  }
-  public get up_vector_enabled(): boolean {
-    is_up_vector_enabled();
-  }
-  public set up_vector_enabled(value): void {
-    set_up_vector_enabled(value);
-  }
+  public get bake_interval(): number;
+  public set bake_interval(value): void;
+  public get point_count(): number;
+  public set point_count(value): void;
+  public get up_vector_enabled(): boolean;
+  public set up_vector_enabled(value): void;
 }

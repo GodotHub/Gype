@@ -1,11 +1,12 @@
 
-import { GraphElement } from "@godot/classes/graph_element";
 import { HBoxContainer } from "@godot/classes/h_box_container";
 import { Texture2D } from "@godot/classes/texture2d";
+import { GraphElement } from "@godot/classes/graph_element";
+
 
 export declare class GraphNode extends GraphElement{
   public _draw_port(_slot_index: number, _position: Vector2i, _left: boolean, _color: Color): void;
-  public set_title(_title: String | StringName | string): void;
+  public set_title(_title: GDString | StringName | string): void;
   public get_title(): String;
   public get_titlebar_hbox(): HBoxContainer;
   public set_slot(_slot_index: number, _enable_left_port: boolean, _type_left: number, _color_left: Color, _enable_right_port: boolean, _type_right: number, _color_right: Color, _custom_icon_left: Texture2D, _custom_icon_right: Texture2D, _draw_stylebox: boolean): void;
@@ -41,17 +42,9 @@ export declare class GraphNode extends GraphElement{
   public get_output_port_type(_port_idx: number): number;
   public get_output_port_color(_port_idx: number): Color;
   public get_output_port_slot(_port_idx: number): number;
-  public get title(): String {
-    get_title();
-  }
-  public set title(value): void {
-    set_title(value);
-  }
-  public get ignore_invalid_connection_type(): boolean {
-    is_ignoring_valid_connection_type();
-  }
-  public set ignore_invalid_connection_type(value): void {
-    set_ignore_invalid_connection_type(value);
-  }
+  public get title(): String;
+  public set title(value): void;
+  public get ignore_invalid_connection_type(): boolean;
+  public set ignore_invalid_connection_type(value): void;
   public get slot_updated(): Signal;
 }

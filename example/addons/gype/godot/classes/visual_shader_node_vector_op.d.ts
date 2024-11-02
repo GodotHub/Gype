@@ -1,15 +1,12 @@
 
 import { VisualShaderNodeVectorBase } from "@godot/classes/visual_shader_node_vector_base";
 
+
 export declare class VisualShaderNodeVectorOp extends VisualShaderNodeVectorBase{
   public set_operator(_op: number): void;
   public get_operator(): number;
-  public get operator(): number {
-    get_operator();
-  }
-  public set operator(value): void {
-    set_operator(value);
-  }
+  public get operator(): number;
+  public set operator(value): void;
   static Operator = {
     OP_ADD = 0,
     OP_SUB = 1,

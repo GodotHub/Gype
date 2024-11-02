@@ -1,6 +1,7 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
 
+
 export declare class CharFXTransform extends RefCounted{
   public get_transform(): Transform2D;
   public set_transform(_transform: Transform2D): void;
@@ -28,82 +29,30 @@ export declare class CharFXTransform extends RefCounted{
   public set_glyph_flags(_glyph_flags: number): void;
   public get_font(): RID;
   public set_font(_font: RID): void;
-  public get transform(): Transform2D {
-    get_transform();
-  }
-  public set transform(value): void {
-    set_transform(value);
-  }
-  public get range(): Vector2i {
-    get_range();
-  }
-  public set range(value): void {
-    set_range(value);
-  }
-  public get elapsed_time(): number {
-    get_elapsed_time();
-  }
-  public set elapsed_time(value): void {
-    set_elapsed_time(value);
-  }
-  public get visible(): boolean {
-    is_visible();
-  }
-  public set visible(value): void {
-    set_visibility(value);
-  }
-  public get outline(): boolean {
-    is_outline();
-  }
-  public set outline(value): void {
-    set_outline(value);
-  }
-  public get offset(): Vector2 {
-    get_offset();
-  }
-  public set offset(value): void {
-    set_offset(value);
-  }
-  public get color(): Color {
-    get_color();
-  }
-  public set color(value): void {
-    set_color(value);
-  }
-  public get env(): Dictionary {
-    get_environment();
-  }
-  public set env(value): void {
-    set_environment(value);
-  }
-  public get glyph_index(): number {
-    get_glyph_index();
-  }
-  public set glyph_index(value): void {
-    set_glyph_index(value);
-  }
-  public get glyph_count(): number {
-    get_glyph_count();
-  }
-  public set glyph_count(value): void {
-    set_glyph_count(value);
-  }
-  public get glyph_flags(): number {
-    get_glyph_flags();
-  }
-  public set glyph_flags(value): void {
-    set_glyph_flags(value);
-  }
-  public get relative_index(): number {
-    get_relative_index();
-  }
-  public set relative_index(value): void {
-    set_relative_index(value);
-  }
-  public get font(): RID {
-    get_font();
-  }
-  public set font(value): void {
-    set_font(value);
-  }
+  public get transform(): Transform2D;
+  public set transform(value): void;
+  public get range(): Vector2i;
+  public set range(value): void;
+  public get elapsed_time(): number;
+  public set elapsed_time(value): void;
+  public get visible(): boolean;
+  public set visible(value): void;
+  public get outline(): boolean;
+  public set outline(value): void;
+  public get offset(): Vector2;
+  public set offset(value): void;
+  public get color(): Color;
+  public set color(value): void;
+  public get env(): Dictionary;
+  public set env(value): void;
+  public get glyph_index(): number;
+  public set glyph_index(value): void;
+  public get glyph_count(): number;
+  public set glyph_count(value): void;
+  public get glyph_flags(): number;
+  public set glyph_flags(value): void;
+  public get relative_index(): number;
+  public set relative_index(value): void;
+  public get font(): RID;
+  public set font(value): void;
 }

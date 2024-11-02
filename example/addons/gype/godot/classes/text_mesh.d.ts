@@ -2,12 +2,13 @@
 import { PrimitiveMesh } from "@godot/classes/primitive_mesh";
 import { Font } from "@godot/classes/font";
 
+
 export declare class TextMesh extends PrimitiveMesh{
   public set_horizontal_alignment(_alignment: number): void;
   public get_horizontal_alignment(): number;
   public set_vertical_alignment(_alignment: number): void;
   public get_vertical_alignment(): number;
-  public set_text(_text: String | StringName | string): void;
+  public set_text(_text: GDString | StringName | string): void;
   public get_text(): String;
   public set_font(_font: Font): void;
   public get_font(): Font;
@@ -31,7 +32,7 @@ export declare class TextMesh extends PrimitiveMesh{
   public get_curve_step(): number;
   public set_text_direction(_direction: number): void;
   public get_text_direction(): number;
-  public set_language(_language: String | StringName | string): void;
+  public set_language(_language: GDString | StringName | string): void;
   public get_language(): String;
   public set_structured_text_bidi_override(_parser: number): void;
   public get_structured_text_bidi_override(): number;
@@ -39,112 +40,40 @@ export declare class TextMesh extends PrimitiveMesh{
   public get_structured_text_bidi_override_options(): GDArray;
   public set_uppercase(_enable: boolean): void;
   public is_uppercase(): boolean;
-  public get text(): String {
-    get_text();
-  }
-  public set text(value): void {
-    set_text(value);
-  }
-  public get font(): Font {
-    get_font();
-  }
-  public set font(value): void {
-    set_font(value);
-  }
-  public get font_size(): number {
-    get_font_size();
-  }
-  public set font_size(value): void {
-    set_font_size(value);
-  }
-  public get horizontal_alignment(): number {
-    get_horizontal_alignment();
-  }
-  public set horizontal_alignment(value): void {
-    set_horizontal_alignment(value);
-  }
-  public get vertical_alignment(): number {
-    get_vertical_alignment();
-  }
-  public set vertical_alignment(value): void {
-    set_vertical_alignment(value);
-  }
-  public get uppercase(): boolean {
-    is_uppercase();
-  }
-  public set uppercase(value): void {
-    set_uppercase(value);
-  }
-  public get line_spacing(): number {
-    get_line_spacing();
-  }
-  public set line_spacing(value): void {
-    set_line_spacing(value);
-  }
-  public get autowrap_mode(): number {
-    get_autowrap_mode();
-  }
-  public set autowrap_mode(value): void {
-    set_autowrap_mode(value);
-  }
-  public get justification_flags(): number {
-    get_justification_flags();
-  }
-  public set justification_flags(value): void {
-    set_justification_flags(value);
-  }
-  public get pixel_size(): number {
-    get_pixel_size();
-  }
-  public set pixel_size(value): void {
-    set_pixel_size(value);
-  }
-  public get curve_step(): number {
-    get_curve_step();
-  }
-  public set curve_step(value): void {
-    set_curve_step(value);
-  }
-  public get depth(): number {
-    get_depth();
-  }
-  public set depth(value): void {
-    set_depth(value);
-  }
-  public get width(): number {
-    get_width();
-  }
-  public set width(value): void {
-    set_width(value);
-  }
-  public get offset(): Vector2 {
-    get_offset();
-  }
-  public set offset(value): void {
-    set_offset(value);
-  }
-  public get text_direction(): number {
-    get_text_direction();
-  }
-  public set text_direction(value): void {
-    set_text_direction(value);
-  }
-  public get language(): String {
-    get_language();
-  }
-  public set language(value): void {
-    set_language(value);
-  }
-  public get structured_text_bidi_override(): number {
-    get_structured_text_bidi_override();
-  }
-  public set structured_text_bidi_override(value): void {
-    set_structured_text_bidi_override(value);
-  }
-  public get structured_text_bidi_override_options(): GDArray {
-    get_structured_text_bidi_override_options();
-  }
-  public set structured_text_bidi_override_options(value): void {
-    set_structured_text_bidi_override_options(value);
-  }
+  public get text(): String;
+  public set text(value): void;
+  public get font(): Font;
+  public set font(value): void;
+  public get font_size(): number;
+  public set font_size(value): void;
+  public get horizontal_alignment(): number;
+  public set horizontal_alignment(value): void;
+  public get vertical_alignment(): number;
+  public set vertical_alignment(value): void;
+  public get uppercase(): boolean;
+  public set uppercase(value): void;
+  public get line_spacing(): number;
+  public set line_spacing(value): void;
+  public get autowrap_mode(): number;
+  public set autowrap_mode(value): void;
+  public get justification_flags(): number;
+  public set justification_flags(value): void;
+  public get pixel_size(): number;
+  public set pixel_size(value): void;
+  public get curve_step(): number;
+  public set curve_step(value): void;
+  public get depth(): number;
+  public set depth(value): void;
+  public get width(): number;
+  public set width(value): void;
+  public get offset(): Vector2;
+  public set offset(value): void;
+  public get text_direction(): number;
+  public set text_direction(value): void;
+  public get language(): String;
+  public set language(value): void;
+  public get structured_text_bidi_override(): number;
+  public set structured_text_bidi_override(value): void;
+  public get structured_text_bidi_override_options(): GDArray;
+  public set structured_text_bidi_override_options(value): void;
 }

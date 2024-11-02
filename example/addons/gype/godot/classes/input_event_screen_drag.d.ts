@@ -1,6 +1,7 @@
 
 import { InputEventFromWindow } from "@godot/classes/input_event_from_window";
 
+
 export declare class InputEventScreenDrag extends InputEventFromWindow{
   public set_index(_index: number): void;
   public get_index(): number;
@@ -20,58 +21,22 @@ export declare class InputEventScreenDrag extends InputEventFromWindow{
   public get_velocity(): Vector2;
   public set_screen_velocity(_velocity: Vector2): void;
   public get_screen_velocity(): Vector2;
-  public get index(): number {
-    get_index();
-  }
-  public set index(value): void {
-    set_index(value);
-  }
-  public get tilt(): Vector2 {
-    get_tilt();
-  }
-  public set tilt(value): void {
-    set_tilt(value);
-  }
-  public get pressure(): number {
-    get_pressure();
-  }
-  public set pressure(value): void {
-    set_pressure(value);
-  }
-  public get pen_inverted(): boolean {
-    get_pen_inverted();
-  }
-  public set pen_inverted(value): void {
-    set_pen_inverted(value);
-  }
-  public get position(): Vector2 {
-    get_position();
-  }
-  public set position(value): void {
-    set_position(value);
-  }
-  public get relative(): Vector2 {
-    get_relative();
-  }
-  public set relative(value): void {
-    set_relative(value);
-  }
-  public get screen_relative(): Vector2 {
-    get_screen_relative();
-  }
-  public set screen_relative(value): void {
-    set_screen_relative(value);
-  }
-  public get velocity(): Vector2 {
-    get_velocity();
-  }
-  public set velocity(value): void {
-    set_velocity(value);
-  }
-  public get screen_velocity(): Vector2 {
-    get_screen_velocity();
-  }
-  public set screen_velocity(value): void {
-    set_screen_velocity(value);
-  }
+  public get index(): number;
+  public set index(value): void;
+  public get tilt(): Vector2;
+  public set tilt(value): void;
+  public get pressure(): number;
+  public set pressure(value): void;
+  public get pen_inverted(): boolean;
+  public set pen_inverted(value): void;
+  public get position(): Vector2;
+  public set position(value): void;
+  public get relative(): Vector2;
+  public set relative(value): void;
+  public get screen_relative(): Vector2;
+  public set screen_relative(value): void;
+  public get velocity(): Vector2;
+  public set velocity(value): void;
+  public get screen_velocity(): Vector2;
+  public set screen_velocity(value): void;
 }

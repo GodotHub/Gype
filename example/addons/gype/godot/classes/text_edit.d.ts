@@ -1,10 +1,11 @@
 
-import { HScrollBar } from "@godot/classes/h_scroll_bar";
-import { VScrollBar } from "@godot/classes/v_scroll_bar";
-import { Texture2D } from "@godot/classes/texture2d";
-import { Control } from "@godot/classes/control";
 import { SyntaxHighlighter } from "@godot/classes/syntax_highlighter";
+import { VScrollBar } from "@godot/classes/v_scroll_bar";
+import { Control } from "@godot/classes/control";
+import { Texture2D } from "@godot/classes/texture2d";
 import { PopupMenu } from "@godot/classes/popup_menu";
+import { HScrollBar } from "@godot/classes/h_scroll_bar";
+
 
 export declare class TextEdit extends Control{
   public _handle_unicode_input(_unicode_char: number, _caret_index: number): void;
@@ -20,7 +21,7 @@ export declare class TextEdit extends Control{
   public is_editable(): boolean;
   public set_text_direction(_direction: number): void;
   public get_text_direction(): number;
-  public set_language(_language: String | StringName | string): void;
+  public set_language(_language: GDString | StringName | string): void;
   public get_language(): String;
   public set_structured_text_bidi_override(_parser: number): void;
   public get_structured_text_bidi_override(): number;
@@ -41,22 +42,22 @@ export declare class TextEdit extends Control{
   public set_middle_mouse_paste_enabled(_enabled: boolean): void;
   public is_middle_mouse_paste_enabled(): boolean;
   public clear(): void;
-  public set_text(_text: String | StringName | string): void;
+  public set_text(_text: GDString | StringName | string): void;
   public get_text(): String;
   public get_line_count(): number;
-  public set_placeholder(_text: String | StringName | string): void;
+  public set_placeholder(_text: GDString | StringName | string): void;
   public get_placeholder(): String;
-  public set_line(_line: number, _new_text: String | StringName | string): void;
+  public set_line(_line: number, _new_text: GDString | StringName | string): void;
   public get_line(_line: number): String;
   public get_line_width(_line: number, _wrap_index: number): number;
   public get_line_height(): number;
   public get_indent_level(_line: number): number;
   public get_first_non_whitespace_column(_line: number): number;
   public swap_lines(_from_line: number, _to_line: number): void;
-  public insert_line_at(_line: number, _text: String | StringName | string): void;
+  public insert_line_at(_line: number, _text: GDString | StringName | string): void;
   public remove_line_at(_line: number, _move_carets_down: boolean): void;
-  public insert_text_at_caret(_text: String | StringName | string, _caret_index: number): void;
-  public insert_text(_text: String | StringName | string, _line: number, _column: number, _before_selection_begin: boolean, _before_selection_end: boolean): void;
+  public insert_text_at_caret(_text: GDString | StringName | string, _caret_index: number): void;
+  public insert_text(_text: GDString | StringName | string, _line: number, _column: number, _before_selection_begin: boolean, _before_selection_end: boolean): void;
   public remove_text(_from_line: number, _from_column: number, _to_line: number, _to_column: number): void;
   public get_last_unhidden_line(): number;
   public get_next_visible_line_offset_from(_line: number, _visible_amount: number): number;
@@ -78,9 +79,9 @@ export declare class TextEdit extends Control{
   public tag_saved_version(): void;
   public get_version(): number;
   public get_saved_version(): number;
-  public set_search_text(_search_text: String | StringName | string): void;
+  public set_search_text(_search_text: GDString | StringName | string): void;
   public set_search_flags(_flags: number): void;
-  public search(_text: String | StringName | string, _flags: number, _from_line: number, _from_column: number): Vector2i;
+  public search(_text: GDString | StringName | string, _flags: number, _from_line: number, _from_column: number): Vector2i;
   public set_tooltip_request_func(_callback: Callable): void;
   public get_local_mouse_pos(): Vector2;
   public get_word_at_pos(_position: Vector2): String;
@@ -128,7 +129,7 @@ export declare class TextEdit extends Control{
   public is_default_word_separators_enabled(): boolean;
   public set_use_custom_word_separators(_enabled: boolean): void;
   public is_custom_word_separators_enabled(): boolean;
-  public set_custom_word_separators(_custom_word_separators: String | StringName | string): void;
+  public set_custom_word_separators(_custom_word_separators: GDString | StringName | string): void;
   public get_custom_word_separators(): String;
   public set_selecting_enabled(_enable: boolean): void;
   public is_selecting_enabled(): boolean;
@@ -200,7 +201,7 @@ export declare class TextEdit extends Control{
   public add_gutter(_at: number): void;
   public remove_gutter(_gutter: number): void;
   public get_gutter_count(): number;
-  public set_gutter_name(_gutter: number, _name: String | StringName | string): void;
+  public set_gutter_name(_gutter: number, _name: GDString | StringName | string): void;
   public get_gutter_name(_gutter: number): String;
   public set_gutter_type(_gutter: number, _type: number): void;
   public get_gutter_type(_gutter: number): number;
@@ -217,7 +218,7 @@ export declare class TextEdit extends Control{
   public get_total_gutter_width(): number;
   public set_line_gutter_metadata(_line: number, _gutter: number, _metadata: any): void;
   public get_line_gutter_metadata(_line: number, _gutter: number): any;
-  public set_line_gutter_text(_line: number, _gutter: number, _text: String | StringName | string): void;
+  public set_line_gutter_text(_line: number, _gutter: number, _text: GDString | StringName | string): void;
   public get_line_gutter_text(_line: number, _gutter: number): String;
   public set_line_gutter_icon(_line: number, _gutter: number, _icon: Texture2D): void;
   public get_line_gutter_icon(_line: number, _gutter: number): Texture2D;
@@ -246,252 +247,88 @@ export declare class TextEdit extends Control{
   public get_caret_index_edit_order(): PackedInt32Array;
   public get_selection_line(_caret_index: number): number;
   public get_selection_column(_caret_index: number): number;
-  public get text(): String {
-    get_text();
-  }
-  public set text(value): void {
-    set_text(value);
-  }
-  public get placeholder_text(): String {
-    get_placeholder();
-  }
-  public set placeholder_text(value): void {
-    set_placeholder(value);
-  }
-  public get editable(): boolean {
-    is_editable();
-  }
-  public set editable(value): void {
-    set_editable(value);
-  }
-  public get context_menu_enabled(): boolean {
-    is_context_menu_enabled();
-  }
-  public set context_menu_enabled(value): void {
-    set_context_menu_enabled(value);
-  }
-  public get shortcut_keys_enabled(): boolean {
-    is_shortcut_keys_enabled();
-  }
-  public set shortcut_keys_enabled(value): void {
-    set_shortcut_keys_enabled(value);
-  }
-  public get selecting_enabled(): boolean {
-    is_selecting_enabled();
-  }
-  public set selecting_enabled(value): void {
-    set_selecting_enabled(value);
-  }
-  public get deselect_on_focus_loss_enabled(): boolean {
-    is_deselect_on_focus_loss_enabled();
-  }
-  public set deselect_on_focus_loss_enabled(value): void {
-    set_deselect_on_focus_loss_enabled(value);
-  }
-  public get drag_and_drop_selection_enabled(): boolean {
-    is_drag_and_drop_selection_enabled();
-  }
-  public set drag_and_drop_selection_enabled(value): void {
-    set_drag_and_drop_selection_enabled(value);
-  }
-  public get virtual_keyboard_enabled(): boolean {
-    is_virtual_keyboard_enabled();
-  }
-  public set virtual_keyboard_enabled(value): void {
-    set_virtual_keyboard_enabled(value);
-  }
-  public get middle_mouse_paste_enabled(): boolean {
-    is_middle_mouse_paste_enabled();
-  }
-  public set middle_mouse_paste_enabled(value): void {
-    set_middle_mouse_paste_enabled(value);
-  }
-  public get wrap_mode(): number {
-    get_line_wrapping_mode();
-  }
-  public set wrap_mode(value): void {
-    set_line_wrapping_mode(value);
-  }
-  public get autowrap_mode(): number {
-    get_autowrap_mode();
-  }
-  public set autowrap_mode(value): void {
-    set_autowrap_mode(value);
-  }
-  public get indent_wrapped_lines(): boolean {
-    is_indent_wrapped_lines();
-  }
-  public set indent_wrapped_lines(value): void {
-    set_indent_wrapped_lines(value);
-  }
-  public get scroll_smooth(): boolean {
-    is_smooth_scroll_enabled();
-  }
-  public set scroll_smooth(value): void {
-    set_smooth_scroll_enabled(value);
-  }
-  public get scroll_v_scroll_speed(): number {
-    get_v_scroll_speed();
-  }
-  public set scroll_v_scroll_speed(value): void {
-    set_v_scroll_speed(value);
-  }
-  public get scroll_past_end_of_file(): boolean {
-    is_scroll_past_end_of_file_enabled();
-  }
-  public set scroll_past_end_of_file(value): void {
-    set_scroll_past_end_of_file_enabled(value);
-  }
-  public get scroll_vertical(): number {
-    get_v_scroll();
-  }
-  public set scroll_vertical(value): void {
-    set_v_scroll(value);
-  }
-  public get scroll_horizontal(): number {
-    get_h_scroll();
-  }
-  public set scroll_horizontal(value): void {
-    set_h_scroll(value);
-  }
-  public get scroll_fit_content_height(): boolean {
-    is_fit_content_height_enabled();
-  }
-  public set scroll_fit_content_height(value): void {
-    set_fit_content_height_enabled(value);
-  }
-  public get minimap_draw(): boolean {
-    is_drawing_minimap();
-  }
-  public set minimap_draw(value): void {
-    set_draw_minimap(value);
-  }
-  public get minimap_width(): number {
-    get_minimap_width();
-  }
-  public set minimap_width(value): void {
-    set_minimap_width(value);
-  }
-  public get caret_type(): number {
-    get_caret_type();
-  }
-  public set caret_type(value): void {
-    set_caret_type(value);
-  }
-  public get caret_blink(): boolean {
-    is_caret_blink_enabled();
-  }
-  public set caret_blink(value): void {
-    set_caret_blink_enabled(value);
-  }
-  public get caret_blink_interval(): number {
-    get_caret_blink_interval();
-  }
-  public set caret_blink_interval(value): void {
-    set_caret_blink_interval(value);
-  }
-  public get caret_draw_when_editable_disabled(): boolean {
-    is_drawing_caret_when_editable_disabled();
-  }
-  public set caret_draw_when_editable_disabled(value): void {
-    set_draw_caret_when_editable_disabled(value);
-  }
-  public get caret_move_on_right_click(): boolean {
-    is_move_caret_on_right_click_enabled();
-  }
-  public set caret_move_on_right_click(value): void {
-    set_move_caret_on_right_click_enabled(value);
-  }
-  public get caret_mid_grapheme(): boolean {
-    is_caret_mid_grapheme_enabled();
-  }
-  public set caret_mid_grapheme(value): void {
-    set_caret_mid_grapheme_enabled(value);
-  }
-  public get caret_multiple(): boolean {
-    is_multiple_carets_enabled();
-  }
-  public set caret_multiple(value): void {
-    set_multiple_carets_enabled(value);
-  }
-  public get use_default_word_separators(): boolean {
-    is_default_word_separators_enabled();
-  }
-  public set use_default_word_separators(value): void {
-    set_use_default_word_separators(value);
-  }
-  public get use_custom_word_separators(): boolean {
-    is_custom_word_separators_enabled();
-  }
-  public set use_custom_word_separators(value): void {
-    set_use_custom_word_separators(value);
-  }
-  public get custom_word_separators(): String {
-    get_custom_word_separators();
-  }
-  public set custom_word_separators(value): void {
-    set_custom_word_separators(value);
-  }
-  public get syntax_highlighter(): SyntaxHighlighter {
-    get_syntax_highlighter();
-  }
-  public set syntax_highlighter(value): void {
-    set_syntax_highlighter(value);
-  }
-  public get highlight_all_occurrences(): boolean {
-    is_highlight_all_occurrences_enabled();
-  }
-  public set highlight_all_occurrences(value): void {
-    set_highlight_all_occurrences(value);
-  }
-  public get highlight_current_line(): boolean {
-    is_highlight_current_line_enabled();
-  }
-  public set highlight_current_line(value): void {
-    set_highlight_current_line(value);
-  }
-  public get draw_control_chars(): boolean {
-    get_draw_control_chars();
-  }
-  public set draw_control_chars(value): void {
-    set_draw_control_chars(value);
-  }
-  public get draw_tabs(): boolean {
-    is_drawing_tabs();
-  }
-  public set draw_tabs(value): void {
-    set_draw_tabs(value);
-  }
-  public get draw_spaces(): boolean {
-    is_drawing_spaces();
-  }
-  public set draw_spaces(value): void {
-    set_draw_spaces(value);
-  }
-  public get text_direction(): number {
-    get_text_direction();
-  }
-  public set text_direction(value): void {
-    set_text_direction(value);
-  }
-  public get language(): String {
-    get_language();
-  }
-  public set language(value): void {
-    set_language(value);
-  }
-  public get structured_text_bidi_override(): number {
-    get_structured_text_bidi_override();
-  }
-  public set structured_text_bidi_override(value): void {
-    set_structured_text_bidi_override(value);
-  }
-  public get structured_text_bidi_override_options(): GDArray {
-    get_structured_text_bidi_override_options();
-  }
-  public set structured_text_bidi_override_options(value): void {
-    set_structured_text_bidi_override_options(value);
-  }
+  public get text(): String;
+  public set text(value): void;
+  public get placeholder_text(): String;
+  public set placeholder_text(value): void;
+  public get editable(): boolean;
+  public set editable(value): void;
+  public get context_menu_enabled(): boolean;
+  public set context_menu_enabled(value): void;
+  public get shortcut_keys_enabled(): boolean;
+  public set shortcut_keys_enabled(value): void;
+  public get selecting_enabled(): boolean;
+  public set selecting_enabled(value): void;
+  public get deselect_on_focus_loss_enabled(): boolean;
+  public set deselect_on_focus_loss_enabled(value): void;
+  public get drag_and_drop_selection_enabled(): boolean;
+  public set drag_and_drop_selection_enabled(value): void;
+  public get virtual_keyboard_enabled(): boolean;
+  public set virtual_keyboard_enabled(value): void;
+  public get middle_mouse_paste_enabled(): boolean;
+  public set middle_mouse_paste_enabled(value): void;
+  public get wrap_mode(): number;
+  public set wrap_mode(value): void;
+  public get autowrap_mode(): number;
+  public set autowrap_mode(value): void;
+  public get indent_wrapped_lines(): boolean;
+  public set indent_wrapped_lines(value): void;
+  public get scroll_smooth(): boolean;
+  public set scroll_smooth(value): void;
+  public get scroll_v_scroll_speed(): number;
+  public set scroll_v_scroll_speed(value): void;
+  public get scroll_past_end_of_file(): boolean;
+  public set scroll_past_end_of_file(value): void;
+  public get scroll_vertical(): number;
+  public set scroll_vertical(value): void;
+  public get scroll_horizontal(): number;
+  public set scroll_horizontal(value): void;
+  public get scroll_fit_content_height(): boolean;
+  public set scroll_fit_content_height(value): void;
+  public get minimap_draw(): boolean;
+  public set minimap_draw(value): void;
+  public get minimap_width(): number;
+  public set minimap_width(value): void;
+  public get caret_type(): number;
+  public set caret_type(value): void;
+  public get caret_blink(): boolean;
+  public set caret_blink(value): void;
+  public get caret_blink_interval(): number;
+  public set caret_blink_interval(value): void;
+  public get caret_draw_when_editable_disabled(): boolean;
+  public set caret_draw_when_editable_disabled(value): void;
+  public get caret_move_on_right_click(): boolean;
+  public set caret_move_on_right_click(value): void;
+  public get caret_mid_grapheme(): boolean;
+  public set caret_mid_grapheme(value): void;
+  public get caret_multiple(): boolean;
+  public set caret_multiple(value): void;
+  public get use_default_word_separators(): boolean;
+  public set use_default_word_separators(value): void;
+  public get use_custom_word_separators(): boolean;
+  public set use_custom_word_separators(value): void;
+  public get custom_word_separators(): String;
+  public set custom_word_separators(value): void;
+  public get syntax_highlighter(): SyntaxHighlighter;
+  public set syntax_highlighter(value): void;
+  public get highlight_all_occurrences(): boolean;
+  public set highlight_all_occurrences(value): void;
+  public get highlight_current_line(): boolean;
+  public set highlight_current_line(value): void;
+  public get draw_control_chars(): boolean;
+  public set draw_control_chars(value): void;
+  public get draw_tabs(): boolean;
+  public set draw_tabs(value): void;
+  public get draw_spaces(): boolean;
+  public set draw_spaces(value): void;
+  public get text_direction(): number;
+  public set text_direction(value): void;
+  public get language(): String;
+  public set language(value): void;
+  public get structured_text_bidi_override(): number;
+  public set structured_text_bidi_override(value): void;
+  public get structured_text_bidi_override_options(): GDArray;
+  public set structured_text_bidi_override_options(value): void;
   static MenuItems = {
     MENU_CUT = 0,
     MENU_COPY = 1,

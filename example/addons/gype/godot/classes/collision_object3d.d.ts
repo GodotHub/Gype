@@ -1,9 +1,10 @@
 
-import { Camera3D } from "@godot/classes/camera3d";
-import { InputEvent } from "@godot/classes/input_event";
-import { GodotObject } from "@godot/classes/godot_object";
 import { Shape3D } from "@godot/classes/shape3d";
+import { InputEvent } from "@godot/classes/input_event";
+import { Camera3D } from "@godot/classes/camera3d";
 import { Node3D } from "@godot/classes/node3d";
+import { GodotObject } from "@godot/classes/godot_object";
+
 
 export declare class CollisionObject3D extends Node3D{
   public _input_event(_camera: Camera3D, _event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: number): void;
@@ -26,7 +27,7 @@ export declare class CollisionObject3D extends Node3D{
   public set_capture_input_on_drag(_enable: boolean): void;
   public get_capture_input_on_drag(): boolean;
   public get_rid(): RID;
-  public create_shape_owner(_owner: Object): number;
+  public create_shape_owner(_owner: GodotObject): number;
   public remove_shape_owner(_owner_id: number): void;
   public get_shape_owners(): PackedInt32Array;
   public shape_owner_set_transform(_owner_id: number, _transform: Transform3D): void;
@@ -41,42 +42,18 @@ export declare class CollisionObject3D extends Node3D{
   public shape_owner_remove_shape(_owner_id: number, _shape_id: number): void;
   public shape_owner_clear_shapes(_owner_id: number): void;
   public shape_find_owner(_shape_index: number): number;
-  public get disable_mode(): number {
-    get_disable_mode();
-  }
-  public set disable_mode(value): void {
-    set_disable_mode(value);
-  }
-  public get collision_layer(): number {
-    get_collision_layer();
-  }
-  public set collision_layer(value): void {
-    set_collision_layer(value);
-  }
-  public get collision_mask(): number {
-    get_collision_mask();
-  }
-  public set collision_mask(value): void {
-    set_collision_mask(value);
-  }
-  public get collision_priority(): number {
-    get_collision_priority();
-  }
-  public set collision_priority(value): void {
-    set_collision_priority(value);
-  }
-  public get input_ray_pickable(): boolean {
-    is_ray_pickable();
-  }
-  public set input_ray_pickable(value): void {
-    set_ray_pickable(value);
-  }
-  public get input_capture_on_drag(): boolean {
-    get_capture_input_on_drag();
-  }
-  public set input_capture_on_drag(value): void {
-    set_capture_input_on_drag(value);
-  }
+  public get disable_mode(): number;
+  public set disable_mode(value): void;
+  public get collision_layer(): number;
+  public set collision_layer(value): void;
+  public get collision_mask(): number;
+  public set collision_mask(value): void;
+  public get collision_priority(): number;
+  public set collision_priority(value): void;
+  public get input_ray_pickable(): boolean;
+  public set input_ray_pickable(value): void;
+  public get input_capture_on_drag(): boolean;
+  public set input_capture_on_drag(value): void;
   static DisableMode = {
     DISABLE_MODE_REMOVE = 0,
     DISABLE_MODE_MAKE_STATIC = 1,

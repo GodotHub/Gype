@@ -1,10 +1,11 @@
 
-import { Camera3D } from "@godot/classes/camera3d";
-import { StandardMaterial3D } from "@godot/classes/standard_material3d";
 import { Texture2D } from "@godot/classes/texture2d";
 import { Resource } from "@godot/classes/resource";
 import { Node3D } from "@godot/classes/node3d";
+import { Camera3D } from "@godot/classes/camera3d";
 import { EditorNode3DGizmo } from "@godot/classes/editor_node3d_gizmo";
+import { StandardMaterial3D } from "@godot/classes/standard_material3d";
+
 
 export declare class EditorNode3DGizmoPlugin extends Resource{
   public _has_gizmo(_for_node_3d: Node3D): boolean;
@@ -25,9 +26,9 @@ export declare class EditorNode3DGizmoPlugin extends Resource{
   public _get_subgizmo_transform(_gizmo: EditorNode3DGizmo, _subgizmo_id: number): Transform3D;
   public _set_subgizmo_transform(_gizmo: EditorNode3DGizmo, _subgizmo_id: number, _transform: Transform3D): void;
   public _commit_subgizmos(_gizmo: EditorNode3DGizmo, _ids: PackedInt32Array, _restores: GDArray, _cancel: boolean): void;
-  public create_material(_name: String | StringName | string, _color: Color, _billboard: boolean, _on_top: boolean, _use_vertex_color: boolean): void;
-  public create_icon_material(_name: String | StringName | string, _texture: Texture2D, _on_top: boolean, _color: Color): void;
-  public create_handle_material(_name: String | StringName | string, _billboard: boolean, _texture: Texture2D): void;
-  public add_material(_name: String | StringName | string, _material: StandardMaterial3D): void;
-  public get_material(_name: String | StringName | string, _gizmo: EditorNode3DGizmo): StandardMaterial3D;
+  public create_material(_name: GDString | StringName | string, _color: Color, _billboard: boolean, _on_top: boolean, _use_vertex_color: boolean): void;
+  public create_icon_material(_name: GDString | StringName | string, _texture: Texture2D, _on_top: boolean, _color: Color): void;
+  public create_handle_material(_name: GDString | StringName | string, _billboard: boolean, _texture: Texture2D): void;
+  public add_material(_name: GDString | StringName | string, _material: StandardMaterial3D): void;
+  public get_material(_name: GDString | StringName | string, _gizmo: EditorNode3DGizmo): StandardMaterial3D;
 }

@@ -1,6 +1,7 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
 
+
 export declare class RandomNumberGenerator extends RefCounted{
   public set_seed(_seed: number): void;
   public get_seed(): number;
@@ -13,16 +14,8 @@ export declare class RandomNumberGenerator extends RefCounted{
   public randi_range(_from: number, _to: number): number;
   public rand_weighted(_weights: PackedFloat32Array): number;
   public randomize(): void;
-  public get seed(): number {
-    get_seed();
-  }
-  public set seed(value): void {
-    set_seed(value);
-  }
-  public get state(): number {
-    get_state();
-  }
-  public set state(value): void {
-    set_state(value);
-  }
+  public get seed(): number;
+  public set seed(value): void;
+  public get state(): number;
+  public set state(value): void;
 }

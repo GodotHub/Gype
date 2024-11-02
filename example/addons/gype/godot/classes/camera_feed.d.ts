@@ -1,6 +1,7 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
 
+
 export declare class CameraFeed extends RefCounted{
   public get_id(): number;
   public is_active(): boolean;
@@ -10,18 +11,10 @@ export declare class CameraFeed extends RefCounted{
   public get_transform(): Transform2D;
   public set_transform(_transform: Transform2D): void;
   public get_datatype(): number;
-  public get feed_is_active(): boolean {
-    is_active();
-  }
-  public set feed_is_active(value): void {
-    set_active(value);
-  }
-  public get feed_transform(): Transform2D {
-    get_transform();
-  }
-  public set feed_transform(value): void {
-    set_transform(value);
-  }
+  public get feed_is_active(): boolean;
+  public set feed_is_active(value): void;
+  public get feed_transform(): Transform2D;
+  public set feed_transform(value): void;
   static FeedDataType = {
     FEED_NOIMAGE = 0,
     FEED_RGB = 1,

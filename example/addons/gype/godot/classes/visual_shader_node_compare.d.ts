@@ -1,6 +1,7 @@
 
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
 
+
 export declare class VisualShaderNodeCompare extends VisualShaderNode{
   public set_comparison_type(_type: number): void;
   public get_comparison_type(): number;
@@ -8,24 +9,12 @@ export declare class VisualShaderNodeCompare extends VisualShaderNode{
   public get_function(): number;
   public set_condition(_condition: number): void;
   public get_condition(): number;
-  public get type(): number {
-    get_comparison_type();
-  }
-  public set type(value): void {
-    set_comparison_type(value);
-  }
-  public get function(): number {
-    get_function();
-  }
-  public set function(value): void {
-    set_function(value);
-  }
-  public get condition(): number {
-    get_condition();
-  }
-  public set condition(value): void {
-    set_condition(value);
-  }
+  public get type(): number;
+  public set type(value): void;
+  public get function(): number;
+  public set function(value): void;
+  public get condition(): number;
+  public set condition(value): void;
   static ComparisonType = {
     CTYPE_SCALAR = 0,
     CTYPE_SCALAR_INT = 1,

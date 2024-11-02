@@ -2,6 +2,7 @@
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
 import { Texture2D } from "@godot/classes/texture2d";
 
+
 export declare class VisualShaderNodeTexture extends VisualShaderNode{
   public set_source(_value: number): void;
   public get_source(): number;
@@ -9,24 +10,12 @@ export declare class VisualShaderNodeTexture extends VisualShaderNode{
   public get_texture(): Texture2D;
   public set_texture_type(_value: number): void;
   public get_texture_type(): number;
-  public get source(): number {
-    get_source();
-  }
-  public set source(value): void {
-    set_source(value);
-  }
-  public get texture(): Texture2D {
-    get_texture();
-  }
-  public set texture(value): void {
-    set_texture(value);
-  }
-  public get texture_type(): number {
-    get_texture_type();
-  }
-  public set texture_type(value): void {
-    set_texture_type(value);
-  }
+  public get source(): number;
+  public set source(value): void;
+  public get texture(): Texture2D;
+  public set texture(value): void;
+  public get texture_type(): number;
+  public set texture_type(value): void;
   static Source = {
     SOURCE_TEXTURE = 0,
     SOURCE_SCREEN = 1,

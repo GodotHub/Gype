@@ -1,11 +1,12 @@
 
 import { Tween } from "@godot/classes/tween";
-import { Window } from "@godot/classes/window";
-import { MultiplayerAPI } from "@godot/classes/multiplayer_api";
-import { SceneTree } from "@godot/classes/scene_tree";
-import { Viewport } from "@godot/classes/viewport";
 import { GodotObject } from "@godot/classes/godot_object";
 import { InputEvent } from "@godot/classes/input_event";
+import { Window } from "@godot/classes/window";
+import { Viewport } from "@godot/classes/viewport";
+import { SceneTree } from "@godot/classes/scene_tree";
+import { MultiplayerAPI } from "@godot/classes/multiplayer_api";
+
 
 export declare class Node extends GodotObject{
   public _process(_delta: number): void;
@@ -20,7 +21,7 @@ export declare class Node extends GodotObject{
   public _unhandled_key_input(_event: InputEvent): void;
   public print_orphan_nodes(): void;
   public add_sibling(_sibling: Node, _force_readable_name: boolean): void;
-  public set_name(_name: String | StringName | string): void;
+  public set_name(_name: GDString | StringName | string): void;
   public get_name(): StringName;
   public add_child(_node: Node, _force_readable_name: boolean, _internal: number): void;
   public remove_child(_node: Node): void;
@@ -28,24 +29,24 @@ export declare class Node extends GodotObject{
   public get_child_count(_include_internal: boolean): number;
   public get_children(_include_internal: boolean): GDArray;
   public get_child(_idx: number, _include_internal: boolean): Node;
-  public has_node(_path: NodePath): boolean;
-  public get_node(_path: NodePath): Node;
-  public get_node_or_null(_path: NodePath): Node;
-  public get_parent(): Node;
-  public find_child(_pattern: String | StringName | string, _recursive: boolean, _owned: boolean): Node;
-  public find_children(_pattern: String | StringName | string, _type: String | StringName | string, _recursive: boolean, _owned: boolean): GDArray;
-  public find_parent(_pattern: String | StringName | string): Node;
-  public has_node_and_resource(_path: NodePath): boolean;
-  public get_node_and_resource(_path: NodePath): GDArray;
+  public has_node(_path: GDString | NodePath | string): boolean;
+  public get_node<T extends Node>(_path: GDString | NodePath | string): T;
+  public get_node_or_null(_path: GDString | NodePath | string): Node;
+  public get_parent<T extends Node>(): T;
+  public find_child(_pattern: GDString | StringName | string, _recursive: boolean, _owned: boolean): Node;
+  public find_children(_pattern: GDString | StringName | string, _type: GDString | StringName | string, _recursive: boolean, _owned: boolean): GDArray;
+  public find_parent(_pattern: GDString | StringName | string): Node;
+  public has_node_and_resource(_path: GDString | NodePath | string): boolean;
+  public get_node_and_resource(_path: GDString | NodePath | string): GDArray;
   public is_inside_tree(): boolean;
   public is_part_of_edited_scene(): boolean;
   public is_ancestor_of(_node: Node): boolean;
   public is_greater_than(_node: Node): boolean;
   public get_path(): NodePath;
   public get_path_to(_node: Node, _use_unique_path: boolean): NodePath;
-  public add_to_group(_group: String | StringName | string, _persistent: boolean): void;
-  public remove_from_group(_group: String | StringName | string): void;
-  public is_in_group(_group: String | StringName | string): boolean;
+  public add_to_group(_group: GDString | StringName | string, _persistent: boolean): void;
+  public remove_from_group(_group: GDString | StringName | string): void;
+  public is_in_group(_group: GDString | StringName | string): boolean;
   public move_child(_child_node: Node, _to_index: number): void;
   public get_groups(): GDArray;
   public set_owner(_owner: Node): void;
@@ -55,10 +56,10 @@ export declare class Node extends GodotObject{
   public print_tree_pretty(): void;
   public get_tree_string(): String;
   public get_tree_string_pretty(): String;
-  public set_scene_file_path(_scene_file_path: String | StringName | string): void;
+  public set_scene_file_path(_scene_file_path: GDString | StringName | string): void;
   public get_scene_file_path(): String;
   public propagate_notification(_what: number): void;
-  public propagate_call(_method: String | StringName | string, _args: GDArray, _parent_first: boolean): void;
+  public propagate_call(_method: GDString | StringName | string, _args: GDArray, _parent_first: boolean): void;
   public set_physics_process(_enable: boolean): void;
   public get_physics_process_delta_time(): number;
   public is_physics_processing(): boolean;
@@ -117,103 +118,49 @@ export declare class Node extends GodotObject{
   public get_multiplayer_authority(): number;
   public is_multiplayer_authority(): boolean;
   public get_multiplayer(): MultiplayerAPI;
-  public rpc_config(_method: String | StringName | string, _config: any): void;
-  public set_editor_description(_editor_description: String | StringName | string): void;
+  public rpc_config(_method: GDString | StringName | string, _config: any): void;
+  public set_editor_description(_editor_description: GDString | StringName | string): void;
   public get_editor_description(): String;
   public set_unique_name_in_owner(_enable: boolean): void;
   public is_unique_name_in_owner(): boolean;
-  public atr(_message: String | StringName | string, _context: String | StringName | string): String;
-  public atr_n(_message: String | StringName | string, _plural_message: String | StringName | string, _n: number, _context: String | StringName | string): String;
-  public rpc(_method: String | StringName | string, ...arg: StringName): number;
-  public rpc_id(_peer_id: number, _method: String | StringName | string, ...arg: StringName): number;
+  public atr(_message: GDString | StringName | string, _context: GDString | StringName | string): String;
+  public atr_n(_message: GDString | StringName | string, _plural_message: GDString | StringName | string, _n: number, _context: GDString | StringName | string): String;
+  public rpc(_method: GDString | StringName | string, ...arg: StringName): number;
+  public rpc_id(_peer_id: number, _method: GDString | StringName | string, ...arg: StringName): number;
   public update_configuration_warnings(): void;
-  public call_deferred_thread_group(_method: String | StringName | string, ...arg: StringName): any;
-  public set_deferred_thread_group(_property: String | StringName | string, _value: any): void;
+  public call_deferred_thread_group(_method: GDString | StringName | string, ...arg: StringName): any;
+  public set_deferred_thread_group(_property: GDString | StringName | string, _value: any): void;
   public notify_deferred_thread_group(_what: number): void;
-  public call_thread_safe(_method: String | StringName | string, ...arg: StringName): any;
-  public set_thread_safe(_property: String | StringName | string, _value: any): void;
+  public call_thread_safe(_method: GDString | StringName | string, ...arg: StringName): any;
+  public set_thread_safe(_property: GDString | StringName | string, _value: any): void;
   public notify_thread_safe(_what: number): void;
-  public get name(): StringName {
-    get_name();
-  }
-  public set name(value): void {
-    set_name(value);
-  }
-  public get unique_name_in_owner(): boolean {
-    is_unique_name_in_owner();
-  }
-  public set unique_name_in_owner(value): void {
-    set_unique_name_in_owner(value);
-  }
-  public get scene_file_path(): String {
-    get_scene_file_path();
-  }
-  public set scene_file_path(value): void {
-    set_scene_file_path(value);
-  }
-  public get owner(): Node {
-    get_owner();
-  }
-  public set owner(value): void {
-    set_owner(value);
-  }
-  public get multiplayer(): MultiplayerAPI {
-    get_multiplayer();
-  }
-  public get process_mode(): number {
-    get_process_mode();
-  }
-  public set process_mode(value): void {
-    set_process_mode(value);
-  }
-  public get process_priority(): number {
-    get_process_priority();
-  }
-  public set process_priority(value): void {
-    set_process_priority(value);
-  }
-  public get process_physics_priority(): number {
-    get_physics_process_priority();
-  }
-  public set process_physics_priority(value): void {
-    set_physics_process_priority(value);
-  }
-  public get process_thread_group(): number {
-    get_process_thread_group();
-  }
-  public set process_thread_group(value): void {
-    set_process_thread_group(value);
-  }
-  public get process_thread_group_order(): number {
-    get_process_thread_group_order();
-  }
-  public set process_thread_group_order(value): void {
-    set_process_thread_group_order(value);
-  }
-  public get process_thread_messages(): number {
-    get_process_thread_messages();
-  }
-  public set process_thread_messages(value): void {
-    set_process_thread_messages(value);
-  }
-  public get physics_interpolation_mode(): number {
-    get_physics_interpolation_mode();
-  }
-  public set physics_interpolation_mode(value): void {
-    set_physics_interpolation_mode(value);
-  }
-  public get auto_translate_mode(): number {
-    get_auto_translate_mode();
-  }
-  public set auto_translate_mode(value): void {
-    set_auto_translate_mode(value);
-  }
-  public get editor_description(): String {
-    get_editor_description();
-  }
-  public set editor_description(value): void {
-    set_editor_description(value);
-  }
+  public get name(): StringName;
+  public set name(value): void;
+  public get unique_name_in_owner(): boolean;
+  public set unique_name_in_owner(value): void;
+  public get scene_file_path(): String;
+  public set scene_file_path(value): void;
+  public get owner(): Node;
+  public set owner(value): void;
+  public get multiplayer(): MultiplayerAPI;
+  public get process_mode(): number;
+  public set process_mode(value): void;
+  public get process_priority(): number;
+  public set process_priority(value): void;
+  public get process_physics_priority(): number;
+  public set process_physics_priority(value): void;
+  public get process_thread_group(): number;
+  public set process_thread_group(value): void;
+  public get process_thread_group_order(): number;
+  public set process_thread_group_order(value): void;
+  public get process_thread_messages(): number;
+  public set process_thread_messages(value): void;
+  public get physics_interpolation_mode(): number;
+  public set physics_interpolation_mode(value): void;
+  public get auto_translate_mode(): number;
+  public set auto_translate_mode(value): void;
+  public get editor_description(): String;
+  public set editor_description(value): void;
   static ProcessMode = {
     PROCESS_MODE_INHERIT = 0,
     PROCESS_MODE_PAUSABLE = 1,

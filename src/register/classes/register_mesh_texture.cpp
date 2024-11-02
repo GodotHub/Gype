@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/mesh_texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/mesh_texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

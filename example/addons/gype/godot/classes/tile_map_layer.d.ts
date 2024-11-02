@@ -4,6 +4,7 @@ import { TileData } from "@godot/classes/tile_data";
 import { TileSet } from "@godot/classes/tile_set";
 import { TileMapPattern } from "@godot/classes/tile_map_pattern";
 
+
 export declare class TileMapLayer extends Node2D{
   public _use_tile_data_runtime_update(_coords: Vector2i): boolean;
   public _tile_data_runtime_update(_coords: Vector2i, _tile_data: TileData): void;
@@ -55,72 +56,28 @@ export declare class TileMapLayer extends Node2D{
   public get_navigation_map(): RID;
   public set_navigation_visibility_mode(_show_navigation: number): void;
   public get_navigation_visibility_mode(): number;
-  public get tile_map_data(): PackedByteArray {
-    get_tile_map_data_as_array();
-  }
-  public set tile_map_data(value): void {
-    set_tile_map_data_from_array(value);
-  }
-  public get enabled(): boolean {
-    is_enabled();
-  }
-  public set enabled(value): void {
-    set_enabled(value);
-  }
-  public get tile_set(): TileSet {
-    get_tile_set();
-  }
-  public set tile_set(value): void {
-    set_tile_set(value);
-  }
-  public get y_sort_origin(): number {
-    get_y_sort_origin();
-  }
-  public set y_sort_origin(value): void {
-    set_y_sort_origin(value);
-  }
-  public get x_draw_order_reversed(): boolean {
-    is_x_draw_order_reversed();
-  }
-  public set x_draw_order_reversed(value): void {
-    set_x_draw_order_reversed(value);
-  }
-  public get rendering_quadrant_size(): number {
-    get_rendering_quadrant_size();
-  }
-  public set rendering_quadrant_size(value): void {
-    set_rendering_quadrant_size(value);
-  }
-  public get collision_enabled(): boolean {
-    is_collision_enabled();
-  }
-  public set collision_enabled(value): void {
-    set_collision_enabled(value);
-  }
-  public get use_kinematic_bodies(): boolean {
-    is_using_kinematic_bodies();
-  }
-  public set use_kinematic_bodies(value): void {
-    set_use_kinematic_bodies(value);
-  }
-  public get collision_visibility_mode(): number {
-    get_collision_visibility_mode();
-  }
-  public set collision_visibility_mode(value): void {
-    set_collision_visibility_mode(value);
-  }
-  public get navigation_enabled(): boolean {
-    is_navigation_enabled();
-  }
-  public set navigation_enabled(value): void {
-    set_navigation_enabled(value);
-  }
-  public get navigation_visibility_mode(): number {
-    get_navigation_visibility_mode();
-  }
-  public set navigation_visibility_mode(value): void {
-    set_navigation_visibility_mode(value);
-  }
+  public get tile_map_data(): PackedByteArray;
+  public set tile_map_data(value): void;
+  public get enabled(): boolean;
+  public set enabled(value): void;
+  public get tile_set(): TileSet;
+  public set tile_set(value): void;
+  public get y_sort_origin(): number;
+  public set y_sort_origin(value): void;
+  public get x_draw_order_reversed(): boolean;
+  public set x_draw_order_reversed(value): void;
+  public get rendering_quadrant_size(): number;
+  public set rendering_quadrant_size(value): void;
+  public get collision_enabled(): boolean;
+  public set collision_enabled(value): void;
+  public get use_kinematic_bodies(): boolean;
+  public set use_kinematic_bodies(value): void;
+  public get collision_visibility_mode(): number;
+  public set collision_visibility_mode(value): void;
+  public get navigation_enabled(): boolean;
+  public set navigation_enabled(value): void;
+  public get navigation_visibility_mode(): number;
+  public set navigation_visibility_mode(value): void;
   static DebugVisibilityMode = {
     DEBUG_VISIBILITY_MODE_DEFAULT = 0,
     DEBUG_VISIBILITY_MODE_FORCE_HIDE = 2,

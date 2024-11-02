@@ -1,14 +1,15 @@
 
-import { ViewportTexture } from "@godot/classes/viewport_texture";
-import { World2D } from "@godot/classes/world2d";
-import { Node } from "@godot/classes/node";
-import { Camera3D } from "@godot/classes/camera3d";
-import { Texture2D } from "@godot/classes/texture2d";
 import { Control } from "@godot/classes/control";
-import { Window } from "@godot/classes/window";
+import { Texture2D } from "@godot/classes/texture2d";
 import { InputEvent } from "@godot/classes/input_event";
+import { Camera3D } from "@godot/classes/camera3d";
 import { Camera2D } from "@godot/classes/camera2d";
+import { World2D } from "@godot/classes/world2d";
+import { Window } from "@godot/classes/window";
+import { Node } from "@godot/classes/node";
 import { World3D } from "@godot/classes/world3d";
+import { ViewportTexture } from "@godot/classes/viewport_texture";
+
 
 export declare class Viewport extends Node{
   public set_world_2d(_world_2d: World2D): void;
@@ -48,7 +49,7 @@ export declare class Viewport extends Node{
   public set_physics_object_picking_first_only(_enable: boolean): void;
   public get_physics_object_picking_first_only(): boolean;
   public get_viewport_rid(): RID;
-  public push_text_input(_text: String | StringName | string): void;
+  public push_text_input(_text: GDString | StringName | string): void;
   public push_input(_event: InputEvent, _in_local_coords: boolean): void;
   public push_unhandled_input(_event: InputEvent, _in_local_coords: boolean): void;
   public get_mouse_position(): Vector2;
@@ -124,282 +125,98 @@ export declare class Viewport extends Node{
   public get_vrs_update_mode(): number;
   public set_vrs_texture(_texture: Texture2D): void;
   public get_vrs_texture(): Texture2D;
-  public get disable_3d(): boolean {
-    is_3d_disabled();
-  }
-  public set disable_3d(value): void {
-    set_disable_3d(value);
-  }
-  public get use_xr(): boolean {
-    is_using_xr();
-  }
-  public set use_xr(value): void {
-    set_use_xr(value);
-  }
-  public get own_world_3d(): boolean {
-    is_using_own_world_3d();
-  }
-  public set own_world_3d(value): void {
-    set_use_own_world_3d(value);
-  }
-  public get world_3d(): World3D {
-    get_world_3d();
-  }
-  public set world_3d(value): void {
-    set_world_3d(value);
-  }
-  public get world_2d(): World2D {
-    get_world_2d();
-  }
-  public set world_2d(value): void {
-    set_world_2d(value);
-  }
-  public get transparent_bg(): boolean {
-    has_transparent_background();
-  }
-  public set transparent_bg(value): void {
-    set_transparent_background(value);
-  }
-  public get handle_input_locally(): boolean {
-    is_handling_input_locally();
-  }
-  public set handle_input_locally(value): void {
-    set_handle_input_locally(value);
-  }
-  public get snap_2d_transforms_to_pixel(): boolean {
-    is_snap_2d_transforms_to_pixel_enabled();
-  }
-  public set snap_2d_transforms_to_pixel(value): void {
-    set_snap_2d_transforms_to_pixel(value);
-  }
-  public get snap_2d_vertices_to_pixel(): boolean {
-    is_snap_2d_vertices_to_pixel_enabled();
-  }
-  public set snap_2d_vertices_to_pixel(value): void {
-    set_snap_2d_vertices_to_pixel(value);
-  }
-  public get msaa_2d(): number {
-    get_msaa_2d();
-  }
-  public set msaa_2d(value): void {
-    set_msaa_2d(value);
-  }
-  public get msaa_3d(): number {
-    get_msaa_3d();
-  }
-  public set msaa_3d(value): void {
-    set_msaa_3d(value);
-  }
-  public get screen_space_aa(): number {
-    get_screen_space_aa();
-  }
-  public set screen_space_aa(value): void {
-    set_screen_space_aa(value);
-  }
-  public get use_taa(): boolean {
-    is_using_taa();
-  }
-  public set use_taa(value): void {
-    set_use_taa(value);
-  }
-  public get use_debanding(): boolean {
-    is_using_debanding();
-  }
-  public set use_debanding(value): void {
-    set_use_debanding(value);
-  }
-  public get use_occlusion_culling(): boolean {
-    is_using_occlusion_culling();
-  }
-  public set use_occlusion_culling(value): void {
-    set_use_occlusion_culling(value);
-  }
-  public get mesh_lod_threshold(): number {
-    get_mesh_lod_threshold();
-  }
-  public set mesh_lod_threshold(value): void {
-    set_mesh_lod_threshold(value);
-  }
-  public get debug_draw(): number {
-    get_debug_draw();
-  }
-  public set debug_draw(value): void {
-    set_debug_draw(value);
-  }
-  public get use_hdr_2d(): boolean {
-    is_using_hdr_2d();
-  }
-  public set use_hdr_2d(value): void {
-    set_use_hdr_2d(value);
-  }
-  public get scaling_3d_mode(): number {
-    get_scaling_3d_mode();
-  }
-  public set scaling_3d_mode(value): void {
-    set_scaling_3d_mode(value);
-  }
-  public get scaling_3d_scale(): number {
-    get_scaling_3d_scale();
-  }
-  public set scaling_3d_scale(value): void {
-    set_scaling_3d_scale(value);
-  }
-  public get texture_mipmap_bias(): number {
-    get_texture_mipmap_bias();
-  }
-  public set texture_mipmap_bias(value): void {
-    set_texture_mipmap_bias(value);
-  }
-  public get fsr_sharpness(): number {
-    get_fsr_sharpness();
-  }
-  public set fsr_sharpness(value): void {
-    set_fsr_sharpness(value);
-  }
-  public get vrs_mode(): number {
-    get_vrs_mode();
-  }
-  public set vrs_mode(value): void {
-    set_vrs_mode(value);
-  }
-  public get vrs_update_mode(): number {
-    get_vrs_update_mode();
-  }
-  public set vrs_update_mode(value): void {
-    set_vrs_update_mode(value);
-  }
-  public get vrs_texture(): Texture2D {
-    get_vrs_texture();
-  }
-  public set vrs_texture(value): void {
-    set_vrs_texture(value);
-  }
-  public get canvas_item_default_texture_filter(): number {
-    get_default_canvas_item_texture_filter();
-  }
-  public set canvas_item_default_texture_filter(value): void {
-    set_default_canvas_item_texture_filter(value);
-  }
-  public get canvas_item_default_texture_repeat(): number {
-    get_default_canvas_item_texture_repeat();
-  }
-  public set canvas_item_default_texture_repeat(value): void {
-    set_default_canvas_item_texture_repeat(value);
-  }
-  public get audio_listener_enable_2d(): boolean {
-    is_audio_listener_2d();
-  }
-  public set audio_listener_enable_2d(value): void {
-    set_as_audio_listener_2d(value);
-  }
-  public get audio_listener_enable_3d(): boolean {
-    is_audio_listener_3d();
-  }
-  public set audio_listener_enable_3d(value): void {
-    set_as_audio_listener_3d(value);
-  }
-  public get physics_object_picking(): boolean {
-    get_physics_object_picking();
-  }
-  public set physics_object_picking(value): void {
-    set_physics_object_picking(value);
-  }
-  public get physics_object_picking_sort(): boolean {
-    get_physics_object_picking_sort();
-  }
-  public set physics_object_picking_sort(value): void {
-    set_physics_object_picking_sort(value);
-  }
-  public get physics_object_picking_first_only(): boolean {
-    get_physics_object_picking_first_only();
-  }
-  public set physics_object_picking_first_only(value): void {
-    set_physics_object_picking_first_only(value);
-  }
-  public get gui_disable_input(): boolean {
-    is_input_disabled();
-  }
-  public set gui_disable_input(value): void {
-    set_disable_input(value);
-  }
-  public get gui_snap_controls_to_pixels(): boolean {
-    is_snap_controls_to_pixels_enabled();
-  }
-  public set gui_snap_controls_to_pixels(value): void {
-    set_snap_controls_to_pixels(value);
-  }
-  public get gui_embed_subwindows(): boolean {
-    is_embedding_subwindows();
-  }
-  public set gui_embed_subwindows(value): void {
-    set_embedding_subwindows(value);
-  }
-  public get sdf_oversize(): number {
-    get_sdf_oversize();
-  }
-  public set sdf_oversize(value): void {
-    set_sdf_oversize(value);
-  }
-  public get sdf_scale(): number {
-    get_sdf_scale();
-  }
-  public set sdf_scale(value): void {
-    set_sdf_scale(value);
-  }
-  public get positional_shadow_atlas_size(): number {
-    get_positional_shadow_atlas_size();
-  }
-  public set positional_shadow_atlas_size(value): void {
-    set_positional_shadow_atlas_size(value);
-  }
-  public get positional_shadow_atlas_16_bits(): boolean {
-    get_positional_shadow_atlas_16_bits();
-  }
-  public set positional_shadow_atlas_16_bits(value): void {
-    set_positional_shadow_atlas_16_bits(value);
-  }
-  public get positional_shadow_atlas_quad_0(): number {
-    get_positional_shadow_atlas_quadrant_subdiv();
-  }
-  public set positional_shadow_atlas_quad_0(value): void {
-    set_positional_shadow_atlas_quadrant_subdiv(value);
-  }
-  public get positional_shadow_atlas_quad_1(): number {
-    get_positional_shadow_atlas_quadrant_subdiv();
-  }
-  public set positional_shadow_atlas_quad_1(value): void {
-    set_positional_shadow_atlas_quadrant_subdiv(value);
-  }
-  public get positional_shadow_atlas_quad_2(): number {
-    get_positional_shadow_atlas_quadrant_subdiv();
-  }
-  public set positional_shadow_atlas_quad_2(value): void {
-    set_positional_shadow_atlas_quadrant_subdiv(value);
-  }
-  public get positional_shadow_atlas_quad_3(): number {
-    get_positional_shadow_atlas_quadrant_subdiv();
-  }
-  public set positional_shadow_atlas_quad_3(value): void {
-    set_positional_shadow_atlas_quadrant_subdiv(value);
-  }
-  public get canvas_transform(): Transform2D {
-    get_canvas_transform();
-  }
-  public set canvas_transform(value): void {
-    set_canvas_transform(value);
-  }
-  public get global_canvas_transform(): Transform2D {
-    get_global_canvas_transform();
-  }
-  public set global_canvas_transform(value): void {
-    set_global_canvas_transform(value);
-  }
-  public get canvas_cull_mask(): number {
-    get_canvas_cull_mask();
-  }
-  public set canvas_cull_mask(value): void {
-    set_canvas_cull_mask(value);
-  }
+  public get disable_3d(): boolean;
+  public set disable_3d(value): void;
+  public get use_xr(): boolean;
+  public set use_xr(value): void;
+  public get own_world_3d(): boolean;
+  public set own_world_3d(value): void;
+  public get world_3d(): World3D;
+  public set world_3d(value): void;
+  public get world_2d(): World2D;
+  public set world_2d(value): void;
+  public get transparent_bg(): boolean;
+  public set transparent_bg(value): void;
+  public get handle_input_locally(): boolean;
+  public set handle_input_locally(value): void;
+  public get snap_2d_transforms_to_pixel(): boolean;
+  public set snap_2d_transforms_to_pixel(value): void;
+  public get snap_2d_vertices_to_pixel(): boolean;
+  public set snap_2d_vertices_to_pixel(value): void;
+  public get msaa_2d(): number;
+  public set msaa_2d(value): void;
+  public get msaa_3d(): number;
+  public set msaa_3d(value): void;
+  public get screen_space_aa(): number;
+  public set screen_space_aa(value): void;
+  public get use_taa(): boolean;
+  public set use_taa(value): void;
+  public get use_debanding(): boolean;
+  public set use_debanding(value): void;
+  public get use_occlusion_culling(): boolean;
+  public set use_occlusion_culling(value): void;
+  public get mesh_lod_threshold(): number;
+  public set mesh_lod_threshold(value): void;
+  public get debug_draw(): number;
+  public set debug_draw(value): void;
+  public get use_hdr_2d(): boolean;
+  public set use_hdr_2d(value): void;
+  public get scaling_3d_mode(): number;
+  public set scaling_3d_mode(value): void;
+  public get scaling_3d_scale(): number;
+  public set scaling_3d_scale(value): void;
+  public get texture_mipmap_bias(): number;
+  public set texture_mipmap_bias(value): void;
+  public get fsr_sharpness(): number;
+  public set fsr_sharpness(value): void;
+  public get vrs_mode(): number;
+  public set vrs_mode(value): void;
+  public get vrs_update_mode(): number;
+  public set vrs_update_mode(value): void;
+  public get vrs_texture(): Texture2D;
+  public set vrs_texture(value): void;
+  public get canvas_item_default_texture_filter(): number;
+  public set canvas_item_default_texture_filter(value): void;
+  public get canvas_item_default_texture_repeat(): number;
+  public set canvas_item_default_texture_repeat(value): void;
+  public get audio_listener_enable_2d(): boolean;
+  public set audio_listener_enable_2d(value): void;
+  public get audio_listener_enable_3d(): boolean;
+  public set audio_listener_enable_3d(value): void;
+  public get physics_object_picking(): boolean;
+  public set physics_object_picking(value): void;
+  public get physics_object_picking_sort(): boolean;
+  public set physics_object_picking_sort(value): void;
+  public get physics_object_picking_first_only(): boolean;
+  public set physics_object_picking_first_only(value): void;
+  public get gui_disable_input(): boolean;
+  public set gui_disable_input(value): void;
+  public get gui_snap_controls_to_pixels(): boolean;
+  public set gui_snap_controls_to_pixels(value): void;
+  public get gui_embed_subwindows(): boolean;
+  public set gui_embed_subwindows(value): void;
+  public get sdf_oversize(): number;
+  public set sdf_oversize(value): void;
+  public get sdf_scale(): number;
+  public set sdf_scale(value): void;
+  public get positional_shadow_atlas_size(): number;
+  public set positional_shadow_atlas_size(value): void;
+  public get positional_shadow_atlas_16_bits(): boolean;
+  public set positional_shadow_atlas_16_bits(value): void;
+  public get positional_shadow_atlas_quad_0(): number;
+  public set positional_shadow_atlas_quad_0(value): void;
+  public get positional_shadow_atlas_quad_1(): number;
+  public set positional_shadow_atlas_quad_1(value): void;
+  public get positional_shadow_atlas_quad_2(): number;
+  public set positional_shadow_atlas_quad_2(value): void;
+  public get positional_shadow_atlas_quad_3(): number;
+  public set positional_shadow_atlas_quad_3(value): void;
+  public get canvas_transform(): Transform2D;
+  public set canvas_transform(value): void;
+  public get global_canvas_transform(): Transform2D;
+  public set global_canvas_transform(value): void;
+  public get canvas_cull_mask(): number;
+  public set canvas_cull_mask(value): void;
   static PositionalShadowAtlasQuadrantSubdiv = {
     SHADOW_ATLAS_QUADRANT_SUBDIV_DISABLED = 0,
     SHADOW_ATLAS_QUADRANT_SUBDIV_1 = 1,

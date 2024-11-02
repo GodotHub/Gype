@@ -3,12 +3,13 @@ import { StreamPeer } from "@godot/classes/stream_peer";
 import { RefCounted } from "@godot/classes/ref_counted";
 import { TLSOptions } from "@godot/classes/tls_options";
 
+
 export declare class HTTPClient extends RefCounted{
-  public connect_to_host(_host: String | StringName | string, _port: number, _tls_options: TLSOptions): number;
+  public connect_to_host(_host: GDString | StringName | string, _port: number, _tls_options: TLSOptions): number;
   public set_connection(_connection: StreamPeer): void;
   public get_connection(): StreamPeer;
-  public request_raw(_method: number, _url: String | StringName | string, _headers: PackedStringArray, _body: PackedByteArray): number;
-  public request(_method: number, _url: String | StringName | string, _headers: PackedStringArray, _body: String | StringName | string): number;
+  public request_raw(_method: number, _url: GDString | StringName | string, _headers: PackedStringArray, _body: PackedByteArray): number;
+  public request(_method: number, _url: GDString | StringName | string, _headers: PackedStringArray, _body: GDString | StringName | string): number;
   public close(): void;
   public has_response(): boolean;
   public is_response_chunked(): boolean;
@@ -23,27 +24,15 @@ export declare class HTTPClient extends RefCounted{
   public is_blocking_mode_enabled(): boolean;
   public get_status(): number;
   public poll(): number;
-  public set_http_proxy(_host: String | StringName | string, _port: number): void;
-  public set_https_proxy(_host: String | StringName | string, _port: number): void;
+  public set_http_proxy(_host: GDString | StringName | string, _port: number): void;
+  public set_https_proxy(_host: GDString | StringName | string, _port: number): void;
   public query_string_from_dict(_fields: Dictionary): String;
-  public get blocking_mode_enabled(): boolean {
-    is_blocking_mode_enabled();
-  }
-  public set blocking_mode_enabled(value): void {
-    set_blocking_mode(value);
-  }
-  public get connection(): StreamPeer {
-    get_connection();
-  }
-  public set connection(value): void {
-    set_connection(value);
-  }
-  public get read_chunk_size(): number {
-    get_read_chunk_size();
-  }
-  public set read_chunk_size(value): void {
-    set_read_chunk_size(value);
-  }
+  public get blocking_mode_enabled(): boolean;
+  public set blocking_mode_enabled(value): void;
+  public get connection(): StreamPeer;
+  public set connection(value): void;
+  public get read_chunk_size(): number;
+  public set read_chunk_size(value): void;
   static Method = {
     METHOD_GET = 0,
     METHOD_HEAD = 1,

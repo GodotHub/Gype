@@ -1,6 +1,7 @@
 
-import { Resource } from "@godot/classes/resource";
 import { Mesh } from "@godot/classes/mesh";
+import { Resource } from "@godot/classes/resource";
+
 
 export declare class MultiMesh extends Resource{
   public set_mesh(_mesh: Mesh): void;
@@ -28,78 +29,30 @@ export declare class MultiMesh extends Resource{
   public get_aabb(): AABB;
   public get_buffer(): PackedFloat32Array;
   public set_buffer(_buffer: PackedFloat32Array): void;
-  public get transform_format(): number {
-    get_transform_format();
-  }
-  public set transform_format(value): void {
-    set_transform_format(value);
-  }
-  public get use_colors(): boolean {
-    is_using_colors();
-  }
-  public set use_colors(value): void {
-    set_use_colors(value);
-  }
-  public get use_custom_data(): boolean {
-    is_using_custom_data();
-  }
-  public set use_custom_data(value): void {
-    set_use_custom_data(value);
-  }
-  public get custom_aabb(): AABB {
-    get_custom_aabb();
-  }
-  public set custom_aabb(value): void {
-    set_custom_aabb(value);
-  }
-  public get instance_count(): number {
-    get_instance_count();
-  }
-  public set instance_count(value): void {
-    set_instance_count(value);
-  }
-  public get visible_instance_count(): number {
-    get_visible_instance_count();
-  }
-  public set visible_instance_count(value): void {
-    set_visible_instance_count(value);
-  }
-  public get mesh(): Mesh {
-    get_mesh();
-  }
-  public set mesh(value): void {
-    set_mesh(value);
-  }
-  public get buffer(): PackedFloat32Array {
-    get_buffer();
-  }
-  public set buffer(value): void {
-    set_buffer(value);
-  }
-  public get transform_array(): PackedVector3Array {
-    _get_transform_array();
-  }
-  public set transform_array(value): void {
-    _set_transform_array(value);
-  }
-  public get transform_2d_array(): PackedVector2Array {
-    _get_transform_2d_array();
-  }
-  public set transform_2d_array(value): void {
-    _set_transform_2d_array(value);
-  }
-  public get color_array(): PackedColorArray {
-    _get_color_array();
-  }
-  public set color_array(value): void {
-    _set_color_array(value);
-  }
-  public get custom_data_array(): PackedColorArray {
-    _get_custom_data_array();
-  }
-  public set custom_data_array(value): void {
-    _set_custom_data_array(value);
-  }
+  public get transform_format(): number;
+  public set transform_format(value): void;
+  public get use_colors(): boolean;
+  public set use_colors(value): void;
+  public get use_custom_data(): boolean;
+  public set use_custom_data(value): void;
+  public get custom_aabb(): AABB;
+  public set custom_aabb(value): void;
+  public get instance_count(): number;
+  public set instance_count(value): void;
+  public get visible_instance_count(): number;
+  public set visible_instance_count(value): void;
+  public get mesh(): Mesh;
+  public set mesh(value): void;
+  public get buffer(): PackedFloat32Array;
+  public set buffer(value): void;
+  public get transform_array(): PackedVector3Array;
+  public set transform_array(value): void;
+  public get transform_2d_array(): PackedVector2Array;
+  public set transform_2d_array(value): void;
+  public get color_array(): PackedColorArray;
+  public set color_array(value): void;
+  public get custom_data_array(): PackedColorArray;
+  public set custom_data_array(value): void;
   static TransformFormat = {
     TRANSFORM_2D = 0,
     TRANSFORM_3D = 1,

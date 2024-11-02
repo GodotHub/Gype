@@ -1,8 +1,9 @@
 
 import { Node2D } from "@godot/classes/node2d";
-import { Gradient } from "@godot/classes/gradient";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Gradient } from "@godot/classes/gradient";
 import { Curve } from "@godot/classes/curve";
+
 
 export declare class Line2D extends Node2D{
   public set_points(_points: PackedVector2Array): void;
@@ -39,90 +40,34 @@ export declare class Line2D extends Node2D{
   public get_round_precision(): number;
   public set_antialiased(_antialiased: boolean): void;
   public get_antialiased(): boolean;
-  public get points(): PackedVector2Array {
-    get_points();
-  }
-  public set points(value): void {
-    set_points(value);
-  }
-  public get closed(): boolean {
-    is_closed();
-  }
-  public set closed(value): void {
-    set_closed(value);
-  }
-  public get width(): number {
-    get_width();
-  }
-  public set width(value): void {
-    set_width(value);
-  }
-  public get width_curve(): Curve {
-    get_curve();
-  }
-  public set width_curve(value): void {
-    set_curve(value);
-  }
-  public get default_color(): Color {
-    get_default_color();
-  }
-  public set default_color(value): void {
-    set_default_color(value);
-  }
-  public get gradient(): Gradient {
-    get_gradient();
-  }
-  public set gradient(value): void {
-    set_gradient(value);
-  }
-  public get texture(): Texture2D {
-    get_texture();
-  }
-  public set texture(value): void {
-    set_texture(value);
-  }
-  public get texture_mode(): number {
-    get_texture_mode();
-  }
-  public set texture_mode(value): void {
-    set_texture_mode(value);
-  }
-  public get joint_mode(): number {
-    get_joint_mode();
-  }
-  public set joint_mode(value): void {
-    set_joint_mode(value);
-  }
-  public get begin_cap_mode(): number {
-    get_begin_cap_mode();
-  }
-  public set begin_cap_mode(value): void {
-    set_begin_cap_mode(value);
-  }
-  public get end_cap_mode(): number {
-    get_end_cap_mode();
-  }
-  public set end_cap_mode(value): void {
-    set_end_cap_mode(value);
-  }
-  public get sharp_limit(): number {
-    get_sharp_limit();
-  }
-  public set sharp_limit(value): void {
-    set_sharp_limit(value);
-  }
-  public get round_precision(): number {
-    get_round_precision();
-  }
-  public set round_precision(value): void {
-    set_round_precision(value);
-  }
-  public get antialiased(): boolean {
-    get_antialiased();
-  }
-  public set antialiased(value): void {
-    set_antialiased(value);
-  }
+  public get points(): PackedVector2Array;
+  public set points(value): void;
+  public get closed(): boolean;
+  public set closed(value): void;
+  public get width(): number;
+  public set width(value): void;
+  public get width_curve(): Curve;
+  public set width_curve(value): void;
+  public get default_color(): Color;
+  public set default_color(value): void;
+  public get gradient(): Gradient;
+  public set gradient(value): void;
+  public get texture(): Texture2D;
+  public set texture(value): void;
+  public get texture_mode(): number;
+  public set texture_mode(value): void;
+  public get joint_mode(): number;
+  public set joint_mode(value): void;
+  public get begin_cap_mode(): number;
+  public set begin_cap_mode(value): void;
+  public get end_cap_mode(): number;
+  public set end_cap_mode(value): void;
+  public get sharp_limit(): number;
+  public set sharp_limit(value): void;
+  public get round_precision(): number;
+  public set round_precision(value): void;
+  public get antialiased(): boolean;
+  public set antialiased(value): void;
   static LineJointMode = {
     LINE_JOINT_SHARP = 0,
     LINE_JOINT_BEVEL = 1,

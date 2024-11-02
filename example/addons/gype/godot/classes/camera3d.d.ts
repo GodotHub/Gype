@@ -1,8 +1,9 @@
 
-import { Environment } from "@godot/classes/environment";
-import { Compositor } from "@godot/classes/compositor";
 import { CameraAttributes } from "@godot/classes/camera_attributes";
+import { Compositor } from "@godot/classes/compositor";
 import { Node3D } from "@godot/classes/node3d";
+import { Environment } from "@godot/classes/environment";
+
 
 export declare class Camera3D extends Node3D{
   public project_ray_normal(_screen_point: Vector2): Vector3;
@@ -54,96 +55,36 @@ export declare class Camera3D extends Node3D{
   public get_pyramid_shape_rid(): RID;
   public set_cull_mask_value(_layer_number: number, _value: boolean): void;
   public get_cull_mask_value(_layer_number: number): boolean;
-  public get keep_aspect(): number {
-    get_keep_aspect_mode();
-  }
-  public set keep_aspect(value): void {
-    set_keep_aspect_mode(value);
-  }
-  public get cull_mask(): number {
-    get_cull_mask();
-  }
-  public set cull_mask(value): void {
-    set_cull_mask(value);
-  }
-  public get environment(): Environment {
-    get_environment();
-  }
-  public set environment(value): void {
-    set_environment(value);
-  }
-  public get attributes(): CameraAttributesPractical {
-    get_attributes();
-  }
-  public set attributes(value): void {
-    set_attributes(value);
-  }
-  public get compositor(): Compositor {
-    get_compositor();
-  }
-  public set compositor(value): void {
-    set_compositor(value);
-  }
-  public get h_offset(): number {
-    get_h_offset();
-  }
-  public set h_offset(value): void {
-    set_h_offset(value);
-  }
-  public get v_offset(): number {
-    get_v_offset();
-  }
-  public set v_offset(value): void {
-    set_v_offset(value);
-  }
-  public get doppler_tracking(): number {
-    get_doppler_tracking();
-  }
-  public set doppler_tracking(value): void {
-    set_doppler_tracking(value);
-  }
-  public get projection(): number {
-    get_projection();
-  }
-  public set projection(value): void {
-    set_projection(value);
-  }
-  public get current(): boolean {
-    is_current();
-  }
-  public set current(value): void {
-    set_current(value);
-  }
-  public get fov(): number {
-    get_fov();
-  }
-  public set fov(value): void {
-    set_fov(value);
-  }
-  public get size(): number {
-    get_size();
-  }
-  public set size(value): void {
-    set_size(value);
-  }
-  public get frustum_offset(): Vector2 {
-    get_frustum_offset();
-  }
-  public set frustum_offset(value): void {
-    set_frustum_offset(value);
-  }
-  public get near(): number {
-    get_near();
-  }
-  public set near(value): void {
-    set_near(value);
-  }
-  public get far(): number {
-    get_far();
-  }
-  public set far(value): void {
-    set_far(value);
-  }
+  public get keep_aspect(): number;
+  public set keep_aspect(value): void;
+  public get cull_mask(): number;
+  public set cull_mask(value): void;
+  public get environment(): Environment;
+  public set environment(value): void;
+  public get attributes(): CameraAttributesPractical;
+  public set attributes(value): void;
+  public get compositor(): Compositor;
+  public set compositor(value): void;
+  public get h_offset(): number;
+  public set h_offset(value): void;
+  public get v_offset(): number;
+  public set v_offset(value): void;
+  public get doppler_tracking(): number;
+  public set doppler_tracking(value): void;
+  public get projection(): number;
+  public set projection(value): void;
+  public get current(): boolean;
+  public set current(value): void;
+  public get fov(): number;
+  public set fov(value): void;
+  public get size(): number;
+  public set size(value): void;
+  public get frustum_offset(): Vector2;
+  public set frustum_offset(value): void;
+  public get near(): number;
+  public set near(value): void;
+  public get far(): number;
+  public set far(value): void;
   static ProjectionType = {
     PROJECTION_PERSPECTIVE = 0,
     PROJECTION_ORTHOGONAL = 1,

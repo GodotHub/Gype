@@ -2,6 +2,7 @@
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
 import { Shader } from "@godot/classes/shader";
 
+
 export declare class VisualShader extends Shader{
   public set_mode(_mode: number): void;
   public add_node(_type: number, _node: VisualShaderNode, _position: Vector2, _id: number): void;
@@ -11,7 +12,7 @@ export declare class VisualShader extends Shader{
   public get_node_list(_type: number): PackedInt32Array;
   public get_valid_node_id(_type: number): number;
   public remove_node(_type: number, _id: number): void;
-  public replace_node(_type: number, _id: number, _new_class: String | StringName | string): void;
+  public replace_node(_type: number, _id: number, _new_class: GDString | StringName | string): void;
   public is_node_connection(_type: number, _from_node: number, _from_port: number, _to_node: number, _to_port: number): boolean;
   public can_connect_nodes(_type: number, _from_node: number, _from_port: number, _to_node: number, _to_port: number): boolean;
   public connect_nodes(_type: number, _from_node: number, _from_port: number, _to_node: number, _to_port: number): number;
@@ -22,15 +23,11 @@ export declare class VisualShader extends Shader{
   public get_graph_offset(): Vector2;
   public attach_node_to_frame(_type: number, _id: number, _frame: number): void;
   public detach_node_from_frame(_type: number, _id: number): void;
-  public add_varying(_name: String | StringName | string, _mode: number, _type: number): void;
-  public remove_varying(_name: String | StringName | string): void;
-  public has_varying(_name: String | StringName | string): boolean;
-  public get graph_offset(): Vector2 {
-    get_graph_offset();
-  }
-  public set graph_offset(value): void {
-    set_graph_offset(value);
-  }
+  public add_varying(_name: GDString | StringName | string, _mode: number, _type: number): void;
+  public remove_varying(_name: GDString | StringName | string): void;
+  public has_varying(_name: GDString | StringName | string): boolean;
+  public get graph_offset(): Vector2;
+  public set graph_offset(value): void;
   static Type = {
     TYPE_VERTEX = 0,
     TYPE_FRAGMENT = 1,

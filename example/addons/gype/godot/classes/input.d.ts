@@ -3,6 +3,7 @@ import { GodotObject } from "@godot/classes/godot_object";
 import { InputEvent } from "@godot/classes/input_event";
 import { Resource } from "@godot/classes/resource";
 
+
 export declare class Input extends GodotObject{
   public is_anything_pressed(): boolean;
   public is_key_pressed(_keycode: number): boolean;
@@ -10,15 +11,15 @@ export declare class Input extends GodotObject{
   public is_key_label_pressed(_keycode: number): boolean;
   public is_mouse_button_pressed(_button: number): boolean;
   public is_joy_button_pressed(_device: number, _button: number): boolean;
-  public is_action_pressed(_action: String | StringName | string, _exact_match: boolean): boolean;
-  public is_action_just_pressed(_action: String | StringName | string, _exact_match: boolean): boolean;
-  public is_action_just_released(_action: String | StringName | string, _exact_match: boolean): boolean;
-  public get_action_strength(_action: String | StringName | string, _exact_match: boolean): number;
-  public get_action_raw_strength(_action: String | StringName | string, _exact_match: boolean): number;
-  public get_axis(_negative_action: String | StringName | string, _positive_action: String | StringName | string): number;
-  public get_vector(_negative_x: String | StringName | string, _positive_x: String | StringName | string, _negative_y: String | StringName | string, _positive_y: String | StringName | string, _deadzone: number): Vector2;
-  public add_joy_mapping(_mapping: String | StringName | string, _update_existing: boolean): void;
-  public remove_joy_mapping(_guid: String | StringName | string): void;
+  public is_action_pressed(_action: GDString | StringName | string, _exact_match: boolean): boolean;
+  public is_action_just_pressed(_action: GDString | StringName | string, _exact_match: boolean): boolean;
+  public is_action_just_released(_action: GDString | StringName | string, _exact_match: boolean): boolean;
+  public get_action_strength(_action: GDString | StringName | string, _exact_match: boolean): number;
+  public get_action_raw_strength(_action: GDString | StringName | string, _exact_match: boolean): number;
+  public get_axis(_negative_action: GDString | StringName | string, _positive_action: GDString | StringName | string): number;
+  public get_vector(_negative_x: GDString | StringName | string, _positive_x: GDString | StringName | string, _negative_y: GDString | StringName | string, _positive_y: GDString | StringName | string, _deadzone: number): Vector2;
+  public add_joy_mapping(_mapping: GDString | StringName | string, _update_existing: boolean): void;
+  public remove_joy_mapping(_guid: GDString | StringName | string): void;
   public is_joy_known(_device: number): boolean;
   public get_joy_axis(_device: number, _axis: number): number;
   public get_joy_name(_device: number): String;
@@ -45,8 +46,8 @@ export declare class Input extends GodotObject{
   public set_mouse_mode(_mode: number): void;
   public get_mouse_mode(): number;
   public warp_mouse(_position: Vector2): void;
-  public action_press(_action: String | StringName | string, _strength: number): void;
-  public action_release(_action: String | StringName | string): void;
+  public action_press(_action: GDString | StringName | string, _strength: number): void;
+  public action_release(_action: GDString | StringName | string): void;
   public set_default_cursor_shape(_shape: number): void;
   public get_current_cursor_shape(): number;
   public set_custom_mouse_cursor(_image: Resource, _shape: number, _hotspot: Vector2): void;
@@ -58,30 +59,14 @@ export declare class Input extends GodotObject{
   public is_emulating_mouse_from_touch(): boolean;
   public set_emulate_touch_from_mouse(_enable: boolean): void;
   public is_emulating_touch_from_mouse(): boolean;
-  public get mouse_mode(): number {
-    get_mouse_mode();
-  }
-  public set mouse_mode(value): void {
-    set_mouse_mode(value);
-  }
-  public get use_accumulated_input(): boolean {
-    is_using_accumulated_input();
-  }
-  public set use_accumulated_input(value): void {
-    set_use_accumulated_input(value);
-  }
-  public get emulate_mouse_from_touch(): boolean {
-    is_emulating_mouse_from_touch();
-  }
-  public set emulate_mouse_from_touch(value): void {
-    set_emulate_mouse_from_touch(value);
-  }
-  public get emulate_touch_from_mouse(): boolean {
-    is_emulating_touch_from_mouse();
-  }
-  public set emulate_touch_from_mouse(value): void {
-    set_emulate_touch_from_mouse(value);
-  }
+  public get mouse_mode(): number;
+  public set mouse_mode(value): void;
+  public get use_accumulated_input(): boolean;
+  public set use_accumulated_input(value): void;
+  public get emulate_mouse_from_touch(): boolean;
+  public set emulate_mouse_from_touch(value): void;
+  public get emulate_touch_from_mouse(): boolean;
+  public set emulate_touch_from_mouse(value): void;
   static MouseMode = {
     MOUSE_MODE_VISIBLE = 0,
     MOUSE_MODE_HIDDEN = 1,

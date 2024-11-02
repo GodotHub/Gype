@@ -1,14 +1,15 @@
 
-import { Image } from "@godot/classes/image";
 import { Font } from "@godot/classes/font";
+import { Image } from "@godot/classes/image";
+
 
 export declare class FontFile extends Font{
-  public load_bitmap_font(_path: String | StringName | string): number;
-  public load_dynamic_font(_path: String | StringName | string): number;
+  public load_bitmap_font(_path: GDString | StringName | string): number;
+  public load_dynamic_font(_path: GDString | StringName | string): number;
   public set_data(_data: PackedByteArray): void;
   public get_data(): PackedByteArray;
-  public set_font_name(_name: String | StringName | string): void;
-  public set_font_style_name(_name: String | StringName | string): void;
+  public set_font_name(_name: GDString | StringName | string): void;
+  public set_font_style_name(_name: GDString | StringName | string): void;
   public set_font_style(_style: number): void;
   public set_font_weight(_weight: number): void;
   public set_font_stretch(_stretch: number): void;
@@ -93,136 +94,56 @@ export declare class FontFile extends Font{
   public get_kerning(_cache_index: number, _size: number, _glyph_pair: Vector2i): Vector2;
   public render_range(_cache_index: number, _size: Vector2i, _start: number, _end: number): void;
   public render_glyph(_cache_index: number, _size: Vector2i, _index: number): void;
-  public set_language_support_override(_language: String | StringName | string, _supported: boolean): void;
-  public get_language_support_override(_language: String | StringName | string): boolean;
-  public remove_language_support_override(_language: String | StringName | string): void;
+  public set_language_support_override(_language: GDString | StringName | string, _supported: boolean): void;
+  public get_language_support_override(_language: GDString | StringName | string): boolean;
+  public remove_language_support_override(_language: GDString | StringName | string): void;
   public get_language_support_overrides(): PackedStringArray;
-  public set_script_support_override(_script: String | StringName | string, _supported: boolean): void;
-  public get_script_support_override(_script: String | StringName | string): boolean;
-  public remove_script_support_override(_script: String | StringName | string): void;
+  public set_script_support_override(_script: GDString | StringName | string, _supported: boolean): void;
+  public get_script_support_override(_script: GDString | StringName | string): boolean;
+  public remove_script_support_override(_script: GDString | StringName | string): void;
   public get_script_support_overrides(): PackedStringArray;
   public set_opentype_feature_overrides(_overrides: Dictionary): void;
   public get_opentype_feature_overrides(): Dictionary;
   public get_glyph_index(_size: number, _char: number, _variation_selector: number): number;
   public get_char_from_glyph_index(_size: number, _glyph_index: number): number;
-  public get data(): PackedByteArray {
-    get_data();
-  }
-  public set data(value): void {
-    set_data(value);
-  }
-  public get generate_mipmaps(): boolean {
-    get_generate_mipmaps();
-  }
-  public set generate_mipmaps(value): void {
-    set_generate_mipmaps(value);
-  }
-  public get disable_embedded_bitmaps(): boolean {
-    get_disable_embedded_bitmaps();
-  }
-  public set disable_embedded_bitmaps(value): void {
-    set_disable_embedded_bitmaps(value);
-  }
-  public get antialiasing(): number {
-    get_antialiasing();
-  }
-  public set antialiasing(value): void {
-    set_antialiasing(value);
-  }
-  public get font_name(): String {
-    get_font_name();
-  }
-  public set font_name(value): void {
-    set_font_name(value);
-  }
-  public get style_name(): String {
-    get_font_style_name();
-  }
-  public set style_name(value): void {
-    set_font_style_name(value);
-  }
-  public get font_style(): number {
-    get_font_style();
-  }
-  public set font_style(value): void {
-    set_font_style(value);
-  }
-  public get font_weight(): number {
-    get_font_weight();
-  }
-  public set font_weight(value): void {
-    set_font_weight(value);
-  }
-  public get font_stretch(): number {
-    get_font_stretch();
-  }
-  public set font_stretch(value): void {
-    set_font_stretch(value);
-  }
-  public get subpixel_positioning(): number {
-    get_subpixel_positioning();
-  }
-  public set subpixel_positioning(value): void {
-    set_subpixel_positioning(value);
-  }
-  public get multichannel_signed_distance_field(): boolean {
-    is_multichannel_signed_distance_field();
-  }
-  public set multichannel_signed_distance_field(value): void {
-    set_multichannel_signed_distance_field(value);
-  }
-  public get msdf_pixel_range(): number {
-    get_msdf_pixel_range();
-  }
-  public set msdf_pixel_range(value): void {
-    set_msdf_pixel_range(value);
-  }
-  public get msdf_size(): number {
-    get_msdf_size();
-  }
-  public set msdf_size(value): void {
-    set_msdf_size(value);
-  }
-  public get allow_system_fallback(): boolean {
-    is_allow_system_fallback();
-  }
-  public set allow_system_fallback(value): void {
-    set_allow_system_fallback(value);
-  }
-  public get force_autohinter(): boolean {
-    is_force_autohinter();
-  }
-  public set force_autohinter(value): void {
-    set_force_autohinter(value);
-  }
-  public get hinting(): number {
-    get_hinting();
-  }
-  public set hinting(value): void {
-    set_hinting(value);
-  }
-  public get oversampling(): number {
-    get_oversampling();
-  }
-  public set oversampling(value): void {
-    set_oversampling(value);
-  }
-  public get fixed_size(): number {
-    get_fixed_size();
-  }
-  public set fixed_size(value): void {
-    set_fixed_size(value);
-  }
-  public get fixed_size_scale_mode(): number {
-    get_fixed_size_scale_mode();
-  }
-  public set fixed_size_scale_mode(value): void {
-    set_fixed_size_scale_mode(value);
-  }
-  public get opentype_feature_overrides(): Dictionary {
-    get_opentype_feature_overrides();
-  }
-  public set opentype_feature_overrides(value): void {
-    set_opentype_feature_overrides(value);
-  }
+  public get data(): PackedByteArray;
+  public set data(value): void;
+  public get generate_mipmaps(): boolean;
+  public set generate_mipmaps(value): void;
+  public get disable_embedded_bitmaps(): boolean;
+  public set disable_embedded_bitmaps(value): void;
+  public get antialiasing(): number;
+  public set antialiasing(value): void;
+  public get font_name(): String;
+  public set font_name(value): void;
+  public get style_name(): String;
+  public set style_name(value): void;
+  public get font_style(): number;
+  public set font_style(value): void;
+  public get font_weight(): number;
+  public set font_weight(value): void;
+  public get font_stretch(): number;
+  public set font_stretch(value): void;
+  public get subpixel_positioning(): number;
+  public set subpixel_positioning(value): void;
+  public get multichannel_signed_distance_field(): boolean;
+  public set multichannel_signed_distance_field(value): void;
+  public get msdf_pixel_range(): number;
+  public set msdf_pixel_range(value): void;
+  public get msdf_size(): number;
+  public set msdf_size(value): void;
+  public get allow_system_fallback(): boolean;
+  public set allow_system_fallback(value): void;
+  public get force_autohinter(): boolean;
+  public set force_autohinter(value): void;
+  public get hinting(): number;
+  public set hinting(value): void;
+  public get oversampling(): number;
+  public set oversampling(value): void;
+  public get fixed_size(): number;
+  public set fixed_size(value): void;
+  public get fixed_size_scale_mode(): number;
+  public set fixed_size_scale_mode(value): void;
+  public get opentype_feature_overrides(): Dictionary;
+  public set opentype_feature_overrides(value): void;
 }

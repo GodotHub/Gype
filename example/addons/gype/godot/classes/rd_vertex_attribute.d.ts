@@ -1,6 +1,7 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
 
+
 export declare class RDVertexAttribute extends RefCounted{
   public set_location(_p_member: number): void;
   public get_location(): number;
@@ -12,34 +13,14 @@ export declare class RDVertexAttribute extends RefCounted{
   public get_stride(): number;
   public set_frequency(_p_member: number): void;
   public get_frequency(): number;
-  public get location(): number {
-    get_location();
-  }
-  public set location(value): void {
-    set_location(value);
-  }
-  public get offset(): number {
-    get_offset();
-  }
-  public set offset(value): void {
-    set_offset(value);
-  }
-  public get format(): number {
-    get_format();
-  }
-  public set format(value): void {
-    set_format(value);
-  }
-  public get stride(): number {
-    get_stride();
-  }
-  public set stride(value): void {
-    set_stride(value);
-  }
-  public get frequency(): number {
-    get_frequency();
-  }
-  public set frequency(value): void {
-    set_frequency(value);
-  }
+  public get location(): number;
+  public set location(value): void;
+  public get offset(): number;
+  public set offset(value): void;
+  public get format(): number;
+  public set format(value): void;
+  public get stride(): number;
+  public set stride(value): void;
+  public get frequency(): number;
+  public set frequency(value): void;
 }

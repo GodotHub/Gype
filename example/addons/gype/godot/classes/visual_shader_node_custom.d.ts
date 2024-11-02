@@ -1,6 +1,7 @@
 
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
 
+
 export declare class VisualShaderNodeCustom extends VisualShaderNode{
   public _get_name(): String;
   public _get_description(): String;
@@ -24,16 +25,8 @@ export declare class VisualShaderNodeCustom extends VisualShaderNode{
   public _is_highend(): boolean;
   public _is_available(_mode: number, _type: number): boolean;
   public get_option_index(_option: number): number;
-  public get initialized(): boolean {
-    _is_initialized();
-  }
-  public set initialized(value): void {
-    _set_initialized(value);
-  }
-  public get properties(): String {
-    _get_properties();
-  }
-  public set properties(value): void {
-    _set_properties(value);
-  }
+  public get initialized(): boolean;
+  public set initialized(value): void;
+  public get properties(): String;
+  public set properties(value): void;
 }

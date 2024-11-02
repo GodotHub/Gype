@@ -1,6 +1,7 @@
 
-import { Texture3D } from "@godot/classes/texture3d";
 import { Material } from "@godot/classes/material";
+import { Texture3D } from "@godot/classes/texture3d";
+
 
 export declare class FogMaterial extends Material{
   public set_density(_density: number): void;
@@ -15,40 +16,16 @@ export declare class FogMaterial extends Material{
   public get_edge_fade(): number;
   public set_density_texture(_density_texture: Texture3D): void;
   public get_density_texture(): Texture3D;
-  public get density(): number {
-    get_density();
-  }
-  public set density(value): void {
-    set_density(value);
-  }
-  public get albedo(): Color {
-    get_albedo();
-  }
-  public set albedo(value): void {
-    set_albedo(value);
-  }
-  public get emission(): Color {
-    get_emission();
-  }
-  public set emission(value): void {
-    set_emission(value);
-  }
-  public get height_falloff(): number {
-    get_height_falloff();
-  }
-  public set height_falloff(value): void {
-    set_height_falloff(value);
-  }
-  public get edge_fade(): number {
-    get_edge_fade();
-  }
-  public set edge_fade(value): void {
-    set_edge_fade(value);
-  }
-  public get density_texture(): Texture3D {
-    get_density_texture();
-  }
-  public set density_texture(value): void {
-    set_density_texture(value);
-  }
+  public get density(): number;
+  public set density(value): void;
+  public get albedo(): Color;
+  public set albedo(value): void;
+  public get emission(): Color;
+  public set emission(value): void;
+  public get height_falloff(): number;
+  public set height_falloff(value): void;
+  public get edge_fade(): number;
+  public set edge_fade(value): void;
+  public get density_texture(): Texture3D;
+  public set density_texture(value): void;
 }

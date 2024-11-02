@@ -1,8 +1,9 @@
 
-import { Resource } from "@godot/classes/resource";
-import { PhysicsMaterial } from "@godot/classes/physics_material";
-import { TileSetSource } from "@godot/classes/tile_set_source";
 import { TileMapPattern } from "@godot/classes/tile_map_pattern";
+import { TileSetSource } from "@godot/classes/tile_set_source";
+import { PhysicsMaterial } from "@godot/classes/physics_material";
+import { Resource } from "@godot/classes/resource";
+
 
 export declare class TileSet extends Resource{
   public get_next_source_id(): number;
@@ -51,7 +52,7 @@ export declare class TileSet extends Resource{
   public add_terrain(_terrain_set: number, _to_position: number): void;
   public move_terrain(_terrain_set: number, _terrain_index: number, _to_position: number): void;
   public remove_terrain(_terrain_set: number, _terrain_index: number): void;
-  public set_terrain_name(_terrain_set: number, _terrain_index: number, _name: String | StringName | string): void;
+  public set_terrain_name(_terrain_set: number, _terrain_index: number, _name: GDString | StringName | string): void;
   public get_terrain_name(_terrain_set: number, _terrain_index: number): String;
   public set_terrain_color(_terrain_set: number, _terrain_index: number, _color: Color): void;
   public get_terrain_color(_terrain_set: number, _terrain_index: number): Color;
@@ -67,8 +68,8 @@ export declare class TileSet extends Resource{
   public add_custom_data_layer(_to_position: number): void;
   public move_custom_data_layer(_layer_index: number, _to_position: number): void;
   public remove_custom_data_layer(_layer_index: number): void;
-  public get_custom_data_layer_by_name(_layer_name: String | StringName | string): number;
-  public set_custom_data_layer_name(_layer_index: number, _layer_name: String | StringName | string): void;
+  public get_custom_data_layer_by_name(_layer_name: GDString | StringName | string): number;
+  public set_custom_data_layer_name(_layer_index: number, _layer_name: GDString | StringName | string): void;
   public get_custom_data_layer_name(_layer_index: number): String;
   public set_custom_data_layer_type(_layer_index: number, _layer_type: number): void;
   public get_custom_data_layer_type(_layer_index: number): number;
@@ -91,36 +92,16 @@ export declare class TileSet extends Resource{
   public get_pattern(_index: number): TileMapPattern;
   public remove_pattern(_index: number): void;
   public get_patterns_count(): number;
-  public get tile_shape(): number {
-    get_tile_shape();
-  }
-  public set tile_shape(value): void {
-    set_tile_shape(value);
-  }
-  public get tile_layout(): number {
-    get_tile_layout();
-  }
-  public set tile_layout(value): void {
-    set_tile_layout(value);
-  }
-  public get tile_offset_axis(): number {
-    get_tile_offset_axis();
-  }
-  public set tile_offset_axis(value): void {
-    set_tile_offset_axis(value);
-  }
-  public get tile_size(): Vector2i {
-    get_tile_size();
-  }
-  public set tile_size(value): void {
-    set_tile_size(value);
-  }
-  public get uv_clipping(): boolean {
-    is_uv_clipping();
-  }
-  public set uv_clipping(value): void {
-    set_uv_clipping(value);
-  }
+  public get tile_shape(): number;
+  public set tile_shape(value): void;
+  public get tile_layout(): number;
+  public set tile_layout(value): void;
+  public get tile_offset_axis(): number;
+  public set tile_offset_axis(value): void;
+  public get tile_size(): Vector2i;
+  public set tile_size(value): void;
+  public get uv_clipping(): boolean;
+  public set uv_clipping(value): void;
   static TileShape = {
     TILE_SHAPE_SQUARE = 0,
     TILE_SHAPE_ISOMETRIC = 1,

@@ -1,8 +1,9 @@
 
-import { Node2D } from "@godot/classes/node2d";
 import { Shape2D } from "@godot/classes/shape2d";
+import { Node2D } from "@godot/classes/node2d";
 import { CollisionObject2D } from "@godot/classes/collision_object2d";
 import { GodotObject } from "@godot/classes/godot_object";
+
 
 export declare class ShapeCast2D extends Node2D{
   public set_enabled(_enabled: boolean): void;
@@ -40,61 +41,23 @@ export declare class ShapeCast2D extends Node2D{
   public is_collide_with_areas_enabled(): boolean;
   public set_collide_with_bodies(_enable: boolean): void;
   public is_collide_with_bodies_enabled(): boolean;
-  public get enabled(): boolean {
-    is_enabled();
-  }
-  public set enabled(value): void {
-    set_enabled(value);
-  }
-  public get shape(): Shape2D {
-    get_shape();
-  }
-  public set shape(value): void {
-    set_shape(value);
-  }
-  public get exclude_parent(): boolean {
-    get_exclude_parent_body();
-  }
-  public set exclude_parent(value): void {
-    set_exclude_parent_body(value);
-  }
-  public get target_position(): Vector2 {
-    get_target_position();
-  }
-  public set target_position(value): void {
-    set_target_position(value);
-  }
-  public get margin(): number {
-    get_margin();
-  }
-  public set margin(value): void {
-    set_margin(value);
-  }
-  public get max_results(): number {
-    get_max_results();
-  }
-  public set max_results(value): void {
-    set_max_results(value);
-  }
-  public get collision_mask(): number {
-    get_collision_mask();
-  }
-  public set collision_mask(value): void {
-    set_collision_mask(value);
-  }
-  public get collision_result(): GDArray {
-    _get_collision_result();
-  }
-  public get collide_with_areas(): boolean {
-    is_collide_with_areas_enabled();
-  }
-  public set collide_with_areas(value): void {
-    set_collide_with_areas(value);
-  }
-  public get collide_with_bodies(): boolean {
-    is_collide_with_bodies_enabled();
-  }
-  public set collide_with_bodies(value): void {
-    set_collide_with_bodies(value);
-  }
+  public get enabled(): boolean;
+  public set enabled(value): void;
+  public get shape(): Shape2D;
+  public set shape(value): void;
+  public get exclude_parent(): boolean;
+  public set exclude_parent(value): void;
+  public get target_position(): Vector2;
+  public set target_position(value): void;
+  public get margin(): number;
+  public set margin(value): void;
+  public get max_results(): number;
+  public set max_results(value): void;
+  public get collision_mask(): number;
+  public set collision_mask(value): void;
+  public get collision_result(): GDArray;
+  public get collide_with_areas(): boolean;
+  public set collide_with_areas(value): void;
+  public get collide_with_bodies(): boolean;
+  public set collide_with_bodies(value): void;
 }

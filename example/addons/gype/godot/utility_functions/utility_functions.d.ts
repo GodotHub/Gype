@@ -102,7 +102,7 @@ declare global {
         push_error(_arg1: any, ...arg: any): void;
         push_warning(_arg1: any, ...arg: any): void;
         var_to_str(_variable: any): String;
-        str_to_var(_string: String | StringName | string): any;
+        str_to_var(_string: GDString | StringName | string): any;
         var_to_bytes(_variable: any): PackedByteArray;
         bytes_to_var(_bytes: PackedByteArray): any;
         var_to_bytes_with_objects(_variable: any): PackedByteArray;

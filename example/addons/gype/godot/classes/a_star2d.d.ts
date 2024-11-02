@@ -1,6 +1,7 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
 
+
 export declare class AStar2D extends RefCounted{
   public _estimate_cost(_from_id: number, _to_id: number): number;
   public _compute_cost(_from_id: number, _to_id: number): number;

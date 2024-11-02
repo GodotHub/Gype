@@ -1,6 +1,7 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
 
+
 export declare class XRInterface extends RefCounted{
   public get_name(): StringName;
   public get_capabilities(): number;
@@ -13,7 +14,7 @@ export declare class XRInterface extends RefCounted{
   public get_tracking_status(): number;
   public get_render_target_size(): Vector2;
   public get_view_count(): number;
-  public trigger_haptic_pulse(_action_name: String | StringName | string, _tracker_name: String | StringName | string, _frequency: number, _amplitude: number, _duration_sec: number, _delay_sec: number): void;
+  public trigger_haptic_pulse(_action_name: GDString | StringName | string, _tracker_name: GDString | StringName | string, _frequency: number, _amplitude: number, _duration_sec: number, _delay_sec: number): void;
   public supports_play_area_mode(_mode: number): boolean;
   public get_play_area_mode(): number;
   public set_play_area_mode(_mode: number): boolean;
@@ -30,30 +31,14 @@ export declare class XRInterface extends RefCounted{
   public get_supported_environment_blend_modes(): GDArray;
   public set_environment_blend_mode(_mode: number): boolean;
   public get_environment_blend_mode(): number;
-  public get interface_is_primary(): boolean {
-    is_primary();
-  }
-  public set interface_is_primary(value): void {
-    set_primary(value);
-  }
-  public get xr_play_area_mode(): number {
-    get_play_area_mode();
-  }
-  public set xr_play_area_mode(value): void {
-    set_play_area_mode(value);
-  }
-  public get environment_blend_mode(): number {
-    get_environment_blend_mode();
-  }
-  public set environment_blend_mode(value): void {
-    set_environment_blend_mode(value);
-  }
-  public get ar_is_anchor_detection_enabled(): boolean {
-    get_anchor_detection_is_enabled();
-  }
-  public set ar_is_anchor_detection_enabled(value): void {
-    set_anchor_detection_is_enabled(value);
-  }
+  public get interface_is_primary(): boolean;
+  public set interface_is_primary(value): void;
+  public get xr_play_area_mode(): number;
+  public set xr_play_area_mode(value): void;
+  public get environment_blend_mode(): number;
+  public set environment_blend_mode(value): void;
+  public get ar_is_anchor_detection_enabled(): boolean;
+  public set ar_is_anchor_detection_enabled(value): void;
   static Capabilities = {
     XR_NONE = 0,
     XR_MONO = 1,

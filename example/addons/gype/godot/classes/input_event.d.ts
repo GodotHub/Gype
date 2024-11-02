@@ -1,13 +1,14 @@
 
 import { Resource } from "@godot/classes/resource";
 
+
 export declare class InputEvent extends Resource{
   public set_device(_device: number): void;
   public get_device(): number;
-  public is_action(_action: String | StringName | string, _exact_match: boolean): boolean;
-  public is_action_pressed(_action: String | StringName | string, _allow_echo: boolean, _exact_match: boolean): boolean;
-  public is_action_released(_action: String | StringName | string, _exact_match: boolean): boolean;
-  public get_action_strength(_action: String | StringName | string, _exact_match: boolean): number;
+  public is_action(_action: GDString | StringName | string, _exact_match: boolean): boolean;
+  public is_action_pressed(_action: GDString | StringName | string, _allow_echo: boolean, _exact_match: boolean): boolean;
+  public is_action_released(_action: GDString | StringName | string, _exact_match: boolean): boolean;
+  public get_action_strength(_action: GDString | StringName | string, _exact_match: boolean): number;
   public is_canceled(): boolean;
   public is_pressed(): boolean;
   public is_released(): boolean;
@@ -17,10 +18,6 @@ export declare class InputEvent extends Resource{
   public is_action_type(): boolean;
   public accumulate(_with_event: InputEvent): boolean;
   public xformed_by(_xform: Transform2D, _local_ofs: Vector2): InputEvent;
-  public get device(): number {
-    get_device();
-  }
-  public set device(value): void {
-    set_device(value);
-  }
+  public get device(): number;
+  public set device(value): void;
 }

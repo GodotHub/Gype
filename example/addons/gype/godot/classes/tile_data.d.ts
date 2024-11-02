@@ -1,8 +1,9 @@
 
 import { NavigationPolygon } from "@godot/classes/navigation_polygon";
-import { GodotObject } from "@godot/classes/godot_object";
-import { OccluderPolygon2D } from "@godot/classes/occluder_polygon2d";
 import { Material } from "@godot/classes/material";
+import { OccluderPolygon2D } from "@godot/classes/occluder_polygon2d";
+import { GodotObject } from "@godot/classes/godot_object";
+
 
 export declare class TileData extends GodotObject{
   public set_flip_h(_flip_h: boolean): void;
@@ -48,75 +49,31 @@ export declare class TileData extends GodotObject{
   public get_navigation_polygon(_layer_id: number, _flip_h: boolean, _flip_v: boolean, _transpose: boolean): NavigationPolygon;
   public set_probability(_probability: number): void;
   public get_probability(): number;
-  public set_custom_data(_layer_name: String | StringName | string, _value: any): void;
-  public get_custom_data(_layer_name: String | StringName | string): any;
+  public set_custom_data(_layer_name: GDString | StringName | string, _value: any): void;
+  public get_custom_data(_layer_name: GDString | StringName | string): any;
   public set_custom_data_by_layer_id(_layer_id: number, _value: any): void;
   public get_custom_data_by_layer_id(_layer_id: number): any;
-  public get flip_h(): boolean {
-    get_flip_h();
-  }
-  public set flip_h(value): void {
-    set_flip_h(value);
-  }
-  public get flip_v(): boolean {
-    get_flip_v();
-  }
-  public set flip_v(value): void {
-    set_flip_v(value);
-  }
-  public get transpose(): boolean {
-    get_transpose();
-  }
-  public set transpose(value): void {
-    set_transpose(value);
-  }
-  public get texture_origin(): Vector2i {
-    get_texture_origin();
-  }
-  public set texture_origin(value): void {
-    set_texture_origin(value);
-  }
-  public get modulate(): Color {
-    get_modulate();
-  }
-  public set modulate(value): void {
-    set_modulate(value);
-  }
-  public get material(): CanvasItemMaterial {
-    get_material();
-  }
-  public set material(value): void {
-    set_material(value);
-  }
-  public get z_index(): number {
-    get_z_index();
-  }
-  public set z_index(value): void {
-    set_z_index(value);
-  }
-  public get y_sort_origin(): number {
-    get_y_sort_origin();
-  }
-  public set y_sort_origin(value): void {
-    set_y_sort_origin(value);
-  }
-  public get terrain_set(): number {
-    get_terrain_set();
-  }
-  public set terrain_set(value): void {
-    set_terrain_set(value);
-  }
-  public get terrain(): number {
-    get_terrain();
-  }
-  public set terrain(value): void {
-    set_terrain(value);
-  }
-  public get probability(): number {
-    get_probability();
-  }
-  public set probability(value): void {
-    set_probability(value);
-  }
+  public get flip_h(): boolean;
+  public set flip_h(value): void;
+  public get flip_v(): boolean;
+  public set flip_v(value): void;
+  public get transpose(): boolean;
+  public set transpose(value): void;
+  public get texture_origin(): Vector2i;
+  public set texture_origin(value): void;
+  public get modulate(): Color;
+  public set modulate(value): void;
+  public get material(): CanvasItemMaterial;
+  public set material(value): void;
+  public get z_index(): number;
+  public set z_index(value): void;
+  public get y_sort_origin(): number;
+  public set y_sort_origin(value): void;
+  public get terrain_set(): number;
+  public set terrain_set(value): void;
+  public get terrain(): number;
+  public set terrain(value): void;
+  public get probability(): number;
+  public set probability(value): void;
   public get changed(): Signal;
 }

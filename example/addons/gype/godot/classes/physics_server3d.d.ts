@@ -1,10 +1,11 @@
 
 import { PhysicsServer3DRenderingServerHandler } from "@godot/classes/physics_server3d_rendering_server_handler";
-import { PhysicsTestMotionResult3D } from "@godot/classes/physics_test_motion_result3d";
-import { PhysicsDirectSpaceState3D } from "@godot/classes/physics_direct_space_state3d";
 import { GodotObject } from "@godot/classes/godot_object";
-import { PhysicsDirectBodyState3D } from "@godot/classes/physics_direct_body_state3d";
 import { PhysicsTestMotionParameters3D } from "@godot/classes/physics_test_motion_parameters3d";
+import { PhysicsDirectBodyState3D } from "@godot/classes/physics_direct_body_state3d";
+import { PhysicsDirectSpaceState3D } from "@godot/classes/physics_direct_space_state3d";
+import { PhysicsTestMotionResult3D } from "@godot/classes/physics_test_motion_result3d";
+
 
 export declare class PhysicsServer3D extends GodotObject{
   public world_boundary_shape_create(): RID;

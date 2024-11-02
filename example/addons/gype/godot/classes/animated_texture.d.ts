@@ -1,6 +1,7 @@
 
 import { Texture2D } from "@godot/classes/texture2d";
 
+
 export declare class AnimatedTexture extends Texture2D{
   public set_frames(_frames: number): void;
   public get_frames(): number;
@@ -16,34 +17,14 @@ export declare class AnimatedTexture extends Texture2D{
   public get_frame_texture(_frame: number): Texture2D;
   public set_frame_duration(_frame: number, _duration: number): void;
   public get_frame_duration(_frame: number): number;
-  public get frames(): number {
-    get_frames();
-  }
-  public set frames(value): void {
-    set_frames(value);
-  }
-  public get current_frame(): number {
-    get_current_frame();
-  }
-  public set current_frame(value): void {
-    set_current_frame(value);
-  }
-  public get pause(): boolean {
-    get_pause();
-  }
-  public set pause(value): void {
-    set_pause(value);
-  }
-  public get one_shot(): boolean {
-    get_one_shot();
-  }
-  public set one_shot(value): void {
-    set_one_shot(value);
-  }
-  public get speed_scale(): number {
-    get_speed_scale();
-  }
-  public set speed_scale(value): void {
-    set_speed_scale(value);
-  }
+  public get frames(): number;
+  public set frames(value): void;
+  public get current_frame(): number;
+  public set current_frame(value): void;
+  public get pause(): boolean;
+  public set pause(value): void;
+  public get one_shot(): boolean;
+  public set one_shot(value): void;
+  public get speed_scale(): number;
+  public set speed_scale(value): void;
 }

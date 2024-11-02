@@ -1,6 +1,7 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
 import { PhysicsDirectSpaceState3D } from "@godot/classes/physics_direct_space_state3d";
+import { GodotObject } from "@godot/classes/godot_object";
+
 
 export declare class PhysicsDirectBodyState3D extends GodotObject{
   public get_total_gravity(): Vector3;
@@ -49,58 +50,22 @@ export declare class PhysicsDirectBodyState3D extends GodotObject{
   public get_step(): number;
   public integrate_forces(): void;
   public get_space_state(): PhysicsDirectSpaceState3D;
-  public get step(): number {
-    get_step();
-  }
-  public get inverse_mass(): number {
-    get_inverse_mass();
-  }
-  public get total_angular_damp(): number {
-    get_total_angular_damp();
-  }
-  public get total_linear_damp(): number {
-    get_total_linear_damp();
-  }
-  public get inverse_inertia(): Vector3 {
-    get_inverse_inertia();
-  }
-  public get inverse_inertia_tensor(): Basis {
-    get_inverse_inertia_tensor();
-  }
-  public get total_gravity(): Vector3 {
-    get_total_gravity();
-  }
-  public get center_of_mass(): Vector3 {
-    get_center_of_mass();
-  }
-  public get center_of_mass_local(): Vector3 {
-    get_center_of_mass_local();
-  }
-  public get principal_inertia_axes(): Basis {
-    get_principal_inertia_axes();
-  }
-  public get angular_velocity(): Vector3 {
-    get_angular_velocity();
-  }
-  public set angular_velocity(value): void {
-    set_angular_velocity(value);
-  }
-  public get linear_velocity(): Vector3 {
-    get_linear_velocity();
-  }
-  public set linear_velocity(value): void {
-    set_linear_velocity(value);
-  }
-  public get sleeping(): boolean {
-    is_sleeping();
-  }
-  public set sleeping(value): void {
-    set_sleep_state(value);
-  }
-  public get transform(): Transform3D {
-    get_transform();
-  }
-  public set transform(value): void {
-    set_transform(value);
-  }
+  public get step(): number;
+  public get inverse_mass(): number;
+  public get total_angular_damp(): number;
+  public get total_linear_damp(): number;
+  public get inverse_inertia(): Vector3;
+  public get inverse_inertia_tensor(): Basis;
+  public get total_gravity(): Vector3;
+  public get center_of_mass(): Vector3;
+  public get center_of_mass_local(): Vector3;
+  public get principal_inertia_axes(): Basis;
+  public get angular_velocity(): Vector3;
+  public set angular_velocity(value): void;
+  public get linear_velocity(): Vector3;
+  public set linear_velocity(value): void;
+  public get sleeping(): boolean;
+  public set sleeping(value): void;
+  public get transform(): Transform3D;
+  public set transform(value): void;
 }

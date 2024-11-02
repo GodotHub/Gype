@@ -2,6 +2,7 @@
 import { PhysicsBody3D } from "@godot/classes/physics_body3d";
 import { KinematicCollision3D } from "@godot/classes/kinematic_collision3d";
 
+
 export declare class CharacterBody3D extends PhysicsBody3D{
   public move_and_slide(): boolean;
   public apply_floor_snap(): void;
@@ -52,96 +53,36 @@ export declare class CharacterBody3D extends PhysicsBody3D{
   public get_slide_collision_count(): number;
   public get_slide_collision(_slide_idx: number): KinematicCollision3D;
   public get_last_slide_collision(): KinematicCollision3D;
-  public get motion_mode(): number {
-    get_motion_mode();
-  }
-  public set motion_mode(value): void {
-    set_motion_mode(value);
-  }
-  public get up_direction(): Vector3 {
-    get_up_direction();
-  }
-  public set up_direction(value): void {
-    set_up_direction(value);
-  }
-  public get slide_on_ceiling(): boolean {
-    is_slide_on_ceiling_enabled();
-  }
-  public set slide_on_ceiling(value): void {
-    set_slide_on_ceiling_enabled(value);
-  }
-  public get velocity(): Vector3 {
-    get_velocity();
-  }
-  public set velocity(value): void {
-    set_velocity(value);
-  }
-  public get max_slides(): number {
-    get_max_slides();
-  }
-  public set max_slides(value): void {
-    set_max_slides(value);
-  }
-  public get wall_min_slide_angle(): number {
-    get_wall_min_slide_angle();
-  }
-  public set wall_min_slide_angle(value): void {
-    set_wall_min_slide_angle(value);
-  }
-  public get floor_stop_on_slope(): boolean {
-    is_floor_stop_on_slope_enabled();
-  }
-  public set floor_stop_on_slope(value): void {
-    set_floor_stop_on_slope_enabled(value);
-  }
-  public get floor_constant_speed(): boolean {
-    is_floor_constant_speed_enabled();
-  }
-  public set floor_constant_speed(value): void {
-    set_floor_constant_speed_enabled(value);
-  }
-  public get floor_block_on_wall(): boolean {
-    is_floor_block_on_wall_enabled();
-  }
-  public set floor_block_on_wall(value): void {
-    set_floor_block_on_wall_enabled(value);
-  }
-  public get floor_max_angle(): number {
-    get_floor_max_angle();
-  }
-  public set floor_max_angle(value): void {
-    set_floor_max_angle(value);
-  }
-  public get floor_snap_length(): number {
-    get_floor_snap_length();
-  }
-  public set floor_snap_length(value): void {
-    set_floor_snap_length(value);
-  }
-  public get platform_on_leave(): number {
-    get_platform_on_leave();
-  }
-  public set platform_on_leave(value): void {
-    set_platform_on_leave(value);
-  }
-  public get platform_floor_layers(): number {
-    get_platform_floor_layers();
-  }
-  public set platform_floor_layers(value): void {
-    set_platform_floor_layers(value);
-  }
-  public get platform_wall_layers(): number {
-    get_platform_wall_layers();
-  }
-  public set platform_wall_layers(value): void {
-    set_platform_wall_layers(value);
-  }
-  public get safe_margin(): number {
-    get_safe_margin();
-  }
-  public set safe_margin(value): void {
-    set_safe_margin(value);
-  }
+  public get motion_mode(): number;
+  public set motion_mode(value): void;
+  public get up_direction(): Vector3;
+  public set up_direction(value): void;
+  public get slide_on_ceiling(): boolean;
+  public set slide_on_ceiling(value): void;
+  public get velocity(): Vector3;
+  public set velocity(value): void;
+  public get max_slides(): number;
+  public set max_slides(value): void;
+  public get wall_min_slide_angle(): number;
+  public set wall_min_slide_angle(value): void;
+  public get floor_stop_on_slope(): boolean;
+  public set floor_stop_on_slope(value): void;
+  public get floor_constant_speed(): boolean;
+  public set floor_constant_speed(value): void;
+  public get floor_block_on_wall(): boolean;
+  public set floor_block_on_wall(value): void;
+  public get floor_max_angle(): number;
+  public set floor_max_angle(value): void;
+  public get floor_snap_length(): number;
+  public set floor_snap_length(value): void;
+  public get platform_on_leave(): number;
+  public set platform_on_leave(value): void;
+  public get platform_floor_layers(): number;
+  public set platform_floor_layers(value): void;
+  public get platform_wall_layers(): number;
+  public set platform_wall_layers(value): void;
+  public get safe_margin(): number;
+  public set safe_margin(value): void;
   static MotionMode = {
     MOTION_MODE_GROUNDED = 0,
     MOTION_MODE_FLOATING = 1,

@@ -59,6 +59,7 @@ On Windows, download [mingw64 (posix version)](https://github.com/niXman/mingw-b
 
 Windows: `./build.ps1`  
 
+```ts
 增加await signal支持
 import { Node2D } from "@godot/classes/node2d";
 import { GodotClass, ToSignal } from "@godot/core/class_defined";
@@ -78,3 +79,4 @@ export class node_2d extends Node2D {
 
 	}
 }
+```

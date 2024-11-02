@@ -2560,16 +2560,16 @@ def make_js_varargs_template(function_data, static=False,
     function_signature += " {"
     result.append(function_signature)
 
-    args_array = f"std::vector<Variant *> variant_args;\n"
+    args_array = f"\tstd::vector<Variant *> variant_args;\n"
     for argument in method_arguments:
-        args_array += f'Variant {argument["name"]} = {escape_argument(argument["name"])};\n'
-        args_array += f'variant_args.push_back(&{argument["name"]});\n'
+        args_array += f'\t\tVariant {argument["name"]} = {escape_argument(argument["name"])};\n'
+        args_array += f'\t\tvariant_args.push_back(&{argument["name"]});\n'
 
     result.append(args_array)
     result.append(
-        'for (size_t i = 0; i < p_args.size(); i++) {\n'
-            'variant_args.push_back(&p_args[i]);\n'
-        '}')
+        '\tfor (size_t i = 0; i < p_args.size(); i++) {\n'
+        '\t\t\tvariant_args.push_back(&p_args[i]);\n'
+        '\t\t}')
     call_line = "\t"
     if not for_builtin_classes:
         if return_type != "void":

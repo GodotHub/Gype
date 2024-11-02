@@ -1,6 +1,7 @@
 
 import { Node2D } from "@godot/classes/node2d";
 
+
 export declare class PathFollow2D extends Node2D{
   public set_progress(_progress: number): void;
   public get_progress(): number;
@@ -16,46 +17,18 @@ export declare class PathFollow2D extends Node2D{
   public get_cubic_interpolation(): boolean;
   public set_loop(_loop: boolean): void;
   public has_loop(): boolean;
-  public get progress(): number {
-    get_progress();
-  }
-  public set progress(value): void {
-    set_progress(value);
-  }
-  public get progress_ratio(): number {
-    get_progress_ratio();
-  }
-  public set progress_ratio(value): void {
-    set_progress_ratio(value);
-  }
-  public get h_offset(): number {
-    get_h_offset();
-  }
-  public set h_offset(value): void {
-    set_h_offset(value);
-  }
-  public get v_offset(): number {
-    get_v_offset();
-  }
-  public set v_offset(value): void {
-    set_v_offset(value);
-  }
-  public get rotates(): boolean {
-    is_rotating();
-  }
-  public set rotates(value): void {
-    set_rotates(value);
-  }
-  public get cubic_interp(): boolean {
-    get_cubic_interpolation();
-  }
-  public set cubic_interp(value): void {
-    set_cubic_interpolation(value);
-  }
-  public get loop(): boolean {
-    has_loop();
-  }
-  public set loop(value): void {
-    set_loop(value);
-  }
+  public get progress(): number;
+  public set progress(value): void;
+  public get progress_ratio(): number;
+  public set progress_ratio(value): void;
+  public get h_offset(): number;
+  public set h_offset(value): void;
+  public get v_offset(): number;
+  public set v_offset(value): void;
+  public get rotates(): boolean;
+  public set rotates(value): void;
+  public get cubic_interp(): boolean;
+  public set cubic_interp(value): void;
+  public get loop(): boolean;
+  public set loop(value): void;
 }

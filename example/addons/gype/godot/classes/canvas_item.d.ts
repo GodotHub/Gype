@@ -1,14 +1,15 @@
 
 import { StyleBox } from "@godot/classes/style_box";
-import { MultiMesh } from "@godot/classes/multi_mesh";
-import { World2D } from "@godot/classes/world2d";
-import { Node } from "@godot/classes/node";
-import { CanvasLayer } from "@godot/classes/canvas_layer";
 import { Texture2D } from "@godot/classes/texture2d";
-import { Mesh } from "@godot/classes/mesh";
-import { Material } from "@godot/classes/material";
 import { InputEvent } from "@godot/classes/input_event";
+import { Mesh } from "@godot/classes/mesh";
 import { Font } from "@godot/classes/font";
+import { World2D } from "@godot/classes/world2d";
+import { CanvasLayer } from "@godot/classes/canvas_layer";
+import { Node } from "@godot/classes/node";
+import { MultiMesh } from "@godot/classes/multi_mesh";
+import { Material } from "@godot/classes/material";
+
 
 export declare class CanvasItem extends Node{
   public _draw(): void;
@@ -54,12 +55,12 @@ export declare class CanvasItem extends Node{
   public draw_primitive(_points: PackedVector2Array, _colors: PackedColorArray, _uvs: PackedVector2Array, _texture: Texture2D): void;
   public draw_polygon(_points: PackedVector2Array, _colors: PackedColorArray, _uvs: PackedVector2Array, _texture: Texture2D): void;
   public draw_colored_polygon(_points: PackedVector2Array, _color: Color, _uvs: PackedVector2Array, _texture: Texture2D): void;
-  public draw_string(_font: Font, _pos: Vector2, _text: String | StringName | string, _alignment: number, _width: number, _font_size: number, _modulate: Color, _justification_flags: number, _direction: number, _orientation: number): void;
-  public draw_multiline_string(_font: Font, _pos: Vector2, _text: String | StringName | string, _alignment: number, _width: number, _font_size: number, _max_lines: number, _modulate: Color, _brk_flags: number, _justification_flags: number, _direction: number, _orientation: number): void;
-  public draw_string_outline(_font: Font, _pos: Vector2, _text: String | StringName | string, _alignment: number, _width: number, _font_size: number, _size: number, _modulate: Color, _justification_flags: number, _direction: number, _orientation: number): void;
-  public draw_multiline_string_outline(_font: Font, _pos: Vector2, _text: String | StringName | string, _alignment: number, _width: number, _font_size: number, _max_lines: number, _size: number, _modulate: Color, _brk_flags: number, _justification_flags: number, _direction: number, _orientation: number): void;
-  public draw_char(_font: Font, _pos: Vector2, _char: String | StringName | string, _font_size: number, _modulate: Color): void;
-  public draw_char_outline(_font: Font, _pos: Vector2, _char: String | StringName | string, _font_size: number, _size: number, _modulate: Color): void;
+  public draw_string(_font: Font, _pos: Vector2, _text: GDString | StringName | string, _alignment: number, _width: number, _font_size: number, _modulate: Color, _justification_flags: number, _direction: number, _orientation: number): void;
+  public draw_multiline_string(_font: Font, _pos: Vector2, _text: GDString | StringName | string, _alignment: number, _width: number, _font_size: number, _max_lines: number, _modulate: Color, _brk_flags: number, _justification_flags: number, _direction: number, _orientation: number): void;
+  public draw_string_outline(_font: Font, _pos: Vector2, _text: GDString | StringName | string, _alignment: number, _width: number, _font_size: number, _size: number, _modulate: Color, _justification_flags: number, _direction: number, _orientation: number): void;
+  public draw_multiline_string_outline(_font: Font, _pos: Vector2, _text: GDString | StringName | string, _alignment: number, _width: number, _font_size: number, _max_lines: number, _size: number, _modulate: Color, _brk_flags: number, _justification_flags: number, _direction: number, _orientation: number): void;
+  public draw_char(_font: Font, _pos: Vector2, _char: GDString | StringName | string, _font_size: number, _modulate: Color): void;
+  public draw_char_outline(_font: Font, _pos: Vector2, _char: GDString | StringName | string, _font_size: number, _size: number, _modulate: Color): void;
   public draw_mesh(_mesh: Mesh, _texture: Texture2D, _transform: Transform2D, _modulate: Color): void;
   public draw_multimesh(_multimesh: MultiMesh, _texture: Texture2D): void;
   public draw_set_transform(_position: Vector2, _rotation: number, _scale: Vector2): void;
@@ -99,96 +100,36 @@ export declare class CanvasItem extends Node{
   public get_texture_repeat(): number;
   public set_clip_children_mode(_mode: number): void;
   public get_clip_children_mode(): number;
-  public get visible(): boolean {
-    is_visible();
-  }
-  public set visible(value): void {
-    set_visible(value);
-  }
-  public get modulate(): Color {
-    get_modulate();
-  }
-  public set modulate(value): void {
-    set_modulate(value);
-  }
-  public get self_modulate(): Color {
-    get_self_modulate();
-  }
-  public set self_modulate(value): void {
-    set_self_modulate(value);
-  }
-  public get show_behind_parent(): boolean {
-    is_draw_behind_parent_enabled();
-  }
-  public set show_behind_parent(value): void {
-    set_draw_behind_parent(value);
-  }
-  public get top_level(): boolean {
-    is_set_as_top_level();
-  }
-  public set top_level(value): void {
-    set_as_top_level(value);
-  }
-  public get clip_children(): number {
-    get_clip_children_mode();
-  }
-  public set clip_children(value): void {
-    set_clip_children_mode(value);
-  }
-  public get light_mask(): number {
-    get_light_mask();
-  }
-  public set light_mask(value): void {
-    set_light_mask(value);
-  }
-  public get visibility_layer(): number {
-    get_visibility_layer();
-  }
-  public set visibility_layer(value): void {
-    set_visibility_layer(value);
-  }
-  public get z_index(): number {
-    get_z_index();
-  }
-  public set z_index(value): void {
-    set_z_index(value);
-  }
-  public get z_as_relative(): boolean {
-    is_z_relative();
-  }
-  public set z_as_relative(value): void {
-    set_z_as_relative(value);
-  }
-  public get y_sort_enabled(): boolean {
-    is_y_sort_enabled();
-  }
-  public set y_sort_enabled(value): void {
-    set_y_sort_enabled(value);
-  }
-  public get texture_filter(): number {
-    get_texture_filter();
-  }
-  public set texture_filter(value): void {
-    set_texture_filter(value);
-  }
-  public get texture_repeat(): number {
-    get_texture_repeat();
-  }
-  public set texture_repeat(value): void {
-    set_texture_repeat(value);
-  }
-  public get material(): CanvasItemMaterial {
-    get_material();
-  }
-  public set material(value): void {
-    set_material(value);
-  }
-  public get use_parent_material(): boolean {
-    get_use_parent_material();
-  }
-  public set use_parent_material(value): void {
-    set_use_parent_material(value);
-  }
+  public get visible(): boolean;
+  public set visible(value): void;
+  public get modulate(): Color;
+  public set modulate(value): void;
+  public get self_modulate(): Color;
+  public set self_modulate(value): void;
+  public get show_behind_parent(): boolean;
+  public set show_behind_parent(value): void;
+  public get top_level(): boolean;
+  public set top_level(value): void;
+  public get clip_children(): number;
+  public set clip_children(value): void;
+  public get light_mask(): number;
+  public set light_mask(value): void;
+  public get visibility_layer(): number;
+  public set visibility_layer(value): void;
+  public get z_index(): number;
+  public set z_index(value): void;
+  public get z_as_relative(): boolean;
+  public set z_as_relative(value): void;
+  public get y_sort_enabled(): boolean;
+  public set y_sort_enabled(value): void;
+  public get texture_filter(): number;
+  public set texture_filter(value): void;
+  public get texture_repeat(): number;
+  public set texture_repeat(value): void;
+  public get material(): CanvasItemMaterial;
+  public set material(value): void;
+  public get use_parent_material(): boolean;
+  public set use_parent_material(value): void;
   static TextureFilter = {
     TEXTURE_FILTER_PARENT_NODE = 0,
     TEXTURE_FILTER_NEAREST = 1,

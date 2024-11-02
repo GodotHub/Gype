@@ -1,8 +1,9 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
-import { PhysicsPointQueryParameters3D } from "@godot/classes/physics_point_query_parameters3d";
-import { PhysicsRayQueryParameters3D } from "@godot/classes/physics_ray_query_parameters3d";
 import { PhysicsShapeQueryParameters3D } from "@godot/classes/physics_shape_query_parameters3d";
+import { PhysicsRayQueryParameters3D } from "@godot/classes/physics_ray_query_parameters3d";
+import { PhysicsPointQueryParameters3D } from "@godot/classes/physics_point_query_parameters3d";
+import { GodotObject } from "@godot/classes/godot_object";
+
 
 export declare class PhysicsDirectSpaceState3D extends GodotObject{
   public intersect_point(_parameters: PhysicsPointQueryParameters3D, _max_results: number): GDArray;

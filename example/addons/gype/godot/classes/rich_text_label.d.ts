@@ -1,17 +1,18 @@
 
 import { VScrollBar } from "@godot/classes/v_scroll_bar";
-import { Texture2D } from "@godot/classes/texture2d";
 import { Control } from "@godot/classes/control";
-import { RichTextEffect } from "@godot/classes/rich_text_effect";
+import { Texture2D } from "@godot/classes/texture2d";
 import { Font } from "@godot/classes/font";
+import { RichTextEffect } from "@godot/classes/rich_text_effect";
 import { PopupMenu } from "@godot/classes/popup_menu";
+
 
 export declare class RichTextLabel extends Control{
   public get_parsed_text(): String;
-  public add_text(_text: String | StringName | string): void;
-  public set_text(_text: String | StringName | string): void;
-  public add_image(_image: Texture2D, _width: number, _height: number, _color: Color, _inline_align: number, _region: Rect2, _key: any, _pad: boolean, _tooltip: String | StringName | string, _size_in_percent: boolean): void;
-  public update_image(_key: any, _mask: number, _image: Texture2D, _width: number, _height: number, _color: Color, _inline_align: number, _region: Rect2, _pad: boolean, _tooltip: String | StringName | string, _size_in_percent: boolean): void;
+  public add_text(_text: GDString | StringName | string): void;
+  public set_text(_text: GDString | StringName | string): void;
+  public add_image(_image: Texture2D, _width: number, _height: number, _color: Color, _inline_align: number, _region: Rect2, _key: any, _pad: boolean, _tooltip: GDString | StringName | string, _size_in_percent: boolean): void;
+  public update_image(_key: any, _mask: number, _image: Texture2D, _width: number, _height: number, _color: Color, _inline_align: number, _region: Rect2, _pad: boolean, _tooltip: GDString | StringName | string, _size_in_percent: boolean): void;
   public newline(): void;
   public remove_paragraph(_paragraph: number, _no_invalidate: boolean): boolean;
   public invalidate_paragraph(_paragraph: number): boolean;
@@ -25,16 +26,16 @@ export declare class RichTextLabel extends Control{
   public push_color(_color: Color): void;
   public push_outline_size(_outline_size: number): void;
   public push_outline_color(_color: Color): void;
-  public push_paragraph(_alignment: number, _base_direction: number, _language: String | StringName | string, _st_parser: number, _justification_flags: number, _tab_stops: PackedFloat32Array): void;
+  public push_paragraph(_alignment: number, _base_direction: number, _language: GDString | StringName | string, _st_parser: number, _justification_flags: number, _tab_stops: PackedFloat32Array): void;
   public push_indent(_level: number): void;
-  public push_list(_level: number, _type: number, _capitalize: boolean, _bullet: String | StringName | string): void;
+  public push_list(_level: number, _type: number, _capitalize: boolean, _bullet: GDString | StringName | string): void;
   public push_meta(_data: any, _underline_mode: number): void;
-  public push_hint(_description: String | StringName | string): void;
-  public push_language(_language: String | StringName | string): void;
+  public push_hint(_description: GDString | StringName | string): void;
+  public push_language(_language: GDString | StringName | string): void;
   public push_underline(): void;
   public push_strikethrough(): void;
   public push_table(_columns: number, _inline_align: number, _align_to_row: number): void;
-  public push_dropcap(_string: String | StringName | string, _font: Font, _size: number, _dropcap_margins: Rect2, _color: Color, _outline_size: number, _outline_color: Color): void;
+  public push_dropcap(_string: GDString | StringName | string, _font: Font, _size: number, _dropcap_margins: Rect2, _color: Color, _outline_size: number, _outline_color: Color): void;
   public set_table_column_expand(_column: number, _expand: boolean, _ratio: number): void;
   public set_cell_row_background_color(_odd_row_bg: Color, _even_row_bg: Color): void;
   public set_cell_border_color(_color: Color): void;
@@ -55,7 +56,7 @@ export declare class RichTextLabel extends Control{
   public get_structured_text_bidi_override_options(): GDArray;
   public set_text_direction(_direction: number): void;
   public get_text_direction(): number;
-  public set_language(_language: String | StringName | string): void;
+  public set_language(_language: GDString | StringName | string): void;
   public get_language(): String;
   public set_autowrap_mode(_autowrap_mode: number): void;
   public get_autowrap_mode(): number;
@@ -90,8 +91,8 @@ export declare class RichTextLabel extends Control{
   public select_all(): void;
   public get_selected_text(): String;
   public deselect(): void;
-  public parse_bbcode(_bbcode: String | StringName | string): void;
-  public append_text(_bbcode: String | StringName | string): void;
+  public parse_bbcode(_bbcode: GDString | StringName | string): void;
+  public append_text(_bbcode: GDString | StringName | string): void;
   public get_text(): String;
   public is_ready(): boolean;
   public set_threaded(_threaded: boolean): void;
@@ -124,150 +125,54 @@ export declare class RichTextLabel extends Control{
   public get_menu(): PopupMenu;
   public is_menu_visible(): boolean;
   public menu_option(_option: number): void;
-  public get bbcode_enabled(): boolean {
-    is_using_bbcode();
-  }
-  public set bbcode_enabled(value): void {
-    set_use_bbcode(value);
-  }
-  public get text(): String {
-    get_text();
-  }
-  public set text(value): void {
-    set_text(value);
-  }
-  public get fit_content(): boolean {
-    is_fit_content_enabled();
-  }
-  public set fit_content(value): void {
-    set_fit_content(value);
-  }
-  public get scroll_active(): boolean {
-    is_scroll_active();
-  }
-  public set scroll_active(value): void {
-    set_scroll_active(value);
-  }
-  public get scroll_following(): boolean {
-    is_scroll_following();
-  }
-  public set scroll_following(value): void {
-    set_scroll_follow(value);
-  }
-  public get autowrap_mode(): number {
-    get_autowrap_mode();
-  }
-  public set autowrap_mode(value): void {
-    set_autowrap_mode(value);
-  }
-  public get tab_size(): number {
-    get_tab_size();
-  }
-  public set tab_size(value): void {
-    set_tab_size(value);
-  }
-  public get context_menu_enabled(): boolean {
-    is_context_menu_enabled();
-  }
-  public set context_menu_enabled(value): void {
-    set_context_menu_enabled(value);
-  }
-  public get shortcut_keys_enabled(): boolean {
-    is_shortcut_keys_enabled();
-  }
-  public set shortcut_keys_enabled(value): void {
-    set_shortcut_keys_enabled(value);
-  }
-  public get custom_effects(): GDArray {
-    get_effects();
-  }
-  public set custom_effects(value): void {
-    set_effects(value);
-  }
-  public get meta_underlined(): boolean {
-    is_meta_underlined();
-  }
-  public set meta_underlined(value): void {
-    set_meta_underline(value);
-  }
-  public get hint_underlined(): boolean {
-    is_hint_underlined();
-  }
-  public set hint_underlined(value): void {
-    set_hint_underline(value);
-  }
-  public get threaded(): boolean {
-    is_threaded();
-  }
-  public set threaded(value): void {
-    set_threaded(value);
-  }
-  public get progress_bar_delay(): number {
-    get_progress_bar_delay();
-  }
-  public set progress_bar_delay(value): void {
-    set_progress_bar_delay(value);
-  }
-  public get selection_enabled(): boolean {
-    is_selection_enabled();
-  }
-  public set selection_enabled(value): void {
-    set_selection_enabled(value);
-  }
-  public get deselect_on_focus_loss_enabled(): boolean {
-    is_deselect_on_focus_loss_enabled();
-  }
-  public set deselect_on_focus_loss_enabled(value): void {
-    set_deselect_on_focus_loss_enabled(value);
-  }
-  public get drag_and_drop_selection_enabled(): boolean {
-    is_drag_and_drop_selection_enabled();
-  }
-  public set drag_and_drop_selection_enabled(value): void {
-    set_drag_and_drop_selection_enabled(value);
-  }
-  public get visible_characters(): number {
-    get_visible_characters();
-  }
-  public set visible_characters(value): void {
-    set_visible_characters(value);
-  }
-  public get visible_characters_behavior(): number {
-    get_visible_characters_behavior();
-  }
-  public set visible_characters_behavior(value): void {
-    set_visible_characters_behavior(value);
-  }
-  public get visible_ratio(): number {
-    get_visible_ratio();
-  }
-  public set visible_ratio(value): void {
-    set_visible_ratio(value);
-  }
-  public get text_direction(): number {
-    get_text_direction();
-  }
-  public set text_direction(value): void {
-    set_text_direction(value);
-  }
-  public get language(): String {
-    get_language();
-  }
-  public set language(value): void {
-    set_language(value);
-  }
-  public get structured_text_bidi_override(): number {
-    get_structured_text_bidi_override();
-  }
-  public set structured_text_bidi_override(value): void {
-    set_structured_text_bidi_override(value);
-  }
-  public get structured_text_bidi_override_options(): GDArray {
-    get_structured_text_bidi_override_options();
-  }
-  public set structured_text_bidi_override_options(value): void {
-    set_structured_text_bidi_override_options(value);
-  }
+  public get bbcode_enabled(): boolean;
+  public set bbcode_enabled(value): void;
+  public get text(): String;
+  public set text(value): void;
+  public get fit_content(): boolean;
+  public set fit_content(value): void;
+  public get scroll_active(): boolean;
+  public set scroll_active(value): void;
+  public get scroll_following(): boolean;
+  public set scroll_following(value): void;
+  public get autowrap_mode(): number;
+  public set autowrap_mode(value): void;
+  public get tab_size(): number;
+  public set tab_size(value): void;
+  public get context_menu_enabled(): boolean;
+  public set context_menu_enabled(value): void;
+  public get shortcut_keys_enabled(): boolean;
+  public set shortcut_keys_enabled(value): void;
+  public get custom_effects(): GDArray;
+  public set custom_effects(value): void;
+  public get meta_underlined(): boolean;
+  public set meta_underlined(value): void;
+  public get hint_underlined(): boolean;
+  public set hint_underlined(value): void;
+  public get threaded(): boolean;
+  public set threaded(value): void;
+  public get progress_bar_delay(): number;
+  public set progress_bar_delay(value): void;
+  public get selection_enabled(): boolean;
+  public set selection_enabled(value): void;
+  public get deselect_on_focus_loss_enabled(): boolean;
+  public set deselect_on_focus_loss_enabled(value): void;
+  public get drag_and_drop_selection_enabled(): boolean;
+  public set drag_and_drop_selection_enabled(value): void;
+  public get visible_characters(): number;
+  public set visible_characters(value): void;
+  public get visible_characters_behavior(): number;
+  public set visible_characters_behavior(value): void;
+  public get visible_ratio(): number;
+  public set visible_ratio(value): void;
+  public get text_direction(): number;
+  public set text_direction(value): void;
+  public get language(): String;
+  public set language(value): void;
+  public get structured_text_bidi_override(): number;
+  public set structured_text_bidi_override(value): void;
+  public get structured_text_bidi_override_options(): GDArray;
+  public set structured_text_bidi_override_options(value): void;
   static ListType = {
     LIST_NUMBERS = 0,
     LIST_LETTERS = 1,

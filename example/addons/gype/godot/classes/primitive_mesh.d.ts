@@ -1,6 +1,7 @@
 
-import { Mesh } from "@godot/classes/mesh";
 import { Material } from "@godot/classes/material";
+import { Mesh } from "@godot/classes/mesh";
+
 
 export declare class PrimitiveMesh extends Mesh{
   public _create_mesh_array(): GDArray;
@@ -16,34 +17,14 @@ export declare class PrimitiveMesh extends Mesh{
   public set_uv2_padding(_uv2_padding: number): void;
   public get_uv2_padding(): number;
   public request_update(): void;
-  public get material(): BaseMaterial3D {
-    get_material();
-  }
-  public set material(value): void {
-    set_material(value);
-  }
-  public get custom_aabb(): AABB {
-    get_custom_aabb();
-  }
-  public set custom_aabb(value): void {
-    set_custom_aabb(value);
-  }
-  public get flip_faces(): boolean {
-    get_flip_faces();
-  }
-  public set flip_faces(value): void {
-    set_flip_faces(value);
-  }
-  public get add_uv2(): boolean {
-    get_add_uv2();
-  }
-  public set add_uv2(value): void {
-    set_add_uv2(value);
-  }
-  public get uv2_padding(): number {
-    get_uv2_padding();
-  }
-  public set uv2_padding(value): void {
-    set_uv2_padding(value);
-  }
+  public get material(): BaseMaterial3D;
+  public set material(value): void;
+  public get custom_aabb(): AABB;
+  public set custom_aabb(value): void;
+  public get flip_faces(): boolean;
+  public set flip_faces(value): void;
+  public get add_uv2(): boolean;
+  public set add_uv2(value): void;
+  public get uv2_padding(): number;
+  public set uv2_padding(value): void;
 }

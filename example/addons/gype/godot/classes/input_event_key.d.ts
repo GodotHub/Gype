@@ -1,6 +1,7 @@
 
 import { InputEventWithModifiers } from "@godot/classes/input_event_with_modifiers";
 
+
 export declare class InputEventKey extends InputEventWithModifiers{
   public set_pressed(_pressed: boolean): void;
   public set_keycode(_keycode: number): void;
@@ -21,46 +22,18 @@ export declare class InputEventKey extends InputEventWithModifiers{
   public as_text_physical_keycode(): String;
   public as_text_key_label(): String;
   public as_text_location(): String;
-  public get pressed(): boolean {
-    is_pressed();
-  }
-  public set pressed(value): void {
-    set_pressed(value);
-  }
-  public get keycode(): number {
-    get_keycode();
-  }
-  public set keycode(value): void {
-    set_keycode(value);
-  }
-  public get physical_keycode(): number {
-    get_physical_keycode();
-  }
-  public set physical_keycode(value): void {
-    set_physical_keycode(value);
-  }
-  public get key_label(): number {
-    get_key_label();
-  }
-  public set key_label(value): void {
-    set_key_label(value);
-  }
-  public get unicode(): number {
-    get_unicode();
-  }
-  public set unicode(value): void {
-    set_unicode(value);
-  }
-  public get location(): number {
-    get_location();
-  }
-  public set location(value): void {
-    set_location(value);
-  }
-  public get echo(): boolean {
-    is_echo();
-  }
-  public set echo(value): void {
-    set_echo(value);
-  }
+  public get pressed(): boolean;
+  public set pressed(value): void;
+  public get keycode(): number;
+  public set keycode(value): void;
+  public get physical_keycode(): number;
+  public set physical_keycode(value): void;
+  public get key_label(): number;
+  public set key_label(value): void;
+  public get unicode(): number;
+  public set unicode(value): void;
+  public get location(): number;
+  public set location(value): void;
+  public get echo(): boolean;
+  public set echo(value): void;
 }
