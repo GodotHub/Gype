@@ -8,11 +8,7 @@ Godot with Great JavaScript/TypeScript
 
 Import the [plugin](https://github.com/GodotHub/Gype/releases/download/preview/addons.zip) in a Godot project and use it like GDS：  
 ```js
-<<<<<<< HEAD
 import { GodotClass, Tool } from "@js_godot/class_defined";
-=======
-import { GodotClass, Tool } from "@godot/class_defined";
->>>>>>> 0c008da7b935a7329ba949abea3320f1b5334455
 import { Sprite2D } from "godot/classes/sprite2d";
 
 @GodotClass

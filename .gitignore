@@ -1,10 +1,5 @@
 /.dist
-<<<<<<< HEAD
-=======
-example/.dist/
->>>>>>> 0c008da7b935a7329ba949abea3320f1b5334455
 /node_modules
-/js-dist
 *.o
 .clang-format
 .vscode
