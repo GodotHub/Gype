@@ -3,8 +3,8 @@
 declare global {
 export declare class NodePath {
   constructor();
-  constructor(_from: NodePath);
-  constructor(_from: String | StringName | string);
+  constructor(_from: GDString | NodePath | string);
+  constructor(_from: GDString | StringName | string);
   public is_absolute(): boolean;
   public get_name_count(): number;
   public get_name(_idx: number): StringName;

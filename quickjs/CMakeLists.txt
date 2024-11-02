@@ -17,7 +17,7 @@ target_link_libraries(quickjs PUBLIC godot-cpp)
 
 target_compile_options(quickjs 
     PRIVATE 
-        -O0 -g -s)
+        -O3 -g -s)
 
 target_compile_features(${PROJECT_NAME}
 	PRIVATE

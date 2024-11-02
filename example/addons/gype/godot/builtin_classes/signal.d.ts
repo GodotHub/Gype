@@ -4,7 +4,7 @@ declare global {
 export declare class Signal {
   constructor();
   constructor(_from: Signal);
-  constructor(_object: Object, _signal: String | StringName | string);
+  constructor(_object: GodotObject, _signal: GDString | StringName | string);
   public is_null(): boolean;
   public get_object(): GodotObject;
   public get_object_id(): number;

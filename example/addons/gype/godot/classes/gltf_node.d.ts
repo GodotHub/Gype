@@ -1,0 +1,60 @@
+
+import { Resource } from "@godot/classes/resource";
+
+
+export declare class GLTFNode extends Resource{
+  public get_original_name(): String;
+  public set_original_name(_original_name: GDString | StringName | string): void;
+  public get_parent(): number;
+  public set_parent(_parent: number): void;
+  public get_height(): number;
+  public set_height(_height: number): void;
+  public get_xform(): Transform3D;
+  public set_xform(_xform: Transform3D): void;
+  public get_mesh(): number;
+  public set_mesh(_mesh: number): void;
+  public get_camera(): number;
+  public set_camera(_camera: number): void;
+  public get_skin(): number;
+  public set_skin(_skin: number): void;
+  public get_skeleton(): number;
+  public set_skeleton(_skeleton: number): void;
+  public get_position(): Vector3;
+  public set_position(_position: Vector3): void;
+  public get_rotation(): Quaternion;
+  public set_rotation(_rotation: Quaternion): void;
+  public get_scale(): Vector3;
+  public set_scale(_scale: Vector3): void;
+  public get_children(): PackedInt32Array;
+  public set_children(_children: PackedInt32Array): void;
+  public get_light(): number;
+  public set_light(_light: number): void;
+  public get_additional_data(_extension_name: GDString | StringName | string): any;
+  public set_additional_data(_extension_name: GDString | StringName | string, _additional_data: any): void;
+  public get original_name(): String;
+  public set original_name(value): void;
+  public get parent(): number;
+  public set parent(value): void;
+  public get height(): number;
+  public set height(value): void;
+  public get xform(): Transform3D;
+  public set xform(value): void;
+  public get mesh(): number;
+  public set mesh(value): void;
+  public get camera(): number;
+  public set camera(value): void;
+  public get skin(): number;
+  public set skin(value): void;
+  public get skeleton(): number;
+  public set skeleton(value): void;
+  public get position(): Vector3;
+  public set position(value): void;
+  public get rotation(): Quaternion;
+  public set rotation(value): void;
+  public get scale(): Vector3;
+  public set scale(value): void;
+  public get children(): PackedInt32Array;
+  public set children(value): void;
+  public get light(): number;
+  public set light(value): void;
+}

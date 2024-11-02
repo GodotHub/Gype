@@ -1,0 +1,6 @@
+
+import { TextServerExtension } from "@godot/classes/text_server_extension";
+
+
+export declare class TextServerDummy extends TextServerExtension{
+}

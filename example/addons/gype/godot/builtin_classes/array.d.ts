@@ -4,7 +4,7 @@ declare global {
 export declare class Array {
   constructor();
   constructor(_from: GDArray);
-  constructor(_base: GDArray, _type: number, _class_name: String | StringName | string, _script: any);
+  constructor(_base: GDArray, _type: number, _class_name: GDString | StringName | string, _script: any);
   constructor(_from: PackedByteArray);
   constructor(_from: PackedInt32Array);
   constructor(_from: PackedInt64Array);

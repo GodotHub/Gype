@@ -1,0 +1,43 @@
+
+import { Resource } from "@godot/classes/resource";
+import { Font } from "@godot/classes/font";
+
+
+export declare class LabelSettings extends Resource{
+  public set_line_spacing(_spacing: number): void;
+  public get_line_spacing(): number;
+  public set_font(_font: Font): void;
+  public get_font(): Font;
+  public set_font_size(_size: number): void;
+  public get_font_size(): number;
+  public set_font_color(_color: Color): void;
+  public get_font_color(): Color;
+  public set_outline_size(_size: number): void;
+  public get_outline_size(): number;
+  public set_outline_color(_color: Color): void;
+  public get_outline_color(): Color;
+  public set_shadow_size(_size: number): void;
+  public get_shadow_size(): number;
+  public set_shadow_color(_color: Color): void;
+  public get_shadow_color(): Color;
+  public set_shadow_offset(_offset: Vector2): void;
+  public get_shadow_offset(): Vector2;
+  public get line_spacing(): number;
+  public set line_spacing(value): void;
+  public get font(): Font;
+  public set font(value): void;
+  public get font_size(): number;
+  public set font_size(value): void;
+  public get font_color(): Color;
+  public set font_color(value): void;
+  public get outline_size(): number;
+  public set outline_size(value): void;
+  public get outline_color(): Color;
+  public set outline_color(value): void;
+  public get shadow_size(): number;
+  public set shadow_size(value): void;
+  public get shadow_color(): Color;
+  public set shadow_color(value): void;
+  public get shadow_offset(): Vector2;
+  public set shadow_offset(value): void;
+}

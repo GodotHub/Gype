@@ -7,8 +7,8 @@ export declare class Color {
   constructor(_from: Color, _alpha: number);
   constructor(_r: number, _g: number, _b: number);
   constructor(_r: number, _g: number, _b: number, _a: number);
-  constructor(_code: String | StringName | string);
-  constructor(_code: String | StringName | string, _alpha: number);
+  constructor(_code: GDString | StringName | string);
+  constructor(_code: GDString | StringName | string, _alpha: number);
   public r: float;
   public g: float;
   public b: float;
@@ -39,9 +39,9 @@ export declare class Color {
   public is_equal_approx(_to: Color): boolean;
   public hex(_hex: number): Color;
   public hex64(_hex: number): Color;
-  public html(_rgba: String | StringName | string): Color;
-  public html_is_valid(_color: String | StringName | string): boolean;
-  public from_string(_str: String | StringName | string, _default: Color): Color;
+  public html(_rgba: GDString | StringName | string): Color;
+  public html_is_valid(_color: GDString | StringName | string): boolean;
+  public from_string(_str: GDString | StringName | string, _default: Color): Color;
   public from_hsv(_h: number, _s: number, _v: number, _alpha: number): Color;
   public from_ok_hsl(_h: number, _s: number, _l: number, _alpha: number): Color;
   public from_rgbe9995(_rgbe: number): Color;

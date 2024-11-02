@@ -1,0 +1,46 @@
+
+import { XRInterface } from "@godot/classes/xr_interface";
+
+
+export declare class MobileVRInterface extends XRInterface{
+  public set_eye_height(_eye_height: number): void;
+  public get_eye_height(): number;
+  public set_iod(_iod: number): void;
+  public get_iod(): number;
+  public set_display_width(_display_width: number): void;
+  public get_display_width(): number;
+  public set_display_to_lens(_display_to_lens: number): void;
+  public get_display_to_lens(): number;
+  public set_offset_rect(_offset_rect: Rect2): void;
+  public get_offset_rect(): Rect2;
+  public set_oversample(_oversample: number): void;
+  public get_oversample(): number;
+  public set_k1(_k: number): void;
+  public get_k1(): number;
+  public set_k2(_k: number): void;
+  public get_k2(): number;
+  public get_vrs_min_radius(): number;
+  public set_vrs_min_radius(_radius: number): void;
+  public get_vrs_strength(): number;
+  public set_vrs_strength(_strength: number): void;
+  public get eye_height(): number;
+  public set eye_height(value): void;
+  public get iod(): number;
+  public set iod(value): void;
+  public get display_width(): number;
+  public set display_width(value): void;
+  public get display_to_lens(): number;
+  public set display_to_lens(value): void;
+  public get offset_rect(): Rect2;
+  public set offset_rect(value): void;
+  public get oversample(): number;
+  public set oversample(value): void;
+  public get k1(): number;
+  public set k1(value): void;
+  public get k2(): number;
+  public set k2(value): void;
+  public get vrs_min_radius(): number;
+  public set vrs_min_radius(value): void;
+  public get vrs_strength(): number;
+  public set vrs_strength(value): void;
+}

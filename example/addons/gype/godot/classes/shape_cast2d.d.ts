@@ -1,0 +1,63 @@
+
+import { Node2D } from "@godot/classes/node2d";
+import { GodotObject } from "@godot/classes/godot_object";
+import { CollisionObject2D } from "@godot/classes/collision_object2d";
+import { Shape2D } from "@godot/classes/shape2d";
+
+
+export declare class ShapeCast2D extends Node2D{
+  public set_enabled(_enabled: boolean): void;
+  public is_enabled(): boolean;
+  public set_shape(_shape: Shape2D): void;
+  public get_shape(): Shape2D;
+  public set_target_position(_local_point: Vector2): void;
+  public get_target_position(): Vector2;
+  public set_margin(_margin: number): void;
+  public get_margin(): number;
+  public set_max_results(_max_results: number): void;
+  public get_max_results(): number;
+  public is_colliding(): boolean;
+  public get_collision_count(): number;
+  public force_shapecast_update(): void;
+  public get_collider(_index: number): GodotObject;
+  public get_collider_rid(_index: number): RID;
+  public get_collider_shape(_index: number): number;
+  public get_collision_point(_index: number): Vector2;
+  public get_collision_normal(_index: number): Vector2;
+  public get_closest_collision_safe_fraction(): number;
+  public get_closest_collision_unsafe_fraction(): number;
+  public add_exception_rid(_rid: RID): void;
+  public add_exception(_node: CollisionObject2D): void;
+  public remove_exception_rid(_rid: RID): void;
+  public remove_exception(_node: CollisionObject2D): void;
+  public clear_exceptions(): void;
+  public set_collision_mask(_mask: number): void;
+  public get_collision_mask(): number;
+  public set_collision_mask_value(_layer_number: number, _value: boolean): void;
+  public get_collision_mask_value(_layer_number: number): boolean;
+  public set_exclude_parent_body(_mask: boolean): void;
+  public get_exclude_parent_body(): boolean;
+  public set_collide_with_areas(_enable: boolean): void;
+  public is_collide_with_areas_enabled(): boolean;
+  public set_collide_with_bodies(_enable: boolean): void;
+  public is_collide_with_bodies_enabled(): boolean;
+  public get enabled(): boolean;
+  public set enabled(value): void;
+  public get shape(): Shape2D;
+  public set shape(value): void;
+  public get exclude_parent(): boolean;
+  public set exclude_parent(value): void;
+  public get target_position(): Vector2;
+  public set target_position(value): void;
+  public get margin(): number;
+  public set margin(value): void;
+  public get max_results(): number;
+  public set max_results(value): void;
+  public get collision_mask(): number;
+  public set collision_mask(value): void;
+  public get collision_result(): GDArray;
+  public get collide_with_areas(): boolean;
+  public set collide_with_areas(value): void;
+  public get collide_with_bodies(): boolean;
+  public set collide_with_bodies(value): void;
+}

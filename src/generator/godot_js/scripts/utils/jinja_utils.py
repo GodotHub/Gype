@@ -208,28 +208,11 @@ def connect_args(args):
     def mapper(arg):
         arg_name = '_' + arg.get('name', '')
         arg_type = arg.get('type', '')
-<<<<<<< HEAD
         arg_type = set_type(arg_type)
         if arg_type == "String" or arg_type == "StringName":
             return arg_name + ": " + "GDString | StringName | string"
         elif arg_type == 'NodePath':
             return arg_name + ": " + "GDString | NodePath | string"
-=======
-        if is_number(arg_type):
-            return arg_name + ': ' 'number'
-        elif is_bool(arg_type):
-            return arg_name + ': ' 'boolean'
-        elif is_enum(arg_type):
-            return arg_name + ': ' + 'number'
-        elif arg_type == 'Array':
-            return arg_name + ': ' + 'GDArray'
-        elif arg_type.find('typedarray:') != -1:
-            return arg_name + ': ' + 'GDArray'
-        elif arg_type == 'Variant':
-            return arg_name + ': ' + 'any'
-        elif arg_type == "String" or arg_type == "StringName":
-            return arg_name + ": " + "String | StringName | string"
->>>>>>> 0c008da7b935a7329ba949abea3320f1b5334455
         else:
             return arg_name + ': ' + arg_type
 

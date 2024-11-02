@@ -1,0 +1,42 @@
+
+import { RefCounted } from "@godot/classes/ref_counted";
+
+
+export declare class RenderSceneBuffersConfiguration extends RefCounted{
+  public get_render_target(): RID;
+  public set_render_target(_render_target: RID): void;
+  public get_internal_size(): Vector2i;
+  public set_internal_size(_internal_size: Vector2i): void;
+  public get_target_size(): Vector2i;
+  public set_target_size(_target_size: Vector2i): void;
+  public get_view_count(): number;
+  public set_view_count(_view_count: number): void;
+  public get_scaling_3d_mode(): number;
+  public set_scaling_3d_mode(_scaling_3d_mode: number): void;
+  public get_msaa_3d(): number;
+  public set_msaa_3d(_msaa_3d: number): void;
+  public get_screen_space_aa(): number;
+  public set_screen_space_aa(_screen_space_aa: number): void;
+  public get_fsr_sharpness(): number;
+  public set_fsr_sharpness(_fsr_sharpness: number): void;
+  public get_texture_mipmap_bias(): number;
+  public set_texture_mipmap_bias(_texture_mipmap_bias: number): void;
+  public get render_target(): RID;
+  public set render_target(value): void;
+  public get internal_size(): Vector2i;
+  public set internal_size(value): void;
+  public get target_size(): Vector2i;
+  public set target_size(value): void;
+  public get view_count(): number;
+  public set view_count(value): void;
+  public get scaling_3d_mode(): number;
+  public set scaling_3d_mode(value): void;
+  public get msaa_3d(): number;
+  public set msaa_3d(value): void;
+  public get screen_space_aa(): number;
+  public set screen_space_aa(value): void;
+  public get fsr_sharpness(): boolean;
+  public set fsr_sharpness(value): void;
+  public get texture_mipmap_bias(): boolean;
+  public set texture_mipmap_bias(value): void;
+}
