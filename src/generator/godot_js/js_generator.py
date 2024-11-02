@@ -11,8 +11,5 @@ if __name__ == '__main__':
     gen_utility_functions()
     gen_global_enum()
     gen_classes_d_ts()
-<<<<<<< HEAD
-=======
     gen_builtin_classes_d_ts()
->>>>>>> 0c008da7b935a7329ba949abea3320f1b5334455
     gen_utility_functions_d_ts()
