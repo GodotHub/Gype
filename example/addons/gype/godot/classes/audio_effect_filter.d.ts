@@ -1,7 +1,5 @@
 
 import { AudioEffect } from "@godot/classes/audio_effect";
-
-
 export declare class AudioEffectFilter extends AudioEffect{
   public set_cutoff(_freq: number): void;
   public get_cutoff(): number;

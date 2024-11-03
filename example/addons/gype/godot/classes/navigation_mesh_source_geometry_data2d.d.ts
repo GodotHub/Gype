@@ -1,7 +1,5 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class NavigationMeshSourceGeometryData2D extends Resource{
   public clear(): void;
   public has_data(): boolean;

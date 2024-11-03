@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/resource_preloader.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -97,13 +97,14 @@ static int js_resource_preloader_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPropertyFunctionList(ctx, proto, resource_preloader_class_proto_funcs, _countof(resource_preloader_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, resource_preloader_class_constructor, "ResourcePreloader", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "ResourcePreloader", ctor);
+	constructors[ResourcePreloader::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_resource_preloader_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/node';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

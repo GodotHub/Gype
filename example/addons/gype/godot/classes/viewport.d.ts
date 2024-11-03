@@ -1,16 +1,14 @@
 
-import { ViewportTexture } from "@godot/classes/viewport_texture";
-import { World3D } from "@godot/classes/world3d";
-import { Camera2D } from "@godot/classes/camera2d";
-import { Camera3D } from "@godot/classes/camera3d";
-import { InputEvent } from "@godot/classes/input_event";
-import { Node } from "@godot/classes/node";
-import { Window } from "@godot/classes/window";
-import { Control } from "@godot/classes/control";
 import { World2D } from "@godot/classes/world2d";
+import { Control } from "@godot/classes/control";
+import { Node } from "@godot/classes/node";
+import { ViewportTexture } from "@godot/classes/viewport_texture";
+import { InputEvent } from "@godot/classes/input_event";
+import { World3D } from "@godot/classes/world3d";
+import { Window } from "@godot/classes/window";
 import { Texture2D } from "@godot/classes/texture2d";
-
-
+import { Camera3D } from "@godot/classes/camera3d";
+import { Camera2D } from "@godot/classes/camera2d";
 export declare class Viewport extends Node{
   public set_world_2d(_world_2d: World2D): void;
   public get_world_2d(): World2D;
@@ -50,8 +48,8 @@ export declare class Viewport extends Node{
   public get_physics_object_picking_first_only(): boolean;
   public get_viewport_rid(): RID;
   public push_text_input(_text: GDString | StringName | string): void;
-  public push_input(_event: InputEvent, _in_local_coords: boolean): void;
-  public push_unhandled_input(_event: InputEvent, _in_local_coords: boolean): void;
+  public push_input(_event: InputEvent, _in_local_coords: boolean = false): void;
+  public push_unhandled_input(_event: InputEvent, _in_local_coords: boolean = false): void;
   public get_mouse_position(): Vector2;
   public warp_mouse(_position: Vector2): void;
   public update_mouse_cursor_state(): void;

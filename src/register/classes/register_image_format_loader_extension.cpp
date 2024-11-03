@@ -78,13 +78,14 @@ static int js_image_format_loader_extension_class_init(JSContext *ctx, JSModuleD
 	JS_SetPropertyFunctionList(ctx, proto, image_format_loader_extension_class_proto_funcs, _countof(image_format_loader_extension_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, image_format_loader_extension_class_constructor, "ImageFormatLoaderExtension", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "ImageFormatLoaderExtension", ctor);
+	constructors[ImageFormatLoaderExtension::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_image_format_loader_extension_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/image_format_loader';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

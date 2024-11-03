@@ -6,13 +6,13 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/callback_tweener.hpp>
-#include <godot_cpp/classes/method_tweener.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/property_tweener.hpp>
 #include <godot_cpp/classes/tween.hpp>
+#include <godot_cpp/classes/method_tweener.hpp>
 #include <godot_cpp/classes/interval_tweener.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -277,13 +277,14 @@ static int js_tween_class_init(JSContext *ctx, JSModuleDef *m) {
 	JSValue ctor = JS_NewCFunction2(ctx, tween_class_constructor, "Tween", 0, JS_CFUNC_constructor, 0);
 	JS_SetPropertyFunctionList(ctx, ctor, tween_class_static_funcs, _countof(tween_class_static_funcs));
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "Tween", ctor);
+	constructors[Tween::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_tween_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

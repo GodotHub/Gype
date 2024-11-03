@@ -1,15 +1,13 @@
 
-import { StreamPeer } from "@godot/classes/stream_peer";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { StreamPeer } from "@godot/classes/stream_peer";
 import { TLSOptions } from "@godot/classes/tls_options";
-
-
 export declare class HTTPClient extends RefCounted{
-  public connect_to_host(_host: GDString | StringName | string, _port: number, _tls_options: TLSOptions): number;
+  public connect_to_host(_host: GDString | StringName | string, _port: number = -1, _tls_options: TLSOptions = null): number;
   public set_connection(_connection: StreamPeer): void;
   public get_connection(): StreamPeer;
   public request_raw(_method: number, _url: GDString | StringName | string, _headers: PackedStringArray, _body: PackedByteArray): number;
-  public request(_method: number, _url: GDString | StringName | string, _headers: PackedStringArray, _body: GDString | StringName | string): number;
+  public request(_method: number, _url: GDString | StringName | string, _headers: PackedStringArray, _body: GDString | StringName | string = ""): number;
   public close(): void;
   public has_response(): boolean;
   public is_response_chunked(): boolean;

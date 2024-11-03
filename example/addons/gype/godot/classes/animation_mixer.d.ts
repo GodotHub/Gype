@@ -1,9 +1,7 @@
 
+import { Animation } from "@godot/classes/animation";
 import { AnimationLibrary } from "@godot/classes/animation_library";
 import { Node } from "@godot/classes/node";
-import { Animation } from "@godot/classes/animation";
-
-
 export declare class AnimationMixer extends Node{
   public _post_process_key_value(_animation: Animation, _track: number, _value: any, _object_id: number, _object_sub_idx: number): any;
   public add_animation_library(_name: GDString | StringName | string, _library: AnimationLibrary): number;
@@ -39,7 +37,7 @@ export declare class AnimationMixer extends Node{
   public get_root_motion_scale_accumulator(): Vector3;
   public clear_caches(): void;
   public advance(_delta: number): void;
-  public capture(_name: GDString | StringName | string, _duration: number, _trans_type: number, _ease_type: number): void;
+  public capture(_name: GDString | StringName | string, _duration: number, _trans_type: number = 0, _ease_type: number = 0): void;
   public set_reset_on_save_enabled(_enabled: boolean): void;
   public is_reset_on_save_enabled(): boolean;
   public find_animation(_animation: Animation): StringName;

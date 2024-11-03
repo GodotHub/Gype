@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class CharFXTransform extends RefCounted{
   public get_transform(): Transform2D;
   public set_transform(_transform: Transform2D): void;

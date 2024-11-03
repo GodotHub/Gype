@@ -1,14 +1,12 @@
 
-import { TileSet } from "@godot/classes/tile_set";
-import { Node2D } from "@godot/classes/node2d";
 import { TileData } from "@godot/classes/tile_data";
+import { TileSet } from "@godot/classes/tile_set";
 import { TileMapPattern } from "@godot/classes/tile_map_pattern";
-
-
+import { Node2D } from "@godot/classes/node2d";
 export declare class TileMapLayer extends Node2D{
   public _use_tile_data_runtime_update(_coords: Vector2i): boolean;
   public _tile_data_runtime_update(_coords: Vector2i, _tile_data: TileData): void;
-  public set_cell(_coords: Vector2i, _source_id: number, _atlas_coords: Vector2i, _alternative_tile: number): void;
+  public set_cell(_coords: Vector2i, _source_id: number = -1, _atlas_coords: Vector2i = Vector2i(-1, -1), _alternative_tile: number = 0): void;
   public erase_cell(_coords: Vector2i): void;
   public fix_invalid_tiles(): void;
   public clear(): void;
@@ -17,12 +15,12 @@ export declare class TileMapLayer extends Node2D{
   public get_cell_alternative_tile(_coords: Vector2i): number;
   public get_cell_tile_data(_coords: Vector2i): TileData;
   public get_used_cells(): GDArray;
-  public get_used_cells_by_id(_source_id: number, _atlas_coords: Vector2i, _alternative_tile: number): GDArray;
+  public get_used_cells_by_id(_source_id: number = -1, _atlas_coords: Vector2i = Vector2i(-1, -1), _alternative_tile: number = -1): GDArray;
   public get_used_rect(): Rect2i;
   public get_pattern(_coords_array: GDArray): TileMapPattern;
   public set_pattern(_position: Vector2i, _pattern: TileMapPattern): void;
-  public set_cells_terrain_connect(_cells: GDArray, _terrain_set: number, _terrain: number, _ignore_empty_terrains: boolean): void;
-  public set_cells_terrain_path(_path: GDArray, _terrain_set: number, _terrain: number, _ignore_empty_terrains: boolean): void;
+  public set_cells_terrain_connect(_cells: GDArray, _terrain_set: number, _terrain: number, _ignore_empty_terrains: boolean = true): void;
+  public set_cells_terrain_path(_path: GDArray, _terrain_set: number, _terrain: number, _ignore_empty_terrains: boolean = true): void;
   public has_body_rid(_body: RID): boolean;
   public get_coords_for_body_rid(_body: RID): Vector2i;
   public update_internals(): void;

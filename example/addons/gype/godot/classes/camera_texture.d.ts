@@ -1,7 +1,5 @@
 
 import { Texture2D } from "@godot/classes/texture2d";
-
-
 export declare class CameraTexture extends Texture2D{
   public set_camera_feed_id(_feed_id: number): void;
   public get_camera_feed_id(): number;

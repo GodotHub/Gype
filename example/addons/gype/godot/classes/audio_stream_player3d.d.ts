@@ -1,9 +1,7 @@
 
-import { AudioStreamPlayback } from "@godot/classes/audio_stream_playback";
-import { AudioStream } from "@godot/classes/audio_stream";
 import { Node3D } from "@godot/classes/node3d";
-
-
+import { AudioStream } from "@godot/classes/audio_stream";
+import { AudioStreamPlayback } from "@godot/classes/audio_stream_playback";
 export declare class AudioStreamPlayer3D extends Node3D{
   public set_stream(_stream: AudioStream): void;
   public get_stream(): AudioStream;
@@ -15,7 +13,7 @@ export declare class AudioStreamPlayer3D extends Node3D{
   public get_max_db(): number;
   public set_pitch_scale(_pitch_scale: number): void;
   public get_pitch_scale(): number;
-  public play(_from_position: number): void;
+  public play(_from_position: number = 0.0): void;
   public seek(_to_position: number): void;
   public stop(): void;
   public is_playing(): boolean;

@@ -1,10 +1,9 @@
 
 import { GodotObject } from "@godot/classes/godot_object";
-import { MainLoop } from "@godot/classes/main_loop";
 import { ScriptLanguage } from "@godot/classes/script_language";
-
-
-export declare class Engine extends GodotObject{
+import { MainLoop } from "@godot/classes/main_loop";
+declare global {
+export declare class _Engine extends GodotObject{
   public set_physics_ticks_per_second(_physics_ticks_per_second: number): void;
   public get_physics_ticks_per_second(): number;
   public set_max_physics_steps_per_frame(_max_physics_steps: number): void;
@@ -54,4 +53,8 @@ export declare class Engine extends GodotObject{
   public set time_scale(value): void;
   public get physics_jitter_fix(): number;
   public set physics_jitter_fix(value): void;
+}
+}
+declare global {
+  const Engine: _Engine;
 }

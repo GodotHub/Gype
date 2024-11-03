@@ -1,7 +1,5 @@
 
 import { Texture2D } from "@godot/classes/texture2d";
-
-
 export declare class CanvasTexture extends Texture2D{
   public set_diffuse_texture(_texture: Texture2D): void;
   public get_diffuse_texture(): Texture2D;

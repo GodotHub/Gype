@@ -1,8 +1,6 @@
 
 import { VisualInstance3D } from "@godot/classes/visual_instance3d";
 import { Occluder3D } from "@godot/classes/occluder3d";
-
-
 export declare class OccluderInstance3D extends VisualInstance3D{
   public set_bake_mask(_mask: number): void;
   public get_bake_mask(): number;

@@ -1,7 +1,5 @@
 
 import { GeometryInstance3D } from "@godot/classes/geometry_instance3d";
-
-
 export declare class CSGShape3D extends GeometryInstance3D{
   public is_root_shape(): boolean;
   public set_operation(_operation: number): void;

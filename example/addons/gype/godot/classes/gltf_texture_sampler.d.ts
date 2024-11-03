@@ -1,7 +1,5 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class GLTFTextureSampler extends Resource{
   public get_mag_filter(): number;
   public set_mag_filter(_filter_mode: number): void;

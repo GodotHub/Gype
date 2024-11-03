@@ -1,8 +1,6 @@
 
-import { Resource } from "@godot/classes/resource";
 import { Animation } from "@godot/classes/animation";
-
-
+import { Resource } from "@godot/classes/resource";
 export declare class AnimationLibrary extends Resource{
   public add_animation(_name: GDString | StringName | string, _animation: Animation): number;
   public remove_animation(_name: GDString | StringName | string): void;

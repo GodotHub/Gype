@@ -1,7 +1,5 @@
 
 import { Container } from "@godot/classes/container";
-
-
 export declare class CenterContainer extends Container{
   public set_use_top_left(_enable: boolean): void;
   public is_using_top_left(): boolean;

@@ -1,7 +1,5 @@
 
 import { Joint2D } from "@godot/classes/joint2d";
-
-
 export declare class GrooveJoint2D extends Joint2D{
   public set_length(_length: number): void;
   public get_length(): number;

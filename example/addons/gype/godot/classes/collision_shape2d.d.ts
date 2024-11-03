@@ -1,8 +1,6 @@
 
-import { Node2D } from "@godot/classes/node2d";
 import { Shape2D } from "@godot/classes/shape2d";
-
-
+import { Node2D } from "@godot/classes/node2d";
 export declare class CollisionShape2D extends Node2D{
   public set_shape(_shape: Shape2D): void;
   public get_shape(): Shape2D;

@@ -1,7 +1,5 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class Gradient extends Resource{
   public add_point(_offset: number, _color: Color): void;
   public remove_point(_point: number): void;

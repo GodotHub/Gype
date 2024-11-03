@@ -1,7 +1,5 @@
 
 import { CameraAttributes } from "@godot/classes/camera_attributes";
-
-
 export declare class CameraAttributesPhysical extends CameraAttributes{
   public set_aperture(_aperture: number): void;
   public get_aperture(): number;

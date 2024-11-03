@@ -1,8 +1,6 @@
 
-import { PhysicsBody3D } from "@godot/classes/physics_body3d";
 import { KinematicCollision3D } from "@godot/classes/kinematic_collision3d";
-
-
+import { PhysicsBody3D } from "@godot/classes/physics_body3d";
 export declare class CharacterBody3D extends PhysicsBody3D{
   public move_and_slide(): boolean;
   public apply_floor_snap(): void;
@@ -47,7 +45,7 @@ export declare class CharacterBody3D extends PhysicsBody3D{
   public get_last_motion(): Vector3;
   public get_position_delta(): Vector3;
   public get_real_velocity(): Vector3;
-  public get_floor_angle(_up_direction: Vector3): number;
+  public get_floor_angle(_up_direction: Vector3 = Vector3(0, 1, 0)): number;
   public get_platform_velocity(): Vector3;
   public get_platform_angular_velocity(): Vector3;
   public get_slide_collision_count(): number;

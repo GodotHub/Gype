@@ -1,7 +1,5 @@
 
 import { VisualInstance3D } from "@godot/classes/visual_instance3d";
-
-
 export declare class ReflectionProbe extends VisualInstance3D{
   public set_intensity(_intensity: number): void;
   public get_intensity(): number;

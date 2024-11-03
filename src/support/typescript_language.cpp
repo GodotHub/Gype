@@ -90,7 +90,7 @@ TypedArray<Dictionary> TypeScriptLanguage::_get_built_in_templates(const StringN
 }
 
 bool TypeScriptLanguage::_is_using_templates() {
-	return true;
+	return false;
 }
 
 Dictionary TypeScriptLanguage::_validate(const String &p_script, const String &p_path, bool p_validate_functions, bool p_validate_errors, bool p_validate_warnings, bool p_validate_safe_lines) const {
@@ -113,7 +113,7 @@ bool TypeScriptLanguage::_has_named_classes() const {
 }
 
 bool TypeScriptLanguage::_supports_builtin_mode() const {
-	return true;
+	return false;
 }
 
 bool TypeScriptLanguage::_supports_documentation() const {

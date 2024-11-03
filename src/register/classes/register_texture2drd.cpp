@@ -84,13 +84,14 @@ static int js_texture2drd_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPropertyFunctionList(ctx, proto, texture2drd_class_proto_funcs, _countof(texture2drd_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, texture2drd_class_constructor, "Texture2DRD", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "Texture2DRD", ctor);
+	constructors[Texture2DRD::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_texture2drd_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/texture2d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

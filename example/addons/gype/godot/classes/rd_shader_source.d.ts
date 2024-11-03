@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class RDShaderSource extends RefCounted{
   public set_stage_source(_stage: number, _source: GDString | StringName | string): void;
   public get_stage_source(_stage: number): String;

@@ -1,7 +1,5 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class RDShaderSPIRV extends Resource{
   public set_stage_bytecode(_stage: number, _bytecode: PackedByteArray): void;
   public get_stage_bytecode(_stage: number): PackedByteArray;

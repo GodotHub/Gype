@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class PhysicsPointQueryParameters3D extends RefCounted{
   public set_position(_position: Vector3): void;
   public get_position(): Vector3;

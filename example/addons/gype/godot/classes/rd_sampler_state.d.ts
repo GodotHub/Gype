@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class RDSamplerState extends RefCounted{
   public set_mag_filter(_p_member: number): void;
   public get_mag_filter(): number;

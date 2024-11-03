@@ -1,7 +1,5 @@
 
 import { Node3D } from "@godot/classes/node3d";
-
-
 export declare class CollisionPolygon3D extends Node3D{
   public set_depth(_depth: number): void;
   public get_depth(): number;

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/placeholder_texture_layered.hpp>
 #include <godot_cpp/classes/placeholder_texture2d_array.hpp>
+#include <godot_cpp/classes/placeholder_texture_layered.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -63,13 +63,14 @@ static int js_placeholder_texture2d_array_class_init(JSContext *ctx, JSModuleDef
 	define_placeholder_texture2d_array_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, placeholder_texture2d_array_class_constructor, "PlaceholderTexture2DArray", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "PlaceholderTexture2DArray", ctor);
+	constructors[PlaceholderTexture2DArray::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_placeholder_texture2d_array_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/placeholder_texture_layered';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

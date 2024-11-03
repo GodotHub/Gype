@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_pipeline_depth_stencil_state.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/rd_pipeline_depth_stencil_state.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -444,13 +444,14 @@ static int js_rd_pipeline_depth_stencil_state_class_init(JSContext *ctx, JSModul
 	JS_SetPropertyFunctionList(ctx, proto, rd_pipeline_depth_stencil_state_class_proto_funcs, _countof(rd_pipeline_depth_stencil_state_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, rd_pipeline_depth_stencil_state_class_constructor, "RDPipelineDepthStencilState", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "RDPipelineDepthStencilState", ctor);
+	constructors[RDPipelineDepthStencilState::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_rd_pipeline_depth_stencil_state_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

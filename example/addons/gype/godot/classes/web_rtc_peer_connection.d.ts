@@ -1,12 +1,11 @@
 
-import { WebRTCDataChannel } from "@godot/classes/web_rtc_data_channel";
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
+import { WebRTCDataChannel } from "@godot/classes/web_rtc_data_channel";
 export declare class WebRTCPeerConnection extends RefCounted{
-  public set_default_extension(_extension_class: GDString | StringName | string): void;
-  public initialize(_configuration: Dictionary): number;
-  public create_data_channel(_label: GDString | StringName | string, _options: Dictionary): WebRTCDataChannel;
+  public
+ static set_default_extension(_extension_class: GDString | StringName | string): void;
+  public initialize(_configuration: Dictionary = {}): number;
+  public create_data_channel(_label: GDString | StringName | string, _options: Dictionary = {}): WebRTCDataChannel;
   public create_offer(): number;
   public set_local_description(_type: GDString | StringName | string, _sdp: GDString | StringName | string): number;
   public set_remote_description(_type: GDString | StringName | string, _sdp: GDString | StringName | string): number;

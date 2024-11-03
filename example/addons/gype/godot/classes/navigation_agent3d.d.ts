@@ -1,8 +1,6 @@
 
 import { Node } from "@godot/classes/node";
 import { NavigationPathQueryResult3D } from "@godot/classes/navigation_path_query_result3d";
-
-
 export declare class NavigationAgent3D extends Node{
   public get_rid(): RID;
   public set_avoidance_enabled(_enabled: boolean): void;

@@ -1,22 +1,20 @@
 
+import { VScrollBar } from "@godot/classes/v_scroll_bar";
+import { Control } from "@godot/classes/control";
 import { Font } from "@godot/classes/font";
 import { PopupMenu } from "@godot/classes/popup_menu";
-import { RichTextEffect } from "@godot/classes/rich_text_effect";
-import { VScrollBar } from "@godot/classes/v_scroll_bar";
 import { Texture2D } from "@godot/classes/texture2d";
-import { Control } from "@godot/classes/control";
-
-
+import { RichTextEffect } from "@godot/classes/rich_text_effect";
 export declare class RichTextLabel extends Control{
   public get_parsed_text(): String;
   public add_text(_text: GDString | StringName | string): void;
   public set_text(_text: GDString | StringName | string): void;
-  public add_image(_image: Texture2D, _width: number, _height: number, _color: Color, _inline_align: number, _region: Rect2, _key: any, _pad: boolean, _tooltip: GDString | StringName | string, _size_in_percent: boolean): void;
-  public update_image(_key: any, _mask: number, _image: Texture2D, _width: number, _height: number, _color: Color, _inline_align: number, _region: Rect2, _pad: boolean, _tooltip: GDString | StringName | string, _size_in_percent: boolean): void;
+  public add_image(_image: Texture2D, _width: number = 0, _height: number = 0, _color: Color = Color(1, 1, 1, 1), _inline_align: number = 5, _region: Rect2 = Rect2(0, 0, 0, 0), _key: any = null, _pad: boolean = false, _tooltip: GDString | StringName | string = "", _size_in_percent: boolean = false): void;
+  public update_image(_key: any, _mask: number, _image: Texture2D, _width: number = 0, _height: number = 0, _color: Color = Color(1, 1, 1, 1), _inline_align: number = 5, _region: Rect2 = Rect2(0, 0, 0, 0), _pad: boolean = false, _tooltip: GDString | StringName | string = "", _size_in_percent: boolean = false): void;
   public newline(): void;
-  public remove_paragraph(_paragraph: number, _no_invalidate: boolean): boolean;
+  public remove_paragraph(_paragraph: number, _no_invalidate: boolean = false): boolean;
   public invalidate_paragraph(_paragraph: number): boolean;
-  public push_font(_font: Font, _font_size: number): void;
+  public push_font(_font: Font, _font_size: number = 0): void;
   public push_font_size(_font_size: number): void;
   public push_normal(): void;
   public push_bold(): void;
@@ -26,17 +24,17 @@ export declare class RichTextLabel extends Control{
   public push_color(_color: Color): void;
   public push_outline_size(_outline_size: number): void;
   public push_outline_color(_color: Color): void;
-  public push_paragraph(_alignment: number, _base_direction: number, _language: GDString | StringName | string, _st_parser: number, _justification_flags: number, _tab_stops: PackedFloat32Array): void;
+  public push_paragraph(_alignment: number, _base_direction: number = 0, _language: GDString | StringName | string = "", _st_parser: number = 0, _justification_flags: number = 163, _tab_stops: PackedFloat32Array = PackedFloat32Array()): void;
   public push_indent(_level: number): void;
-  public push_list(_level: number, _type: number, _capitalize: boolean, _bullet: GDString | StringName | string): void;
-  public push_meta(_data: any, _underline_mode: number): void;
+  public push_list(_level: number, _type: number, _capitalize: boolean, _bullet: GDString | StringName | string = "•"): void;
+  public push_meta(_data: any, _underline_mode: number = 1): void;
   public push_hint(_description: GDString | StringName | string): void;
   public push_language(_language: GDString | StringName | string): void;
   public push_underline(): void;
   public push_strikethrough(): void;
-  public push_table(_columns: number, _inline_align: number, _align_to_row: number): void;
-  public push_dropcap(_string: GDString | StringName | string, _font: Font, _size: number, _dropcap_margins: Rect2, _color: Color, _outline_size: number, _outline_color: Color): void;
-  public set_table_column_expand(_column: number, _expand: boolean, _ratio: number): void;
+  public push_table(_columns: number, _inline_align: number = 0, _align_to_row: number = -1): void;
+  public push_dropcap(_string: GDString | StringName | string, _font: Font, _size: number, _dropcap_margins: Rect2 = Rect2(0, 0, 0, 0), _color: Color = Color(1, 1, 1, 1), _outline_size: number = 0, _outline_color: Color = Color(0, 0, 0, 0)): void;
+  public set_table_column_expand(_column: number, _expand: boolean, _ratio: number = 1): void;
   public set_cell_row_background_color(_odd_row_bg: Color, _even_row_bg: Color): void;
   public set_cell_border_color(_color: Color): void;
   public set_cell_size_override(_min_size: Vector2, _max_size: Vector2): void;

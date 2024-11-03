@@ -1,7 +1,5 @@
 
 import { VisibleOnScreenNotifier2D } from "@godot/classes/visible_on_screen_notifier2d";
-
-
 export declare class VisibleOnScreenEnabler2D extends VisibleOnScreenNotifier2D{
   public set_enable_mode(_mode: number): void;
   public get_enable_mode(): number;

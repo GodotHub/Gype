@@ -1,7 +1,5 @@
 
 import { VisualShaderNodeParameter } from "@godot/classes/visual_shader_node_parameter";
-
-
 export declare class VisualShaderNodeColorParameter extends VisualShaderNodeParameter{
   public set_default_value_enabled(_enabled: boolean): void;
   public is_default_value_enabled(): boolean;

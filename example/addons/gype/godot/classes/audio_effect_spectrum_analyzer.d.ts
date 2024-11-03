@@ -1,7 +1,5 @@
 
 import { AudioEffect } from "@godot/classes/audio_effect";
-
-
 export declare class AudioEffectSpectrumAnalyzer extends AudioEffect{
   public set_buffer_length(_seconds: number): void;
   public get_buffer_length(): number;

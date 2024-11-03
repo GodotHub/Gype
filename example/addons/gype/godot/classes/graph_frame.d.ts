@@ -1,8 +1,6 @@
 
-import { GraphElement } from "@godot/classes/graph_element";
 import { HBoxContainer } from "@godot/classes/h_box_container";
-
-
+import { GraphElement } from "@godot/classes/graph_element";
 export declare class GraphFrame extends GraphElement{
   public set_title(_title: GDString | StringName | string): void;
   public get_title(): String;

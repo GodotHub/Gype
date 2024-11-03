@@ -1,10 +1,8 @@
 
 import { GodotObject } from "@godot/classes/godot_object";
-
-
 export declare class UndoRedo extends GodotObject{
-  public create_action(_name: GDString | StringName | string, _merge_mode: number, _backward_undo_ops: boolean): void;
-  public commit_action(_execute: boolean): void;
+  public create_action(_name: GDString | StringName | string, _merge_mode: number = 0, _backward_undo_ops: boolean = false): void;
+  public commit_action(_execute: boolean = true): void;
   public is_committing_action(): boolean;
   public add_do_method(_callable: Callable): void;
   public add_undo_method(_callable: Callable): void;
@@ -17,7 +15,7 @@ export declare class UndoRedo extends GodotObject{
   public get_history_count(): number;
   public get_current_action(): number;
   public get_action_name(_id: number): String;
-  public clear_history(_increase_version: boolean): void;
+  public clear_history(_increase_version: boolean = true): void;
   public get_current_action_name(): String;
   public has_undo(): boolean;
   public has_redo(): boolean;

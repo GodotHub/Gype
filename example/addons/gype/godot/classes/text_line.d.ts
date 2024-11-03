@@ -1,8 +1,6 @@
 
-import { Font } from "@godot/classes/font";
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
+import { Font } from "@godot/classes/font";
 export declare class TextLine extends RefCounted{
   public clear(): void;
   public set_direction(_direction: number): void;
@@ -14,9 +12,9 @@ export declare class TextLine extends RefCounted{
   public set_preserve_control(_enabled: boolean): void;
   public get_preserve_control(): boolean;
   public set_bidi_override(_override: GDArray): void;
-  public add_string(_text: GDString | StringName | string, _font: Font, _font_size: number, _language: GDString | StringName | string, _meta: any): boolean;
-  public add_object(_key: any, _size: Vector2, _inline_align: number, _length: number, _baseline: number): boolean;
-  public resize_object(_key: any, _size: Vector2, _inline_align: number, _baseline: number): boolean;
+  public add_string(_text: GDString | StringName | string, _font: Font, _font_size: number, _language: GDString | StringName | string = "", _meta: any = null): boolean;
+  public add_object(_key: any, _size: Vector2, _inline_align: number = 5, _length: number = 1, _baseline: number = 0.0): boolean;
+  public resize_object(_key: any, _size: Vector2, _inline_align: number = 5, _baseline: number = 0.0): boolean;
   public set_width(_width: number): void;
   public get_width(): number;
   public set_horizontal_alignment(_alignment: number): void;
@@ -37,8 +35,8 @@ export declare class TextLine extends RefCounted{
   public get_line_width(): number;
   public get_line_underline_position(): number;
   public get_line_underline_thickness(): number;
-  public draw(_canvas: RID, _pos: Vector2, _color: Color): void;
-  public draw_outline(_canvas: RID, _pos: Vector2, _outline_size: number, _color: Color): void;
+  public draw(_canvas: RID, _pos: Vector2, _color: Color = Color(1, 1, 1, 1)): void;
+  public draw_outline(_canvas: RID, _pos: Vector2, _outline_size: number = 1, _color: Color = Color(1, 1, 1, 1)): void;
   public hit_test(_coords: number): number;
   public get direction(): number;
   public set direction(value): void;

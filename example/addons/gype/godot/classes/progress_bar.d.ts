@@ -1,7 +1,5 @@
 
 import { Range } from "@godot/classes/range";
-
-
 export declare class ProgressBar extends Range{
   public set_fill_mode(_mode: number): void;
   public get_fill_mode(): number;

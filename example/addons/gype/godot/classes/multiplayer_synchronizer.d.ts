@@ -1,8 +1,6 @@
 
 import { SceneReplicationConfig } from "@godot/classes/scene_replication_config";
 import { Node } from "@godot/classes/node";
-
-
 export declare class MultiplayerSynchronizer extends Node{
   public set_root_path(_path: GDString | NodePath | string): void;
   public get_root_path(): NodePath;
@@ -14,7 +12,7 @@ export declare class MultiplayerSynchronizer extends Node{
   public get_replication_config(): SceneReplicationConfig;
   public set_visibility_update_mode(_mode: number): void;
   public get_visibility_update_mode(): number;
-  public update_visibility(_for_peer: number): void;
+  public update_visibility(_for_peer: number = 0): void;
   public set_visibility_public(_visible: boolean): void;
   public is_visibility_public(): boolean;
   public add_visibility_filter(_filter: Callable): void;

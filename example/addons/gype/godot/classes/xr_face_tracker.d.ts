@@ -1,7 +1,5 @@
 
 import { XRTracker } from "@godot/classes/xr_tracker";
-
-
 export declare class XRFaceTracker extends XRTracker{
   public get_blend_shape(_blend_shape: number): number;
   public set_blend_shape(_blend_shape: number, _weight: number): void;

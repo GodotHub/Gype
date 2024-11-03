@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class MeshConvexDecompositionSettings extends RefCounted{
   public set_max_concavity(_max_concavity: number): void;
   public get_max_concavity(): number;

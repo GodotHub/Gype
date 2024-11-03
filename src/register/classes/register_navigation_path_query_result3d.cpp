@@ -147,13 +147,14 @@ static int js_navigation_path_query_result3d_class_init(JSContext *ctx, JSModule
 	JS_SetPropertyFunctionList(ctx, proto, navigation_path_query_result3d_class_proto_funcs, _countof(navigation_path_query_result3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, navigation_path_query_result3d_class_constructor, "NavigationPathQueryResult3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "NavigationPathQueryResult3D", ctor);
+	constructors[NavigationPathQueryResult3D::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_navigation_path_query_result3d_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

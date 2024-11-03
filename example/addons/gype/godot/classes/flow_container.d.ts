@@ -1,7 +1,5 @@
 
 import { Container } from "@godot/classes/container";
-
-
 export declare class FlowContainer extends Container{
   public get_line_count(): number;
   public set_alignment(_alignment: number): void;

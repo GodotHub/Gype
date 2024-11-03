@@ -221,13 +221,14 @@ static int js_multiplayer_peer_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPropertyFunctionList(ctx, proto, multiplayer_peer_class_proto_funcs, _countof(multiplayer_peer_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, multiplayer_peer_class_constructor, "MultiplayerPeer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "MultiplayerPeer", ctor);
+	constructors[MultiplayerPeer::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_multiplayer_peer_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/packet_peer';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

@@ -1,7 +1,5 @@
 
 import { RigidBody3D } from "@godot/classes/rigid_body3d";
-
-
 export declare class VehicleBody3D extends RigidBody3D{
   public set_engine_force(_engine_force: number): void;
   public get_engine_force(): number;

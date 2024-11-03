@@ -1,7 +1,5 @@
 
 import { InputEventMouse } from "@godot/classes/input_event_mouse";
-
-
 export declare class InputEventMouseButton extends InputEventMouse{
   public set_factor(_factor: number): void;
   public get_factor(): number;

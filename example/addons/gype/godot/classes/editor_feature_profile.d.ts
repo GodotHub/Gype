@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class EditorFeatureProfile extends RefCounted{
   public set_disable_class(_class_name: GDString | StringName | string, _disable: boolean): void;
   public is_class_disabled(_class_name: GDString | StringName | string): boolean;

@@ -63,13 +63,14 @@ static int js_check_box_class_init(JSContext *ctx, JSModuleDef *m) {
 	define_check_box_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, check_box_class_constructor, "CheckBox", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "CheckBox", ctor);
+	constructors[CheckBox::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_check_box_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/button';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

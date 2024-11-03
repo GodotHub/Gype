@@ -1,8 +1,6 @@
 
 import { Skeleton3D } from "@godot/classes/skeleton3d";
 import { Node3D } from "@godot/classes/node3d";
-
-
 export declare class SkeletonModifier3D extends Node3D{
   public _process_modification(): void;
   public get_skeleton(): Skeleton3D;

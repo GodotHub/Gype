@@ -204,14 +204,14 @@ static int js_{{snake_name}}_class_init(JSContext *ctx, JSModuleDef *m) {
 	define_{{snake_name}}_enum(ctx, proto);
 		{%- if instance_methods or vararg_methods %}
 	JS_SetPropertyFunctionList(ctx, proto, {{snake_name}}_class_proto_funcs, _countof({{snake_name}}_class_proto_funcs));
-	{%- endif %}
+		{%- endif %}
 	JSValue ctor = JS_NewCFunction2(ctx, {{snake_name}}_class_constructor, "{{clazz_name}}", 0, JS_CFUNC_constructor, 0);
 	{%- if static_methods %}
 	JS_SetPropertyFunctionList(ctx, ctor, {{snake_name}}_class_static_funcs, _countof({{snake_name}}_class_static_funcs));
 	{%- endif %}
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "{{clazz_name}}", ctor);
+	constructors[{{clazz_name}}::__class_id] = ctor;
 
 	return 0;
 }
@@ -222,11 +222,14 @@ static int js_{{snake_name}}_class_init(JSContext *ctx, JSModuleDef *m) {
 {%- endif %}
 
 JSModuleDef *_js_init_{{ snake_name }}_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	{%- if inherits %}
+		{%- if inherits not in singletons | map(attribute='type') | list %}
 	const char *code = "import * as _ from '@godot/classes/{{camel_to_snake(inherits)}}';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))
 		return NULL;
+		{%- endif %}
 	{%- endif %}
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_{{snake_name}}_class_init);
 	if (!m)

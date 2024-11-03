@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class StreamPeer extends RefCounted{
   public put_data(_data: PackedByteArray): number;
   public put_partial_data(_data: PackedByteArray): GDArray;
@@ -22,7 +20,7 @@ export declare class StreamPeer extends RefCounted{
   public put_double(_value: number): void;
   public put_string(_value: GDString | StringName | string): void;
   public put_utf8_string(_value: GDString | StringName | string): void;
-  public put_var(_value: any, _full_objects: boolean): void;
+  public put_var(_value: any, _full_objects: boolean = false): void;
   public get_8(): number;
   public get_u8(): number;
   public get_16(): number;
@@ -33,9 +31,9 @@ export declare class StreamPeer extends RefCounted{
   public get_u64(): number;
   public get_float(): number;
   public get_double(): number;
-  public get_string(_bytes: number): String;
-  public get_utf8_string(_bytes: number): String;
-  public get_var(_allow_objects: boolean): any;
+  public get_string(_bytes: number = -1): String;
+  public get_utf8_string(_bytes: number = -1): String;
+  public get_var(_allow_objects: boolean = false): any;
   public get big_endian(): boolean;
   public set big_endian(value): void;
 }

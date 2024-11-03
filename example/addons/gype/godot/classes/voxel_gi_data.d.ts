@@ -1,7 +1,5 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class VoxelGIData extends Resource{
   public allocate(_to_cell_xform: Transform3D, _aabb: AABB, _octree_size: Vector3, _octree_cells: PackedByteArray, _data_cells: PackedByteArray, _distance_field: PackedByteArray, _level_counts: PackedInt32Array): void;
   public get_bounds(): AABB;

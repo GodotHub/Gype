@@ -1,12 +1,11 @@
 
+import { Texture2D } from "@godot/classes/texture2d";
+import { Font } from "@godot/classes/font";
 import { StyleBox } from "@godot/classes/style_box";
 import { GodotObject } from "@godot/classes/godot_object";
-import { Font } from "@godot/classes/font";
 import { Theme } from "@godot/classes/theme";
-import { Texture2D } from "@godot/classes/texture2d";
-
-
-export declare class ThemeDB extends GodotObject{
+declare global {
+export declare class _ThemeDB extends GodotObject{
   public get_default_theme(): Theme;
   public get_project_theme(): Theme;
   public set_fallback_base_scale(_base_scale: number): void;
@@ -30,4 +29,8 @@ export declare class ThemeDB extends GodotObject{
   public get fallback_stylebox(): StyleBox;
   public set fallback_stylebox(value): void;
   public get fallback_changed(): Signal;
+}
+}
+declare global {
+  const ThemeDB: _ThemeDB;
 }

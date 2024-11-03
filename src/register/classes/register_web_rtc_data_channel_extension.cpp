@@ -63,13 +63,14 @@ static int js_web_rtc_data_channel_extension_class_init(JSContext *ctx, JSModule
 	define_web_rtc_data_channel_extension_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, web_rtc_data_channel_extension_class_constructor, "WebRTCDataChannelExtension", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "WebRTCDataChannelExtension", ctor);
+	constructors[WebRTCDataChannelExtension::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_web_rtc_data_channel_extension_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/web_rtc_data_channel';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

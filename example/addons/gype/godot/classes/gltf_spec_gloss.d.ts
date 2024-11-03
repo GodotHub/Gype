@@ -1,8 +1,6 @@
 
 import { Image } from "@godot/classes/image";
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class GLTFSpecGloss extends Resource{
   public get_diffuse_img(): Image;
   public set_diffuse_img(_diffuse_img: Image): void;

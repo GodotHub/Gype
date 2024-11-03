@@ -1,7 +1,5 @@
 
 import { Shape3D } from "@godot/classes/shape3d";
-
-
 export declare class ConcavePolygonShape3D extends Shape3D{
   public set_faces(_faces: PackedVector3Array): void;
   public get_faces(): PackedVector3Array;

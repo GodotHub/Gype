@@ -84,13 +84,14 @@ static int js_texture_layered_rd_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPropertyFunctionList(ctx, proto, texture_layered_rd_class_proto_funcs, _countof(texture_layered_rd_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, texture_layered_rd_class_constructor, "TextureLayeredRD", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "TextureLayeredRD", ctor);
+	constructors[TextureLayeredRD::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_texture_layered_rd_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/texture_layered';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

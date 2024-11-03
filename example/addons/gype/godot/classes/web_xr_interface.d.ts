@@ -1,8 +1,6 @@
 
 import { XRControllerTracker } from "@godot/classes/xr_controller_tracker";
 import { XRInterface } from "@godot/classes/xr_interface";
-
-
 export declare class WebXRInterface extends XRInterface{
   public is_session_supported(_session_mode: GDString | StringName | string): void;
   public set_session_mode(_session_mode: GDString | StringName | string): void;

@@ -1,11 +1,10 @@
 
 import { GodotObject } from "@godot/classes/godot_object";
-
-
-export declare class ProjectSettings extends GodotObject{
+declare global {
+export declare class _ProjectSettings extends GodotObject{
   public has_setting(_name: GDString | StringName | string): boolean;
   public set_setting(_name: GDString | StringName | string, _value: any): void;
-  public get_setting(_name: GDString | StringName | string, _default_value: any): any;
+  public get_setting(_name: GDString | StringName | string, _default_value: any = null): any;
   public get_setting_with_override(_name: GDString | StringName | string): any;
   public get_global_class_list(): GDArray;
   public set_order(_name: GDString | StringName | string, _position: number): void;
@@ -19,7 +18,11 @@ export declare class ProjectSettings extends GodotObject{
   public localize_path(_path: GDString | StringName | string): String;
   public globalize_path(_path: GDString | StringName | string): String;
   public save(): number;
-  public load_resource_pack(_pack: GDString | StringName | string, _replace_files: boolean, _offset: number): boolean;
+  public load_resource_pack(_pack: GDString | StringName | string, _replace_files: boolean = true, _offset: number = 0): boolean;
   public save_custom(_file: GDString | StringName | string): number;
   public get settings_changed(): Signal;
+}
+}
+declare global {
+  const ProjectSettings: _ProjectSettings;
 }

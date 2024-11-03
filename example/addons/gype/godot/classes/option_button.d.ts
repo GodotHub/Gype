@@ -1,12 +1,10 @@
 
-import { PopupMenu } from "@godot/classes/popup_menu";
-import { Texture2D } from "@godot/classes/texture2d";
 import { Button } from "@godot/classes/button";
-
-
+import { Texture2D } from "@godot/classes/texture2d";
+import { PopupMenu } from "@godot/classes/popup_menu";
 export declare class OptionButton extends Button{
-  public add_item(_label: GDString | StringName | string, _id: number): void;
-  public add_icon_item(_texture: Texture2D, _label: GDString | StringName | string, _id: number): void;
+  public add_item(_label: GDString | StringName | string, _id: number = -1): void;
+  public add_icon_item(_texture: Texture2D, _label: GDString | StringName | string, _id: number = -1): void;
   public set_item_text(_idx: number, _text: GDString | StringName | string): void;
   public set_item_icon(_idx: number, _texture: Texture2D): void;
   public set_item_disabled(_idx: number, _disabled: boolean): void;
@@ -21,7 +19,7 @@ export declare class OptionButton extends Button{
   public get_item_tooltip(_idx: number): String;
   public is_item_disabled(_idx: number): boolean;
   public is_item_separator(_idx: number): boolean;
-  public add_separator(_text: GDString | StringName | string): void;
+  public add_separator(_text: GDString | StringName | string = ""): void;
   public clear(): void;
   public select(_idx: number): void;
   public get_selected(): number;
@@ -33,7 +31,7 @@ export declare class OptionButton extends Button{
   public set_item_count(_count: number): void;
   public get_item_count(): number;
   public has_selectable_items(): boolean;
-  public get_selectable_item(_from_last: boolean): number;
+  public get_selectable_item(_from_last: boolean = false): number;
   public set_fit_to_longest_item(_fit: boolean): void;
   public is_fit_to_longest_item(): boolean;
   public set_allow_reselect(_allow: boolean): void;

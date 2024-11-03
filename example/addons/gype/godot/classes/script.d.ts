@@ -1,15 +1,13 @@
 
-import { Resource } from "@godot/classes/resource";
 import { GodotObject } from "@godot/classes/godot_object";
-
-
+import { Resource } from "@godot/classes/resource";
 export declare class Script extends Resource{
   public can_instantiate(): boolean;
   public instance_has(_base_object: GodotObject): boolean;
   public has_source_code(): boolean;
   public get_source_code(): String;
   public set_source_code(_source: GDString | StringName | string): void;
-  public reload(_keep_state: boolean): number;
+  public reload(_keep_state: boolean = false): number;
   public get_base_script(): Script;
   public get_instance_base_type(): StringName;
   public get_global_name(): StringName;

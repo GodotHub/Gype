@@ -1,7 +1,5 @@
 
 import { Shape3D } from "@godot/classes/shape3d";
-
-
 export declare class SeparationRayShape3D extends Shape3D{
   public set_length(_length: number): void;
   public get_length(): number;

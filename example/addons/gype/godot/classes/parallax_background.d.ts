@@ -1,7 +1,5 @@
 
 import { CanvasLayer } from "@godot/classes/canvas_layer";
-
-
 export declare class ParallaxBackground extends CanvasLayer{
   public set_scroll_offset(_offset: Vector2): void;
   public get_scroll_offset(): Vector2;

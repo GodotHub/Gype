@@ -1,7 +1,5 @@
 
 import { Container } from "@godot/classes/container";
-
-
 export declare class SplitContainer extends Container{
   public set_split_offset(_offset: number): void;
   public get_split_offset(): number;

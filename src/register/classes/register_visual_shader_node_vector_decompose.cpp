@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_vector_decompose.hpp>
 #include <godot_cpp/classes/visual_shader_node_vector_base.hpp>
+#include <godot_cpp/classes/visual_shader_node_vector_decompose.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -63,13 +63,14 @@ static int js_visual_shader_node_vector_decompose_class_init(JSContext *ctx, JSM
 	define_visual_shader_node_vector_decompose_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_vector_decompose_class_constructor, "VisualShaderNodeVectorDecompose", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "VisualShaderNodeVectorDecompose", ctor);
+	constructors[VisualShaderNodeVectorDecompose::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_visual_shader_node_vector_decompose_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/visual_shader_node_vector_base';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

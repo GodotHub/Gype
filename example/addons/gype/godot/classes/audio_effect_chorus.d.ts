@@ -1,7 +1,5 @@
 
 import { AudioEffect } from "@godot/classes/audio_effect";
-
-
 export declare class AudioEffectChorus extends AudioEffect{
   public set_voice_count(_voices: number): void;
   public get_voice_count(): number;

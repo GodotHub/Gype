@@ -1,9 +1,7 @@
 
 import { Image } from "@godot/classes/image";
-import { Resource } from "@godot/classes/resource";
 import { Texture } from "@godot/classes/texture";
-
-
+import { Resource } from "@godot/classes/resource";
 export declare class Texture2D extends Texture{
   public _get_width(): number;
   public _get_height(): number;
@@ -16,9 +14,9 @@ export declare class Texture2D extends Texture{
   public get_height(): number;
   public get_size(): Vector2;
   public has_alpha(): boolean;
-  public draw(_canvas_item: RID, _position: Vector2, _modulate: Color, _transpose: boolean): void;
-  public draw_rect(_canvas_item: RID, _rect: Rect2, _tile: boolean, _modulate: Color, _transpose: boolean): void;
-  public draw_rect_region(_canvas_item: RID, _rect: Rect2, _src_rect: Rect2, _modulate: Color, _transpose: boolean, _clip_uv: boolean): void;
+  public draw(_canvas_item: RID, _position: Vector2, _modulate: Color = Color(1, 1, 1, 1), _transpose: boolean = false): void;
+  public draw_rect(_canvas_item: RID, _rect: Rect2, _tile: boolean, _modulate: Color = Color(1, 1, 1, 1), _transpose: boolean = false): void;
+  public draw_rect_region(_canvas_item: RID, _rect: Rect2, _src_rect: Rect2, _modulate: Color = Color(1, 1, 1, 1), _transpose: boolean = false, _clip_uv: boolean = true): void;
   public get_image(): Image;
   public create_placeholder(): Resource;
 }

@@ -1,8 +1,6 @@
 
-import { Resource } from "@godot/classes/resource";
 import { Material } from "@godot/classes/material";
-
-
+import { Resource } from "@godot/classes/resource";
 export declare class Sky extends Resource{
   public set_radiance_size(_size: number): void;
   public get_radiance_size(): number;

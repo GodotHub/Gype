@@ -1,9 +1,8 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
 import { TextServer } from "@godot/classes/text_server";
-
-
-export declare class TextServerManager extends GodotObject{
+import { GodotObject } from "@godot/classes/godot_object";
+declare global {
+export declare class _TextServerManager extends GodotObject{
   public add_interface(_interface: TextServer): void;
   public get_interface_count(): number;
   public remove_interface(_interface: TextServer): void;
@@ -14,4 +13,8 @@ export declare class TextServerManager extends GodotObject{
   public get_primary_interface(): TextServer;
   public get interface_added(): Signal;
   public get interface_removed(): Signal;
+}
+}
+declare global {
+  const TextServerManager: _TextServerManager;
 }

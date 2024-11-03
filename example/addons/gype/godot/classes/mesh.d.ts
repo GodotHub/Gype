@@ -1,11 +1,9 @@
 
-import { Resource } from "@godot/classes/resource";
 import { ConcavePolygonShape3D } from "@godot/classes/concave_polygon_shape3d";
 import { TriangleMesh } from "@godot/classes/triangle_mesh";
-import { ConvexPolygonShape3D } from "@godot/classes/convex_polygon_shape3d";
+import { Resource } from "@godot/classes/resource";
 import { Material } from "@godot/classes/material";
-
-
+import { ConvexPolygonShape3D } from "@godot/classes/convex_polygon_shape3d";
 export declare class Mesh extends Resource{
   public _get_surface_count(): number;
   public _surface_get_array_len(_index: number): number;
@@ -32,7 +30,7 @@ export declare class Mesh extends Resource{
   public surface_get_material(_surf_idx: number): Material;
   public create_placeholder(): Resource;
   public create_trimesh_shape(): ConcavePolygonShape3D;
-  public create_convex_shape(_clean: boolean, _simplify: boolean): ConvexPolygonShape3D;
+  public create_convex_shape(_clean: boolean = true, _simplify: boolean = false): ConvexPolygonShape3D;
   public create_outline(_margin: number): Mesh;
   public generate_triangle_mesh(): TriangleMesh;
   public get lightmap_size_hint(): Vector2i;

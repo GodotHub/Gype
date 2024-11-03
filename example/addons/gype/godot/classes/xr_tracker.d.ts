@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class XRTracker extends RefCounted{
   public get_tracker_type(): number;
   public set_tracker_type(_type: number): void;

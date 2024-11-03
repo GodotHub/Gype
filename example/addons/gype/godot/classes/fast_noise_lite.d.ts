@@ -1,7 +1,5 @@
 
 import { Noise } from "@godot/classes/noise";
-
-
 export declare class FastNoiseLite extends Noise{
   public set_noise_type(_type: number): void;
   public get_noise_type(): number;

@@ -208,13 +208,20 @@ def connect_args(args):
     def mapper(arg):
         arg_name = '_' + arg.get('name', '')
         arg_type = arg.get('type', '')
+        default_value = arg.get('default_value', None)
         arg_type = set_type(arg_type)
         if arg_type == "String" or arg_type == "StringName":
-            return arg_name + ": " + "GDString | StringName | string"
+            ret = arg_name + ": " + "GDString | StringName | string"
         elif arg_type == 'NodePath':
-            return arg_name + ": " + "GDString | NodePath | string"
+            ret = arg_name + ": " + "GDString | NodePath | string"
         else:
-            return arg_name + ': ' + arg_type
+            ret = arg_name + ': ' + arg_type
+        if default_value:
+            if isinstance(default_value, str) and default_value[0] == '&':
+                ret += ' = ' + default_value.removeprefix('&')
+            else:
+                ret += ' = ' + default_value
+        return ret
 
     if args:
         return ', '.join(list(map(mapper, args)))

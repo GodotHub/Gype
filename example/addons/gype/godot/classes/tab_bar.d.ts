@@ -1,8 +1,6 @@
 
-import { Control } from "@godot/classes/control";
 import { Texture2D } from "@godot/classes/texture2d";
-
-
+import { Control } from "@godot/classes/control";
 export declare class TabBar extends Control{
   public set_tab_count(_count: number): void;
   public get_tab_count(): number;
@@ -32,7 +30,7 @@ export declare class TabBar extends Control{
   public set_tab_metadata(_tab_idx: number, _metadata: any): void;
   public get_tab_metadata(_tab_idx: number): any;
   public remove_tab(_tab_idx: number): void;
-  public add_tab(_title: GDString | StringName | string, _icon: Texture2D): void;
+  public add_tab(_title: GDString | StringName | string = "", _icon: Texture2D = null): void;
   public get_tab_idx_at_point(_point: Vector2): number;
   public set_tab_alignment(_alignment: number): void;
   public get_tab_alignment(): number;

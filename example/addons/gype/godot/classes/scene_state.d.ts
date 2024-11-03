@@ -1,13 +1,11 @@
 
 import { PackedScene } from "@godot/classes/packed_scene";
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class SceneState extends RefCounted{
   public get_node_count(): number;
   public get_node_type(_idx: number): StringName;
   public get_node_name(_idx: number): StringName;
-  public get_node_path(_idx: number, _for_parent: boolean): NodePath;
+  public get_node_path(_idx: number, _for_parent: boolean = false): NodePath;
   public get_node_owner_path(_idx: number): NodePath;
   public is_node_instance_placeholder(_idx: number): boolean;
   public get_node_instance_placeholder(_idx: number): String;

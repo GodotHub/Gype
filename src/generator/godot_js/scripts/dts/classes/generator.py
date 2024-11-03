@@ -12,7 +12,7 @@ def gen_classes_d_ts():
         if clazz['name'].find('Extension') != -1 or clazz['name'] == 'Object': 
             continue
         dependency = list(filter(lambda e: not is_variant(e), collect_dependency(clazz)))
-        content = cpp_template.render({ 'class': clazz, 'dependency': dependency })
+        content = cpp_template.render({ 'class': clazz, 'singletons': gde_json['singletons'], 'dependency': dependency })
         if clazz['name'] == 'Object':
             class_name = 'GodotObject'
         else:

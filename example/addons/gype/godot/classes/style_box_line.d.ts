@@ -1,7 +1,5 @@
 
 import { StyleBox } from "@godot/classes/style_box";
-
-
 export declare class StyleBoxLine extends StyleBox{
   public set_color(_color: Color): void;
   public get_color(): Color;

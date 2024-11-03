@@ -1,9 +1,8 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class PhysicsRayQueryParameters2D extends RefCounted{
-  public create(_from: Vector2, _to: Vector2, _collision_mask: number, _exclude: GDArray): PhysicsRayQueryParameters2D;
+  public
+ static create(_from: Vector2, _to: Vector2, _collision_mask: number = 4294967295, _exclude: GDArray = Array[RID]([])): PhysicsRayQueryParameters2D;
   public set_from(_from: Vector2): void;
   public get_from(): Vector2;
   public set_to(_to: Vector2): void;

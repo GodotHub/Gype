@@ -63,13 +63,14 @@ static int js_audio_effect_eq10_class_init(JSContext *ctx, JSModuleDef *m) {
 	define_audio_effect_eq10_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, audio_effect_eq10_class_constructor, "AudioEffectEQ10", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "AudioEffectEQ10", ctor);
+	constructors[AudioEffectEQ10::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_audio_effect_eq10_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/audio_effect_eq';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

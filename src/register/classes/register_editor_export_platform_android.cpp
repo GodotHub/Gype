@@ -63,13 +63,14 @@ static int js_editor_export_platform_android_class_init(JSContext *ctx, JSModule
 	define_editor_export_platform_android_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, editor_export_platform_android_class_constructor, "EditorExportPlatformAndroid", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "EditorExportPlatformAndroid", ctor);
+	constructors[EditorExportPlatformAndroid::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_editor_export_platform_android_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/editor_export_platform';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

@@ -9,7 +9,7 @@
 
 HashSet<int> class_id_list;
 HashMap<StringName, int> classes;
-HashMap<int, HashSet<JSObject *>> object_pool;
+HashMap<uint64_t, JSValue> constructors;
 
 using namespace godot;
 
@@ -77,22 +77,6 @@ enum {
 
 	JS_CLASS_INIT_COUNT, /* last entry for predefined classes */
 };
-
-// void object_pool_add(JSValue obj, Object) {
-// 	HashSet<JSObject *> hash_set = object_pool[];
-// 	hash_set.insert(object);
-// }
-
-// uint64_t object_pool_when_contains(Object *obj) {
-// 	auto it = object_pool.begin();
-// 	while (it)
-// 	{
-// 		if (it->value.has(obj))
-// 			return it->key;
-// 		++it;
-// 	}
-// 	return -1;
-// }
 
 #define CREATE_OBJECT_FUNC(type)                           \
 	static JSValue create_##type##_obj(Variant val) {      \
@@ -385,6 +369,10 @@ JSValue any_to_jsvalue(const Variant *val) {
 		case Variant::Type::OBJECT: {
 			Object *obj = *val;
 			if (obj) {
+				const char *class_name = to_chars(obj->get_class());
+				char code[1024];
+				sprintf(code, "import { %s } from \"@godot/classes/%s\";", class_name, camelToSnake(class_name).c_str());
+				JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 				JSClassID class_id = obj->__get_js_class_id();
 				JSValue js_obj = JS_NewObjectClass(ctx, class_id);
 				JS_SetOpaque(js_obj, obj);

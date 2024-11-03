@@ -1,7 +1,5 @@
 
 import { Node } from "@godot/classes/node";
-
-
 export declare class CanvasLayer extends Node{
   public set_layer(_layer: number): void;
   public get_layer(): number;

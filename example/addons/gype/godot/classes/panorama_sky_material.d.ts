@@ -1,8 +1,6 @@
 
-import { Material } from "@godot/classes/material";
 import { Texture2D } from "@godot/classes/texture2d";
-
-
+import { Material } from "@godot/classes/material";
 export declare class PanoramaSkyMaterial extends Material{
   public set_panorama(_texture: Texture2D): void;
   public get_panorama(): Texture2D;

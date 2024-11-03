@@ -1,10 +1,8 @@
 
-import { Font } from "@godot/classes/font";
 import { GodotObject } from "@godot/classes/godot_object";
-import { Tree } from "@godot/classes/tree";
+import { Font } from "@godot/classes/font";
 import { Texture2D } from "@godot/classes/texture2d";
-
-
+import { Tree } from "@godot/classes/tree";
 export declare class TreeItem extends GodotObject{
   public set_cell_mode(_column: number, _mode: number): void;
   public get_cell_mode(_column: number): number;
@@ -14,7 +12,7 @@ export declare class TreeItem extends GodotObject{
   public set_indeterminate(_column: number, _indeterminate: boolean): void;
   public is_checked(_column: number): boolean;
   public is_indeterminate(_column: number): boolean;
-  public propagate_check(_column: number, _emit_signal: boolean): void;
+  public propagate_check(_column: number, _emit_signal: boolean = true): void;
   public set_text(_column: number, _text: GDString | StringName | string): void;
   public get_text(_column: number): String;
   public set_text_direction(_column: number, _direction: number): void;
@@ -41,7 +39,7 @@ export declare class TreeItem extends GodotObject{
   public get_icon_modulate(_column: number): Color;
   public set_range(_column: number, _value: number): void;
   public get_range(_column: number): number;
-  public set_range_config(_column: number, _min: number, _max: number, _step: number, _expr: boolean): void;
+  public set_range_config(_column: number, _min: number, _max: number, _step: number, _expr: boolean = false): void;
   public get_range_config(_column: number): Dictionary;
   public set_metadata(_column: number, _meta: any): void;
   public get_metadata(_column: number): any;
@@ -51,7 +49,7 @@ export declare class TreeItem extends GodotObject{
   public set_collapsed(_enable: boolean): void;
   public is_collapsed(): boolean;
   public set_collapsed_recursive(_enable: boolean): void;
-  public is_any_collapsed(_only_visible: boolean): boolean;
+  public is_any_collapsed(_only_visible: boolean = false): boolean;
   public set_visible(_enable: boolean): void;
   public is_visible(): boolean;
   public is_visible_in_tree(): boolean;
@@ -72,12 +70,12 @@ export declare class TreeItem extends GodotObject{
   public get_custom_font(_column: number): Font;
   public set_custom_font_size(_column: number, _font_size: number): void;
   public get_custom_font_size(_column: number): number;
-  public set_custom_bg_color(_column: number, _color: Color, _just_outline: boolean): void;
+  public set_custom_bg_color(_column: number, _color: Color, _just_outline: boolean = false): void;
   public clear_custom_bg_color(_column: number): void;
   public get_custom_bg_color(_column: number): Color;
   public set_custom_as_button(_column: number, _enable: boolean): void;
   public is_custom_set_as_button(_column: number): boolean;
-  public add_button(_column: number, _button: Texture2D, _id: number, _disabled: boolean, _tooltip_text: GDString | StringName | string): void;
+  public add_button(_column: number, _button: Texture2D, _id: number = -1, _disabled: boolean = false, _tooltip_text: GDString | StringName | string = ""): void;
   public get_button_count(_column: number): number;
   public get_button_tooltip_text(_column: number, _button_index: number): String;
   public get_button_id(_column: number, _button_index: number): number;
@@ -98,7 +96,7 @@ export declare class TreeItem extends GodotObject{
   public get_expand_right(_column: number): boolean;
   public set_disable_folding(_disable: boolean): void;
   public is_folding_disabled(): boolean;
-  public create_child(_index: number): TreeItem;
+  public create_child(_index: number = -1): TreeItem;
   public add_child(_child: TreeItem): void;
   public remove_child(_child: TreeItem): void;
   public get_tree(): Tree;
@@ -106,10 +104,10 @@ export declare class TreeItem extends GodotObject{
   public get_prev(): TreeItem;
   public get_parent(): TreeItem;
   public get_first_child(): TreeItem;
-  public get_next_in_tree(_wrap: boolean): TreeItem;
-  public get_prev_in_tree(_wrap: boolean): TreeItem;
-  public get_next_visible(_wrap: boolean): TreeItem;
-  public get_prev_visible(_wrap: boolean): TreeItem;
+  public get_next_in_tree(_wrap: boolean = false): TreeItem;
+  public get_prev_in_tree(_wrap: boolean = false): TreeItem;
+  public get_next_visible(_wrap: boolean = false): TreeItem;
+  public get_prev_visible(_wrap: boolean = false): TreeItem;
   public get_child(_index: number): TreeItem;
   public get_child_count(): number;
   public get_children(): GDArray;

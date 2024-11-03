@@ -1,9 +1,8 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
 import { Translation } from "@godot/classes/translation";
-
-
-export declare class TranslationServer extends GodotObject{
+import { GodotObject } from "@godot/classes/godot_object";
+declare global {
+export declare class _TranslationServer extends GodotObject{
   public set_locale(_locale: GDString | StringName | string): void;
   public get_locale(): String;
   public get_tool_locale(): String;
@@ -16,8 +15,8 @@ export declare class TranslationServer extends GodotObject{
   public get_all_countries(): PackedStringArray;
   public get_country_name(_country: GDString | StringName | string): String;
   public get_locale_name(_locale: GDString | StringName | string): String;
-  public translate(_message: GDString | StringName | string, _context: GDString | StringName | string): StringName;
-  public translate_plural(_message: GDString | StringName | string, _plural_message: GDString | StringName | string, _n: number, _context: GDString | StringName | string): StringName;
+  public translate(_message: GDString | StringName | string, _context: GDString | StringName | string = ""): StringName;
+  public translate_plural(_message: GDString | StringName | string, _plural_message: GDString | StringName | string, _n: number, _context: GDString | StringName | string = ""): StringName;
   public add_translation(_translation: Translation): void;
   public remove_translation(_translation: Translation): void;
   public get_translation_object(_locale: GDString | StringName | string): Translation;
@@ -29,4 +28,8 @@ export declare class TranslationServer extends GodotObject{
   public pseudolocalize(_message: GDString | StringName | string): StringName;
   public get pseudolocalization_enabled(): boolean;
   public set pseudolocalization_enabled(value): void;
+}
+}
+declare global {
+  const TranslationServer: _TranslationServer;
 }

@@ -206,13 +206,14 @@ static int js_upnp_device_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPropertyFunctionList(ctx, proto, upnp_device_class_proto_funcs, _countof(upnp_device_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, upnp_device_class_constructor, "UPNPDevice", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "UPNPDevice", ctor);
+	constructors[UPNPDevice::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_upnp_device_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

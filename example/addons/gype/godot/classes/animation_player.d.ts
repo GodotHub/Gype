@@ -1,7 +1,5 @@
 
 import { AnimationMixer } from "@godot/classes/animation_mixer";
-
-
 export declare class AnimationPlayer extends AnimationMixer{
   public animation_set_next(_animation_from: GDString | StringName | string, _animation_to: GDString | StringName | string): void;
   public animation_get_next(_animation_from: GDString | StringName | string): StringName;
@@ -17,11 +15,11 @@ export declare class AnimationPlayer extends AnimationMixer{
   public get_auto_capture_transition_type(): number;
   public set_auto_capture_ease_type(_auto_capture_ease_type: number): void;
   public get_auto_capture_ease_type(): number;
-  public play(_name: GDString | StringName | string, _custom_blend: number, _custom_speed: number, _from_end: boolean): void;
-  public play_backwards(_name: GDString | StringName | string, _custom_blend: number): void;
-  public play_with_capture(_name: GDString | StringName | string, _duration: number, _custom_blend: number, _custom_speed: number, _from_end: boolean, _trans_type: number, _ease_type: number): void;
+  public play(_name: GDString | StringName | string = "", _custom_blend: number = -1, _custom_speed: number = 1.0, _from_end: boolean = false): void;
+  public play_backwards(_name: GDString | StringName | string = "", _custom_blend: number = -1): void;
+  public play_with_capture(_name: GDString | StringName | string = "", _duration: number = -1.0, _custom_blend: number = -1, _custom_speed: number = 1.0, _from_end: boolean = false, _trans_type: number = 0, _ease_type: number = 0): void;
   public pause(): void;
-  public stop(_keep_state: boolean): void;
+  public stop(_keep_state: boolean = false): void;
   public is_playing(): boolean;
   public set_current_animation(_animation: GDString | StringName | string): void;
   public get_current_animation(): String;
@@ -39,7 +37,7 @@ export declare class AnimationPlayer extends AnimationMixer{
   public is_movie_quit_on_finish_enabled(): boolean;
   public get_current_animation_position(): number;
   public get_current_animation_length(): number;
-  public seek(_seconds: number, _update: boolean, _update_only: boolean): void;
+  public seek(_seconds: number, _update: boolean = false, _update_only: boolean = false): void;
   public set_process_callback(_mode: number): void;
   public get_process_callback(): number;
   public set_method_call_mode(_mode: number): void;

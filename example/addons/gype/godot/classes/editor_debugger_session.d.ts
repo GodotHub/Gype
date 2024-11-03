@@ -1,11 +1,9 @@
 
-import { RefCounted } from "@godot/classes/ref_counted";
 import { Control } from "@godot/classes/control";
-
-
+import { RefCounted } from "@godot/classes/ref_counted";
 export declare class EditorDebuggerSession extends RefCounted{
-  public send_message(_message: GDString | StringName | string, _data: GDArray): void;
-  public toggle_profiler(_profiler: GDString | StringName | string, _enable: boolean, _data: GDArray): void;
+  public send_message(_message: GDString | StringName | string, _data: GDArray = []): void;
+  public toggle_profiler(_profiler: GDString | StringName | string, _enable: boolean, _data: GDArray = []): void;
   public is_breaked(): boolean;
   public is_debuggable(): boolean;
   public is_active(): boolean;

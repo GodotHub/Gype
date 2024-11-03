@@ -1,24 +1,23 @@
 
 import { GodotObject } from "@godot/classes/godot_object";
-import { Resource } from "@godot/classes/resource";
 import { Image } from "@godot/classes/image";
+import { Resource } from "@godot/classes/resource";
 import { Texture2D } from "@godot/classes/texture2d";
-
-
-export declare class DisplayServer extends GodotObject{
+declare global {
+export declare class _DisplayServer extends GodotObject{
   public has_feature(_feature: number): boolean;
   public get_name(): String;
   public help_set_search_callbacks(_search_callback: Callable, _action_callback: Callable): void;
   public global_menu_set_popup_callbacks(_menu_root: GDString | StringName | string, _open_callback: Callable, _close_callback: Callable): void;
-  public global_menu_add_submenu_item(_menu_root: GDString | StringName | string, _label: GDString | StringName | string, _submenu: GDString | StringName | string, _index: number): number;
-  public global_menu_add_item(_menu_root: GDString | StringName | string, _label: GDString | StringName | string, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public global_menu_add_check_item(_menu_root: GDString | StringName | string, _label: GDString | StringName | string, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public global_menu_add_icon_item(_menu_root: GDString | StringName | string, _icon: Texture2D, _label: GDString | StringName | string, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public global_menu_add_icon_check_item(_menu_root: GDString | StringName | string, _icon: Texture2D, _label: GDString | StringName | string, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public global_menu_add_radio_check_item(_menu_root: GDString | StringName | string, _label: GDString | StringName | string, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public global_menu_add_icon_radio_check_item(_menu_root: GDString | StringName | string, _icon: Texture2D, _label: GDString | StringName | string, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public global_menu_add_multistate_item(_menu_root: GDString | StringName | string, _label: GDString | StringName | string, _max_states: number, _default_state: number, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public global_menu_add_separator(_menu_root: GDString | StringName | string, _index: number): number;
+  public global_menu_add_submenu_item(_menu_root: GDString | StringName | string, _label: GDString | StringName | string, _submenu: GDString | StringName | string, _index: number = -1): number;
+  public global_menu_add_item(_menu_root: GDString | StringName | string, _label: GDString | StringName | string, _callback: Callable = Callable(), _key_callback: Callable = Callable(), _tag: any = null, _accelerator: number = 0, _index: number = -1): number;
+  public global_menu_add_check_item(_menu_root: GDString | StringName | string, _label: GDString | StringName | string, _callback: Callable = Callable(), _key_callback: Callable = Callable(), _tag: any = null, _accelerator: number = 0, _index: number = -1): number;
+  public global_menu_add_icon_item(_menu_root: GDString | StringName | string, _icon: Texture2D, _label: GDString | StringName | string, _callback: Callable = Callable(), _key_callback: Callable = Callable(), _tag: any = null, _accelerator: number = 0, _index: number = -1): number;
+  public global_menu_add_icon_check_item(_menu_root: GDString | StringName | string, _icon: Texture2D, _label: GDString | StringName | string, _callback: Callable = Callable(), _key_callback: Callable = Callable(), _tag: any = null, _accelerator: number = 0, _index: number = -1): number;
+  public global_menu_add_radio_check_item(_menu_root: GDString | StringName | string, _label: GDString | StringName | string, _callback: Callable = Callable(), _key_callback: Callable = Callable(), _tag: any = null, _accelerator: number = 0, _index: number = -1): number;
+  public global_menu_add_icon_radio_check_item(_menu_root: GDString | StringName | string, _icon: Texture2D, _label: GDString | StringName | string, _callback: Callable = Callable(), _key_callback: Callable = Callable(), _tag: any = null, _accelerator: number = 0, _index: number = -1): number;
+  public global_menu_add_multistate_item(_menu_root: GDString | StringName | string, _label: GDString | StringName | string, _max_states: number, _default_state: number, _callback: Callable = Callable(), _key_callback: Callable = Callable(), _tag: any = null, _accelerator: number = 0, _index: number = -1): number;
+  public global_menu_add_separator(_menu_root: GDString | StringName | string, _index: number = -1): number;
   public global_menu_get_item_index_from_text(_menu_root: GDString | StringName | string, _text: GDString | StringName | string): number;
   public global_menu_get_item_index_from_tag(_menu_root: GDString | StringName | string, _tag: any): number;
   public global_menu_is_item_checked(_menu_root: GDString | StringName | string, _idx: number): boolean;
@@ -62,7 +61,7 @@ export declare class DisplayServer extends GodotObject{
   public tts_is_paused(): boolean;
   public tts_get_voices(): GDArray;
   public tts_get_voices_for_language(_language: GDString | StringName | string): PackedStringArray;
-  public tts_speak(_text: GDString | StringName | string, _voice: GDString | StringName | string, _volume: number, _pitch: number, _rate: number, _utterance_id: number, _interrupt: boolean): void;
+  public tts_speak(_text: GDString | StringName | string, _voice: GDString | StringName | string, _volume: number = 50, _pitch: number = 1.0, _rate: number = 1.0, _utterance_id: number = 0, _interrupt: boolean = false): void;
   public tts_pause(): void;
   public tts_resume(): void;
   public tts_stop(): void;
@@ -90,74 +89,74 @@ export declare class DisplayServer extends GodotObject{
   public get_primary_screen(): number;
   public get_keyboard_focus_screen(): number;
   public get_screen_from_rect(_rect: Rect2): number;
-  public screen_get_position(_screen: number): Vector2i;
-  public screen_get_size(_screen: number): Vector2i;
-  public screen_get_usable_rect(_screen: number): Rect2i;
-  public screen_get_dpi(_screen: number): number;
-  public screen_get_scale(_screen: number): number;
+  public screen_get_position(_screen: number = -1): Vector2i;
+  public screen_get_size(_screen: number = -1): Vector2i;
+  public screen_get_usable_rect(_screen: number = -1): Rect2i;
+  public screen_get_dpi(_screen: number = -1): number;
+  public screen_get_scale(_screen: number = -1): number;
   public is_touchscreen_available(): boolean;
   public screen_get_max_scale(): number;
-  public screen_get_refresh_rate(_screen: number): number;
+  public screen_get_refresh_rate(_screen: number = -1): number;
   public screen_get_pixel(_position: Vector2i): Color;
-  public screen_get_image(_screen: number): Image;
-  public screen_set_orientation(_orientation: number, _screen: number): void;
-  public screen_get_orientation(_screen: number): number;
+  public screen_get_image(_screen: number = -1): Image;
+  public screen_set_orientation(_orientation: number, _screen: number = -1): void;
+  public screen_get_orientation(_screen: number = -1): number;
   public screen_set_keep_on(_enable: boolean): void;
   public screen_is_kept_on(): boolean;
   public get_window_list(): PackedInt32Array;
   public get_window_at_screen_position(_position: Vector2i): number;
-  public window_get_native_handle(_handle_type: number, _window_id: number): number;
+  public window_get_native_handle(_handle_type: number, _window_id: number = 0): number;
   public window_get_active_popup(): number;
   public window_set_popup_safe_rect(_window: number, _rect: Rect2i): void;
   public window_get_popup_safe_rect(_window: number): Rect2i;
-  public window_set_title(_title: GDString | StringName | string, _window_id: number): void;
-  public window_get_title_size(_title: GDString | StringName | string, _window_id: number): Vector2i;
-  public window_set_mouse_passthrough(_region: PackedVector2Array, _window_id: number): void;
-  public window_get_current_screen(_window_id: number): number;
-  public window_set_current_screen(_screen: number, _window_id: number): void;
-  public window_get_position(_window_id: number): Vector2i;
-  public window_get_position_with_decorations(_window_id: number): Vector2i;
-  public window_set_position(_position: Vector2i, _window_id: number): void;
-  public window_get_size(_window_id: number): Vector2i;
-  public window_set_size(_size: Vector2i, _window_id: number): void;
-  public window_set_rect_changed_callback(_callback: Callable, _window_id: number): void;
-  public window_set_window_event_callback(_callback: Callable, _window_id: number): void;
-  public window_set_input_event_callback(_callback: Callable, _window_id: number): void;
-  public window_set_input_text_callback(_callback: Callable, _window_id: number): void;
-  public window_set_drop_files_callback(_callback: Callable, _window_id: number): void;
-  public window_get_attached_instance_id(_window_id: number): number;
-  public window_get_max_size(_window_id: number): Vector2i;
-  public window_set_max_size(_max_size: Vector2i, _window_id: number): void;
-  public window_get_min_size(_window_id: number): Vector2i;
-  public window_set_min_size(_min_size: Vector2i, _window_id: number): void;
-  public window_get_size_with_decorations(_window_id: number): Vector2i;
-  public window_get_mode(_window_id: number): number;
-  public window_set_mode(_mode: number, _window_id: number): void;
-  public window_set_flag(_flag: number, _enabled: boolean, _window_id: number): void;
-  public window_get_flag(_flag: number, _window_id: number): boolean;
-  public window_set_window_buttons_offset(_offset: Vector2i, _window_id: number): void;
-  public window_get_safe_title_margins(_window_id: number): Vector3i;
-  public window_request_attention(_window_id: number): void;
-  public window_move_to_foreground(_window_id: number): void;
-  public window_is_focused(_window_id: number): boolean;
-  public window_can_draw(_window_id: number): boolean;
+  public window_set_title(_title: GDString | StringName | string, _window_id: number = 0): void;
+  public window_get_title_size(_title: GDString | StringName | string, _window_id: number = 0): Vector2i;
+  public window_set_mouse_passthrough(_region: PackedVector2Array, _window_id: number = 0): void;
+  public window_get_current_screen(_window_id: number = 0): number;
+  public window_set_current_screen(_screen: number, _window_id: number = 0): void;
+  public window_get_position(_window_id: number = 0): Vector2i;
+  public window_get_position_with_decorations(_window_id: number = 0): Vector2i;
+  public window_set_position(_position: Vector2i, _window_id: number = 0): void;
+  public window_get_size(_window_id: number = 0): Vector2i;
+  public window_set_size(_size: Vector2i, _window_id: number = 0): void;
+  public window_set_rect_changed_callback(_callback: Callable, _window_id: number = 0): void;
+  public window_set_window_event_callback(_callback: Callable, _window_id: number = 0): void;
+  public window_set_input_event_callback(_callback: Callable, _window_id: number = 0): void;
+  public window_set_input_text_callback(_callback: Callable, _window_id: number = 0): void;
+  public window_set_drop_files_callback(_callback: Callable, _window_id: number = 0): void;
+  public window_get_attached_instance_id(_window_id: number = 0): number;
+  public window_get_max_size(_window_id: number = 0): Vector2i;
+  public window_set_max_size(_max_size: Vector2i, _window_id: number = 0): void;
+  public window_get_min_size(_window_id: number = 0): Vector2i;
+  public window_set_min_size(_min_size: Vector2i, _window_id: number = 0): void;
+  public window_get_size_with_decorations(_window_id: number = 0): Vector2i;
+  public window_get_mode(_window_id: number = 0): number;
+  public window_set_mode(_mode: number, _window_id: number = 0): void;
+  public window_set_flag(_flag: number, _enabled: boolean, _window_id: number = 0): void;
+  public window_get_flag(_flag: number, _window_id: number = 0): boolean;
+  public window_set_window_buttons_offset(_offset: Vector2i, _window_id: number = 0): void;
+  public window_get_safe_title_margins(_window_id: number = 0): Vector3i;
+  public window_request_attention(_window_id: number = 0): void;
+  public window_move_to_foreground(_window_id: number = 0): void;
+  public window_is_focused(_window_id: number = 0): boolean;
+  public window_can_draw(_window_id: number = 0): boolean;
   public window_set_transient(_window_id: number, _parent_window_id: number): void;
   public window_set_exclusive(_window_id: number, _exclusive: boolean): void;
-  public window_set_ime_active(_active: boolean, _window_id: number): void;
-  public window_set_ime_position(_position: Vector2i, _window_id: number): void;
-  public window_set_vsync_mode(_vsync_mode: number, _window_id: number): void;
-  public window_get_vsync_mode(_window_id: number): number;
-  public window_is_maximize_allowed(_window_id: number): boolean;
+  public window_set_ime_active(_active: boolean, _window_id: number = 0): void;
+  public window_set_ime_position(_position: Vector2i, _window_id: number = 0): void;
+  public window_set_vsync_mode(_vsync_mode: number, _window_id: number = 0): void;
+  public window_get_vsync_mode(_window_id: number = 0): number;
+  public window_is_maximize_allowed(_window_id: number = 0): boolean;
   public window_maximize_on_title_dbl_click(): boolean;
   public window_minimize_on_title_dbl_click(): boolean;
   public ime_get_selection(): Vector2i;
   public ime_get_text(): String;
-  public virtual_keyboard_show(_existing_text: GDString | StringName | string, _position: Rect2, _type: number, _max_length: number, _cursor_start: number, _cursor_end: number): void;
+  public virtual_keyboard_show(_existing_text: GDString | StringName | string, _position: Rect2 = Rect2(0, 0, 0, 0), _type: number = 0, _max_length: number = -1, _cursor_start: number = -1, _cursor_end: number = -1): void;
   public virtual_keyboard_hide(): void;
   public virtual_keyboard_get_height(): number;
   public cursor_set_shape(_shape: number): void;
   public cursor_get_shape(): number;
-  public cursor_set_custom_image(_cursor: Resource, _shape: number, _hotspot: Vector2): void;
+  public cursor_set_custom_image(_cursor: Resource, _shape: number = 0, _hotspot: Vector2 = Vector2(0, 0)): void;
   public get_swap_cancel_ok(): boolean;
   public enable_for_stealing_focus(_process_id: number): void;
   public dialog_show(_title: GDString | StringName | string, _description: GDString | StringName | string, _buttons: PackedStringArray, _callback: Callable): number;
@@ -316,4 +315,8 @@ export declare class DisplayServer extends GodotObject{
     TTS_UTTERANCE_CANCELED = 2,
     TTS_UTTERANCE_BOUNDARY = 3,
   }
+}
+}
+declare global {
+  const DisplayServer: _DisplayServer;
 }

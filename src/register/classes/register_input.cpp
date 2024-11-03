@@ -5,17 +5,13 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/input.hpp>
-#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
-
-static JSValue input_instance;
-
-static void js_input_singleton();
 
 static void input_class_finalizer(JSRuntime *rt, JSValue val) {
 	
@@ -23,16 +19,15 @@ static void input_class_finalizer(JSRuntime *rt, JSValue val) {
 }
 
 static JSClassDef input_class_def = {
-	"Input",
+	"_Input",
 	.finalizer = input_class_finalizer
 };
 
 static JSValue input_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Input *input_class;
 	JSValue obj = JS_NewObjectClass(ctx, Input::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	input_class = Input::get_singleton();
+	Input *input_class = Input::get_singleton();
 	if (!input_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -42,239 +37,185 @@ static JSValue input_class_constructor(JSContext *ctx, JSValueConst new_target, 
 	return obj;
 }
 static JSValue input_class_is_anything_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::is_anything_pressed, ctx, this_val, argc, argv);
 };
 static JSValue input_class_is_key_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::is_key_pressed, ctx, this_val, argc, argv);
 };
 static JSValue input_class_is_physical_key_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::is_physical_key_pressed, ctx, this_val, argc, argv);
 };
 static JSValue input_class_is_key_label_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::is_key_label_pressed, ctx, this_val, argc, argv);
 };
 static JSValue input_class_is_mouse_button_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::is_mouse_button_pressed, ctx, this_val, argc, argv);
 };
 static JSValue input_class_is_joy_button_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::is_joy_button_pressed, ctx, this_val, argc, argv);
 };
 static JSValue input_class_is_action_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::is_action_pressed, ctx, this_val, argc, argv);
 };
 static JSValue input_class_is_action_just_pressed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::is_action_just_pressed, ctx, this_val, argc, argv);
 };
 static JSValue input_class_is_action_just_released(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::is_action_just_released, ctx, this_val, argc, argv);
 };
 static JSValue input_class_get_action_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::get_action_strength, ctx, this_val, argc, argv);
 };
 static JSValue input_class_get_action_raw_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::get_action_raw_strength, ctx, this_val, argc, argv);
 };
 static JSValue input_class_get_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::get_axis, ctx, this_val, argc, argv);
 };
 static JSValue input_class_get_vector(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::get_vector, ctx, this_val, argc, argv);
 };
 static JSValue input_class_add_joy_mapping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::add_joy_mapping, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_remove_joy_mapping(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::remove_joy_mapping, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_is_joy_known(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_method_ret(&Input::is_joy_known, ctx, this_val, argc, argv);
 };
 static JSValue input_class_get_joy_axis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::get_joy_axis, ctx, this_val, argc, argv);
 };
 static JSValue input_class_get_joy_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_method_ret(&Input::get_joy_name, ctx, this_val, argc, argv);
 };
 static JSValue input_class_get_joy_guid(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::get_joy_guid, ctx, this_val, argc, argv);
 };
 static JSValue input_class_get_joy_info(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::get_joy_info, ctx, this_val, argc, argv);
 };
 static JSValue input_class_should_ignore_device(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::should_ignore_device, ctx, this_val, argc, argv);
 };
 static JSValue input_class_get_connected_joypads(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_method_ret(&Input::get_connected_joypads, ctx, this_val, argc, argv);
 };
 static JSValue input_class_get_joy_vibration_strength(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_method_ret(&Input::get_joy_vibration_strength, ctx, this_val, argc, argv);
 };
 static JSValue input_class_get_joy_vibration_duration(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_method_ret(&Input::get_joy_vibration_duration, ctx, this_val, argc, argv);
 };
 static JSValue input_class_start_joy_vibration(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::start_joy_vibration, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_stop_joy_vibration(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::stop_joy_vibration, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_vibrate_handheld(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::vibrate_handheld, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_get_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::get_gravity, ctx, this_val, argc, argv);
 };
 static JSValue input_class_get_accelerometer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::get_accelerometer, ctx, this_val, argc, argv);
 };
 static JSValue input_class_get_magnetometer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::get_magnetometer, ctx, this_val, argc, argv);
 };
 static JSValue input_class_get_gyroscope(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::get_gyroscope, ctx, this_val, argc, argv);
 };
 static JSValue input_class_set_gravity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::set_gravity, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_set_accelerometer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::set_accelerometer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_set_magnetometer(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::set_magnetometer, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_set_gyroscope(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::set_gyroscope, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_get_last_mouse_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_method_ret(&Input::get_last_mouse_velocity, ctx, this_val, argc, argv);
 };
 static JSValue input_class_get_last_mouse_screen_velocity(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_method_ret(&Input::get_last_mouse_screen_velocity, ctx, this_val, argc, argv);
 };
 static JSValue input_class_get_mouse_button_mask(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::get_mouse_button_mask, ctx, this_val, argc, argv);
 };
 static JSValue input_class_set_mouse_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::set_mouse_mode, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_get_mouse_mode(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::get_mouse_mode, ctx, this_val, argc, argv);
 };
 static JSValue input_class_warp_mouse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::warp_mouse, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_action_press(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::action_press, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_action_release(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::action_release, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_set_default_cursor_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::set_default_cursor_shape, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_get_current_cursor_shape(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::get_current_cursor_shape, ctx, this_val, argc, argv);
 };
 static JSValue input_class_set_custom_mouse_cursor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::set_custom_mouse_cursor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_parse_input_event(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::parse_input_event, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_set_use_accumulated_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::set_use_accumulated_input, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_is_using_accumulated_input(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_method_ret(&Input::is_using_accumulated_input, ctx, this_val, argc, argv);
 };
 static JSValue input_class_flush_buffered_events(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::flush_buffered_events, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_set_emulate_mouse_from_touch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::set_emulate_mouse_from_touch, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_is_emulating_mouse_from_touch(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::is_emulating_mouse_from_touch, ctx, this_val, argc, argv);
 };
 static JSValue input_class_set_emulate_touch_from_mouse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
     call_builtin_method_no_ret(&Input::set_emulate_touch_from_mouse, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue input_class_is_emulating_touch_from_mouse(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_input_singleton();
 	return call_builtin_const_method_ret(&Input::is_emulating_touch_from_mouse, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry input_class_proto_funcs[] = {
@@ -335,7 +276,6 @@ static const JSCFunctionListEntry input_class_proto_funcs[] = {
 };
 
 static int js_input_class_init(JSContext *ctx) {
-	JS_NewClassID(&Input::__class_id);
 	classes["Input"] = Input::__class_id;
 	JS_NewClass(JS_GetRuntime(ctx), Input::__class_id, &input_class_def);
 
@@ -344,18 +284,17 @@ static int js_input_class_init(JSContext *ctx) {
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Input::__class_id, proto);
 	JS_SetPropertyFunctionList(ctx, proto, input_class_proto_funcs, _countof(input_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, input_class_constructor, "_Input", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
+
+	JSValue global = JS_GetGlobalObject(ctx);
+	JS_SetPropertyStr(ctx, global, "_Input", ctor);
+	JS_FreeValue(ctx, global);
 	return 0;
 }
 
-static void js_input_singleton() {
-	if (JS_IsUninitialized(input_instance)) {
-		JSValue global = JS_GetGlobalObject(ctx);
-		input_instance = input_class_constructor(ctx, global, 0, NULL);
-		JS_SetPropertyStr(ctx, global, "Input", input_instance);
-	}
-}
-
-
 void register_input() {
+	Input::__init_js_class_id();
 	js_input_class_init(ctx);
 }

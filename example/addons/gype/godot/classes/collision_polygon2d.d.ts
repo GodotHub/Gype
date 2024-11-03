@@ -1,7 +1,5 @@
 
 import { Node2D } from "@godot/classes/node2d";
-
-
 export declare class CollisionPolygon2D extends Node2D{
   public set_polygon(_polygon: PackedVector2Array): void;
   public get_polygon(): PackedVector2Array;

@@ -1,7 +1,5 @@
 
 import { PacketPeer } from "@godot/classes/packet_peer";
-
-
 export declare class MultiplayerPeer extends PacketPeer{
   public set_transfer_channel(_channel: number): void;
   public get_transfer_channel(): number;
@@ -13,7 +11,7 @@ export declare class MultiplayerPeer extends PacketPeer{
   public get_packet_mode(): number;
   public poll(): void;
   public close(): void;
-  public disconnect_peer(_peer: number, _force: boolean): void;
+  public disconnect_peer(_peer: number, _force: boolean = false): void;
   public get_connection_status(): number;
   public get_unique_id(): number;
   public generate_unique_id(): number;

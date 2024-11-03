@@ -187,8 +187,13 @@ void TypeScriptInstance::call(GDExtensionConstStringNamePtr p_method, const GDEx
 }
 
 void TypeScriptInstance::notification(int32_t p_what, GDExtensionBool p_reversed) {
-	JSValue js_instance = binding->js_instance;
-	notification_bind(js_instance, JS_GetPrototype(ctx, js_instance), p_what, p_reversed);
+	JSAtom atom = JS_NewAtom(ctx, "_notification");
+	if (script->is_tool || !Engine::get_singleton()->is_editor_hint()) {
+		JSValue js_instance = binding->js_instance;
+		if (JS_HasProperty(ctx, js_instance, atom)) {
+			notification_bind(js_instance, JS_GetPrototype(ctx, js_instance), p_what, p_reversed);
+		}
+	}
 }
 
 void TypeScriptInstance::to_string(GDExtensionBool *r_is_valid, GDExtensionStringPtr r_out) {
@@ -230,7 +235,7 @@ GDExtensionScriptLanguagePtr TypeScriptInstance::get_language() {
 static void notification_bind(JSValue instance, JSValue prototype, int32_t p_what, GDExtensionBool p_reversed) {
 	if (JS_IsNull(prototype))
 		return;
-	static JSAtom method_atom = JS_NewAtom(ctx, "_notification");
+	JSAtom method_atom = JS_NewAtom(ctx, "_notification");
 	JSValue what = JS_NewInt32(ctx, p_what);
 	JSPropertyDescriptor prop;
 	JS_GetOwnProperty(ctx, &prop, prototype, method_atom);
@@ -241,4 +246,5 @@ static void notification_bind(JSValue instance, JSValue prototype, int32_t p_wha
 	notification_bind(instance, prototype, p_what, p_reversed);
 	if (!p_reversed && JS_IsFunction(ctx, js_method))
 		JS_Call(ctx, js_method, instance, 1, &what);
+	JS_FreeAtom(ctx, method_atom);
 }

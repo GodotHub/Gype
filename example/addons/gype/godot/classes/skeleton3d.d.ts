@@ -1,9 +1,7 @@
 
-import { SkinReference } from "@godot/classes/skin_reference";
 import { Node3D } from "@godot/classes/node3d";
 import { Skin } from "@godot/classes/skin";
-
-
+import { SkinReference } from "@godot/classes/skin_reference";
 export declare class Skeleton3D extends Node3D{
   public add_bone(_name: GDString | StringName | string): number;
   public find_bone(_name: GDString | StringName | string): number;
@@ -35,7 +33,7 @@ export declare class Skeleton3D extends Node3D{
   public reset_bone_pose(_bone_idx: number): void;
   public reset_bone_poses(): void;
   public is_bone_enabled(_bone_idx: number): boolean;
-  public set_bone_enabled(_bone_idx: number, _enabled: boolean): void;
+  public set_bone_enabled(_bone_idx: number, _enabled: boolean = true): void;
   public get_bone_global_pose(_bone_idx: number): Transform3D;
   public set_bone_global_pose(_bone_idx: number, _pose: Transform3D): void;
   public force_update_all_bone_transforms(): void;
@@ -47,13 +45,13 @@ export declare class Skeleton3D extends Node3D{
   public set_modifier_callback_mode_process(_mode: number): void;
   public get_modifier_callback_mode_process(): number;
   public clear_bones_global_pose_override(): void;
-  public set_bone_global_pose_override(_bone_idx: number, _pose: Transform3D, _amount: number, _persistent: boolean): void;
+  public set_bone_global_pose_override(_bone_idx: number, _pose: Transform3D, _amount: number, _persistent: boolean = false): void;
   public get_bone_global_pose_override(_bone_idx: number): Transform3D;
   public get_bone_global_pose_no_override(_bone_idx: number): Transform3D;
   public set_animate_physical_bones(_enabled: boolean): void;
   public get_animate_physical_bones(): boolean;
   public physical_bones_stop_simulation(): void;
-  public physical_bones_start_simulation(_bones: GDArray): void;
+  public physical_bones_start_simulation(_bones: GDArray = []): void;
   public physical_bones_add_collision_exception(_exception: RID): void;
   public physical_bones_remove_collision_exception(_exception: RID): void;
   public get motion_scale(): number;

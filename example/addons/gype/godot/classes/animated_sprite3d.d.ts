@@ -1,8 +1,6 @@
 
 import { SpriteBase3D } from "@godot/classes/sprite_base3d";
 import { SpriteFrames } from "@godot/classes/sprite_frames";
-
-
 export declare class AnimatedSprite3D extends SpriteBase3D{
   public set_sprite_frames(_sprite_frames: SpriteFrames): void;
   public get_sprite_frames(): SpriteFrames;
@@ -11,8 +9,8 @@ export declare class AnimatedSprite3D extends SpriteBase3D{
   public set_autoplay(_name: GDString | StringName | string): void;
   public get_autoplay(): String;
   public is_playing(): boolean;
-  public play(_name: GDString | StringName | string, _custom_speed: number, _from_end: boolean): void;
-  public play_backwards(_name: GDString | StringName | string): void;
+  public play(_name: GDString | StringName | string = "", _custom_speed: number = 1.0, _from_end: boolean = false): void;
+  public play_backwards(_name: GDString | StringName | string = ""): void;
   public pause(): void;
   public stop(): void;
   public set_frame(_frame: number): void;

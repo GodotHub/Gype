@@ -63,13 +63,14 @@ static int js_resource_importer_image_font_class_init(JSContext *ctx, JSModuleDe
 	define_resource_importer_image_font_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, resource_importer_image_font_class_constructor, "ResourceImporterImageFont", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "ResourceImporterImageFont", ctor);
+	constructors[ResourceImporterImageFont::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_resource_importer_image_font_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/resource_importer';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

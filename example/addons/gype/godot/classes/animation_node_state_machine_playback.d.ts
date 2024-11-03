@@ -1,10 +1,8 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class AnimationNodeStateMachinePlayback extends Resource{
-  public travel(_to_node: GDString | StringName | string, _reset_on_teleport: boolean): void;
-  public start(_node: GDString | StringName | string, _reset: boolean): void;
+  public travel(_to_node: GDString | StringName | string, _reset_on_teleport: boolean = true): void;
+  public start(_node: GDString | StringName | string, _reset: boolean = true): void;
   public next(): void;
   public stop(): void;
   public is_playing(): boolean;

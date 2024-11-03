@@ -91,13 +91,14 @@ static int js_visual_shader_node_multiply_add_class_init(JSContext *ctx, JSModul
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_multiply_add_class_proto_funcs, _countof(visual_shader_node_multiply_add_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_multiply_add_class_constructor, "VisualShaderNodeMultiplyAdd", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "VisualShaderNodeMultiplyAdd", ctor);
+	constructors[VisualShaderNodeMultiplyAdd::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_visual_shader_node_multiply_add_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/visual_shader_node';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

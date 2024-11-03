@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class RDPipelineRasterizationState extends RefCounted{
   public set_enable_depth_clamp(_p_member: boolean): void;
   public get_enable_depth_clamp(): boolean;

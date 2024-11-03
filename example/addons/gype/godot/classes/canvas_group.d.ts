@@ -1,7 +1,5 @@
 
 import { Node2D } from "@godot/classes/node2d";
-
-
 export declare class CanvasGroup extends Node2D{
   public set_fit_margin(_fit_margin: number): void;
   public get_fit_margin(): number;

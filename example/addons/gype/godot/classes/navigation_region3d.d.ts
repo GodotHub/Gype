@@ -1,8 +1,6 @@
 
 import { NavigationMesh } from "@godot/classes/navigation_mesh";
 import { Node3D } from "@godot/classes/node3d";
-
-
 export declare class NavigationRegion3D extends Node3D{
   public get_rid(): RID;
   public set_navigation_mesh(_navigation_mesh: NavigationMesh): void;
@@ -22,7 +20,7 @@ export declare class NavigationRegion3D extends Node3D{
   public get_enter_cost(): number;
   public set_travel_cost(_travel_cost: number): void;
   public get_travel_cost(): number;
-  public bake_navigation_mesh(_on_thread: boolean): void;
+  public bake_navigation_mesh(_on_thread: boolean = true): void;
   public is_baking(): boolean;
   public get navigation_mesh(): NavigationMesh;
   public set navigation_mesh(value): void;

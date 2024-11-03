@@ -63,13 +63,14 @@ static int js_h_separator_class_init(JSContext *ctx, JSModuleDef *m) {
 	define_h_separator_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, h_separator_class_constructor, "HSeparator", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "HSeparator", ctor);
+	constructors[HSeparator::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_h_separator_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/separator';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

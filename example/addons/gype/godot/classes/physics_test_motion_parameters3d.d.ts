@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class PhysicsTestMotionParameters3D extends RefCounted{
   public get_from(): Transform3D;
   public set_from(_from: Transform3D): void;

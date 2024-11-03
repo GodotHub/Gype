@@ -1,7 +1,5 @@
 
 import { Viewport } from "@godot/classes/viewport";
-
-
 export declare class SubViewport extends Viewport{
   public set_size(_size: Vector2i): void;
   public get_size(): Vector2i;

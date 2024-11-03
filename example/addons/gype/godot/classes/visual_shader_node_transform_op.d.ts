@@ -1,7 +1,5 @@
 
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
-
-
 export declare class VisualShaderNodeTransformOp extends VisualShaderNode{
   public set_operator(_op: number): void;
   public get_operator(): number;

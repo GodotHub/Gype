@@ -1,7 +1,5 @@
 
 import { Node2D } from "@godot/classes/node2d";
-
-
 export declare class Light2D extends Node2D{
   public set_enabled(_enabled: boolean): void;
   public is_enabled(): boolean;

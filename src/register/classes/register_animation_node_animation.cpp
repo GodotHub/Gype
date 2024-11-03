@@ -196,13 +196,14 @@ static int js_animation_node_animation_class_init(JSContext *ctx, JSModuleDef *m
 	JS_SetPropertyFunctionList(ctx, proto, animation_node_animation_class_proto_funcs, _countof(animation_node_animation_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, animation_node_animation_class_constructor, "AnimationNodeAnimation", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "AnimationNodeAnimation", ctor);
+	constructors[AnimationNodeAnimation::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_animation_node_animation_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/animation_root_node';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

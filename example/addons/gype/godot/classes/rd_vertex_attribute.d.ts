@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class RDVertexAttribute extends RefCounted{
   public set_location(_p_member: number): void;
   public get_location(): number;

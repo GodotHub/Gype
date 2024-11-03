@@ -1,7 +1,5 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class Material extends Resource{
   public _get_shader_rid(): RID;
   public _get_shader_mode(): number;

@@ -1,7 +1,5 @@
 
 import { Node2D } from "@godot/classes/node2d";
-
-
 export declare class Bone2D extends Node2D{
   public set_rest(_rest: Transform2D): void;
   public get_rest(): Transform2D;

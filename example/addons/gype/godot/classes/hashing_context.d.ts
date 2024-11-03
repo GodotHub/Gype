@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class HashingContext extends RefCounted{
   public start(_type: number): number;
   public update(_chunk: PackedByteArray): number;

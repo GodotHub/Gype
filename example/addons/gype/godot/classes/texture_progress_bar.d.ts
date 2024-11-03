@@ -1,8 +1,6 @@
 
-import { Range } from "@godot/classes/range";
 import { Texture2D } from "@godot/classes/texture2d";
-
-
+import { Range } from "@godot/classes/range";
 export declare class TextureProgressBar extends Range{
   public set_under_texture(_tex: Texture2D): void;
   public get_under_texture(): Texture2D;

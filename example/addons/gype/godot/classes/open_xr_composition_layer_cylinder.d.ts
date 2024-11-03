@@ -1,7 +1,5 @@
 
 import { OpenXRCompositionLayer } from "@godot/classes/open_xr_composition_layer";
-
-
 export declare class OpenXRCompositionLayerCylinder extends OpenXRCompositionLayer{
   public set_radius(_radius: number): void;
   public get_radius(): number;

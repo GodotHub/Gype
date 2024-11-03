@@ -1,7 +1,5 @@
 
 import { SkeletonModifier3D } from "@godot/classes/skeleton_modifier3d";
-
-
 export declare class XRHandModifier3D extends SkeletonModifier3D{
   public set_hand_tracker(_tracker_name: GDString | StringName | string): void;
   public get_hand_tracker(): StringName;

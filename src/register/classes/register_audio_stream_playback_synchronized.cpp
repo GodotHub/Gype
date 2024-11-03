@@ -63,13 +63,14 @@ static int js_audio_stream_playback_synchronized_class_init(JSContext *ctx, JSMo
 	define_audio_stream_playback_synchronized_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, audio_stream_playback_synchronized_class_constructor, "AudioStreamPlaybackSynchronized", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "AudioStreamPlaybackSynchronized", ctor);
+	constructors[AudioStreamPlaybackSynchronized::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_audio_stream_playback_synchronized_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/audio_stream_playback';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

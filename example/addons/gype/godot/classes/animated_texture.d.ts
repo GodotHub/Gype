@@ -1,7 +1,5 @@
 
 import { Texture2D } from "@godot/classes/texture2d";
-
-
 export declare class AnimatedTexture extends Texture2D{
   public set_frames(_frames: number): void;
   public get_frames(): number;

@@ -63,13 +63,14 @@ static int js_point_mesh_class_init(JSContext *ctx, JSModuleDef *m) {
 	define_point_mesh_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, point_mesh_class_constructor, "PointMesh", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "PointMesh", ctor);
+	constructors[PointMesh::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_point_mesh_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/primitive_mesh';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

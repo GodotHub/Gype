@@ -1,10 +1,8 @@
 
-import { PhysicsMaterial } from "@godot/classes/physics_material";
-import { PhysicsDirectBodyState3D } from "@godot/classes/physics_direct_body_state3d";
-import { PhysicsBody3D } from "@godot/classes/physics_body3d";
 import { Node3D } from "@godot/classes/node3d";
-
-
+import { PhysicsDirectBodyState3D } from "@godot/classes/physics_direct_body_state3d";
+import { PhysicsMaterial } from "@godot/classes/physics_material";
+import { PhysicsBody3D } from "@godot/classes/physics_body3d";
 export declare class RigidBody3D extends PhysicsBody3D{
   public _integrate_forces(_state: PhysicsDirectBodyState3D): void;
   public set_mass(_mass: number): void;
@@ -43,13 +41,13 @@ export declare class RigidBody3D extends PhysicsBody3D{
   public is_using_continuous_collision_detection(): boolean;
   public set_axis_velocity(_axis_velocity: Vector3): void;
   public apply_central_impulse(_impulse: Vector3): void;
-  public apply_impulse(_impulse: Vector3, _position: Vector3): void;
+  public apply_impulse(_impulse: Vector3, _position: Vector3 = Vector3(0, 0, 0)): void;
   public apply_torque_impulse(_impulse: Vector3): void;
   public apply_central_force(_force: Vector3): void;
-  public apply_force(_force: Vector3, _position: Vector3): void;
+  public apply_force(_force: Vector3, _position: Vector3 = Vector3(0, 0, 0)): void;
   public apply_torque(_torque: Vector3): void;
   public add_constant_central_force(_force: Vector3): void;
-  public add_constant_force(_force: Vector3, _position: Vector3): void;
+  public add_constant_force(_force: Vector3, _position: Vector3 = Vector3(0, 0, 0)): void;
   public add_constant_torque(_torque: Vector3): void;
   public set_constant_force(_force: Vector3): void;
   public get_constant_force(): Vector3;

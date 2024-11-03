@@ -1,9 +1,7 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
-import { Mesh } from "@godot/classes/mesh";
 import { Node2D } from "@godot/classes/node2d";
-
-
+import { Mesh } from "@godot/classes/mesh";
+import { Texture2D } from "@godot/classes/texture2d";
 export declare class MeshInstance2D extends Node2D{
   public set_mesh(_mesh: Mesh): void;
   public get_mesh(): Mesh;

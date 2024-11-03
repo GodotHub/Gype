@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class AStarGrid2D extends RefCounted{
   public _estimate_cost(_from_id: Vector2i, _to_id: Vector2i): number;
   public _compute_cost(_from_id: Vector2i, _to_id: Vector2i): number;
@@ -27,16 +25,16 @@ export declare class AStarGrid2D extends RefCounted{
   public get_default_compute_heuristic(): number;
   public set_default_estimate_heuristic(_heuristic: number): void;
   public get_default_estimate_heuristic(): number;
-  public set_point_solid(_id: Vector2i, _solid: boolean): void;
+  public set_point_solid(_id: Vector2i, _solid: boolean = true): void;
   public is_point_solid(_id: Vector2i): boolean;
   public set_point_weight_scale(_id: Vector2i, _weight_scale: number): void;
   public get_point_weight_scale(_id: Vector2i): number;
-  public fill_solid_region(_region: Rect2i, _solid: boolean): void;
+  public fill_solid_region(_region: Rect2i, _solid: boolean = true): void;
   public fill_weight_scale_region(_region: Rect2i, _weight_scale: number): void;
   public clear(): void;
   public get_point_position(_id: Vector2i): Vector2;
-  public get_point_path(_from_id: Vector2i, _to_id: Vector2i, _allow_partial_path: boolean): PackedVector2Array;
-  public get_id_path(_from_id: Vector2i, _to_id: Vector2i, _allow_partial_path: boolean): GDArray;
+  public get_point_path(_from_id: Vector2i, _to_id: Vector2i, _allow_partial_path: boolean = false): PackedVector2Array;
+  public get_id_path(_from_id: Vector2i, _to_id: Vector2i, _allow_partial_path: boolean = false): GDArray;
   public get region(): Rect2i;
   public set region(value): void;
   public get size(): Vector2i;

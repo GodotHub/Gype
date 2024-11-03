@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/gltf_camera.hpp>
 #include <godot_cpp/classes/camera3d.hpp>
+#include <godot_cpp/classes/gltf_camera.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -178,13 +178,14 @@ static int js_gltf_camera_class_init(JSContext *ctx, JSModuleDef *m) {
 	JSValue ctor = JS_NewCFunction2(ctx, gltf_camera_class_constructor, "GLTFCamera", 0, JS_CFUNC_constructor, 0);
 	JS_SetPropertyFunctionList(ctx, ctor, gltf_camera_class_static_funcs, _countof(gltf_camera_class_static_funcs));
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "GLTFCamera", ctor);
+	constructors[GLTFCamera::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_gltf_camera_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

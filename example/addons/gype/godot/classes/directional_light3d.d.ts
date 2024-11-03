@@ -1,7 +1,5 @@
 
 import { Light3D } from "@godot/classes/light3d";
-
-
 export declare class DirectionalLight3D extends Light3D{
   public set_shadow_mode(_mode: number): void;
   public get_shadow_mode(): number;

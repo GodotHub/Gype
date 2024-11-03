@@ -1,10 +1,8 @@
 
-import { PhysicsMaterial } from "@godot/classes/physics_material";
-import { Node2D } from "@godot/classes/node2d";
-import { PhysicsBody2D } from "@godot/classes/physics_body2d";
 import { PhysicsDirectBodyState2D } from "@godot/classes/physics_direct_body_state2d";
-
-
+import { PhysicsMaterial } from "@godot/classes/physics_material";
+import { PhysicsBody2D } from "@godot/classes/physics_body2d";
+import { Node2D } from "@godot/classes/node2d";
 export declare class RigidBody2D extends PhysicsBody2D{
   public _integrate_forces(_state: PhysicsDirectBodyState2D): void;
   public set_mass(_mass: number): void;
@@ -41,14 +39,14 @@ export declare class RigidBody2D extends PhysicsBody2D{
   public set_continuous_collision_detection_mode(_mode: number): void;
   public get_continuous_collision_detection_mode(): number;
   public set_axis_velocity(_axis_velocity: Vector2): void;
-  public apply_central_impulse(_impulse: Vector2): void;
-  public apply_impulse(_impulse: Vector2, _position: Vector2): void;
+  public apply_central_impulse(_impulse: Vector2 = Vector2(0, 0)): void;
+  public apply_impulse(_impulse: Vector2, _position: Vector2 = Vector2(0, 0)): void;
   public apply_torque_impulse(_torque: number): void;
   public apply_central_force(_force: Vector2): void;
-  public apply_force(_force: Vector2, _position: Vector2): void;
+  public apply_force(_force: Vector2, _position: Vector2 = Vector2(0, 0)): void;
   public apply_torque(_torque: number): void;
   public add_constant_central_force(_force: Vector2): void;
-  public add_constant_force(_force: Vector2, _position: Vector2): void;
+  public add_constant_force(_force: Vector2, _position: Vector2 = Vector2(0, 0)): void;
   public add_constant_torque(_torque: number): void;
   public set_constant_force(_force: Vector2): void;
   public get_constant_force(): Vector2;

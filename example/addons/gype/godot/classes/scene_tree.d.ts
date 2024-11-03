@@ -1,16 +1,14 @@
 
-import { Window } from "@godot/classes/window";
-import { SceneTreeTimer } from "@godot/classes/scene_tree_timer";
-import { Tween } from "@godot/classes/tween";
-import { Node } from "@godot/classes/node";
 import { GodotObject } from "@godot/classes/godot_object";
+import { Node } from "@godot/classes/node";
+import { Window } from "@godot/classes/window";
+import { PackedScene } from "@godot/classes/packed_scene";
+import { SceneTreeTimer } from "@godot/classes/scene_tree_timer";
+import { MainLoop } from "@godot/classes/main_loop";
+import { Node } from "@godot/classes/node";
 import { Tween } from "@godot/classes/tween";
 import { MultiplayerAPI } from "@godot/classes/multiplayer_api";
-import { PackedScene } from "@godot/classes/packed_scene";
-import { Node } from "@godot/classes/node";
-import { MainLoop } from "@godot/classes/main_loop";
-
-
+import { Tween } from "@godot/classes/tween";
 export declare class SceneTree extends MainLoop{
   public get_root(): Window;
   public has_group(_name: GDString | StringName | string): boolean;
@@ -28,12 +26,12 @@ export declare class SceneTree extends MainLoop{
   public get_edited_scene_root(): Node;
   public set_pause(_enable: boolean): void;
   public is_paused(): boolean;
-  public create_timer(_time_sec: number, _process_always: boolean, _process_in_physics: boolean, _ignore_time_scale: boolean): SceneTreeTimer;
+  public create_timer(_time_sec: number, _process_always: boolean = true, _process_in_physics: boolean = false, _ignore_time_scale: boolean = false): SceneTreeTimer;
   public create_tween(): Tween;
   public get_processed_tweens(): GDArray;
   public get_node_count(): number;
   public get_frame(): number;
-  public quit(_exit_code: number): void;
+  public quit(_exit_code: number = 0): void;
   public set_physics_interpolation_enabled(_enabled: boolean): void;
   public is_physics_interpolation_enabled(): boolean;
   public queue_delete(_obj: GodotObject): void;
@@ -52,8 +50,8 @@ export declare class SceneTree extends MainLoop{
   public change_scene_to_packed(_packed_scene: PackedScene): number;
   public reload_current_scene(): number;
   public unload_current_scene(): void;
-  public set_multiplayer(_multiplayer: MultiplayerAPI, _root_path: GDString | NodePath | string): void;
-  public get_multiplayer(_for_path: GDString | NodePath | string): MultiplayerAPI;
+  public set_multiplayer(_multiplayer: MultiplayerAPI, _root_path: GDString | NodePath | string = NodePath("")): void;
+  public get_multiplayer(_for_path: GDString | NodePath | string = NodePath("")): MultiplayerAPI;
   public set_multiplayer_poll_enabled(_enabled: boolean): void;
   public is_multiplayer_poll_enabled(): boolean;
   public get auto_accept_quit(): boolean;

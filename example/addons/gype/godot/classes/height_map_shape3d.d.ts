@@ -1,8 +1,6 @@
 
 import { Image } from "@godot/classes/image";
 import { Shape3D } from "@godot/classes/shape3d";
-
-
 export declare class HeightMapShape3D extends Shape3D{
   public set_map_width(_width: number): void;
   public get_map_width(): number;

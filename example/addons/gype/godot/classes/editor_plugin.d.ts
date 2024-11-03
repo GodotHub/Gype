@@ -1,29 +1,27 @@
 
-import { Shortcut } from "@godot/classes/shortcut";
-import { EditorResourceConversionPlugin } from "@godot/classes/editor_resource_conversion_plugin";
-import { PopupMenu } from "@godot/classes/popup_menu";
-import { EditorTranslationParserPlugin } from "@godot/classes/editor_translation_parser_plugin";
-import { EditorInterface } from "@godot/classes/editor_interface";
-import { EditorScenePostImportPlugin } from "@godot/classes/editor_scene_post_import_plugin";
-import { GodotObject } from "@godot/classes/godot_object";
-import { EditorImportPlugin } from "@godot/classes/editor_import_plugin";
-import { Camera3D } from "@godot/classes/camera3d";
-import { ScriptCreateDialog } from "@godot/classes/script_create_dialog";
-import { InputEvent } from "@godot/classes/input_event";
-import { EditorNode3DGizmoPlugin } from "@godot/classes/editor_node3d_gizmo_plugin";
-import { ConfigFile } from "@godot/classes/config_file";
-import { EditorExportPlugin } from "@godot/classes/editor_export_plugin";
-import { Script } from "@godot/classes/script";
-import { Node } from "@godot/classes/node";
-import { EditorSceneFormatImporter } from "@godot/classes/editor_scene_format_importer";
-import { Texture2D } from "@godot/classes/texture2d";
-import { Control } from "@godot/classes/control";
-import { EditorUndoRedoManager } from "@godot/classes/editor_undo_redo_manager";
-import { Button } from "@godot/classes/button";
-import { EditorInspectorPlugin } from "@godot/classes/editor_inspector_plugin";
 import { EditorDebuggerPlugin } from "@godot/classes/editor_debugger_plugin";
-
-
+import { ConfigFile } from "@godot/classes/config_file";
+import { GodotObject } from "@godot/classes/godot_object";
+import { ScriptCreateDialog } from "@godot/classes/script_create_dialog";
+import { EditorUndoRedoManager } from "@godot/classes/editor_undo_redo_manager";
+import { EditorInspectorPlugin } from "@godot/classes/editor_inspector_plugin";
+import { Script } from "@godot/classes/script";
+import { Control } from "@godot/classes/control";
+import { EditorInterface } from "@godot/classes/editor_interface";
+import { Node } from "@godot/classes/node";
+import { Button } from "@godot/classes/button";
+import { EditorScenePostImportPlugin } from "@godot/classes/editor_scene_post_import_plugin";
+import { InputEvent } from "@godot/classes/input_event";
+import { EditorTranslationParserPlugin } from "@godot/classes/editor_translation_parser_plugin";
+import { PopupMenu } from "@godot/classes/popup_menu";
+import { EditorSceneFormatImporter } from "@godot/classes/editor_scene_format_importer";
+import { EditorExportPlugin } from "@godot/classes/editor_export_plugin";
+import { Shortcut } from "@godot/classes/shortcut";
+import { Texture2D } from "@godot/classes/texture2d";
+import { Camera3D } from "@godot/classes/camera3d";
+import { EditorImportPlugin } from "@godot/classes/editor_import_plugin";
+import { EditorResourceConversionPlugin } from "@godot/classes/editor_resource_conversion_plugin";
+import { EditorNode3DGizmoPlugin } from "@godot/classes/editor_node3d_gizmo_plugin";
 export declare class EditorPlugin extends Node{
   public _forward_canvas_gui_input(_event: InputEvent): boolean;
   public _forward_canvas_draw_over_viewport(_viewport_control: Control): void;
@@ -50,8 +48,8 @@ export declare class EditorPlugin extends Node{
   public _enable_plugin(): void;
   public _disable_plugin(): void;
   public add_control_to_container(_container: number, _control: Control): void;
-  public add_control_to_bottom_panel(_control: Control, _title: GDString | StringName | string, _shortcut: Shortcut): Button;
-  public add_control_to_dock(_slot: number, _control: Control, _shortcut: Shortcut): void;
+  public add_control_to_bottom_panel(_control: Control, _title: GDString | StringName | string, _shortcut: Shortcut = null): Button;
+  public add_control_to_dock(_slot: number, _control: Control, _shortcut: Shortcut = null): void;
   public remove_control_from_docks(_control: Control): void;
   public remove_control_from_bottom_panel(_control: Control): void;
   public remove_control_from_container(_container: number, _control: Control): void;
@@ -73,11 +71,11 @@ export declare class EditorPlugin extends Node{
   public queue_save_layout(): void;
   public add_translation_parser_plugin(_parser: EditorTranslationParserPlugin): void;
   public remove_translation_parser_plugin(_parser: EditorTranslationParserPlugin): void;
-  public add_import_plugin(_importer: EditorImportPlugin, _first_priority: boolean): void;
+  public add_import_plugin(_importer: EditorImportPlugin, _first_priority: boolean = false): void;
   public remove_import_plugin(_importer: EditorImportPlugin): void;
-  public add_scene_format_importer_plugin(_scene_format_importer: EditorSceneFormatImporter, _first_priority: boolean): void;
+  public add_scene_format_importer_plugin(_scene_format_importer: EditorSceneFormatImporter, _first_priority: boolean = false): void;
   public remove_scene_format_importer_plugin(_scene_format_importer: EditorSceneFormatImporter): void;
-  public add_scene_post_import_plugin(_scene_import_plugin: EditorScenePostImportPlugin, _first_priority: boolean): void;
+  public add_scene_post_import_plugin(_scene_import_plugin: EditorScenePostImportPlugin, _first_priority: boolean = false): void;
   public remove_scene_post_import_plugin(_scene_import_plugin: EditorScenePostImportPlugin): void;
   public add_export_plugin(_plugin: EditorExportPlugin): void;
   public remove_export_plugin(_plugin: EditorExportPlugin): void;

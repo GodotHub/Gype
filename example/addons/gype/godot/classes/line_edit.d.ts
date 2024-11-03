@@ -1,14 +1,12 @@
 
-import { Control } from "@godot/classes/control";
-import { PopupMenu } from "@godot/classes/popup_menu";
 import { Texture2D } from "@godot/classes/texture2d";
-
-
+import { PopupMenu } from "@godot/classes/popup_menu";
+import { Control } from "@godot/classes/control";
 export declare class LineEdit extends Control{
   public set_horizontal_alignment(_alignment: number): void;
   public get_horizontal_alignment(): number;
   public clear(): void;
-  public select(_from: number, _to: number): void;
+  public select(_from: number = 0, _to: number = -1): void;
   public select_all(): void;
   public deselect(): void;
   public has_selection(): boolean;

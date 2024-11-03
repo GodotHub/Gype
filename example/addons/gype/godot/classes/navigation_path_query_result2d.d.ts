@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class NavigationPathQueryResult2D extends RefCounted{
   public set_path(_path: PackedVector2Array): void;
   public get_path(): PackedVector2Array;

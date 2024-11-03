@@ -2,9 +2,8 @@
 import { GodotObject } from "@godot/classes/godot_object";
 import { CameraFeed } from "@godot/classes/camera_feed";
 import { CameraFeed } from "@godot/classes/camera_feed";
-
-
-export declare class CameraServer extends GodotObject{
+declare global {
+export declare class _CameraServer extends GodotObject{
   public get_feed(_index: number): CameraFeed;
   public get_feed_count(): number;
   public feeds(): GDArray;
@@ -18,4 +17,8 @@ export declare class CameraServer extends GodotObject{
   }
   public get camera_feed_added(): Signal;
   public get camera_feed_removed(): Signal;
+}
+}
+declare global {
+  const CameraServer: _CameraServer;
 }

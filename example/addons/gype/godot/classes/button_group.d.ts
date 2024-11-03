@@ -1,9 +1,7 @@
 
+import { BaseButton } from "@godot/classes/base_button";
 import { Resource } from "@godot/classes/resource";
 import { BaseButton } from "@godot/classes/base_button";
-import { BaseButton } from "@godot/classes/base_button";
-
-
 export declare class ButtonGroup extends Resource{
   public get_pressed_button(): BaseButton;
   public get_buttons(): GDArray;

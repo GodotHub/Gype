@@ -1,7 +1,5 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class Skin extends Resource{
   public set_bind_count(_bind_count: number): void;
   public get_bind_count(): number;

@@ -1,7 +1,5 @@
 
 import { Font } from "@godot/classes/font";
-
-
 export declare class SystemFont extends Font{
   public set_antialiasing(_antialiasing: number): void;
   public get_antialiasing(): number;

@@ -81,13 +81,14 @@ static int js_popup_class_init(JSContext *ctx, JSModuleDef *m) {
 	define_popup_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, popup_class_constructor, "Popup", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "Popup", ctor);
+	constructors[Popup::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_popup_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/window';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

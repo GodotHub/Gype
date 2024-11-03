@@ -1,7 +1,5 @@
 
 import { AudioEffect } from "@godot/classes/audio_effect";
-
-
 export declare class AudioEffectPitchShift extends AudioEffect{
   public set_pitch_scale(_rate: number): void;
   public get_pitch_scale(): number;

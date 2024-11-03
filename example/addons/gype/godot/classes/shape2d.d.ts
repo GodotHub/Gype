@@ -1,7 +1,5 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class Shape2D extends Resource{
   public set_custom_solver_bias(_bias: number): void;
   public get_custom_solver_bias(): number;

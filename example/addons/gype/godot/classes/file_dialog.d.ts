@@ -1,12 +1,10 @@
 
-import { LineEdit } from "@godot/classes/line_edit";
-import { ConfirmationDialog } from "@godot/classes/confirmation_dialog";
 import { VBoxContainer } from "@godot/classes/v_box_container";
-
-
+import { ConfirmationDialog } from "@godot/classes/confirmation_dialog";
+import { LineEdit } from "@godot/classes/line_edit";
 export declare class FileDialog extends ConfirmationDialog{
   public clear_filters(): void;
-  public add_filter(_filter: GDString | StringName | string, _description: GDString | StringName | string): void;
+  public add_filter(_filter: GDString | StringName | string, _description: GDString | StringName | string = ""): void;
   public set_filters(_filters: PackedStringArray): void;
   public get_filters(): PackedStringArray;
   public get_option_name(_option: number): String;

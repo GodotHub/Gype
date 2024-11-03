@@ -1,12 +1,12 @@
 
 import { Resource } from "@godot/classes/resource";
 import { CollisionObject3D } from "@godot/classes/collision_object3d";
-
-
 export declare class GLTFPhysicsBody extends Resource{
-  public from_node(_body_node: CollisionObject3D): GLTFPhysicsBody;
+  public
+ static from_node(_body_node: CollisionObject3D): GLTFPhysicsBody;
   public to_node(): CollisionObject3D;
-  public from_dictionary(_dictionary: Dictionary): GLTFPhysicsBody;
+  public
+ static from_dictionary(_dictionary: Dictionary): GLTFPhysicsBody;
   public to_dictionary(): Dictionary;
   public get_body_type(): String;
   public set_body_type(_body_type: GDString | StringName | string): void;

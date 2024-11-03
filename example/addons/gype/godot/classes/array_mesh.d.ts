@@ -1,7 +1,5 @@
 
 import { Mesh } from "@godot/classes/mesh";
-
-
 export declare class ArrayMesh extends Mesh{
   public add_blend_shape(_name: GDString | StringName | string): void;
   public get_blend_shape_count(): number;
@@ -10,7 +8,7 @@ export declare class ArrayMesh extends Mesh{
   public clear_blend_shapes(): void;
   public set_blend_shape_mode(_mode: number): void;
   public get_blend_shape_mode(): number;
-  public add_surface_from_arrays(_primitive: number, _arrays: GDArray, _blend_shapes: GDArray, _lods: Dictionary, _flags: number): void;
+  public add_surface_from_arrays(_primitive: number, _arrays: GDArray, _blend_shapes: GDArray = [], _lods: Dictionary = {}, _flags: number = 0): void;
   public clear_surfaces(): void;
   public surface_update_vertex_region(_surf_idx: number, _offset: number, _data: PackedByteArray): void;
   public surface_update_attribute_region(_surf_idx: number, _offset: number, _data: PackedByteArray): void;

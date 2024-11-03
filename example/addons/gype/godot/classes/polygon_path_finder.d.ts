@@ -1,7 +1,5 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class PolygonPathFinder extends Resource{
   public setup(_points: PackedVector2Array, _connections: PackedInt32Array): void;
   public find_path(_from: Vector2, _to: Vector2): PackedVector2Array;

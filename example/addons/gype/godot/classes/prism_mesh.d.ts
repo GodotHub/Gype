@@ -1,7 +1,5 @@
 
 import { PrimitiveMesh } from "@godot/classes/primitive_mesh";
-
-
 export declare class PrismMesh extends PrimitiveMesh{
   public set_left_to_right(_left_to_right: number): void;
   public get_left_to_right(): number;

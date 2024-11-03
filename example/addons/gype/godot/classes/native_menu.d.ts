@@ -1,9 +1,8 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
 import { Texture2D } from "@godot/classes/texture2d";
-
-
-export declare class NativeMenu extends GodotObject{
+import { GodotObject } from "@godot/classes/godot_object";
+declare global {
+export declare class _NativeMenu extends GodotObject{
   public has_feature(_feature: number): boolean;
   public has_system_menu(_menu_id: number): boolean;
   public get_system_menu(_menu_id: number): RID;
@@ -21,15 +20,15 @@ export declare class NativeMenu extends GodotObject{
   public set_minimum_width(_rid: RID, _width: number): void;
   public get_minimum_width(_rid: RID): number;
   public is_opened(_rid: RID): boolean;
-  public add_submenu_item(_rid: RID, _label: GDString | StringName | string, _submenu_rid: RID, _tag: any, _index: number): number;
-  public add_item(_rid: RID, _label: GDString | StringName | string, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public add_check_item(_rid: RID, _label: GDString | StringName | string, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public add_icon_item(_rid: RID, _icon: Texture2D, _label: GDString | StringName | string, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public add_icon_check_item(_rid: RID, _icon: Texture2D, _label: GDString | StringName | string, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public add_radio_check_item(_rid: RID, _label: GDString | StringName | string, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public add_icon_radio_check_item(_rid: RID, _icon: Texture2D, _label: GDString | StringName | string, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public add_multistate_item(_rid: RID, _label: GDString | StringName | string, _max_states: number, _default_state: number, _callback: Callable, _key_callback: Callable, _tag: any, _accelerator: number, _index: number): number;
-  public add_separator(_rid: RID, _index: number): number;
+  public add_submenu_item(_rid: RID, _label: GDString | StringName | string, _submenu_rid: RID, _tag: any = null, _index: number = -1): number;
+  public add_item(_rid: RID, _label: GDString | StringName | string, _callback: Callable = Callable(), _key_callback: Callable = Callable(), _tag: any = null, _accelerator: number = 0, _index: number = -1): number;
+  public add_check_item(_rid: RID, _label: GDString | StringName | string, _callback: Callable = Callable(), _key_callback: Callable = Callable(), _tag: any = null, _accelerator: number = 0, _index: number = -1): number;
+  public add_icon_item(_rid: RID, _icon: Texture2D, _label: GDString | StringName | string, _callback: Callable = Callable(), _key_callback: Callable = Callable(), _tag: any = null, _accelerator: number = 0, _index: number = -1): number;
+  public add_icon_check_item(_rid: RID, _icon: Texture2D, _label: GDString | StringName | string, _callback: Callable = Callable(), _key_callback: Callable = Callable(), _tag: any = null, _accelerator: number = 0, _index: number = -1): number;
+  public add_radio_check_item(_rid: RID, _label: GDString | StringName | string, _callback: Callable = Callable(), _key_callback: Callable = Callable(), _tag: any = null, _accelerator: number = 0, _index: number = -1): number;
+  public add_icon_radio_check_item(_rid: RID, _icon: Texture2D, _label: GDString | StringName | string, _callback: Callable = Callable(), _key_callback: Callable = Callable(), _tag: any = null, _accelerator: number = 0, _index: number = -1): number;
+  public add_multistate_item(_rid: RID, _label: GDString | StringName | string, _max_states: number, _default_state: number, _callback: Callable = Callable(), _key_callback: Callable = Callable(), _tag: any = null, _accelerator: number = 0, _index: number = -1): number;
+  public add_separator(_rid: RID, _index: number = -1): number;
   public find_item_index_with_text(_rid: RID, _text: GDString | StringName | string): number;
   public find_item_index_with_tag(_rid: RID, _tag: any): number;
   public find_item_index_with_submenu(_rid: RID, _submenu_rid: RID): number;
@@ -85,4 +84,8 @@ export declare class NativeMenu extends GodotObject{
     HELP_MENU_ID = 4,
     DOCK_MENU_ID = 5,
   }
+}
+}
+declare global {
+  const NativeMenu: _NativeMenu;
 }

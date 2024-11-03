@@ -1,8 +1,6 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
 import { Image } from "@godot/classes/image";
-
-
 export declare class TextServer extends RefCounted{
   public has_feature(_feature: number): boolean;
   public get_name(): String;
@@ -116,8 +114,8 @@ export declare class TextServer extends RefCounted{
   public font_get_supported_chars(_font_rid: RID): String;
   public font_render_range(_font_rid: RID, _size: Vector2i, _start: number, _end: number): void;
   public font_render_glyph(_font_rid: RID, _size: Vector2i, _index: number): void;
-  public font_draw_glyph(_font_rid: RID, _canvas: RID, _size: number, _pos: Vector2, _index: number, _color: Color): void;
-  public font_draw_glyph_outline(_font_rid: RID, _canvas: RID, _size: number, _outline_size: number, _pos: Vector2, _index: number, _color: Color): void;
+  public font_draw_glyph(_font_rid: RID, _canvas: RID, _size: number, _pos: Vector2, _index: number, _color: Color = Color(1, 1, 1, 1)): void;
+  public font_draw_glyph_outline(_font_rid: RID, _canvas: RID, _size: number, _outline_size: number, _pos: Vector2, _index: number, _color: Color = Color(1, 1, 1, 1)): void;
   public font_is_language_supported(_font_rid: RID, _language: GDString | StringName | string): boolean;
   public font_set_language_support_override(_font_rid: RID, _language: GDString | StringName | string, _supported: boolean): void;
   public font_get_language_support_override(_font_rid: RID, _language: GDString | StringName | string): boolean;
@@ -136,9 +134,9 @@ export declare class TextServer extends RefCounted{
   public font_set_global_oversampling(_oversampling: number): void;
   public get_hex_code_box_size(_size: number, _index: number): Vector2;
   public draw_hex_code_box(_canvas: RID, _size: number, _pos: Vector2, _index: number, _color: Color): void;
-  public create_shaped_text(_direction: number, _orientation: number): RID;
+  public create_shaped_text(_direction: number = 0, _orientation: number = 0): RID;
   public shaped_text_clear(_rid: RID): void;
-  public shaped_text_set_direction(_shaped: RID, _direction: number): void;
+  public shaped_text_set_direction(_shaped: RID, _direction: number = 0): void;
   public shaped_text_get_direction(_shaped: RID): number;
   public shaped_text_get_inferred_direction(_shaped: RID): number;
   public shaped_text_set_bidi_override(_shaped: RID, _override: GDArray): void;
@@ -146,7 +144,7 @@ export declare class TextServer extends RefCounted{
   public shaped_text_get_custom_punctuation(_shaped: RID): String;
   public shaped_text_set_custom_ellipsis(_shaped: RID, _char: number): void;
   public shaped_text_get_custom_ellipsis(_shaped: RID): number;
-  public shaped_text_set_orientation(_shaped: RID, _orientation: number): void;
+  public shaped_text_set_orientation(_shaped: RID, _orientation: number = 0): void;
   public shaped_text_get_orientation(_shaped: RID): number;
   public shaped_text_set_preserve_invalid(_shaped: RID, _enabled: boolean): void;
   public shaped_text_get_preserve_invalid(_shaped: RID): boolean;
@@ -154,15 +152,15 @@ export declare class TextServer extends RefCounted{
   public shaped_text_get_preserve_control(_shaped: RID): boolean;
   public shaped_text_set_spacing(_shaped: RID, _spacing: number, _value: number): void;
   public shaped_text_get_spacing(_shaped: RID, _spacing: number): number;
-  public shaped_text_add_string(_shaped: RID, _text: GDString | StringName | string, _fonts: GDArray, _size: number, _opentype_features: Dictionary, _language: GDString | StringName | string, _meta: any): boolean;
-  public shaped_text_add_object(_shaped: RID, _key: any, _size: Vector2, _inline_align: number, _length: number, _baseline: number): boolean;
-  public shaped_text_resize_object(_shaped: RID, _key: any, _size: Vector2, _inline_align: number, _baseline: number): boolean;
+  public shaped_text_add_string(_shaped: RID, _text: GDString | StringName | string, _fonts: GDArray, _size: number, _opentype_features: Dictionary = {}, _language: GDString | StringName | string = "", _meta: any = null): boolean;
+  public shaped_text_add_object(_shaped: RID, _key: any, _size: Vector2, _inline_align: number = 5, _length: number = 1, _baseline: number = 0.0): boolean;
+  public shaped_text_resize_object(_shaped: RID, _key: any, _size: Vector2, _inline_align: number = 5, _baseline: number = 0.0): boolean;
   public shaped_get_span_count(_shaped: RID): number;
   public shaped_get_span_meta(_shaped: RID, _index: number): any;
-  public shaped_set_span_update_font(_shaped: RID, _index: number, _fonts: GDArray, _size: number, _opentype_features: Dictionary): void;
+  public shaped_set_span_update_font(_shaped: RID, _index: number, _fonts: GDArray, _size: number, _opentype_features: Dictionary = {}): void;
   public shaped_text_substr(_shaped: RID, _start: number, _length: number): RID;
   public shaped_text_get_parent(_shaped: RID): RID;
-  public shaped_text_fit_to_width(_shaped: RID, _width: number, _justification_flags: number): number;
+  public shaped_text_fit_to_width(_shaped: RID, _width: number, _justification_flags: number = 3): number;
   public shaped_text_tab_align(_shaped: RID, _tab_stops: PackedFloat32Array): number;
   public shaped_text_shape(_shaped: RID): boolean;
   public shaped_text_is_ready(_shaped: RID): boolean;
@@ -171,14 +169,14 @@ export declare class TextServer extends RefCounted{
   public shaped_text_sort_logical(_shaped: RID): GDArray;
   public shaped_text_get_glyph_count(_shaped: RID): number;
   public shaped_text_get_range(_shaped: RID): Vector2i;
-  public shaped_text_get_line_breaks_adv(_shaped: RID, _width: PackedFloat32Array, _start: number, _once: boolean, _break_flags: number): PackedInt32Array;
-  public shaped_text_get_line_breaks(_shaped: RID, _width: number, _start: number, _break_flags: number): PackedInt32Array;
-  public shaped_text_get_word_breaks(_shaped: RID, _grapheme_flags: number, _skip_grapheme_flags: number): PackedInt32Array;
+  public shaped_text_get_line_breaks_adv(_shaped: RID, _width: PackedFloat32Array, _start: number = 0, _once: boolean = true, _break_flags: number = 3): PackedInt32Array;
+  public shaped_text_get_line_breaks(_shaped: RID, _width: number, _start: number = 0, _break_flags: number = 3): PackedInt32Array;
+  public shaped_text_get_word_breaks(_shaped: RID, _grapheme_flags: number = 264, _skip_grapheme_flags: number = 4): PackedInt32Array;
   public shaped_text_get_trim_pos(_shaped: RID): number;
   public shaped_text_get_ellipsis_pos(_shaped: RID): number;
   public shaped_text_get_ellipsis_glyphs(_shaped: RID): GDArray;
   public shaped_text_get_ellipsis_glyph_count(_shaped: RID): number;
-  public shaped_text_overrun_trim_to_width(_shaped: RID, _width: number, _overrun_trim_flags: number): void;
+  public shaped_text_overrun_trim_to_width(_shaped: RID, _width: number = 0, _overrun_trim_flags: number = 0): void;
   public shaped_text_get_objects(_shaped: RID): GDArray;
   public shaped_text_get_object_rect(_shaped: RID, _key: any): Rect2;
   public shaped_text_get_object_range(_shaped: RID, _key: any): Vector2i;
@@ -200,22 +198,22 @@ export declare class TextServer extends RefCounted{
   public shaped_text_next_character_pos(_shaped: RID, _pos: number): number;
   public shaped_text_prev_character_pos(_shaped: RID, _pos: number): number;
   public shaped_text_closest_character_pos(_shaped: RID, _pos: number): number;
-  public shaped_text_draw(_shaped: RID, _canvas: RID, _pos: Vector2, _clip_l: number, _clip_r: number, _color: Color): void;
-  public shaped_text_draw_outline(_shaped: RID, _canvas: RID, _pos: Vector2, _clip_l: number, _clip_r: number, _outline_size: number, _color: Color): void;
+  public shaped_text_draw(_shaped: RID, _canvas: RID, _pos: Vector2, _clip_l: number = -1, _clip_r: number = -1, _color: Color = Color(1, 1, 1, 1)): void;
+  public shaped_text_draw_outline(_shaped: RID, _canvas: RID, _pos: Vector2, _clip_l: number = -1, _clip_r: number = -1, _outline_size: number = 1, _color: Color = Color(1, 1, 1, 1)): void;
   public shaped_text_get_dominant_direction_in_range(_shaped: RID, _start: number, _end: number): number;
-  public format_number(_number: GDString | StringName | string, _language: GDString | StringName | string): String;
-  public parse_number(_number: GDString | StringName | string, _language: GDString | StringName | string): String;
-  public percent_sign(_language: GDString | StringName | string): String;
-  public string_get_word_breaks(_string: GDString | StringName | string, _language: GDString | StringName | string, _chars_per_line: number): PackedInt32Array;
-  public string_get_character_breaks(_string: GDString | StringName | string, _language: GDString | StringName | string): PackedInt32Array;
+  public format_number(_number: GDString | StringName | string, _language: GDString | StringName | string = ""): String;
+  public parse_number(_number: GDString | StringName | string, _language: GDString | StringName | string = ""): String;
+  public percent_sign(_language: GDString | StringName | string = ""): String;
+  public string_get_word_breaks(_string: GDString | StringName | string, _language: GDString | StringName | string = "", _chars_per_line: number = 0): PackedInt32Array;
+  public string_get_character_breaks(_string: GDString | StringName | string, _language: GDString | StringName | string = ""): PackedInt32Array;
   public is_confusable(_string: GDString | StringName | string, _dict: PackedStringArray): number;
   public spoof_check(_string: GDString | StringName | string): boolean;
   public strip_diacritics(_string: GDString | StringName | string): String;
   public is_valid_identifier(_string: GDString | StringName | string): boolean;
   public is_valid_letter(_unicode: number): boolean;
-  public string_to_upper(_string: GDString | StringName | string, _language: GDString | StringName | string): String;
-  public string_to_lower(_string: GDString | StringName | string, _language: GDString | StringName | string): String;
-  public string_to_title(_string: GDString | StringName | string, _language: GDString | StringName | string): String;
+  public string_to_upper(_string: GDString | StringName | string, _language: GDString | StringName | string = ""): String;
+  public string_to_lower(_string: GDString | StringName | string, _language: GDString | StringName | string = ""): String;
+  public string_to_title(_string: GDString | StringName | string, _language: GDString | StringName | string = ""): String;
   public parse_structured_text(_parser_type: number, _args: GDArray, _text: GDString | StringName | string): GDArray;
   static FontAntialiasing = {
     FONT_ANTIALIASING_NONE = 0,

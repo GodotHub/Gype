@@ -1,7 +1,5 @@
 
 import { VisualShaderNodeResizableBase } from "@godot/classes/visual_shader_node_resizable_base";
-
-
 export declare class VisualShaderNodeFrame extends VisualShaderNodeResizableBase{
   public set_title(_title: GDString | StringName | string): void;
   public get_title(): String;

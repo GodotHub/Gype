@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tls_options.hpp>
-#include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/classes/web_socket_peer.hpp>
+#include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/classes/web_socket_multiplayer_peer.hpp>
+#include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -201,13 +201,14 @@ static int js_web_socket_multiplayer_peer_class_init(JSContext *ctx, JSModuleDef
 	JS_SetPropertyFunctionList(ctx, proto, web_socket_multiplayer_peer_class_proto_funcs, _countof(web_socket_multiplayer_peer_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, web_socket_multiplayer_peer_class_constructor, "WebSocketMultiplayerPeer", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "WebSocketMultiplayerPeer", ctor);
+	constructors[WebSocketMultiplayerPeer::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_web_socket_multiplayer_peer_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/multiplayer_peer';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

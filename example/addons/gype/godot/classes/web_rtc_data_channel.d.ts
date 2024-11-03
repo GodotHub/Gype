@@ -1,7 +1,5 @@
 
 import { PacketPeer } from "@godot/classes/packet_peer";
-
-
 export declare class WebRTCDataChannel extends PacketPeer{
   public poll(): number;
   public close(): void;

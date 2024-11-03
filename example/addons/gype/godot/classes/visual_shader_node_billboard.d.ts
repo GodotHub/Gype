@@ -1,7 +1,5 @@
 
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
-
-
 export declare class VisualShaderNodeBillboard extends VisualShaderNode{
   public set_billboard_type(_billboard_type: number): void;
   public get_billboard_type(): number;

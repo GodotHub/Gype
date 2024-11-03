@@ -1,8 +1,6 @@
 
 import { KinematicCollision2D } from "@godot/classes/kinematic_collision2d";
 import { PhysicsBody2D } from "@godot/classes/physics_body2d";
-
-
 export declare class CharacterBody2D extends PhysicsBody2D{
   public move_and_slide(): boolean;
   public apply_floor_snap(): void;
@@ -47,7 +45,7 @@ export declare class CharacterBody2D extends PhysicsBody2D{
   public get_last_motion(): Vector2;
   public get_position_delta(): Vector2;
   public get_real_velocity(): Vector2;
-  public get_floor_angle(_up_direction: Vector2): number;
+  public get_floor_angle(_up_direction: Vector2 = Vector2(0, -1)): number;
   public get_platform_velocity(): Vector2;
   public get_slide_collision_count(): number;
   public get_slide_collision(_slide_idx: number): KinematicCollision2D;

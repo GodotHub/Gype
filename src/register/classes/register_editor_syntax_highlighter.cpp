@@ -63,13 +63,14 @@ static int js_editor_syntax_highlighter_class_init(JSContext *ctx, JSModuleDef *
 	define_editor_syntax_highlighter_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, editor_syntax_highlighter_class_constructor, "EditorSyntaxHighlighter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "EditorSyntaxHighlighter", ctor);
+	constructors[EditorSyntaxHighlighter::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_editor_syntax_highlighter_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/syntax_highlighter';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

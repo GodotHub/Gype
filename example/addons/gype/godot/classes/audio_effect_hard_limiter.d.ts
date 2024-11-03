@@ -1,7 +1,5 @@
 
 import { AudioEffect } from "@godot/classes/audio_effect";
-
-
 export declare class AudioEffectHardLimiter extends AudioEffect{
   public set_ceiling_db(_ceiling: number): void;
   public get_ceiling_db(): number;

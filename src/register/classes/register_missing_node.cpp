@@ -120,13 +120,14 @@ static int js_missing_node_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPropertyFunctionList(ctx, proto, missing_node_class_proto_funcs, _countof(missing_node_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, missing_node_class_constructor, "MissingNode", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "MissingNode", ctor);
+	constructors[MissingNode::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_missing_node_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/node';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

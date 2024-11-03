@@ -1,7 +1,5 @@
 
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
-
-
 export declare class VisualShaderNodeUIntFunc extends VisualShaderNode{
   public set_function(_func: number): void;
   public get_function(): number;

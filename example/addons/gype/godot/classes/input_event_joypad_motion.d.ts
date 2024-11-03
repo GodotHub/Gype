@@ -1,7 +1,5 @@
 
 import { InputEvent } from "@godot/classes/input_event";
-
-
 export declare class InputEventJoypadMotion extends InputEvent{
   public set_axis(_axis: number): void;
   public get_axis(): number;

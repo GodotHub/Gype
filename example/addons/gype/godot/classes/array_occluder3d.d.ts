@@ -1,7 +1,5 @@
 
 import { Occluder3D } from "@godot/classes/occluder3d";
-
-
 export declare class ArrayOccluder3D extends Occluder3D{
   public set_arrays(_vertices: PackedVector3Array, _indices: PackedInt32Array): void;
   public set_vertices(_vertices: PackedVector3Array): void;

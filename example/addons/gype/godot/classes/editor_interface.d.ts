@@ -1,28 +1,27 @@
 
-import { EditorSettings } from "@godot/classes/editor_settings";
-import { VBoxContainer } from "@godot/classes/v_box_container";
-import { ScriptEditor } from "@godot/classes/script_editor";
-import { Window } from "@godot/classes/window";
-import { FileSystemDock } from "@godot/classes/file_system_dock";
 import { EditorCommandPalette } from "@godot/classes/editor_command_palette";
-import { EditorPaths } from "@godot/classes/editor_paths";
-import { Texture2D } from "@godot/classes/texture2d";
 import { GodotObject } from "@godot/classes/godot_object";
-import { Mesh } from "@godot/classes/mesh";
+import { Window } from "@godot/classes/window";
 import { EditorInspector } from "@godot/classes/editor_inspector";
-import { EditorSelection } from "@godot/classes/editor_selection";
-import { Resource } from "@godot/classes/resource";
-import { EditorResourcePreview } from "@godot/classes/editor_resource_preview";
-import { Script } from "@godot/classes/script";
-import { Node } from "@godot/classes/node";
-import { EditorFileSystem } from "@godot/classes/editor_file_system";
-import { Theme } from "@godot/classes/theme";
+import { FileSystemDock } from "@godot/classes/file_system_dock";
 import { SubViewport } from "@godot/classes/sub_viewport";
+import { VBoxContainer } from "@godot/classes/v_box_container";
+import { Script } from "@godot/classes/script";
+import { EditorResourcePreview } from "@godot/classes/editor_resource_preview";
 import { Control } from "@godot/classes/control";
-
-
-export declare class EditorInterface extends GodotObject{
-  public restart_editor(_save: boolean): void;
+import { EditorSelection } from "@godot/classes/editor_selection";
+import { ScriptEditor } from "@godot/classes/script_editor";
+import { Node } from "@godot/classes/node";
+import { EditorSettings } from "@godot/classes/editor_settings";
+import { EditorPaths } from "@godot/classes/editor_paths";
+import { Theme } from "@godot/classes/theme";
+import { Resource } from "@godot/classes/resource";
+import { Mesh } from "@godot/classes/mesh";
+import { EditorFileSystem } from "@godot/classes/editor_file_system";
+import { Texture2D } from "@godot/classes/texture2d";
+declare global {
+export declare class _EditorInterface extends GodotObject{
+  public restart_editor(_save: boolean = true): void;
   public get_command_palette(): EditorCommandPalette;
   public get_resource_filesystem(): EditorFileSystem;
   public get_editor_paths(): EditorPaths;
@@ -37,36 +36,36 @@ export declare class EditorInterface extends GodotObject{
   public get_editor_main_screen(): VBoxContainer;
   public get_script_editor(): ScriptEditor;
   public get_editor_viewport_2d(): SubViewport;
-  public get_editor_viewport_3d(_idx: number): SubViewport;
+  public get_editor_viewport_3d(_idx: number = 0): SubViewport;
   public set_main_screen_editor(_name: GDString | StringName | string): void;
   public set_distraction_free_mode(_enter: boolean): void;
   public is_distraction_free_mode_enabled(): boolean;
   public is_multi_window_enabled(): boolean;
   public get_editor_scale(): number;
-  public popup_dialog(_dialog: Window, _rect: Rect2i): void;
-  public popup_dialog_centered(_dialog: Window, _minsize: Vector2i): void;
-  public popup_dialog_centered_ratio(_dialog: Window, _ratio: number): void;
-  public popup_dialog_centered_clamped(_dialog: Window, _minsize: Vector2i, _fallback_ratio: number): void;
+  public popup_dialog(_dialog: Window, _rect: Rect2i = Rect2i(0, 0, 0, 0)): void;
+  public popup_dialog_centered(_dialog: Window, _minsize: Vector2i = Vector2i(0, 0)): void;
+  public popup_dialog_centered_ratio(_dialog: Window, _ratio: number = 0.8): void;
+  public popup_dialog_centered_clamped(_dialog: Window, _minsize: Vector2i = Vector2i(0, 0), _fallback_ratio: number = 0.75): void;
   public get_current_feature_profile(): String;
   public set_current_feature_profile(_profile_name: GDString | StringName | string): void;
-  public popup_node_selector(_callback: Callable, _valid_types: GDArray): void;
-  public popup_property_selector(_object: GodotObject, _callback: Callable, _type_filter: PackedInt32Array): void;
+  public popup_node_selector(_callback: Callable, _valid_types: GDArray = Array[StringName]([])): void;
+  public popup_property_selector(_object: GodotObject, _callback: Callable, _type_filter: PackedInt32Array = PackedInt32Array()): void;
   public get_file_system_dock(): FileSystemDock;
   public select_file(_file: GDString | StringName | string): void;
   public get_selected_paths(): PackedStringArray;
   public get_current_path(): String;
   public get_current_directory(): String;
   public get_inspector(): EditorInspector;
-  public inspect_object(_object: GodotObject, _for_property: GDString | StringName | string, _inspector_only: boolean): void;
+  public inspect_object(_object: GodotObject, _for_property: GDString | StringName | string = "", _inspector_only: boolean = false): void;
   public edit_resource(_resource: Resource): void;
   public edit_node(_node: Node): void;
-  public edit_script(_script: Script, _line: number, _column: number, _grab_focus: boolean): void;
+  public edit_script(_script: Script, _line: number = -1, _column: number = 0, _grab_focus: boolean = true): void;
   public open_scene_from_path(_scene_filepath: GDString | StringName | string): void;
   public reload_scene_from_path(_scene_filepath: GDString | StringName | string): void;
   public get_open_scenes(): PackedStringArray;
   public get_edited_scene_root(): Node;
   public save_scene(): number;
-  public save_scene_as(_path: GDString | StringName | string, _with_preview: boolean): void;
+  public save_scene_as(_path: GDString | StringName | string, _with_preview: boolean = true): void;
   public save_all_scenes(): void;
   public mark_scene_as_unsaved(): void;
   public play_main_scene(): void;
@@ -81,4 +80,8 @@ export declare class EditorInterface extends GodotObject{
   public set distraction_free_mode(value): void;
   public get movie_maker_enabled(): boolean;
   public set movie_maker_enabled(value): void;
+}
+}
+declare global {
+  const EditorInterface: _EditorInterface;
 }

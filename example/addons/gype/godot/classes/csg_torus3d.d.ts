@@ -1,8 +1,6 @@
 
 import { CSGPrimitive3D } from "@godot/classes/csg_primitive3d";
 import { Material } from "@godot/classes/material";
-
-
 export declare class CSGTorus3D extends CSGPrimitive3D{
   public set_inner_radius(_radius: number): void;
   public get_inner_radius(): number;

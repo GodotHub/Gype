@@ -1,7 +1,5 @@
 
 import { AudioStream } from "@godot/classes/audio_stream";
-
-
 export declare class AudioStreamInteractive extends AudioStream{
   public set_clip_count(_clip_count: number): void;
   public get_clip_count(): number;
@@ -15,7 +13,7 @@ export declare class AudioStreamInteractive extends AudioStream{
   public get_clip_auto_advance(_clip_index: number): number;
   public set_clip_auto_advance_next_clip(_clip_index: number, _auto_advance_next_clip: number): void;
   public get_clip_auto_advance_next_clip(_clip_index: number): number;
-  public add_transition(_from_clip: number, _to_clip: number, _from_time: number, _to_time: number, _fade_mode: number, _fade_beats: number, _use_filler_clip: boolean, _filler_clip: number, _hold_previous: boolean): void;
+  public add_transition(_from_clip: number, _to_clip: number, _from_time: number, _to_time: number, _fade_mode: number, _fade_beats: number, _use_filler_clip: boolean = false, _filler_clip: number = -1, _hold_previous: boolean = false): void;
   public has_transition(_from_clip: number, _to_clip: number): boolean;
   public erase_transition(_from_clip: number, _to_clip: number): void;
   public get_transition_list(): PackedInt32Array;

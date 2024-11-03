@@ -1,8 +1,6 @@
 
-import { PopupMenu } from "@godot/classes/popup_menu";
 import { Button } from "@godot/classes/button";
-
-
+import { PopupMenu } from "@godot/classes/popup_menu";
 export declare class MenuButton extends Button{
   public get_popup(): PopupMenu;
   public show_popup(): void;

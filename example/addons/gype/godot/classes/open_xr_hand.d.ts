@@ -1,7 +1,5 @@
 
 import { Node3D } from "@godot/classes/node3d";
-
-
 export declare class OpenXRHand extends Node3D{
   public set_hand(_hand: number): void;
   public get_hand(): number;

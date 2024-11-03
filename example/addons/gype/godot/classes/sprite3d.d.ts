@@ -1,8 +1,6 @@
 
-import { SpriteBase3D } from "@godot/classes/sprite_base3d";
 import { Texture2D } from "@godot/classes/texture2d";
-
-
+import { SpriteBase3D } from "@godot/classes/sprite_base3d";
 export declare class Sprite3D extends SpriteBase3D{
   public set_texture(_texture: Texture2D): void;
   public get_texture(): Texture2D;

@@ -1,8 +1,6 @@
 
 import { Image } from "@godot/classes/image";
 import { Texture } from "@godot/classes/texture";
-
-
 export declare class TextureLayered extends Texture{
   public _get_format(): number;
   public _get_layered_type(): number;

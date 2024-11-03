@@ -1,7 +1,5 @@
 
 import { Node3D } from "@godot/classes/node3d";
-
-
 export declare class Joint3D extends Node3D{
   public set_node_a(_node: GDString | NodePath | string): void;
   public get_node_a(): NodePath;

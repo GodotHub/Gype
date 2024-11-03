@@ -1,7 +1,5 @@
 
 import { VisualShaderNodeParameter } from "@godot/classes/visual_shader_node_parameter";
-
-
 export declare class VisualShaderNodeTextureParameter extends VisualShaderNodeParameter{
   public set_texture_type(_type: number): void;
   public get_texture_type(): number;

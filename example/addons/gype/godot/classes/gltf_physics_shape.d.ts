@@ -1,16 +1,17 @@
 
-import { Shape3D } from "@godot/classes/shape3d";
-import { Resource } from "@godot/classes/resource";
 import { CollisionShape3D } from "@godot/classes/collision_shape3d";
+import { Shape3D } from "@godot/classes/shape3d";
 import { ImporterMesh } from "@godot/classes/importer_mesh";
-
-
+import { Resource } from "@godot/classes/resource";
 export declare class GLTFPhysicsShape extends Resource{
-  public from_node(_shape_node: CollisionShape3D): GLTFPhysicsShape;
-  public to_node(_cache_shapes: boolean): CollisionShape3D;
-  public from_resource(_shape_resource: Shape3D): GLTFPhysicsShape;
-  public to_resource(_cache_shapes: boolean): Shape3D;
-  public from_dictionary(_dictionary: Dictionary): GLTFPhysicsShape;
+  public
+ static from_node(_shape_node: CollisionShape3D): GLTFPhysicsShape;
+  public to_node(_cache_shapes: boolean = false): CollisionShape3D;
+  public
+ static from_resource(_shape_resource: Shape3D): GLTFPhysicsShape;
+  public to_resource(_cache_shapes: boolean = false): Shape3D;
+  public
+ static from_dictionary(_dictionary: Dictionary): GLTFPhysicsShape;
   public to_dictionary(): Dictionary;
   public get_shape_type(): String;
   public set_shape_type(_shape_type: GDString | StringName | string): void;

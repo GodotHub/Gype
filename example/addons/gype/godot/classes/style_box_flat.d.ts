@@ -1,7 +1,5 @@
 
 import { StyleBox } from "@godot/classes/style_box";
-
-
 export declare class StyleBoxFlat extends StyleBox{
   public set_bg_color(_color: Color): void;
   public get_bg_color(): Color;

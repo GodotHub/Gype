@@ -1,8 +1,6 @@
 
 import { SkeletonModifier3D } from "@godot/classes/skeleton_modifier3d";
 import { Skeleton3D } from "@godot/classes/skeleton3d";
-
-
 export declare class SkeletonIK3D extends SkeletonModifier3D{
   public set_root_bone(_root_bone: GDString | StringName | string): void;
   public get_root_bone(): StringName;
@@ -24,7 +22,7 @@ export declare class SkeletonIK3D extends SkeletonModifier3D{
   public get_min_distance(): number;
   public set_max_iterations(_iterations: number): void;
   public get_max_iterations(): number;
-  public start(_one_time: boolean): void;
+  public start(_one_time: boolean = false): void;
   public stop(): void;
   public set_interpolation(_interpolation: number): void;
   public get_interpolation(): number;

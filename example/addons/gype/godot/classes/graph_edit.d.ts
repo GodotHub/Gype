@@ -1,11 +1,9 @@
 
-import { GraphFrame } from "@godot/classes/graph_frame";
 import { GodotObject } from "@godot/classes/godot_object";
-import { HBoxContainer } from "@godot/classes/h_box_container";
-import { Node } from "@godot/classes/node";
+import { GraphFrame } from "@godot/classes/graph_frame";
 import { Control } from "@godot/classes/control";
-
-
+import { Node } from "@godot/classes/node";
+import { HBoxContainer } from "@godot/classes/h_box_container";
 export declare class GraphEdit extends Control{
   public _is_in_input_hotzone(_in_node: GodotObject, _in_port: number, _mouse_position: Vector2): boolean;
   public _is_in_output_hotzone(_in_node: GodotObject, _in_port: number, _mouse_position: Vector2): boolean;
@@ -16,7 +14,7 @@ export declare class GraphEdit extends Control{
   public disconnect_node(_from_node: GDString | StringName | string, _from_port: number, _to_node: GDString | StringName | string, _to_port: number): void;
   public set_connection_activity(_from_node: GDString | StringName | string, _from_port: number, _to_node: GDString | StringName | string, _to_port: number, _amount: number): void;
   public get_connection_list(): GDArray;
-  public get_closest_connection_at_point(_point: Vector2, _max_distance: number): Dictionary;
+  public get_closest_connection_at_point(_point: Vector2, _max_distance: number = 4.0): Dictionary;
   public get_connections_intersecting_with_rect(_rect: Rect2): GDArray;
   public clear_connections(): void;
   public force_connection_drag_end(): void;

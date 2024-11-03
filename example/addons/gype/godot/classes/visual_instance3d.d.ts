@@ -1,7 +1,5 @@
 
 import { Node3D } from "@godot/classes/node3d";
-
-
 export declare class VisualInstance3D extends Node3D{
   public _get_aabb(): AABB;
   public set_base(_base: RID): void;

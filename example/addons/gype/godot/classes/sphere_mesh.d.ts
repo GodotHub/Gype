@@ -1,7 +1,5 @@
 
 import { PrimitiveMesh } from "@godot/classes/primitive_mesh";
-
-
 export declare class SphereMesh extends PrimitiveMesh{
   public set_radius(_radius: number): void;
   public get_radius(): number;

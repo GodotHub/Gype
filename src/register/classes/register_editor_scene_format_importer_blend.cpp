@@ -63,13 +63,14 @@ static int js_editor_scene_format_importer_blend_class_init(JSContext *ctx, JSMo
 	define_editor_scene_format_importer_blend_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, editor_scene_format_importer_blend_class_constructor, "EditorSceneFormatImporterBlend", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "EditorSceneFormatImporterBlend", ctor);
+	constructors[EditorSceneFormatImporterBlend::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_editor_scene_format_importer_blend_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/editor_scene_format_importer';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

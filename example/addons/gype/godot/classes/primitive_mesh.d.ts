@@ -1,8 +1,6 @@
 
-import { Material } from "@godot/classes/material";
 import { Mesh } from "@godot/classes/mesh";
-
-
+import { Material } from "@godot/classes/material";
 export declare class PrimitiveMesh extends Mesh{
   public _create_mesh_array(): GDArray;
   public set_material(_material: Material): void;

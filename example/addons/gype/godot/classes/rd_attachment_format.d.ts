@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class RDAttachmentFormat extends RefCounted{
   public set_format(_p_member: number): void;
   public get_format(): number;

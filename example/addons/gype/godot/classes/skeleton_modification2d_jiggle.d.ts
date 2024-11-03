@@ -1,7 +1,5 @@
 
 import { SkeletonModification2D } from "@godot/classes/skeleton_modification2d";
-
-
 export declare class SkeletonModification2DJiggle extends SkeletonModification2D{
   public set_target_node(_target_nodepath: GDString | NodePath | string): void;
   public get_target_node(): NodePath;

@@ -1,8 +1,6 @@
 
-import { Font } from "@godot/classes/font";
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
+import { Font } from "@godot/classes/font";
 export declare class TextParagraph extends RefCounted{
   public clear(): void;
   public set_direction(_direction: number): void;
@@ -16,11 +14,11 @@ export declare class TextParagraph extends RefCounted{
   public set_preserve_control(_enabled: boolean): void;
   public get_preserve_control(): boolean;
   public set_bidi_override(_override: GDArray): void;
-  public set_dropcap(_text: GDString | StringName | string, _font: Font, _font_size: number, _dropcap_margins: Rect2, _language: GDString | StringName | string): boolean;
+  public set_dropcap(_text: GDString | StringName | string, _font: Font, _font_size: number, _dropcap_margins: Rect2 = Rect2(0, 0, 0, 0), _language: GDString | StringName | string = ""): boolean;
   public clear_dropcap(): void;
-  public add_string(_text: GDString | StringName | string, _font: Font, _font_size: number, _language: GDString | StringName | string, _meta: any): boolean;
-  public add_object(_key: any, _size: Vector2, _inline_align: number, _length: number, _baseline: number): boolean;
-  public resize_object(_key: any, _size: Vector2, _inline_align: number, _baseline: number): boolean;
+  public add_string(_text: GDString | StringName | string, _font: Font, _font_size: number, _language: GDString | StringName | string = "", _meta: any = null): boolean;
+  public add_object(_key: any, _size: Vector2, _inline_align: number = 5, _length: number = 1, _baseline: number = 0.0): boolean;
+  public resize_object(_key: any, _size: Vector2, _inline_align: number = 5, _baseline: number = 0.0): boolean;
   public set_alignment(_alignment: number): void;
   public get_alignment(): number;
   public tab_align(_tab_stops: PackedFloat32Array): void;
@@ -53,12 +51,12 @@ export declare class TextParagraph extends RefCounted{
   public get_line_underline_thickness(_line: number): number;
   public get_dropcap_size(): Vector2;
   public get_dropcap_lines(): number;
-  public draw(_canvas: RID, _pos: Vector2, _color: Color, _dc_color: Color): void;
-  public draw_outline(_canvas: RID, _pos: Vector2, _outline_size: number, _color: Color, _dc_color: Color): void;
-  public draw_line(_canvas: RID, _pos: Vector2, _line: number, _color: Color): void;
-  public draw_line_outline(_canvas: RID, _pos: Vector2, _line: number, _outline_size: number, _color: Color): void;
-  public draw_dropcap(_canvas: RID, _pos: Vector2, _color: Color): void;
-  public draw_dropcap_outline(_canvas: RID, _pos: Vector2, _outline_size: number, _color: Color): void;
+  public draw(_canvas: RID, _pos: Vector2, _color: Color = Color(1, 1, 1, 1), _dc_color: Color = Color(1, 1, 1, 1)): void;
+  public draw_outline(_canvas: RID, _pos: Vector2, _outline_size: number = 1, _color: Color = Color(1, 1, 1, 1), _dc_color: Color = Color(1, 1, 1, 1)): void;
+  public draw_line(_canvas: RID, _pos: Vector2, _line: number, _color: Color = Color(1, 1, 1, 1)): void;
+  public draw_line_outline(_canvas: RID, _pos: Vector2, _line: number, _outline_size: number = 1, _color: Color = Color(1, 1, 1, 1)): void;
+  public draw_dropcap(_canvas: RID, _pos: Vector2, _color: Color = Color(1, 1, 1, 1)): void;
+  public draw_dropcap_outline(_canvas: RID, _pos: Vector2, _outline_size: number = 1, _color: Color = Color(1, 1, 1, 1)): void;
   public hit_test(_coords: Vector2): number;
   public get direction(): number;
   public set direction(value): void;

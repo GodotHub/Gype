@@ -1,8 +1,6 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
+import { GodotObject } from "@godot/classes/godot_object";
 export declare class PhysicsTestMotionResult2D extends RefCounted{
   public get_travel(): Vector2;
   public get_remainder(): Vector2;

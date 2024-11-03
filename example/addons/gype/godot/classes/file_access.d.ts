@@ -1,22 +1,27 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class FileAccess extends RefCounted{
-  public open(_path: GDString | StringName | string, _flags: number): FileAccess;
-  public open_encrypted(_path: GDString | StringName | string, _mode_flags: number, _key: PackedByteArray): FileAccess;
-  public open_encrypted_with_pass(_path: GDString | StringName | string, _mode_flags: number, _pass: GDString | StringName | string): FileAccess;
-  public open_compressed(_path: GDString | StringName | string, _mode_flags: number, _compression_mode: number): FileAccess;
-  public get_open_error(): number;
-  public get_file_as_bytes(_path: GDString | StringName | string): PackedByteArray;
-  public get_file_as_string(_path: GDString | StringName | string): String;
+  public
+ static open(_path: GDString | StringName | string, _flags: number): FileAccess;
+  public
+ static open_encrypted(_path: GDString | StringName | string, _mode_flags: number, _key: PackedByteArray): FileAccess;
+  public
+ static open_encrypted_with_pass(_path: GDString | StringName | string, _mode_flags: number, _pass: GDString | StringName | string): FileAccess;
+  public
+ static open_compressed(_path: GDString | StringName | string, _mode_flags: number, _compression_mode: number = 0): FileAccess;
+  public
+ static get_open_error(): number;
+  public
+ static get_file_as_bytes(_path: GDString | StringName | string): PackedByteArray;
+  public
+ static get_file_as_string(_path: GDString | StringName | string): String;
   public resize(_length: number): number;
   public flush(): void;
   public get_path(): String;
   public get_path_absolute(): String;
   public is_open(): boolean;
   public seek(_position: number): void;
-  public seek_end(_position: number): void;
+  public seek_end(_position: number = 0): void;
   public get_position(): number;
   public get_length(): number;
   public eof_reached(): boolean;
@@ -29,14 +34,16 @@ export declare class FileAccess extends RefCounted{
   public get_real(): number;
   public get_buffer(_length: number): PackedByteArray;
   public get_line(): String;
-  public get_csv_line(_delim: GDString | StringName | string): PackedStringArray;
-  public get_as_text(_skip_cr: boolean): String;
-  public get_md5(_path: GDString | StringName | string): String;
-  public get_sha256(_path: GDString | StringName | string): String;
+  public get_csv_line(_delim: GDString | StringName | string = ","): PackedStringArray;
+  public get_as_text(_skip_cr: boolean = false): String;
+  public
+ static get_md5(_path: GDString | StringName | string): String;
+  public
+ static get_sha256(_path: GDString | StringName | string): String;
   public is_big_endian(): boolean;
   public set_big_endian(_big_endian: boolean): void;
   public get_error(): number;
-  public get_var(_allow_objects: boolean): any;
+  public get_var(_allow_objects: boolean = false): any;
   public store_8(_value: number): void;
   public store_16(_value: number): void;
   public store_32(_value: number): void;
@@ -46,20 +53,28 @@ export declare class FileAccess extends RefCounted{
   public store_real(_value: number): void;
   public store_buffer(_buffer: PackedByteArray): void;
   public store_line(_line: GDString | StringName | string): void;
-  public store_csv_line(_values: PackedStringArray, _delim: GDString | StringName | string): void;
+  public store_csv_line(_values: PackedStringArray, _delim: GDString | StringName | string = ","): void;
   public store_string(_string: GDString | StringName | string): void;
-  public store_var(_value: any, _full_objects: boolean): void;
+  public store_var(_value: any, _full_objects: boolean = false): void;
   public store_pascal_string(_string: GDString | StringName | string): void;
   public get_pascal_string(): String;
   public close(): void;
-  public file_exists(_path: GDString | StringName | string): boolean;
-  public get_modified_time(_file: GDString | StringName | string): number;
-  public get_unix_permissions(_file: GDString | StringName | string): number;
-  public set_unix_permissions(_file: GDString | StringName | string, _permissions: number): number;
-  public get_hidden_attribute(_file: GDString | StringName | string): boolean;
-  public set_hidden_attribute(_file: GDString | StringName | string, _hidden: boolean): number;
-  public set_read_only_attribute(_file: GDString | StringName | string, _ro: boolean): number;
-  public get_read_only_attribute(_file: GDString | StringName | string): boolean;
+  public
+ static file_exists(_path: GDString | StringName | string): boolean;
+  public
+ static get_modified_time(_file: GDString | StringName | string): number;
+  public
+ static get_unix_permissions(_file: GDString | StringName | string): number;
+  public
+ static set_unix_permissions(_file: GDString | StringName | string, _permissions: number): number;
+  public
+ static get_hidden_attribute(_file: GDString | StringName | string): boolean;
+  public
+ static set_hidden_attribute(_file: GDString | StringName | string, _hidden: boolean): number;
+  public
+ static set_read_only_attribute(_file: GDString | StringName | string, _ro: boolean): number;
+  public
+ static get_read_only_attribute(_file: GDString | StringName | string): boolean;
   public get big_endian(): boolean;
   public set big_endian(value): void;
   static ModeFlags = {

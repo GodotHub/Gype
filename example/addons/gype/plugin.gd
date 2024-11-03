@@ -25,7 +25,8 @@ func _compile():
 	var exit_code = OS.execute("cmd.exe", ["/c", "tsc", "--build", "tsconfig.json"]);
 	if exit_code == -1:
 		printerr('error compile js')
-	print('scripts generated')
+	else:
+		print('scripts generated')
 
 func _build() -> bool:
 	_compile()

@@ -1,8 +1,6 @@
 
-import { AcceptDialog } from "@godot/classes/accept_dialog";
 import { Button } from "@godot/classes/button";
-
-
+import { AcceptDialog } from "@godot/classes/accept_dialog";
 export declare class ConfirmationDialog extends AcceptDialog{
   public get_cancel_button(): Button;
   public set_cancel_button_text(_text: GDString | StringName | string): void;

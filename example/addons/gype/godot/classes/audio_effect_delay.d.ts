@@ -1,7 +1,5 @@
 
 import { AudioEffect } from "@godot/classes/audio_effect";
-
-
 export declare class AudioEffectDelay extends AudioEffect{
   public set_dry(_amount: number): void;
   public get_dry(): number;

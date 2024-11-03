@@ -5,15 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/performance.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
-
-static JSValue performance_instance;
-
-static void js_performance_singleton();
 
 static void performance_class_finalizer(JSRuntime *rt, JSValue val) {
 	
@@ -21,16 +17,15 @@ static void performance_class_finalizer(JSRuntime *rt, JSValue val) {
 }
 
 static JSClassDef performance_class_def = {
-	"Performance",
+	"_Performance",
 	.finalizer = performance_class_finalizer
 };
 
 static JSValue performance_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Performance *performance_class;
 	JSValue obj = JS_NewObjectClass(ctx, Performance::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	performance_class = Performance::get_singleton();
+	Performance *performance_class = Performance::get_singleton();
 	if (!performance_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -40,33 +35,26 @@ static JSValue performance_class_constructor(JSContext *ctx, JSValueConst new_ta
 	return obj;
 }
 static JSValue performance_class_get_monitor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_performance_singleton();
 	return call_builtin_const_method_ret(&Performance::get_monitor, ctx, this_val, argc, argv);
 };
 static JSValue performance_class_add_custom_monitor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_performance_singleton();
     call_builtin_method_no_ret(&Performance::add_custom_monitor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue performance_class_remove_custom_monitor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_performance_singleton();
     call_builtin_method_no_ret(&Performance::remove_custom_monitor, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue performance_class_has_custom_monitor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_performance_singleton();
 	return call_builtin_method_ret(&Performance::has_custom_monitor, ctx, this_val, argc, argv);
 };
 static JSValue performance_class_get_custom_monitor(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_performance_singleton();
 	return call_builtin_method_ret(&Performance::get_custom_monitor, ctx, this_val, argc, argv);
 };
 static JSValue performance_class_get_monitor_modification_time(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_performance_singleton();
 	return call_builtin_method_ret(&Performance::get_monitor_modification_time, ctx, this_val, argc, argv);
 };
 static JSValue performance_class_get_custom_monitor_names(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_performance_singleton();
 	return call_builtin_method_ret(&Performance::get_custom_monitor_names, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry performance_class_proto_funcs[] = {
@@ -80,7 +68,6 @@ static const JSCFunctionListEntry performance_class_proto_funcs[] = {
 };
 
 static int js_performance_class_init(JSContext *ctx) {
-	JS_NewClassID(&Performance::__class_id);
 	classes["Performance"] = Performance::__class_id;
 	JS_NewClass(JS_GetRuntime(ctx), Performance::__class_id, &performance_class_def);
 
@@ -89,18 +76,17 @@ static int js_performance_class_init(JSContext *ctx) {
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Performance::__class_id, proto);
 	JS_SetPropertyFunctionList(ctx, proto, performance_class_proto_funcs, _countof(performance_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, performance_class_constructor, "_Performance", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
+
+	JSValue global = JS_GetGlobalObject(ctx);
+	JS_SetPropertyStr(ctx, global, "_Performance", ctor);
+	JS_FreeValue(ctx, global);
 	return 0;
 }
 
-static void js_performance_singleton() {
-	if (JS_IsUninitialized(performance_instance)) {
-		JSValue global = JS_GetGlobalObject(ctx);
-		performance_instance = performance_class_constructor(ctx, global, 0, NULL);
-		JS_SetPropertyStr(ctx, global, "Performance", performance_instance);
-	}
-}
-
-
 void register_performance() {
+	Performance::__init_js_class_id();
 	js_performance_class_init(ctx);
 }

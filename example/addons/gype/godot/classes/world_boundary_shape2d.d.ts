@@ -1,7 +1,5 @@
 
 import { Shape2D } from "@godot/classes/shape2d";
-
-
 export declare class WorldBoundaryShape2D extends Shape2D{
   public set_normal(_normal: Vector2): void;
   public get_normal(): Vector2;

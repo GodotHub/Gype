@@ -94,13 +94,14 @@ static int js_image_texture_class_init(JSContext *ctx, JSModuleDef *m) {
 	JSValue ctor = JS_NewCFunction2(ctx, image_texture_class_constructor, "ImageTexture", 0, JS_CFUNC_constructor, 0);
 	JS_SetPropertyFunctionList(ctx, ctor, image_texture_class_static_funcs, _countof(image_texture_class_static_funcs));
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "ImageTexture", ctor);
+	constructors[ImageTexture::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_image_texture_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/texture2d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

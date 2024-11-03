@@ -1,12 +1,10 @@
 
+import { SceneState } from "@godot/classes/scene_state";
 import { Node } from "@godot/classes/node";
 import { Resource } from "@godot/classes/resource";
-import { SceneState } from "@godot/classes/scene_state";
-
-
 export declare class PackedScene extends Resource{
   public pack(_path: Node): number;
-  public instantiate(_edit_state: number): Node;
+  public instantiate(_edit_state: number = 0): Node;
   public can_instantiate(): boolean;
   public get_state(): SceneState;
   static GenEditState = {

@@ -1,7 +1,5 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class GLTFNode extends Resource{
   public get_original_name(): String;
   public set_original_name(_original_name: GDString | StringName | string): void;

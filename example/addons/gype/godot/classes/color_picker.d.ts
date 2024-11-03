@@ -1,7 +1,5 @@
 
 import { VBoxContainer } from "@godot/classes/v_box_container";
-
-
 export declare class ColorPicker extends VBoxContainer{
   public set_pick_color(_color: Color): void;
   public get_pick_color(): Color;

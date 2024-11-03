@@ -1,7 +1,5 @@
 
 import { VisualInstance3D } from "@godot/classes/visual_instance3d";
-
-
 export declare class RootMotionView extends VisualInstance3D{
   public set_animation_path(_path: GDString | NodePath | string): void;
   public get_animation_path(): NodePath;

@@ -1,8 +1,6 @@
 
-import { Resource } from "@godot/classes/resource";
 import { CanvasItem } from "@godot/classes/canvas_item";
-
-
+import { Resource } from "@godot/classes/resource";
 export declare class StyleBox extends Resource{
   public _draw(_to_canvas_item: RID, _rect: Rect2): void;
   public _get_draw_rect(_rect: Rect2): Rect2;

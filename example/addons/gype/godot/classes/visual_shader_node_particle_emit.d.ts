@@ -1,7 +1,5 @@
 
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
-
-
 export declare class VisualShaderNodeParticleEmit extends VisualShaderNode{
   public set_flags(_flags: number): void;
   public get_flags(): number;

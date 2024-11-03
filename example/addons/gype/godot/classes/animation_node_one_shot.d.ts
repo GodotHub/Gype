@@ -1,8 +1,6 @@
 
 import { Curve } from "@godot/classes/curve";
 import { AnimationNodeSync } from "@godot/classes/animation_node_sync";
-
-
 export declare class AnimationNodeOneShot extends AnimationNodeSync{
   public set_fadein_time(_time: number): void;
   public get_fadein_time(): number;

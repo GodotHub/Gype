@@ -1,7 +1,5 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class GLTFTexture extends Resource{
   public get_src_image(): number;
   public set_src_image(_src_image: number): void;

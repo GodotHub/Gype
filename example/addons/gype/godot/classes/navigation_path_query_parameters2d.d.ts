@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class NavigationPathQueryParameters2D extends RefCounted{
   public set_pathfinding_algorithm(_pathfinding_algorithm: number): void;
   public get_pathfinding_algorithm(): number;

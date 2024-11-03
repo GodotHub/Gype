@@ -499,13 +499,14 @@ static int js_image_class_init(JSContext *ctx, JSModuleDef *m) {
 	JSValue ctor = JS_NewCFunction2(ctx, image_class_constructor, "Image", 0, JS_CFUNC_constructor, 0);
 	JS_SetPropertyFunctionList(ctx, ctor, image_class_static_funcs, _countof(image_class_static_funcs));
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "Image", ctor);
+	constructors[Image::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_image_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

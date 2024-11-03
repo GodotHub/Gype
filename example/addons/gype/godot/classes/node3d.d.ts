@@ -1,10 +1,8 @@
 
-import { Node3DGizmo } from "@godot/classes/node3d_gizmo";
-import { Node } from "@godot/classes/node";
 import { World3D } from "@godot/classes/world3d";
 import { Node3DGizmo } from "@godot/classes/node3d_gizmo";
-
-
+import { Node3DGizmo } from "@godot/classes/node3d_gizmo";
+import { Node } from "@godot/classes/node";
 export declare class Node3D extends Node{
   public set_transform(_local: Transform3D): void;
   public get_transform(): Transform3D;
@@ -72,8 +70,8 @@ export declare class Node3D extends Node{
   public translate(_offset: Vector3): void;
   public orthonormalize(): void;
   public set_identity(): void;
-  public look_at(_target: Vector3, _up: Vector3, _use_model_front: boolean): void;
-  public look_at_from_position(_position: Vector3, _target: Vector3, _up: Vector3, _use_model_front: boolean): void;
+  public look_at(_target: Vector3, _up: Vector3 = Vector3(0, 1, 0), _use_model_front: boolean = false): void;
+  public look_at_from_position(_position: Vector3, _target: Vector3, _up: Vector3 = Vector3(0, 1, 0), _use_model_front: boolean = false): void;
   public to_local(_global_point: Vector3): Vector3;
   public to_global(_local_point: Vector3): Vector3;
   public get transform(): Transform3D;

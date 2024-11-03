@@ -1,8 +1,6 @@
 
 import { CSGPrimitive3D } from "@godot/classes/csg_primitive3d";
 import { Material } from "@godot/classes/material";
-
-
 export declare class CSGPolygon3D extends CSGPrimitive3D{
   public set_polygon(_polygon: PackedVector2Array): void;
   public get_polygon(): PackedVector2Array;

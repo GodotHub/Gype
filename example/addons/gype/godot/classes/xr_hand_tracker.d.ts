@@ -1,7 +1,5 @@
 
 import { XRPositionalTracker } from "@godot/classes/xr_positional_tracker";
-
-
 export declare class XRHandTracker extends XRPositionalTracker{
   public set_has_tracking_data(_has_data: boolean): void;
   public get_has_tracking_data(): boolean;

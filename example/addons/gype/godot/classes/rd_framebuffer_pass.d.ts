@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class RDFramebufferPass extends RefCounted{
   public set_color_attachments(_p_member: PackedInt32Array): void;
   public get_color_attachments(): PackedInt32Array;

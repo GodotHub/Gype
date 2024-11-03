@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/video_stream_playback.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/video_stream_playback.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -72,13 +72,14 @@ static int js_video_stream_playback_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPropertyFunctionList(ctx, proto, video_stream_playback_class_proto_funcs, _countof(video_stream_playback_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, video_stream_playback_class_constructor, "VideoStreamPlayback", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "VideoStreamPlayback", ctor);
+	constructors[VideoStreamPlayback::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_video_stream_playback_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

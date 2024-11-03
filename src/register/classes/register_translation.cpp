@@ -124,13 +124,14 @@ static int js_translation_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPropertyFunctionList(ctx, proto, translation_class_proto_funcs, _countof(translation_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, translation_class_constructor, "Translation", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "Translation", ctor);
+	constructors[Translation::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_translation_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

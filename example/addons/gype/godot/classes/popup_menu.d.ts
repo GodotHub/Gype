@@ -1,30 +1,28 @@
 
 import { Shortcut } from "@godot/classes/shortcut";
-import { Popup } from "@godot/classes/popup";
 import { Texture2D } from "@godot/classes/texture2d";
 import { InputEvent } from "@godot/classes/input_event";
-
-
+import { Popup } from "@godot/classes/popup";
 export declare class PopupMenu extends Popup{
-  public activate_item_by_event(_event: InputEvent, _for_global_only: boolean): boolean;
+  public activate_item_by_event(_event: InputEvent, _for_global_only: boolean = false): boolean;
   public set_prefer_native_menu(_enabled: boolean): void;
   public is_prefer_native_menu(): boolean;
   public is_native_menu(): boolean;
-  public add_item(_label: GDString | StringName | string, _id: number, _accel: number): void;
-  public add_icon_item(_texture: Texture2D, _label: GDString | StringName | string, _id: number, _accel: number): void;
-  public add_check_item(_label: GDString | StringName | string, _id: number, _accel: number): void;
-  public add_icon_check_item(_texture: Texture2D, _label: GDString | StringName | string, _id: number, _accel: number): void;
-  public add_radio_check_item(_label: GDString | StringName | string, _id: number, _accel: number): void;
-  public add_icon_radio_check_item(_texture: Texture2D, _label: GDString | StringName | string, _id: number, _accel: number): void;
-  public add_multistate_item(_label: GDString | StringName | string, _max_states: number, _default_state: number, _id: number, _accel: number): void;
-  public add_shortcut(_shortcut: Shortcut, _id: number, _global: boolean, _allow_echo: boolean): void;
-  public add_icon_shortcut(_texture: Texture2D, _shortcut: Shortcut, _id: number, _global: boolean, _allow_echo: boolean): void;
-  public add_check_shortcut(_shortcut: Shortcut, _id: number, _global: boolean): void;
-  public add_icon_check_shortcut(_texture: Texture2D, _shortcut: Shortcut, _id: number, _global: boolean): void;
-  public add_radio_check_shortcut(_shortcut: Shortcut, _id: number, _global: boolean): void;
-  public add_icon_radio_check_shortcut(_texture: Texture2D, _shortcut: Shortcut, _id: number, _global: boolean): void;
-  public add_submenu_item(_label: GDString | StringName | string, _submenu: GDString | StringName | string, _id: number): void;
-  public add_submenu_node_item(_label: GDString | StringName | string, _submenu: PopupMenu, _id: number): void;
+  public add_item(_label: GDString | StringName | string, _id: number = -1, _accel: number = 0): void;
+  public add_icon_item(_texture: Texture2D, _label: GDString | StringName | string, _id: number = -1, _accel: number = 0): void;
+  public add_check_item(_label: GDString | StringName | string, _id: number = -1, _accel: number = 0): void;
+  public add_icon_check_item(_texture: Texture2D, _label: GDString | StringName | string, _id: number = -1, _accel: number = 0): void;
+  public add_radio_check_item(_label: GDString | StringName | string, _id: number = -1, _accel: number = 0): void;
+  public add_icon_radio_check_item(_texture: Texture2D, _label: GDString | StringName | string, _id: number = -1, _accel: number = 0): void;
+  public add_multistate_item(_label: GDString | StringName | string, _max_states: number, _default_state: number = 0, _id: number = -1, _accel: number = 0): void;
+  public add_shortcut(_shortcut: Shortcut, _id: number = -1, _global: boolean = false, _allow_echo: boolean = false): void;
+  public add_icon_shortcut(_texture: Texture2D, _shortcut: Shortcut, _id: number = -1, _global: boolean = false, _allow_echo: boolean = false): void;
+  public add_check_shortcut(_shortcut: Shortcut, _id: number = -1, _global: boolean = false): void;
+  public add_icon_check_shortcut(_texture: Texture2D, _shortcut: Shortcut, _id: number = -1, _global: boolean = false): void;
+  public add_radio_check_shortcut(_shortcut: Shortcut, _id: number = -1, _global: boolean = false): void;
+  public add_icon_radio_check_shortcut(_texture: Texture2D, _shortcut: Shortcut, _id: number = -1, _global: boolean = false): void;
+  public add_submenu_item(_label: GDString | StringName | string, _submenu: GDString | StringName | string, _id: number = -1): void;
+  public add_submenu_node_item(_label: GDString | StringName | string, _submenu: PopupMenu, _id: number = -1): void;
   public set_item_text(_index: number, _text: GDString | StringName | string): void;
   public set_item_text_direction(_index: number, _direction: number): void;
   public set_item_language(_index: number, _language: GDString | StringName | string): void;
@@ -42,7 +40,7 @@ export declare class PopupMenu extends Popup{
   public set_item_as_checkable(_index: number, _enable: boolean): void;
   public set_item_as_radio_checkable(_index: number, _enable: boolean): void;
   public set_item_tooltip(_index: number, _tooltip: GDString | StringName | string): void;
-  public set_item_shortcut(_index: number, _shortcut: Shortcut, _global: boolean): void;
+  public set_item_shortcut(_index: number, _shortcut: Shortcut, _global: boolean = false): void;
   public set_item_indent(_index: number, _indent: number): void;
   public set_item_multistate(_index: number, _state: number): void;
   public set_item_multistate_max(_index: number, _max_states: number): void;
@@ -78,8 +76,8 @@ export declare class PopupMenu extends Popup{
   public get_item_count(): number;
   public scroll_to_item(_index: number): void;
   public remove_item(_index: number): void;
-  public add_separator(_label: GDString | StringName | string, _id: number): void;
-  public clear(_free_submenus: boolean): void;
+  public add_separator(_label: GDString | StringName | string = "", _id: number = -1): void;
+  public clear(_free_submenus: boolean = false): void;
   public set_hide_on_item_selection(_enable: boolean): void;
   public is_hide_on_item_selection(): boolean;
   public set_hide_on_checkable_item_selection(_enable: boolean): void;

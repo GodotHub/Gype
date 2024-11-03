@@ -1,8 +1,6 @@
 
-import { Resource } from "@godot/classes/resource";
 import { TextEdit } from "@godot/classes/text_edit";
-
-
+import { Resource } from "@godot/classes/resource";
 export declare class CodeEdit extends TextEdit{
   public _confirm_code_completion(_replace: boolean): void;
   public _request_code_completion(_force: boolean): void;
@@ -18,7 +16,7 @@ export declare class CodeEdit extends TextEdit{
   public do_indent(): void;
   public indent_lines(): void;
   public unindent_lines(): void;
-  public convert_indent(_from_line: number, _to_line: number): void;
+  public convert_indent(_from_line: number = -1, _to_line: number = -1): void;
   public set_auto_brace_completion_enabled(_enable: boolean): void;
   public is_auto_brace_completion_enabled(): boolean;
   public set_highlight_matching_braces_enabled(_enable: boolean): void;
@@ -67,23 +65,23 @@ export declare class CodeEdit extends TextEdit{
   public create_code_region(): void;
   public get_code_region_start_tag(): String;
   public get_code_region_end_tag(): String;
-  public set_code_region_tags(_start: GDString | StringName | string, _end: GDString | StringName | string): void;
+  public set_code_region_tags(_start: GDString | StringName | string = "region", _end: GDString | StringName | string = "endregion"): void;
   public is_line_code_region_start(_line: number): boolean;
   public is_line_code_region_end(_line: number): boolean;
-  public add_string_delimiter(_start_key: GDString | StringName | string, _end_key: GDString | StringName | string, _line_only: boolean): void;
+  public add_string_delimiter(_start_key: GDString | StringName | string, _end_key: GDString | StringName | string, _line_only: boolean = false): void;
   public remove_string_delimiter(_start_key: GDString | StringName | string): void;
   public has_string_delimiter(_start_key: GDString | StringName | string): boolean;
   public set_string_delimiters(_string_delimiters: GDArray): void;
   public clear_string_delimiters(): void;
   public get_string_delimiters(): GDArray;
-  public is_in_string(_line: number, _column: number): number;
-  public add_comment_delimiter(_start_key: GDString | StringName | string, _end_key: GDString | StringName | string, _line_only: boolean): void;
+  public is_in_string(_line: number, _column: number = -1): number;
+  public add_comment_delimiter(_start_key: GDString | StringName | string, _end_key: GDString | StringName | string, _line_only: boolean = false): void;
   public remove_comment_delimiter(_start_key: GDString | StringName | string): void;
   public has_comment_delimiter(_start_key: GDString | StringName | string): boolean;
   public set_comment_delimiters(_comment_delimiters: GDArray): void;
   public clear_comment_delimiters(): void;
   public get_comment_delimiters(): GDArray;
-  public is_in_comment(_line: number, _column: number): number;
+  public is_in_comment(_line: number, _column: number = -1): number;
   public get_delimiter_start_key(_delimiter_index: number): String;
   public get_delimiter_end_key(_delimiter_index: number): String;
   public get_delimiter_start_position(_line: number, _column: number): Vector2;
@@ -91,14 +89,14 @@ export declare class CodeEdit extends TextEdit{
   public set_code_hint(_code_hint: GDString | StringName | string): void;
   public set_code_hint_draw_below(_draw_below: boolean): void;
   public get_text_for_code_completion(): String;
-  public request_code_completion(_force: boolean): void;
-  public add_code_completion_option(_type: number, _display_text: GDString | StringName | string, _insert_text: GDString | StringName | string, _text_color: Color, _icon: Resource, _value: any, _location: number): void;
+  public request_code_completion(_force: boolean = false): void;
+  public add_code_completion_option(_type: number, _display_text: GDString | StringName | string, _insert_text: GDString | StringName | string, _text_color: Color = Color(1, 1, 1, 1), _icon: Resource = null, _value: any = null, _location: number = 1024): void;
   public update_code_completion_options(_force: boolean): void;
   public get_code_completion_options(): GDArray;
   public get_code_completion_option(_index: number): Dictionary;
   public get_code_completion_selected_index(): number;
   public set_code_completion_selected_index(_index: number): void;
-  public confirm_code_completion(_replace: boolean): void;
+  public confirm_code_completion(_replace: boolean = false): void;
   public cancel_code_completion(): void;
   public set_code_completion_enabled(_enable: boolean): void;
   public is_code_completion_enabled(): boolean;

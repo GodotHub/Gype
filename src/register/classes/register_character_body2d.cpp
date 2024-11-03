@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/kinematic_collision2d.hpp>
-#include <godot_cpp/classes/character_body2d.hpp>
 #include <godot_cpp/classes/physics_body2d.hpp>
+#include <godot_cpp/classes/character_body2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -32,7 +32,7 @@ static JSValue character_body2d_class_constructor(JSContext *ctx, JSValueConst n
 	CharacterBody2D *character_body2d_class;
 	if (argc == 1) 
 		character_body2d_class = static_cast<CharacterBody2D *>(Variant(*argv).operator Object *());
-	else 
+	else
 		character_body2d_class = memnew(CharacterBody2D);
 	if (!character_body2d_class) {
 		JS_FreeValue(ctx, obj);
@@ -436,13 +436,14 @@ static int js_character_body2d_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPropertyFunctionList(ctx, proto, character_body2d_class_proto_funcs, _countof(character_body2d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, character_body2d_class_constructor, "CharacterBody2D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "CharacterBody2D", ctor);
+	constructors[CharacterBody2D::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_character_body2d_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/physics_body2d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

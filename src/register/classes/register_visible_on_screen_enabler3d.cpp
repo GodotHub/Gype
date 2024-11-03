@@ -107,13 +107,14 @@ static int js_visible_on_screen_enabler3d_class_init(JSContext *ctx, JSModuleDef
 	JS_SetPropertyFunctionList(ctx, proto, visible_on_screen_enabler3d_class_proto_funcs, _countof(visible_on_screen_enabler3d_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visible_on_screen_enabler3d_class_constructor, "VisibleOnScreenEnabler3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "VisibleOnScreenEnabler3D", ctor);
+	constructors[VisibleOnScreenEnabler3D::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_visible_on_screen_enabler3d_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/visible_on_screen_notifier3d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

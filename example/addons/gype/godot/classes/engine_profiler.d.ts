@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class EngineProfiler extends RefCounted{
   public _toggle(_enable: boolean, _options: GDArray): void;
   public _add_frame(_data: GDArray): void;

@@ -1,7 +1,5 @@
 
 import { Range } from "@godot/classes/range";
-
-
 export declare class EditorSpinSlider extends Range{
   public set_label(_label: GDString | StringName | string): void;
   public get_label(): String;

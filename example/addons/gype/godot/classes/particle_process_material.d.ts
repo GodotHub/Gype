@@ -1,8 +1,6 @@
 
-import { Material } from "@godot/classes/material";
 import { Texture2D } from "@godot/classes/texture2d";
-
-
+import { Material } from "@godot/classes/material";
 export declare class ParticleProcessMaterial extends Material{
   public set_direction(_degrees: Vector3): void;
   public get_direction(): Vector3;

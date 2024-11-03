@@ -1,7 +1,5 @@
 
 import { Node3D } from "@godot/classes/node3d";
-
-
 export declare class NavigationLink3D extends Node3D{
   public get_rid(): RID;
   public set_enabled(_enabled: boolean): void;

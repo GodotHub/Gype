@@ -1,10 +1,9 @@
 
 import { GodotObject } from "@godot/classes/godot_object";
-
-
-export declare class Performance extends GodotObject{
+declare global {
+export declare class _Performance extends GodotObject{
   public get_monitor(_monitor: number): number;
-  public add_custom_monitor(_id: GDString | StringName | string, _callable: Callable, _arguments: GDArray): void;
+  public add_custom_monitor(_id: GDString | StringName | string, _callable: Callable, _arguments: GDArray = []): void;
   public remove_custom_monitor(_id: GDString | StringName | string): void;
   public has_custom_monitor(_id: GDString | StringName | string): boolean;
   public get_custom_monitor(_id: GDString | StringName | string): any;
@@ -46,4 +45,8 @@ export declare class Performance extends GodotObject{
     NAVIGATION_EDGE_FREE_COUNT = 32,
     MONITOR_MAX = 33,
   }
+}
+}
+declare global {
+  const Performance: _Performance;
 }

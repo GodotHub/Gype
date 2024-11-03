@@ -1,9 +1,7 @@
 
 import { TextureLayered } from "@godot/classes/texture_layered";
-import { Resource } from "@godot/classes/resource";
 import { TextureLayered } from "@godot/classes/texture_layered";
-
-
+import { Resource } from "@godot/classes/resource";
 export declare class LightmapGIData extends Resource{
   public set_lightmap_textures(_light_textures: GDArray): void;
   public get_lightmap_textures(): GDArray;

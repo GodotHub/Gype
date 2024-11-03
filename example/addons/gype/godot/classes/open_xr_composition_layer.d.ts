@@ -1,8 +1,6 @@
 
-import { SubViewport } from "@godot/classes/sub_viewport";
 import { Node3D } from "@godot/classes/node3d";
-
-
+import { SubViewport } from "@godot/classes/sub_viewport";
 export declare class OpenXRCompositionLayer extends Node3D{
   public set_layer_viewport(_viewport: SubViewport): void;
   public get_layer_viewport(): SubViewport;

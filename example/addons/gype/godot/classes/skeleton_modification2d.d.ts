@@ -1,8 +1,6 @@
 
-import { Resource } from "@godot/classes/resource";
 import { SkeletonModificationStack2D } from "@godot/classes/skeleton_modification_stack2d";
-
-
+import { Resource } from "@godot/classes/resource";
 export declare class SkeletonModification2D extends Resource{
   public _execute(_delta: number): void;
   public _setup_modification(_modification_stack: SkeletonModificationStack2D): void;

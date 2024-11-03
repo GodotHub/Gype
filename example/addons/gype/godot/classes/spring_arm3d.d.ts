@@ -1,8 +1,6 @@
 
 import { Shape3D } from "@godot/classes/shape3d";
 import { Node3D } from "@godot/classes/node3d";
-
-
 export declare class SpringArm3D extends Node3D{
   public get_hit_length(): number;
   public set_length(_length: number): void;

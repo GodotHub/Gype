@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/style_box_line.hpp>
+#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -156,13 +156,14 @@ static int js_style_box_line_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPropertyFunctionList(ctx, proto, style_box_line_class_proto_funcs, _countof(style_box_line_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, style_box_line_class_constructor, "StyleBoxLine", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "StyleBoxLine", ctor);
+	constructors[StyleBoxLine::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_style_box_line_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/style_box';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

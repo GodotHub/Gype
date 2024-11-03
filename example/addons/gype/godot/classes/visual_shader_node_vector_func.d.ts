@@ -1,7 +1,5 @@
 
 import { VisualShaderNodeVectorBase } from "@godot/classes/visual_shader_node_vector_base";
-
-
 export declare class VisualShaderNodeVectorFunc extends VisualShaderNodeVectorBase{
   public set_function(_func: number): void;
   public get_function(): number;

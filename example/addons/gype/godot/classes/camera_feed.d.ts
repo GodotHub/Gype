@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class CameraFeed extends RefCounted{
   public get_id(): number;
   public is_active(): boolean;

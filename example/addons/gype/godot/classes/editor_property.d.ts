@@ -1,9 +1,7 @@
 
-import { Container } from "@godot/classes/container";
-import { GodotObject } from "@godot/classes/godot_object";
 import { Control } from "@godot/classes/control";
-
-
+import { GodotObject } from "@godot/classes/godot_object";
+import { Container } from "@godot/classes/container";
 export declare class EditorProperty extends Container{
   public _update_property(): void;
   public _set_read_only(_read_only: boolean): void;
@@ -26,7 +24,7 @@ export declare class EditorProperty extends Container{
   public update_property(): void;
   public add_focusable(_control: Control): void;
   public set_bottom_editor(_editor: Control): void;
-  public emit_changed(_property: GDString | StringName | string, _value: any, _field: GDString | StringName | string, _changing: boolean): void;
+  public emit_changed(_property: GDString | StringName | string, _value: any, _field: GDString | StringName | string = "", _changing: boolean = false): void;
   public get label(): String;
   public set label(value): void;
   public get read_only(): boolean;

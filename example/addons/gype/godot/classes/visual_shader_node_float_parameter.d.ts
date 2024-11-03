@@ -1,7 +1,5 @@
 
 import { VisualShaderNodeParameter } from "@godot/classes/visual_shader_node_parameter";
-
-
 export declare class VisualShaderNodeFloatParameter extends VisualShaderNodeParameter{
   public set_hint(_hint: number): void;
   public get_hint(): number;

@@ -1,8 +1,6 @@
 
-import { PrimitiveMesh } from "@godot/classes/primitive_mesh";
 import { Curve } from "@godot/classes/curve";
-
-
+import { PrimitiveMesh } from "@godot/classes/primitive_mesh";
 export declare class RibbonTrailMesh extends PrimitiveMesh{
   public set_size(_size: number): void;
   public get_size(): number;

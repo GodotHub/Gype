@@ -1,8 +1,6 @@
 
-import { Node } from "@godot/classes/node";
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
+import { Node } from "@godot/classes/node";
 export declare class Resource extends RefCounted{
   public _setup_local_to_scene(): void;
   public set_path(_path: GDString | StringName | string): void;
@@ -15,11 +13,12 @@ export declare class Resource extends RefCounted{
   public is_local_to_scene(): boolean;
   public get_local_scene(): Node;
   public setup_local_to_scene(): void;
-  public generate_scene_unique_id(): String;
+  public
+ static generate_scene_unique_id(): String;
   public set_scene_unique_id(_id: GDString | StringName | string): void;
   public get_scene_unique_id(): String;
   public emit_changed(): void;
-  public duplicate(_subresources: boolean): Resource;
+  public duplicate(_subresources: boolean = false): Resource;
   public get resource_local_to_scene(): boolean;
   public set resource_local_to_scene(value): void;
   public get resource_path(): String;

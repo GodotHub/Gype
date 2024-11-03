@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class RDPipelineMultisampleState extends RefCounted{
   public set_sample_count(_p_member: number): void;
   public get_sample_count(): number;

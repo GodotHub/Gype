@@ -1,7 +1,5 @@
 
 import { SyntaxHighlighter } from "@godot/classes/syntax_highlighter";
-
-
 export declare class CodeHighlighter extends SyntaxHighlighter{
   public add_keyword_color(_keyword: GDString | StringName | string, _color: Color): void;
   public remove_keyword_color(_keyword: GDString | StringName | string): void;
@@ -17,7 +15,7 @@ export declare class CodeHighlighter extends SyntaxHighlighter{
   public set_member_keyword_colors(_member_keyword: Dictionary): void;
   public clear_member_keyword_colors(): void;
   public get_member_keyword_colors(): Dictionary;
-  public add_color_region(_start_key: GDString | StringName | string, _end_key: GDString | StringName | string, _color: Color, _line_only: boolean): void;
+  public add_color_region(_start_key: GDString | StringName | string, _end_key: GDString | StringName | string, _color: Color, _line_only: boolean = false): void;
   public remove_color_region(_start_key: GDString | StringName | string): void;
   public has_color_region(_start_key: GDString | StringName | string): boolean;
   public set_color_regions(_color_regions: Dictionary): void;

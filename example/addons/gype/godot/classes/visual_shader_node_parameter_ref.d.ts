@@ -1,7 +1,5 @@
 
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
-
-
 export declare class VisualShaderNodeParameterRef extends VisualShaderNode{
   public set_parameter_name(_name: GDString | StringName | string): void;
   public get_parameter_name(): String;

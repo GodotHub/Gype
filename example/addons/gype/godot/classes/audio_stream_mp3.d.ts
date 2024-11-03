@@ -1,7 +1,5 @@
 
 import { AudioStream } from "@godot/classes/audio_stream";
-
-
 export declare class AudioStreamMP3 extends AudioStream{
   public set_data(_data: PackedByteArray): void;
   public get_data(): PackedByteArray;

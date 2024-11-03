@@ -1,16 +1,14 @@
 
 import { AnimationRootNode } from "@godot/classes/animation_root_node";
-
-
 export declare class AnimationNodeBlendSpace2D extends AnimationRootNode{
-  public add_blend_point(_node: AnimationRootNode, _pos: Vector2, _at_index: number): void;
+  public add_blend_point(_node: AnimationRootNode, _pos: Vector2, _at_index: number = -1): void;
   public set_blend_point_position(_point: number, _pos: Vector2): void;
   public get_blend_point_position(_point: number): Vector2;
   public set_blend_point_node(_point: number, _node: AnimationRootNode): void;
   public get_blend_point_node(_point: number): AnimationRootNode;
   public remove_blend_point(_point: number): void;
   public get_blend_point_count(): number;
-  public add_triangle(_x: number, _y: number, _z: number, _at_index: number): void;
+  public add_triangle(_x: number, _y: number, _z: number, _at_index: number = -1): void;
   public get_triangle_point(_triangle: number, _point: number): number;
   public remove_triangle(_triangle: number): void;
   public get_triangle_count(): number;

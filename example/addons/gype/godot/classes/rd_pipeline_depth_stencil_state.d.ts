@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class RDPipelineDepthStencilState extends RefCounted{
   public set_enable_depth_test(_p_member: boolean): void;
   public get_enable_depth_test(): boolean;

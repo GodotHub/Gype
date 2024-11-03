@@ -190,13 +190,14 @@ static int js_skeleton_modification2dccdik_class_init(JSContext *ctx, JSModuleDe
 	JS_SetPropertyFunctionList(ctx, proto, skeleton_modification2dccdik_class_proto_funcs, _countof(skeleton_modification2dccdik_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, skeleton_modification2dccdik_class_constructor, "SkeletonModification2DCCDIK", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "SkeletonModification2DCCDIK", ctor);
+	constructors[SkeletonModification2DCCDIK::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_skeleton_modification2dccdik_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/skeleton_modification2d';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

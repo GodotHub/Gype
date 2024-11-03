@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class RDUniform extends RefCounted{
   public set_uniform_type(_p_member: number): void;
   public get_uniform_type(): number;

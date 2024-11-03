@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class XMLParser extends RefCounted{
   public read(): number;
   public get_node_type(): number;

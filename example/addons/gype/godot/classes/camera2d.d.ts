@@ -1,8 +1,6 @@
 
 import { Node } from "@godot/classes/node";
 import { Node2D } from "@godot/classes/node2d";
-
-
 export declare class Camera2D extends Node2D{
   public set_offset(_offset: Vector2): void;
   public get_offset(): Vector2;

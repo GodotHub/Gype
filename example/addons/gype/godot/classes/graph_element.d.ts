@@ -1,7 +1,5 @@
 
 import { Container } from "@godot/classes/container";
-
-
 export declare class GraphElement extends Container{
   public set_resizable(_resizable: boolean): void;
   public is_resizable(): boolean;

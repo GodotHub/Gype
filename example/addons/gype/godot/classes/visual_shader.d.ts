@@ -1,8 +1,6 @@
 
 import { Shader } from "@godot/classes/shader";
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
-
-
 export declare class VisualShader extends Shader{
   public set_mode(_mode: number): void;
   public add_node(_type: number, _node: VisualShaderNode, _position: Vector2, _id: number): void;

@@ -1,9 +1,7 @@
 
 import { AudioStream } from "@godot/classes/audio_stream";
-
-
 export declare class AudioStreamRandomizer extends AudioStream{
-  public add_stream(_index: number, _stream: AudioStream, _weight: number): void;
+  public add_stream(_index: number, _stream: AudioStream, _weight: number = 1.0): void;
   public move_stream(_index_from: number, _index_to: number): void;
   public remove_stream(_index: number): void;
   public set_stream(_index: number, _stream: AudioStream): void;

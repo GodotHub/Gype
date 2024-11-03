@@ -1,7 +1,5 @@
 
 import { Node3D } from "@godot/classes/node3d";
-
-
 export declare class XROrigin3D extends Node3D{
   public set_world_scale(_world_scale: number): void;
   public get_world_scale(): number;

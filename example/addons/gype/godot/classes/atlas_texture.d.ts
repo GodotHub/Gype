@@ -1,7 +1,5 @@
 
 import { Texture2D } from "@godot/classes/texture2d";
-
-
 export declare class AtlasTexture extends Texture2D{
   public set_atlas(_atlas: Texture2D): void;
   public get_atlas(): Texture2D;

@@ -2,8 +2,6 @@
 import { Font } from "@godot/classes/font";
 import { TriangleMesh } from "@godot/classes/triangle_mesh";
 import { GeometryInstance3D } from "@godot/classes/geometry_instance3d";
-
-
 export declare class Label3D extends GeometryInstance3D{
   public set_horizontal_alignment(_alignment: number): void;
   public get_horizontal_alignment(): number;

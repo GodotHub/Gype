@@ -1,7 +1,5 @@
 
 import { Node } from "@godot/classes/node";
-
-
 export declare class Timer extends Node{
   public set_wait_time(_time_sec: number): void;
   public get_wait_time(): number;
@@ -9,7 +7,7 @@ export declare class Timer extends Node{
   public is_one_shot(): boolean;
   public set_autostart(_enable: boolean): void;
   public has_autostart(): boolean;
-  public start(_time_sec: number): void;
+  public start(_time_sec: number = -1): void;
   public stop(): void;
   public set_paused(_paused: boolean): void;
   public is_paused(): boolean;

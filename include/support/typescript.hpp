@@ -36,12 +36,10 @@ class TypeScript : public ScriptExtension {
 
 	String source_code;
 	String dist_source_code;
-	String origin_path;
-	String path;
-	String global_class_name;
-	String base_class_name;
 	TypeScript *baseScript;
-	bool is_tool = false;
+	mutable String global_class_name;
+	mutable String base_class_name;
+	mutable bool is_tool = false;
 
 	HashSet<int64_t> instances;
 
@@ -88,13 +86,9 @@ public:
 		parser = ts_parser_new();
 		lang = tree_sitter_typescript();
 		ts_parser_set_language(parser, lang);
+		complie(false);
+		analyze();
 	}
-	TypeScript(const String &path, const String &origin_path) :
-			origin_path(origin_path), path(path) {
-		parser = ts_parser_new();
-		lang = tree_sitter_typescript();
-		ts_parser_set_language(parser, lang);
-	};
 	~TypeScript();
 
 protected:
@@ -104,8 +98,8 @@ private:
 	void remove_dist();
 	void remove_dist_internal(const String &path);
 	String get_dist_source_code() const;
-	void complie(bool force);
-	void analyze();
+	void complie(bool force) const;
+	void analyze() const;
 };
 
 } // namespace godot

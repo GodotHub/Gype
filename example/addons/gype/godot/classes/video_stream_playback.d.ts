@@ -1,8 +1,6 @@
 
-import { Resource } from "@godot/classes/resource";
 import { Texture2D } from "@godot/classes/texture2d";
-
-
+import { Resource } from "@godot/classes/resource";
 export declare class VideoStreamPlayback extends Resource{
   public _stop(): void;
   public _play(): void;
@@ -17,5 +15,5 @@ export declare class VideoStreamPlayback extends Resource{
   public _update(_delta: number): void;
   public _get_channels(): number;
   public _get_mix_rate(): number;
-  public mix_audio(_num_frames: number, _buffer: PackedFloat32Array, _offset: number): number;
+  public mix_audio(_num_frames: number, _buffer: PackedFloat32Array = PackedFloat32Array(), _offset: number = 0): number;
 }

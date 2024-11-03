@@ -5,11 +5,11 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_server3d_rendering_server_handler.hpp>
-#include <godot_cpp/classes/physics_server3d.hpp>
 #include <godot_cpp/classes/physics_direct_body_state3d.hpp>
-#include <godot_cpp/classes/physics_server3d_extension.hpp>
 #include <godot_cpp/classes/physics_direct_space_state3d.hpp>
+#include <godot_cpp/classes/physics_server3d.hpp>
+#include <godot_cpp/classes/physics_server3d_extension.hpp>
+#include <godot_cpp/classes/physics_server3d_rendering_server_handler.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -79,17 +79,14 @@ static int js_physics_server3d_extension_class_init(JSContext *ctx, JSModuleDef 
 	JS_SetPropertyFunctionList(ctx, proto, physics_server3d_extension_class_proto_funcs, _countof(physics_server3d_extension_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, physics_server3d_extension_class_constructor, "PhysicsServer3DExtension", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "PhysicsServer3DExtension", ctor);
+	constructors[PhysicsServer3DExtension::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_physics_server3d_extension_module(JSContext *ctx, const char *module_name) {
-	const char *code = "import * as _ from '@godot/classes/physics_server3d';";
-	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
-	if (JS_IsException(module))
-		return NULL;
+	// 需要提前完成import依赖
 	JSModuleDef *m = JS_NewCModule(ctx, module_name, js_physics_server3d_extension_class_init);
 	if (!m)
 		return NULL;

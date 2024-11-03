@@ -1,7 +1,5 @@
 
 import { Node2D } from "@godot/classes/node2d";
-
-
 export declare class NavigationObstacle2D extends Node2D{
   public get_rid(): RID;
   public set_avoidance_enabled(_enabled: boolean): void;

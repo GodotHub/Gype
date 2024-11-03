@@ -1,17 +1,15 @@
 
-import { Node2D } from "@godot/classes/node2d";
 import { Gradient } from "@godot/classes/gradient";
 import { Curve } from "@godot/classes/curve";
 import { Texture2D } from "@godot/classes/texture2d";
-
-
+import { Node2D } from "@godot/classes/node2d";
 export declare class Line2D extends Node2D{
   public set_points(_points: PackedVector2Array): void;
   public get_points(): PackedVector2Array;
   public set_point_position(_index: number, _position: Vector2): void;
   public get_point_position(_index: number): Vector2;
   public get_point_count(): number;
-  public add_point(_position: Vector2, _index: number): void;
+  public add_point(_position: Vector2, _index: number = -1): void;
   public remove_point(_index: number): void;
   public clear_points(): void;
   public set_closed(_closed: boolean): void;

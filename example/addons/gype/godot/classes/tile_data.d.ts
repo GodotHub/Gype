@@ -1,10 +1,8 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
 import { OccluderPolygon2D } from "@godot/classes/occluder_polygon2d";
 import { NavigationPolygon } from "@godot/classes/navigation_polygon";
+import { GodotObject } from "@godot/classes/godot_object";
 import { Material } from "@godot/classes/material";
-
-
 export declare class TileData extends GodotObject{
   public set_flip_h(_flip_h: boolean): void;
   public get_flip_h(): boolean;
@@ -23,7 +21,7 @@ export declare class TileData extends GodotObject{
   public set_y_sort_origin(_y_sort_origin: number): void;
   public get_y_sort_origin(): number;
   public set_occluder(_layer_id: number, _occluder_polygon: OccluderPolygon2D): void;
-  public get_occluder(_layer_id: number, _flip_h: boolean, _flip_v: boolean, _transpose: boolean): OccluderPolygon2D;
+  public get_occluder(_layer_id: number, _flip_h: boolean = false, _flip_v: boolean = false, _transpose: boolean = false): OccluderPolygon2D;
   public set_constant_linear_velocity(_layer_id: number, _velocity: Vector2): void;
   public get_constant_linear_velocity(_layer_id: number): Vector2;
   public set_constant_angular_velocity(_layer_id: number, _velocity: number): void;
@@ -46,7 +44,7 @@ export declare class TileData extends GodotObject{
   public get_terrain_peering_bit(_peering_bit: number): number;
   public is_valid_terrain_peering_bit(_peering_bit: number): boolean;
   public set_navigation_polygon(_layer_id: number, _navigation_polygon: NavigationPolygon): void;
-  public get_navigation_polygon(_layer_id: number, _flip_h: boolean, _flip_v: boolean, _transpose: boolean): NavigationPolygon;
+  public get_navigation_polygon(_layer_id: number, _flip_h: boolean = false, _flip_v: boolean = false, _transpose: boolean = false): NavigationPolygon;
   public set_probability(_probability: number): void;
   public get_probability(): number;
   public set_custom_data(_layer_name: GDString | StringName | string, _value: any): void;

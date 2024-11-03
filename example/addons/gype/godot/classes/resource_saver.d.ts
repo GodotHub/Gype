@@ -1,13 +1,12 @@
 
-import { Resource } from "@godot/classes/resource";
-import { GodotObject } from "@godot/classes/godot_object";
 import { ResourceFormatSaver } from "@godot/classes/resource_format_saver";
-
-
-export declare class ResourceSaver extends GodotObject{
-  public save(_resource: Resource, _path: GDString | StringName | string, _flags: number): number;
+import { GodotObject } from "@godot/classes/godot_object";
+import { Resource } from "@godot/classes/resource";
+declare global {
+export declare class _ResourceSaver extends GodotObject{
+  public save(_resource: Resource, _path: GDString | StringName | string = "", _flags: number = 0): number;
   public get_recognized_extensions(_type: Resource): PackedStringArray;
-  public add_resource_format_saver(_format_saver: ResourceFormatSaver, _at_front: boolean): void;
+  public add_resource_format_saver(_format_saver: ResourceFormatSaver, _at_front: boolean = false): void;
   public remove_resource_format_saver(_format_saver: ResourceFormatSaver): void;
   static SaverFlags = {
     FLAG_NONE = 0,
@@ -19,4 +18,8 @@ export declare class ResourceSaver extends GodotObject{
     FLAG_COMPRESS = 32,
     FLAG_REPLACE_SUBRESOURCE_PATHS = 64,
   }
+}
+}
+declare global {
+  const ResourceSaver: _ResourceSaver;
 }

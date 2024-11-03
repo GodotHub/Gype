@@ -1,7 +1,5 @@
 
 import { InputEventWithModifiers } from "@godot/classes/input_event_with_modifiers";
-
-
 export declare class InputEventKey extends InputEventWithModifiers{
   public set_pressed(_pressed: boolean): void;
   public set_keycode(_keycode: number): void;

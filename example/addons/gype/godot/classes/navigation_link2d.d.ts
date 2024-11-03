@@ -1,7 +1,5 @@
 
 import { Node2D } from "@godot/classes/node2d";
-
-
 export declare class NavigationLink2D extends Node2D{
   public get_rid(): RID;
   public set_enabled(_enabled: boolean): void;

@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class XRPose extends RefCounted{
   public set_has_tracking_data(_has_tracking_data: boolean): void;
   public get_has_tracking_data(): boolean;

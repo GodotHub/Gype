@@ -1,7 +1,5 @@
 
 import { MultiplayerAPI } from "@godot/classes/multiplayer_api";
-
-
 export declare class SceneMultiplayer extends MultiplayerAPI{
   public set_root_path(_path: GDString | NodePath | string): void;
   public get_root_path(): NodePath;
@@ -20,7 +18,7 @@ export declare class SceneMultiplayer extends MultiplayerAPI{
   public is_object_decoding_allowed(): boolean;
   public set_server_relay_enabled(_enabled: boolean): void;
   public is_server_relay_enabled(): boolean;
-  public send_bytes(_bytes: PackedByteArray, _id: number, _mode: number, _channel: number): number;
+  public send_bytes(_bytes: PackedByteArray, _id: number = 0, _mode: number = 2, _channel: number = 0): number;
   public get_max_sync_packet_size(): number;
   public set_max_sync_packet_size(_size: number): void;
   public get_max_delta_packet_size(): number;

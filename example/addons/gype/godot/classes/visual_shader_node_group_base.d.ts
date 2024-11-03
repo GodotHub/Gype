@@ -1,7 +1,5 @@
 
 import { VisualShaderNodeResizableBase } from "@godot/classes/visual_shader_node_resizable_base";
-
-
 export declare class VisualShaderNodeGroupBase extends VisualShaderNodeResizableBase{
   public set_inputs(_inputs: GDString | StringName | string): void;
   public get_inputs(): String;

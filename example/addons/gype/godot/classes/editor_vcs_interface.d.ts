@@ -1,7 +1,5 @@
 
 import { GodotObject } from "@godot/classes/godot_object";
-
-
 export declare class EditorVCSInterface extends GodotObject{
   public _initialize(_project_path: GDString | StringName | string): boolean;
   public _set_credentials(_username: GDString | StringName | string, _password: GDString | StringName | string, _ssh_public_key_path: GDString | StringName | string, _ssh_private_key_path: GDString | StringName | string, _ssh_passphrase: GDString | StringName | string): void;

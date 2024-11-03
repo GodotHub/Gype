@@ -1,14 +1,13 @@
 
 import { GodotObject } from "@godot/classes/godot_object";
-
-
-export declare class OS extends GodotObject{
+declare global {
+export declare class _OS extends GodotObject{
   public get_entropy(_size: number): PackedByteArray;
   public get_system_ca_certificates(): String;
   public get_connected_midi_inputs(): PackedStringArray;
   public open_midi_inputs(): void;
   public close_midi_inputs(): void;
-  public alert(_text: GDString | StringName | string, _title: GDString | StringName | string): void;
+  public alert(_text: GDString | StringName | string, _title: GDString | StringName | string = "Alert!"): void;
   public crash(_message: GDString | StringName | string): void;
   public set_low_processor_usage_mode(_enable: boolean): void;
   public is_in_low_processor_usage_mode(): boolean;
@@ -19,17 +18,17 @@ export declare class OS extends GodotObject{
   public get_processor_count(): number;
   public get_processor_name(): String;
   public get_system_fonts(): PackedStringArray;
-  public get_system_font_path(_font_name: GDString | StringName | string, _weight: number, _stretch: number, _italic: boolean): String;
-  public get_system_font_path_for_text(_font_name: GDString | StringName | string, _text: GDString | StringName | string, _locale: GDString | StringName | string, _script: GDString | StringName | string, _weight: number, _stretch: number, _italic: boolean): PackedStringArray;
+  public get_system_font_path(_font_name: GDString | StringName | string, _weight: number = 400, _stretch: number = 100, _italic: boolean = false): String;
+  public get_system_font_path_for_text(_font_name: GDString | StringName | string, _text: GDString | StringName | string, _locale: GDString | StringName | string = "", _script: GDString | StringName | string = "", _weight: number = 400, _stretch: number = 100, _italic: boolean = false): PackedStringArray;
   public get_executable_path(): String;
   public read_string_from_stdin(): String;
-  public execute(_path: GDString | StringName | string, _arguments: PackedStringArray, _output: GDArray, _read_stderr: boolean, _open_console: boolean): number;
+  public execute(_path: GDString | StringName | string, _arguments: PackedStringArray, _output: GDArray = [], _read_stderr: boolean = false, _open_console: boolean = false): number;
   public execute_with_pipe(_path: GDString | StringName | string, _arguments: PackedStringArray): Dictionary;
-  public create_process(_path: GDString | StringName | string, _arguments: PackedStringArray, _open_console: boolean): number;
+  public create_process(_path: GDString | StringName | string, _arguments: PackedStringArray, _open_console: boolean = false): number;
   public create_instance(_arguments: PackedStringArray): number;
   public kill(_pid: number): number;
   public shell_open(_uri: GDString | StringName | string): number;
-  public shell_show_in_file_manager(_file_or_dir_path: GDString | StringName | string, _open_folder: boolean): number;
+  public shell_show_in_file_manager(_file_or_dir_path: GDString | StringName | string, _open_folder: boolean = true): number;
   public is_process_running(_pid: number): boolean;
   public get_process_exit_code(_pid: number): number;
   public get_process_id(): number;
@@ -43,7 +42,7 @@ export declare class OS extends GodotObject{
   public get_cmdline_args(): PackedStringArray;
   public get_cmdline_user_args(): PackedStringArray;
   public get_video_adapter_driver_info(): PackedStringArray;
-  public set_restart_on_exit(_restart: boolean, _arguments: PackedStringArray): void;
+  public set_restart_on_exit(_restart: boolean, _arguments: PackedStringArray = PackedStringArray()): void;
   public is_restart_on_exit_set(): boolean;
   public get_restart_on_exit_arguments(): PackedStringArray;
   public delay_usec(_usec: number): void;
@@ -59,7 +58,7 @@ export declare class OS extends GodotObject{
   public get_memory_info(): Dictionary;
   public move_to_trash(_path: GDString | StringName | string): number;
   public get_user_data_dir(): String;
-  public get_system_dir(_dir: number, _shared_storage: boolean): String;
+  public get_system_dir(_dir: number, _shared_storage: boolean = true): String;
   public get_config_dir(): String;
   public get_data_dir(): String;
   public get_cache_dir(): String;
@@ -98,4 +97,8 @@ export declare class OS extends GodotObject{
     SYSTEM_DIR_PICTURES = 6,
     SYSTEM_DIR_RINGTONES = 7,
   }
+}
+}
+declare global {
+  const OS: _OS;
 }

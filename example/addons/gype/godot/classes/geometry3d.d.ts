@@ -1,12 +1,11 @@
 
 import { GodotObject } from "@godot/classes/godot_object";
-
-
-export declare class Geometry3D extends GodotObject{
+declare global {
+export declare class _Geometry3D extends GodotObject{
   public compute_convex_mesh_points(_planes: GDArray): PackedVector3Array;
   public build_box_planes(_extents: Vector3): GDArray;
-  public build_cylinder_planes(_radius: number, _height: number, _sides: number, _axis: number): GDArray;
-  public build_capsule_planes(_radius: number, _height: number, _sides: number, _lats: number, _axis: number): GDArray;
+  public build_cylinder_planes(_radius: number, _height: number, _sides: number, _axis: number = 2): GDArray;
+  public build_capsule_planes(_radius: number, _height: number, _sides: number, _lats: number, _axis: number = 2): GDArray;
   public get_closest_points_between_segments(_p1: Vector3, _p2: Vector3, _q1: Vector3, _q2: Vector3): PackedVector3Array;
   public get_closest_point_to_segment(_point: Vector3, _s1: Vector3, _s2: Vector3): Vector3;
   public get_closest_point_to_segment_uncapped(_point: Vector3, _s1: Vector3, _s2: Vector3): Vector3;
@@ -18,4 +17,8 @@ export declare class Geometry3D extends GodotObject{
   public segment_intersects_convex(_from: Vector3, _to: Vector3, _planes: GDArray): PackedVector3Array;
   public clip_polygon(_points: PackedVector3Array, _plane: Plane): PackedVector3Array;
   public tetrahedralize_delaunay(_points: PackedVector3Array): PackedInt32Array;
+}
+}
+declare global {
+  const Geometry3D: _Geometry3D;
 }

@@ -1,7 +1,5 @@
 
 import { InputEvent } from "@godot/classes/input_event";
-
-
 export declare class InputEventJoypadButton extends InputEvent{
   public set_button_index(_button_index: number): void;
   public get_button_index(): number;

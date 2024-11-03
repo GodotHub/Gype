@@ -1,7 +1,5 @@
 
 import { Light3D } from "@godot/classes/light3d";
-
-
 export declare class SpotLight3D extends Light3D{
   public get spot_range(): number;
   public set spot_range(value): void;

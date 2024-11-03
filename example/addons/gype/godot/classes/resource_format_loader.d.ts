@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class ResourceFormatLoader extends RefCounted{
   public _get_recognized_extensions(): PackedStringArray;
   public _recognize_path(_path: GDString | StringName | string, _type: GDString | StringName | string): boolean;

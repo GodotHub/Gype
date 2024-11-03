@@ -1,7 +1,5 @@
 
 import { CameraAttributes } from "@godot/classes/camera_attributes";
-
-
 export declare class CameraAttributesPractical extends CameraAttributes{
   public set_dof_blur_far_enabled(_enabled: boolean): void;
   public is_dof_blur_far_enabled(): boolean;

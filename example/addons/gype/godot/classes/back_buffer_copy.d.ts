@@ -1,7 +1,5 @@
 
 import { Node2D } from "@godot/classes/node2d";
-
-
 export declare class BackBufferCopy extends Node2D{
   public set_rect(_rect: Rect2): void;
   public get_rect(): Rect2;

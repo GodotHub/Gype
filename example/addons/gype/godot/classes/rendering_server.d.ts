@@ -1,11 +1,10 @@
 
-import { RenderingDevice } from "@godot/classes/rendering_device";
-import { Image } from "@godot/classes/image";
 import { Image } from "@godot/classes/image";
 import { GodotObject } from "@godot/classes/godot_object";
-
-
-export declare class RenderingServer extends GodotObject{
+import { RenderingDevice } from "@godot/classes/rendering_device";
+import { Image } from "@godot/classes/image";
+declare global {
+export declare class _RenderingServer extends GodotObject{
   public texture_2d_create(_image: Image): RID;
   public texture_2d_layered_create(_layers: GDArray, _layered_type: number): RID;
   public texture_3d_create(_format: number, _width: number, _height: number, _depth: number, _mipmaps: boolean, _data: GDArray): RID;
@@ -25,24 +24,24 @@ export declare class RenderingServer extends GodotObject{
   public texture_get_path(_texture: RID): String;
   public texture_get_format(_texture: RID): number;
   public texture_set_force_redraw_if_visible(_texture: RID, _enable: boolean): void;
-  public texture_rd_create(_rd_texture: RID, _layer_type: number): RID;
-  public texture_get_rd_texture(_texture: RID, _srgb: boolean): RID;
-  public texture_get_native_handle(_texture: RID, _srgb: boolean): number;
+  public texture_rd_create(_rd_texture: RID, _layer_type: number = 0): RID;
+  public texture_get_rd_texture(_texture: RID, _srgb: boolean = false): RID;
+  public texture_get_native_handle(_texture: RID, _srgb: boolean = false): number;
   public shader_create(): RID;
   public shader_set_code(_shader: RID, _code: GDString | StringName | string): void;
   public shader_set_path_hint(_shader: RID, _path: GDString | StringName | string): void;
   public shader_get_code(_shader: RID): String;
   public get_shader_parameter_list(_shader: RID): GDArray;
   public shader_get_parameter_default(_shader: RID, _name: GDString | StringName | string): any;
-  public shader_set_default_texture_parameter(_shader: RID, _name: GDString | StringName | string, _texture: RID, _index: number): void;
-  public shader_get_default_texture_parameter(_shader: RID, _name: GDString | StringName | string, _index: number): RID;
+  public shader_set_default_texture_parameter(_shader: RID, _name: GDString | StringName | string, _texture: RID, _index: number = 0): void;
+  public shader_get_default_texture_parameter(_shader: RID, _name: GDString | StringName | string, _index: number = 0): RID;
   public material_create(): RID;
   public material_set_shader(_shader_material: RID, _shader: RID): void;
   public material_set_param(_material: RID, _parameter: GDString | StringName | string, _value: any): void;
   public material_get_param(_material: RID, _parameter: GDString | StringName | string): any;
   public material_set_render_priority(_material: RID, _priority: number): void;
   public material_set_next_pass(_material: RID, _next_material: RID): void;
-  public mesh_create_from_surfaces(_surfaces: GDArray, _blend_shape_count: number): RID;
+  public mesh_create_from_surfaces(_surfaces: GDArray, _blend_shape_count: number = 0): RID;
   public mesh_create(): RID;
   public mesh_surface_get_format_offset(_format: number, _vertex_count: number, _array_index: number): number;
   public mesh_surface_get_format_vertex_stride(_format: number, _vertex_count: number): number;
@@ -50,7 +49,7 @@ export declare class RenderingServer extends GodotObject{
   public mesh_surface_get_format_attribute_stride(_format: number, _vertex_count: number): number;
   public mesh_surface_get_format_skin_stride(_format: number, _vertex_count: number): number;
   public mesh_add_surface(_mesh: RID, _surface: Dictionary): void;
-  public mesh_add_surface_from_arrays(_mesh: RID, _primitive: number, _arrays: GDArray, _blend_shapes: GDArray, _lods: Dictionary, _compress_format: number): void;
+  public mesh_add_surface_from_arrays(_mesh: RID, _primitive: number, _arrays: GDArray, _blend_shapes: GDArray = [], _lods: Dictionary = {}, _compress_format: number = 0): void;
   public mesh_get_blend_shape_count(_mesh: RID): number;
   public mesh_set_blend_shape_mode(_mesh: RID, _mode: number): void;
   public mesh_get_blend_shape_mode(_mesh: RID): number;
@@ -68,7 +67,7 @@ export declare class RenderingServer extends GodotObject{
   public mesh_surface_update_skin_region(_mesh: RID, _surface: number, _offset: number, _data: PackedByteArray): void;
   public mesh_set_shadow_mesh(_mesh: RID, _shadow_mesh: RID): void;
   public multimesh_create(): RID;
-  public multimesh_allocate_data(_multimesh: RID, _instances: number, _transform_format: number, _color_format: boolean, _custom_data_format: boolean): void;
+  public multimesh_allocate_data(_multimesh: RID, _instances: number, _transform_format: number, _color_format: boolean = false, _custom_data_format: boolean = false): void;
   public multimesh_get_instance_count(_multimesh: RID): number;
   public multimesh_set_mesh(_multimesh: RID, _mesh: RID): void;
   public multimesh_instance_set_transform(_multimesh: RID, _index: number, _transform: Transform3D): void;
@@ -88,7 +87,7 @@ export declare class RenderingServer extends GodotObject{
   public multimesh_set_buffer(_multimesh: RID, _buffer: PackedFloat32Array): void;
   public multimesh_get_buffer(_multimesh: RID): PackedFloat32Array;
   public skeleton_create(): RID;
-  public skeleton_allocate_data(_skeleton: RID, _bones: number, _is_2d_skeleton: boolean): void;
+  public skeleton_allocate_data(_skeleton: RID, _bones: number, _is_2d_skeleton: boolean = false): void;
   public skeleton_get_bone_count(_skeleton: RID): number;
   public skeleton_bone_set_transform(_skeleton: RID, _bone: number, _transform: Transform3D): void;
   public skeleton_bone_get_transform(_skeleton: RID, _bone: number): Transform3D;
@@ -241,7 +240,7 @@ export declare class RenderingServer extends GodotObject{
   public viewport_set_size(_viewport: RID, _width: number, _height: number): void;
   public viewport_set_active(_viewport: RID, _active: boolean): void;
   public viewport_set_parent_viewport(_viewport: RID, _parent_viewport: RID): void;
-  public viewport_attach_to_screen(_viewport: RID, _rect: Rect2, _screen: number): void;
+  public viewport_attach_to_screen(_viewport: RID, _rect: Rect2 = Rect2(0, 0, 0, 0), _screen: number = 0): void;
   public viewport_set_render_direct_to_screen(_viewport: RID, _enabled: boolean): void;
   public viewport_set_canvas_cull_mask(_viewport: RID, _canvas_cull_mask: number): void;
   public viewport_set_scaling_3d_mode(_viewport: RID, _scaling_3d_mode: number): void;
@@ -269,7 +268,7 @@ export declare class RenderingServer extends GodotObject{
   public viewport_set_transparent_background(_viewport: RID, _enabled: boolean): void;
   public viewport_set_global_canvas_transform(_viewport: RID, _transform: Transform2D): void;
   public viewport_set_sdf_oversize_and_scale(_viewport: RID, _oversize: number, _scale: number): void;
-  public viewport_set_positional_shadow_atlas_size(_viewport: RID, _size: number, _use_16_bits: boolean): void;
+  public viewport_set_positional_shadow_atlas_size(_viewport: RID, _size: number, _use_16_bits: boolean = false): void;
   public viewport_set_positional_shadow_atlas_quadrant_subdivision(_viewport: RID, _quadrant: number, _subdivision: number): void;
   public viewport_set_msaa_3d(_viewport: RID, _msaa: number): void;
   public viewport_set_msaa_2d(_viewport: RID, _msaa: number): void;
@@ -307,13 +306,13 @@ export declare class RenderingServer extends GodotObject{
   public environment_set_bg_color(_env: RID, _color: Color): void;
   public environment_set_bg_energy(_env: RID, _multiplier: number, _exposure_value: number): void;
   public environment_set_canvas_max_layer(_env: RID, _max_layer: number): void;
-  public environment_set_ambient_light(_env: RID, _color: Color, _ambient: number, _energy: number, _sky_contibution: number, _reflection_source: number): void;
+  public environment_set_ambient_light(_env: RID, _color: Color, _ambient: number = 0, _energy: number = 1.0, _sky_contibution: number = 0.0, _reflection_source: number = 0): void;
   public environment_set_glow(_env: RID, _enable: boolean, _levels: PackedFloat32Array, _intensity: number, _strength: number, _mix: number, _bloom_threshold: number, _blend_mode: number, _hdr_bleed_threshold: number, _hdr_bleed_scale: number, _hdr_luminance_cap: number, _glow_map_strength: number, _glow_map: RID): void;
   public environment_set_tonemap(_env: RID, _tone_mapper: number, _exposure: number, _white: number): void;
   public environment_set_adjustment(_env: RID, _enable: boolean, _brightness: number, _contrast: number, _saturation: number, _use_1d_color_correction: boolean, _color_correction: RID): void;
   public environment_set_ssr(_env: RID, _enable: boolean, _max_steps: number, _fade_in: number, _fade_out: number, _depth_tolerance: number): void;
   public environment_set_ssao(_env: RID, _enable: boolean, _radius: number, _intensity: number, _power: number, _detail: number, _horizon: number, _sharpness: number, _light_affect: number, _ao_channel_affect: number): void;
-  public environment_set_fog(_env: RID, _enable: boolean, _light_color: Color, _light_energy: number, _sun_scatter: number, _density: number, _height: number, _height_density: number, _aerial_perspective: number, _sky_affect: number, _fog_mode: number): void;
+  public environment_set_fog(_env: RID, _enable: boolean, _light_color: Color, _light_energy: number, _sun_scatter: number, _density: number, _height: number, _height_density: number, _aerial_perspective: number, _sky_affect: number, _fog_mode: number = 0): void;
   public environment_set_sdfgi(_env: RID, _enable: boolean, _cascades: number, _min_cell_size: number, _y_scale: number, _use_occlusion: boolean, _bounce_feedback: number, _read_sky: boolean, _energy: number, _normal_bias: number, _probe_bias: number): void;
   public environment_set_volumetric_fog(_env: RID, _enable: boolean, _density: number, _albedo: Color, _emission: Color, _emission_energy: number, _anisotropy: number, _length: number, _p_detail_spread: number, _gi_inject: number, _temporal_reprojection: boolean, _temporal_reprojection_amount: number, _ambient_inject: number, _sky_affect: number): void;
   public environment_glow_set_use_bicubic_upscale(_enable: boolean): void;
@@ -368,9 +367,9 @@ export declare class RenderingServer extends GodotObject{
   public instance_geometry_get_shader_parameter(_instance: RID, _parameter: GDString | StringName | string): any;
   public instance_geometry_get_shader_parameter_default_value(_instance: RID, _parameter: GDString | StringName | string): any;
   public instance_geometry_get_shader_parameter_list(_instance: RID): GDArray;
-  public instances_cull_aabb(_aabb: AABB, _scenario: RID): PackedInt64Array;
-  public instances_cull_ray(_from: Vector3, _to: Vector3, _scenario: RID): PackedInt64Array;
-  public instances_cull_convex(_convex: GDArray, _scenario: RID): PackedInt64Array;
+  public instances_cull_aabb(_aabb: AABB, _scenario: RID = RID()): PackedInt64Array;
+  public instances_cull_ray(_from: Vector3, _to: Vector3, _scenario: RID = RID()): PackedInt64Array;
+  public instances_cull_convex(_convex: GDArray, _scenario: RID = RID()): PackedInt64Array;
   public bake_render_uv2(_base: RID, _material_overrides: GDArray, _image_size: Vector2i): GDArray;
   public canvas_create(): RID;
   public canvas_set_item_mirroring(_canvas: RID, _item: RID, _mirroring: Vector2): void;
@@ -392,32 +391,32 @@ export declare class RenderingServer extends GodotObject{
   public canvas_item_set_transform(_item: RID, _transform: Transform2D): void;
   public canvas_item_set_clip(_item: RID, _clip: boolean): void;
   public canvas_item_set_distance_field_mode(_item: RID, _enabled: boolean): void;
-  public canvas_item_set_custom_rect(_item: RID, _use_custom_rect: boolean, _rect: Rect2): void;
+  public canvas_item_set_custom_rect(_item: RID, _use_custom_rect: boolean, _rect: Rect2 = Rect2(0, 0, 0, 0)): void;
   public canvas_item_set_modulate(_item: RID, _color: Color): void;
   public canvas_item_set_self_modulate(_item: RID, _color: Color): void;
   public canvas_item_set_draw_behind_parent(_item: RID, _enabled: boolean): void;
   public canvas_item_set_interpolated(_item: RID, _interpolated: boolean): void;
   public canvas_item_reset_physics_interpolation(_item: RID): void;
   public canvas_item_transform_physics_interpolation(_item: RID, _transform: Transform2D): void;
-  public canvas_item_add_line(_item: RID, _from: Vector2, _to: Vector2, _color: Color, _width: number, _antialiased: boolean): void;
-  public canvas_item_add_polyline(_item: RID, _points: PackedVector2Array, _colors: PackedColorArray, _width: number, _antialiased: boolean): void;
-  public canvas_item_add_multiline(_item: RID, _points: PackedVector2Array, _colors: PackedColorArray, _width: number, _antialiased: boolean): void;
-  public canvas_item_add_rect(_item: RID, _rect: Rect2, _color: Color, _antialiased: boolean): void;
-  public canvas_item_add_circle(_item: RID, _pos: Vector2, _radius: number, _color: Color, _antialiased: boolean): void;
-  public canvas_item_add_texture_rect(_item: RID, _rect: Rect2, _texture: RID, _tile: boolean, _modulate: Color, _transpose: boolean): void;
-  public canvas_item_add_msdf_texture_rect_region(_item: RID, _rect: Rect2, _texture: RID, _src_rect: Rect2, _modulate: Color, _outline_size: number, _px_range: number, _scale: number): void;
+  public canvas_item_add_line(_item: RID, _from: Vector2, _to: Vector2, _color: Color, _width: number = -1.0, _antialiased: boolean = false): void;
+  public canvas_item_add_polyline(_item: RID, _points: PackedVector2Array, _colors: PackedColorArray, _width: number = -1.0, _antialiased: boolean = false): void;
+  public canvas_item_add_multiline(_item: RID, _points: PackedVector2Array, _colors: PackedColorArray, _width: number = -1.0, _antialiased: boolean = false): void;
+  public canvas_item_add_rect(_item: RID, _rect: Rect2, _color: Color, _antialiased: boolean = false): void;
+  public canvas_item_add_circle(_item: RID, _pos: Vector2, _radius: number, _color: Color, _antialiased: boolean = false): void;
+  public canvas_item_add_texture_rect(_item: RID, _rect: Rect2, _texture: RID, _tile: boolean = false, _modulate: Color = Color(1, 1, 1, 1), _transpose: boolean = false): void;
+  public canvas_item_add_msdf_texture_rect_region(_item: RID, _rect: Rect2, _texture: RID, _src_rect: Rect2, _modulate: Color = Color(1, 1, 1, 1), _outline_size: number = 0, _px_range: number = 1.0, _scale: number = 1.0): void;
   public canvas_item_add_lcd_texture_rect_region(_item: RID, _rect: Rect2, _texture: RID, _src_rect: Rect2, _modulate: Color): void;
-  public canvas_item_add_texture_rect_region(_item: RID, _rect: Rect2, _texture: RID, _src_rect: Rect2, _modulate: Color, _transpose: boolean, _clip_uv: boolean): void;
-  public canvas_item_add_nine_patch(_item: RID, _rect: Rect2, _source: Rect2, _texture: RID, _topleft: Vector2, _bottomright: Vector2, _x_axis_mode: number, _y_axis_mode: number, _draw_center: boolean, _modulate: Color): void;
+  public canvas_item_add_texture_rect_region(_item: RID, _rect: Rect2, _texture: RID, _src_rect: Rect2, _modulate: Color = Color(1, 1, 1, 1), _transpose: boolean = false, _clip_uv: boolean = true): void;
+  public canvas_item_add_nine_patch(_item: RID, _rect: Rect2, _source: Rect2, _texture: RID, _topleft: Vector2, _bottomright: Vector2, _x_axis_mode: number = 0, _y_axis_mode: number = 0, _draw_center: boolean = true, _modulate: Color = Color(1, 1, 1, 1)): void;
   public canvas_item_add_primitive(_item: RID, _points: PackedVector2Array, _colors: PackedColorArray, _uvs: PackedVector2Array, _texture: RID): void;
-  public canvas_item_add_polygon(_item: RID, _points: PackedVector2Array, _colors: PackedColorArray, _uvs: PackedVector2Array, _texture: RID): void;
-  public canvas_item_add_triangle_array(_item: RID, _indices: PackedInt32Array, _points: PackedVector2Array, _colors: PackedColorArray, _uvs: PackedVector2Array, _bones: PackedInt32Array, _weights: PackedFloat32Array, _texture: RID, _count: number): void;
-  public canvas_item_add_mesh(_item: RID, _mesh: RID, _transform: Transform2D, _modulate: Color, _texture: RID): void;
-  public canvas_item_add_multimesh(_item: RID, _mesh: RID, _texture: RID): void;
+  public canvas_item_add_polygon(_item: RID, _points: PackedVector2Array, _colors: PackedColorArray, _uvs: PackedVector2Array = PackedVector2Array(), _texture: RID = RID()): void;
+  public canvas_item_add_triangle_array(_item: RID, _indices: PackedInt32Array, _points: PackedVector2Array, _colors: PackedColorArray, _uvs: PackedVector2Array = PackedVector2Array(), _bones: PackedInt32Array = PackedInt32Array(), _weights: PackedFloat32Array = PackedFloat32Array(), _texture: RID = RID(), _count: number = -1): void;
+  public canvas_item_add_mesh(_item: RID, _mesh: RID, _transform: Transform2D = Transform2D(1, 0, 0, 1, 0, 0), _modulate: Color = Color(1, 1, 1, 1), _texture: RID = RID()): void;
+  public canvas_item_add_multimesh(_item: RID, _mesh: RID, _texture: RID = RID()): void;
   public canvas_item_add_particles(_item: RID, _particles: RID, _texture: RID): void;
   public canvas_item_add_set_transform(_item: RID, _transform: Transform2D): void;
   public canvas_item_add_clip_ignore(_item: RID, _ignore: boolean): void;
-  public canvas_item_add_animation_slice(_item: RID, _animation_length: number, _slice_begin: number, _slice_end: number, _offset: number): void;
+  public canvas_item_add_animation_slice(_item: RID, _animation_length: number, _slice_begin: number, _slice_end: number, _offset: number = 0.0): void;
   public canvas_item_set_sort_children_by_y(_item: RID, _enabled: boolean): void;
   public canvas_item_set_z_index(_item: RID, _z_index: number): void;
   public canvas_item_set_z_as_relative_to_parent(_item: RID, _enabled: boolean): void;
@@ -427,7 +426,7 @@ export declare class RenderingServer extends GodotObject{
   public canvas_item_set_material(_item: RID, _material: RID): void;
   public canvas_item_set_use_parent_material(_item: RID, _enabled: boolean): void;
   public canvas_item_set_visibility_notifier(_item: RID, _enable: boolean, _area: Rect2, _enter_callable: Callable, _exit_callable: Callable): void;
-  public canvas_item_set_canvas_group_mode(_item: RID, _mode: number, _clear_margin: number, _fit_empty: boolean, _fit_margin: number, _blur_mipmaps: boolean): void;
+  public canvas_item_set_canvas_group_mode(_item: RID, _mode: number, _clear_margin: number = 5.0, _fit_empty: boolean = false, _fit_margin: number = 0.0, _blur_mipmaps: boolean = false): void;
   public debug_canvas_item_get_rect(_item: RID): Rect2;
   public canvas_light_create(): RID;
   public canvas_light_attach_to_canvas(_light: RID, _canvas: RID): void;
@@ -485,7 +484,7 @@ export declare class RenderingServer extends GodotObject{
   public get_test_cube(): RID;
   public get_test_texture(): RID;
   public get_white_texture(): RID;
-  public set_boot_image(_image: Image, _color: Color, _scale: boolean, _use_filter: boolean): void;
+  public set_boot_image(_image: Image, _color: Color, _scale: boolean, _use_filter: boolean = true): void;
   public get_default_clear_color(): Color;
   public set_default_clear_color(_color: Color): void;
   public has_os_feature(_feature: GDString | StringName | string): boolean;
@@ -494,7 +493,7 @@ export declare class RenderingServer extends GodotObject{
   public set_render_loop_enabled(_enabled: boolean): void;
   public get_frame_setup_time_cpu(): number;
   public force_sync(): void;
-  public force_draw(_swap_buffers: boolean, _frame_step: number): void;
+  public force_draw(_swap_buffers: boolean = true, _frame_step: number = 0.0): void;
   public get_rendering_device(): RenderingDevice;
   public create_local_rendering_device(): RenderingDevice;
   public is_on_render_thread(): boolean;
@@ -1109,4 +1108,8 @@ export declare class RenderingServer extends GodotObject{
   }
   public get frame_pre_draw(): Signal;
   public get frame_post_draw(): Signal;
+}
+}
+declare global {
+  const RenderingServer: _RenderingServer;
 }

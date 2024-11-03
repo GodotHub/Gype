@@ -1,10 +1,8 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class SceneReplicationConfig extends Resource{
   public get_properties(): GDArray;
-  public add_property(_path: GDString | NodePath | string, _index: number): void;
+  public add_property(_path: GDString | NodePath | string, _index: number = -1): void;
   public has_property(_path: GDString | NodePath | string): boolean;
   public remove_property(_path: GDString | NodePath | string): void;
   public property_get_index(_path: GDString | NodePath | string): number;

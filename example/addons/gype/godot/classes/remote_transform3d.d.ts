@@ -1,7 +1,5 @@
 
 import { Node3D } from "@godot/classes/node3d";
-
-
 export declare class RemoteTransform3D extends Node3D{
   public set_remote_node(_path: GDString | NodePath | string): void;
   public get_remote_node(): NodePath;

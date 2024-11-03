@@ -1,13 +1,11 @@
 
-import { LineEdit } from "@godot/classes/line_edit";
-import { ConfirmationDialog } from "@godot/classes/confirmation_dialog";
 import { VBoxContainer } from "@godot/classes/v_box_container";
+import { ConfirmationDialog } from "@godot/classes/confirmation_dialog";
 import { Control } from "@godot/classes/control";
-
-
+import { LineEdit } from "@godot/classes/line_edit";
 export declare class EditorFileDialog extends ConfirmationDialog{
   public clear_filters(): void;
-  public add_filter(_filter: GDString | StringName | string, _description: GDString | StringName | string): void;
+  public add_filter(_filter: GDString | StringName | string, _description: GDString | StringName | string = ""): void;
   public set_filters(_filters: PackedStringArray): void;
   public get_filters(): PackedStringArray;
   public get_option_name(_option: number): String;
@@ -38,7 +36,7 @@ export declare class EditorFileDialog extends ConfirmationDialog{
   public get_display_mode(): number;
   public set_disable_overwrite_warning(_disable: boolean): void;
   public is_overwrite_warning_disabled(): boolean;
-  public add_side_menu(_menu: Control, _title: GDString | StringName | string): void;
+  public add_side_menu(_menu: Control, _title: GDString | StringName | string = ""): void;
   public popup_file_dialog(): void;
   public invalidate(): void;
   public get access(): number;

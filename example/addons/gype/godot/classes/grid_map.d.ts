@@ -1,10 +1,8 @@
 
+import { Node3D } from "@godot/classes/node3d";
+import { MeshLibrary } from "@godot/classes/mesh_library";
 import { PhysicsMaterial } from "@godot/classes/physics_material";
 import { Resource } from "@godot/classes/resource";
-import { MeshLibrary } from "@godot/classes/mesh_library";
-import { Node3D } from "@godot/classes/node3d";
-
-
 export declare class GridMap extends Node3D{
   public set_collision_layer(_layer: number): void;
   public get_collision_layer(): number;
@@ -30,7 +28,7 @@ export declare class GridMap extends Node3D{
   public get_cell_scale(): number;
   public set_octant_size(_size: number): void;
   public get_octant_size(): number;
-  public set_cell_item(_position: Vector3i, _item: number, _orientation: number): void;
+  public set_cell_item(_position: Vector3i, _item: number, _orientation: number = 0): void;
   public get_cell_item(_position: Vector3i): number;
   public get_cell_item_orientation(_position: Vector3i): number;
   public get_cell_item_basis(_position: Vector3i): Basis;
@@ -52,7 +50,7 @@ export declare class GridMap extends Node3D{
   public get_bake_meshes(): GDArray;
   public get_bake_mesh_instance(_idx: number): RID;
   public clear_baked_meshes(): void;
-  public make_baked_meshes(_gen_lightmap_uv: boolean, _lightmap_uv_texel_size: number): void;
+  public make_baked_meshes(_gen_lightmap_uv: boolean = false, _lightmap_uv_texel_size: number = 0.1): void;
   public get mesh_library(): MeshLibrary;
   public set mesh_library(value): void;
   public get physics_material(): PhysicsMaterial;

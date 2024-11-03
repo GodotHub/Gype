@@ -1,13 +1,12 @@
 
-import { Node } from "@godot/classes/node";
-import { GodotObject } from "@godot/classes/godot_object";
 import { NavigationPathQueryParameters2D } from "@godot/classes/navigation_path_query_parameters2d";
-import { NavigationPolygon } from "@godot/classes/navigation_polygon";
 import { NavigationMeshSourceGeometryData2D } from "@godot/classes/navigation_mesh_source_geometry_data2d";
+import { NavigationPolygon } from "@godot/classes/navigation_polygon";
+import { GodotObject } from "@godot/classes/godot_object";
 import { NavigationPathQueryResult2D } from "@godot/classes/navigation_path_query_result2d";
-
-
-export declare class NavigationServer2D extends GodotObject{
+import { Node } from "@godot/classes/node";
+declare global {
+export declare class _NavigationServer2D extends GodotObject{
   public get_maps(): GDArray;
   public map_create(): RID;
   public map_set_active(_map: RID, _active: boolean): void;
@@ -20,7 +19,7 @@ export declare class NavigationServer2D extends GodotObject{
   public map_get_edge_connection_margin(_map: RID): number;
   public map_set_link_connection_radius(_map: RID, _radius: number): void;
   public map_get_link_connection_radius(_map: RID): number;
-  public map_get_path(_map: RID, _origin: Vector2, _destination: Vector2, _optimize: boolean, _navigation_layers: number): PackedVector2Array;
+  public map_get_path(_map: RID, _origin: Vector2, _destination: Vector2, _optimize: boolean, _navigation_layers: number = 1): PackedVector2Array;
   public map_get_closest_point(_map: RID, _to_point: Vector2): Vector2;
   public map_get_closest_point_owner(_map: RID, _to_point: Vector2): RID;
   public map_get_links(_map: RID): GDArray;
@@ -123,9 +122,9 @@ export declare class NavigationServer2D extends GodotObject{
   public obstacle_get_vertices(_obstacle: RID): PackedVector2Array;
   public obstacle_set_avoidance_layers(_obstacle: RID, _layers: number): void;
   public obstacle_get_avoidance_layers(_obstacle: RID): number;
-  public parse_source_geometry_data(_navigation_polygon: NavigationPolygon, _source_geometry_data: NavigationMeshSourceGeometryData2D, _root_node: Node, _callback: Callable): void;
-  public bake_from_source_geometry_data(_navigation_polygon: NavigationPolygon, _source_geometry_data: NavigationMeshSourceGeometryData2D, _callback: Callable): void;
-  public bake_from_source_geometry_data_async(_navigation_polygon: NavigationPolygon, _source_geometry_data: NavigationMeshSourceGeometryData2D, _callback: Callable): void;
+  public parse_source_geometry_data(_navigation_polygon: NavigationPolygon, _source_geometry_data: NavigationMeshSourceGeometryData2D, _root_node: Node, _callback: Callable = Callable()): void;
+  public bake_from_source_geometry_data(_navigation_polygon: NavigationPolygon, _source_geometry_data: NavigationMeshSourceGeometryData2D, _callback: Callable = Callable()): void;
+  public bake_from_source_geometry_data_async(_navigation_polygon: NavigationPolygon, _source_geometry_data: NavigationMeshSourceGeometryData2D, _callback: Callable = Callable()): void;
   public is_baking_navigation_polygon(_navigation_polygon: NavigationPolygon): boolean;
   public source_geometry_parser_create(): RID;
   public source_geometry_parser_set_callback(_parser: RID, _callback: Callable): void;
@@ -135,4 +134,8 @@ export declare class NavigationServer2D extends GodotObject{
   public get_debug_enabled(): boolean;
   public get map_changed(): Signal;
   public get navigation_debug_changed(): Signal;
+}
+}
+declare global {
+  const NavigationServer2D: _NavigationServer2D;
 }

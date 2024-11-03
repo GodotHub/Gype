@@ -1,7 +1,5 @@
 
 import { Joint2D } from "@godot/classes/joint2d";
-
-
 export declare class PinJoint2D extends Joint2D{
   public set_softness(_softness: number): void;
   public get_softness(): number;

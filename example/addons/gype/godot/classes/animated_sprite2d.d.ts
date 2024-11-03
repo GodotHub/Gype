@@ -1,8 +1,6 @@
 
-import { Node2D } from "@godot/classes/node2d";
 import { SpriteFrames } from "@godot/classes/sprite_frames";
-
-
+import { Node2D } from "@godot/classes/node2d";
 export declare class AnimatedSprite2D extends Node2D{
   public set_sprite_frames(_sprite_frames: SpriteFrames): void;
   public get_sprite_frames(): SpriteFrames;
@@ -11,8 +9,8 @@ export declare class AnimatedSprite2D extends Node2D{
   public set_autoplay(_name: GDString | StringName | string): void;
   public get_autoplay(): String;
   public is_playing(): boolean;
-  public play(_name: GDString | StringName | string, _custom_speed: number, _from_end: boolean): void;
-  public play_backwards(_name: GDString | StringName | string): void;
+  public play(_name: GDString | StringName | string = "", _custom_speed: number = 1.0, _from_end: boolean = false): void;
+  public play_backwards(_name: GDString | StringName | string = ""): void;
   public pause(): void;
   public stop(): void;
   public set_centered(_centered: boolean): void;

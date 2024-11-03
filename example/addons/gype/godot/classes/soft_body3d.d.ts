@@ -1,9 +1,7 @@
 
-import { Node } from "@godot/classes/node";
 import { PhysicsBody3D } from "@godot/classes/physics_body3d";
 import { MeshInstance3D } from "@godot/classes/mesh_instance3d";
-
-
+import { Node } from "@godot/classes/node";
 export declare class SoftBody3D extends MeshInstance3D{
   public get_physics_rid(): RID;
   public set_collision_mask(_collision_mask: number): void;
@@ -34,7 +32,7 @@ export declare class SoftBody3D extends MeshInstance3D{
   public set_drag_coefficient(_drag_coefficient: number): void;
   public get_drag_coefficient(): number;
   public get_point_transform(_point_index: number): Vector3;
-  public set_point_pinned(_point_index: number, _pinned: boolean, _attachment_path: GDString | NodePath | string): void;
+  public set_point_pinned(_point_index: number, _pinned: boolean, _attachment_path: GDString | NodePath | string = NodePath("")): void;
   public is_point_pinned(_point_index: number): boolean;
   public set_ray_pickable(_ray_pickable: boolean): void;
   public is_ray_pickable(): boolean;

@@ -1,7 +1,5 @@
 
 import { Range } from "@godot/classes/range";
-
-
 export declare class Slider extends Range{
   public set_ticks(_count: number): void;
   public get_ticks(): number;

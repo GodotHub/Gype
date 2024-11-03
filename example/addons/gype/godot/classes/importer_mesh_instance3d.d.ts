@@ -1,9 +1,7 @@
 
+import { Skin } from "@godot/classes/skin";
 import { ImporterMesh } from "@godot/classes/importer_mesh";
 import { Node3D } from "@godot/classes/node3d";
-import { Skin } from "@godot/classes/skin";
-
-
 export declare class ImporterMeshInstance3D extends Node3D{
   public set_mesh(_mesh: ImporterMesh): void;
   public get_mesh(): ImporterMesh;

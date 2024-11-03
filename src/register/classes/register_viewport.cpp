@@ -5,17 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/viewport_texture.hpp>
-#include <godot_cpp/classes/world3d.hpp>
 #include <godot_cpp/classes/camera2d.hpp>
-#include <godot_cpp/classes/camera3d.hpp>
-#include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/viewport.hpp>
 #include <godot_cpp/classes/world2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/world3d.hpp>
+#include <godot_cpp/classes/viewport.hpp>
+#include <godot_cpp/classes/viewport_texture.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -1151,13 +1151,14 @@ static int js_viewport_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPropertyFunctionList(ctx, proto, viewport_class_proto_funcs, _countof(viewport_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, viewport_class_constructor, "Viewport", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "Viewport", ctor);
+	constructors[Viewport::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_viewport_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/node';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

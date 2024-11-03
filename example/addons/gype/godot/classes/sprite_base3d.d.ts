@@ -1,8 +1,6 @@
 
 import { TriangleMesh } from "@godot/classes/triangle_mesh";
 import { GeometryInstance3D } from "@godot/classes/geometry_instance3d";
-
-
 export declare class SpriteBase3D extends GeometryInstance3D{
   public set_centered(_centered: boolean): void;
   public is_centered(): boolean;

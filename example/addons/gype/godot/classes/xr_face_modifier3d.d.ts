@@ -1,7 +1,5 @@
 
 import { Node3D } from "@godot/classes/node3d";
-
-
 export declare class XRFaceModifier3D extends Node3D{
   public set_face_tracker(_tracker_name: GDString | StringName | string): void;
   public get_face_tracker(): StringName;

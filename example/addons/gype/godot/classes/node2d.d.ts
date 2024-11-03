@@ -1,8 +1,6 @@
 
-import { Node } from "@godot/classes/node";
 import { CanvasItem } from "@godot/classes/canvas_item";
-
-
+import { Node } from "@godot/classes/node";
 export declare class Node2D extends CanvasItem{
   public set_position(_position: Vector2): void;
   public set_rotation(_radians: number): void;
@@ -15,8 +13,8 @@ export declare class Node2D extends CanvasItem{
   public get_skew(): number;
   public get_scale(): Vector2;
   public rotate(_radians: number): void;
-  public move_local_x(_delta: number, _scaled: boolean): void;
-  public move_local_y(_delta: number, _scaled: boolean): void;
+  public move_local_x(_delta: number, _scaled: boolean = false): void;
+  public move_local_y(_delta: number, _scaled: boolean = false): void;
   public translate(_offset: Vector2): void;
   public global_translate(_offset: Vector2): void;
   public apply_scale(_ratio: Vector2): void;

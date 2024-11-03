@@ -1,8 +1,6 @@
 
-import { Resource } from "@godot/classes/resource";
 import { Texture2D } from "@godot/classes/texture2d";
-
-
+import { Resource } from "@godot/classes/resource";
 export declare class SkeletonProfile extends Resource{
   public set_root_bone(_bone_name: GDString | StringName | string): void;
   public get_root_bone(): StringName;

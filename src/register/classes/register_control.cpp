@@ -6,14 +6,14 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/classes/canvas_item.hpp>
-#include <godot_cpp/classes/theme.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/style_box.hpp>
+#include <godot_cpp/classes/theme.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/canvas_item.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -1269,13 +1269,14 @@ static int js_control_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPropertyFunctionList(ctx, proto, control_class_proto_funcs, _countof(control_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, control_class_constructor, "Control", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "Control", ctor);
+	constructors[Control::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_control_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/canvas_item';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

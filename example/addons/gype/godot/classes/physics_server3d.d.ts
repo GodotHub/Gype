@@ -1,13 +1,12 @@
 
-import { PhysicsTestMotionParameters3D } from "@godot/classes/physics_test_motion_parameters3d";
-import { PhysicsServer3DRenderingServerHandler } from "@godot/classes/physics_server3d_rendering_server_handler";
-import { GodotObject } from "@godot/classes/godot_object";
-import { PhysicsTestMotionResult3D } from "@godot/classes/physics_test_motion_result3d";
 import { PhysicsDirectBodyState3D } from "@godot/classes/physics_direct_body_state3d";
+import { GodotObject } from "@godot/classes/godot_object";
+import { PhysicsServer3DRenderingServerHandler } from "@godot/classes/physics_server3d_rendering_server_handler";
 import { PhysicsDirectSpaceState3D } from "@godot/classes/physics_direct_space_state3d";
-
-
-export declare class PhysicsServer3D extends GodotObject{
+import { PhysicsTestMotionResult3D } from "@godot/classes/physics_test_motion_result3d";
+import { PhysicsTestMotionParameters3D } from "@godot/classes/physics_test_motion_parameters3d";
+declare global {
+export declare class _PhysicsServer3D extends GodotObject{
   public world_boundary_shape_create(): RID;
   public separation_ray_shape_create(): RID;
   public sphere_shape_create(): RID;
@@ -32,7 +31,7 @@ export declare class PhysicsServer3D extends GodotObject{
   public area_create(): RID;
   public area_set_space(_area: RID, _space: RID): void;
   public area_get_space(_area: RID): RID;
-  public area_add_shape(_area: RID, _shape: RID, _transform: Transform3D, _disabled: boolean): void;
+  public area_add_shape(_area: RID, _shape: RID, _transform: Transform3D = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0), _disabled: boolean = false): void;
   public area_set_shape(_area: RID, _shape_idx: number, _shape: RID): void;
   public area_set_shape_transform(_area: RID, _shape_idx: number, _transform: Transform3D): void;
   public area_set_shape_disabled(_area: RID, _shape_idx: number, _disabled: boolean): void;
@@ -66,7 +65,7 @@ export declare class PhysicsServer3D extends GodotObject{
   public body_get_collision_mask(_body: RID): number;
   public body_set_collision_priority(_body: RID, _priority: number): void;
   public body_get_collision_priority(_body: RID): number;
-  public body_add_shape(_body: RID, _shape: RID, _transform: Transform3D, _disabled: boolean): void;
+  public body_add_shape(_body: RID, _shape: RID, _transform: Transform3D = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0), _disabled: boolean = false): void;
   public body_set_shape(_body: RID, _shape_idx: number, _shape: RID): void;
   public body_set_shape_transform(_body: RID, _shape_idx: number, _transform: Transform3D): void;
   public body_set_shape_disabled(_body: RID, _shape_idx: number, _disabled: boolean): void;
@@ -85,13 +84,13 @@ export declare class PhysicsServer3D extends GodotObject{
   public body_set_state(_body: RID, _state: number, _value: any): void;
   public body_get_state(_body: RID, _state: number): any;
   public body_apply_central_impulse(_body: RID, _impulse: Vector3): void;
-  public body_apply_impulse(_body: RID, _impulse: Vector3, _position: Vector3): void;
+  public body_apply_impulse(_body: RID, _impulse: Vector3, _position: Vector3 = Vector3(0, 0, 0)): void;
   public body_apply_torque_impulse(_body: RID, _impulse: Vector3): void;
   public body_apply_central_force(_body: RID, _force: Vector3): void;
-  public body_apply_force(_body: RID, _force: Vector3, _position: Vector3): void;
+  public body_apply_force(_body: RID, _force: Vector3, _position: Vector3 = Vector3(0, 0, 0)): void;
   public body_apply_torque(_body: RID, _torque: Vector3): void;
   public body_add_constant_central_force(_body: RID, _force: Vector3): void;
-  public body_add_constant_force(_body: RID, _force: Vector3, _position: Vector3): void;
+  public body_add_constant_force(_body: RID, _force: Vector3, _position: Vector3 = Vector3(0, 0, 0)): void;
   public body_add_constant_torque(_body: RID, _torque: Vector3): void;
   public body_set_constant_force(_body: RID, _force: Vector3): void;
   public body_get_constant_force(_body: RID): Vector3;
@@ -107,9 +106,9 @@ export declare class PhysicsServer3D extends GodotObject{
   public body_set_omit_force_integration(_body: RID, _enable: boolean): void;
   public body_is_omitting_force_integration(_body: RID): boolean;
   public body_set_state_sync_callback(_body: RID, _callable: Callable): void;
-  public body_set_force_integration_callback(_body: RID, _callable: Callable, _userdata: any): void;
+  public body_set_force_integration_callback(_body: RID, _callable: Callable, _userdata: any = null): void;
   public body_set_ray_pickable(_body: RID, _enable: boolean): void;
-  public body_test_motion(_body: RID, _parameters: PhysicsTestMotionParameters3D, _result: PhysicsTestMotionResult3D): boolean;
+  public body_test_motion(_body: RID, _parameters: PhysicsTestMotionParameters3D, _result: PhysicsTestMotionResult3D = null): boolean;
   public body_get_direct_state(_body: RID): PhysicsDirectBodyState3D;
   public soft_body_create(): RID;
   public soft_body_update_rendering_server(_body: RID, _rendering_server_handler: PhysicsServer3DRenderingServerHandler): void;
@@ -363,4 +362,8 @@ export declare class PhysicsServer3D extends GodotObject{
     BODY_AXIS_ANGULAR_Y = 16,
     BODY_AXIS_ANGULAR_Z = 32,
   }
+}
+}
+declare global {
+  const PhysicsServer3D: _PhysicsServer3D;
 }

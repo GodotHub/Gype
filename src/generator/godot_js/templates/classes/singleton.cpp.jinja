@@ -30,10 +30,6 @@
 
 using namespace godot;
 
-static JSValue {{snake_name}}_instance;
-
-static void js_{{snake_name}}_singleton();
-
 static void {{snake_name}}_class_finalizer(JSRuntime *rt, JSValue val) {
 	{# {{norm_name}} *{{snake_name}} = static_cast<{{norm_name}} *>(JS_GetOpaque(val, {{class_id}}));
 	if ({{snake_name}})
@@ -42,20 +38,19 @@ static void {{snake_name}}_class_finalizer(JSRuntime *rt, JSValue val) {
 }
 
 static JSClassDef {{snake_name}}_class_def = {
-	"{{clazz_name}}",
+	"_{{clazz_name}}",
 	.finalizer = {{snake_name}}_class_finalizer
 };
 
 static JSValue {{snake_name}}_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	{{norm_name}} *{{snake_name}}_class;
 	JSValue obj = JS_NewObjectClass(ctx, {{class_id}});
 	if (JS_IsException(obj))
 		return obj;
 
 	{%- if clazz_name in (singletons | map(attribute='type') | list) %}
-	{{snake_name}}_class = {{norm_name}}::get_singleton();
+	{{norm_name}} *{{snake_name}}_class = {{norm_name}}::get_singleton();
 	{%- else%}
-	{{snake_name}}_class = memnew({{clazz_name}});
+	{{norm_name}} *{{snake_name}}_class = memnew({{clazz_name}});
 	{%- endif %}
 	if (!{{snake_name}}_class) {
 		JS_FreeValue(ctx, obj);
@@ -71,7 +66,6 @@ static JSValue {{snake_name}}_class_constructor(JSContext *ctx, JSValueConst new
 
 {%- for method in instance_methods %}
 static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_{{snake_name}}_singleton();
     {%- if method['return_value'] %}
 	return call_builtin{{get_const(method)}}_method_ret(&{{norm_name}}::{{method['name']}}, ctx, this_val, argc, argv);
     {%- else %}
@@ -82,7 +76,6 @@ static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueCo
 {%- endfor %}
 {%- for method in  static_methods %}
 static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_{{snake_name}}_singleton();
     {%- if method['return_value'] %}
 	return call_builtin_static_method_ret(&{{norm_name}}::{{method['name']}}, ctx, this_val, argc, argv);
     {%- else %}
@@ -93,7 +86,6 @@ static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueCo
 {%- endfor %}
 {%- for method in vararg_methods %}
 static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_{{snake_name}}_singleton();
     {%- if method['return_value'] %}
 	return call_builtin_vararg_method_ret(&{{norm_name}}::js_{{method['name']}}, ctx, this_val, argc, argv);
     {%- else %}
@@ -120,7 +112,6 @@ static const JSCFunctionListEntry {{snake_name}}_class_static_funcs[] = {
 {%- endif %}
 
 static int js_{{snake_name}}_class_init(JSContext *ctx) {
-	JS_NewClassID(&{{class_id}});
 	classes["{{clazz_name}}"] = {{class_id}};
 	JS_NewClass(JS_GetRuntime(ctx), {{class_id}}, &{{snake_name}}_class_def);
 
@@ -138,18 +129,17 @@ static int js_{{snake_name}}_class_init(JSContext *ctx) {
 	{%- if static_methods %}
 	JS_SetPropertyFunctionList(ctx, ctor, {{snake_name}}_class_static_funcs, _countof({{snake_name}}_class_static_funcs));
 	{%- endif %}
+
+	JSValue ctor = JS_NewCFunction2(ctx, {{snake_name}}_class_constructor, "_{{clazz_name}}", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
+
+	JSValue global = JS_GetGlobalObject(ctx);
+	JS_SetPropertyStr(ctx, global, "_{{clazz_name}}", ctor);
+	JS_FreeValue(ctx, global);
 	return 0;
 }
 
-static void js_{{snake_name}}_singleton() {
-	if (JS_IsUninitialized({{snake_name}}_instance)) {
-		JSValue global = JS_GetGlobalObject(ctx);
-		{{snake_name}}_instance = {{snake_name}}_class_constructor(ctx, global, 0, NULL);
-		JS_SetPropertyStr(ctx, global, "{{clazz_name}}", {{snake_name}}_instance);
-	}
-}
-
-
 void register_{{ snake_name }}() {
+	{{norm_name}}::__init_js_class_id();
 	js_{{snake_name}}_class_init(ctx);
 }

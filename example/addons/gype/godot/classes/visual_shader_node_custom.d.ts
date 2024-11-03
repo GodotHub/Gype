@@ -1,7 +1,5 @@
 
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
-
-
 export declare class VisualShaderNodeCustom extends VisualShaderNode{
   public _get_name(): String;
   public _get_description(): String;

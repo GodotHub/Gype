@@ -36,19 +36,28 @@ import { {{den}} } from "@godot/classes/{{camel_to_snake(den)}}";
     {%- endif -%}
   {%- endif -%}
 {%- endmacro %}
-
-
-export declare class {{class_name}} {{extends(class)}}{
+{%- macro is_static(method) %}
+{%- if method['is_static'] %}
+ static
+{%- endif %}
+{%- endmacro -%}
+{%- macro is_singleton() -%}
+{{'_' if class_name in singletons | map(attribute='type') | list else ''}}{{class_name}}
+{%- endmacro %}
+{%- if class_name in singletons | map(attribute='type') | list %}
+declare global {
+{%- endif %}
+export declare class {{is_singleton()}} {{extends(class)}}{
   {%- for method in class['methods'] %}
     {%- if not method['invalid'] %}
       {%- if class_name == 'Node' %}
         {%- if method['name'] == 'get_node' or method['name'] == 'get_parent' %}
-  public {{method['name']}}<T extends Node>({{connect_args(method['arguments']) + process_vararg(method['is_vararg'], method['arguments']|last)}}): T;
+  public{{is_static(method)}} {{method['name']}}<T extends Node>({{connect_args(method['arguments']) + process_vararg(method['is_vararg'], method['arguments']|last)}}): T;
         {%- else %}
-  public {{method['name']}}({{connect_args(method['arguments']) + process_vararg(method['is_vararg'], method['arguments']|last)}}){{set_return(method['return_value']['type'] if method['return_value'] else None)}};
+  public{{is_static(method)}} {{method['name']}}({{connect_args(method['arguments']) + process_vararg(method['is_vararg'], method['arguments']|last)}}){{set_return(method['return_value']['type'] if method['return_value'] else None)}};
         {%- endif %}
       {%- else %}
-  public {{method['name']}}({{connect_args(method['arguments']) + process_vararg(method['is_vararg'], method['arguments']|last)}}){{set_return(method['return_value']['type'] if method['return_value'] else None)}};
+  public{{is_static(method)}} {{method['name']}}({{connect_args(method['arguments']) + process_vararg(method['is_vararg'], method['arguments']|last)}}){{set_return(method['return_value']['type'] if method['return_value'] else None)}};
       {%- endif %}
     {%- endif %}
   {%- endfor %}
@@ -71,3 +80,7 @@ export declare class {{class_name}} {{extends(class)}}{
   public get {{signal['name']}}(): Signal;
   {%- endfor %}
 }
+{%- if class_name in singletons | map(attribute='type') | list %}
+const {{class_name}}: _{{class_name}};
+}
+{%- endif %}

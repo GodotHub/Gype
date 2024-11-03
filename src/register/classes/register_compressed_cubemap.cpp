@@ -63,13 +63,14 @@ static int js_compressed_cubemap_class_init(JSContext *ctx, JSModuleDef *m) {
 	define_compressed_cubemap_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, compressed_cubemap_class_constructor, "CompressedCubemap", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "CompressedCubemap", ctor);
+	constructors[CompressedCubemap::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_compressed_cubemap_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/compressed_texture_layered';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

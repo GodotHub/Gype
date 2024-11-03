@@ -1,12 +1,11 @@
 
 import { GodotObject } from "@godot/classes/godot_object";
+import { PhysicsDirectBodyState2D } from "@godot/classes/physics_direct_body_state2d";
 import { PhysicsDirectSpaceState2D } from "@godot/classes/physics_direct_space_state2d";
 import { PhysicsTestMotionResult2D } from "@godot/classes/physics_test_motion_result2d";
-import { PhysicsDirectBodyState2D } from "@godot/classes/physics_direct_body_state2d";
 import { PhysicsTestMotionParameters2D } from "@godot/classes/physics_test_motion_parameters2d";
-
-
-export declare class PhysicsServer2D extends GodotObject{
+declare global {
+export declare class _PhysicsServer2D extends GodotObject{
   public world_boundary_shape_create(): RID;
   public separation_ray_shape_create(): RID;
   public segment_shape_create(): RID;
@@ -27,7 +26,7 @@ export declare class PhysicsServer2D extends GodotObject{
   public area_create(): RID;
   public area_set_space(_area: RID, _space: RID): void;
   public area_get_space(_area: RID): RID;
-  public area_add_shape(_area: RID, _shape: RID, _transform: Transform2D, _disabled: boolean): void;
+  public area_add_shape(_area: RID, _shape: RID, _transform: Transform2D = Transform2D(1, 0, 0, 1, 0, 0), _disabled: boolean = false): void;
   public area_set_shape(_area: RID, _shape_idx: number, _shape: RID): void;
   public area_set_shape_transform(_area: RID, _shape_idx: number, _transform: Transform2D): void;
   public area_set_shape_disabled(_area: RID, _shape_idx: number, _disabled: boolean): void;
@@ -56,7 +55,7 @@ export declare class PhysicsServer2D extends GodotObject{
   public body_get_space(_body: RID): RID;
   public body_set_mode(_body: RID, _mode: number): void;
   public body_get_mode(_body: RID): number;
-  public body_add_shape(_body: RID, _shape: RID, _transform: Transform2D, _disabled: boolean): void;
+  public body_add_shape(_body: RID, _shape: RID, _transform: Transform2D = Transform2D(1, 0, 0, 1, 0, 0), _disabled: boolean = false): void;
   public body_set_shape(_body: RID, _shape_idx: number, _shape: RID): void;
   public body_set_shape_transform(_body: RID, _shape_idx: number, _transform: Transform2D): void;
   public body_get_shape_count(_body: RID): number;
@@ -85,12 +84,12 @@ export declare class PhysicsServer2D extends GodotObject{
   public body_get_state(_body: RID, _state: number): any;
   public body_apply_central_impulse(_body: RID, _impulse: Vector2): void;
   public body_apply_torque_impulse(_body: RID, _impulse: number): void;
-  public body_apply_impulse(_body: RID, _impulse: Vector2, _position: Vector2): void;
+  public body_apply_impulse(_body: RID, _impulse: Vector2, _position: Vector2 = Vector2(0, 0)): void;
   public body_apply_central_force(_body: RID, _force: Vector2): void;
-  public body_apply_force(_body: RID, _force: Vector2, _position: Vector2): void;
+  public body_apply_force(_body: RID, _force: Vector2, _position: Vector2 = Vector2(0, 0)): void;
   public body_apply_torque(_body: RID, _torque: number): void;
   public body_add_constant_central_force(_body: RID, _force: Vector2): void;
-  public body_add_constant_force(_body: RID, _force: Vector2, _position: Vector2): void;
+  public body_add_constant_force(_body: RID, _force: Vector2, _position: Vector2 = Vector2(0, 0)): void;
   public body_add_constant_torque(_body: RID, _torque: number): void;
   public body_set_constant_force(_body: RID, _force: Vector2): void;
   public body_get_constant_force(_body: RID): Vector2;
@@ -104,8 +103,8 @@ export declare class PhysicsServer2D extends GodotObject{
   public body_set_omit_force_integration(_body: RID, _enable: boolean): void;
   public body_is_omitting_force_integration(_body: RID): boolean;
   public body_set_state_sync_callback(_body: RID, _callable: Callable): void;
-  public body_set_force_integration_callback(_body: RID, _callable: Callable, _userdata: any): void;
-  public body_test_motion(_body: RID, _parameters: PhysicsTestMotionParameters2D, _result: PhysicsTestMotionResult2D): boolean;
+  public body_set_force_integration_callback(_body: RID, _callable: Callable, _userdata: any = null): void;
+  public body_test_motion(_body: RID, _parameters: PhysicsTestMotionParameters2D, _result: PhysicsTestMotionResult2D = null): boolean;
   public body_get_direct_state(_body: RID): PhysicsDirectBodyState2D;
   public joint_create(): RID;
   public joint_clear(_joint: RID): void;
@@ -113,9 +112,9 @@ export declare class PhysicsServer2D extends GodotObject{
   public joint_get_param(_joint: RID, _param: number): number;
   public joint_disable_collisions_between_bodies(_joint: RID, _disable: boolean): void;
   public joint_is_disabled_collisions_between_bodies(_joint: RID): boolean;
-  public joint_make_pin(_joint: RID, _anchor: Vector2, _body_a: RID, _body_b: RID): void;
-  public joint_make_groove(_joint: RID, _groove1_a: Vector2, _groove2_a: Vector2, _anchor_b: Vector2, _body_a: RID, _body_b: RID): void;
-  public joint_make_damped_spring(_joint: RID, _anchor_a: Vector2, _anchor_b: Vector2, _body_a: RID, _body_b: RID): void;
+  public joint_make_pin(_joint: RID, _anchor: Vector2, _body_a: RID, _body_b: RID = RID()): void;
+  public joint_make_groove(_joint: RID, _groove1_a: Vector2, _groove2_a: Vector2, _anchor_b: Vector2, _body_a: RID = RID(), _body_b: RID = RID()): void;
+  public joint_make_damped_spring(_joint: RID, _anchor_a: Vector2, _anchor_b: Vector2, _body_a: RID, _body_b: RID = RID()): void;
   public pin_joint_set_flag(_joint: RID, _flag: number, _enabled: boolean): void;
   public pin_joint_get_flag(_joint: RID, _flag: number): boolean;
   public pin_joint_set_param(_joint: RID, _param: number, _value: number): void;
@@ -237,4 +236,8 @@ export declare class PhysicsServer2D extends GodotObject{
     INFO_COLLISION_PAIRS = 1,
     INFO_ISLAND_COUNT = 2,
   }
+}
+}
+declare global {
+  const PhysicsServer2D: _PhysicsServer2D;
 }

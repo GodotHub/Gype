@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class XRInterface extends RefCounted{
   public get_name(): StringName;
   public get_capabilities(): number;

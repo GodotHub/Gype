@@ -1,7 +1,5 @@
 
 import { GodotObject } from "@godot/classes/godot_object";
-
-
 export declare class ScriptLanguage extends GodotObject{
   static ScriptNameCasing = {
     SCRIPT_NAME_CASING_AUTO = 0,

@@ -1,8 +1,6 @@
 
-import { Curve } from "@godot/classes/curve";
 import { Texture2D } from "@godot/classes/texture2d";
-
-
+import { Curve } from "@godot/classes/curve";
 export declare class CurveTexture extends Texture2D{
   public set_width(_width: number): void;
   public set_curve(_curve: Curve): void;

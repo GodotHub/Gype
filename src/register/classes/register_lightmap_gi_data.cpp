@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/texture_layered.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/lightmap_gi_data.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/texture_layered.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -142,13 +142,14 @@ static int js_lightmap_gi_data_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPropertyFunctionList(ctx, proto, lightmap_gi_data_class_proto_funcs, _countof(lightmap_gi_data_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, lightmap_gi_data_class_constructor, "LightmapGIData", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "LightmapGIData", ctor);
+	constructors[LightmapGIData::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_lightmap_gi_data_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/resource';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

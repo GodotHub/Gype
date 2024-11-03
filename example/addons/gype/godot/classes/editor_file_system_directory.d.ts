@@ -1,7 +1,5 @@
 
 import { GodotObject } from "@godot/classes/godot_object";
-
-
 export declare class EditorFileSystemDirectory extends GodotObject{
   public get_subdir_count(): number;
   public get_subdir(_idx: number): EditorFileSystemDirectory;

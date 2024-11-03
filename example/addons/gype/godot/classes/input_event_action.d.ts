@@ -1,7 +1,5 @@
 
 import { InputEvent } from "@godot/classes/input_event";
-
-
 export declare class InputEventAction extends InputEvent{
   public set_action(_action: GDString | StringName | string): void;
   public get_action(): StringName;

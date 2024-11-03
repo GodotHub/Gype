@@ -1,9 +1,7 @@
 
 import { PacketPeer } from "@godot/classes/packet_peer";
-
-
 export declare class PacketPeerUDP extends PacketPeer{
-  public bind(_port: number, _bind_address: GDString | StringName | string, _recv_buf_size: number): number;
+  public bind(_port: number, _bind_address: GDString | StringName | string = "*", _recv_buf_size: number = 65536): number;
   public close(): void;
   public wait(): number;
   public is_bound(): boolean;

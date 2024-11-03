@@ -11,26 +11,21 @@
 
 using namespace godot;
 
-static JSValue marshalls_instance;
-
-static void js_marshalls_singleton();
-
 static void marshalls_class_finalizer(JSRuntime *rt, JSValue val) {
 	
 	// nothing
 }
 
 static JSClassDef marshalls_class_def = {
-	"Marshalls",
+	"_Marshalls",
 	.finalizer = marshalls_class_finalizer
 };
 
 static JSValue marshalls_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	Marshalls *marshalls_class;
 	JSValue obj = JS_NewObjectClass(ctx, Marshalls::__class_id);
 	if (JS_IsException(obj))
 		return obj;
-	marshalls_class = Marshalls::get_singleton();
+	Marshalls *marshalls_class = Marshalls::get_singleton();
 	if (!marshalls_class) {
 		JS_FreeValue(ctx, obj);
 		return JS_EXCEPTION;
@@ -40,27 +35,21 @@ static JSValue marshalls_class_constructor(JSContext *ctx, JSValueConst new_targ
 	return obj;
 }
 static JSValue marshalls_class_variant_to_base64(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_marshalls_singleton();
 	return call_builtin_method_ret(&Marshalls::variant_to_base64, ctx, this_val, argc, argv);
 };
 static JSValue marshalls_class_base64_to_variant(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_marshalls_singleton();
 	return call_builtin_method_ret(&Marshalls::base64_to_variant, ctx, this_val, argc, argv);
 };
 static JSValue marshalls_class_raw_to_base64(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_marshalls_singleton();
 	return call_builtin_method_ret(&Marshalls::raw_to_base64, ctx, this_val, argc, argv);
 };
 static JSValue marshalls_class_base64_to_raw(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_marshalls_singleton();
 	return call_builtin_method_ret(&Marshalls::base64_to_raw, ctx, this_val, argc, argv);
 };
 static JSValue marshalls_class_utf8_to_base64(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_marshalls_singleton();
 	return call_builtin_method_ret(&Marshalls::utf8_to_base64, ctx, this_val, argc, argv);
 };
 static JSValue marshalls_class_base64_to_utf8(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    js_marshalls_singleton();
 	return call_builtin_method_ret(&Marshalls::base64_to_utf8, ctx, this_val, argc, argv);
 };
 static const JSCFunctionListEntry marshalls_class_proto_funcs[] = {
@@ -73,7 +62,6 @@ static const JSCFunctionListEntry marshalls_class_proto_funcs[] = {
 };
 
 static int js_marshalls_class_init(JSContext *ctx) {
-	JS_NewClassID(&Marshalls::__class_id);
 	classes["Marshalls"] = Marshalls::__class_id;
 	JS_NewClass(JS_GetRuntime(ctx), Marshalls::__class_id, &marshalls_class_def);
 
@@ -82,18 +70,17 @@ static int js_marshalls_class_init(JSContext *ctx) {
 	JS_SetPrototype(ctx, proto, base_class);
 	JS_SetClassProto(ctx, Marshalls::__class_id, proto);
 	JS_SetPropertyFunctionList(ctx, proto, marshalls_class_proto_funcs, _countof(marshalls_class_proto_funcs));
+
+	JSValue ctor = JS_NewCFunction2(ctx, marshalls_class_constructor, "_Marshalls", 0, JS_CFUNC_constructor, 0);
+	JS_SetConstructor(ctx, ctor, proto);
+
+	JSValue global = JS_GetGlobalObject(ctx);
+	JS_SetPropertyStr(ctx, global, "_Marshalls", ctor);
+	JS_FreeValue(ctx, global);
 	return 0;
 }
 
-static void js_marshalls_singleton() {
-	if (JS_IsUninitialized(marshalls_instance)) {
-		JSValue global = JS_GetGlobalObject(ctx);
-		marshalls_instance = marshalls_class_constructor(ctx, global, 0, NULL);
-		JS_SetPropertyStr(ctx, global, "Marshalls", marshalls_instance);
-	}
-}
-
-
 void register_marshalls() {
+	Marshalls::__init_js_class_id();
 	js_marshalls_class_init(ctx);
 }

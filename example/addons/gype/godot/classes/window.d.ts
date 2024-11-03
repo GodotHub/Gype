@@ -1,12 +1,10 @@
 
-import { Font } from "@godot/classes/font";
-import { Node } from "@godot/classes/node";
-import { StyleBox } from "@godot/classes/style_box";
 import { Viewport } from "@godot/classes/viewport";
+import { StyleBox } from "@godot/classes/style_box";
+import { Node } from "@godot/classes/node";
+import { Font } from "@godot/classes/font";
 import { Theme } from "@godot/classes/theme";
 import { Texture2D } from "@godot/classes/texture2d";
-
-
 export declare class Window extends Viewport{
   public _get_contents_minimum_size(): Vector2;
   public set_title(_title: GDString | StringName | string): void;
@@ -92,24 +90,24 @@ export declare class Window extends Viewport{
   public remove_theme_font_size_override(_name: GDString | StringName | string): void;
   public remove_theme_color_override(_name: GDString | StringName | string): void;
   public remove_theme_constant_override(_name: GDString | StringName | string): void;
-  public get_theme_icon(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): Texture2D;
-  public get_theme_stylebox(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): StyleBox;
-  public get_theme_font(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): Font;
-  public get_theme_font_size(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): number;
-  public get_theme_color(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): Color;
-  public get_theme_constant(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): number;
+  public get_theme_icon(_name: GDString | StringName | string, _theme_type: GDString | StringName | string = ""): Texture2D;
+  public get_theme_stylebox(_name: GDString | StringName | string, _theme_type: GDString | StringName | string = ""): StyleBox;
+  public get_theme_font(_name: GDString | StringName | string, _theme_type: GDString | StringName | string = ""): Font;
+  public get_theme_font_size(_name: GDString | StringName | string, _theme_type: GDString | StringName | string = ""): number;
+  public get_theme_color(_name: GDString | StringName | string, _theme_type: GDString | StringName | string = ""): Color;
+  public get_theme_constant(_name: GDString | StringName | string, _theme_type: GDString | StringName | string = ""): number;
   public has_theme_icon_override(_name: GDString | StringName | string): boolean;
   public has_theme_stylebox_override(_name: GDString | StringName | string): boolean;
   public has_theme_font_override(_name: GDString | StringName | string): boolean;
   public has_theme_font_size_override(_name: GDString | StringName | string): boolean;
   public has_theme_color_override(_name: GDString | StringName | string): boolean;
   public has_theme_constant_override(_name: GDString | StringName | string): boolean;
-  public has_theme_icon(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): boolean;
-  public has_theme_stylebox(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): boolean;
-  public has_theme_font(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): boolean;
-  public has_theme_font_size(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): boolean;
-  public has_theme_color(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): boolean;
-  public has_theme_constant(_name: GDString | StringName | string, _theme_type: GDString | StringName | string): boolean;
+  public has_theme_icon(_name: GDString | StringName | string, _theme_type: GDString | StringName | string = ""): boolean;
+  public has_theme_stylebox(_name: GDString | StringName | string, _theme_type: GDString | StringName | string = ""): boolean;
+  public has_theme_font(_name: GDString | StringName | string, _theme_type: GDString | StringName | string = ""): boolean;
+  public has_theme_font_size(_name: GDString | StringName | string, _theme_type: GDString | StringName | string = ""): boolean;
+  public has_theme_color(_name: GDString | StringName | string, _theme_type: GDString | StringName | string = ""): boolean;
+  public has_theme_constant(_name: GDString | StringName | string, _theme_type: GDString | StringName | string = ""): boolean;
   public get_theme_default_base_scale(): number;
   public get_theme_default_font(): Font;
   public get_theme_default_font_size(): number;
@@ -118,16 +116,16 @@ export declare class Window extends Viewport{
   public is_layout_rtl(): boolean;
   public set_auto_translate(_enable: boolean): void;
   public is_auto_translating(): boolean;
-  public popup(_rect: Rect2i): void;
+  public popup(_rect: Rect2i = Rect2i(0, 0, 0, 0)): void;
   public popup_on_parent(_parent_rect: Rect2i): void;
-  public popup_centered(_minsize: Vector2i): void;
-  public popup_centered_ratio(_ratio: number): void;
-  public popup_centered_clamped(_minsize: Vector2i, _fallback_ratio: number): void;
-  public popup_exclusive(_from_node: Node, _rect: Rect2i): void;
+  public popup_centered(_minsize: Vector2i = Vector2i(0, 0)): void;
+  public popup_centered_ratio(_ratio: number = 0.8): void;
+  public popup_centered_clamped(_minsize: Vector2i = Vector2i(0, 0), _fallback_ratio: number = 0.75): void;
+  public popup_exclusive(_from_node: Node, _rect: Rect2i = Rect2i(0, 0, 0, 0)): void;
   public popup_exclusive_on_parent(_from_node: Node, _parent_rect: Rect2i): void;
-  public popup_exclusive_centered(_from_node: Node, _minsize: Vector2i): void;
-  public popup_exclusive_centered_ratio(_from_node: Node, _ratio: number): void;
-  public popup_exclusive_centered_clamped(_from_node: Node, _minsize: Vector2i, _fallback_ratio: number): void;
+  public popup_exclusive_centered(_from_node: Node, _minsize: Vector2i = Vector2i(0, 0)): void;
+  public popup_exclusive_centered_ratio(_from_node: Node, _ratio: number = 0.8): void;
+  public popup_exclusive_centered_clamped(_from_node: Node, _minsize: Vector2i = Vector2i(0, 0), _fallback_ratio: number = 0.75): void;
   public get mode(): number;
   public set mode(value): void;
   public get title(): String;

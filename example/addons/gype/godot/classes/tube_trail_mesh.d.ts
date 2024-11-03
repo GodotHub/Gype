@@ -1,8 +1,6 @@
 
-import { PrimitiveMesh } from "@godot/classes/primitive_mesh";
 import { Curve } from "@godot/classes/curve";
-
-
+import { PrimitiveMesh } from "@godot/classes/primitive_mesh";
 export declare class TubeTrailMesh extends PrimitiveMesh{
   public set_radius(_radius: number): void;
   public get_radius(): number;

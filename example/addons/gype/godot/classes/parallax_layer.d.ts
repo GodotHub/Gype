@@ -1,7 +1,5 @@
 
 import { Node2D } from "@godot/classes/node2d";
-
-
 export declare class ParallaxLayer extends Node2D{
   public set_motion_scale(_scale: Vector2): void;
   public get_motion_scale(): Vector2;

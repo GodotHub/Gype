@@ -1,7 +1,5 @@
 
 import { XRInterface } from "@godot/classes/xr_interface";
-
-
 export declare class MobileVRInterface extends XRInterface{
   public set_eye_height(_eye_height: number): void;
   public get_eye_height(): number;

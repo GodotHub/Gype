@@ -1,9 +1,7 @@
 
+import { Texture2D } from "@godot/classes/texture2d";
 import { BaseButton } from "@godot/classes/base_button";
 import { BitMap } from "@godot/classes/bit_map";
-import { Texture2D } from "@godot/classes/texture2d";
-
-
 export declare class TextureButton extends BaseButton{
   public set_texture_normal(_texture: Texture2D): void;
   public set_texture_pressed(_texture: Texture2D): void;

@@ -1,7 +1,5 @@
 
 import { AudioEffect } from "@godot/classes/audio_effect";
-
-
 export declare class AudioEffectCompressor extends AudioEffect{
   public set_threshold(_threshold: number): void;
   public get_threshold(): number;

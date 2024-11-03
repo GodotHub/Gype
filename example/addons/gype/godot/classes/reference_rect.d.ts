@@ -1,7 +1,5 @@
 
 import { Control } from "@godot/classes/control";
-
-
 export declare class ReferenceRect extends Control{
   public get_border_color(): Color;
   public set_border_color(_color: Color): void;

@@ -1,10 +1,8 @@
 
-import { Node } from "@godot/classes/node";
-import { CameraAttributes } from "@godot/classes/camera_attributes";
-import { VoxelGIData } from "@godot/classes/voxel_gi_data";
 import { VisualInstance3D } from "@godot/classes/visual_instance3d";
-
-
+import { VoxelGIData } from "@godot/classes/voxel_gi_data";
+import { CameraAttributes } from "@godot/classes/camera_attributes";
+import { Node } from "@godot/classes/node";
 export declare class VoxelGI extends VisualInstance3D{
   public set_probe_data(_data: VoxelGIData): void;
   public get_probe_data(): VoxelGIData;
@@ -14,7 +12,7 @@ export declare class VoxelGI extends VisualInstance3D{
   public get_size(): Vector3;
   public set_camera_attributes(_camera_attributes: CameraAttributes): void;
   public get_camera_attributes(): CameraAttributes;
-  public bake(_from_node: Node, _create_visual_debug: boolean): void;
+  public bake(_from_node: Node = null, _create_visual_debug: boolean = false): void;
   public debug_bake(): void;
   public get subdiv(): number;
   public set subdiv(value): void;

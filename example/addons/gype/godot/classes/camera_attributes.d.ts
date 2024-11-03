@@ -1,7 +1,5 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class CameraAttributes extends Resource{
   public set_exposure_multiplier(_multiplier: number): void;
   public get_exposure_multiplier(): number;

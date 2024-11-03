@@ -1,7 +1,5 @@
 
 import { SkeletonModification2D } from "@godot/classes/skeleton_modification2d";
-
-
 export declare class SkeletonModification2DLookAt extends SkeletonModification2D{
   public set_bone2d_node(_bone2d_nodepath: GDString | NodePath | string): void;
   public get_bone2d_node(): NodePath;

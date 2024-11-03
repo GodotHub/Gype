@@ -1,16 +1,15 @@
 
 import { GodotObject } from "@godot/classes/godot_object";
 import { AudioBusLayout } from "@godot/classes/audio_bus_layout";
-import { AudioEffectInstance } from "@godot/classes/audio_effect_instance";
 import { AudioEffect } from "@godot/classes/audio_effect";
+import { AudioEffectInstance } from "@godot/classes/audio_effect_instance";
 import { AudioStream } from "@godot/classes/audio_stream";
-
-
-export declare class AudioServer extends GodotObject{
+declare global {
+export declare class _AudioServer extends GodotObject{
   public set_bus_count(_amount: number): void;
   public get_bus_count(): number;
   public remove_bus(_index: number): void;
-  public add_bus(_at_position: number): void;
+  public add_bus(_at_position: number = -1): void;
   public move_bus(_index: number, _to_index: number): void;
   public set_bus_name(_bus_idx: number, _name: GDString | StringName | string): void;
   public get_bus_name(_bus_idx: number): String;
@@ -26,11 +25,11 @@ export declare class AudioServer extends GodotObject{
   public is_bus_mute(_bus_idx: number): boolean;
   public set_bus_bypass_effects(_bus_idx: number, _enable: boolean): void;
   public is_bus_bypassing_effects(_bus_idx: number): boolean;
-  public add_bus_effect(_bus_idx: number, _effect: AudioEffect, _at_position: number): void;
+  public add_bus_effect(_bus_idx: number, _effect: AudioEffect, _at_position: number = -1): void;
   public remove_bus_effect(_bus_idx: number, _effect_idx: number): void;
   public get_bus_effect_count(_bus_idx: number): number;
   public get_bus_effect(_bus_idx: number, _effect_idx: number): AudioEffect;
-  public get_bus_effect_instance(_bus_idx: number, _effect_idx: number, _channel: number): AudioEffectInstance;
+  public get_bus_effect_instance(_bus_idx: number, _effect_idx: number, _channel: number = 0): AudioEffectInstance;
   public swap_bus_effects(_bus_idx: number, _effect_idx: number, _by_effect_idx: number): void;
   public set_bus_effect_enabled(_bus_idx: number, _effect_idx: number, _enabled: boolean): void;
   public is_bus_effect_enabled(_bus_idx: number, _effect_idx: number): boolean;
@@ -78,4 +77,8 @@ export declare class AudioServer extends GodotObject{
   }
   public get bus_layout_changed(): Signal;
   public get bus_renamed(): Signal;
+}
+}
+declare global {
+  const AudioServer: _AudioServer;
 }

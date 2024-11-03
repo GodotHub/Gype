@@ -1,9 +1,7 @@
 
 import { AnimationRootNode } from "@godot/classes/animation_root_node";
-
-
 export declare class AnimationNodeBlendSpace1D extends AnimationRootNode{
-  public add_blend_point(_node: AnimationRootNode, _pos: number, _at_index: number): void;
+  public add_blend_point(_node: AnimationRootNode, _pos: number, _at_index: number = -1): void;
   public set_blend_point_position(_point: number, _pos: number): void;
   public get_blend_point_position(_point: number): number;
   public set_blend_point_node(_point: number, _node: AnimationRootNode): void;

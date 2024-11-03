@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class RDPipelineColorBlendStateAttachment extends RefCounted{
   public set_as_mix(): void;
   public set_enable_blend(_p_member: boolean): void;

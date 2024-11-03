@@ -1,8 +1,6 @@
 
 import { GodotObject } from "@godot/classes/godot_object";
 import { PhysicsDirectSpaceState3D } from "@godot/classes/physics_direct_space_state3d";
-
-
 export declare class PhysicsDirectBodyState3D extends GodotObject{
   public get_total_gravity(): Vector3;
   public get_total_linear_damp(): number;
@@ -20,14 +18,14 @@ export declare class PhysicsDirectBodyState3D extends GodotObject{
   public set_transform(_transform: Transform3D): void;
   public get_transform(): Transform3D;
   public get_velocity_at_local_position(_local_position: Vector3): Vector3;
-  public apply_central_impulse(_impulse: Vector3): void;
-  public apply_impulse(_impulse: Vector3, _position: Vector3): void;
+  public apply_central_impulse(_impulse: Vector3 = Vector3(0, 0, 0)): void;
+  public apply_impulse(_impulse: Vector3, _position: Vector3 = Vector3(0, 0, 0)): void;
   public apply_torque_impulse(_impulse: Vector3): void;
-  public apply_central_force(_force: Vector3): void;
-  public apply_force(_force: Vector3, _position: Vector3): void;
+  public apply_central_force(_force: Vector3 = Vector3(0, 0, 0)): void;
+  public apply_force(_force: Vector3, _position: Vector3 = Vector3(0, 0, 0)): void;
   public apply_torque(_torque: Vector3): void;
-  public add_constant_central_force(_force: Vector3): void;
-  public add_constant_force(_force: Vector3, _position: Vector3): void;
+  public add_constant_central_force(_force: Vector3 = Vector3(0, 0, 0)): void;
+  public add_constant_force(_force: Vector3, _position: Vector3 = Vector3(0, 0, 0)): void;
   public add_constant_torque(_torque: Vector3): void;
   public set_constant_force(_force: Vector3): void;
   public get_constant_force(): Vector3;

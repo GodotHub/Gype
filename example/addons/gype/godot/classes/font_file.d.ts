@@ -1,8 +1,6 @@
 
-import { Font } from "@godot/classes/font";
 import { Image } from "@godot/classes/image";
-
-
+import { Font } from "@godot/classes/font";
 export declare class FontFile extends Font{
   public load_bitmap_font(_path: GDString | StringName | string): number;
   public load_dynamic_font(_path: GDString | StringName | string): number;

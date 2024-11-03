@@ -1,7 +1,5 @@
 
 import { Node3D } from "@godot/classes/node3d";
-
-
 export declare class VehicleWheel3D extends Node3D{
   public set_radius(_length: number): void;
   public get_radius(): number;

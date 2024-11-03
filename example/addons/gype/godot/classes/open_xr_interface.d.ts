@@ -1,7 +1,5 @@
 
 import { XRInterface } from "@godot/classes/xr_interface";
-
-
 export declare class OpenXRInterface extends XRInterface{
   public get_display_refresh_rate(): number;
   public set_display_refresh_rate(_refresh_rate: number): void;

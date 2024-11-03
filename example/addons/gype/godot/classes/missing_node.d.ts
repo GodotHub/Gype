@@ -1,7 +1,5 @@
 
 import { Node } from "@godot/classes/node";
-
-
 export declare class MissingNode extends Node{
   public set_original_class(_name: GDString | StringName | string): void;
   public get_original_class(): String;

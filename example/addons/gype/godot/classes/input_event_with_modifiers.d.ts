@@ -1,7 +1,5 @@
 
 import { InputEventFromWindow } from "@godot/classes/input_event_from_window";
-
-
 export declare class InputEventWithModifiers extends InputEventFromWindow{
   public set_command_or_control_autoremap(_enable: boolean): void;
   public is_command_or_control_autoremap(): boolean;

@@ -1,7 +1,5 @@
 
 import { BaseButton } from "@godot/classes/base_button";
-
-
 export declare class LinkButton extends BaseButton{
   public set_text(_text: GDString | StringName | string): void;
   public get_text(): String;

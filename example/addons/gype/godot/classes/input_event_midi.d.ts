@@ -1,7 +1,5 @@
 
 import { InputEvent } from "@godot/classes/input_event";
-
-
 export declare class InputEventMIDI extends InputEvent{
   public set_channel(_channel: number): void;
   public get_channel(): number;

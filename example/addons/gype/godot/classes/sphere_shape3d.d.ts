@@ -1,7 +1,5 @@
 
 import { Shape3D } from "@godot/classes/shape3d";
-
-
 export declare class SphereShape3D extends Shape3D{
   public set_radius(_radius: number): void;
   public get_radius(): number;

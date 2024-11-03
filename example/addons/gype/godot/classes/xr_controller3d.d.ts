@@ -1,7 +1,5 @@
 
 import { XRNode3D } from "@godot/classes/xr_node3d";
-
-
 export declare class XRController3D extends XRNode3D{
   public is_button_pressed(_name: GDString | StringName | string): boolean;
   public get_input(_name: GDString | StringName | string): any;

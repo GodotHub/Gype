@@ -1,7 +1,5 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class OggPacketSequence extends Resource{
   public set_packet_data(_packet_data: GDArray): void;
   public get_packet_data(): GDArray;

@@ -1,13 +1,12 @@
 
-import { Node } from "@godot/classes/node";
-import { GodotObject } from "@godot/classes/godot_object";
 import { NavigationMeshSourceGeometryData3D } from "@godot/classes/navigation_mesh_source_geometry_data3d";
-import { NavigationPathQueryResult3D } from "@godot/classes/navigation_path_query_result3d";
 import { NavigationMesh } from "@godot/classes/navigation_mesh";
 import { NavigationPathQueryParameters3D } from "@godot/classes/navigation_path_query_parameters3d";
-
-
-export declare class NavigationServer3D extends GodotObject{
+import { GodotObject } from "@godot/classes/godot_object";
+import { Node } from "@godot/classes/node";
+import { NavigationPathQueryResult3D } from "@godot/classes/navigation_path_query_result3d";
+declare global {
+export declare class _NavigationServer3D extends GodotObject{
   public get_maps(): GDArray;
   public map_create(): RID;
   public map_set_active(_map: RID, _active: boolean): void;
@@ -26,8 +25,8 @@ export declare class NavigationServer3D extends GodotObject{
   public map_get_edge_connection_margin(_map: RID): number;
   public map_set_link_connection_radius(_map: RID, _radius: number): void;
   public map_get_link_connection_radius(_map: RID): number;
-  public map_get_path(_map: RID, _origin: Vector3, _destination: Vector3, _optimize: boolean, _navigation_layers: number): PackedVector3Array;
-  public map_get_closest_point_to_segment(_map: RID, _start: Vector3, _end: Vector3, _use_collision: boolean): Vector3;
+  public map_get_path(_map: RID, _origin: Vector3, _destination: Vector3, _optimize: boolean, _navigation_layers: number = 1): PackedVector3Array;
+  public map_get_closest_point_to_segment(_map: RID, _start: Vector3, _end: Vector3, _use_collision: boolean = false): Vector3;
   public map_get_closest_point(_map: RID, _to_point: Vector3): Vector3;
   public map_get_closest_point_normal(_map: RID, _to_point: Vector3): Vector3;
   public map_get_closest_point_owner(_map: RID, _to_point: Vector3): RID;
@@ -140,9 +139,9 @@ export declare class NavigationServer3D extends GodotObject{
   public obstacle_get_vertices(_obstacle: RID): PackedVector3Array;
   public obstacle_set_avoidance_layers(_obstacle: RID, _layers: number): void;
   public obstacle_get_avoidance_layers(_obstacle: RID): number;
-  public parse_source_geometry_data(_navigation_mesh: NavigationMesh, _source_geometry_data: NavigationMeshSourceGeometryData3D, _root_node: Node, _callback: Callable): void;
-  public bake_from_source_geometry_data(_navigation_mesh: NavigationMesh, _source_geometry_data: NavigationMeshSourceGeometryData3D, _callback: Callable): void;
-  public bake_from_source_geometry_data_async(_navigation_mesh: NavigationMesh, _source_geometry_data: NavigationMeshSourceGeometryData3D, _callback: Callable): void;
+  public parse_source_geometry_data(_navigation_mesh: NavigationMesh, _source_geometry_data: NavigationMeshSourceGeometryData3D, _root_node: Node, _callback: Callable = Callable()): void;
+  public bake_from_source_geometry_data(_navigation_mesh: NavigationMesh, _source_geometry_data: NavigationMeshSourceGeometryData3D, _callback: Callable = Callable()): void;
+  public bake_from_source_geometry_data_async(_navigation_mesh: NavigationMesh, _source_geometry_data: NavigationMeshSourceGeometryData3D, _callback: Callable = Callable()): void;
   public is_baking_navigation_mesh(_navigation_mesh: NavigationMesh): boolean;
   public source_geometry_parser_create(): RID;
   public source_geometry_parser_set_callback(_parser: RID, _callback: Callable): void;
@@ -166,4 +165,8 @@ export declare class NavigationServer3D extends GodotObject{
   public get map_changed(): Signal;
   public get navigation_debug_changed(): Signal;
   public get avoidance_debug_changed(): Signal;
+}
+}
+declare global {
+  const NavigationServer3D: _NavigationServer3D;
 }

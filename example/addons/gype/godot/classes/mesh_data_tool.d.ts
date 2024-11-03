@@ -2,12 +2,10 @@
 import { RefCounted } from "@godot/classes/ref_counted";
 import { ArrayMesh } from "@godot/classes/array_mesh";
 import { Material } from "@godot/classes/material";
-
-
 export declare class MeshDataTool extends RefCounted{
   public clear(): void;
   public create_from_surface(_mesh: ArrayMesh, _surface: number): number;
-  public commit_to_surface(_mesh: ArrayMesh, _compression_flags: number): number;
+  public commit_to_surface(_mesh: ArrayMesh, _compression_flags: number = 0): number;
   public get_format(): number;
   public get_vertex_count(): number;
   public get_edge_count(): number;

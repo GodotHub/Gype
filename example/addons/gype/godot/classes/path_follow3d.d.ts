@@ -1,7 +1,5 @@
 
 import { Node3D } from "@godot/classes/node3d";
-
-
 export declare class PathFollow3D extends Node3D{
   public set_progress(_progress: number): void;
   public get_progress(): number;
@@ -21,7 +19,8 @@ export declare class PathFollow3D extends Node3D{
   public has_loop(): boolean;
   public set_tilt_enabled(_enabled: boolean): void;
   public is_tilt_enabled(): boolean;
-  public correct_posture(_transform: Transform3D, _rotation_mode: number): Transform3D;
+  public
+ static correct_posture(_transform: Transform3D, _rotation_mode: number): Transform3D;
   public get progress(): number;
   public set progress(value): void;
   public get progress_ratio(): number;

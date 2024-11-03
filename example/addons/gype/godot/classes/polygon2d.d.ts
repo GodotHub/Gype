@@ -1,8 +1,6 @@
 
-import { Node2D } from "@godot/classes/node2d";
 import { Texture2D } from "@godot/classes/texture2d";
-
-
+import { Node2D } from "@godot/classes/node2d";
 export declare class Polygon2D extends Node2D{
   public set_polygon(_polygon: PackedVector2Array): void;
   public get_polygon(): PackedVector2Array;

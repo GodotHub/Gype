@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="game"
-run/main_scene="res://node.tscn"
+run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalClasses="*res://addons/gype/godot/core/global_classes.ts"
 
 [editor_plugins]
 

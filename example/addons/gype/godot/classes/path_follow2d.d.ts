@@ -1,7 +1,5 @@
 
 import { Node2D } from "@godot/classes/node2d";
-
-
 export declare class PathFollow2D extends Node2D{
   public set_progress(_progress: number): void;
   public get_progress(): number;

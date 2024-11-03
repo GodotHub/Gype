@@ -1,12 +1,12 @@
 
-import { Resource } from "@godot/classes/resource";
 import { Camera3D } from "@godot/classes/camera3d";
-
-
+import { Resource } from "@godot/classes/resource";
 export declare class GLTFCamera extends Resource{
-  public from_node(_camera_node: Camera3D): GLTFCamera;
+  public
+ static from_node(_camera_node: Camera3D): GLTFCamera;
   public to_node(): Camera3D;
-  public from_dictionary(_dictionary: Dictionary): GLTFCamera;
+  public
+ static from_dictionary(_dictionary: Dictionary): GLTFCamera;
   public to_dictionary(): Dictionary;
   public get_perspective(): boolean;
   public set_perspective(_perspective: boolean): void;

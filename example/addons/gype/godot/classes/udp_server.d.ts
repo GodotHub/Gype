@@ -1,10 +1,8 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
 import { PacketPeerUDP } from "@godot/classes/packet_peer_udp";
-
-
 export declare class UDPServer extends RefCounted{
-  public listen(_port: number, _bind_address: GDString | StringName | string): number;
+  public listen(_port: number, _bind_address: GDString | StringName | string = "*"): number;
   public poll(): number;
   public is_connection_available(): boolean;
   public get_local_port(): number;

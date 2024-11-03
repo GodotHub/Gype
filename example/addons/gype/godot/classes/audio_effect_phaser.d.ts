@@ -1,7 +1,5 @@
 
 import { AudioEffect } from "@godot/classes/audio_effect";
-
-
 export declare class AudioEffectPhaser extends AudioEffect{
   public set_range_min_hz(_hz: number): void;
   public get_range_min_hz(): number;

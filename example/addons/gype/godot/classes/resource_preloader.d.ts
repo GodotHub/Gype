@@ -1,8 +1,6 @@
 
 import { Node } from "@godot/classes/node";
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class ResourcePreloader extends Node{
   public add_resource(_name: GDString | StringName | string, _resource: Resource): void;
   public remove_resource(_name: GDString | StringName | string): void;

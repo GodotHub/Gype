@@ -1,8 +1,6 @@
 
-import { Resource } from "@godot/classes/resource";
 import { Mesh } from "@godot/classes/mesh";
-
-
+import { Resource } from "@godot/classes/resource";
 export declare class NavigationMesh extends Resource{
   public set_sample_partition_type(_sample_partition_type: number): void;
   public get_sample_partition_type(): number;

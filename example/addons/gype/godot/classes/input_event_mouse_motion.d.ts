@@ -1,7 +1,5 @@
 
 import { InputEventMouse } from "@godot/classes/input_event_mouse";
-
-
 export declare class InputEventMouseMotion extends InputEventMouse{
   public set_tilt(_tilt: Vector2): void;
   public get_tilt(): Vector2;

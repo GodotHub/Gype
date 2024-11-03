@@ -1,7 +1,5 @@
 
 import { InputEventWithModifiers } from "@godot/classes/input_event_with_modifiers";
-
-
 export declare class InputEventMouse extends InputEventWithModifiers{
   public set_button_mask(_button_mask: number): void;
   public get_button_mask(): number;

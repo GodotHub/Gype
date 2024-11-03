@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/cubemap_array.hpp>
 #include <godot_cpp/classes/image_texture_layered.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/cubemap_array.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -72,13 +72,14 @@ static int js_cubemap_array_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPropertyFunctionList(ctx, proto, cubemap_array_class_proto_funcs, _countof(cubemap_array_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, cubemap_array_class_constructor, "CubemapArray", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "CubemapArray", ctor);
+	constructors[CubemapArray::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_cubemap_array_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/image_texture_layered';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

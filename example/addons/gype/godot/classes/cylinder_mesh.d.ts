@@ -1,7 +1,5 @@
 
 import { PrimitiveMesh } from "@godot/classes/primitive_mesh";
-
-
 export declare class CylinderMesh extends PrimitiveMesh{
   public set_top_radius(_radius: number): void;
   public get_top_radius(): number;

@@ -1,7 +1,5 @@
 
 import { InputEventFromWindow } from "@godot/classes/input_event_from_window";
-
-
 export declare class InputEventScreenDrag extends InputEventFromWindow{
   public set_index(_index: number): void;
   public get_index(): number;

@@ -1,7 +1,5 @@
 
 import { Node2D } from "@godot/classes/node2d";
-
-
 export declare class RemoteTransform2D extends Node2D{
   public set_remote_node(_path: GDString | NodePath | string): void;
   public get_remote_node(): NodePath;

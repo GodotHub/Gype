@@ -1,12 +1,10 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class UPNPDevice extends RefCounted{
   public is_valid_gateway(): boolean;
   public query_external_address(): String;
-  public add_port_mapping(_port: number, _port_internal: number, _desc: GDString | StringName | string, _proto: GDString | StringName | string, _duration: number): number;
-  public delete_port_mapping(_port: number, _proto: GDString | StringName | string): number;
+  public add_port_mapping(_port: number, _port_internal: number = 0, _desc: GDString | StringName | string = "", _proto: GDString | StringName | string = "UDP", _duration: number = 0): number;
+  public delete_port_mapping(_port: number, _proto: GDString | StringName | string = "UDP"): number;
   public set_description_url(_url: GDString | StringName | string): void;
   public get_description_url(): String;
   public set_service_type(_type: GDString | StringName | string): void;

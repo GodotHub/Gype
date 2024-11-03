@@ -1,7 +1,5 @@
 
 import { SkeletonModifier3D } from "@godot/classes/skeleton_modifier3d";
-
-
 export declare class XRBodyModifier3D extends SkeletonModifier3D{
   public set_body_tracker(_tracker_name: GDString | StringName | string): void;
   public get_body_tracker(): StringName;

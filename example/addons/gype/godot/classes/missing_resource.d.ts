@@ -1,7 +1,5 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class MissingResource extends Resource{
   public set_original_class(_name: GDString | StringName | string): void;
   public get_original_class(): String;

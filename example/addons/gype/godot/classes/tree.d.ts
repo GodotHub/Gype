@@ -1,11 +1,9 @@
 
 import { TreeItem } from "@godot/classes/tree_item";
 import { Control } from "@godot/classes/control";
-
-
 export declare class Tree extends Control{
   public clear(): void;
-  public create_item(_parent: TreeItem, _index: number): TreeItem;
+  public create_item(_parent: TreeItem = null, _index: number = -1): TreeItem;
   public get_root(): TreeItem;
   public set_column_custom_minimum_width(_column: number, _min_width: number): void;
   public set_column_expand(_column: number, _expand: boolean): void;
@@ -29,9 +27,9 @@ export declare class Tree extends Control{
   public get_columns(): number;
   public get_edited(): TreeItem;
   public get_edited_column(): number;
-  public edit_selected(_force_edit: boolean): boolean;
+  public edit_selected(_force_edit: boolean = false): boolean;
   public get_custom_popup_rect(): Rect2;
-  public get_item_area_rect(_item: TreeItem, _column: number, _button_index: number): Rect2;
+  public get_item_area_rect(_item: TreeItem, _column: number = -1, _button_index: number = -1): Rect2;
   public get_item_at_position(_position: Vector2): TreeItem;
   public get_column_at_position(_position: Vector2): number;
   public get_drop_section_at_position(_position: Vector2): number;
@@ -48,7 +46,7 @@ export declare class Tree extends Control{
   public set_column_title_language(_column: number, _language: GDString | StringName | string): void;
   public get_column_title_language(_column: number): String;
   public get_scroll(): Vector2;
-  public scroll_to_item(_item: TreeItem, _center_on_item: boolean): void;
+  public scroll_to_item(_item: TreeItem, _center_on_item: boolean = false): void;
   public set_h_scroll_enabled(_h_scroll: boolean): void;
   public is_h_scroll_enabled(): boolean;
   public set_v_scroll_enabled(_h_scroll: boolean): void;

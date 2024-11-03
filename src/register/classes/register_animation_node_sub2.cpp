@@ -63,13 +63,14 @@ static int js_animation_node_sub2_class_init(JSContext *ctx, JSModuleDef *m) {
 	define_animation_node_sub2_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, animation_node_sub2_class_constructor, "AnimationNodeSub2", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "AnimationNodeSub2", ctor);
+	constructors[AnimationNodeSub2::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_animation_node_sub2_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/animation_node_sync';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

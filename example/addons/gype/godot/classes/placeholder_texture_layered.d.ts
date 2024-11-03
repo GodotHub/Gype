@@ -1,7 +1,5 @@
 
 import { TextureLayered } from "@godot/classes/texture_layered";
-
-
 export declare class PlaceholderTextureLayered extends TextureLayered{
   public set_size(_size: Vector2i): void;
   public get_size(): Vector2i;

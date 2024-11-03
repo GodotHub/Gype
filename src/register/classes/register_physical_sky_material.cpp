@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/physical_sky_material.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -265,13 +265,14 @@ static int js_physical_sky_material_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPropertyFunctionList(ctx, proto, physical_sky_material_class_proto_funcs, _countof(physical_sky_material_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, physical_sky_material_class_constructor, "PhysicalSkyMaterial", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "PhysicalSkyMaterial", ctor);
+	constructors[PhysicalSkyMaterial::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_physical_sky_material_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/material';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

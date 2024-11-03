@@ -1,13 +1,11 @@
 
-import { SceneTree } from "@godot/classes/scene_tree";
-import { Window } from "@godot/classes/window";
 import { GodotObject } from "@godot/classes/godot_object";
-import { Tween } from "@godot/classes/tween";
-import { MultiplayerAPI } from "@godot/classes/multiplayer_api";
-import { InputEvent } from "@godot/classes/input_event";
 import { Viewport } from "@godot/classes/viewport";
-
-
+import { Window } from "@godot/classes/window";
+import { InputEvent } from "@godot/classes/input_event";
+import { MultiplayerAPI } from "@godot/classes/multiplayer_api";
+import { Tween } from "@godot/classes/tween";
+import { SceneTree } from "@godot/classes/scene_tree";
 export declare class Node extends GodotObject{
   public _process(_delta: number): void;
   public _physics_process(_delta: number): void;
@@ -19,22 +17,23 @@ export declare class Node extends GodotObject{
   public _shortcut_input(_event: InputEvent): void;
   public _unhandled_input(_event: InputEvent): void;
   public _unhandled_key_input(_event: InputEvent): void;
-  public print_orphan_nodes(): void;
-  public add_sibling(_sibling: Node, _force_readable_name: boolean): void;
+  public
+ static print_orphan_nodes(): void;
+  public add_sibling(_sibling: Node, _force_readable_name: boolean = false): void;
   public set_name(_name: GDString | StringName | string): void;
   public get_name(): StringName;
-  public add_child(_node: Node, _force_readable_name: boolean, _internal: number): void;
+  public add_child(_node: Node, _force_readable_name: boolean = false, _internal: number = 0): void;
   public remove_child(_node: Node): void;
-  public reparent(_new_parent: Node, _keep_global_transform: boolean): void;
-  public get_child_count(_include_internal: boolean): number;
-  public get_children(_include_internal: boolean): GDArray;
-  public get_child(_idx: number, _include_internal: boolean): Node;
+  public reparent(_new_parent: Node, _keep_global_transform: boolean = true): void;
+  public get_child_count(_include_internal: boolean = false): number;
+  public get_children(_include_internal: boolean = false): GDArray;
+  public get_child(_idx: number, _include_internal: boolean = false): Node;
   public has_node(_path: GDString | NodePath | string): boolean;
   public get_node<T extends Node>(_path: GDString | NodePath | string): T;
   public get_node_or_null(_path: GDString | NodePath | string): Node;
   public get_parent<T extends Node>(): T;
-  public find_child(_pattern: GDString | StringName | string, _recursive: boolean, _owned: boolean): Node;
-  public find_children(_pattern: GDString | StringName | string, _type: GDString | StringName | string, _recursive: boolean, _owned: boolean): GDArray;
+  public find_child(_pattern: GDString | StringName | string, _recursive: boolean = true, _owned: boolean = true): Node;
+  public find_children(_pattern: GDString | StringName | string, _type: GDString | StringName | string = "", _recursive: boolean = true, _owned: boolean = true): GDArray;
   public find_parent(_pattern: GDString | StringName | string): Node;
   public has_node_and_resource(_path: GDString | NodePath | string): boolean;
   public get_node_and_resource(_path: GDString | NodePath | string): GDArray;
@@ -43,15 +42,15 @@ export declare class Node extends GodotObject{
   public is_ancestor_of(_node: Node): boolean;
   public is_greater_than(_node: Node): boolean;
   public get_path(): NodePath;
-  public get_path_to(_node: Node, _use_unique_path: boolean): NodePath;
-  public add_to_group(_group: GDString | StringName | string, _persistent: boolean): void;
+  public get_path_to(_node: Node, _use_unique_path: boolean = false): NodePath;
+  public add_to_group(_group: GDString | StringName | string, _persistent: boolean = false): void;
   public remove_from_group(_group: GDString | StringName | string): void;
   public is_in_group(_group: GDString | StringName | string): boolean;
   public move_child(_child_node: Node, _to_index: number): void;
   public get_groups(): GDArray;
   public set_owner(_owner: Node): void;
   public get_owner(): Node;
-  public get_index(_include_internal: boolean): number;
+  public get_index(_include_internal: boolean = false): number;
   public print_tree(): void;
   public print_tree_pretty(): void;
   public get_tree_string(): String;
@@ -59,7 +58,7 @@ export declare class Node extends GodotObject{
   public set_scene_file_path(_scene_file_path: GDString | StringName | string): void;
   public get_scene_file_path(): String;
   public propagate_notification(_what: number): void;
-  public propagate_call(_method: GDString | StringName | string, _args: GDArray, _parent_first: boolean): void;
+  public propagate_call(_method: GDString | StringName | string, _args: GDArray = [], _parent_first: boolean = false): void;
   public set_physics_process(_enable: boolean): void;
   public get_physics_process_delta_time(): number;
   public is_physics_processing(): boolean;
@@ -104,8 +103,8 @@ export declare class Node extends GodotObject{
   public get_last_exclusive_window(): Window;
   public get_tree(): SceneTree;
   public create_tween(): Tween;
-  public duplicate(_flags: number): Node;
-  public replace_by(_node: Node, _keep_groups: boolean): void;
+  public duplicate(_flags: number = 15): Node;
+  public replace_by(_node: Node, _keep_groups: boolean = false): void;
   public set_scene_instance_load_placeholder(_load_placeholder: boolean): void;
   public get_scene_instance_load_placeholder(): boolean;
   public set_editable_instance(_node: Node, _is_editable: boolean): void;
@@ -114,7 +113,7 @@ export declare class Node extends GodotObject{
   public queue_free(): void;
   public request_ready(): void;
   public is_node_ready(): boolean;
-  public set_multiplayer_authority(_id: number, _recursive: boolean): void;
+  public set_multiplayer_authority(_id: number, _recursive: boolean = true): void;
   public get_multiplayer_authority(): number;
   public is_multiplayer_authority(): boolean;
   public get_multiplayer(): MultiplayerAPI;
@@ -123,8 +122,8 @@ export declare class Node extends GodotObject{
   public get_editor_description(): String;
   public set_unique_name_in_owner(_enable: boolean): void;
   public is_unique_name_in_owner(): boolean;
-  public atr(_message: GDString | StringName | string, _context: GDString | StringName | string): String;
-  public atr_n(_message: GDString | StringName | string, _plural_message: GDString | StringName | string, _n: number, _context: GDString | StringName | string): String;
+  public atr(_message: GDString | StringName | string, _context: GDString | StringName | string = ""): String;
+  public atr_n(_message: GDString | StringName | string, _plural_message: GDString | StringName | string, _n: number, _context: GDString | StringName | string = ""): String;
   public rpc(_method: GDString | StringName | string, ...arg: StringName): number;
   public rpc_id(_peer_id: number, _method: GDString | StringName | string, ...arg: StringName): number;
   public update_configuration_warnings(): void;

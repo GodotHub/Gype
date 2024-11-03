@@ -69,7 +69,7 @@ PackedStringArray TypeScriptLoader::_get_classes_used(const String &p_path) cons
 
 Variant TypeScriptLoader::_load(const String &p_path, const String &p_original_path, bool p_use_sub_threads, int32_t p_cache_mode) const {
 	String source_code = FileAccess::get_file_as_string(p_original_path);
-	Ref<TypeScript> script = memnew(TypeScript(p_path, p_original_path));
+	Ref<TypeScript> script = memnew(TypeScript);
 	script->source_code = source_code;
 	TypeScriptLanguage::get_singleton()->scripts.insert(script);
 	return script;

@@ -1,7 +1,5 @@
 
 import { AudioStream } from "@godot/classes/audio_stream";
-
-
 export declare class AudioStreamSynchronized extends AudioStream{
   public set_stream_count(_stream_count: number): void;
   public get_stream_count(): number;

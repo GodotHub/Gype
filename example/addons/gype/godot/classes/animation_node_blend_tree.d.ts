@@ -1,10 +1,8 @@
 
-import { AnimationRootNode } from "@godot/classes/animation_root_node";
 import { AnimationNode } from "@godot/classes/animation_node";
-
-
+import { AnimationRootNode } from "@godot/classes/animation_root_node";
 export declare class AnimationNodeBlendTree extends AnimationRootNode{
-  public add_node(_name: GDString | StringName | string, _node: AnimationNode, _position: Vector2): void;
+  public add_node(_name: GDString | StringName | string, _node: AnimationNode, _position: Vector2 = Vector2(0, 0)): void;
   public get_node(_name: GDString | StringName | string): AnimationNode;
   public remove_node(_name: GDString | StringName | string): void;
   public rename_node(_name: GDString | StringName | string, _new_name: GDString | StringName | string): void;

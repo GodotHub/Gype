@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class RDTextureView extends RefCounted{
   public set_format_override(_p_member: number): void;
   public get_format_override(): number;

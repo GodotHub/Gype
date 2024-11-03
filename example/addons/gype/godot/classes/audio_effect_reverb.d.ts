@@ -1,7 +1,5 @@
 
 import { AudioEffect } from "@godot/classes/audio_effect";
-
-
 export declare class AudioEffectReverb extends AudioEffect{
   public set_predelay_msec(_msec: number): void;
   public get_predelay_msec(): number;

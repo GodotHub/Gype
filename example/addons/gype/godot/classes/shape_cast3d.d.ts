@@ -1,11 +1,9 @@
 
-import { Resource } from "@godot/classes/resource";
 import { Shape3D } from "@godot/classes/shape3d";
-import { GodotObject } from "@godot/classes/godot_object";
-import { CollisionObject3D } from "@godot/classes/collision_object3d";
 import { Node3D } from "@godot/classes/node3d";
-
-
+import { CollisionObject3D } from "@godot/classes/collision_object3d";
+import { GodotObject } from "@godot/classes/godot_object";
+import { Resource } from "@godot/classes/resource";
 export declare class ShapeCast3D extends Node3D{
   public resource_changed(_resource: Resource): void;
   public set_enabled(_enabled: boolean): void;

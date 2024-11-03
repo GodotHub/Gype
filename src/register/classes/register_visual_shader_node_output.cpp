@@ -63,13 +63,14 @@ static int js_visual_shader_node_output_class_init(JSContext *ctx, JSModuleDef *
 	define_visual_shader_node_output_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_output_class_constructor, "VisualShaderNodeOutput", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "VisualShaderNodeOutput", ctor);
+	constructors[VisualShaderNodeOutput::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_visual_shader_node_output_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/visual_shader_node';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

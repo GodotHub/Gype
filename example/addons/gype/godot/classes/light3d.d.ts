@@ -1,8 +1,6 @@
 
 import { VisualInstance3D } from "@godot/classes/visual_instance3d";
 import { Texture2D } from "@godot/classes/texture2d";
-
-
 export declare class Light3D extends VisualInstance3D{
   public set_editor_only(_editor_only: boolean): void;
   public is_editor_only(): boolean;

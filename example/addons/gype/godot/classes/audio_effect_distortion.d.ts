@@ -1,7 +1,5 @@
 
 import { AudioEffect } from "@godot/classes/audio_effect";
-
-
 export declare class AudioEffectDistortion extends AudioEffect{
   public set_mode(_mode: number): void;
   public get_mode(): number;

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/editor_debugger_session.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/editor_debugger_session.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -179,13 +179,14 @@ static int js_editor_debugger_session_class_init(JSContext *ctx, JSModuleDef *m)
 	JS_SetPropertyFunctionList(ctx, proto, editor_debugger_session_class_proto_funcs, _countof(editor_debugger_session_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, editor_debugger_session_class_constructor, "EditorDebuggerSession", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "EditorDebuggerSession", ctor);
+	constructors[EditorDebuggerSession::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_editor_debugger_session_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/ref_counted';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

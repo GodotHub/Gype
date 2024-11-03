@@ -1,10 +1,8 @@
 
-import { LineEdit } from "@godot/classes/line_edit";
-import { Window } from "@godot/classes/window";
 import { Button } from "@godot/classes/button";
+import { Window } from "@godot/classes/window";
 import { Label } from "@godot/classes/label";
-
-
+import { LineEdit } from "@godot/classes/line_edit";
 export declare class AcceptDialog extends Window{
   public get_ok_button(): Button;
   public get_label(): Label;
@@ -12,7 +10,7 @@ export declare class AcceptDialog extends Window{
   public get_hide_on_ok(): boolean;
   public set_close_on_escape(_enabled: boolean): void;
   public get_close_on_escape(): boolean;
-  public add_button(_text: GDString | StringName | string, _right: boolean, _action: GDString | StringName | string): Button;
+  public add_button(_text: GDString | StringName | string, _right: boolean = false, _action: GDString | StringName | string = ""): Button;
   public add_cancel_button(_name: GDString | StringName | string): Button;
   public remove_button(_button: Button): void;
   public register_text_enter(_line_edit: LineEdit): void;

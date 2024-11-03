@@ -1,12 +1,10 @@
 
 import { PhysicsDirectBodyState3D } from "@godot/classes/physics_direct_body_state3d";
 import { PhysicsBody3D } from "@godot/classes/physics_body3d";
-
-
 export declare class PhysicalBone3D extends PhysicsBody3D{
   public _integrate_forces(_state: PhysicsDirectBodyState3D): void;
   public apply_central_impulse(_impulse: Vector3): void;
-  public apply_impulse(_impulse: Vector3, _position: Vector3): void;
+  public apply_impulse(_impulse: Vector3, _position: Vector3 = Vector3(0, 0, 0)): void;
   public set_joint_type(_joint_type: number): void;
   public get_joint_type(): number;
   public set_joint_offset(_offset: Transform3D): void;

@@ -1,9 +1,7 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class AESContext extends RefCounted{
-  public start(_mode: number, _key: PackedByteArray, _iv: PackedByteArray): number;
+  public start(_mode: number, _key: PackedByteArray, _iv: PackedByteArray = PackedByteArray()): number;
   public update(_src: PackedByteArray): PackedByteArray;
   public get_iv_state(): PackedByteArray;
   public finish(): void;

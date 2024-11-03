@@ -1,13 +1,11 @@
 
 import { Node } from "@godot/classes/node";
-
-
 export declare class MultiplayerSpawner extends Node{
   public add_spawnable_scene(_path: GDString | StringName | string): void;
   public get_spawnable_scene_count(): number;
   public get_spawnable_scene(_index: number): String;
   public clear_spawnable_scenes(): void;
-  public spawn(_data: any): Node;
+  public spawn(_data: any = null): Node;
   public get_spawn_path(): NodePath;
   public set_spawn_path(_path: GDString | NodePath | string): void;
   public get_spawn_limit(): number;

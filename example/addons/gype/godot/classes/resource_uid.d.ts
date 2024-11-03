@@ -1,8 +1,7 @@
 
 import { GodotObject } from "@godot/classes/godot_object";
-
-
-export declare class ResourceUID extends GodotObject{
+declare global {
+export declare class _ResourceUID extends GodotObject{
   public id_to_text(_id: number): String;
   public text_to_id(_text_id: GDString | StringName | string): number;
   public create_id(): number;
@@ -11,4 +10,8 @@ export declare class ResourceUID extends GodotObject{
   public set_id(_id: number, _path: GDString | StringName | string): void;
   public get_id_path(_id: number): String;
   public remove_id(_id: number): void;
+}
+}
+declare global {
+  const ResourceUID: _ResourceUID;
 }

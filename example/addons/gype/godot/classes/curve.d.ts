@@ -1,11 +1,9 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class Curve extends Resource{
   public get_point_count(): number;
   public set_point_count(_count: number): void;
-  public add_point(_position: Vector2, _left_tangent: number, _right_tangent: number, _left_mode: number, _right_mode: number): number;
+  public add_point(_position: Vector2, _left_tangent: number = 0, _right_tangent: number = 0, _left_mode: number = 0, _right_mode: number = 0): number;
   public remove_point(_index: number): void;
   public clear_points(): void;
   public get_point_position(_index: number): Vector2;

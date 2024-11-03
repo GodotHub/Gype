@@ -1,8 +1,6 @@
 
-import { Node2D } from "@godot/classes/node2d";
 import { NavigationPolygon } from "@godot/classes/navigation_polygon";
-
-
+import { Node2D } from "@godot/classes/node2d";
 export declare class NavigationRegion2D extends Node2D{
   public get_rid(): RID;
   public set_navigation_polygon(_navigation_polygon: NavigationPolygon): void;
@@ -22,7 +20,7 @@ export declare class NavigationRegion2D extends Node2D{
   public get_enter_cost(): number;
   public set_travel_cost(_travel_cost: number): void;
   public get_travel_cost(): number;
-  public bake_navigation_polygon(_on_thread: boolean): void;
+  public bake_navigation_polygon(_on_thread: boolean = true): void;
   public is_baking(): boolean;
   public get navigation_polygon(): NavigationPolygon;
   public set navigation_polygon(value): void;

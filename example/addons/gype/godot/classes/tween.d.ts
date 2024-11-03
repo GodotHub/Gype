@@ -1,13 +1,11 @@
 
+import { IntervalTweener } from "@godot/classes/interval_tweener";
 import { CallbackTweener } from "@godot/classes/callback_tweener";
 import { MethodTweener } from "@godot/classes/method_tweener";
-import { Node } from "@godot/classes/node";
-import { GodotObject } from "@godot/classes/godot_object";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { GodotObject } from "@godot/classes/godot_object";
 import { PropertyTweener } from "@godot/classes/property_tweener";
-import { IntervalTweener } from "@godot/classes/interval_tweener";
-
-
+import { Node } from "@godot/classes/node";
 export declare class Tween extends RefCounted{
   public tween_property(_object: GodotObject, _property: GDString | NodePath | string, _final_val: any, _duration: number): PropertyTweener;
   public tween_interval(_time: number): IntervalTweener;
@@ -24,15 +22,16 @@ export declare class Tween extends RefCounted{
   public bind_node(_node: Node): Tween;
   public set_process_mode(_mode: number): Tween;
   public set_pause_mode(_mode: number): Tween;
-  public set_parallel(_parallel: boolean): Tween;
-  public set_loops(_loops: number): Tween;
+  public set_parallel(_parallel: boolean = true): Tween;
+  public set_loops(_loops: number = 0): Tween;
   public get_loops_left(): number;
   public set_speed_scale(_speed: number): Tween;
   public set_trans(_trans: number): Tween;
   public set_ease(_ease: number): Tween;
   public parallel(): Tween;
   public chain(): Tween;
-  public interpolate_value(_initial_value: any, _delta_value: any, _elapsed_time: number, _duration: number, _trans_type: number, _ease_type: number): any;
+  public
+ static interpolate_value(_initial_value: any, _delta_value: any, _elapsed_time: number, _duration: number, _trans_type: number, _ease_type: number): any;
   static TweenProcessMode = {
     TWEEN_PROCESS_PHYSICS = 0,
     TWEEN_PROCESS_IDLE = 1,

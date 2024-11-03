@@ -1,7 +1,5 @@
 
 import { PrimitiveMesh } from "@godot/classes/primitive_mesh";
-
-
 export declare class BoxMesh extends PrimitiveMesh{
   public set_size(_size: Vector3): void;
   public get_size(): Vector3;

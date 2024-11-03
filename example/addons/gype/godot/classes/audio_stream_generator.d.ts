@@ -1,7 +1,5 @@
 
 import { AudioStream } from "@godot/classes/audio_stream";
-
-
 export declare class AudioStreamGenerator extends AudioStream{
   public set_mix_rate(_hz: number): void;
   public get_mix_rate(): number;

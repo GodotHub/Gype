@@ -1,12 +1,10 @@
 
-import { VScrollBar } from "@godot/classes/v_scroll_bar";
 import { Texture2D } from "@godot/classes/texture2d";
 import { Control } from "@godot/classes/control";
-
-
+import { VScrollBar } from "@godot/classes/v_scroll_bar";
 export declare class ItemList extends Control{
-  public add_item(_text: GDString | StringName | string, _icon: Texture2D, _selectable: boolean): number;
-  public add_icon_item(_icon: Texture2D, _selectable: boolean): number;
+  public add_item(_text: GDString | StringName | string, _icon: Texture2D = null, _selectable: boolean = true): number;
+  public add_icon_item(_icon: Texture2D, _selectable: boolean = true): number;
   public set_item_text(_idx: number, _text: GDString | StringName | string): void;
   public get_item_text(_idx: number): String;
   public set_item_icon(_idx: number, _icon: Texture2D): void;
@@ -31,12 +29,12 @@ export declare class ItemList extends Control{
   public get_item_custom_bg_color(_idx: number): Color;
   public set_item_custom_fg_color(_idx: number, _custom_fg_color: Color): void;
   public get_item_custom_fg_color(_idx: number): Color;
-  public get_item_rect(_idx: number, _expand: boolean): Rect2;
+  public get_item_rect(_idx: number, _expand: boolean = true): Rect2;
   public set_item_tooltip_enabled(_idx: number, _enable: boolean): void;
   public is_item_tooltip_enabled(_idx: number): boolean;
   public set_item_tooltip(_idx: number, _tooltip: GDString | StringName | string): void;
   public get_item_tooltip(_idx: number): String;
-  public select(_idx: number, _single: boolean): void;
+  public select(_idx: number, _single: boolean = true): void;
   public deselect(_idx: number): void;
   public deselect_all(): void;
   public is_selected(_idx: number): boolean;
@@ -72,7 +70,7 @@ export declare class ItemList extends Control{
   public set_auto_height(_enable: boolean): void;
   public has_auto_height(): boolean;
   public is_anything_selected(): boolean;
-  public get_item_at_position(_position: Vector2, _exact: boolean): number;
+  public get_item_at_position(_position: Vector2, _exact: boolean = false): number;
   public ensure_current_is_visible(): void;
   public get_v_scroll_bar(): VScrollBar;
   public set_text_overrun_behavior(_overrun_behavior: number): void;

@@ -1,8 +1,6 @@
 
-import { Control } from "@godot/classes/control";
 import { LabelSettings } from "@godot/classes/label_settings";
-
-
+import { Control } from "@godot/classes/control";
 export declare class Label extends Control{
   public set_horizontal_alignment(_alignment: number): void;
   public get_horizontal_alignment(): number;
@@ -30,7 +28,7 @@ export declare class Label extends Control{
   public get_ellipsis_char(): String;
   public set_uppercase(_enable: boolean): void;
   public is_uppercase(): boolean;
-  public get_line_height(_line: number): number;
+  public get_line_height(_line: number = -1): number;
   public get_line_count(): number;
   public get_visible_line_count(): number;
   public get_total_character_count(): number;

@@ -1,7 +1,5 @@
 
 import { Container } from "@godot/classes/container";
-
-
 export declare class AspectRatioContainer extends Container{
   public set_ratio(_ratio: number): void;
   public get_ratio(): number;

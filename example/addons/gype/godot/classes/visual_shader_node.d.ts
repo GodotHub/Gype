@@ -1,12 +1,10 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class VisualShaderNode extends Resource{
   public get_default_input_port(_type: number): number;
   public set_output_port_for_preview(_port: number): void;
   public get_output_port_for_preview(): number;
-  public set_input_port_default_value(_port: number, _value: any, _prev_value: any): void;
+  public set_input_port_default_value(_port: number, _value: any, _prev_value: any = null): void;
   public get_input_port_default_value(_port: number): any;
   public remove_input_port_default_value(_port: number): void;
   public clear_default_input_values(): void;

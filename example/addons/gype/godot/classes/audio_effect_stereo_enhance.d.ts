@@ -1,7 +1,5 @@
 
 import { AudioEffect } from "@godot/classes/audio_effect";
-
-
 export declare class AudioEffectStereoEnhance extends AudioEffect{
   public set_pan_pullout(_amount: number): void;
   public get_pan_pullout(): number;

@@ -1,7 +1,5 @@
 
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
-
-
 export declare class VisualShaderNodeCompare extends VisualShaderNode{
   public set_comparison_type(_type: number): void;
   public get_comparison_type(): number;

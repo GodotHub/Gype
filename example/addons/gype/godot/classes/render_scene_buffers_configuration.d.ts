@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class RenderSceneBuffersConfiguration extends RefCounted{
   public get_render_target(): RID;
   public set_render_target(_render_target: RID): void;

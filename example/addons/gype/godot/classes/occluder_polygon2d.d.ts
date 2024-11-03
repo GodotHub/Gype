@@ -1,7 +1,5 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class OccluderPolygon2D extends Resource{
   public set_closed(_closed: boolean): void;
   public is_closed(): boolean;

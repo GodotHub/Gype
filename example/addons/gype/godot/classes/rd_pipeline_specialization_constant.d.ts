@@ -1,7 +1,5 @@
 
 import { RefCounted } from "@godot/classes/ref_counted";
-
-
 export declare class RDPipelineSpecializationConstant extends RefCounted{
   public set_value(_value: any): void;
   public get_value(): any;

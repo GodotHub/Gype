@@ -1,7 +1,5 @@
 
 import { PrimitiveMesh } from "@godot/classes/primitive_mesh";
-
-
 export declare class TorusMesh extends PrimitiveMesh{
   public set_inner_radius(_radius: number): void;
   public get_inner_radius(): number;

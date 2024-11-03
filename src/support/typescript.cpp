@@ -41,6 +41,8 @@ bool TypeScript::_inherits_script(const Ref<Script> &p_script) const {
 }
 
 StringName TypeScript::_get_instance_base_type() const {
+	complie(false);
+	analyze();
 	return base_class_name;
 }
 
@@ -51,8 +53,7 @@ void *TypeScript::_instance_create(Object *p_for_object) const {
 }
 
 void *TypeScript::_placeholder_instance_create(Object *p_for_object) const {
-	// return internal::gdextension_interface_placeholder_script_instance_create(_get_language(), const_cast<JavaScript *>(this), p_for_object);
-	return nullptr;
+	return NULL;
 }
 
 bool TypeScript::_instance_has(Object *p_object) const {
@@ -71,10 +72,10 @@ String TypeScript::get_dist_source_code() const {
 	return dist_source_code;
 }
 
-void TypeScript::analyze() {
+void TypeScript::analyze() const {
 	is_tool = false;
 	String path = get_path();
-	if (path != "" && !path.begins_with("res://.dist/") && !path.begins_with("res://addons/")) {
+	if (path != "" && !path.begins_with("res://.dist/")) {
 		String code = _get_source_code();
 		std::string origin_string = code.ascii().get_data();
 		const char *c_code = origin_string.c_str();
@@ -117,7 +118,7 @@ void TypeScript::analyze() {
 	}
 }
 
-void TypeScript::complie(bool force = false) {
+void TypeScript::complie(bool force = false) const {
 	int exit_code = 0;
 	if (force)
 		exit_code = OS::get_singleton()->execute("cmd.exe", { "/c", "tsc", "--build", "tsconfig.json", "--force" });

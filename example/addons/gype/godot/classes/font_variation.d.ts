@@ -1,7 +1,5 @@
 
 import { Font } from "@godot/classes/font";
-
-
 export declare class FontVariation extends Font{
   public set_base_font(_font: Font): void;
   public get_base_font(): Font;

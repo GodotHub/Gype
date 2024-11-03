@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/image_texture_layered.hpp>
 #include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/texture_layered.hpp>
-#include <godot_cpp/classes/image_texture_layered.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -78,13 +78,14 @@ static int js_image_texture_layered_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPropertyFunctionList(ctx, proto, image_texture_layered_class_proto_funcs, _countof(image_texture_layered_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, image_texture_layered_class_constructor, "ImageTextureLayered", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "ImageTextureLayered", ctor);
+	constructors[ImageTextureLayered::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_image_texture_layered_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/texture_layered';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

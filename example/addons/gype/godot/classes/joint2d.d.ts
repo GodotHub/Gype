@@ -1,7 +1,5 @@
 
 import { Node2D } from "@godot/classes/node2d";
-
-
 export declare class Joint2D extends Node2D{
   public set_node_a(_node: GDString | NodePath | string): void;
   public get_node_a(): NodePath;

@@ -102,13 +102,14 @@ static int js_visual_shader_node_vec3_parameter_class_init(JSContext *ctx, JSMod
 	JS_SetPropertyFunctionList(ctx, proto, visual_shader_node_vec3_parameter_class_proto_funcs, _countof(visual_shader_node_vec3_parameter_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, visual_shader_node_vec3_parameter_class_constructor, "VisualShaderNodeVec3Parameter", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "VisualShaderNodeVec3Parameter", ctor);
+	constructors[VisualShaderNodeVec3Parameter::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_visual_shader_node_vec3_parameter_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/visual_shader_node_parameter';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

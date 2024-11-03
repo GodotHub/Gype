@@ -1,12 +1,10 @@
 
+import { CollisionObject3D } from "@godot/classes/collision_object3d";
 import { Node } from "@godot/classes/node";
 import { KinematicCollision3D } from "@godot/classes/kinematic_collision3d";
-import { CollisionObject3D } from "@godot/classes/collision_object3d";
-
-
 export declare class PhysicsBody3D extends CollisionObject3D{
-  public move_and_collide(_motion: Vector3, _test_only: boolean, _safe_margin: number, _recovery_as_collision: boolean, _max_collisions: number): KinematicCollision3D;
-  public test_move(_from: Transform3D, _motion: Vector3, _collision: KinematicCollision3D, _safe_margin: number, _recovery_as_collision: boolean, _max_collisions: number): boolean;
+  public move_and_collide(_motion: Vector3, _test_only: boolean = false, _safe_margin: number = 0.001, _recovery_as_collision: boolean = false, _max_collisions: number = 1): KinematicCollision3D;
+  public test_move(_from: Transform3D, _motion: Vector3, _collision: KinematicCollision3D = null, _safe_margin: number = 0.001, _recovery_as_collision: boolean = false, _max_collisions: number = 1): boolean;
   public get_gravity(): Vector3;
   public set_axis_lock(_axis: number, _lock: boolean): void;
   public get_axis_lock(_axis: number): boolean;

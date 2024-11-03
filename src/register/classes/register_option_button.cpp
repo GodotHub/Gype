@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/option_button.hpp>
-#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -306,13 +306,14 @@ static int js_option_button_class_init(JSContext *ctx, JSModuleDef *m) {
 	JS_SetPropertyFunctionList(ctx, proto, option_button_class_proto_funcs, _countof(option_button_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, option_button_class_constructor, "OptionButton", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "OptionButton", ctor);
+	constructors[OptionButton::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_option_button_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/button';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

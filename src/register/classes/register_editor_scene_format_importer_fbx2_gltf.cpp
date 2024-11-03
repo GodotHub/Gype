@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_scene_format_importer.hpp>
 #include <godot_cpp/classes/editor_scene_format_importer_fbx2_gltf.hpp>
+#include <godot_cpp/classes/editor_scene_format_importer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
@@ -63,13 +63,14 @@ static int js_editor_scene_format_importer_fbx2_gltf_class_init(JSContext *ctx, 
 	define_editor_scene_format_importer_fbx2_gltf_enum(ctx, proto);
 	JSValue ctor = JS_NewCFunction2(ctx, editor_scene_format_importer_fbx2_gltf_class_constructor, "EditorSceneFormatImporterFBX2GLTF", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "EditorSceneFormatImporterFBX2GLTF", ctor);
+	constructors[EditorSceneFormatImporterFBX2GLTF::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_editor_scene_format_importer_fbx2_gltf_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/editor_scene_format_importer';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

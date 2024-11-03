@@ -1,7 +1,5 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class PhysicsMaterial extends Resource{
   public set_friction(_friction: number): void;
   public get_friction(): number;

@@ -1,10 +1,8 @@
 
-import { CameraAttributes } from "@godot/classes/camera_attributes";
+import { Node3D } from "@godot/classes/node3d";
 import { Compositor } from "@godot/classes/compositor";
 import { Environment } from "@godot/classes/environment";
-import { Node3D } from "@godot/classes/node3d";
-
-
+import { CameraAttributes } from "@godot/classes/camera_attributes";
 export declare class Camera3D extends Node3D{
   public project_ray_normal(_screen_point: Vector2): Vector3;
   public project_local_ray_normal(_screen_point: Vector2): Vector3;
@@ -16,7 +14,7 @@ export declare class Camera3D extends Node3D{
   public set_orthogonal(_size: number, _z_near: number, _z_far: number): void;
   public set_frustum(_size: number, _offset: Vector2, _z_near: number, _z_far: number): void;
   public make_current(): void;
-  public clear_current(_enable_next: boolean): void;
+  public clear_current(_enable_next: boolean = true): void;
   public set_current(_enabled: boolean): void;
   public is_current(): boolean;
   public get_camera_transform(): Transform3D;

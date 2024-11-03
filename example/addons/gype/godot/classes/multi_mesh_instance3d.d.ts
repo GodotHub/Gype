@@ -1,8 +1,6 @@
 
 import { GeometryInstance3D } from "@godot/classes/geometry_instance3d";
 import { MultiMesh } from "@godot/classes/multi_mesh";
-
-
 export declare class MultiMeshInstance3D extends GeometryInstance3D{
   public set_multimesh(_multimesh: MultiMesh): void;
   public get_multimesh(): MultiMesh;

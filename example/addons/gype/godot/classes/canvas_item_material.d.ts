@@ -1,7 +1,5 @@
 
 import { Material } from "@godot/classes/material";
-
-
 export declare class CanvasItemMaterial extends Material{
   public set_blend_mode(_blend_mode: number): void;
   public get_blend_mode(): number;

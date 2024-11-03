@@ -1,8 +1,6 @@
 
-import { Resource } from "@godot/classes/resource";
 import { OpenXRIPBinding } from "@godot/classes/open_xrip_binding";
-
-
+import { Resource } from "@godot/classes/resource";
 export declare class OpenXRInteractionProfile extends Resource{
   public set_interaction_profile_path(_interaction_profile_path: GDString | StringName | string): void;
   public get_interaction_profile_path(): String;

@@ -2,9 +2,8 @@
 import { XRTracker } from "@godot/classes/xr_tracker";
 import { GodotObject } from "@godot/classes/godot_object";
 import { XRInterface } from "@godot/classes/xr_interface";
-
-
-export declare class XRServer extends GodotObject{
+declare global {
+export declare class _XRServer extends GodotObject{
   public get_world_scale(): number;
   public set_world_scale(_scale: number): void;
   public get_world_origin(): Transform3D;
@@ -54,4 +53,8 @@ export declare class XRServer extends GodotObject{
   public get tracker_added(): Signal;
   public get tracker_updated(): Signal;
   public get tracker_removed(): Signal;
+}
+}
+declare global {
+  const XRServer: _XRServer;
 }

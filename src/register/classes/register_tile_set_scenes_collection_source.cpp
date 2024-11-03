@@ -122,13 +122,14 @@ static int js_tile_set_scenes_collection_source_class_init(JSContext *ctx, JSMod
 	JS_SetPropertyFunctionList(ctx, proto, tile_set_scenes_collection_source_class_proto_funcs, _countof(tile_set_scenes_collection_source_class_proto_funcs));
 	JSValue ctor = JS_NewCFunction2(ctx, tile_set_scenes_collection_source_class_constructor, "TileSetScenesCollectionSource", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-
 	JS_SetModuleExport(ctx, m, "TileSetScenesCollectionSource", ctor);
+	constructors[TileSetScenesCollectionSource::__class_id] = ctor;
 
 	return 0;
 }
 
 JSModuleDef *_js_init_tile_set_scenes_collection_source_module(JSContext *ctx, const char *module_name) {
+	// 需要提前完成import依赖
 	const char *code = "import * as _ from '@godot/classes/tile_set_source';";
 	JSValue module = JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
 	if (JS_IsException(module))

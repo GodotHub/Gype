@@ -1,7 +1,5 @@
 
 import { StreamPeer } from "@godot/classes/stream_peer";
-
-
 export declare class StreamPeerBuffer extends StreamPeer{
   public seek(_position: number): void;
   public get_size(): number;

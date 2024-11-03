@@ -1,7 +1,5 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class Image extends Resource{
   public get_width(): number;
   public get_height(): number;
@@ -13,34 +11,38 @@ export declare class Image extends Resource{
   public convert(_format: number): void;
   public get_mipmap_count(): number;
   public get_mipmap_offset(_mipmap: number): number;
-  public resize_to_po2(_square: boolean, _interpolation: number): void;
-  public resize(_width: number, _height: number, _interpolation: number): void;
+  public resize_to_po2(_square: boolean = false, _interpolation: number = 1): void;
+  public resize(_width: number, _height: number, _interpolation: number = 1): void;
   public shrink_x2(): void;
   public crop(_width: number, _height: number): void;
   public flip_x(): void;
   public flip_y(): void;
-  public generate_mipmaps(_renormalize: boolean): number;
+  public generate_mipmaps(_renormalize: boolean = false): number;
   public clear_mipmaps(): void;
-  public create(_width: number, _height: number, _use_mipmaps: boolean, _format: number): Image;
-  public create_empty(_width: number, _height: number, _use_mipmaps: boolean, _format: number): Image;
-  public create_from_data(_width: number, _height: number, _use_mipmaps: boolean, _format: number, _data: PackedByteArray): Image;
+  public
+ static create(_width: number, _height: number, _use_mipmaps: boolean, _format: number): Image;
+  public
+ static create_empty(_width: number, _height: number, _use_mipmaps: boolean, _format: number): Image;
+  public
+ static create_from_data(_width: number, _height: number, _use_mipmaps: boolean, _format: number, _data: PackedByteArray): Image;
   public set_data(_width: number, _height: number, _use_mipmaps: boolean, _format: number, _data: PackedByteArray): void;
   public is_empty(): boolean;
   public load(_path: GDString | StringName | string): number;
-  public load_from_file(_path: GDString | StringName | string): Image;
+  public
+ static load_from_file(_path: GDString | StringName | string): Image;
   public save_png(_path: GDString | StringName | string): number;
   public save_png_to_buffer(): PackedByteArray;
-  public save_jpg(_path: GDString | StringName | string, _quality: number): number;
-  public save_jpg_to_buffer(_quality: number): PackedByteArray;
-  public save_exr(_path: GDString | StringName | string, _grayscale: boolean): number;
-  public save_exr_to_buffer(_grayscale: boolean): PackedByteArray;
-  public save_webp(_path: GDString | StringName | string, _lossy: boolean, _quality: number): number;
-  public save_webp_to_buffer(_lossy: boolean, _quality: number): PackedByteArray;
+  public save_jpg(_path: GDString | StringName | string, _quality: number = 0.75): number;
+  public save_jpg_to_buffer(_quality: number = 0.75): PackedByteArray;
+  public save_exr(_path: GDString | StringName | string, _grayscale: boolean = false): number;
+  public save_exr_to_buffer(_grayscale: boolean = false): PackedByteArray;
+  public save_webp(_path: GDString | StringName | string, _lossy: boolean = false, _quality: number = 0.75): number;
+  public save_webp_to_buffer(_lossy: boolean = false, _quality: number = 0.75): PackedByteArray;
   public detect_alpha(): number;
   public is_invisible(): boolean;
-  public detect_used_channels(_source: number): number;
-  public compress(_mode: number, _source: number, _astc_format: number): number;
-  public compress_from_channels(_mode: number, _channels: number, _astc_format: number): number;
+  public detect_used_channels(_source: number = 0): number;
+  public compress(_mode: number, _source: number = 0, _astc_format: number = 0): number;
+  public compress_from_channels(_mode: number, _channels: number, _astc_format: number = 0): number;
   public decompress(): number;
   public is_compressed(): boolean;
   public rotate_90(_direction: number): void;
@@ -50,7 +52,7 @@ export declare class Image extends Resource{
   public srgb_to_linear(): void;
   public normal_map_to_xy(): void;
   public rgbe_to_srgb(): Image;
-  public bump_map_to_normal_map(_bump_scale: number): void;
+  public bump_map_to_normal_map(_bump_scale: number = 1.0): void;
   public compute_image_metrics(_compared_image: Image, _use_luma: boolean): Dictionary;
   public blit_rect(_src: Image, _src_rect: Rect2i, _dst: Vector2i): void;
   public blit_rect_mask(_src: Image, _mask: Image, _src_rect: Rect2i, _dst: Vector2i): void;
@@ -72,8 +74,8 @@ export declare class Image extends Resource{
   public load_tga_from_buffer(_buffer: PackedByteArray): number;
   public load_bmp_from_buffer(_buffer: PackedByteArray): number;
   public load_ktx_from_buffer(_buffer: PackedByteArray): number;
-  public load_svg_from_buffer(_buffer: PackedByteArray, _scale: number): number;
-  public load_svg_from_string(_svg_str: GDString | StringName | string, _scale: number): number;
+  public load_svg_from_buffer(_buffer: PackedByteArray, _scale: number = 1.0): number;
+  public load_svg_from_string(_svg_str: GDString | StringName | string, _scale: number = 1.0): number;
   public get data(): Dictionary;
   public set data(value): void;
   static Format = {

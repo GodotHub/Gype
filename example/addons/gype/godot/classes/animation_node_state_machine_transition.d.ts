@@ -1,8 +1,6 @@
 
-import { Resource } from "@godot/classes/resource";
 import { Curve } from "@godot/classes/curve";
-
-
+import { Resource } from "@godot/classes/resource";
 export declare class AnimationNodeStateMachineTransition extends Resource{
   public set_switch_mode(_mode: number): void;
   public get_switch_mode(): number;

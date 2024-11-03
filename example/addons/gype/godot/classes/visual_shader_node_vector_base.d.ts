@@ -1,7 +1,5 @@
 
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
-
-
 export declare class VisualShaderNodeVectorBase extends VisualShaderNode{
   public set_op_type(_type: number): void;
   public get_op_type(): number;

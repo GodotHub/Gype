@@ -1,8 +1,6 @@
 
-import { Resource } from "@godot/classes/resource";
 import { InputEvent } from "@godot/classes/input_event";
-
-
+import { Resource } from "@godot/classes/resource";
 export declare class EditorSettings extends Resource{
   public has_setting(_name: GDString | StringName | string): boolean;
   public set_setting(_name: GDString | StringName | string, _value: any): void;
@@ -11,7 +9,7 @@ export declare class EditorSettings extends Resource{
   public set_initial_value(_name: GDString | StringName | string, _value: any, _update_current: boolean): void;
   public add_property_info(_info: Dictionary): void;
   public set_project_metadata(_section: GDString | StringName | string, _key: GDString | StringName | string, _data: any): void;
-  public get_project_metadata(_section: GDString | StringName | string, _key: GDString | StringName | string, _default: any): any;
+  public get_project_metadata(_section: GDString | StringName | string, _key: GDString | StringName | string, _default: any = null): any;
   public set_favorites(_dirs: PackedStringArray): void;
   public get_favorites(): PackedStringArray;
   public set_recent_dirs(_dirs: PackedStringArray): void;

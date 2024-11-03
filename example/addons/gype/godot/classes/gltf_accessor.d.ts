@@ -1,7 +1,5 @@
 
 import { Resource } from "@godot/classes/resource";
-
-
 export declare class GLTFAccessor extends Resource{
   public get_buffer_view(): number;
   public set_buffer_view(_buffer_view: number): void;
