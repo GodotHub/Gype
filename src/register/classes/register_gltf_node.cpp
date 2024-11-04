@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gltf_node.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/gltf_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gltf_node_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GLTFNode *gltf_node = static_cast<GLTFNode *>(JS_GetOpaque(val, GLTFNode::__class_id));
+	if (gltf_node)
+		memdelete(gltf_node);
 }
 
 static JSClassDef gltf_node_class_def = {

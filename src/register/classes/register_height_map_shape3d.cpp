@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/height_map_shape3d.hpp>
 #include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/height_map_shape3d.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void height_map_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	HeightMapShape3D *height_map_shape3d = static_cast<HeightMapShape3D *>(JS_GetOpaque(val, HeightMapShape3D::__class_id));
+	if (height_map_shape3d)
+		memdelete(height_map_shape3d);
 }
 
 static JSClassDef height_map_shape3d_class_def = {

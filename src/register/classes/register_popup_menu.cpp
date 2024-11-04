@@ -5,19 +5,20 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/popup.hpp>
-#include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/shortcut.hpp>
+#include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/popup.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void popup_menu_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PopupMenu *popup_menu = static_cast<PopupMenu *>(JS_GetOpaque(val, PopupMenu::__class_id));
+	if (popup_menu)
+		memdelete(popup_menu);
 }
 
 static JSClassDef popup_menu_class_def = {

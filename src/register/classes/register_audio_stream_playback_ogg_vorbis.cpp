@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void audio_stream_playback_ogg_vorbis_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioStreamPlaybackOggVorbis *audio_stream_playback_ogg_vorbis = static_cast<AudioStreamPlaybackOggVorbis *>(JS_GetOpaque(val, AudioStreamPlaybackOggVorbis::__class_id));
+	if (audio_stream_playback_ogg_vorbis)
+		memdelete(audio_stream_playback_ogg_vorbis);
 }
 
 static JSClassDef audio_stream_playback_ogg_vorbis_class_def = {

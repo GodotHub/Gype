@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void render_scene_buffers_extension_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RenderSceneBuffersExtension *render_scene_buffers_extension = static_cast<RenderSceneBuffersExtension *>(JS_GetOpaque(val, RenderSceneBuffersExtension::__class_id));
+	if (render_scene_buffers_extension)
+		memdelete(render_scene_buffers_extension);
 }
 
 static JSClassDef render_scene_buffers_extension_class_def = {

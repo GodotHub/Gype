@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void collision_polygon2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CollisionPolygon2D *collision_polygon2d = static_cast<CollisionPolygon2D *>(JS_GetOpaque(val, CollisionPolygon2D::__class_id));
+	if (collision_polygon2d)
+		memdelete(collision_polygon2d);
 }
 
 static JSClassDef collision_polygon2d_class_def = {

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_pipeline_specialization_constant.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/rd_pipeline_specialization_constant.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rd_pipeline_specialization_constant_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RDPipelineSpecializationConstant *rd_pipeline_specialization_constant = static_cast<RDPipelineSpecializationConstant *>(JS_GetOpaque(val, RDPipelineSpecializationConstant::__class_id));
+	if (rd_pipeline_specialization_constant)
+		memdelete(rd_pipeline_specialization_constant);
 }
 
 static JSClassDef rd_pipeline_specialization_constant_class_def = {

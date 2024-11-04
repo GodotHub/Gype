@@ -13,7 +13,7 @@ export declare class NodePath {
   public get_subname(_idx: number): StringName;
   public get_concatenated_names(): StringName;
   public get_concatenated_subnames(): StringName;
-  public slice(_begin: number, _end: number): NodePath;
+  public slice(_begin: number, _end: number = 2147483647): NodePath;
   public get_as_property_path(): NodePath;
   public is_empty(): boolean;
 }

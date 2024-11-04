@@ -5,18 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/editor_scene_post_import_plugin.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/editor_scene_post_import_plugin.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_scene_post_import_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorScenePostImportPlugin *editor_scene_post_import_plugin = static_cast<EditorScenePostImportPlugin *>(JS_GetOpaque(val, EditorScenePostImportPlugin::__class_id));
+	if (editor_scene_post_import_plugin)
+		memdelete(editor_scene_post_import_plugin);
 }
 
 static JSClassDef editor_scene_post_import_plugin_class_def = {

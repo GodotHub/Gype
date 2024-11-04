@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_compressor.hpp>
 #include <godot_cpp/classes/audio_effect.hpp>
+#include <godot_cpp/classes/audio_effect_compressor.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_effect_compressor_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioEffectCompressor *audio_effect_compressor = static_cast<AudioEffectCompressor *>(JS_GetOpaque(val, AudioEffectCompressor::__class_id));
+	if (audio_effect_compressor)
+		memdelete(audio_effect_compressor);
 }
 
 static JSClassDef audio_effect_compressor_class_def = {

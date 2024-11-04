@@ -54,7 +54,5 @@ export declare class _XRServer extends GodotObject{
   public get tracker_updated(): Signal;
   public get tracker_removed(): Signal;
 }
-}
-declare global {
-  const XRServer: _XRServer;
+const XRServer: _XRServer;
 }

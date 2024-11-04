@@ -1,6 +1,6 @@
 
-import { InputEvent } from "@godot/classes/input_event";
 import { Container } from "@godot/classes/container";
+import { InputEvent } from "@godot/classes/input_event";
 export declare class SubViewportContainer extends Container{
   public _propagate_input_event(_event: InputEvent): boolean;
   public set_stretch(_enable: boolean): void;

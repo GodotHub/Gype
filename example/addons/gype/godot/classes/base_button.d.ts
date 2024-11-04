@@ -1,7 +1,7 @@
 
+import { ButtonGroup } from "@godot/classes/button_group";
 import { Shortcut } from "@godot/classes/shortcut";
 import { Control } from "@godot/classes/control";
-import { ButtonGroup } from "@godot/classes/button_group";
 export declare class BaseButton extends Control{
   public _pressed(): void;
   public _toggled(_toggled_on: boolean): void;

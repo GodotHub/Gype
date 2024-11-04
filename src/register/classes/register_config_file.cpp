@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void config_file_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ConfigFile *config_file = static_cast<ConfigFile *>(JS_GetOpaque(val, ConfigFile::__class_id));
+	if (config_file)
+		memdelete(config_file);
 }
 
 static JSClassDef config_file_class_def = {

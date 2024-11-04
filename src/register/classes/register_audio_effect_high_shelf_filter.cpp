@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void audio_effect_high_shelf_filter_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioEffectHighShelfFilter *audio_effect_high_shelf_filter = static_cast<AudioEffectHighShelfFilter *>(JS_GetOpaque(val, AudioEffectHighShelfFilter::__class_id));
+	if (audio_effect_high_shelf_filter)
+		memdelete(audio_effect_high_shelf_filter);
 }
 
 static JSClassDef audio_effect_high_shelf_filter_class_def = {

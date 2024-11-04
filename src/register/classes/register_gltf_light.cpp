@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gltf_light.hpp>
-#include <godot_cpp/classes/light3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/light3d.hpp>
+#include <godot_cpp/classes/gltf_light.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gltf_light_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GLTFLight *gltf_light = static_cast<GLTFLight *>(JS_GetOpaque(val, GLTFLight::__class_id));
+	if (gltf_light)
+		memdelete(gltf_light);
 }
 
 static JSClassDef gltf_light_class_def = {

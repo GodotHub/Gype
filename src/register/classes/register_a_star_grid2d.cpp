@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/a_star_grid2d.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/a_star_grid2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void a_star_grid2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AStarGrid2D *a_star_grid2d = static_cast<AStarGrid2D *>(JS_GetOpaque(val, AStarGrid2D::__class_id));
+	if (a_star_grid2d)
+		memdelete(a_star_grid2d);
 }
 
 static JSClassDef a_star_grid2d_class_def = {

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/translation.hpp>
 #include <godot_cpp/classes/translation_server.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/translation.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
 
 static void translation_server_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	TranslationServer *translation_server = static_cast<TranslationServer *>(JS_GetOpaque(val, TranslationServer::__class_id));
+	if (translation_server)
+		memdelete(translation_server);
 }
 
 static JSClassDef translation_server_class_def = {

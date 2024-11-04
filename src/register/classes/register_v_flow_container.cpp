@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void v_flow_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VFlowContainer *v_flow_container = static_cast<VFlowContainer *>(JS_GetOpaque(val, VFlowContainer::__class_id));
+	if (v_flow_container)
+		memdelete(v_flow_container);
 }
 
 static JSClassDef v_flow_container_class_def = {

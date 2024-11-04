@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_inspector.hpp>
-#include <godot_cpp/classes/scroll_container.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/scroll_container.hpp>
+#include <godot_cpp/classes/editor_inspector.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_inspector_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorInspector *editor_inspector = static_cast<EditorInspector *>(JS_GetOpaque(val, EditorInspector::__class_id));
+	if (editor_inspector)
+		memdelete(editor_inspector);
 }
 
 static JSClassDef editor_inspector_class_def = {

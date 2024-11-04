@@ -1109,7 +1109,5 @@ export declare class _RenderingServer extends GodotObject{
   public get frame_pre_draw(): Signal;
   public get frame_post_draw(): Signal;
 }
-}
-declare global {
-  const RenderingServer: _RenderingServer;
+const RenderingServer: _RenderingServer;
 }

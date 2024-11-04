@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void visual_shader_node_reroute_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeReroute *visual_shader_node_reroute = static_cast<VisualShaderNodeReroute *>(JS_GetOpaque(val, VisualShaderNodeReroute::__class_id));
+	if (visual_shader_node_reroute)
+		memdelete(visual_shader_node_reroute);
 }
 
 static JSClassDef visual_shader_node_reroute_class_def = {

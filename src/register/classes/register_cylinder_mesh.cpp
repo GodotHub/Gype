@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/cylinder_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/cylinder_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void cylinder_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CylinderMesh *cylinder_mesh = static_cast<CylinderMesh *>(JS_GetOpaque(val, CylinderMesh::__class_id));
+	if (cylinder_mesh)
+		memdelete(cylinder_mesh);
 }
 
 static JSClassDef cylinder_mesh_class_def = {

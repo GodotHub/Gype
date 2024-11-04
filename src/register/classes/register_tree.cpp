@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void tree_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Tree *tree = static_cast<Tree *>(JS_GetOpaque(val, Tree::__class_id));
+	if (tree)
+		memdelete(tree);
 }
 
 static JSClassDef tree_class_def = {

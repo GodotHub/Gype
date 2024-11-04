@@ -5,19 +5,20 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_direct_space_state3d.hpp>
+#include <godot_cpp/classes/world3d.hpp>
+#include <godot_cpp/classes/environment.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/camera_attributes.hpp>
-#include <godot_cpp/classes/environment.hpp>
-#include <godot_cpp/classes/world3d.hpp>
+#include <godot_cpp/classes/physics_direct_space_state3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void world3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	World3D *world3d = static_cast<World3D *>(JS_GetOpaque(val, World3D::__class_id));
+	if (world3d)
+		memdelete(world3d);
 }
 
 static JSClassDef world3d_class_def = {

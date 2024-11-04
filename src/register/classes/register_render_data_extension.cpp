@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/render_scene_data.hpp>
 #include <godot_cpp/classes/render_data.hpp>
 #include <godot_cpp/classes/render_data_extension.hpp>
+#include <godot_cpp/classes/render_scene_data.hpp>
 #include <godot_cpp/classes/render_scene_buffers.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -15,8 +15,9 @@
 using namespace godot;
 
 static void render_data_extension_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RenderDataExtension *render_data_extension = static_cast<RenderDataExtension *>(JS_GetOpaque(val, RenderDataExtension::__class_id));
+	if (render_data_extension)
+		memdelete(render_data_extension);
 }
 
 static JSClassDef render_data_extension_class_def = {

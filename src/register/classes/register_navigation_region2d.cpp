@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/navigation_region2d.hpp>
 #include <godot_cpp/classes/navigation_polygon.hpp>
+#include <godot_cpp/classes/navigation_region2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void navigation_region2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	NavigationRegion2D *navigation_region2d = static_cast<NavigationRegion2D *>(JS_GetOpaque(val, NavigationRegion2D::__class_id));
+	if (navigation_region2d)
+		memdelete(navigation_region2d);
 }
 
 static JSClassDef navigation_region2d_class_def = {

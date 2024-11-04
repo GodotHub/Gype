@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/capsule_shape2d.hpp>
 #include <godot_cpp/classes/shape2d.hpp>
+#include <godot_cpp/classes/capsule_shape2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void capsule_shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CapsuleShape2D *capsule_shape2d = static_cast<CapsuleShape2D *>(JS_GetOpaque(val, CapsuleShape2D::__class_id));
+	if (capsule_shape2d)
+		memdelete(capsule_shape2d);
 }
 
 static JSClassDef capsule_shape2d_class_def = {

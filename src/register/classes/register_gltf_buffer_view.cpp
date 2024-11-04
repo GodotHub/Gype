@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/gltf_state.hpp>
 #include <godot_cpp/classes/gltf_buffer_view.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/gltf_state.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gltf_buffer_view_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GLTFBufferView *gltf_buffer_view = static_cast<GLTFBufferView *>(JS_GetOpaque(val, GLTFBufferView::__class_id));
+	if (gltf_buffer_view)
+		memdelete(gltf_buffer_view);
 }
 
 static JSClassDef gltf_buffer_view_class_def = {

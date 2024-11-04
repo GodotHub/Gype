@@ -5,34 +5,35 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/classes/file_system_dock.hpp>
 #include <godot_cpp/classes/editor_selection.hpp>
-#include <godot_cpp/classes/script.hpp>
+#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/theme.hpp>
-#include <godot_cpp/classes/editor_file_system.hpp>
-#include <godot_cpp/classes/sub_viewport.hpp>
-#include <godot_cpp/classes/editor_command_palette.hpp>
 #include <godot_cpp/classes/v_box_container.hpp>
 #include <godot_cpp/classes/editor_inspector.hpp>
-#include <godot_cpp/classes/editor_resource_preview.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/script_editor.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/editor_settings.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/editor_interface.hpp>
-#include <godot_cpp/classes/editor_paths.hpp>
+#include <godot_cpp/classes/editor_command_palette.hpp>
+#include <godot_cpp/classes/theme.hpp>
+#include <godot_cpp/classes/editor_resource_preview.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/file_system_dock.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/sub_viewport.hpp>
+#include <godot_cpp/classes/editor_file_system.hpp>
+#include <godot_cpp/classes/editor_paths.hpp>
+#include <godot_cpp/classes/script.hpp>
+#include <godot_cpp/classes/script_editor.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
 
 static void editor_interface_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorInterface *editor_interface = static_cast<EditorInterface *>(JS_GetOpaque(val, EditorInterface::__class_id));
+	if (editor_interface)
+		memdelete(editor_interface);
 }
 
 static JSClassDef editor_interface_class_def = {

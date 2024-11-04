@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/packet_peer.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void packet_peer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PacketPeer *packet_peer = static_cast<PacketPeer *>(JS_GetOpaque(val, PacketPeer::__class_id));
+	if (packet_peer)
+		memdelete(packet_peer);
 }
 
 static JSClassDef packet_peer_class_def = {

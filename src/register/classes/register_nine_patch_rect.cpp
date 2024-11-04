@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/nine_patch_rect.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void nine_patch_rect_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	NinePatchRect *nine_patch_rect = static_cast<NinePatchRect *>(JS_GetOpaque(val, NinePatchRect::__class_id));
+	if (nine_patch_rect)
+		memdelete(nine_patch_rect);
 }
 
 static JSClassDef nine_patch_rect_class_def = {

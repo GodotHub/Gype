@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void visual_shader_node_texture_parameter_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeTextureParameter *visual_shader_node_texture_parameter = static_cast<VisualShaderNodeTextureParameter *>(JS_GetOpaque(val, VisualShaderNodeTextureParameter::__class_id));
+	if (visual_shader_node_texture_parameter)
+		memdelete(visual_shader_node_texture_parameter);
 }
 
 static JSClassDef visual_shader_node_texture_parameter_class_def = {

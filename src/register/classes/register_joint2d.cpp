@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void joint2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Joint2D *joint2d = static_cast<Joint2D *>(JS_GetOpaque(val, Joint2D::__class_id));
+	if (joint2d)
+		memdelete(joint2d);
 }
 
 static JSClassDef joint2d_class_def = {

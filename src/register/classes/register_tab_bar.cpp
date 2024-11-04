@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/tab_bar.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void tab_bar_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	TabBar *tab_bar = static_cast<TabBar *>(JS_GetOpaque(val, TabBar::__class_id));
+	if (tab_bar)
+		memdelete(tab_bar);
 }
 
 static JSClassDef tab_bar_class_def = {

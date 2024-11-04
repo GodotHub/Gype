@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void font_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Font *font = static_cast<Font *>(JS_GetOpaque(val, Font::__class_id));
+	if (font)
+		memdelete(font);
 }
 
 static JSClassDef font_class_def = {

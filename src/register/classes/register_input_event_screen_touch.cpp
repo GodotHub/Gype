@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_screen_touch.hpp>
 #include <godot_cpp/classes/input_event_from_window.hpp>
+#include <godot_cpp/classes/input_event_screen_touch.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void input_event_screen_touch_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	InputEventScreenTouch *input_event_screen_touch = static_cast<InputEventScreenTouch *>(JS_GetOpaque(val, InputEventScreenTouch::__class_id));
+	if (input_event_screen_touch)
+		memdelete(input_event_screen_touch);
 }
 
 static JSClassDef input_event_screen_touch_class_def = {

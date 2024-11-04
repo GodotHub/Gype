@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/shader_material.hpp>
-#include <godot_cpp/classes/shader.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/shader.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void shader_material_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ShaderMaterial *shader_material = static_cast<ShaderMaterial *>(JS_GetOpaque(val, ShaderMaterial::__class_id));
+	if (shader_material)
+		memdelete(shader_material);
 }
 
 static JSClassDef shader_material_class_def = {

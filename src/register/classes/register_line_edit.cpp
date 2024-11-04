@@ -5,18 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/line_edit.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void line_edit_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	LineEdit *line_edit = static_cast<LineEdit *>(JS_GetOpaque(val, LineEdit::__class_id));
+	if (line_edit)
+		memdelete(line_edit);
 }
 
 static JSClassDef line_edit_class_def = {

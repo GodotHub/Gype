@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/classes/gpu_particles_collision_sdf3d.hpp>
 #include <godot_cpp/classes/gpu_particles_collision3d.hpp>
-#include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gpu_particles_collision_sdf3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GPUParticlesCollisionSDF3D *gpu_particles_collision_sdf3d = static_cast<GPUParticlesCollisionSDF3D *>(JS_GetOpaque(val, GPUParticlesCollisionSDF3D::__class_id));
+	if (gpu_particles_collision_sdf3d)
+		memdelete(gpu_particles_collision_sdf3d);
 }
 
 static JSClassDef gpu_particles_collision_sdf3d_class_def = {

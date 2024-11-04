@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void syntax_highlighter_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SyntaxHighlighter *syntax_highlighter = static_cast<SyntaxHighlighter *>(JS_GetOpaque(val, SyntaxHighlighter::__class_id));
+	if (syntax_highlighter)
+		memdelete(syntax_highlighter);
 }
 
 static JSClassDef syntax_highlighter_class_def = {

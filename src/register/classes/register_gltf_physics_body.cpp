@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/gltf_physics_body.hpp>
 #include <godot_cpp/classes/collision_object3d.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gltf_physics_body_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GLTFPhysicsBody *gltf_physics_body = static_cast<GLTFPhysicsBody *>(JS_GetOpaque(val, GLTFPhysicsBody::__class_id));
+	if (gltf_physics_body)
+		memdelete(gltf_physics_body);
 }
 
 static JSClassDef gltf_physics_body_class_def = {

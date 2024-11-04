@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void sub_viewport_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SubViewportContainer *sub_viewport_container = static_cast<SubViewportContainer *>(JS_GetOpaque(val, SubViewportContainer::__class_id));
+	if (sub_viewport_container)
+		memdelete(sub_viewport_container);
 }
 
 static JSClassDef sub_viewport_container_class_def = {

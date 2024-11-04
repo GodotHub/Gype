@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/texture3d.hpp>
-#include <godot_cpp/classes/fog_material.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/fog_material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void fog_material_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	FogMaterial *fog_material = static_cast<FogMaterial *>(JS_GetOpaque(val, FogMaterial::__class_id));
+	if (fog_material)
+		memdelete(fog_material);
 }
 
 static JSClassDef fog_material_class_def = {

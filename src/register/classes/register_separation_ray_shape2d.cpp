@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/separation_ray_shape2d.hpp>
 #include <godot_cpp/classes/shape2d.hpp>
+#include <godot_cpp/classes/separation_ray_shape2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void separation_ray_shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SeparationRayShape2D *separation_ray_shape2d = static_cast<SeparationRayShape2D *>(JS_GetOpaque(val, SeparationRayShape2D::__class_id));
+	if (separation_ray_shape2d)
+		memdelete(separation_ray_shape2d);
 }
 
 static JSClassDef separation_ray_shape2d_class_def = {

@@ -5,19 +5,20 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/editor_file_dialog.hpp>
+#include <godot_cpp/classes/line_edit.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/confirmation_dialog.hpp>
 #include <godot_cpp/classes/v_box_container.hpp>
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/line_edit.hpp>
-#include <godot_cpp/classes/editor_file_dialog.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_file_dialog_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorFileDialog *editor_file_dialog = static_cast<EditorFileDialog *>(JS_GetOpaque(val, EditorFileDialog::__class_id));
+	if (editor_file_dialog)
+		memdelete(editor_file_dialog);
 }
 
 static JSClassDef editor_file_dialog_class_def = {

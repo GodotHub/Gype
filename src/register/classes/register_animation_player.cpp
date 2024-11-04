@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_mixer.hpp>
 #include <godot_cpp/classes/animation_player.hpp>
+#include <godot_cpp/classes/animation_mixer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_player_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AnimationPlayer *animation_player = static_cast<AnimationPlayer *>(JS_GetOpaque(val, AnimationPlayer::__class_id));
+	if (animation_player)
+		memdelete(animation_player);
 }
 
 static JSClassDef animation_player_class_def = {

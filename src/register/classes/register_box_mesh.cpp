@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/box_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/box_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void box_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	BoxMesh *box_mesh = static_cast<BoxMesh *>(JS_GetOpaque(val, BoxMesh::__class_id));
+	if (box_mesh)
+		memdelete(box_mesh);
 }
 
 static JSClassDef box_mesh_class_def = {

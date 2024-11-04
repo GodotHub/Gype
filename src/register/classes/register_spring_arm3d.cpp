@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/spring_arm3d.hpp>
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void spring_arm3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SpringArm3D *spring_arm3d = static_cast<SpringArm3D *>(JS_GetOpaque(val, SpringArm3D::__class_id));
+	if (spring_arm3d)
+		memdelete(spring_arm3d);
 }
 
 static JSClassDef spring_arm3d_class_def = {

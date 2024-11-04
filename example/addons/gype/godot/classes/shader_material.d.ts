@@ -1,6 +1,6 @@
 
-import { Shader } from "@godot/classes/shader";
 import { Material } from "@godot/classes/material";
+import { Shader } from "@godot/classes/shader";
 export declare class ShaderMaterial extends Material{
   public set_shader(_shader: Shader): void;
   public get_shader(): Shader;

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/placeholder_texture_layered.hpp>
 #include <godot_cpp/classes/placeholder_cubemap.hpp>
+#include <godot_cpp/classes/placeholder_texture_layered.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void placeholder_cubemap_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PlaceholderCubemap *placeholder_cubemap = static_cast<PlaceholderCubemap *>(JS_GetOpaque(val, PlaceholderCubemap::__class_id));
+	if (placeholder_cubemap)
+		memdelete(placeholder_cubemap);
 }
 
 static JSClassDef placeholder_cubemap_class_def = {

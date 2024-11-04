@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Shape2D *shape2d = static_cast<Shape2D *>(JS_GetOpaque(val, Shape2D::__class_id));
+	if (shape2d)
+		memdelete(shape2d);
 }
 
 static JSClassDef shape2d_class_def = {

@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/texture_rect.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/texture_rect.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void texture_rect_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	TextureRect *texture_rect = static_cast<TextureRect *>(JS_GetOpaque(val, TextureRect::__class_id));
+	if (texture_rect)
+		memdelete(texture_rect);
 }
 
 static JSClassDef texture_rect_class_def = {

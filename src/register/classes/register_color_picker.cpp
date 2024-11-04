@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void color_picker_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ColorPicker *color_picker = static_cast<ColorPicker *>(JS_GetOpaque(val, ColorPicker::__class_id));
+	if (color_picker)
+		memdelete(color_picker);
 }
 
 static JSClassDef color_picker_class_def = {

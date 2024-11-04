@@ -30,7 +30,7 @@ export declare class Transform2D {
   public is_conformal(): boolean;
   public is_equal_approx(_xform: Transform2D): boolean;
   public is_finite(): boolean;
-  public looking_at(_target: Vector2): Transform2D;
+  public looking_at(_target: Vector2 = Vector2(0, 0)): Transform2D;
 }
 }
 

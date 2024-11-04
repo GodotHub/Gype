@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/classes/audio_stream_polyphonic.hpp>
+#include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_stream_polyphonic_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioStreamPolyphonic *audio_stream_polyphonic = static_cast<AudioStreamPolyphonic *>(JS_GetOpaque(val, AudioStreamPolyphonic::__class_id));
+	if (audio_stream_polyphonic)
+		memdelete(audio_stream_polyphonic);
 }
 
 static JSClassDef audio_stream_polyphonic_class_def = {

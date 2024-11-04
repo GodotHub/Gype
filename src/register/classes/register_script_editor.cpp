@@ -5,21 +5,22 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/script.hpp>
-#include <godot_cpp/classes/editor_syntax_highlighter.hpp>
-#include <godot_cpp/classes/script.hpp>
-#include <godot_cpp/classes/script_editor_base.hpp>
 #include <godot_cpp/classes/script_editor_base.hpp>
 #include <godot_cpp/classes/panel_container.hpp>
+#include <godot_cpp/classes/script.hpp>
+#include <godot_cpp/classes/editor_syntax_highlighter.hpp>
+#include <godot_cpp/classes/script_editor_base.hpp>
 #include <godot_cpp/classes/script_editor.hpp>
+#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void script_editor_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ScriptEditor *script_editor = static_cast<ScriptEditor *>(JS_GetOpaque(val, ScriptEditor::__class_id));
+	if (script_editor)
+		memdelete(script_editor);
 }
 
 static JSClassDef script_editor_class_def = {

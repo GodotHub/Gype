@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/light_occluder2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/occluder_polygon2d.hpp>
-#include <godot_cpp/classes/light_occluder2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void light_occluder2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	LightOccluder2D *light_occluder2d = static_cast<LightOccluder2D *>(JS_GetOpaque(val, LightOccluder2D::__class_id));
+	if (light_occluder2d)
+		memdelete(light_occluder2d);
 }
 
 static JSClassDef light_occluder2d_class_def = {

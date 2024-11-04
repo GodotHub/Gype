@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void rd_vertex_attribute_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RDVertexAttribute *rd_vertex_attribute = static_cast<RDVertexAttribute *>(JS_GetOpaque(val, RDVertexAttribute::__class_id));
+	if (rd_vertex_attribute)
+		memdelete(rd_vertex_attribute);
 }
 
 static JSClassDef rd_vertex_attribute_class_def = {

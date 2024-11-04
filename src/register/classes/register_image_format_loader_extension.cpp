@@ -6,17 +6,18 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/image.hpp>
+#include <godot_cpp/classes/image_format_loader_extension.hpp>
 #include <godot_cpp/classes/file_access.hpp>
 #include <godot_cpp/classes/image_format_loader.hpp>
-#include <godot_cpp/classes/image_format_loader_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void image_format_loader_extension_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ImageFormatLoaderExtension *image_format_loader_extension = static_cast<ImageFormatLoaderExtension *>(JS_GetOpaque(val, ImageFormatLoaderExtension::__class_id));
+	if (image_format_loader_extension)
+		memdelete(image_format_loader_extension);
 }
 
 static JSClassDef image_format_loader_extension_class_def = {

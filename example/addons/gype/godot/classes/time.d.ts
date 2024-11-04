@@ -47,7 +47,5 @@ export declare class _Time extends GodotObject{
     WEEKDAY_SATURDAY = 6,
   }
 }
-}
-declare global {
-  const Time: _Time;
+const Time: _Time;
 }

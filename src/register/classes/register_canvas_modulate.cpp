@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void canvas_modulate_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CanvasModulate *canvas_modulate = static_cast<CanvasModulate *>(JS_GetOpaque(val, CanvasModulate::__class_id));
+	if (canvas_modulate)
+		memdelete(canvas_modulate);
 }
 
 static JSClassDef canvas_modulate_class_def = {

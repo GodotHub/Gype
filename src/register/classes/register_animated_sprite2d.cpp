@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/sprite_frames.hpp>
 #include <godot_cpp/classes/animated_sprite2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animated_sprite2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AnimatedSprite2D *animated_sprite2d = static_cast<AnimatedSprite2D *>(JS_GetOpaque(val, AnimatedSprite2D::__class_id));
+	if (animated_sprite2d)
+		memdelete(animated_sprite2d);
 }
 
 static JSClassDef animated_sprite2d_class_def = {

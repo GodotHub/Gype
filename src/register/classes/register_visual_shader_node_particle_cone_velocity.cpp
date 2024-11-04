@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void visual_shader_node_particle_cone_velocity_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeParticleConeVelocity *visual_shader_node_particle_cone_velocity = static_cast<VisualShaderNodeParticleConeVelocity *>(JS_GetOpaque(val, VisualShaderNodeParticleConeVelocity::__class_id));
+	if (visual_shader_node_particle_cone_velocity)
+		memdelete(visual_shader_node_particle_cone_velocity);
 }
 
 static JSClassDef visual_shader_node_particle_cone_velocity_class_def = {

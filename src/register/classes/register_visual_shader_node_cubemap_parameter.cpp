@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void visual_shader_node_cubemap_parameter_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeCubemapParameter *visual_shader_node_cubemap_parameter = static_cast<VisualShaderNodeCubemapParameter *>(JS_GetOpaque(val, VisualShaderNodeCubemapParameter::__class_id));
+	if (visual_shader_node_cubemap_parameter)
+		memdelete(visual_shader_node_cubemap_parameter);
 }
 
 static JSClassDef visual_shader_node_cubemap_parameter_class_def = {

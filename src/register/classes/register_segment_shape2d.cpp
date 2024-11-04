@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void segment_shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SegmentShape2D *segment_shape2d = static_cast<SegmentShape2D *>(JS_GetOpaque(val, SegmentShape2D::__class_id));
+	if (segment_shape2d)
+		memdelete(segment_shape2d);
 }
 
 static JSClassDef segment_shape2d_class_def = {

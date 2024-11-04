@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void sphere_occluder3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SphereOccluder3D *sphere_occluder3d = static_cast<SphereOccluder3D *>(JS_GetOpaque(val, SphereOccluder3D::__class_id));
+	if (sphere_occluder3d)
+		memdelete(sphere_occluder3d);
 }
 
 static JSClassDef sphere_occluder3d_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void rd_pipeline_multisample_state_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RDPipelineMultisampleState *rd_pipeline_multisample_state = static_cast<RDPipelineMultisampleState *>(JS_GetOpaque(val, RDPipelineMultisampleState::__class_id));
+	if (rd_pipeline_multisample_state)
+		memdelete(rd_pipeline_multisample_state);
 }
 
 static JSClassDef rd_pipeline_multisample_state_class_def = {

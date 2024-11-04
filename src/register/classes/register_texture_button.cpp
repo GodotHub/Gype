@@ -5,18 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/base_button.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/texture_button.hpp>
 #include <godot_cpp/classes/bit_map.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/base_button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void texture_button_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	TextureButton *texture_button = static_cast<TextureButton *>(JS_GetOpaque(val, TextureButton::__class_id));
+	if (texture_button)
+		memdelete(texture_button);
 }
 
 static JSClassDef texture_button_class_def = {

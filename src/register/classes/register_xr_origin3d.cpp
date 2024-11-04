@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void xr_origin3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	XROrigin3D *xr_origin3d = static_cast<XROrigin3D *>(JS_GetOpaque(val, XROrigin3D::__class_id));
+	if (xr_origin3d)
+		memdelete(xr_origin3d);
 }
 
 static JSClassDef xr_origin3d_class_def = {

@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/triangle_mesh.hpp>
 #include <godot_cpp/classes/geometry_instance3d.hpp>
+#include <godot_cpp/classes/triangle_mesh.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/label3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -15,8 +15,9 @@
 using namespace godot;
 
 static void label3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Label3D *label3d = static_cast<Label3D *>(JS_GetOpaque(val, Label3D::__class_id));
+	if (label3d)
+		memdelete(label3d);
 }
 
 static JSClassDef label3d_class_def = {

@@ -6,17 +6,18 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/mesh_instance3d.hpp>
-#include <godot_cpp/classes/soft_body3d.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/physics_body3d.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/soft_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void soft_body3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SoftBody3D *soft_body3d = static_cast<SoftBody3D *>(JS_GetOpaque(val, SoftBody3D::__class_id));
+	if (soft_body3d)
+		memdelete(soft_body3d);
 }
 
 static JSClassDef soft_body3d_class_def = {

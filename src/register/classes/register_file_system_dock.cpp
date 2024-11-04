@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_resource_tooltip_plugin.hpp>
 #include <godot_cpp/classes/file_system_dock.hpp>
+#include <godot_cpp/classes/editor_resource_tooltip_plugin.hpp>
 #include <godot_cpp/classes/v_box_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void file_system_dock_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	FileSystemDock *file_system_dock = static_cast<FileSystemDock *>(JS_GetOpaque(val, FileSystemDock::__class_id));
+	if (file_system_dock)
+		memdelete(file_system_dock);
 }
 
 static JSClassDef file_system_dock_class_def = {

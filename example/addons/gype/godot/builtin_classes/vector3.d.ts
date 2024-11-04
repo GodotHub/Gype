@@ -18,7 +18,7 @@ export declare class Vector3 {
   public distance_squared_to(_to: Vector3): number;
   public length(): number;
   public length_squared(): number;
-  public limit_length(_length: number): Vector3;
+  public limit_length(_length: number = 1.0): Vector3;
   public normalized(): Vector3;
   public is_normalized(): boolean;
   public is_equal_approx(_to: Vector3): boolean;

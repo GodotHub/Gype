@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_multiply_add.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_multiply_add_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeMultiplyAdd *visual_shader_node_multiply_add = static_cast<VisualShaderNodeMultiplyAdd *>(JS_GetOpaque(val, VisualShaderNodeMultiplyAdd::__class_id));
+	if (visual_shader_node_multiply_add)
+		memdelete(visual_shader_node_multiply_add);
 }
 
 static JSClassDef visual_shader_node_multiply_add_class_def = {

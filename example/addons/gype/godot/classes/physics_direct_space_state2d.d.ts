@@ -1,7 +1,7 @@
 
-import { PhysicsPointQueryParameters2D } from "@godot/classes/physics_point_query_parameters2d";
 import { GodotObject } from "@godot/classes/godot_object";
 import { PhysicsShapeQueryParameters2D } from "@godot/classes/physics_shape_query_parameters2d";
+import { PhysicsPointQueryParameters2D } from "@godot/classes/physics_point_query_parameters2d";
 import { PhysicsRayQueryParameters2D } from "@godot/classes/physics_ray_query_parameters2d";
 export declare class PhysicsDirectSpaceState2D extends GodotObject{
   public intersect_point(_parameters: PhysicsPointQueryParameters2D, _max_results: number = 32): GDArray;

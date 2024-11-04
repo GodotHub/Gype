@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void base_material3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	BaseMaterial3D *base_material3d = static_cast<BaseMaterial3D *>(JS_GetOpaque(val, BaseMaterial3D::__class_id));
+	if (base_material3d)
+		memdelete(base_material3d);
 }
 
 static JSClassDef base_material3d_class_def = {

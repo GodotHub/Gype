@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_file_system.hpp>
-#include <godot_cpp/classes/editor_file_system_directory.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/editor_file_system_directory.hpp>
+#include <godot_cpp/classes/editor_file_system.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_file_system_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorFileSystem *editor_file_system = static_cast<EditorFileSystem *>(JS_GetOpaque(val, EditorFileSystem::__class_id));
+	if (editor_file_system)
+		memdelete(editor_file_system);
 }
 
 static JSClassDef editor_file_system_class_def = {

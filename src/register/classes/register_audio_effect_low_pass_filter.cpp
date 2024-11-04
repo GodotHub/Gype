@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void audio_effect_low_pass_filter_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioEffectLowPassFilter *audio_effect_low_pass_filter = static_cast<AudioEffectLowPassFilter *>(JS_GetOpaque(val, AudioEffectLowPassFilter::__class_id));
+	if (audio_effect_low_pass_filter)
+		memdelete(audio_effect_low_pass_filter);
 }
 
 static JSClassDef audio_effect_low_pass_filter_class_def = {

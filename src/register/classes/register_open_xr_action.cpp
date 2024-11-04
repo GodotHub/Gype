@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/open_xr_action.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void open_xr_action_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	OpenXRAction *open_xr_action = static_cast<OpenXRAction *>(JS_GetOpaque(val, OpenXRAction::__class_id));
+	if (open_xr_action)
+		memdelete(open_xr_action);
 }
 
 static JSClassDef open_xr_action_class_def = {

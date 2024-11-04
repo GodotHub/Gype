@@ -15,8 +15,9 @@
 using namespace godot;
 
 static void editor_selection_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorSelection *editor_selection = static_cast<EditorSelection *>(JS_GetOpaque(val, EditorSelection::__class_id));
+	if (editor_selection)
+		memdelete(editor_selection);
 }
 
 static JSClassDef editor_selection_class_def = {

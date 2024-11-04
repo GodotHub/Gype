@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource_importer.hpp>
 #include <godot_cpp/classes/resource_importer_image.hpp>
+#include <godot_cpp/classes/resource_importer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void resource_importer_image_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ResourceImporterImage *resource_importer_image = static_cast<ResourceImporterImage *>(JS_GetOpaque(val, ResourceImporterImage::__class_id));
+	if (resource_importer_image)
+		memdelete(resource_importer_image);
 }
 
 static JSClassDef resource_importer_image_class_def = {

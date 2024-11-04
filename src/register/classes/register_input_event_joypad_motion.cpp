@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_joypad_motion.hpp>
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/input_event_joypad_motion.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void input_event_joypad_motion_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	InputEventJoypadMotion *input_event_joypad_motion = static_cast<InputEventJoypadMotion *>(JS_GetOpaque(val, InputEventJoypadMotion::__class_id));
+	if (input_event_joypad_motion)
+		memdelete(input_event_joypad_motion);
 }
 
 static JSClassDef input_event_joypad_motion_class_def = {

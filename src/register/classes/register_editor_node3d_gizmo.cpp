@@ -5,24 +5,25 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_node3d_gizmo.hpp>
-#include <godot_cpp/classes/skin_reference.hpp>
 #include <godot_cpp/classes/editor_node3d_gizmo_plugin.hpp>
-#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/skin_reference.hpp>
 #include <godot_cpp/classes/node3d_gizmo.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/triangle_mesh.hpp>
+#include <godot_cpp/classes/editor_node3d_gizmo.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_node3d_gizmo_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorNode3DGizmo *editor_node3d_gizmo = static_cast<EditorNode3DGizmo *>(JS_GetOpaque(val, EditorNode3DGizmo::__class_id));
+	if (editor_node3d_gizmo)
+		memdelete(editor_node3d_gizmo);
 }
 
 static JSClassDef editor_node3d_gizmo_class_def = {

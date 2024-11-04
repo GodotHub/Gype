@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/navigation_region3d.hpp>
 #include <godot_cpp/classes/navigation_mesh.hpp>
+#include <godot_cpp/classes/navigation_region3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void navigation_region3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	NavigationRegion3D *navigation_region3d = static_cast<NavigationRegion3D *>(JS_GetOpaque(val, NavigationRegion3D::__class_id));
+	if (navigation_region3d)
+		memdelete(navigation_region3d);
 }
 
 static JSClassDef navigation_region3d_class_def = {

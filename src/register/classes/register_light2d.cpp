@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void light2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Light2D *light2d = static_cast<Light2D *>(JS_GetOpaque(val, Light2D::__class_id));
+	if (light2d)
+		memdelete(light2d);
 }
 
 static JSClassDef light2d_class_def = {

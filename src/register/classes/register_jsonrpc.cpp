@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void jsonrpc_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	JSONRPC *jsonrpc = static_cast<JSONRPC *>(JS_GetOpaque(val, JSONRPC::__class_id));
+	if (jsonrpc)
+		memdelete(jsonrpc);
 }
 
 static JSClassDef jsonrpc_class_def = {

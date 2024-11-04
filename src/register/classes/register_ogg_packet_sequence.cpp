@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/ogg_packet_sequence.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void ogg_packet_sequence_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	OggPacketSequence *ogg_packet_sequence = static_cast<OggPacketSequence *>(JS_GetOpaque(val, OggPacketSequence::__class_id));
+	if (ogg_packet_sequence)
+		memdelete(ogg_packet_sequence);
 }
 
 static JSClassDef ogg_packet_sequence_class_def = {

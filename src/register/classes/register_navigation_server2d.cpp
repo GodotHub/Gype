@@ -7,18 +7,19 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/navigation_path_query_result2d.hpp>
 #include <godot_cpp/classes/navigation_polygon.hpp>
-#include <godot_cpp/classes/navigation_path_query_parameters2d.hpp>
 #include <godot_cpp/classes/navigation_mesh_source_geometry_data2d.hpp>
+#include <godot_cpp/classes/navigation_path_query_parameters2d.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/navigation_server2d.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
 
 static void navigation_server2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	NavigationServer2D *navigation_server2d = static_cast<NavigationServer2D *>(JS_GetOpaque(val, NavigationServer2D::__class_id));
+	if (navigation_server2d)
+		memdelete(navigation_server2d);
 }
 
 static JSClassDef navigation_server2d_class_def = {

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_sampler_state.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rd_sampler_state_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RDSamplerState *rd_sampler_state = static_cast<RDSamplerState *>(JS_GetOpaque(val, RDSamplerState::__class_id));
+	if (rd_sampler_state)
+		memdelete(rd_sampler_state);
 }
 
 static JSClassDef rd_sampler_state_class_def = {

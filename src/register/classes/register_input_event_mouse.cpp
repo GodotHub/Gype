@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_mouse.hpp>
 #include <godot_cpp/classes/input_event_with_modifiers.hpp>
+#include <godot_cpp/classes/input_event_mouse.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void input_event_mouse_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	InputEventMouse *input_event_mouse = static_cast<InputEventMouse *>(JS_GetOpaque(val, InputEventMouse::__class_id));
+	if (input_event_mouse)
+		memdelete(input_event_mouse);
 }
 
 static JSClassDef input_event_mouse_class_def = {

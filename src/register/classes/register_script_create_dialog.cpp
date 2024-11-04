@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/script_create_dialog.hpp>
 #include <godot_cpp/classes/confirmation_dialog.hpp>
+#include <godot_cpp/classes/script_create_dialog.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void script_create_dialog_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ScriptCreateDialog *script_create_dialog = static_cast<ScriptCreateDialog *>(JS_GetOpaque(val, ScriptCreateDialog::__class_id));
+	if (script_create_dialog)
+		memdelete(script_create_dialog);
 }
 
 static JSClassDef script_create_dialog_class_def = {

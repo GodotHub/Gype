@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void plane_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PlaneMesh *plane_mesh = static_cast<PlaneMesh *>(JS_GetOpaque(val, PlaneMesh::__class_id));
+	if (plane_mesh)
+		memdelete(plane_mesh);
 }
 
 static JSClassDef plane_mesh_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void omni_light3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	OmniLight3D *omni_light3d = static_cast<OmniLight3D *>(JS_GetOpaque(val, OmniLight3D::__class_id));
+	if (omni_light3d)
+		memdelete(omni_light3d);
 }
 
 static JSClassDef omni_light3d_class_def = {

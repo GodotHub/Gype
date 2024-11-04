@@ -5,18 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/editor_inspector_plugin.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/editor_inspector_plugin.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_inspector_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorInspectorPlugin *editor_inspector_plugin = static_cast<EditorInspectorPlugin *>(JS_GetOpaque(val, EditorInspectorPlugin::__class_id));
+	if (editor_inspector_plugin)
+		memdelete(editor_inspector_plugin);
 }
 
 static JSClassDef editor_inspector_plugin_class_def = {

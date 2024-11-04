@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void visible_on_screen_enabler3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisibleOnScreenEnabler3D *visible_on_screen_enabler3d = static_cast<VisibleOnScreenEnabler3D *>(JS_GetOpaque(val, VisibleOnScreenEnabler3D::__class_id));
+	if (visible_on_screen_enabler3d)
+		memdelete(visible_on_screen_enabler3d);
 }
 
 static JSClassDef visible_on_screen_enabler3d_class_def = {

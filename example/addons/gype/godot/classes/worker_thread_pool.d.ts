@@ -10,7 +10,5 @@ export declare class _WorkerThreadPool extends GodotObject{
   public get_group_processed_element_count(_group_id: number): number;
   public wait_for_group_task_completion(_group_id: number): void;
 }
-}
-declare global {
-  const WorkerThreadPool: _WorkerThreadPool;
+const WorkerThreadPool: _WorkerThreadPool;
 }

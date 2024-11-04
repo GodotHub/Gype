@@ -29,7 +29,5 @@ export declare class _ClassDB extends GodotObject{
   public is_class_enum_bitfield(_class: GDString | StringName | string, _enum: GDString | StringName | string, _no_inheritance: boolean = false): boolean;
   public is_class_enabled(_class: GDString | StringName | string): boolean;
 }
-}
-declare global {
-  const ClassDB: _ClassDB;
+const ClassDB: _ClassDB;
 }

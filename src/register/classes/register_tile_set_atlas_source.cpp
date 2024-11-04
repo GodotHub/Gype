@@ -5,18 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tile_data.hpp>
-#include <godot_cpp/classes/tile_set_atlas_source.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/tile_set_source.hpp>
+#include <godot_cpp/classes/tile_data.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/tile_set_atlas_source.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void tile_set_atlas_source_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	TileSetAtlasSource *tile_set_atlas_source = static_cast<TileSetAtlasSource *>(JS_GetOpaque(val, TileSetAtlasSource::__class_id));
+	if (tile_set_atlas_source)
+		memdelete(tile_set_atlas_source);
 }
 
 static JSClassDef tile_set_atlas_source_class_def = {

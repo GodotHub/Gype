@@ -1,6 +1,6 @@
 
-import { InputEvent } from "@godot/classes/input_event";
 import { GodotObject } from "@godot/classes/godot_object";
+import { InputEvent } from "@godot/classes/input_event";
 import { InputEvent } from "@godot/classes/input_event";
 declare global {
 export declare class _InputMap extends GodotObject{
@@ -18,7 +18,5 @@ export declare class _InputMap extends GodotObject{
   public event_is_action(_event: InputEvent, _action: GDString | StringName | string, _exact_match: boolean = false): boolean;
   public load_from_project_settings(): void;
 }
-}
-declare global {
-  const InputMap: _InputMap;
+const InputMap: _InputMap;
 }

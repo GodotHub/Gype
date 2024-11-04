@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/flow_container.hpp>
 #include <godot_cpp/classes/container.hpp>
+#include <godot_cpp/classes/flow_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void flow_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	FlowContainer *flow_container = static_cast<FlowContainer *>(JS_GetOpaque(val, FlowContainer::__class_id));
+	if (flow_container)
+		memdelete(flow_container);
 }
 
 static JSClassDef flow_container_class_def = {

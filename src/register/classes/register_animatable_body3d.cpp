@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animatable_body3d.hpp>
 #include <godot_cpp/classes/static_body3d.hpp>
+#include <godot_cpp/classes/animatable_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animatable_body3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AnimatableBody3D *animatable_body3d = static_cast<AnimatableBody3D *>(JS_GetOpaque(val, AnimatableBody3D::__class_id));
+	if (animatable_body3d)
+		memdelete(animatable_body3d);
 }
 
 static JSClassDef animatable_body3d_class_def = {

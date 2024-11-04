@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/sprite_base3d.hpp>
-#include <godot_cpp/classes/animated_sprite3d.hpp>
 #include <godot_cpp/classes/sprite_frames.hpp>
+#include <godot_cpp/classes/animated_sprite3d.hpp>
+#include <godot_cpp/classes/sprite_base3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animated_sprite3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AnimatedSprite3D *animated_sprite3d = static_cast<AnimatedSprite3D *>(JS_GetOpaque(val, AnimatedSprite3D::__class_id));
+	if (animated_sprite3d)
+		memdelete(animated_sprite3d);
 }
 
 static JSClassDef animated_sprite3d_class_def = {

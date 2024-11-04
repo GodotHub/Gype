@@ -18,7 +18,5 @@ export declare class _Geometry3D extends GodotObject{
   public clip_polygon(_points: PackedVector3Array, _plane: Plane): PackedVector3Array;
   public tetrahedralize_delaunay(_points: PackedVector3Array): PackedInt32Array;
 }
-}
-declare global {
-  const Geometry3D: _Geometry3D;
+const Geometry3D: _Geometry3D;
 }

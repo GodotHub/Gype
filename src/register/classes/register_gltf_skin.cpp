@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/classes/gltf_skin.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gltf_skin_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GLTFSkin *gltf_skin = static_cast<GLTFSkin *>(JS_GetOpaque(val, GLTFSkin::__class_id));
+	if (gltf_skin)
+		memdelete(gltf_skin);
 }
 
 static JSClassDef gltf_skin_class_def = {

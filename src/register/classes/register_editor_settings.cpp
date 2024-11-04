@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void editor_settings_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorSettings *editor_settings = static_cast<EditorSettings *>(JS_GetOpaque(val, EditorSettings::__class_id));
+	if (editor_settings)
+		memdelete(editor_settings);
 }
 
 static JSClassDef editor_settings_class_def = {

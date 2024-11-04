@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/video_stream.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/video_stream_playback.hpp>
+#include <godot_cpp/classes/video_stream.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void video_stream_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VideoStream *video_stream = static_cast<VideoStream *>(JS_GetOpaque(val, VideoStream::__class_id));
+	if (video_stream)
+		memdelete(video_stream);
 }
 
 static JSClassDef video_stream_class_def = {

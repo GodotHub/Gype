@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void input_event_screen_drag_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	InputEventScreenDrag *input_event_screen_drag = static_cast<InputEventScreenDrag *>(JS_GetOpaque(val, InputEventScreenDrag::__class_id));
+	if (input_event_screen_drag)
+		memdelete(input_event_screen_drag);
 }
 
 static JSClassDef input_event_screen_drag_class_def = {

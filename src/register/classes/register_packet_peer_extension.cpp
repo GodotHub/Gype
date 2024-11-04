@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/packet_peer_extension.hpp>
 #include <godot_cpp/classes/packet_peer.hpp>
+#include <godot_cpp/classes/packet_peer_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void packet_peer_extension_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PacketPeerExtension *packet_peer_extension = static_cast<PacketPeerExtension *>(JS_GetOpaque(val, PacketPeerExtension::__class_id));
+	if (packet_peer_extension)
+		memdelete(packet_peer_extension);
 }
 
 static JSClassDef packet_peer_extension_class_def = {

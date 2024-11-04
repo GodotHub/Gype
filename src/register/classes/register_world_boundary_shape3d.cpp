@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void world_boundary_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	WorldBoundaryShape3D *world_boundary_shape3d = static_cast<WorldBoundaryShape3D *>(JS_GetOpaque(val, WorldBoundaryShape3D::__class_id));
+	if (world_boundary_shape3d)
+		memdelete(world_boundary_shape3d);
 }
 
 static JSClassDef world_boundary_shape3d_class_def = {

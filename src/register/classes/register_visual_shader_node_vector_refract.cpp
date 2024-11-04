@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_vector_refract.hpp>
 #include <godot_cpp/classes/visual_shader_node_vector_base.hpp>
+#include <godot_cpp/classes/visual_shader_node_vector_refract.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_vector_refract_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeVectorRefract *visual_shader_node_vector_refract = static_cast<VisualShaderNodeVectorRefract *>(JS_GetOpaque(val, VisualShaderNodeVectorRefract::__class_id));
+	if (visual_shader_node_vector_refract)
+		memdelete(visual_shader_node_vector_refract);
 }
 
 static JSClassDef visual_shader_node_vector_refract_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void editor_scene_format_importer_fbx2_gltf_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorSceneFormatImporterFBX2GLTF *editor_scene_format_importer_fbx2_gltf = static_cast<EditorSceneFormatImporterFBX2GLTF *>(JS_GetOpaque(val, EditorSceneFormatImporterFBX2GLTF::__class_id));
+	if (editor_scene_format_importer_fbx2_gltf)
+		memdelete(editor_scene_format_importer_fbx2_gltf);
 }
 
 static JSClassDef editor_scene_format_importer_fbx2_gltf_class_def = {

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_export_platform.hpp>
 #include <godot_cpp/classes/editor_export_platform_web.hpp>
+#include <godot_cpp/classes/editor_export_platform.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_export_platform_web_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorExportPlatformWeb *editor_export_platform_web = static_cast<EditorExportPlatformWeb *>(JS_GetOpaque(val, EditorExportPlatformWeb::__class_id));
+	if (editor_export_platform_web)
+		memdelete(editor_export_platform_web);
 }
 
 static JSClassDef editor_export_platform_web_class_def = {

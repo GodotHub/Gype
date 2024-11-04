@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visible_on_screen_enabler2d.hpp>
 #include <godot_cpp/classes/visible_on_screen_notifier2d.hpp>
+#include <godot_cpp/classes/visible_on_screen_enabler2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visible_on_screen_enabler2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisibleOnScreenEnabler2D *visible_on_screen_enabler2d = static_cast<VisibleOnScreenEnabler2D *>(JS_GetOpaque(val, VisibleOnScreenEnabler2D::__class_id));
+	if (visible_on_screen_enabler2d)
+		memdelete(visible_on_screen_enabler2d);
 }
 
 static JSClassDef visible_on_screen_enabler2d_class_def = {

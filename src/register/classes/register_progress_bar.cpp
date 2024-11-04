@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/classes/progress_bar.hpp>
+#include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void progress_bar_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ProgressBar *progress_bar = static_cast<ProgressBar *>(JS_GetOpaque(val, ProgressBar::__class_id));
+	if (progress_bar)
+		memdelete(progress_bar);
 }
 
 static JSClassDef progress_bar_class_def = {

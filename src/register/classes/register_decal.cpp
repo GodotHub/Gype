@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void decal_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Decal *decal = static_cast<Decal *>(JS_GetOpaque(val, Decal::__class_id));
+	if (decal)
+		memdelete(decal);
 }
 
 static JSClassDef decal_class_def = {

@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_shape_query_parameters3d.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/physics_shape_query_parameters3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void physics_shape_query_parameters3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PhysicsShapeQueryParameters3D *physics_shape_query_parameters3d = static_cast<PhysicsShapeQueryParameters3D *>(JS_GetOpaque(val, PhysicsShapeQueryParameters3D::__class_id));
+	if (physics_shape_query_parameters3d)
+		memdelete(physics_shape_query_parameters3d);
 }
 
 static JSClassDef physics_shape_query_parameters3d_class_def = {

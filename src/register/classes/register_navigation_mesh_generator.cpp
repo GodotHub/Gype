@@ -5,18 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/navigation_mesh.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/navigation_mesh_source_geometry_data3d.hpp>
 #include <godot_cpp/classes/navigation_mesh_generator.hpp>
-#include <godot_cpp/classes/navigation_mesh.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
 
 static void navigation_mesh_generator_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	NavigationMeshGenerator *navigation_mesh_generator = static_cast<NavigationMeshGenerator *>(JS_GetOpaque(val, NavigationMeshGenerator::__class_id));
+	if (navigation_mesh_generator)
+		memdelete(navigation_mesh_generator);
 }
 
 static JSClassDef navigation_mesh_generator_class_def = {

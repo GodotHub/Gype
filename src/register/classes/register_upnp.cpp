@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/upnp_device.hpp>
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/upnp.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/upnp_device.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void upnp_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	UPNP *upnp = static_cast<UPNP *>(JS_GetOpaque(val, UPNP::__class_id));
+	if (upnp)
+		memdelete(upnp);
 }
 
 static JSClassDef upnp_class_def = {

@@ -1,6 +1,6 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { Node } from "@godot/classes/node";
+import { Texture2D } from "@godot/classes/texture2d";
 export declare class StatusIndicator extends Node{
   public set_tooltip(_tooltip: GDString | StringName | string): void;
   public get_tooltip(): String;

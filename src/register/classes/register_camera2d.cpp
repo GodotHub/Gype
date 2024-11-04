@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/camera2d.hpp>
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void camera2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Camera2D *camera2d = static_cast<Camera2D *>(JS_GetOpaque(val, Camera2D::__class_id));
+	if (camera2d)
+		memdelete(camera2d);
 }
 
 static JSClassDef camera2d_class_def = {

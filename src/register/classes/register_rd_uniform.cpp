@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void rd_uniform_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RDUniform *rd_uniform = static_cast<RDUniform *>(JS_GetOpaque(val, RDUniform::__class_id));
+	if (rd_uniform)
+		memdelete(rd_uniform);
 }
 
 static JSClassDef rd_uniform_class_def = {

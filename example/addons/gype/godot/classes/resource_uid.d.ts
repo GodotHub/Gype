@@ -11,7 +11,5 @@ export declare class _ResourceUID extends GodotObject{
   public get_id_path(_id: number): String;
   public remove_id(_id: number): void;
 }
-}
-declare global {
-  const ResourceUID: _ResourceUID;
+const ResourceUID: _ResourceUID;
 }

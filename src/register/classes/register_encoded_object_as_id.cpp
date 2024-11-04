@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/encoded_object_as_id.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/encoded_object_as_id.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void encoded_object_as_id_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EncodedObjectAsID *encoded_object_as_id = static_cast<EncodedObjectAsID *>(JS_GetOpaque(val, EncodedObjectAsID::__class_id));
+	if (encoded_object_as_id)
+		memdelete(encoded_object_as_id);
 }
 
 static JSClassDef encoded_object_as_id_class_def = {

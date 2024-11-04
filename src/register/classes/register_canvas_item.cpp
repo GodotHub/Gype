@@ -5,25 +5,26 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/multi_mesh.hpp>
-#include <godot_cpp/classes/world2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/canvas_item.hpp>
 #include <godot_cpp/classes/canvas_layer.hpp>
 #include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/canvas_item.hpp>
+#include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/world2d.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void canvas_item_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CanvasItem *canvas_item = static_cast<CanvasItem *>(JS_GetOpaque(val, CanvasItem::__class_id));
+	if (canvas_item)
+		memdelete(canvas_item);
 }
 
 static JSClassDef canvas_item_class_def = {

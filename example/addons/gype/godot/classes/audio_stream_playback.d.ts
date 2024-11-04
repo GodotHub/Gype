@@ -1,6 +1,6 @@
 
-import { RefCounted } from "@godot/classes/ref_counted";
 import { AudioSamplePlayback } from "@godot/classes/audio_sample_playback";
+import { RefCounted } from "@godot/classes/ref_counted";
 export declare class AudioStreamPlayback extends RefCounted{
   public _start(_from_pos: number): void;
   public _stop(): void;

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_shader_source.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/rd_shader_source.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rd_shader_source_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RDShaderSource *rd_shader_source = static_cast<RDShaderSource *>(JS_GetOpaque(val, RDShaderSource::__class_id));
+	if (rd_shader_source)
+		memdelete(rd_shader_source);
 }
 
 static JSClassDef rd_shader_source_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void texture2drd_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Texture2DRD *texture2drd = static_cast<Texture2DRD *>(JS_GetOpaque(val, Texture2DRD::__class_id));
+	if (texture2drd)
+		memdelete(texture2drd);
 }
 
 static JSClassDef texture2drd_class_def = {

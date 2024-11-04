@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/gltf_spec_gloss.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/gltf_spec_gloss.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gltf_spec_gloss_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GLTFSpecGloss *gltf_spec_gloss = static_cast<GLTFSpecGloss *>(JS_GetOpaque(val, GLTFSpecGloss::__class_id));
+	if (gltf_spec_gloss)
+		memdelete(gltf_spec_gloss);
 }
 
 static JSClassDef gltf_spec_gloss_class_def = {

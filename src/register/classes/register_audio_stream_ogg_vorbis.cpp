@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/classes/ogg_packet_sequence.hpp>
+#include <godot_cpp/classes/audio_stream.hpp>
 #include <godot_cpp/classes/audio_stream_ogg_vorbis.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void audio_stream_ogg_vorbis_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioStreamOggVorbis *audio_stream_ogg_vorbis = static_cast<AudioStreamOggVorbis *>(JS_GetOpaque(val, AudioStreamOggVorbis::__class_id));
+	if (audio_stream_ogg_vorbis)
+		memdelete(audio_stream_ogg_vorbis);
 }
 
 static JSClassDef audio_stream_ogg_vorbis_class_def = {

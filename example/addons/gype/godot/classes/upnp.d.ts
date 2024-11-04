@@ -1,6 +1,6 @@
 
-import { UPNPDevice } from "@godot/classes/upnp_device";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { UPNPDevice } from "@godot/classes/upnp_device";
 export declare class UPNP extends RefCounted{
   public get_device_count(): number;
   public get_device(_index: number): UPNPDevice;

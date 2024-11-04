@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void cubemap_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Cubemap *cubemap = static_cast<Cubemap *>(JS_GetOpaque(val, Cubemap::__class_id));
+	if (cubemap)
+		memdelete(cubemap);
 }
 
 static JSClassDef cubemap_class_def = {

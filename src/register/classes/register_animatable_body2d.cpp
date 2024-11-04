@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void animatable_body2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AnimatableBody2D *animatable_body2d = static_cast<AnimatableBody2D *>(JS_GetOpaque(val, AnimatableBody2D::__class_id));
+	if (animatable_body2d)
+		memdelete(animatable_body2d);
 }
 
 static JSClassDef animatable_body2d_class_def = {

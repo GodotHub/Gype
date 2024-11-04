@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/light3d.hpp>
 #include <godot_cpp/classes/directional_light3d.hpp>
+#include <godot_cpp/classes/light3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void directional_light3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	DirectionalLight3D *directional_light3d = static_cast<DirectionalLight3D *>(JS_GetOpaque(val, DirectionalLight3D::__class_id));
+	if (directional_light3d)
+		memdelete(directional_light3d);
 }
 
 static JSClassDef directional_light3d_class_def = {

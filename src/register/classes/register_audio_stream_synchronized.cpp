@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void audio_stream_synchronized_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioStreamSynchronized *audio_stream_synchronized = static_cast<AudioStreamSynchronized *>(JS_GetOpaque(val, AudioStreamSynchronized::__class_id));
+	if (audio_stream_synchronized)
+		memdelete(audio_stream_synchronized);
 }
 
 static JSClassDef audio_stream_synchronized_class_def = {

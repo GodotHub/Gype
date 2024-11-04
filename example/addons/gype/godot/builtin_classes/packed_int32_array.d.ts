@@ -18,13 +18,13 @@ export declare class PackedInt32Array {
   public clear(): void;
   public has(_value: number): boolean;
   public reverse(): void;
-  public slice(_begin: number, _end: number): PackedInt32Array;
+  public slice(_begin: number, _end: number = 2147483647): PackedInt32Array;
   public to_byte_array(): PackedByteArray;
   public sort(): void;
-  public bsearch(_value: number, _before: boolean): number;
+  public bsearch(_value: number, _before: boolean = true): number;
   public duplicate(): PackedInt32Array;
-  public find(_value: number, _from: number): number;
-  public rfind(_value: number, _from: number): number;
+  public find(_value: number, _from: number = 0): number;
+  public rfind(_value: number, _from: number = -1): number;
   public count(_value: number): number;
 }
 }

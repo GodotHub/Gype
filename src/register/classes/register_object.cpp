@@ -12,8 +12,9 @@
 using namespace godot;
 
 static void object_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Object *object = static_cast<Object *>(JS_GetOpaque(val, Object::__class_id));
+	if (object)
+		memdelete(object);
 }
 
 static JSClassDef object_class_def = {

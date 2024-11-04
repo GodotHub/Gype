@@ -7,16 +7,17 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/animation_library.hpp>
 #include <godot_cpp/classes/animation_mixer.hpp>
-#include <godot_cpp/classes/animation.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/animation.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_mixer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AnimationMixer *animation_mixer = static_cast<AnimationMixer *>(JS_GetOpaque(val, AnimationMixer::__class_id));
+	if (animation_mixer)
+		memdelete(animation_mixer);
 }
 
 static JSClassDef animation_mixer_class_def = {

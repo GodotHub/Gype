@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/web_socket_peer.hpp>
 #include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
+#include <godot_cpp/classes/web_socket_peer.hpp>
 #include <godot_cpp/classes/packet_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -15,8 +15,9 @@
 using namespace godot;
 
 static void web_socket_peer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	WebSocketPeer *web_socket_peer = static_cast<WebSocketPeer *>(JS_GetOpaque(val, WebSocketPeer::__class_id));
+	if (web_socket_peer)
+		memdelete(web_socket_peer);
 }
 
 static JSClassDef web_socket_peer_class_def = {

@@ -1,8 +1,8 @@
 
 import { TileData } from "@godot/classes/tile_data";
+import { Node2D } from "@godot/classes/node2d";
 import { TileSet } from "@godot/classes/tile_set";
 import { TileMapPattern } from "@godot/classes/tile_map_pattern";
-import { Node2D } from "@godot/classes/node2d";
 export declare class TileMap extends Node2D{
   public _use_tile_data_runtime_update(_layer: number, _coords: Vector2i): boolean;
   public _tile_data_runtime_update(_layer: number, _coords: Vector2i, _tile_data: TileData): void;

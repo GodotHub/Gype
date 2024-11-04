@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/box_occluder3d.hpp>
 #include <godot_cpp/classes/occluder3d.hpp>
+#include <godot_cpp/classes/box_occluder3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void box_occluder3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	BoxOccluder3D *box_occluder3d = static_cast<BoxOccluder3D *>(JS_GetOpaque(val, BoxOccluder3D::__class_id));
+	if (box_occluder3d)
+		memdelete(box_occluder3d);
 }
 
 static JSClassDef box_occluder3d_class_def = {

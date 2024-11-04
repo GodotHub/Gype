@@ -5,18 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/mesh_instance2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void mesh_instance2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	MeshInstance2D *mesh_instance2d = static_cast<MeshInstance2D *>(JS_GetOpaque(val, MeshInstance2D::__class_id));
+	if (mesh_instance2d)
+		memdelete(mesh_instance2d);
 }
 
 static JSClassDef mesh_instance2d_class_def = {

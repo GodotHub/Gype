@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/optimized_translation.hpp>
 #include <godot_cpp/classes/translation.hpp>
+#include <godot_cpp/classes/optimized_translation.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void optimized_translation_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	OptimizedTranslation *optimized_translation = static_cast<OptimizedTranslation *>(JS_GetOpaque(val, OptimizedTranslation::__class_id));
+	if (optimized_translation)
+		memdelete(optimized_translation);
 }
 
 static JSClassDef optimized_translation_class_def = {

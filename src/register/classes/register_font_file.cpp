@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/classes/font_file.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void font_file_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	FontFile *font_file = static_cast<FontFile *>(JS_GetOpaque(val, FontFile::__class_id));
+	if (font_file)
+		memdelete(font_file);
 }
 
 static JSClassDef font_file_class_def = {

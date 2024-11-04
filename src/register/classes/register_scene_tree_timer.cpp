@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/scene_tree_timer.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/scene_tree_timer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void scene_tree_timer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SceneTreeTimer *scene_tree_timer = static_cast<SceneTreeTimer *>(JS_GetOpaque(val, SceneTreeTimer::__class_id));
+	if (scene_tree_timer)
+		memdelete(scene_tree_timer);
 }
 
 static JSClassDef scene_tree_timer_class_def = {

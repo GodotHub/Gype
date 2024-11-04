@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/zip_packer.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void zip_packer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ZIPPacker *zip_packer = static_cast<ZIPPacker *>(JS_GetOpaque(val, ZIPPacker::__class_id));
+	if (zip_packer)
+		memdelete(zip_packer);
 }
 
 static JSClassDef zip_packer_class_def = {

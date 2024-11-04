@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_pipeline_color_blend_state.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_pipeline_color_blend_state_attachment.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void rd_pipeline_color_blend_state_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RDPipelineColorBlendState *rd_pipeline_color_blend_state = static_cast<RDPipelineColorBlendState *>(JS_GetOpaque(val, RDPipelineColorBlendState::__class_id));
+	if (rd_pipeline_color_blend_state)
+		memdelete(rd_pipeline_color_blend_state);
 }
 
 static JSClassDef rd_pipeline_color_blend_state_class_def = {

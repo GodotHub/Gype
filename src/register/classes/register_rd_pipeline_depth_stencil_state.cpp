@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void rd_pipeline_depth_stencil_state_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RDPipelineDepthStencilState *rd_pipeline_depth_stencil_state = static_cast<RDPipelineDepthStencilState *>(JS_GetOpaque(val, RDPipelineDepthStencilState::__class_id));
+	if (rd_pipeline_depth_stencil_state)
+		memdelete(rd_pipeline_depth_stencil_state);
 }
 
 static JSClassDef rd_pipeline_depth_stencil_state_class_def = {

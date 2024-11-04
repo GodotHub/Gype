@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/polygon_occluder3d.hpp>
 #include <godot_cpp/classes/occluder3d.hpp>
+#include <godot_cpp/classes/polygon_occluder3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void polygon_occluder3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PolygonOccluder3D *polygon_occluder3d = static_cast<PolygonOccluder3D *>(JS_GetOpaque(val, PolygonOccluder3D::__class_id));
+	if (polygon_occluder3d)
+		memdelete(polygon_occluder3d);
 }
 
 static JSClassDef polygon_occluder3d_class_def = {

@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/canvas_item.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void style_box_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	StyleBox *style_box = static_cast<StyleBox *>(JS_GetOpaque(val, StyleBox::__class_id));
+	if (style_box)
+		memdelete(style_box);
 }
 
 static JSClassDef style_box_class_def = {

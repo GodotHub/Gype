@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void visual_shader_node_derivative_func_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeDerivativeFunc *visual_shader_node_derivative_func = static_cast<VisualShaderNodeDerivativeFunc *>(JS_GetOpaque(val, VisualShaderNodeDerivativeFunc::__class_id));
+	if (visual_shader_node_derivative_func)
+		memdelete(visual_shader_node_derivative_func);
 }
 
 static JSClassDef visual_shader_node_derivative_func_class_def = {

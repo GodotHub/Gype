@@ -1,9 +1,9 @@
 
-import { VScrollBar } from "@godot/classes/v_scroll_bar";
 import { HScrollBar } from "@godot/classes/h_scroll_bar";
-import { Control } from "@godot/classes/control";
-import { PopupMenu } from "@godot/classes/popup_menu";
 import { Texture2D } from "@godot/classes/texture2d";
+import { Control } from "@godot/classes/control";
+import { VScrollBar } from "@godot/classes/v_scroll_bar";
+import { PopupMenu } from "@godot/classes/popup_menu";
 import { SyntaxHighlighter } from "@godot/classes/syntax_highlighter";
 export declare class TextEdit extends Control{
   public _handle_unicode_input(_unicode_char: number, _caret_index: number): void;

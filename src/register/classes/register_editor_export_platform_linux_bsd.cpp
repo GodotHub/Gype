@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void editor_export_platform_linux_bsd_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorExportPlatformLinuxBSD *editor_export_platform_linux_bsd = static_cast<EditorExportPlatformLinuxBSD *>(JS_GetOpaque(val, EditorExportPlatformLinuxBSD::__class_id));
+	if (editor_export_platform_linux_bsd)
+		memdelete(editor_export_platform_linux_bsd);
 }
 
 static JSClassDef editor_export_platform_linux_bsd_class_def = {

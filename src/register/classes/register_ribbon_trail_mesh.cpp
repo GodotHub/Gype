@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/ribbon_trail_mesh.hpp>
+#include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void ribbon_trail_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RibbonTrailMesh *ribbon_trail_mesh = static_cast<RibbonTrailMesh *>(JS_GetOpaque(val, RibbonTrailMesh::__class_id));
+	if (ribbon_trail_mesh)
+		memdelete(ribbon_trail_mesh);
 }
 
 static JSClassDef ribbon_trail_mesh_class_def = {

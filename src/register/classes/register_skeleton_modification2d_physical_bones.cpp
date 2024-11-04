@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void skeleton_modification2d_physical_bones_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SkeletonModification2DPhysicalBones *skeleton_modification2d_physical_bones = static_cast<SkeletonModification2DPhysicalBones *>(JS_GetOpaque(val, SkeletonModification2DPhysicalBones::__class_id));
+	if (skeleton_modification2d_physical_bones)
+		memdelete(skeleton_modification2d_physical_bones);
 }
 
 static JSClassDef skeleton_modification2d_physical_bones_class_def = {

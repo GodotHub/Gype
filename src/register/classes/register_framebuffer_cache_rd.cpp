@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rd_framebuffer_pass.hpp>
 #include <godot_cpp/classes/framebuffer_cache_rd.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/rd_framebuffer_pass.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void framebuffer_cache_rd_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	FramebufferCacheRD *framebuffer_cache_rd = static_cast<FramebufferCacheRD *>(JS_GetOpaque(val, FramebufferCacheRD::__class_id));
+	if (framebuffer_cache_rd)
+		memdelete(framebuffer_cache_rd);
 }
 
 static JSClassDef framebuffer_cache_rd_class_def = {

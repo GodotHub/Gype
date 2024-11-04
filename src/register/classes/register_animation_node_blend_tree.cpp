@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_root_node.hpp>
-#include <godot_cpp/classes/animation_node_blend_tree.hpp>
 #include <godot_cpp/classes/animation_node.hpp>
+#include <godot_cpp/classes/animation_node_blend_tree.hpp>
+#include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_node_blend_tree_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AnimationNodeBlendTree *animation_node_blend_tree = static_cast<AnimationNodeBlendTree *>(JS_GetOpaque(val, AnimationNodeBlendTree::__class_id));
+	if (animation_node_blend_tree)
+		memdelete(animation_node_blend_tree);
 }
 
 static JSClassDef animation_node_blend_tree_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void gltf_animation_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GLTFAnimation *gltf_animation = static_cast<GLTFAnimation *>(JS_GetOpaque(val, GLTFAnimation::__class_id));
+	if (gltf_animation)
+		memdelete(gltf_animation);
 }
 
 static JSClassDef gltf_animation_class_def = {

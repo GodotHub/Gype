@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void editor_export_platform_pc_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorExportPlatformPC *editor_export_platform_pc = static_cast<EditorExportPlatformPC *>(JS_GetOpaque(val, EditorExportPlatformPC::__class_id));
+	if (editor_export_platform_pc)
+		memdelete(editor_export_platform_pc);
 }
 
 static JSClassDef editor_export_platform_pc_class_def = {

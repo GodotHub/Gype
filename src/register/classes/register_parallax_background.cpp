@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void parallax_background_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ParallaxBackground *parallax_background = static_cast<ParallaxBackground *>(JS_GetOpaque(val, ParallaxBackground::__class_id));
+	if (parallax_background)
+		memdelete(parallax_background);
 }
 
 static JSClassDef parallax_background_class_def = {

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/capsule_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/capsule_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void capsule_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CapsuleMesh *capsule_mesh = static_cast<CapsuleMesh *>(JS_GetOpaque(val, CapsuleMesh::__class_id));
+	if (capsule_mesh)
+		memdelete(capsule_mesh);
 }
 
 static JSClassDef capsule_mesh_class_def = {

@@ -9,7 +9,5 @@ export declare class _Marshalls extends GodotObject{
   public utf8_to_base64(_utf8_str: GDString | StringName | string): String;
   public base64_to_utf8(_base64_str: GDString | StringName | string): String;
 }
-}
-declare global {
-  const Marshalls: _Marshalls;
+const Marshalls: _Marshalls;
 }

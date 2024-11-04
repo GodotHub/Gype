@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void rd_pipeline_color_blend_state_attachment_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RDPipelineColorBlendStateAttachment *rd_pipeline_color_blend_state_attachment = static_cast<RDPipelineColorBlendStateAttachment *>(JS_GetOpaque(val, RDPipelineColorBlendStateAttachment::__class_id));
+	if (rd_pipeline_color_blend_state_attachment)
+		memdelete(rd_pipeline_color_blend_state_attachment);
 }
 
 static JSClassDef rd_pipeline_color_blend_state_attachment_class_def = {

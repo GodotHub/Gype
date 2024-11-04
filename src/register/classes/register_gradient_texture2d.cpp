@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/gradient_texture2d.hpp>
 #include <godot_cpp/classes/gradient.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/gradient_texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gradient_texture2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GradientTexture2D *gradient_texture2d = static_cast<GradientTexture2D *>(JS_GetOpaque(val, GradientTexture2D::__class_id));
+	if (gradient_texture2d)
+		memdelete(gradient_texture2d);
 }
 
 static JSClassDef gradient_texture2d_class_def = {

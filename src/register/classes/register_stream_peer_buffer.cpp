@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void stream_peer_buffer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	StreamPeerBuffer *stream_peer_buffer = static_cast<StreamPeerBuffer *>(JS_GetOpaque(val, StreamPeerBuffer::__class_id));
+	if (stream_peer_buffer)
+		memdelete(stream_peer_buffer);
 }
 
 static JSClassDef stream_peer_buffer_class_def = {

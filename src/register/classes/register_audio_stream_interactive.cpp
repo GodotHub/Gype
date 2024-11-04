@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void audio_stream_interactive_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioStreamInteractive *audio_stream_interactive = static_cast<AudioStreamInteractive *>(JS_GetOpaque(val, AudioStreamInteractive::__class_id));
+	if (audio_stream_interactive)
+		memdelete(audio_stream_interactive);
 }
 
 static JSClassDef audio_stream_interactive_class_def = {

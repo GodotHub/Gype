@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void audio_effect_spectrum_analyzer_instance_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioEffectSpectrumAnalyzerInstance *audio_effect_spectrum_analyzer_instance = static_cast<AudioEffectSpectrumAnalyzerInstance *>(JS_GetOpaque(val, AudioEffectSpectrumAnalyzerInstance::__class_id));
+	if (audio_effect_spectrum_analyzer_instance)
+		memdelete(audio_effect_spectrum_analyzer_instance);
 }
 
 static JSClassDef audio_effect_spectrum_analyzer_instance_class_def = {

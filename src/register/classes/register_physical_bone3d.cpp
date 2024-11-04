@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/physics_direct_body_state3d.hpp>
-#include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/classes/physical_bone3d.hpp>
+#include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void physical_bone3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PhysicalBone3D *physical_bone3d = static_cast<PhysicalBone3D *>(JS_GetOpaque(val, PhysicalBone3D::__class_id));
+	if (physical_bone3d)
+		memdelete(physical_bone3d);
 }
 
 static JSClassDef physical_bone3d_class_def = {

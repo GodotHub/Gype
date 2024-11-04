@@ -1,8 +1,6 @@
 #include "register/classes/register_classes.h"
 #include <cstdint>
 
-std::unordered_map<intptr_t, int64_t> instance_id_map;
-
 void register_classes() {
 	register_object();
 	register_audio_server();

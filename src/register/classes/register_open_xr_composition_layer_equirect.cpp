@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/open_xr_composition_layer.hpp>
 #include <godot_cpp/classes/open_xr_composition_layer_equirect.hpp>
+#include <godot_cpp/classes/open_xr_composition_layer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void open_xr_composition_layer_equirect_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	OpenXRCompositionLayerEquirect *open_xr_composition_layer_equirect = static_cast<OpenXRCompositionLayerEquirect *>(JS_GetOpaque(val, OpenXRCompositionLayerEquirect::__class_id));
+	if (open_xr_composition_layer_equirect)
+		memdelete(open_xr_composition_layer_equirect);
 }
 
 static JSClassDef open_xr_composition_layer_equirect_class_def = {

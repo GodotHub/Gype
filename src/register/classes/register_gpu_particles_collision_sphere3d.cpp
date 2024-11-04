@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void gpu_particles_collision_sphere3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GPUParticlesCollisionSphere3D *gpu_particles_collision_sphere3d = static_cast<GPUParticlesCollisionSphere3D *>(JS_GetOpaque(val, GPUParticlesCollisionSphere3D::__class_id));
+	if (gpu_particles_collision_sphere3d)
+		memdelete(gpu_particles_collision_sphere3d);
 }
 
 static JSClassDef gpu_particles_collision_sphere3d_class_def = {

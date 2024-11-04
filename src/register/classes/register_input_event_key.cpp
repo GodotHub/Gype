@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void input_event_key_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	InputEventKey *input_event_key = static_cast<InputEventKey *>(JS_GetOpaque(val, InputEventKey::__class_id));
+	if (input_event_key)
+		memdelete(input_event_key);
 }
 
 static JSClassDef input_event_key_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void skeleton_modification2dccdik_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SkeletonModification2DCCDIK *skeleton_modification2dccdik = static_cast<SkeletonModification2DCCDIK *>(JS_GetOpaque(val, SkeletonModification2DCCDIK::__class_id));
+	if (skeleton_modification2dccdik)
+		memdelete(skeleton_modification2dccdik);
 }
 
 static JSClassDef skeleton_modification2dccdik_class_def = {

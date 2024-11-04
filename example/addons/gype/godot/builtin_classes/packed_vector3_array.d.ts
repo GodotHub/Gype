@@ -18,13 +18,13 @@ export declare class PackedVector3Array {
   public clear(): void;
   public has(_value: Vector3): boolean;
   public reverse(): void;
-  public slice(_begin: number, _end: number): PackedVector3Array;
+  public slice(_begin: number, _end: number = 2147483647): PackedVector3Array;
   public to_byte_array(): PackedByteArray;
   public sort(): void;
-  public bsearch(_value: Vector3, _before: boolean): number;
+  public bsearch(_value: Vector3, _before: boolean = true): number;
   public duplicate(): PackedVector3Array;
-  public find(_value: Vector3, _from: number): number;
-  public rfind(_value: Vector3, _from: number): number;
+  public find(_value: Vector3, _from: number = 0): number;
+  public rfind(_value: Vector3, _from: number = -1): number;
   public count(_value: Vector3): number;
 }
 }

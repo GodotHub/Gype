@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_positional_tracker.hpp>
 #include <godot_cpp/classes/xr_tracker.hpp>
+#include <godot_cpp/classes/xr_positional_tracker.hpp>
 #include <godot_cpp/classes/xr_pose.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void xr_positional_tracker_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	XRPositionalTracker *xr_positional_tracker = static_cast<XRPositionalTracker *>(JS_GetOpaque(val, XRPositionalTracker::__class_id));
+	if (xr_positional_tracker)
+		memdelete(xr_positional_tracker);
 }
 
 static JSClassDef xr_positional_tracker_class_def = {

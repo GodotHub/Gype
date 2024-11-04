@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void crypto_key_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CryptoKey *crypto_key = static_cast<CryptoKey *>(JS_GetOpaque(val, CryptoKey::__class_id));
+	if (crypto_key)
+		memdelete(crypto_key);
 }
 
 static JSClassDef crypto_key_class_def = {

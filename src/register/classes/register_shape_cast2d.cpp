@@ -6,18 +6,19 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/shape2d.hpp>
-#include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/collision_object2d.hpp>
 #include <godot_cpp/classes/shape_cast2d.hpp>
-#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void shape_cast2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ShapeCast2D *shape_cast2d = static_cast<ShapeCast2D *>(JS_GetOpaque(val, ShapeCast2D::__class_id));
+	if (shape_cast2d)
+		memdelete(shape_cast2d);
 }
 
 static JSClassDef shape_cast2d_class_def = {

@@ -1,6 +1,6 @@
 
-import { RefCounted } from "@godot/classes/ref_counted";
 import { Node } from "@godot/classes/node";
+import { RefCounted } from "@godot/classes/ref_counted";
 export declare class Resource extends RefCounted{
   public _setup_local_to_scene(): void;
   public set_path(_path: GDString | StringName | string): void;

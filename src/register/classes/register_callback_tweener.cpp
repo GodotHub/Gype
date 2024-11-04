@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void callback_tweener_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CallbackTweener *callback_tweener = static_cast<CallbackTweener *>(JS_GetOpaque(val, CallbackTweener::__class_id));
+	if (callback_tweener)
+		memdelete(callback_tweener);
 }
 
 static JSClassDef callback_tweener_class_def = {

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/window.hpp>
 #include <godot_cpp/classes/popup.hpp>
+#include <godot_cpp/classes/window.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void popup_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Popup *popup = static_cast<Popup *>(JS_GetOpaque(val, Popup::__class_id));
+	if (popup)
+		memdelete(popup);
 }
 
 static JSClassDef popup_class_def = {

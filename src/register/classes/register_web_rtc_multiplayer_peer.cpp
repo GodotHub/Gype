@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/classes/web_rtc_multiplayer_peer.hpp>
 #include <godot_cpp/classes/web_rtc_peer_connection.hpp>
-#include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void web_rtc_multiplayer_peer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	WebRTCMultiplayerPeer *web_rtc_multiplayer_peer = static_cast<WebRTCMultiplayerPeer *>(JS_GetOpaque(val, WebRTCMultiplayerPeer::__class_id));
+	if (web_rtc_multiplayer_peer)
+		memdelete(web_rtc_multiplayer_peer);
 }
 
 static JSClassDef web_rtc_multiplayer_peer_class_def = {

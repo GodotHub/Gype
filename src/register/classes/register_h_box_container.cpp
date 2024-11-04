@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void h_box_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	HBoxContainer *h_box_container = static_cast<HBoxContainer *>(JS_GetOpaque(val, HBoxContainer::__class_id));
+	if (h_box_container)
+		memdelete(h_box_container);
 }
 
 static JSClassDef h_box_container_class_def = {

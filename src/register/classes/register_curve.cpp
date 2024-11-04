@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void curve_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Curve *curve = static_cast<Curve *>(JS_GetOpaque(val, Curve::__class_id));
+	if (curve)
+		memdelete(curve);
 }
 
 static JSClassDef curve_class_def = {

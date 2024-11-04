@@ -18,7 +18,5 @@ export declare class _CameraServer extends GodotObject{
   public get camera_feed_added(): Signal;
   public get camera_feed_removed(): Signal;
 }
-}
-declare global {
-  const CameraServer: _CameraServer;
+const CameraServer: _CameraServer;
 }

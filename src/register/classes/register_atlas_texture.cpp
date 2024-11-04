@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void atlas_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AtlasTexture *atlas_texture = static_cast<AtlasTexture *>(JS_GetOpaque(val, AtlasTexture::__class_id));
+	if (atlas_texture)
+		memdelete(atlas_texture);
 }
 
 static JSClassDef atlas_texture_class_def = {

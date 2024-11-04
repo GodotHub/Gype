@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void gltf_accessor_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GLTFAccessor *gltf_accessor = static_cast<GLTFAccessor *>(JS_GetOpaque(val, GLTFAccessor::__class_id));
+	if (gltf_accessor)
+		memdelete(gltf_accessor);
 }
 
 static JSClassDef gltf_accessor_class_def = {

@@ -1,6 +1,6 @@
 
-import { PackedScene } from "@godot/classes/packed_scene";
 import { TileSetSource } from "@godot/classes/tile_set_source";
+import { PackedScene } from "@godot/classes/packed_scene";
 export declare class TileSetScenesCollectionSource extends TileSetSource{
   public get_scene_tiles_count(): number;
   public get_scene_tile_id(_index: number): number;

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/classes/prism_mesh.hpp>
+#include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void prism_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PrismMesh *prism_mesh = static_cast<PrismMesh *>(JS_GetOpaque(val, PrismMesh::__class_id));
+	if (prism_mesh)
+		memdelete(prism_mesh);
 }
 
 static JSClassDef prism_mesh_class_def = {

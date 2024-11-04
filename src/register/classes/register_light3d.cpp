@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/light3d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/light3d.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void light3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Light3D *light3d = static_cast<Light3D *>(JS_GetOpaque(val, Light3D::__class_id));
+	if (light3d)
+		memdelete(light3d);
 }
 
 static JSClassDef light3d_class_def = {

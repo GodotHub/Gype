@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void visual_shader_node_u_int_func_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeUIntFunc *visual_shader_node_u_int_func = static_cast<VisualShaderNodeUIntFunc *>(JS_GetOpaque(val, VisualShaderNodeUIntFunc::__class_id));
+	if (visual_shader_node_u_int_func)
+		memdelete(visual_shader_node_u_int_func);
 }
 
 static JSClassDef visual_shader_node_u_int_func_class_def = {

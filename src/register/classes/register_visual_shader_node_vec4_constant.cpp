@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void visual_shader_node_vec4_constant_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeVec4Constant *visual_shader_node_vec4_constant = static_cast<VisualShaderNodeVec4Constant *>(JS_GetOpaque(val, VisualShaderNodeVec4Constant::__class_id));
+	if (visual_shader_node_vec4_constant)
+		memdelete(visual_shader_node_vec4_constant);
 }
 
 static JSClassDef visual_shader_node_vec4_constant_class_def = {

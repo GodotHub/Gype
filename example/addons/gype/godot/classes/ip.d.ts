@@ -25,7 +25,5 @@ export declare class _IP extends GodotObject{
     TYPE_ANY = 3,
   }
 }
-}
-declare global {
-  const IP: _IP;
+const IP: _IP;
 }

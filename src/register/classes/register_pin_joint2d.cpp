@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void pin_joint2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PinJoint2D *pin_joint2d = static_cast<PinJoint2D *>(JS_GetOpaque(val, PinJoint2D::__class_id));
+	if (pin_joint2d)
+		memdelete(pin_joint2d);
 }
 
 static JSClassDef pin_joint2d_class_def = {

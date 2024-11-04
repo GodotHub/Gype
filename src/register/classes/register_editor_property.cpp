@@ -6,17 +6,18 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/container.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/editor_property.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_property_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorProperty *editor_property = static_cast<EditorProperty *>(JS_GetOpaque(val, EditorProperty::__class_id));
+	if (editor_property)
+		memdelete(editor_property);
 }
 
 static JSClassDef editor_property_class_def = {

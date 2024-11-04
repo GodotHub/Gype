@@ -5,19 +5,20 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/collision_object3d.hpp>
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/area3d.hpp>
 #include <godot_cpp/classes/area3d.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/collision_object3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void area3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Area3D *area3d = static_cast<Area3D *>(JS_GetOpaque(val, Area3D::__class_id));
+	if (area3d)
+		memdelete(area3d);
 }
 
 static JSClassDef area3d_class_def = {

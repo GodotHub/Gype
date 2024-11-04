@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/compressed_texture_layered.hpp>
 #include <godot_cpp/classes/texture_layered.hpp>
+#include <godot_cpp/classes/compressed_texture_layered.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void compressed_texture_layered_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CompressedTextureLayered *compressed_texture_layered = static_cast<CompressedTextureLayered *>(JS_GetOpaque(val, CompressedTextureLayered::__class_id));
+	if (compressed_texture_layered)
+		memdelete(compressed_texture_layered);
 }
 
 static JSClassDef compressed_texture_layered_class_def = {

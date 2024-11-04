@@ -46,7 +46,5 @@ export declare class _Performance extends GodotObject{
     MONITOR_MAX = 33,
   }
 }
-}
-declare global {
-  const Performance: _Performance;
+const Performance: _Performance;
 }

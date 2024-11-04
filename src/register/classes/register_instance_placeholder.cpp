@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/instance_placeholder.hpp>
 #include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/instance_placeholder.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void instance_placeholder_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	InstancePlaceholder *instance_placeholder = static_cast<InstancePlaceholder *>(JS_GetOpaque(val, InstancePlaceholder::__class_id));
+	if (instance_placeholder)
+		memdelete(instance_placeholder);
 }
 
 static JSClassDef instance_placeholder_class_def = {

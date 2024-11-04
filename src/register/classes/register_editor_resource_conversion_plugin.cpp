@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void editor_resource_conversion_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorResourceConversionPlugin *editor_resource_conversion_plugin = static_cast<EditorResourceConversionPlugin *>(JS_GetOpaque(val, EditorResourceConversionPlugin::__class_id));
+	if (editor_resource_conversion_plugin)
+		memdelete(editor_resource_conversion_plugin);
 }
 
 static JSClassDef editor_resource_conversion_plugin_class_def = {

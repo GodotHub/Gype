@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void editor_scene_format_importer_blend_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorSceneFormatImporterBlend *editor_scene_format_importer_blend = static_cast<EditorSceneFormatImporterBlend *>(JS_GetOpaque(val, EditorSceneFormatImporterBlend::__class_id));
+	if (editor_scene_format_importer_blend)
+		memdelete(editor_scene_format_importer_blend);
 }
 
 static JSClassDef editor_scene_format_importer_blend_class_def = {

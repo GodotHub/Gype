@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_command_palette.hpp>
 #include <godot_cpp/classes/confirmation_dialog.hpp>
+#include <godot_cpp/classes/editor_command_palette.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_command_palette_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorCommandPalette *editor_command_palette = static_cast<EditorCommandPalette *>(JS_GetOpaque(val, EditorCommandPalette::__class_id));
+	if (editor_command_palette)
+		memdelete(editor_command_palette);
 }
 
 static JSClassDef editor_command_palette_class_def = {

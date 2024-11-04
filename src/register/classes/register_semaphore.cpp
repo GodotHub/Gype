@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/semaphore.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/semaphore.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void semaphore_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Semaphore *semaphore = static_cast<Semaphore *>(JS_GetOpaque(val, Semaphore::__class_id));
+	if (semaphore)
+		memdelete(semaphore);
 }
 
 static JSClassDef semaphore_class_def = {

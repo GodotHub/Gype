@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/status_indicator.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void status_indicator_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	StatusIndicator *status_indicator = static_cast<StatusIndicator *>(JS_GetOpaque(val, StatusIndicator::__class_id));
+	if (status_indicator)
+		memdelete(status_indicator);
 }
 
 static JSClassDef status_indicator_class_def = {

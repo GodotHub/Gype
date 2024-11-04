@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/missing_node.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/missing_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void missing_node_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	MissingNode *missing_node = static_cast<MissingNode *>(JS_GetOpaque(val, MissingNode::__class_id));
+	if (missing_node)
+		memdelete(missing_node);
 }
 
 static JSClassDef missing_node_class_def = {

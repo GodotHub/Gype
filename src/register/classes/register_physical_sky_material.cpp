@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/physical_sky_material.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void physical_sky_material_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PhysicalSkyMaterial *physical_sky_material = static_cast<PhysicalSkyMaterial *>(JS_GetOpaque(val, PhysicalSkyMaterial::__class_id));
+	if (physical_sky_material)
+		memdelete(physical_sky_material);
 }
 
 static JSClassDef physical_sky_material_class_def = {

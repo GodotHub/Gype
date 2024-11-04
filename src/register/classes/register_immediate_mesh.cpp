@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/immediate_mesh.hpp>
 #include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void immediate_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ImmediateMesh *immediate_mesh = static_cast<ImmediateMesh *>(JS_GetOpaque(val, ImmediateMesh::__class_id));
+	if (immediate_mesh)
+		memdelete(immediate_mesh);
 }
 
 static JSClassDef immediate_mesh_class_def = {

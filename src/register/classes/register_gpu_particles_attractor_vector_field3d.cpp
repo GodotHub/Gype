@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void gpu_particles_attractor_vector_field3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GPUParticlesAttractorVectorField3D *gpu_particles_attractor_vector_field3d = static_cast<GPUParticlesAttractorVectorField3D *>(JS_GetOpaque(val, GPUParticlesAttractorVectorField3D::__class_id));
+	if (gpu_particles_attractor_vector_field3d)
+		memdelete(gpu_particles_attractor_vector_field3d);
 }
 
 static JSClassDef gpu_particles_attractor_vector_field3d_class_def = {

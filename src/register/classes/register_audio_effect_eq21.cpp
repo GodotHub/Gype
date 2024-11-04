@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void audio_effect_eq21_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioEffectEQ21 *audio_effect_eq21 = static_cast<AudioEffectEQ21 *>(JS_GetOpaque(val, AudioEffectEQ21::__class_id));
+	if (audio_effect_eq21)
+		memdelete(audio_effect_eq21);
 }
 
 static JSClassDef audio_effect_eq21_class_def = {

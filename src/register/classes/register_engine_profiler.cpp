@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void engine_profiler_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EngineProfiler *engine_profiler = static_cast<EngineProfiler *>(JS_GetOpaque(val, EngineProfiler::__class_id));
+	if (engine_profiler)
+		memdelete(engine_profiler);
 }
 
 static JSClassDef engine_profiler_class_def = {

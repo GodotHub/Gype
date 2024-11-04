@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void skeleton_modification2d_two_bone_ik_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SkeletonModification2DTwoBoneIK *skeleton_modification2d_two_bone_ik = static_cast<SkeletonModification2DTwoBoneIK *>(JS_GetOpaque(val, SkeletonModification2DTwoBoneIK::__class_id));
+	if (skeleton_modification2d_two_bone_ik)
+		memdelete(skeleton_modification2d_two_bone_ik);
 }
 
 static JSClassDef skeleton_modification2d_two_bone_ik_class_def = {

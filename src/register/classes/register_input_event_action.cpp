@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_action.hpp>
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/input_event_action.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void input_event_action_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	InputEventAction *input_event_action = static_cast<InputEventAction *>(JS_GetOpaque(val, InputEventAction::__class_id));
+	if (input_event_action)
+		memdelete(input_event_action);
 }
 
 static JSClassDef input_event_action_class_def = {

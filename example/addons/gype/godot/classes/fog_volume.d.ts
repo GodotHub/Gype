@@ -1,6 +1,6 @@
 
-import { VisualInstance3D } from "@godot/classes/visual_instance3d";
 import { Material } from "@godot/classes/material";
+import { VisualInstance3D } from "@godot/classes/visual_instance3d";
 export declare class FogVolume extends VisualInstance3D{
   public set_size(_size: Vector3): void;
   public get_size(): Vector3;

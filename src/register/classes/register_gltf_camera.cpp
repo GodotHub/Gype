@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/gltf_camera.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/camera3d.hpp>
-#include <godot_cpp/classes/gltf_camera.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gltf_camera_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GLTFCamera *gltf_camera = static_cast<GLTFCamera *>(JS_GetOpaque(val, GLTFCamera::__class_id));
+	if (gltf_camera)
+		memdelete(gltf_camera);
 }
 
 static JSClassDef gltf_camera_class_def = {

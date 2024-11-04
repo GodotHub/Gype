@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void editor_export_platform_android_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorExportPlatformAndroid *editor_export_platform_android = static_cast<EditorExportPlatformAndroid *>(JS_GetOpaque(val, EditorExportPlatformAndroid::__class_id));
+	if (editor_export_platform_android)
+		memdelete(editor_export_platform_android);
 }
 
 static JSClassDef editor_export_platform_android_class_def = {

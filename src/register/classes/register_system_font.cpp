@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void system_font_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SystemFont *system_font = static_cast<SystemFont *>(JS_GetOpaque(val, SystemFont::__class_id));
+	if (system_font)
+		memdelete(system_font);
 }
 
 static JSClassDef system_font_class_def = {

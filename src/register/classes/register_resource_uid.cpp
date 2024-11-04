@@ -5,15 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource_uid.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/resource_uid.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
 
 static void resource_uid_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ResourceUID *resource_uid = static_cast<ResourceUID *>(JS_GetOpaque(val, ResourceUID::__class_id));
+	if (resource_uid)
+		memdelete(resource_uid);
 }
 
 static JSClassDef resource_uid_class_def = {

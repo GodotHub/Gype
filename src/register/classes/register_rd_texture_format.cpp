@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_texture_format.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rd_texture_format_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RDTextureFormat *rd_texture_format = static_cast<RDTextureFormat *>(JS_GetOpaque(val, RDTextureFormat::__class_id));
+	if (rd_texture_format)
+		memdelete(rd_texture_format);
 }
 
 static JSClassDef rd_texture_format_class_def = {

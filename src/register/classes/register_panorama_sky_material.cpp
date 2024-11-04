@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void panorama_sky_material_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PanoramaSkyMaterial *panorama_sky_material = static_cast<PanoramaSkyMaterial *>(JS_GetOpaque(val, PanoramaSkyMaterial::__class_id));
+	if (panorama_sky_material)
+		memdelete(panorama_sky_material);
 }
 
 static JSClassDef panorama_sky_material_class_def = {

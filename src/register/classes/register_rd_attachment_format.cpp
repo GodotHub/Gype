@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/rd_attachment_format.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rd_attachment_format_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RDAttachmentFormat *rd_attachment_format = static_cast<RDAttachmentFormat *>(JS_GetOpaque(val, RDAttachmentFormat::__class_id));
+	if (rd_attachment_format)
+		memdelete(rd_attachment_format);
 }
 
 static JSClassDef rd_attachment_format_class_def = {

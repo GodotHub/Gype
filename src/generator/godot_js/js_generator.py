@@ -8,8 +8,8 @@ from scripts.dts.utility_functions.generator import gen_utility_functions_d_ts
 
 if __name__ == '__main__':
     gen_classes()
-    # gen_utility_functions()
-    # gen_global_enum()
-    # gen_classes_d_ts()
-    # gen_builtin_classes_d_ts()
-    # gen_utility_functions_d_ts()
+    gen_utility_functions()
+    gen_global_enum()
+    gen_classes_d_ts()
+    gen_builtin_classes_d_ts()
+    gen_utility_functions_d_ts()

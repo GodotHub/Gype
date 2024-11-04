@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void aspect_ratio_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AspectRatioContainer *aspect_ratio_container = static_cast<AspectRatioContainer *>(JS_GetOpaque(val, AspectRatioContainer::__class_id));
+	if (aspect_ratio_container)
+		memdelete(aspect_ratio_container);
 }
 
 static JSClassDef aspect_ratio_container_class_def = {

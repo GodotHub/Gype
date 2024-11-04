@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void audio_effect_stereo_enhance_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioEffectStereoEnhance *audio_effect_stereo_enhance = static_cast<AudioEffectStereoEnhance *>(JS_GetOpaque(val, AudioEffectStereoEnhance::__class_id));
+	if (audio_effect_stereo_enhance)
+		memdelete(audio_effect_stereo_enhance);
 }
 
 static JSClassDef audio_effect_stereo_enhance_class_def = {

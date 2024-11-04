@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/voxel_gi_data.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void voxel_gi_data_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VoxelGIData *voxel_gi_data = static_cast<VoxelGIData *>(JS_GetOpaque(val, VoxelGIData::__class_id));
+	if (voxel_gi_data)
+		memdelete(voxel_gi_data);
 }
 
 static JSClassDef voxel_gi_data_class_def = {

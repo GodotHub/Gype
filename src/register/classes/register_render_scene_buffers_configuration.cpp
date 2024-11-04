@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/render_scene_buffers_configuration.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void render_scene_buffers_configuration_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RenderSceneBuffersConfiguration *render_scene_buffers_configuration = static_cast<RenderSceneBuffersConfiguration *>(JS_GetOpaque(val, RenderSceneBuffersConfiguration::__class_id));
+	if (render_scene_buffers_configuration)
+		memdelete(render_scene_buffers_configuration);
 }
 
 static JSClassDef render_scene_buffers_configuration_class_def = {

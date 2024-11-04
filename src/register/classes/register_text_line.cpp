@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/text_line.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void text_line_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	TextLine *text_line = static_cast<TextLine *>(JS_GetOpaque(val, TextLine::__class_id));
+	if (text_line)
+		memdelete(text_line);
 }
 
 static JSClassDef text_line_class_def = {

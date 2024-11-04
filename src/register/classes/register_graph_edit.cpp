@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/h_box_container.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/graph_frame.hpp>
 #include <godot_cpp/classes/graph_edit.hpp>
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/h_box_container.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -17,8 +17,9 @@
 using namespace godot;
 
 static void graph_edit_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GraphEdit *graph_edit = static_cast<GraphEdit *>(JS_GetOpaque(val, GraphEdit::__class_id));
+	if (graph_edit)
+		memdelete(graph_edit);
 }
 
 static JSClassDef graph_edit_class_def = {

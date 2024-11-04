@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void animation_node_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AnimationNode *animation_node = static_cast<AnimationNode *>(JS_GetOpaque(val, AnimationNode::__class_id));
+	if (animation_node)
+		memdelete(animation_node);
 }
 
 static JSClassDef animation_node_class_def = {

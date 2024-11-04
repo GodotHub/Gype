@@ -26,8 +26,8 @@ export declare class Color {
   public to_argb64(): number;
   public to_abgr64(): number;
   public to_rgba64(): number;
-  public to_html(_with_alpha: boolean): String;
-  public clamp(_min: Color, _max: Color): Color;
+  public to_html(_with_alpha: boolean = true): String;
+  public clamp(_min: Color = Color(0, 0, 0, 0), _max: Color = Color(1, 1, 1, 1)): Color;
   public inverted(): Color;
   public lerp(_to: Color, _weight: number): Color;
   public lightened(_amount: number): Color;
@@ -42,8 +42,8 @@ export declare class Color {
   public html(_rgba: GDString | StringName | string): Color;
   public html_is_valid(_color: GDString | StringName | string): boolean;
   public from_string(_str: GDString | StringName | string, _default: Color): Color;
-  public from_hsv(_h: number, _s: number, _v: number, _alpha: number): Color;
-  public from_ok_hsl(_h: number, _s: number, _l: number, _alpha: number): Color;
+  public from_hsv(_h: number, _s: number, _v: number, _alpha: number = 1.0): Color;
+  public from_ok_hsl(_h: number, _s: number, _l: number, _alpha: number = 1.0): Color;
   public from_rgbe9995(_rgbe: number): Color;
 }
 }

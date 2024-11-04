@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/syntax_highlighter.hpp>
 #include <godot_cpp/classes/code_highlighter.hpp>
+#include <godot_cpp/classes/syntax_highlighter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void code_highlighter_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CodeHighlighter *code_highlighter = static_cast<CodeHighlighter *>(JS_GetOpaque(val, CodeHighlighter::__class_id));
+	if (code_highlighter)
+		memdelete(code_highlighter);
 }
 
 static JSClassDef code_highlighter_class_def = {

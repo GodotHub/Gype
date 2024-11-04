@@ -5,18 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/e_net_packet_peer.hpp>
 #include <godot_cpp/classes/multiplayer_peer.hpp>
-#include <godot_cpp/classes/e_net_multiplayer_peer.hpp>
 #include <godot_cpp/classes/e_net_connection.hpp>
+#include <godot_cpp/classes/e_net_multiplayer_peer.hpp>
+#include <godot_cpp/classes/e_net_packet_peer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void e_net_multiplayer_peer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ENetMultiplayerPeer *e_net_multiplayer_peer = static_cast<ENetMultiplayerPeer *>(JS_GetOpaque(val, ENetMultiplayerPeer::__class_id));
+	if (e_net_multiplayer_peer)
+		memdelete(e_net_multiplayer_peer);
 }
 
 static JSClassDef e_net_multiplayer_peer_class_def = {

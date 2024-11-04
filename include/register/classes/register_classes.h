@@ -4,27 +4,20 @@
 #include <godot_cpp/variant/utility_functions.hpp>
 #include <unordered_map>
 
-extern std::unordered_map<intptr_t, int64_t> instance_id_map;
-
-#define CHECK_INSTANCE_VALID(val)                                   \
-	{                                                               \
-		void *opaque = JS_GetOpaque(val, JS_GetClassID(val));       \
-		Object *object = reinterpret_cast<Object *>(opaque);        \
-		intptr_t ptr = (intptr_t)object->_owner;                    \
-		ERR_FAIL_COND(instance_id_map.count(ptr) <= 0)              \
-		int64_t id = instance_id_map[ptr];                          \
-		ERR_FAIL_COND(!UtilityFunctions::is_instance_id_valid(id)); \
+#define CHECK_INSTANCE_VALID(val)                                                          \
+	{                                                                                      \
+		void *opaque = JS_GetOpaque(val, JS_GetClassID(val));                              \
+		Object *object = reinterpret_cast<Object *>(opaque);                               \
+		intptr_t ptr = (intptr_t)object->_owner;                                           \
+		ERR_FAIL_COND(!UtilityFunctions::is_instance_id_valid(object->get_instance_id())); \
 	}
 
-#define CHECK_INSTANCE_VALID_V(val)                                              \
-	{                                                                            \
-		JSValue undefined = JS_UNDEFINED;                                        \
-		void *opaque = JS_GetOpaque(val, JS_GetClassID(val));                    \
-		Object *object = reinterpret_cast<Object *>(opaque);                     \
-		intptr_t ptr = (intptr_t)object->_owner;                                 \
-		ERR_FAIL_COND_V(instance_id_map.count(ptr) <= 0, undefined);             \
-		int64_t id = instance_id_map[ptr];                                       \
-		ERR_FAIL_COND_V(!UtilityFunctions::is_instance_id_valid(id), undefined); \
+#define CHECK_INSTANCE_VALID_V(val)                                                                     \
+	{                                                                                                   \
+		JSValue undefined = JS_UNDEFINED;                                                               \
+		void *opaque = JS_GetOpaque(val, JS_GetClassID(val));                                           \
+		Object *object = reinterpret_cast<Object *>(opaque);                                            \
+		ERR_FAIL_COND_V(!UtilityFunctions::is_instance_id_valid(object->get_instance_id()), undefined); \
 	}
 void register_aes_context();
 void register_a_star2d();

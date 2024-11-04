@@ -1,6 +1,6 @@
 
-import { SceneReplicationConfig } from "@godot/classes/scene_replication_config";
 import { Node } from "@godot/classes/node";
+import { SceneReplicationConfig } from "@godot/classes/scene_replication_config";
 export declare class MultiplayerSynchronizer extends Node{
   public set_root_path(_path: GDString | NodePath | string): void;
   public get_root_path(): NodePath;

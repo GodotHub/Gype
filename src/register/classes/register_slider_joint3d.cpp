@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/joint3d.hpp>
 #include <godot_cpp/classes/slider_joint3d.hpp>
+#include <godot_cpp/classes/joint3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void slider_joint3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SliderJoint3D *slider_joint3d = static_cast<SliderJoint3D *>(JS_GetOpaque(val, SliderJoint3D::__class_id));
+	if (slider_joint3d)
+		memdelete(slider_joint3d);
 }
 
 static JSClassDef slider_joint3d_class_def = {

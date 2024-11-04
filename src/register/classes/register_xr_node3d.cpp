@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/xr_pose.hpp>
 #include <godot_cpp/classes/xr_node3d.hpp>
+#include <godot_cpp/classes/xr_pose.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void xr_node3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	XRNode3D *xr_node3d = static_cast<XRNode3D *>(JS_GetOpaque(val, XRNode3D::__class_id));
+	if (xr_node3d)
+		memdelete(xr_node3d);
 }
 
 static JSClassDef xr_node3d_class_def = {

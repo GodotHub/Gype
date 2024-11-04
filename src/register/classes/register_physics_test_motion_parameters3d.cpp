@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/physics_test_motion_parameters3d.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void physics_test_motion_parameters3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PhysicsTestMotionParameters3D *physics_test_motion_parameters3d = static_cast<PhysicsTestMotionParameters3D *>(JS_GetOpaque(val, PhysicsTestMotionParameters3D::__class_id));
+	if (physics_test_motion_parameters3d)
+		memdelete(physics_test_motion_parameters3d);
 }
 
 static JSClassDef physics_test_motion_parameters3d_class_def = {

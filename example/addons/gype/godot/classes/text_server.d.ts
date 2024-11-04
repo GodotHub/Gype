@@ -1,6 +1,6 @@
 
-import { RefCounted } from "@godot/classes/ref_counted";
 import { Image } from "@godot/classes/image";
+import { RefCounted } from "@godot/classes/ref_counted";
 export declare class TextServer extends RefCounted{
   public has_feature(_feature: number): boolean;
   public get_name(): String;

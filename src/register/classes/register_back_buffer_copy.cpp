@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/back_buffer_copy.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void back_buffer_copy_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	BackBufferCopy *back_buffer_copy = static_cast<BackBufferCopy *>(JS_GetOpaque(val, BackBufferCopy::__class_id));
+	if (back_buffer_copy)
+		memdelete(back_buffer_copy);
 }
 
 static JSClassDef back_buffer_copy_class_def = {

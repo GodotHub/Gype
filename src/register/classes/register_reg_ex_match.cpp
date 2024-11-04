@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void reg_ex_match_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RegExMatch *reg_ex_match = static_cast<RegExMatch *>(JS_GetOpaque(val, RegExMatch::__class_id));
+	if (reg_ex_match)
+		memdelete(reg_ex_match);
 }
 
 static JSClassDef reg_ex_match_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void reflection_probe_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ReflectionProbe *reflection_probe = static_cast<ReflectionProbe *>(JS_GetOpaque(val, ReflectionProbe::__class_id));
+	if (reflection_probe)
+		memdelete(reflection_probe);
 }
 
 static JSClassDef reflection_probe_class_def = {

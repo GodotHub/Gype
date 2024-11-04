@@ -1,6 +1,6 @@
 
-import { Gradient } from "@godot/classes/gradient";
 import { Texture3D } from "@godot/classes/texture3d";
+import { Gradient } from "@godot/classes/gradient";
 import { Noise } from "@godot/classes/noise";
 export declare class NoiseTexture3D extends Texture3D{
   public set_width(_width: number): void;

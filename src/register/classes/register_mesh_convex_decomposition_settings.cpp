@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void mesh_convex_decomposition_settings_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	MeshConvexDecompositionSettings *mesh_convex_decomposition_settings = static_cast<MeshConvexDecompositionSettings *>(JS_GetOpaque(val, MeshConvexDecompositionSettings::__class_id));
+	if (mesh_convex_decomposition_settings)
+		memdelete(mesh_convex_decomposition_settings);
 }
 
 static JSClassDef mesh_convex_decomposition_settings_class_def = {

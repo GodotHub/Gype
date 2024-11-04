@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void ref_counted_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RefCounted *ref_counted = static_cast<RefCounted *>(JS_GetOpaque(val, RefCounted::__class_id));
+	if (ref_counted)
+		memdelete(ref_counted);
 }
 
 static JSClassDef ref_counted_class_def = {

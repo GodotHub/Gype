@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/path_follow2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void path_follow2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PathFollow2D *path_follow2d = static_cast<PathFollow2D *>(JS_GetOpaque(val, PathFollow2D::__class_id));
+	if (path_follow2d)
+		memdelete(path_follow2d);
 }
 
 static JSClassDef path_follow2d_class_def = {

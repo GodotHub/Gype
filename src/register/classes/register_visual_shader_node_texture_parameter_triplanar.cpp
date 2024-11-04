@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_texture_parameter.hpp>
 #include <godot_cpp/classes/visual_shader_node_texture_parameter_triplanar.hpp>
+#include <godot_cpp/classes/visual_shader_node_texture_parameter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_texture_parameter_triplanar_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeTextureParameterTriplanar *visual_shader_node_texture_parameter_triplanar = static_cast<VisualShaderNodeTextureParameterTriplanar *>(JS_GetOpaque(val, VisualShaderNodeTextureParameterTriplanar::__class_id));
+	if (visual_shader_node_texture_parameter_triplanar)
+		memdelete(visual_shader_node_texture_parameter_triplanar);
 }
 
 static JSClassDef visual_shader_node_texture_parameter_triplanar_class_def = {

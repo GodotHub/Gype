@@ -5,15 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/geometry2d.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/geometry2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
 
 static void geometry2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Geometry2D *geometry2d = static_cast<Geometry2D *>(JS_GetOpaque(val, Geometry2D::__class_id));
+	if (geometry2d)
+		memdelete(geometry2d);
 }
 
 static JSClassDef geometry2d_class_def = {

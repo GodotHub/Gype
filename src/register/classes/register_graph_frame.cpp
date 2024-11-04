@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/graph_frame.hpp>
-#include <godot_cpp/classes/graph_element.hpp>
 #include <godot_cpp/classes/h_box_container.hpp>
+#include <godot_cpp/classes/graph_element.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void graph_frame_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GraphFrame *graph_frame = static_cast<GraphFrame *>(JS_GetOpaque(val, GraphFrame::__class_id));
+	if (graph_frame)
+		memdelete(graph_frame);
 }
 
 static JSClassDef graph_frame_class_def = {

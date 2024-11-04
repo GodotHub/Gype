@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void render_scene_data_rd_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RenderSceneDataRD *render_scene_data_rd = static_cast<RenderSceneDataRD *>(JS_GetOpaque(val, RenderSceneDataRD::__class_id));
+	if (render_scene_data_rd)
+		memdelete(render_scene_data_rd);
 }
 
 static JSClassDef render_scene_data_rd_class_def = {

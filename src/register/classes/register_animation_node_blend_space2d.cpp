@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/classes/animation_node_blend_space2d.hpp>
+#include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_node_blend_space2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AnimationNodeBlendSpace2D *animation_node_blend_space2d = static_cast<AnimationNodeBlendSpace2D *>(JS_GetOpaque(val, AnimationNodeBlendSpace2D::__class_id));
+	if (animation_node_blend_space2d)
+		memdelete(animation_node_blend_space2d);
 }
 
 static JSClassDef animation_node_blend_space2d_class_def = {

@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void navigation_agent2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	NavigationAgent2D *navigation_agent2d = static_cast<NavigationAgent2D *>(JS_GetOpaque(val, NavigationAgent2D::__class_id));
+	if (navigation_agent2d)
+		memdelete(navigation_agent2d);
 }
 
 static JSClassDef navigation_agent2d_class_def = {

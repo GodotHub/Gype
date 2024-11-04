@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_scene_format_importer_gltf.hpp>
 #include <godot_cpp/classes/editor_scene_format_importer.hpp>
+#include <godot_cpp/classes/editor_scene_format_importer_gltf.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_scene_format_importer_gltf_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorSceneFormatImporterGLTF *editor_scene_format_importer_gltf = static_cast<EditorSceneFormatImporterGLTF *>(JS_GetOpaque(val, EditorSceneFormatImporterGLTF::__class_id));
+	if (editor_scene_format_importer_gltf)
+		memdelete(editor_scene_format_importer_gltf);
 }
 
 static JSClassDef editor_scene_format_importer_gltf_class_def = {

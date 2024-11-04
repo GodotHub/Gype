@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/random_number_generator.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void random_number_generator_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RandomNumberGenerator *random_number_generator = static_cast<RandomNumberGenerator *>(JS_GetOpaque(val, RandomNumberGenerator::__class_id));
+	if (random_number_generator)
+		memdelete(random_number_generator);
 }
 
 static JSClassDef random_number_generator_class_def = {

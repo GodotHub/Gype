@@ -6,13 +6,13 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/multiplayer_api.hpp>
-#include <godot_cpp/classes/scene_tree.hpp>
 #include <godot_cpp/classes/tween.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/multiplayer_api.hpp>
 #include <godot_cpp/classes/viewport.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/scene_tree.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -20,8 +20,9 @@
 using namespace godot;
 
 static void node_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Node *node = static_cast<Node *>(JS_GetOpaque(val, Node::__class_id));
+	if (node)
+		memdelete(node);
 }
 
 static JSClassDef node_class_def = {

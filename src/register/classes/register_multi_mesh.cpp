@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void multi_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	MultiMesh *multi_mesh = static_cast<MultiMesh *>(JS_GetOpaque(val, MultiMesh::__class_id));
+	if (multi_mesh)
+		memdelete(multi_mesh);
 }
 
 static JSClassDef multi_mesh_class_def = {

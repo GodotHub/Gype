@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_parameter.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_parameter_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeParameter *visual_shader_node_parameter = static_cast<VisualShaderNodeParameter *>(JS_GetOpaque(val, VisualShaderNodeParameter::__class_id));
+	if (visual_shader_node_parameter)
+		memdelete(visual_shader_node_parameter);
 }
 
 static JSClassDef visual_shader_node_parameter_class_def = {

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/editor_feature_profile.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_feature_profile_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorFeatureProfile *editor_feature_profile = static_cast<EditorFeatureProfile *>(JS_GetOpaque(val, EditorFeatureProfile::__class_id));
+	if (editor_feature_profile)
+		memdelete(editor_feature_profile);
 }
 
 static JSClassDef editor_feature_profile_class_def = {

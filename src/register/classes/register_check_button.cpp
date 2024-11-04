@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/check_button.hpp>
+#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void check_button_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CheckButton *check_button = static_cast<CheckButton *>(JS_GetOpaque(val, CheckButton::__class_id));
+	if (check_button)
+		memdelete(check_button);
 }
 
 static JSClassDef check_button_class_def = {

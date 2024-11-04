@@ -5,19 +5,20 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/compositor.hpp>
+#include <godot_cpp/classes/environment.hpp>
 #include <godot_cpp/classes/camera_attributes.hpp>
+#include <godot_cpp/classes/compositor.hpp>
 #include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/environment.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void camera3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Camera3D *camera3d = static_cast<Camera3D *>(JS_GetOpaque(val, Camera3D::__class_id));
+	if (camera3d)
+		memdelete(camera3d);
 }
 
 static JSClassDef camera3d_class_def = {

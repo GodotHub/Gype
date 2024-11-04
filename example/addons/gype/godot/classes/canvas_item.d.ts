@@ -1,14 +1,14 @@
 
-import { World2D } from "@godot/classes/world2d";
 import { MultiMesh } from "@godot/classes/multi_mesh";
-import { StyleBox } from "@godot/classes/style_box";
-import { Node } from "@godot/classes/node";
+import { Texture2D } from "@godot/classes/texture2d";
 import { Material } from "@godot/classes/material";
 import { CanvasLayer } from "@godot/classes/canvas_layer";
-import { InputEvent } from "@godot/classes/input_event";
+import { StyleBox } from "@godot/classes/style_box";
 import { Font } from "@godot/classes/font";
+import { World2D } from "@godot/classes/world2d";
+import { InputEvent } from "@godot/classes/input_event";
+import { Node } from "@godot/classes/node";
 import { Mesh } from "@godot/classes/mesh";
-import { Texture2D } from "@godot/classes/texture2d";
 export declare class CanvasItem extends Node{
   public _draw(): void;
   public get_canvas_item(): RID;

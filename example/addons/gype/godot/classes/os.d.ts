@@ -98,7 +98,5 @@ export declare class _OS extends GodotObject{
     SYSTEM_DIR_RINGTONES = 7,
   }
 }
-}
-declare global {
-  const OS: _OS;
+const OS: _OS;
 }

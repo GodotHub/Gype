@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/animation_node_state_machine_transition.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_node_state_machine_transition_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AnimationNodeStateMachineTransition *animation_node_state_machine_transition = static_cast<AnimationNodeStateMachineTransition *>(JS_GetOpaque(val, AnimationNodeStateMachineTransition::__class_id));
+	if (animation_node_state_machine_transition)
+		memdelete(animation_node_state_machine_transition);
 }
 
 static JSClassDef animation_node_state_machine_transition_class_def = {

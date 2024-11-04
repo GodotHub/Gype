@@ -1,9 +1,9 @@
 
-import { NavigationMeshSourceGeometryData3D } from "@godot/classes/navigation_mesh_source_geometry_data3d";
 import { NavigationMesh } from "@godot/classes/navigation_mesh";
-import { NavigationPathQueryParameters3D } from "@godot/classes/navigation_path_query_parameters3d";
 import { GodotObject } from "@godot/classes/godot_object";
 import { Node } from "@godot/classes/node";
+import { NavigationPathQueryParameters3D } from "@godot/classes/navigation_path_query_parameters3d";
+import { NavigationMeshSourceGeometryData3D } from "@godot/classes/navigation_mesh_source_geometry_data3d";
 import { NavigationPathQueryResult3D } from "@godot/classes/navigation_path_query_result3d";
 declare global {
 export declare class _NavigationServer3D extends GodotObject{
@@ -166,7 +166,5 @@ export declare class _NavigationServer3D extends GodotObject{
   public get navigation_debug_changed(): Signal;
   public get avoidance_debug_changed(): Signal;
 }
-}
-declare global {
-  const NavigationServer3D: _NavigationServer3D;
+const NavigationServer3D: _NavigationServer3D;
 }

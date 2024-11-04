@@ -100,7 +100,7 @@ convert(JSContext *ctx, JSValue v) {
 template <typename T, typename... P, std::size_t... Is>
 JSValue call_builtin_method_no_ret_impl(void (T::*Func)(P...), JSContext *ctx, JSValue this_val, int argc, JSValue *argv, std::index_sequence<Is...>) {
 	T *obj = (T *)JS_GetOpaque(this_val, JS_GetClassID(this_val));
-	(JS_DupValue(ctx, argv[Is]), ...);
+
 	(obj->*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, std::forward<JSValue>(argv[Is]))...);
 	return JS_UNDEFINED;
 };
@@ -112,7 +112,6 @@ JSValue call_builtin_method_no_ret(void (T::*Func)(P...), JSContext *ctx, JSValu
 
 template <typename T, typename... P, std::size_t... Is>
 JSValue call_builtin_const_method_no_ret_impl(void (T::*Func)(P...) const, JSContext *ctx, JSValue this_val, int argc, JSValue *argv, std::index_sequence<Is...>) {
-	(JS_DupValue(ctx, argv[Is]), ...);
 	T *obj = (T *)JS_GetOpaque(this_val, JS_GetClassID(this_val));
 	(obj->*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, argv[Is])...);
 	return JS_UNDEFINED;
@@ -124,7 +123,6 @@ JSValue call_builtin_const_method_no_ret(void (T::*Func)(P...) const, JSContext 
 };
 template <typename R, typename T, typename... P, std::size_t... Is>
 JSValue call_builtin_method_ret_impl(R (T::*Func)(P...), JSContext *ctx, JSValue this_val, int argc, JSValue *argv, std::index_sequence<Is...>) {
-	(JS_DupValue(ctx, argv[Is]), ...);
 	T *obj = (T *)JS_GetOpaque(this_val, JS_GetClassID(this_val));
 	return Variant((obj->*Func)((convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, argv[Is]))...));
 };
@@ -136,7 +134,6 @@ JSValue call_builtin_method_ret(R (T::*Func)(P...), JSContext *ctx, JSValue this
 
 template <typename R, typename T, typename... P, std::size_t... Is>
 JSValue call_builtin_const_method_ret_impl(R (T::*Func)(P...) const, JSContext *ctx, JSValue this_val, int argc, JSValue *argv, std::index_sequence<Is...>) {
-	(JS_DupValue(ctx, argv[Is]), ...);
 	T *obj = (T *)JS_GetOpaque(this_val, JS_GetClassID(this_val));
 	return Variant((obj->*Func)((convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, argv[Is]))...));
 };
@@ -148,7 +145,6 @@ JSValue call_builtin_const_method_ret(R (T::*Func)(P...) const, JSContext *ctx, 
 
 template <typename R, typename... P, std::size_t... Is>
 JSValue call_builtin_static_method_ret_impl(R (*Func)(P...), JSContext *ctx, JSValue this_val, int argc, JSValue *argv, std::index_sequence<Is...>) {
-	(JS_DupValue(ctx, argv[Is]), ...);
 	return Variant((*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, argv[Is])...));
 };
 
@@ -159,7 +155,6 @@ JSValue call_builtin_static_method_ret(R (*Func)(P...), JSContext *ctx, JSValue 
 
 template <typename... P, std::size_t... Is>
 JSValue call_builtin_static_method_no_ret_impl(void (*Func)(P...), JSContext *ctx, JSValue this_val, int argc, JSValue *argv, std::index_sequence<Is...>) {
-	(JS_DupValue(ctx, argv[Is]), ...);
 	(*Func)(convert<std::tuple_element_t<Is, std::tuple<P...>>>(ctx, argv[Is])...);
 	return JS_UNDEFINED;
 };
@@ -171,7 +166,6 @@ JSValue call_builtin_static_method_no_ret(void (*Func)(P...), JSContext *ctx, JS
 
 template <typename T, typename... P, std::size_t... Is>
 JSValue call_builtin_vararg_method_no_ret_impl(void (T::*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv, std::index_sequence<Is...>) {
-	(JS_DupValue(ctx, argv[Is]), ...);
 	T *gd_val = static_cast<T *>(JS_GetOpaque(this_obj, JS_GetClassID(this_obj)));
 	constexpr int fixed_argc = sizeof...(P) - 1;
 	std::vector<Variant> variant_args;
@@ -190,7 +184,6 @@ JSValue call_builtin_vararg_method_no_ret(void (T::*Func)(P...), JSContext *ctx,
 
 template <typename T, typename... P, std::size_t... Is>
 JSValue call_builtin_const_vararg_method_no_ret_impl(void (T::*Func)(P...) const, JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv, std::index_sequence<Is...>) {
-	(JS_DupValue(ctx, argv[Is]), ...);
 	T *gd_val = static_cast<T *>(JS_GetOpaque(this_obj, JS_GetClassID(this_obj)));
 	constexpr int fixed_argc = sizeof...(P) - 1;
 	std::vector<Variant> variant_args;
@@ -226,7 +219,6 @@ JSValue call_builtin_const_no_fixed_vararg_method_no_ret(void (T::*Func)(std::ve
 
 template <typename T, typename R, typename... P, std::size_t... Is>
 JSValue call_builtin_vararg_method_ret_impl(R (T::*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv, std::index_sequence<Is...>) {
-	(JS_DupValue(ctx, argv[Is]), ...);
 	T *gd_val = static_cast<T *>(JS_GetOpaque(this_obj, JS_GetClassID(this_obj)));
 	constexpr int fixed_argc = sizeof...(P) - 1;
 	std::vector<Variant> variant_args;
@@ -244,7 +236,6 @@ JSValue call_builtin_vararg_method_ret(R (T::*Func)(P...), JSContext *ctx, JSVal
 
 template <typename... P, std::size_t... Is>
 JSValue call_builtin_static_vararg_method_no_ret_impl(void (*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv, std::index_sequence<Is...>) {
-	(JS_DupValue(ctx, argv[Is]), ...);
 	constexpr int fixed_argc = sizeof...(P) - 1;
 	std::vector<Variant> variant_args;
 	for (int i = fixed_argc; i < argc; ++i) {
@@ -262,7 +253,6 @@ JSValue call_builtin_static_vararg_method_no_ret(void (*Func)(P...), JSContext *
 
 template <typename T, typename R, typename... P, std::size_t... Is>
 JSValue call_builtin_const_vararg_method_ret_impl(R (T::*Func)(P...) const, JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv, std::index_sequence<Is...>) {
-	(JS_DupValue(ctx, argv[Is]), ...);
 	T *gd_val = static_cast<T *>(JS_GetOpaque(this_obj, JS_GetClassID(this_obj)));
 	constexpr int fixed_argc = sizeof...(P) - 1;
 	std::vector<Variant> variant_args;
@@ -296,7 +286,6 @@ JSValue call_builtin_const_no_fixed_vararg_method_ret(R (T::*Func)(std::vector<V
 
 template <typename R, typename... P, std::size_t... Is>
 JSValue call_builtin_static_vararg_method_ret_impl(R (*Func)(P...), JSContext *ctx, JSValueConst this_obj, int argc, JSValueConst *argv, std::index_sequence<Is...>) {
-	(JS_DupValue(ctx, argv[Is]), ...);
 	std::vector<Variant> variant_args;
 	for (int i = 0; i < argc; ++i) {
 		JS_DupValue(ctx, argv[i]);

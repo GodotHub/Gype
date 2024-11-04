@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void missing_resource_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	MissingResource *missing_resource = static_cast<MissingResource *>(JS_GetOpaque(val, MissingResource::__class_id));
+	if (missing_resource)
+		memdelete(missing_resource);
 }
 
 static JSClassDef missing_resource_class_def = {

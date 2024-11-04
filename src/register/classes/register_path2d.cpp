@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/curve2d.hpp>
-#include <godot_cpp/classes/path2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
+#include <godot_cpp/classes/path2d.hpp>
+#include <godot_cpp/classes/curve2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void path2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Path2D *path2d = static_cast<Path2D *>(JS_GetOpaque(val, Path2D::__class_id));
+	if (path2d)
+		memdelete(path2d);
 }
 
 static JSClassDef path2d_class_def = {

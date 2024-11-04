@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource_importer.hpp>
 #include <godot_cpp/classes/resource_importer_dynamic_font.hpp>
+#include <godot_cpp/classes/resource_importer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void resource_importer_dynamic_font_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ResourceImporterDynamicFont *resource_importer_dynamic_font = static_cast<ResourceImporterDynamicFont *>(JS_GetOpaque(val, ResourceImporterDynamicFont::__class_id));
+	if (resource_importer_dynamic_font)
+		memdelete(resource_importer_dynamic_font);
 }
 
 static JSClassDef resource_importer_dynamic_font_class_def = {

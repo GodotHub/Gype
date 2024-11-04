@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void multiplayer_peer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	MultiplayerPeer *multiplayer_peer = static_cast<MultiplayerPeer *>(JS_GetOpaque(val, MultiplayerPeer::__class_id));
+	if (multiplayer_peer)
+		memdelete(multiplayer_peer);
 }
 
 static JSClassDef multiplayer_peer_class_def = {

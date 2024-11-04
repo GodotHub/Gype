@@ -1,7 +1,7 @@
 
-import { ResourceFormatSaver } from "@godot/classes/resource_format_saver";
 import { GodotObject } from "@godot/classes/godot_object";
 import { Resource } from "@godot/classes/resource";
+import { ResourceFormatSaver } from "@godot/classes/resource_format_saver";
 declare global {
 export declare class _ResourceSaver extends GodotObject{
   public save(_resource: Resource, _path: GDString | StringName | string = "", _flags: number = 0): number;
@@ -19,7 +19,5 @@ export declare class _ResourceSaver extends GodotObject{
     FLAG_REPLACE_SUBRESOURCE_PATHS = 64,
   }
 }
-}
-declare global {
-  const ResourceSaver: _ResourceSaver;
+const ResourceSaver: _ResourceSaver;
 }

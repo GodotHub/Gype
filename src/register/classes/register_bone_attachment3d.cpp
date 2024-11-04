@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void bone_attachment3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	BoneAttachment3D *bone_attachment3d = static_cast<BoneAttachment3D *>(JS_GetOpaque(val, BoneAttachment3D::__class_id));
+	if (bone_attachment3d)
+		memdelete(bone_attachment3d);
 }
 
 static JSClassDef bone_attachment3d_class_def = {

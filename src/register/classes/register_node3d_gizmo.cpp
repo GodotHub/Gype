@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void node3d_gizmo_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Node3DGizmo *node3d_gizmo = static_cast<Node3DGizmo *>(JS_GetOpaque(val, Node3DGizmo::__class_id));
+	if (node3d_gizmo)
+		memdelete(node3d_gizmo);
 }
 
 static JSClassDef node3d_gizmo_class_def = {

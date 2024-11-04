@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/bone2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void bone2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Bone2D *bone2d = static_cast<Bone2D *>(JS_GetOpaque(val, Bone2D::__class_id));
+	if (bone2d)
+		memdelete(bone2d);
 }
 
 static JSClassDef bone2d_class_def = {

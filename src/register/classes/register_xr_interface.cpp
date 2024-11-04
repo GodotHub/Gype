@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/xr_interface.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void xr_interface_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	XRInterface *xr_interface = static_cast<XRInterface *>(JS_GetOpaque(val, XRInterface::__class_id));
+	if (xr_interface)
+		memdelete(xr_interface);
 }
 
 static JSClassDef xr_interface_class_def = {

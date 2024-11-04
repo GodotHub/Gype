@@ -6,37 +6,38 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/editor_node3d_gizmo_plugin.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/input_event.hpp>
-#include <godot_cpp/classes/camera3d.hpp>
-#include <godot_cpp/classes/config_file.hpp>
-#include <godot_cpp/classes/script.hpp>
-#include <godot_cpp/classes/editor_scene_format_importer.hpp>
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/editor_plugin.hpp>
-#include <godot_cpp/classes/script_create_dialog.hpp>
-#include <godot_cpp/classes/button.hpp>
-#include <godot_cpp/classes/editor_debugger_plugin.hpp>
+#include <godot_cpp/classes/editor_translation_parser_plugin.hpp>
 #include <godot_cpp/classes/editor_undo_redo_manager.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/editor_scene_post_import_plugin.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/editor_resource_conversion_plugin.hpp>
-#include <godot_cpp/classes/editor_interface.hpp>
-#include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/editor_inspector_plugin.hpp>
 #include <godot_cpp/classes/editor_import_plugin.hpp>
-#include <godot_cpp/classes/shortcut.hpp>
-#include <godot_cpp/classes/editor_translation_parser_plugin.hpp>
-#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
+#include <godot_cpp/classes/script_create_dialog.hpp>
 #include <godot_cpp/classes/editor_export_plugin.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/editor_resource_conversion_plugin.hpp>
+#include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/button.hpp>
+#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/editor_interface.hpp>
+#include <godot_cpp/classes/config_file.hpp>
+#include <godot_cpp/classes/editor_debugger_plugin.hpp>
+#include <godot_cpp/classes/editor_plugin.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/editor_scene_format_importer.hpp>
+#include <godot_cpp/classes/shortcut.hpp>
+#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorPlugin *editor_plugin = static_cast<EditorPlugin *>(JS_GetOpaque(val, EditorPlugin::__class_id));
+	if (editor_plugin)
+		memdelete(editor_plugin);
 }
 
 static JSClassDef editor_plugin_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void generic6_dof_joint3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Generic6DOFJoint3D *generic6_dof_joint3d = static_cast<Generic6DOFJoint3D *>(JS_GetOpaque(val, Generic6DOFJoint3D::__class_id));
+	if (generic6_dof_joint3d)
+		memdelete(generic6_dof_joint3d);
 }
 
 static JSClassDef generic6_dof_joint3d_class_def = {

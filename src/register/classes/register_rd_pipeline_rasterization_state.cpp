@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void rd_pipeline_rasterization_state_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RDPipelineRasterizationState *rd_pipeline_rasterization_state = static_cast<RDPipelineRasterizationState *>(JS_GetOpaque(val, RDPipelineRasterizationState::__class_id));
+	if (rd_pipeline_rasterization_state)
+		memdelete(rd_pipeline_rasterization_state);
 }
 
 static JSClassDef rd_pipeline_rasterization_state_class_def = {

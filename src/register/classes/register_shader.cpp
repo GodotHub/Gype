@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/shader.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void shader_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Shader *shader = static_cast<Shader *>(JS_GetOpaque(val, Shader::__class_id));
+	if (shader)
+		memdelete(shader);
 }
 
 static JSClassDef shader_class_def = {

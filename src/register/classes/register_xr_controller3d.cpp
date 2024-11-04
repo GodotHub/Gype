@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_controller3d.hpp>
 #include <godot_cpp/classes/xr_node3d.hpp>
+#include <godot_cpp/classes/xr_controller3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void xr_controller3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	XRController3D *xr_controller3d = static_cast<XRController3D *>(JS_GetOpaque(val, XRController3D::__class_id));
+	if (xr_controller3d)
+		memdelete(xr_controller3d);
 }
 
 static JSClassDef xr_controller3d_class_def = {

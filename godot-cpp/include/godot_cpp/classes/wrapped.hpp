@@ -41,6 +41,8 @@
 
 #include <godot_cpp/godot.hpp>
 
+#include <godot_cpp/variant/utility_functions.hpp>
+
 #include "quickjs/env.h"
 #include "quickjs/quickjs.h"
 
@@ -496,6 +498,8 @@ public:                                                                         
 	}                                                                                                                                                                                  \
 	static GDExtensionBool _gde_binding_reference_callback(void *p_token, void *p_instance, GDExtensionBool p_reference) {                                                             \
 		m_class *binding = reinterpret_cast<m_class *>(p_instance);                                                                                                                    \
+		if (!binding)                                                                                                                                                                  \
+			return true;                                                                                                                                                               \
 		if (p_reference) {                                                                                                                                                             \
 			JS_DupValue(ctx, binding->js_instance);                                                                                                                                    \
 		} else {                                                                                                                                                                       \

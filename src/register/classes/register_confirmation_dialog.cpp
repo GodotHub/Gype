@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/confirmation_dialog.hpp>
+#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/accept_dialog.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void confirmation_dialog_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ConfirmationDialog *confirmation_dialog = static_cast<ConfirmationDialog *>(JS_GetOpaque(val, ConfirmationDialog::__class_id));
+	if (confirmation_dialog)
+		memdelete(confirmation_dialog);
 }
 
 static JSClassDef confirmation_dialog_class_def = {

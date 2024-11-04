@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/navigation_path_query_result3d.hpp>
-#include <godot_cpp/classes/navigation_agent3d.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/navigation_agent3d.hpp>
+#include <godot_cpp/classes/navigation_path_query_result3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void navigation_agent3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	NavigationAgent3D *navigation_agent3d = static_cast<NavigationAgent3D *>(JS_GetOpaque(val, NavigationAgent3D::__class_id));
+	if (navigation_agent3d)
+		memdelete(navigation_agent3d);
 }
 
 static JSClassDef navigation_agent3d_class_def = {

@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void resource_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Resource *resource = static_cast<Resource *>(JS_GetOpaque(val, Resource::__class_id));
+	if (resource)
+		memdelete(resource);
 }
 
 static JSClassDef resource_class_def = {

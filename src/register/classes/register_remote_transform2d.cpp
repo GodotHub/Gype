@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/remote_transform2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void remote_transform2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RemoteTransform2D *remote_transform2d = static_cast<RemoteTransform2D *>(JS_GetOpaque(val, RemoteTransform2D::__class_id));
+	if (remote_transform2d)
+		memdelete(remote_transform2d);
 }
 
 static JSClassDef remote_transform2d_class_def = {

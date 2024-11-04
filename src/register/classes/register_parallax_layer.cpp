@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void parallax_layer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ParallaxLayer *parallax_layer = static_cast<ParallaxLayer *>(JS_GetOpaque(val, ParallaxLayer::__class_id));
+	if (parallax_layer)
+		memdelete(parallax_layer);
 }
 
 static JSClassDef parallax_layer_class_def = {

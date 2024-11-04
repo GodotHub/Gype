@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/image_texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/image_texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void image_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ImageTexture *image_texture = static_cast<ImageTexture *>(JS_GetOpaque(val, ImageTexture::__class_id));
+	if (image_texture)
+		memdelete(image_texture);
 }
 
 static JSClassDef image_texture_class_def = {

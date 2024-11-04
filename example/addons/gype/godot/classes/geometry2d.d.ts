@@ -44,7 +44,5 @@ export declare class _Geometry2D extends GodotObject{
     END_ROUND = 4,
   }
 }
-}
-declare global {
-  const Geometry2D: _Geometry2D;
+const Geometry2D: _Geometry2D;
 }

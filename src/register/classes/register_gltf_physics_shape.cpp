@@ -5,19 +5,20 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/collision_shape3d.hpp>
 #include <godot_cpp/classes/importer_mesh.hpp>
-#include <godot_cpp/classes/gltf_physics_shape.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/collision_shape3d.hpp>
 #include <godot_cpp/classes/shape3d.hpp>
+#include <godot_cpp/classes/gltf_physics_shape.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gltf_physics_shape_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GLTFPhysicsShape *gltf_physics_shape = static_cast<GLTFPhysicsShape *>(JS_GetOpaque(val, GLTFPhysicsShape::__class_id));
+	if (gltf_physics_shape)
+		memdelete(gltf_physics_shape);
 }
 
 static JSClassDef gltf_physics_shape_class_def = {

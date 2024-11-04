@@ -18,12 +18,12 @@ export declare class PackedByteArray {
   public clear(): void;
   public has(_value: number): boolean;
   public reverse(): void;
-  public slice(_begin: number, _end: number): PackedByteArray;
+  public slice(_begin: number, _end: number = 2147483647): PackedByteArray;
   public sort(): void;
-  public bsearch(_value: number, _before: boolean): number;
+  public bsearch(_value: number, _before: boolean = true): number;
   public duplicate(): PackedByteArray;
-  public find(_value: number, _from: number): number;
-  public rfind(_value: number, _from: number): number;
+  public find(_value: number, _from: number = 0): number;
+  public rfind(_value: number, _from: number = -1): number;
   public count(_value: number): number;
   public get_string_from_ascii(): String;
   public get_string_from_utf8(): String;
@@ -31,9 +31,9 @@ export declare class PackedByteArray {
   public get_string_from_utf32(): String;
   public get_string_from_wchar(): String;
   public hex_encode(): String;
-  public compress(_compression_mode: number): PackedByteArray;
-  public decompress(_buffer_size: number, _compression_mode: number): PackedByteArray;
-  public decompress_dynamic(_max_output_size: number, _compression_mode: number): PackedByteArray;
+  public compress(_compression_mode: number = 0): PackedByteArray;
+  public decompress(_buffer_size: number, _compression_mode: number = 0): PackedByteArray;
+  public decompress_dynamic(_max_output_size: number, _compression_mode: number = 0): PackedByteArray;
   public decode_u8(_byte_offset: number): number;
   public decode_s8(_byte_offset: number): number;
   public decode_u16(_byte_offset: number): number;
@@ -45,9 +45,9 @@ export declare class PackedByteArray {
   public decode_half(_byte_offset: number): number;
   public decode_float(_byte_offset: number): number;
   public decode_double(_byte_offset: number): number;
-  public has_encoded_var(_byte_offset: number, _allow_objects: boolean): boolean;
-  public decode_var(_byte_offset: number, _allow_objects: boolean): any;
-  public decode_var_size(_byte_offset: number, _allow_objects: boolean): number;
+  public has_encoded_var(_byte_offset: number, _allow_objects: boolean = false): boolean;
+  public decode_var(_byte_offset: number, _allow_objects: boolean = false): any;
+  public decode_var_size(_byte_offset: number, _allow_objects: boolean = false): number;
   public to_int32_array(): PackedInt32Array;
   public to_int64_array(): PackedInt64Array;
   public to_float32_array(): PackedFloat32Array;
@@ -63,7 +63,7 @@ export declare class PackedByteArray {
   public encode_half(_byte_offset: number, _value: number): void;
   public encode_float(_byte_offset: number, _value: number): void;
   public encode_double(_byte_offset: number, _value: number): void;
-  public encode_var(_byte_offset: number, _value: any, _allow_objects: boolean): number;
+  public encode_var(_byte_offset: number, _value: any, _allow_objects: boolean = false): number;
 }
 }
 

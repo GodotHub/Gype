@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void vehicle_body3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VehicleBody3D *vehicle_body3d = static_cast<VehicleBody3D *>(JS_GetOpaque(val, VehicleBody3D::__class_id));
+	if (vehicle_body3d)
+		memdelete(vehicle_body3d);
 }
 
 static JSClassDef vehicle_body3d_class_def = {

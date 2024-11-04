@@ -27,7 +27,7 @@ export declare class Quaternion {
   public slerpni(_to: Quaternion, _weight: number): Quaternion;
   public spherical_cubic_interpolate(_b: Quaternion, _pre_a: Quaternion, _post_b: Quaternion, _weight: number): Quaternion;
   public spherical_cubic_interpolate_in_time(_b: Quaternion, _pre_a: Quaternion, _post_b: Quaternion, _weight: number, _b_t: number, _pre_a_t: number, _post_b_t: number): Quaternion;
-  public get_euler(_order: number): Vector3;
+  public get_euler(_order: number = 2): Vector3;
   public from_euler(_euler: Vector3): Quaternion;
   public get_axis(): Vector3;
   public get_angle(): number;

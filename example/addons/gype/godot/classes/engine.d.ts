@@ -1,7 +1,7 @@
 
+import { MainLoop } from "@godot/classes/main_loop";
 import { GodotObject } from "@godot/classes/godot_object";
 import { ScriptLanguage } from "@godot/classes/script_language";
-import { MainLoop } from "@godot/classes/main_loop";
 declare global {
 export declare class _Engine extends GodotObject{
   public set_physics_ticks_per_second(_physics_ticks_per_second: number): void;
@@ -54,7 +54,5 @@ export declare class _Engine extends GodotObject{
   public get physics_jitter_fix(): number;
   public set physics_jitter_fix(value): void;
 }
-}
-declare global {
-  const Engine: _Engine;
+const Engine: _Engine;
 }

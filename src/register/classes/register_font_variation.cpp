@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/font_variation.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void font_variation_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	FontVariation *font_variation = static_cast<FontVariation *>(JS_GetOpaque(val, FontVariation::__class_id));
+	if (font_variation)
+		memdelete(font_variation);
 }
 
 static JSClassDef font_variation_class_def = {

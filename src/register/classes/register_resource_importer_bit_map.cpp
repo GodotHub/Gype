@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void resource_importer_bit_map_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ResourceImporterBitMap *resource_importer_bit_map = static_cast<ResourceImporterBitMap *>(JS_GetOpaque(val, ResourceImporterBitMap::__class_id));
+	if (resource_importer_bit_map)
+		memdelete(resource_importer_bit_map);
 }
 
 static JSClassDef resource_importer_bit_map_class_def = {

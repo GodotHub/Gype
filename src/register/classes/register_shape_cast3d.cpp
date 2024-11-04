@@ -5,20 +5,21 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/collision_object3d.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/shape_cast3d.hpp>
-#include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/shape3d.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/collision_object3d.hpp>
+#include <godot_cpp/classes/shape3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void shape_cast3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ShapeCast3D *shape_cast3d = static_cast<ShapeCast3D *>(JS_GetOpaque(val, ShapeCast3D::__class_id));
+	if (shape_cast3d)
+		memdelete(shape_cast3d);
 }
 
 static JSClassDef shape_cast3d_class_def = {

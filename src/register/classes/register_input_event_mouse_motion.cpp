@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void input_event_mouse_motion_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	InputEventMouseMotion *input_event_mouse_motion = static_cast<InputEventMouseMotion *>(JS_GetOpaque(val, InputEventMouseMotion::__class_id));
+	if (input_event_mouse_motion)
+		memdelete(input_event_mouse_motion);
 }
 
 static JSClassDef input_event_mouse_motion_class_def = {

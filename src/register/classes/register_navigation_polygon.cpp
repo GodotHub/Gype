@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/navigation_mesh.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/navigation_polygon.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void navigation_polygon_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	NavigationPolygon *navigation_polygon = static_cast<NavigationPolygon *>(JS_GetOpaque(val, NavigationPolygon::__class_id));
+	if (navigation_polygon)
+		memdelete(navigation_polygon);
 }
 
 static JSClassDef navigation_polygon_class_def = {

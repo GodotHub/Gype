@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/label_settings.hpp>
 #include <godot_cpp/classes/label.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void label_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Label *label = static_cast<Label *>(JS_GetOpaque(val, Label::__class_id));
+	if (label)
+		memdelete(label);
 }
 
 static JSClassDef label_class_def = {

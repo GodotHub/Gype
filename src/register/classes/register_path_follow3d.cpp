@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void path_follow3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PathFollow3D *path_follow3d = static_cast<PathFollow3D *>(JS_GetOpaque(val, PathFollow3D::__class_id));
+	if (path_follow3d)
+		memdelete(path_follow3d);
 }
 
 static JSClassDef path_follow3d_class_def = {

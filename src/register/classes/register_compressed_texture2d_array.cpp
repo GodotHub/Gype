@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void compressed_texture2d_array_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CompressedTexture2DArray *compressed_texture2d_array = static_cast<CompressedTexture2DArray *>(JS_GetOpaque(val, CompressedTexture2DArray::__class_id));
+	if (compressed_texture2d_array)
+		memdelete(compressed_texture2d_array);
 }
 
 static JSClassDef compressed_texture2d_array_class_def = {

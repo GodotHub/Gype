@@ -1,6 +1,6 @@
 
-import { XRPose } from "@godot/classes/xr_pose";
 import { XRTracker } from "@godot/classes/xr_tracker";
+import { XRPose } from "@godot/classes/xr_pose";
 export declare class XRPositionalTracker extends XRTracker{
   public get_tracker_profile(): String;
   public set_tracker_profile(_profile: GDString | StringName | string): void;

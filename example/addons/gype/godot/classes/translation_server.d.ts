@@ -1,6 +1,6 @@
 
-import { Translation } from "@godot/classes/translation";
 import { GodotObject } from "@godot/classes/godot_object";
+import { Translation } from "@godot/classes/translation";
 declare global {
 export declare class _TranslationServer extends GodotObject{
   public set_locale(_locale: GDString | StringName | string): void;
@@ -29,7 +29,5 @@ export declare class _TranslationServer extends GodotObject{
   public get pseudolocalization_enabled(): boolean;
   public set pseudolocalization_enabled(value): void;
 }
-}
-declare global {
-  const TranslationServer: _TranslationServer;
+const TranslationServer: _TranslationServer;
 }

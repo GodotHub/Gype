@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_modification2d_jiggle.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include <godot_cpp/classes/skeleton_modification2d_jiggle.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void skeleton_modification2d_jiggle_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SkeletonModification2DJiggle *skeleton_modification2d_jiggle = static_cast<SkeletonModification2DJiggle *>(JS_GetOpaque(val, SkeletonModification2DJiggle::__class_id));
+	if (skeleton_modification2d_jiggle)
+		memdelete(skeleton_modification2d_jiggle);
 }
 
 static JSClassDef skeleton_modification2d_jiggle_class_def = {

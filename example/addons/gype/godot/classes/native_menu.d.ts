@@ -1,6 +1,6 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { GodotObject } from "@godot/classes/godot_object";
+import { Texture2D } from "@godot/classes/texture2d";
 declare global {
 export declare class _NativeMenu extends GodotObject{
   public has_feature(_feature: number): boolean;
@@ -85,7 +85,5 @@ export declare class _NativeMenu extends GodotObject{
     DOCK_MENU_ID = 5,
   }
 }
-}
-declare global {
-  const NativeMenu: _NativeMenu;
+const NativeMenu: _NativeMenu;
 }

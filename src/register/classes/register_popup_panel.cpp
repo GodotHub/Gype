@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/popup_panel.hpp>
 #include <godot_cpp/classes/popup.hpp>
+#include <godot_cpp/classes/popup_panel.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void popup_panel_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PopupPanel *popup_panel = static_cast<PopupPanel *>(JS_GetOpaque(val, PopupPanel::__class_id));
+	if (popup_panel)
+		memdelete(popup_panel);
 }
 
 static JSClassDef popup_panel_class_def = {

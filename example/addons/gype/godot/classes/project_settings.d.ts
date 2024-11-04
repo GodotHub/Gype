@@ -22,7 +22,5 @@ export declare class _ProjectSettings extends GodotObject{
   public save_custom(_file: GDString | StringName | string): number;
   public get settings_changed(): Signal;
 }
-}
-declare global {
-  const ProjectSettings: _ProjectSettings;
+const ProjectSettings: _ProjectSettings;
 }

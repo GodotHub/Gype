@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/canvas_layer.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/canvas_layer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void canvas_layer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CanvasLayer *canvas_layer = static_cast<CanvasLayer *>(JS_GetOpaque(val, CanvasLayer::__class_id));
+	if (canvas_layer)
+		memdelete(canvas_layer);
 }
 
 static JSClassDef canvas_layer_class_def = {

@@ -6,8 +6,8 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/popup_panel.hpp>
-#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/color_picker_button.hpp>
+#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/classes/color_picker.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -15,8 +15,9 @@
 using namespace godot;
 
 static void color_picker_button_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ColorPickerButton *color_picker_button = static_cast<ColorPickerButton *>(JS_GetOpaque(val, ColorPickerButton::__class_id));
+	if (color_picker_button)
+		memdelete(color_picker_button);
 }
 
 static JSClassDef color_picker_button_class_def = {

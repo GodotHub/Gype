@@ -1,6 +1,6 @@
 
-import { SpriteBase3D } from "@godot/classes/sprite_base3d";
 import { SpriteFrames } from "@godot/classes/sprite_frames";
+import { SpriteBase3D } from "@godot/classes/sprite_base3d";
 export declare class AnimatedSprite3D extends SpriteBase3D{
   public set_sprite_frames(_sprite_frames: SpriteFrames): void;
   public get_sprite_frames(): SpriteFrames;

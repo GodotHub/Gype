@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void editor_scene_format_importer_ufbx_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorSceneFormatImporterUFBX *editor_scene_format_importer_ufbx = static_cast<EditorSceneFormatImporterUFBX *>(JS_GetOpaque(val, EditorSceneFormatImporterUFBX::__class_id));
+	if (editor_scene_format_importer_ufbx)
+		memdelete(editor_scene_format_importer_ufbx);
 }
 
 static JSClassDef editor_scene_format_importer_ufbx_class_def = {

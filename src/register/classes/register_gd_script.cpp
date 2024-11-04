@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void gd_script_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GDScript *gd_script = static_cast<GDScript *>(JS_GetOpaque(val, GDScript::__class_id));
+	if (gd_script)
+		memdelete(gd_script);
 }
 
 static JSClassDef gd_script_class_def = {

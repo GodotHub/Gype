@@ -5,18 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/editor_resource_tooltip_plugin.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/texture_rect.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_resource_tooltip_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorResourceTooltipPlugin *editor_resource_tooltip_plugin = static_cast<EditorResourceTooltipPlugin *>(JS_GetOpaque(val, EditorResourceTooltipPlugin::__class_id));
+	if (editor_resource_tooltip_plugin)
+		memdelete(editor_resource_tooltip_plugin);
 }
 
 static JSClassDef editor_resource_tooltip_plugin_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void audio_listener3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioListener3D *audio_listener3d = static_cast<AudioListener3D *>(JS_GetOpaque(val, AudioListener3D::__class_id));
+	if (audio_listener3d)
+		memdelete(audio_listener3d);
 }
 
 static JSClassDef audio_listener3d_class_def = {

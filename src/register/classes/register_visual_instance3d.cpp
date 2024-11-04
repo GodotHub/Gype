@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void visual_instance3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualInstance3D *visual_instance3d = static_cast<VisualInstance3D *>(JS_GetOpaque(val, VisualInstance3D::__class_id));
+	if (visual_instance3d)
+		memdelete(visual_instance3d);
 }
 
 static JSClassDef visual_instance3d_class_def = {

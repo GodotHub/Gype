@@ -5,19 +5,20 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/style_box.hpp>
 #include <godot_cpp/classes/theme_db.hpp>
 #include <godot_cpp/classes/font.hpp>
-#include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/theme.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
 
 static void theme_db_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ThemeDB *theme_db = static_cast<ThemeDB *>(JS_GetOpaque(val, ThemeDB::__class_id));
+	if (theme_db)
+		memdelete(theme_db);
 }
 
 static JSClassDef theme_db_class_def = {

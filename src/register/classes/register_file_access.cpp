@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/file_access.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void file_access_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	FileAccess *file_access = static_cast<FileAccess *>(JS_GetOpaque(val, FileAccess::__class_id));
+	if (file_access)
+		memdelete(file_access);
 }
 
 static JSClassDef file_access_class_def = {

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/lightmapper.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/lightmapper.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void lightmapper_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Lightmapper *lightmapper = static_cast<Lightmapper *>(JS_GetOpaque(val, Lightmapper::__class_id));
+	if (lightmapper)
+		memdelete(lightmapper);
 }
 
 static JSClassDef lightmapper_class_def = {

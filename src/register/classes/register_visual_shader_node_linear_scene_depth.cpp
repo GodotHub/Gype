@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_linear_scene_depth.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_linear_scene_depth_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeLinearSceneDepth *visual_shader_node_linear_scene_depth = static_cast<VisualShaderNodeLinearSceneDepth *>(JS_GetOpaque(val, VisualShaderNodeLinearSceneDepth::__class_id));
+	if (visual_shader_node_linear_scene_depth)
+		memdelete(visual_shader_node_linear_scene_depth);
 }
 
 static JSClassDef visual_shader_node_linear_scene_depth_class_def = {

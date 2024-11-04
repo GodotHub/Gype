@@ -5,18 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/classes/http_client.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void http_client_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	HTTPClient *http_client = static_cast<HTTPClient *>(JS_GetOpaque(val, HTTPClient::__class_id));
+	if (http_client)
+		memdelete(http_client);
 }
 
 static JSClassDef http_client_class_def = {

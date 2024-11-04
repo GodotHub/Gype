@@ -1,8 +1,8 @@
 
-import { Node3D } from "@godot/classes/node3d";
+import { Resource } from "@godot/classes/resource";
 import { MeshLibrary } from "@godot/classes/mesh_library";
 import { PhysicsMaterial } from "@godot/classes/physics_material";
-import { Resource } from "@godot/classes/resource";
+import { Node3D } from "@godot/classes/node3d";
 export declare class GridMap extends Node3D{
   public set_collision_layer(_layer: number): void;
   public get_collision_layer(): number;

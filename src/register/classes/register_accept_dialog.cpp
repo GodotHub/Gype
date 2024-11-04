@@ -6,18 +6,19 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/classes/button.hpp>
+#include <godot_cpp/classes/label.hpp>
 #include <godot_cpp/classes/line_edit.hpp>
 #include <godot_cpp/classes/accept_dialog.hpp>
-#include <godot_cpp/classes/label.hpp>
+#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void accept_dialog_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AcceptDialog *accept_dialog = static_cast<AcceptDialog *>(JS_GetOpaque(val, AcceptDialog::__class_id));
+	if (accept_dialog)
+		memdelete(accept_dialog);
 }
 
 static JSClassDef accept_dialog_class_def = {

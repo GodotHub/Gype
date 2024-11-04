@@ -6,17 +6,18 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/rendering_device.hpp>
-#include <godot_cpp/classes/rendering_server.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/rendering_server.hpp>
+#include <godot_cpp/classes/rendering_device.hpp>
 #include <godot_cpp/classes/image.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
 
 static void rendering_server_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RenderingServer *rendering_server = static_cast<RenderingServer *>(JS_GetOpaque(val, RenderingServer::__class_id));
+	if (rendering_server)
+		memdelete(rendering_server);
 }
 
 static JSClassDef rendering_server_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void panel_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Panel *panel = static_cast<Panel *>(JS_GetOpaque(val, Panel::__class_id));
+	if (panel)
+		memdelete(panel);
 }
 
 static JSClassDef panel_class_def = {

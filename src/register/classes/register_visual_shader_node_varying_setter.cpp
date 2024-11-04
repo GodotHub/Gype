@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void visual_shader_node_varying_setter_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeVaryingSetter *visual_shader_node_varying_setter = static_cast<VisualShaderNodeVaryingSetter *>(JS_GetOpaque(val, VisualShaderNodeVaryingSetter::__class_id));
+	if (visual_shader_node_varying_setter)
+		memdelete(visual_shader_node_varying_setter);
 }
 
 static JSClassDef visual_shader_node_varying_setter_class_def = {

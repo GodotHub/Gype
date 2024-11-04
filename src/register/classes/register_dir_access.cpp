@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void dir_access_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	DirAccess *dir_access = static_cast<DirAccess *>(JS_GetOpaque(val, DirAccess::__class_id));
+	if (dir_access)
+		memdelete(dir_access);
 }
 
 static JSClassDef dir_access_class_def = {

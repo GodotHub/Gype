@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void h_slider_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	HSlider *h_slider = static_cast<HSlider *>(JS_GetOpaque(val, HSlider::__class_id));
+	if (h_slider)
+		memdelete(h_slider);
 }
 
 static JSClassDef h_slider_class_def = {

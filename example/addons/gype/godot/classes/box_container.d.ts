@@ -1,6 +1,6 @@
 
-import { Control } from "@godot/classes/control";
 import { Container } from "@godot/classes/container";
+import { Control } from "@godot/classes/control";
 export declare class BoxContainer extends Container{
   public add_spacer(_begin: boolean): Control;
   public set_alignment(_alignment: number): void;

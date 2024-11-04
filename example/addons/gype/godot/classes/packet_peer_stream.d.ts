@@ -1,6 +1,6 @@
 
-import { StreamPeer } from "@godot/classes/stream_peer";
 import { PacketPeer } from "@godot/classes/packet_peer";
+import { StreamPeer } from "@godot/classes/stream_peer";
 export declare class PacketPeerStream extends PacketPeer{
   public set_stream_peer(_peer: StreamPeer): void;
   public get_stream_peer(): StreamPeer;

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void editor_spin_slider_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorSpinSlider *editor_spin_slider = static_cast<EditorSpinSlider *>(JS_GetOpaque(val, EditorSpinSlider::__class_id));
+	if (editor_spin_slider)
+		memdelete(editor_spin_slider);
 }
 
 static JSClassDef editor_spin_slider_class_def = {

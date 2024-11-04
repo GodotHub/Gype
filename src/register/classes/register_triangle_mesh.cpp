@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/triangle_mesh.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/triangle_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void triangle_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	TriangleMesh *triangle_mesh = static_cast<TriangleMesh *>(JS_GetOpaque(val, TriangleMesh::__class_id));
+	if (triangle_mesh)
+		memdelete(triangle_mesh);
 }
 
 static JSClassDef triangle_mesh_class_def = {

@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/tree_item.hpp>
 #include <godot_cpp/classes/tree_item.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/tree.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
@@ -17,8 +17,9 @@
 using namespace godot;
 
 static void tree_item_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	TreeItem *tree_item = static_cast<TreeItem *>(JS_GetOpaque(val, TreeItem::__class_id));
+	if (tree_item)
+		memdelete(tree_item);
 }
 
 static JSClassDef tree_item_class_def = {

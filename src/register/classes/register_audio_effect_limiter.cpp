@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void audio_effect_limiter_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioEffectLimiter *audio_effect_limiter = static_cast<AudioEffectLimiter *>(JS_GetOpaque(val, AudioEffectLimiter::__class_id));
+	if (audio_effect_limiter)
+		memdelete(audio_effect_limiter);
 }
 
 static JSClassDef audio_effect_limiter_class_def = {

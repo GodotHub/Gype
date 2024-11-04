@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/editor_undo_redo_manager.hpp>
 #include <godot_cpp/classes/undo_redo.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_undo_redo_manager_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorUndoRedoManager *editor_undo_redo_manager = static_cast<EditorUndoRedoManager *>(JS_GetOpaque(val, EditorUndoRedoManager::__class_id));
+	if (editor_undo_redo_manager)
+		memdelete(editor_undo_redo_manager);
 }
 
 static JSClassDef editor_undo_redo_manager_class_def = {

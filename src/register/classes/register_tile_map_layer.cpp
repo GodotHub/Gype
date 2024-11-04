@@ -5,19 +5,20 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/tile_data.hpp>
-#include <godot_cpp/classes/tile_map_pattern.hpp>
-#include <godot_cpp/classes/tile_map_layer.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/tile_set.hpp>
+#include <godot_cpp/classes/tile_map_layer.hpp>
+#include <godot_cpp/classes/tile_map_pattern.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void tile_map_layer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	TileMapLayer *tile_map_layer = static_cast<TileMapLayer *>(JS_GetOpaque(val, TileMapLayer::__class_id));
+	if (tile_map_layer)
+		memdelete(tile_map_layer);
 }
 
 static JSClassDef tile_map_layer_class_def = {

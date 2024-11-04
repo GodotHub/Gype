@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void scroll_bar_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ScrollBar *scroll_bar = static_cast<ScrollBar *>(JS_GetOpaque(val, ScrollBar::__class_id));
+	if (scroll_bar)
+		memdelete(scroll_bar);
 }
 
 static JSClassDef scroll_bar_class_def = {

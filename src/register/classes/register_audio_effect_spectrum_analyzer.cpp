@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_spectrum_analyzer.hpp>
 #include <godot_cpp/classes/audio_effect.hpp>
+#include <godot_cpp/classes/audio_effect_spectrum_analyzer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_effect_spectrum_analyzer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioEffectSpectrumAnalyzer *audio_effect_spectrum_analyzer = static_cast<AudioEffectSpectrumAnalyzer *>(JS_GetOpaque(val, AudioEffectSpectrumAnalyzer::__class_id));
+	if (audio_effect_spectrum_analyzer)
+		memdelete(audio_effect_spectrum_analyzer);
 }
 
 static JSClassDef audio_effect_spectrum_analyzer_class_def = {

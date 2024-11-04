@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource_importer_scene.hpp>
 #include <godot_cpp/classes/resource_importer.hpp>
+#include <godot_cpp/classes/resource_importer_scene.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void resource_importer_scene_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ResourceImporterScene *resource_importer_scene = static_cast<ResourceImporterScene *>(JS_GetOpaque(val, ResourceImporterScene::__class_id));
+	if (resource_importer_scene)
+		memdelete(resource_importer_scene);
 }
 
 static JSClassDef resource_importer_scene_class_def = {

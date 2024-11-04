@@ -5,18 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/bone_attachment3d.hpp>
 #include <godot_cpp/classes/gltf_skeleton.hpp>
-#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/bone_attachment3d.hpp>
 #include <godot_cpp/classes/skeleton3d.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gltf_skeleton_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GLTFSkeleton *gltf_skeleton = static_cast<GLTFSkeleton *>(JS_GetOpaque(val, GLTFSkeleton::__class_id));
+	if (gltf_skeleton)
+		memdelete(gltf_skeleton);
 }
 
 static JSClassDef gltf_skeleton_class_def = {

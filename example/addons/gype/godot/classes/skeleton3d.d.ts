@@ -1,6 +1,6 @@
 
-import { Node3D } from "@godot/classes/node3d";
 import { Skin } from "@godot/classes/skin";
+import { Node3D } from "@godot/classes/node3d";
 import { SkinReference } from "@godot/classes/skin_reference";
 export declare class Skeleton3D extends Node3D{
   public add_bone(_name: GDString | StringName | string): number;

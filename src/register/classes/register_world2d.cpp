@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/physics_direct_space_state2d.hpp>
-#include <godot_cpp/classes/world2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/world2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void world2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	World2D *world2d = static_cast<World2D *>(JS_GetOpaque(val, World2D::__class_id));
+	if (world2d)
+		memdelete(world2d);
 }
 
 static JSClassDef world2d_class_def = {

@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/fog_volume.hpp>
-#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void fog_volume_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	FogVolume *fog_volume = static_cast<FogVolume *>(JS_GetOpaque(val, FogVolume::__class_id));
+	if (fog_volume)
+		memdelete(fog_volume);
 }
 
 static JSClassDef fog_volume_class_def = {

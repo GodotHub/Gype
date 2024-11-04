@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/packed_data_container_ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/packed_data_container_ref.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void packed_data_container_ref_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PackedDataContainerRef *packed_data_container_ref = static_cast<PackedDataContainerRef *>(JS_GetOpaque(val, PackedDataContainerRef::__class_id));
+	if (packed_data_container_ref)
+		memdelete(packed_data_container_ref);
 }
 
 static JSClassDef packed_data_container_ref_class_def = {

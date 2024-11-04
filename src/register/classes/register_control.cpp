@@ -5,14 +5,14 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/classes/theme.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/canvas_item.hpp>
+#include <godot_cpp/classes/style_box.hpp>
+#include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/theme.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -20,8 +20,9 @@
 using namespace godot;
 
 static void control_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Control *control = static_cast<Control *>(JS_GetOpaque(val, Control::__class_id));
+	if (control)
+		memdelete(control);
 }
 
 static JSClassDef control_class_def = {

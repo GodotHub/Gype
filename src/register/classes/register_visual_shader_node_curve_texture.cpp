@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/curve_texture.hpp>
-#include <godot_cpp/classes/visual_shader_node_curve_texture.hpp>
 #include <godot_cpp/classes/visual_shader_node_resizable_base.hpp>
+#include <godot_cpp/classes/visual_shader_node_curve_texture.hpp>
+#include <godot_cpp/classes/curve_texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_curve_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeCurveTexture *visual_shader_node_curve_texture = static_cast<VisualShaderNodeCurveTexture *>(JS_GetOpaque(val, VisualShaderNodeCurveTexture::__class_id));
+	if (visual_shader_node_curve_texture)
+		memdelete(visual_shader_node_curve_texture);
 }
 
 static JSClassDef visual_shader_node_curve_texture_class_def = {

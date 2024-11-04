@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void circle_shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CircleShape2D *circle_shape2d = static_cast<CircleShape2D *>(JS_GetOpaque(val, CircleShape2D::__class_id));
+	if (circle_shape2d)
+		memdelete(circle_shape2d);
 }
 
 static JSClassDef circle_shape2d_class_def = {

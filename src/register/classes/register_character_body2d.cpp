@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void character_body2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CharacterBody2D *character_body2d = static_cast<CharacterBody2D *>(JS_GetOpaque(val, CharacterBody2D::__class_id));
+	if (character_body2d)
+		memdelete(character_body2d);
 }
 
 static JSClassDef character_body2d_class_def = {
@@ -32,7 +33,7 @@ static JSValue character_body2d_class_constructor(JSContext *ctx, JSValueConst n
 	CharacterBody2D *character_body2d_class;
 	if (argc == 1) 
 		character_body2d_class = static_cast<CharacterBody2D *>(Variant(*argv).operator Object *());
-	else
+	else 
 		character_body2d_class = memnew(CharacterBody2D);
 	if (!character_body2d_class) {
 		JS_FreeValue(ctx, obj);

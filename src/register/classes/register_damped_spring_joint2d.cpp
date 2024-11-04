@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/damped_spring_joint2d.hpp>
 #include <godot_cpp/classes/joint2d.hpp>
+#include <godot_cpp/classes/damped_spring_joint2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void damped_spring_joint2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	DampedSpringJoint2D *damped_spring_joint2d = static_cast<DampedSpringJoint2D *>(JS_GetOpaque(val, DampedSpringJoint2D::__class_id));
+	if (damped_spring_joint2d)
+		memdelete(damped_spring_joint2d);
 }
 
 static JSClassDef damped_spring_joint2d_class_def = {

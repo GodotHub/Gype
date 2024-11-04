@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_modifier3d.hpp>
-#include <godot_cpp/classes/skeleton_ik3d.hpp>
 #include <godot_cpp/classes/skeleton3d.hpp>
+#include <godot_cpp/classes/skeleton_ik3d.hpp>
+#include <godot_cpp/classes/skeleton_modifier3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void skeleton_ik3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SkeletonIK3D *skeleton_ik3d = static_cast<SkeletonIK3D *>(JS_GetOpaque(val, SkeletonIK3D::__class_id));
+	if (skeleton_ik3d)
+		memdelete(skeleton_ik3d);
 }
 
 static JSClassDef skeleton_ik3d_class_def = {

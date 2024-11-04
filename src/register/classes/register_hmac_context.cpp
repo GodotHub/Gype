@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void hmac_context_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	HMACContext *hmac_context = static_cast<HMACContext *>(JS_GetOpaque(val, HMACContext::__class_id));
+	if (hmac_context)
+		memdelete(hmac_context);
 }
 
 static JSClassDef hmac_context_class_def = {

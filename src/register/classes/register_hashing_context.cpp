@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/hashing_context.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void hashing_context_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	HashingContext *hashing_context = static_cast<HashingContext *>(JS_GetOpaque(val, HashingContext::__class_id));
+	if (hashing_context)
+		memdelete(hashing_context);
 }
 
 static JSClassDef hashing_context_class_def = {

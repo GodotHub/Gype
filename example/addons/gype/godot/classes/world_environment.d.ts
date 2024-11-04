@@ -1,7 +1,7 @@
 
-import { CameraAttributes } from "@godot/classes/camera_attributes";
-import { Environment } from "@godot/classes/environment";
 import { Node } from "@godot/classes/node";
+import { Environment } from "@godot/classes/environment";
+import { CameraAttributes } from "@godot/classes/camera_attributes";
 import { Compositor } from "@godot/classes/compositor";
 export declare class WorldEnvironment extends Node{
   public set_environment(_env: Environment): void;

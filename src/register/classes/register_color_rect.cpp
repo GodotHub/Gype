@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/color_rect.hpp>
 #include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/color_rect.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void color_rect_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ColorRect *color_rect = static_cast<ColorRect *>(JS_GetOpaque(val, ColorRect::__class_id));
+	if (color_rect)
+		memdelete(color_rect);
 }
 
 static JSClassDef color_rect_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void xr_hand_tracker_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	XRHandTracker *xr_hand_tracker = static_cast<XRHandTracker *>(JS_GetOpaque(val, XRHandTracker::__class_id));
+	if (xr_hand_tracker)
+		memdelete(xr_hand_tracker);
 }
 
 static JSClassDef xr_hand_tracker_class_def = {

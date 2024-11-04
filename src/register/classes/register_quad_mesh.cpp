@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void quad_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	QuadMesh *quad_mesh = static_cast<QuadMesh *>(JS_GetOpaque(val, QuadMesh::__class_id));
+	if (quad_mesh)
+		memdelete(quad_mesh);
 }
 
 static JSClassDef quad_mesh_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void grid_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GridContainer *grid_container = static_cast<GridContainer *>(JS_GetOpaque(val, GridContainer::__class_id));
+	if (grid_container)
+		memdelete(grid_container);
 }
 
 static JSClassDef grid_container_class_def = {

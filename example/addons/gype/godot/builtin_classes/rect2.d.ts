@@ -16,7 +16,7 @@ export declare class Rect2 {
   public has_point(_point: Vector2): boolean;
   public is_equal_approx(_rect: Rect2): boolean;
   public is_finite(): boolean;
-  public intersects(_b: Rect2, _include_borders: boolean): boolean;
+  public intersects(_b: Rect2, _include_borders: boolean = false): boolean;
   public encloses(_b: Rect2): boolean;
   public intersection(_b: Rect2): Rect2;
   public merge(_b: Rect2): Rect2;

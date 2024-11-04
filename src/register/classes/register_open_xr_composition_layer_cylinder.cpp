@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void open_xr_composition_layer_cylinder_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	OpenXRCompositionLayerCylinder *open_xr_composition_layer_cylinder = static_cast<OpenXRCompositionLayerCylinder *>(JS_GetOpaque(val, OpenXRCompositionLayerCylinder::__class_id));
+	if (open_xr_composition_layer_cylinder)
+		memdelete(open_xr_composition_layer_cylinder);
 }
 
 static JSClassDef open_xr_composition_layer_cylinder_class_def = {

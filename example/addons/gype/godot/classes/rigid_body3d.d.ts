@@ -1,8 +1,8 @@
 
 import { Node3D } from "@godot/classes/node3d";
 import { PhysicsDirectBodyState3D } from "@godot/classes/physics_direct_body_state3d";
-import { PhysicsMaterial } from "@godot/classes/physics_material";
 import { PhysicsBody3D } from "@godot/classes/physics_body3d";
+import { PhysicsMaterial } from "@godot/classes/physics_material";
 export declare class RigidBody3D extends PhysicsBody3D{
   public _integrate_forces(_state: PhysicsDirectBodyState3D): void;
   public set_mass(_mass: number): void;

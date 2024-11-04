@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_uv_polar_coord.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_uv_polar_coord_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeUVPolarCoord *visual_shader_node_uv_polar_coord = static_cast<VisualShaderNodeUVPolarCoord *>(JS_GetOpaque(val, VisualShaderNodeUVPolarCoord::__class_id));
+	if (visual_shader_node_uv_polar_coord)
+		memdelete(visual_shader_node_uv_polar_coord);
 }
 
 static JSClassDef visual_shader_node_uv_polar_coord_class_def = {

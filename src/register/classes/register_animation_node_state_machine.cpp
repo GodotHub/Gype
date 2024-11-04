@@ -5,18 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_node_state_machine.hpp>
-#include <godot_cpp/classes/animation_root_node.hpp>
-#include <godot_cpp/classes/animation_node_state_machine_transition.hpp>
 #include <godot_cpp/classes/animation_node.hpp>
+#include <godot_cpp/classes/animation_node_state_machine_transition.hpp>
+#include <godot_cpp/classes/animation_root_node.hpp>
+#include <godot_cpp/classes/animation_node_state_machine.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_node_state_machine_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AnimationNodeStateMachine *animation_node_state_machine = static_cast<AnimationNodeStateMachine *>(JS_GetOpaque(val, AnimationNodeStateMachine::__class_id));
+	if (animation_node_state_machine)
+		memdelete(animation_node_state_machine);
 }
 
 static JSClassDef animation_node_state_machine_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void csg_combiner3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CSGCombiner3D *csg_combiner3d = static_cast<CSGCombiner3D *>(JS_GetOpaque(val, CSGCombiner3D::__class_id));
+	if (csg_combiner3d)
+		memdelete(csg_combiner3d);
 }
 
 static JSClassDef csg_combiner3d_class_def = {

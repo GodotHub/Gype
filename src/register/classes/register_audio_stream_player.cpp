@@ -5,18 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_stream_player.hpp>
 #include <godot_cpp/classes/audio_stream.hpp>
-#include <godot_cpp/classes/audio_stream_playback.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/audio_stream_playback.hpp>
+#include <godot_cpp/classes/audio_stream_player.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_stream_player_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioStreamPlayer *audio_stream_player = static_cast<AudioStreamPlayer *>(JS_GetOpaque(val, AudioStreamPlayer::__class_id));
+	if (audio_stream_player)
+		memdelete(audio_stream_player);
 }
 
 static JSClassDef audio_stream_player_class_def = {

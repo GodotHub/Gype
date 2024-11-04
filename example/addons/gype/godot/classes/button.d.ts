@@ -1,6 +1,6 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { BaseButton } from "@godot/classes/base_button";
+import { Texture2D } from "@godot/classes/texture2d";
 export declare class Button extends BaseButton{
   public set_text(_text: GDString | StringName | string): void;
   public get_text(): String;

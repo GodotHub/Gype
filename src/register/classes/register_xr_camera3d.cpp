@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/classes/xr_camera3d.hpp>
+#include <godot_cpp/classes/camera3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void xr_camera3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	XRCamera3D *xr_camera3d = static_cast<XRCamera3D *>(JS_GetOpaque(val, XRCamera3D::__class_id));
+	if (xr_camera3d)
+		memdelete(xr_camera3d);
 }
 
 static JSClassDef xr_camera3d_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void parallax2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Parallax2D *parallax2d = static_cast<Parallax2D *>(JS_GetOpaque(val, Parallax2D::__class_id));
+	if (parallax2d)
+		memdelete(parallax2d);
 }
 
 static JSClassDef parallax2d_class_def = {

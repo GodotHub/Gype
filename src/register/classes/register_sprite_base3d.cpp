@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/sprite_base3d.hpp>
-#include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/triangle_mesh.hpp>
+#include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void sprite_base3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SpriteBase3D *sprite_base3d = static_cast<SpriteBase3D *>(JS_GetOpaque(val, SpriteBase3D::__class_id));
+	if (sprite_base3d)
+		memdelete(sprite_base3d);
 }
 
 static JSClassDef sprite_base3d_class_def = {

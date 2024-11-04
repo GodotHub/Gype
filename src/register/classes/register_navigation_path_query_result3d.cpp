@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void navigation_path_query_result3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	NavigationPathQueryResult3D *navigation_path_query_result3d = static_cast<NavigationPathQueryResult3D *>(JS_GetOpaque(val, NavigationPathQueryResult3D::__class_id));
+	if (navigation_path_query_result3d)
+		memdelete(navigation_path_query_result3d);
 }
 
 static JSClassDef navigation_path_query_result3d_class_def = {

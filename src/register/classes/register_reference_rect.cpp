@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void reference_rect_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ReferenceRect *reference_rect = static_cast<ReferenceRect *>(JS_GetOpaque(val, ReferenceRect::__class_id));
+	if (reference_rect)
+		memdelete(reference_rect);
 }
 
 static JSClassDef reference_rect_class_def = {

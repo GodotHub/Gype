@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void skeleton_modification2d_look_at_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SkeletonModification2DLookAt *skeleton_modification2d_look_at = static_cast<SkeletonModification2DLookAt *>(JS_GetOpaque(val, SkeletonModification2DLookAt::__class_id));
+	if (skeleton_modification2d_look_at)
+		memdelete(skeleton_modification2d_look_at);
 }
 
 static JSClassDef skeleton_modification2d_look_at_class_def = {

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/canvas_item_material.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/canvas_item_material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void canvas_item_material_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CanvasItemMaterial *canvas_item_material = static_cast<CanvasItemMaterial *>(JS_GetOpaque(val, CanvasItemMaterial::__class_id));
+	if (canvas_item_material)
+		memdelete(canvas_item_material);
 }
 
 static JSClassDef canvas_item_material_class_def = {

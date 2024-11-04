@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void rd_shader_spirv_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RDShaderSPIRV *rd_shader_spirv = static_cast<RDShaderSPIRV *>(JS_GetOpaque(val, RDShaderSPIRV::__class_id));
+	if (rd_shader_spirv)
+		memdelete(rd_shader_spirv);
 }
 
 static JSClassDef rd_shader_spirv_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void array_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ArrayMesh *array_mesh = static_cast<ArrayMesh *>(JS_GetOpaque(val, ArrayMesh::__class_id));
+	if (array_mesh)
+		memdelete(array_mesh);
 }
 
 static JSClassDef array_mesh_class_def = {

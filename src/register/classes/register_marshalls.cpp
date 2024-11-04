@@ -12,8 +12,9 @@
 using namespace godot;
 
 static void marshalls_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Marshalls *marshalls = static_cast<Marshalls *>(JS_GetOpaque(val, Marshalls::__class_id));
+	if (marshalls)
+		memdelete(marshalls);
 }
 
 static JSClassDef marshalls_class_def = {

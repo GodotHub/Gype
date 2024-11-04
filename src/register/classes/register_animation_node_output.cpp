@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_node_output.hpp>
 #include <godot_cpp/classes/animation_node.hpp>
+#include <godot_cpp/classes/animation_node_output.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_node_output_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AnimationNodeOutput *animation_node_output = static_cast<AnimationNodeOutput *>(JS_GetOpaque(val, AnimationNodeOutput::__class_id));
+	if (animation_node_output)
+		memdelete(animation_node_output);
 }
 
 static JSClassDef animation_node_output_class_def = {

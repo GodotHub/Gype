@@ -1,6 +1,6 @@
 
-import { Mesh } from "@godot/classes/mesh";
 import { Resource } from "@godot/classes/resource";
+import { Mesh } from "@godot/classes/mesh";
 export declare class MultiMesh extends Resource{
   public set_mesh(_mesh: Mesh): void;
   public get_mesh(): Mesh;

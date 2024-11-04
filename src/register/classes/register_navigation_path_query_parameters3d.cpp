@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void navigation_path_query_parameters3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	NavigationPathQueryParameters3D *navigation_path_query_parameters3d = static_cast<NavigationPathQueryParameters3D *>(JS_GetOpaque(val, NavigationPathQueryParameters3D::__class_id));
+	if (navigation_path_query_parameters3d)
+		memdelete(navigation_path_query_parameters3d);
 }
 
 static JSClassDef navigation_path_query_parameters3d_class_def = {

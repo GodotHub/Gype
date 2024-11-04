@@ -5,19 +5,20 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/gradient.hpp>
+#include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/line2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void line2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Line2D *line2d = static_cast<Line2D *>(JS_GetOpaque(val, Line2D::__class_id));
+	if (line2d)
+		memdelete(line2d);
 }
 
 static JSClassDef line2d_class_def = {

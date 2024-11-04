@@ -1,6 +1,6 @@
 
-import { JavaScriptObject } from "@godot/classes/java_script_object";
 import { GodotObject } from "@godot/classes/godot_object";
+import { JavaScriptObject } from "@godot/classes/java_script_object";
 declare global {
 export declare class _JavaScriptBridge extends GodotObject{
   public eval(_code: GDString | StringName | string, _use_global_execution_context: boolean = false): any;
@@ -13,7 +13,5 @@ export declare class _JavaScriptBridge extends GodotObject{
   public force_fs_sync(): void;
   public get pwa_update_available(): Signal;
 }
-}
-declare global {
-  const JavaScriptBridge: _JavaScriptBridge;
+const JavaScriptBridge: _JavaScriptBridge;
 }

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/camera_attributes.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void camera_attributes_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CameraAttributes *camera_attributes = static_cast<CameraAttributes *>(JS_GetOpaque(val, CameraAttributes::__class_id));
+	if (camera_attributes)
+		memdelete(camera_attributes);
 }
 
 static JSClassDef camera_attributes_class_def = {

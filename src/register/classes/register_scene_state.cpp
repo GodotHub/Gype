@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/classes/scene_state.hpp>
+#include <godot_cpp/classes/packed_scene.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void scene_state_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SceneState *scene_state = static_cast<SceneState *>(JS_GetOpaque(val, SceneState::__class_id));
+	if (scene_state)
+		memdelete(scene_state);
 }
 
 static JSClassDef scene_state_class_def = {

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/editor_translation_parser_plugin.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_translation_parser_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorTranslationParserPlugin *editor_translation_parser_plugin = static_cast<EditorTranslationParserPlugin *>(JS_GetOpaque(val, EditorTranslationParserPlugin::__class_id));
+	if (editor_translation_parser_plugin)
+		memdelete(editor_translation_parser_plugin);
 }
 
 static JSClassDef editor_translation_parser_plugin_class_def = {

@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/resource_preloader.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void resource_preloader_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ResourcePreloader *resource_preloader = static_cast<ResourcePreloader *>(JS_GetOpaque(val, ResourcePreloader::__class_id));
+	if (resource_preloader)
+		memdelete(resource_preloader);
 }
 
 static JSClassDef resource_preloader_class_def = {

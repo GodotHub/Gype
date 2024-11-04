@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_particle_emitter.hpp>
 #include <godot_cpp/classes/visual_shader_node_particle_box_emitter.hpp>
+#include <godot_cpp/classes/visual_shader_node_particle_emitter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_particle_box_emitter_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeParticleBoxEmitter *visual_shader_node_particle_box_emitter = static_cast<VisualShaderNodeParticleBoxEmitter *>(JS_GetOpaque(val, VisualShaderNodeParticleBoxEmitter::__class_id));
+	if (visual_shader_node_particle_box_emitter)
+		memdelete(visual_shader_node_particle_box_emitter);
 }
 
 static JSClassDef visual_shader_node_particle_box_emitter_class_def = {

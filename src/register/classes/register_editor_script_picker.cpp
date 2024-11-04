@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/editor_resource_picker.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/editor_script_picker.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void editor_script_picker_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorScriptPicker *editor_script_picker = static_cast<EditorScriptPicker *>(JS_GetOpaque(val, EditorScriptPicker::__class_id));
+	if (editor_script_picker)
+		memdelete(editor_script_picker);
 }
 
 static JSClassDef editor_script_picker_class_def = {

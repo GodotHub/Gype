@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void input_event_from_window_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	InputEventFromWindow *input_event_from_window = static_cast<InputEventFromWindow *>(JS_GetOpaque(val, InputEventFromWindow::__class_id));
+	if (input_event_from_window)
+		memdelete(input_event_from_window);
 }
 
 static JSClassDef input_event_from_window_class_def = {

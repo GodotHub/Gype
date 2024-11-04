@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void rd_shader_file_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RDShaderFile *rd_shader_file = static_cast<RDShaderFile *>(JS_GetOpaque(val, RDShaderFile::__class_id));
+	if (rd_shader_file)
+		memdelete(rd_shader_file);
 }
 
 static JSClassDef rd_shader_file_class_def = {

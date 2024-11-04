@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void fbx_document_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	FBXDocument *fbx_document = static_cast<FBXDocument *>(JS_GetOpaque(val, FBXDocument::__class_id));
+	if (fbx_document)
+		memdelete(fbx_document);
 }
 
 static JSClassDef fbx_document_class_def = {

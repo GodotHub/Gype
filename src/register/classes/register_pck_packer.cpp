@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/pck_packer.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void pck_packer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PCKPacker *pck_packer = static_cast<PCKPacker *>(JS_GetOpaque(val, PCKPacker::__class_id));
+	if (pck_packer)
+		memdelete(pck_packer);
 }
 
 static JSClassDef pck_packer_class_def = {

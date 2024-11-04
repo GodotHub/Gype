@@ -5,15 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/os.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/os.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
 
 static void os_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	OS *os = static_cast<OS *>(JS_GetOpaque(val, OS::__class_id));
+	if (os)
+		memdelete(os);
 }
 
 static JSClassDef os_class_def = {

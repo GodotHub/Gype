@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/classes/polygon2d.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void polygon2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Polygon2D *polygon2d = static_cast<Polygon2D *>(JS_GetOpaque(val, Polygon2D::__class_id));
+	if (polygon2d)
+		memdelete(polygon2d);
 }
 
 static JSClassDef polygon2d_class_def = {

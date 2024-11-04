@@ -5,18 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/ray_cast3d.hpp>
 #include <godot_cpp/classes/collision_object3d.hpp>
 #include <godot_cpp/classes/node3d.hpp>
-#include <godot_cpp/classes/ray_cast3d.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void ray_cast3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RayCast3D *ray_cast3d = static_cast<RayCast3D *>(JS_GetOpaque(val, RayCast3D::__class_id));
+	if (ray_cast3d)
+		memdelete(ray_cast3d);
 }
 
 static JSClassDef ray_cast3d_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void visual_shader_node_particle_multiply_by_axis_angle_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeParticleMultiplyByAxisAngle *visual_shader_node_particle_multiply_by_axis_angle = static_cast<VisualShaderNodeParticleMultiplyByAxisAngle *>(JS_GetOpaque(val, VisualShaderNodeParticleMultiplyByAxisAngle::__class_id));
+	if (visual_shader_node_particle_multiply_by_axis_angle)
+		memdelete(visual_shader_node_particle_multiply_by_axis_angle);
 }
 
 static JSClassDef visual_shader_node_particle_multiply_by_axis_angle_class_def = {

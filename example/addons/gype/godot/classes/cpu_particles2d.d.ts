@@ -1,8 +1,8 @@
 
+import { Node } from "@godot/classes/node";
 import { Gradient } from "@godot/classes/gradient";
 import { Texture2D } from "@godot/classes/texture2d";
 import { Curve } from "@godot/classes/curve";
-import { Node } from "@godot/classes/node";
 import { Node2D } from "@godot/classes/node2d";
 export declare class CPUParticles2D extends Node2D{
   public set_emitting(_emitting: boolean): void;

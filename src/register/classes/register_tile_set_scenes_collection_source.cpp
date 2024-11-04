@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/classes/tile_set_source.hpp>
+#include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/classes/tile_set_scenes_collection_source.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void tile_set_scenes_collection_source_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	TileSetScenesCollectionSource *tile_set_scenes_collection_source = static_cast<TileSetScenesCollectionSource *>(JS_GetOpaque(val, TileSetScenesCollectionSource::__class_id));
+	if (tile_set_scenes_collection_source)
+		memdelete(tile_set_scenes_collection_source);
 }
 
 static JSClassDef tile_set_scenes_collection_source_class_def = {

@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void character_body3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CharacterBody3D *character_body3d = static_cast<CharacterBody3D *>(JS_GetOpaque(val, CharacterBody3D::__class_id));
+	if (character_body3d)
+		memdelete(character_body3d);
 }
 
 static JSClassDef character_body3d_class_def = {

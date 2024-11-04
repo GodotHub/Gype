@@ -1,7 +1,7 @@
 
 import { Shape2D } from "@godot/classes/shape2d";
-import { CollisionObject2D } from "@godot/classes/collision_object2d";
 import { GodotObject } from "@godot/classes/godot_object";
+import { CollisionObject2D } from "@godot/classes/collision_object2d";
 import { Node2D } from "@godot/classes/node2d";
 export declare class ShapeCast2D extends Node2D{
   public set_enabled(_enabled: boolean): void;

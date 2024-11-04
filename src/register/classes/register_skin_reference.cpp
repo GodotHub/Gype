@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void skin_reference_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SkinReference *skin_reference = static_cast<SkinReference *>(JS_GetOpaque(val, SkinReference::__class_id));
+	if (skin_reference)
+		memdelete(skin_reference);
 }
 
 static JSClassDef skin_reference_class_def = {

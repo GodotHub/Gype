@@ -7,14 +7,14 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/window.hpp>
 #include <godot_cpp/classes/packed_scene.hpp>
-#include <godot_cpp/classes/multiplayer_api.hpp>
 #include <godot_cpp/classes/tween.hpp>
+#include <godot_cpp/classes/main_loop.hpp>
+#include <godot_cpp/classes/multiplayer_api.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/scene_tree_timer.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/scene_tree.hpp>
 #include <godot_cpp/classes/tween.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/scene_tree_timer.hpp>
-#include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/main_loop.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -22,8 +22,9 @@
 using namespace godot;
 
 static void scene_tree_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SceneTree *scene_tree = static_cast<SceneTree *>(JS_GetOpaque(val, SceneTree::__class_id));
+	if (scene_tree)
+		memdelete(scene_tree);
 }
 
 static JSClassDef scene_tree_class_def = {

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/classes/placeholder_texture3d.hpp>
+#include <godot_cpp/classes/texture3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void placeholder_texture3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PlaceholderTexture3D *placeholder_texture3d = static_cast<PlaceholderTexture3D *>(JS_GetOpaque(val, PlaceholderTexture3D::__class_id));
+	if (placeholder_texture3d)
+		memdelete(placeholder_texture3d);
 }
 
 static JSClassDef placeholder_texture3d_class_def = {

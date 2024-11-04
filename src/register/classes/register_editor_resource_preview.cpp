@@ -5,19 +5,20 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/editor_resource_preview_generator.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/editor_resource_preview.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/editor_resource_preview_generator.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_resource_preview_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorResourcePreview *editor_resource_preview = static_cast<EditorResourcePreview *>(JS_GetOpaque(val, EditorResourcePreview::__class_id));
+	if (editor_resource_preview)
+		memdelete(editor_resource_preview);
 }
 
 static JSClassDef editor_resource_preview_class_def = {

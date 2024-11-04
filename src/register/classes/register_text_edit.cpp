@@ -5,12 +5,12 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/text_edit.hpp>
 #include <godot_cpp/classes/h_scroll_bar.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/v_scroll_bar.hpp>
+#include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/syntax_highlighter.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -18,8 +18,9 @@
 using namespace godot;
 
 static void text_edit_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	TextEdit *text_edit = static_cast<TextEdit *>(JS_GetOpaque(val, TextEdit::__class_id));
+	if (text_edit)
+		memdelete(text_edit);
 }
 
 static JSClassDef text_edit_class_def = {

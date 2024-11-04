@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void cone_twist_joint3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ConeTwistJoint3D *cone_twist_joint3d = static_cast<ConeTwistJoint3D *>(JS_GetOpaque(val, ConeTwistJoint3D::__class_id));
+	if (cone_twist_joint3d)
+		memdelete(cone_twist_joint3d);
 }
 
 static JSClassDef cone_twist_joint3d_class_def = {

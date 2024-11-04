@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/uniform_set_cache_rd.hpp>
-#include <godot_cpp/classes/rd_uniform.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/rd_uniform.hpp>
+#include <godot_cpp/classes/uniform_set_cache_rd.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void uniform_set_cache_rd_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	UniformSetCacheRD *uniform_set_cache_rd = static_cast<UniformSetCacheRD *>(JS_GetOpaque(val, UniformSetCacheRD::__class_id));
+	if (uniform_set_cache_rd)
+		memdelete(uniform_set_cache_rd);
 }
 
 static JSClassDef uniform_set_cache_rd_class_def = {

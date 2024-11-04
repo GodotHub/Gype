@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_rotation_by_axis.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_rotation_by_axis_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeRotationByAxis *visual_shader_node_rotation_by_axis = static_cast<VisualShaderNodeRotationByAxis *>(JS_GetOpaque(val, VisualShaderNodeRotationByAxis::__class_id));
+	if (visual_shader_node_rotation_by_axis)
+		memdelete(visual_shader_node_rotation_by_axis);
 }
 
 static JSClassDef visual_shader_node_rotation_by_axis_class_def = {

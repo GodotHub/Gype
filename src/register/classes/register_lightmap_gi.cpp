@@ -6,9 +6,9 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/lightmap_gi_data.hpp>
-#include <godot_cpp/classes/sky.hpp>
-#include <godot_cpp/classes/camera_attributes.hpp>
 #include <godot_cpp/classes/lightmap_gi.hpp>
+#include <godot_cpp/classes/camera_attributes.hpp>
+#include <godot_cpp/classes/sky.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -16,8 +16,9 @@
 using namespace godot;
 
 static void lightmap_gi_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	LightmapGI *lightmap_gi = static_cast<LightmapGI *>(JS_GetOpaque(val, LightmapGI::__class_id));
+	if (lightmap_gi)
+		memdelete(lightmap_gi);
 }
 
 static JSClassDef lightmap_gi_class_def = {

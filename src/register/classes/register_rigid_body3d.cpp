@@ -5,19 +5,20 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/rigid_body3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/physics_direct_body_state3d.hpp>
 #include <godot_cpp/classes/physics_body3d.hpp>
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/physics_material.hpp>
-#include <godot_cpp/classes/rigid_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rigid_body3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RigidBody3D *rigid_body3d = static_cast<RigidBody3D *>(JS_GetOpaque(val, RigidBody3D::__class_id));
+	if (rigid_body3d)
+		memdelete(rigid_body3d);
 }
 
 static JSClassDef rigid_body3d_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void visual_shader_node_smooth_step_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeSmoothStep *visual_shader_node_smooth_step = static_cast<VisualShaderNodeSmoothStep *>(JS_GetOpaque(val, VisualShaderNodeSmoothStep::__class_id));
+	if (visual_shader_node_smooth_step)
+		memdelete(visual_shader_node_smooth_step);
 }
 
 static JSClassDef visual_shader_node_smooth_step_class_def = {

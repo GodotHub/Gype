@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void concave_polygon_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ConcavePolygonShape3D *concave_polygon_shape3d = static_cast<ConcavePolygonShape3D *>(JS_GetOpaque(val, ConcavePolygonShape3D::__class_id));
+	if (concave_polygon_shape3d)
+		memdelete(concave_polygon_shape3d);
 }
 
 static JSClassDef concave_polygon_shape3d_class_def = {

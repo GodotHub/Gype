@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/light2d.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/point_light2d.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/light2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void point_light2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PointLight2D *point_light2d = static_cast<PointLight2D *>(JS_GetOpaque(val, PointLight2D::__class_id));
+	if (point_light2d)
+		memdelete(point_light2d);
 }
 
 static JSClassDef point_light2d_class_def = {

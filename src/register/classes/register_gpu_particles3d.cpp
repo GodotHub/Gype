@@ -5,20 +5,21 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skin.hpp>
-#include <godot_cpp/classes/geometry_instance3d.hpp>
-#include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/gpu_particles3d.hpp>
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/skin.hpp>
+#include <godot_cpp/classes/gpu_particles3d.hpp>
+#include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gpu_particles3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GPUParticles3D *gpu_particles3d = static_cast<GPUParticles3D *>(JS_GetOpaque(val, GPUParticles3D::__class_id));
+	if (gpu_particles3d)
+		memdelete(gpu_particles3d);
 }
 
 static JSClassDef gpu_particles3d_class_def = {

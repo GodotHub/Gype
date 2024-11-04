@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/text_edit.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/code_edit.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void code_edit_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CodeEdit *code_edit = static_cast<CodeEdit *>(JS_GetOpaque(val, CodeEdit::__class_id));
+	if (code_edit)
+		memdelete(code_edit);
 }
 
 static JSClassDef code_edit_class_def = {

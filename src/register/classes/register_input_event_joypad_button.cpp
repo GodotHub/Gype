@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event_joypad_button.hpp>
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/input_event_joypad_button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void input_event_joypad_button_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	InputEventJoypadButton *input_event_joypad_button = static_cast<InputEventJoypadButton *>(JS_GetOpaque(val, InputEventJoypadButton::__class_id));
+	if (input_event_joypad_button)
+		memdelete(input_event_joypad_button);
 }
 
 static JSClassDef input_event_joypad_button_class_def = {

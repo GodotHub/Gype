@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void xr_body_tracker_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	XRBodyTracker *xr_body_tracker = static_cast<XRBodyTracker *>(JS_GetOpaque(val, XRBodyTracker::__class_id));
+	if (xr_body_tracker)
+		memdelete(xr_body_tracker);
 }
 
 static JSClassDef xr_body_tracker_class_def = {

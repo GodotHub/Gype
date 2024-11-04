@@ -5,19 +5,20 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/tile_map_pattern.hpp>
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/tile_set.hpp>
 #include <godot_cpp/classes/tile_set_source.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/physics_material.hpp>
+#include <godot_cpp/classes/tile_set.hpp>
+#include <godot_cpp/classes/tile_map_pattern.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void tile_set_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	TileSet *tile_set = static_cast<TileSet *>(JS_GetOpaque(val, TileSet::__class_id));
+	if (tile_set)
+		memdelete(tile_set);
 }
 
 static JSClassDef tile_set_class_def = {

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/scene_replication_config.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/scene_replication_config.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void scene_replication_config_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SceneReplicationConfig *scene_replication_config = static_cast<SceneReplicationConfig *>(JS_GetOpaque(val, SceneReplicationConfig::__class_id));
+	if (scene_replication_config)
+		memdelete(scene_replication_config);
 }
 
 static JSClassDef scene_replication_config_class_def = {

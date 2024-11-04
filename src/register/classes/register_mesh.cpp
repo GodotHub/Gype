@@ -6,10 +6,10 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/triangle_mesh.hpp>
-#include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/concave_polygon_shape3d.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/concave_polygon_shape3d.hpp>
+#include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/triangle_mesh.hpp>
 #include <godot_cpp/classes/convex_polygon_shape3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -17,8 +17,9 @@
 using namespace godot;
 
 static void mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Mesh *mesh = static_cast<Mesh *>(JS_GetOpaque(val, Mesh::__class_id));
+	if (mesh)
+		memdelete(mesh);
 }
 
 static JSClassDef mesh_class_def = {

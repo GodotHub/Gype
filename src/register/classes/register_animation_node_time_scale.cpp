@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_node_time_scale.hpp>
 #include <godot_cpp/classes/animation_node.hpp>
+#include <godot_cpp/classes/animation_node_time_scale.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_node_time_scale_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AnimationNodeTimeScale *animation_node_time_scale = static_cast<AnimationNodeTimeScale *>(JS_GetOpaque(val, AnimationNodeTimeScale::__class_id));
+	if (animation_node_time_scale)
+		memdelete(animation_node_time_scale);
 }
 
 static JSClassDef animation_node_time_scale_class_def = {

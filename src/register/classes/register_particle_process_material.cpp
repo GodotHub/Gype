@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/particle_process_material.hpp>
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void particle_process_material_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ParticleProcessMaterial *particle_process_material = static_cast<ParticleProcessMaterial *>(JS_GetOpaque(val, ParticleProcessMaterial::__class_id));
+	if (particle_process_material)
+		memdelete(particle_process_material);
 }
 
 static JSClassDef particle_process_material_class_def = {

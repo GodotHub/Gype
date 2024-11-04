@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void canvas_group_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CanvasGroup *canvas_group = static_cast<CanvasGroup *>(JS_GetOpaque(val, CanvasGroup::__class_id));
+	if (canvas_group)
+		memdelete(canvas_group);
 }
 
 static JSClassDef canvas_group_class_def = {

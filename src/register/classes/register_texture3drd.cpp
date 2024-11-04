@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/texture3drd.hpp>
 #include <godot_cpp/classes/texture3d.hpp>
+#include <godot_cpp/classes/texture3drd.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void texture3drd_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Texture3DRD *texture3drd = static_cast<Texture3DRD *>(JS_GetOpaque(val, Texture3DRD::__class_id));
+	if (texture3drd)
+		memdelete(texture3drd);
 }
 
 static JSClassDef texture3drd_class_def = {

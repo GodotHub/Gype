@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/stream_peer_tls.hpp>
 #include <godot_cpp/classes/stream_peer.hpp>
 #include <godot_cpp/classes/tls_options.hpp>
+#include <godot_cpp/classes/stream_peer_tls.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void stream_peer_tls_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	StreamPeerTLS *stream_peer_tls = static_cast<StreamPeerTLS *>(JS_GetOpaque(val, StreamPeerTLS::__class_id));
+	if (stream_peer_tls)
+		memdelete(stream_peer_tls);
 }
 
 static JSClassDef stream_peer_tls_class_def = {

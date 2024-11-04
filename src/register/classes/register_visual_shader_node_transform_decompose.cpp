@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/classes/visual_shader_node_transform_decompose.hpp>
+#include <godot_cpp/classes/visual_shader_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_transform_decompose_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeTransformDecompose *visual_shader_node_transform_decompose = static_cast<VisualShaderNodeTransformDecompose *>(JS_GetOpaque(val, VisualShaderNodeTransformDecompose::__class_id));
+	if (visual_shader_node_transform_decompose)
+		memdelete(visual_shader_node_transform_decompose);
 }
 
 static JSClassDef visual_shader_node_transform_decompose_class_def = {

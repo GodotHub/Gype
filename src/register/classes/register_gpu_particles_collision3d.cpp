@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/classes/gpu_particles_collision3d.hpp>
+#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void gpu_particles_collision3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GPUParticlesCollision3D *gpu_particles_collision3d = static_cast<GPUParticlesCollision3D *>(JS_GetOpaque(val, GPUParticlesCollision3D::__class_id));
+	if (gpu_particles_collision3d)
+		memdelete(gpu_particles_collision3d);
 }
 
 static JSClassDef gpu_particles_collision3d_class_def = {

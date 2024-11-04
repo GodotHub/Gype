@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/navigation_mesh_source_geometry_data3d.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/navigation_mesh_source_geometry_data3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void navigation_mesh_source_geometry_data3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	NavigationMeshSourceGeometryData3D *navigation_mesh_source_geometry_data3d = static_cast<NavigationMeshSourceGeometryData3D *>(JS_GetOpaque(val, NavigationMeshSourceGeometryData3D::__class_id));
+	if (navigation_mesh_source_geometry_data3d)
+		memdelete(navigation_mesh_source_geometry_data3d);
 }
 
 static JSClassDef navigation_mesh_source_geometry_data3d_class_def = {

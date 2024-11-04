@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/input_map.hpp>
-#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
 
 static void input_map_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	InputMap *input_map = static_cast<InputMap *>(JS_GetOpaque(val, InputMap::__class_id));
+	if (input_map)
+		memdelete(input_map);
 }
 
 static JSClassDef input_map_class_def = {

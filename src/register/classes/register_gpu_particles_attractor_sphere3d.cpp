@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void gpu_particles_attractor_sphere3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GPUParticlesAttractorSphere3D *gpu_particles_attractor_sphere3d = static_cast<GPUParticlesAttractorSphere3D *>(JS_GetOpaque(val, GPUParticlesAttractorSphere3D::__class_id));
+	if (gpu_particles_attractor_sphere3d)
+		memdelete(gpu_particles_attractor_sphere3d);
 }
 
 static JSClassDef gpu_particles_attractor_sphere3d_class_def = {

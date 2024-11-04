@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/curve_xyz_texture.hpp>
 #include <godot_cpp/classes/curve.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void curve_xyz_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CurveXYZTexture *curve_xyz_texture = static_cast<CurveXYZTexture *>(JS_GetOpaque(val, CurveXYZTexture::__class_id));
+	if (curve_xyz_texture)
+		memdelete(curve_xyz_texture);
 }
 
 static JSClassDef curve_xyz_texture_class_def = {

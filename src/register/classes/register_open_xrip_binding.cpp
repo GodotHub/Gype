@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/open_xr_action.hpp>
 #include <godot_cpp/classes/open_xrip_binding.hpp>
+#include <godot_cpp/classes/open_xr_action.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void open_xrip_binding_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	OpenXRIPBinding *open_xrip_binding = static_cast<OpenXRIPBinding *>(JS_GetOpaque(val, OpenXRIPBinding::__class_id));
+	if (open_xrip_binding)
+		memdelete(open_xrip_binding);
 }
 
 static JSClassDef open_xrip_binding_class_def = {

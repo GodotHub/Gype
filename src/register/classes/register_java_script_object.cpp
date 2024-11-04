@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void java_script_object_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	JavaScriptObject *java_script_object = static_cast<JavaScriptObject *>(JS_GetOpaque(val, JavaScriptObject::__class_id));
+	if (java_script_object)
+		memdelete(java_script_object);
 }
 
 static JSClassDef java_script_object_class_def = {

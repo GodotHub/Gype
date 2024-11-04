@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void visual_shader_node_texture_sdf_normal_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeTextureSDFNormal *visual_shader_node_texture_sdf_normal = static_cast<VisualShaderNodeTextureSDFNormal *>(JS_GetOpaque(val, VisualShaderNodeTextureSDFNormal::__class_id));
+	if (visual_shader_node_texture_sdf_normal)
+		memdelete(visual_shader_node_texture_sdf_normal);
 }
 
 static JSClassDef visual_shader_node_texture_sdf_normal_class_def = {

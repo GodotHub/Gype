@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void web_xr_interface_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	WebXRInterface *web_xr_interface = static_cast<WebXRInterface *>(JS_GetOpaque(val, WebXRInterface::__class_id));
+	if (web_xr_interface)
+		memdelete(web_xr_interface);
 }
 
 static JSClassDef web_xr_interface_class_def = {

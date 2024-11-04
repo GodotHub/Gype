@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/camera_feed.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void camera_feed_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CameraFeed *camera_feed = static_cast<CameraFeed *>(JS_GetOpaque(val, CameraFeed::__class_id));
+	if (camera_feed)
+		memdelete(camera_feed);
 }
 
 static JSClassDef camera_feed_class_def = {

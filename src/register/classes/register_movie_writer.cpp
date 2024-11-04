@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/image.hpp>
-#include <godot_cpp/classes/movie_writer.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/movie_writer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void movie_writer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	MovieWriter *movie_writer = static_cast<MovieWriter *>(JS_GetOpaque(val, MovieWriter::__class_id));
+	if (movie_writer)
+		memdelete(movie_writer);
 }
 
 static JSClassDef movie_writer_class_def = {

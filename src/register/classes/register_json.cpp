@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void json_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	JSON *json = static_cast<JSON *>(JS_GetOpaque(val, JSON::__class_id));
+	if (json)
+		memdelete(json);
 }
 
 static JSClassDef json_class_def = {

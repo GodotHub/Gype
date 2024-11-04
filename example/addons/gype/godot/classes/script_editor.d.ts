@@ -1,10 +1,10 @@
 
-import { EditorSyntaxHighlighter } from "@godot/classes/editor_syntax_highlighter";
+import { ScriptEditorBase } from "@godot/classes/script_editor_base";
 import { PanelContainer } from "@godot/classes/panel_container";
 import { Script } from "@godot/classes/script";
+import { EditorSyntaxHighlighter } from "@godot/classes/editor_syntax_highlighter";
 import { ScriptEditorBase } from "@godot/classes/script_editor_base";
 import { Script } from "@godot/classes/script";
-import { ScriptEditorBase } from "@godot/classes/script_editor_base";
 export declare class ScriptEditor extends PanelContainer{
   public get_current_editor(): ScriptEditorBase;
   public get_open_script_editors(): GDArray;

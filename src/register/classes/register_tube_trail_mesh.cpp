@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void tube_trail_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	TubeTrailMesh *tube_trail_mesh = static_cast<TubeTrailMesh *>(JS_GetOpaque(val, TubeTrailMesh::__class_id));
+	if (tube_trail_mesh)
+		memdelete(tube_trail_mesh);
 }
 
 static JSClassDef tube_trail_mesh_class_def = {

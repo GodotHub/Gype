@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/visual_instance3d.hpp>
-#include <godot_cpp/classes/material.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void geometry_instance3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GeometryInstance3D *geometry_instance3d = static_cast<GeometryInstance3D *>(JS_GetOpaque(val, GeometryInstance3D::__class_id));
+	if (geometry_instance3d)
+		memdelete(geometry_instance3d);
 }
 
 static JSClassDef geometry_instance3d_class_def = {

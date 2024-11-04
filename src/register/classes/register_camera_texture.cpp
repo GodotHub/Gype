@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/camera_texture.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/camera_texture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void camera_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CameraTexture *camera_texture = static_cast<CameraTexture *>(JS_GetOpaque(val, CameraTexture::__class_id));
+	if (camera_texture)
+		memdelete(camera_texture);
 }
 
 static JSClassDef camera_texture_class_def = {

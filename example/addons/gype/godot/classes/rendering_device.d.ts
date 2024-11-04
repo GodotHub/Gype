@@ -1,19 +1,19 @@
 
-import { RDAttachmentFormat } from "@godot/classes/rd_attachment_format";
-import { RDPipelineRasterizationState } from "@godot/classes/rd_pipeline_rasterization_state";
-import { RDVertexAttribute } from "@godot/classes/rd_vertex_attribute";
-import { GodotObject } from "@godot/classes/godot_object";
-import { RDUniform } from "@godot/classes/rd_uniform";
-import { RDPipelineMultisampleState } from "@godot/classes/rd_pipeline_multisample_state";
-import { RDFramebufferPass } from "@godot/classes/rd_framebuffer_pass";
 import { RDPipelineColorBlendState } from "@godot/classes/rd_pipeline_color_blend_state";
-import { RDPipelineSpecializationConstant } from "@godot/classes/rd_pipeline_specialization_constant";
+import { RDAttachmentFormat } from "@godot/classes/rd_attachment_format";
+import { RDFramebufferPass } from "@godot/classes/rd_framebuffer_pass";
+import { RDVertexAttribute } from "@godot/classes/rd_vertex_attribute";
+import { RDPipelineRasterizationState } from "@godot/classes/rd_pipeline_rasterization_state";
 import { RDShaderSPIRV } from "@godot/classes/rd_shader_spirv";
-import { RDTextureView } from "@godot/classes/rd_texture_view";
-import { RDShaderSource } from "@godot/classes/rd_shader_source";
+import { GodotObject } from "@godot/classes/godot_object";
 import { RDTextureFormat } from "@godot/classes/rd_texture_format";
 import { RDSamplerState } from "@godot/classes/rd_sampler_state";
+import { RDPipelineMultisampleState } from "@godot/classes/rd_pipeline_multisample_state";
 import { RDPipelineDepthStencilState } from "@godot/classes/rd_pipeline_depth_stencil_state";
+import { RDTextureView } from "@godot/classes/rd_texture_view";
+import { RDPipelineSpecializationConstant } from "@godot/classes/rd_pipeline_specialization_constant";
+import { RDUniform } from "@godot/classes/rd_uniform";
+import { RDShaderSource } from "@godot/classes/rd_shader_source";
 export declare class RenderingDevice extends GodotObject{
   public texture_create(_format: RDTextureFormat, _view: RDTextureView, _data: GDArray = []): RID;
   public texture_create_shared(_view: RDTextureView, _with_texture: RID): RID;

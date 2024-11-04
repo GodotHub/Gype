@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void physics_ray_query_parameters3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PhysicsRayQueryParameters3D *physics_ray_query_parameters3d = static_cast<PhysicsRayQueryParameters3D *>(JS_GetOpaque(val, PhysicsRayQueryParameters3D::__class_id));
+	if (physics_ray_query_parameters3d)
+		memdelete(physics_ray_query_parameters3d);
 }
 
 static JSClassDef physics_ray_query_parameters3d_class_def = {

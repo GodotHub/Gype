@@ -12,7 +12,9 @@ using namespace godot;
 JSValue utility_functions_instance;
 
 static void utility_functions_class_finalizer(JSRuntime *rt, JSValue val) {
-    // nothing
+	UtilityFunctions *utility_functions = static_cast<UtilityFunctions *>(JS_GetOpaque(val, UtilityFunctions::__class_id));
+	if (utility_functions)
+		memdelete(utility_functions);
 }
 
 static JSClassDef utility_functions_class_def = {
@@ -502,7 +504,6 @@ static const JSCFunctionListEntry utility_functions_class_funcs[] = {
 };
 
 static int js_utility_functions_class_init(JSContext *ctx) {
-	JS_NewClassID(&UtilityFunctions::__class_id);	
 	classes["UtilityFunctions"] = UtilityFunctions::__class_id;
 	class_id_list.insert(UtilityFunctions::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), UtilityFunctions::__class_id, &utility_functions_class_def);
@@ -519,5 +520,6 @@ static int js_utility_functions_class_init(JSContext *ctx) {
 }
 
 void register_utility_functions() {
+	UtilityFunctions::__init_js_class_id();
 	js_utility_functions_class_init(ctx);
 }

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/weak_ref.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/classes/weak_ref.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void weak_ref_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	WeakRef *weak_ref = static_cast<WeakRef *>(JS_GetOpaque(val, WeakRef::__class_id));
+	if (weak_ref)
+		memdelete(weak_ref);
 }
 
 static JSClassDef weak_ref_class_def = {

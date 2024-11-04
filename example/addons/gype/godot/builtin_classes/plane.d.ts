@@ -20,7 +20,7 @@ export declare class Plane {
   public is_finite(): boolean;
   public is_point_over(_point: Vector3): boolean;
   public distance_to(_point: Vector3): number;
-  public has_point(_point: Vector3, _tolerance: number): boolean;
+  public has_point(_point: Vector3, _tolerance: number = 1e-05): boolean;
   public project(_point: Vector3): Vector3;
   public intersect_3(_b: Plane, _c: Plane): any;
   public intersects_ray(_from: Vector3, _dir: Vector3): any;

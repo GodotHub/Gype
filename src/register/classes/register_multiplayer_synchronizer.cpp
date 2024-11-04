@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/scene_replication_config.hpp>
 #include <godot_cpp/classes/multiplayer_synchronizer.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void multiplayer_synchronizer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	MultiplayerSynchronizer *multiplayer_synchronizer = static_cast<MultiplayerSynchronizer *>(JS_GetOpaque(val, MultiplayerSynchronizer::__class_id));
+	if (multiplayer_synchronizer)
+		memdelete(multiplayer_synchronizer);
 }
 
 static JSClassDef multiplayer_synchronizer_class_def = {

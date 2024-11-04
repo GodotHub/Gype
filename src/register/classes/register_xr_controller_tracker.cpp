@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_positional_tracker.hpp>
 #include <godot_cpp/classes/xr_controller_tracker.hpp>
+#include <godot_cpp/classes/xr_positional_tracker.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void xr_controller_tracker_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	XRControllerTracker *xr_controller_tracker = static_cast<XRControllerTracker *>(JS_GetOpaque(val, XRControllerTracker::__class_id));
+	if (xr_controller_tracker)
+		memdelete(xr_controller_tracker);
 }
 
 static JSClassDef xr_controller_tracker_class_def = {

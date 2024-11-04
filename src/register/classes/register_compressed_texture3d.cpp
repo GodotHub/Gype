@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/compressed_texture3d.hpp>
 #include <godot_cpp/classes/texture3d.hpp>
+#include <godot_cpp/classes/compressed_texture3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void compressed_texture3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CompressedTexture3D *compressed_texture3d = static_cast<CompressedTexture3D *>(JS_GetOpaque(val, CompressedTexture3D::__class_id));
+	if (compressed_texture3d)
+		memdelete(compressed_texture3d);
 }
 
 static JSClassDef compressed_texture3d_class_def = {

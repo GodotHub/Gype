@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void translation_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Translation *translation = static_cast<Translation *>(JS_GetOpaque(val, Translation::__class_id));
+	if (translation)
+		memdelete(translation);
 }
 
 static JSClassDef translation_class_def = {

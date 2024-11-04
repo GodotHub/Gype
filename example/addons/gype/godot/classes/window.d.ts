@@ -1,10 +1,10 @@
 
+import { Texture2D } from "@godot/classes/texture2d";
 import { Viewport } from "@godot/classes/viewport";
 import { StyleBox } from "@godot/classes/style_box";
-import { Node } from "@godot/classes/node";
 import { Font } from "@godot/classes/font";
 import { Theme } from "@godot/classes/theme";
-import { Texture2D } from "@godot/classes/texture2d";
+import { Node } from "@godot/classes/node";
 export declare class Window extends Viewport{
   public _get_contents_minimum_size(): Vector2;
   public set_title(_title: GDString | StringName | string): void;

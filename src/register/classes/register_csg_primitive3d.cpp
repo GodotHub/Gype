@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/csg_primitive3d.hpp>
 #include <godot_cpp/classes/csg_shape3d.hpp>
+#include <godot_cpp/classes/csg_primitive3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void csg_primitive3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CSGPrimitive3D *csg_primitive3d = static_cast<CSGPrimitive3D *>(JS_GetOpaque(val, CSGPrimitive3D::__class_id));
+	if (csg_primitive3d)
+		memdelete(csg_primitive3d);
 }
 
 static JSClassDef csg_primitive3d_class_def = {

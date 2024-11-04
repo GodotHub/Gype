@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void portable_compressed_texture2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PortableCompressedTexture2D *portable_compressed_texture2d = static_cast<PortableCompressedTexture2D *>(JS_GetOpaque(val, PortableCompressedTexture2D::__class_id));
+	if (portable_compressed_texture2d)
+		memdelete(portable_compressed_texture2d);
 }
 
 static JSClassDef portable_compressed_texture2d_class_def = {

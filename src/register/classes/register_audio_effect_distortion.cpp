@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_distortion.hpp>
 #include <godot_cpp/classes/audio_effect.hpp>
+#include <godot_cpp/classes/audio_effect_distortion.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_effect_distortion_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioEffectDistortion *audio_effect_distortion = static_cast<AudioEffectDistortion *>(JS_GetOpaque(val, AudioEffectDistortion::__class_id));
+	if (audio_effect_distortion)
+		memdelete(audio_effect_distortion);
 }
 
 static JSClassDef audio_effect_distortion_class_def = {

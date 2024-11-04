@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/undo_redo.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/undo_redo.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void undo_redo_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	UndoRedo *undo_redo = static_cast<UndoRedo *>(JS_GetOpaque(val, UndoRedo::__class_id));
+	if (undo_redo)
+		memdelete(undo_redo);
 }
 
 static JSClassDef undo_redo_class_def = {

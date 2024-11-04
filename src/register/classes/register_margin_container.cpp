@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/margin_container.hpp>
 #include <godot_cpp/classes/container.hpp>
+#include <godot_cpp/classes/margin_container.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void margin_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	MarginContainer *margin_container = static_cast<MarginContainer *>(JS_GetOpaque(val, MarginContainer::__class_id));
+	if (margin_container)
+		memdelete(margin_container);
 }
 
 static JSClassDef margin_container_class_def = {

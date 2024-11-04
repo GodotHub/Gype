@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void animated_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AnimatedTexture *animated_texture = static_cast<AnimatedTexture *>(JS_GetOpaque(val, AnimatedTexture::__class_id));
+	if (animated_texture)
+		memdelete(animated_texture);
 }
 
 static JSClassDef animated_texture_class_def = {

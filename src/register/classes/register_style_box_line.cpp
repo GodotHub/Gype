@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/style_box_line.hpp>
 #include <godot_cpp/classes/style_box.hpp>
+#include <godot_cpp/classes/style_box_line.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void style_box_line_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	StyleBoxLine *style_box_line = static_cast<StyleBoxLine *>(JS_GetOpaque(val, StyleBoxLine::__class_id));
+	if (style_box_line)
+		memdelete(style_box_line);
 }
 
 static JSClassDef style_box_line_class_def = {

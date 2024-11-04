@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/editor_scene_format_importer.hpp>
 #include <godot_cpp/classes/ref_counted.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void editor_scene_format_importer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorSceneFormatImporter *editor_scene_format_importer = static_cast<EditorSceneFormatImporter *>(JS_GetOpaque(val, EditorSceneFormatImporter::__class_id));
+	if (editor_scene_format_importer)
+		memdelete(editor_scene_format_importer);
 }
 
 static JSClassDef editor_scene_format_importer_class_def = {

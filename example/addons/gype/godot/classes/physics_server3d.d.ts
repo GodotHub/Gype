@@ -2,9 +2,9 @@
 import { PhysicsDirectBodyState3D } from "@godot/classes/physics_direct_body_state3d";
 import { GodotObject } from "@godot/classes/godot_object";
 import { PhysicsServer3DRenderingServerHandler } from "@godot/classes/physics_server3d_rendering_server_handler";
-import { PhysicsDirectSpaceState3D } from "@godot/classes/physics_direct_space_state3d";
 import { PhysicsTestMotionResult3D } from "@godot/classes/physics_test_motion_result3d";
 import { PhysicsTestMotionParameters3D } from "@godot/classes/physics_test_motion_parameters3d";
+import { PhysicsDirectSpaceState3D } from "@godot/classes/physics_direct_space_state3d";
 declare global {
 export declare class _PhysicsServer3D extends GodotObject{
   public world_boundary_shape_create(): RID;
@@ -363,7 +363,5 @@ export declare class _PhysicsServer3D extends GodotObject{
     BODY_AXIS_ANGULAR_Z = 32,
   }
 }
-}
-declare global {
-  const PhysicsServer3D: _PhysicsServer3D;
+const PhysicsServer3D: _PhysicsServer3D;
 }

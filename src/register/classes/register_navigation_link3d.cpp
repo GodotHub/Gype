@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void navigation_link3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	NavigationLink3D *navigation_link3d = static_cast<NavigationLink3D *>(JS_GetOpaque(val, NavigationLink3D::__class_id));
+	if (navigation_link3d)
+		memdelete(navigation_link3d);
 }
 
 static JSClassDef navigation_link3d_class_def = {

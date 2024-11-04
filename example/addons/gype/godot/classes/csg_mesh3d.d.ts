@@ -1,6 +1,6 @@
 
-import { Mesh } from "@godot/classes/mesh";
 import { Material } from "@godot/classes/material";
+import { Mesh } from "@godot/classes/mesh";
 import { CSGPrimitive3D } from "@godot/classes/csg_primitive3d";
 export declare class CSGMesh3D extends CSGPrimitive3D{
   public set_mesh(_mesh: Mesh): void;

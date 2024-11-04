@@ -1,7 +1,7 @@
 
-import { Button } from "@godot/classes/button";
 import { Texture2D } from "@godot/classes/texture2d";
 import { PopupMenu } from "@godot/classes/popup_menu";
+import { Button } from "@godot/classes/button";
 export declare class OptionButton extends Button{
   public add_item(_label: GDString | StringName | string, _id: number = -1): void;
   public add_icon_item(_texture: Texture2D, _label: GDString | StringName | string, _id: number = -1): void;

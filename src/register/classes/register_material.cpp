@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void material_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Material *material = static_cast<Material *>(JS_GetOpaque(val, Material::__class_id));
+	if (material)
+		memdelete(material);
 }
 
 static JSClassDef material_class_def = {

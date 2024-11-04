@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/primitive_mesh.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void primitive_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PrimitiveMesh *primitive_mesh = static_cast<PrimitiveMesh *>(JS_GetOpaque(val, PrimitiveMesh::__class_id));
+	if (primitive_mesh)
+		memdelete(primitive_mesh);
 }
 
 static JSClassDef primitive_mesh_class_def = {

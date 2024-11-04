@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/multiplayer_peer_extension.hpp>
 #include <godot_cpp/classes/multiplayer_peer.hpp>
+#include <godot_cpp/classes/multiplayer_peer_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void multiplayer_peer_extension_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	MultiplayerPeerExtension *multiplayer_peer_extension = static_cast<MultiplayerPeerExtension *>(JS_GetOpaque(val, MultiplayerPeerExtension::__class_id));
+	if (multiplayer_peer_extension)
+		memdelete(multiplayer_peer_extension);
 }
 
 static JSClassDef multiplayer_peer_extension_class_def = {

@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/open_xrip_binding.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/open_xr_interaction_profile.hpp>
-#include <godot_cpp/classes/open_xrip_binding.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void open_xr_interaction_profile_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	OpenXRInteractionProfile *open_xr_interaction_profile = static_cast<OpenXRInteractionProfile *>(JS_GetOpaque(val, OpenXRInteractionProfile::__class_id));
+	if (open_xr_interaction_profile)
+		memdelete(open_xr_interaction_profile);
 }
 
 static JSClassDef open_xr_interaction_profile_class_def = {

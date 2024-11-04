@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void sphere_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SphereShape3D *sphere_shape3d = static_cast<SphereShape3D *>(JS_GetOpaque(val, SphereShape3D::__class_id));
+	if (sphere_shape3d)
+		memdelete(sphere_shape3d);
 }
 
 static JSClassDef sphere_shape3d_class_def = {

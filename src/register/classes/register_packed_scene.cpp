@@ -5,18 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/classes/scene_state.hpp>
+#include <godot_cpp/classes/packed_scene.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void packed_scene_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PackedScene *packed_scene = static_cast<PackedScene *>(JS_GetOpaque(val, PackedScene::__class_id));
+	if (packed_scene)
+		memdelete(packed_scene);
 }
 
 static JSClassDef packed_scene_class_def = {

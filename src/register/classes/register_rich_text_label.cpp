@@ -5,21 +5,22 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/rich_text_effect.hpp>
-#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/control.hpp>
-#include <godot_cpp/classes/popup_menu.hpp>
-#include <godot_cpp/classes/rich_text_label.hpp>
+#include <godot_cpp/classes/rich_text_effect.hpp>
 #include <godot_cpp/classes/v_scroll_bar.hpp>
+#include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/rich_text_label.hpp>
+#include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rich_text_label_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RichTextLabel *rich_text_label = static_cast<RichTextLabel *>(JS_GetOpaque(val, RichTextLabel::__class_id));
+	if (rich_text_label)
+		memdelete(rich_text_label);
 }
 
 static JSClassDef rich_text_label_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void sphere_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SphereMesh *sphere_mesh = static_cast<SphereMesh *>(JS_GetOpaque(val, SphereMesh::__class_id));
+	if (sphere_mesh)
+		memdelete(sphere_mesh);
 }
 
 static JSClassDef sphere_mesh_class_def = {

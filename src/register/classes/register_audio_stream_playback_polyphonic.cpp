@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void audio_stream_playback_polyphonic_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioStreamPlaybackPolyphonic *audio_stream_playback_polyphonic = static_cast<AudioStreamPlaybackPolyphonic *>(JS_GetOpaque(val, AudioStreamPlaybackPolyphonic::__class_id));
+	if (audio_stream_playback_polyphonic)
+		memdelete(audio_stream_playback_polyphonic);
 }
 
 static JSClassDef audio_stream_playback_polyphonic_class_def = {

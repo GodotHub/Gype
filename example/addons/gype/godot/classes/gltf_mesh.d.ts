@@ -1,7 +1,7 @@
 
-import { Material } from "@godot/classes/material";
-import { Resource } from "@godot/classes/resource";
 import { ImporterMesh } from "@godot/classes/importer_mesh";
+import { Resource } from "@godot/classes/resource";
+import { Material } from "@godot/classes/material";
 export declare class GLTFMesh extends Resource{
   public get_original_name(): String;
   public set_original_name(_original_name: GDString | StringName | string): void;

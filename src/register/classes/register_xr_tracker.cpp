@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/xr_tracker.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void xr_tracker_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	XRTracker *xr_tracker = static_cast<XRTracker *>(JS_GetOpaque(val, XRTracker::__class_id));
+	if (xr_tracker)
+		memdelete(xr_tracker);
 }
 
 static JSClassDef xr_tracker_class_def = {

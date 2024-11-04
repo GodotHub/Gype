@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void gltf_document_extension_convert_importer_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GLTFDocumentExtensionConvertImporterMesh *gltf_document_extension_convert_importer_mesh = static_cast<GLTFDocumentExtensionConvertImporterMesh *>(JS_GetOpaque(val, GLTFDocumentExtensionConvertImporterMesh::__class_id));
+	if (gltf_document_extension_convert_importer_mesh)
+		memdelete(gltf_document_extension_convert_importer_mesh);
 }
 
 static JSClassDef gltf_document_extension_convert_importer_mesh_class_def = {

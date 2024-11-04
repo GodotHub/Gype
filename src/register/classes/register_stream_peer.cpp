@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/stream_peer.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void stream_peer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	StreamPeer *stream_peer = static_cast<StreamPeer *>(JS_GetOpaque(val, StreamPeer::__class_id));
+	if (stream_peer)
+		memdelete(stream_peer);
 }
 
 static JSClassDef stream_peer_class_def = {

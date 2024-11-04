@@ -1,7 +1,7 @@
 
-import { Animation } from "@godot/classes/animation";
 import { AnimationLibrary } from "@godot/classes/animation_library";
 import { Node } from "@godot/classes/node";
+import { Animation } from "@godot/classes/animation";
 export declare class AnimationMixer extends Node{
   public _post_process_key_value(_animation: Animation, _track: number, _value: any, _object_id: number, _object_sub_idx: number): any;
   public add_animation_library(_name: GDString | StringName | string, _library: AnimationLibrary): number;

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/groove_joint2d.hpp>
 #include <godot_cpp/classes/joint2d.hpp>
+#include <godot_cpp/classes/groove_joint2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void groove_joint2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GrooveJoint2D *groove_joint2d = static_cast<GrooveJoint2D *>(JS_GetOpaque(val, GrooveJoint2D::__class_id));
+	if (groove_joint2d)
+		memdelete(groove_joint2d);
 }
 
 static JSClassDef groove_joint2d_class_def = {

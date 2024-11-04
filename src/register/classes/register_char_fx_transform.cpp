@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void char_fx_transform_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CharFXTransform *char_fx_transform = static_cast<CharFXTransform *>(JS_GetOpaque(val, CharFXTransform::__class_id));
+	if (char_fx_transform)
+		memdelete(char_fx_transform);
 }
 
 static JSClassDef char_fx_transform_class_def = {

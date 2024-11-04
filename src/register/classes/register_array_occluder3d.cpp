@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void array_occluder3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ArrayOccluder3D *array_occluder3d = static_cast<ArrayOccluder3D *>(JS_GetOpaque(val, ArrayOccluder3D::__class_id));
+	if (array_occluder3d)
+		memdelete(array_occluder3d);
 }
 
 static JSClassDef array_occluder3d_class_def = {

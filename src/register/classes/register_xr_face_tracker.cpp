@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void xr_face_tracker_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	XRFaceTracker *xr_face_tracker = static_cast<XRFaceTracker *>(JS_GetOpaque(val, XRFaceTracker::__class_id));
+	if (xr_face_tracker)
+		memdelete(xr_face_tracker);
 }
 
 static JSClassDef xr_face_tracker_class_def = {

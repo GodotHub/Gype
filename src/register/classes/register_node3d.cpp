@@ -5,19 +5,20 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/node3d_gizmo.hpp>
+#include <godot_cpp/classes/world3d.hpp>
 #include <godot_cpp/classes/node3d_gizmo.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/world3d.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void node3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Node3D *node3d = static_cast<Node3D *>(JS_GetOpaque(val, Node3D::__class_id));
+	if (node3d)
+		memdelete(node3d);
 }
 
 static JSClassDef node3d_class_def = {

@@ -6,19 +6,20 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/cpu_particles3d.hpp>
-#include <godot_cpp/classes/geometry_instance3d.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/gradient.hpp>
 #include <godot_cpp/classes/curve.hpp>
 #include <godot_cpp/classes/mesh.hpp>
-#include <godot_cpp/classes/gradient.hpp>
-#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void cpu_particles3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CPUParticles3D *cpu_particles3d = static_cast<CPUParticles3D *>(JS_GetOpaque(val, CPUParticles3D::__class_id));
+	if (cpu_particles3d)
+		memdelete(cpu_particles3d);
 }
 
 static JSClassDef cpu_particles3d_class_def = {

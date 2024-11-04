@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void canvas_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CanvasTexture *canvas_texture = static_cast<CanvasTexture *>(JS_GetOpaque(val, CanvasTexture::__class_id));
+	if (canvas_texture)
+		memdelete(canvas_texture);
 }
 
 static JSClassDef canvas_texture_class_def = {

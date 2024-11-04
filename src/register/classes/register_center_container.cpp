@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void center_container_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CenterContainer *center_container = static_cast<CenterContainer *>(JS_GetOpaque(val, CenterContainer::__class_id));
+	if (center_container)
+		memdelete(center_container);
 }
 
 static JSClassDef center_container_class_def = {

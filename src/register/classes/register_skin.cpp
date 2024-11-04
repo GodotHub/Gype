@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void skin_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Skin *skin = static_cast<Skin *>(JS_GetOpaque(val, Skin::__class_id));
+	if (skin)
+		memdelete(skin);
 }
 
 static JSClassDef skin_class_def = {

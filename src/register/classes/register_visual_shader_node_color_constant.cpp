@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void visual_shader_node_color_constant_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeColorConstant *visual_shader_node_color_constant = static_cast<VisualShaderNodeColorConstant *>(JS_GetOpaque(val, VisualShaderNodeColorConstant::__class_id));
+	if (visual_shader_node_color_constant)
+		memdelete(visual_shader_node_color_constant);
 }
 
 static JSClassDef visual_shader_node_color_constant_class_def = {

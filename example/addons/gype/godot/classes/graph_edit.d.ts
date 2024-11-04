@@ -1,9 +1,9 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
-import { GraphFrame } from "@godot/classes/graph_frame";
-import { Control } from "@godot/classes/control";
-import { Node } from "@godot/classes/node";
 import { HBoxContainer } from "@godot/classes/h_box_container";
+import { Control } from "@godot/classes/control";
+import { GraphFrame } from "@godot/classes/graph_frame";
+import { GodotObject } from "@godot/classes/godot_object";
+import { Node } from "@godot/classes/node";
 export declare class GraphEdit extends Control{
   public _is_in_input_hotzone(_in_node: GodotObject, _in_port: number, _mouse_position: Vector2): boolean;
   public _is_in_output_hotzone(_in_node: GodotObject, _in_port: number, _mouse_position: Vector2): boolean;

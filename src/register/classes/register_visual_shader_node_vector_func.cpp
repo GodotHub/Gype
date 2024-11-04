@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void visual_shader_node_vector_func_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeVectorFunc *visual_shader_node_vector_func = static_cast<VisualShaderNodeVectorFunc *>(JS_GetOpaque(val, VisualShaderNodeVectorFunc::__class_id));
+	if (visual_shader_node_vector_func)
+		memdelete(visual_shader_node_vector_func);
 }
 
 static JSClassDef visual_shader_node_vector_func_class_def = {

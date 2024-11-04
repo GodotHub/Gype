@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/physics_ray_query_parameters2d.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void physics_ray_query_parameters2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PhysicsRayQueryParameters2D *physics_ray_query_parameters2d = static_cast<PhysicsRayQueryParameters2D *>(JS_GetOpaque(val, PhysicsRayQueryParameters2D::__class_id));
+	if (physics_ray_query_parameters2d)
+		memdelete(physics_ray_query_parameters2d);
 }
 
 static JSClassDef physics_ray_query_parameters2d_class_def = {

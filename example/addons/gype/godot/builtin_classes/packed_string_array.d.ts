@@ -18,13 +18,13 @@ export declare class PackedStringArray {
   public clear(): void;
   public has(_value: GDString | StringName | string): boolean;
   public reverse(): void;
-  public slice(_begin: number, _end: number): PackedStringArray;
+  public slice(_begin: number, _end: number = 2147483647): PackedStringArray;
   public to_byte_array(): PackedByteArray;
   public sort(): void;
-  public bsearch(_value: GDString | StringName | string, _before: boolean): number;
+  public bsearch(_value: GDString | StringName | string, _before: boolean = true): number;
   public duplicate(): PackedStringArray;
-  public find(_value: GDString | StringName | string, _from: number): number;
-  public rfind(_value: GDString | StringName | string, _from: number): number;
+  public find(_value: GDString | StringName | string, _from: number = 0): number;
+  public rfind(_value: GDString | StringName | string, _from: number = -1): number;
   public count(_value: GDString | StringName | string): number;
 }
 }

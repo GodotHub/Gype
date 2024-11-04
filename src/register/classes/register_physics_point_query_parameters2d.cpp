@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void physics_point_query_parameters2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PhysicsPointQueryParameters2D *physics_point_query_parameters2d = static_cast<PhysicsPointQueryParameters2D *>(JS_GetOpaque(val, PhysicsPointQueryParameters2D::__class_id));
+	if (physics_point_query_parameters2d)
+		memdelete(physics_point_query_parameters2d);
 }
 
 static JSClassDef physics_point_query_parameters2d_class_def = {

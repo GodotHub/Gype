@@ -7,17 +7,18 @@
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/area2d.hpp>
 #include <godot_cpp/classes/collision_object2d.hpp>
+#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/area2d.hpp>
 #include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void area2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Area2D *area2d = static_cast<Area2D *>(JS_GetOpaque(val, Area2D::__class_id));
+	if (area2d)
+		memdelete(area2d);
 }
 
 static JSClassDef area2d_class_def = {

@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/open_xr_composition_layer.hpp>
-#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/classes/sub_viewport.hpp>
+#include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void open_xr_composition_layer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	OpenXRCompositionLayer *open_xr_composition_layer = static_cast<OpenXRCompositionLayer *>(JS_GetOpaque(val, OpenXRCompositionLayer::__class_id));
+	if (open_xr_composition_layer)
+		memdelete(open_xr_composition_layer);
 }
 
 static JSClassDef open_xr_composition_layer_class_def = {

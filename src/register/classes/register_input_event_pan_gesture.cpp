@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void input_event_pan_gesture_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	InputEventPanGesture *input_event_pan_gesture = static_cast<InputEventPanGesture *>(JS_GetOpaque(val, InputEventPanGesture::__class_id));
+	if (input_event_pan_gesture)
+		memdelete(input_event_pan_gesture);
 }
 
 static JSClassDef input_event_pan_gesture_class_def = {

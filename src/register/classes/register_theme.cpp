@@ -5,10 +5,10 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/font.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/style_box.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/font.hpp>
 #include <godot_cpp/classes/theme.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -16,8 +16,9 @@
 using namespace godot;
 
 static void theme_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Theme *theme = static_cast<Theme *>(JS_GetOpaque(val, Theme::__class_id));
+	if (theme)
+		memdelete(theme);
 }
 
 static JSClassDef theme_class_def = {

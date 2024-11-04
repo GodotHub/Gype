@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/char_fx_transform.hpp>
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/rich_text_effect.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rich_text_effect_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RichTextEffect *rich_text_effect = static_cast<RichTextEffect *>(JS_GetOpaque(val, RichTextEffect::__class_id));
+	if (rich_text_effect)
+		memdelete(rich_text_effect);
 }
 
 static JSClassDef rich_text_effect_class_def = {

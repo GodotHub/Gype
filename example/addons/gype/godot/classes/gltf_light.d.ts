@@ -1,6 +1,6 @@
 
-import { Light3D } from "@godot/classes/light3d";
 import { Resource } from "@godot/classes/resource";
+import { Light3D } from "@godot/classes/light3d";
 export declare class GLTFLight extends Resource{
   public
  static from_node(_light_node: Light3D): GLTFLight;

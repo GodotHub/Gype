@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/button.hpp>
-#include <godot_cpp/classes/popup_menu.hpp>
 #include <godot_cpp/classes/menu_button.hpp>
+#include <godot_cpp/classes/popup_menu.hpp>
+#include <godot_cpp/classes/button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void menu_button_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	MenuButton *menu_button = static_cast<MenuButton *>(JS_GetOpaque(val, MenuButton::__class_id));
+	if (menu_button)
+		memdelete(menu_button);
 }
 
 static JSClassDef menu_button_class_def = {

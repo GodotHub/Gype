@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void physics_material_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PhysicsMaterial *physics_material = static_cast<PhysicsMaterial *>(JS_GetOpaque(val, PhysicsMaterial::__class_id));
+	if (physics_material)
+		memdelete(physics_material);
 }
 
 static JSClassDef physics_material_class_def = {

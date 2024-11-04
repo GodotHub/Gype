@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/point_mesh.hpp>
 #include <godot_cpp/classes/primitive_mesh.hpp>
+#include <godot_cpp/classes/point_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void point_mesh_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PointMesh *point_mesh = static_cast<PointMesh *>(JS_GetOpaque(val, PointMesh::__class_id));
+	if (point_mesh)
+		memdelete(point_mesh);
 }
 
 static JSClassDef point_mesh_class_def = {

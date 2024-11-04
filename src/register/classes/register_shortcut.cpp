@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/classes/shortcut.hpp>
+#include <godot_cpp/classes/input_event.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void shortcut_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Shortcut *shortcut = static_cast<Shortcut *>(JS_GetOpaque(val, Shortcut::__class_id));
+	if (shortcut)
+		memdelete(shortcut);
 }
 
 static JSClassDef shortcut_class_def = {

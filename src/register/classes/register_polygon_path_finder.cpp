@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/classes/polygon_path_finder.hpp>
+#include <godot_cpp/classes/resource.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void polygon_path_finder_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PolygonPathFinder *polygon_path_finder = static_cast<PolygonPathFinder *>(JS_GetOpaque(val, PolygonPathFinder::__class_id));
+	if (polygon_path_finder)
+		memdelete(polygon_path_finder);
 }
 
 static JSClassDef polygon_path_finder_class_def = {

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/classes/animation_node.hpp>
+#include <godot_cpp/classes/animation_root_node.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_root_node_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AnimationRootNode *animation_root_node = static_cast<AnimationRootNode *>(JS_GetOpaque(val, AnimationRootNode::__class_id));
+	if (animation_root_node)
+		memdelete(animation_root_node);
 }
 
 static JSClassDef animation_root_node_class_def = {

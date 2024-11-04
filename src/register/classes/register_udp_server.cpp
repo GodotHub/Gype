@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/packet_peer_udp.hpp>
 #include <godot_cpp/classes/udp_server.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void udp_server_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	UDPServer *udp_server = static_cast<UDPServer *>(JS_GetOpaque(val, UDPServer::__class_id));
+	if (udp_server)
+		memdelete(udp_server);
 }
 
 static JSClassDef udp_server_class_def = {

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/x509_certificate.hpp>
 #include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/classes/x509_certificate.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void x509_certificate_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	X509Certificate *x509_certificate = static_cast<X509Certificate *>(JS_GetOpaque(val, X509Certificate::__class_id));
+	if (x509_certificate)
+		memdelete(x509_certificate);
 }
 
 static JSClassDef x509_certificate_class_def = {

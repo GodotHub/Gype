@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void directional_light2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	DirectionalLight2D *directional_light2d = static_cast<DirectionalLight2D *>(JS_GetOpaque(val, DirectionalLight2D::__class_id));
+	if (directional_light2d)
+		memdelete(directional_light2d);
 }
 
 static JSClassDef directional_light2d_class_def = {

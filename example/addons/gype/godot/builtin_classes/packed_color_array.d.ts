@@ -18,13 +18,13 @@ export declare class PackedColorArray {
   public clear(): void;
   public has(_value: Color): boolean;
   public reverse(): void;
-  public slice(_begin: number, _end: number): PackedColorArray;
+  public slice(_begin: number, _end: number = 2147483647): PackedColorArray;
   public to_byte_array(): PackedByteArray;
   public sort(): void;
-  public bsearch(_value: Color, _before: boolean): number;
+  public bsearch(_value: Color, _before: boolean = true): number;
   public duplicate(): PackedColorArray;
-  public find(_value: Color, _from: number): number;
-  public rfind(_value: Color, _from: number): number;
+  public find(_value: Color, _from: number = 0): number;
+  public rfind(_value: Color, _from: number = -1): number;
   public count(_value: Color): number;
 }
 }

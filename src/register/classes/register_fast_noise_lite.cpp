@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/noise.hpp>
 #include <godot_cpp/classes/fast_noise_lite.hpp>
+#include <godot_cpp/classes/noise.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void fast_noise_lite_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	FastNoiseLite *fast_noise_lite = static_cast<FastNoiseLite *>(JS_GetOpaque(val, FastNoiseLite::__class_id));
+	if (fast_noise_lite)
+		memdelete(fast_noise_lite);
 }
 
 static JSClassDef fast_noise_lite_class_def = {

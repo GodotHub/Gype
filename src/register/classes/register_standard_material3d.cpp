@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/standard_material3d.hpp>
 #include <godot_cpp/classes/base_material3d.hpp>
+#include <godot_cpp/classes/standard_material3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void standard_material3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	StandardMaterial3D *standard_material3d = static_cast<StandardMaterial3D *>(JS_GetOpaque(val, StandardMaterial3D::__class_id));
+	if (standard_material3d)
+		memdelete(standard_material3d);
 }
 
 static JSClassDef standard_material3d_class_def = {

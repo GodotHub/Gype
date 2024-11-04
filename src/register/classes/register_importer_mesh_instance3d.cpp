@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skin.hpp>
-#include <godot_cpp/classes/importer_mesh.hpp>
 #include <godot_cpp/classes/importer_mesh_instance3d.hpp>
+#include <godot_cpp/classes/importer_mesh.hpp>
+#include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/classes/node3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -15,8 +15,9 @@
 using namespace godot;
 
 static void importer_mesh_instance3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ImporterMeshInstance3D *importer_mesh_instance3d = static_cast<ImporterMeshInstance3D *>(JS_GetOpaque(val, ImporterMeshInstance3D::__class_id));
+	if (importer_mesh_instance3d)
+		memdelete(importer_mesh_instance3d);
 }
 
 static JSClassDef importer_mesh_instance3d_class_def = {

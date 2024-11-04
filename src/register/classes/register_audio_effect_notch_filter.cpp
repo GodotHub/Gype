@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void audio_effect_notch_filter_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioEffectNotchFilter *audio_effect_notch_filter = static_cast<AudioEffectNotchFilter *>(JS_GetOpaque(val, AudioEffectNotchFilter::__class_id));
+	if (audio_effect_notch_filter)
+		memdelete(audio_effect_notch_filter);
 }
 
 static JSClassDef audio_effect_notch_filter_class_def = {

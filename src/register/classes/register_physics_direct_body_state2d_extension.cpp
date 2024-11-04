@@ -5,18 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_direct_body_state2d_extension.hpp>
 #include <godot_cpp/classes/physics_direct_body_state2d.hpp>
-#include <godot_cpp/classes/physics_direct_space_state2d.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/physics_direct_space_state2d.hpp>
+#include <godot_cpp/classes/physics_direct_body_state2d_extension.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void physics_direct_body_state2d_extension_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PhysicsDirectBodyState2DExtension *physics_direct_body_state2d_extension = static_cast<PhysicsDirectBodyState2DExtension *>(JS_GetOpaque(val, PhysicsDirectBodyState2DExtension::__class_id));
+	if (physics_direct_body_state2d_extension)
+		memdelete(physics_direct_body_state2d_extension);
 }
 
 static JSClassDef physics_direct_body_state2d_extension_class_def = {

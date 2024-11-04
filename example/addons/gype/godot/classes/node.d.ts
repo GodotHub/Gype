@@ -1,10 +1,10 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
-import { Viewport } from "@godot/classes/viewport";
 import { Window } from "@godot/classes/window";
-import { InputEvent } from "@godot/classes/input_event";
-import { MultiplayerAPI } from "@godot/classes/multiplayer_api";
 import { Tween } from "@godot/classes/tween";
+import { MultiplayerAPI } from "@godot/classes/multiplayer_api";
+import { Viewport } from "@godot/classes/viewport";
+import { GodotObject } from "@godot/classes/godot_object";
+import { InputEvent } from "@godot/classes/input_event";
 import { SceneTree } from "@godot/classes/scene_tree";
 export declare class Node extends GodotObject{
   public _process(_delta: number): void;

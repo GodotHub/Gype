@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void editor_paths_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorPaths *editor_paths = static_cast<EditorPaths *>(JS_GetOpaque(val, EditorPaths::__class_id));
+	if (editor_paths)
+		memdelete(editor_paths);
 }
 
 static JSClassDef editor_paths_class_def = {

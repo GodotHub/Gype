@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/v_slider.hpp>
 #include <godot_cpp/classes/slider.hpp>
+#include <godot_cpp/classes/v_slider.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void v_slider_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VSlider *v_slider = static_cast<VSlider *>(JS_GetOpaque(val, VSlider::__class_id));
+	if (v_slider)
+		memdelete(v_slider);
 }
 
 static JSClassDef v_slider_class_def = {

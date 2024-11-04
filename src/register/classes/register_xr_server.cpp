@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/xr_tracker.hpp>
+#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/xr_server.hpp>
 #include <godot_cpp/classes/xr_interface.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
 
 static void xr_server_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	XRServer *xr_server = static_cast<XRServer *>(JS_GetOpaque(val, XRServer::__class_id));
+	if (xr_server)
+		memdelete(xr_server);
 }
 
 static JSClassDef xr_server_class_def = {

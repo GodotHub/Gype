@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void zip_reader_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ZIPReader *zip_reader = static_cast<ZIPReader *>(JS_GetOpaque(val, ZIPReader::__class_id));
+	if (zip_reader)
+		memdelete(zip_reader);
 }
 
 static JSClassDef zip_reader_class_def = {

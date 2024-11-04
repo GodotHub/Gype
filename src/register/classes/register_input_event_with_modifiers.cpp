@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void input_event_with_modifiers_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	InputEventWithModifiers *input_event_with_modifiers = static_cast<InputEventWithModifiers *>(JS_GetOpaque(val, InputEventWithModifiers::__class_id));
+	if (input_event_with_modifiers)
+		memdelete(input_event_with_modifiers);
 }
 
 static JSClassDef input_event_with_modifiers_class_def = {

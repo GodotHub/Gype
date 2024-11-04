@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void placeholder_texture2d_array_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PlaceholderTexture2DArray *placeholder_texture2d_array = static_cast<PlaceholderTexture2DArray *>(JS_GetOpaque(val, PlaceholderTexture2DArray::__class_id));
+	if (placeholder_texture2d_array)
+		memdelete(placeholder_texture2d_array);
 }
 
 static JSClassDef placeholder_texture2d_array_class_def = {

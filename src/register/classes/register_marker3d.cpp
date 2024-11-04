@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void marker3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Marker3D *marker3d = static_cast<Marker3D *>(JS_GetOpaque(val, Marker3D::__class_id));
+	if (marker3d)
+		memdelete(marker3d);
 }
 
 static JSClassDef marker3d_class_def = {

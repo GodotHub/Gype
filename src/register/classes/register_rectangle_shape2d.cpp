@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void rectangle_shape2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RectangleShape2D *rectangle_shape2d = static_cast<RectangleShape2D *>(JS_GetOpaque(val, RectangleShape2D::__class_id));
+	if (rectangle_shape2d)
+		memdelete(rectangle_shape2d);
 }
 
 static JSClassDef rectangle_shape2d_class_def = {

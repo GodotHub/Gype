@@ -5,15 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/class_db_singleton.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/class_db_singleton.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
 
 static void class_db_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ClassDBSingleton *class_db = static_cast<ClassDBSingleton *>(JS_GetOpaque(val, ClassDBSingleton::__class_id));
+	if (class_db)
+		memdelete(class_db);
 }
 
 static JSClassDef class_db_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void rd_texture_view_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RDTextureView *rd_texture_view = static_cast<RDTextureView *>(JS_GetOpaque(val, RDTextureView::__class_id));
+	if (rd_texture_view)
+		memdelete(rd_texture_view);
 }
 
 static JSClassDef rd_texture_view_class_def = {

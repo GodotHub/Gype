@@ -5,20 +5,21 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/curve.hpp>
-#include <godot_cpp/classes/gradient.hpp>
-#include <godot_cpp/classes/cpu_particles2d.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/gradient.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/cpu_particles2d.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void cpu_particles2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CPUParticles2D *cpu_particles2d = static_cast<CPUParticles2D *>(JS_GetOpaque(val, CPUParticles2D::__class_id));
+	if (cpu_particles2d)
+		memdelete(cpu_particles2d);
 }
 
 static JSClassDef cpu_particles2d_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void capsule_shape3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CapsuleShape3D *capsule_shape3d = static_cast<CapsuleShape3D *>(JS_GetOpaque(val, CapsuleShape3D::__class_id));
+	if (capsule_shape3d)
+		memdelete(capsule_shape3d);
 }
 
 static JSClassDef capsule_shape3d_class_def = {

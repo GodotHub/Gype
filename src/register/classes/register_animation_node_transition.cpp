@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/animation_node_transition.hpp>
-#include <godot_cpp/classes/animation_node_sync.hpp>
 #include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/animation_node_sync.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_node_transition_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AnimationNodeTransition *animation_node_transition = static_cast<AnimationNodeTransition *>(JS_GetOpaque(val, AnimationNodeTransition::__class_id));
+	if (animation_node_transition)
+		memdelete(animation_node_transition);
 }
 
 static JSClassDef animation_node_transition_class_def = {

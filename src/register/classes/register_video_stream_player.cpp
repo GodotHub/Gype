@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/video_stream.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/video_stream_player.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -15,8 +15,9 @@
 using namespace godot;
 
 static void video_stream_player_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VideoStreamPlayer *video_stream_player = static_cast<VideoStreamPlayer *>(JS_GetOpaque(val, VideoStreamPlayer::__class_id));
+	if (video_stream_player)
+		memdelete(video_stream_player);
 }
 
 static JSClassDef video_stream_player_class_def = {

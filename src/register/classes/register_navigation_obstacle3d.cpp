@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void navigation_obstacle3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	NavigationObstacle3D *navigation_obstacle3d = static_cast<NavigationObstacle3D *>(JS_GetOpaque(val, NavigationObstacle3D::__class_id));
+	if (navigation_obstacle3d)
+		memdelete(navigation_obstacle3d);
 }
 
 static JSClassDef navigation_obstacle3d_class_def = {

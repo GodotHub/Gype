@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void viewport_texture_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ViewportTexture *viewport_texture = static_cast<ViewportTexture *>(JS_GetOpaque(val, ViewportTexture::__class_id));
+	if (viewport_texture)
+		memdelete(viewport_texture);
 }
 
 static JSClassDef viewport_texture_class_def = {

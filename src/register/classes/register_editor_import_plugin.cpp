@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void editor_import_plugin_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	EditorImportPlugin *editor_import_plugin = static_cast<EditorImportPlugin *>(JS_GetOpaque(val, EditorImportPlugin::__class_id));
+	if (editor_import_plugin)
+		memdelete(editor_import_plugin);
 }
 
 static JSClassDef editor_import_plugin_class_def = {

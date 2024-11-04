@@ -12,13 +12,13 @@ export declare class Projection {
   public w: Vector4;
   public create_depth_correction(_flip_y: boolean): Projection;
   public create_light_atlas_rect(_rect: Rect2): Projection;
-  public create_perspective(_fovy: number, _aspect: number, _z_near: number, _z_far: number, _flip_fov: boolean): Projection;
+  public create_perspective(_fovy: number, _aspect: number, _z_near: number, _z_far: number, _flip_fov: boolean = false): Projection;
   public create_perspective_hmd(_fovy: number, _aspect: number, _z_near: number, _z_far: number, _flip_fov: boolean, _eye: number, _intraocular_dist: number, _convergence_dist: number): Projection;
   public create_for_hmd(_eye: number, _aspect: number, _intraocular_dist: number, _display_width: number, _display_to_lens: number, _oversample: number, _z_near: number, _z_far: number): Projection;
   public create_orthogonal(_left: number, _right: number, _bottom: number, _top: number, _z_near: number, _z_far: number): Projection;
-  public create_orthogonal_aspect(_size: number, _aspect: number, _z_near: number, _z_far: number, _flip_fov: boolean): Projection;
+  public create_orthogonal_aspect(_size: number, _aspect: number, _z_near: number, _z_far: number, _flip_fov: boolean = false): Projection;
   public create_frustum(_left: number, _right: number, _bottom: number, _top: number, _z_near: number, _z_far: number): Projection;
-  public create_frustum_aspect(_size: number, _aspect: number, _offset: Vector2, _z_near: number, _z_far: number, _flip_fov: boolean): Projection;
+  public create_frustum_aspect(_size: number, _aspect: number, _offset: Vector2, _z_near: number, _z_far: number, _flip_fov: boolean = false): Projection;
   public create_fit_aabb(_aabb: AABB): Projection;
   public determinant(): number;
   public perspective_znear_adjusted(_new_znear: number): Projection;

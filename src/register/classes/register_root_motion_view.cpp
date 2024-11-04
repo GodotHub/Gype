@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/classes/root_motion_view.hpp>
+#include <godot_cpp/classes/visual_instance3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void root_motion_view_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RootMotionView *root_motion_view = static_cast<RootMotionView *>(JS_GetOpaque(val, RootMotionView::__class_id));
+	if (root_motion_view)
+		memdelete(root_motion_view);
 }
 
 static JSClassDef root_motion_view_class_def = {

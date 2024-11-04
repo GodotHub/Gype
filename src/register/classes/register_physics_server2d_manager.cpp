@@ -5,15 +5,16 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/physics_server2d_manager.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/physics_server2d_manager.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
 
 static void physics_server2d_manager_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	PhysicsServer2DManager *physics_server2d_manager = static_cast<PhysicsServer2DManager *>(JS_GetOpaque(val, PhysicsServer2DManager::__class_id));
+	if (physics_server2d_manager)
+		memdelete(physics_server2d_manager);
 }
 
 static JSClassDef physics_server2d_manager_class_def = {

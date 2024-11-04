@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void interval_tweener_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	IntervalTweener *interval_tweener = static_cast<IntervalTweener *>(JS_GetOpaque(val, IntervalTweener::__class_id));
+	if (interval_tweener)
+		memdelete(interval_tweener);
 }
 
 static JSClassDef interval_tweener_class_def = {

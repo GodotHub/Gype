@@ -1,9 +1,9 @@
 
 import { Shape2D } from "@godot/classes/shape2d";
-import { InputEvent } from "@godot/classes/input_event";
 import { GodotObject } from "@godot/classes/godot_object";
 import { Viewport } from "@godot/classes/viewport";
 import { Node2D } from "@godot/classes/node2d";
+import { InputEvent } from "@godot/classes/input_event";
 export declare class CollisionObject2D extends Node2D{
   public _input_event(_viewport: Viewport, _event: InputEvent, _shape_idx: number): void;
   public _mouse_enter(): void;

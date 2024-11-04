@@ -28,7 +28,5 @@ export declare class _EngineDebugger extends GodotObject{
   public remove_breakpoint(_line: number, _source: GDString | StringName | string): void;
   public clear_breakpoints(): void;
 }
-}
-declare global {
-  const EngineDebugger: _EngineDebugger;
+const EngineDebugger: _EngineDebugger;
 }

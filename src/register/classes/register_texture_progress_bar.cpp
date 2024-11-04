@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/range.hpp>
 #include <godot_cpp/classes/texture_progress_bar.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void texture_progress_bar_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	TextureProgressBar *texture_progress_bar = static_cast<TextureProgressBar *>(JS_GetOpaque(val, TextureProgressBar::__class_id));
+	if (texture_progress_bar)
+		memdelete(texture_progress_bar);
 }
 
 static JSClassDef texture_progress_bar_class_def = {

@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void xr_face_modifier3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	XRFaceModifier3D *xr_face_modifier3d = static_cast<XRFaceModifier3D *>(JS_GetOpaque(val, XRFaceModifier3D::__class_id));
+	if (xr_face_modifier3d)
+		memdelete(xr_face_modifier3d);
 }
 
 static JSClassDef xr_face_modifier3d_class_def = {

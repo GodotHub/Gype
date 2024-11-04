@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void visual_shader_node_clamp_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeClamp *visual_shader_node_clamp = static_cast<VisualShaderNodeClamp *>(JS_GetOpaque(val, VisualShaderNodeClamp::__class_id));
+	if (visual_shader_node_clamp)
+		memdelete(visual_shader_node_clamp);
 }
 
 static JSClassDef visual_shader_node_clamp_class_def = {

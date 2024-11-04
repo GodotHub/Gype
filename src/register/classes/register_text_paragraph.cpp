@@ -14,8 +14,9 @@
 using namespace godot;
 
 static void text_paragraph_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	TextParagraph *text_paragraph = static_cast<TextParagraph *>(JS_GetOpaque(val, TextParagraph::__class_id));
+	if (text_paragraph)
+		memdelete(text_paragraph);
 }
 
 static JSClassDef text_paragraph_class_def = {

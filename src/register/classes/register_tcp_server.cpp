@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/classes/tcp_server.hpp>
 #include <godot_cpp/classes/stream_peer_tcp.hpp>
+#include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void tcp_server_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	TCPServer *tcp_server = static_cast<TCPServer *>(JS_GetOpaque(val, TCPServer::__class_id));
+	if (tcp_server)
+		memdelete(tcp_server);
 }
 
 static JSClassDef tcp_server_class_def = {

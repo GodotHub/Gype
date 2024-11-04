@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/line_edit.hpp>
-#include <godot_cpp/classes/spin_box.hpp>
 #include <godot_cpp/classes/range.hpp>
+#include <godot_cpp/classes/spin_box.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void spin_box_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SpinBox *spin_box = static_cast<SpinBox *>(JS_GetOpaque(val, SpinBox::__class_id));
+	if (spin_box)
+		memdelete(spin_box);
 }
 
 static JSClassDef spin_box_class_def = {

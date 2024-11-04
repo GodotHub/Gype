@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void jni_singleton_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	JNISingleton *jni_singleton = static_cast<JNISingleton *>(JS_GetOpaque(val, JNISingleton::__class_id));
+	if (jni_singleton)
+		memdelete(jni_singleton);
 }
 
 static JSClassDef jni_singleton_class_def = {

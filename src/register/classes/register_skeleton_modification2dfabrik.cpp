@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_modification2dfabrik.hpp>
 #include <godot_cpp/classes/skeleton_modification2d.hpp>
+#include <godot_cpp/classes/skeleton_modification2dfabrik.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void skeleton_modification2dfabrik_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SkeletonModification2DFABRIK *skeleton_modification2dfabrik = static_cast<SkeletonModification2DFABRIK *>(JS_GetOpaque(val, SkeletonModification2DFABRIK::__class_id));
+	if (skeleton_modification2dfabrik)
+		memdelete(skeleton_modification2dfabrik);
 }
 
 static JSClassDef skeleton_modification2dfabrik_class_def = {

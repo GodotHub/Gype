@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/multi_mesh.hpp>
-#include <godot_cpp/classes/geometry_instance3d.hpp>
 #include <godot_cpp/classes/multi_mesh_instance3d.hpp>
+#include <godot_cpp/classes/geometry_instance3d.hpp>
+#include <godot_cpp/classes/multi_mesh.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void multi_mesh_instance3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	MultiMeshInstance3D *multi_mesh_instance3d = static_cast<MultiMeshInstance3D *>(JS_GetOpaque(val, MultiMeshInstance3D::__class_id));
+	if (multi_mesh_instance3d)
+		memdelete(multi_mesh_instance3d);
 }
 
 static JSClassDef multi_mesh_instance3d_class_def = {

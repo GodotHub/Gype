@@ -1,8 +1,8 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
-import { Font } from "@godot/classes/font";
-import { StyleBox } from "@godot/classes/style_box";
 import { GodotObject } from "@godot/classes/godot_object";
+import { Texture2D } from "@godot/classes/texture2d";
+import { StyleBox } from "@godot/classes/style_box";
+import { Font } from "@godot/classes/font";
 import { Theme } from "@godot/classes/theme";
 declare global {
 export declare class _ThemeDB extends GodotObject{
@@ -30,7 +30,5 @@ export declare class _ThemeDB extends GodotObject{
   public set fallback_stylebox(value): void;
   public get fallback_changed(): Signal;
 }
-}
-declare global {
-  const ThemeDB: _ThemeDB;
+const ThemeDB: _ThemeDB;
 }

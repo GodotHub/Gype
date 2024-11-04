@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/sky.hpp>
 #include <godot_cpp/classes/material.hpp>
+#include <godot_cpp/classes/sky.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void sky_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Sky *sky = static_cast<Sky *>(JS_GetOpaque(val, Sky::__class_id));
+	if (sky)
+		memdelete(sky);
 }
 
 static JSClassDef sky_class_def = {

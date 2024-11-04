@@ -5,18 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/classes/web_socket_peer.hpp>
 #include <godot_cpp/classes/multiplayer_peer.hpp>
 #include <godot_cpp/classes/web_socket_multiplayer_peer.hpp>
-#include <godot_cpp/classes/tls_options.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void web_socket_multiplayer_peer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	WebSocketMultiplayerPeer *web_socket_multiplayer_peer = static_cast<WebSocketMultiplayerPeer *>(JS_GetOpaque(val, WebSocketMultiplayerPeer::__class_id));
+	if (web_socket_multiplayer_peer)
+		memdelete(web_socket_multiplayer_peer);
 }
 
 static JSClassDef web_socket_multiplayer_peer_class_def = {

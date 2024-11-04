@@ -5,18 +5,19 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skin.hpp>
-#include <godot_cpp/classes/skin_reference.hpp>
 #include <godot_cpp/classes/skeleton3d.hpp>
+#include <godot_cpp/classes/skin.hpp>
 #include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/skin_reference.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void skeleton3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	Skeleton3D *skeleton3d = static_cast<Skeleton3D *>(JS_GetOpaque(val, Skeleton3D::__class_id));
+	if (skeleton3d)
+		memdelete(skeleton3d);
 }
 
 static JSClassDef skeleton3d_class_def = {

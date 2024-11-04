@@ -15,8 +15,9 @@
 using namespace godot;
 
 static void lightmap_gi_data_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	LightmapGIData *lightmap_gi_data = static_cast<LightmapGIData *>(JS_GetOpaque(val, LightmapGIData::__class_id));
+	if (lightmap_gi_data)
+		memdelete(lightmap_gi_data);
 }
 
 static JSClassDef lightmap_gi_data_class_def = {

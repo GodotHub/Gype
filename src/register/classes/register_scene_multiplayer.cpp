@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/scene_multiplayer.hpp>
 #include <godot_cpp/classes/multiplayer_api.hpp>
+#include <godot_cpp/classes/scene_multiplayer.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void scene_multiplayer_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	SceneMultiplayer *scene_multiplayer = static_cast<SceneMultiplayer *>(JS_GetOpaque(val, SceneMultiplayer::__class_id));
+	if (scene_multiplayer)
+		memdelete(scene_multiplayer);
 }
 
 static JSClassDef scene_multiplayer_class_def = {

@@ -5,17 +5,18 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/camera_feed.hpp>
 #include <godot_cpp/classes/camera_feed.hpp>
 #include <godot_cpp/classes/camera_server.hpp>
-#include <godot_cpp/classes/camera_feed.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 using namespace godot;
 
 static void camera_server_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	CameraServer *camera_server = static_cast<CameraServer *>(JS_GetOpaque(val, CameraServer::__class_id));
+	if (camera_server)
+		memdelete(camera_server);
 }
 
 static JSClassDef camera_server_class_def = {

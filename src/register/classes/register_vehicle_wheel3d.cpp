@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void vehicle_wheel3d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VehicleWheel3D *vehicle_wheel3d = static_cast<VehicleWheel3D *>(JS_GetOpaque(val, VehicleWheel3D::__class_id));
+	if (vehicle_wheel3d)
+		memdelete(vehicle_wheel3d);
 }
 
 static JSClassDef vehicle_wheel3d_class_def = {

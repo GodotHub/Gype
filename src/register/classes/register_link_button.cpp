@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/link_button.hpp>
 #include <godot_cpp/classes/base_button.hpp>
+#include <godot_cpp/classes/link_button.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void link_button_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	LinkButton *link_button = static_cast<LinkButton *>(JS_GetOpaque(val, LinkButton::__class_id));
+	if (link_button)
+		memdelete(link_button);
 }
 
 static JSClassDef link_button_class_def = {

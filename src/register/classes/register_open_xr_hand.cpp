@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void open_xr_hand_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	OpenXRHand *open_xr_hand = static_cast<OpenXRHand *>(JS_GetOpaque(val, OpenXRHand::__class_id));
+	if (open_xr_hand)
+		memdelete(open_xr_hand);
 }
 
 static JSClassDef open_xr_hand_class_def = {

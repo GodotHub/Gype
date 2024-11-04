@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void tile_set_source_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	TileSetSource *tile_set_source = static_cast<TileSetSource *>(JS_GetOpaque(val, TileSetSource::__class_id));
+	if (tile_set_source)
+		memdelete(tile_set_source);
 }
 
 static JSClassDef tile_set_source_class_def = {

@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/classes/mobile_vr_interface.hpp>
+#include <godot_cpp/classes/xr_interface.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void mobile_vr_interface_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	MobileVRInterface *mobile_vr_interface = static_cast<MobileVRInterface *>(JS_GetOpaque(val, MobileVRInterface::__class_id));
+	if (mobile_vr_interface)
+		memdelete(mobile_vr_interface);
 }
 
 static JSClassDef mobile_vr_interface_class_def = {

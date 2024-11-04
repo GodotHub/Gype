@@ -6,16 +6,17 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/animation_node_one_shot.hpp>
-#include <godot_cpp/classes/animation_node_sync.hpp>
 #include <godot_cpp/classes/curve.hpp>
+#include <godot_cpp/classes/animation_node_sync.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void animation_node_one_shot_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AnimationNodeOneShot *animation_node_one_shot = static_cast<AnimationNodeOneShot *>(JS_GetOpaque(val, AnimationNodeOneShot::__class_id));
+	if (animation_node_one_shot)
+		memdelete(animation_node_one_shot);
 }
 
 static JSClassDef animation_node_one_shot_class_def = {

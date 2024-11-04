@@ -6,18 +6,19 @@
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
 #include <godot_cpp/classes/physics_direct_body_state2d.hpp>
-#include <godot_cpp/classes/node2d.hpp>
-#include <godot_cpp/classes/physics_body2d.hpp>
 #include <godot_cpp/classes/rigid_body2d.hpp>
+#include <godot_cpp/classes/physics_body2d.hpp>
 #include <godot_cpp/classes/physics_material.hpp>
+#include <godot_cpp/classes/node2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void rigid_body2d_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	RigidBody2D *rigid_body2d = static_cast<RigidBody2D *>(JS_GetOpaque(val, RigidBody2D::__class_id));
+	if (rigid_body2d)
+		memdelete(rigid_body2d);
 }
 
 static JSClassDef rigid_body2d_class_def = {

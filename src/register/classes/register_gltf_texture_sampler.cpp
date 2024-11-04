@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void gltf_texture_sampler_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	GLTFTextureSampler *gltf_texture_sampler = static_cast<GLTFTextureSampler *>(JS_GetOpaque(val, GLTFTextureSampler::__class_id));
+	if (gltf_texture_sampler)
+		memdelete(gltf_texture_sampler);
 }
 
 static JSClassDef gltf_texture_sampler_class_def = {

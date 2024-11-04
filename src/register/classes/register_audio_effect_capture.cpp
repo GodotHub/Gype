@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/audio_effect_capture.hpp>
 #include <godot_cpp/classes/audio_effect.hpp>
+#include <godot_cpp/classes/audio_effect_capture.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void audio_effect_capture_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioEffectCapture *audio_effect_capture = static_cast<AudioEffectCapture *>(JS_GetOpaque(val, AudioEffectCapture::__class_id));
+	if (audio_effect_capture)
+		memdelete(audio_effect_capture);
 }
 
 static JSClassDef audio_effect_capture_class_def = {

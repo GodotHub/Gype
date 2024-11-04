@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void aes_context_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AESContext *aes_context = static_cast<AESContext *>(JS_GetOpaque(val, AESContext::__class_id));
+	if (aes_context)
+		memdelete(aes_context);
 }
 
 static JSClassDef aes_context_class_def = {

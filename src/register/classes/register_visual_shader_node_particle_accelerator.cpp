@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/visual_shader_node_particle_accelerator.hpp>
 #include <godot_cpp/classes/visual_shader_node.hpp>
+#include <godot_cpp/classes/visual_shader_node_particle_accelerator.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void visual_shader_node_particle_accelerator_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	VisualShaderNodeParticleAccelerator *visual_shader_node_particle_accelerator = static_cast<VisualShaderNodeParticleAccelerator *>(JS_GetOpaque(val, VisualShaderNodeParticleAccelerator::__class_id));
+	if (visual_shader_node_particle_accelerator)
+		memdelete(visual_shader_node_particle_accelerator);
 }
 
 static JSClassDef visual_shader_node_particle_accelerator_class_def = {

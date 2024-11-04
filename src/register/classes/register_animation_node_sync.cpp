@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void animation_node_sync_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AnimationNodeSync *animation_node_sync = static_cast<AnimationNodeSync *>(JS_GetOpaque(val, AnimationNodeSync::__class_id));
+	if (animation_node_sync)
+		memdelete(animation_node_sync);
 }
 
 static JSClassDef animation_node_sync_class_def = {

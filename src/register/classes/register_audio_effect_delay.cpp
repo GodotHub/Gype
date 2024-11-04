@@ -13,8 +13,9 @@
 using namespace godot;
 
 static void audio_effect_delay_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	AudioEffectDelay *audio_effect_delay = static_cast<AudioEffectDelay *>(JS_GetOpaque(val, AudioEffectDelay::__class_id));
+	if (audio_effect_delay)
+		memdelete(audio_effect_delay);
 }
 
 static JSClassDef audio_effect_delay_class_def = {

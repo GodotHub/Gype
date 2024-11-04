@@ -5,16 +5,17 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/multiplayer_spawner.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/multiplayer_spawner.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 
 using namespace godot;
 
 static void multiplayer_spawner_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	MultiplayerSpawner *multiplayer_spawner = static_cast<MultiplayerSpawner *>(JS_GetOpaque(val, MultiplayerSpawner::__class_id));
+	if (multiplayer_spawner)
+		memdelete(multiplayer_spawner);
 }
 
 static JSClassDef multiplayer_spawner_class_def = {

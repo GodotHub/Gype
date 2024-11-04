@@ -12,8 +12,9 @@
 using namespace godot;
 
 static void project_settings_class_finalizer(JSRuntime *rt, JSValue val) {
-	
-	// nothing
+	ProjectSettings *project_settings = static_cast<ProjectSettings *>(JS_GetOpaque(val, ProjectSettings::__class_id));
+	if (project_settings)
+		memdelete(project_settings);
 }
 
 static JSClassDef project_settings_class_def = {
