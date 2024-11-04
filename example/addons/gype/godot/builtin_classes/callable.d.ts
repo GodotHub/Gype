@@ -4,6 +4,7 @@ declare global {
 export declare class Callable {
   constructor();
   constructor(_from: Callable);
+  constructor(_object: GodotObject, _method: Function);
   constructor(_object: GodotObject, _method: GDString | StringName | string);
   public create(_variant: any, _method: GDString | StringName | string): Callable;
   public callv(_arguments: GDArray): any;
