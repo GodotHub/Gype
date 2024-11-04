@@ -16,18 +16,18 @@ func _enable_plugin() -> void:
 	add_control_to_container(CONTAINER_TOOLBAR, compile_button);
 	compile_button.pressed.connect(_compile);
 
-
 func _disable_plugin() -> void:
 	remove_control_from_container(CONTAINER_TOOLBAR, compile_button);
-	compile_button.free()
+	compile_button.disconnect("pressed", _compile)
 
 func _compile():
 	var exit_code = OS.execute("cmd.exe", ["/c", "tsc", "--build", "tsconfig.json"]);
 	if exit_code == -1:
 		printerr('error compile js')
+		return false
 	else:
 		print('scripts generated')
+		return true
 
 func _build() -> bool:
-	_compile()
-	return true
+	return _compile()

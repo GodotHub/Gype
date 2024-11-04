@@ -33,16 +33,16 @@ export class Player extends CharacterBody2D {
 	this.velocity = velocity;
 	if (velocity.x != 0 || velocity.y != 0) {
 	  this.#playback?.travel("Move");
-    this.#animation_tree?.set(
-      "parameters/Move/BlendSpace2D/blend_position",
-      this.velocity
-    );
+	  this.#animation_tree?.set(
+		"parameters/Move/BlendSpace2D/blend_position",
+		this.velocity
+	  );
+	  this.#animation_tree?.set(
+		"parameters/Idle/blend_position",
+		this.velocity
+	  );
 	} else {
 	  this.#playback?.travel("Idle");
-    this.#animation_tree?.set(
-      "parameters/Idle/BlendSpace2D/blend_position",
-      this.velocity
-    );
 	}
 	this.move_and_slide();
   }
