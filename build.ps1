@@ -27,15 +27,15 @@ function check_python {
         echo "Failed to install jinja2."
         exit 1
     }
-    
+
 }
 
-if ($args.Count -eq 0 -or $args[0] -eq "all") {
+if ($args.Count -eq 0 -or $args[0] -match "all") {
 
     check_python
     & $python ./js_generator.py "12345"
 }
-elseif ($args[0] -eq "none") {
+elseif ($args[0] -match "none") {
     echo "Skip generation ..."
 } else {
     check_python
@@ -51,6 +51,12 @@ if (Test-Path "build") {
 
 mkdir build
 
-cmake -DCMAKE_BUILD_TYPE:STRING=Debug -DGENERATE_TEMPLATE_GET_NODE:STRING=OFF -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_C_COMPILER:FILEPATH=gcc -DCMAKE_CXX_COMPILER:FILEPATH=g++ --no-warn-unused-cli -S . -B build -G "MinGW Makefiles"
+$build_type = "Debug"
 
-cmake --build build --config Debug --target all -j
+if ($args[0] -match "rel") {
+    $build_type = "Release"
+}
+
+cmake -DCMAKE_BUILD_TYPE:STRING=$build_type -DGENERATE_TEMPLATE_GET_NODE:STRING=OFF -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_C_COMPILER:FILEPATH=gcc -DCMAKE_CXX_COMPILER:FILEPATH=g++ --no-warn-unused-cli -S . -B build -G "MinGW Makefiles"
+
+cmake --build build --config $build_type --target all -j

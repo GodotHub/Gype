@@ -10,6 +10,7 @@ node_modules/
 *.a
 *.tmp
 *.TMP
+*.zip
 
 # Editor and system files
 .clang-format
