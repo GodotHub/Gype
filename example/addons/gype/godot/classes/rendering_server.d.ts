@@ -1,7 +1,7 @@
 
+import { RenderingDevice } from "@godot/classes/rendering_device";
 import { Image } from "@godot/classes/image";
 import { GodotObject } from "@godot/classes/godot_object";
-import { RenderingDevice } from "@godot/classes/rendering_device";
 import { Image } from "@godot/classes/image";
 declare global {
 export declare class _RenderingServer extends GodotObject{

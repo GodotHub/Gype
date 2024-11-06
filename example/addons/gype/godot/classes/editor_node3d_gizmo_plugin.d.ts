@@ -1,9 +1,9 @@
 
-import { EditorNode3DGizmo } from "@godot/classes/editor_node3d_gizmo";
-import { Texture2D } from "@godot/classes/texture2d";
 import { StandardMaterial3D } from "@godot/classes/standard_material3d";
-import { Resource } from "@godot/classes/resource";
+import { EditorNode3DGizmo } from "@godot/classes/editor_node3d_gizmo";
 import { Camera3D } from "@godot/classes/camera3d";
+import { Texture2D } from "@godot/classes/texture2d";
+import { Resource } from "@godot/classes/resource";
 import { Node3D } from "@godot/classes/node3d";
 export declare class EditorNode3DGizmoPlugin extends Resource{
   public _has_gizmo(_for_node_3d: Node3D): boolean;

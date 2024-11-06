@@ -1,20 +1,20 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
+import { GLTFMesh } from "@godot/classes/gltf_mesh";
+import { Material } from "@godot/classes/material";
+import { GLTFSkin } from "@godot/classes/gltf_skin";
 import { GLTFNode } from "@godot/classes/gltf_node";
 import { GLTFLight } from "@godot/classes/gltf_light";
-import { GLTFAccessor } from "@godot/classes/gltf_accessor";
-import { GLTFTexture } from "@godot/classes/gltf_texture";
-import { GLTFSkin } from "@godot/classes/gltf_skin";
-import { GLTFBufferView } from "@godot/classes/gltf_buffer_view";
-import { GLTFSkeleton } from "@godot/classes/gltf_skeleton";
-import { Resource } from "@godot/classes/resource";
-import { AnimationPlayer } from "@godot/classes/animation_player";
-import { Node } from "@godot/classes/node";
-import { GLTFTextureSampler } from "@godot/classes/gltf_texture_sampler";
-import { Material } from "@godot/classes/material";
-import { GLTFMesh } from "@godot/classes/gltf_mesh";
 import { GLTFAnimation } from "@godot/classes/gltf_animation";
+import { GLTFBufferView } from "@godot/classes/gltf_buffer_view";
+import { Texture2D } from "@godot/classes/texture2d";
+import { GLTFAccessor } from "@godot/classes/gltf_accessor";
+import { AnimationPlayer } from "@godot/classes/animation_player";
+import { GLTFSkeleton } from "@godot/classes/gltf_skeleton";
 import { GLTFCamera } from "@godot/classes/gltf_camera";
+import { Node } from "@godot/classes/node";
+import { GLTFTexture } from "@godot/classes/gltf_texture";
+import { GLTFTextureSampler } from "@godot/classes/gltf_texture_sampler";
+import { Resource } from "@godot/classes/resource";
 export declare class GLTFState extends Resource{
   public add_used_extension(_extension_name: GDString | StringName | string, _required: boolean): void;
   public append_data_to_buffers(_data: PackedByteArray, _deduplication: boolean): number;

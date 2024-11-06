@@ -1,6 +1,6 @@
 
-import { Skeleton3D } from "@godot/classes/skeleton3d";
 import { SkeletonModifier3D } from "@godot/classes/skeleton_modifier3d";
+import { Skeleton3D } from "@godot/classes/skeleton3d";
 export declare class SkeletonIK3D extends SkeletonModifier3D{
   public set_root_bone(_root_bone: GDString | StringName | string): void;
   public get_root_bone(): StringName;

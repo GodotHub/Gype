@@ -1,6 +1,6 @@
 
-import { Resource } from "@godot/classes/resource";
 import { Camera3D } from "@godot/classes/camera3d";
+import { Resource } from "@godot/classes/resource";
 export declare class GLTFCamera extends Resource{
   public
  static from_node(_camera_node: Camera3D): GLTFCamera;

@@ -1,7 +1,7 @@
 
+import { Node2D } from "@godot/classes/node2d";
 import { AudioStream } from "@godot/classes/audio_stream";
 import { AudioStreamPlayback } from "@godot/classes/audio_stream_playback";
-import { Node2D } from "@godot/classes/node2d";
 export declare class AudioStreamPlayer2D extends Node2D{
   public set_stream(_stream: AudioStream): void;
   public get_stream(): AudioStream;

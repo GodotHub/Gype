@@ -1,6 +1,6 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
 import { PhysicsDirectSpaceState3D } from "@godot/classes/physics_direct_space_state3d";
+import { GodotObject } from "@godot/classes/godot_object";
 export declare class PhysicsDirectBodyState3D extends GodotObject{
   public get_total_gravity(): Vector3;
   public get_total_linear_damp(): number;

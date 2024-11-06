@@ -1,7 +1,7 @@
 
+import { PacketPeerUDP } from "@godot/classes/packet_peer_udp";
 import { TLSOptions } from "@godot/classes/tls_options";
 import { PacketPeer } from "@godot/classes/packet_peer";
-import { PacketPeerUDP } from "@godot/classes/packet_peer_udp";
 export declare class PacketPeerDTLS extends PacketPeer{
   public poll(): void;
   public connect_to_peer(_packet_peer: PacketPeerUDP, _hostname: GDString | StringName | string, _client_options: TLSOptions = null): number;

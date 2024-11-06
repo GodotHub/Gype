@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/open_xr_interaction_profile.hpp>
 #include <godot_cpp/classes/open_xr_action_set.hpp>
 #include <godot_cpp/classes/resource.hpp>
-#include <godot_cpp/classes/open_xr_interaction_profile.hpp>
 #include <godot_cpp/classes/open_xr_action_map.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 

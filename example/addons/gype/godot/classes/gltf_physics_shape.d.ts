@@ -1,8 +1,8 @@
 
+import { Shape3D } from "@godot/classes/shape3d";
+import { CollisionShape3D } from "@godot/classes/collision_shape3d";
 import { ImporterMesh } from "@godot/classes/importer_mesh";
 import { Resource } from "@godot/classes/resource";
-import { CollisionShape3D } from "@godot/classes/collision_shape3d";
-import { Shape3D } from "@godot/classes/shape3d";
 export declare class GLTFPhysicsShape extends Resource{
   public
  static from_node(_shape_node: CollisionShape3D): GLTFPhysicsShape;

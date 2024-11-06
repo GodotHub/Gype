@@ -42,7 +42,6 @@ bool TypeScript::_inherits_script(const Ref<Script> &p_script) const {
 
 StringName TypeScript::_get_instance_base_type() const {
 	complie(false);
-	analyze();
 	return base_class_name;
 }
 
@@ -119,18 +118,21 @@ void TypeScript::analyze() const {
 }
 
 void TypeScript::complie(bool force = false) const {
+	if (!dirty)
+		return;
 	int exit_code = 0;
 	if (force)
 		exit_code = OS::get_singleton()->execute("cmd.exe", { "/c", "tsc", "--build", "tsconfig.json", "--force" });
 	else
 		exit_code = OS::get_singleton()->execute("cmd.exe", { "/c", "tsc", "--build", "tsconfig.json" });
 	ERR_FAIL_COND_EDMSG(exit_code == -1, "Error executing tsc.");
+	analyze();
+	dirty = false;
 }
 
 void TypeScript::_set_source_code(const String &p_code) {
 	source_code = p_code;
-	complie(false);
-	analyze();
+	dirty = true;
 }
 
 void TypeScript::remove_dist() {

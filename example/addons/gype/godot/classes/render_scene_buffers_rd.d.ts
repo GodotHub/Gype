@@ -1,7 +1,7 @@
 
 import { RDTextureView } from "@godot/classes/rd_texture_view";
-import { RDTextureFormat } from "@godot/classes/rd_texture_format";
 import { RenderSceneBuffers } from "@godot/classes/render_scene_buffers";
+import { RDTextureFormat } from "@godot/classes/rd_texture_format";
 export declare class RenderSceneBuffersRD extends RenderSceneBuffers{
   public has_texture(_context: GDString | StringName | string, _name: GDString | StringName | string): boolean;
   public create_texture(_context: GDString | StringName | string, _name: GDString | StringName | string, _data_format: number, _usage_bits: number, _texture_samples: number, _size: Vector2i, _layers: number, _mipmaps: number, _unique: boolean): RID;

@@ -1,7 +1,7 @@
 
+import { AudioSample } from "@godot/classes/audio_sample";
 import { Resource } from "@godot/classes/resource";
 import { AudioStreamPlayback } from "@godot/classes/audio_stream_playback";
-import { AudioSample } from "@godot/classes/audio_sample";
 export declare class AudioStream extends Resource{
   public _instantiate_playback(): AudioStreamPlayback;
   public _get_stream_name(): String;

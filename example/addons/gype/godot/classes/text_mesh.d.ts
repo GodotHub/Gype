@@ -1,6 +1,6 @@
 
-import { PrimitiveMesh } from "@godot/classes/primitive_mesh";
 import { Font } from "@godot/classes/font";
+import { PrimitiveMesh } from "@godot/classes/primitive_mesh";
 export declare class TextMesh extends PrimitiveMesh{
   public set_horizontal_alignment(_alignment: number): void;
   public get_horizontal_alignment(): number;

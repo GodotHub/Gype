@@ -1,6 +1,6 @@
 
-import { PopupPanel } from "@godot/classes/popup_panel";
 import { Button } from "@godot/classes/button";
+import { PopupPanel } from "@godot/classes/popup_panel";
 import { ColorPicker } from "@godot/classes/color_picker";
 export declare class ColorPickerButton extends Button{
   public set_pick_color(_color: Color): void;

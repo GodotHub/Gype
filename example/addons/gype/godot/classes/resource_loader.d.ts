@@ -1,7 +1,7 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
-import { ResourceFormatLoader } from "@godot/classes/resource_format_loader";
 import { Resource } from "@godot/classes/resource";
+import { ResourceFormatLoader } from "@godot/classes/resource_format_loader";
+import { GodotObject } from "@godot/classes/godot_object";
 declare global {
 export declare class _ResourceLoader extends GodotObject{
   public load_threaded_request(_path: GDString | StringName | string, _type_hint: GDString | StringName | string = "", _use_sub_threads: boolean = false, _cache_mode: number = 1): number;

@@ -1,14 +1,14 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
-import { Control } from "@godot/classes/control";
-import { Camera3D } from "@godot/classes/camera3d";
-import { Window } from "@godot/classes/window";
-import { ViewportTexture } from "@godot/classes/viewport_texture";
-import { World2D } from "@godot/classes/world2d";
-import { InputEvent } from "@godot/classes/input_event";
 import { Camera2D } from "@godot/classes/camera2d";
+import { InputEvent } from "@godot/classes/input_event";
+import { Camera3D } from "@godot/classes/camera3d";
+import { Control } from "@godot/classes/control";
 import { World3D } from "@godot/classes/world3d";
+import { Window } from "@godot/classes/window";
+import { World2D } from "@godot/classes/world2d";
 import { Node } from "@godot/classes/node";
+import { Texture2D } from "@godot/classes/texture2d";
+import { ViewportTexture } from "@godot/classes/viewport_texture";
 export declare class Viewport extends Node{
   public set_world_2d(_world_2d: World2D): void;
   public get_world_2d(): World2D;

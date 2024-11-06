@@ -1,8 +1,8 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
 import { NavigationPolygon } from "@godot/classes/navigation_polygon";
-import { Material } from "@godot/classes/material";
 import { OccluderPolygon2D } from "@godot/classes/occluder_polygon2d";
+import { GodotObject } from "@godot/classes/godot_object";
+import { Material } from "@godot/classes/material";
 export declare class TileData extends GodotObject{
   public set_flip_h(_flip_h: boolean): void;
   public get_flip_h(): boolean;

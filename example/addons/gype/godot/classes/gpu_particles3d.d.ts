@@ -1,9 +1,9 @@
 
-import { Node } from "@godot/classes/node";
-import { Material } from "@godot/classes/material";
-import { Mesh } from "@godot/classes/mesh";
 import { Skin } from "@godot/classes/skin";
+import { Node } from "@godot/classes/node";
+import { Mesh } from "@godot/classes/mesh";
 import { GeometryInstance3D } from "@godot/classes/geometry_instance3d";
+import { Material } from "@godot/classes/material";
 export declare class GPUParticles3D extends GeometryInstance3D{
   public set_emitting(_emitting: boolean): void;
   public set_amount(_amount: number): void;

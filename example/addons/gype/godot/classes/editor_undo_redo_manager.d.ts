@@ -1,6 +1,6 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
 import { UndoRedo } from "@godot/classes/undo_redo";
+import { GodotObject } from "@godot/classes/godot_object";
 export declare class EditorUndoRedoManager extends GodotObject{
   public create_action(_name: GDString | StringName | string, _merge_mode: number = 0, _custom_context: GodotObject = null, _backward_undo_ops: boolean = false): void;
   public commit_action(_execute: boolean = true): void;

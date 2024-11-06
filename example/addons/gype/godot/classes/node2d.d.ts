@@ -1,6 +1,6 @@
 
-import { Node } from "@godot/classes/node";
 import { CanvasItem } from "@godot/classes/canvas_item";
+import { Node } from "@godot/classes/node";
 export declare class Node2D extends CanvasItem{
   public set_position(_position: Vector2): void;
   public set_rotation(_radians: number): void;

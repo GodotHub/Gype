@@ -1,14 +1,14 @@
 
-import { Window } from "@godot/classes/window";
-import { PackedScene } from "@godot/classes/packed_scene";
+import { Tween } from "@godot/classes/tween";
 import { Tween } from "@godot/classes/tween";
 import { MainLoop } from "@godot/classes/main_loop";
-import { MultiplayerAPI } from "@godot/classes/multiplayer_api";
+import { Node } from "@godot/classes/node";
 import { GodotObject } from "@godot/classes/godot_object";
 import { SceneTreeTimer } from "@godot/classes/scene_tree_timer";
+import { Window } from "@godot/classes/window";
+import { PackedScene } from "@godot/classes/packed_scene";
 import { Node } from "@godot/classes/node";
-import { Tween } from "@godot/classes/tween";
-import { Node } from "@godot/classes/node";
+import { MultiplayerAPI } from "@godot/classes/multiplayer_api";
 export declare class SceneTree extends MainLoop{
   public get_root(): Window;
   public has_group(_name: GDString | StringName | string): boolean;

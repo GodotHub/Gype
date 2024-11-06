@@ -1,6 +1,6 @@
 
-import { TLSOptions } from "@godot/classes/tls_options";
 import { Node } from "@godot/classes/node";
+import { TLSOptions } from "@godot/classes/tls_options";
 export declare class HTTPRequest extends Node{
   public request(_url: GDString | StringName | string, _custom_headers: PackedStringArray = PackedStringArray(), _method: number = 0, _request_data: GDString | StringName | string = ""): number;
   public request_raw(_url: GDString | StringName | string, _custom_headers: PackedStringArray = PackedStringArray(), _method: number = 0, _request_data_raw: PackedByteArray = PackedByteArray()): number;

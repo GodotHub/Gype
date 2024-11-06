@@ -1,6 +1,6 @@
 
-import { NavigationPolygon } from "@godot/classes/navigation_polygon";
 import { Node2D } from "@godot/classes/node2d";
+import { NavigationPolygon } from "@godot/classes/navigation_polygon";
 export declare class NavigationRegion2D extends Node2D{
   public get_rid(): RID;
   public set_navigation_polygon(_navigation_polygon: NavigationPolygon): void;

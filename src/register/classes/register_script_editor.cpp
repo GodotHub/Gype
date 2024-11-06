@@ -9,8 +9,8 @@
 #include <godot_cpp/classes/panel_container.hpp>
 #include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/classes/editor_syntax_highlighter.hpp>
-#include <godot_cpp/classes/script_editor_base.hpp>
 #include <godot_cpp/classes/script_editor.hpp>
+#include <godot_cpp/classes/script_editor_base.hpp>
 #include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 

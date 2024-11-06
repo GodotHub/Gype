@@ -5,13 +5,13 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/container.hpp>
-#include <godot_cpp/classes/tab_container.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/texture2d.hpp>
-#include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/classes/popup.hpp>
+#include <godot_cpp/classes/container.hpp>
 #include <godot_cpp/classes/tab_bar.hpp>
+#include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/tab_container.hpp>
+#include <godot_cpp/classes/control.hpp>
+#include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

@@ -1,5 +1,5 @@
-#ifndef __JAVASCRIPT_H__
-#define __JAVASCRIPT_H__
+#ifndef __TYPESCRIPT_H__
+#define __TYPESCRIPT_H__
 
 #include "support/placeholder_javascript_instance.hpp"
 #include "support/typescript_instance.hpp"
@@ -40,6 +40,7 @@ class TypeScript : public ScriptExtension {
 	mutable String global_class_name;
 	mutable String base_class_name;
 	mutable bool is_tool = false;
+	mutable bool dirty = true;
 
 	HashSet<int64_t> instances;
 
@@ -86,8 +87,6 @@ public:
 		parser = ts_parser_new();
 		lang = tree_sitter_typescript();
 		ts_parser_set_language(parser, lang);
-		complie(false);
-		analyze();
 	}
 	~TypeScript();
 
@@ -104,4 +103,4 @@ private:
 
 } // namespace godot
 
-#endif // __JAVASCRIPT_H__
+#endif // __TYPESCRIPT_H__

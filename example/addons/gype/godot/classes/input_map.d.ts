@@ -1,7 +1,7 @@
 
+import { InputEvent } from "@godot/classes/input_event";
+import { InputEvent } from "@godot/classes/input_event";
 import { GodotObject } from "@godot/classes/godot_object";
-import { InputEvent } from "@godot/classes/input_event";
-import { InputEvent } from "@godot/classes/input_event";
 declare global {
 export declare class _InputMap extends GodotObject{
   public has_action(_action: GDString | StringName | string): boolean;

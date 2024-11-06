@@ -1,6 +1,6 @@
 
-import { NavigationPathQueryResult2D } from "@godot/classes/navigation_path_query_result2d";
 import { Node } from "@godot/classes/node";
+import { NavigationPathQueryResult2D } from "@godot/classes/navigation_path_query_result2d";
 export declare class NavigationAgent2D extends Node{
   public get_rid(): RID;
   public set_avoidance_enabled(_enabled: boolean): void;

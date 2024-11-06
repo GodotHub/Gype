@@ -1,6 +1,6 @@
 
-import { Material } from "@godot/classes/material";
 import { Mesh } from "@godot/classes/mesh";
+import { Material } from "@godot/classes/material";
 export declare class ImmediateMesh extends Mesh{
   public surface_begin(_primitive: number, _material: Material = null): void;
   public surface_set_color(_color: Color): void;

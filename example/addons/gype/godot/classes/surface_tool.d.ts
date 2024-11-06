@@ -1,6 +1,6 @@
 
-import { Material } from "@godot/classes/material";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { Material } from "@godot/classes/material";
 import { ArrayMesh } from "@godot/classes/array_mesh";
 import { Mesh } from "@godot/classes/mesh";
 export declare class SurfaceTool extends RefCounted{

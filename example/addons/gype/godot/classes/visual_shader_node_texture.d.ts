@@ -1,6 +1,6 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { VisualShaderNode } from "@godot/classes/visual_shader_node";
+import { Texture2D } from "@godot/classes/texture2d";
 export declare class VisualShaderNodeTexture extends VisualShaderNode{
   public set_source(_value: number): void;
   public get_source(): number;

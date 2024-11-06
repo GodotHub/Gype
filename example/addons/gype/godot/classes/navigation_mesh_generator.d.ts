@@ -1,8 +1,8 @@
 
-import { NavigationMesh } from "@godot/classes/navigation_mesh";
-import { GodotObject } from "@godot/classes/godot_object";
 import { Node } from "@godot/classes/node";
+import { NavigationMesh } from "@godot/classes/navigation_mesh";
 import { NavigationMeshSourceGeometryData3D } from "@godot/classes/navigation_mesh_source_geometry_data3d";
+import { GodotObject } from "@godot/classes/godot_object";
 declare global {
 export declare class _NavigationMeshGenerator extends GodotObject{
   public bake(_navigation_mesh: NavigationMesh, _root_node: Node): void;

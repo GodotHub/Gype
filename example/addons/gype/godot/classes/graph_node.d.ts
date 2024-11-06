@@ -1,6 +1,6 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { HBoxContainer } from "@godot/classes/h_box_container";
+import { Texture2D } from "@godot/classes/texture2d";
 import { GraphElement } from "@godot/classes/graph_element";
 export declare class GraphNode extends GraphElement{
   public _draw_port(_slot_index: number, _position: Vector2i, _left: boolean, _color: Color): void;

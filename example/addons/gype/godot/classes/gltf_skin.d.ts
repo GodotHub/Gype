@@ -1,6 +1,6 @@
 
-import { Resource } from "@godot/classes/resource";
 import { Skin } from "@godot/classes/skin";
+import { Resource } from "@godot/classes/resource";
 export declare class GLTFSkin extends Resource{
   public get_skin_root(): number;
   public set_skin_root(_skin_root: number): void;

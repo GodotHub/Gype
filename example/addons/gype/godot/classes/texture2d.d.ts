@@ -1,7 +1,7 @@
 
 import { Image } from "@godot/classes/image";
-import { Resource } from "@godot/classes/resource";
 import { Texture } from "@godot/classes/texture";
+import { Resource } from "@godot/classes/resource";
 export declare class Texture2D extends Texture{
   public _get_width(): number;
   public _get_height(): number;

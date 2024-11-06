@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/kinematic_collision3d.hpp>
 #include <godot_cpp/classes/physics_body3d.hpp>
+#include <godot_cpp/classes/kinematic_collision3d.hpp>
 #include <godot_cpp/classes/character_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 

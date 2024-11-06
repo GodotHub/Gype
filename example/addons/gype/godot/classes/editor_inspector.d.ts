@@ -1,6 +1,6 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
 import { ScrollContainer } from "@godot/classes/scroll_container";
+import { GodotObject } from "@godot/classes/godot_object";
 export declare class EditorInspector extends ScrollContainer{
   public get_selected_path(): String;
   public get_edited_object(): GodotObject;

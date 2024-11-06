@@ -1,8 +1,8 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
-import { EditorResourcePreviewGenerator } from "@godot/classes/editor_resource_preview_generator";
 import { Node } from "@godot/classes/node";
 import { Resource } from "@godot/classes/resource";
+import { EditorResourcePreviewGenerator } from "@godot/classes/editor_resource_preview_generator";
+import { GodotObject } from "@godot/classes/godot_object";
 export declare class EditorResourcePreview extends Node{
   public queue_resource_preview(_path: GDString | StringName | string, _receiver: GodotObject, _receiver_func: GDString | StringName | string, _userdata: any): void;
   public queue_edited_resource_preview(_resource: Resource, _receiver: GodotObject, _receiver_func: GDString | StringName | string, _userdata: any): void;

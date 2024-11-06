@@ -1,7 +1,7 @@
 
+import { ScriptLanguage } from "@godot/classes/script_language";
 import { MainLoop } from "@godot/classes/main_loop";
 import { GodotObject } from "@godot/classes/godot_object";
-import { ScriptLanguage } from "@godot/classes/script_language";
 declare global {
 export declare class _Engine extends GodotObject{
   public set_physics_ticks_per_second(_physics_ticks_per_second: number): void;

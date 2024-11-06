@@ -1,6 +1,6 @@
 
-import { Material } from "@godot/classes/material";
 import { VisualInstance3D } from "@godot/classes/visual_instance3d";
+import { Material } from "@godot/classes/material";
 export declare class GeometryInstance3D extends VisualInstance3D{
   public set_material_override(_material: Material): void;
   public get_material_override(): Material;

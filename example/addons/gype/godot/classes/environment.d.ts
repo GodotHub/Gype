@@ -1,7 +1,7 @@
 
-import { Resource } from "@godot/classes/resource";
 import { Sky } from "@godot/classes/sky";
 import { Texture } from "@godot/classes/texture";
+import { Resource } from "@godot/classes/resource";
 export declare class Environment extends Resource{
   public set_background(_mode: number): void;
   public get_background(): number;

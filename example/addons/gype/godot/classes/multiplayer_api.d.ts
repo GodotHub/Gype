@@ -1,7 +1,7 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
 import { MultiplayerPeer } from "@godot/classes/multiplayer_peer";
 import { RefCounted } from "@godot/classes/ref_counted";
+import { GodotObject } from "@godot/classes/godot_object";
 export declare class MultiplayerAPI extends RefCounted{
   public has_multiplayer_peer(): boolean;
   public get_multiplayer_peer(): MultiplayerPeer;

@@ -1,6 +1,6 @@
 
-import { XRPose } from "@godot/classes/xr_pose";
 import { Node3D } from "@godot/classes/node3d";
+import { XRPose } from "@godot/classes/xr_pose";
 export declare class XRNode3D extends Node3D{
   public set_tracker(_tracker_name: GDString | StringName | string): void;
   public get_tracker(): StringName;

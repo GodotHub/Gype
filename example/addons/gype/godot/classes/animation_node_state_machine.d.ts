@@ -1,7 +1,7 @@
 
-import { AnimationNode } from "@godot/classes/animation_node";
 import { AnimationNodeStateMachineTransition } from "@godot/classes/animation_node_state_machine_transition";
 import { AnimationRootNode } from "@godot/classes/animation_root_node";
+import { AnimationNode } from "@godot/classes/animation_node";
 export declare class AnimationNodeStateMachine extends AnimationRootNode{
   public add_node(_name: GDString | StringName | string, _node: AnimationNode, _position: Vector2 = Vector2(0, 0)): void;
   public replace_node(_name: GDString | StringName | string, _node: AnimationNode): void;

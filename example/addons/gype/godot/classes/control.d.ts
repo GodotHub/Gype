@@ -1,12 +1,12 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
-import { CanvasItem } from "@godot/classes/canvas_item";
-import { StyleBox } from "@godot/classes/style_box";
-import { Font } from "@godot/classes/font";
-import { GodotObject } from "@godot/classes/godot_object";
 import { InputEvent } from "@godot/classes/input_event";
+import { StyleBox } from "@godot/classes/style_box";
 import { Theme } from "@godot/classes/theme";
+import { GodotObject } from "@godot/classes/godot_object";
+import { Font } from "@godot/classes/font";
 import { Node } from "@godot/classes/node";
+import { CanvasItem } from "@godot/classes/canvas_item";
+import { Texture2D } from "@godot/classes/texture2d";
 export declare class Control extends CanvasItem{
   public _has_point(_point: Vector2): boolean;
   public _structured_text_parser(_args: GDArray, _text: GDString | StringName | string): GDArray;

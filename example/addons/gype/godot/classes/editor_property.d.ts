@@ -1,7 +1,7 @@
 
 import { Container } from "@godot/classes/container";
-import { GodotObject } from "@godot/classes/godot_object";
 import { Control } from "@godot/classes/control";
+import { GodotObject } from "@godot/classes/godot_object";
 export declare class EditorProperty extends Container{
   public _update_property(): void;
   public _set_read_only(_read_only: boolean): void;

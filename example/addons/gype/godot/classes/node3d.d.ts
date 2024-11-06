@@ -1,6 +1,6 @@
 
-import { Node3DGizmo } from "@godot/classes/node3d_gizmo";
 import { World3D } from "@godot/classes/world3d";
+import { Node3DGizmo } from "@godot/classes/node3d_gizmo";
 import { Node3DGizmo } from "@godot/classes/node3d_gizmo";
 import { Node } from "@godot/classes/node";
 export declare class Node3D extends Node{

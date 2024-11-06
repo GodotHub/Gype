@@ -1,9 +1,9 @@
 
-import { GodotObject } from "@godot/classes/godot_object";
-import { Camera3D } from "@godot/classes/camera3d";
-import { InputEvent } from "@godot/classes/input_event";
 import { Shape3D } from "@godot/classes/shape3d";
+import { InputEvent } from "@godot/classes/input_event";
+import { Camera3D } from "@godot/classes/camera3d";
 import { Node3D } from "@godot/classes/node3d";
+import { GodotObject } from "@godot/classes/godot_object";
 export declare class CollisionObject3D extends Node3D{
   public _input_event(_camera: Camera3D, _event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: number): void;
   public _mouse_enter(): void;

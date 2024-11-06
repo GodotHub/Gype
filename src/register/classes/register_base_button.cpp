@@ -5,9 +5,9 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
+#include <godot_cpp/classes/shortcut.hpp>
 #include <godot_cpp/classes/button_group.hpp>
 #include <godot_cpp/classes/base_button.hpp>
-#include <godot_cpp/classes/shortcut.hpp>
 #include <godot_cpp/classes/control.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 

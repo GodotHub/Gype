@@ -1,6 +1,6 @@
 
-import { Texture3D } from "@godot/classes/texture3d";
 import { GPUParticlesCollision3D } from "@godot/classes/gpu_particles_collision3d";
+import { Texture3D } from "@godot/classes/texture3d";
 export declare class GPUParticlesCollisionSDF3D extends GPUParticlesCollision3D{
   public set_size(_size: Vector3): void;
   public get_size(): Vector3;

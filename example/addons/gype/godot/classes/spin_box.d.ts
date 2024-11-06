@@ -1,6 +1,6 @@
 
-import { LineEdit } from "@godot/classes/line_edit";
 import { Range } from "@godot/classes/range";
+import { LineEdit } from "@godot/classes/line_edit";
 export declare class SpinBox extends Range{
   public set_horizontal_alignment(_alignment: number): void;
   public get_horizontal_alignment(): number;

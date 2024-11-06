@@ -1,6 +1,6 @@
 
-import { Control } from "@godot/classes/control";
 import { TreeItem } from "@godot/classes/tree_item";
+import { Control } from "@godot/classes/control";
 export declare class Tree extends Control{
   public clear(): void;
   public create_item(_parent: TreeItem = null, _index: number = -1): TreeItem;

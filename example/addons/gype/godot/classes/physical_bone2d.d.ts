@@ -1,6 +1,6 @@
 
-import { RigidBody2D } from "@godot/classes/rigid_body2d";
 import { Joint2D } from "@godot/classes/joint2d";
+import { RigidBody2D } from "@godot/classes/rigid_body2d";
 export declare class PhysicalBone2D extends RigidBody2D{
   public get_joint(): Joint2D;
   public get_auto_configure_joint(): boolean;

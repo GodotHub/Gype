@@ -1,7 +1,7 @@
 
-import { CollisionObject2D } from "@godot/classes/collision_object2d";
-import { Node } from "@godot/classes/node";
 import { Node2D } from "@godot/classes/node2d";
+import { Node } from "@godot/classes/node";
+import { CollisionObject2D } from "@godot/classes/collision_object2d";
 export declare class Area2D extends CollisionObject2D{
   public set_gravity_space_override_mode(_space_override_mode: number): void;
   public get_gravity_space_override_mode(): number;

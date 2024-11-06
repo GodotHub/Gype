@@ -5,8 +5,8 @@
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
 #include "quickjs/quickjs_helper.h"
-#include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/classes/skeleton_modification2d_two_bone_ik.hpp>
+#include <godot_cpp/classes/skeleton_modification2d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

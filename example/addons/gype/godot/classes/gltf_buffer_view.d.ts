@@ -1,6 +1,6 @@
 
-import { GLTFState } from "@godot/classes/gltf_state";
 import { Resource } from "@godot/classes/resource";
+import { GLTFState } from "@godot/classes/gltf_state";
 export declare class GLTFBufferView extends Resource{
   public load_buffer_view_data(_state: GLTFState): PackedByteArray;
   public get_buffer(): number;

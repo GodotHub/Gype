@@ -1,7 +1,7 @@
 
+import { Node } from "@godot/classes/node";
 import { MeshInstance3D } from "@godot/classes/mesh_instance3d";
 import { PhysicsBody3D } from "@godot/classes/physics_body3d";
-import { Node } from "@godot/classes/node";
 export declare class SoftBody3D extends MeshInstance3D{
   public get_physics_rid(): RID;
   public set_collision_mask(_collision_mask: number): void;

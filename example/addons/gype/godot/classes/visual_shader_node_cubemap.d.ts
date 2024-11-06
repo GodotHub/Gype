@@ -1,6 +1,6 @@
 
-import { VisualShaderNode } from "@godot/classes/visual_shader_node";
 import { Cubemap } from "@godot/classes/cubemap";
+import { VisualShaderNode } from "@godot/classes/visual_shader_node";
 export declare class VisualShaderNodeCubemap extends VisualShaderNode{
   public set_source(_value: number): void;
   public get_source(): number;

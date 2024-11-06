@@ -1,7 +1,7 @@
 
 import { Image } from "@godot/classes/image";
-import { Texture2D } from "@godot/classes/texture2d";
 import { GodotObject } from "@godot/classes/godot_object";
+import { Texture2D } from "@godot/classes/texture2d";
 import { Resource } from "@godot/classes/resource";
 declare global {
 export declare class _DisplayServer extends GodotObject{

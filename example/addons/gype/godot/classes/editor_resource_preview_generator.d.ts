@@ -1,6 +1,6 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
 import { Resource } from "@godot/classes/resource";
+import { Texture2D } from "@godot/classes/texture2d";
 import { RefCounted } from "@godot/classes/ref_counted";
 export declare class EditorResourcePreviewGenerator extends RefCounted{
   public _handles(_type: GDString | StringName | string): boolean;

@@ -1,6 +1,6 @@
 
-import { SpriteFrames } from "@godot/classes/sprite_frames";
 import { Node2D } from "@godot/classes/node2d";
+import { SpriteFrames } from "@godot/classes/sprite_frames";
 export declare class AnimatedSprite2D extends Node2D{
   public set_sprite_frames(_sprite_frames: SpriteFrames): void;
   public get_sprite_frames(): SpriteFrames;

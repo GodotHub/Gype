@@ -1,10 +1,10 @@
 
-import { Texture2D } from "@godot/classes/texture2d";
+import { PopupMenu } from "@godot/classes/popup_menu";
+import { VScrollBar } from "@godot/classes/v_scroll_bar";
 import { Control } from "@godot/classes/control";
 import { RichTextEffect } from "@godot/classes/rich_text_effect";
-import { VScrollBar } from "@godot/classes/v_scroll_bar";
 import { Font } from "@godot/classes/font";
-import { PopupMenu } from "@godot/classes/popup_menu";
+import { Texture2D } from "@godot/classes/texture2d";
 export declare class RichTextLabel extends Control{
   public get_parsed_text(): String;
   public add_text(_text: GDString | StringName | string): void;

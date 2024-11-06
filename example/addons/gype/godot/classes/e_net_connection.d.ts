@@ -1,6 +1,6 @@
 
-import { TLSOptions } from "@godot/classes/tls_options";
 import { ENetPacketPeer } from "@godot/classes/e_net_packet_peer";
+import { TLSOptions } from "@godot/classes/tls_options";
 import { RefCounted } from "@godot/classes/ref_counted";
 import { ENetPacketPeer } from "@godot/classes/e_net_packet_peer";
 export declare class ENetConnection extends RefCounted{

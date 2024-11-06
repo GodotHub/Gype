@@ -1,7 +1,7 @@
 
+import { InputEvent } from "@godot/classes/input_event";
 import { GodotObject } from "@godot/classes/godot_object";
 import { Resource } from "@godot/classes/resource";
-import { InputEvent } from "@godot/classes/input_event";
 declare global {
 export declare class _Input extends GodotObject{
   public is_anything_pressed(): boolean;

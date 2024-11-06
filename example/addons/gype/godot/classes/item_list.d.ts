@@ -1,7 +1,7 @@
 
+import { VScrollBar } from "@godot/classes/v_scroll_bar";
 import { Texture2D } from "@godot/classes/texture2d";
 import { Control } from "@godot/classes/control";
-import { VScrollBar } from "@godot/classes/v_scroll_bar";
 export declare class ItemList extends Control{
   public add_item(_text: GDString | StringName | string, _icon: Texture2D = null, _selectable: boolean = true): number;
   public add_icon_item(_icon: Texture2D, _selectable: boolean = true): number;

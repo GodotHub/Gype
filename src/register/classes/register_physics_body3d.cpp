@@ -8,8 +8,8 @@
 #include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/kinematic_collision3d.hpp>
-#include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/classes/collision_object3d.hpp>
+#include <godot_cpp/classes/physics_body3d.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
 
 

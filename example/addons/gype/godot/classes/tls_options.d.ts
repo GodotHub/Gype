@@ -1,7 +1,7 @@
 
+import { X509Certificate } from "@godot/classes/x509_certificate";
 import { CryptoKey } from "@godot/classes/crypto_key";
 import { RefCounted } from "@godot/classes/ref_counted";
-import { X509Certificate } from "@godot/classes/x509_certificate";
 export declare class TLSOptions extends RefCounted{
   public
  static client(_trusted_chain: X509Certificate = null, _common_name_override: GDString | StringName | string = ""): TLSOptions;
