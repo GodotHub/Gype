@@ -43,7 +43,7 @@ Notes:
 1. ✅ Run a JS/TS script  
 2. ✅ Add JS/TS bindings for Godot API  
 3. 🟦 Implement new version of GMUI with JS/TS binding  
-4. 🟨 Add editor support for ~~JS~~/TS  
+4. 🟨 Add editor support for JS/TS  
 5. 🟦🟨✅...  
 
 ## Build the Project

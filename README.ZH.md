@@ -43,7 +43,7 @@ export class MySprite extends Sprite2D {
 1. ✅ 运行JS/TS脚本  
 2. ✅ 添加Godot API的JS/TS绑定  
 3. 🟦 通过JS/TS绑定实现新版GMUI  
-4. 🟨 为~~JS~~/TS脚本添加编辑器支持  
+4. 🟨 为JS/TS脚本添加编辑器支持  
 5. 🟦🟨✅...  
 
 ## 编译项目
