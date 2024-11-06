@@ -7,26 +7,28 @@ Godot引擎，但是带有JavaScript/TypeScript支持
 ## 快速开始
 
 在Godot项目中导入[插件](https://github.com/GodotHub/Gype/releases/download/1.0.0/addons.zip)，像GDS一样使用：  
-```js
-import { GodotClass, Tool } from "@js_godot/class_defined";
-import { Sprite2D } from "godot/classes/sprite2d";
+```ts
+import { Button } from "@godot/classes/button";
+import { GodotClass } from "@godot/core/class_defined";
+import { Label } from "@godot/classes/label";
 
 @GodotClass
-export class MySprite extends Sprite2D {
-  vec2 = new Vector2(500, 0);
-  constructor() {
-	super();
-  }
+export class ClickGype extends Button {
+	#label?: Label;
+	#count = 0;
 
-  _ready() {
-	this.position = this.vec2;
-	GD.print(this.position);
-  }
+	public _ready(): void {
+		this.#label = this.get_node("../Label");
+		this.pressed.connect(new Callable(this, this.add_count));
+	}
 
-  _process(delta) {
-	this.vec2.y += 100 * delta;
-	this.position = this.vec2;
-  }
+	public add_count() {
+		this.#label!.text = (this.#count++).toString();
+	}
+
+	public _process(delta: number): void {
+
+	}
 }
 ```  
 
