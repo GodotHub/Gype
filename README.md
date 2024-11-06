@@ -7,7 +7,7 @@ Godot with Great JavaScript/TypeScript
 ## Quick Start
 
 Import the [plugin](https://github.com/GodotHub/Gype/releases/download/preview/addons.zip) in a Godot project and use it like GDS：  
-```js
+```ts
 import { GodotClass, Tool } from "@js_godot/class_defined";
 import { Sprite2D } from "godot/classes/sprite2d";
 
@@ -38,7 +38,6 @@ Notes:
 2. Godot's `object` classes are all in `godot/classes/xxxx`, such as `godot/classes/node`.  
 3. Godot's utility functions are in the `GD` singleton, e.g. `GD.print()`.  
 
-
 ## Project Plan
 
 1. ✅ Run a JS/TS script  
@@ -58,25 +57,3 @@ On Windows, download [mingw64 (posix version)](https://github.com/niXman/mingw-b
 #### Build library
 
 Windows: `./build.ps1`  
-
-```ts
-增加await signal支持
-import { Node2D } from "@godot/classes/node2d";
-import { GodotClass, ToSignal } from "@godot/core/class_defined";
-
-@GodotClass
-export class node_2d extends Node2D {
-	public async _enter_tree(): Promise<void> {
-		await to_promise(this.ready);
-		GD.print("test");
-	}
-	
-	_ready(): void {
-
-	}
-
-	_process(delta: number): void {
-
-	}
-}
-```

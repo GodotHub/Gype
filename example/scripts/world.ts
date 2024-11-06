@@ -3,6 +3,7 @@ import {GodotClass} from "@godot/core/class_defined";
 
 @GodotClass
 export class world extends Node2D {
+
 	#test_node: Node2D = new Node2D();
 
 	public _ready(): void {
@@ -10,4 +11,5 @@ export class world extends Node2D {
 	}
 
 	public _process(delta: number): void {}
+	
 }
