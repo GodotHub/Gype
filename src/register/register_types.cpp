@@ -4,7 +4,6 @@
 #include "register/builtin_classes/register_builtin_classes.h"
 #include "register/classes/register_classes.h"
 #include "register/utility_functions/register_utility_functions.h"
-#include "support/console_support.hpp"
 #include "support/typescript.hpp"
 #include "support/typescript_language.hpp"
 #include "support/typescript_loader.hpp"
@@ -23,7 +22,6 @@ void initialize_tgds_types(godot::ModuleInitializationLevel p_level) {
 	if (p_level != godot::ModuleInitializationLevel::MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
-	RedirectIOToConsole();
 	printf("%s", "Quickjs start initialization\n");
 	init_quickjs();
 	init_language();
