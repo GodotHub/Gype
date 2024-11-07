@@ -174,8 +174,7 @@ bool is_float(JSContext *ctx, JSValue value) {
 
 int64_t to_int64(JSContext *ctx, JSValue val) {
 	int64_t i;
-	if (JS_ToInt64(ctx, &i, val))
-		throw JS_ThrowTypeError(ctx, "%s", "Error convert to int");
+	ERR_FAIL_COND_V(JS_ToInt64(ctx, &i, val), 0);
 	return i;
 }
 
@@ -208,14 +207,12 @@ Variant any_to_variant(JSValue val) {
 	switch (tag) {
 		case JS_TAG_INT: {
 			int64_t i;
-			if (JS_ToInt64(ctx, &i, val))
-				throw JS_ThrowTypeError(ctx, "%s", "Error convert to int");
+			ERR_FAIL_COND_V(JS_ToInt64(ctx, &i, val), 0);
 			return i;
 		}
 		case JS_TAG_FLOAT64: {
 			double i;
-			if (JS_ToFloat64(ctx, &i, val))
-				throw JS_ThrowTypeError(ctx, "%s", "Error convert to float");
+			ERR_FAIL_COND_V(JS_ToFloat64(ctx, &i, val), 0);
 			return i;
 		}
 		case JS_TAG_BOOL:
@@ -229,8 +226,7 @@ Variant any_to_variant(JSValue val) {
 		case JS_TAG_UNINITIALIZED:
 			return Variant();
 		default:
-			print_exception(ctx);
-			throw JS_ThrowTypeError(ctx, "%s", "Error convert");
+			ERR_FAIL_V(Variant());
 	}
 }
 
