@@ -23,4 +23,8 @@ bool is_exception(JSContext *ctx, JSValue exp);
 Variant any_to_variant(JSValue val);
 JSValue any_to_jsvalue(const Variant *val);
 
+#ifndef _countof
+#define _countof(array) (sizeof(array) / sizeof((array)[0]))
+#endif // _countof
+
 #endif // __QUICKJS_HELPER_H__
