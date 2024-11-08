@@ -18,6 +18,11 @@ static void notification_bind(JSValue instance, JSValue prototype, int32_t p_wha
 
 const char *TypeScriptInstance::symbol_mask = "_GodotClass";
 
+#define JS_INSTANCE_VALID_V(js_instance, ret) \
+	ERR_FAIL_COND_V(JS_IsUndefined(js_instance), ret)
+#define JS_INSTANCE_VALID(js_instance) \
+	ERR_FAIL_COND(JS_IsUndefined(js_instance))
+
 TypeScriptInstance::TypeScriptInstance(Object *p_godot_object, TypeScript *script, bool is_placeholder) {
 	this->script = script;
 	String code = script->_get_source_code();
@@ -25,34 +30,33 @@ TypeScriptInstance::TypeScriptInstance(Object *p_godot_object, TypeScript *scrip
 	JSValue ret = JS_Eval(ctx, code_str.c_str(), code_str.size(), "<input>", JS_EVAL_TYPE_MODULE | JS_EVAL_FLAG_COMPILE_ONLY);
 	JSModuleDef *md = (JSModuleDef *)JS_VALUE_GET_PTR(ret);
 	ret = JS_EvalFunction(ctx, ret);
-	if (!is_exception(ctx, ret)) {
-		JSValue ns = JS_GetModuleNamespace(ctx, md);
-		ERR_FAIL_COND(is_exception(ctx, ns));
-		JSPropertyEnum *props;
-		uint32_t len;
-		ERR_FAIL_COND_MSG(JS_GetOwnPropertyNames(ctx, &props, &len, ns, JS_GPN_STRING_MASK) < 0, "Error getting module property\n");
-		for (uint32_t i = 0; i < len; i++) {
-			JSAtom class_atom = props[i].atom;
-			const char *prop_name = JS_AtomToCString(ctx, class_atom);
-			ret = JS_GetPropertyStr(ctx, ns, prop_name);
-			if (!is_exception(ctx, ret) && JS_IsObject(ret)) {
-				JSValue clazz = ret;
-				JSPropertyEnum *class_props;
-				uint32_t class_len;
+	ERR_FAIL_COND(is_exception(ctx, ret));
+	JSValue ns = JS_GetModuleNamespace(ctx, md);
+	ERR_FAIL_COND(is_exception(ctx, ns));
+	JSPropertyEnum *props;
+	uint32_t len;
+	ERR_FAIL_COND_MSG(JS_GetOwnPropertyNames(ctx, &props, &len, ns, JS_GPN_STRING_MASK) < 0, "Error getting module property\n");
+	for (uint32_t i = 0; i < len; i++) {
+		JSAtom class_atom = props[i].atom;
+		const char *prop_name = JS_AtomToCString(ctx, class_atom);
+		ret = JS_GetPropertyStr(ctx, ns, prop_name);
+		if (!is_exception(ctx, ret) && JS_IsObject(ret)) {
+			JSValue clazz = ret;
+			JSPropertyEnum *class_props;
+			uint32_t class_len;
 
-				ERR_FAIL_COND_MSG(JS_GetOwnPropertyNames(ctx, &class_props, &class_len, clazz, JS_GPN_SYMBOL_MASK) < 0, "Error getting class property\n");
-				for (uint32_t j = 0; j < class_len; j++) {
-					JSAtom symbol = class_props[j].atom;
-					const char *symbol_name = JS_AtomToCString(ctx, symbol);
-					ret = JS_GetProperty(ctx, ret, symbol);
-					if (strcmp(symbol_mask, symbol_name) == 0 || true) {
-						binding = internal::get_object_instance_binding(p_godot_object->_owner);
-						JSValue vbinding = static_cast<Variant>(binding);
-						JSValue js_instance = JS_CallConstructor(ctx, clazz, 1, &vbinding);
-						JS_SetOpaque(js_instance, binding);
-						binding->js_instance = js_instance;
-						script->instances.insert(binding->get_instance_id());
-					}
+			ERR_FAIL_COND_MSG(JS_GetOwnPropertyNames(ctx, &class_props, &class_len, clazz, JS_GPN_SYMBOL_MASK) < 0, "Error getting class property\n");
+			for (uint32_t j = 0; j < class_len; j++) {
+				JSAtom symbol = class_props[j].atom;
+				const char *symbol_name = JS_AtomToCString(ctx, symbol);
+				ret = JS_GetProperty(ctx, ret, symbol);
+				if (strcmp(symbol_mask, symbol_name) == 0 || true) {
+					binding = internal::get_object_instance_binding(p_godot_object->_owner);
+					JSValue vbinding = static_cast<Variant>(binding);
+					JSValue js_instance = JS_CallConstructor(ctx, clazz, 1, &vbinding);
+					JS_SetOpaque(js_instance, binding);
+					binding->js_instance = js_instance;
+					script->instances.insert(binding->get_instance_id());
 				}
 			}
 		}
@@ -95,9 +99,10 @@ JSValue TypeScriptInstance::find_ns_property(JSModuleDef *md, const char *name) 
 	return true;
 
 GDExtensionBool TypeScriptInstance::set(GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_variant) {
+	JSValue js_instance = binding->js_instance;
+	JS_INSTANCE_VALID_V(js_instance, false);
 	const char *name = to_chars(*reinterpret_cast<const StringName *>(p_name));
 	if (script->is_tool || !Engine::get_singleton()->is_editor_hint()) {
-		JSValue js_instance = binding->js_instance;
 		Variant varg;
 		internal::gdextension_interface_variant_new_copy(varg._native_ptr(), p_variant);
 		return JS_SetPropertyStr(ctx, js_instance, name, varg) > 0;
@@ -106,6 +111,8 @@ GDExtensionBool TypeScriptInstance::set(GDExtensionConstStringNamePtr p_name, GD
 }
 
 GDExtensionBool TypeScriptInstance::get(GDExtensionConstStringNamePtr p_name, GDExtensionVariantPtr r_ret) {
+	JSValue js_instance = binding->js_instance;
+	JS_INSTANCE_VALID_V(js_instance, false);
 	const char *name = to_chars(*reinterpret_cast<const StringName *>(p_name));
 	if (script->is_tool || !Engine::get_singleton()->is_editor_hint()) {
 		JSValue js_instance = binding->js_instance;
@@ -135,6 +142,7 @@ GDExtensionBool TypeScriptInstance::get(GDExtensionConstStringNamePtr p_name, GD
 
 GDExtensionBool TypeScriptInstance::has_method(GDExtensionConstStringNamePtr p_name) {
 	JSValue js_instance = binding->js_instance;
+	JS_INSTANCE_VALID_V(js_instance, false);
 	StringName method = *reinterpret_cast<const StringName *>(p_name);
 	const char *name = to_chars(method);
 	JSValue js_method = JS_GetPropertyStr(ctx, js_instance, name);
@@ -143,6 +151,7 @@ GDExtensionBool TypeScriptInstance::has_method(GDExtensionConstStringNamePtr p_n
 
 GDExtensionInt TypeScriptInstance::get_method_argument_count(GDExtensionConstStringNamePtr p_name, GDExtensionBool *r_is_valid) {
 	JSValue js_instance = binding->js_instance;
+	JS_INSTANCE_VALID_V(js_instance, 0);
 	const char *name = to_chars(*reinterpret_cast<const StringName *>(p_name));
 	JSValue js_method = JS_GetPropertyStr(ctx, js_instance, name);
 	JSValue js_len = JS_GetPropertyStr(ctx, js_method, "length");
@@ -153,6 +162,7 @@ GDExtensionInt TypeScriptInstance::get_method_argument_count(GDExtensionConstStr
 
 void TypeScriptInstance::call(GDExtensionConstStringNamePtr p_method, const GDExtensionConstVariantPtr *p_args, GDExtensionInt p_argument_count, GDExtensionVariantPtr r_return, GDExtensionCallError *r_error) {
 	JSValue js_instance = binding->js_instance;
+	JS_INSTANCE_VALID(js_instance);
 	JSValue prototype = JS_GetPrototype(ctx, js_instance);
 	const char *method = to_chars(*reinterpret_cast<const StringName *>(p_method));
 	JSAtom atom = JS_NewAtom(ctx, method);
@@ -187,9 +197,10 @@ void TypeScriptInstance::call(GDExtensionConstStringNamePtr p_method, const GDEx
 }
 
 void TypeScriptInstance::notification(int32_t p_what, GDExtensionBool p_reversed) {
+	JSValue js_instance = binding->js_instance;
+	JS_INSTANCE_VALID(js_instance);
 	JSAtom atom = JS_NewAtom(ctx, "_notification");
 	if (script->is_tool || !Engine::get_singleton()->is_editor_hint()) {
-		JSValue js_instance = binding->js_instance;
 		if (JS_HasProperty(ctx, js_instance, atom)) {
 			notification_bind(js_instance, JS_GetPrototype(ctx, js_instance), p_what, p_reversed);
 		}
@@ -207,13 +218,15 @@ void TypeScriptInstance::to_string(GDExtensionBool *r_is_valid, GDExtensionStrin
 
 void TypeScriptInstance::refcount_incremented() {
 	JSValue js_instance = binding->js_instance;
+	JS_INSTANCE_VALID(js_instance);
 	JS_DupValue(ctx, js_instance);
 }
 
 GDExtensionBool TypeScriptInstance::refcount_decremented() {
 	JSValue js_instance = binding->js_instance;
+	JS_INSTANCE_VALID_V(js_instance, false);
 	JS_FreeValue(ctx, js_instance);
-	return true;
+	return !JS_IsLiveObject(rt, js_instance);
 }
 
 GDExtensionObjectPtr TypeScriptInstance::get_owner() {

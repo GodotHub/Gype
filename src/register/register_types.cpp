@@ -32,12 +32,12 @@ void uninitialize_tgds_types(godot::ModuleInitializationLevel p_level) {
 	if (p_level != godot::ModuleInitializationLevel::MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
-	// Engine::get_singleton()->unregister_script_language(TypeScriptLanguage::get_singleton());
-	// ResourceSaver::get_singleton()->remove_resource_format_saver(TypeScriptSaver::get_singleton());
-	// ResourceLoader::get_singleton()->remove_resource_format_loader(TypeScriptLoader::get_singleton());
-	// memdelete(JavaScriptLanguage::get_singleton());
-	// memdelete(JavaScriptSaver::get_singleton());
-	// memdelete(JavaScriptLoader::get_singleton());
+	Engine::get_singleton()->unregister_script_language(TypeScriptLanguage::get_singleton());
+	ResourceSaver::get_singleton()->remove_resource_format_saver(TypeScriptSaver::get_singleton());
+	ResourceLoader::get_singleton()->remove_resource_format_loader(TypeScriptLoader::get_singleton());
+	memdelete(TypeScriptLanguage::get_singleton());
+	memdelete(TypeScriptSaver::get_singleton());
+	memdelete(TypeScriptLoader::get_singleton());
 	printf("Quickjs close\n");
 }
 
@@ -45,8 +45,8 @@ void init_quickjs() {
 	rt = JS_NewRuntime();
 	ctx = JS_NewContext(rt);
 	create_event_loop(rt);
-	register_utility_functions();
 	register_builtin_classes();
+	register_utility_functions();
 	register_classes();
 	JS_SetModuleLoaderFunc(rt, NULL, module_loader, NULL);
 }
