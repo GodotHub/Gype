@@ -24,13 +24,14 @@ godot-cpp/__pycache__/
 .venv/
 .cache/
 __pycache__/
-*.pyc
+*.pyc0
 
 # Example directory - ignore specific directories but allow specific files
 example/addons/gype/godot/classes/*
 example/addons/gype/godot/utility_functions/*
 !example/addons/gype/godot/utility_functions/.keep
 !example/addons/gype/godot/classes/godot_object.d.ts
+examples/*/addons
 
 # Source register directories
 src/register/classes/*

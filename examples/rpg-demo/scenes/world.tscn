@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://1h3kxt7tt2qh"]
+
+[ext_resource type="PackedScene" uid="uid://5mxdm386ytfs" path="res://scenes/player.tscn" id="1_55iln"]
+[ext_resource type="Texture2D" uid="uid://cjyed1vc7ifvi" path="res://resources/World/GrassBackground.png" id="2_lksmd"]
+[ext_resource type="PackedScene" uid="uid://b20vdgvn6hee6" path="res://scenes/bush.tscn" id="3_1u1x6"]
+
+[node name="World" type="Node2D"]
+
+[node name="Floor" type="TextureRect" parent="."]
+offset_right = 328.0
+offset_bottom = 192.0
+texture = ExtResource("2_lksmd")
+stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("1_55iln")]
+position = Vector2(168, 96)
+
+[node name="Bush1" parent="." instance=ExtResource("3_1u1x6")]
+
+[node name="Bush2" parent="." instance=ExtResource("3_1u1x6")]
+position = Vector2(160, 144)

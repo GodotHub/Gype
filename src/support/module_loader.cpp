@@ -16,7 +16,9 @@ JSModuleDef *module_loader(JSContext *ctx, const char *module_name, void *opaque
 	if (path.begins_with("@res")) {
 		path = path.replace("@res", "res://");
 	} else if (path.begins_with("@godot/core")) {
-		path = path.replace("@godot", "res://dist/addons/gype/godot");
+		char p[128];
+		sprintf(p, "%saddons/gype/godot", TypeScript::dist_path);
+		path = path.replace("@godot", p);
 	}
 
 	Ref<TypeScript> script = godot::ResourceLoader::get_singleton()->load(path);

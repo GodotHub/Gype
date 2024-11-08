@@ -52,14 +52,14 @@ std::string camelToSnake(std::string input) {
 
 const char *to_chars(const godot::String &input) {
 	std::string str = std::string(input.utf8().get_data());
-	char *chars = new char[128];
+	char *chars = new char[512];
 	strcpy(chars, str.c_str());
 	return chars;
 }
 
 const char *to_chars(const godot::StringName &input) {
 	std::string str = std::string(godot::String(input).utf8().get_data());
-	char *chars = new char[128];
+	char *chars = new char[512];
 	strcpy(chars, str.c_str());
 	return chars;
 }

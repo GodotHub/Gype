@@ -15,10 +15,10 @@ class TypeScript;
 class PlaceholderJavaScriptInstance;
 
 class PlaceholderJavaScriptInstance {
-	Object *binding;
-	Object *p_godot_object;
-	TypeScript *script;
-	bool _is_placeholder;
+	Object *binding = nullptr;
+	Object *p_godot_object = nullptr;
+	TypeScript *script = nullptr;
+	bool _is_placeholder = false;
 
 private:
 	JSModuleDef *get_module(const char *path);

@@ -1,0 +1,32 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="RPG-Demo"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalClasses="*res://addons/gype/godot/core/global_classes.ts"
+
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=180
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gype/plugin.cfg")
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

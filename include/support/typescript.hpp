@@ -29,9 +29,6 @@ class TypeScript : public ScriptExtension {
 	friend class TypeScriptInstance;
 	friend class PlaceholderJavaScriptInstance;
 
-	static const char *symbol_mask;
-	static const char *dist;
-
 	TSParser *parser;
 	const TSLanguage *lang;
 
@@ -46,6 +43,9 @@ class TypeScript : public ScriptExtension {
 	HashSet<int64_t> instances;
 
 public:
+	static const char *dist_path;
+	static const char *symbol_mask;
+
 	bool _editor_can_reload_from_file();
 	void _placeholder_erased(void *p_placeholder);
 	bool _can_instantiate() const;

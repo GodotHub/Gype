@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://5mxdm386ytfs"]
+
+[ext_resource type="Script" path="res://scripts/player.ts" id="1_gbcbj"]
+[ext_resource type="Texture2D" uid="uid://4alreq7wgiso" path="res://resources/Player/Player.png" id="2_qwwe6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iw2hc"]
+radius = 6.0
+height = 16.0
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8dl4f"]
+states/Start/position = Vector2(213, 100)
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_gbcbj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -13)
+texture = ExtResource("2_qwwe6")
+hframes = 60
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_iw2hc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_8dl4f")
+anim_player = NodePath("../AnimationPlayer")
