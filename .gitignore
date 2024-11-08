@@ -1,7 +1,7 @@
 # Distribution and build directories
-.dist/
 build/
 node_modules/
+example/dist
 
 # Object files and temporary files
 *.o

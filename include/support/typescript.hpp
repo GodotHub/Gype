@@ -30,6 +30,7 @@ class TypeScript : public ScriptExtension {
 	friend class PlaceholderJavaScriptInstance;
 
 	static const char *symbol_mask;
+	static const char *dist;
 
 	TSParser *parser;
 	const TSLanguage *lang;
@@ -97,7 +98,7 @@ private:
 	void remove_dist();
 	void remove_dist_internal(const String &path);
 	String get_dist_source_code() const;
-	void complie(bool force) const;
+	void complie(bool force = false) const;
 	void analyze() const;
 };
 

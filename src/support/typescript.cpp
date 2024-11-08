@@ -14,6 +14,7 @@
 using namespace godot;
 
 const char *TypeScript::symbol_mask = "GodotClass";
+const char *TypeScript::dist = "dist";
 
 bool TypeScript::_editor_can_reload_from_file() {
 	return true;
@@ -46,7 +47,7 @@ StringName TypeScript::_get_instance_base_type() const {
 }
 
 void *TypeScript::_instance_create(Object *p_for_object) const {
-	String path = get_path().replace("res://", "res://.dist/").replace(".ts", ".js");
+	String path = get_path().replace("res://", "res://dist/").replace(".ts", ".js");
 	Ref<TypeScript> script = ResourceLoader::get_singleton()->load(path);
 	return internal::gdextension_interface_script_instance_create3(&InstanceInfo, memnew(TypeScriptInstance(p_for_object, script.ptr(), false)));
 }
@@ -74,7 +75,7 @@ String TypeScript::get_dist_source_code() const {
 void TypeScript::analyze() const {
 	is_tool = false;
 	String path = get_path();
-	if (path != "" && !path.begins_with("res://.dist/")) {
+	if (path != "" && !path.begins_with("res://dist/")) {
 		String code = _get_source_code();
 		std::string origin_string = code.ascii().get_data();
 		const char *c_code = origin_string.c_str();
@@ -117,7 +118,7 @@ void TypeScript::analyze() const {
 	}
 }
 
-void TypeScript::complie(bool force = false) const {
+void TypeScript::complie(bool force) const {
 	if (!dirty)
 		return;
 	int exit_code = 0;
@@ -136,7 +137,7 @@ void TypeScript::_set_source_code(const String &p_code) {
 }
 
 void TypeScript::remove_dist() {
-	Ref<DirAccess> dir = DirAccess::open("res://.dist");
+	Ref<DirAccess> dir = DirAccess::open("res://dist");
 	Error err = dir->get_open_error();
 	ERR_FAIL_COND(err != OK);
 	remove_dist_internal(dir->get_current_dir());

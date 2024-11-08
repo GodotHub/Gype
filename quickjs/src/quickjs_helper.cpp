@@ -5,6 +5,7 @@
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/templates/hash_map.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+#include <godot_cpp/variant/utility_functions.hpp>
 #include <unordered_map>
 
 HashSet<int> class_id_list;
@@ -184,8 +185,8 @@ void print_exception(JSContext *ctx) {
 	JSValue stack = JS_GetPropertyStr(ctx, exp, "stack");
 	const char *mssage_str = JS_ToCString(ctx, message);
 	const char *stack_str = JS_ToCString(ctx, stack);
-	printf("%s\n", mssage_str);
-	printf("%s\n", stack_str);
+	UtilityFunctions::print(mssage_str);
+	UtilityFunctions::print(stack_str);
 	JS_FreeValue(ctx, exp);
 	JS_FreeValue(ctx, message);
 	JS_FreeValue(ctx, stack);
