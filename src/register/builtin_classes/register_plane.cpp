@@ -6,6 +6,7 @@
 #include "utils/func_utils.h"
 #include <godot_cpp/variant/plane.hpp>
 
+
 using namespace godot;
 
 static void plane_class_finalizer(JSRuntime *rt, JSValue val) {
@@ -207,7 +208,14 @@ void define_plane_property(JSContext *ctx, JSValue obj) {
 			JS_PROP_GETSET);
 }
 
+void define_plane_constants(JSContext *ctx, JSValue ctor) {
+	JS_DefinePropertyValueStr(ctx, ctor, "PLANE_YZ", Variant(Plane(1, 0, 0, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "PLANE_XZ", Variant(Plane(0, 1, 0, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "PLANE_XY", Variant(Plane(0, 0, 1, 0)), JS_PROP_ENUMERABLE);
+}
+
 static int js_plane_class_init(JSContext *ctx) {
+	JS_NewClassID(&Plane::__class_id);
 	classes["Plane"] = Plane::__class_id;
 	class_id_list.insert(Plane::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Plane::__class_id, &plane_class_def);
@@ -219,6 +227,7 @@ static int js_plane_class_init(JSContext *ctx) {
 
 	JSValue ctor = JS_NewCFunction2(ctx, plane_class_constructor, "Plane", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
+	define_plane_constants(ctx, ctor);
 
 	JSValue global = JS_GetGlobalObject(ctx);
 	JS_SetPropertyStr(ctx, global, "Plane", ctor);

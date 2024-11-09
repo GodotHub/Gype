@@ -1,9 +1,9 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/vector3.hpp>
 
 using namespace godot;
@@ -25,27 +25,28 @@ static JSValue vector3_class_constructor(JSContext *ctx, JSValueConst new_target
 		return obj;
 
 	Vector3 *vector3_class = nullptr;
-
-	if (argc == 0) {
+	
+	if (argc == 0 ) {
 		vector3_class = memnew(Vector3());
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::VECTOR3) {
 		Vector3 v0 = Variant(argv[0]);
 		vector3_class = memnew(Vector3(v0));
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3I) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::VECTOR3I) {
 		Vector3i v0 = Variant(argv[0]);
 		vector3_class = memnew(Vector3(v0));
 	}
-
-	if (argc == 3 && (Variant(argv[0]).get_type() == Variant::Type::FLOAT || Variant(argv[0]).get_type() == Variant::Type::INT) && (Variant(argv[1]).get_type() == Variant::Type::FLOAT || Variant(argv[1]).get_type() == Variant::Type::INT) && (Variant(argv[2]).get_type() == Variant::Type::FLOAT || Variant(argv[2]).get_type() == Variant::Type::INT)) {
+	
+	if (argc == 3 &&(Variant(argv[0]).get_type() == Variant::Type::FLOAT||Variant(argv[0]).get_type() == Variant::Type::INT)&&(Variant(argv[1]).get_type() == Variant::Type::FLOAT||Variant(argv[1]).get_type() == Variant::Type::INT)&&(Variant(argv[2]).get_type() == Variant::Type::FLOAT||Variant(argv[2]).get_type() == Variant::Type::INT)) {
 		float v0 = Variant(argv[0]);
 		float v1 = Variant(argv[1]);
 		float v2 = Variant(argv[2]);
-		vector3_class = memnew(Vector3(v0, v1, v2));
+		vector3_class = memnew(Vector3(v0,v1,v2));
 	}
+	
 
 	if (!vector3_class) {
 		JS_FreeValue(ctx, obj);
@@ -197,6 +198,9 @@ static JSValue vector3_class_octahedron_decode(JSContext *ctx, JSValueConst this
 	return call_builtin_static_method_ret(&Vector3::octahedron_decode, ctx, this_val, argc, argv);
 };
 
+
+
+
 static JSValue vector3_class_get_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Vector3 &val = *reinterpret_cast<Vector3 *>(JS_GetOpaque(this_val, Vector3::__class_id));
 	return Variant(val.x);
@@ -226,6 +230,7 @@ static JSValue vector3_class_set_z(JSContext *ctx, JSValueConst this_val, int ar
 	val.z = Variant(*argv);
 	return JS_UNDEFINED;
 }
+
 
 static const JSCFunctionListEntry vector3_class_proto_funcs[] = {
 	JS_CFUNC_DEF("min_axis_index", 0, &vector3_class_min_axis_index),
@@ -279,31 +284,58 @@ static const JSCFunctionListEntry vector3_class_static_funcs[] = {
 	JS_CFUNC_DEF("octahedron_decode", 1, &vector3_class_octahedron_decode),
 };
 
+
 void define_vector3_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "x"),
-			JS_NewCFunction(ctx, vector3_class_get_x, "get_x", 0),
-			JS_NewCFunction(ctx, vector3_class_set_x, "set_x", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "y"),
-			JS_NewCFunction(ctx, vector3_class_get_y, "get_y", 0),
-			JS_NewCFunction(ctx, vector3_class_set_y, "set_y", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "z"),
-			JS_NewCFunction(ctx, vector3_class_get_z, "get_z", 0),
-			JS_NewCFunction(ctx, vector3_class_set_z, "set_z", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "x"),
+        JS_NewCFunction(ctx, vector3_class_get_x, "get_x", 0),
+        JS_NewCFunction(ctx, vector3_class_set_x, "set_x", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "y"),
+        JS_NewCFunction(ctx, vector3_class_get_y, "get_y", 0),
+        JS_NewCFunction(ctx, vector3_class_set_y, "set_y", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "z"),
+        JS_NewCFunction(ctx, vector3_class_get_z, "get_z", 0),
+        JS_NewCFunction(ctx, vector3_class_set_z, "set_z", 1),
+		JS_PROP_GETSET
+    );
+}
+
+void define_vector3_constants(JSContext *ctx, JSValue ctor) {
+	JS_DefinePropertyValueStr(ctx, ctor, "AXIS_X", Variant(0), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "AXIS_Y", Variant(1), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "AXIS_Z", Variant(2), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "ZERO", Variant(Vector3(0, 0, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "ONE", Variant(Vector3(1, 1, 1)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "INF", Variant(Vector3(INFINITY, INFINITY, INFINITY)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "LEFT", Variant(Vector3(-1, 0, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "RIGHT", Variant(Vector3(1, 0, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "UP", Variant(Vector3(0, 1, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "DOWN", Variant(Vector3(0, -1, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "FORWARD", Variant(Vector3(0, 0, -1)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "BACK", Variant(Vector3(0, 0, 1)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "MODEL_LEFT", Variant(Vector3(1, 0, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "MODEL_RIGHT", Variant(Vector3(-1, 0, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "MODEL_TOP", Variant(Vector3(0, 1, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "MODEL_BOTTOM", Variant(Vector3(0, -1, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "MODEL_FRONT", Variant(Vector3(0, 0, 1)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "MODEL_REAR", Variant(Vector3(0, 0, -1)), JS_PROP_ENUMERABLE);
 }
 
 static int js_vector3_class_init(JSContext *ctx) {
+	
+	JS_NewClassID(&Vector3::__class_id);
 	classes["Vector3"] = Vector3::__class_id;
 	class_id_list.insert(Vector3::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Vector3::__class_id, &vector3_class_def);
@@ -316,6 +348,7 @@ static int js_vector3_class_init(JSContext *ctx) {
 	JSValue ctor = JS_NewCFunction2(ctx, vector3_class_constructor, "Vector3", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, vector3_class_static_funcs, _countof(vector3_class_static_funcs));
+	define_vector3_constants(ctx, ctor);
 
 	JSValue global = JS_GetGlobalObject(ctx);
 	JS_SetPropertyStr(ctx, global, "Vector3", ctor);

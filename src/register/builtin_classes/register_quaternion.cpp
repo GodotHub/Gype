@@ -1,9 +1,9 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/quaternion.hpp>
 
 using namespace godot;
@@ -25,40 +25,41 @@ static JSValue quaternion_class_constructor(JSContext *ctx, JSValueConst new_tar
 		return obj;
 
 	Quaternion *quaternion_class = nullptr;
-
-	if (argc == 0) {
+	
+	if (argc == 0 ) {
 		quaternion_class = memnew(Quaternion());
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::QUATERNION) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::QUATERNION) {
 		Quaternion v0 = Variant(argv[0]);
 		quaternion_class = memnew(Quaternion(v0));
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::BASIS) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::BASIS) {
 		Basis v0 = Variant(argv[0]);
 		quaternion_class = memnew(Quaternion(v0));
 	}
-
-	if (argc == 2 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3 && (Variant(argv[1]).get_type() == Variant::Type::FLOAT || Variant(argv[1]).get_type() == Variant::Type::INT)) {
+	
+	if (argc == 2 &&Variant(argv[0]).get_type() == Variant::Type::VECTOR3&&(Variant(argv[1]).get_type() == Variant::Type::FLOAT||Variant(argv[1]).get_type() == Variant::Type::INT)) {
 		Vector3 v0 = Variant(argv[0]);
 		float v1 = Variant(argv[1]);
-		quaternion_class = memnew(Quaternion(v0, v1));
+		quaternion_class = memnew(Quaternion(v0,v1));
 	}
-
-	if (argc == 2 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3 && Variant(argv[1]).get_type() == Variant::Type::VECTOR3) {
+	
+	if (argc == 2 &&Variant(argv[0]).get_type() == Variant::Type::VECTOR3&&Variant(argv[1]).get_type() == Variant::Type::VECTOR3) {
 		Vector3 v0 = Variant(argv[0]);
 		Vector3 v1 = Variant(argv[1]);
-		quaternion_class = memnew(Quaternion(v0, v1));
+		quaternion_class = memnew(Quaternion(v0,v1));
 	}
-
-	if (argc == 4 && (Variant(argv[0]).get_type() == Variant::Type::FLOAT || Variant(argv[0]).get_type() == Variant::Type::INT) && (Variant(argv[1]).get_type() == Variant::Type::FLOAT || Variant(argv[1]).get_type() == Variant::Type::INT) && (Variant(argv[2]).get_type() == Variant::Type::FLOAT || Variant(argv[2]).get_type() == Variant::Type::INT) && (Variant(argv[3]).get_type() == Variant::Type::FLOAT || Variant(argv[3]).get_type() == Variant::Type::INT)) {
+	
+	if (argc == 4 &&(Variant(argv[0]).get_type() == Variant::Type::FLOAT||Variant(argv[0]).get_type() == Variant::Type::INT)&&(Variant(argv[1]).get_type() == Variant::Type::FLOAT||Variant(argv[1]).get_type() == Variant::Type::INT)&&(Variant(argv[2]).get_type() == Variant::Type::FLOAT||Variant(argv[2]).get_type() == Variant::Type::INT)&&(Variant(argv[3]).get_type() == Variant::Type::FLOAT||Variant(argv[3]).get_type() == Variant::Type::INT)) {
 		float v0 = Variant(argv[0]);
 		float v1 = Variant(argv[1]);
 		float v2 = Variant(argv[2]);
 		float v3 = Variant(argv[3]);
-		quaternion_class = memnew(Quaternion(v0, v1, v2, v3));
+		quaternion_class = memnew(Quaternion(v0,v1,v2,v3));
 	}
+	
 
 	if (!quaternion_class) {
 		JS_FreeValue(ctx, obj);
@@ -123,6 +124,8 @@ static JSValue quaternion_class_get_angle(JSContext *ctx, JSValueConst this_val,
 	return call_builtin_const_method_ret(&Quaternion::get_angle, ctx, this_val, argc, argv);
 };
 
+
+
 static JSValue quaternion_class_get_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Quaternion &val = *reinterpret_cast<Quaternion *>(JS_GetOpaque(this_val, Quaternion::__class_id));
 	return Variant(val.x);
@@ -163,6 +166,7 @@ static JSValue quaternion_class_set_w(JSContext *ctx, JSValueConst this_val, int
 	return JS_UNDEFINED;
 }
 
+
 static const JSCFunctionListEntry quaternion_class_proto_funcs[] = {
 	JS_CFUNC_DEF("length", 0, &quaternion_class_length),
 	JS_CFUNC_DEF("length_squared", 0, &quaternion_class_length_squared),
@@ -185,37 +189,47 @@ static const JSCFunctionListEntry quaternion_class_proto_funcs[] = {
 };
 
 void define_quaternion_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "x"),
-			JS_NewCFunction(ctx, quaternion_class_get_x, "get_x", 0),
-			JS_NewCFunction(ctx, quaternion_class_set_x, "set_x", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "y"),
-			JS_NewCFunction(ctx, quaternion_class_get_y, "get_y", 0),
-			JS_NewCFunction(ctx, quaternion_class_set_y, "set_y", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "z"),
-			JS_NewCFunction(ctx, quaternion_class_get_z, "get_z", 0),
-			JS_NewCFunction(ctx, quaternion_class_set_z, "set_z", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "w"),
-			JS_NewCFunction(ctx, quaternion_class_get_w, "get_w", 0),
-			JS_NewCFunction(ctx, quaternion_class_set_w, "set_w", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "x"),
+        JS_NewCFunction(ctx, quaternion_class_get_x, "get_x", 0),
+        JS_NewCFunction(ctx, quaternion_class_set_x, "set_x", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "y"),
+        JS_NewCFunction(ctx, quaternion_class_get_y, "get_y", 0),
+        JS_NewCFunction(ctx, quaternion_class_set_y, "set_y", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "z"),
+        JS_NewCFunction(ctx, quaternion_class_get_z, "get_z", 0),
+        JS_NewCFunction(ctx, quaternion_class_set_z, "set_z", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "w"),
+        JS_NewCFunction(ctx, quaternion_class_get_w, "get_w", 0),
+        JS_NewCFunction(ctx, quaternion_class_set_w, "set_w", 1),
+		JS_PROP_GETSET
+    );
+}
+
+void define_quaternion_constants(JSContext *ctx, JSValue ctor) {
+	JS_DefinePropertyValueStr(ctx, ctor, "IDENTITY", Variant(Quaternion(0, 0, 0, 1)), JS_PROP_ENUMERABLE);
 }
 
 static int js_quaternion_class_init(JSContext *ctx) {
+	
+	JS_NewClassID(&Quaternion::__class_id);
 	classes["Quaternion"] = Quaternion::__class_id;
 	class_id_list.insert(Quaternion::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Quaternion::__class_id, &quaternion_class_def);
@@ -227,6 +241,7 @@ static int js_quaternion_class_init(JSContext *ctx) {
 
 	JSValue ctor = JS_NewCFunction2(ctx, quaternion_class_constructor, "Quaternion", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
+	define_quaternion_constants(ctx, ctor);
 
 	JSValue global = JS_GetGlobalObject(ctx);
 	JS_SetPropertyStr(ctx, global, "Quaternion", ctor);

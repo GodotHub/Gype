@@ -1,9 +1,9 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/transform3d.hpp>
 
 using namespace godot;
@@ -25,34 +25,35 @@ static JSValue transform3d_class_constructor(JSContext *ctx, JSValueConst new_ta
 		return obj;
 
 	Transform3D *transform3d_class = nullptr;
-
-	if (argc == 0) {
+	
+	if (argc == 0 ) {
 		transform3d_class = memnew(Transform3D());
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::TRANSFORM3D) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::TRANSFORM3D) {
 		Transform3D v0 = Variant(argv[0]);
 		transform3d_class = memnew(Transform3D(v0));
 	}
-
-	if (argc == 2 && Variant(argv[0]).get_type() == Variant::Type::BASIS && Variant(argv[1]).get_type() == Variant::Type::VECTOR3) {
+	
+	if (argc == 2 &&Variant(argv[0]).get_type() == Variant::Type::BASIS&&Variant(argv[1]).get_type() == Variant::Type::VECTOR3) {
 		Basis v0 = Variant(argv[0]);
 		Vector3 v1 = Variant(argv[1]);
-		transform3d_class = memnew(Transform3D(v0, v1));
+		transform3d_class = memnew(Transform3D(v0,v1));
 	}
-
-	if (argc == 4 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3 && Variant(argv[1]).get_type() == Variant::Type::VECTOR3 && Variant(argv[2]).get_type() == Variant::Type::VECTOR3 && Variant(argv[3]).get_type() == Variant::Type::VECTOR3) {
+	
+	if (argc == 4 &&Variant(argv[0]).get_type() == Variant::Type::VECTOR3&&Variant(argv[1]).get_type() == Variant::Type::VECTOR3&&Variant(argv[2]).get_type() == Variant::Type::VECTOR3&&Variant(argv[3]).get_type() == Variant::Type::VECTOR3) {
 		Vector3 v0 = Variant(argv[0]);
 		Vector3 v1 = Variant(argv[1]);
 		Vector3 v2 = Variant(argv[2]);
 		Vector3 v3 = Variant(argv[3]);
-		transform3d_class = memnew(Transform3D(v0, v1, v2, v3));
+		transform3d_class = memnew(Transform3D(v0,v1,v2,v3));
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::PROJECTION) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::PROJECTION) {
 		Projection v0 = Variant(argv[0]);
 		transform3d_class = memnew(Transform3D(v0));
 	}
+	
 
 	if (!transform3d_class) {
 		JS_FreeValue(ctx, obj);
@@ -102,6 +103,8 @@ static JSValue transform3d_class_is_finite(JSContext *ctx, JSValueConst this_val
 	return call_builtin_const_method_ret(&Transform3D::is_finite, ctx, this_val, argc, argv);
 };
 
+
+
 static JSValue transform3d_class_get_basis(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Transform3D &val = *reinterpret_cast<Transform3D *>(JS_GetOpaque(this_val, Transform3D::__class_id));
 	return Variant(val.basis);
@@ -122,6 +125,7 @@ static JSValue transform3d_class_set_origin(JSContext *ctx, JSValueConst this_va
 	return JS_UNDEFINED;
 }
 
+
 static const JSCFunctionListEntry transform3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("inverse", 0, &transform3d_class_inverse),
 	JS_CFUNC_DEF("affine_inverse", 0, &transform3d_class_affine_inverse),
@@ -138,24 +142,36 @@ static const JSCFunctionListEntry transform3d_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_finite", 0, &transform3d_class_is_finite),
 };
 
+
 void define_transform3d_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "basis"),
-			JS_NewCFunction(ctx, transform3d_class_get_basis, "get_basis", 0),
-			JS_NewCFunction(ctx, transform3d_class_set_basis, "set_basis", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "origin"),
-			JS_NewCFunction(ctx, transform3d_class_get_origin, "get_origin", 0),
-			JS_NewCFunction(ctx, transform3d_class_set_origin, "set_origin", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "basis"),
+        JS_NewCFunction(ctx, transform3d_class_get_basis, "get_basis", 0),
+        JS_NewCFunction(ctx, transform3d_class_set_basis, "set_basis", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "origin"),
+        JS_NewCFunction(ctx, transform3d_class_get_origin, "get_origin", 0),
+        JS_NewCFunction(ctx, transform3d_class_set_origin, "set_origin", 1),
+		JS_PROP_GETSET
+    );
+}
+
+void define_transform3d_constants(JSContext *ctx, JSValue ctor) {
+	JS_DefinePropertyValueStr(ctx, ctor, "IDENTITY", Variant(Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "FLIP_X", Variant(Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "FLIP_Y", Variant(Transform3D(1, 0, 0, 0, -1, 0, 0, 0, 1, 0, 0, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "FLIP_Z", Variant(Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)), JS_PROP_ENUMERABLE);
 }
 
 static int js_transform3d_class_init(JSContext *ctx) {
+	
+	JS_NewClassID(&Transform3D::__class_id);
 	classes["Transform3D"] = Transform3D::__class_id;
 	class_id_list.insert(Transform3D::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Transform3D::__class_id, &transform3d_class_def);
@@ -167,6 +183,7 @@ static int js_transform3d_class_init(JSContext *ctx) {
 
 	JSValue ctor = JS_NewCFunction2(ctx, transform3d_class_constructor, "Transform3D", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
+	define_transform3d_constants(ctx, ctor);
 
 	JSValue global = JS_GetGlobalObject(ctx);
 	JS_SetPropertyStr(ctx, global, "Transform3D", ctor);

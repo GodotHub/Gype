@@ -1,9 +1,9 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/node_path.hpp>
 
 using namespace godot;
@@ -25,25 +25,21 @@ static JSValue node_path_class_constructor(JSContext *ctx, JSValueConst new_targ
 		return obj;
 
 	NodePath *node_path_class = nullptr;
-
-	if (argc == 0) {
+	
+	if (argc == 0 ) {
 		node_path_class = memnew(NodePath());
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::NODE_PATH) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::NODE_PATH) {
 		NodePath v0 = Variant(argv[0]);
 		node_path_class = memnew(NodePath(v0));
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::STRING) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::STRING) {
 		String v0 = Variant(argv[0]);
 		node_path_class = memnew(NodePath(v0));
 	}
-
-	if (argc == 1 && JS_IsString(argv[0])) {
-		String v0 = Variant(argv[0]);
-		node_path_class = memnew(NodePath(v0));
-	}
+	
 
 	if (!node_path_class) {
 		JS_FreeValue(ctx, obj);
@@ -87,6 +83,7 @@ static JSValue node_path_class_is_empty(JSContext *ctx, JSValueConst this_val, i
 	return call_builtin_const_method_ret(&NodePath::is_empty, ctx, this_val, argc, argv);
 };
 
+
 static const JSCFunctionListEntry node_path_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_absolute", 0, &node_path_class_is_absolute),
 	JS_CFUNC_DEF("get_name_count", 0, &node_path_class_get_name_count),
@@ -101,7 +98,11 @@ static const JSCFunctionListEntry node_path_class_proto_funcs[] = {
 	JS_CFUNC_DEF("is_empty", 0, &node_path_class_is_empty),
 };
 
+
+
 static int js_node_path_class_init(JSContext *ctx) {
+	
+	JS_NewClassID(&NodePath::__class_id);
 	classes["NodePath"] = NodePath::__class_id;
 	class_id_list.insert(NodePath::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), NodePath::__class_id, &node_path_class_def);

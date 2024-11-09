@@ -1,9 +1,9 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/string_name.hpp>
 
 using namespace godot;
@@ -25,20 +25,21 @@ static JSValue string_name_class_constructor(JSContext *ctx, JSValueConst new_ta
 		return obj;
 
 	StringName *string_name_class = nullptr;
-
-	if (argc == 0) {
+	
+	if (argc == 0 ) {
 		string_name_class = memnew(StringName());
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::STRING_NAME) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::STRING_NAME) {
 		StringName v0 = Variant(argv[0]);
 		string_name_class = memnew(StringName(v0));
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::STRING) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::STRING) {
 		String v0 = Variant(argv[0]);
 		string_name_class = memnew(StringName(v0));
 	}
+	
 
 	if (!string_name_class) {
 		JS_FreeValue(ctx, obj);
@@ -352,6 +353,7 @@ static JSValue string_name_class_hash(JSContext *ctx, JSValueConst this_val, int
 	return call_builtin_const_method_ret(&StringName::hash, ctx, this_val, argc, argv);
 };
 
+
 static const JSCFunctionListEntry string_name_class_proto_funcs[] = {
 	JS_CFUNC_DEF("casecmp_to", 1, &string_name_class_casecmp_to),
 	JS_CFUNC_DEF("nocasecmp_to", 1, &string_name_class_nocasecmp_to),
@@ -456,7 +458,11 @@ static const JSCFunctionListEntry string_name_class_proto_funcs[] = {
 	JS_CFUNC_DEF("hash", 0, &string_name_class_hash),
 };
 
+
+
 static int js_string_name_class_init(JSContext *ctx) {
+	
+	JS_NewClassID(&StringName::__class_id);
 	classes["StringName"] = StringName::__class_id;
 	class_id_list.insert(StringName::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), StringName::__class_id, &string_name_class_def);

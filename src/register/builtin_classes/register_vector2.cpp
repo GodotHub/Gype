@@ -1,9 +1,9 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/vector2.hpp>
 
 using namespace godot;
@@ -25,26 +25,27 @@ static JSValue vector2_class_constructor(JSContext *ctx, JSValueConst new_target
 		return obj;
 
 	Vector2 *vector2_class = nullptr;
-
-	if (argc == 0) {
+	
+	if (argc == 0 ) {
 		vector2_class = memnew(Vector2());
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::VECTOR2) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::VECTOR2) {
 		Vector2 v0 = Variant(argv[0]);
 		vector2_class = memnew(Vector2(v0));
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::VECTOR2I) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::VECTOR2I) {
 		Vector2i v0 = Variant(argv[0]);
 		vector2_class = memnew(Vector2(v0));
 	}
-
-	if (argc == 2 && (Variant(argv[0]).get_type() == Variant::Type::FLOAT || Variant(argv[0]).get_type() == Variant::Type::INT) && (Variant(argv[1]).get_type() == Variant::Type::FLOAT || Variant(argv[1]).get_type() == Variant::Type::INT)) {
+	
+	if (argc == 2 &&(Variant(argv[0]).get_type() == Variant::Type::FLOAT||Variant(argv[0]).get_type() == Variant::Type::INT)&&(Variant(argv[1]).get_type() == Variant::Type::FLOAT||Variant(argv[1]).get_type() == Variant::Type::INT)) {
 		float v0 = Variant(argv[0]);
 		float v1 = Variant(argv[1]);
-		vector2_class = memnew(Vector2(v0, v1));
+		vector2_class = memnew(Vector2(v0,v1));
 	}
+	
 
 	if (!vector2_class) {
 		JS_FreeValue(ctx, obj);
@@ -196,6 +197,9 @@ static JSValue vector2_class_from_angle(JSContext *ctx, JSValueConst this_val, i
 	return call_builtin_static_method_ret(&Vector2::from_angle, ctx, this_val, argc, argv);
 };
 
+
+
+
 static JSValue vector2_class_get_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Vector2 &val = *reinterpret_cast<Vector2 *>(JS_GetOpaque(this_val, Vector2::__class_id));
 	return Variant(val.x);
@@ -215,6 +219,7 @@ static JSValue vector2_class_set_y(JSContext *ctx, JSValueConst this_val, int ar
 	val.y = Variant(*argv);
 	return JS_UNDEFINED;
 }
+
 
 static const JSCFunctionListEntry vector2_class_proto_funcs[] = {
 	JS_CFUNC_DEF("angle", 0, &vector2_class_angle),
@@ -268,24 +273,41 @@ static const JSCFunctionListEntry vector2_class_static_funcs[] = {
 	JS_CFUNC_DEF("from_angle", 1, &vector2_class_from_angle),
 };
 
+
 void define_vector2_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "x"),
-			JS_NewCFunction(ctx, vector2_class_get_x, "get_x", 0),
-			JS_NewCFunction(ctx, vector2_class_set_x, "set_x", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "y"),
-			JS_NewCFunction(ctx, vector2_class_get_y, "get_y", 0),
-			JS_NewCFunction(ctx, vector2_class_set_y, "set_y", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "x"),
+        JS_NewCFunction(ctx, vector2_class_get_x, "get_x", 0),
+        JS_NewCFunction(ctx, vector2_class_set_x, "set_x", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "y"),
+        JS_NewCFunction(ctx, vector2_class_get_y, "get_y", 0),
+        JS_NewCFunction(ctx, vector2_class_set_y, "set_y", 1),
+		JS_PROP_GETSET
+    );
+}
+
+void define_vector2_constants(JSContext *ctx, JSValue ctor) {
+	JS_DefinePropertyValueStr(ctx, ctor, "AXIS_X", Variant(0), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "AXIS_Y", Variant(1), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "ZERO", Variant(Vector2(0, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "ONE", Variant(Vector2(1, 1)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "INF", Variant(Vector2(INFINITY, INFINITY)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "LEFT", Variant(Vector2(-1, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "RIGHT", Variant(Vector2(1, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "UP", Variant(Vector2(0, -1)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "DOWN", Variant(Vector2(0, 1)), JS_PROP_ENUMERABLE);
 }
 
 static int js_vector2_class_init(JSContext *ctx) {
+	
+	JS_NewClassID(&Vector2::__class_id);
 	classes["Vector2"] = Vector2::__class_id;
 	class_id_list.insert(Vector2::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Vector2::__class_id, &vector2_class_def);
@@ -298,6 +320,7 @@ static int js_vector2_class_init(JSContext *ctx) {
 	JSValue ctor = JS_NewCFunction2(ctx, vector2_class_constructor, "Vector2", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, vector2_class_static_funcs, _countof(vector2_class_static_funcs));
+	define_vector2_constants(ctx, ctor);
 
 	JSValue global = JS_GetGlobalObject(ctx);
 	JS_SetPropertyStr(ctx, global, "Vector2", ctor);

@@ -1,9 +1,9 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/basis.hpp>
 
 using namespace godot;
@@ -25,33 +25,34 @@ static JSValue basis_class_constructor(JSContext *ctx, JSValueConst new_target, 
 		return obj;
 
 	Basis *basis_class = nullptr;
-
-	if (argc == 0) {
+	
+	if (argc == 0 ) {
 		basis_class = memnew(Basis());
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::BASIS) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::BASIS) {
 		Basis v0 = Variant(argv[0]);
 		basis_class = memnew(Basis(v0));
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::QUATERNION) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::QUATERNION) {
 		Quaternion v0 = Variant(argv[0]);
 		basis_class = memnew(Basis(v0));
 	}
-
-	if (argc == 2 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3 && (Variant(argv[1]).get_type() == Variant::Type::FLOAT || Variant(argv[1]).get_type() == Variant::Type::INT)) {
+	
+	if (argc == 2 &&Variant(argv[0]).get_type() == Variant::Type::VECTOR3&&(Variant(argv[1]).get_type() == Variant::Type::FLOAT||Variant(argv[1]).get_type() == Variant::Type::INT)) {
 		Vector3 v0 = Variant(argv[0]);
 		float v1 = Variant(argv[1]);
-		basis_class = memnew(Basis(v0, v1));
+		basis_class = memnew(Basis(v0,v1));
 	}
-
-	if (argc == 3 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3 && Variant(argv[1]).get_type() == Variant::Type::VECTOR3 && Variant(argv[2]).get_type() == Variant::Type::VECTOR3) {
+	
+	if (argc == 3 &&Variant(argv[0]).get_type() == Variant::Type::VECTOR3&&Variant(argv[1]).get_type() == Variant::Type::VECTOR3&&Variant(argv[2]).get_type() == Variant::Type::VECTOR3) {
 		Vector3 v0 = Variant(argv[0]);
 		Vector3 v1 = Variant(argv[1]);
 		Vector3 v2 = Variant(argv[2]);
-		basis_class = memnew(Basis(v0, v1, v2));
+		basis_class = memnew(Basis(v0,v1,v2));
 	}
+	
 
 	if (!basis_class) {
 		JS_FreeValue(ctx, obj);
@@ -115,35 +116,39 @@ static JSValue basis_class_from_euler(JSContext *ctx, JSValueConst this_val, int
 	return call_builtin_static_method_ret(&Basis::from_euler, ctx, this_val, argc, argv);
 };
 
+
+
+
 static JSValue basis_class_get_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Basis &val = *reinterpret_cast<Basis *>(JS_GetOpaque(this_val, Basis::__class_id));
-	return Variant(val.rows[0]);
+	return Variant(val.rows->x);
 }
 static JSValue basis_class_set_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Basis &val = *reinterpret_cast<Basis *>(JS_GetOpaque(this_val, Basis::__class_id));
-	val.rows[0] = Variant(*argv);
+	val.rows->x = Variant(*argv);
 	return JS_UNDEFINED;
 }
 
 static JSValue basis_class_get_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Basis &val = *reinterpret_cast<Basis *>(JS_GetOpaque(this_val, Basis::__class_id));
-	return Variant(val.rows[1]);
+	return Variant(val.rows->y);
 }
 static JSValue basis_class_set_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Basis &val = *reinterpret_cast<Basis *>(JS_GetOpaque(this_val, Basis::__class_id));
-	val.rows[1] = Variant(*argv);
+	val.rows->y = Variant(*argv);
 	return JS_UNDEFINED;
 }
 
 static JSValue basis_class_get_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Basis &val = *reinterpret_cast<Basis *>(JS_GetOpaque(this_val, Basis::__class_id));
-	return Variant(val.rows[2]);
+	return Variant(val.rows->z);
 }
 static JSValue basis_class_set_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Basis &val = *reinterpret_cast<Basis *>(JS_GetOpaque(this_val, Basis::__class_id));
-	val.rows[2] = Variant(*argv);
+	val.rows->z = Variant(*argv);
 	return JS_UNDEFINED;
 }
+
 
 static const JSCFunctionListEntry basis_class_proto_funcs[] = {
 	JS_CFUNC_DEF("inverse", 0, &basis_class_inverse),
@@ -167,31 +172,44 @@ static const JSCFunctionListEntry basis_class_static_funcs[] = {
 	JS_CFUNC_DEF("from_euler", 2, &basis_class_from_euler),
 };
 
+
 void define_basis_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "x"),
-			JS_NewCFunction(ctx, basis_class_get_x, "get_x", 0),
-			JS_NewCFunction(ctx, basis_class_set_x, "set_x", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "y"),
-			JS_NewCFunction(ctx, basis_class_get_y, "get_y", 0),
-			JS_NewCFunction(ctx, basis_class_set_y, "set_y", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "z"),
-			JS_NewCFunction(ctx, basis_class_get_z, "get_z", 0),
-			JS_NewCFunction(ctx, basis_class_set_z, "set_z", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "x"),
+        JS_NewCFunction(ctx, basis_class_get_x, "get_x", 0),
+        JS_NewCFunction(ctx, basis_class_set_x, "set_x", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "y"),
+        JS_NewCFunction(ctx, basis_class_get_y, "get_y", 0),
+        JS_NewCFunction(ctx, basis_class_set_y, "set_y", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "z"),
+        JS_NewCFunction(ctx, basis_class_get_z, "get_z", 0),
+        JS_NewCFunction(ctx, basis_class_set_z, "set_z", 1),
+		JS_PROP_GETSET
+    );
+}
+
+void define_basis_constants(JSContext *ctx, JSValue ctor) {
+	JS_DefinePropertyValueStr(ctx, ctor, "IDENTITY", Variant(Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "FLIP_X", Variant(Basis(-1, 0, 0, 0, 1, 0, 0, 0, 1)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "FLIP_Y", Variant(Basis(1, 0, 0, 0, -1, 0, 0, 0, 1)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "FLIP_Z", Variant(Basis(1, 0, 0, 0, 1, 0, 0, 0, -1)), JS_PROP_ENUMERABLE);
 }
 
 static int js_basis_class_init(JSContext *ctx) {
+	
+	JS_NewClassID(&Basis::__class_id);
 	classes["Basis"] = Basis::__class_id;
 	class_id_list.insert(Basis::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Basis::__class_id, &basis_class_def);
@@ -204,6 +222,7 @@ static int js_basis_class_init(JSContext *ctx) {
 	JSValue ctor = JS_NewCFunction2(ctx, basis_class_constructor, "Basis", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, basis_class_static_funcs, _countof(basis_class_static_funcs));
+	define_basis_constants(ctx, ctor);
 
 	JSValue global = JS_GetGlobalObject(ctx);
 	JS_SetPropertyStr(ctx, global, "Basis", ctor);

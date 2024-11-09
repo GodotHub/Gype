@@ -1,9 +1,9 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/projection.hpp>
 
 using namespace godot;
@@ -25,28 +25,29 @@ static JSValue projection_class_constructor(JSContext *ctx, JSValueConst new_tar
 		return obj;
 
 	Projection *projection_class = nullptr;
-
-	if (argc == 0) {
+	
+	if (argc == 0 ) {
 		projection_class = memnew(Projection());
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::PROJECTION) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::PROJECTION) {
 		Projection v0 = Variant(argv[0]);
 		projection_class = memnew(Projection(v0));
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::TRANSFORM3D) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::TRANSFORM3D) {
 		Transform3D v0 = Variant(argv[0]);
 		projection_class = memnew(Projection(v0));
 	}
-
-	if (argc == 4 && Variant(argv[0]).get_type() == Variant::Type::VECTOR4 && Variant(argv[1]).get_type() == Variant::Type::VECTOR4 && Variant(argv[2]).get_type() == Variant::Type::VECTOR4 && Variant(argv[3]).get_type() == Variant::Type::VECTOR4) {
+	
+	if (argc == 4 &&Variant(argv[0]).get_type() == Variant::Type::VECTOR4&&Variant(argv[1]).get_type() == Variant::Type::VECTOR4&&Variant(argv[2]).get_type() == Variant::Type::VECTOR4&&Variant(argv[3]).get_type() == Variant::Type::VECTOR4) {
 		Vector4 v0 = Variant(argv[0]);
 		Vector4 v1 = Variant(argv[1]);
 		Vector4 v2 = Variant(argv[2]);
 		Vector4 v3 = Variant(argv[3]);
-		projection_class = memnew(Projection(v0, v1, v2, v3));
+		projection_class = memnew(Projection(v0,v1,v2,v3));
 	}
+	
 
 	if (!projection_class) {
 		JS_FreeValue(ctx, obj);
@@ -145,45 +146,49 @@ static JSValue projection_class_get_fovy(JSContext *ctx, JSValueConst this_val, 
 	return call_builtin_static_method_ret(&Projection::get_fovy, ctx, this_val, argc, argv);
 };
 
+
+
+
 static JSValue projection_class_get_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Projection &val = *reinterpret_cast<Projection *>(JS_GetOpaque(this_val, Projection::__class_id));
-	return Variant(val.columns[0]);
+	return Variant(val.columns->x);
 }
 static JSValue projection_class_set_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Projection &val = *reinterpret_cast<Projection *>(JS_GetOpaque(this_val, Projection::__class_id));
-	val.columns[0] = Variant(*argv);
+	val.columns->x = Variant(*argv);
 	return JS_UNDEFINED;
 }
 
 static JSValue projection_class_get_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Projection &val = *reinterpret_cast<Projection *>(JS_GetOpaque(this_val, Projection::__class_id));
-	return Variant(val.columns[1]);
+	return Variant(val.columns->y);
 }
 static JSValue projection_class_set_y(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Projection &val = *reinterpret_cast<Projection *>(JS_GetOpaque(this_val, Projection::__class_id));
-	val.columns[1] = Variant(*argv);
+	val.columns->y = Variant(*argv);
 	return JS_UNDEFINED;
 }
 
 static JSValue projection_class_get_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Projection &val = *reinterpret_cast<Projection *>(JS_GetOpaque(this_val, Projection::__class_id));
-	return Variant(val.columns[2]);
+	return Variant(val.columns->z);
 }
 static JSValue projection_class_set_z(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Projection &val = *reinterpret_cast<Projection *>(JS_GetOpaque(this_val, Projection::__class_id));
-	val.columns[2] = Variant(*argv);
+	val.columns->z = Variant(*argv);
 	return JS_UNDEFINED;
 }
 
 static JSValue projection_class_get_w(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Projection &val = *reinterpret_cast<Projection *>(JS_GetOpaque(this_val, Projection::__class_id));
-	return Variant(val.columns[3]);
+	return Variant(val.columns->w);
 }
 static JSValue projection_class_set_w(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Projection &val = *reinterpret_cast<Projection *>(JS_GetOpaque(this_val, Projection::__class_id));
-	val.columns[3] = Variant(*argv);
+	val.columns->w = Variant(*argv);
 	return JS_UNDEFINED;
 }
+
 
 static const JSCFunctionListEntry projection_class_proto_funcs[] = {
 	JS_CFUNC_DEF("determinant", 0, &projection_class_determinant),
@@ -216,38 +221,56 @@ static const JSCFunctionListEntry projection_class_static_funcs[] = {
 	JS_CFUNC_DEF("get_fovy", 2, &projection_class_get_fovy),
 };
 
+
 void define_projection_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "x"),
-			JS_NewCFunction(ctx, projection_class_get_x, "get_x", 0),
-			JS_NewCFunction(ctx, projection_class_set_x, "set_x", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "y"),
-			JS_NewCFunction(ctx, projection_class_get_y, "get_y", 0),
-			JS_NewCFunction(ctx, projection_class_set_y, "set_y", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "z"),
-			JS_NewCFunction(ctx, projection_class_get_z, "get_z", 0),
-			JS_NewCFunction(ctx, projection_class_set_z, "set_z", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "w"),
-			JS_NewCFunction(ctx, projection_class_get_w, "get_w", 0),
-			JS_NewCFunction(ctx, projection_class_set_w, "set_w", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "x"),
+        JS_NewCFunction(ctx, projection_class_get_x, "get_x", 0),
+        JS_NewCFunction(ctx, projection_class_set_x, "set_x", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "y"),
+        JS_NewCFunction(ctx, projection_class_get_y, "get_y", 0),
+        JS_NewCFunction(ctx, projection_class_set_y, "set_y", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "z"),
+        JS_NewCFunction(ctx, projection_class_get_z, "get_z", 0),
+        JS_NewCFunction(ctx, projection_class_set_z, "set_z", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "w"),
+        JS_NewCFunction(ctx, projection_class_get_w, "get_w", 0),
+        JS_NewCFunction(ctx, projection_class_set_w, "set_w", 1),
+		JS_PROP_GETSET
+    );
+}
+
+void define_projection_constants(JSContext *ctx, JSValue ctor) {
+	JS_DefinePropertyValueStr(ctx, ctor, "PLANE_NEAR", Variant(0), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "PLANE_FAR", Variant(1), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "PLANE_LEFT", Variant(2), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "PLANE_TOP", Variant(3), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "PLANE_RIGHT", Variant(4), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "PLANE_BOTTOM", Variant(5), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "IDENTITY", Variant(Projection(Vector4(1, 0, 0, 0), Vector4(0, 1, 0, 0), Vector4(0, 0, 1, 0), Vector4(0, 0, 0, 1))), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "ZERO", Variant(Projection(Vector4(0, 0, 0, 0), Vector4(0, 0, 0, 0), Vector4(0, 0, 0, 0), Vector4(0, 0, 0, 0))), JS_PROP_ENUMERABLE);
 }
 
 static int js_projection_class_init(JSContext *ctx) {
+	
+	JS_NewClassID(&Projection::__class_id);
 	classes["Projection"] = Projection::__class_id;
 	class_id_list.insert(Projection::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Projection::__class_id, &projection_class_def);
@@ -260,6 +283,7 @@ static int js_projection_class_init(JSContext *ctx) {
 	JSValue ctor = JS_NewCFunction2(ctx, projection_class_constructor, "Projection", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetPropertyFunctionList(ctx, ctor, projection_class_static_funcs, _countof(projection_class_static_funcs));
+	define_projection_constants(ctx, ctor);
 
 	JSValue global = JS_GetGlobalObject(ctx);
 	JS_SetPropertyStr(ctx, global, "Projection", ctor);

@@ -1,9 +1,9 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/aabb.hpp>
 
 using namespace godot;
@@ -25,21 +25,22 @@ static JSValue aabb_class_constructor(JSContext *ctx, JSValueConst new_target, i
 		return obj;
 
 	AABB *aabb_class = nullptr;
-
-	if (argc == 0) {
+	
+	if (argc == 0 ) {
 		aabb_class = memnew(AABB());
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::AABB) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::AABB) {
 		AABB v0 = Variant(argv[0]);
 		aabb_class = memnew(AABB(v0));
 	}
-
-	if (argc == 2 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3 && Variant(argv[1]).get_type() == Variant::Type::VECTOR3) {
+	
+	if (argc == 2 &&Variant(argv[0]).get_type() == Variant::Type::VECTOR3&&Variant(argv[1]).get_type() == Variant::Type::VECTOR3) {
 		Vector3 v0 = Variant(argv[0]);
 		Vector3 v1 = Variant(argv[1]);
-		aabb_class = memnew(AABB(v0, v1));
+		aabb_class = memnew(AABB(v0,v1));
 	}
+	
 
 	if (!aabb_class) {
 		JS_FreeValue(ctx, obj);
@@ -125,6 +126,8 @@ static JSValue aabb_class_intersects_ray(JSContext *ctx, JSValueConst this_val, 
 	return call_builtin_const_method_ret(&AABB::intersects_ray, ctx, this_val, argc, argv);
 };
 
+
+
 static JSValue aabb_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	AABB &val = *reinterpret_cast<AABB *>(JS_GetOpaque(this_val, AABB::__class_id));
 	return Variant(val.position);
@@ -144,12 +147,17 @@ static JSValue aabb_class_set_size(JSContext *ctx, JSValueConst this_val, int ar
 	val.size = Variant(*argv);
 	return JS_UNDEFINED;
 }
+
 static JSValue aabb_class_get_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&AABB::get_end, ctx, this_val, argc, argv);
+	AABB &val = *reinterpret_cast<AABB *>(JS_GetOpaque(this_val, AABB::__class_id));
+	return Variant(val.get_end());
 }
 static JSValue aabb_class_set_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_no_ret(&AABB::set_end, ctx, this_val, argc, argv);
+	AABB &val = *reinterpret_cast<AABB *>(JS_GetOpaque(this_val, AABB::__class_id));
+	val.set_end(Variant(*argv));
+	return JS_UNDEFINED;
 }
+
 
 static const JSCFunctionListEntry aabb_class_proto_funcs[] = {
 	JS_CFUNC_DEF("abs", 0, &aabb_class_abs),
@@ -179,31 +187,38 @@ static const JSCFunctionListEntry aabb_class_proto_funcs[] = {
 	JS_CFUNC_DEF("intersects_ray", 2, &aabb_class_intersects_ray),
 };
 
+
 void define_aabb_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "position"),
-			JS_NewCFunction(ctx, aabb_class_get_position, "get_position", 0),
-			JS_NewCFunction(ctx, aabb_class_set_position, "set_position", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "size"),
-			JS_NewCFunction(ctx, aabb_class_get_size, "get_size", 0),
-			JS_NewCFunction(ctx, aabb_class_set_size, "set_size", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "end"),
-			JS_NewCFunction(ctx, aabb_class_get_end, "get_end", 0),
-			JS_NewCFunction(ctx, aabb_class_set_end, "set_end", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "position"),
+        JS_NewCFunction(ctx, aabb_class_get_position, "get_position", 0),
+        JS_NewCFunction(ctx, aabb_class_set_position, "set_position", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "size"),
+        JS_NewCFunction(ctx, aabb_class_get_size, "get_size", 0),
+        JS_NewCFunction(ctx, aabb_class_set_size, "set_size", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "end"),
+        JS_NewCFunction(ctx, aabb_class_get_end, "get_end", 0),
+        JS_NewCFunction(ctx, aabb_class_set_end, "set_end", 1),
+		JS_PROP_GETSET
+    );
 }
 
+
 static int js_aabb_class_init(JSContext *ctx) {
+	
+	JS_NewClassID(&AABB::__class_id);
 	classes["AABB"] = AABB::__class_id;
 	class_id_list.insert(AABB::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), AABB::__class_id, &aabb_class_def);

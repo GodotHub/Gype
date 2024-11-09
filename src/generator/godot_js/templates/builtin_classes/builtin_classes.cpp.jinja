@@ -33,7 +33,7 @@ static JSValue {{snake_name}}_class_constructor(JSContext *ctx, JSValueConst new
 	if (JS_IsException(obj))
 		return obj;
 
-	{{clazz_name}} *{{snake_name}}_class;
+	{{clazz_name}} *{{snake_name}}_class = nullptr;
 	{%- set constructs = clazz['constructors'] %}
 	{% for ctor in constructs %}
 	if (argc == {{ctor['arguments'] | length}} {{variant_type_cond(ctor['arguments'])}}) {
@@ -144,6 +144,14 @@ void define_{{snake_name}}_property(JSContext *ctx, JSValue obj) {
 }
 {% endif %}
 
+{%- if clazz['constants'] %}
+void define_{{snake_name}}_constants(JSContext *ctx, JSValue ctor) {
+	{%- for constant in clazz['constants'] %}
+	JS_DefinePropertyValueStr(ctx, ctor, "{{constant['name']}}", Variant({{constant['value']}}), JS_PROP_ENUMERABLE);
+	{%- endfor %}
+}
+{%- endif %}
+
 static int js_{{snake_name}}_class_init(JSContext *ctx) {
 	
 	JS_NewClassID(&{{class_id}});
@@ -169,6 +177,9 @@ static int js_{{snake_name}}_class_init(JSContext *ctx) {
 	JS_SetConstructor(ctx, ctor, proto);
 	{%- if static_methods %}
 	JS_SetPropertyFunctionList(ctx, ctor, {{snake_name}}_class_static_funcs, _countof({{snake_name}}_class_static_funcs));
+	{%- endif %}
+	{%- if clazz['constants'] %}
+	define_{{snake_name}}_constants(ctx, ctor);
 	{%- endif %}
 
 	JSValue global = JS_GetGlobalObject(ctx);

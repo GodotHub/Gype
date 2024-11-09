@@ -1,9 +1,9 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/vector3i.hpp>
 
 using namespace godot;
@@ -25,27 +25,28 @@ static JSValue vector3i_class_constructor(JSContext *ctx, JSValueConst new_targe
 		return obj;
 
 	Vector3i *vector3i_class = nullptr;
-
-	if (argc == 0) {
+	
+	if (argc == 0 ) {
 		vector3i_class = memnew(Vector3i());
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3I) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::VECTOR3I) {
 		Vector3i v0 = Variant(argv[0]);
 		vector3i_class = memnew(Vector3i(v0));
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::VECTOR3) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::VECTOR3) {
 		Vector3 v0 = Variant(argv[0]);
 		vector3i_class = memnew(Vector3i(v0));
 	}
-
-	if (argc == 3 && Variant(argv[0]).get_type() == Variant::Type::INT && Variant(argv[1]).get_type() == Variant::Type::INT && Variant(argv[2]).get_type() == Variant::Type::INT) {
+	
+	if (argc == 3 &&Variant(argv[0]).get_type() == Variant::Type::INT&&Variant(argv[1]).get_type() == Variant::Type::INT&&Variant(argv[2]).get_type() == Variant::Type::INT) {
 		int v0 = Variant(argv[0]);
 		int v1 = Variant(argv[1]);
 		int v2 = Variant(argv[2]);
-		vector3i_class = memnew(Vector3i(v0, v1, v2));
+		vector3i_class = memnew(Vector3i(v0,v1,v2));
 	}
+	
 
 	if (!vector3i_class) {
 		JS_FreeValue(ctx, obj);
@@ -104,6 +105,8 @@ static JSValue vector3i_class_maxi(JSContext *ctx, JSValueConst this_val, int ar
 	return call_builtin_const_method_ret(&Vector3i::maxi, ctx, this_val, argc, argv);
 };
 
+
+
 static JSValue vector3i_class_get_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Vector3i &val = *reinterpret_cast<Vector3i *>(JS_GetOpaque(this_val, Vector3i::__class_id));
 	return Variant(val.x);
@@ -134,6 +137,7 @@ static JSValue vector3i_class_set_z(JSContext *ctx, JSValueConst this_val, int a
 	return JS_UNDEFINED;
 }
 
+
 static const JSCFunctionListEntry vector3i_class_proto_funcs[] = {
 	JS_CFUNC_DEF("min_axis_index", 0, &vector3i_class_min_axis_index),
 	JS_CFUNC_DEF("max_axis_index", 0, &vector3i_class_max_axis_index),
@@ -153,31 +157,53 @@ static const JSCFunctionListEntry vector3i_class_proto_funcs[] = {
 	JS_CFUNC_DEF("maxi", 1, &vector3i_class_maxi),
 };
 
+
 void define_vector3i_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "x"),
-			JS_NewCFunction(ctx, vector3i_class_get_x, "get_x", 0),
-			JS_NewCFunction(ctx, vector3i_class_set_x, "set_x", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "y"),
-			JS_NewCFunction(ctx, vector3i_class_get_y, "get_y", 0),
-			JS_NewCFunction(ctx, vector3i_class_set_y, "set_y", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "z"),
-			JS_NewCFunction(ctx, vector3i_class_get_z, "get_z", 0),
-			JS_NewCFunction(ctx, vector3i_class_set_z, "set_z", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "x"),
+        JS_NewCFunction(ctx, vector3i_class_get_x, "get_x", 0),
+        JS_NewCFunction(ctx, vector3i_class_set_x, "set_x", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "y"),
+        JS_NewCFunction(ctx, vector3i_class_get_y, "get_y", 0),
+        JS_NewCFunction(ctx, vector3i_class_set_y, "set_y", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "z"),
+        JS_NewCFunction(ctx, vector3i_class_get_z, "get_z", 0),
+        JS_NewCFunction(ctx, vector3i_class_set_z, "set_z", 1),
+		JS_PROP_GETSET
+    );
+}
+
+void define_vector3i_constants(JSContext *ctx, JSValue ctor) {
+	JS_DefinePropertyValueStr(ctx, ctor, "AXIS_X", Variant(0), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "AXIS_Y", Variant(1), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "AXIS_Z", Variant(2), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "ZERO", Variant(Vector3i(0, 0, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "ONE", Variant(Vector3i(1, 1, 1)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "MIN", Variant(Vector3i(-2147483648, -2147483648, -2147483648)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "MAX", Variant(Vector3i(2147483647, 2147483647, 2147483647)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "LEFT", Variant(Vector3i(-1, 0, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "RIGHT", Variant(Vector3i(1, 0, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "UP", Variant(Vector3i(0, 1, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "DOWN", Variant(Vector3i(0, -1, 0)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "FORWARD", Variant(Vector3i(0, 0, -1)), JS_PROP_ENUMERABLE);
+	JS_DefinePropertyValueStr(ctx, ctor, "BACK", Variant(Vector3i(0, 0, 1)), JS_PROP_ENUMERABLE);
 }
 
 static int js_vector3i_class_init(JSContext *ctx) {
+	
+	JS_NewClassID(&Vector3i::__class_id);
 	classes["Vector3i"] = Vector3i::__class_id;
 	class_id_list.insert(Vector3i::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Vector3i::__class_id, &vector3i_class_def);
@@ -189,6 +215,7 @@ static int js_vector3i_class_init(JSContext *ctx) {
 
 	JSValue ctor = JS_NewCFunction2(ctx, vector3i_class_constructor, "Vector3i", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
+	define_vector3i_constants(ctx, ctor);
 
 	JSValue global = JS_GetGlobalObject(ctx);
 	JS_SetPropertyStr(ctx, global, "Vector3i", ctor);

@@ -1,9 +1,9 @@
 
-#include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
-#include "quickjs/str_helper.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.h"
+#include "quickjs/str_helper.h"
+#include "quickjs/quickjs_helper.h"
 #include <godot_cpp/variant/rect2i.hpp>
 
 using namespace godot;
@@ -25,34 +25,35 @@ static JSValue rect2i_class_constructor(JSContext *ctx, JSValueConst new_target,
 		return obj;
 
 	Rect2i *rect2i_class = nullptr;
-
-	if (argc == 0) {
+	
+	if (argc == 0 ) {
 		rect2i_class = memnew(Rect2i());
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::RECT2I) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::RECT2I) {
 		Rect2i v0 = Variant(argv[0]);
 		rect2i_class = memnew(Rect2i(v0));
 	}
-
-	if (argc == 1 && Variant(argv[0]).get_type() == Variant::Type::RECT2) {
+	
+	if (argc == 1 &&Variant(argv[0]).get_type() == Variant::Type::RECT2) {
 		Rect2 v0 = Variant(argv[0]);
 		rect2i_class = memnew(Rect2i(v0));
 	}
-
-	if (argc == 2 && Variant(argv[0]).get_type() == Variant::Type::VECTOR2I && Variant(argv[1]).get_type() == Variant::Type::VECTOR2I) {
+	
+	if (argc == 2 &&Variant(argv[0]).get_type() == Variant::Type::VECTOR2I&&Variant(argv[1]).get_type() == Variant::Type::VECTOR2I) {
 		Vector2i v0 = Variant(argv[0]);
 		Vector2i v1 = Variant(argv[1]);
-		rect2i_class = memnew(Rect2i(v0, v1));
+		rect2i_class = memnew(Rect2i(v0,v1));
 	}
-
-	if (argc == 4 && Variant(argv[0]).get_type() == Variant::Type::INT && Variant(argv[1]).get_type() == Variant::Type::INT && Variant(argv[2]).get_type() == Variant::Type::INT && Variant(argv[3]).get_type() == Variant::Type::INT) {
+	
+	if (argc == 4 &&Variant(argv[0]).get_type() == Variant::Type::INT&&Variant(argv[1]).get_type() == Variant::Type::INT&&Variant(argv[2]).get_type() == Variant::Type::INT&&Variant(argv[3]).get_type() == Variant::Type::INT) {
 		int v0 = Variant(argv[0]);
 		int v1 = Variant(argv[1]);
 		int v2 = Variant(argv[2]);
 		int v3 = Variant(argv[3]);
-		rect2i_class = memnew(Rect2i(v0, v1, v2, v3));
+		rect2i_class = memnew(Rect2i(v0,v1,v2,v3));
 	}
+	
 
 	if (!rect2i_class) {
 		JS_FreeValue(ctx, obj);
@@ -102,6 +103,8 @@ static JSValue rect2i_class_abs(JSContext *ctx, JSValueConst this_val, int argc,
 	return call_builtin_const_method_ret(&Rect2i::abs, ctx, this_val, argc, argv);
 };
 
+
+
 static JSValue rect2i_class_get_position(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Rect2i &val = *reinterpret_cast<Rect2i *>(JS_GetOpaque(this_val, Rect2i::__class_id));
 	return Variant(val.position);
@@ -123,11 +126,15 @@ static JSValue rect2i_class_set_size(JSContext *ctx, JSValueConst this_val, int 
 }
 
 static JSValue rect2i_class_get_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Rect2::get_end, ctx, this_val, argc, argv);
+	Rect2i &val = *reinterpret_cast<Rect2i *>(JS_GetOpaque(this_val, Rect2i::__class_id));
+	return Variant(val.get_end());
 }
 static JSValue rect2i_class_set_end(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_method_no_ret(&Rect2::set_end, ctx, this_val, argc, argv);
+	Rect2i &val = *reinterpret_cast<Rect2i *>(JS_GetOpaque(this_val, Rect2i::__class_id));
+	val.set_end(Variant(*argv));
+	return JS_UNDEFINED;
 }
+
 
 static const JSCFunctionListEntry rect2i_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_center", 0, &rect2i_class_get_center),
@@ -145,31 +152,38 @@ static const JSCFunctionListEntry rect2i_class_proto_funcs[] = {
 	JS_CFUNC_DEF("abs", 0, &rect2i_class_abs),
 };
 
+
 void define_rect2i_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "position"),
-			JS_NewCFunction(ctx, rect2i_class_get_position, "get_position", 0),
-			JS_NewCFunction(ctx, rect2i_class_set_position, "set_position", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "size"),
-			JS_NewCFunction(ctx, rect2i_class_get_size, "get_size", 0),
-			JS_NewCFunction(ctx, rect2i_class_set_size, "set_size", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "end"),
-			JS_NewCFunction(ctx, rect2i_class_get_end, "get_end", 0),
-			JS_NewCFunction(ctx, rect2i_class_set_end, "set_end", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "position"),
+        JS_NewCFunction(ctx, rect2i_class_get_position, "get_position", 0),
+        JS_NewCFunction(ctx, rect2i_class_set_position, "set_position", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "size"),
+        JS_NewCFunction(ctx, rect2i_class_get_size, "get_size", 0),
+        JS_NewCFunction(ctx, rect2i_class_set_size, "set_size", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "end"),
+        JS_NewCFunction(ctx, rect2i_class_get_end, "get_end", 0),
+        JS_NewCFunction(ctx, rect2i_class_set_end, "set_end", 1),
+		JS_PROP_GETSET
+    );
 }
 
+
 static int js_rect2i_class_init(JSContext *ctx) {
+	
+	JS_NewClassID(&Rect2i::__class_id);
 	classes["Rect2i"] = Rect2i::__class_id;
 	class_id_list.insert(Rect2i::__class_id);
 	JS_NewClass(JS_GetRuntime(ctx), Rect2i::__class_id, &rect2i_class_def);
