@@ -496,24 +496,27 @@ sources/5 = SubResource("TileSetAtlasSource_kyhyy")
 [node name="World" type="Node2D"]
 
 [node name="Floor" type="TextureRect" parent="."]
-offset_right = 328.0
+offset_right = 352.0
 offset_bottom = 192.0
 texture = ExtResource("2_lksmd")
 stretch_mode = 1
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+y_sort_enabled = true
 tile_map_data = PackedByteArray("AAABAAMABQAFAAIAAAACAAMABQABAAAAAAACAAQABQABAAEAAAABAAQABQAGAAEAAAACAAUABQABAAIAAAADAAQABQAFAAIAAAADAAUABQABAAIAAAAEAAQABQABAAAAAAAFAAQABQACAAAAAAAFAAUABQACAAIAAAAEAAUABQABAAIAAAADAAMABQACAAAAAAABAAUABQAAAAIAAAAAAAQABQAAAAIAAAAAAAMABQAAAAEAAAAAAAEABQAAAAAAAAABAAEABQACAAAAAAABAAIABQACAAEAAAAAAAIABQAAAAEAAAAJAAMABQAGAAEAAAAJAAQABQAAAAEAAAAJAAUABQAAAAIAAAAKAAUABQACAAIAAAAKAAQABQACAAEAAAAKAAMABQACAAEAAAAIAAMABQAAAAIAAAAIAAIABQAAAAEAAAAIAAEABQAAAAEAAAAIAAAABQAAAAAAAAAJAAAABQABAAAAAAAJAAEABQABAAEAAAAJAAIABQABAAEAAAAKAAIABQACAAEAAAAKAAEABQACAAEAAAAKAAAABQACAAAAAAAEAAAABQABAAMAAAAFAAAABQABAAMAAAAGAAAABQACAAMAAAADAAAABQAAAAMAAAA=")
 tile_set = SubResource("TileSet_g3523")
 
-[node name="Player" parent="." instance=ExtResource("1_55iln")]
-position = Vector2(168, 96)
+[node name="Player" parent="TileMapLayer" instance=ExtResource("1_55iln")]
+y_sort_enabled = true
+position = Vector2(184, 88)
 
-[node name="Bushs" type="Node2D" parent="."]
+[node name="Bushs" type="Node2D" parent="TileMapLayer"]
+y_sort_enabled = true
 
-[node name="Bush1" parent="Bushs" instance=ExtResource("3_1u1x6")]
+[node name="Bush1" parent="TileMapLayer/Bushs" instance=ExtResource("3_1u1x6")]
 
-[node name="Bush2" parent="Bushs" instance=ExtResource("3_1u1x6")]
+[node name="Bush2" parent="TileMapLayer/Bushs" instance=ExtResource("3_1u1x6")]
 position = Vector2(152, 152)
 
-[node name="Bush3" parent="Bushs" instance=ExtResource("3_1u1x6")]
+[node name="Bush3" parent="TileMapLayer/Bushs" instance=ExtResource("3_1u1x6")]
 position = Vector2(240, 64)

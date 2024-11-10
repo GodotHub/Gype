@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RPG-Demo"
-run/main_scene="res://scenes/world.tscn"
+run/main_scene="res://scenes/test.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,8 @@ GlobalClasses="*res://addons/gype/godot/core/global_classes.ts"
 
 window/size/viewport_width=320
 window/size/viewport_height=180
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_width"
 
 [editor_plugins]
 
@@ -31,3 +33,5 @@ enabled=PackedStringArray("res://addons/gype/plugin.cfg")
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

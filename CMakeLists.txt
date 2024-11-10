@@ -58,8 +58,7 @@ target_compile_features(${PROJECT_NAME}
 # -s strips the binary for reducing size
 # -DDEBUG_ENABLED defines a preprocessor macro for enabling debug mode
 target_compile_options(gype PUBLIC 
-    -Wall -O3 -g -s
-    -DDEBUG_ENABLED)
+    -Wall -O3 -g -s)
 
 # Configure the output directories for different types of binaries
 # This sets the output path for runtime executables, shared libraries, and static archives
