@@ -4,13 +4,13 @@
 #include "support/typescript_language.hpp"
 #include <godot_cpp/classes/dir_access.hpp>
 #include <godot_cpp/classes/editor_interface.hpp>
+#include <godot_cpp/classes/engine.hpp>
 #include <godot_cpp/classes/file_access.hpp>
 #include <godot_cpp/classes/os.hpp>
 #include <godot_cpp/classes/project_settings.hpp>
 #include <godot_cpp/classes/resource_loader.hpp>
 #include <godot_cpp/classes/script_editor.hpp>
 #include <godot_cpp/variant/variant.hpp>
-#include <godot_cpp/classes/engine.hpp>
 
 using namespace godot;
 
@@ -120,14 +120,16 @@ void TypeScript::analyze() const {
 }
 
 void TypeScript::complie(bool force) const {
-	if (!dirty || !Engine::get_singleton()->is_editor_hint())
+	if (!dirty)
 		return;
 	int exit_code = 0;
-	if (force)
-		exit_code = OS::get_singleton()->execute("cmd.exe", { "/c", "tsc", "--build", "tsconfig.json", "--force" });
-	else
-		exit_code = OS::get_singleton()->execute("cmd.exe", { "/c", "tsc", "--build", "tsconfig.json" });
-	ERR_FAIL_COND_EDMSG(exit_code == -1, "Error executing tsc.");
+	if (Engine::get_singleton()->is_editor_hint()) {
+		if (force)
+			exit_code = OS::get_singleton()->execute("cmd.exe", { "/c", "tsc", "--build", "tsconfig.json", "--force" });
+		else
+			exit_code = OS::get_singleton()->execute("cmd.exe", { "/c", "tsc", "--build", "tsconfig.json" });
+		ERR_FAIL_COND_EDMSG(exit_code == -1, "Error executing tsc.");
+	}
 	analyze();
 	dirty = false;
 }
