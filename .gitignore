@@ -11,6 +11,7 @@ example/dist
 *.tmp
 *.TMP
 *.zip
+*.apk
 
 # Editor and system files
 .clang-format

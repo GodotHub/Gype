@@ -10,6 +10,7 @@
 #include <godot_cpp/classes/resource_loader.hpp>
 #include <godot_cpp/classes/script_editor.hpp>
 #include <godot_cpp/variant/variant.hpp>
+#include <godot_cpp/classes/engine.hpp>
 
 using namespace godot;
 
@@ -119,7 +120,7 @@ void TypeScript::analyze() const {
 }
 
 void TypeScript::complie(bool force) const {
-	if (!dirty)
+	if (!dirty || !Engine::get_singleton()->is_editor_hint())
 		return;
 	int exit_code = 0;
 	if (force)
