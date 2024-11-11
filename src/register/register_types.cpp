@@ -19,12 +19,12 @@
 using namespace godot;
 
 void initialize_tgds_types(godot::ModuleInitializationLevel p_level) {
-	if (p_level != godot::ModuleInitializationLevel::MODULE_INITIALIZATION_LEVEL_SCENE) {
+	if (p_level != godot::ModuleInitializationLevel::MODULE_INITIALIZATION_LEVEL_CORE) {
 		return;
 	}
 	printf("%s", "Quickjs start initialization\n");
-	init_quickjs();
 	init_language();
+	init_quickjs();
 	printf("%s", "Quickjs initialization is over\n");
 }
 

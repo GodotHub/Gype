@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://1do8dl2umtkr"]
+[gd_scene load_steps=2 format=3 uid="uid://1do8dl2umtkr"]
+
+[ext_resource type="Script" path="res://scripts/test.ts" id="1_xrrm7"]
 
 [node name="Test" type="Node2D"]
+script = ExtResource("1_xrrm7")
