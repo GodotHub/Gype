@@ -120,10 +120,8 @@ void TypeScript::analyze() const {
 }
 
 void TypeScript::complie(bool force) const {
-	if (!dirty)
-		return;
 	int exit_code = 0;
-	if (Engine::get_singleton()->is_editor_hint()) {
+	if (dirty && Engine::get_singleton()->is_editor_hint()) {
 		if (force)
 			exit_code = OS::get_singleton()->execute("cmd.exe", { "/c", "tsc", "--build", "tsconfig.json", "--force" });
 		else
