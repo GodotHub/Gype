@@ -11,4 +11,3 @@ export class Test extends Node2D {
 
 	}
 }
-	
