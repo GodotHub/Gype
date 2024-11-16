@@ -3,12 +3,13 @@
 #include "quickjs/env.h"
 #include "utils/func_utils.h"
 #include "quickjs/str_helper.h"
-#include "quickjs/quickjs_helper.h"
+#include "utils/quickjs_helper.hpp"
 #include <godot_cpp/variant/aabb.hpp>
 
 using namespace godot;
 
 static void aabb_class_finalizer(JSRuntime *rt, JSValue val) {
+	
 	AABB *aabb = static_cast<AABB *>(JS_GetOpaque(val, AABB::__class_id));
 	if (aabb)
 		memfree(aabb);

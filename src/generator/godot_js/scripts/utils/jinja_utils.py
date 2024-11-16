@@ -141,7 +141,7 @@ def add_opaque(args):
 def camel_to_snake(name):
     name = re.sub("(.)([A-Z][a-z]+)", r"\1_\2", name)
     name = re.sub("([a-z0-9])([A-Z])", r"\1_\2", name)
-    return name.replace("1_D", "1D").replace("2_D", "2D").replace("3_D", "3D").lower()
+    return name.replace("2_D", "2D").replace("3_D", "3D").lower()
 
 def is_enum(type_name):
     return type_name.startswith("enum::") or type_name.startswith("bitfield::")

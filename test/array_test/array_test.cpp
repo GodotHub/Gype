@@ -1,7 +1,7 @@
 #include "array_test.hpp"
 #include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
+#include "utils/quickjs_helper.hpp"
 #include <string>
 
 

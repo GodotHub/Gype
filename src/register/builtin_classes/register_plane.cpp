@@ -1,7 +1,7 @@
 
 #include "quickjs/env.h"
 #include "quickjs/quickjs.h"
-#include "quickjs/quickjs_helper.h"
+#include "utils/quickjs_helper.hpp"
 #include "quickjs/str_helper.h"
 #include "utils/func_utils.h"
 #include <godot_cpp/variant/plane.hpp>

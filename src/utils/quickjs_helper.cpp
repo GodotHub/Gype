@@ -1,6 +1,7 @@
-#include "quickjs/quickjs_helper.h"
+#include "utils/quickjs_helper.hpp"
 #include "quickjs/env.h"
 #include "quickjs/str_helper.h"
+#include "utils/variant_helper.hpp"
 #include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/ref.hpp>
 #include <godot_cpp/templates/hash_map.hpp>
@@ -9,8 +10,13 @@
 #include <unordered_map>
 
 HashSet<int> class_id_list;
+// <class_name, JSClassID>
 HashMap<StringName, int> classes;
-HashMap<uint64_t, JSValue> constructors;
+
+template <typename T>
+static uint32_t get_class_id(T *obj) {
+	return *reinterpret_cast<uint32_t *>(reinterpret_cast<uint8_t *>(obj) + sizeof(T));
+}
 
 using namespace godot;
 
@@ -83,7 +89,7 @@ enum {
 	static JSValue create_##type##_obj(Variant val) {      \
 		type *obj = memnew(type());                        \
 		memnew_placement(obj, type(val));                  \
-		JSClassID class_id = type::__class_id;             \
+		JSClassID class_id = get_class_id<type>(obj);      \
 		JSValue js_obj = JS_NewObjectClass(ctx, class_id); \
 		JS_SetOpaque(js_obj, obj);                         \
 		return js_obj;                                     \
@@ -231,35 +237,38 @@ Variant any_to_variant(JSValue val) {
 	}
 }
 
-#define COND_CAST_TO_VARIANT(type, val) \
-	if (class_id == type::__class_id)   \
+#define CASE_TO_VARIANT(type, val)           \
+	int class_id = JS_GetClassID(val);            \
+	VariantAdapter adapter = VariantAdapter(val); \
+	Variant variant = adapter.operator Variant(); \
+	type _##type = variant;                       \
+	if (class_id == get_class_id<type>(&_##type)) \
 		return *reinterpret_cast<type *>(JS_GetOpaque(val, class_id));
 
 Variant obj_to_variant(JSValue val) {
+	CASE_TO_VARIANT(Vector2, val)
+	CASE_TO_VARIANT(Vector2i, val)
+	CASE_TO_VARIANT(Vector3, val)
+	CASE_TO_VARIANT(Vector3i, val)
+	CASE_TO_VARIANT(Vector4, val)
+	CASE_TO_VARIANT(Vector4i, val)
+	CASE_TO_VARIANT(AABB, val)
+	CASE_TO_VARIANT(Callable, val)
+	CASE_TO_VARIANT(Basis, val)
+	CASE_TO_VARIANT(Dictionary, val)
+	CASE_TO_VARIANT(Color, val)
+	CASE_TO_VARIANT(NodePath, val)
+	CASE_TO_VARIANT(Plane, val)
+	CASE_TO_VARIANT(Projection, val)
+	CASE_TO_VARIANT(Quaternion, val)
+	CASE_TO_VARIANT(Rect2, val)
+	CASE_TO_VARIANT(Rect2i, val)
+	CASE_TO_VARIANT(RID, val)
+	CASE_TO_VARIANT(Signal, val)
+	CASE_TO_VARIANT(Transform2D, val)
+	CASE_TO_VARIANT(Transform3D, val)
+	// not match Variant case
 	int class_id = JS_GetClassID(val);
-	if (class_id != Object::__class_id) {
-		COND_CAST_TO_VARIANT(Vector2, val)
-		COND_CAST_TO_VARIANT(Vector2i, val)
-		COND_CAST_TO_VARIANT(Vector3, val)
-		COND_CAST_TO_VARIANT(Vector3i, val)
-		COND_CAST_TO_VARIANT(Vector4, val)
-		COND_CAST_TO_VARIANT(Vector4i, val)
-		COND_CAST_TO_VARIANT(AABB, val)
-		COND_CAST_TO_VARIANT(Callable, val)
-		COND_CAST_TO_VARIANT(Basis, val)
-		COND_CAST_TO_VARIANT(Dictionary, val)
-		COND_CAST_TO_VARIANT(Color, val)
-		COND_CAST_TO_VARIANT(NodePath, val)
-		COND_CAST_TO_VARIANT(Plane, val)
-		COND_CAST_TO_VARIANT(Projection, val)
-		COND_CAST_TO_VARIANT(Quaternion, val)
-		COND_CAST_TO_VARIANT(Rect2, val)
-		COND_CAST_TO_VARIANT(Rect2i, val)
-		COND_CAST_TO_VARIANT(RID, val)
-		COND_CAST_TO_VARIANT(Signal, val)
-		COND_CAST_TO_VARIANT(Transform2D, val)
-		COND_CAST_TO_VARIANT(Transform3D, val)
-	}
 	switch (class_id) {
 		case JS_CLASS_ARRAY: {
 			Array gd_arr;
@@ -273,6 +282,7 @@ Variant obj_to_variant(JSValue val) {
 			return gd_arr;
 		}
 		default: {
+			// TODO Ref<?>会有提前释放的BUG
 			return Variant(reinterpret_cast<Object *>(JS_GetOpaque(val, class_id)));
 		}
 	}
@@ -354,7 +364,7 @@ JSValue any_to_jsvalue(const Variant *val) {
 		case Variant::PACKED_VECTOR4_ARRAY:
 			return create_PackedVector4Array_obj(*val);
 		case Variant::Type::VARIANT_MAX:
-			return Variant(*val);
+			return VariantAdapter(*val);
 		case Variant::Type::ARRAY: {
 			Array arr = *val;
 			JSValue js_arr = JS_NewArray(ctx);
@@ -370,7 +380,7 @@ JSValue any_to_jsvalue(const Variant *val) {
 				char code[1024];
 				sprintf(code, "import { %s } from \"@godot/classes/%s\";", class_name, camelToSnake(class_name).c_str());
 				JS_Eval(ctx, code, strlen(code), "<eval>", JS_EVAL_TYPE_MODULE);
-				JSClassID class_id = obj->__get_js_class_id();
+				JSClassID class_id =  classes[class_name];
 				JSValue js_obj = JS_NewObjectClass(ctx, class_id);
 				JS_SetOpaque(js_obj, obj);
 				return js_obj;

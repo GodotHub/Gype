@@ -16,9 +16,10 @@
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
-#include "quickjs/str_helper.h"
-#include "quickjs/quickjs_helper.h"
+#include "utils/func_utils.hpp"
+#include "utils/str_helper.hpp"
+#include "utils/quickjs_helper.hpp"
+#include "utils/variant_helper.hpp"
 {%- for den in dependency %}
 	{%- if den == 'class_db' %}
 #include <godot_cpp/classes/class_db_singleton.hpp>
@@ -45,8 +46,9 @@ static JSClassDef {{snake_name}}_class_def = {
 };
 
 static JSValue {{snake_name}}_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
+	JSClassID class_id = classes[{{clazz_name}}::get_class_static()];
 	JSValue proto = JS_GetPropertyStr(ctx, new_target, "prototype");
-	JSValue obj = JS_NewObjectProtoClass(ctx, proto, {{class_id}});
+	JSValue obj = JS_NewObjectProtoClass(ctx, proto, class_id);
 	if (JS_IsException(obj))
 		return obj;
 	{%- if clazz_name in (singletons | map(attribute='type') | list) %}
@@ -54,11 +56,11 @@ static JSValue {{snake_name}}_class_constructor(JSContext *ctx, JSValueConst new
 	{%- else%}
 
 	{{norm_name}} *{{snake_name}}_class;
-	if (argc == 1) 
-		{{snake_name}}_class = static_cast<{{norm_name}} *>(Variant(*argv).operator Object *());
-	else 
+	if (argc == 1)
+		{{snake_name}}_class = static_cast<{{clazz_name}} *>(VariantAdapter(*argv).operator Variant().operator godot::Object *());
+	else
 		{{snake_name}}_class = memnew({{clazz_name}});
-	
+
 	{%- endif %}
 	if (!{{snake_name}}_class) {
 		JS_FreeValue(ctx, obj);
@@ -210,7 +212,6 @@ static int js_{{snake_name}}_class_init(JSContext *ctx, JSModuleDef *m) {
 	{%- endif %}
 	JS_SetConstructor(ctx, ctor, proto);
 	JS_SetModuleExport(ctx, m, "{{clazz_name}}", ctor);
-	constructors[{{clazz_name}}::__class_id] = ctor;
 
 	return 0;
 }

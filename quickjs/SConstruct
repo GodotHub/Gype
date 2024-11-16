@@ -1,0 +1,8 @@
+import os
+
+env = Environment(CC='gcc',
+                  CCFLAGS=['-O0', '-Wall', '-Wextra', '-Wno-unused-parameter'],
+                  CPPPATH=['./include', './include/quickjs'])
+sources = Glob('./src/*.c')
+
+env.Program(target='quickjs', source=sources)

@@ -1,5 +1,5 @@
 #include "support/placeholder_javascript_instance.hpp"
-#include "quickjs/quickjs_helper.h"
+#include "utils/quickjs_helper.hpp"
 #include "quickjs/str_helper.h"
 #include "support/typescript.hpp"
 #include <godot_cpp/classes/class_db_singleton.hpp>

@@ -19,6 +19,20 @@
 		Object *object = reinterpret_cast<Object *>(opaque);                                            \
 		ERR_FAIL_COND_V(!UtilityFunctions::is_instance_id_valid(object->get_instance_id()), undefined); \
 	}
+
+class ClassIDAllocator {
+public:
+	static void *alloc(size_t size) {
+		Memory::alloc_static(size + sizeof(uint32_t));
+	}
+	static void free(void *ptr) {
+		Memory::free_static(ptr);
+	}
+	template <typename T>
+	static uint32_t get_class_id(T *obj) {
+		return *reinterpret_cast<uint32_t>(reinterpret_cast<uint8_t *>(obj) + sizeof(T));
+	}
+};
 void register_aes_context();
 void register_a_star2d();
 void register_a_star3d();
@@ -38,7 +52,7 @@ void register_animation_node_add3();
 void register_animation_node_animation();
 void register_animation_node_blend2();
 void register_animation_node_blend3();
-void register_animation_node_blend_space1d();
+void register_animation_node_blend_space1_d();
 void register_animation_node_blend_space2d();
 void register_animation_node_blend_tree();
 void register_animation_node_one_shot();
@@ -320,7 +334,7 @@ void register_geometry2d();
 void register_geometry3d();
 void register_geometry_instance3d();
 void register_gradient();
-void register_gradient_texture1d();
+void register_gradient_texture1_d();
 void register_gradient_texture2d();
 void register_graph_edit();
 void register_graph_element();
