@@ -1,8 +1,20 @@
 import os
 
-env = Environment(CC='gcc',
-                  CCFLAGS=['-O0', '-Wall', '-Wextra', '-Wno-unused-parameter'],
-                  CPPPATH=['./include', './include/quickjs'])
+env = Environment(tools=["default"], PLATFORM="")
+env.PrependENVPath("PATH", os.getenv("PATH"))
+
+env.Append(CCFLAGS=['-O0', '-Wall', '-Wextra', '-Wno-unused-parameter'])
+env.Append(CPPPATH=['./include'])
+env.Append(CPPDEFINES=[
+    '_GNU_SOURCE',
+    'CONFIG_BIGNUM',
+    'CONFIG_ALL_UNICODE',
+    'CONFIG_VERSION=\\"2024-05-20\\"'
+])
+
 sources = Glob('./src/*.c')
 
-env.Program(target='quickjs', source=sources)
+quickjs = env.SharedLibrary(target='./bin/quickjs', source=sources)
+
+Export('quickjs')
+Return('quickjs')

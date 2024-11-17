@@ -1,0 +1,14 @@
+import os
+
+env = Environment(tools=["default"], PLATFORM="")
+env.PrependENVPath("PATH", os.getenv("PATH"))
+
+env.Append(CCFLAGS=['-O0', '-Wall', '-Wextra', '-Wno-unused-parameter'])
+env.Append(CPPPATH=['./include', './src'])
+
+sources = Glob('./src/*/*.**c')
+
+tree_sitter = env.SharedLibrary(target='./bin/tree-sitter', source=sources)
+
+Export('tree_sitter')
+Return('tree_sitter')

@@ -137,7 +137,7 @@ static JSValue {{snake_name}}_class_get_{{signal['name']}}_signal(JSContext *ctx
 	{{clazz['name']}} *opaque = reinterpret_cast<{{clazz['name']}} *>(JS_GetOpaque(this_val, JS_GetClassID(this_val)));
 	JSValue js_signal = JS_GetPropertyStr(ctx, this_val, "{{signal['name']}}_signal");
 	if (JS_IsUndefined(js_signal)) {
-		js_signal = Signal(opaque, "{{signal['name']}}").operator JSValue();
+		js_signal = VariantAdapter(Signal(opaque, "{{signal['name']}}"));
 		JS_DefinePropertyValueStr(ctx, this_val, "{{signal['name']}}_signal", js_signal, JS_PROP_HAS_VALUE);
 	}
 	return js_signal;
@@ -189,17 +189,17 @@ static void define_{{snake_name}}_enum(JSContext *ctx, JSValue proto) {
 }
 
 static int js_{{snake_name}}_class_init(JSContext *ctx, JSModuleDef *m) {
-	
-	classes["{{clazz_name}}"] = {{class_id}};
-	class_id_list.insert({{class_id}});
-	JS_NewClass(JS_GetRuntime(ctx), {{class_id}}, &{{snake_name}}_class_def);
+	classes["{{clazz_name}}"] = 0;
+	JSClassID class_id = JS_NewClassID(&classes["{{clazz_name}}"]);
+	class_id_list.insert(class_id);
+	JS_NewClass(JS_GetRuntime(ctx), class_id, &{{snake_name}}_class_def);
 
-	JSValue proto = JS_NewObjectClass(ctx, {{class_id}});
+	JSValue proto = JS_NewObjectClass(ctx, class_id);
 	{%- if clazz['inherits'] %}
-	JSValue base_class = JS_GetClassProto(ctx, {{clazz['inherits']}}::__class_id);
+	JSValue base_class = JS_GetClassProto(ctx, classes["{{clazz['inherits']}}"]);
 	JS_SetPrototype(ctx, proto, base_class);
 	{%- endif %}
-	JS_SetClassProto(ctx, {{class_id}}, proto);
+	JS_SetClassProto(ctx, class_id, proto);
 
 	define_{{snake_name}}_property(ctx, proto);
 	define_{{snake_name}}_enum(ctx, proto);
@@ -247,6 +247,5 @@ JSModuleDef *js_init_{{ snake_name }}_module(JSContext *ctx) {
 }
 
 void register_{{ snake_name }}() {
-	{{clazz_name}}::__init_js_class_id();
 	js_init_{{ snake_name }}_module(ctx);
 }

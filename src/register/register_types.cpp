@@ -1,19 +1,4 @@
 #include "register/register_types.h"
-#include "quickjs/env.h"
-#include "quickjs/event_loop.h"
-#include "register/builtin_classes/register_builtin_classes.h"
-#include "register/classes/register_classes.h"
-#include "register/utility_functions/register_utility_functions.h"
-#include "support/typescript.hpp"
-#include "support/typescript_language.hpp"
-#include "support/typescript_loader.hpp"
-#include "support/typescript_saver.hpp"
-#include "support/module_loader.hpp"
-#include <gdextension_interface.h>
-#include <godot_cpp/classes/engine.hpp>
-#include <godot_cpp/classes/resource_loader.hpp>
-#include <godot_cpp/classes/resource_saver.hpp>
-#include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/defs.hpp>
 
 using namespace godot;
@@ -22,43 +7,12 @@ void initialize_tgds_types(godot::ModuleInitializationLevel p_level) {
 	if (p_level != godot::ModuleInitializationLevel::MODULE_INITIALIZATION_LEVEL_CORE) {
 		return;
 	}
-	printf("%s", "Quickjs start initialization\n");
-	init_language();
-	init_quickjs();
-	printf("%s", "Quickjs initialization is over\n");
 }
 
 void uninitialize_tgds_types(godot::ModuleInitializationLevel p_level) {
 	if (p_level != godot::ModuleInitializationLevel::MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
-	Engine::get_singleton()->unregister_script_language(TypeScriptLanguage::get_singleton());
-	ResourceSaver::get_singleton()->remove_resource_format_saver(TypeScriptSaver::get_singleton());
-	ResourceLoader::get_singleton()->remove_resource_format_loader(TypeScriptLoader::get_singleton());
-	memdelete(TypeScriptLanguage::get_singleton());
-	memdelete(TypeScriptSaver::get_singleton());
-	memdelete(TypeScriptLoader::get_singleton());
-	printf("Quickjs close\n");
-}
-
-void init_quickjs() {
-	rt = JS_NewRuntime();
-	ctx = JS_NewContext(rt);
-	create_event_loop(rt);
-	register_builtin_classes();
-	register_utility_functions();
-	register_classes();
-	JS_SetModuleLoaderFunc(rt, NULL, module_loader, NULL);
-}
-
-void init_language() {
-	GDREGISTER_CLASS(TypeScriptLoader);
-	GDREGISTER_CLASS(TypeScriptSaver);
-	GDREGISTER_CLASS(TypeScriptLanguage);
-	GDREGISTER_CLASS(TypeScript);
-	Engine::get_singleton()->register_script_language(TypeScriptLanguage::get_singleton());
-	ResourceSaver::get_singleton()->add_resource_format_saver(TypeScriptSaver::get_singleton());
-	ResourceLoader::get_singleton()->add_resource_format_loader(TypeScriptLoader::get_singleton());
 }
 
 extern "C" {

@@ -12,6 +12,9 @@ example/dist
 *.TMP
 *.zip
 *.apk
+*.os
+*.lib
+.sconsign.dblite
 
 # Editor and system files
 .clang-format
