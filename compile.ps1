@@ -1,0 +1,1 @@
+scons use_mingw=true generate_template_get_node=false

@@ -14,9 +14,12 @@
 #include "quickjs/quickjs.h"
 #include "register/classes/register_classes.h"
 #include "quickjs/env.h"
-#include "utils/func_utils.h"
+#include "utils/func_utils.hpp"
 #include "utils/str_helper.hpp"
 #include "utils/quickjs_helper.hpp"
+{%- if vararg_methods | length > 0 %}
+#include "register/classes/{{snake_name}}_vararg_method.hpp"
+{%- endif %}
 {%- for den in dependency %}
 	{%- if den == 'class_db' %}
 #include <godot_cpp/classes/class_db_singleton.hpp>
@@ -42,7 +45,8 @@ static JSClassDef {{snake_name}}_class_def = {
 };
 
 static JSValue {{snake_name}}_class_constructor(JSContext *ctx, JSValueConst new_target, int argc, JSValueConst *argv) {
-	JSValue obj = JS_NewObjectClass(ctx, {{class_id}});
+	JSClassID class_id = classes["{{clazz_name}}"];
+	JSValue obj = JS_NewObjectClass(ctx, class_id);
 	if (JS_IsException(obj))
 		return obj;
 
@@ -86,10 +90,9 @@ static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueCo
 {%- for method in vararg_methods %}
 static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
     {%- if method['return_value'] %}
-	return call_builtin_vararg_method_ret(&{{norm_name}}::js_{{method['name']}}, ctx, this_val, argc, argv);
+	return call_builtin_free_owner_vararg_method_ret(&js_{{method['name']}}, ctx, this_val, argc, argv);
     {%- else %}
-    call_builtin_vararg_method_no_ret(&{{norm_name}}::js_{{method['name']}}, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
+    return call_builtin_free_owner_vararg_method_no_ret(&js_{{method['name']}}, ctx, this_val, argc, argv);
     {%- endif %}
 }
 {%- endfor %}
@@ -111,15 +114,17 @@ static const JSCFunctionListEntry {{snake_name}}_class_static_funcs[] = {
 {%- endif %}
 
 static int js_{{snake_name}}_class_init(JSContext *ctx) {
-	classes["{{clazz_name}}"] = {{class_id}};
-	JS_NewClass(JS_GetRuntime(ctx), {{class_id}}, &{{snake_name}}_class_def);
+	classes["{{clazz_name}}"] = 0;
+	classes["{{clazz_name}}"] = JS_NewClassID(&classes["{{clazz_name}}"]);
+	JSClassID class_id = classes["{{clazz_name}}"];
+	JS_NewClass(JS_GetRuntime(ctx), class_id, &{{snake_name}}_class_def);
 
 	JSValue proto = JS_NewObject(ctx);
 	{%- if clazz['inherits'] %}
-	JSValue base_class = JS_GetClassProto(ctx, {{clazz['inherits']}}::__class_id);
+	JSValue base_class = JS_GetClassProto(ctx, classes["{{clazz['inherits']}}"]);
 	JS_SetPrototype(ctx, proto, base_class);
 	{%- endif %}
-	JS_SetClassProto(ctx, {{class_id}}, proto);
+	JS_SetClassProto(ctx, class_id, proto);
 
 	{%- if instance_methods or vararg_methods %}
 	JS_SetPropertyFunctionList(ctx, proto, {{snake_name}}_class_proto_funcs, _countof({{snake_name}}_class_proto_funcs));
@@ -139,6 +144,5 @@ static int js_{{snake_name}}_class_init(JSContext *ctx) {
 }
 
 void register_{{ snake_name }}() {
-	{{norm_name}}::__init_js_class_id();
 	js_{{snake_name}}_class_init(ctx);
 }

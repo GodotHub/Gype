@@ -1,7 +1,7 @@
 from scripts.utils.file_utils import gde_json, generated_root_dir
 from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
-from scripts.utils.jinja_utils import camel_to_snake, is_pod_type, get_enum_fullname, is_enum, is_variant
+from scripts.utils.jinja_utils import camel_to_snake, is_pod_type, get_enum_fullname, is_enum, is_variant, connect_mutable_args, has_vararg_method
 
 def gen_classes():
     sort()
@@ -9,6 +9,7 @@ def gen_classes():
     gen_classes_h()
     gen_classes_register()
     gen_singleton_cpp()
+    gen_vararg_method()
 
 def gen_classes_cpp():
     env = Environment(loader=FileSystemLoader(searchpath='./templates/classes'))
@@ -32,6 +33,17 @@ def gen_singleton_cpp():
             dependency = collect_dependency(clazz)
             content = cpp_template.render({ 'clazz': clazz, 'dependency': dependency, 'singletons': singletons })
             with open(file=Path.joinpath(generated_root_dir, 'src', 'register', 'classes', f'register_{camel_to_snake(clazz['name'])}.cpp'), mode='w', encoding='utf8') as file:
+                file.write(content)
+
+def gen_vararg_method():
+    env = Environment(loader=FileSystemLoader(searchpath='./templates/classes'))
+    cpp_template = env.get_template('vararg_method.h.jinja')
+    config_env(env)
+    for clazz in gde_json['classes']:
+        if has_vararg_method(clazz):
+            dependency = collect_dependency(clazz)
+            content = cpp_template.render({ 'clazz': clazz, 'dependency': dependency })
+            with open(file=Path.joinpath(generated_root_dir, 'include', 'register', 'classes', f'{camel_to_snake(clazz['name'])}_vararg_method.hpp'), mode='w', encoding='utf8') as file:
                 file.write(content)
 
 def gen_classes_h():
@@ -87,7 +99,7 @@ def register_classes():
     ret = _process()
     return ret
 
-
 def config_env(env: Environment):
     env.globals['camel_to_snake'] = camel_to_snake
     env.globals['register_classes'] = register_classes
+    env.globals['connect_mutable_args'] = connect_mutable_args

@@ -172,6 +172,25 @@ def get_enum_name(enum_name: str):
     else:
         return enum_name.replace("enum::", "").split(".")[-1]
 
+def connect_mutable_args(arguments):
+    arg_str = []
+    if arguments is not None or len(arguments) > 0:
+        for arg in arguments:
+            if is_pod_type(arg['type']):
+                arg_str.append(f'{arg['type']} p_{arg['name']}')
+            elif arg['type'] == 'Object':
+                arg_str.append(f'Object * p_{arg['name']}')
+            else:
+                arg_str.append(f'const {arg['type']}& p_{arg['name']}')
+    arg_str.append('std::vector<Variant> p_args')
+    return ','.join(arg_str)
+
+def has_vararg_method(clazz):
+    for method in clazz.get('methods', []):
+        if method['is_vararg']:
+            return True
+    return False
+
 # ---给内置类使用
 def put_args(arguments):
     def mapper(pair):
@@ -188,9 +207,9 @@ def variant_type_cond(arguments):
     for i in range(len(arguments)):
         vtype = camel_to_snake(arguments[i]['type']).upper()
         if vtype == 'FLOAT':
-            arr.append(f'(Variant(argv[{i}]).get_type() == Variant::Type::FLOAT||Variant(argv[{i}]).get_type() == Variant::Type::INT)')
+            arr.append(f'(VariantAdapter(argv[{i}]).get_type() == Variant::Type::FLOAT||VariantAdapter(argv[{i}]).get_type() == Variant::Type::INT)')
         else:
-            arr.append(f'Variant(argv[{i}]).get_type() == Variant::Type::{vtype}')
+            arr.append(f'VariantAdapter(argv[{i}]).get_type() == Variant::Type::{vtype}')
     if (len(arr) > 0):
         return '&&' + '&&'.join(arr)
     else:

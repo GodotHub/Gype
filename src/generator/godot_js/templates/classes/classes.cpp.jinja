@@ -20,6 +20,9 @@
 #include "utils/str_helper.hpp"
 #include "utils/quickjs_helper.hpp"
 #include "utils/variant_helper.hpp"
+{%- if vararg_methods | length > 0 %}
+#include "register/classes/{{snake_name}}_vararg_method.hpp"
+{%- endif %}
 {%- for den in dependency %}
 	{%- if den == 'class_db' %}
 #include <godot_cpp/classes/class_db_singleton.hpp>
@@ -95,7 +98,7 @@ static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueCo
 };
 	{%- endif %}
 {%- endfor %}
-{%- for method in  static_methods %}
+{%- for method in static_methods %}
 static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
     {%- if method['return_value'] %}
 	return call_builtin_static{{get_const(method)}}_method_ret(&{{norm_name}}::{{method['name']}}, ctx, this_val, argc, argv);
@@ -108,9 +111,9 @@ static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueCo
 static JSValue {{snake_name}}_class_{{method['name']}}(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	CHECK_INSTANCE_VALID_V(this_val);
     {%- if method['return_value'] %}
-	return call_builtin_vararg_method_ret(&{{norm_name}}::js_{{method['name']}}, ctx, this_val, argc, argv);
+	return call_builtin_free_owner_vararg_method_ret(&js_{{method['name']}}, ctx, this_val, argc, argv);
     {%- else %}
-    return call_builtin_vararg_method_no_ret(&{{norm_name}}::js_{{method['name']}}, ctx, this_val, argc, argv);
+    return call_builtin_free_owner_vararg_method_no_ret(&js_{{method['name']}}, ctx, this_val, argc, argv);
     {%- endif %}
 }
 {%- endfor %}
@@ -190,7 +193,8 @@ static void define_{{snake_name}}_enum(JSContext *ctx, JSValue proto) {
 
 static int js_{{snake_name}}_class_init(JSContext *ctx, JSModuleDef *m) {
 	classes["{{clazz_name}}"] = 0;
-	JSClassID class_id = JS_NewClassID(&classes["{{clazz_name}}"]);
+	classes["{{clazz_name}}"] = JS_NewClassID(&classes["{{clazz_name}}"]);
+	JSClassID class_id = classes["{{clazz_name}}"];
 	class_id_list.insert(class_id);
 	JS_NewClass(JS_GetRuntime(ctx), class_id, &{{snake_name}}_class_def);
 

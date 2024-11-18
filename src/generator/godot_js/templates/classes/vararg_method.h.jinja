@@ -1,0 +1,68 @@
+
+#ifndef __{{clazz['name']}}_vararg_method__
+#define __{{clazz['name']}}_vararg_method__
+#include <godot_cpp/variant/variant.hpp>
+#include <godot_cpp/variant/builtin_types.hpp>
+{%- for den in dependency %}
+	{%- if den == 'class_db' %}
+#include <godot_cpp/classes/class_db_singleton.hpp>
+	{%- else %}
+#include <godot_cpp/classes/{{den}}.hpp>
+	{%- endif %}
+{%- endfor %}
+{%- macro return_value(ret) -%}
+	{%- if ret -%}
+{{ret['type']}}
+	{%- else -%}
+void
+	{%- endif -%}
+{%- endmacro -%}
+{% macro actual_class_name(name) -%}
+{%- if name == 'ClassDB' -%}
+ClassDBSingleton
+{%- else -%}
+{{name}}
+{%- endif -%}
+{%- endmacro %}
+using namespace godot;
+
+{%- set class_name = clazz['name'] %}
+{%- set vararg_methods = clazz['methods'] | selectattr('is_vararg', 'equalto', true) | list %}
+
+{%- for method in vararg_methods %}
+static {{return_value(method['return_value'])}} js_{{method['name']}}_internal(GodotObject *p_owner, const Variant **p_args, GDExtensionInt p_arg_count) {
+	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(StringName("{{actual_class_name(class_name)}}")._native_ptr(), StringName("{{method['name']}}")._native_ptr(), {{method['hash']}});
+	{%- if method['return_value']	%}
+	CHECK_METHOD_BIND_RET(_gde_method_bind, {{return_value(method['return_value'])}}());
+	{%- else %}
+	CHECK_METHOD_BIND(_gde_method_bind);
+	{%- endif %}
+	GDExtensionCallError error;
+	Variant ret;
+	internal::gdextension_interface_object_method_bind_call(_gde_method_bind, p_owner, reinterpret_cast<GDExtensionConstVariantPtr *>(p_args), p_arg_count, &ret, &error);
+	{%- if method['return_value']  %}
+	return VariantCaster<{{method['return_value']['type']}}>::cast(ret);
+	{%- endif %}
+}
+{%- endfor %}
+
+{%- for method in vararg_methods %}
+{{return_value(method['return_value'])}} js_{{method['name']}}(GodotObject *owner, {{connect_mutable_args(method['arguments'])}}) {
+	std::vector<Variant> variant_args;
+	std::vector<Variant *> variant_args_ptr;
+	{%- for arg in method['arguments'] %}
+	variant_args.push_back(p_{{arg['name']}});
+	{%- endfor %}
+		for (int i = 0; i < p_args.size(); i++) {
+		variant_args.push_back(p_args[i]);
+	}	
+	for (int i = 0; i < variant_args.size(); i++) {
+		variant_args_ptr.push_back(&variant_args[i]);
+	}
+	{%- if method['return_value']  %}
+	js_{{method['name']}}_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
+	{%- endif %}
+}
+{%- endfor %}
+
+#endif // __{{clazz['name']}}_vararg_method__
