@@ -21,6 +21,7 @@ example/dist
 .vscode/
 
 # Godot-specific files
+godot-cpp/
 godot-cpp/.sconsign.dblite
 godot-cpp/__pycache__/
 
