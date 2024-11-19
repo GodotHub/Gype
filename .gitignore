@@ -33,8 +33,6 @@ __pycache__/
 
 # Example directory - ignore specific directories but allow specific files
 example/addons/gype/godot/classes/*
-example/addons/gype/godot/utility_functions/*
-!example/addons/gype/godot/utility_functions/.keep
 !example/addons/gype/godot/classes/godot_object.d.ts
 examples/*/addons
 
@@ -43,5 +41,3 @@ src/register/classes/*
 !src/register/classes/.keep
 src/register/global_enum/*
 !src/register/global_enum/.keep
-src/register/utility_functions/*
-!src/register/utility_functions/.keep
