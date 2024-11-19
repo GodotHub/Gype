@@ -5,13 +5,13 @@
 #include <godot_cpp/variant/builtin_types.hpp>
 #include <godot_cpp/classes/object.hpp>
 using namespace godot;
-static enum::Error js_emit_signal_internal(GodotObject *p_owner, const Variant **p_args, GDExtensionInt p_arg_count) {
+static Error js_emit_signal_internal(GodotObject *p_owner, const Variant **p_args, GDExtensionInt p_arg_count) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(StringName("Object")._native_ptr(), StringName("emit_signal")._native_ptr(), 4047867050);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));
 	GDExtensionCallError error;
 	Variant ret;
 	internal::gdextension_interface_object_method_bind_call(_gde_method_bind, p_owner, reinterpret_cast<GDExtensionConstVariantPtr *>(p_args), p_arg_count, &ret, &error);
-	return VariantCaster<enum::Error>::cast(ret);
+	return VariantCaster<Error>::cast(ret);
 }
 static Variant js_call_internal(GodotObject *p_owner, const Variant **p_args, GDExtensionInt p_arg_count) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(StringName("Object")._native_ptr(), StringName("call")._native_ptr(), 3400424181);

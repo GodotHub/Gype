@@ -127,9 +127,6 @@ static JSValue quaternion_class_get_axis(JSContext *ctx, JSValueConst this_val, 
 static JSValue quaternion_class_get_angle(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&Quaternion::get_angle, ctx, this_val, argc, argv);
 };
-static JSValue quaternion_class_from_euler(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_static_method_ret(&Quaternion::from_euler, ctx, this_val, argc, argv);
-};
 
 static JSValue quaternion_class_get_x(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	Quaternion &val = *reinterpret_cast<Quaternion *>(JS_GetOpaque(this_val, classes["Quaternion"]));
@@ -187,9 +184,6 @@ static const JSCFunctionListEntry quaternion_class_proto_funcs[] = {
 	JS_CFUNC_DEF("get_axis", 0, &quaternion_class_get_axis),
 	JS_CFUNC_DEF("get_angle", 0, &quaternion_class_get_angle),
 };
-static const JSCFunctionListEntry quaternion_class_static_funcs[] = {
-	JS_CFUNC_DEF("from_euler", 1, &quaternion_class_from_euler),
-};
 void define_quaternion_property(JSContext *ctx, JSValue obj) {
     JS_DefinePropertyGetSet(
         ctx,
@@ -243,7 +237,6 @@ static int js_quaternion_class_init(JSContext *ctx) {
 
 	JSValue ctor = JS_NewCFunction2(ctx, quaternion_class_constructor, "Quaternion", 0, JS_CFUNC_constructor, 0);
 	JS_SetConstructor(ctx, ctor, proto);
-	JS_SetPropertyFunctionList(ctx, ctor, quaternion_class_static_funcs, _countof(quaternion_class_static_funcs));
 	define_quaternion_constants(ctx, ctor);
 
 	JSValue global = JS_GetGlobalObject(ctx);

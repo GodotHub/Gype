@@ -1,13 +1,12 @@
 
-#include "quickjs/env.h"
-#include "quickjs/quickjs.h"
 #include "register/builtin_classes/register_builtin_classes.h"
+#include "quickjs/quickjs.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.hpp"
-#include "utils/quickjs_helper.hpp"
 #include "utils/str_helper.hpp"
+#include "utils/quickjs_helper.hpp"
 #include "utils/variant_helper.hpp"
 #include <godot_cpp/variant/rect2i.hpp>
-
 
 using namespace godot;
 
@@ -30,34 +29,35 @@ static JSValue rect2i_class_constructor(JSContext *ctx, JSValueConst new_target,
 		return obj;
 
 	Rect2i *rect2i_class = nullptr;
-
-	if (argc == 0) {
+	
+	if (argc == 0 ) {
 		rect2i_class = memnew(Rect2i());
 	}
-
-	if (argc == 1 && VariantAdapter(argv[0]).get_type() == Variant::Type::RECT2I) {
+	
+	if (argc == 1 &&VariantAdapter(argv[0]).get_type() == Variant::Type::RECT2I) {
 		Rect2i v0 = VariantAdapter(argv[0]);
 		rect2i_class = memnew(Rect2i(v0));
 	}
-
-	if (argc == 1 && VariantAdapter(argv[0]).get_type() == Variant::Type::RECT2) {
+	
+	if (argc == 1 &&VariantAdapter(argv[0]).get_type() == Variant::Type::RECT2) {
 		Rect2 v0 = VariantAdapter(argv[0]);
 		rect2i_class = memnew(Rect2i(v0));
 	}
-
-	if (argc == 2 && VariantAdapter(argv[0]).get_type() == Variant::Type::VECTOR2I && VariantAdapter(argv[1]).get_type() == Variant::Type::VECTOR2I) {
+	
+	if (argc == 2 &&VariantAdapter(argv[0]).get_type() == Variant::Type::VECTOR2I&&VariantAdapter(argv[1]).get_type() == Variant::Type::VECTOR2I) {
 		Vector2i v0 = VariantAdapter(argv[0]);
 		Vector2i v1 = VariantAdapter(argv[1]);
-		rect2i_class = memnew(Rect2i(v0, v1));
+		rect2i_class = memnew(Rect2i(v0,v1));
 	}
-
-	if (argc == 4 && VariantAdapter(argv[0]).get_type() == Variant::Type::INT && VariantAdapter(argv[1]).get_type() == Variant::Type::INT && VariantAdapter(argv[2]).get_type() == Variant::Type::INT && VariantAdapter(argv[3]).get_type() == Variant::Type::INT) {
+	
+	if (argc == 4 &&VariantAdapter(argv[0]).get_type() == Variant::Type::INT&&VariantAdapter(argv[1]).get_type() == Variant::Type::INT&&VariantAdapter(argv[2]).get_type() == Variant::Type::INT&&VariantAdapter(argv[3]).get_type() == Variant::Type::INT) {
 		int v0 = VariantAdapter(argv[0]);
 		int v1 = VariantAdapter(argv[1]);
 		int v2 = VariantAdapter(argv[2]);
 		int v3 = VariantAdapter(argv[3]);
-		rect2i_class = memnew(Rect2i(v0, v1, v2, v3));
+		rect2i_class = memnew(Rect2i(v0,v1,v2,v3));
 	}
+	
 
 	if (!rect2i_class) {
 		JS_FreeValue(ctx, obj);
@@ -149,27 +149,30 @@ static const JSCFunctionListEntry rect2i_class_proto_funcs[] = {
 	JS_CFUNC_DEF("abs", 0, &rect2i_class_abs),
 };
 void define_rect2i_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "position"),
-			JS_NewCFunction(ctx, rect2i_class_get_position, "get_position", 0),
-			JS_NewCFunction(ctx, rect2i_class_set_position, "set_position", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "size"),
-			JS_NewCFunction(ctx, rect2i_class_get_size, "get_size", 0),
-			JS_NewCFunction(ctx, rect2i_class_set_size, "set_size", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "end"),
-			JS_NewCFunction(ctx, rect2i_class_get_end, "get_end", 0),
-			JS_NewCFunction(ctx, rect2i_class_set_end, "set_end", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "position"),
+        JS_NewCFunction(ctx, rect2i_class_get_position, "get_position", 0),
+        JS_NewCFunction(ctx, rect2i_class_set_position, "set_position", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "size"),
+        JS_NewCFunction(ctx, rect2i_class_get_size, "get_size", 0),
+        JS_NewCFunction(ctx, rect2i_class_set_size, "set_size", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "end"),
+        JS_NewCFunction(ctx, rect2i_class_get_end, "get_end", 0),
+        JS_NewCFunction(ctx, rect2i_class_set_end, "set_end", 1),
+		JS_PROP_GETSET
+    );
 }
 
 static int js_rect2i_class_init(JSContext *ctx) {

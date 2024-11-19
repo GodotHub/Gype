@@ -3,17 +3,17 @@
 #define __SceneTree_vararg_method__
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-#include <godot_cpp/classes/packed_scene.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/classes/packed_scene.hpp>
+#include <godot_cpp/classes/tween.hpp>
+#include <godot_cpp/classes/multiplayer_api.hpp>
+#include <godot_cpp/classes/main_loop.hpp>
 #include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/scene_tree.hpp>
 #include <godot_cpp/classes/node.hpp>
 #include <godot_cpp/classes/scene_tree_timer.hpp>
-#include <godot_cpp/classes/tween.hpp>
-#include <godot_cpp/classes/scene_tree.hpp>
-#include <godot_cpp/classes/main_loop.hpp>
-#include <godot_cpp/classes/multiplayer_api.hpp>
 using namespace godot;
 static void js_call_group_flags_internal(GodotObject *p_owner, const Variant **p_args, GDExtensionInt p_arg_count) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(StringName("SceneTree")._native_ptr(), StringName("call_group_flags")._native_ptr(), 1527739229);

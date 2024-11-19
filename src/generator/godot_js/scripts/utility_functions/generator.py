@@ -6,7 +6,7 @@ from scripts.utils.jinja_utils import camel_to_snake, is_pod_type, is_enum, is_v
 def gen_utility_functions():
     gen_utility_functions_cpp()
     gen_utility_functions_h()
-    gen_vararg_method()
+    # gen_vararg_method()
 
 def gen_utility_functions_cpp():
     env = Environment(loader=FileSystemLoader(searchpath='./templates/utility_functions'))

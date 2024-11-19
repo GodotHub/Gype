@@ -3,9 +3,9 @@
 #define __JavaScriptBridge_vararg_method__
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-#include <godot_cpp/classes/java_script_bridge.hpp>
 #include <godot_cpp/classes/java_script_object.hpp>
 #include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/java_script_bridge.hpp>
 using namespace godot;
 static Variant js_create_object_internal(GodotObject *p_owner, const Variant **p_args, GDExtensionInt p_arg_count) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(StringName("JavaScriptBridge")._native_ptr(), StringName("create_object")._native_ptr(), 3093893586);

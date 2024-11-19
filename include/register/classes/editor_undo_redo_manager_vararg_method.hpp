@@ -3,9 +3,9 @@
 #define __EditorUndoRedoManager_vararg_method__
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
+#include <godot_cpp/classes/editor_undo_redo_manager.hpp>
 #include <godot_cpp/classes/undo_redo.hpp>
 #include <godot_cpp/classes/object.hpp>
-#include <godot_cpp/classes/editor_undo_redo_manager.hpp>
 using namespace godot;
 static void js_add_do_method_internal(GodotObject *p_owner, const Variant **p_args, GDExtensionInt p_arg_count) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(StringName("EditorUndoRedoManager")._native_ptr(), StringName("add_do_method")._native_ptr(), 1517810467);

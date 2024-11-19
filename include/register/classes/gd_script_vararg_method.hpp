@@ -3,8 +3,8 @@
 #define __GDScript_vararg_method__
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-#include <godot_cpp/classes/script.hpp>
 #include <godot_cpp/classes/gd_script.hpp>
+#include <godot_cpp/classes/script.hpp>
 using namespace godot;
 static Variant js_new_internal(GodotObject *p_owner, const Variant **p_args, GDExtensionInt p_arg_count) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(StringName("GDScript")._native_ptr(), StringName("new")._native_ptr(), 1545262638);

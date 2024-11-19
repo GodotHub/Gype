@@ -3,17 +3,17 @@
 #define __Node_vararg_method__
 #include <godot_cpp/variant/variant.hpp>
 #include <godot_cpp/variant/builtin_types.hpp>
-#include <godot_cpp/classes/object.hpp>
 #include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/window.hpp>
-#include <godot_cpp/classes/node.hpp>
-#include <godot_cpp/classes/tween.hpp>
-#include <godot_cpp/classes/scene_tree.hpp>
 #include <godot_cpp/classes/input_event.hpp>
+#include <godot_cpp/classes/tween.hpp>
 #include <godot_cpp/classes/viewport.hpp>
 #include <godot_cpp/classes/multiplayer_api.hpp>
+#include <godot_cpp/classes/window.hpp>
+#include <godot_cpp/classes/object.hpp>
+#include <godot_cpp/classes/scene_tree.hpp>
+#include <godot_cpp/classes/node.hpp>
 using namespace godot;
-static enum::Error js_rpc_internal(GodotObject *p_owner, const Variant **p_args, GDExtensionInt p_arg_count) {
+static Error js_rpc_internal(GodotObject *p_owner, const Variant **p_args, GDExtensionInt p_arg_count) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(StringName("Node")._native_ptr(), StringName("rpc")._native_ptr(), 4047867050);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));
 	GDExtensionCallError error;
@@ -21,7 +21,7 @@ static enum::Error js_rpc_internal(GodotObject *p_owner, const Variant **p_args,
 	internal::gdextension_interface_object_method_bind_call(_gde_method_bind, p_owner, reinterpret_cast<GDExtensionConstVariantPtr *>(p_args), p_arg_count, &ret, &error);
 	return VariantCaster<enum::Error>::cast(ret);
 }
-static enum::Error js_rpc_id_internal(GodotObject *p_owner, const Variant **p_args, GDExtensionInt p_arg_count) {
+static Error js_rpc_id_internal(GodotObject *p_owner, const Variant **p_args, GDExtensionInt p_arg_count) {
 	static GDExtensionMethodBindPtr _gde_method_bind = internal::gdextension_interface_classdb_get_method_bind(StringName("Node")._native_ptr(), StringName("rpc_id")._native_ptr(), 361499283);
 	CHECK_METHOD_BIND_RET(_gde_method_bind, Error(0));
 	GDExtensionCallError error;

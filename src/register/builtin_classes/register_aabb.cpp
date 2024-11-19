@@ -1,13 +1,12 @@
 
-#include "quickjs/env.h"
-#include "quickjs/quickjs.h"
 #include "register/builtin_classes/register_builtin_classes.h"
+#include "quickjs/quickjs.h"
+#include "quickjs/env.h"
 #include "utils/func_utils.hpp"
-#include "utils/quickjs_helper.hpp"
 #include "utils/str_helper.hpp"
+#include "utils/quickjs_helper.hpp"
 #include "utils/variant_helper.hpp"
 #include <godot_cpp/variant/aabb.hpp>
-
 
 using namespace godot;
 
@@ -30,21 +29,22 @@ static JSValue aabb_class_constructor(JSContext *ctx, JSValueConst new_target, i
 		return obj;
 
 	AABB *aabb_class = nullptr;
-
-	if (argc == 0) {
+	
+	if (argc == 0 ) {
 		aabb_class = memnew(AABB());
 	}
-
-	if (argc == 1 && VariantAdapter(argv[0]).get_type() == Variant::Type::AABB) {
+	
+	if (argc == 1 &&VariantAdapter(argv[0]).get_type() == Variant::Type::AABB) {
 		AABB v0 = VariantAdapter(argv[0]);
 		aabb_class = memnew(AABB(v0));
 	}
-
-	if (argc == 2 && VariantAdapter(argv[0]).get_type() == Variant::Type::VECTOR3 && VariantAdapter(argv[1]).get_type() == Variant::Type::VECTOR3) {
+	
+	if (argc == 2 &&VariantAdapter(argv[0]).get_type() == Variant::Type::VECTOR3&&VariantAdapter(argv[1]).get_type() == Variant::Type::VECTOR3) {
 		Vector3 v0 = VariantAdapter(argv[0]);
 		Vector3 v1 = VariantAdapter(argv[1]);
-		aabb_class = memnew(AABB(v0, v1));
+		aabb_class = memnew(AABB(v0,v1));
 	}
+	
 
 	if (!aabb_class) {
 		JS_FreeValue(ctx, obj);
@@ -184,27 +184,30 @@ static const JSCFunctionListEntry aabb_class_proto_funcs[] = {
 	JS_CFUNC_DEF("intersects_ray", 2, &aabb_class_intersects_ray),
 };
 void define_aabb_property(JSContext *ctx, JSValue obj) {
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "position"),
-			JS_NewCFunction(ctx, aabb_class_get_position, "get_position", 0),
-			JS_NewCFunction(ctx, aabb_class_set_position, "set_position", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "size"),
-			JS_NewCFunction(ctx, aabb_class_get_size, "get_size", 0),
-			JS_NewCFunction(ctx, aabb_class_set_size, "set_size", 1),
-			JS_PROP_GETSET);
-	JS_DefinePropertyGetSet(
-			ctx,
-			obj,
-			JS_NewAtom(ctx, "end"),
-			JS_NewCFunction(ctx, aabb_class_get_end, "get_end", 0),
-			JS_NewCFunction(ctx, aabb_class_set_end, "set_end", 1),
-			JS_PROP_GETSET);
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "position"),
+        JS_NewCFunction(ctx, aabb_class_get_position, "get_position", 0),
+        JS_NewCFunction(ctx, aabb_class_set_position, "set_position", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "size"),
+        JS_NewCFunction(ctx, aabb_class_get_size, "get_size", 0),
+        JS_NewCFunction(ctx, aabb_class_set_size, "set_size", 1),
+		JS_PROP_GETSET
+    );
+    JS_DefinePropertyGetSet(
+        ctx,
+        obj,
+        JS_NewAtom(ctx, "end"),
+        JS_NewCFunction(ctx, aabb_class_get_end, "get_end", 0),
+        JS_NewCFunction(ctx, aabb_class_set_end, "set_end", 1),
+		JS_PROP_GETSET
+    );
 }
 
 static int js_aabb_class_init(JSContext *ctx) {

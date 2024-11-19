@@ -284,12 +284,6 @@ static JSValue string_name_class_validate_node_name(JSContext *ctx, JSValueConst
 static JSValue string_name_class_validate_filename(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StringName::validate_filename, ctx, this_val, argc, argv);
 };
-static JSValue string_name_class_is_valid_ascii_identifier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&StringName::is_valid_ascii_identifier, ctx, this_val, argc, argv);
-};
-static JSValue string_name_class_is_valid_unicode_identifier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&StringName::is_valid_unicode_identifier, ctx, this_val, argc, argv);
-};
 static JSValue string_name_class_is_valid_identifier(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_const_method_ret(&StringName::is_valid_identifier, ctx, this_val, argc, argv);
 };
@@ -440,8 +434,6 @@ static const JSCFunctionListEntry string_name_class_proto_funcs[] = {
 	JS_CFUNC_DEF("json_escape", 0, &string_name_class_json_escape),
 	JS_CFUNC_DEF("validate_node_name", 0, &string_name_class_validate_node_name),
 	JS_CFUNC_DEF("validate_filename", 0, &string_name_class_validate_filename),
-	JS_CFUNC_DEF("is_valid_ascii_identifier", 0, &string_name_class_is_valid_ascii_identifier),
-	JS_CFUNC_DEF("is_valid_unicode_identifier", 0, &string_name_class_is_valid_unicode_identifier),
 	JS_CFUNC_DEF("is_valid_identifier", 0, &string_name_class_is_valid_identifier),
 	JS_CFUNC_DEF("is_valid_int", 0, &string_name_class_is_valid_int),
 	JS_CFUNC_DEF("is_valid_float", 0, &string_name_class_is_valid_float),

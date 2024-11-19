@@ -39,17 +39,6 @@ static JSValue dictionary_class_constructor(JSContext *ctx, JSValueConst new_tar
 		dictionary_class = memnew(Dictionary(v0));
 	}
 	
-	if (argc == 7 &&VariantAdapter(argv[0]).get_type() == Variant::Type::DICTIONARY&&VariantAdapter(argv[1]).get_type() == Variant::Type::INT&&VariantAdapter(argv[2]).get_type() == Variant::Type::STRING_NAME&&VariantAdapter(argv[3]).get_type() == Variant::Type::VARIANT_MAX&&VariantAdapter(argv[4]).get_type() == Variant::Type::INT&&VariantAdapter(argv[5]).get_type() == Variant::Type::STRING_NAME&&VariantAdapter(argv[6]).get_type() == Variant::Type::VARIANT_MAX) {
-		Dictionary v0 = VariantAdapter(argv[0]);
-		int v1 = VariantAdapter(argv[1]);
-		StringName v2 = VariantAdapter(argv[2]);
-		Variant v3 = VariantAdapter(argv[3]);
-		int v4 = VariantAdapter(argv[4]);
-		StringName v5 = VariantAdapter(argv[5]);
-		Variant v6 = VariantAdapter(argv[6]);
-		dictionary_class = memnew(Dictionary(v0,v1,v2,v3,v4,v5,v6));
-	}
-	
 
 	if (!dictionary_class) {
 		JS_FreeValue(ctx, obj);
@@ -67,10 +56,6 @@ static JSValue dictionary_class_is_empty(JSContext *ctx, JSValueConst this_val, 
 };
 static JSValue dictionary_class_clear(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
     call_builtin_method_no_ret(&Dictionary::clear, ctx, this_val, argc, argv);
-	return JS_UNDEFINED;
-};
-static JSValue dictionary_class_assign(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-    call_builtin_method_no_ret(&Dictionary::assign, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
 };
 static JSValue dictionary_class_merge(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
@@ -110,42 +95,6 @@ static JSValue dictionary_class_get(JSContext *ctx, JSValueConst this_val, int a
 static JSValue dictionary_class_get_or_add(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
 	return call_builtin_method_ret(&Dictionary::get_or_add, ctx, this_val, argc, argv);
 };
-static JSValue dictionary_class_is_typed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Dictionary::is_typed, ctx, this_val, argc, argv);
-};
-static JSValue dictionary_class_is_typed_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Dictionary::is_typed_key, ctx, this_val, argc, argv);
-};
-static JSValue dictionary_class_is_typed_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Dictionary::is_typed_value, ctx, this_val, argc, argv);
-};
-static JSValue dictionary_class_is_same_typed(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Dictionary::is_same_typed, ctx, this_val, argc, argv);
-};
-static JSValue dictionary_class_is_same_typed_key(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Dictionary::is_same_typed_key, ctx, this_val, argc, argv);
-};
-static JSValue dictionary_class_is_same_typed_value(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Dictionary::is_same_typed_value, ctx, this_val, argc, argv);
-};
-static JSValue dictionary_class_get_typed_key_builtin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Dictionary::get_typed_key_builtin, ctx, this_val, argc, argv);
-};
-static JSValue dictionary_class_get_typed_value_builtin(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Dictionary::get_typed_value_builtin, ctx, this_val, argc, argv);
-};
-static JSValue dictionary_class_get_typed_key_class_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Dictionary::get_typed_key_class_name, ctx, this_val, argc, argv);
-};
-static JSValue dictionary_class_get_typed_value_class_name(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Dictionary::get_typed_value_class_name, ctx, this_val, argc, argv);
-};
-static JSValue dictionary_class_get_typed_key_script(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Dictionary::get_typed_key_script, ctx, this_val, argc, argv);
-};
-static JSValue dictionary_class_get_typed_value_script(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
-	return call_builtin_const_method_ret(&Dictionary::get_typed_value_script, ctx, this_val, argc, argv);
-};
 static JSValue dictionary_class_make_read_only(JSContext *ctx, JSValueConst this_val, int argc, JSValueConst *argv) {
     call_builtin_method_no_ret(&Dictionary::make_read_only, ctx, this_val, argc, argv);
 	return JS_UNDEFINED;
@@ -160,7 +109,6 @@ static const JSCFunctionListEntry dictionary_class_proto_funcs[] = {
 	JS_CFUNC_DEF("size", 0, &dictionary_class_size),
 	JS_CFUNC_DEF("is_empty", 0, &dictionary_class_is_empty),
 	JS_CFUNC_DEF("clear", 0, &dictionary_class_clear),
-	JS_CFUNC_DEF("assign", 1, &dictionary_class_assign),
 	JS_CFUNC_DEF("merge", 2, &dictionary_class_merge),
 	JS_CFUNC_DEF("merged", 2, &dictionary_class_merged),
 	JS_CFUNC_DEF("has", 1, &dictionary_class_has),
@@ -173,18 +121,6 @@ static const JSCFunctionListEntry dictionary_class_proto_funcs[] = {
 	JS_CFUNC_DEF("duplicate", 1, &dictionary_class_duplicate),
 	JS_CFUNC_DEF("get", 2, &dictionary_class_get),
 	JS_CFUNC_DEF("get_or_add", 2, &dictionary_class_get_or_add),
-	JS_CFUNC_DEF("is_typed", 0, &dictionary_class_is_typed),
-	JS_CFUNC_DEF("is_typed_key", 0, &dictionary_class_is_typed_key),
-	JS_CFUNC_DEF("is_typed_value", 0, &dictionary_class_is_typed_value),
-	JS_CFUNC_DEF("is_same_typed", 1, &dictionary_class_is_same_typed),
-	JS_CFUNC_DEF("is_same_typed_key", 1, &dictionary_class_is_same_typed_key),
-	JS_CFUNC_DEF("is_same_typed_value", 1, &dictionary_class_is_same_typed_value),
-	JS_CFUNC_DEF("get_typed_key_builtin", 0, &dictionary_class_get_typed_key_builtin),
-	JS_CFUNC_DEF("get_typed_value_builtin", 0, &dictionary_class_get_typed_value_builtin),
-	JS_CFUNC_DEF("get_typed_key_class_name", 0, &dictionary_class_get_typed_key_class_name),
-	JS_CFUNC_DEF("get_typed_value_class_name", 0, &dictionary_class_get_typed_value_class_name),
-	JS_CFUNC_DEF("get_typed_key_script", 0, &dictionary_class_get_typed_key_script),
-	JS_CFUNC_DEF("get_typed_value_script", 0, &dictionary_class_get_typed_value_script),
 	JS_CFUNC_DEF("make_read_only", 0, &dictionary_class_make_read_only),
 	JS_CFUNC_DEF("is_read_only", 0, &dictionary_class_is_read_only),
 	JS_CFUNC_DEF("recursive_equal", 2, &dictionary_class_recursive_equal),

@@ -9,7 +9,7 @@ def gen_classes():
     gen_classes_h()
     gen_classes_register()
     gen_singleton_cpp()
-    gen_vararg_method()
+    # gen_vararg_method()
 
 def gen_classes_cpp():
     env = Environment(loader=FileSystemLoader(searchpath='./templates/classes'))
