@@ -1,14 +1,22 @@
 import os
 
+def get_sources(path):
+    sources = []
+    for root, dirs, files in os.walk(path):
+        sources += Glob(os.path.join(root, '*.cpp'))
+    for root, dirs, files in os.walk(path):
+        sources += Glob(os.path.join(root, '*.c'))
+    return sources
+
 env = Environment(tools=["default"], PLATFORM="")
 env.PrependENVPath("PATH", os.getenv("PATH"))
 
 env.Append(CCFLAGS=['-O0', '-Wall', '-Wextra', '-Wno-unused-parameter'])
 env.Append(CPPPATH=['./include', './src'])
 
-sources = Glob('./src/*/*.**c')
+sources = get_sources('./src')
 
-tree_sitter = env.SharedLibrary(target='./bin/tree-sitter', source=sources)
+tree_sitter = env.StaticLibrary(target='./bin/tree-sitter', source=sources)
 
 Export('tree_sitter')
 Return('tree_sitter')

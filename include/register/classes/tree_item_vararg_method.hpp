@@ -27,6 +27,7 @@ void js_call_recursive(GodotObject *owner, const StringName& p_method,std::vecto
 	for (int i = 0; i < variant_args.size(); i++) {
 		variant_args_ptr.push_back(&variant_args[i]);
 	}
+	js_call_recursive_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
 }
 
 #endif // __TreeItem_vararg_method__

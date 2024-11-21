@@ -47,4 +47,4 @@ Push-Location src/generator/godot_js
 Pop-Location
 
 
-scons use_mingw=true generate_template_get_node=false
+scons use_mingw=true generate_template_get_node=false debug_symbols=true optimize=debug

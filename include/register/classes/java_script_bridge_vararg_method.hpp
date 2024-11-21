@@ -25,7 +25,7 @@ Variant js_create_object(GodotObject *owner, const String& p_object,std::vector<
 	for (int i = 0; i < variant_args.size(); i++) {
 		variant_args_ptr.push_back(&variant_args[i]);
 	}
-	js_create_object_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
+	return js_create_object_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
 }
 
 #endif // __JavaScriptBridge_vararg_method__

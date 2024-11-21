@@ -20,7 +20,7 @@ void print_exception(JSContext *ctx);
 int64_t to_int64(JSContext *ctx, JSValue val);
 bool is_exception(JSContext *ctx, JSValue exp);
 Variant any_to_variant(JSValue val);
-JSValue any_to_jsvalue(const Variant *val);
+JSValue any_to_jsvalue(const Variant &val);
 
 #ifndef _countof
 #define _countof(array) (sizeof(array) / sizeof((array)[0]))

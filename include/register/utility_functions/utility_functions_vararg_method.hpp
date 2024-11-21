@@ -99,7 +99,7 @@ Variant js_max(const Variant& p_arg1,const Variant& p_arg2,std::vector<Variant> 
 	for (int i = 0; i < variant_args.size(); i++) {
 		variant_args_ptr.push_back(&variant_args[i]);
 	}
-	js_max_internal(const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
+	return js_max_internal(const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
 }
 Variant js_min(const Variant& p_arg1,const Variant& p_arg2,std::vector<Variant> p_args) {
 	std::vector<Variant> variant_args;
@@ -112,7 +112,7 @@ Variant js_min(const Variant& p_arg1,const Variant& p_arg2,std::vector<Variant> 
 	for (int i = 0; i < variant_args.size(); i++) {
 		variant_args_ptr.push_back(&variant_args[i]);
 	}
-	js_min_internal(const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
+	return js_min_internal(const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
 }
 String js_str(const Variant& p_arg1,std::vector<Variant> p_args) {
 	std::vector<Variant> variant_args;
@@ -124,7 +124,7 @@ String js_str(const Variant& p_arg1,std::vector<Variant> p_args) {
 	for (int i = 0; i < variant_args.size(); i++) {
 		variant_args_ptr.push_back(&variant_args[i]);
 	}
-	js_str_internal(const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
+	return js_str_internal(const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
 }
 void js_print(const Variant& p_arg1,std::vector<Variant> p_args) {
 	std::vector<Variant> variant_args;

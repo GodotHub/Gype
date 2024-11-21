@@ -92,7 +92,7 @@ enum {
 Variant JSArray_to_PackedArray(JSValue val);
 Variant any_to_variant(JSValue val);
 Variant obj_to_variant(JSValue val);
-JSValue packed_to_jsvalue(const Variant *val);
+JSValue packed_to_jsvalue(const Variant val);
 CREATE_OBJECT_FUNC(Vector2);
 CREATE_OBJECT_FUNC(Vector2i);
 CREATE_OBJECT_FUNC(Vector3);
@@ -124,47 +124,6 @@ CREATE_OBJECT_FUNC(PackedStringArray);
 CREATE_OBJECT_FUNC(PackedVector2Array);
 CREATE_OBJECT_FUNC(PackedVector3Array);
 CREATE_OBJECT_FUNC(PackedVector4Array);
-
-template <typename T>
-T *get_typed_array_buf(JSContext *ctx, JSValue v) {
-	int class_id = JS_GetClassID(v);
-	size_t offset;
-	size_t length;
-	JSValue tbuf = JS_GetTypedArrayBuffer(ctx, v, &offset, NULL, NULL);
-	if constexpr (std::is_fundamental_v<T>) {
-		uint8_t *buffer = JS_GetArrayBuffer(ctx, &length, tbuf);
-		return (T *)(buffer + offset);
-	} else {
-		return nullptr;
-	}
-}
-
-static std::unordered_map<Variant::Type, JSTypedArrayEnum> JSTypedArrayEnums = {
-	{ Variant::Type::PACKED_BYTE_ARRAY, JSTypedArrayEnum::JS_TYPED_ARRAY_UINT8 },
-	{ Variant::Type::PACKED_FLOAT32_ARRAY, JSTypedArrayEnum::JS_TYPED_ARRAY_FLOAT32 },
-	{ Variant::Type::PACKED_FLOAT64_ARRAY, JSTypedArrayEnum::JS_TYPED_ARRAY_FLOAT64 },
-	{ Variant::Type::PACKED_INT32_ARRAY, JSTypedArrayEnum::JS_TYPED_ARRAY_INT32 },
-	{ Variant::Type::PACKED_INT64_ARRAY, JSTypedArrayEnum::JS_TYPED_ARRAY_BIG_INT64 }
-};
-
-template <typename T, typename V>
-JSValue create_typed_array(const Variant *val) {
-	V packed = V(*val);
-	uint8_t *ptrw = (uint8_t *)packed.ptrw();
-	size_t buffer_size = packed.size() * sizeof(T);
-	JSValue buffer = JS_NewArrayBuffer(ctx, ptrw, buffer_size, nullptr, val->_native_ptr(), false);
-	JSValue argv[3] = {
-		buffer,
-		JS_NewInt64(ctx, sizeof(T)),
-		JS_NewInt64(ctx, buffer_size)
-	};
-	return JS_NewTypedArray(ctx, 3, argv, JSTypedArrayEnums[val->get_type()]);
-}
-
-bool is_typed_array(JSContext *ctx, JSValue value) {
-	JSClassID class_id = JS_GetClassID(value);
-	return class_id >= 21 && class_id <= 31;
-}
 
 bool is_int(JSContext *ctx, JSValue value) {
 	return JS_VALUE_GET_TAG(value) == JS_TAG_INT;
@@ -235,9 +194,6 @@ Variant any_to_variant(JSValue val) {
 #define CASE_TO_VARIANT(type, val)                                         \
 	{                                                                      \
 		int class_id = JS_GetClassID(val);                                 \
-		VariantAdapter adapter = VariantAdapter(val);                      \
-		Variant variant = adapter.operator Variant();                      \
-		type _##type = variant;                                            \
 		if (class_id == classes[#type])                                    \
 			return *reinterpret_cast<type *>(JS_GetOpaque(val, class_id)); \
 	}
@@ -279,99 +235,101 @@ Variant obj_to_variant(JSValue val) {
 			return gd_arr;
 		}
 		default: {
-			// TODO Ref<?>会有提前释放的BUG
+			// TODO Ref<>会有提前释放的BUG
 			return Variant(reinterpret_cast<Object *>(JS_GetOpaque(val, class_id)));
 		}
 	}
 }
 
-JSValue any_to_jsvalue(const Variant *val) {
-	Variant::Type type = val->get_type();
+JSValue any_to_jsvalue(const Variant &val) {
+	Variant::Type type = val.get_type();
 	switch (type) {
+		case Variant::Type::NIL:
+			return JS_UNDEFINED;
 		case Variant::Type::INT:
-			return JS_NewInt64(ctx, *val);
+			return JS_NewInt64(ctx, val);
 		case Variant::Type::FLOAT:
-			return JS_NewFloat64(ctx, *val);
+			return JS_NewFloat64(ctx, val);
 		case Variant::Type::BOOL:
-			return JS_NewBool(ctx, *val);
+			return JS_NewBool(ctx, val);
 		case Variant::Type::STRING:
-			return JS_NewString(ctx, to_chars(String(*val)));
+			return JS_NewString(ctx, to_chars(String(val)));
 		case Variant::Type::STRING_NAME:
-			return JS_NewString(ctx, to_chars(StringName(*val)));
+			return JS_NewString(ctx, to_chars(StringName(val)));
 		case Variant::Type::VECTOR2:
-			return create_Vector2_obj(*val);
+			return create_Vector2_obj(val);
 		case Variant::Type::VECTOR2I:
-			return create_Vector2i_obj(*val);
+			return create_Vector2i_obj(val);
 		case Variant::Type::VECTOR3:
-			return create_Vector3_obj(*val);
+			return create_Vector3_obj(val);
 		case Variant::Type::VECTOR3I:
-			return create_Vector3i_obj(*val);
+			return create_Vector3i_obj(val);
 		case Variant::Type::VECTOR4:
-			return create_Vector4_obj(*val);
+			return create_Vector4_obj(val);
 		case Variant::Type::VECTOR4I:
-			return create_Vector4i_obj(*val);
+			return create_Vector4i_obj(val);
 		case Variant::Type::AABB:
-			return create_AABB_obj(*val);
+			return create_AABB_obj(val);
 		case Variant::Type::BASIS:
-			return create_Basis_obj(*val);
+			return create_Basis_obj(val);
 		case Variant::Type::CALLABLE:
-			return create_Callable_obj(*val);
+			return create_Callable_obj(val);
 		case Variant::Type::COLOR:
-			return create_Color_obj(*val);
+			return create_Color_obj(val);
 		case Variant::Type::DICTIONARY:
-			return create_Dictionary_obj(*val);
+			return create_Dictionary_obj(val);
 		case Variant::Type::NODE_PATH:
-			return create_NodePath_obj(*val);
+			return create_NodePath_obj(val);
 		case Variant::Type::PLANE:
-			return create_Plane_obj(*val);
+			return create_Plane_obj(val);
 		case Variant::Type::PROJECTION:
-			return create_Projection_obj(*val);
+			return create_Projection_obj(val);
 		case Variant::Type::QUATERNION:
-			return create_Quaternion_obj(*val);
+			return create_Quaternion_obj(val);
 		case Variant::Type::RECT2:
-			return create_Rect2_obj(*val);
+			return create_Rect2_obj(val);
 		case Variant::Type::RECT2I:
-			return create_Rect2i_obj(*val);
+			return create_Rect2i_obj(val);
 		case Variant::Type::RID:
-			return create_RID_obj(*val);
+			return create_RID_obj(val);
 		case Variant::Type::SIGNAL:
-			return create_Signal_obj(*val);
+			return create_Signal_obj(val);
 		case Variant::Type::TRANSFORM2D:
-			return create_Transform2D_obj(*val);
+			return create_Transform2D_obj(val);
 		case Variant::Type::TRANSFORM3D:
-			return create_Transform3D_obj(*val);
+			return create_Transform3D_obj(val);
 		case Variant::PACKED_BYTE_ARRAY:
-			return create_PackedByteArray_obj(*val);
+			return create_PackedByteArray_obj(val);
 		case Variant::PACKED_COLOR_ARRAY:
-			return create_PackedColorArray_obj(*val);
+			return create_PackedColorArray_obj(val);
 		case Variant::PACKED_FLOAT32_ARRAY:
-			return create_PackedFloat32Array_obj(*val);
+			return create_PackedFloat32Array_obj(val);
 		case Variant::PACKED_FLOAT64_ARRAY:
-			return create_PackedFloat64Array_obj(*val);
+			return create_PackedFloat64Array_obj(val);
 		case Variant::PACKED_INT32_ARRAY:
-			return create_PackedInt32Array_obj(*val);
+			return create_PackedInt32Array_obj(val);
 		case Variant::PACKED_INT64_ARRAY:
-			return create_PackedInt64Array_obj(*val);
+			return create_PackedInt64Array_obj(val);
 		case Variant::PACKED_STRING_ARRAY:
-			return create_PackedStringArray_obj(*val);
+			return create_PackedStringArray_obj(val);
 		case Variant::PACKED_VECTOR2_ARRAY:
-			return create_PackedVector2Array_obj(*val);
+			return create_PackedVector2Array_obj(val);
 		case Variant::PACKED_VECTOR3_ARRAY:
-			return create_PackedVector3Array_obj(*val);
+			return create_PackedVector3Array_obj(val);
 		case Variant::PACKED_VECTOR4_ARRAY:
-			return create_PackedVector4Array_obj(*val);
+			return create_PackedVector4Array_obj(val);
 		case Variant::Type::VARIANT_MAX:
-			return VariantAdapter(*val);
+			return VariantAdapter(val);
 		case Variant::Type::ARRAY: {
-			Array arr = *val;
+			Array arr = val;
 			JSValue js_arr = JS_NewArray(ctx);
 			for (int i = 0; i < arr.size(); i++) {
-				JS_SetPropertyUint32(ctx, js_arr, i, any_to_jsvalue(&arr[i]));
+				JS_SetPropertyUint32(ctx, js_arr, i, any_to_jsvalue(arr[i]));
 			}
 			return js_arr;
 		}
 		case Variant::Type::OBJECT: {
-			Object *obj = *val;
+			Object *obj = val;
 			if (obj) {
 				const char *class_name = to_chars(obj->get_class());
 				char code[1024];
@@ -384,31 +342,8 @@ JSValue any_to_jsvalue(const Variant *val) {
 			}
 			return JS_UNDEFINED;
 		}
-		default:
+		default: {
 			return JS_UNDEFINED;
+		}
 	}
-}
-
-JSValue packed_to_jsvalue(const Variant *val) {
-	Variant::Type type = val->get_type();
-	switch (type) {
-		case Variant::Type::PACKED_BYTE_ARRAY:
-			return create_typed_array<uint8_t, PackedByteArray>(val);
-		case Variant::Type::PACKED_FLOAT32_ARRAY:
-			return create_typed_array<float, PackedFloat32Array>(val);
-		case Variant::Type::PACKED_FLOAT64_ARRAY:
-			return create_typed_array<double, PackedFloat64Array>(val);
-		case Variant::Type::PACKED_INT32_ARRAY:
-			return create_typed_array<int32_t, PackedInt32Array>(val);
-		case Variant::Type::PACKED_INT64_ARRAY:
-			return create_typed_array<int64_t, PackedInt64Array>(val);
-		default:
-			return JS_UNDEFINED;
-	}
-}
-
-Variant JSArray_to_PackedArray(JSValue val) {
-	int class_id = JS_GetClassID(val);
-	void *opaque = JS_GetOpaque(val, class_id);
-	return Variant(opaque);
 }

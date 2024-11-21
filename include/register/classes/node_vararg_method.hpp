@@ -45,7 +45,7 @@ static Variant js_call_thread_safe_internal(GodotObject *p_owner, const Variant 
 	internal::gdextension_interface_object_method_bind_call(_gde_method_bind, p_owner, reinterpret_cast<GDExtensionConstVariantPtr *>(p_args), p_arg_count, &ret, &error);
 	return VariantCaster<Variant>::cast(ret);
 }
-enum::Error js_rpc(GodotObject *owner, const StringName& p_method,std::vector<Variant> p_args) {
+Error js_rpc(GodotObject *owner, const StringName& p_method,std::vector<Variant> p_args) {
 	std::vector<Variant> variant_args;
 	std::vector<Variant *> variant_args_ptr;
 	variant_args.push_back(p_method);
@@ -55,9 +55,9 @@ enum::Error js_rpc(GodotObject *owner, const StringName& p_method,std::vector<Va
 	for (int i = 0; i < variant_args.size(); i++) {
 		variant_args_ptr.push_back(&variant_args[i]);
 	}
-	js_rpc_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
+	return js_rpc_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
 }
-enum::Error js_rpc_id(GodotObject *owner, int p_peer_id,const StringName& p_method,std::vector<Variant> p_args) {
+Error js_rpc_id(GodotObject *owner, int p_peer_id,const StringName& p_method,std::vector<Variant> p_args) {
 	std::vector<Variant> variant_args;
 	std::vector<Variant *> variant_args_ptr;
 	variant_args.push_back(p_peer_id);
@@ -68,7 +68,7 @@ enum::Error js_rpc_id(GodotObject *owner, int p_peer_id,const StringName& p_meth
 	for (int i = 0; i < variant_args.size(); i++) {
 		variant_args_ptr.push_back(&variant_args[i]);
 	}
-	js_rpc_id_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
+	return js_rpc_id_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
 }
 Variant js_call_deferred_thread_group(GodotObject *owner, const StringName& p_method,std::vector<Variant> p_args) {
 	std::vector<Variant> variant_args;
@@ -80,7 +80,7 @@ Variant js_call_deferred_thread_group(GodotObject *owner, const StringName& p_me
 	for (int i = 0; i < variant_args.size(); i++) {
 		variant_args_ptr.push_back(&variant_args[i]);
 	}
-	js_call_deferred_thread_group_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
+	return js_call_deferred_thread_group_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
 }
 Variant js_call_thread_safe(GodotObject *owner, const StringName& p_method,std::vector<Variant> p_args) {
 	std::vector<Variant> variant_args;
@@ -92,7 +92,7 @@ Variant js_call_thread_safe(GodotObject *owner, const StringName& p_method,std::
 	for (int i = 0; i < variant_args.size(); i++) {
 		variant_args_ptr.push_back(&variant_args[i]);
 	}
-	js_call_thread_safe_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
+	return js_call_thread_safe_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
 }
 
 #endif // __Node_vararg_method__

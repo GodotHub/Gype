@@ -23,7 +23,7 @@ Variant js_new(GodotObject *owner, std::vector<Variant> p_args) {
 	for (int i = 0; i < variant_args.size(); i++) {
 		variant_args_ptr.push_back(&variant_args[i]);
 	}
-	js_new_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
+	return js_new_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
 }
 
 #endif // __GDScript_vararg_method__

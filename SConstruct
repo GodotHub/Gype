@@ -1,7 +1,13 @@
-#!/usr/bin/env python
 import os
 
+# env = Environment(tools=["default"], PLATFORM="windows")
+
 env = SConscript("./godot-cpp/SConstruct")
+tree_sitter = SConscript("./tree-sitter/SConstruct")
+quickjs = SConscript("./quickjs/SConstruct")
+
+env.Append(CXXFLAGS=["-std=c++17"])
+env["LINK"] = "g++"
 
 def get_sources(path):
     sources = []
@@ -11,49 +17,28 @@ def get_sources(path):
         sources += Glob(os.path.join(root, '*.c'))
     return sources
 
-# For the reference:
-# - CCFLAGS are compilation flags shared between C and C++
-# - CFLAGS are for C-specific compilation flags
-# - CXXFLAGS are for C++-specific compilation flags
-# - CPPFLAGS are for pre-processor flags
-# - CPPDEFINES are for pre-processor defines
-# - LINKFLAGS are for linking flags
-
-# tweak this if you want to use different folders, or more folders, to store your source code in.
-env.Append(CPPPATH=["./include", "./quickjs/include", "./tree-sitter/include", "./tree-sitter/src"])
-env.Append(CPPDEFINES=['_GNU_SOURCE', 'CONFIG_BIGNUM', 'CONFIG_ALL_UNICODE', 'CONFIG_VERSION=\\"2024-05-20\\"'])
+env.Append(CPPPATH=["./include", "./quickjs/include", "./tree-sitter/include", "./tree-sitter/src", "./godot-cpp/include", "./godot-cpp/gen/include"])
 
 sources = []
-sources.extend(get_sources("./quickjs/src"))
-sources.extend(get_sources("./tree-sitter/src"))
 sources.extend(get_sources('./src'))
+sources.extend(get_sources('./godot-cpp/src'))
+sources.extend(get_sources('./godot-cpp/gen/src'))
 
-if env["target"] in ["editor", "template_debug"]:
-    doc_data = env.GodotCPPDocData("src/gen/doc_data.gen.cpp", source=Glob("doc_classes/*.xml"))
-    sources.append(doc_data)
+object_files = []
+for source in sources:
+    obj = env.Object(source=source)
+    object_files.append(obj)
 
-if env["platform"] == "macos":
-    library = env.SharedLibrary(
-        "bin/libgdexample.{}.{}.framework/libgdexample.{}.{}".format(
-            env["platform"], env["target"], env["platform"], env["target"]
-        ),
-        source=sources,
-    )
-elif env["platform"] == "ios":
-    if env["ios_simulator"]:
-        library = env.StaticLibrary(
-            "bin/libgdexample.{}.{}.simulator.a".format(env["platform"], env["target"]),
-            source=sources,
-        )
-    else:
-        library = env.StaticLibrary(
-            "bin/libgdexample.{}.{}.a".format(env["platform"], env["target"]),
-            source=sources,
-        )
-else:
-    library = env.SharedLibrary(
-        "bin/libgype{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
-        source=sources,
-    )
+response_file_path = "objects.rsp"
+with open(response_file_path, "w") as rsp:
+    for obj in object_files:
+        rsp.write(f"{obj[0].abspath.replace("\\", "/")}\n")
 
-Default(library)
+env.Append(LINKFLAGS=[f"@{response_file_path}"])
+library = env.SharedLibrary(
+    "bin/libgype{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
+    source=[], # Objects are passed via the response file in LINKFLAGS
+    LIBS=[quickjs,tree_sitter],
+)
+
+Default([object_files,library])

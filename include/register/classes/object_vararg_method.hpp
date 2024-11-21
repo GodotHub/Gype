@@ -29,7 +29,7 @@ static Variant js_call_deferred_internal(GodotObject *p_owner, const Variant **p
 	internal::gdextension_interface_object_method_bind_call(_gde_method_bind, p_owner, reinterpret_cast<GDExtensionConstVariantPtr *>(p_args), p_arg_count, &ret, &error);
 	return VariantCaster<Variant>::cast(ret);
 }
-enum::Error js_emit_signal(GodotObject *owner, const StringName& p_signal,std::vector<Variant> p_args) {
+Error js_emit_signal(GodotObject *owner, const StringName& p_signal,std::vector<Variant> p_args) {
 	std::vector<Variant> variant_args;
 	std::vector<Variant *> variant_args_ptr;
 	variant_args.push_back(p_signal);
@@ -39,7 +39,7 @@ enum::Error js_emit_signal(GodotObject *owner, const StringName& p_signal,std::v
 	for (int i = 0; i < variant_args.size(); i++) {
 		variant_args_ptr.push_back(&variant_args[i]);
 	}
-	js_emit_signal_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
+	return js_emit_signal_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
 }
 Variant js_call(GodotObject *owner, const StringName& p_method,std::vector<Variant> p_args) {
 	std::vector<Variant> variant_args;
@@ -51,7 +51,7 @@ Variant js_call(GodotObject *owner, const StringName& p_method,std::vector<Varia
 	for (int i = 0; i < variant_args.size(); i++) {
 		variant_args_ptr.push_back(&variant_args[i]);
 	}
-	js_call_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
+	return js_call_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
 }
 Variant js_call_deferred(GodotObject *owner, const StringName& p_method,std::vector<Variant> p_args) {
 	std::vector<Variant> variant_args;
@@ -63,7 +63,7 @@ Variant js_call_deferred(GodotObject *owner, const StringName& p_method,std::vec
 	for (int i = 0; i < variant_args.size(); i++) {
 		variant_args_ptr.push_back(&variant_args[i]);
 	}
-	js_call_deferred_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
+	return js_call_deferred_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
 }
 
 #endif // __Object_vararg_method__

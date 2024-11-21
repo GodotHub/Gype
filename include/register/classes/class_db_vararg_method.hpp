@@ -25,7 +25,7 @@ Variant js_class_call_static_method(GodotObject *owner, const StringName& p_clas
 	for (int i = 0; i < variant_args.size(); i++) {
 		variant_args_ptr.push_back(&variant_args[i]);
 	}
-	js_class_call_static_method_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
+	return js_class_call_static_method_internal(owner, const_cast<const Variant **>(variant_args_ptr.data()), variant_args_ptr.size());
 }
 
 #endif // __ClassDB_vararg_method__

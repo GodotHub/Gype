@@ -14,7 +14,7 @@ env.Append(CPPDEFINES=[
 
 sources = Glob('./src/*.c')
 
-quickjs = env.SharedLibrary(target='./bin/quickjs', source=sources)
+quickjs = env.StaticLibrary(target='./bin/quickjs', source=sources)
 
 Export('quickjs')
 Return('quickjs')

@@ -2,8 +2,7 @@
 #include "utils/quickjs_helper.hpp"
 
 VariantAdapter::VariantAdapter() {}
-VariantAdapter::VariantAdapter(const Variant &variant) { this->variant = variant; }
-VariantAdapter::VariantAdapter(Variant &&other) { this->variant = variant; }
+VariantAdapter::VariantAdapter(Variant variant) { this->variant = variant; }
 VariantAdapter::VariantAdapter(const JSValue &v) { variant = any_to_variant(v); }
 VariantAdapter::~VariantAdapter() {}
 
@@ -54,6 +53,6 @@ VariantAdapter::operator PackedVector2Array() const { return variant; }
 VariantAdapter::operator PackedVector3Array() const { return variant; }
 VariantAdapter::operator PackedColorArray() const { return variant; }
 VariantAdapter::operator PackedVector4Array() const { return variant; }
-VariantAdapter::operator JSValue() const { return any_to_jsvalue(&variant); }
+VariantAdapter::operator JSValue() const { return any_to_jsvalue(variant); }
 VariantAdapter::operator Variant() const { return variant; }
 Variant::Type VariantAdapter::get_type() { return variant.get_type(); }

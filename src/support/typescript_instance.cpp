@@ -54,9 +54,10 @@ TypeScriptInstance::TypeScriptInstance(Object *p_godot_object, TypeScript *scrip
 				const char *symbol_name = JS_AtomToCString(ctx, symbol);
 				ret = JS_GetProperty(ctx, ret, symbol);
 				if (strcmp(symbol_mask, symbol_name) == 0 || true) {
-					gd_binding = internal::get_object_instance_binding(p_godot_object->_owner);
+					gd_binding = p_godot_object;
 					JSValue vbinding = VariantAdapter(gd_binding);
 					js_binding = JS_CallConstructor(ctx, clazz, 1, &vbinding);
+					is_exception(ctx, js_binding);
 					JS_SetOpaque(js_binding, gd_binding);
 					script->instances.insert(gd_binding->get_instance_id());
 				}

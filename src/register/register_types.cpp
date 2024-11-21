@@ -20,13 +20,13 @@
 using namespace godot;
 
 void initialize_tgds_types(godot::ModuleInitializationLevel p_level) {
-	if (p_level != godot::ModuleInitializationLevel::MODULE_INITIALIZATION_LEVEL_CORE) {
+	if (p_level != godot::ModuleInitializationLevel::MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
-	printf("%s", "Quickjs start initialization\n");
+	UtilityFunctions::print("Quickjs start initialization");
 	init_language();
 	init_quickjs();
-	printf("%s", "Quickjs initialization is over\n");
+	UtilityFunctions::print("Quickjs initialization is over");
 }
 
 void uninitialize_tgds_types(godot::ModuleInitializationLevel p_level) {
@@ -39,7 +39,7 @@ void uninitialize_tgds_types(godot::ModuleInitializationLevel p_level) {
 	memdelete(TypeScriptLanguage::get_singleton());
 	memdelete(TypeScriptSaver::get_singleton());
 	memdelete(TypeScriptLoader::get_singleton());
-	printf("Quickjs close\n");
+	UtilityFunctions::print("Quickjs close");
 }
 
 void init_quickjs() {

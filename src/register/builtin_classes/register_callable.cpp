@@ -1,11 +1,12 @@
 
+#include "quickjs/env.h"
+#include "quickjs/quickjs.h"
 #include "register/builtin_classes/callable_vararg_method.hpp"
 #include "register/builtin_classes/register_builtin_classes.h"
-#include "quickjs/quickjs.h"
-#include "quickjs/env.h"
+#include "support/callable_jsmethod_pointer.hpp"
 #include "utils/func_utils.hpp"
-#include "utils/str_helper.hpp"
 #include "utils/quickjs_helper.hpp"
+#include "utils/str_helper.hpp"
 #include "utils/variant_helper.hpp"
 #include <godot_cpp/variant/callable.hpp>
 
@@ -30,22 +31,25 @@ static JSValue callable_class_constructor(JSContext *ctx, JSValueConst new_targe
 		return obj;
 
 	Callable *callable_class = nullptr;
-	
-	if (argc == 0 ) {
+
+	if (argc == 0) {
 		callable_class = memnew(Callable());
 	}
-	
-	if (argc == 1 &&VariantAdapter(argv[0]).get_type() == Variant::Type::CALLABLE) {
+
+	if (argc == 1 && VariantAdapter(argv[0]).get_type() == Variant::Type::CALLABLE) {
 		Callable v0 = VariantAdapter(argv[0]);
 		callable_class = memnew(Callable(v0));
 	}
-	
-	if (argc == 2 &&VariantAdapter(argv[0]).get_type() == Variant::Type::OBJECT&&VariantAdapter(argv[1]).get_type() == Variant::Type::STRING_NAME) {
+
+	if (argc == 2 && JS_IsObject(argv[0]) && JS_IsFunction(ctx, argv[1])) {
+		callable_class = create_custom_javascript_callable(argv[0], argv[1]);
+	}
+
+	if (argc == 2 && VariantAdapter(argv[0]).get_type() == Variant::Type::OBJECT && VariantAdapter(argv[1]).get_type() == Variant::Type::STRING_NAME) {
 		Object *v0 = VariantAdapter(argv[0]);
 		StringName v1 = VariantAdapter(argv[1]);
-		callable_class = memnew(Callable(v0,v1));
+		callable_class = memnew(Callable(v0, v1));
 	}
-	
 
 	if (!callable_class) {
 		JS_FreeValue(ctx, obj);

@@ -12,8 +12,7 @@ class VariantAdapter {
 
 public:
 	VariantAdapter();
-	VariantAdapter(const Variant &other);
-	VariantAdapter(Variant &&other);
+	VariantAdapter(Variant other);
 	VariantAdapter(const JSValue &v);
 	~VariantAdapter();
 
