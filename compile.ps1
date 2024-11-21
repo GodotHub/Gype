@@ -1,5 +1,11 @@
-if ($args.Count -eq 0 -or $args[0] -match "none") {
+# 使用本地godot-cpp编译：./compile.ps1
+# 拉取官方仓库里的godot-cpp进行编译：./compile.ps1 4.3
+# 使用本地godot-cpp编译Win：./compile.ps1 none win
+# 拉取官方仓库4.3编译Windows版本：./compile.ps1 4.3 win
+# 拉取官方仓库4.3编译Android版本：./compile.ps1 4.3 andr
 
+if ($args.Count -eq 0 -or $args[0] -match "none") {
+    echo "Use local godot-cpp ..."
 }else {
     if (Test-Path "godot-cpp") {
         Remove-Item -Recurse -Force "godot-cpp"
@@ -49,6 +55,27 @@ Push-Location src/generator/godot_js
 Pop-Location
 
 
-# scons use_mingw=true generate_template_get_node=false debug_symbols=true optimize=debug
+if ($args[1] -match "noc|no-clean") {
+    echo "Will not clean scons cache ..."
+}else {
+    scons -c
+}
 
-scons platform=android generate_template_get_node=false
+$debug_mode = ""
+
+if ($args[1] -match "debug") {
+    $debug_mode = "debug_symbols=true optimize=debug"
+}
+
+if ($args.Count -eq 1 -or $args[1] -match "none") {
+    scons use_mingw=true generate_template_get_node=false $debug_mode
+}
+elseif ($args[1] -match "andr|adr|and|ad") {
+    scons platform=android generate_template_get_node=false $debug_mode
+}
+elseif ($args[1] -match "win") {
+    scons use_mingw=true generate_template_get_node=false $debug_mode
+}
+else {
+    Write-Output "Argument mismatch !!!"
+}

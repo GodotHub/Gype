@@ -25,6 +25,7 @@ godot-cpp/
 godot-cpp/.sconsign.dblite
 godot-cpp/__pycache__/
 *.rsp
+/*log*
 
 # Python virtual environment and cache files
 .venv/

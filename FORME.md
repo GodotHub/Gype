@@ -2,6 +2,8 @@ https://github.com/android/ndk/wiki/Unsupported-Downloads
 
 NDK下载：https://dl.google.com/android/repository/android-ndk-r23c-windows.zip  
 
+Linux下载：https://dl.google.com/android/repository/android-ndk-r23c-linux.zip  
+
 设置`ANDROID_HOME`环境变量为安卓SDK路径，然后确保`$ANDROID_HOME/ndk/23.2.8568313/toolchains`目录存在  
 
 是的，你要手动修改(刚刚下载的压缩包)解压后得到的文件夹的名称  
