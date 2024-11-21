@@ -6,6 +6,7 @@ if ($args.Count -eq 0 -or $args[0] -match "none") {
         echo "Delete godot-cpp directory ..."
     }
     git clone https://github.com/godotengine/godot-cpp -b $args[0]
+    # git clone https://ghp.ci/github.com/godotengine/godot-cpp -b $args[0]
 }
 
 $pip = if ($IsLinux) { "pip3" } else { "pip" }
@@ -29,6 +30,7 @@ function check_python {
             echo "Please install python3's jinja2 package . "
             # & $pip install jinja2
             # sudo apt install python3-jinja2
+            exit 1
         }
     }
     catch {
@@ -47,4 +49,6 @@ Push-Location src/generator/godot_js
 Pop-Location
 
 
-scons use_mingw=true generate_template_get_node=false debug_symbols=true optimize=debug
+# scons use_mingw=true generate_template_get_node=false debug_symbols=true optimize=debug
+
+scons platform=android generate_template_get_node=false

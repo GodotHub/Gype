@@ -16,7 +16,7 @@ def gen_builtin_classes_cpp():
     builtin_class = list(filter(lambda e: not is_pod_type(e['name']), gde_json['builtin_classes']))
     for clazz in builtin_class:
         content = cpp_template.render({ 'clazz': clazz  })
-        with open(file=Path.joinpath(generated_root_dir, 'src', 'register', 'builtin_classes', f'register_{camel_to_snake(clazz['name'])}.cpp'), mode='w', encoding='utf8') as file:
+        with open(file=Path.joinpath(generated_root_dir, 'src', 'register', 'builtin_classes', f"register_{camel_to_snake(clazz['name'])}.cpp"), mode='w', encoding='utf8') as file:
             file.write(content)
 
 def gen_builtin_classes_h():
@@ -45,7 +45,7 @@ def gen_vararg_method():
     for clazz in builtin_class:
         if not has_vararg_method(clazz): continue
         content = cpp_template.render({ 'clazz': clazz  })
-        with open(file=Path.joinpath(generated_root_dir, 'include', 'register', 'builtin_classes', f'{camel_to_snake(clazz['name'])}_vararg_method.hpp'), mode='w', encoding='utf8') as file:
+        with open(file=Path.joinpath(generated_root_dir, 'include', 'register', 'builtin_classes', f"{camel_to_snake(clazz['name'])}_vararg_method.hpp"), mode='w', encoding='utf8') as file:
             file.write(content)
 
 def config_env(env: Environment):

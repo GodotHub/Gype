@@ -177,11 +177,11 @@ def connect_mutable_args(arguments):
     if arguments is not None or len(arguments) > 0:
         for arg in arguments:
             if is_pod_type(arg['type']):
-                arg_str.append(f'{arg['type']} p_{arg['name']}')
+                arg_str.append(f"{arg['type']} p_{arg['name']}")
             elif arg['type'] == 'Object':
-                arg_str.append(f'Object * p_{arg['name']}')
+                arg_str.append(f"Object * p_{arg['name']}")
             else:
-                arg_str.append(f'const {arg['type']}& p_{arg['name']}')
+                arg_str.append(f"const {arg['type']}& p_{arg['name']}")
     arg_str.append('std::vector<Variant> p_args')
     return ','.join(arg_str)
 

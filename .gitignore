@@ -24,6 +24,7 @@ example/dist
 godot-cpp/
 godot-cpp/.sconsign.dblite
 godot-cpp/__pycache__/
+*.rsp
 
 # Python virtual environment and cache files
 .venv/

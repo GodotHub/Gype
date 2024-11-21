@@ -13,7 +13,7 @@ def gen_builtin_classes_d_ts():
             continue 
         dependency = list(filter(lambda e: not is_variant(e), collect_dependency(clazz)))
         content = cpp_template.render({ 'class': clazz, 'dependency': dependency })
-        with open(file=Path.joinpath(gen_path, f'{camel_to_snake(clazz['name'])}.d.ts'), mode='w', encoding='utf8') as file:
+        with open(file=Path.joinpath(gen_path, f"{camel_to_snake(clazz['name'])}.d.ts"), mode='w', encoding='utf8') as file:
             file.write(content)
 
 def config_env(env: Environment):

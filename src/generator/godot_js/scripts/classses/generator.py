@@ -20,7 +20,7 @@ def gen_classes_cpp():
         if clazz['name'] not in map(lambda e: e['type'], singletons):
             dependency = collect_dependency(clazz)
             content = cpp_template.render({ 'clazz': clazz, 'dependency': dependency, 'singletons': singletons })
-            with open(file=Path.joinpath(generated_root_dir, 'src', 'register', 'classes', f'register_{camel_to_snake(clazz['name'])}.cpp'), mode='w', encoding='utf8') as file:
+            with open(file=Path.joinpath(generated_root_dir, 'src', 'register', 'classes', f"register_{camel_to_snake(clazz['name'])}.cpp"), mode='w', encoding='utf8') as file:
                 file.write(content)
 
 def gen_singleton_cpp():
@@ -32,7 +32,7 @@ def gen_singleton_cpp():
         if clazz['name'] in map(lambda e: e['type'], singletons):
             dependency = collect_dependency(clazz)
             content = cpp_template.render({ 'clazz': clazz, 'dependency': dependency, 'singletons': singletons })
-            with open(file=Path.joinpath(generated_root_dir, 'src', 'register', 'classes', f'register_{camel_to_snake(clazz['name'])}.cpp'), mode='w', encoding='utf8') as file:
+            with open(file=Path.joinpath(generated_root_dir, 'src', 'register', 'classes', f"register_{camel_to_snake(clazz['name'])}.cpp"), mode='w', encoding='utf8') as file:
                 file.write(content)
 
 def gen_vararg_method():
@@ -43,7 +43,7 @@ def gen_vararg_method():
         if has_vararg_method(clazz):
             dependency = collect_dependency(clazz)
             content = cpp_template.render({ 'clazz': clazz, 'dependency': dependency })
-            with open(file=Path.joinpath(generated_root_dir, 'include', 'register', 'classes', f'{camel_to_snake(clazz['name'])}_vararg_method.hpp'), mode='w', encoding='utf8') as file:
+            with open(file=Path.joinpath(generated_root_dir, 'include', 'register', 'classes', f"{camel_to_snake(clazz['name'])}_vararg_method.hpp"), mode='w', encoding='utf8') as file:
                 file.write(content)
 
 def gen_classes_h():
@@ -92,7 +92,7 @@ def sort(base = gde_json['classes'][439], classes = gde_json['classes'], sets = 
 
 def register_classes():
     def _process(ret = '',clazz=gde_json['classes'][439]):
-        ret = f'\tregister_{ camel_to_snake(clazz['name']) }();\n'
+        ret = f"\tregister_{ camel_to_snake(clazz['name']) }();\n"
         for subclass in clazz['children']:
             ret += _process(ret,subclass)
         return ret

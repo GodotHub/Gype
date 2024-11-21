@@ -1,6 +1,5 @@
 import os
 
-# env = Environment(tools=["default"], PLATFORM="windows")
 
 env = SConscript("./godot-cpp/SConstruct")
 tree_sitter = SConscript("./tree-sitter/SConstruct")
@@ -31,12 +30,16 @@ for source in sources:
 response_file_path = "objects.rsp"
 with open(response_file_path, "w") as rsp:
     for obj in object_files:
-        rsp.write(f"{obj[0].abspath.replace("\\", "/")}\n")
+        # rsp.write(f"{obj[0].abspath.replace("\\", "/")}\n")
+        path = obj[0].abspath.replace("\\", "/")
+        rsp.write(f"{path}\n")
+
 
 env.Append(LINKFLAGS=[f"@{response_file_path}"])
+
 library = env.SharedLibrary(
     "bin/libgype{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
-    source=[], # Objects are passed via the response file in LINKFLAGS
+    source=[],
     LIBS=[quickjs,tree_sitter],
 )
 
