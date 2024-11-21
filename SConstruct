@@ -7,7 +7,6 @@ tree_sitter = SConscript("./tree-sitter/SConstruct")
 quickjs = SConscript("./quickjs/SConstruct")
 
 env.Append(CXXFLAGS=["-std=c++17"])
-env["LINK"] = "g++"
 
 def get_sources(path):
     sources = []
