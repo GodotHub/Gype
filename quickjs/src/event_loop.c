@@ -3,9 +3,10 @@
 #include <pthread.h>
 #include <unistd.h>
 
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
-pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
-pthread_t event_thread;
+static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+static pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
+static pthread_t event_thread;
+static pthread_t main_thread;
 
 void *event_loop(void *arg) {
 	int err;
@@ -35,6 +36,5 @@ void execute_events() {
 }
 
 void create_event_loop(JSRuntime *rt) {
-	pthread_t main_thread;
 	pthread_create(&main_thread, NULL, event_loop, rt);
 }

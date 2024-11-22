@@ -22,3 +22,7 @@ GlobalClasses="*res://addons/gype/godot/core/global_classes.ts"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gype/plugin.cfg")
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
