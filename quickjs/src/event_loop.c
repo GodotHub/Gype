@@ -6,7 +6,6 @@
 static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 static pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
 static pthread_t event_thread;
-static pthread_t main_thread;
 
 void *event_loop(void *arg) {
 	int err;
@@ -32,9 +31,9 @@ void *event_loop(void *arg) {
 // 通知事件循环有新任务
 void execute_events() {
 	pthread_cond_signal(&cond);
-	pthread_join(event_thread, NULL);
+	// pthread_join(event_thread, NULL);
 }
 
 void create_event_loop(JSRuntime *rt) {
-	pthread_create(&main_thread, NULL, event_loop, rt);
+	pthread_create(&event_thread, NULL, event_loop, rt);
 }
