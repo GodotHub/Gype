@@ -3,7 +3,19 @@ import os
 env = Environment(tools=["default"], PLATFORM="")
 env.PrependENVPath("PATH", os.getenv("PATH"))
 
-env.Append(CCFLAGS=['-O0', '-Wall', '-Wextra', '-Wno-unused-parameter'])
+if os.name == 'nt':
+    prebuilt_path = "windows-x86_64"
+elif os.name == 'posix':
+    prebuilt_path = "linux-x86_64"
+else:
+    raise OSError("Unsupported operating system")
+
+env["ENV"]["ANDROID_HOME"] = os.getenv("ANDROID_HOME")
+env["CC"] = f"{env['ENV']['ANDROID_HOME']}/ndk/23.2.8568313/toolchains/llvm/prebuilt/{prebuilt_path}/bin/aarch64-linux-android23-clang"
+env["CXX"] = f"{env['ENV']['ANDROID_HOME']}/ndk/23.2.8568313/toolchains/llvm/prebuilt/{prebuilt_path}/bin/aarch64-linux-android23-clang++"
+
+
+env.Append(CCFLAGS=['-O0', '-Wall', '-Wextra', '-Wno-unused-parameter', '-fPIC'])
 env.Append(CPPPATH=['./include'])
 env.Append(CPPDEFINES=[
     '_GNU_SOURCE',

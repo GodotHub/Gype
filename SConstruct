@@ -6,7 +6,6 @@ tree_sitter = SConscript("./tree-sitter/SConstruct")
 quickjs = SConscript("./quickjs/SConstruct")
 
 env.Append(CXXFLAGS=["-std=c++17"])
-env['LINK']='g++'
 
 def get_sources(path):
     sources = []
@@ -31,7 +30,6 @@ for source in sources:
 response_file_path = "objects.rsp"
 with open(response_file_path, "w") as rsp:
     for obj in object_files:
-        # rsp.write(f"{obj[0].abspath.replace("\\", "/")}\n")
         path = obj[0].abspath.replace("\\", "/")
         rsp.write(f"{path}\n")
 

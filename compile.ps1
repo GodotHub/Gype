@@ -3,6 +3,8 @@
 # 使用本地godot-cpp编译Win：./compile.ps1 none win
 # 拉取官方仓库4.3编译Windows版本：./compile.ps1 4.3 win
 # 拉取官方仓库4.3编译Android版本：./compile.ps1 4.3 andr
+# 拉取官方仓库4.3编译Android的debug版本：./compile.ps1 4.3 andr-debug
+# 拉取官方仓库4.3编译Android的debug版本，不增量编译：./compile.ps1 4.3 andr-debug-noc
 
 if ($args.Count -eq 0 -or $args[0] -match "none") {
     echo "Use local godot-cpp ..."
@@ -12,7 +14,6 @@ if ($args.Count -eq 0 -or $args[0] -match "none") {
         echo "Delete godot-cpp directory ..."
     }
     git clone https://github.com/godotengine/godot-cpp -b $args[0]
-    # git clone https://ghp.ci/github.com/godotengine/godot-cpp -b $args[0]
 }
 
 $pip = if ($IsLinux) { "pip3" } else { "pip" }
@@ -68,10 +69,10 @@ if ($args[1] -match "debug") {
 }
 
 if ($args.Count -eq 1 -or $args[1] -match "none") {
-    scons use_mingw=true generate_template_get_node=false $debug_mode
+    scons generate_template_get_node=false $debug_mode
 }
 elseif ($args[1] -match "andr|adr|and|ad") {
-    scons platform=android generate_template_get_node=false $debug_mode
+    scons platform=android generate_template_get_node=false threads=true $debug_mode
 }
 elseif ($args[1] -match "win") {
     scons use_mingw=true generate_template_get_node=false $debug_mode
