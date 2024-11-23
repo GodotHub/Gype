@@ -34,7 +34,7 @@ else:
     print(f"gype_target is an unexpected value: {gype_target}")
 
 
-env_gype.Append(CCFLAGS=['-O0', '-Wall', '-Wextra', '-Wno-unused-parameter', '-fPIC'])
+env_gype.Append(CCFLAGS=['-O3', '-Wall', '-Wextra', '-Wno-unused-parameter', '-fPIC'])
 env_gype.Append(CPPPATH=['tree-sitter/include', 'tree-sitter/src'])
 
 
@@ -57,8 +57,15 @@ Export('quickjs')
 
 
 
-env.Append(CXXFLAGS=["-std=c++17"])
-env.Append(CPPPATH=["include", "quickjs/include", "tree-sitter/include", "tree-sitter/src", "godot-cpp/include", "godot-cpp/gen/include"])
+env.Append(CXXFLAGS=["-std=c++17", "-O3"])
+env.Append(CPPPATH=[
+    "include", 
+    "quickjs/include", 
+    "tree-sitter/include", 
+    "tree-sitter/src", 
+    "godot-cpp/include", 
+    "godot-cpp/gen/include"
+    ])
 
 sources = []
 sources.extend(get_sources('src'))
@@ -82,7 +89,7 @@ env.Append(LINKFLAGS=[f"@{response_file_path}"])
 library = env.SharedLibrary(
     "bin/libgype{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
     source=[],
-    LIBS=[quickjs,tree_sitter],
+    LIBS=[quickjs,tree_sitter]
 )
 
-Default([object_files,library])
+Default([object_files, library])
