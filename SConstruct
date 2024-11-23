@@ -1,11 +1,8 @@
 import os
 
 
-env = SConscript("./godot-cpp/SConstruct")
-tree_sitter = SConscript("./tree-sitter/SConstruct")
-quickjs = SConscript("./quickjs/SConstruct")
-
-env.Append(CXXFLAGS=["-std=c++17"])
+env = SConscript("godot-cpp/SConstruct")
+gype_target = ARGUMENTS.get('gype_target')
 
 def get_sources(path):
     sources = []
@@ -15,12 +12,58 @@ def get_sources(path):
         sources += Glob(os.path.join(root, '*.c'))
     return sources
 
-env.Append(CPPPATH=["./include", "./quickjs/include", "./tree-sitter/include", "./tree-sitter/src", "./godot-cpp/include", "./godot-cpp/gen/include"])
+if os.name == 'nt':
+    prebuilt_path = "windows-x86_64"
+elif os.name == 'posix':
+    prebuilt_path = "linux-x86_64"
+else:
+    raise OSError("Unsupported operating system")
+
+env_gype = Environment(tools=["default"], PLATFORM="")
+env_gype.PrependENVPath("PATH", os.getenv("PATH"))
+
+if gype_target == 'windows':
+    env["LINK"]="g++"
+elif gype_target == 'linux':
+    env["LINK"]="g++"
+elif gype_target == 'android':
+    env_gype["ENV"]["ANDROID_HOME"] = os.getenv("ANDROID_HOME")
+    env_gype["CC"] = f"{env_gype['ENV']['ANDROID_HOME']}/ndk/23.2.8568313/toolchains/llvm/prebuilt/{prebuilt_path}/bin/aarch64-linux-android23-clang"
+    env_gype["CXX"] = f"{env_gype['ENV']['ANDROID_HOME']}/ndk/23.2.8568313/toolchains/llvm/prebuilt/{prebuilt_path}/bin/aarch64-linux-android23-clang++"
+else:
+    print(f"gype_target is an unexpected value: {gype_target}")
+
+
+env_gype.Append(CCFLAGS=['-O0', '-Wall', '-Wextra', '-Wno-unused-parameter', '-fPIC'])
+env_gype.Append(CPPPATH=['tree-sitter/include', 'tree-sitter/src'])
+
+
+sources_tree = get_sources('tree-sitter/src')
+tree_sitter = env_gype.StaticLibrary(target='tree-sitter/bin/tree-sitter', source=sources_tree)
+Export('tree_sitter')
+
+
+env_gype.Append(CPPPATH=['quickjs/include'])
+env_gype.Append(CPPDEFINES=[
+    '_GNU_SOURCE',
+    'CONFIG_BIGNUM',
+    'CONFIG_ALL_UNICODE',
+    'CONFIG_VERSION=\\"2024-05-20\\"'
+])
+
+sources_qjs = Glob('quickjs/src/*.c')
+quickjs = env_gype.StaticLibrary(target='quickjs/bin/quickjs', source=sources_qjs)
+Export('quickjs')
+
+
+
+env.Append(CXXFLAGS=["-std=c++17"])
+env.Append(CPPPATH=["include", "quickjs/include", "tree-sitter/include", "tree-sitter/src", "godot-cpp/include", "godot-cpp/gen/include"])
 
 sources = []
-sources.extend(get_sources('./src'))
-sources.extend(get_sources('./godot-cpp/src'))
-sources.extend(get_sources('./godot-cpp/gen/src'))
+sources.extend(get_sources('src'))
+sources.extend(get_sources('godot-cpp/src'))
+sources.extend(get_sources('godot-cpp/gen/src'))
 
 object_files = []
 for source in sources:

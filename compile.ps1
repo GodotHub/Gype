@@ -69,13 +69,16 @@ if ($args[1] -match "debug") {
 }
 
 if ($args.Count -eq 1 -or $args[1] -match "none") {
-    scons generate_template_get_node=false $debug_mode
+    scons generate_template_get_node=false $debug_mode gype_target=none
 }
 elseif ($args[1] -match "andr|adr|and|ad") {
-    scons platform=android generate_template_get_node=false threads=true $debug_mode
+    scons platform=android generate_template_get_node=false threads=true $debug_mode gype_target=android
 }
 elseif ($args[1] -match "win") {
-    scons use_mingw=true generate_template_get_node=false $debug_mode
+    scons use_mingw=true generate_template_get_node=false $debug_mode gype_target=windows
+}
+elseif ($args[1] -match "lin") {
+    scons generate_template_get_node=false $debug_mode gype_target=linux
 }
 else {
     Write-Output "Argument mismatch !!!"
