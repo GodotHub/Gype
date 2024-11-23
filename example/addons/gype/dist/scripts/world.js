@@ -5,16 +5,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { Node2D } from "@godot/classes/node2d";
-import { GodotClass } from "@godot/core/class_defined";
+import { GodotClass, to_promise } from "@godot/core/class_defined";
 let world = class world extends Node2D {
+    async _enter_tree() {
+        GD.print('pre');
+        await to_promise(this.ready);
+        GD.print('aft');
+    }
     _ready() {
-        let callable = new Callable(this, this.test_callable);
-        callable.call();
+        GD.print('ready');
     }
     _process(delta) {
     }
     test_callable() {
-        GD.print('test callable');
     }
 };
 world = __decorate([

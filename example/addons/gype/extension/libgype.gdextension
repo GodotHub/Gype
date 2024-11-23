@@ -6,9 +6,9 @@ compatibility_minimum = 4.3
 [libraries]
 
 android.debug.arm64 = "res://addons/gype/extension/libgype.android.template_debug.arm64.so"
-android.release.arm64 = "res://addons/gype/extension/libgype.android.template_debug.arm64.so"
-linux.x86_64.debug = "res://bin/libtgds.linux.template_debug.x86_64.so"
-linux.x86_64.release = "res://bin/libtgds.linux.template_release.x86_64.so"
+android.release.arm64 = "res://addons/gype/extension/libgype.android.template_release.arm64.so"
+linux.x86_64.debug = "res://addons/gype/extension/libgype.linux.template_debug.x86_64.so"
+linux.x86_64.release = "res://addons/gype/extension/libgype.linux.template_debug.x86_64.so"
 linux.debug.arm64 = "res://bin/libtgds.linux.template_debug.arm64.so"
 linux.release.arm64 = "res://bin/libtgds.linux.template_release.arm64.so"
 windows.x86_64.debug = "res://addons/gype/extension/libgype.windows.template_debug.x86_64.dll"
