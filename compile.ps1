@@ -60,6 +60,7 @@ if ($args[1] -match "noc|no-clean") {
     echo "Will not clean scons cache ..."
 }else {
     scons -c
+    Get-ChildItem -Path . -Recurse -Filter *.o | Remove-Item -Force
 }
 
 if (Test-Path "bin") {
