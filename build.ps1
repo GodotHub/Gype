@@ -88,12 +88,14 @@ if (Test-Path "bin") {
     echo "Delete bin directory ..."
 }
 
-$debug_set = ""
+$ds1 = ""
+$ds2 = ""
 $release_mode = ""
 $general = "generate_template_get_node=false"
 
 if ($args[1] -match "debug") {
-    $debug_set = "debug_symbols=true optimize=debug"
+    $ds1 = "debug_symbols=true"
+    $ds2 = "optimize=debug"
 }
 
 if ($args[1] -match "rel") {
@@ -106,16 +108,16 @@ if ($args[1] -match "rel") {
 
 
 if ($args.Count -eq 1 -or $args[1] -match "none") {
-    scons $general gype_target=none $release_mode $debug_set
+    scons $general gype_target=none $release_mode $ds1 $ds2
 }
 elseif ($args[1] -match "andr|adr|and|ad") {
-    scons platform=android $general threads=true gype_target=android $release_mode $debug_set
+    scons platform=android $general threads=true gype_target=android $release_mode $ds1 $ds2
 }
 elseif ($args[1] -match "win") {
-    scons use_mingw=true $general gype_target=windows $release_mode $debug_set
+    scons use_mingw=true $general gype_target=windows $release_mode $ds1 $ds2
 }
 elseif ($args[1] -match "lin") {
-    scons $general gype_target=linux $release_mode $debug_set
+    scons $general gype_target=linux $release_mode $ds1 $ds2
 }
 else {
     Write-Output "Argument mismatch !!!"
