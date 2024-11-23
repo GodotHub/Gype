@@ -5,6 +5,12 @@ compatibility_minimum = 4.3
 
 [libraries]
 
+macos.debug = "res://addons/gype/extension/libgype.macos.debug.framework"
+macos.release = "res://addons/gype/extension/libgype.macos.release.framework"
+windows.debug.x86_64 = "res://addons/gype/extension/libgype.windows.debug.x86_64.dll"
+windows.release.x86_64 = "res://addons/gype/extension/libgype.windows.release.x86_64.dll"
+linux.debug.x86_64 = "res://addons/gype/extension/bin/libgype.linux.debug.x86_64.so"
+linux.release.x86_64 = "res://addons/gype/extension/libgype.linux.release.x86_64.so"
 android.debug.arm64 = "res://addons/gype/extension/libgype.android.template_debug.arm64.so"
 android.release.arm64 = "res://addons/gype/extension/libgype.android.template_release.arm64.so"
 linux.x86_64.debug = "res://addons/gype/extension/libgype.linux.template_debug.x86_64.so"

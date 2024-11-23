@@ -1,6 +1,40 @@
-#!/bin/pwsh
+# 使用本地godot-cpp编译：./compile.ps1
+# 拉取官方仓库里的godot-cpp进行编译：./compile.ps1 4.3
+# 使用本地godot-cpp编译Win：./compile.ps1 none win
+# 拉取官方仓库4.3编译Windows版本：./compile.ps1 4.3 win
+# 拉取官方仓库4.3编译Android版本：./compile.ps1 4.3 andr
+# 拉取官方仓库4.3编译Android带debug选项：./compile.ps1 4.3 andr-debug
+# 拉取官方仓库4.3编译Android带debug选项，不增量编译：./compile.ps1 4.3 andr-debug-noc
 
-Push-Location src/generator/godot_js
+
+$sconsVersion = scons --version 2>&1 | Select-String -Pattern "\d+\.\d+(\.\d+)?"
+
+if ($sconsVersion) {
+    $versionString = $sconsVersion.Matches[0].Value
+    $version = [version]$versionString
+    $requiredVersion = [version]"4.7"
+
+    if ($version -ge $requiredVersion) {
+        Write-Output "SCons version $versionString ..."
+    } else {
+        Write-Output "Error: SCons version $versionString is less than 4.7 !"
+        exit -1
+    }
+} else {
+    Write-Output "Error: SCons is not installed !"
+    exit -1
+}
+
+
+if ($args.Count -eq 0 -or $args[0] -match "none") {
+    echo "Use local godot-cpp ..."
+}else {
+    if (Test-Path "godot-cpp") {
+        Remove-Item -Recurse -Force "godot-cpp"
+        echo "Delete godot-cpp directory ..."
+    }
+    git clone https://github.com/godotengine/godot-cpp -b $args[0]
+}
 
 $pip = if ($IsLinux) { "pip3" } else { "pip" }
 $python = if ($IsLinux) { "python3" } else { "python" }
@@ -20,7 +54,10 @@ function check_python {
     try {
         & $pip show jinja2 > $null
         if ($LASTEXITCODE -ne 0) {
-            & $pip install jinja2
+            echo "Please install python3's jinja2 package . "
+            # & $pip install jinja2
+            # sudo apt install python3-jinja2
+            exit 1
         }
     }
     catch {
@@ -30,33 +67,56 @@ function check_python {
 
 }
 
-if ($args.Count -eq 0 -or $args[0] -match "all") {
+check_python
 
-    check_python
-    & $python ./js_generator.py "12345"
-}
-elseif ($args[0] -match "none") {
-    echo "Skip generation ..."
-} else {
-    check_python
-    & $python ./js_generator.py $args[0]
-}
+Push-Location src/generator/godot_js
+
+& $python js_generator.py
 
 Pop-Location
 
-if (Test-Path "build") {
-    Remove-Item -Recurse -Force "build"
-    echo "Delete build directory ..."
+
+if ($args[1] -match "noc|no-clean") {
+    echo "Will not clean scons cache ..."
+}else {
+    scons -c
+    Get-ChildItem -Path . -Recurse -Filter *.o | Remove-Item -Force
 }
 
-mkdir build
-
-$build_type = "Debug"
-
-if ($args[0] -match "rel") {
-    $build_type = "Release"
+if (Test-Path "bin") {
+    Remove-Item -Recurse -Force "bin"
+    echo "Delete bin directory ..."
 }
 
-cmake -DCMAKE_BUILD_TYPE:STRING=$build_type -DGENERATE_TEMPLATE_GET_NODE:STRING=OFF -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_C_COMPILER:FILEPATH=gcc -DCMAKE_CXX_COMPILER:FILEPATH=g++ --no-warn-unused-cli -S . -B build -G "MinGW Makefiles"
+$debug_set = ""
+$release_mode = ""
+$general = "generate_template_get_node=false"
 
-cmake --build build --config $build_type --target all -j
+if ($args[1] -match "debug") {
+    $debug_set = "debug_symbols=true optimize=debug"
+}
+
+if ($args[1] -match "rel") {
+    $release_mode = "target=template_release"
+}elseif ($args[1] -match "edi") {
+    $release_mode = "target=editor"
+}else {
+    echo "Use target=template_debug ..."
+}
+
+
+if ($args.Count -eq 1 -or $args[1] -match "none") {
+    scons $general gype_target=none $release_mode $debug_set
+}
+elseif ($args[1] -match "andr|adr|and|ad") {
+    scons platform=android $general threads=true gype_target=android $release_mode $debug_set
+}
+elseif ($args[1] -match "win") {
+    scons use_mingw=true $general gype_target=windows $release_mode $debug_set
+}
+elseif ($args[1] -match "lin") {
+    scons $general gype_target=linux $release_mode $debug_set
+}
+else {
+    Write-Output "Argument mismatch !!!"
+}
