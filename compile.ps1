@@ -62,23 +62,30 @@ if ($args[1] -match "noc|no-clean") {
     scons -c
 }
 
-$debug_mode = ""
+if (Test-Path "bin") {
+    Remove-Item -Recurse -Force "bin"
+    echo "Delete bin directory ..."
+}
+
+
+$general_scons = "generate_template_get_node=false"
 
 if ($args[1] -match "debug") {
     $debug_mode = "debug_symbols=true optimize=debug"
+    $general_scons = "$general_scons $debug_mode"
 }
 
 if ($args.Count -eq 1 -or $args[1] -match "none") {
-    scons generate_template_get_node=false $debug_mode gype_target=none
+    scons $general_scons gype_target=none
 }
 elseif ($args[1] -match "andr|adr|and|ad") {
-    scons platform=android generate_template_get_node=false threads=true $debug_mode gype_target=android
+    scons platform=android $general_scons threads=true gype_target=android
 }
 elseif ($args[1] -match "win") {
-    scons use_mingw=true generate_template_get_node=false $debug_mode gype_target=windows
+    scons use_mingw=true $general_scons gype_target=windows
 }
 elseif ($args[1] -match "lin") {
-    scons generate_template_get_node=false $debug_mode gype_target=linux
+    scons $general_scons gype_target=linux
 }
 else {
     Write-Output "Argument mismatch !!!"
