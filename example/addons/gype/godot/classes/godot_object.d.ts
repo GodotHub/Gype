@@ -79,6 +79,6 @@ export declare class GodotObject {
     CONNECT_ONE_SHOT = 4,
     CONNECT_REFERENCE_COUNTED = 8,
   };
-  public script_changed: string = "script_changed";
-  public property_list_changed: string = "property_list_changed";
+  public get script_changed(): signal;
+  public get property_list_changed(): signal;
 }

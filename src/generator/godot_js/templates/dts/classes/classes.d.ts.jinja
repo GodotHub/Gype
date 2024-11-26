@@ -49,7 +49,7 @@ declare global {
 {%- endif %}
 export declare class {{is_singleton()}} {{extends(class)}}{
   {%- for method in class['methods'] %}
-    {%- if not method['invalid'] %}
+    {%- if not class_name+':'+method['name'] in invalid_methods %}
       {%- if class_name == 'Node' %}
         {%- if method['name'] == 'get_node' or method['name'] == 'get_parent' %}
   public{{is_static(method)}} {{method['name']}}<T extends Node>({{connect_args(method['arguments']) + process_vararg(method['is_vararg'], method['arguments']|last)}}): T;

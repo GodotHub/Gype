@@ -21,13 +21,15 @@ export function Tool(target) {
     target[_Tool] = true;
     return target;
 }
+const _resolvers = new Set();
 export function to_promise(signal) {
     return new Promise((resolve, reject) => {
         const instance = signal.get_object();
         if (!GD.is_instance_id_valid(instance.get_instance_id()))
             reject("instance invalid");
         const resolver = new Resolver(resolve);
-        signal.connect(resolver.callback, 0);
+        _resolvers.add(resolver);
+        signal.connect(resolver.callback, 4);
     });
 }
 class Resolver extends Node {
@@ -36,14 +38,13 @@ class Resolver extends Node {
         _Resolver_resolve.set(this, void 0);
         _Resolver_callback.set(this, void 0);
         __classPrivateFieldSet(this, _Resolver_resolve, resolve, "f");
-        __classPrivateFieldSet(this, _Resolver_callback, new Callable(this, __classPrivateFieldGet(this, _Resolver_resolve, "f")), "f");
+        __classPrivateFieldSet(this, _Resolver_callback, new Callable(this, this.resolve), "f");
     }
     get callback() {
         return __classPrivateFieldGet(this, _Resolver_callback, "f");
     }
     resolve() {
         __classPrivateFieldGet(this, _Resolver_resolve, "f").call(this);
-        this.queue_free();
     }
 }
 _Resolver_resolve = new WeakMap(), _Resolver_callback = new WeakMap();

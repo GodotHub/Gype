@@ -191,35 +191,38 @@ Variant any_to_variant(JSValue val) {
 	}
 }
 
-#define CASE_TO_VARIANT(type, val)                                         \
-	{                                                                      \
-		int class_id = JS_GetClassID(val);                                 \
-		if (class_id == classes[#type])                                    \
-			return *reinterpret_cast<type *>(JS_GetOpaque(val, class_id)); \
+#define CASE_TO_VARIANT(type, val)                                               \
+	{                                                                            \
+		int class_id = JS_GetClassID(val);                                       \
+		if (class_id == classes[#type]) {                                        \
+			return type(*reinterpret_cast<type *>(JS_GetOpaque(val, class_id))); \
+		}                                                                        \
 	}
 
 Variant obj_to_variant(JSValue val) {
-	CASE_TO_VARIANT(Vector2, val)
-	CASE_TO_VARIANT(Vector2i, val)
-	CASE_TO_VARIANT(Vector3, val)
-	CASE_TO_VARIANT(Vector3i, val)
-	CASE_TO_VARIANT(Vector4, val)
-	CASE_TO_VARIANT(Vector4i, val)
-	CASE_TO_VARIANT(AABB, val)
-	CASE_TO_VARIANT(Callable, val)
-	CASE_TO_VARIANT(Basis, val)
-	CASE_TO_VARIANT(Dictionary, val)
-	CASE_TO_VARIANT(Color, val)
-	CASE_TO_VARIANT(NodePath, val)
-	CASE_TO_VARIANT(Plane, val)
-	CASE_TO_VARIANT(Projection, val)
-	CASE_TO_VARIANT(Quaternion, val)
-	CASE_TO_VARIANT(Rect2, val)
-	CASE_TO_VARIANT(Rect2i, val)
-	CASE_TO_VARIANT(RID, val)
-	CASE_TO_VARIANT(Signal, val)
-	CASE_TO_VARIANT(Transform2D, val)
-	CASE_TO_VARIANT(Transform3D, val)
+	CASE_TO_VARIANT(Vector2, val);
+	CASE_TO_VARIANT(Vector2i, val);
+	CASE_TO_VARIANT(Vector3, val);
+	CASE_TO_VARIANT(Vector3i, val);
+	CASE_TO_VARIANT(Vector4, val);
+	CASE_TO_VARIANT(Vector4i, val);
+	CASE_TO_VARIANT(AABB, val);
+	CASE_TO_VARIANT(Callable, val);
+	CASE_TO_VARIANT(Basis, val);
+	CASE_TO_VARIANT(Dictionary, val);
+	CASE_TO_VARIANT(Color, val);
+	CASE_TO_VARIANT(NodePath, val);
+	CASE_TO_VARIANT(Plane, val);
+	CASE_TO_VARIANT(Projection, val);
+	CASE_TO_VARIANT(Quaternion, val);
+	CASE_TO_VARIANT(Rect2, val);
+	CASE_TO_VARIANT(Rect2i, val);
+	CASE_TO_VARIANT(RID, val);
+	CASE_TO_VARIANT(Signal, val);
+	CASE_TO_VARIANT(Transform2D, val);
+	CASE_TO_VARIANT(Transform3D, val);
+	CASE_TO_VARIANT(String, val);
+	CASE_TO_VARIANT(StringName, val);
 	// not match Variant case
 	int class_id = JS_GetClassID(val);
 	switch (class_id) {

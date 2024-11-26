@@ -71,7 +71,7 @@ GDExtensionBool refcount_decremented_func(GDExtensionScriptInstanceDataPtr p_ins
 
 GDExtensionObjectPtr get_owner_func(GDExtensionScriptInstanceDataPtr p_instance) {
 	TypeScriptInstance *instance = reinterpret_cast<TypeScriptInstance *>(p_instance);
-	return instance->get_godot_obj()->_owner;
+	return instance->get_binding()->_owner;
 }
 
 GDExtensionObjectPtr get_script_func(GDExtensionScriptInstanceDataPtr p_instance) {

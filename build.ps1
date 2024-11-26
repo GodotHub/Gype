@@ -95,7 +95,7 @@ $general = "generate_template_get_node=false"
 
 if ($args[1] -match "debug") {
     $ds1 = "debug_symbols=true"
-    $ds2 = "optimize=debug"
+    $ds2 = "optimize=none"
 }
 
 if ($args[1] -match "rel") {

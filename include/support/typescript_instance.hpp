@@ -18,7 +18,6 @@ class TypeScriptInstance;
 class TypeScriptInstance {
 	Object *gd_binding;
 	JSValue js_binding;
-	Object *p_godot_object;
 	TypeScript *script;
 
 private:
@@ -45,8 +44,7 @@ public:
 	GDExtensionBool is_placeholder();
 	GDExtensionScriptLanguagePtr get_language();
 
-	Object *get_godot_obj() { return p_godot_object; }
-	Object *get_binding() { return gd_binding; }
+	Object *get_binding();
 
 	TypeScriptInstance(Object *p_godot_object, TypeScript *script, bool is_placeholder);
 	~TypeScriptInstance();

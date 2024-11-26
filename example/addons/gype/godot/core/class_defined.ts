@@ -13,13 +13,16 @@ export function Tool(target: any) {
   return target;
 }
 
+const _resolvers = new Set();
+
 export function to_promise(signal: Signal): Promise<void> {
   return new Promise((resolve, reject) => {
-    const instance = signal.get_object();
-    if (!GD.is_instance_id_valid(instance.get_instance_id()))
-      reject("instance invalid");
-    const resolver: Resolver = new Resolver(resolve);
-    signal.connect(resolver.callback, 0);
+	const instance = signal.get_object();
+	if (!GD.is_instance_id_valid(instance.get_instance_id()))
+	  reject("instance invalid");
+	const resolver = new Resolver(resolve);
+	_resolvers.add(resolver);
+	signal.connect(resolver.callback, 4);
   });
 }
 
@@ -28,17 +31,16 @@ class Resolver extends Node {
   #callback: Callable;
 
   constructor(resolve: Function) {
-    super();
-    this.#resolve = resolve;
-    this.#callback = new Callable(this, this.#resolve);
+	super();
+	this.#resolve = resolve;
+	this.#callback = new Callable(this, this.resolve);
   }
 
   get callback() {
-    return this.#callback;
+	return this.#callback;
   }
 
   public resolve(): void {
-    this.#resolve();
-    this.queue_free();
+	this.#resolve();
   }
 }

@@ -3,6 +3,13 @@ from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
 from scripts.utils.jinja_utils import camel_to_snake, is_pod_type, get_enum_fullname, is_enum, is_variant, connect_args, set_return, set_type
 
+invalid_methods = [
+    "AudioEffectInstance:_process",
+    "AudioStreamPlayback:_mix",
+    "AudioStreamPlaybackResampled:_mix_resampled",
+    "MovieWriter:_write_frame"
+]
+
 def gen_classes_d_ts():
     env = Environment(loader=FileSystemLoader(searchpath='./templates/dts/classes'))
     cpp_template = env.get_template('classes.d.ts.jinja')
@@ -12,7 +19,7 @@ def gen_classes_d_ts():
         if clazz['name'].find('Extension') != -1 or clazz['name'] == 'Object': 
             continue
         dependency = list(filter(lambda e: not is_variant(e), collect_dependency(clazz)))
-        content = cpp_template.render({ 'class': clazz, 'singletons': gde_json['singletons'], 'dependency': dependency })
+        content = cpp_template.render({ 'class': clazz, 'invalid_methods': invalid_methods, 'singletons': gde_json['singletons'], 'dependency': dependency })
         if clazz['name'] == 'Object':
             class_name = 'GodotObject'
         else:
