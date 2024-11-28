@@ -1,10 +1,10 @@
-# 使用本地godot-cpp编译：./compile.ps1
-# 拉取官方仓库里的godot-cpp进行编译：./compile.ps1 4.3
-# 使用本地godot-cpp编译Win：./compile.ps1 none win
-# 拉取官方仓库4.3编译Windows版本：./compile.ps1 4.3 win
-# 拉取官方仓库4.3编译Android版本：./compile.ps1 4.3 andr
-# 拉取官方仓库4.3编译Android带debug选项：./compile.ps1 4.3 andr-debug
-# 拉取官方仓库4.3编译Android带debug选项，不增量编译：./compile.ps1 4.3 andr-debug-noc
+# 使用本地godot-cpp编译：./build.ps1
+# 拉取官方仓库里的godot-cpp进行编译：./build.ps1 4.3
+# 使用本地godot-cpp编译Win：./build.ps1 none win
+# 拉取官方仓库4.3编译Windows版本：./build.ps1 4.3 win
+# 拉取官方仓库4.3编译Android版本：./build.ps1 4.3 andr
+# 拉取官方仓库4.3编译Android带debug选项：./build.ps1 4.3 andr-debug
+# 拉取官方仓库4.3编译Android带debug选项，不增量编译：./build.ps1 4.3 andr-debug-noc
 
 
 $sconsVersion = scons --version 2>&1 | Select-String -Pattern "\d+\.\d+(\.\d+)?"
